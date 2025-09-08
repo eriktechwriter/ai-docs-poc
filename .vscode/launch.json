@@ -1,0 +1,55 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Development Server",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/@docusaurus/core/bin/docusaurus.mjs",
+      "args": ["start"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    {
+      "name": "Debug Build Process",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/@docusaurus/core/bin/docusaurus.mjs",
+      "args": ["build"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    {
+      "name": "Debug Conversion Script",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/convert-md-to-mdx.js",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "args": ["--debug"]
+    },
+    {
+      "name": "Debug AI Content Planner",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/ai-content-planner.js",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "args": ["--debug"]
+    },
+    {
+      "name": "Attach to Chrome",
+      "type": "chrome",
+      "request": "attach",
+      "port": 9222,
+      "webRoot": "${workspaceFolder}",
+      "url": "http://localhost:3000"
+    }
+  ]
+}

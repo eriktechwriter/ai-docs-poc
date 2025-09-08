@@ -1,0 +1,134 @@
+# Feature Matrix Data Source
+# This file demonstrates how dynamic content can be managed through YAML data sources
+
+metadata:
+  title: "Trend Vision One Feature Matrix"
+  description: "Comprehensive feature support across all products"
+  last_updated: "2024-01-15"
+  version: "1.0"
+
+products:
+  - id: "endpoint-security"
+    name: "Endpoint Security"
+    version: "2.1"
+  - id: "cloud-security"
+    name: "Cloud Security"
+    version: "1.5"
+  - id: "network-security"
+    name: "Network Security"
+    version: "3.2"
+  - id: "email-security"
+    name: "Email Security"
+    version: "1.8"
+
+features:
+  - name: "Single Sign-On (SSO)"
+    category: "Authentication"
+    description: "SAML and OIDC authentication support"
+    products:
+      - product: "endpoint-security"
+        supported: true
+        version_added: "2.0"
+        notes: "SAML and OIDC supported"
+        documentation: "/docs/sso-endpoint"
+      - product: "cloud-security"
+        supported: true
+        version_added: "1.2"
+        notes: "OIDC only"
+        documentation: "/docs/sso-cloud"
+      - product: "network-security"
+        supported: false
+        version_added: null
+        notes: "Planned for v3.5"
+        documentation: null
+      - product: "email-security"
+        supported: true
+        version_added: "1.5"
+        notes: "Full SAML support"
+        documentation: "/docs/sso-email"
+
+  - name: "Multi-Factor Authentication"
+    category: "Authentication"
+    description: "Additional security layer for user authentication"
+    products:
+      - product: "endpoint-security"
+        supported: true
+        version_added: "2.1"
+        notes: "TOTP and SMS supported"
+        documentation: "/docs/mfa-endpoint"
+      - product: "cloud-security"
+        supported: true
+        version_added: "1.0"
+        notes: "TOTP, SMS, and hardware keys"
+        documentation: "/docs/mfa-cloud"
+      - product: "network-security"
+        supported: true
+        version_added: "3.0"
+        notes: "TOTP only"
+        documentation: "/docs/mfa-network"
+      - product: "email-security"
+        supported: false
+        version_added: null
+        notes: "Under development"
+        documentation: null
+
+  - name: "API Access"
+    category: "Integration"
+    description: "RESTful API for programmatic access"
+    products:
+      - product: "endpoint-security"
+        supported: true
+        version_added: "1.5"
+        notes: "REST API v2"
+        documentation: "/docs/api-endpoint"
+      - product: "cloud-security"
+        supported: true
+        version_added: "1.0"
+        notes: "REST API v2 with GraphQL"
+        documentation: "/docs/api-cloud"
+      - product: "network-security"
+        supported: true
+        version_added: "2.8"
+        notes: "REST API v1 (legacy)"
+        documentation: "/docs/api-network"
+      - product: "email-security"
+        supported: true
+        version_added: "1.3"
+        notes: "REST API v2"
+        documentation: "/docs/api-email"
+
+  - name: "Real-time Monitoring"
+    category: "Operations"
+    description: "Live monitoring and alerting capabilities"
+    products:
+      - product: "endpoint-security"
+        supported: true
+        version_added: "1.0"
+        notes: "Real-time threat detection"
+        documentation: "/docs/monitoring-endpoint"
+      - product: "cloud-security"
+        supported: true
+        version_added: "1.0"
+        notes: "Cloud workload monitoring"
+        documentation: "/docs/monitoring-cloud"
+      - product: "network-security"
+        supported: true
+        version_added: "1.0"
+        notes: "Network traffic analysis"
+        documentation: "/docs/monitoring-network"
+      - product: "email-security"
+        supported: true
+        version_added: "1.0"
+        notes: "Email threat monitoring"
+        documentation: "/docs/monitoring-email"
+
+categories:
+  - id: "authentication"
+    name: "Authentication"
+    description: "User authentication and identity management"
+  - id: "integration"
+    name: "Integration"
+    description: "Third-party integrations and APIs"
+  - id: "operations"
+    name: "Operations"
+    description: "Monitoring, alerting, and operational features"
