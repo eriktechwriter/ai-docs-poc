@@ -1,0 +1,91 @@
+---
+slug: trend-vision-one-migrating-service-gateway-1-0-2-0
+title: Migrate from Service Gateway 1.0 to 2.0
+last_updated: '2025-09-08'
+ai_context:
+  source_file: migrating-service-gateway-1-0-2-0.md
+  conversion_date: '2025-09-08T23:42:15.999Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Migrate to Service Gateway 2.0 to manage services more easily and use resources more efficiently.
+
+:::note
+
+- To minimize disruption of services during migration, do not change the Service Gateway Management API key before migrating the Service Gateway virtual appliance.
+
+- The source and target appliances may be temporarily unavailable during migration.
+:::
+
+### Procedure {#procedure}
+
+1.  Deploy a new Service Gateway 2.0 appliance to replace your existing 1.0 appliance.
+
+    1.  Go to **Workflow and Automation → Service Gateway Management**.
+
+    2.  Click **Download Virtual Appliance**.
+
+        :::note
+
+        The original Service Gateway 1.0 appliance package is no longer available for download.
+        :::
+
+    3.  Deploy the appliance.
+
+        - [Deploying a Service Gateway virtual appliance with VMware ESXi](sg-virtual-app-vmware-esxi.mdx)
+
+        - [Deploying a Service Gateway virtual appliance with Microsoft Hyper-V](deploy-virtual-appliance-ms-hyper-v.mdx)
+
+        - [Deploying a Service Gateway virtual appliance with Microsoft Azure](service-gateway-azure.mdx)
+
+        - [Deploying a Service Gateway virtual appliance with AWS](deploy-service-gateway-aws.mdx)
+
+        :::warning[Important]
+
+        Do not enable or install any services on the new Service Gateway 2.0 appliance.
+        :::
+
+    4.  For customers that plan to reuse the IP address from the source 1.0 appliance, ensure that the target appliance network settings (such as network mask and subnets) match the source appliance.
+
+        :::warning[Important]
+
+        If you do not transfer the IP address to the target appliance, all existing products and services using the source appliance need to be reconfigured with the new target appliance IP address or you must manually assign the source IP address to the target appliance.
+        :::
+
+2.  Migrate the Service Gateway 1.0 settings to the target 2.0 appliance.
+
+    1.  Go to **Workflow and Automation → Service Gateway Management**.
+
+    2.  Click the configuration icon (![](/images/configure=GUID-657DB993-ADC7-4DEC-8C62-C8739D74760E.webp)) for the Service Gateway appliance that you want to migrate.
+
+    3.  Click the **Migration Options** tab.
+
+    4.  Click **Migrate Settings to Service Gateway 2.0**.
+
+    5.  Select the target Service Gateway 2.0 appliance deployed in step 1.
+
+    6.  For customers that plan to reuse the IP address from the source 1.0 appliance, enable **Transfer IP address to target appliance and automatically unregister and shut down source appliance**.
+
+        :::warning[Important]
+
+        If you do not transfer the IP address to the target appliance, all existing products and services using the source appliance need to be reconfigured with the new target appliance IP address or you must manually assign the source IP address to the target appliance.
+        :::
+
+        :::note
+
+        The target appliance may be temporarily unavailable while the appliance transfers and configures the IP address.
+        :::
+
+    7.  Verify the active services that you want the target appliance to enable.
+
+        :::note
+
+        - Only services that you had enabled on the Service Gateway 1.0 appliance appear as options for the new appliance.
+
+        - Services that did not log any activity for the last 30 days are not automatically selected.
+        :::
+
+    8.  Click **Start Migration**.
+::::

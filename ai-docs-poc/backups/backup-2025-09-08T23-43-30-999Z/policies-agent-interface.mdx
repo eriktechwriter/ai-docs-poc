@@ -1,0 +1,127 @@
+---
+slug: trend-vision-one-policies-agent-interface
+title: Agent Interface
+last_updated: '2025-09-08'
+ai_context:
+  source_file: policies-agent-interface.md
+  conversion_date: '2025-09-08T23:42:14.557Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure and manage the Agent Interface module settings.
+
+:::warning[Important]
+
+- Policies are "Pre-release" features and are not considered an official release. Please review the [Pre-Release Disclaimer](pre-release-disclaimer.mdx) before using the feature.
+
+- This feature is not available in all regions.
+
+- Agent Interface supports Windows and macOS deployments.
+
+- Navigating between the security modules or leaving the **Policy Settings** screen discards any unsaved changes. To avoid losing your work, always click **Save** before leaving the current screen.
+:::
+
+The Agent Interface is the user interface deployed on the endpoint that allows endpoint users to interact with the Trend Vision One Endpoint Security agent to perform scans and view security information. When disabled, users cannot open the agent interface on the endpoint.
+
+### Procedure {#procedure}
+
+1.  To allow your end users to access the Agent Interface and receive notifications, select **Enable**.
+
+2.  To allow end users on Windows endpoints to right-click and manually scan files, select **Add manual scan to the shortcut menu on endpoints** under **General settings**.
+
+3.  To notify end users about upcoming scheduled scans, select **Notify users of an upcoming scheduled scan** and set the **mintues before running**.
+
+4.  To allow end users to delay a scheduled scan, select **Allow user to postpone a scheduled scan for** and set how long users can delay a scheduled scan.
+
+    End users can only delay a scheduled scan once with this option.
+
+5.  To allow end users to skip a scheduled scan, select **Allow user to skip a scheduled scan**.
+
+    If end users chose to skip a scan, the agent does not run the upcoming scheduled scan and waits for the next occurance on the configured schedule. You can configure and review scheduled scans in [Anti-Malware](policies-anti-malware.mdx).
+
+6.  Configure the **Threat Prevention** notifications.
+
+    1.  Click **Threat Prevention**.
+
+    2.  To allow Anti-Malware to send end users notifications, click **Notify user when Anti-Malware detects a threat**.
+
+        :::note
+
+        For Windows agents, Anti-Malware sends notifications when a threat is detected by real-time scan and scheduled scans.
+
+        For macOS agents, Anti-Malware sends notifications when a threat is detected by real-time scan.
+        :::
+
+    3.  If you want to customize the notification, type a message up to 1024 characters.
+
+    4.  To allow Web Reputation to send end users notifications, click **Notify user when Web Reputation detects a threat**.
+
+        :::warning[Important]
+
+        Web Reputation notifications only support Windows agents.
+        :::
+
+    5.  If you want to customize the notification, type a message up to 1024 characters.
+
+7.  Configure the **Access Control** notifications.
+
+    1.  Click **Access Control**.
+
+    2.  To allow Application Control to send end users notifications, click **Notify user when Application Control detects an access violation**.
+
+        :::warning[Important]
+
+        Application Control notifications only support Windows agents.
+        :::
+
+    3.  If you want to customize the notification, type a message up to 1024 characters.
+
+    4.  To allow Device Control to send end users notifications, click **Notify user when Device Control detects an access violation**.
+
+    5.  If you want to customize the notification, type a message up to 1024 characters.
+
+    6.  To allow Firewall to send end users notifications, click **Notify user when Firewall detects a threat**.
+
+        :::warning[Important]
+
+        Firewall notifications only support Windows agents.
+        :::
+
+    7.  If you want to customize the notification, type a message up to 1024 characters.
+
+8.  Configure the **Cyber Risk & Security Operations** notifications.
+
+    :::warning[Important]
+
+    Cyber Risk & Security Operations notifications only support Windows agents.
+    :::
+
+    1.  Click **Cyber Risk & Security Operations**.
+
+    2.  To notify end users when the endpoint is isolated using the Isolate Endpoint response action, click **Send a notification when the endpoint is isolated**.
+
+    3.  If you want to customize the notification, type a message up to 1024 characters.
+
+    4.  To notify end users when the agent detects deepfake content, click **Notify user when the agent detects deepfake content**.
+
+    5.  If you want to customize the notification, type a message up to 1024 characters.
+
+    6.  To notify end users when the agent terminates a process, click **Notify user when an app process is terminated by the agent**.
+
+    7.  If you want to customize the notification, type a message up to 1024 characters.
+
+9.  To allow end users to terminate the agent program, select **Allow users to shut down the agent using an authorization token**.
+
+    :::warning[Important]
+
+    Agent Interface only supports Windows agents terminating the agent program using an authorization token.
+
+    Some agent processes do not automatically terminate when shutting down the agent, and might need to be terminated manually before shutting down the agent program. For more information, see [How to manually terminate Trend Vision One Endpoint Security agent processes](manually-stop-agent-processes.mdx).
+    :::
+
+    Terminating the agent program requires an authorization token. You can generate an [authorization token](resources-authorization-tokens.mdx) in Policy Resources.
+
+    To restart the agent program, see [How to restart the Trend Vision One Endpoint Security agent](restart-security-agent.mdx).
+::::

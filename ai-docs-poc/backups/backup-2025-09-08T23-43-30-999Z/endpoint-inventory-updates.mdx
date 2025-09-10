@@ -1,0 +1,75 @@
+---
+slug: trend-vision-one-endpoint-inventory-updates
+title: >-
+  Endpoint Inventory update considerations for customers migrating multiple
+  consoles
+last_updated: '2025-09-08'
+ai_context:
+  source_file: endpoint-inventory-updates.md
+  conversion_date: '2025-09-08T23:42:19.988Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Before you update to Trend Vision One Endpoint Security, carefully read through and plan out how to manage the limitations and effects of the update.
+
+Customers that want to merge multiple Trend Vision One consoles need to request help from support. Support can assist customers in the following scenarios:
+
+- Migrate endpoints from Site A to Site B within the same business
+
+- Migrate endpoints from Company A to Company B
+
+:::note
+
+To reduce the possibility of unexpected issues occurring during the migration, please update all Apex One as a Service and Trend Cloud One Endpoint & Workload Security instances to Trend Vision One Endpoint Security before requesting help from support.
+:::
+
+The following table outlines considerations you should be aware of before merging your consoles.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Consideration</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Company-level migration</p></td>
+<td><p>The migration is only supported at the company-level for each console. You cannot migrate a subset of endpoints or merge at the instance level.</p></td>
+</tr>
+<tr>
+<td><p>Data cannot be migrated</p></td>
+<td><p>None of the Endpoint Inventory settings from the source console, including inactive agent removal, group settings, and policy settings, are migrated to the new target console. You must manually reconfigure all necessary settings after the migration is complete.</p></td>
+</tr>
+<tr>
+<td><p>Only supported for Windows and macOS endpoints</p></td>
+<td><p>If your source console includes Linux agents, you must manually uninstall the existing agent and reinstall a new agent package from the target console on the Linux endpoints after the migration is complete.</p></td>
+</tr>
+<tr>
+<td><p>Agents must download and reinstall new Endpoint Sensor components</p></td>
+<td><p>After the migration is complete, agents start to download updated Endpoint Sensor components. You may need to <a href="trend-vision-one-sensor-settings">configure bandwidth throttling settings</a> on the target console before filing the support request.</p></td>
+</tr>
+</tbody>
+</table>
+
+After the migration is complete, you can no longer access the Endpoint Inventory app from the source console. If you install an agent using an installation package from the source console, the newly-installed agent will not appear to report to any Trend Vision One console.
+
+The migrated agents automatically apply the following default settings:
+
+- Standard Endpoint Protection settings: For endpoints that also have an Apex One agent installed
+
+- Server & Workload Protection settings: For endpoints that also have an Endpoint & Workload Security agent installed
+
+- Sensor-only settings: For endpoints do not have an endpoint protection agent installed
+
+:::note
+
+A typical agent completes the migration and displays in the target Endpoint Inventory app within 8 hours (depending on the agent's polling schedule). Agents that are not online receive the migration command the next time they contact the server and may take longer before appearing in the target console.
+:::
+:::::

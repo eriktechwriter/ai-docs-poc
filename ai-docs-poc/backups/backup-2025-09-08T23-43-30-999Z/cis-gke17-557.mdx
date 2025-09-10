@@ -1,0 +1,77 @@
+---
+slug: trend-vision-one-cis-gke17-557
+title: 5.5.7 - Ensure Secure Boot for Shielded GKE Nodes is Enabled (Automated)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: cis-gke17-557.md
+  conversion_date: '2025-09-08T23:42:23.597Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Profile applicability: Level 2
+
+Enable Secure Boot for Shielded GKE Nodes to verify the digital signature of node boot components.
+
+An attacker may seek to alter boot components to persist malware or root kits during system initialisation. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.
+
+:::note
+
+By default, Secure Boot is disabled in GKE clusters. By default, Secure Boot is disabled when Shielded GKE Nodes is enabled.
+:::
+
+### Impact {#impact}
+
+Secure Boot will not permit the use of third-party unsigned kernel modules.
+
+### Audit {#audit}
+
+Using Google Cloud Console:
+
+1.  Go to [Kubernetes Engine website](https://console.cloud.google.com/kubernetes/list).
+2.  From the list of clusters, click on the name of the cluster under test.
+3.  Open the Details pane for each Node pool within the cluster, and ensure that Secure boot is set to Enabled under the Security heading.
+
+Using Command Line:
+
+To check if Secure Boot is enabled for the Node pools in the cluster, run the following command for each Node pool:
+
+``` codeblock
+gcloud container node-pools describe <node_pool_name> --cluster 
+<cluster_name> --zone <compute_zone> --format json | jq 
+.config.shieldedInstanceConfig
+```
+
+This will return the value below, if Secure Boot is enabled:
+
+``` codeblock
+{ 
+    "enableSecureBoot": true 
+}
+```
+
+### Remediation {#remediation}
+
+Once a Node pool is provisioned, it cannot be updated to enable Secure Boot. New Node pools must be created within the cluster with Secure Boot enabled.
+
+Using Google Cloud Console:
+
+1.  Go to [Kubernetes Engine website](https://console.cloud.google.com/kubernetes/list).
+2.  From the list of clusters, click on the cluster requiring the update and click ADD NODE POOL.
+3.  Ensure that the Secure boot checkbox is checked under the Shielded options Heading.
+4.  Click SAVE.
+
+Workloads will need to be migrated from existing non-conforming Node pools to the newly created Node pool, then delete the non-conforming pools.
+
+Using Command Line:
+
+To create a Node pool within the cluster with Secure Boot enabled, run the following command:
+
+``` codeblock
+gcloud container node-pools create <node_pool_name> --cluster <cluster_name> 
+--zone <compute_zone> --shielded-secure-boot
+```
+
+Workloads will need to be migrated from existing non-conforming Node pools to the newly created Node pool, then delete the non-conforming pools.
+::::

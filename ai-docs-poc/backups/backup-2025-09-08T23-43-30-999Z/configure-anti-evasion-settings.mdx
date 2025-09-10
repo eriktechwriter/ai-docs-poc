@@ -1,0 +1,174 @@
+---
+slug: trend-vision-one-configure-anti-evasion-settings
+title: Configure anti-evasion settings
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configure-anti-evasion-settings.md
+  conversion_date: '2025-09-08T23:42:22.861Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Anti-evasion settings control the network engine handling of abnormal packets that may be attempting to evade analysis. Anti evasion settings are configured in a policy or an individual computer. The Security Posture setting controls how rigorous intrusion prevention analyzes packets, and can be set to one of the following values:
+
+- *Normal*: Prevents the evasion of intrusion prevention rules without false positives. This is the default value.
+- *Strict*: Performs more stringent checking than Normal mode but can produce some false-positive results. Strict mode is useful for penetration testing but should not be enabled under normal circumstances.
+- *Custom*: If you select *Custom*, additional settings are available that enable you to specify how the agent will handle issues with packets. For these settings (with the exception of *TCP Timestamp PAWS Window*), the options are *Allow* (the agent sends the packet through to the system) or *Deny Silent* (same behavior as Deny, but no event is logged):
+
+:::note
+
+Deny (the agent drops the packet and logs an event) is not a customizable option.
+:::
+
+<table>
+<thead>
+<tr>
+<th><p>Setting</p></th>
+<th><p>Description</p></th>
+<th><p>Normal value</p></th>
+<th><p>Strict value</p></th>
+<th><p>Default custom value (pre-10.2)</p></th>
+<th><p>Default custom value (10.2 or later)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Invalid TCP Timestamps</p></td>
+<td><p>Action to take when a TCP timestamp is too old</p></td>
+<td><p>Ignore (same function as Allow)</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny</p></td>
+<td><p>Ignore (same function as Allow)</p></td>
+</tr>
+<tr>
+<td><p>TCP Timestamp PAWS Window</p></td>
+<td><p>Packets can have timestamps. When a timestamp has an earlier timestamp than the one that came before it, it can be suspicious. The tolerance for the difference in timestamps depends on the operating system. For Windows systems, select 0 (the system will only accept packets with a timestamp that is equal to or newer than the previous packet). For Linux systems, select 1 (the system will accept packets with a timestamp that is a maximum of one second earlier than the previous packet).</p></td>
+<td><p>1 for Linux agents, otherwise 0</p></td>
+<td><p>1 for Linux agents, otherwise 0</p></td>
+<td><p>0</p></td>
+<td><p>1 for Linux agents, otherwise 0</p></td>
+</tr>
+<tr>
+<td><p>Timestamp PAWS Zero Allowed</p></td>
+<td><p>Action to take when a TCP timestamp is zero</p></td>
+<td><p>Deny for Linux agents or NDIS5, otherwise Allow</p></td>
+<td><p>Deny for Linux agents or NDIS5, otherwise Allow</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny for Linux agents or NDIS5, otherwise Allow</p></td>
+</tr>
+<tr>
+<td><p>Fragmented Packets</p></td>
+<td><p>Action to take when a packet is fragmented</p></td>
+<td><p>Allow</p></td>
+<td><p>Allow</p></td>
+<td><p>Deny</p></td>
+<td><p>Allow</p></td>
+</tr>
+<tr>
+<td><p>TCP Zero Flags</p></td>
+<td><p>Action to take when a packet has zero flags set</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny</p></td>
+</tr>
+<tr>
+<td><p>TCP Congestion Flags</p></td>
+<td><p>Action to take when a packet has congestion flags set</p></td>
+<td><p>Allow</p></td>
+<td><p>Allow</p></td>
+<td><p>Deny</p></td>
+<td><p>Allow</p></td>
+</tr>
+<tr>
+<td><p>TCP Urgent Flags</p></td>
+<td><p>Action to take when a packet has urgent flags set</p></td>
+<td><p>Allow</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny</p></td>
+<td><p>Allow</p></td>
+</tr>
+<tr>
+<td><p>TCP Syn Fin Flags</p></td>
+<td><p>Action to take when a packet has both SYN and FIN flags set</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny</p></td>
+</tr>
+<tr>
+<td><p>TCP Syn Rst Flags</p></td>
+<td><p>Action to take when a packet has both SYN and RST flags set</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny</p></td>
+</tr>
+<tr>
+<td><p>TCP Rst Fin Flags</p></td>
+<td><p>Action to take when a packet has both RST and FIN flags set</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny</p></td>
+</tr>
+<tr>
+<td><p>TCP Syn with Data</p></td>
+<td><p>Action to take when a packet has a SYN flag set and also contains data</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny</p></td>
+</tr>
+<tr>
+<td><p>TCP Split Handshake</p></td>
+<td><p>Action to take when a SYN is received instead of SYN-ACK, as a reply to a SYN.</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny</p></td>
+</tr>
+<tr>
+<td><p>RST Packet Out of Connection</p></td>
+<td><p>Action to take for a RST packet without a known connection</p></td>
+<td><p>Allow</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny</p></td>
+<td><p>Allow</p></td>
+</tr>
+<tr>
+<td><p>FIN Packet Out of Connection</p></td>
+<td><p>Action to take for a FIN packet without a known connection</p></td>
+<td><p>Allow</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny</p></td>
+<td><p>Allow</p></td>
+</tr>
+<tr>
+<td><p>OUT Packet Out of Connection</p></td>
+<td><p>Action to take for an outgoing packet without a known connection</p></td>
+<td><p>Allow</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny</p></td>
+<td><p>Allow</p></td>
+</tr>
+<tr>
+<td><p>Evasive Retransmit</p></td>
+<td><p>Action to take for a packet with duplicated or overlapping data</p></td>
+<td><p>Allow</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny</p></td>
+<td><p>Allow</p></td>
+</tr>
+<tr>
+<td><p>TCP Checksum</p></td>
+<td><p>Action to take for a packet with an invalid checksum</p></td>
+<td><p>Allow</p></td>
+<td><p>Deny</p></td>
+<td><p>Deny</p></td>
+<td><p>Allow</p></td>
+</tr>
+</tbody>
+</table>
+::::

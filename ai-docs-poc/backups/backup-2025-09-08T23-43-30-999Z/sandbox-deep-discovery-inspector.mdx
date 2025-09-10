@@ -1,0 +1,63 @@
+---
+slug: trend-vision-one-sandbox-deep-discovery-inspector
+title: Sandbox options for connected Deep Discovery Inspector appliances
+last_updated: '2025-09-08'
+ai_context:
+  source_file: sandbox-deep-discovery-inspector.md
+  conversion_date: '2025-09-08T23:42:13.264Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Review the options available for integrating and enabling analysis of suspicious files in a virtual sandbox for your Deep Discovery Inspector appliances.
+
+Trend Vision One Network Security provides several ways to help manage your Deep Discover Inspector sandbox settings and how suspicious objects are analyzed. Different management options are available depending on how you configure the sandbox options on your appliance.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Sandbox type</p></th>
+<th><p>Sandbox</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="3"><p>External</p></td>
+<td><p>Send to sandbox for Deep Discovery Inspector</p></td>
+<td><p>Enable in Network Inventory to automatically send suspicious object samples to a virtual sandbox for analysis</p>
+<p>By leveraging the Send to sandbox feature in Trend Vision One, you can reduce the workload needed to prepare and configure a Virtual Analyzers. Results are available in the Sandbox Analysis app.</p></td>
+</tr>
+<tr>
+<td><p>Sandbox as a Service</p></td>
+<td><p>By connecting a Deep Discovery Inspector appliance with an active Sandbox as a Service license, you can integrate the service to allow sharing of analysis reports with Trend Vision One</p>
+<p>This option requires an active Sandbox as a Service license. If you do not have an active license, but still want to leverage Trend Vision One, consider using Send to sandbox for Deep Discovery Inspector.</p>
+<p>For more information, see <a href="trend-vision-one-ddi-virtual-sandbox-aas">Integrating a Deep Discovery Inspector virtual appliance with Sandbox as a Service</a></p></td>
+</tr>
+<tr>
+<td><p>Deep Discovery Analyzer</p></td>
+<td><p>By connecting a Deep Discovery Analyzer appliance to Trend Vision One, analysis results with a high risk score are shared to the Sandbox Analysis app</p>
+<p>The information shared by Deep Discovery Analyzer is limited compared to other options. To view all analysis results, access the Deep Discovery Analyzer appliance console.</p>
+<p>For more information on connecting your Deep Discovery Analyzer appliance, see <a href="trend-vision-one-product-instance">Product Instance</a>.</p></td>
+</tr>
+<tr>
+<td><p>Internal</p></td>
+<td><p>Virtual Analyzer</p></td>
+<td><p>Trend Vision One Network Security provides a set of features to centrally manage the Virtual Analyzer configurations of your connected appliances, such as image deployment plans</p>
+<p>The Virtual Analyzer is best suited for security environments that are air-gapped, or if you wish to manage the sandbox configuration yourself. This sandbox type requires using the Virtual Analyzer Image Preparation Tool. Suspicious object samples and analysis reports are not sent to Trend Vision One. Access the Deep Discovery Inspector appliance console to view analysis results.</p>
+<p>For more information about plans, see <a href="trend-vision-one-appliance-plans">Appliance Plans</a>.</p>
+<p>For more information about managing images, see <a href="trend-vision-one-virtual-analyzer-image-source">Virtual Analyzer Image Source</a></p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Integrating a Deep Discovery Inspector virtual appliance with Sandbox as a Service](ddi-virtual-sandbox-aas.md "Integrate the Deep Discovery Inspector virtual appliance with Sandbox as a Service to send object data to Trend Vision One.")
+:::

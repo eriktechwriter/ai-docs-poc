@@ -1,0 +1,44 @@
+---
+slug: trend-vision-one-configuring-so-email-security
+title: Configuring suspicious object settings
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configuring-so-email-security.md
+  conversion_date: '2025-09-08T23:42:22.176Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Before you start, make sure you meet the following requirements:
+
+- You have enabled virus policies. Suspicious file SHA-1/SHA-256 hashes apply during virus scanning.
+
+- You have enabled spam policies with Web Reputation turned on. Suspicious URLs apply during Web Reputation scanning.
+
+### Procedure {#procedure}
+
+1.  Go to **Administration → Other Settings → Service Integration**.
+
+2.  Click **Threat Intelligence**.
+
+3.  Enable **Check for suspicious files and URLs**.
+
+    For files or URLs that match the suspicious objects from both Trend Vision One and Trend Micro Apex Central, the settings for the suspicious objects from Trend Vision One take precedence.
+
+4.  Enable **Check for suspicious sender addresses**.
+
+    Cloud Email Gateway Protection synchronizes only the sender addresses configured with the “Block/Quarantine” action in Trend Vision One and blocks messages from these senders.
+
+5.  Under **Security Level for Files**, specify the security level to determine whether to take actions on messages when suspicious files are detected during virus scanning.
+
+    The actions to take are synchronized from Trend Vision One along with the suspicious objects.
+
+6.  For **Security Level for URLs**, make sure your specify the security level for Web Reputation in your spam policy to determine whether to take actions on messages when suspicious URLs are detected during spam scanning.
+
+    The actions to take are synchronized from Trend Vision One along with the suspicious objects.
+
+7.  Check additional information about suspicious object synchronization from Trend Vision One.
+
+8.  Click **Save**.
+:::

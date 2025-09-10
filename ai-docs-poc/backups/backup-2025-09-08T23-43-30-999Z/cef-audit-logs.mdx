@@ -1,0 +1,123 @@
+---
+slug: trend-vision-one-cef-audit-logs
+title: CEF audit logs
+last_updated: '2025-09-08'
+ai_context:
+  source_file: cef-audit-logs.md
+  conversion_date: '2025-09-08T23:42:24.127Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+**CEF Audit Logs**
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>CEF Key</p></th>
+<th><p>Description</p></th>
+<th><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Header (logVer)</p></td>
+<td><p>CEF format version</p></td>
+<td><p>CEF: 0</p></td>
+</tr>
+<tr>
+<td><p>Header (vendor)</p></td>
+<td><p>Appliance vendor</p></td>
+<td><p>Trend Micro</p></td>
+</tr>
+<tr>
+<td><p>Header (pname)</p></td>
+<td><p>Appliance product</p></td>
+<td><p>TMES</p></td>
+</tr>
+<tr>
+<td><p>Header (pver)</p></td>
+<td><p>Appliance version</p></td>
+<td><p>Example: 1.0.0.0</p></td>
+</tr>
+<tr>
+<td><p>Header (eventid)</p></td>
+<td><p>Signature ID</p></td>
+<td><p>300101</p></td>
+</tr>
+<tr>
+<td><p>Header (eventName)</p></td>
+<td><p>Description</p></td>
+<td><p>AUDIT</p></td>
+</tr>
+<tr>
+<td><p>Header (severity)</p></td>
+<td><p>Email severity</p></td>
+<td><p>4</p></td>
+</tr>
+<tr>
+<td><p>rt</p></td>
+<td><p>Log generation time</p></td>
+<td><p>Example: 2018-06-28 03:22:31</p></td>
+</tr>
+<tr>
+<td><p>cs1Label</p></td>
+<td><p>Account type</p></td>
+<td><p>accountType</p></td>
+</tr>
+<tr>
+<td><p>cs1</p></td>
+<td><p>Account type</p></td>
+<td><ul>
+<li><p>end user</p></li>
+<li><p>admin</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>suser</p></td>
+<td><p>Email sender</p></td>
+<td><p>Example: user1@example1.com</p></td>
+</tr>
+<tr>
+<td><p>cs2Label</p></td>
+<td><p>Event type</p></td>
+<td><p>eventType</p></td>
+</tr>
+<tr>
+<td><p>cs2</p></td>
+<td><p>Event type</p></td>
+<td><p>Example: End-User Actions</p></td>
+</tr>
+<tr>
+<td><p>act</p></td>
+<td><p>Action in the event</p></td>
+<td><p>Example: User login to End User Console</p></td>
+</tr>
+<tr>
+<td><p>cs3Label</p></td>
+<td><p>Domain affected by the event</p></td>
+<td><p>affectedDomains</p></td>
+</tr>
+<tr>
+<td><p>cs3</p></td>
+<td><p>Domain affected by the event</p></td>
+<td><p>Example: example1.com</p></td>
+</tr>
+</tbody>
+</table>
+
+Log sample:
+
+``` {.codeblock style="font-size: 70%;"}
+CEF:0|Trend Micro|TMES|1.0.0.0|300101|AUDIT|4|rt=2018-06-28 03:22:31 
+cs1Label=accountType cs1=end user suser=user1@example1.com cs2Label=eventType 
+cs2=End-User Actions act=User login to End User Console cs3Label=affectedDomains 
+cs3=
+```
+:::

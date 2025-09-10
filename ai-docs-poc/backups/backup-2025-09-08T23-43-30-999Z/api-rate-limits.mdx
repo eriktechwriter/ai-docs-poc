@@ -1,0 +1,65 @@
+---
+slug: trend-vision-one-api-rate-limits
+title: API rate limits
+last_updated: '2025-09-08'
+ai_context:
+  source_file: api-rate-limits.md
+  conversion_date: '2025-09-08T23:42:24.933Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+API rate limits are set on /api endpoints to prevent large spikes in the number of API calls that could degrade Server & Workload Protection performance.
+
+API call rates are measured as the number of API calls that Server & Workload Protection receives within the last sixty seconds. When a rate limit is exceeded, the manager does not process requests until the call rate falls below all rate limits.
+
+When a call is made and an API rate limit is exceeded, the response code is `429` with the message `Too many API requests`.
+
+### Handle rate limit errors in your code {#handle-rate-limit-errors-in-your-code}
+
+When an SDK method or function executes when an API rate limit is exceeded in your environment, the method or function throws an `ApiException` with the message `Too many API calls`. Consider including logic in your code that tests exceptions for this message and if caught, executes the script again after waiting for a certain amount of time.
+
+If you consistently exceed the rate limit, [contact support](https://cloudone.trendmicro.com/support).
+
+:::tip
+
+Calls that are made while a rate limit is exceeded are not counted in API rate measurements.
+:::
+
+You can use the `APIUsageAPI` class of an SDK to determine call rates. See [API Usage](https://automation.trendmicro.com/cloudone/workload-security/) in the API Reference. For example you can search for all API calls that occur during a certain time period. Parse the returned data to count the total calls. You can also find the number of code 429 responses. See [Date-range searches](search-for-resources.mdx).
+
+The following example catches exceptions or errors that are caused when an API rate limit is exceeded. When caught, an exponential backoff algorithm calculates the delay until the call is retried. The number of retries is capped to a maximum number.
+
+[View source](https://github.com/deep-security/automation-center-sdk-samples/blob/bcee47112ed9da79c7f2534698e8550a7a380f86/python/src/rate_limit_examples.py)
+
+``` codeblock
+while True:
+
+    # Create a computer object and set the policy ID
+    computer = api.Computer()
+    computer.policy_id = policy_id
+    try:
+        # Modify the computer on Server & Workload Protection and store the ID of the returned computer
+        computer = computers_api.modify_computer(computer_ids[change_count], computer, api_version, overrides=False)
+        modified_computer_ids.append(computer.id)
+        retries = 0
+
+        # Increment the count and return if all computers are modified
+        change_count += 1
+        if change_count == len(computer_ids):
+            return modified_computer_ids
+    except api_exception as e:
+        if e.status == 429 and retries &lt; MAX_RETRIES:
+            # The error is due to exceeding an API rate limit
+            retries += 1
+
+            # Calculate sleep time
+            exp_backoff = (2 ** (retries +3)) / 1000
+            print("API rate limit is exceeded. Retry in {} s.".format(exp_backoff))
+            time.sleep(exp_backoff)
+        else:
+            # Return all other exception causes or when max retries is exceeded
+            return "Exception: " + str(e)
+```
+::::

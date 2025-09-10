@@ -1,0 +1,186 @@
+---
+slug: trend-vision-one-vulnerabilities
+title: Vulnerabilities
+---
+# Vulnerabilities
+
+View information about the **Vulnerabilities** risk factor, which is determined by CVEs detected on your managed assets.
+
+Trend Micro uses global activity data, CVE information, and local detection activity to analyze your environment and produce customized vulnerability assessment scores for each asset. The Vulnerabilities risk factor contributes to your [exposure level](exposure-overview.mdx).
+
+Trend Micro sources CVE information from the National Vulnerability Database (NVD) and security advisories issued by major software vendors, such as Microsoft and Red Hat. The NVD sometimes publishes information later than the vendors of affected products, which might result in delayed CVE assessment results in Trend Vision One.
+
+The Vulnerability Assessment service scans endpoints for vulnerabilities related to operating systems, applications, ECR container images, cloud VMs, and serverless functions. For more information about the specific operating systems supported by Vulnerability Assessment, see [Vulnerability Assessment supported operating systems](vulnerability-assessment-os.mdx). For more information about supported language packages used in ECR container images, see [Vulnerability Assessment supported language packages](vulnerability-assess-languages.mdx).
+
+On Windows devices, Vulnerability Assessment updates between 10 minutes and 1 hour after an operating system vulnerability is patched. Applications are scanned every ten minutes. On macOS and Linux devices, Vulnerability Assessment scans for vulnerabilities once per day.
+
+:::warning[Important]
+
+To start receiving vulnerability data in Trend Vision One, you must first connect one or more vulnerabilities data sources. For more information, see [Vulnerability Assessment](vulnerability-assessment.mdx).
+:::
+
+The following table outlines the widgets available in the **Vulnerabilities** section.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Widget</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Vulnerability Management Metrics</p></td>
+<td><p>View information about CVEs and operating system vulnerabilities affecting your organization.</p>
+<ul>
+<li><p>The <strong>Patch Management</strong> section displays the average number of days your organization takes to patch CVEs and the average number of days that CVEs remain unpatched.</p>
+<p>For more information, see <a href="trend-vision-one-mttp-average-unpatched-time">Mean time to patch (MTTP) and average unpatched time (AUT)</a>.</p>
+
+
+:::warning[Important]
+
+<p><strong>Patch Management</strong> is only visible for users with full asset visibility scope.</p>
+
+
+:::
+
+</li>
+<li><p>The <strong>Vulnerability Percentages</strong> and <strong>CVE Density</strong> sections display information about the amount of CVEs affecting your devices, hosts, container clusters, container images, cloud VMs, and serverless functions.</p>
+<p>For more information, see <a href="trend-vision-one-exploitable-cve-density-percentage">Vulnerability percentages and CVE density</a>.</p>
+
+
+:::warning[Important]
+
+<p>The percentages of container clusters and cloud VMs containing highly exploitable CVEs are calculated using only the data of assets within the asset visibility scope of the current user.</p>
+
+
+:::
+
+</li>
+<li><p>The <strong>Legacy Operating Systems</strong> section displays the number of endpoints in your organization still running legacy Windows operating systems.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Detected Vulnerabilities</p></td>
+<td><p>Lists devices, internet-facing assets, containers, cloud VMs, and serverless functions with CVEs.</p>
+<p>The tabs of the <strong>Detected Vulnerabilities</strong> widget display CVEs detected on your internal and internet-facing assets, containers, cloud VMs, and serverless functions. Mitigating the vulnerabilities with the highest CVE impact scores, global exploit activity, or CVSS scores is an effective way to reduce the Cyber Risk Index.</p>
+<ul>
+<li><p>Click <strong>Import Third-Party Data</strong> to configure <a href="trend-vision-one-configuring-data-sources">data sources</a> for CVE information.</p></li>
+<li><p>Click <strong>Configure CVE Coverage</strong> to select whether to assess for all CVEs or high-impact and medium-impact CVEs only.</p>
+<ul>
+<li>
+
+:::note
+
+<p>This feature is not available in all regions.</p>
+
+
+:::
+
+</li>
+</ul></li>
+<li><p>Click a vulnerability ID to view detailed information on the <a href="trend-vision-one-cve-profile">CVE profiles</a> screen.</p></li>
+<li><p>Click the number in the <strong>Attack prevention/detection rules</strong> column to view available <a href="trend-vision-one-attack-prevention">attack prevention/detection rules</a> from Trend Micro products and see how to apply the rules to mitigate the vulnerability.</p></li>
+<li><p>Select a vulnerability to change the status. Status changes that affect the Cyber Risk Index may take up to one hour to show impact.</p>
+<ul>
+<li><p>In progress: The vulnerability is being addressed.</p></li>
+<li><p>Remediated: The vulnerability has been remediated either by Trend Micro recommendations or a third-party solution. Remediated vulnerabilities no longer contribute to the Cyber Risk Index, but future instances may still occur and will be reported.</p></li>
+<li><p>Dismissed: The vulnerability is not applicable to associated assets or your environment. Dismissed vulnerabilities no longer contribute to the Cyber Risk Index, but future instances may still occur and will be reported unless you create an <a href="trend-vision-one-event-rule-management">event rule</a> for the vulnerability type.</p></li>
+<li><p>Accepted: The vulnerability is unable to be remediated at this time. Accepted vulnerabilities continue to contribute to the Cyber Risk Index until they are remediated or dismissed. Future instances may still occur and will be reported unless you create an <a href="trend-vision-one-event-rule-management">event rule</a> for the vulnerability type. Event rules for accepted vulnerabilities are only valid for a specified time period.</p></li>
+</ul></li>
+<li><p>When viewing risk events, click the number in the case column to view current cases involving the vulnerability. Click the options icon (<img src="./images/options=ddb0b67f-0654-4aa5-8bc7-48ec554c5448.webp" />) to open a new case for the vulnerability or add the case to an existing vulnerability.</p></li>
+</ul>
+
+
+:::warning[Important]
+
+<p>For customers that have updated to the <a href="trend-vision-one-update-foundation-services-release">Foundation Services release</a>, additional details are only available for assets within the asset visibility scope of the current user.</p>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+
+The following table describes the risk indicators associated with the **Vulnerabilities** risk factor.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Indicator</p></th>
+<th><p>Description</p></th>
+<th><p>Data sources</p></th>
+<th><p>Target</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>OS vulnerability</p></td>
+<td><p>The detection of exploitable operating system vulnerabilities on the endpoint</p></td>
+<td><ul>
+<li><p>Trend Micro™ Endpoint Sensor</p></li>
+<li><p>Trend Vision One™ - Container Security</p></li>
+<li><p>Trend Vision One™ - Endpoint Security</p></li>
+<li><p>Nessus Pro</p></li>
+<li><p>Rapid7 - InsightVM</p></li>
+<li><p>Rapid7 - Nexpose</p></li>
+<li><p>Tanium Comply</p></li>
+<li><p>Tenable Vulnerability Management</p></li>
+<li><p>Qualys</p></li>
+</ul></td>
+<td><ul>
+<li><p>Device</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Application vulnerability</p></td>
+<td><p>The detection of exploitable application vulnerabilities on the endpoint</p></td>
+<td><ul>
+<li><p>Trend Micro™ Endpoint Sensor</p></li>
+<li><p>Trend Vision One™ - Container Security</p></li>
+<li><p>Trend Vision One™ - Endpoint Security</p></li>
+<li><p>Nessus Pro</p></li>
+<li><p>Rapid7 - InsightVM</p></li>
+<li><p>Rapid7 - Nexpose</p></li>
+<li><p>Tanium Comply</p></li>
+<li><p>Tenable Vulnerability Management</p></li>
+<li><p>Qualys</p></li>
+</ul></td>
+<td><ul>
+<li><p>Device</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Zero-day vulnerability</p></td>
+<td><p>The detection of exploitable zero-day vulnerabilities on the endpoint</p></td>
+<td><ul>
+<li><p>Trend Micro™ Endpoint Sensor</p></li>
+</ul></td>
+<td><ul>
+<li><p>Device</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Vulnerability Assessment](vulnerability-assessment.md "Vulnerability Assessment identifies assets on your network containing CVEs that require mitigation actions.")
+- [CVE assessment visibility and configuration](full-cve-assessment.md "View all CVEs detected on your assets, and configure Trend Vision One to assess for all CVEs on your internal assets, including low-impact CVEs.")
+- [CVE profiles](cve-profile.md "View important information regarding a specific CVE detected in your environment and any associated prevention and detection rules available from your integrated products.")
+- [Attack prevention/detection rules](attack-prevention.md "Apply attack prevention/detection rules from Trend Micro products to vulnerable assets in Cyber Risk Exposure Management in order to mitigate specific vulnerabilities and reduce risk.")
+- [Mean time to patch (MTTP) and average unpatched time (AUT)](mttp-average-unpatched-time.md "Evaluate your company's response time to CVEs and Windows updates.")
+- [Vulnerability percentages and CVE density](exploitable-cve-density-percentage.md "Evaluate your organization's exposure to CVEs to help tailor your mitigation efforts.")
+::::

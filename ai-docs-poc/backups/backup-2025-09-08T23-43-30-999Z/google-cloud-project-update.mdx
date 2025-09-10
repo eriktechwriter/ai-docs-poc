@@ -1,0 +1,125 @@
+---
+slug: trend-vision-one-google-cloud-project-update
+title: Google Cloud Resource Update (January 2025 update)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: google-cloud-project-update.md
+  conversion_date: '2025-09-08T23:42:18.750Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Update deployed resources in your Google Cloud project to the latest version.
+
+The Resource Update tab in the Project Settings screen allows you to update the Trend Vision One resources deployed to your project. Updating might be required to support new features or functions added to Cloud Accounts. Make sure you have the [required permissions](gcp-required-permissions.mdx) to update the project.
+
+Some features have limited support for Google Cloud regions. For more information, see [Google Cloud supported regions and limitations](google-supported-regions.mdx).
+
+:::warning[Important]
+
+The following steps are for updating resources on a connected project. To update a Legacy Connection, see [Updating a legacy Google Cloud connection (January 2025 update)](update-legacy-google-cloud-project.mdx).
+
+Agentless Vulnerability & Threat Detection is a pre-release feature and is not part of the existing features of an official commercial or general release. Please review the [Pre-release disclaimer](pre-release-disclaimer.mdx) before using the features.
+
+The January 2025 update is not available in all regions. To check which version you have, verify if you have access to the Agentless Vulnerability & Threat Detection feature. If not, see [Google Cloud Resource Update](resource-update-gcp.mdx) to update your deployed resources.
+
+The steps are valid as of January 2025.
+:::
+
+### Procedure {#procedure}
+
+1.  Sign in to the Trend Vision One console.
+
+2.  In a new tab in the same browser session, sign in to the Google Cloud project you want to connect and access the Cloud Shell.
+
+    :::warning[Important]
+
+    Make sure your Cloud Shell region is set to the region you originally connected.
+    :::
+
+3.  In the Trend Vision One console, go to **Cloud Security → Cloud Accounts → Google Cloud**.
+
+4.  Click the name of the project you want to update.
+
+    The **Project Setting** screen appears.
+
+5.  In the **Project Information** tab, verify the **Name** and **Description** or edit a needed.
+
+6.  Go to the **Resource Update** tab.
+
+7.  Verify the deployment region.
+
+    The deployment region must be the same as the Cloud Shell region. If the region is incorrect, select the correct region for deployment.
+
+8.  Under the **Select features and permissions** section, configure which features you want to enable or disable.
+
+    You can change the deployment regions for **Agentless Vulnerability & Threat Detection**.
+
+9.  In Google Cloud Shell, access the command line interface.
+
+    :::note
+
+    The Resource Update screen in the Trend Vision One console provides a set of commands to help complete the following steps. The parameters in each step are based on using the default parameters provided when the project was first connected. Verify the location of the deployed resource before continuing.
+    :::
+
+10. Access the connected project.
+
+    Copy the command or type `glcloud config set project [projectID]`.
+
+11. If the parent directory does not exist, create the parent directory.
+
+    Copy the command or type `mkdir -p [projectID]`.
+
+12. Access the project parent directory.
+
+    Copy the command or type `cd [projectID]`.
+
+13. Extract the template using the command in the Add Google Cloud Project screen.
+
+    - Select **Upload via CLI** to upload the resource package directly to your project. Copy the command from the **Project Settings** screen to retrieve the package.
+
+    - Select **Manual Upload** to download the template to your local machine and upload to your project. Click **Download Resource Creation Script** to save the .zip file and upload to your project.
+
+14. Extract the template to a new folder.
+
+    To prevent issues with deployment, the .zip file contains a random number in the file name. Copy the command from the **Project Settings** screen.
+
+15. Access the deployment folder.
+
+    Copy the command or type `cd cloud-account-management-terraform-package`.
+
+    :::warning[Important]
+
+    The resource creation script must be the only terraform file in the directory. Having more than one terraform file in the folder interferes with deployment process and might cause the update to fail.
+    :::
+
+16. Run the deployment script.
+
+    - If you are deploying without enabling Agentless Vulnerability & Threat Detection, type the command `./deploy.sh`.
+
+    - If you are deploying with Agentless Vulnerability & Threat Detection enabled, use one of the following commands to specify sidecar project and billing handling. For more information about sidecar projects, see [Get started with Agentless Vulnerability & Threat Detection in Google Cloud](get-started-google-cloud.mdx).
+
+      - To allow Trend Vision One to automatically detect your Google Cloud billing info and create a sidecar project, type the command `./deploy.sh` without any parameters.
+
+      - To specify your Google Cloud billing info an allow Trend Vision One to create a sidecar project, type the command `./deploy.sh --billing_account "[billingID]"`.
+
+      - To specify a sidecar project, type the command `./deploy.sh --sidecar_project_id "[sidecarID]"`.
+
+      - To specify both your billing info and sidecar project, type the command `./deploy.sh --billing_account "[billingID]" --sidecar_project_id "[sidecarID]"`
+
+      - To deploy all resources to your connected project without using a sidecar project, type the command `./deploy.sh --billing_account "[billingID]" --sidecar_project_id "[projectID]"`
+
+      :::warning[Important]
+
+      - To manually specify a sidecar project, you must have a sidecar project configured before updating.
+
+      - If you are not using a sidecar project, the `projectID` parameter must be the same as the project you are updating.
+      :::
+
+    Google Cloud Shell begins the terraform process to deploy Trend Vision One security resources.
+
+17. In the Trend Vision One console, in the Project Settings screen, click **Save Changes**.
+
+    The update process might take a few moments to complete. You can refresh the Cloud Accounts screen to check the status of your update.
+::::

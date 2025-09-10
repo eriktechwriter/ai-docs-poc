@@ -1,0 +1,130 @@
+---
+slug: trend-vision-one-configuring-web-reputation-policy
+title: Configuring a Web Reputation Policy
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configuring-web-reputation-policy.md
+  conversion_date: '2025-09-08T23:42:22.055Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Specify proxy server authentication credentials if you have set up a proxy server to handle HTTP communication in your organization and authentication is required before web access is allowed.
+
+### Procedure {#procedure}
+
+1.  Click the **External Agents** tab to configure a policy for external agents or the **Internal Agents** tab to configure a policy for internal agents.
+
+2.  Under **Enable Web Reputation on the following operating systems**, select the types of Windows platforms to protect (**Windows desktop platforms** and **Windows Server platforms**).
+
+    :::tip
+
+    Trend Micro recommends disabling Web Reputation for internal agents if you already use a Trend Micro product with the web reputation capability, such as InterScan Web Security Virtual Appliance.
+    :::
+
+3.  Select **Enable assessment mode**.
+
+    :::note
+
+    When in assessment mode, Trend Vision One Endpoint Security agents allow access to all websites. For any accessed website that violates the configured **Security Level** setting, the Trend Vision One Endpoint Security agent logs the event. Assessment mode allows you to monitor website access and evaluate the safety of websites before actively blocking users access. Based on your evaluation of the access logs, you can add trusted websites to the Approved URL List before disabling assessment mode.
+    :::
+
+4.  Select **Check HTTPS URLs**.
+
+    :::warning[Important]
+
+    HTTPS URL scanning also supports the HTTP/2 protocol. Before Web Reputation can check HTTPS or HTTP/2 URLs, you must configure some prerequisite settings for different browsers.
+
+    For more information, see [HTTPS URL Scan Support](https-url-scan-support.mdx).
+    :::
+
+5.  Select **Scan common HTTP ports only** to restrict web reputation scanning to traffic through ports 80, 81, and 8080. By default, Web Reputation scans all traffic through all ports.
+
+    :::note
+
+    Not supported on Windows 7, 8, 8.1, 10, or Windows Server 2008 R2, 2012 or later platforms.
+    :::
+
+6.  For internal Trend Vision One Endpoint Security agents, select **Send queries to Smart Protection Servers** if you want Trend Vision One Endpoint Security agents to send web reputation queries to Smart Protection Servers.
+
+    - If you enable this option:
+
+      - Agents refer to the smart protection source list to determine the Smart Protection Servers to which they send queries.
+
+      - Be sure that Smart Protection Servers are available. If all Smart Protection Servers are unavailable, agents send queries to Smart Protection Network and reference approved and blocked URL lists.
+
+      - Agents do not block untested websites. Smart Protection Servers do not store web reputation data for these websites.
+
+    - If you disable this option:
+
+      - Agents send web reputation queries to the Smart Protection Network. Endpoints must have an Internet connection to send queries successfully.
+
+      - Agents can block untested websites if you select the **Block pages that have not been tested by Trend Micro** option.
+
+    :::note
+
+    You can only configure internal on-premises Trend Vision One Endpoint Security agents to send web reputation queries to local Smart Protection Servers.
+    :::
+
+7.  Select from the available web reputation security levels: **High**, **Medium**, or **Low**
+
+    :::note
+
+    The security levels determine whether Web Reputation allows or blocks access to a URL. For example, if you set the security level to Low, Web Reputation only blocks URLs that are known to be web threats. As you set the security level higher, the web threat detection rate improves but the possibility of false positives also increases.
+    :::
+
+8.  If you disabled the **Send queries to Smart Protection Servers** option, you can select **Block pages that have not been tested by Trend Micro**.
+
+    :::note
+
+    While Trend Micro actively tests web pages for safety, users may encounter untested pages when visiting new or less popular websites. Blocking access to untested pages can improve safety but can also prevent access to safe pages.
+    :::
+
+9.  Select **Block pages containing malicious script** to identify web browser exploits and malicious scripts, and prevent the use of these threats from compromising the web browser.
+
+    Web Reputation utilizes both the Browser Exploit Prevention pattern and the Script Analyzer pattern to identify and block web pages before exposing the system.
+
+    :::warning[Important]
+
+    - The Browser Exploit Prevention feature only supports HTTP traffic analysis for Microsoft Edge Legacy, Microsoft Edge Chromium, Mozilla Firefox, and Chrome browsers.
+
+    - The Browser Exploit Prevention feature requires that you enable the Advanced Protection Service.
+    :::
+
+10. Configure the approved and blocked lists.
+
+    :::note
+
+    The approved list takes precedence over the blocked list. When a URL matches an entry in the approved list, agents always allow access to the URL, even if it is in the blocked list.
+    :::
+
+    1.  Select **Enable approved/blocked list**.
+
+    2.  Type a URL.
+
+        You can add a wildcard character (\*) anywhere on the URL.
+
+        For example:
+
+        - Typing `www.trendmicro.com/*` means that Web Reputation approves all pages in the Trend Micro website.
+
+        - Typing `*.trendmicro.com/*` means that Web Reputation approves all pages on any sub-domain of `trendmicro.com`.
+
+        You can type URLs containing IP addresses. If a URL contains an IPv6 address, enclose the address in parentheses.
+
+    3.  Click **Add to Approved List** or **Add to Blocked List**.
+
+    :::warning[Important]
+
+    Web Reputation does not perform any scanning on addresses located in the Approved and Blocked lists.
+    :::
+
+11. To submit Web Reputation feedback, click the URL provided under **Reassess URL**. The Trend Micro Web Reputation Query system opens in a browser window.
+
+12. Select whether to allow the Trend Vision One Endpoint Security agent to send web reputation logs to the server. Allow agents to send logs if you want to analyze URLs blocked by Web Reputation and take the appropriate action on URLs you think are safe to access.
+
+**Related information**
+
+- [HTTPS URL Scan Support](https-url-scan-support.mdx)
+:::

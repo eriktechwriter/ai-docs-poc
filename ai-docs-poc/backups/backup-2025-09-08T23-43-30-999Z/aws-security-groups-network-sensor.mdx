@@ -1,0 +1,184 @@
+---
+slug: trend-vision-one-aws-security-groups-network-sensor
+title: Configuring AWS security groups for Virtual Network Sensor
+last_updated: '2025-09-08'
+ai_context:
+  source_file: aws-security-groups-network-sensor.md
+  conversion_date: '2025-09-08T23:42:24.429Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Prepare security groups before deploying the instance to ensure properly configured rules for the data port and management port.
+
+Before you deploy the Virtual Network Sensor AMI to a new instance, you need to create two security groups for the data port and management port. Because the security settings are different between both ports, Trend Micro recommends using the steps below to create the security groups before launching the instance.
+
+:::warning[Important]
+
+Your security groups must be on the same VPC as your Virtual Network Sensor deployment. Before you begin, make sure you have chosen or created a VPC for the Virtual Network Sensor.
+
+For more information on how to set up a VPC and subnet, refer to the [Amazon documentation](https://docs.aws.amazon.com/index.mdx).
+:::
+
+:::note
+
+The steps contained in these instructions are valid as of January 2024.
+:::
+
+### Procedure {#procedure}
+
+1.  On the AWS Management Console, go to the EC2 dashboard.
+
+2.  In the top navigation bar, select the **Region** where you plan to deploy your instance.
+
+    :::note
+
+    The region can be set to any region you require the Virtual Network Sensor to be deployed. If you are unsure which region to select, use the default region for your AWS account.
+    :::
+
+3.  Go to **Network & Security → Security Groups**.
+
+4.  To create the data port rules, click **Create security group**.
+
+5.  Configure the **Basic details**.
+
+    1.  Specify a unique name.
+
+        Trend Micro recommends using easy to identify rule name such as `VirtualNetworkSensor_DataPort`
+
+    2.  Type a description of the ruleset.
+
+    3.  Select the VPC to save the security group.
+
+6.  Configure the **Inbound rules**.
+
+    1.  Click **Add rule**.
+
+    2.  Configure the new rule.
+
+        - **Type**: Select **All traffic**.
+
+        - **Source**: Trend Micro recommends setting the source to custom and setting the IP to `0.0.0.0/0` to allow the Virtual Network Sensor to scan all traffic.
+
+          Allowing all traffic to the data port provides the Virtual Network Sensor with maximum visibility into your security environment.
+
+7.  Make sure **Outbound rules** is set to the default to accept all traffic.
+
+    :::note
+
+    Trend Micro recommends using default settings for outbound port rules. Setting additional outbound rules might affect the ability of the Virtual Network Sensor to scan all traffic.
+    :::
+
+8.  Assign tags to your rule.
+
+    :::tip
+
+    Adding tags helps with managing objects like security rules by providing a way to track ownership or locate resources associated with deployed instances.
+    :::
+
+9.  Click **Create security group**.
+
+    The security group is created and opens the details page for the newly created security group.
+
+10. Go to **Network & Security → Security Groups**.
+
+11. To create the management port rules, click **Create security group**.
+
+12. Configure the **Basic details**.
+
+    1.  Specify a unique name.
+
+        Trend Micro recommends using easy to identify rule name such as `VirtualNetworkSensor_ManagementPort`
+
+    2.  Type a description of the ruleset.
+
+    3.  Select the VPC to save the security group.
+
+13. Configure the **Inbound rules**.
+
+    1.  Click **Add rule** to create a new rule.
+
+    2.  Configure the following rules.
+
+        <table>
+        <colgroup>
+        <col style="width: 13%" />
+        <col style="width: 13%" />
+        <col style="width: 13%" />
+        <col style="width: 13%" />
+        <col style="width: 25%" />
+        <col style="width: 25%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Type</p></th>
+        <th><p>Protocol</p></th>
+        <th><p>Port Range</p></th>
+        <th><p>Source Type</p></th>
+        <th><p>Source</p></th>
+        <th><p>Purpose</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>SSH</p></td>
+        <td><p>TCP</p></td>
+        <td><p>22</p></td>
+        <td><p>Recommended: Custom</p></td>
+        <td><p>Specify an IP address in CIDR notation or select a security group which is allowed to access the Virtual Network Sensor.</p>
+        <p>See note</p></td>
+        <td><p>For accessing the Virtual Network Sensor CLISH console</p></td>
+        </tr>
+        <tr>
+        <td><p>HTTP</p></td>
+        <td><p>TCP</p></td>
+        <td><p>80</p></td>
+        <td><p>Recommended: Custom</p></td>
+        <td><p>Specify an IP address in CIDR notation or select a security group which is allowed to access the Virtual Network Sensor.</p>
+        <p>See note</p></td>
+        <td><p>Debug log export</p></td>
+        </tr>
+        <tr>
+        <td><p>Custom UDP</p></td>
+        <td><p>UDP</p></td>
+        <td><p>4789</p></td>
+        <td><p>Recommended: Custom</p></td>
+        <td><p>Specify the IP address in CIDR notation of your mirror source or NLB.</p>
+        <p>See note</p></td>
+        <td><p>For VXLAN traffic required by the AWS traffic mirror</p></td>
+        </tr>
+        <tr>
+        <td><p>Custom TCP</p></td>
+        <td><p>TCP</p></td>
+        <td><p>14789</p></td>
+        <td><p>Recommended: Custom</p></td>
+        <td><p>Specify the IP address in CIDR notation of your NLB.</p>
+        <p>See note</p></td>
+        <td><p>For answering NLB health check</p></td>
+        </tr>
+        </tbody>
+        </table>
+
+        :::note
+
+        **Source type** controls which IP addresses are allowed to connect to the Virtual Network Sensor. Trend Micro suggests setting **Source type** to **Custom**, then specifying **Source** IP addresses or security groups.
+
+        See the AWS help for more information about assigning IP addresses and security groups.
+        :::
+
+14. Make sure **Outbound rules** is set to the default to accept all traffic.
+
+    :::note
+
+    Trend Micro recommends using default settings for outbound port rules. Setting additional outbound rules may affect the ability of the Virtual Network Sensor to connect to Network Inventory.
+    :::
+
+15. Assign tags to your rule.
+
+16. Click **Create security group**.
+
+    The security group is created and opens the details page for the newly created security group.
+
+    Your environment should now be ready to [launch the Virtual Network Sensor instance](launching-ami-instance.mdx).
+:::::

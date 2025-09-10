@@ -1,0 +1,67 @@
+---
+slug: trend-vision-one-manual-upgrade-aws-account
+title: Manually upgrade your AWS account connection
+last_updated: '2025-09-08'
+ai_context:
+  source_file: manual-upgrade-aws-account.md
+  conversion_date: '2025-09-08T23:42:16.095Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+In older iterations of Deep Security as a Service, you could add an AWS account by clicking *Add AWS Account* on the *Computers* page. This method used an AWS CloudFormation template to add your account. All of the AWS instances associated with your account would appear on the Computer page, listed under your AWS account name and regions.
+
+Server & Workload Protection includes the ability to display your AWS instances organized by region, VPC and subnet. The migration from the older type of AWS connection to the new method usually happens automatically. However, if Server & Workload Protection encounters a problem and cannot perform the migration automatically, it will produce an "AWS Account Migration Failed" alert. If you encounter this alert, follow the steps in this article to migrate your AWS account connection. The main cause of the migration failure is a lack of permissions for the AWS role listed in the alert message.
+
+## Verify the permissions associated with the AWS role {#verify-the-permissions-associated-with-the-aws-role}
+
+### Procedure {#procedure}
+
+1.  Log in to your Amazon Web Services Console and go to the *IAM* service.
+
+2.  In the left navigation pane, click *Roles*.
+
+3.  Find the role that was identified in the alert message and click the role.
+
+4.  Under Permissions, expand the "DeepSecurity" policy, and click *Edit Policy*.
+
+5.  The policy in the "Action" section should be:
+
+    ``` codeblock
+    "Action": [ 
+    "ec2:DescribeImages",
+    "ec2:DescribeInstances",
+    "ec2:DescribeRegions",git 
+    "ec2:DescribeSubnets",
+    "ec2:DescribeTags",
+    "ec2:DescribeVpcs",
+    "ec2:DescribeAvailabilityZones",
+    "ec2:DescribeSecurityGroups",
+    "workspaces:DescribeWorkspaces",
+    "workspaces:DescribeWorkspaceDirectories",
+    "workspaces:DescribeWorkspaceBundles",
+    "workspaces:DescribeTags",
+    "iam:ListAccountAliases",
+    "iam:GetRole",
+    "iam:GetRolePolicy",
+    "sts:AssumeRole"
+    ]
+    ```
+
+    :::note
+
+    The `"sts:AssumeRole"` permission is required only if you are using cross account roles.
+    :::
+
+    :::note
+
+    The `"iam:GetRole"` and `"iam:GetRolePolicy"` permissions are optional, but recommended in case an update to Server & Workload Protection requires additional AWS permissions. Enabling those extra permissions allows Server & Workload Protection to determine whether you have the correct policy.
+    :::
+
+6.  Click *Review policy* and *Save changes*.
+
+7.  Wait for up to 30 minutes and your connection should be upgraded. On the *Computers* tab in the Server & Workload Protection console, your AWS instances are organized by region, VPC and subnet. Your Amazon WorkSpaces are organized by region and WorkSpace directory.
+
+### Next steps {#next-steps}
+:::

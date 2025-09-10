@@ -1,0 +1,130 @@
+---
+slug: trend-vision-one-applications
+title: Applications
+last_updated: '2025-09-08'
+ai_context:
+  source_file: applications.md
+  conversion_date: '2025-09-08T23:42:24.870Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Identify applications with potential security vulnerabilities that are in use within your organization.
+
+Attack Surface Discovery detects all local applications, connected SaaS applications, and public cloud applications that have been accessed by your organization's users and devices. Trend Vision One categorizes and assigns a reputation score or asset risk score to each application. The consolidated visibility of all apps in your environment helps you to identify potential vulnerabilities, continuously assess and prioritize risk, and strengthen your security posture.
+
+The following table describes the tabs available in the Applications section of Attack Surface Discovery.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Tab</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Public cloud apps</p></td>
+<td><p>Displays all public cloud apps accessed by your organization's users and devices</p>
+<ul>
+<li><p>Search for public cloud apps by name.</p></li>
+<li><p>Click <strong>Filter</strong> to filter cloud apps by <strong>Category</strong>, <strong>Reputation</strong>, <strong>Sanctioned state</strong>, <strong>Warnings</strong>, or <strong>Last detected</strong> time.</p>
+<ul>
+<li><p>Lower public cloud app reputation scores indicate a better overall reputation.</p></li>
+</ul></li>
+<li><p>Click <strong>Export</strong> to generate a report for the apps currently displayed on the list.</p></li>
+<li><p>Click any public cloud app name to view details in the <a href="trend-vision-one-cloud-app-profile">Public cloud app profile</a>.</p></li>
+<li><p>Select one or more public cloud apps and click <strong>Change Sanctioned/Unsanctioned</strong> to set the sanctioned status of the app.</p></li>
+<li><p>Select one or more cloud apps and click <strong>Assign Secure Access Rule</strong> to control users' access to the selected public cloud apps. Options from Zero Trust Secure Access include:</p>
+<ul>
+<li><p>Assign the selected public cloud apps to a new <a href="trend-vision-one-custom-cloud-app-categories">custom cloud app category</a> and assign the apps to a new <a href="trend-vision-one-create-internet-access-rule">Internet Access rule</a></p></li>
+<li><p>Add the selected public cloud apps to an existing cloud app category with Internet Access or Risk Control rules already applied.</p></li>
+</ul></li>
+<li><p>Select one or more public cloud apps and click <strong>Manage Tags</strong> to view, add, or remove tags assigned to the selected apps.</p></li>
+</ul>
+
+
+:::note
+
+<p>Drilling down from the <strong>Users</strong> column and the <strong>User name</strong> column (drilled from the <strong>Visits</strong> column) is only available for users with the <strong>Accounts</strong> asset visibility scope.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Connected SaaS apps</p></td>
+<td><p>Displays all connected SaaS apps managed by your organization and provides insight into your organization's SaaS security posture</p>
+<ul>
+<li><p>View the connection status of the supported SaaS data sources, including Salesforce and Office 365.</p></li>
+<li><p>Search for connected SaaS apps by name.</p></li>
+<li><p>Click <strong>Filter</strong> to filter SaaS apps by <strong>Asset risk score</strong>, <strong>Category</strong>, <strong>Custom tags</strong>, or <strong>Last detected</strong> time.</p></li>
+<li><p>Click any SaaS app name to view details in the Connected SaaS app profile.</p></li>
+<li><p>Select one or more SaaS apps and click <strong>Manage Tags</strong> to view, add, or remove tags assigned to the selected apps.</p>
+
+
+:::warning[Important]
+
+<p>Asset criticality levels of Microsoft apps cannot currently be modified.</p>
+
+
+:::
+
+</li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Local Apps</p></td>
+<td><p>Displays all local apps detected on devices in your environment by the Trend Vision One Agent or Trend Micro Mobile Security</p>
+<p>The <strong>Local app list</strong> displays the number of CVEs that affect each app. The app risk score equals the score of the highest-impact CVE for the application.</p>
+<ul>
+<li><p>Search for local apps by name.</p></li>
+<li><p>Click <strong>Filter</strong> to filter local apps by <strong>Operating system</strong>, <strong>App risk score</strong>, <strong>Vendor</strong>, <strong>First seen</strong>, or <strong>Last detected</strong>.</p></li>
+<li><p>Click <strong>Export</strong> to generate a report for the local apps currently displayed on the list.</p></li>
+<li><p>Click any column header to sort the list by that column.</p></li>
+<li><p>Click any local app name to view details on the <a href="trend-vision-one-local-app-profile">Local App Profile</a>.</p></li>
+<li><p>Click the number of devices in the entry for an app for a list of the devices on which the app has been detected.</p></li>
+<li><p>Click the number of detected CVEs for an app for details on the CVEs that affect the app.</p></li>
+<li><p>Select an app to change the permission status to <strong>Allowed</strong> or <strong>Blocked</strong>.</p>
+
+
+:::note
+
+<p>This feature is not available in all regions.</p>
+
+
+:::
+
+</li>
+</ul>
+<p>Select <strong>View by executable file</strong> in the dropdown menu to see a list of executable files related to detected local apps.</p>
+<ul>
+<li><p>Search for executable files by file name.</p></li>
+<li><p>Click <strong>Filter</strong> to filter executable files by <strong>Product name</strong>, <strong>Permission status</strong>, <strong>First seen</strong>, or <strong>Last detected</strong>.</p></li>
+<li><p>Click on any executable file name to view details on the Executable File Profile.</p></li>
+<li><p>Click the number of devices in the entry for an executable file for a list of the devices on which the file has been detected.</p></li>
+<li><p>Select an executable file to change the file permission status to <strong>Allowed</strong> or <strong>Blocked</strong>.</p>
+
+
+:::warning[Important]
+
+<ul>
+<li><p>The default permission status of an executable file is <strong>Not configured</strong>.</p></li>
+<li><p>It may take up to 12 hours for a newly discovered local app to be assessed and receive a risk score. To ensure visibility of potentially high-risk unassessed apps, apps without risk scores are grouped with high-risk apps and displayed before high-risk apps on the local apps list.</p></li>
+</ul>
+
+
+:::
+
+</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+:::

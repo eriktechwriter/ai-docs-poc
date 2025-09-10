@@ -1,0 +1,200 @@
+---
+slug: trend-vision-one-querying-quarantine
+title: Querying the quarantine
+last_updated: '2025-09-08'
+ai_context:
+  source_file: querying-quarantine.md
+  conversion_date: '2025-09-08T23:42:13.957Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Use the **Query** screen to view a list of quarantined messages for your managed domains. You can review the messages, delete them, or release them for further scanning.
+
+### Procedure {#procedure}
+
+1.  In the **Period** field, specify the time range for your query.
+
+    :::note
+
+    Queries include data for up to 30 continuous days in one calendar month. Use more than one query to search across calendar months.
+    :::
+
+2.  In the **Direction** field, select a mail traffic direction.
+
+3.  Type your search criteria into one or more of the following fields:
+
+    - **Recipient**: The envelope recipient address.
+
+    - **Sender**: The envelope sender address.
+
+    - **Subject**: The email message subject.
+
+    You can specify up to 10 recipients or senders. Separate multiple recipients or senders by pressing the **ENTER** or **TAB** key, or using a semicolon (;).
+
+    A recipient or sender can be a specific email address or all addresses from a specific domain.
+
+    - Query a specific email address by typing that email address.
+
+    - Query all addresses from a domain by using an asterisk (\*) to the left of the at sign (@) in the email address. For example, `*@example.com` will search for all email addresses in the `example.com` domain.
+
+    The following table provides format examples that are valid and invalid:
+
+    **Format Examples for Mail Tracking and Quarantine Query**
+
+    <table>
+    <colgroup>
+    <col style="width: 50%" />
+    <col style="width: 50%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Valid</p></th>
+    <th><p>Invalid</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><code>name@info.example.com</code></p></td>
+    <td><p><code>name@*.example.com</code></p></td>
+    </tr>
+    <tr>
+    <td><p><code>*@example.com</code></p></td>
+    <td><p><code>*@*.com</code></p></td>
+    </tr>
+    <tr>
+    <td><p><code>*@server.example.com</code></p></td>
+    <td><p><code>*@*</code></p></td>
+    </tr>
+    <tr>
+    <td></td>
+    <td><p><code>*@*.example.com</code></p></td>
+    </tr>
+    </tbody>
+    </table>
+
+4.  In the **Visibility** field, specify whether to query quarantined messages that end users have access to.
+
+    - **All**: Query all quarantined messages.
+
+    - **Invisible to End Users**: Query the quarantined messages that end users do not have access to.
+
+    - **Visible to End Users**: Query the quarantined messages that end users have access to.
+
+    Quarantined incoming messages that end users have access to depend on your setting based on quarantine reasons on the **End User Quarantine Settings** screen. Quarantined outgoing messages are always invisible to end users.
+
+5.  In the **Reason** field, select one or multiple reasons why the message was quarantined.
+
+    - **Sender IP Match**: The message failed Sender IP Match check.
+
+    - **SPF**: The message failed SPF check.
+
+    - **DKIM**: The message failed DKIM verification.
+
+    - **Ransomware**: The message was identified as ransomware.
+
+    - **Advanced Persistent Threat**: The message triggered the advanced threat policy.
+
+      - **Analyzed Advanced Threats (Files)**: The message was identified as advanced file threats according to Virtual Analyzer and the policy configuration.
+
+      - **Analyzed Advanced Threats (URLs)**: The message was identified as advanced URL threats according to Virtual Analyzer and the policy configuration.
+
+      - **Probable Advanced Threats**: The message was treated as suspicious according to policy configuration or the message was not sent to Virtual Analyzer due to exceptions that occurred during analysis.
+
+    - **Malware**: The message triggered the malware criteria. The malware may be detected by Predictive Machine Learning or traditional pattern-based scanning.
+
+    - **Suspicious Objects**: The message contains suspicious files or suspicious URLs.
+
+    - **Scanning Exception**: The message triggered scan exceptions.
+
+    - **Spam**: The message was identified as spam.
+
+    - **BEC**: The message triggered the Business Email Compromise (BEC) criteria.
+
+    - **Phishing**: The message triggered the phishing criteria in Spam Filtering or the security risk criteria in Correlated Intelligence.
+
+    - **Graymail**: The message triggered the graymail criteria.
+
+    - **Web Reputation**: The message triggered the Web Reputation criteria.
+
+    - **Anomaly**: The message triggered the anomaly criteria in Correlated Intelligence.
+
+    - **Content Filtering - No Criteria**: The message triggered the **No Criteria** scanning criteria in the Content Filtering policy.
+
+    - **Content**: The message triggered the message content criteria. For example, a message's header, body or attachment matches the specified keywords or expressions.
+
+    - **Attachment**: The message triggered the message attachment criteria.
+
+    - **Data Loss Prevention**: The message triggered the Data Loss Prevention policy.
+
+6.  In the **Rule** field, specify the policy rule that was triggered by the quarantined message.
+
+    The **Rule** field supports the following:
+
+    - A maximum of 20 policy rules in use will be listed for you to choose when you click in this text box.
+
+    - Select from the policy rules listed or type keywords for a fuzzy match.
+
+7.  In the **Message ID** field, specify the unique identifier of an email message.
+
+8.  Click **Search**.
+
+9.  Select one or multiple messages to manage.
+
+10. Click one of the following buttons to manage the selected messages:
+
+    - ![](/images/delete=GUID-BC6E6057-9D48-40F3-B032-8EE37E97FFC3=3=en-us=Low.webp) **Delete**: Cancel delivery and permanently delete the message
+
+    - ![](/images/deliver=GUID-6EB66433-B46F-42FF-8279-BFF928DA37BE=2=en-us=Low.webp) **Deliver**: Release from quarantine
+
+      :::note
+
+      Released messages will no longer trigger the exact policy rule that caused the messages to be quarantined, but they will continue to be processed by Cloud Email Gateway Protection. The following conditions apply to delivery:
+
+      - If a message triggers a content-based policy rule with an **Intercept** action of **Quarantine**, it will once again appear in the quarantined message list.
+
+      - If a message triggers a content-based policy rule with an **Intercept** action of **Delete entire message** or **Change recipient**, it will not arrive at its intended destination.
+
+      The content-based policy rule mentioned above refers to any policy rule that evaluates email messages based on message contents. Typical content-based policy rules include virus policies, spam policies, content filtering policies, and DLP policies.
+      :::
+
+11. Configure the password settings for downloading quarantined messages.
+
+    1.  Click **Set Download Password**.
+
+    2.  On the **Password Settings for Message Download** screen, select whether to use a random password or your own custom password for protecting the downloaded messages.
+
+        If you use a custom password, specify a password consisting of 4 to 32 characters in the range "A-Z", "a-z", and "0-9".
+
+    3.  Select **Apply password settings to all admin accounts** if you want all administrators to use the same password settings for message download.
+
+        :::note
+
+        This option is available only to the Business Account and superadmin accounts.
+        :::
+
+12. Optionally click on the **Date** value to view the **Quarantine Query Details** screen for a given message.
+
+    1.  Check the summary and detailed information about the message.
+
+        In the **Message Details** area, view message body content in the HTML or plain text format.
+
+        On the **HTML** tab, click **Show Source** or **Hide Source** to switch between viewing the source code and the rendered HTML of the body content. Click **Render Image** or **Hide Image** to display or hide the images within the body content.
+
+        :::note
+
+        If the email header exceeds 20 KB, only the first 20 KB is displayed. For messages larger than 1 MB, the HTML content is not rendered. Instead, the message is displayed as truncated HTML source code on the **HTML** tab.
+        :::
+
+    2.  Click **Delete**, **Deliver**, or **Download** to manage the message.
+
+        When you click ![](/images/Download_icon=GUID-80D31FB3-4EC8-4B68-BD88-23620D8B4C74=1=en-us=Low.webp)**Download**, choose whether to download the original email file or password-protected ZIP file to your local host.
+
+        When you download the ZIP file, Cloud Email Gateway Protection generates a password for decompressing the ZIP file. You can find the password on the **Quarantine Query Details** screen or at the end of the ZIP file name.
+
+        :::note
+
+        The **Download** button is available only on the **Quarantine Query Details** screen.
+        :::
+:::

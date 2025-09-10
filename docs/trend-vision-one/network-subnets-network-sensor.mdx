@@ -1,0 +1,133 @@
+---
+slug: trend-vision-one-network-subnets-network-sensor
+title: Creating a network security group and subnets for the Virtual Network Sensor
+---
+# Creating a network security group and subnets for the Virtual Network Sensor
+
+Prepare a network security group and two subnets to deploy the Virtual Network Sensor in your Azure subscription.
+
+Before deploying the Virtual Network Sensor to your Azure subscription, you must either select or configure a *network security group* and two subnets. The following steps detail how to create these assets if you do not have any previously configured.
+
+### Procedure {#procedure}
+
+1.  Access the Azure console.
+
+2.  Go to **Network security groups**.
+
+3.  Click **Create**.
+
+    The **Create network security group** window appears.
+
+4.  Configure the settings.
+
+    <table>
+    <colgroup>
+    <col style="width: 33%" />
+    <col style="width: 67%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Option</p></th>
+    <th><p>Setting</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><strong>Subscription</strong></p></td>
+    <td><p>Select the subscription where you plan to deploy the Virtual Network Sensor</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Resource group</strong></p></td>
+    <td><p>Select the resource group where you plan to deploy the Virtual Network Sensor</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Name</strong></p></td>
+    <td><p>Provide a unique name for the network security group</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Region</strong></p></td>
+    <td><p>Select the region where you plan to deploy the Virtual Network Sensor</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+5.  Click **Review + create** to create the security group.
+
+6.  To create a subnet, from the Azure console, go to **Virtual networks**.
+
+7.  Select the virtual network where you plan to deploy the Virtual Network Sensor, and go to **Subnets**.
+
+8.  Click **+ Subnet** to create a subnet for the management port.
+
+9.  Configure the settings for the Virtual Network Sensor management port subnet.
+
+    **Management Port Subnet Settings**
+
+    <table>
+    <colgroup>
+    <col style="width: 33%" />
+    <col style="width: 67%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Option</p></th>
+    <th><p>Setting</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><strong>Name</strong></p></td>
+    <td><p>Provide a unique and easily identifiable name</p>
+    <p>Trend Micro recommends using a name like <strong>VirtualNetworkSensor-ManagementPort</strong>.</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Subnet address range</strong></p></td>
+    <td><p>Specify the subnet IP address or range in CIDR notation</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Network security group</strong></p></td>
+    <td><p>Select the security group you created</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+10. Click **Save** to create the subnet.
+
+11. Click **+ Subnet** to create a subnet for the data port.
+
+12. Configure the settings for the Virtual Network Sensor data port subnet.
+
+    **Data Port Subnet Settings**
+
+    <table>
+    <colgroup>
+    <col style="width: 33%" />
+    <col style="width: 67%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Option</p></th>
+    <th><p>Setting</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><strong>Name</strong></p></td>
+    <td><p>Provide a unique and easily identifiable name</p>
+    <p>Trend Micro recommends using a name like <strong>VirtualNetworkSensor-DataPort</strong>.</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Subnet address range</strong></p></td>
+    <td><p>Specify the subnet IP address or range in CIDR notation</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Network security group</strong></p></td>
+    <td><p>Select the security group you created</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+13. Click **Save** to create the subnet.
+
+    Once the subnets have finished creation, you can [launch a Virtual Network Sensor instance](launching-network-sensor-azure.mdx).
+:::

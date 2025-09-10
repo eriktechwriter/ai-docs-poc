@@ -1,0 +1,269 @@
+---
+slug: trend-vision-one-multi-policy-bash-powershell
+title: Assign a policy to many computers (Bash and PowerShell)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: multi-policy-bash-powershell.md
+  conversion_date: '2025-09-08T23:42:15.709Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+This recipe creates a script that assigns a policy to many computers. The script searches for the computers to modify and then assigns the policy to each computer.
+
+When you need to perform a task on many computers (hundreds or thousands), perform the work in small batches:
+
+### Procedure {#procedure}
+
+1.  Retrieve a small batch of computers.
+
+2.  Assign the policy to each computer in the batch.
+
+3.  Repeat until all computers are assigned the policy.
+
+### Next steps {#next-steps}
+
+Small batches makes more efficient use of Server & Workload Protection resources. This recipe assigns a policy to all computers in small batches.
+
+## Before you begin {#before-you-begin}
+
+You should have already verified that your environment is [set up to use the API using Bash or PowerShell](set-up-use-bash-or-powershell.mdx).
+
+## jq for Bash {#jq-for-bash}
+
+The Bash script uses jq to parse JSON data. To see if it is installed, open Terminal or your preferred command line tool and enter the following command:
+
+`jq --version`
+
+If `jq` is not found, visit their [website](https://stedolan.github.io/jq/) to install it.
+
+## Required information {#required-information}
+
+Gather the following information that you need to complete this recipe:
+
+- The URL of Server & Workload Protection
+
+- The secret key for your API key
+
+- The ID of the policy to assign
+
+If you don't know the ID of the policy, you can use the [Search for a Policy](search-for-policy-bash-powershell.mdx) recipe to obtain it.
+
+## Bash {#bash}
+
+### Procedure {#procedure-1}
+
+1.  Open Terminal or your preferred command line tool.
+
+2.  Enter the following commands to store details about your request, replacing `<YOUR URL>` with the URL of Server & Workload Protection, and `<YOUR SECRET KEY>` with the secret from your API key:
+
+    `url=<YOUR URL>`
+
+    for example, `url=https://cloudone.trendmicro.com`
+
+    `secret=<YOUR SECRET KEY>`
+
+    for example, `secret=5C58EADA-04BC-4ABC-45CF-B72925A0B674:aFBgpPV8eJQGaY2Dk0LmyQMD7nUGvyIDfIbIQo8Zgm8=`
+
+3.  Enter the following command to store the ID of the policy, replacing `<YOUR POLCIY ID>` with the ID of the computer:
+
+    `policyId=<YOUR POLICY ID>`
+
+    for example, `policyId=1`
+
+4.  Copy and paste the following code that searches for computers in batches and assigns the policy to them:
+
+    ``` codeblock
+    pagesize=10; idOfLastFound=0 ; \
+    while [ $pagesize -gt 0 ]; do \
+        echo -e "\nGetting a batch of computers..." 
+        page=$(curl -X POST "$url/api/computers/search?expand=none" -H "api-secret-key: $secret" -H "api-version: v1" -H "Content-Type: application/json" -# \
+        -d "{ \
+        \"searchCriteria\": [{ \
+        \"idValue\": \"$idOfLastFound\", \
+        \"idTest\": \"greater-than\"}], \
+        \"maxItems\": \"$pagesize\" \
+        }" \
+        -k | jq '.[]'); \
+        pagesize=$(echo $page | jq length); \
+        for (( i=0; i&lt;$pagesize; i++)); do \
+            computerId=$(echo $page | jq ".[$i][\"ID\"]"); \
+            echo "Assigning policy to computer with ID $computerId"; \
+            curl -X POST "$url/api/computers/${computerId}?expand=none" -H "api-secret-key: $secret" -H "api-version: v1" -H "Content-Type: application/json" -d "{ \"policyID\": \"$policyId\" }" -s -S -o /dev/null; \
+        done; \
+        idOfLastFound=$(echo $page | jq '.[-1]["ID"]'); \ 
+    done;
+    ```
+
+### Next steps {#next-steps-1}
+
+## Let's dig into that Bash script {#lets-dig-into-that-bash-script}
+
+This script is a bit more complicated than what we've done in other recipes, so let's recap what it does.
+
+Most of the code executes in a loop where each iteration of the loop searches for a batch of computers and modifies them. The loop ends when the search returns no more computers. To begin, we define the size of the batch and set the computer ID to use as the basis of the search in the first iteration.
+
+``` codeblock
+pagesize=10; idOfLastFound=0 ; \
+while [ $pagesize -gt 0 ]; do \
+...
+done;
+```
+
+Inside the loop, we use cURL to search for a batch of computers. The search finds 10 computers that have an ID that is greater than the last ID found in the previous iteration. The result is piped to `jq` to obtain an array of computers.
+
+``` codeblock
+page=$(curl -X POST "$url/api/computers/search?expand=none" -H "api-secret-key: $secret" -H "api-version: v1" -H "Content-Type: application/json" -# \
+  -d "{ \
+  \"searchCriteria\": [{ \
+  \"idValue\": \"$idOfLastFound\", \
+  \"idTest\": \"greater-than\"}], \
+  \"maxItems\": \"$pagesize\" \
+  }" \
+  -k | jq '.[]'); \
+```
+
+Then, we find the number of computers that were returned.
+
+`pagesize=$(echo $page | jq length); \`
+
+For each computer, we use cURL to assign the policy.
+
+``` codeblock
+for (( i=0; i&lt;$pagesize; i++)); do \
+    computerId=$(echo $page | jq ".[$i][\"ID\"]"); \
+    echo "Assigning policy to computer with ID $computerId"; \
+    curl -X POST "$url/api/computers/${computerId}?expand=none" -H "api-secret-key: $secret" -H "api-version: v1" -H "Content-Type: application/json" -d "{ \"policyID\": \"$policyId\" }" -k -s -S -o /dev/null; \
+  done; \
+```
+
+Finally, we find the ID of the last computer found to use as the basis of the search in the next iteration.
+
+``` codeblock
+idOfLastFound=$(echo $page | jq '.[-1][\"ID\"]'); \
+```
+
+## PowerShell {#powershell}
+
+### Procedure {#procedure-2}
+
+1.  Open PowerShell.
+
+2.  Enter the following command to use TLS 1.2, which the manager requires to create a secure connection:
+
+    `[Net.ServicePointManager]::SecurityProtocol += [Net.SecurityProtocolType]::Tls12`
+
+3.  Enter the following commands to store details about your request, replacing `<YOUR URL>` with the URL of your Server & Workload Protection, and `<YOUR SECRET KEY>` with the secret from your API key:
+
+    - `$url = "<YOUR URL>"`
+
+      for example, `url=https://cloudone.trendmicro.com`
+
+    - `$secret = "<YOUR API KEY SECRET>"`
+
+      for example,`$secret="5C58EADA-04BC-4ABC-45CF-B72725A0B674:aFBgpPV8eJQGaY2Dk0LmyQMD7nUGvyIDfIbIQo8Zgm8="`
+
+    - `$headers = @{‘api-version’ = “v1”; ‘api-secret-key’ = $secret; 'Content-Type' = "application/json"}`
+
+4.  Enter the following command to store the ID of the policy, replacing `<YOUR POLCIY ID>` with the ID of the computer:
+
+    `$policyId = <YOUR POLICY ID>`
+
+    for example, `$policyId = 1`
+
+5.  Copy and paste the following code that searches for computers in batches and assigns the policy to them:
+
+    ``` codeblock
+    $pageSize = 10
+    $idOfLastFound = 0
+    while($pageSize -gt 0){
+        Write-Output "Getting batch of computers..."
+        $page = Invoke-RestMethod -Method 'Post' -Uri "$url/api/computers/search?expand=none" -Headers $headers -Body @"
+        {"searchCriteria": [ 
+            {
+            "idTest": "greater-than", 
+            "idValue": $idOfLastFound
+            } 
+        ],
+        "maxItems": $pageSize}
+    "@
+        $pageSize = $page.computers.Length
+        for ($i=0; $i -lt $pageSize; $i++){
+            $id = $page.computers.Get($i).ID
+            Write-Output "Setting policy for computer with ID $id" 
+            Invoke-RestMethod -Method 'Post' -Uri "$url/api/computers/${id}?expand=none" -Headers $headers -Body @"
+            {"policyID": "$policyId"} 
+    "@ | Out-Null
+        }
+        if ($pageSize -gt 0 ) {
+            $idOfLastFound = $page.computers.Get($pageSize - 1).ID
+        }
+    }
+    ```
+
+### Next steps {#next-steps-2}
+
+If you receive the error message `The underlying connection was closed: An unexpected error occurred on a send`, close PowerShell, open PowerShell again, and try repeating steps.
+
+## Let's dig into that PowerShell script {#lets-dig-into-that-powershell-script}
+
+This script is a bit more complicated than what we've done in other recipes, so let's recap what it does.
+
+Most of the code executes in a loop where each iteration of the loop searches for a batch of computers and modifies them. The loop ends when the search returns no more computers. To begin, we define the size of the batch and set the computer ID to use as the basis of the search in the first iteration.
+
+``` codeblock
+$pageSize = 10
+$idOfLastFound = 0
+while($pageSize -gt 0){
+...
+}
+```
+
+Inside the loop, we call `Invoke-RestMethod` to search for a batch of computers. The search finds 10 computers that have an ID that is greater than the last ID found in the previous iteration.
+
+``` codeblock
+page=$(curl -X POST "$url/api/computers/search?expand=none" -H "api-secret-key: $secret" -H "api-version: v1" -H "Content-Type: application/json" -# \
+  -d "{ \
+  \"searchCriteria\": [{ \
+  \"idValue\": \"$idOfLastFound\", \
+  \"idTest\": \"greater-than\"}], \
+  \"maxItems\": \"$pagesize\" \
+  }" \
+  -k | jq '.[]'); \
+```
+
+Then, we determine the number of computers that were returned.
+
+`$pageSize = $page.computers.Length`
+
+For each computer, we call `Invoke-RestMethod` to assign the policy.
+
+``` codeblock
+for ($i=0; $i -lt $pageSize; $i++){
+        $id = $page.computers.Get($i).ID
+        Write-Output "Setting policy for computer with ID $id" 
+        Invoke-RestMethod -Method 'Post' -Uri "$url/api/computers/${id}?expand=none" -Headers $headers -Body @"
+        {"policyID": "$policyId"}
+```
+
+Finally, we find the ID of the last computer found to use as the basis of the search in the next iteration.
+
+`$idOfLastFound = $page.computers.Get($pageSize - 1).ID`
+
+## Notes {#notes}
+
+- To change the size of the batch of computers that is processed, set the `pagesize` (Bash) or `$pageSize` (PowerShell) variable to a different value. The value of `10` is normally a conservative batch size.
+
+## Related Resources {#related-resources}
+
+- [Set up to use Bash or PowerShell](set-up-use-bash-or-powershell.mdx)
+
+- [Modify a computer](https://automation.trendmicro.com/cloudone/workload-security/) (API Reference
+
+- [Create and configure a policy](create-configure-policy.mdx) (Guide) – “Assign a policy to a computer” section
+
+- [Configure computers to override policies](override-policies-computer.mdx) (Guide)
+
+- [Search for Resources](search-for-resources.mdx) (Guide) - "Limit search results and paging" section
+:::

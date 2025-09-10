@@ -1,0 +1,200 @@
+---
+slug: trend-vision-one-exception-list-wildcard-support
+title: Exception List Wildcard Support
+last_updated: '2025-09-08'
+ai_context:
+  source_file: exception-list-wildcard-support.md
+  conversion_date: '2025-09-08T23:42:19.585Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+The Behavior Monitoring Approved List supports the use of wildcard characters when defining file path, file name, and file extension exception types. Use the following tables to properly format your exception lists to ensure that Apex One excludes the correct files and folders from scanning.
+
+Supported wildcard characters:
+
+- Asterisk (\*): Represents any character or string of characters
+
+- Question mark (?): Represents a single character
+
+:::warning[Important]
+
+- The Behavior Monitoring Approved List does not support the use of wildcard characters to replace system drive designations or UNC addresses.
+
+- The Behavior Monitoring Block List does not support the use of wildcard characters to replace folders.
+:::
+
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Exception Type</p></th>
+<th><p>Wildcard Usage</p></th>
+<th><p>Matched</p></th>
+<th><p>Not Matched</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Directories</p></td>
+<td><p><code>C:\*</code></p>
+<p>Excludes all files and folders on the specified drive</p></td>
+<td><ul>
+<li><p><code>C:\sample.exe</code></p></li>
+<li><p><code>C:\folder\test.doc</code></p></li>
+</ul></td>
+<td><ul>
+<li><p><code>D:\sample.exe</code></p></li>
+<li><p><code>E:\folder\test.doc</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Specific files under a specific folder layer</p></td>
+<td><p><code>C:\*\Sample.exe</code></p>
+<p>Excludes the <code>Sample.exe</code> file only if the file is located in any subfolder of the <code>C:\</code> directory</p></td>
+<td><ul>
+<li><p><code>C:\files\Sample.exe</code></p></li>
+<li><p><code>C:\temp\files\Sample.exe</code></p></li>
+</ul></td>
+<td><ul>
+<li><p><code>C:\sample.exe</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>UNC paths</p></td>
+<td><p><code>\\&lt;UNC path&gt;\*\Sample.exe</code></p>
+<p>Excludes the <code>Sample.exe</code> file only if the file is located in any subfolder of the specified UNC path</p></td>
+<td><ul>
+<li><p><code>\\&lt;UNC path&gt;\files\Sample.exe</code></p></li>
+<li><p><code>\\&lt;UNC path&gt;\temp\files\Sample.exe</code></p></li>
+</ul></td>
+<td><ul>
+<li><p><code>R:\files\Sample.exe</code></p>
+<p>Reason: Mapped drives are not supported.</p></li>
+<li><p><code>\\&lt;UNC path&gt;\Sample.exe</code></p>
+<p>Reason: The file does not exist within a subfolder of the UNC path.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>File names and extensions</p></td>
+<td><p><code>C:\*.*</code></p>
+<p>Excludes all files with extensions in all folders and subfolders of the <code>C:\</code> directory</p></td>
+<td><ul>
+<li><p><code>C:\Sample.exe</code></p></li>
+<li><p><code>C:\temp\Sample.exe</code></p></li>
+<li><p><code>C:\test.doc</code></p></li>
+</ul></td>
+<td><ul>
+<li><p><code>D:\sample.exe</code></p></li>
+<li><p><code>C:\Sample</code></p>
+
+
+:::note
+
+<p><code>C:\Sample</code> does not have a file extension and is therefore not excluded from scanning.</p>
+
+
+:::
+
+</li>
+</ul></td>
+</tr>
+<tr>
+<td><p>File names</p></td>
+<td><p><code>C:\*.exe</code></p>
+<p>Excludes all files with the <code>.exe</code> extension in all folders and subfolders of the <code>C:\</code> directory</p></td>
+<td><ul>
+<li><p><code>C:\Sample.exe</code></p></li>
+<li><p><code>C:\temp\test.exe</code></p></li>
+</ul></td>
+<td><ul>
+<li><p><code>C:\Sample.doc</code></p></li>
+<li><p><code>C:\temp\test.bat</code></p></li>
+<li><p><code>C:\Sample</code></p>
+
+
+:::note
+
+<p><code>C:\Sample</code> does not have a file extension and is therefore not excluded from scanning.</p>
+
+
+:::
+
+</li>
+</ul></td>
+</tr>
+<tr>
+<td><p>File extensions</p></td>
+<td><p><code>C:\Sample.*</code></p>
+<p>Excludes all files with the name <code>Sample</code> and any extension in the <code>C:\</code> directory</p></td>
+<td><ul>
+<li><p><code>C:\Sample.exe</code></p></li>
+</ul></td>
+<td><ul>
+<li><p><code>C:\Sample1.doc</code></p></li>
+<li><p><code>C:\temp\Sample.bat</code></p></li>
+<li><p><code>C:\Sample</code></p>
+
+
+:::note
+
+<p><code>C:\Sample</code> does not have a file extension and is therefore not excluded from scanning.</p>
+
+
+:::
+
+</li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Files in specific directory structures</p></td>
+<td><p><code>C:\*\*\Sample.exe</code></p>
+<p>Excludes all files located within the second subfolder layer or any subsequent subfolders of the <code>C:\</code> directory with the file name and extension <code>Sample.exe</code></p></td>
+<td><ul>
+<li><p><code>C:\files\temp\Sample.exe</code></p></li>
+<li><p><code>C:\files\temp\test\Sample.exe</code></p></li>
+</ul></td>
+<td><ul>
+<li><p><code>C:\Sample.exe</code></p></li>
+<li><p><code>C:\temp\Sample.exe</code></p></li>
+<li><p><code>C:\files\temp\Sample.doc</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Complex paths or file names</p></td>
+<td><p><code>C:\Sam*e??.exe</code></p>
+<p>Excludes all files with names that satisfy the following conditions:</p>
+<ul>
+<li><p>Begin with the characters "Sam"</p></li>
+<li><p>The third last character of the file name must be "e"</p></li>
+<li><p>At least 1 character exists between the opening "Sam" string and closing "e??" string of the file name</p></li>
+<li><p>Exactly 2 characters exist before the file extension and after the "e" in the file name</p></li>
+<li><p>The file extension is <code>.exe</code></p></li>
+</ul>
+<p>If a file meets all the required conditions and is located the <code>C:\</code> directory, Behavior Monitoring excludes the file from scans.</p></td>
+<td><ul>
+<li><p><code>C:\Sample12.exe</code></p></li>
+<li><p><code>C:\SamSamSample12.exe</code></p></li>
+</ul></td>
+<td><ul>
+<li><p><code>C:\SaSmple12.exe</code></p>
+<p>Reason: Does not start with "Sam"</p></li>
+<li><p><code>C:\SamSamSam12.exe</code></p>
+<p>Reason: Does not contain "e" as the third last character</p></li>
+<li><p><code>C:\Same12.exe</code></p>
+<p>Reason: Does not include characters between the starting "Sam" string and third last "e" character</p></li>
+<li><p><code>C:\Sample1.exe</code></p>
+<p>Reason: Does not include 2 characters before the extension and after the "e"</p></li>
+<li><p><code>C:\Sample12.doc</code></p>
+<p>Reason: Incorrect extension</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+::::

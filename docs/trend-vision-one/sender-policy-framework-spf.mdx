@@ -1,0 +1,78 @@
+---
+slug: trend-vision-one-sender-policy-framework-spf
+title: Sender policy framework (SPF)
+---
+# Sender policy framework (SPF)
+
+Sender Policy Framework (SPF) is an open standard to prevent sender address forgery. SPF protects the *envelope address* of a sender, which is used for the delivery of email messages. Cloud Email Gateway Protection allows you to verify the sender's authenticity using SPF settings.
+
+SPF requires the owner of a domain to publish the email sending policy (for example, which email servers are used to send email messages from that domain) in an SPF record in the Domain Name System (DNS).
+
+When Cloud Email Gateway Protection receives an email message claiming to come from that domain, Cloud Email Gateway Protection checks the SPF record to verify whether the email message complies with the domain's stated policy. For example, if the message comes from an unknown server, the email message can be considered as fake.
+
+Evaluation of an SPF record can return any of the following results.
+
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 62%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Result</p></th>
+<th><p>Explanation</p></th>
+<th><p>Default Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Pass</p></td>
+<td><p>The SPF record designates the host to be allowed to send.</p></td>
+<td><p>Accept (reserved)</p></td>
+</tr>
+<tr>
+<td><p>Fail</p></td>
+<td><p>The SPF record has designated the host as not being allowed to send.</p></td>
+<td><p>Delete (customizable)</p></td>
+</tr>
+<tr>
+<td><p>SoftFail</p></td>
+<td><p>The SPF record has designated the host as not being allowed to send but is in transition.</p></td>
+<td><p>Accept (customizable)</p></td>
+</tr>
+<tr>
+<td><p>Neutral</p></td>
+<td><p>The SPF record specifies explicitly that nothing can be said about validity.</p></td>
+<td><p>Accept (customizable)</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>The domain does not have an SPF record or the SPF record does not evaluate to a result.</p></td>
+<td><p>Accept (customizable)</p></td>
+</tr>
+<tr>
+<td><p>PermError</p></td>
+<td><p>A permanent error has occurred (for example, badly formatted SPF record).</p></td>
+<td><p>Accept (customizable)</p></td>
+</tr>
+<tr>
+<td><p>TempError</p></td>
+<td><p>A transient error has occurred.</p></td>
+<td><p>Accept (customizable)</p></td>
+</tr>
+</tbody>
+</table>
+
+:::note
+
+By default, if an email message gets a "Pass" result, Cloud Email Gateway Protection will bypass the SPF check and skip the remaining SPF settings for the message. Cloud Email Gateway Protection will then continue scanning the message according to policy rules.
+
+If an email message passes the Sender IP Match check, the message is also considered as passing its own SPF check.
+:::
+
+**Related information**
+
+- [Adding SPF settings](adding-spf-settings.mdx)
+- [Editing SPF settings](editing-spf-settings.mdx)
+::::

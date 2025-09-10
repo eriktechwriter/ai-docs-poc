@@ -1,0 +1,181 @@
+---
+slug: trend-vision-one-managing-address-groups
+title: Managing address groups
+last_updated: '2025-09-08'
+ai_context:
+  source_file: managing-address-groups.md
+  conversion_date: '2025-09-08T23:42:16.182Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Creating an address group facilitates your policy management. You can use **Address Groups** screen to manage address groups in Cloud Email Gateway Protection.
+
+**Address Groups Screen**
+
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 72%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Tasks</p></th>
+<th><p>Steps</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Querying Address Groups</p></td>
+<td><ol>
+<li><p>Specify an address group name, an email address, or a domain name.</p></li>
+<li><p>Click <strong>Search</strong>.</p></li>
+</ol>
+
+
+:::note
+
+<p>For <strong>Email</strong>, make sure you specify the exact email address or use wildcards (*) to represent the local part, domain, or subdomain. For more information about the valid formats, see the table below.</p>
+<p>The search returns a range of relevant results. For example, searching for <code>name@*.example.com</code> can return <code>name@info.example.com</code>, <code>name@*.example.com</code>, <code>name@*.com</code>, <code>name@*</code>, <code>*@info.example.com</code>, <code>*@*.example.com</code>, and <code>*@*.com</code>.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Adding an Address Group</p></td>
+<td><p>Click <strong>Add</strong>.</p>
+<ol>
+<li><p>In the <strong>Basic Information</strong> section, provide the following information:</p>
+<ul>
+<li><p><strong>Name</strong>: A name for the address group.</p></li>
+<li><p><strong>Description</strong> (optional): A description for the address group.</p></li>
+<li><p><strong>Internal group</strong> (optional): An address group that only contains managed domains or email addresses that belong to managed domains.</p>
+
+
+:::warning[Important]
+
+<p>You must use internal groups when specifying senders (or sender exceptions) in outbound policies or recipients (or recipient exceptions) in inbound policies.</p>
+
+
+:::
+
+</li>
+<li><p>In the <strong>Email Addresses</strong> section, choose either of the following ways to specify the email addresses in the address group:</p>
+<ul>
+<li><p>Specify the email address and its description, and click <strong>Add</strong>.</p>
+
+
+:::note
+
+<ul>
+<li><p>Only one email address can be added at a time.</p></li>
+<li><p>For more information about the valid formats of the email addresses, see the table below.</p></li>
+<li><p>The maximum length of the description is 1024 characters.</p></li>
+</ul>
+
+
+:::
+
+</li>
+<li><p>Import email addresses.</p>
+<ol>
+<li><p>Click <strong>Import</strong>.</p></li>
+<li><p>Next to <strong>File location</strong>, browse and select a CSV file to import.</p>
+<p>You can click <strong>Download sample file</strong> to view a sample of a properly formatted file.</p>
+<p>Cloud Email Gateway Protection checks all the entries in the selected file to identify any invalid and duplicate email addresses as well as overlong descriptions.</p></li>
+<li><p>After you confirm all the entries to be imported, click <strong>Import</strong>.</p></li>
+</ol></li>
+</ul>
+<p>To search for email addresses, type an email address or domain name and click <strong>Search</strong>.</p>
+
+
+:::note
+
+<p>Make sure you specify the exact email address or use wildcards (*) to represent the local part, domain, or subdomain. For more information about the valid formats, see the table below.</p>
+<p>The search returns a range of relevant results. For example, searching for <code>name@*.example.com</code> can return <code>name@info.example.com</code>, <code>name@*.example.com</code>, <code>name@*.com</code>, <code>name@*</code>, <code>*@info.example.com</code>, <code>*@*.example.com</code>, and <code>*@*.com</code>.</p>
+
+
+:::
+
+</li>
+<li><p>Click <strong>Submit</strong>.</p></li>
+</ul></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Editing an Address Group</p></td>
+<td><p>In the <strong>Address Groups</strong> list, click the name of the group you want to edit and follow the instructions in <em>Adding an Address Group</em> procedure in this table.</p>
+
+
+:::note
+
+<p>A hybrid address group cannot be changed into an internal group if the group contains at least one wildcard domain member.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Deleting Address Groups</p></td>
+<td><p>In the <strong>Address Groups</strong> list, select the groups to delete. Click <strong>Delete</strong>, and click <strong>OK</strong> to confirm.</p>
+
+
+:::note
+
+<p>Only address groups that are not referenced by any policies can be deleted.</p>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+
+The following table displays format examples for address groups:
+
+**Format Examples for Address Groups**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Valid for Internal Address Group</p></th>
+<th><p>Valid for Hybrid Address Group</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>name@example.com</p>
+<p>name@info.example.com</p></td>
+<td><p>name@example.com</p>
+<p>name@info.example.com</p></td>
+</tr>
+<tr>
+<td><p>*@example.com</p>
+<p>*@info.example.com</p></td>
+<td><p>*@example.com</p>
+<p>*@info.example.com</p></td>
+</tr>
+<tr>
+<td></td>
+<td><p>name@*</p></td>
+</tr>
+<tr>
+<td></td>
+<td><p>name@*.example.com</p></td>
+</tr>
+<tr>
+<td></td>
+<td><p>*@*.example.com</p></td>
+</tr>
+</tbody>
+</table>
+:::

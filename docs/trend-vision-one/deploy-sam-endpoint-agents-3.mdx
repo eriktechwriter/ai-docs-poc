@@ -1,0 +1,86 @@
+---
+slug: trend-vision-one-deploy-sam-endpoint-agents-3
+title: >-
+  Deploying the Secure Access Module to Trend Vision One Endpoint Security
+  agents
+---
+# Deploying the Secure Access Module to Trend Vision One Endpoint Security agents
+
+Authenticate user access attempts at the account and device levels using the Secure Access Module.
+
+:::note
+
+This feature is not available in all regions.
+:::
+
+After deployment to end-user devices, the Secure Access Module transfers connection attempts to configured Private Access Connectors or Internet Access Gateways that enforce private access, internet access and AI access rules. To manage access to specific AI services and enable advanced AI content generation checks, go to Secure Access Rules and create at least one AI service access rule. To deploy the Secure Access Module to endpoints, target endpoints must already have the Trend Vision One Endpoint Security agent installed and meet [system requirements](secure-access-module-sys-reqs.mdx). You may install the endpoint agent from within Zero Trust Secure Access.
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Zero Trust Secure Access → Secure Access Configuration → Secure Access Module**.
+
+2.  Click **Download the Agent Installer**.
+
+    You have a choice of installing the agent:
+
+    :::note
+
+    Zero Trust Secure Access does not support an agent installer with the Secure Access Module autoenabled in macOS.
+    :::
+
+    - With autoenable secure access module. The agent automatically deploys the Secure Access Module after installation.
+
+      :::note
+
+      If you install the agent with the Secure Access Module autoenabled, you can skip steps 4, 5, and 6.
+      :::
+
+    - Without autoenable secure access module. You must manually deploy the Secure Access Module after installing the agent.
+
+3.  Run the agent installer to install the Trend Vision One Endpoint Security agent on your target endpoints.
+
+    For more information about deploying agents, see [Deploy agents](deploy-agents.mdx).
+
+    :::note
+
+    After the agent is installed on an endpoint, the endpoint appears on the endpoint list in **Secure Access Module**. If an endpoint already has another Trend Micro endpoint security product installed, the endpoint is already on the endpoint list and does not need to have the agent program installed again.
+    :::
+
+4.  Display the endpoints you wish to select from for module deployment.
+
+    - To display endpoints based on security deployment type, click a security deployment type in the **Endpoints** section to the left of the list.
+
+    - To display endpoints based on endpoint group, click an endpoint group in the **Endpoint Groups** section to the left of the list.
+
+    :::note
+
+    Only endpoints with operating systems supported by the Secure Access Module are listed.
+    :::
+
+5.  Select one or more endpoints that you want the Secure Access Module deployed to and select **Deploy Modules** from the **Manage Modules** menu.
+
+    If you do not select any endpoints, you can select **Manage all Modules** and choose whether to deploy, update, or remove modules on all endpoints in the current list.
+
+6.  On the **Deploy Secure Access Module** dialog that appears, confirm the selected endpoints and click **Deploy**.
+
+7.  Monitor the deployment status on the **Endpoints** screen. If an error occurs during deployment, click the **Action required** tab for detailed information.
+
+8.  Instruct end users to sign in to the Secure Access Module app to transfer connection attempts to configured Private Access Connectors or Internet Access Gateways.
+
+    :::warning[Important]
+
+    End users of macOS devices must grant a series of required permissions when opening or signing into the Secure Access Module for the first time. For more information, see [Setting up permissions for the Secure Access Module on endpoints using macOS versions 11 to 14](setup-permissions-sam-macos.mdx).
+    :::
+
+9.  Configure the module update settings by performing the following steps.
+
+    1.  Click **Module Version Management**.
+
+    2.  Select the Windows or macOS version you want to update to or deploy to new endpoints. To automatically update the module when a new version is available, select **Latest Version**.
+
+    3.  Select **Specify test endpoints** to add specific endpoints to a group that will always update to the latest module version. Click **Add endpoints**, select endpoints from the **Available endpoints** list, and then click **Add**
+
+    4.  To change the active hours of automatic updates, go to the **Update settings** tab and select **Pause automatic updates daily**, then specify the time period. Trend Vision One will not automatically update the module during the selected hours.
+
+    5.  Click **Save**.
+::::

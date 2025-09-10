@@ -1,0 +1,122 @@
+---
+slug: trend-vision-one-managing-wrs-approved-list
+title: Managing the Web Reputation approved list
+last_updated: '2025-09-08'
+ai_context:
+  source_file: managing-wrs-approved-list.md
+  conversion_date: '2025-09-08T23:42:16.119Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+The Web Reputation Approved List provides you a way to bypass scanning and blocking of URLs that you considered safe. When URLs match the domains, IP addresses, or URLs specified in the Web Reputation Approved List, the URLs will not be scanned by Time-of-Click Protection and Virtual Analyzer. You can configure whether to bypass Web Reputation Services as well.
+
+### Procedure {#procedure}
+
+1.  Enable the Web Reputation Approved List.
+
+    1.  Create or edit an inbound or outbound spam policy.
+
+        For details about configuring a policy, see [Configuring policies](configuring-policies.mdx).
+
+    2.  Click the **Scanning Criteria** tab.
+
+    3.  Select and click **Web reputation**.
+
+    4.  Under **Web Reputation Approved List**, select the **Enable the Web Reputation Approved List** check box.
+
+2.  Manage the Web Reputation Approved List.
+
+    The Web Reputation Approved List is available in the following path:
+
+    **Administration → Policy Objects → Web Reputation Approved List**
+
+    <table>
+    <colgroup>
+    <col style="width: 33%" />
+    <col style="width: 67%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Action</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Search for an item</p></td>
+    <td><p>Type a domain name, IP address, or URL in the <strong>Item</strong> text box, or select a type from the <strong>Type</strong> drop-down box, and click <strong>Search</strong>.</p></td>
+    </tr>
+    <tr>
+    <td><p>Add an item</p></td>
+    <td><ol>
+    <li><p>Click <strong>Add</strong>.</p>
+    <p>The <strong>Add Item</strong> screen appears.</p></li>
+    <li><p>Specify <strong>Domain</strong>, <strong>IP address</strong>, or <strong>URL</strong> as the type.</p></li>
+    <li><p>Type a domain, IP address, or URL.</p>
+    
+
+    :::note
+    
+    <p>Specify a domain in one of the following formats:</p>
+    <ul>
+    <li><p>example.com</p></li>
+    <li><p>subdomain.example.com</p></li>
+    <li><p>*.example.com</p>
+    <p>This format matches all the subdomains under the example.com domain, for example, a.example.com, a.b.example.com.</p></li>
+    </ul>
+    
+
+    :::
+
+    </li>
+    <li><p>(Optional) Description: Provide a description.</p></li>
+    <li><p>Select whether to bypass Web Reputation Services.</p>
+    
+
+    :::note
+    
+    <p>This item always bypasses Time-of-Click Protection and Virtual Analyzer scanning.</p>
+    
+
+    :::
+
+    </li>
+    <li><p>Click <strong>Save</strong>.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Edit an item</p></td>
+    <td><ol>
+    <li><p>Click an item in the <strong>Item</strong> column.</p></li>
+    <li><p>On the <strong>Edit Item</strong> screen, change the description or select whether to bypass Web Reputation Services.</p></li>
+    <li><p>Click <strong>Save</strong>.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Import items</p></td>
+    <td><ol>
+    <li><p>Click <strong>Import</strong>.</p></li>
+    <li><p>On the <strong>Import Items</strong> screen, click <strong>Choose File</strong> and select a CSV file to import.</p>
+    <p>You can click <strong>Download sample file</strong> to download the file for reference or use it for import.</p>
+    <p>Make sure the CSV file meets the following requirements:</p>
+    <ul>
+    <li><p>The file size does not exceed 2 MB.</p></li>
+    <li><p>Column A (item), column C (item type), and Column D (whether to bypass Web Reputation Services) are all filled.</p></li>
+    </ul></li>
+    <li><p>Select <strong>Merge</strong> or <strong>Overwrite</strong> as the import option.</p></li>
+    <li><p>Click <strong>Preview</strong>.</p></li>
+    <li><p>After you confirm all the entries to be imported, click <strong>Import</strong>.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Delete items</p></td>
+    <td><ol>
+    <li><p>Select one or multiple items from the existing list and click <strong>Delete</strong>.</p></li>
+    <li><p>Click <strong>OK</strong> to confirm your deletion.</p></li>
+    </ol></td>
+    </tr>
+    </tbody>
+    </table>
+:::

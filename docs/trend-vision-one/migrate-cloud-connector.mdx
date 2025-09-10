@@ -1,0 +1,66 @@
+---
+slug: trend-vision-one-migrate-cloud-connector
+title: How do I migrate to the new cloud connector functionality?
+---
+# How do I migrate to the new cloud connector functionality?
+
+If you previously used the "Add Cloud Account" wizard to import Amazon Web Services resources into Deep Security as a Service, those resources are organized by AWS region on *Computers*. You may have run the wizard more than once if you have multiple AWS regions.
+
+Server & Workload Protection the ability to display your AWS instances under your AWS account name, organized in a hierarchy that includes the AWS Region, VPC, and subnet.
+
+Before migrating your AWS resources, you will need to edit the policy that allows Server & Workload Protection to access your AWS account:
+
+### Procedure {#procedure}
+
+1.  Log in to your Amazon Web Services Console and go to *Identity and Access Management (IAM)*.
+
+2.  In the left navigation pane, click *Policies*.
+
+3.  In the list of policies, select the policy that allows Server & Workload Protection to access your AWS account.
+
+4.  Go to the *Policy Document* tab and click *Edit*.
+
+5.  Edit the policy document to include this JSON code:
+
+    ```bash
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "cloudconnector",
+                "Effect": "Allow",
+                "Action": [
+                    "ec2:DescribeImages",
+                    "ec2:DescribeInstances",
+                    "ec2:DescribeRegions",
+                    "ec2:DescribeSubnets",
+                    "ec2:DescribeTags",
+                    "ec2:DescribeVpcs",
+                    "iam:ListAccountAliases",
+                    "sts:AssumeRole"
+                ],
+                "Resource": [
+                    "*"
+                ]
+            }
+        ]
+    }
+    ```
+
+    :::note
+
+    The `"sts:AssumeRole"` permission is required only if you are using cross-account role access. For more information on IAM roles, see [Tutorial: Delegate Access Across AWS Accounts Using IAM Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles).
+    :::
+
+6.  Select *Save as default version*.
+
+### Next steps {#next-steps}
+
+To migrate your AWS resources in the Server & Workload Protection console:
+
+1.  In the Server & Workload Protection console, go to the *Computers* page.
+
+2.  In the Computers tree, right-click an AWS region and select *Upgrade to Amazon Account*.
+
+3.  Click *Finish* and then *Close*. Your AWS instances will now appear under your AWS account name, organized in a hierarchy that includes the AWS Region, VPC, and subnet.
+:::

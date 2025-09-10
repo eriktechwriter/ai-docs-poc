@@ -1,0 +1,90 @@
+---
+slug: trend-vision-one-smart-folder-operators
+title: Operators
+last_updated: '2025-09-08'
+ai_context:
+  source_file: smart-folder-operators.md
+  conversion_date: '2025-09-08T23:42:12.445Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Use operators to refine how your smart folders search for computers.
+
+Smart folder operators indicate whether matching computers should have a property value that is identical, similar, or dissimilar to your search term. Not all operators are available for every property.
+
+<table>
+<thead>
+<tr>
+<th><p>Operator</p></th>
+<th><p>Description</p></th>
+<th><p>Example usage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>EQUALS</p></td>
+<td><p>The search query only finds computers that are an exact match.</p></td>
+<td><p>A search query for "Windows" in the Operating System property does not find computers with "Windows 7" or "Microsoft Windows".</p></td>
+</tr>
+<tr>
+<td><p>DOES NOT EQUAL</p></td>
+<td><p>The search query finds any computers that are not an exact match.</p></td>
+<td><p>A search query for "Amazon Linux (64 bit)" in the Operating System property finds all computers other than Amazon Linux 64-bit machines.</p></td>
+</tr>
+<tr>
+<td><p>CONTAINS</p></td>
+<td><p>The search query finds any computers that contain the search term.</p></td>
+<td><p>A search query for "203.0.113." in the IP Address property finds any computers on the 203.0.113.xxx subnet.</p></td>
+</tr>
+<tr>
+<td><p>DOES NOT CONTAIN</p></td>
+<td><p>The search query finds any computers that do not contain the search term.</p></td>
+<td><p>A search query for "Windows" in the Operating System property finds any computers that do not have "Windows" in their operating system name.</p></td>
+</tr>
+<tr>
+<td><p>ANY VALUE</p></td>
+<td><p>The search query finds all computers with the selected property.</p></td>
+<td><p>A search query in the Group Name property finds all computers in that group.</p></td>
+</tr>
+<tr>
+<td><p>IN RANGE</p></td>
+<td><p>The search query finds all computers between the specified start and end range.</p></td>
+<td><p>A search query in the IP Address property with Start Range 10.0.0.0 and End Range 10.255.255.255 would find all computers with IP addresses between 10.0.0.0 and 10.255.255.255.</p></td>
+</tr>
+<tr>
+<td><p>NOT IN RANGE</p></td>
+<td><p>The search query finds all computers that are not between the specified start and end range.</p></td>
+<td><p>A search query in the IP Address property with Start Range 10.0.0.0 and End Range 10.255.255.255 finds all computers that have IP addresses outside the range of 10.0.0.0 and 10.255.255.255.</p></td>
+</tr>
+<tr>
+<td><p>Yes</p></td>
+<td><p>The search query finds all computers with the selected property.</p></td>
+<td><p>A search query with Yes selected for the Docker property finds any computers with the Docker service running.</p></td>
+</tr>
+<tr>
+<td><p>No</p></td>
+<td><p>The search query finds all computers that do not have the selected property.</p></td>
+<td><p>A search query with No selected for the Docker property would find any computers that do not have the Docker service running.</p></td>
+</tr>
+<tr>
+<td><p>OLDER THAN</p></td>
+<td><p>The search query finds all computers prior to the specified date for the property.</p>
+<p>Used with an accompanying DAYS, WEEKS, HOURS, or MINUTES operator.</p></td>
+<td><p>A search query with OLDER THAN, 7, DAYS for the Last Successful Recommendation Scan property finds computers that have had a successful recommendation scan 8 days or longer ago.</p></td>
+</tr>
+<tr>
+<td><p>MORE RECENTLY THAN</p></td>
+<td><p>The search query finds all computers more recent than the specified date for the property.</p>
+<p>Used with an accompanying DAYS, WEEKS, HOURS, or MINUTES operator.</p></td>
+<td><p>A search query with MORE RECENTLY THAN, 1, MONTH for the Last Successful Recommendation Scan property finds computers that have had a successful recommendation scan earlier than 1 month ago.</p></td>
+</tr>
+<tr>
+<td><p>NEVER</p></td>
+<td><p>The search query finds all computers that do not match the property.</p></td>
+<td><p>A search query with NEVER for the Last Successful Recommendation Scan property finds computers that have never had a successful recommendation scan.</p></td>
+</tr>
+</tbody>
+</table>
+:::

@@ -1,0 +1,56 @@
+---
+slug: trend-vision-one-integratwe-aad-sso-ztsa
+title: Integrating Microsoft Entra ID and SSO for Zero Trust Secure Access
+last_updated: '2025-09-08'
+ai_context:
+  source_file: integratwe-aad-sso-ztsa.md
+  conversion_date: '2025-09-08T23:42:17.073Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Integrate with Microsoft Entra ID to authenticate user access attempts and take action on risky account activity.
+
+:::warning[Important]
+
+You cannot configure single sign-on (SSO) from multiple IAMs. Ensure that you configure the necessary permissions and SSO on the IAM you want to use for Private Access and Internet Access authentication.
+
+**Threat and Exposure Management** and **Zero Trust Secure Access** both require data upload permission to ensure certain features function properly. Revoking data upload permission may prevent secure access policy enforcement and risk analysis.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Zero Trust Secure Access → Secure Access Configuration → Identity and Access Management**.
+
+2.  To take direct action on risky accounts and authenticate Private Access and Internet Access rules, grant necessary permissions in the **Third-Party Integration** app.
+
+    1.  Click **Grant permissions** next to **Microsoft Entra ID**.
+
+        The **Microsoft Entra ID** screen opens in a new browser tab.
+
+    2.  Locate one or multiple Microsoft Entra ID tenants that you want to grant the "Read directory data and perform account management actions" permissions on, and then click **Grant permissions** in the **Status** column for **Zero Trust Secure Access**.
+
+    3.  Follow the onscreen instructions to enable the data connection.
+
+    4.  Switch back to the **Zero Trust Secure Access** browser tab.
+
+    5.  Go toConfigure Microsoft Entra ID and configure your SSO settings.
+
+3.  To configure risk control rules, you must also grant data upload permission for [Configure Microsoft Entra ID](configuring-saml-ad.mdx) in **Threat and Exposure Management → Data source**.
+
+    1.  Go to the **Data Source** panel in **Threat and Exposure Management** by clicking **Data Source** in the information that displays when you hover over ![](/images/infoIcon=5ca285cd-10f2-43bc-bcd6-147fcbd4db5a.webp) in the **Data upload permission status** column.
+
+    2.  If the required Microsoft Entra ID permissions are not granted yet, click **Manage permissions and integration settings in Third-Party Integration** to open the **Microsoft Entra ID** screen of the **Third-Party Integration** app.
+
+    3.  Locate the Microsoft Entra ID tenants that you want to grant permissions on, and then click **Grant permissions** in the **Status** column for **Cyber Risk Exposure Management**.
+
+    4.  Switch back to the Microsoft Entra ID **Data Source** panel and turn on **Data upload permission**.
+
+    5.  Switch back to the **Zero Trust Secure Access** browser tab.
+
+    :::note
+
+    Once you have configured Microsoft Entra ID as your data source, data begins syncing after 10 minutes. When the full sync is complete, Microsoft Entra ID syncs updates every 8 hours.
+    :::
+::::

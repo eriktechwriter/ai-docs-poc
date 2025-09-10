@@ -1,0 +1,52 @@
+---
+slug: trend-vision-one-before-you-migrate
+title: Before You Migrate
+last_updated: '2025-09-08'
+ai_context:
+  source_file: before-you-migrate.md
+  conversion_date: '2025-09-08T23:42:24.247Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Review your current environment and the requirements needed to ensure a successful migration.
+
+Currently, the Product Instance app does not support updating Apex One on-premises solutions to a Standard Endpoint Protection Manager. You must migrate your endpoints and settings manually from your Apex One server to a provisioned Standard Endpoint Protection Manager.
+
+Before you begin, there are several key planning steps and considerations you must review to ensure a smooth migration and reduce the chance of migration failure.
+
+- Consider a phase deployment/migration.
+
+  Trend Micro recommends migrating your endpoints in batches or phases. Once the endpoints start reporting to Trend Vision One Endpoint Security, the endpoints automatically download and install a new endpoint agent package to begin the update process. Migrating all of your agents at once without sufficient bandwidth might cause service outages on your network.
+
+  The size of the endpoint agent package might vary with pattern and binary file updates. Download an agent installer package from the Trend Vision One Endpoint Inventory to verify the current package size.
+
+- Consider expected network usage after migration.
+
+  After migrating your endpoints to Trend Vision One Endpoint Security, your endpoints begin an update process. The following network activities occur as part of the update process:
+
+  - Component updates
+
+  - Policy deployment
+
+  - Querying for file and web reputation services, Predictive Machine Learning, and other security service related tasks
+
+- Update your firewall and port settings.
+
+  Communication between Trend Vision One and your updated endpoints uses the HTTPS protocol using TLS on port 4343. For a complete list of network setting requirements, see [Firewall exception requirements for Trend Vision One](firewall-exception-requirements-for.mdx).
+
+  HTTPS communication issues can occur due to various factors, such as inconsistent SSL/TLS environments or firewalls blocking the HTTPS port. These issues can cause endpoint agents to display as offline, fail to update, or fail to upload logs and quarantined files. Ensure your network environment is configured before migrating your endpoints.
+
+- Review your agent proxy settings.
+
+  Check the agent proxy settings for the endpoints you are migrating by navigating to **Apex One web console → Administration → Settings → Proxy**.
+
+  Check the proxy settings in Trend Vision One Endpoint Security by going to **Endpoint Security → Endpoint Inventory → Settings → Global Settings** and clicking on **Runtime Proxy Settings**.
+
+  Runtime Proxy Settings uses a policy based model to assign proxy settings to endpoint groups. Proxy policies are assigned to endpoint groups. Once migrated to Trend Vision One Endpoint Security, your endpoints adopt the policy settings assigned to the Standard Endpoint Protection instance or endpoint group managing the endpoints.
+
+  Before you migrate, check if changing the proxy settings might affect the ability for your endpoints to connect to the internet. Agents must be able to connect to the internet in order to communicate with Trend Vision One and download the update package. You can test the settings by setting up another Apex One Server with the same proxy settings as the Runtime Proxy policy assigned to the endpoint group you are moving endpoints to, and migrating some of your endpoints to the new Apex One Server first.
+
+  For more information about Runtime Proxy policies, see [Runtime Proxy Settings](runtime-proxy-settings.mdx).
+:::

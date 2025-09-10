@@ -1,0 +1,126 @@
+---
+slug: trend-vision-one-authentication-proxy-service
+title: >-
+  Configuring the authentication proxy service for corporate intranet locations
+  and public or home networks
+last_updated: '2025-09-08'
+ai_context:
+  source_file: authentication-proxy-service.md
+  conversion_date: '2025-09-08T23:42:24.686Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure the correct ports and services to allow end users to authenticate using SSO through your on-premises Active Directory server from public networks or your corporate intranet locations.
+
+:::warning[Important]
+
+Kerberos authentication may fail for endpoints on public or home networks, as they are often unable to reach the corporate Key Distribution Center (KDC) on the corporate private network. To ensure users can log in from both public or home networks and private networks, please enable only NTLM authentication and disable Kerberos authentication
+
+.
+:::
+
+<figure>
+<img src="./images/auth_proxy_NTLM=29647280-c18a-47b6-a5fd-5f9dfbe5d5b8.webp" alt="Internet access on-premises gateway authentication proxy using NTLM authentication diagram" />
+<figcaption>Internet access on-premises gateway authentication proxy using NTLM authentication</figcaption>
+</figure>
+
+The authentication proxy service on the Zero Trust Secure Access Internet Access On-Premises Gateway facilitates [NTLM v2 or Kerberos-supported single sign-on (SSO) authentication](ntlm-kerberos-sso-ad.mdx) with your on-premises Active Directory server. The service runs within the DMZ between firewalls, which allows users access for authentication whether the users are connecting from the corporate intranet (user A in the above diagram), or from a public or home network (user B in the above diagram). The service retrieves settings and data from Trend Vision One via HTTPS through port 443 on firewall A.
+
+Once configured, the authentication proxy service allows end users to reach your Active Directory server from endpoints under the following scenarios.
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Secure Access Module status</p></th>
+<th>Location</th>
+<th><p>Connection method</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Installed</p></td>
+<td><p>Any location</p></td>
+<td><p>Any method</p></td>
+</tr>
+<tr>
+<td><p>Not installed</p></td>
+<td><p>Corporate network</p></td>
+<td><p>Through a <a href="trend-vision-one-corporate-network-locations-ia">configured Internet Access On-Premises Gateway</a>, or through the Internet Access Cloud Gateway from a <a href="trend-vision-one-corporate-internet-access-locations">defined IP address</a></p></td>
+</tr>
+<tr>
+<td><p>Not installed</p></td>
+<td><p>Public or home network</p></td>
+<td><p>Through the Internet Access On-Premises Gateway via firewall</p></td>
+</tr>
+</tbody>
+</table>
+
+Before configuring the authentication proxy service, you must have a [Service Gateway virtual appliance](service-gateway-services.mdx) installed with the Zero Trust Secure Access Internet Access On-Premises Gateway service enabled.
+
+### Procedure {#procedure}
+
+1.  In **Secure Access Configuration → Internet Access Configuration → Global Settings**, enable **Single Sign-On with Active Directory (On-Premises)** and [complete the configuration steps](ntlm-kerberos-sso-ad.mdx).
+
+2.  Ensure that DNS can resolve the FQDN of the authentication proxy with the proper IP address for endpoints accessing from the corporate network or public/home network.
+
+    Note that when accessing from a public or home network, the authentication proxy FQDN needs to be resolved to a public IP. If they are using:
+
+    - a single gateway, the authentication proxy FQDN is the \<single gateway FQDN\>
+    - multiple gateways behind a load balancer, authentication proxy FQDN is the \<load balancer FQDN\>
+
+3.  In your firewall settings for firewall A, open the following ports according to how users plan to access the authorization proxy service.
+
+    - **TCP 8089**: For users accessing the service on a public network through the cloud gateway
+
+      :::warning[Important]
+
+      The authentication proxy service also requires TCP port 8089 as a listening port.
+      :::
+
+    - **TCP 8088**: For users accessing the service on a public network through the on-premises gateway
+
+4.  If your are using NTLM authentication:
+
+    1.  In your firewall settings for firewall B, ensure you allow the IP address of the Service Gateway appliance running the on-premises gateway.
+
+        :::tip
+
+        Find the IP address of your Service Gateway appliance in **Service Gateway Management**.
+        :::
+
+    2.  Open the port for your Active Directory server on firewall B according to the server type and protocol.
+
+        <table style="width:99%;">
+        <colgroup>
+        <col style="width: 33%" />
+        <col style="width: 33%" />
+        <col style="width: 33%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Protocol</p></th>
+        <th><p>Microsoft Active Directory</p></th>
+        <th><p>Microsoft Active Directory Global Catalog</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>LDAP</p></td>
+        <td><p>389</p></td>
+        <td><p>3268</p></td>
+        </tr>
+        <tr>
+        <td><p>LDAPS</p></td>
+        <td><p>636</p></td>
+        <td><p>3269</p></td>
+        </tr>
+        </tbody>
+        </table>
+::::

@@ -1,0 +1,85 @@
+---
+slug: trend-vision-one-console-settings
+title: Console Settings
+last_updated: '2025-09-08'
+ai_context:
+  source_file: console-settings.md
+  conversion_date: '2025-09-08T23:42:21.874Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Configure global console settings, such as time zone and concurrent web browser sessions, which apply to all users.
+
+Access **Console Settings** from **Administration → Console Settings**.
+
+The following table outlines the actions available in the **Console Settings** screen.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Setting</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>System update</p></td>
+<td><p>Allows the Primary User Account holder to <a href="trend-vision-one-update-foundation-services-release">update Trend Vision One to the Foundation Services release</a> for your business</p></td>
+</tr>
+<tr>
+<td><p>Time zone</p></td>
+<td><p>Converts all data displayed in the console to the specified time zone</p></td>
+</tr>
+<tr>
+<td><p>Limit concurrent browser sessions per account</p></td>
+<td><p>Limits the maximum number of concurrent web browser sessions a user account can start to access the console</p>
+
+
+:::note
+
+<p>Exceeding the limit automatically terminates the earliest session.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Restrict console access to specified IP addresses</p></td>
+<td><p>Restricts user access to the specified IPv4 addresses or IPv4 ranges in CIDR notation</p>
+
+
+:::note
+
+<p>Private IP addresses and wildcards are not supported.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td>Timeout</td>
+<td><p>Allows organizations to customize inactivity timeout and max session timeout to comply with regulatory standards or internal security policy.</p>
+<p><strong>Inactivity timeout</strong> is the amount of time a user can be inactive before being signed out. Its value can range from 5 minutes to 8 hours. Its default value is 15 minutes. The inactivity timeout is renewed whenever cursor or keyboard input is detected.</p>
+<p><strong>Max session timeout</strong> is the amount of time before a user is signed out and re-authentication is required to continue. Its value can range from 30 minutes to 8 hours. Its default value is 8 hours. The max session timeout cannot be renewed, but the user will be notified 5 minutes and 1 minute before it expires.</p>
+
+
+:::note
+
+<p>Inactivity timeout cannot exceed max session timeout.</p>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+:::

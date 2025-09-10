@@ -1,0 +1,61 @@
+---
+slug: trend-vision-one-verifying-domain-ownership
+title: Verifying domain ownership
+---
+# Verifying domain ownership
+
+Verify your email domain to allow Phishing Simulation Assessment to send phishing simulation emails to more than five recipients.
+
+Trend Vision One needs to verify your email domain to confirm that you have adequate permission to send phishing simulations to employees in your organization. This security precaution prevents bad actors from impersonating members of your organization. Unverified users can only send phishing simulation emails to a maximum of five recipients.
+
+You may complete the domain verification process by going to **Administration → Domain Verification**. To learn more, see [Adding and managing domains](adding-managing-domains.mdx).
+
+If you do not have access to the **Domain Verification** screen, you may verify your domain with a TXT record by following the procedure below.
+
+### Procedure {#procedure}
+
+1.  Copy your unique domain TXT record.
+
+    :::note
+
+    Every Trend Vision One user is assigned a unique TXT key. When you start a phishing simulation, Trend Vision One checks the domain server for the TXT record to confirm that the domain is verified.
+    :::
+
+    1.  On the Trend Vision One console, go to **Assessments → Security Assessments**.
+
+    2.  Under Phishing Simulation Assessment, click **Start Assessment**.
+
+    3.  Add six or more recipients to your simulation.
+
+    4.  Click **Verify Now**.
+
+    5.  Copy the TXT record.
+
+2.  Add the TXT record to your domain host.
+
+    :::note
+
+    The process of adding the TXT record varies depending on your domain host. For more information, find your domain host below.
+
+    - cPanel: [Zone Editor](https://docs.cpanel.net/cpanel/domains/zone-editor/)
+
+    - Google Domains: [Verify your domain with a TXT record](https://support.google.com/a/answer/183895?hl=en)
+
+    - GoDaddy: [Add a TXT record](https://uk.godaddy.com/help/add-a-txt-record-19232)
+
+    - Wix: [Adding or Updating TXT Records in Your Wix Account](https://support.wix.com/en/article/adding-or-updating-txt-records-in-your-wix-account)
+
+    - Cloudflare: [Managing DNS records in Cloudflare](https://support.cloudflare.com/hc/en-us/articles/360019093151-How-do-I-add-a-TXT-record-)
+    :::
+
+3.  Confirm that your domain is verified.
+
+    1.  On the Trend Vision One console, go to **Phishing Simulation Assessment** and return to the **Settings** screen.
+
+    2.  Click the refresh icon (![](/images/Refresh_icon=GUID-B55739E8-3C9C-4511-9D93-A22BEA066D27=1=en-us=Low.webp)) to check your verification status.
+
+    :::note
+
+    Configuring your DNS with a TXT record may take up to 72 hours to take effect, depending on your domain host. If your domain verification is unsuccessful, the status will display “Unable to verify domain.” You may retry the verification process by clicking the refresh icon (![](/images/Refresh_icon=GUID-B55739E8-3C9C-4511-9D93-A22BEA066D27=1=en-us=Low.webp)).
+    :::
+:::

@@ -1,0 +1,80 @@
+---
+slug: trend-vision-one-connecting-deep-discovery-director
+title: Connecting through Deep Discovery Director
+---
+# Connecting through Deep Discovery Director
+
+:Connect Deep Discovery Inspector appliances to **Network Inventory** through Deep Discovery Director.
+
+:::warning[Important]
+
+As of May 6, 2024, connecting Deep Discovery Inspector appliances using Deep Discovery Director is no long supported for new customers. Customers who have already connected their Deep Discovery Director appliances to **Network Inventory** are not affected.
+
+You can only connect Deep Discovery Director to Network Inventory if:
+
+- You have a valid "XDR Add-On: Deep Discovery Inspector" license
+
+- The license entitlement is not redeemed in the form of Trend Vision One credits
+
+To see if your "XDR Add-On: Deep Discovery Inspector" license is redeemed as credits, in Trend Vision One go to **Administration → License Information**.
+
+For more information about Trend Vision One credits, see [Annual credits](credit-usage.mdx).
+:::
+
+Network Inventory supports connecting to activated on-premises Deep Discovery Director (Consolidated Mode) appliances running version 5.3 or later. Your Deep Discovery Director appliances must be integrated with Deep Discovery Director - Network Analytics as a Service.
+
+:::note
+
+- Network Inventory does not support integrations with an on-premises version of Deep Discovery Director - Network Analytics
+
+- Network Inventory does not support Deep Discovery Director (Internal Network Analytics Version) or Deep Discovery Director (Distributed Mode).
+:::
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Network Security → Network Inventory**.
+
+    The Network Inventory introductory screen appears.
+
+    :::note
+
+    If you do not see the introductory screen, you may need to reset the Network Inventory app in order to connect through Deep Discovery Director. To reset Network Inventory, click the options button (![](/images/options_icon=GUID-408062FA-DA13-4ECA-81EB-31A5B68355A1=1=en-us=Low.webp)), select **Reset Network Inventory**, and then confirm by clicking **Reset**.
+    :::
+
+    :::warning[Important]
+
+    Resetting the **Network Inventory** disconnects all connected Network Inspector and Deep Discovery Inspector appliances from Trend Vision One. Data that has already been sent is not affected.
+    :::
+
+2.  Select **Connect a deployed Deep Discovery Director and we'll automatically connect all managed appliances** and click **Get Started**.
+
+    The **Network Inventory** screen appears.
+
+3.  Click **Connect Appliance**.
+
+    The **Appliance Connection Settings** panel appears.
+
+4.  Select the Deep Discovery Director version.
+
+5.  Specify the Deep Discovery Director appliance IP address or FQDN.
+
+6.  Click **Go**.
+
+    The Deep Discovery Director appliance console opens.
+
+7.  In the Deep Discovery Directorconsole, sign in with an administrator account.
+
+8.  (Optional) Change the password.
+
+9.  In the **Registering to Trend Micro Vision One** dialog that displays, click **Continue** to confirm the process.
+
+    Network Inventory connects Deep Discovery Director and all managed Deep Discovery Inspector appliances.
+
+10. In the Trend Vision One console, go to **Network Security → Network Inventory** to verify the connection status.
+
+11. (Optional) Configure the network sensor settings with Deep Discovery Director.
+
+    To access Network Analytics reports from the Workbench app, you must first configure specific product settings.
+
+    For more information, see [Configuring Network Sensors with Deep Discovery Director](configuring-network-sensors-ddd.mdx).
+:::::

@@ -1,0 +1,77 @@
+---
+slug: trend-vision-one-searching-logs-cloud-apps
+title: Searching logs
+last_updated: '2025-09-08'
+ai_context:
+  source_file: searching-logs-cloud-apps.md
+  conversion_date: '2025-09-08T23:42:13.066Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Find the log information that meet your needs by specifying the search criteria.
+
+### Procedure {#procedure}
+
+1.  In Cloud Email and Collaboration Protection, go to **Logs**.
+
+2.  Select a log type to search.
+
+    For details about the log types, see [Log types](log-types.mdx).
+
+3.  Specify search criteria in either of the following ways.
+
+    - Quickly specify search criteria by using the facets in the left panel.
+
+      Log facets vary with each log type you select.
+
+      :::note
+
+      A maximum of 10 items can be displayed under most facets, and a maximum of 50 items can be displayed under **Virus Name**.
+      :::
+
+    - Specify search fields and values in the search bar. This allows you to select one or several fields to query items on a more fine-grained level.
+
+      Search fields vary with each log type you select.
+
+      The following rules apply to the search:
+
+      - The **NOT** logic is not supported.
+
+      - Values are case insensitive.
+
+        :::note
+
+        For detection logs, only the following fields support case-insensitivity: **Affected user**, **Supposed sender**, **Location**, **File name**, **Subject**, **Sender**, **Envelope sender**, and **Recipient**.
+        :::
+
+      - Wildcards are not supported.
+
+      - One field can be selected for more than one time and specified with different values as necessary. The items that meet either value will be queried and displayed. When different fields are selected and specified, only the items that meet all the fields will be queried and displayed.
+
+      - Partial matching is supported except for the `Organization` field and time related fields. You can select a field and type the first few letters of a keyword to query.
+
+        :::note
+
+        For detection logs, only the following fields support partial matching: **Affected user**, **Supposed sender**, **Location**, **File name**, **Subject**, **Sender**, **Envelope sender**, and **Recipient**.
+        :::
+
+      - Only exact matching is supported for the `Organization` field and time-related fields. You need to type the time exactly in the `MM DD, YYYY HH:MM` format you see in the corresponding column.
+
+        This includes **Timestamp**, **Message Arrival Time**, and **File Modification Time**.
+
+        - **Timestamp**: Date and time when Cloud Email and Collaboration Protection took an action on an email message or file
+
+        - **Message Arrival Time**: Date and time when an email message was received
+
+        - **File Modification Time**: Date and time when a file was uploaded or last modified
+
+      - The **All Fields** fields supports querying **Timestamp** and all the other fields.
+
+4.  Specify a time range to search.
+
+    You can search the quarantine logs from the past 90 days, the email tracking logs from the past 60 days, the URL click tracking logs from the past 90 days, and other logs from the past 180 days.
+
+5.  Click **Search**.
+:::

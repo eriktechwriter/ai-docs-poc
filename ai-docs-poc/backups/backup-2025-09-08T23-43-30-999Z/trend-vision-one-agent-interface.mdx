@@ -1,0 +1,99 @@
+---
+slug: trend-vision-one-trend-vision-one-agent-interface
+title: Trend Vision One Endpoint Security Agent Interface
+last_updated: '2025-09-08'
+ai_context:
+  source_file: trend-vision-one-agent-interface.md
+  conversion_date: '2025-09-08T23:42:11.952Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+:::warning[Important]
+
+- Agent Interface is only available for customers with access to [Endpoint Security Policies (unified assignment)](endpoint-security-policies.mdx).
+
+- Agent Interface only supports Windows and macOS endpoints with the Trend Vision One Endpoint Security agent version 202507 release or later installed.
+
+- Agent Interface is a "Pre-release" feature and is not considered an official release. Please review the [Pre-Release Disclaimer](pre-release-disclaimer.mdx) before using the feature.
+
+- This feature is not available in all regions.
+:::
+
+The Trend Vision One Endpoint Security Agent Interface enables end users to interact with the agent program on managed endpoints. The agent interface provides information about the installed agent and certain policy configurations, and allows the user to run scans or update the agent manually. You can manage agent interface settings such as enabling alerts, customizing alert messages, and controlling end-user access from the [Agent Interface](policies-agent-interface.mdx) screen in Endpoint Security Policies.
+
+Endpoint users can hover the mouse over the system tray icon (![](/images/AgentConsoleSysTrayIcon=4c51e4c9-adf0-4be5-84e1-0b23390537aa.webp)) to get a quick glance at the agent status, and click on the icon to open the agent console.
+
+**Agent Console Screens**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Screen</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><strong>Protection status</strong></p></td>
+<td><p>Displays the status of protection capabilities and a summary of agent details</p>
+<p>Protection status provides the agent status, including alerts for when the user might need to take action on the endpoint. Protection status also displays the following information for users:</p>
+<ul>
+<li><p><strong>Alert summary</strong>: A quick summary of detected threats found on the endpoint by scans.</p></li>
+<li><p><strong>Assigned policy</strong>: The name of the assigned endpoint security policy.</p></li>
+<li><p><strong>Scheduled scan</strong>: When scheduled scans run on the endpoint.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><strong>Scan</strong></p></td>
+<td><p>Provides users with the ability to perform manual scans</p>
+<p>Users can drag and drop items to scan or choose to run the following manual scans:</p>
+<ul>
+<li><p><strong>Full scan</strong>: Manually run a full scan of the endpoint.</p></li>
+<li><p><strong>Quick scan</strong> (macOS only): Manually scan commonly targeted system files and folders.</p></li>
+<li><p><strong>Custom scan</strong>: Manually scan up to 1,000 selected folders.</p></li>
+</ul>
+
+
+:::warning[Important]
+
+<p>Windows only supports selecting folders to scan. Individual files or objects cannot be selected for manual scan.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><strong>Software information</strong></p></td>
+<td><p>Displays information about the installed agent program and security components</p>
+<p>Software information provides detailed information about the installed agent and components including the agent GUID, registered business, and component versions.</p>
+<p>Users can also manually update the agent software. To update the agent from the endpoint, click <strong>Update</strong>.</p></td>
+</tr>
+<tr>
+<td><p><strong>Security capability status</strong></p></td>
+<td><p>Displays information about the assigned policy and enabled security features</p>
+<p>Security capability status screen provides a quick overview of the agent security configuration, including the assigned Endpoint Security policy and which security capabilities are enabled on the endpoint.</p></td>
+</tr>
+<tr>
+<td><p><strong>Detection logs</strong></p></td>
+<td><p>Displays detection logs the agent generated from scans and enabled security features</p>
+<p>Detection logs displays logs generated up to the past 15 days. Users can view logs for:</p>
+<ul>
+<li><p>Anti-Malware</p></li>
+<li><p>Web Reputation</p></li>
+<li><p>Device Control</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Agent Interface status messages](agent-interface-status-messages.md "Learn about the agent status messages and how to troubleshoot potential issues.")
+::::

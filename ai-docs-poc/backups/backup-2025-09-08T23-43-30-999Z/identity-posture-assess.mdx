@@ -1,0 +1,94 @@
+---
+slug: trend-vision-one-identity-posture-assess
+title: Identity Posture Assessment
+last_updated: '2025-09-08'
+ai_context:
+  source_file: identity-posture-assess.md
+  conversion_date: '2025-09-08T23:42:17.753Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Scan your organization's identity-related assets to detect potential exposures and identify high-risk events using Identity Posture Assessment.
+
+You can always find your previous assessment reports by clicking **Assessment History** on the **Cyber Risk Assessment** screen.
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Assessment → Cyber Risk Assessment**.
+
+2.  In the **Identity Posture Assessment** area, click **Start Assessment**.
+
+3.  Connect to your configured Identity and access management (IAM) system and run the Identity Posture Assessment.
+
+    :::note
+
+    Currently only Microsoft Entra ID is supported.
+    :::
+
+    - If you do not have any Microsoft Entra ID tenants added, click **Third-Party Integration \> Microsoft Entra ID** and follow the prompts to add Microsoft Entra ID tenants and grant permissions to the tenants in [Third-Party Integration](third-party-integration.mdx).
+
+      Click **Back** after you grant all necessary permissions to the tenants. You will be redirected back to **Identity Posture Assessment** with all the tenants appearing in the list. **Data upload** shows a green circle.
+
+    - If you have already added tenants but have not granted permissions, click the tenant name to grant permissions in [Third-Party Integration](third-party-integration.mdx).
+
+    - If you have already added tenants and granted permissions, select a tenant from the list and click **Start Assessment**.
+
+      :::note
+
+      You can assess only one tenant at a time.
+      :::
+
+4.  Wait until your tenant finishes the assessment.
+
+    You will receive an email notification when the assessment is complete. Click the link in the notification to access the Trend Vision One console, and click **View Report** in the **Identity Posture Assessment** area.
+
+5.  Check the results on the assessment report and take risk remediation actions immediately if necessary.
+
+    The following table lists the actions available on the report (if applicable).
+
+    <table>
+    <colgroup>
+    <col style="width: 33%" />
+    <col style="width: 67%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Action</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Download report</p></td>
+    <td><p>Download the assessment report as a PDF file.</p></td>
+    </tr>
+    <tr>
+    <td><p>Share report</p></td>
+    <td><p>Share the PDF assessment report via email.</p></td>
+    </tr>
+    <tr>
+    <td><p>Start new assessment</p></td>
+    <td><p>Start a new at-risk endpoint assessment, cloud mailbox assessment, phishing simulation assessment, external attack surface assessment, Cloud Risk Management assessment, identity posture assessment, or global threat assessment.</p>
+    
+
+    :::danger[Warning]
+    
+    <p>Starting a new assessment permanently deletes collected data.</p>
+    
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>View details in the <a href="trend-vision-one-identity-posture">Identity Security Posture</a> app</p></td>
+    <td><ul>
+    <li><p>For new users, try Identity Posture to maintain an inventory of your identity assets and learn about your organization's identity posture.</p></li>
+    <li><p>For trial users or paid users, view details about the assets that might be exposed to attack or view the full list of the risk events in Identity Posture.</p></li>
+    </ul></td>
+    </tr>
+    </tbody>
+    </table>
+:::

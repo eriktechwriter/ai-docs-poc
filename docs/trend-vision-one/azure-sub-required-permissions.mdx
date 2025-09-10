@@ -1,0 +1,231 @@
+---
+slug: trend-vision-one-azure-sub-required-permissions
+title: Azure subscriptions required permissions
+---
+# Azure subscriptions required permissions
+
+Review the permissions required to deploy resources and the permissions granted when connecting Azure cloud accounts to Trend Vision One.
+
+**Azure Required Permissions**
+
+<table>
+<thead>
+<tr>
+<th><p>Feature</p></th>
+<th><p>Required permissions</p></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Core features</p></td>
+<td><ul>
+<li><p><code>Microsoft.ContainerService/managedClusters/listClusterUserCredential/action</code></p></li>
+<li><p><code>Microsoft.ContainerService/managedClusters/read</code></p></li>
+<li><p><code>Microsoft.Resources/subscriptions/resourceGroups/read</code></p></li>
+<li><p><code>Microsoft.Authorization/roleAssignments/read</code></p></li>
+<li><p><code>Microsoft.Authorization/roleDefinitions/read</code></p></li>
+<li><p><code>*/read</code></p></li>
+</ul></td>
+<td><p>These permissions are required to deploy the connector into a cloud account.</p></td>
+</tr>
+<tr>
+<td rowspan="7"><p>Server &amp; Workload Protection</p></td>
+<td><p>Subscription permissions:</p>
+<ul>
+<li><p><code>Microsoft.Resources/subscriptions/read</code></p></li>
+<li><p><code>Microsoft.Resources/subscriptions/resourceGroups/read</code></p></li>
+<li><p><code>Microsoft.Resources/providers/read</code></p></li>
+<li><p><code>Microsoft.Resources/resources/read</code></p></li>
+</ul></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Virtual Machine (VM) permissions:</p>
+<ul>
+<li><p><code>Microsoft.Compute/virtualMachines/read</code></p></li>
+</ul></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Virtual Machine Scale Set (VMSS) permissions:</p>
+<ul>
+<li><p><code>Microsoft.Compute/virtualMachineScaleSets/read</code></p></li>
+</ul></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Classic Virtual Machine (VM) permissions:</p>
+<ul>
+<li><p><code>Microsoft.ClassicCompute/virtualMachines/read</code></p></li>
+<li><p><code>Microsoft.ClassicCompute/domainNames/read</code></p></li>
+</ul></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Network permissions:</p>
+<ul>
+<li><p><code>Microsoft.Network/networkSecurityGroups/read</code></p></li>
+<li><p><code>Microsoft.Network/networkInterfaces/read</code></p></li>
+<li><p><code>Microsoft.Network/publicIPAddresses/read</code></p></li>
+<li><p><code>Microsoft.Network/virtualNetworks/read</code></p></li>
+</ul></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Azure Metadata API permissions:</p>
+<ul>
+<li><p><code>Microsoft.Resources/subscriptions/resourceGroups/read</code></p></li>
+<li><p><code>Microsoft.Compute/locations/read </code></p></li>
+</ul></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Authentication and IAM permissions:</p>
+<ul>
+<li><p><code>Microsoft.Resources/deployments/read </code></p></li>
+<li><p><code>Microsoft.Authorization/roleAssignments/read </code></p></li>
+<li><p><code>Microsoft.Authorization/roleDefinitions/read </code></p></li>
+</ul></td>
+<td> </td>
+</tr>
+<tr>
+<td rowspan="3"><p>Cloud Security Posture</p></td>
+<td><p>requiredResourceAccess:</p>
+<ul>
+<li><p>resourceAppName: <code>Microsoft Graph</code></p></li>
+<li><p>resourceAccess:</p>
+<ul>
+<li><p>name: <code>User.Read</code></p></li>
+<li><p>type: <code>Delegated</code></p></li>
+<li><p>name: <code>User.Read.All</code></p></li>
+<li><p>type: <code>Delegated</code></p></li>
+<li><p>name: <code>Directory.Read.All</code></p></li>
+<li><p>type: <code>Application</code></p></li>
+<li><p>name: <code>User.Read.All</code></p></li>
+<li><p>type: <code>Application</code></p></li>
+<li><p>name:<code> Policy.Read.All</code></p></li>
+<li><p>type: <code>Application</code></p></li>
+</ul></li>
+</ul></td>
+<td rowspan="3"> </td>
+</tr>
+<tr>
+<td><p>requiredRoleAccess</p>
+<ul>
+<li><p>resourceAppName: <code>Microsoft App Configuration</code></p>
+<p>roleActions:</p>
+<ul>
+<li>name: <code>Microsoft.AppConfiguration/configurationStores/ListKeyValue/action</code></li>
+</ul></li>
+<li><p>resourceAppName: <code>Microsoft Network</code></p>
+<p>roleActions:</p>
+<ul>
+<li><p>name: <code>Microsoft.Network/networkWatchers/queryFlowLogStatus/action</code></p></li>
+</ul></li>
+<li><p>resourceAppName:<code> Microsoft Web</code></p>
+<p>roleActions:</p>
+<ul>
+<li><p>name: <code>Microsoft.Web/sites/config/list/Action</code></p></li>
+</ul></li>
+<li><p>resourceAppName: <code>Microsoft Key Vault</code></p>
+<p>dataActions:</p>
+<ul>
+<li><p>name: <code>Microsoft.KeyVault/vaults/keys/read</code></p></li>
+<li><p>name: <code>Microsoft.KeyVault/vaults/secrets/readMetadata/action</code></p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>requiredTenantScopeRoleAccess</p>
+<ul>
+<li><p>resourceAppName: <code>Microsoft Management</code></p>
+<p>roleActions:</p>
+<ul>
+<li><p>name: <code>Microsoft.Management/managementGroups/read</code></p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td rowspan="3"><p>Agentless Vulnerability &amp; Threat Detection</p></td>
+<td><p>Subscription permissions:</p>
+<ul>
+<li><p><code>Microsoft.ContainerRegistry/registries/generateCredentials/action</code></p></li>
+<li><p><code>Microsoft.ContainerRegistry/registries/read</code></p></li>
+<li><p><code>Microsoft.ContainerRegistry/registries/pull/read</code></p></li>
+<li><p><code>Microsoft.ContainerRegistry/registries/tokens/write</code></p></li>
+<li><p><code>Microsoft.ContainerRegistry/registries/tokens/operationStatuses/read</code></p></li>
+<li><p><code>Microsoft.ContainerRegistry/registries/scopeMaps/read</code></p></li>
+<li><p><code>Microsoft.ContainerRegistry/registries/tokens/read</code></p></li>
+<li><p><code>Microsoft.Compute/disks/read</code></p></li>
+<li><p><code>Microsoft.Compute/virtualMachines//read</code></p></li>
+<li><p><code>Microsoft.HybridCompute/machines//read</code></p></li>
+<li><p><code>Microsoft.Authorization/roleAssignments/write</code></p></li>
+<li><p><code>Microsoft.Authorization/roleAssignments/delete</code></p></li>
+<li><p><code>Microsoft.Authorization/roleAssignments/read</code></p></li>
+<li><p><code>Microsoft.Compute/locations/usages/read</code></p></li>
+<li><p><code>Microsoft.Quota/quotas/read</code></p></li>
+</ul></td>
+<td rowspan="3"> </td>
+</tr>
+<tr>
+<td><p>Trend Micro Resource Group permissions</p>
+<p>Azure built-in role: Contributor</p>
+<ul>
+<li><p>Actions:</p>
+<ul>
+<li><p><code>Allow Actions:*</code></p></li>
+</ul></li>
+</ul>
+<ul>
+<li><p>NotActions:</p>
+<ul>
+<li><p><code>Microsoft.Authorization/*/Delete</code></p></li>
+<li><p><code>Microsoft.Authorization/*/Write</code></p></li>
+<li><p><code>Microsoft.Authorization/elevateAccess/Action</code></p></li>
+<li><p><code>Microsoft.Blueprint/blueprintAssignments/write </code></p></li>
+<li><p><code>Microsoft.Blueprint/blueprintAssignments/delete </code></p></li>
+<li><p><code>Microsoft.Compute/galleries/share/action </code></p></li>
+<li><p><code>Microsoft.Purview/consents/write </code></p></li>
+<li><p><code>Microsoft.Purview/consents/delete </code></p></li>
+<li><p><code>Microsoft.Resources/deploymentStacks/manageDenySetting/action </code></p></li>
+<li><p><code>Microsoft.Subscription/cancel/action </code></p></li>
+<li><p><code>Microsoft.Subscription/enable/action </code></p></li>
+</ul></li>
+</ul>
+<p>Azure built-in role: AcrPull</p>
+<ul>
+<li><p><code>Microsoft.ContainerRegistry/registries/pull/read </code></p></li>
+</ul>
+<p>Azure built-in role: Storage Blob Data Owner</p>
+<ul>
+<li><p><code>Microsoft.Storage/storageAccounts/blobServices/containers/* </code></p></li>
+<li><p><code>Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action </code></p></li>
+<li><p><code>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/* </code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Trend Micro Storage ID permissions</p>
+<p>Azure built-in role: Storage Blob Data Reader</p>
+<ul>
+<li><p><code>Microsoft.Storage/storageAccounts/blobServices/containers/read </code></p></li>
+<li><p><code>Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action </code></p></li>
+<li><p><code>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Cloud Detections for Azure Activity Log</p></td>
+<td><p>N/A</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Microsoft Defender for Endpoint Log Collection</p></td>
+<td><ul>
+<li><p><code>Microsoft.KeyVault/vaults/secrets/read</code></p></li>
+<li><p><code>Microsoft.KeyVault/vaults/secrets/write</code></p></li>
+</ul></td>
+<td> </td>
+</tr>
+</tbody>
+</table>
+:::

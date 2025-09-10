@@ -1,0 +1,119 @@
+---
+slug: trend-vision-one-intrusion-prevention-rules
+title: Intrusion Prevention Rules
+last_updated: '2025-09-08'
+ai_context:
+  source_file: intrusion-prevention-rules.md
+  conversion_date: '2025-09-08T23:42:16.740Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+The **Intrusion Prevention Rules** screen displays the Intrusion Prevention Rules supported by Trend Micro Apex Central Vulnerability Protection. Intrusion Prevention Rules examine the actual content of network packets (and sequences of packets). Based on the conditions set within the Intrusion Prevention Rule, various actions are then carried out on these packets. These actions include replacing specifically defined or suspicious byte sequences, or completely dropping packets and resetting the connection.
+
+- To filter the list of rules, use the **Search** box to specify full or partial strings that appear in any of the columns.
+
+- To sort the list of Intrusion Prevention Rules by column data, click a column heading.
+
+- To view detailed Intrusion Prevention Rule Properties, click the link in the *Rule Name* column of a rule.
+
+- To exclude traffic from one or more source endpoints from Vulnerability Protection scanning, click **Configure Exceptions** and specify the source IP addresses.
+
+  :::note
+
+  You can add up to 100 entries to the exception list.
+  :::
+
+:::note
+
+Trend Micro Apex Central automatically imports/updates Intrusion Prevention Rules from the Apex One server during manual or scheduled component updates.
+:::
+
+:::warning[Important]
+
+Each managed product provides different policy settings that you can configure and deploy to policy targets. You can find a complete list of supported managed products and the policy settings for each in the Apex Central as a Service Widget and Policy Management Guide.
+
+You can download a PDF version of the guide, or view the guide online, using the following link:
+
+<https://docs.trendmicro.com/en-us/enterprise/apex-one-as-a-service.aspx>
+:::
+
+The following table outlines the rule information that displays on the **Intrusion Prevention Rules** screen.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Column</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Identifier</p></td>
+<td><p>The unique identifier tag for the Intrusion Prevention Rule</p></td>
+</tr>
+<tr>
+<td><p>Rule Name</p></td>
+<td><p>The name of the Intrusion Prevention Rule</p></td>
+</tr>
+<tr>
+<td><p>Application Type</p></td>
+<td><p>The Application Type this Intrusion Prevention Rule is grouped under</p></td>
+</tr>
+<tr>
+<td><p>Severity</p></td>
+<td><p>The severity level that Trend Micro assigns to the rule</p>
+
+
+:::note
+
+<p>The severity of a rule has no effect on how the rule is implemented or applied. Severity levels can be useful as sorting criteria when viewing a list of Intrusion Prevention Rules.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Mode</p></td>
+<td><p>The network engine detection mode used by the Intrusion Prevention module. Click a mode to configure the setting for the rule.</p></td>
+</tr>
+<tr>
+<td><p>Type</p></td>
+<td><p>The type of vulnerability detected:</p>
+<ul>
+<li><p><em>Smart</em>: Known or unknown (for example, zero-day) vulnerability</p></li>
+<li><p><em>Exploit</em>: Known exploit (usually signature based) for a known vulnerability</p></li>
+<li><p><em>Vulnerability</em>: Known vulnerability for which one or more exploits may exist</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>CVE</p></td>
+<td><p>The Common Vulnerabilities and Exposures (CVE®) identifier that MITRE assigns to the vulnerability</p>
+<p>For more information, see <a href="http://cve.mitre.org/">http://cve.mitre.org/</a>.</p></td>
+</tr>
+<tr>
+<td><p>Microsoft</p></td>
+<td><p>The Common Vulnerabilities and Exposures (CVE®) identifier that Microsoft assigns to the vulnerability</p></td>
+</tr>
+<tr>
+<td><p>CVSS Score</p></td>
+<td><p>The Common Vulnerability Scoring System (CVSS) severity score of the vulnerability according the National Vulnerability Database</p>
+<p>For more information, see <a href="http://nvd.nist.gov/cvss.cfm">http://nvd.nist.gov/cvss.cfm</a>.</p></td>
+</tr>
+<tr>
+<td><p>Last Updated</p></td>
+<td><p>The date and time the rule was last modified</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Intrusion Prevention Rule Properties](intrusion-prevention-property-apex.mdx)
+:::::

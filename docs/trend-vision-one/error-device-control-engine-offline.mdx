@@ -1,0 +1,49 @@
+---
+slug: trend-vision-one-error-device-control-engine-offline
+title: 'Error: Device Control Engine Offline'
+---
+# Error: Device Control Engine Offline
+
+This error can occur for a variety of reasons. To resolve the issue, follow the instructions below.
+
+For an overview of the Device Control module, see [Device Control](configure-device-control.mdx).
+
+### Procedure {#procedure}
+
+1.  In the Server & Workload Protection console, check for other errors on the same machine. If errors exist, there could be other issues that are causing your Device Control engine to be offline, such as communications or agent installation failure.
+
+2.  Check communications from the agent to the Server & Workload Protection Relay and Server & Workload Protection.
+
+3.  In the Server & Workload Protection console, view the details for the agent with the issue. Verify that the policy or setting for Device Control is turned on.
+
+4.  Deactivate and uninstall the agent before reinstalling and re-activating it. See [Uninstall the Server & Workload Protection Agent](uninstall-swp-agent.mdx) and [Activate the agent](activate-agent.mdx) for more information.
+
+5.  In the Server & Workload Protection console, go to the Updates section for that computer. Verify that the Security Updates are present and current. If not, click Download Security Updates to initiate an update.
+
+6.  Check if there are conflicts with another antivirus product, such as Apex One. If conflicts exist, uninstall the other product and Server & Workload Protection Agent, reboot, and reinstall the Server & Workload Protection Agent. To remove Apex One, see [Uninstalling agents in Apex One](https://success.trendmicro.com/solution/1039283).
+
+### Next steps {#next-steps}
+
+## If your agent is on Windows {#if-your-agent-is-on-windows}
+
+### Procedure {#procedure-1}
+
+1.  Make sure the following services are running:
+
+    - Trend Micro Server & Workload Protection Agent
+    - Trend Micro Solution Platform
+
+2.  Check that all the Device Control related drivers are running properly by running the following commands:
+
+    For all versions of Server & Workload Protection Agent:
+
+    - `# sc query AMSP`
+
+    If a driver is not running, restart the Trend Micro services. If it is still not running, continue with the steps below.
+
+3.  Verify the installation method. Only install the MSI, not the zip file.
+
+4.  The agent might need to be manually removed and reinstalled. For more information, see [Manually uninstalling Server & Workload Protection Agent, Relay, and Notifier from Windows](https://success.trendmicro.com/solution/1096150)
+
+### Next steps {#next-steps-1}
+:::

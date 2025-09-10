@@ -1,0 +1,300 @@
+---
+slug: trend-vision-one-create-endpoint-response-playbooks
+title: Create Endpoint Response playbooks
+last_updated: '2025-09-08'
+ai_context:
+  source_file: create-endpoint-response-playbooks.md
+  conversion_date: '2025-09-08T23:42:21.457Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Manually or periodically run custom scripts on a target endpoint or isolate endpoints that may pose a security risk to your network.
+
+Create Endpoint Response playbooks to take preventive measures on compromised endpoints during an investigation.
+
+:::warning[Important]
+
+You must have Agentic SIEM & XDR entitlement enabled and the following required data sources configured to create Endpoint Response playbooks: XDR Endpoint Sensor.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Workflow and Automation → Security Playbooks**.
+
+2.  On the **Playbooks** tab, choose **Add → Create playbook**.
+
+3.  On the **Playbook Settings** panel, select the **General** type, specify a unique name for the playbook, and click **Apply**.
+
+4.  On the **Trigger Settings** panel, select the trigger type and click **Apply**.
+
+    - **Manual**: Allows you to start the playbook execution by clicking the **Run** icon (![](/images/run=fddd0df8-993a-4aa5-b09c-51ad84aec2a4.webp))
+
+    - **Scheduled**: Allows you to schedule the playbook to run daily, weekly, or monthly
+
+5.  On the **Target Settings** panel, select and configure the **Target** for the playbook and click **Apply**.
+
+    1.  Select whether you want to execute the playbook on endpoints by **Endpoint name** or **IP address**.
+
+    2.  Specify the endpoint names or IP addresses/IP ranges of the target endpoints.
+
+        - To execute the playbook on endpoints by **Endpoint name**, specify the endpoint names in the **Endpoint name** text box or upload a CSV file containing up to 256 endpoint names.
+
+        - To execute the playbook on endpoints by **IP address**, specify the IP address or IP range in the **IP address** text box or upload a CSV file containing up to 256 IP addresses or IP ranges.
+
+          A maximum of 10 IP ranges can be used. Examples of the IP range are as follows:
+
+          - 10.1.0.\*
+
+          - 192.168.1.0/24
+
+          - 192.168.1.10–192.168.1.20
+
+          In CIDR notation, the prefix length should range from 16 to 32. When using the Start IP–End IP format, the first two octets (representing the network portion) must be identical for all IP addresses within the range.
+
+    3.  Specify the **Operating system** and **Endpoint type**.
+
+6.  If you need to take actions when specific conditions are met, configure the **Condition** node.
+
+    1.  Click the add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) on the right of the **Target** node and click **Condition**.
+
+    2.  Create a condition setting by specifying the **Parameter**, **Operator**, and **Value**.
+
+        <table>
+        <colgroup>
+        <col style="width: 25%" />
+        <col style="width: 75%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Setting</p></th>
+        <th><p>Description</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Parameter</p></td>
+        <td><p>Specify <strong>IP address</strong>, <strong>Endpoint name</strong>, <strong>Operating system</strong>, or <strong>Endpoint type</strong> as the parameter.</p></td>
+        </tr>
+        <tr>
+        <td><p>Operator</p></td>
+        <td><ul>
+        <li><p><strong>IS</strong>: The condition is triggered if any of the values is matched</p></li>
+        <li><p><strong>IS NOT</strong>: The condition is triggered if none of the values is matched</p></li>
+        </ul></td>
+        </tr>
+        <tr>
+        <td><p>Value</p></td>
+        <td><p>Specify the parameter value.</p></td>
+        </tr>
+        </tbody>
+        </table>
+
+    3.  If you need to configure multiple sets of condition settings, click **Add**.
+
+        The condition operator is evaluated using a logical AND.
+
+    4.  Click **Apply**.
+
+    5.  If you need to add more than one parallel **Condition** node, click the add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) on the right of the **Target** node.
+
+    6.  If you need to configure action settings for the **Condition** node, add an **Action** node by clicking the add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) on the right.
+
+        For details, see Step 7.
+
+    7.  If you need to configure else-if conditions or else actions, add an **Else-If Condition** or **Else Action** node by clicking the add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) under the **Condition** node.
+
+        For details, see Step 9.
+
+7.  Configure actions by adding an **Action** node.
+
+    1.  Click the add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) on the right of the **Condition** node and click **Action**.
+
+    2.  On the **Action Settings** panel, select **Run custom script** or **Isolate endpoint** from the **Action** drop-down list.
+
+    3.  For **Run custom script**, select a script file type from the **File type** drop-down list.
+
+    4.  Upload a script file from your local by clicking **Upload File**. Then select your script file from the **File** drop-down list.
+
+        For the `Bash Script (.sh)` file type, specify the operating system before uploading your script file.
+
+    5.  Type the parameters if your script requires an additional input.
+
+    6.  Select whether to send a notification to request manual approval to create response actions.
+
+        :::warning[Important]
+
+        Actions pending manual approval for over 24 hours expire and cannot be performed.
+        :::
+
+    7.  If you require manual approval, configure the following settings.
+
+        <table>
+        <colgroup>
+        <col style="width: 20%" />
+        <col style="width: 80%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Setting</p></th>
+        <th><p>Description</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Notification method</p></td>
+        <td><ul>
+        <li><p><strong>Email</strong>: Sends an email notification to specified recipients</p></li>
+        <li><p><strong>Webhook</strong>: Sends a notification to specified webhook channels</p></li>
+        </ul></td>
+        </tr>
+        <tr>
+        <td><p>Subject prefix</p></td>
+        <td><p>The prefix that appears at the start of the notification subject line</p></td>
+        </tr>
+        <tr>
+        <td><p>Recipients</p></td>
+        <td><p>The email addresses of recipients</p>
+        <p>The field only appears if you select <strong>Email</strong> for <strong>Notification method</strong>.</p></td>
+        </tr>
+        <tr>
+        <td><p>Webhook</p></td>
+        <td><p>The webhook channels to receive notifications</p>
+        <p>The field only appears if you select <strong>Webhook</strong> for <strong>Notification method</strong>.</p>
+        
+
+        :::tip
+        
+        <p>To <a href="trend-vision-one-managing-webhooks">add a webhook connection</a>, click <strong>Create channel</strong> in the drop-down list.</p>
+        
+
+        :::
+
+        </td>
+        </tr>
+        </tbody>
+        </table>
+
+    8.  Click **Apply**.
+
+    9.  If you need to add more than one parallel action, use the add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) on the right of the **Target** or **Condition** node.
+
+8.  Configure notification settings by adding the second **Action** node.
+
+    1.  Click the add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) on the right of the first **Action** node and click **Action**.
+
+    2.  On the **Action Settings** panel, specify how to notify recipients of the playbook results.
+
+    3.  For email and webhook notifications, configure the following settings.
+
+        <table>
+        <colgroup>
+        <col style="width: 20%" />
+        <col style="width: 80%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Setting</p></th>
+        <th><p>Description</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Subject prefix</p></td>
+        <td><p>The prefix that appears at the start of the notification subject line</p></td>
+        </tr>
+        <tr>
+        <td><p>Recipients</p></td>
+        <td><p>The email addresses of recipients</p>
+        <p>The field only appears if you select <strong>Email</strong> for <strong>Notification method</strong>.</p></td>
+        </tr>
+        <tr>
+        <td><p>Webhook</p></td>
+        <td><p>The webhook channels to receive notifications</p>
+        <p>The field only appears if you select <strong>Webhook</strong> for <strong>Notification method</strong>.</p>
+        
+
+        :::tip
+        
+        <p>To <a href="trend-vision-one-managing-webhooks">add a webhook connection</a>, click <strong>Create channel</strong> in the drop-down list.</p>
+        
+
+        :::
+
+        </td>
+        </tr>
+        </tbody>
+        </table>
+
+    4.  For ServiceNow ticket notifications, configure the following settings.
+
+        <table>
+        <colgroup>
+        <col style="width: 20%" />
+        <col style="width: 80%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Setting</p></th>
+        <th><p>Description</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Ticket profile</p></td>
+        <td><p>The ServiceNow ticket profile to use</p>
+        
+
+        :::tip
+        
+        <p>If you need to <a href="trend-vision-one-creating-ticket-profile">add a ticket profile</a>, click <strong>Create ticket profile</strong> in the drop-down list.</p>
+        
+
+        :::
+
+        </td>
+        </tr>
+        <tr>
+        <td><p>Ticket profile settings</p></td>
+        <td><p>The ticket profile settings for the playbook</p>
+        <p>Selecting a ticket profile automatically loads the settings. Changing the settings overrides the ticket profile for the playbook.</p>
+        <ul>
+        <li><p><strong>Assignment group:</strong> The ServiceNow assignment group you want to assign the ticket to</p></li>
+        <li><p><strong>Assigned to:</strong> The ServiceNow user you want to assign the ticket to</p></li>
+        <li><p><strong>Short description:</strong> A short description of the ticket which displays in ServiceNow</p></li>
+        </ul></td>
+        </tr>
+        </tbody>
+        </table>
+
+    5.  If you require manual approval for sending playbook results, follow Step 7 to configure the notification settings.
+
+        :::note
+
+        This setting is available only to ticket notification action.
+        :::
+
+    6.  Click **Apply**.
+
+9.  Configure **Else-If Conditions** or **Else Actions** if necessary.
+
+    1.  Click the add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) below the **Condition** node and click **Else-If Condition** or **Else Action**.
+
+    2.  Configure a condition node by following Step 6, or configure an action node by following Step 7 or Step 8.
+
+    :::note
+
+    - The nodes that can be added by using an add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) vary depending on the preceding node. For example, an **Action** node can only be possibly followed by another **Action** node; a **Condition** node can be followed by an **Action** node or have an **Else-If Condition** or **Else Action** attached to it.
+
+    - When a condition is false, the playbook performs the **Else Action** or checks if its **Else-If Condition** is met. If the **Else-If Condition** is met, the playbook continues to perform the corresponding **Else Action**.
+
+    - Multiple **Action** nodes configured in a serial mode are taken sequentially.
+    :::
+
+10. Enable the playbook by toggling the **Enable** control on.
+
+11. Click **Save**.
+
+    The playbook appears on the **Playbooks** tab in the **Security Playbooks** app.
+::::

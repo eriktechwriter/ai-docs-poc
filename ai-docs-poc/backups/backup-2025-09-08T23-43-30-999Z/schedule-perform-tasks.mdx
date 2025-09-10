@@ -1,0 +1,69 @@
+---
+slug: trend-vision-one-schedule-perform-tasks
+title: Schedule Server & Workload Protection to perform tasks
+last_updated: '2025-09-08'
+ai_context:
+  source_file: schedule-perform-tasks.md
+  conversion_date: '2025-09-08T23:42:13.137Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Server & Workload Protection has many tasks that you might want to perform automatically on a regular basis. Scheduled tasks are useful when deploying Server & Workload Protection in your environment and also later, to keep your system up to date and functioning smoothly. They are especially useful for running scans on a regular basis during off-peak hours.
+
+Workload Security performs some tasks (for example, backup and checking for software updates) automatically.
+
+You can automate scheduled task creation and configuration using the Server & Workload Protection application programming interface (API). For examples, see the [Maintain Protection Using Scheduled Tasks](protection-scheduled-tasks.mdx).
+
+### Create scheduled tasks {#create-scheduled-tasks}
+
+To set up a scheduled task in the Server & Workload Protection console, access the *New Scheduled Task Wizard* which takes you through the steps to create a scheduled task:
+
+Go to **Administration → Scheduled Tasks → New**.
+
+- *Check for Security Updates* regularly checks for [security updates](upgrades.mdx) and imports them into Server & Workload Protection. For most organizations, performing this task daily is ideal. Note that this task ignores offline hosts that have been uncommunicative for 30 days or more.
+
+- *Generate and Send Report* automatically generates [reports](reports-alerts--activity.mdx) and emails them to specified users.
+
+- *Scan Computers for Integrity Changes* performs an [integrity scan](integrity-monitoring.mdx) to compare a computer's current state against its baseline.
+
+- *Scan computers for Malware* schedules a [malware scan](anti-malware.mdx). Specify the configuration of this scan on the Anti-Malware page for each computer. For most organizations, performing this task weekly is ideal, but your organization’s policies may differ. When you configure this task, you can specify a timeout value for daily, weekly, monthly, and once-only scans. Timeout is not available for hourly scans. When a scheduled scan reaches the timeout limit, any running or pending tasks are canceled. If a task times out, the next scheduled scan starts over from the beginning; it does not start where the previous scan ended. The goal is to perform a complete scan, so consider making configuration changes if your scans regularly reach the timeout limit. For example, you could add exceptions or extend the timeout period for the scan.
+
+- *Scan Computers for Recommendations* scans the computers for common applications and makes recommendations based on what the scan detects. Regular [recommendation scans](recommendation-scans-intro.mdx) ensure that the latest, relevant rule sets protect your computers and remove rules that are no longer required. If you enable **Automatically implement Recommendations** for each of the [protection modules](configure-protection-modules.mdx), Server & Workload Protection automatically assigns and unassigns required rules. This task only implements recommended rules if configured. When configured, this task automatically implements agent recommendations based on the last scan results. If the scan identifies rules that need special attention, an alert notifies you. For most organizations, performing this task weekly is ideal.
+
+  [Classic recommendation scan](classic-reco-scan.mdx) can be resource-intensive, so agents that [meet the requirements](recommendation-scans-intro.mdx) use the [enhanced recommendation scan](enhanced-reco-scan.mdx). For agents that do not meet the requirements, scan by group (for example, per policy or for a group of less than 1,000 computers) and spread it over different days (for example, database server scans on Mondays and mail server scans on Tuesdays) to minimize the effect on your system. Schedule recommendation scans more frequently for systems that change often.
+
+- *Scheduled Agent Upgrade Task* schedules an [agent upgrade](upgrade-agent.mdx). You can configure this task to upgrade the agent to the latest version, or one of the two earlier versions. The agent determines which version when performing the scheduled task. This task does not upgrade the agent on a platform with **Agent Version Control** set to a specific version. Reference [Upgrade best practices for agents](https://docs.trendmicro.com/en-us/documentation/article/trend-micro-cloud-one-workload-security-agent-upgrade) to determine the best schedule for agent upgrades.
+
+- *Scheduled Trend Vision One Endpoint Security agent Installation Task* installs the Trend Vision One Endpoint Security agent which provides a single console experience. For more information, see [Getting Started with Trend Vision One Endpoint Security](https://docs.trendmicro.com/en-us/documentation/article/trend-vision-one-get-start-endpoint-security).
+
+  :::note
+
+  This is a "pre-release" feature and is not considered an official release. Review the [Pre-release Disclaimer](https://docs.trendmicro.com/en-us/enterprise/trend-micro-xdr-help/PrereleaseDisclaimer) before using the feature.
+  :::
+
+- *Send Outstanding Alert Summary* generates an email with a list of unresolved [alerts](alerts.mdx).
+
+- *Send Policy* regularly checks for and sends updated [policies](policies-server-workload.mdx). Scheduled updates allow you to follow an existing change control process. You can schedule tasks to update machines during maintenance windows and outside business hours.
+
+- *Synchronize Cloud Account* synchronizes the computers list with an added cloud account. This task is only available if you add an Azure or vCloud cloud account to Server & Workload Protection. This task is not available for other cloud account types like AWS and Google Cloud Platform (GCP).
+
+### Enable or disable a scheduled task {#enable-or-disable-a-scheduled-task}
+
+In the Properties for a task, you can enable or disable scheduled tasks. For example, you might temporarily disable a scheduled task while you perform administrative duties.
+
+### Set up scheduled reports {#set-up-scheduled-reports}
+
+Scheduled reports (previously called "recurring reports") are scheduled tasks that periodically generate and distribute [reports](reports-alerts--activity.mdx) to users and contacts. Report options are identical to single reports, except for the time filter.
+
+To generate a report for specific computers from multiple computer groups:
+
+1.  Create a user with rights for only those specific computers.
+
+2.  Generate report containing only the computers this user has viewing rights to:
+
+    - Create a scheduled task to regularly generate an *All Computers* report for that user.
+
+    - Sign in as that user and run an *All Computers* report.
+:::

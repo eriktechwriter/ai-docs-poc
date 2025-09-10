@@ -1,0 +1,62 @@
+---
+slug: trend-vision-one-nozomi-vantage-integration
+title: Nozomi Vantage integration
+last_updated: '2025-09-08'
+ai_context:
+  source_file: nozomi-vantage-integration.md
+  conversion_date: '2025-09-08T23:42:14.985Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Gain detailed OT/IoT asset profile information and enhanced security analysis in Cyber Risk Exposure Management by connecting your Nozomi Vantage data source with Trend Vision One.
+
+:::warning[Important]
+
+This is a "Pre-release" feature and is not considered an official release. Please review the [Pre-release disclaimer](pre-release-disclaimer.mdx) before using the feature.
+:::
+
+:::note
+
+- The following instructions were valid as of June 24, 2025. For further help, check your Nozomi Vantage documentation.
+
+- The Nozomi Vantage integration currently only supports integrating a single management console.
+:::
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Workflow and Automation → Third-Party Integration** and click **Nozomi Vantage**.
+
+    You are directed to the Nozomi Vantage data source drawer.
+
+2.  Copy the displayed public IP address to use when configuring your API key in the Nozomi Vantage console.
+
+3.  Sign in to the Nozomi Vantage console using an account with administrative privileges.
+
+4.  In **Settings → API Keys**, click **Add** to begin configuring a new API key.
+
+5.  Specify a description for the API key.
+
+6.  Paste the public IP address you copied from the Trend Vision One console into the **Allowed IPs** field.
+
+7.  Leave the default configuration for any additional settings.
+
+8.  Click **Generate**.
+
+9.  Copy the generated key name and key token from the Nozomi Vantage console and click **Close**.
+
+10. Copy the console URL displayed in the URL field in your web browser.
+
+11. In the Trend Vision One console, return to **Workflow and Automation → Third-Party Integration** and click **Nozomi Vantage**.
+
+12. Paste the console URL from the Nozomi Vantage Console into the FQDN field.
+
+13. Paste the newly generated key name and token into the appropriate fields.
+
+14. Review the configuration and then click**Test connection**.
+
+15. After the connection test is successful, click **Connect**.
+
+    Your Nozomi Vantage console begins sending data to Trend Vision One for use in Cyber Risk Exposure Management. Data from your connected Nozomi Vantage data source is synced with Trend Vision One every 10 minutes.
+:::::

@@ -1,0 +1,69 @@
+---
+slug: trend-vision-one-rerun-historical-checks-2
+title: Re-run historical check notifications
+---
+# Re-run historical check notifications
+
+This feature allows users to bulk ingest existing checks into a recently created Communication Channel. It is expected to be a one-time operation as newly discovered or updated checks will automatically be forwarded to Communication Channels through enabled automatic notifications.
+
+### Why re-run historical check notifications? {#why-re-run-historical-check-notifications}
+
+Using this feature will compliment the existing behavior for automatic notifications allowing users to re-run their historical checks (checks discovered prior to the creation of the communication channel) into their targeted communication channel. This is useful for users who may want to keep track of historical checks in their ticketing channel, whilst making use of the auto-resolve feature provided by the communication channels to resolve tickets.
+
+### API Endpoint: {#api-endpoint}
+
+[Checks Replay](https://automation.trendmicro.com/cloudone/conformity/)
+
+### Supported Communication Channels {#supported-communication-channels}
+
+- Jira
+- ServiceNow
+- Zendesk
+- AWS SNS
+- Webhook
+
+*Important:*
+
+- For ticketing channels (Jira, ServiceNow and Zendesk) re-running historical checks will not create duplicate tickets if a check is already associated with the ticketing channel.
+- For non-ticketing channels (AWS, SNS and Webhook) this will resend checks any time the endpoint is called.
+- The feature only supports Account level Communication Channels currently.
+- Only users with write access to the specified account (for which the communication setting is configured) can use this endpoint.
+- It may take several minutes for the check notifications to appear in your Communication Channel following a successful request.
+- Historical checks sent to your targeted communication channel will be filtered out based on the configured triggers for the communication channel.
+
+### User Scenario {#user-scenario}
+
+- It is highly recommended to have some triggers configured on your communication channel for details please visit [here](communication-triggers.mdx).
+
+- The API endpoint takes in two filters `newerThanDays` or `olderThanDays`, we recommend a time frame which fits closer to the creation or updated time of your communication channel. To get an idea on what checks you may want, you can configure the filters in the *Browse All Checks* section of the Cloud Risk Management UI.
+
+- e.g. If my automatic notification communication channel was created 30 days ago from today. A filter of `olderThanDays` 30 will deliver historical checks prior to the creation of that communication channel.
+
+### Example {#example}
+
+Let's assume you have on-boarded an AWS account and Cloud Risk Management Scan has completed it's first scan, and you do not have a Jira Ticketing system setup.
+
+Visiting *Browse All Checks*, you can see that your S3 bucket resource has created 2 failures. As a user you want to see these failure check notifications delivered to your Jira ticketing system.
+
+![](/images/replay-checks-browse-all-checks=5ed0a319-dee5-4f3a-8ab6-f9d2f3f691c7.webp){.zoom}
+
+To get all historical check notifications, you will create a new Jira ticketing communication channel and enable automatic notifications, and apply the following triggers:
+
+- Service: S3
+- Risk Level: Extreme, Very High and High
+- Tags: "staging" and "demo"
+
+![](/images/replay-checks-jira-setup=adcdfbd7-8a3d-4e72-8a8f-754431b13117.webp){.zoom}
+
+Using the API Endpoint with Postman:
+
+![](/images/replay-checks-postman-request=f0aad26e-aca7-40b8-9700-b9f9196d7419.webp){.zoom}
+
+Viewing that the Failed checks have been successfully imported into Jira.
+
+![](/images/replay-checks-imported-into-jira-created=cb3410a6-8067-4955-a9d0-a7731863185c.webp){.zoom}
+
+After addressing those failures the automatic notifications on the Jira communication will resolve the 2 tickets that were created.
+
+![](/images/replay-checks-imported-into-jira-resolved=b40f4a94-a95e-435b-806e-d81f7ff35977.webp){.zoom}
+:::

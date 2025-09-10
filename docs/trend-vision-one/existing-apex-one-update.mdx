@@ -1,0 +1,66 @@
+---
+slug: trend-vision-one-existing-apex-one-update
+title: >-
+  Existing Trend Vision One Customers Updating Apex One as a Service from the
+  Trend Vision One Console
+---
+# Existing Trend Vision One Customers Updating Apex One as a Service from the Trend Vision One Console
+
+:::warning[Important]
+
+- **Permanent update**: You cannot undo or stop the update once you begin. The update may take some time to complete depending on the number of agents managed by your Apex One as a Service instance. Trend Micro strongly recommends scheduling the update during off hours to avoid a disruption of service.
+
+- **Forced sign out during update**: Communicate with any associates that access to your Trend Micro Apex One as a Service console will be immediately terminated once the update process begins. Finish all on-going tasks before starting the update. After the update completes, you may need to update your user accounts before re-accessing the system. If an account update is required, the affected users will receive an email notification with instructions about how to perform the update.
+
+- **Post-update tasks**:
+
+  - Verify that your user accounts have the correct access permissions and roles in the new User Account app and resolve any role conflicts.
+
+  - Verify that all your endpoint groups, policies, and system settings updated properly to the Standard Endpoint Protection and Endpoint Inventory apps.
+
+  - Check or establish your IdP connection in Trend Vision One.
+
+  - The update process only moves your base agents and not your Endpoint Sensor agents. After the update process is complete, you must contact your support representative to re-associate your Endpoint Sensor agents with your Standard Endpoint Protection endpoints.
+
+- **Compliance considerations**: Ensure that you have read and understood the [Privacy and personal data collection disclosure](ppdcd-trend-vision-one.mdx) for Trend Vision One. Customers that have PCI compliance concerns should contact a sales representative before starting the update.
+
+- **Virtual desktops**: After updating to Trend Vision One, you must rebuild your golden image or Sysprep image if your endpoints meet all of the following criteria:
+
+  - The virtual desktops managed under the Apex One Server that you update have never used the Trend Vision One Endpoint Sensor.
+
+  - The virtual desktops are provisioned through a golden image for VDI or cloned as virtual machines using a Sysprep image.
+
+  For more information, see [Creating a golden image with the agent software](create-golden-agent-image.mdx).
+:::
+
+### Procedure {#procedure}
+
+1.  Sign in to the Trend Vision One console using the Primary User Account for your registered business.
+
+    :::note
+
+    The Primary User Account was previously called your company's "Trend Micro Account". The account owner has licensing rights to all your Trend Micro solutions.
+    :::
+
+2.  If you have not already updated Trend Vision One to the Foundation Services release, [update Trend Vision One](update-foundation-services-release.mdx) before proceeding.
+
+3.  Go to **Service Management → Product Instance**.
+
+4.  Click the display name for your Apex One as a Service instance that you want to update.
+
+5.  Click the **Update Solution** tab.
+
+6.  Read about the new updates, the Trend Micro Agreement, Global Privacy Notice, and Data Collection Notice.
+
+7.  Acknowledge that you have read the applicable legal notices by selecting the check box and click **I Agree to Update**.
+
+8.  Carefully read through the **System Update Notice**.
+
+    Please review the Important note above.
+
+9.  Acknowledge that you have read and understood how the update process will affect your system and click **Connect and Transfer**.
+
+10. Allow some time for the update process to complete. You can access the [Endpoint Inventory](endpoint-inventory-intro-part.mdx) or [Product Instance](product-instance.mdx) app to monitor the update progress of your Standard Endpoint Protection Manager (replaces the old Apex Central as a Service console).
+
+    [Learn more about feature mapping in Trend Vision One](apex-one-sep-feature-map.mdx)
+::::

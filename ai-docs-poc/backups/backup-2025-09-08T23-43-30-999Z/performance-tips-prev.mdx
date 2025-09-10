@@ -1,0 +1,85 @@
+---
+slug: trend-vision-one-performance-tips-prev
+title: Performance tips for intrusion prevention
+last_updated: '2025-09-08'
+ai_context:
+  source_file: performance-tips-prev.md
+  conversion_date: '2025-09-08T23:42:14.634Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+To improve system resources utilization on agent, optimize certain performance-related settings.
+
+For an overview of the intrusion prevention module, see [Block exploit attempts using intrusion prevention](intrusion-prevention.mdx).
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>System resource</p></th>
+<th><p>Settings that impact performance</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>CPU usage</p></td>
+<td><ul>
+<li>Log an event when a packet is dropped or blocked. Logging packet modifications may result in a lot of log entries. (See <a href="trend-vision-one-config-intrusion-prevention-rules">Configure event logging for rules</a>)</li>
+<li>Include packet data in the event log only during troubleshooting. (See <a href="trend-vision-one-config-intrusion-prevention-rules">Configure event logging for rules</a>)</li>
+<li>Assign only intrusion prevention rules that apply to the computer's OS and applications. See <a href="trend-vision-one-recommendation-scans-intro">recommendation scans</a> for information about using recommendation scans to discover applicable vulnerabilities and rules.</li>
+<li>Don't assign more than 300 rules.</li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Network usage or throughput</p></td>
+<td><ul>
+<li>Log an event when a packet is dropped or blocked. Logging packet modifications may result in a lot of log entries. (See <a href="trend-vision-one-config-intrusion-prevention-rules">Configure event logging for rules</a>)</li>
+<li>Include packet data in the event log only during troubleshooting. (See <a href="trend-vision-one-config-intrusion-prevention-rules">Configure event logging for rules</a>)</li>
+<li>Do not monitor HTTP responses from the web server, especially if the policy has many signatures applied:
+<ol>
+<li>Click <strong>Policies → Intrusion Prevention Rules</strong>.</li>
+<li>Right-click a rule in the Web Server Common application type and click <em>Application Type Properties</em>.</li>
+<li>On the <em>Configuration</em> tab, deselect <em>Inherited and Monitor responses from Web Server</em>.</li>
+</ol></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Disk usage</p></td>
+<td><ul>
+<li>Include packet data in the event log only during troubleshooting. (See <a href="trend-vision-one-config-intrusion-prevention-rules">Configure event logging for rules</a>)</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+### Maximum size for configuration packages {#maximum-size-for-configuration-packages}
+
+When an agent is assigned a large number of intrusion prevention rules, the size of the configuration package can exceed the maximum allowed size. When the allowed size is exceeded, the status of the agent changes to "Agent configuration package too large" and the event message "Configuration package too large" appears.
+
+:::note
+
+There is a configuration limit of 20 MB in Windows 32-bit platform because it has smaller kernel memory available. For other platforms, the limit is 32 MB.
+:::
+
+For performance reasons, you should have less than 350 intrusion prevention rules assigned to a computer. To minimize the number of required rules, ensure all available patches are applied to the computer operation system and any third-party software that is installed.
+
+1.  Apply available patches to the computer operating system.
+2.  Apply available patches to any third-party software that is installed.
+3.  Apply only the intrusion prevention rules that a [recommendation scan](recommendation-scans-intro.mdx) recommends. Remove any rules from the computer or the assigned policy that are recommended for unassignment. (See [Manage and run recommendation scans](classic-reco-scan.mdx).)
+4.  If you are managing intrusion prevention at the policy level and the configuration package is still too large, configure intrusion prevention in one of the following ways:
+    - Make the policy more granular, so that all servers in that policy have the same operating system and applications.
+    - Manage intrusion prevention at the server level so that rules are added and removed automatically for the computer.
+
+Use the following procedure to manage intrusion prevention at the server level.
+
+1.  Open the editor for the policy that is assigned to the computer.
+2.  Click **Intrusion Prevention → General**.
+3.  In the *Recommendations* section, set *Automatically implement Intrusion Prevention Recommendations (when possible)* to *Yes*.
+4.  Remove any intrusion prevention rules from the policy.
+5.  Run a recommendation scan on the computer.
+::::

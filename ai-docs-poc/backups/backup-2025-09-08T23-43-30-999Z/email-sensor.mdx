@@ -1,0 +1,116 @@
+---
+slug: trend-vision-one-email-sensor
+title: Email and Collaboration Sensor
+last_updated: '2025-09-08'
+ai_context:
+  source_file: email-sensor.md
+  conversion_date: '2025-09-08T23:42:20.146Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Manage Email Sensor for email accounts and Collaboration Sensor for Microsoft 365 accounts in your environment, and quickly validate the Email and Collaboration Security solutions by running email simulations in your environment.
+
+**Email and Collaboration Sensor** allows you to manage the Trend Vision One Email Sensor and Collaboration Sensor in your environment.
+
+After deploying Email Sensor for your email service, you can enable email sensor detection and response for email accounts. Email sensor detection and response sends activity data to Trend Vision One for state-of-the-art threat detection and alerting.
+
+After deploying Collaboration Sensor for your Microsoft 365 services, including SharePoint Online, OneDrive, and Teams Chat, Collaboration Sensor collects the activity data of Microsoft 365 accounts in your organization and sends the data to Trend Vision One. Administrators can search for the collaboration activity data in **XDR Data Explorer** and export the data using the [Datalake Pipeline APIs](https://automation.trendmicro.com/xdr/api-v3).
+
+:::warning[Important]
+
+Collaboration Sensor for Microsoft 365 is a pre-release feature and is not part of the existing features of an official commercial or general release. Please review the [Pre-release disclaimer](pre-release-disclaimer.mdx) before using the feature. There is no additional charge for pre-release features before official release. We will notify you at least 30 days before official release or any upcoming charge.
+:::
+
+The following table outlines the actions available in the **Email and Collaboration Sensor → Sensor Management** screen.
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Set up Email Sensor for Exchange Online</p></td>
+<td><p>Go to the <strong>Exchange Online</strong> tab and follow the on-screen instructions to set up Email Sensor for your Exchange Online mailboxes.</p></td>
+</tr>
+<tr>
+<td><p>Set up Email Sensor for Gmail</p></td>
+<td><p>Go to the <strong>Gmail</strong> tab and follow the on-screen instructions to set up Email Sensor for your Gmail mailboxes.</p></td>
+</tr>
+<tr>
+<td><p>Set up Email Sensor for other email services</p></td>
+<td><p>Go to the <strong>Other Mail Services</strong> tab and follow the on-screen instructions to set up Email Sensor for your mailboxes in other email services except Exchange Online and Gmail.</p>
+
+
+:::note
+
+<p>For email services other than Exchange Online and Gmail, Email Sensor only feeds telemetry data to Trend Vision One and does not provide response actions.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Manage email sensor detection</p></td>
+<td><p>Click <strong>Manage Email Sensor Detection</strong> to <a href="trend-vision-one-managing-email-sensor-detection">enable or disable email sensor detection and response capabilities</a> for the mailboxes in your email service.</p></td>
+</tr>
+<tr>
+<td><p>Set up Collaboration Sensor for Microsoft 365</p></td>
+<td><p>Go to the <strong>Microsoft 365</strong> tab and follow the on-screen instructions to set up Collaboration Sensor for your Microsoft 365 accounts.</p></td>
+</tr>
+<tr>
+<td><p>Manage email protection</p></td>
+<td><p>On the <strong>Exchange Online</strong> or <strong>Gmail</strong> tab, click the <strong>Powered by Cloud Email and Collaboration Protection</strong> link to open the Protection Manager and deploy protection to your email services.</p></td>
+</tr>
+<tr>
+<td><p>Manage collaboration protection</p></td>
+<td><p>On the <strong>Microsoft 365</strong> tab, click the <strong>Powered by Cloud Email and Collaboration Protection</strong> link to open the Protection Manager and deploy protection to your Microsoft 365 services.</p>
+
+
+:::note
+
+<p>Currently, after granting the necessary access permissions, Collaboration Sensor collects activity data of all Microsoft 365 accounts to report to Trend Vision One.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Disable all sensor detection</p></td>
+<td><p>Click <strong>Disable All Sensor Detection</strong> to disable email and collaboration sensor detection and response capabilities for all email services and Microsoft 365 services.</p>
+
+
+:::warning[Important]
+
+<p>After you disable email and collaboration sensor detection and response, email accounts and Microsoft 365 accounts stop reporting activity data to Trend Vision One.</p>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+
+If you have not enabled Email Sensor yet but are interested in the its capabilities and value in Agentic SIEM & XDR and Cyber Risk Exposure Management, Email and Collaboration Security offers a quick and easy way to simulate and validate the solution on a small group of your Exchange Online mailboxes. The test drive ingests sample emails of spoofing, phishing, account takeover, Adversary in the Middle Attack types into the targeted mailboxes, allowing you to view the detection results in associated apps. For more information, see [Running an Email Sensor test drive](running-email-sensor-simulation.mdx).
+
+:::note
+
+Only Email Sensor test drive is currently supported.
+:::
+
+**Related information**
+
+- [Running an Email Sensor test drive](running-email-sensor-simulation.md "Target specific Exchange Online mailboxes and simulate attacks on them to validate the Email Sensor solution and understand the value of associated Trend Vision One functions, including XDR and Cyber Risk Exposure Management capabilities.")
+- [Managing Email Sensor detection](managing-email-sensor-detection.md "Enable or disable Trend Vision One email sensor detection and response on supported email accounts.")
+:::::

@@ -1,0 +1,134 @@
+---
+slug: trend-vision-one-local-accounts
+title: Local accounts
+last_updated: '2025-09-08'
+ai_context:
+  source_file: local-accounts.md
+  conversion_date: '2025-09-08T23:42:16.473Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+In addition to SSO using existing credentials, an local account is another way for end users to access the End User Console. On **Administration → End User Management → Local Accounts** screen, Cloud Email Gateway Protection allows you to manage the local accounts of end users that belong to the managed domains. The local accounts can be registered by either administrators or end users.
+
+**Local Accounts Screen**
+
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 73%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Tasks</p></th>
+<th><p>Steps</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Adding a local account</p></td>
+<td>
+
+:::note
+
+<p>Before adding local accounts for end users, make sure you have enabled local account logon for end users. For details, see <a href="trend-vision-one-config-local-logon-email-security">Configuring local account logon</a>.</p>
+
+
+:::
+
+
+<ol>
+<li><p>Type an email address and click <strong>Add</strong>.</p>
+
+
+:::note
+
+<p>Make sure the email address meets the following requirements:</p>
+<ul>
+<li><p>Belongs to one of the managed domains</p></li>
+<li><p>Is a valid recipient of a managed domain when the recipient filter is enabled for the domain</p></li>
+</ul>
+
+
+:::
+
+
+<p>The email address appears in the local account list below.</p>
+<p>The email address will receive a password reset message for the local account. After the end user resets the password, they can use the account to log on to the End User Console.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Deleting local accounts</p></td>
+<td><ol>
+<li><p>Select one or multiple local accounts and click <strong>Delete</strong>.</p>
+
+
+:::note
+
+<p>To delete a primary account that manages other accounts, remove the account management relationships first. For details, see <a href="trend-vision-one-removing-end-user-managed-accounts">Removing end user managed accounts</a>.</p>
+
+
+:::
+
+</li>
+<li><p>On the <strong>Delete End User</strong> screen, click <strong>OK</strong>.</p>
+<p>The local accounts are removed from the local account lists and can no longer log on to the End User Console.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Importing local accounts</p></td>
+<td>
+
+:::note
+
+<p>Before adding local accounts for end users, make sure you have enabled local account logon for end users. For details, see <a href="trend-vision-one-config-local-logon-email-security">Configuring local account logon</a>.</p>
+
+
+:::
+
+
+<ol>
+<li><p>Click <strong>Import</strong>.</p></li>
+<li><p>(Optional) Click <strong>Download sample file</strong> to download the sample file for reference or import.</p></li>
+<li><p>On the <strong>Import End Users</strong> screen, click <strong>Choose File...</strong> and select a CSV file that contains the end user accounts to import.</p>
+<p>You can click <strong>Download sample file</strong> to download a sample CSV file for reference or use it to import accounts.</p>
+<p>Make sure the CSV file meet the following requirements:</p>
+<ul>
+<li><p>The file size does not exceed 1 MB.</p></li>
+<li><p>The email addresses belong to the managed domains.</p></li>
+<li><p>The email addresses are the valid recipients of a managed domain when the recipient filter is enabled for the domain.</p></li>
+</ul></li>
+<li><p>Click <strong>Preview</strong> to preview the import result.</p></li>
+<li><p>Click <strong>Import</strong>.</p>
+<p>The email addresses imported successfully appear in the local account list below.</p>
+<p>The email addresses will receive a password reset message for the local accounts. After the end users reset the password, they can use the accounts to log on to the End User Console.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Exporting local accounts</p></td>
+<td><ol>
+<li><p>Click <strong>Export All</strong>.</p>
+<p>All local accounts are exported to a CSV file.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Enabling or disabling local accounts</p></td>
+<td><ol>
+<li><p>Click <img src="./images/rule_on=GUID-2A099C30-120A-496A-960B-878EF80A6A34=2=en-us=Low.webp" /> (enabled) or <img src="./images/rule_off=GUID-A7F62B19-ED04-4D71-B014-E5F7B733C3AE=2=en-us=Low.webp" /> (disabled) to toggle the status of a local account, and then click <strong>OK</strong> in the confirmation dialog box.</p>
+
+
+:::note
+
+<p>You cannot enable or disable managed accounts.</p>
+
+
+:::
+
+
+<p>Enabled accounts can log on to the End User Console while disabled accounts cannot.</p></li>
+</ol></td>
+</tr>
+</tbody>
+</table>
+:::

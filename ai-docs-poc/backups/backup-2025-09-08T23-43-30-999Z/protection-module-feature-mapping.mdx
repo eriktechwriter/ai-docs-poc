@@ -1,0 +1,218 @@
+---
+slug: trend-vision-one-protection-module-feature-mapping
+title: Endpoint protection module feature mapping
+last_updated: '2025-09-08'
+ai_context:
+  source_file: protection-module-feature-mapping.md
+  conversion_date: '2025-09-08T23:42:14.051Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+**Security feature mapping**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Feature name</p></th>
+<th><p>Standard Endpoint Protection module</p></th>
+<th><p>Server &amp; Workload Protection module</p></th>
+<th><p>Endpoint Sensor feature</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Anti-Malware</p></td>
+<td><ul>
+<li><p>Anti-malware Scans</p></li>
+<li><p>Behavior Monitoring</p></li>
+<li><p>Predictive Machine Learning</p></li>
+<li><p>Scan Exclusions</p></li>
+<li><p>Real-time scans</p></li>
+<li><p>Scheduled scans</p></li>
+<li><p>Manual scans</p></li>
+<li><p>Scan now</p></li>
+</ul>
+<p>Manual scans and Scan now are part of the Anti-Malware features. Access to Manual scans and Scan now is configured in Agent Interface settings.</p></td>
+<td><ul>
+<li><p>Anti-malware Scans</p></li>
+<li><p>Security configuration</p>
+<ul>
+<li><p>Behavior monitoring</p></li>
+<li><p>Machine learning</p></li>
+</ul></li>
+<li><p>Exclusions</p></li>
+<li><p>Real-time scans</p></li>
+<li><p>Scheduled scans</p></li>
+<li><p>Manual scans</p></li>
+</ul>
+<p>Manual scans are part of the Anti-Malware features. Access to Manual scans is configured in Agent Interface settings.</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Web Reputation</p></td>
+<td><p>Web Reputation</p></td>
+<td><p>Web Reputation</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Intrusion Prevension</p></td>
+<td><p>Vulnerability Protection</p></td>
+<td><p>Intrusion Prevention</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Application Control</p></td>
+<td><p>Application Control</p></td>
+<td><p>Application Control</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Device Control</p></td>
+<td><p>Device Control</p></td>
+<td><p>Device Control</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Firewall</p></td>
+<td><p>Agent Configurations &gt; Additional Service Settings &gt; Firewall Service</p></td>
+<td><p>Firewall</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Advanced Risk Telemetry</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>Advanced risk telemetry</p></td>
+</tr>
+<tr>
+<td><p>Endpoint Sensor</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>Endpoint sensor detection and resposne</p></td>
+</tr>
+<tr>
+<td><p>Sandbox Submission</p></td>
+<td><p>Sample Submission</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Exclusions</p></td>
+<td><p>Windows policies:</p>
+<ul>
+<li><p>Exception Lists</p></li>
+</ul>
+<p>macOS policies:</p>
+<ul>
+<li><p>Scan Exclusions</p></li>
+<li><p>Trusted Program List</p></li>
+</ul></td>
+<td><p>Exclusions</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Browser Extension</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>Browser extension feature in Endpoint detection and response</p></td>
+</tr>
+<tr>
+<td><p>Agent Interface</p></td>
+<td><p>Agent Configurations &gt; Privileges and Other Settings</p></td>
+<td><p>(Policy/Computer) &gt; Settings</p></td>
+<td><p>Agent console</p></td>
+</tr>
+</tbody>
+</table>
+
+Some features are currently unsupported. Support for these features is under development.
+
+**Unsupported features**
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Protection Manager</p></th>
+<th><p>Feature</p></th>
+<th><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="3"><p>Standard Endpoint Protection</p></td>
+<td><p>Network Content Inspection Engine for Standard Endpoint Protection</p></td>
+<td><p>Enrolling in Endpoint Security Policies enables the Network Content Inspection Engine by default, but cannot be configured.</p>
+<p>Support for configuring the feature is coming soon.</p></td>
+</tr>
+<tr>
+<td><p>Spyware/Grayware Approved List</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Data Loss Prevention</p></td>
+<td><p>Enrolling in Endpoint Security Policies disables Data Loss Prevention.</p>
+<p>Support for Data Loss Prevention is coming soon as a feature of Data Security Sensor.</p></td>
+</tr>
+<tr>
+<td rowspan="8"><p>Server &amp; Workload Protection</p></td>
+<td><p>Activity Monitoring</p></td>
+<td><p>Activity monitoring is upgraded to Endpoint Sensor and does not follow Activity Monitoring settings in Server &amp; Workload Protection. Enabling Endpoint Sensor disables Activity Monitoring override settings for targeted endpoints.</p>
+<p>If Endpoint Sensor is disabled, Activity Monitoring can be enabled in Server &amp; Workload Protection.</p></td>
+</tr>
+<tr>
+<td><p>Anti-malware scan inclusions</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Anti-malware scheduled real-time scan</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Integrity Monitoring</p></td>
+<td><p>Enrolling in Endpoint Security Policies disables Integrity Monitoring.</p>
+<p>Integrity Monitoring in Endpoint Security Policies is coming soon.</p></td>
+</tr>
+<tr>
+<td><p>Log Inspection</p></td>
+<td><p>Enrolling in Endpoint Security Policies disables Log Inspection.</p>
+<p>Log Inspection in Endpoint Security Policies is coming soon.</p></td>
+</tr>
+<tr>
+<td><p>SAP Scanner</p></td>
+<td><p>Enrolling in Endpoint Security Policies disables SAP scanner.</p>
+<p>SAP scanner in Endpoint Security Policies is coming soon.</p></td>
+</tr>
+<tr>
+<td><p>Spyware/Grayware Approved List</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Feature blocking</p></td>
+<td><p>Some features can still be configured after enrolling in Endpoint Security Policies on an endpoint level (override settings). For more information, see <a href="trend-vision-one-features-can-edit-after-enrolling">Features editable after enrolling a Server Workload Protection endpoint group</a>.</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p>Other features missing support</p></td>
+<td><p>Local Smart Protection Service support for Anti-malware and Web Reputation</p></td>
+<td><p>Local Smart Protection Service for Service Gateway is coming soon.</p></td>
+</tr>
+<tr>
+<td><p>Dynamic Intelligence Mode</p></td>
+<td><p>Enrolling in Endpoint Security Policies enables Dynamic Intelligence Mode by default, but cannot be configured.</p>
+<p>Support for configuring the feature is coming soon.</p></td>
+</tr>
+</tbody>
+</table>
+:::

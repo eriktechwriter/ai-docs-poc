@@ -1,0 +1,165 @@
+---
+slug: trend-vision-one-activity-monitoring-basic
+title: 'Warning: Activity Monitoring engine has only basic functions'
+---
+# Warning: Activity Monitoring engine has only basic functions
+
+When a new Linux kernel version is released, Trend Micro releases a new kernel support package for the agent. If a computer's kernel version is not currently supported, then the Activity Monitoring engine can provide only basic protection. Normal protection resumes when the agent receives the update to support the new kernel version. To prevent this problem, verify that the new kernel version is supported before you upgrade it.
+
+**Basic functions**
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 33%" />
+<col style="width: 11%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Module</p></th>
+<th><p>Category</p></th>
+<th><p>Feature name</p></th>
+<th><p>Supported</p></th>
+<th><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="14"><p>Activity Monitoring</p></td>
+<td rowspan="7"><p>Telemetry</p></td>
+<td><p>File Create Event</p></td>
+<td><p>No</p></td>
+<td><p>No support in container</p></td>
+</tr>
+<tr>
+<td><p>File Open Event</p></td>
+<td><p>No</p></td>
+<td><p>No support in container</p></td>
+</tr>
+<tr>
+<td><p>Process Create Event</p></td>
+<td><p>Yes</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Process Terminate Event</p></td>
+<td><p>Yes</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>DNS Query Event</p></td>
+<td><p>No</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Network Inbound Connection Event</p></td>
+<td><p>Yes</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Network Outbound Event</p></td>
+<td><p>Yes</p></td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="2"><p>UDSO</p></td>
+<td><p>Logging action for IP address, domain, file SHA-1, and file SHA-256</p></td>
+<td><p>No</p></td>
+<td><p>Cannot log all DNS query events.</p>
+<p>For more information, see <a href="trend-vision-one-suspicious-object-management">Suspicious Object Management</a>.</p></td>
+</tr>
+<tr>
+<td><p>Quarantine or block action for file SHA-1 and file SHA-256</p></td>
+<td><p>Yes</p></td>
+<td><p>For more information, see <a href="trend-vision-one-suspicious-object-management">Suspicious Object Management</a>.</p></td>
+</tr>
+<tr>
+<td rowspan="5"><p>Response</p></td>
+<td><p>Remote Shell</p></td>
+<td><p>Yes</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>File Collection</p></td>
+<td><p>Yes</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Custom Script</p></td>
+<td><p>Yes</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Network Isolation</p></td>
+<td><p>Yes</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Memory Dump</p></td>
+<td><p>Yes</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+### Reason IDs {#reason-ids}
+
+To restore full functionality when the agent is providing only basic protection, you must resolve the cause of the warning based on the reason ID:
+
+- Reason ID 7:
+
+  1.  Find out if the latest Kernel Support Package (KSP) for that particular kernel is available.
+
+  2.  File a case to request KSP support.
+
+- Other reason ID:
+  1.  [Create a diagnostic package and logs](create-diagnostic-package-logs.mdx)
+
+  2.  Contact your support provider
+
+The reason ID is included in events forwarded to an external Syslog, SIEM server, or Amazon SNS. Also the event description for the Anti-Malware Engine Offline or Anti-Malware Engine with Basic Functions agent displays the reason ID.
+
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 28%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Reason ID</p></th>
+<th><p>Event reason</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>7</p></td>
+<td><p>Unavailable kernel version</p></td>
+<td><p>No driver is available for the Linux kernel version. This causes a driver offline error.</p></td>
+</tr>
+<tr>
+<td><p>8</p></td>
+<td><p>Failed driver loading</p></td>
+<td><p>Loading the driver (tmhook/bmhook) into the kernel failed. This causes a driver offline error.</p></td>
+</tr>
+<tr>
+<td><p>9</p></td>
+<td><p>Failed driver unloading</p></td>
+<td><p>Unloading a driver from the kernel failed. This causes a driver offline error.</p></td>
+</tr>
+<tr>
+<td><p>14</p></td>
+<td><p>Configuration file disable driver</p></td>
+<td><p>Agent is set to not load the driver by configuration INI file. This causes a driver offline state.</p></td>
+</tr>
+<tr>
+<td><p>15</p></td>
+<td><p>Policy disable driver</p></td>
+<td><p>Agent is set to not load the driver by Deep Security Manager or Workload Security policy. This causes a driver offline state.</p></td>
+</tr>
+</tbody>
+</table>
+:::

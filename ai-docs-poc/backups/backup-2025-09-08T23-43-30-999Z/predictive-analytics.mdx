@@ -1,0 +1,79 @@
+---
+slug: trend-vision-one-predictive-analytics
+title: Predictive analytics
+last_updated: '2025-09-08'
+ai_context:
+  source_file: predictive-analytics.md
+  conversion_date: '2025-09-08T23:42:14.220Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+View information about the **Predictive analytics** risk factor, which pinpoints potential future threats you can proactively address to strengthen your security posture.
+
+The **Predictive analytics** risk factor is based on exposures detected on your assets that could potentially facilitate an attack in the future. The predictive analytics risk factor contributes to your [exposure level](exposure-overview.mdx). Generated risk events can be viewed and managed in **Threat and Exposure Management**.
+
+When viewing risk events, click the number in the case column to view current cases involving the specified risk event. Click the options icon (![](/images/options=ddb0b67f-0654-4aa5-8bc7-48ec554c5448.webp)) to open a new case for the risk event or add the case to an existing risk event.
+
+:::warning[Important]
+
+Addressing attack path risk events does not necessarily address the root cause of the risk. If you only address the attack path risk event without addressing risk events on the entry and target assets, the attack path risk event may be generated again. Remediate entry and target risk events first to avoid regenerating the attack path risk event.
+:::
+
+The following table describes the risk indicators associated with the predictive analytics risk factor.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Indicator</p></th>
+<th><p>Description</p></th>
+<th><p>Data sources</p></th>
+<th><p>Target</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Attack path inference</p></td>
+<td><p>Potential attack paths identified based on detected internet-exposed assets with misconfigurations or vulnerabilities that may also have excess or unrestricted privileges, access to sensitive data, or be displaying unusual behavior</p></td>
+<td><p>Risk Analytics Service</p></td>
+<td><ul>
+<li><p>Device</p></li>
+<li><p>Cloud asset</p></li>
+<li><p>Intenet-facing asset</p></li>
+<li><p>Public API</p></li>
+<li><p>IAM user</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+The following table outlines the widgets available in the predictive analytics section.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Widget</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Predictive analytics</p></td>
+<td><p>Events indicating exposures that could facilitate potential attack paths from an entry point to a target asset. Potential attack paths are detected using AI to correlate Trend Micro threat research, Trend Micro and third-party asset data, and asset criticality information.</p></td>
+</tr>
+</tbody>
+</table>
+
+For more information on predictive analytics risk indicators and associated data sources, see [How potential attack paths are detected and analyzed](attack-paths-detected.mdx).
+::::

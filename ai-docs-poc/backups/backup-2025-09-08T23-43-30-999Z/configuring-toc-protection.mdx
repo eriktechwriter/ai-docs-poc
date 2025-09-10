@@ -1,0 +1,34 @@
+---
+slug: trend-vision-one-configuring-toc-protection
+title: Configuring time-of-click protection settings
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configuring-toc-protection.md
+  conversion_date: '2025-09-08T23:42:22.103Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+The Time-of-Click Protection feature allows taking actions based on the risk level to protect Exchange Online users against potential risks when users click URLs in incoming email messages. To achieve this, Cloud Email and Collaboration Protection rewrites suspicious URLs in incoming email messages to redirect the URLs to the Web Reputation Services. When the rewritten URL is clicked in the email message, the web browser queries the risk level of the URL from the Web Reputation Services, which then takes the action specified for that specific risk level.
+
+:::note
+
+This feature is available only if you are using an Authorized Account for the Exchange Online service. Therefore, you may need to migrate to use an Authorized Account for Exchange Online if you are still using a Delegate Account.
+:::
+
+### Procedure {#procedure}
+
+1.  In Cloud Email and Collaboration Protection, go to **Policies → Global Settings → Other Settings → Time-of-Click Protection Settings**.
+
+2.  Select an action from **Block**, **Warn**, and **Allow** for URLs at each risk level, and click **Save**.
+
+    :::note
+
+    The **Block** action stops users from accessing the URL.
+
+    The **Allow** action takes users to the destination page.
+
+    The **Warn** action warns users about the risk but allows the user to decide whether to continue to access the URL.
+    :::
+::::

@@ -1,0 +1,65 @@
+{
+  "livePreview": {
+    "enabled": true,
+    "autoRefresh": true,
+    "port": 3000,
+    "host": "localhost",
+    "openInBrowser": false,
+    "showInPanel": true,
+    "panelPosition": "beside"
+  },
+  "docusaurus": {
+    "devServer": {
+      "port": 3000,
+      "host": "localhost",
+      "open": false,
+      "hotReload": true,
+      "liveReload": true,
+      "poll": false
+    },
+    "build": {
+      "outDir": "build",
+      "minify": false,
+      "sourcemap": true
+    }
+  },
+  "mdx": {
+    "preview": {
+      "enabled": true,
+      "autoShow": false,
+      "theme": "light",
+      "fontSize": 14,
+      "lineHeight": 1.6,
+      "maxWidth": "800px"
+    },
+    "validation": {
+      "enabled": true,
+      "showErrors": true,
+      "showWarnings": true
+    }
+  },
+  "hotReload": {
+    "watchFiles": [
+      "docs/**/*.{md,mdx}",
+      "src/**/*.{js,jsx,ts,tsx,css}",
+      "data/**/*.{yaml,yml,json}",
+      "static/**/*"
+    ],
+    "ignoreFiles": [
+      "**/node_modules/**",
+      "**/.docusaurus/**",
+      "**/build/**",
+      "**/.git/**",
+      "**/*.log"
+    ],
+    "debounceMs": 300,
+    "batchChanges": true
+  },
+  "performance": {
+    "enableFastRefresh": true,
+    "enableIncrementalBuilds": true,
+    "cacheEnabled": true,
+    "optimizeImages": false,
+    "bundleAnalyzer": false
+  }
+}

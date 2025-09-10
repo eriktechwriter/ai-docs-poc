@@ -1,0 +1,72 @@
+---
+slug: trend-vision-one-install-agent-gcp-vms
+title: Install the agent on Google Cloud Platform VMs
+last_updated: '2025-09-08'
+ai_context:
+  source_file: install-agent-gcp-vms.md
+  conversion_date: '2025-09-08T23:42:17.179Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Read this page if you want to protect existing Google Cloud Platform (GCP) VM instances with Server & Workload Protection.
+
+To protect your existing GCP VMs:
+
+1.  Add a GCP service account to the Server & Workload Protection console. For instructions, see [Add a Google Cloud Platform account](add-google-cloud-platform-account.mdx).
+
+2.  Configure agent-initiated activation (AIA). For instructions, see [Activate and protect agents using agent-initiated activation and communication](agent-initiated-activation.mdx).
+
+3.  Open ports so that Server & Workload Protection components can access your GCP VMs and the GCP API. For information on which ports to open, see [Server & Workload Protection Port numbers](swp-port-numbers.mdx). For instructions on how to open ports, see [this GCP webpage](https://cloud.google.com/vpc/docs/using-firewalls).
+
+4.  Deploy agents to your GCP VMs. You must use agent version 12 or later. To deploy agents, you have two options:
+
+    <table>
+    <colgroup>
+    <col style="width: 20%" />
+    <col style="width: 20%" />
+    <col style="width: 60%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Option</p></th>
+    <th><p>Use if...</p></th>
+    <th><p>Instructions</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Option 1:</p>
+    <p>Use a deployment script to install, activate, and assign a policy to the agent</p></td>
+    <td><p>You need to deploy many agents to your GCP VMs.</p></td>
+    <td><p>See <a href="trend-vision-one-deployment-scripts-add-computers">Use deployment scripts to add and protect computers</a> for instructions.</p></td>
+    </tr>
+    <tr>
+    <td><p>Option 2:</p>
+    <p>Manually install and activate the agent</p></td>
+    <td><p>You only need to deploy a few agents.</p></td>
+    <td><ol>
+    <li>Obtain the agent software, copy it to the GCPVM, and then install it. For details, see <a href="trend-vision-one-get-agent-software">Get agent software.</a></li>
+    <li>Activate the agent. You can do so on the agent or on the Server &amp; Workload Protection console. For details, see <a href="trend-vision-one-activate-agent">Activate the agent.</a></li>
+    </ol></td>
+    </tr>
+    </tbody>
+    </table>
+
+5.  Verify that the agent was installed and activated properly:
+
+    1.  Log in to the Server & Workload Protection console.
+    2.  Click *Computers* at the top.
+    3.  On the navigation pane on the left, make sure your GCP VM appears under **Computers → your_GCP_service_account → your_GCP_project**.
+    4.  In the main pane, make sure your GCP VMs appear with a *Status* of *Managed (Online)* and a green dot next to them.
+
+6.  Assign a policy if you installed and activated the agent manually. For instructions, see [Assign a policy to a computer](create-policies.mdx). Assigning the policy sends the necessary protection modules to the agent so that your computer is protected.
+
+    :::note
+
+    Skip the policy assignment step if you ran a deployment script to install and activate the agent. The script already assigned a policy so no further action is required.
+    :::
+
+After assigning a policy, your GCP VM is now protected.
+:::

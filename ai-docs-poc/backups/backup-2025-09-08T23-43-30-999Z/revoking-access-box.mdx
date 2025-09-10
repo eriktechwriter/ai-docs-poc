@@ -1,0 +1,62 @@
+---
+slug: trend-vision-one-revoking-access-box
+title: Revoking access to Box
+last_updated: '2025-09-08'
+ai_context:
+  source_file: revoking-access-box.md
+  conversion_date: '2025-09-08T23:42:13.679Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+The steps outlined below detail how to revoke the access of Cloud Email and Collaboration Protection to Box.
+
+### Procedure {#procedure}
+
+1.  Choose **Administration → Service Account**.
+
+2.  Select the Box service account and click **Remove**.
+
+3.  Remove the Cloud Email and Collaboration Protection application for all of your users.
+
+    1.  Visit <https://app.box.com/master/settings>.
+
+    2.  Click **Apps** on the menu bar.
+
+    3.  In the **Individual Application Controls** section, search for the application named *Cloud App Security*.
+
+    4.  Hover over the app's row and click the **Configure** button displayed.
+
+    5.  Click **Available** and clear the **Enforce event notifications settings on all users** check box.
+
+    6.  Visit <https://app.box.com/services/browse/my>.
+
+    7.  Search for the *Cloud App Security* application and remove it from your applications.
+
+4.  Remove the folders created by Cloud Email and Collaboration Protection from the Box administrator's root directory:
+
+    - Temporary folder: `trendmicro_cas_temp__dont_change_or_delete`
+
+      :::note
+
+      Unshare the temporary folder and make the folder unavailable to others before removing it.
+      :::
+
+    - Quarantine folder: `trendmicro_cas_quarantine__dont_change_or_delete`
+
+      :::note
+
+      Back up the existing quarantined files if necessary.
+      :::
+
+5.  Delete the group created for temporary folder management from the Box admin console:
+
+    1.  Go to **Admin Console → Users and Groups → Groups**.
+
+    2.  Click group `trendmicro_cas_temp__dont_change_or_delete`, and then click **Delete Group** in the upper right of the screen.
+
+6.  Manually remove the remaining data.
+
+    For details, see [Changes made under API-based protection](changes-api-based-protection.mdx).
+:::

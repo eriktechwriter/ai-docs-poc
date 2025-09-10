@@ -1,0 +1,68 @@
+---
+slug: trend-vision-one-volume-chart
+title: Volume chart
+---
+# Volume chart
+
+The **Volume** chart on the **Summary** tab of **Dashboard** displays the total number of accepted and blocked messages and the total percentage of blocked messages.
+
+Select a time period by **Date**, **Week**, **Month**, or **Last 12 months** to show data for the selected time period.
+
+The specified time period only affects the data shown on this chart and its corresponding thumbnail chart on the **Threats** tab. Changing these selections does not affect other charts.
+
+The following is the specific data displayed:
+
+**Detected Values on Charts**
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Detected Values</p></th>
+<th><p>For Incoming Mail</p></th>
+<th><p>For Outgoing Mail</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><strong>Blocked</strong></p></td>
+<td><p>The number of email messages blocked by connection-based filtering at the MTA connection level or by Cloud Email Gateway Protection incoming security filtering</p>
+
+
+:::note
+
+<p>This value does not include messages blocked by content-based filtering.</p>
+
+
+:::
+
+</td>
+<td><p>The number of messages blocked using Cloud Email Gateway Protection relay mail service filtering</p>
+<p>Possible reasons for blocking include:</p>
+<ul>
+<li><p>Recipient address is not resolvable (such as <code>someone@???.com</code>).</p></li>
+<li><p>Spammers forged the mail sender address so the message appears to be coming from the customer domain.</p></li>
+<li><p>The customer's MTA is compromised and is sending spam messages (for example, it is an open relay).</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><strong>Accepted</strong></p></td>
+<td><p>The number of email messages passed by connection-based filtering at the MTA connection level or by Cloud Email Gateway Protection incoming security filtering</p></td>
+<td><p>The number of messages passed by Cloud Email Gateway Protection relay mail service filtering</p></td>
+</tr>
+<tr>
+<td><p><strong>Blocked %</strong></p></td>
+<td><p>The percentage of email messages blocked by connection-based filtering at the MTA connection level or by Cloud Email Gateway Protection incoming security filtering</p></td>
+<td><p>The percentage of messages blocked by Cloud Email Gateway Protection relay mail service filtering</p></td>
+</tr>
+<tr>
+<td><p><strong>Total</strong></p></td>
+<td colspan="2"><p>The total number of email messages processed</p></td>
+</tr>
+</tbody>
+</table>
+:::

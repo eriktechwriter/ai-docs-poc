@@ -1,0 +1,38 @@
+---
+slug: trend-vision-one-helm-chart-312
+title: Helm Chart 3.1.2
+last_updated: '2025-09-08'
+ai_context:
+  source_file: helm-chart-312.md
+  conversion_date: '2025-09-08T23:42:18.184Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+July 17, 2025—The 3.1.2 Helm Chart release updates the scope of the attestor custom resource definition to "cluster".
+
+Detailed release notes:
+
+- **Enhancements:**
+
+  - Includes attestor Custom Resource in the log collection script
+
+- **Upgrade instructions**
+
+  - If you are upgrading from 3.1.0 or 3.1.1, you must manually delete the attestor CRD before upgrading using the following command: `kubectl delete crd attestors.container-security.trendmicro.com`
+
+  - Sample upgrade command:
+
+    ``` codeblock
+    helm upgrade \
+    --values overrides.yaml \
+    --namespace trendmicro-system \
+    trendmicro \
+    https://github.com/trendmicro/visionone-container-security-helm/archive/3.1.2.tar.gz
+    ```
+
+- **References**
+
+  - <https://github.com/trendmicro/visionone-container-security-helm/releases/tag/3.1.2>
+:::

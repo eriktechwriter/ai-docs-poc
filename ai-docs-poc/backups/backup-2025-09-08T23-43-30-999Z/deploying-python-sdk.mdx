@@ -1,0 +1,157 @@
+---
+slug: trend-vision-one-deploying-python-sdk
+title: Deploy with Python SDK
+last_updated: '2025-09-08'
+ai_context:
+  source_file: deploying-python-sdk.md
+  conversion_date: '2025-09-08T23:42:20.593Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Use the Trend Vision One™ File Security Python SDK to scan files for malware.
+
+The Python SDK for Trend Vision One™ File Security empowers you to craft applications that seamlessly integrate with File Security. With this SDK you can perform a thorough scan of data and artifacts within your applications to identify potential malicious elements.
+
+Follow the steps below to set up your development environment and configure your project, laying the foundation to effectively use File Security.
+
+## Prerequisites {#prerequisites}
+
+Before installing the SDK, ensure you have the following:
+
+- [Python 3.9 or later](https://www.python.org/downloads/)
+
+- Trend Vision One account associated with your region
+
+- [Configuring custom user roles](custom-user-roles-trend-vision-one.mdx) with File Security permissions
+
+## Create an API key {#create-an-api-key}
+
+The File Security SDK requires a valid API key provided as a parameter to the SDK client object. Trend Vision One API keys are associated with different regions. Refer to the region flag below to obtain a better understanding of the valid regions associated with the API key.
+
+### Procedure {#procedure}
+
+1.  Go to **Administrations → API Keys**.
+
+2.  Click **Add API Key**.
+
+3.  Configure the API key to use the role with the **Run file scan via SDK** permission.
+
+4.  Verify that the API key is associated with the region you plan to use.
+
+5.  Set an expiry time for the API key and make a record of it for future reference.
+
+## Install the SDK {#install-the-sdk}
+
+### Procedure {#procedure-1}
+
+- Install the File Security SDK package with pip:
+
+  ``` codeblock
+  python -m pip install visionone-filesecurity
+  ```
+
+## Run the SDK {#run-the-sdk}
+
+### Procedure {#procedure-2}
+
+1.  Go to the [Examples folder in GitHub](https://dsgithub.trendmicro.com/cloud-one-amaas/tm-v1-fs-python-sdk/tree/main/public/examples).
+
+2.  Review the Python examples in the folder:
+
+    - The `client_aio.py` example uses regular file input/output (i/o).
+
+    - The `client.py` example uses asynchronous i/o.
+
+    The Python examples support the command line arguments in the table below.
+
+    **Python Examples**
+
+    <table style="width:99%;">
+    <colgroup>
+    <col style="width: 33%" />
+    <col style="width: 33%" />
+    <col style="width: 33%" />
+    </colgroup>
+    <thead style="text-align: left;">
+    <tr>
+    <th>Command Line Arguments</th>
+    <th>Value</th>
+    <th>Optional</th>
+    </tr>
+    </thead>
+    <tbody style="text-align: left;">
+    <tr>
+    <td><code>--region or -r</code></td>
+    <td>The region for your API key. Value must be one of the following Trend Vision One regions:
+    <ul>
+    <li><code>ap-northeast-1</code></li>
+    <li><code>ap-south-1</code></li>
+    <li><code>ap-southeast-1</code></li>
+    <li><code>ap-southeast-2</code></li>
+    <li><code>eu-central-1</code></li>
+    <li><code>us-east-1</code></li>
+    </ul></td>
+    <td>Yes, either <code>-r</code> or <code>-a</code></td>
+    </tr>
+    <tr>
+    <td><code>--addr or -a</code></td>
+    <td>File Security server, for example:<code> antimalware.REGION.cloudone.trendmicro.com:443</code></td>
+    <td>Yes, either <code>-r</code> or <code>-a</code></td>
+    </tr>
+    <tr>
+    <td><code>--api_key</code></td>
+    <td>Trend Vision One API key</td>
+    <td>No</td>
+    </tr>
+    <tr>
+    <td><code>--filename or -f</code></td>
+    <td>File to be scanned</td>
+    <td>No</td>
+    </tr>
+    <tr>
+    <td><code>--pml</code></td>
+    <td>Predictive Machine Learning</td>
+    <td>Yes</td>
+    </tr>
+    <tr>
+    <td><code>--tags or -f</code></td>
+    <td>List of tags</td>
+    <td>Yes</td>
+    </tr>
+    </tbody>
+    </table>
+
+3.  Run one of the examples. You can also use these examples to write your own program.
+
+## Customize the Examples {#customize-the-examples}
+
+You can customize one of the [example programs](https://github.com/trendmicro/tm-v1-fs-python-sdk/tree/main/examples) by configuring it with the API key. For custom programs, pass in the region parameter to specify the region of the API key and verify you have the proper authorization.
+
+### Procedure {#procedure-3}
+
+1.  Assign the value of the `API_KEY` to the variable.
+
+2.  Set `FILENAME` to the desired target file.
+
+    ``` codeblock
+    python3 client.py -f FILENAME -r us-1 --api_key API_KEY
+    ```
+
+    You can use the File Security server address `-a` instead of region `-r`.
+
+    ``` codeblock
+    python3 client.py -f FILENAME -a antimalware._REGION_.cloudone.trendmicro.com:443 --api_key API_KEY
+    ```
+
+    You can also use the asynchronous IO example program.
+
+    ``` codeblock
+    python3 client_aio.py -f FILENAME -a antimalware._REGION_.cloudone.trendmicro.com:443 --api_key API_KEY
+    ```
+
+## Disabling the cache digest {#disabling-the-cache-digest}
+
+If you are using the SDK with python to scan large files, you may want to disable the cache digest. there's a [parameter called "digest in the scan_file api](https://github.com/trendmicro/tm-v1-fs-python-sdk/blob/e90fd59dff6cfe84c822044bca5b97392c1f0fa1/amaas/grpc/__init__.py). Change "`digest: bool = True`" to "`digest: bool = False`".
+:::

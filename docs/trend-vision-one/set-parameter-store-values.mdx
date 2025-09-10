@@ -1,0 +1,68 @@
+---
+slug: trend-vision-one-set-parameter-store-values
+title: Set parameter store values
+---
+# Set parameter store values
+
+After [retrieving the Trend Vision One parameters](retrieve-v1-parameters.mdx), complete the following steps.
+
+### Procedure {#procedure}
+
+1.  In the Amazon Web Services (AWS) Systems Manager, go to **Parameter Store**.
+
+2.  Create the parameters as shown in the table:
+
+    1.  Click **Create parameter**.
+
+    2.  Enter the details as shown in the table.
+
+    <table>
+    <thead style="text-align: left;">
+    <tr>
+    <th style="text-align: left;"></th>
+    <th style="text-align: left;"><p>First parameter</p></th>
+    <th style="text-align: left;"><p>Second parameter</p></th>
+    <th style="text-align: left;"><p>Third parameter</p></th>
+    <th><p>Fourth parameter</p></th>
+    </tr>
+    </thead>
+    <tbody style="text-align: left;">
+    <tr>
+    <td style="text-align: left; vertical-align: top;"><p>Name</p></td>
+    <td style="text-align: left; vertical-align: top;"><p>/WorkloadSecurity/ImageBuilder/company_id</p></td>
+    <td style="text-align: left; vertical-align: top;"><p>/WorkloadSecurity/ImageBuilder/x86_64_xbc_agent_token</p></td>
+    <td style="text-align: left; vertical-align: top;"><p>/WorkloadSecurity/ImageBuilder/aarch64_xbc_agent_token</p></td>
+    <td><p>/WorkloadSecurity/ImageBuilder/windows_token</p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left; vertical-align: top;"><p>Data type</p></td>
+    <td style="text-align: left; vertical-align: top;"><p>Text</p></td>
+    <td style="text-align: left; vertical-align: top;"><p>Text</p></td>
+    <td style="text-align: left; vertical-align: top;"><p>Text</p></td>
+    <td><p>Text</p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left; vertical-align: top;"><p>Type</p></td>
+    <td style="text-align: left; vertical-align: top;"><p>String</p></td>
+    <td style="text-align: left; vertical-align: top;"><p>String</p></td>
+    <td style="text-align: left; vertical-align: top;"><p>String</p></td>
+    <td><p>String</p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left; vertical-align: top;"><p>Value</p></td>
+    <td style="text-align: left; vertical-align: top;"><p>company_id</p>
+    <p>Retrieved from Trend Vision One</p></td>
+    <td style="text-align: left; vertical-align: top;"><p>x86_64_xbc_agent_token</p>
+    <p>Retrieved from Trend Vision One</p></td>
+    <td style="text-align: left; vertical-align: top;"><p>aarch64_xbc_agent_token</p>
+    <p>Retrieved from Trend Vision One</p></td>
+    <td><p>windows_token</p>
+    <p>Retrieved from Trend Vision One</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+### Next steps {#next-steps}
+
+[Set up the image builder and create an Amazon Elastic Compute Cloud (EC2) instance](image-builder-ec2-instance.mdx).
+:::

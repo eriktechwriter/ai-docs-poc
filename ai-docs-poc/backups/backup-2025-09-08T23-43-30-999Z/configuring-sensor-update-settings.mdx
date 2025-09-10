@@ -1,0 +1,52 @@
+---
+slug: trend-vision-one-configuring-sensor-update-settings
+title: Configuring sensor update settings
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configuring-sensor-update-settings.md
+  conversion_date: '2025-09-08T23:42:22.190Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Manage whether your Virtual Network Sensor updates automatically and configure update schedules.
+
+Use the **Sensor Update Settings** screen to enable or disable automatic updates. If you enable automatic updates, you can also configure the update schedule to plan when your deployed Virtual Network Sensors perform updates.
+
+:::warning[Important]
+
+If you disable automatic updates, you must manually trigger the update process for the Virtual Network Sensor. Manually updating always updates to the latest version.
+
+Network Inventory only maintains update support for Virtual Network Sensor versions released within the last six months. Versions older than six months might require redeployment to use the latest version.
+:::
+
+### Procedure {#procedure}
+
+1.  On the Trend Vision One console, go to **Network Security → Network Inventory → Virtual Network Sensor**.
+
+2.  Click the identifier of the Virtual Network Sensor you want to configure.
+
+    The **Sensor Details** screen appears.
+
+3.  Go to the **System Settings** tab.
+
+4.  Locate **Sensor update** and click the configure icon (![](/images/gear_icon=fc9a51ad-35af-4fe3-92c6-5e41b2dfc5d9.webp)).
+
+    The **Sensor Update Settings** appears.
+
+5.  To enable automatic updates, select **Automatic updates** and configure the schedule settings.
+
+    - To always update as soon as a new sensor version is available, select **Immediate**.
+
+    - To configure when to perform updates, select **Custom** and specify the preferred update time.
+
+      :::note
+
+      The update process begins at the preferred update time. If the Virtual Network Sensor is turned off or it takes more than 20 minutes to begin the update process, the Virtual Network Sensor waits until the next preferred update time to try again.
+      :::
+
+6.  To disable automatic updates, clear **Automatic updates**.
+
+7.  Click **Save**.
+::::

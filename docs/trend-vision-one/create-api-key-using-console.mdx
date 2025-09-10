@@ -1,0 +1,63 @@
+---
+slug: trend-vision-one-create-api-key-using-console
+title: Create an API Key using the Server & Workload Protection console
+---
+# Create an API Key using the Server & Workload Protection console
+
+:::::tip
+
+This article describes how to create API keys for [legacy accounts](https://docs.trendmicro.com/en-us/documentation/article/trend-micro-cloud-one-identity-account-management-c1-accounts-about).
+
+If you're using a new Trend Micro Cloud One account, see [Manage API keys](https://docs.trendmicro.com/en-us/documentation/article/trend-micro-cloud-one-identity-account-management-c1-api-key) instead.
+:::
+
+Create an API key to use for authenticating your requests with Server & Workload Protection. Trend Micro recommends creating one API key for every user needing API access to the Server & Workload Protection.
+
+Upon creation of an API key, you are provided a unique secret key that is associated with the API key. You use this secret key with your API calls for authenticating. You must store the secret key when it is provided because at no other time are you able to obtain it. If you lose the secret key you must create a new API key or create a new secret key for the API key.
+
+:::note
+
+An account with administrator privileges is required to create an API key.
+:::
+
+To create a new API key:
+
+### Procedure {#procedure}
+
+1.  Go to **Administration → User Management → API Keys**.
+
+2.  Click *New*.
+
+3.  In the Properties window, enter a *Name* and *Description* for the API key.
+
+4.  Click on the *Role* list and select a role. *Auditor* grants read-only access to the Server & Workload Protection through the API, while *Full Access* grants both read and write access. If you need more specific roles for API key users, you can select *New* and define one. See [User Roles](user-roles-foundation-services.mdx) for more information on doing so.
+
+5.  Select a *Language*.
+
+6.  Select a *Time Zone* to associate with the key. This is the default time zone used for interpreting date and time values in API calls and responses.
+
+7.  Optionally select *Expires on* and select a date to limit access to a specific period of time.
+
+8.  Click *OK*.
+
+9.  Copy the *Secret key value*.
+
+### Next steps {#next-steps}
+
+:::note
+
+Make sure to copy the secret key value now. This is the only time it will be shown.
+:::
+
+## Lock out an existing API key {#lock-out-an-existing-api-key}
+
+If an existing API key has been compromised, you can lock it out:
+
+### Procedure {#procedure-1}
+
+1.  Double click on the API key you want to lock out.
+
+2.  Optionally select *Locked Out (Denied permission to authenticate)* to block usage of the API key.
+
+3.  Click *OK*.
+::::::

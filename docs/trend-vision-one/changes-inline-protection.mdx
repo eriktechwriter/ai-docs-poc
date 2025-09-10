@@ -1,0 +1,188 @@
+---
+slug: trend-vision-one-changes-inline-protection
+title: Changes made under inline protection
+---
+# Changes made under inline protection
+
+The following table lists all the actions that Cloud Email and Collaboration Protection performs in the Microsoft 365 environment and other changes made by Cloud Email and Collaboration Protection.
+
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 26%" />
+<col style="width: 30%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th rowspan="2"><p>Stage</p></th>
+<th colspan="2"><p>Cloud Email and Collaboration Protection Changes to Microsoft 365</p></th>
+<th rowspan="2"><p>Other Changes</p></th>
+</tr>
+<tr>
+<th><p>Microsoft 365 Admin Center</p></th>
+<th><p>Exchange Online</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Granting access</p></td>
+<td><ul>
+<li><p>Adds the <strong>Trend Micro Cloud App Security</strong> app in Azure AD.</p></li>
+<li><p>Creates Microsoft 365 virtual groups.</p></li>
+</ul></td>
+<td><ul>
+<li><p>Creates mail flow connectors and transport rules.</p></li>
+<li><p>Uses OAuth 2.0 to obtain Exchange Online's access token.</p></li>
+<li><p>Adds a domain pair for Cloud Email and Collaboration Protection to the allow entries for spoofed senders in the Tenant Allow/Block List.</p></li>
+<li><p>Adds the IP addresses of Cloud Email and Collaboration Protection to the IP Allow List in connection filtering.</p></li>
+</ul></td>
+<td><p>None</p></td>
+</tr>
+<tr>
+<td><p>Service running</p></td>
+<td><ul>
+<li><p>Updates the Microsoft 365 virtual groups when the policy target changes.</p></li>
+<li><p>Synchronizes with Microsoft 365 daily to obtain information about new users, groups, verified domains, and MX records.</p>
+
+
+:::note
+
+<p>Cloud Email and Collaboration Protection synchronizes with Microsoft 365 at 00:15 a.m. UTC for both the EU and UK sites, 05:15 a.m. UTC for the Canada site, 08:15 a.m. UTC for the US site, 04:15 p.m. UTC for both the Japan and the Australia and New Zealand sites, 05:15 p.m. UTC for the Singapore site, and 00:15 p.m. UTC for the India site.</p>
+
+
+:::
+
+</li>
+</ul></td>
+<td><p>Updates mail flow transport rules.</p></td>
+<td><p>Refreshes the access token every hour.</p></td>
+</tr>
+<tr>
+<td><p>Revoking access</p></td>
+<td><ul>
+<li><p>Stops daily synchronization with Microsoft 365.</p></li>
+<li><p>Stops generating scheduled reports.</p></li>
+<li><p>Removes the Microsoft 365 virtual groups.</p></li>
+</ul></td>
+<td><p>Removes the mail flow connectors for outbound protection and the transport rules for rerouting messages.</p>
+
+
+:::note
+
+<p>Cloud Email and Collaboration Protection recommends that you check quarantined items before revoking access.</p>
+
+
+:::
+
+</td>
+<td><p>None.</p></td>
+</tr>
+<tr>
+<td><p>Manual cleanup</p></td>
+<td><ul>
+<li><p>Removes the <strong>Trend Micro Cloud App Security</strong> from Azure AD.</p></li>
+<li><p>Removes the domain pair for Cloud Email and Collaboration Protection from the allow entries for spoofed senders in the Tenant Allow/Block List.</p></li>
+<li><p>Removes the IP addresses of Cloud Email and Collaboration Protection from the IP Allow List in connection filtering.</p></li>
+</ul></td>
+<td><p>None.</p></td>
+<td><p>Deletes the following transport rules and connectors:</p>
+<ul>
+<li><p>TMCAS Inline Incoming Skip Spam Filter Transport Rule</p></li>
+<li><p>TMCAS Inline Incoming Move to Junk Folder Transport Rule</p></li>
+<li><p>TMCAS Inline Inbound Connector for Incoming Message</p></li>
+<li><p>TMCAS Inline Inbound Connector for Outgoing Message</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+The following table lists all the actions that Cloud Email and Collaboration Protection performs in the Gmail environment and other changes made by Cloud Email and Collaboration Protection.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 35%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Stage</p></th>
+<th><p>Cloud Email and Collaboration Protection Changes to Gmail</p></th>
+<th><p>Other Changes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Granting access</p></td>
+<td><p>Uses OAuth 2.0 to obtain Gmail's access token.</p>
+<p>Adds the user group <strong>TMCAS Inline Incoming Gmail Virtual Group</strong>.</p></td>
+<td><p>Saves user and group information to the Cloud Email and Collaboration Protection database.</p></td>
+</tr>
+<tr>
+<td><p>Service running</p></td>
+<td><ul>
+<li><p>Synchronizes with Gmail daily to obtain information about new users and groups.</p>
+
+
+:::note
+
+<p>Cloud Email and Collaboration Protection synchronizes with Gmail at 00:15 a.m. UTC for both the EU and UK sites, 05:15 a.m. UTC for the Canada site, 08:15 a.m. UTC for the US site, 04:15 p.m. UTC for both the Japan and the Australia and New Zealand sites, 05:15 p.m. UTC for the Singapore site, and 00:15 p.m. UTC for the India site.</p>
+
+
+:::
+
+</li>
+<li><p>If an email message violates a policy that specifies the "Label email" action: Creates a label called "Risky (by Trend Micro)" and labels the message.</p></li>
+</ul></td>
+<td><ul>
+<li><p>Updates the access or operation logs for the service account during scanning.</p></li>
+<li><p>Refreshes the access token every hour.</p></li>
+<li><p>Cloud Email and Collaboration Protection refreshes the subscription to all mailboxes' event notifications during scheduled synchronization every day.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Revoking access</p></td>
+<td><ul>
+<li><p>Stops daily synchronization with Gmail.</p></li>
+<li><p>Stops generating scheduled reports.</p></li>
+</ul></td>
+<td><ul>
+<li><p>Removes administrator-set policies.</p></li>
+<li><p>Removes user and group information.</p></li>
+<li><p>Removes the access token obtained.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Manual cleanup</p></td>
+<td><ul>
+<li><p>Removes the Cloud Email and Collaboration Protection application from the Google Workspace admin console and from the admin's Google Account.</p>
+
+
+:::note
+
+<p>You can ignore this if you need to use the Google Drive or Gmail service account for protection.</p>
+
+
+:::
+
+</li>
+<li><p>Removes the content compliance rule <strong>TMCAS Content Compliance Rule for Incoming Messages</strong>.</p></li>
+<li><p>Removes the mail route for routing emails to Cloud Email and Collaboration Protection.</p></li>
+<li><p>Removes the inbound gateway for receiving emails delivered from Cloud Email and Collaboration Protection.</p>
+
+
+:::warning[Important]
+
+<p>To ensure that all emails scanned by Cloud Email and Collaboration Protection are successfully delivered to Gmail, remove the inbound gateway 24 hours after revoking access.</p>
+
+
+:::
+
+</li>
+</ul></td>
+<td><p>None.</p></td>
+</tr>
+</tbody>
+</table>
+:::

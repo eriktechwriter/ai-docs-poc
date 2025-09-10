@@ -1,0 +1,91 @@
+---
+slug: trend-vision-one-autoupgrade-agents-activation
+title: Automatically upgrade agents on activation
+last_updated: '2025-09-08'
+ai_context:
+  source_file: autoupgrade-agents-activation.md
+  conversion_date: '2025-09-08T23:42:24.631Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+'Upgrade on activation' is a feature that can be used to automatically upgrade agents to a newer version of software based on a check of the agent version during the activation process. This feature is especially useful if you want to distribute the agent using the baking process (see [Install the agent on an AMI or WorkSpace bundle](install-agent-ami-workspace.mdx)). When agents are baked it can be difficult for you to update your ‘golden’ images each time a new version of the agent is released. In this case, 'upgrade on activation' can be used so that each time the older agent from the baked image activates, the Server & Workload Protection console instructs the agent to upgrade to the version you specify as part of the activation process keeping the running agents used in your environment up-to-date.
+
+:::note
+
+This feature complies with your [agent version control](configure-agent-version-control.mdx) settings.
+:::
+
+:::note
+
+This feature is currently available only on Linux and Windows computers. Support for Unix is planned for a future release.
+:::
+
+This feature works with these operating systems:
+
+- Red Hat Enterprise Linux
+- Ubuntu
+- CentOS
+- Debian
+- Amazon Linux
+- Oracle Linux
+- SUSE Linux Enterprise Server
+- Cloud Linux
+- Windows
+
+### Enable automatic agent upgrade {#enable-automatic-agent-upgrade}
+
+1.  Go to **Administration → System Settings → Agents**.
+2.  Under *Agent Upgrade*, select any of the following: *Automatically upgrade Linux agents on activation*, *Automatically upgrade Windows agents on activation*, *Automatically upgrade Unix agents on activation*.
+3.  Click *Save*.
+
+### Check that agents were upgraded successfully {#check-that-agents-were-upgraded-successfully}
+
+The Version column on the Computers page displays the installed agent version for each computer.
+
+In addition, when an automatic agent upgrade is triggered, [System events](system-events.mdx) are generated that you can use to track the status of the upgrade. You can check for these system events:
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>ID</p></th>
+<th><p>Event</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>264</p></td>
+<td><p>Agent Software Upgrade Requested</p></td>
+<td><p>An agent software upgrade has been triggered, either manually or by an automatic agent upgrade.</p></td>
+</tr>
+<tr>
+<td><p>277</p></td>
+<td><p>Upgrade on Activation Skipped</p></td>
+<td><p>The agent was eligible for an automatic upgrade, but the upgrade did not occur.The event details list the existing agent version and the attempted upgrade version, along with the reason the upgrade failed. The reasons can be:</p>
+<ul>
+<li>Upgrade on activation was skipped for this computer because there is a pending reboot request. Please restart the computer to resolve this issue. The upgrade request will be serviced during the next activation after the reboot.</li>
+<li>Upgrade on activation is not currently supported for use on Windows servers when the target version to upgrade to is earlier than agent version 12. There are improvements in the 12 agent that are required for this feature. Please update the <a href="trend-vision-one-configure-agent-version-control">agent version control configuration</a> to use a 12 or later agent for this platform to allow the upgrade to succeed.</li>
+<li>The agent was not upgraded automatically because a required Linux kernel support file was not found.</li>
+<li>The agent was not upgraded automatically because the upgrade on activation feature does not support the currently installed OS. You may be able to upgrade the agent manually. See <a href="trend-vision-one-install-agent">Manually install the agent</a>.</li>
+</ul></td>
+</tr>
+<tr>
+<td><p>706</p></td>
+<td><p>Software Update: Agent Software Upgraded</p></td>
+<td><p>The upgrade was successful.</p></td>
+</tr>
+<tr>
+<td><p>707</p></td>
+<td><p>Software Update: Agent Software Upgrade Failed</p></td>
+<td><p>The upgrade was not successful. Refer to the event details for more information about why it was not successful.</p></td>
+</tr>
+</tbody>
+</table>
+:::::

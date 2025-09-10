@@ -1,0 +1,314 @@
+---
+slug: trend-vision-one-create-ir-collection-playbooks
+title: Create Incident Response Evidence Collection playbooks
+last_updated: '2025-09-08'
+ai_context:
+  source_file: create-ir-collection-playbooks.md
+  conversion_date: '2025-09-08T23:42:21.410Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Collect evidence to support threat investigation and incident response by creating evidence collection playbooks.
+
+Collect detailed evidence from potentially compromised endpoints for internal investigations into critical incidents that occurred on your network and may require further attention.
+
+:::warning[Important]
+
+- Evidence collection requires that you enable XDR endpoint sensors on target endpoints.
+
+- Evidence archives use the same folder structures as the SANS Institutes and CyLR tool.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Workflow and Automation → Security Playbooks**.
+
+2.  On the **Playbooks** tab, choose **Add → Create from template**.
+
+3.  Select **Incident Response Evidence Collection** and click **Create Playbook from Template**.
+
+4.  Configure the playbook settings and click **Apply**.
+
+    :::note
+
+    You must specify a unique name for the playbook.
+    :::
+
+5.  To customize the name of the [trigger node](playbook-nodes.mdx), click the edit icon (![](/images/edit=6bab3fa2-ec74-4134-97fb-784f64900103.webp)).
+
+6.  Identify target endpoints for evidence collection by endpoint names or IP addresses.
+
+    - To collect evidence from endpoints by **Endpoint name**, specify the endpoint names in the **Endpoint name** text box.
+
+    - To collect evidence from endpoints by **IP address**, specify the IP address or IP range in the **IP address** text box.
+
+      A maximum of 10 IP ranges can be used. Examples of the IP range are as follows:
+
+      - 10.1.0.\*
+
+      - 192.168.1.0/24
+
+      - 192.168.1.10–192.168.1.20
+
+      In CIDR notation, the prefix length should range from 16 to 32. When using the Start IP–End IP format, the first two octets (representing the network portion) must be identical for all IP addresses within the range.
+
+7.  Configure the manual approval settings in the first [action node](playbook-nodes.mdx) (default name: "Notify recipients for manual approval").
+
+    1.  (Optional) Specify a custom **Name** for the node.
+
+    2.  Select whether to send a notification to request manual approval to create response actions.
+
+        :::warning[Important]
+
+        Actions pending manual approval for over 24 hours expire and cannot be performed.
+        :::
+
+    3.  If you require manual approval, configure the following settings.
+
+        <table>
+        <colgroup>
+        <col style="width: 20%" />
+        <col style="width: 80%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Setting</p></th>
+        <th><p>Description</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Notification method</p></td>
+        <td><ul>
+        <li><p><strong>Email</strong>: Sends an email notification to specified recipients</p></li>
+        <li><p><strong>Webhook</strong>: Sends a notification to specified webhook channels</p></li>
+        </ul></td>
+        </tr>
+        <tr>
+        <td><p>Subject prefix</p></td>
+        <td><p>The prefix that appears at the start of the notification subject line</p></td>
+        </tr>
+        <tr>
+        <td><p>Recipients</p></td>
+        <td><p>The email addresses of recipients</p>
+        <p>The field only appears if you select <strong>Email</strong> for <strong>Notification method</strong>.</p></td>
+        </tr>
+        <tr>
+        <td><p>Webhook</p></td>
+        <td><p>The webhook channels to receive notifications</p>
+        <p>The field only appears if you select <strong>Webhook</strong> for <strong>Notification method</strong>.</p>
+        
+
+        :::tip
+        
+        <p>To <a href="trend-vision-one-managing-webhooks">add a webhook connection</a>, click <strong>Create channel</strong> in the drop-down list.</p>
+        
+
+        :::
+
+        </td>
+        </tr>
+        </tbody>
+        </table>
+
+8.  Configure evidence collection in the next [action node](playbook-nodes.mdx) (default name: "Collect evidence").
+
+    <table>
+    <colgroup>
+    <col style="width: 20%" />
+    <col style="width: 80%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Setting</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Name</p></td>
+    <td><p>The node name</p></td>
+    </tr>
+    <tr>
+    <td><p>Evidence types</p></td>
+    <td><p><a href="trend-vision-one-supported-evidence-types">Types of evidence</a> to collect</p>
+    
+
+    :::note
+    
+    <p><strong>Basic information</strong> is required.</p>
+    
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>Archive location on endpoint</p></td>
+    <td><p>Location of the archive on the local endpoint</p>
+    
+
+    :::warning[Important]
+    
+    <ul>
+    <li><p>The local archive does not have encryption, and remains on the endpoint until deleted. This may allow access to sensitive information to anyone with access to the file system or reveal the presence of an ongoing investigation.</p></li>
+    <li><p>Evidence archives take up hard drive space and may impact endpoint performance.</p></li>
+    </ul>
+    
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>Upload evidence to Trend Vision One</p></td>
+    <td><p>Uploads evidence to the Forensics app in the Trend Vision One console</p>
+    
+
+    :::warning[Important]
+    
+    <p>The playbook requires credits to upload the collected evidence to the Forensics app in the Trend Vision One console. Configure the data allowance in Forensics before you set up the playbook to upload evidence.</p>
+    <p>If the data allowance is not configured, all playbooks created before October 13, 2023 with <strong>Upload evidence to Trend Vision One</strong> turned on will not be able to collect evidence, store it locally, or upload it to the Forensic app.</p>
+    
+
+    :::
+
+    
+    
+
+    :::tip
+    
+    <p>Find uploaded evidence on the <strong>Execution Results</strong> page in the Security Playbooks app.</p>
+    
+
+    :::
+
+    </td>
+    </tr>
+    </tbody>
+    </table>
+
+9.  Specify how to notify recipients of the playbook results by configuring the second [path selection node](playbook-nodes.mdx).
+
+    :::note
+
+    You can only select one path for notification of results.
+    :::
+
+10. For email and webhook notifications, configure the [action node](playbook-nodes.mdx) (default name: "Send notification of results").
+
+    <table>
+    <colgroup>
+    <col style="width: 20%" />
+    <col style="width: 80%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Setting</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Name</p></td>
+    <td><p>The node name</p></td>
+    </tr>
+    <tr>
+    <td><p>Notification method</p></td>
+    <td><ul>
+    <li><p><strong>Email</strong>: Sends an email notification to specified recipients</p></li>
+    <li><p><strong>Webhook</strong>: Sends a notification to specified webhook channels</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>Subject prefix</p></td>
+    <td><p>The prefix that appears at the start of the notification subject line</p></td>
+    </tr>
+    <tr>
+    <td><p>Recipients</p></td>
+    <td><p>The email addresses of recipients</p>
+    <p>The field only appears if you select <strong>Email</strong> for <strong>Notification method</strong>.</p></td>
+    </tr>
+    <tr>
+    <td><p>Webhook</p></td>
+    <td><p>The webhook channels to receive notifications</p>
+    <p>The field only appears if you select <strong>Webhook</strong> for <strong>Notification method</strong>.</p>
+    
+
+    :::tip
+    
+    <p>If you need to <a href="trend-vision-one-managing-webhooks">add a webhook connection</a>, click <strong>Create channel</strong> in the drop-down list.</p>
+    
+
+    :::
+
+    </td>
+    </tr>
+    </tbody>
+    </table>
+
+11. For ServiceNow ticket notifications, configure the two action nodes.
+
+    1.  Follow Step 7 to configure the first [action node](playbook-nodes.mdx) (default name: "Notify recipients for manual approval").
+
+    2.  Configure the next [action node](playbook-nodes.mdx) (default name: "Send ticket notification of results").
+
+        <table>
+        <colgroup>
+        <col style="width: 20%" />
+        <col style="width: 80%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Setting</p></th>
+        <th><p>Description</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Name</p></td>
+        <td><p>The node name</p></td>
+        </tr>
+        <tr>
+        <td><p>Notification method</p></td>
+        <td><p>The action node can only send "Ticket" notifications</p></td>
+        </tr>
+        <tr>
+        <td><p>Ticket profile</p></td>
+        <td><p>The ServiceNow ticket profile to use</p>
+        
+
+        :::tip
+        
+        <p>If you need to <a href="trend-vision-one-creating-ticket-profile">add a ticket profile</a>, click <strong>Create ticket profile</strong> in the drop-down list.</p>
+        
+
+        :::
+
+        </td>
+        </tr>
+        <tr>
+        <td><p>Ticket profile settings</p></td>
+        <td><p>The ticket profile settings for the playbook</p>
+        <p>Selecting a ticket profile automatically loads the settings. Changing the settings overrides the ticket profile for the playbook.</p>
+        <ul>
+        <li><p><strong>Assignment group:</strong> The ServiceNow assignment group you want to assign the ticket to</p></li>
+        <li><p><strong>Assigned to:</strong> The ServiceNow user you want to assign the ticket to</p></li>
+        <li><p><strong>Short description:</strong> A short description of the ticket which displays in ServiceNow</p></li>
+        </ul></td>
+        </tr>
+        </tbody>
+        </table>
+
+12. Enable the playbook by toggling the **Enable** control on.
+
+13. Click **Save**.
+
+    The playbook appears on the **Playbooks** tab in the **Security Playbooks** app.
+
+**Related information**
+
+- [Supported evidence types](supported-evidence-types.md "Learn about the types of evidence in the basic information category that the Incident Response Evidence Collection playbook, Collect Evidence task, and Trend Micro Incident Response Toolkit collect.")
+::::

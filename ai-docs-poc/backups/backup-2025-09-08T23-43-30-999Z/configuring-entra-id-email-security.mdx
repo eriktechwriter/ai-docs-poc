@@ -1,0 +1,103 @@
+---
+slug: trend-vision-one-configuring-entra-id-email-security
+title: Configuring Microsoft ENTRA ID
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configuring-entra-id-email-security.md
+  conversion_date: '2025-09-08T23:42:22.474Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Microsoft Entra ID is Microsoft's multi-tenant cloud based directory and identity management service.
+
+Make sure you have a valid subscription in Microsoft Entra ID that handles the sign-in process and eventually provides the authentication credentials of end users to the End User Console.
+
+### Procedure {#procedure}
+
+1.  On the Microsoft Entra ID management portal, select an active directory that you want to implement SSO.
+
+2.  Click **Enterprise applications** in the navigation area on the left and click **New application**.
+
+3.  On the **Browse Microsoft Entra ID Gallery (Preview)** screen, click **Create your own application**.
+
+4.  On the **Create your own application** panel that appears on the right, specify a name for your application, for example, `Trend Micro Email Security End User Console`, and click **Create**.
+
+5.  Under **Getting Started** in the overview of your application, click **1. Assign users and groups**, click **Add user/group**, select a specific user or group for this application and click **Assign**.
+
+6.  In the navigation area of your application, click **Single sign-on**.
+
+7.  Click **SAML** to configure the connection from your application to Microsoft Entra ID using the SAML protocol.
+
+    1.  Under **Basic SAML Configuration**, click **Edit**, specify the identifier and reply URL, and click **Save**.
+
+        :::note
+
+        Specify the identifier for your region as follows:
+
+        `https://euc.``<domain_name>`{.variable .varname}`/uiserver/euc/ssoLogin`
+
+        Specify the reply URL for your region as follows:
+
+        `https://euc.``<domain_name>`{.variable .varname}`/uiserver/euc/ssoAssert?cmpID=``<unique_identifier>`{.variable .varname}
+
+        In the preceding and following URLs:
+
+        - Replace `<unique_identifier>`{.variable .varname} with a unique identifier. Record the unique identifier, which will be used when you create an SSO profile on the Cloud Email Gateway Protection administrator console.
+
+        - Replace `<domain_name>`{.variable .varname} with any of the following based on your location:
+
+          - North America, Latin America and Asia Pacific:
+
+            `tmes.trendmicro.com`
+
+          - Europe and Africa:
+
+            `tmes.trendmicro.eu`
+
+          - Australia and New Zealand:
+
+            `tmes-anz.trendmicro.com`
+
+          - Japan:
+
+            `tmems-jp.trendmicro.com`
+
+          - Singapore:
+
+            `tmes-sg.trendmicro.com`
+
+          - India:
+
+            `tmes-in.trendmicro.com`
+
+          - Middle East (UAE):
+
+            `tmes-uae.trendmicro.com`
+        :::
+
+        Click **No, I'll test later** when you are prompted to choose whether to test single sign-on with `Trend Micro Email Security End User Console`. You are advised to perform a test after all SSO settings are complete.
+
+    2.  Under **User Attributes & Claims**, click **Edit**, and specify the identity claim.
+
+        User attributes and claims are used to get the email addresses of logon accounts to authenticate their identity. By default, the source attribute **user.mail** is preconfigured to get the email addresses. If the email addresses in your organization are defined by another source attribute, do the following to add a new claim name:
+
+        Click **Add new claim**. On the **Manage claim** screen, specify the claim name, leave **Namespace** empty, select **Attribute** as **Source**, select a value from the **Source attribute** drop-down list, and click **Save**.
+
+        :::warning[Important]
+
+        When configuring the identity claim type for an SSO profile on Cloud Email Gateway Protection, make sure you use the claim name specified here.
+        :::
+
+        (Optional) Click **Add a group claim**. On the **Group Claims** screen, specify the groups associated with the end user, select **Group ID** as **Source attribute**, select **Customize the name of the group claim**, specify the group claim name, for example, `euc_group`, and click **Save**.
+
+        :::warning[Important]
+
+        When configuring the group claim type for an SSO profile on Cloud Email Gateway Protection, make sure you use the group claim name specified here.
+        :::
+
+    3.  Under **SAML Signing Certificate**, click **Edit**, specify an email address for **Notification Email Addresses**, and click **Save**. Click **Download** next to **Certificate (Base64)** to download a certificate file for Microsoft Entra ID signature validation on Cloud Email Gateway Protection.
+
+    4.  Under **Set up Trend Micro Email Security End User Console**, record the login and logout URLs.
+:::

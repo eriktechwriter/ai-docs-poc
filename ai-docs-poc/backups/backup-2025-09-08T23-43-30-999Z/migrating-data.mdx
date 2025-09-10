@@ -1,0 +1,78 @@
+---
+slug: trend-vision-one-migrating-data
+title: Migrating data to Cloud Email Gateway Protection
+last_updated: '2025-09-08'
+ai_context:
+  source_file: migrating-data.md
+  conversion_date: '2025-09-08T23:42:16.000Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+### Procedure {#procedure}
+
+1.  Go to **Administration → Other Settings → IMSS/IMSVA Migration Tool**.
+
+2.  Read the on-screen instructions, and click **Get Started**.
+
+3.  On the pop-up screen, click **Choose File...**, select the configuration file you exported, select **Overwrite** or **Merge**, and click **Next**.
+
+    Cloud Email Gateway Protection begins to create a migration task, analyze the configuration file, and generate a data analysis report.
+
+    :::note
+
+    This process may take several minutes, depending on the size of the configuration file.
+    :::
+
+4.  At Step 2 on the pop-up screen, view pre-migration check results to determine which settings will be migrated to Cloud Email Gateway Protection and which will not.
+
+    1.  Select an option from the **Show** drop-down list to show the settings in a specific state.
+
+        - **Not supported**: Settings in this state are not supported in Cloud Email Gateway Protection and will not be migrated. If you need these settings, you have to add them in Cloud Email Gateway Protection manually.
+
+        - **Error**: There are some critical issues about the settings in this state, but the settings will still be migrated to Cloud Email Gateway Protection. During migration, some improper settings may be removed or modified. The settings in Cloud Email Gateway Protection may be unexpected after migration, and the corresponding policies will be disabled temporarily. You need to fix these error settings and enable the policies manually after migration.
+
+        - **Warning**: There are some minor issues about the settings in this state, and the settings will be automatically handled by Cloud Email Gateway Protection. You only need to confirm these warning settings after migration.
+
+        - **Successful**: Settings in this state will be migrated to Cloud Email Gateway Protection without any issue.
+
+    2.  View the detailed description of the settings in the table.
+
+    3.  Click **Download Report** to download the data analysis report.
+
+    4.  (Optional) If the data analysis report contains too many error settings, click **Cancel**, modify the settings, and restart migration.
+
+        Clicking **Cancel** at this step will not import the settings into Cloud Email Gateway Protection.
+
+5.  Click **Next** to proceed with the migration.
+
+    Cloud Email Gateway Protection begins to analyze the configuration file, import settings in the configuration file, and generate a data migration report.
+
+    :::note
+
+    This process may take several minutes, depending on the size of the configuration file.
+    :::
+
+6.  At Step 3 on the pop-up screen, view the migration results to find which settings are migrated to Cloud Email Gateway Protection and which are not.
+
+    1.  Select an option from the **Show** drop-down list to show the settings in a specific state.
+
+        - **Not supported**: Settings in this state are not supported in Cloud Email Gateway Protection and are not migrated. If you need these settings, you have to add them in Cloud Email Gateway Protection manually.
+
+        - **Error**: There are some critical issues about the settings in this state, but the settings are still migrated to Cloud Email Gateway Protection. During migration, some improper settings may be removed or modified. The settings in Cloud Email Gateway Protection may be unexpected after migration, and the corresponding policies are disabled temporarily. You need to fix these error settings and enable the policies manually after migration.
+
+        - **Warning**: There are some minor issues about the settings in this state, and the settings are automatically handled by Cloud Email Gateway Protection. You only need to confirm these warning settings after migration.
+
+        - **Successful**: Settings in this state are migrated to Cloud Email Gateway Protection without any issue.
+
+    2.  View the detailed description of the settings in the table.
+
+    3.  Click **Download Report** to download the data migration report.
+
+7.  Click **Finish**
+
+    Under **Inbound Protection** and **Outbound Protection**, you will find that the **Migration status** drop-down list and **Migration Status** column are added on the policy list screens. Deselect the **Show migration status** check box in the migration tool if you do not want Cloud Email Gateway Protection to show the **Migration status** drop-down list and **Migration Status** column any more.
+
+    You still need to verify the migrated data after the migration. For details, see [Verifying data after migration](verifying-data-after-migration.mdx).
+:::

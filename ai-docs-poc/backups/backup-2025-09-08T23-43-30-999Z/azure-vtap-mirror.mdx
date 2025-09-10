@@ -1,0 +1,48 @@
+---
+slug: trend-vision-one-azure-vtap-mirror
+title: Setting up traffic mirroring with Azure virtual network TAP
+last_updated: '2025-09-08'
+ai_context:
+  source_file: azure-vtap-mirror.md
+  conversion_date: '2025-09-08T23:42:24.297Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Learn how to configure traffic mirroring for your Virtual Network Sensor with Microsoft Azure virtual network TAP.
+
+Trend Micro recommends configuring traffic mirroring with Azure virtual network TAP. For more information, see the [Azure documentation](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-tap-overview).
+
+You can also configure traffic mirroring with [Gigamon VUE Cloud Suite for Azure](gigamon-vue-cloud-suite-azure.mdx). Gigamon is a third-party provider recommended by Microsoft for use in the Azure environment, and has been tested by Trend Micro for use with the Virtual Network Sensor.
+
+<figure>
+<img src="./images/vTAPtrafficMirroring=f83f2f6e-213d-4d8b-b990-5985fc957c65.webp" />
+<figcaption>Example mapping of a Virtual Network Sensor deployment within the Azure environment</figcaption>
+</figure>
+
+### Procedure {#procedure}
+
+1.  On the Microsoft Azure console, go to **Virtual network terminal access points**.
+
+2.  On the **Virtual network terminal access points** screen, click **Create**.
+
+3.  On the **Basics** tab, select the subscription and resource group from the drop-down lists.
+
+4.  Provide a name for the virtual network TAP.
+
+5.  Select the region that your Virtual Network Sensor is in from the drop-down list.
+
+6.  Specify the data port of your Virtual Network Sensor as the destination IP address.
+
+7.  On the **Review + create** tab, review the settings and click **Create**.
+
+8.  On the left navigation panel, click the name of the virtual network TAP that you just created.
+
+9.  Go to **Settings → Sources** and click **Add** to add the virtual machine you want to monitor.
+
+    :::tip
+
+    If you are unable to add a source successfully, turn off the virtual machine and wait for deallocation. After deallocation, turn on the virtual machine and try again.
+    :::
+:::

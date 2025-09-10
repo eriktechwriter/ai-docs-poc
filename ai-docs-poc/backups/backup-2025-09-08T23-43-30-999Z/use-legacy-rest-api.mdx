@@ -1,0 +1,538 @@
+---
+slug: trend-vision-one-use-legacy-rest-api
+title: Use the legacy REST API
+last_updated: '2025-09-08'
+ai_context:
+  source_file: use-legacy-rest-api.md
+  conversion_date: '2025-09-08T23:42:11.714Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+The REST API that was originally released in a previous version of Deep Security is still available, although it is deprecated and no new features will be added to it. When possible, you should use the Server & Workload Protection API to take advantage of new features and continued support.
+
+For more information, see [Automation Center: Use the Legacy APIs](https://automation.trendmicro.com/deep-security/Guides/use-the-legacy-apis/).
+
+### When to use the legacy REST API {#when-to-use-the-legacy-rest-api}
+
+You should continue to use the legacy REST API if it provides the capabilities that you need and those capabilities are not yet provided in the Server & Workload Protection API. The following table summarizes the availability of REST API capabilities in the Server & Workload Protection API.
+
+:::note
+
+Endpoints are continuously being added to the Server & Workload Protection API. Periodically check this table for changes.
+:::
+
+<table>
+<thead>
+<tr>
+<th><p>Category</p></th>
+<th><p>Capability</p></th>
+<th><p>Server &amp; Workload Protection API support</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Authentication</p></td>
+<td><p>Log in and log out</p></td>
+<td><p>Yes - <a href="trend-vision-one-api-keys-server-workload">legacy API keys</a> and <a href="https://docs.trendmicro.com/en-us/documentation/article/trend-micro-cloud-one-identity-account-management-c1-api-key">Trend Micro Cloud One API keys</a></p></td>
+</tr>
+<tr>
+<td><p>Describe and end a session</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Administrators</p></td>
+<td><p>Create, describe, list, modify, and delete an administrator</p></td>
+<td><p>Yes - See <a href="https://automation.trendmicro.com/cloudone/workload-security/">Administrators</a> in the API Reference</p></td>
+</tr>
+<tr>
+<td><p>Policy settings</p></td>
+<td><p>Describe, modify, and delete the Anti-Malware settings of a policy</p></td>
+<td><p>Yes - See <a href="https://automation.trendmicro.com/cloudone/workload-security/">Modify a Policy</a> in the API Reference</p></td>
+</tr>
+<tr>
+<td><p>Reset, describe, and modify the scanner settings of a policy</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Describe and modify the Application Control settings of a policy</p></td>
+<td><p>Yes - See <a href="https://automation.trendmicro.com/cloudone/workload-security/">Modify a Policy</a> in the API Reference</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Hosts (Computers)</p></td>
+<td><p>Describe, modify, and delete the Anti-Malware settings of a computer</p></td>
+<td><p>Yes - See <a href="https://automation.trendmicro.com/cloudone/workload-security/">Modify a Computer</a> in the API Reference</p></td>
+</tr>
+<tr>
+<td><p>Reset, describe, and modify the scanner settings of a computer</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Create, delete, describe, list, modify, and synchronize a smart folder</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>List the computers in a smart folder</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>List, disable, describe, and modify relays and relay groups</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>List the tree of host groups</p></td>
+<td><p>Yes - See <a href="https://automation.trendmicro.com/cloudone/workload-security/">List Computer Groups</a> in the API Reference</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Describe, modify, and delete scanner settings on a computer</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Malware scan configurations</p></td>
+<td><p>Create, describe, list, modify, and delete a malware scan configuration</p></td>
+<td><p>Yes - See <a href="https://automation.trendmicro.com/cloudone/workload-security/">Anti-Malware Configurations</a> in the API Reference</p></td>
+</tr>
+<tr>
+<td><p>Scheduled Tasks</p></td>
+<td><p>Create, delete, describe, modify, and list scheduled tasks</p></td>
+<td><p>Yes - See <a href="https://automation.trendmicro.com/cloudone/workload-security/">Scheduled Tasks</a> in the API Reference</p></td>
+</tr>
+<tr>
+<td><p>Modify a scheduled task recipient list</p></td>
+<td><p>Yes - See <a href="https://automation.trendmicro.com/cloudone/workload-security/">Scheduled Tasks</a> &gt; Modify a Scheduled Task &gt; Request Body &gt; generateReportTaskParameters in the <a href="https://automation.trendmicro.com/cloudone/workload-security/">API Reference</a></p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Reports</p></td>
+<td><p>List report templates</p></td>
+<td><p>Yes - See <a href="https://automation.trendmicro.com/cloudone/workload-security/">Report Templates</a> in the API Reference</p></td>
+</tr>
+<tr>
+<td><p>Alerts</p></td>
+<td><p>Describe and list alerts</p></td>
+<td><p>Not available</p></td>
+</tr>
+<tr>
+<td><p>Describe, list, modify, and reset alert types</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Dismiss an alert, and dismiss an alert on a single target</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Event-based tasks</p></td>
+<td><p>Create, delete, and list event-based tasks</p></td>
+<td><p>Yes - See <a href="https://automation.trendmicro.com/cloudone/workload-security/">Event Based Tasks</a> in the API Reference</p></td>
+</tr>
+<tr>
+<td><p>Roles</p></td>
+<td><p>Add, delete, and modify a role's host, host group, and policy access</p></td>
+<td><p>Not available</p></td>
+</tr>
+<tr>
+<td><p>Add and delete a role right</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Create, delete, describe, modify, and list roles</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Billing</p></td>
+<td><p>List AWS Marketplace billing records and instance rates</p></td>
+<td><p>Not available</p></td>
+</tr>
+<tr>
+<td><p>Cloud</p></td>
+<td><p>Connect to an AWS account, delete, modify, and describe the connection</p></td>
+<td><p>Not available</p></td>
+</tr>
+<tr>
+<td><p>List, create, delete, describe, modify, and sync cloud accounts (non-AWS)</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Application Control</p></td>
+<td><p>Describe, list, and undo a decision log</p></td>
+<td><p>Not available</p></td>
+</tr>
+<tr>
+<td><p>Create, delete, describe, and list rulesets</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Describe a global ruleset, and add and delete global ruleset rules</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Describe, list, and review application drift and computer drift</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Create, delete, describe, and list software inventories</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Describe and modify Trusted Update Mode (Maintenance Mode)</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Intrusion Prevention</p></td>
+<td><p>Create, delete, modify, describe, and list SSL configurations</p></td>
+<td><p>Not available</p></td>
+</tr>
+<tr>
+<td><p>Connected Threat Defence</p></td>
+<td><p>Clear and modify the list of suspicious objects</p></td>
+<td><p>Not available</p></td>
+</tr>
+<tr>
+<td><p>Events</p></td>
+<td><p>List and describe Anti-Malware, Integrity Monitoring, Log Inspection, Web Reputation, and Application Control events</p></td>
+<td><p>Not available</p></td>
+</tr>
+<tr>
+<td><p>List, create, delete, describe, and modify Syslog configurations</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>SAML</p></td>
+<td><p>Describe a SAML service provider</p></td>
+<td><p>Not available</p></td>
+</tr>
+<tr>
+<td><p>List, create, delete, describe, and modify SAML identity providers</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Assume a role using SAML</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Diagnostics</p></td>
+<td><p>Get manager and agent diagnostic packages</p></td>
+<td><p>Not available</p></td>
+</tr>
+<tr>
+<td><p>Licenses</p></td>
+<td><p>Describe license statuses and update activation codes</p></td>
+<td><p>Not available</p></td>
+</tr>
+<tr>
+<td><p>News Feed</p></td>
+<td><p>Describe, list, and dismiss news feed items</p></td>
+<td><p>Not available</p></td>
+</tr>
+<tr>
+<td><p>Environment</p></td>
+<td><p>List, create, delete, describe, and modify a proxy</p></td>
+<td><p>Not available</p></td>
+</tr>
+</tbody>
+</table>
+
+### Set up your environment to use the REST API {#set-up-your-environment-to-use-the-rest-api}
+
+Perform the following tasks to prepare your environment for developing with the REST API:
+
+1.  Download the Deep Security Web Services SDK
+2.  Create a user account that a REST API client can use
+
+### Download the Web Services SDK {#download-the-web-services-sdk}
+
+Download the Web Services SDK ZIP file and extract it:
+
+[Deep Security Web Service SDK](https://help.deepsecurity.trendmicro.com/DSaaS_WebService_SDK.zip)
+
+The ZIP file contains REST API documentation, a Java client library that helps with developing Java client applications, and samples that use the library. If you use a different language, or you use Java and want to use your own REST client technology, use the REST API reference documentation to learn the syntax for API calls. For each operation, the reference provides the HTTP syntax including the HTTP path and operation (GET, PUT, etc.), and a description of the structure of the data passed to or from the API call.
+
+See the ZIP's readme file for a complete list of contents and other important information.
+
+### Create a Web Service role and user {#create-a-web-service-role-and-user}
+
+Create a role that has permissions to access the Deep Security web services API endpoints (both SOAP and REST) and any other features that you want to use with the REST API. For security reasons, you should create a role and a user specifically for your API calls.
+
+The REST API enforces all role access controls, such as computer rights, security profile rights, and user rights. For example, when you create a role for the Web Service APIs that allows a user to view certain computers, a REST API client that authenticates as that user can view only the specified computers.
+
+1.  In the Server & Workload Protection console, go to **Administration → User Management → Roles**.
+2.  Click *New*.
+3.  Deselect *Allow Access to Workload Security Manager User Interface* and select *Allow Access to Web Service API*.
+4.  When all other configuration is complete, click *Save*.
+5.  Invite a user to join the account as detailed [here](https://docs.trendmicro.com/en-us/documentation/article/trend-micro-cloud-one-identity-account-management-c1-user-invite).
+6.  Provide the required properties for the user. For the Role property, select the role that you just created.
+7.  Make a note of the new user account username and password.
+
+### Develop a REST API client application {#develop-a-rest-api-client-application}
+
+Use the programming language of your choice to write code that calls the REST API according to the API's documentation. You can use any programming language that supports XML or JSON encoding and the HTTP and HTTPS protocols.
+
+For more information, see [Automation Center: Use the Legacy APIs](https://automation.trendmicro.com/deep-security/Guides/use-the-legacy-apis/).
+
+### Basic API access {#basic-api-access}
+
+All access to the REST API is made through the REST API endpoint: `https://app.deepsecurity.trendmicro.com/rest`.
+
+Because the REST API uses standard HTTP mechanisms and some of the operations can be accessed without authentication using HTTP GET, these methods can be accessed from a web browser. For example, the following URL returns the REST API version to the browser:
+
+`https://dsm.example.com:4119/rest/apiVersion`
+
+However, most REST API calls require authentication. To authenticate calls, you provide a session identifier (SID) either as a query parameter for GET and DELETE methods or in the message body of PUT and POST methods. To get a session ID, call the `/rest/authentication/login` URL with the user name and password of a user who is allowed to access the API.
+
+### Manage your sessions {#manage-your-sessions}
+
+Take the following actions to manage your sessions:
+
+- Terminate API sessions when they are no longer required. Server & Workload Protection limits the number of sessions that can be active at one time. Your application should terminate its sessions to avoid reaching the maximum number of concurrent sessions. Call the `/rest/authentication/logout` URL to end the session.
+- Sessions time out after a configurable period. To change the number of concurrent sessions allowed per user and the session timeout, go to **Administration → System Settings → Security**.
+
+The example Java code below illustrates this process.
+
+### Use the provided Java REST API client {#use-the-provided-java-rest-api-client}
+
+The provided Java REST API client is based on the [RESTEasy Client Framework](http://resteasy.jboss.org/) and the [Apache HTTPComponents project](https://hc.apache.org/). This framework takes the Java interfaces that have been marked up with JAX-RS annotations and generates implementations of the interfaces that can communicate with Server & Workload Protection. The Java REST API client takes care of all object serialization and deserialization, HTTP URLs, and HTTP methods for you.
+
+To use the Java REST API client, include the JAR file in the lib folder on the classpath of your application. The JAR file has dependencies on other third-party libraries. For details, see the pom.xml file of the Eclipse project in the samples directory.
+
+The interfaces for all the APIs are found in the Java package `com.trendmicro.ds.platform.rest.api`. All of the objects sent to or from the API are found in the Java package `com.trendmicro.ds.platform.rest.object` and sub-packages.
+
+### Example Java code {#example-java-code}
+
+The following example code uses the Java REST API client to authenticate with Server & Workload Protection.
+
+``` codeblock
+import javax.ws.rs.core.Response.Status;
+
+import org.jboss.resteasy.client.ClientResponse;
+import org.jboss.resteasy.client.ClientResponseFailure;
+import org.jboss.resteasy.client.ProxyFactory;
+import org.jboss.resteasy.client.core.executors.ApacheHttpClient4Executor;
+import org.jboss.resteasy.plugins.providers.RegisterBuiltin;
+import org.jboss.resteasy.spi.ResteasyProviderFactory;
+
+import com.trendmicro.ds.platform.rest.api.IAuthenticationAPI;
+import com.trendmicro.ds.platform.rest.message.error.ErrorMessage;
+import com.trendmicro.ds.platform.rest.object.DSCredentials;
+
+public class AuthenticateSample {
+
+    public static void main(String[] args) {
+        // URL for the REST API. Change this as appropriate. 
+        String restApiUrl = "https://10.0.0.5:4119/rest";
+        
+        // The user name to use for authentication. Change this as appropriate.
+        String username = "admin";
+        
+        // The user's password. Change this as appropriate.
+        String password = "supersecretpassword";
+
+        // Variable to store the session identifier (SID).
+        String sID = null;
+
+        // RESTEasy client framework initialization that only needs to be done once per VM
+        RegisterBuiltin.register(ResteasyProviderFactory.getInstance());
+
+        // An object that will execute HTTP requests
+        ApacheHttpClient4Executor executor = new ApacheHttpClient4Executor();
+
+        // Create the object that will communicate with the authentication API.
+        IAuthenticationAPI authClient = ProxyFactory.create(IAuthenticationAPI.class, restApiUrl, executor);
+
+        // Create the object to pass to the authentication call.
+        DSCredentials credentials = new DSCredentials();
+        credentials.setUserName(username);
+        credentials.setPassword(password);
+
+            try {
+                System.out.println("Attempting to authenticate to Server & Workload Protection REST API...");
+                sID = authClient.login(credentials);
+    
+                System.out.println("Authentication successful.");
+                System.out.println("Authentication session ID string received: " + sID);
+
+            } catch (ClientResponseFailure e) {
+                // This is a special type of exception that means the server threw
+                // an exception because there was a problem with the credentials.
+                // It's important to handle these exceptions explicitly or the
+                // connection to the server won't be released back in to the
+                // underlying connection pool, meaning any subsequent API calls would fail.
+                // See the RESTEasy Client Framework documentation for more details. 
+                ClientResponse&lt;?> clientResponse = e.getResponse();
+
+                // Try to parse the error response in to an instance of the special
+                // ErrorMessage class and display the result.
+                Status status = clientResponse.getResponseStatus();
+                System.out.println("Server returned error status code " + status.getStatusCode() + " (" + status + ")");
+                ErrorMessage errorMessage = clientResponse.getEntity(ErrorMessage.class);
+                System.out.println("Returned error message: " + errorMessage.getMessage());
+
+            } catch (Exception e) {
+                // Some other error happened, most likely related to network communication problems.
+                System.out.println("There was an error during authentication.");
+                e.printStackTrace();
+            
+            } finally {
+                if (sID != null) {
+                    // Make sure to always log out.
+                    System.out.println("");
+                    System.out.println("Ending session...");
+                    authClient.endSession(sID);
+                    System.out.println("End session successful.");
+                    // make sure the session ID isn't accidentally re-used.
+                    sID = null;
+                }
+            }
+        
+            // Cleanup: force the HTTP Client to close any open sockets
+            executor.close();
+
+    }
+    
+}
+```
+
+### Use the Sample Java code {#use-the-sample-java-code}
+
+Sample Java code is included in the samples folder. The samples are part of an Eclipse project that you can import into your Eclipse workspace:
+
+1.  In Eclipse, click **File → Import**.
+2.  Select **General → Existing Projects into Workspace** for the import source.
+3.  Click *Browse* and select the samples folder of the Deep Security Web Services SDK as the root.
+4.  Ensure the *REST API Samples* project is selected and click *Finish*.
+
+To run a sample file within Eclipse, open the file and click **Run → Run As → Java Application**. The samples require command line arguments that you need to set on the Run Configurations screen.
+
+### HTTP status codes {#http-status-codes}
+
+The REST API uses standard HTTP status codes to return the status of requests. The table below shows the response codes that may be used and the circumstances under which they are returned.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>HTTP Status Code</p></th>
+<th><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>200 OK</p></td>
+<td><p>The request completed successfully.</p></td>
+</tr>
+<tr>
+<td><p>400 Bad Request</p></td>
+<td><p>The caller did not supply all of the data that the call requires.</p></td>
+</tr>
+<tr>
+<td><p>401 Unauthorized</p></td>
+<td><p>The caller's SID has timed out due to inactivity. The authentication process must be repeated.</p></td>
+</tr>
+<tr>
+<td><p>403 Forbidden</p></td>
+<td><p>Any of the following reasons:</p>
+<ul>
+<li>The calling does not have access rights to the Web Services APIs.</li>
+<li>The calling user does not have access rights to call the API that failed.</li>
+<li>The caller's SID is invalid.</li>
+<li>The caller is a user in a Tenant but the API is restricted to primary Tenant Users only.</li>
+</ul></td>
+</tr>
+<tr>
+<td><p>404 Not Found</p></td>
+<td><p>Any of the following reasons:</p>
+<ul>
+<li>The caller accessed an invalid URL that is not part of the REST API.</li>
+<li>The caller specified a resource that does not exist. For example, an attempt was made to delete a tenant by ID and the ID that was provided does not correspond with an existing tenant.</li>
+</ul></td>
+</tr>
+<tr>
+<td><p>405 Method Not Found</p></td>
+<td><p>The caller has specified an HTTP method that is not allowed for the given URL. For example, using HTTP POST to access an API that provides GET access.</p></td>
+</tr>
+<tr>
+<td><p>500 Internal Server Error</p></td>
+<td><p>Any of the following reasons:</p>
+<ul>
+<li>A database error occurred.</li>
+<li>Some other unhandled error occurred.</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+### Error responses {#error-responses}
+
+When an API call returns a status code other than `200 OK`, the response body typically includes JSON code similar to the following example:
+
+``` codeblock
+{
+   "error": {
+      "message": "The Activation Code KA47-R947M-KDLUZ-A8WLF-WM6A3-LOL is invalid."
+   }
+}
+```
+
+Some calls include XML code instead of JSON, as in the following example:
+
+``` codeblock
+<error>
+    <message>Error message string</message>
+</error>
+```
+
+:::tip
+
+To force the use of an XML response body, add an `Accept` header to your request with the value of `application/xml`.
+:::
+
+The error message can be helpful for debugging the problem but is not suitable for presenting to end users of an application.
+
+### API calls that return javax.ws.rs.core.Response {#api-calls-that-return-javax.ws.rs.core.response}
+
+Some API calls are documented as returning an object of type javax`.ws.rs.core.Response`. These calls can be thought of as returning nothing more than the HTTP status code.
+
+When you use the provided Java REST API client, it is important to retrieve the result of such calls instead of ignoring them. Once you have the `Response` object, the underlying connection to the server must be manually released back to the connection pool, as described in the RESTEasy Client Framework. For example:
+
+``` codeblock
+org.jboss.resteasy.client.ClientResponse&lt;?> clientResponse = (ClientResponse&lt;?>)apiObject.methodThatReturnsResponse(methodParameters);
+clientResponse.releaseConnection();
+```
+
+### Special Considerations {#special-considerations}
+
+### Specify dates in query parameters {#specify-dates-in-query-parameters}
+
+When you specify dates in search queries, encode them using the date-encoding rules set out in section 5 of [RFC 822](https://tools.ietf.org/html/rfc822), except that years should be encoded as 4 digits instead of 2 as per section 5.2.14 of [RFC 1123](https://tools.ietf.org/html/rfc1123). For example, encode `November 31 2012 at 3:45 PM Eastern Standard Time` as `31 Nov 2012 15:45:00 -0500`.
+
+In Java, these dates could be encoded using `java.text.SimpleDateFormat` and the date format pattern `dd MMM yyyy HH:mm:ss zzz`.
+
+For example, for a session ID of `DC5A4AA79326DF3E149A26EA2DA6B0C7`, the following URL queries all host protection information after `November 31 2012 at 3:45 PM Eastern Standard Time`, where spaces in the date encoding have been URL encoded with `%20`:
+
+`https://dsm.example.com:4119/rest/monitoring/usages/hosts/protection?sID=DC5A4AA79326DF3E149A26EA2DA6B0C7&from=31%20Nov%202012%2015:45:00%20-0500`
+:::::

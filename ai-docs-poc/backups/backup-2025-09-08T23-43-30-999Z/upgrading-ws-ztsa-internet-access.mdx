@@ -1,0 +1,77 @@
+---
+slug: trend-vision-one-upgrading-ws-ztsa-internet-access
+title: >-
+  Upgrading from Trend Micro Web Security to Zero Trust Secure Access Internet
+  Access and AI Service Access
+last_updated: '2025-09-08'
+ai_context:
+  source_file: upgrading-ws-ztsa-internet-access.md
+  conversion_date: '2025-09-08T23:42:11.725Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Set up Internet Access and automatically migrate your settings and access rules from Trend Micro Web Security.
+
+Upgrade from Trend Micro Web Security to Zero Trust Secure Access Internet Access to fully integrate your secure web gateway solution with Trend Vision One. Internet Access helps you better enforce access controls and more effectively reduce risk.
+
+The upgrade process migrates your applicable policies, cloud gateways, and other settings from Trend Micro Web Security to Internet Access. Migrated rules have a higher priority than any existing rules in Internet Access.
+
+:::note
+
+- The migration does not modify your current Trend Micro Web Security deployment
+
+- Not all Trend Micro Web Security settings are directly migratable to Internet Access. For more information, see [Trend Micro Web Security Features and Settings Migration](tmws-features-migration.mdx).
+:::
+
+:::warning[Important]
+
+The following instructions only apply to customers with an active license for Trend Micro Web Security. For the regular Internet Access setup process, see [Setting up Zero Trust Secure Access Internet Access and AI Service Access](setup-ztsa-internet-access.mdx).
+:::
+
+### Procedure {#procedure}
+
+1.  [Integrate your IAM (Identity and Access Management) system with Zero Trust Secure Access](iam-integrate.mdx).
+
+2.  Configure a secure internet gateway.
+
+    - If Trend Micro Web Security currently uses a cloud gateway, the settings are migrated to an Internet Access Cloud Gateway when you upgrade.
+    - If Trend Micro Web Security currently uses an on-premises gateway but you want to use a cloud gateway with Internet Access, [add your corporate locations to the Internet Access Cloud Gateway](cloud-gateway-corporate-locations.mdx).
+    - If Trend Micro Web Security currently uses an on-premises gateway and you want to continue using an on-premises gateway with Internet Access, [deploy an Internet Access On-Premises Gateway](deploy-internet-access-prem-gateway.mdx).
+
+3.  Migrate your settings from Trend Micro Web Security to Internet Access.
+
+    1.  On the Trend Vision One console, go to **Zero Trust Secure Access → Secure Access Configuration → Internet Access and AI Service Access Configuration**.
+
+    2.  Verify that the **Internet Access Control** toggle is off.
+
+    3.  Click **Upgrade Web Gateway**.
+
+        The **Migrate Settings from Existing Products** panel opens.
+
+    4.  Click **Migrate Settings**.
+
+    5.  Verify that **Trend Micro Web Security** is selected.
+
+    6.  Read the Trend Micro Agreement, Global Privacy Notice, and Data Collection Notice.
+
+    7.  Acknowledge that you have read the applicable legal notices by selecting the check box.
+
+    8.  Click **Migrate** to start the settings migration process..
+
+    The settings migration process begins. The process might take several minutes, depending on the amount of settings that need to be migrated.
+
+4.  [Verify that your Internet Access settings are correct](post-migration-checklist-iwss.mdx).
+
+5.  On the **Internet Access Configuration** screen, enable the **Internet Access Control** toggle.
+
+    Internet Access begins analyzing web activity in your organization and enforces secure access rules on your users.
+
+**Related information**
+
+- [Trend Micro Web Security Features and Settings Migration](tmws-features-migration.md "Gain a better understanding of which settings migrate when you upgrade from Trend Micro Web Security to Zero Trust Secure Access Internet Access.")
+- [Identity and Access Management Integration](iam-integrate.md "Integrate a supported IAM system with Zero Trust Secure Access and grant the required permissions.")
+- [Corporate Network Locations](corporate-network-section.md "Define your corporate networks on the Internet Access Cloud Gateway or through Internet Access On-Premises Gateways to identify your internal users and apply more granular Secure Access Rules.")
+- [Post-Migration Checklist](post-migration-checklist-iwss.md "Verify that your Trend Micro Web Security settings correctly migrated to Trend Vision One and direct end user internet traffic to the Internet Access Gateway.")
+:::::

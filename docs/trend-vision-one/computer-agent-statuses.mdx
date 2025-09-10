@@ -1,0 +1,872 @@
+---
+slug: trend-vision-one-computer-agent-statuses
+title: Computer and agent statuses
+---
+# Computer and agent statuses
+
+On the *Computers* page in the Server & Workload Protection console:
+
+- The *Status* column displays the state of the computer's network connectivity and the state (in parentheses) of the agent providing protection, if present. The status column might also display system or agent events. See Status column - computer states and Status column - agent states
+- The Task(s) column displays the state of the tasks. See Task(s) column.
+
+For a list of the events, see [Agent event descriptions](agent-events.mdx) and [System events](system-events.mdx).
+
+### Status column - computer states {#status-column---computer-states}
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>State</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Activated</p></td>
+<td>The agent is activated.
+<p>See Perform other actions on your computers.</p></td>
+</tr>
+<tr>
+<td><p>Discovered</p></td>
+<td><p>Computer has been added to the computers list via the discovery process. (See <a href="trend-vision-one-add-local-network-computers">Discover computers</a>.)</p></td>
+</tr>
+<tr>
+<td><p>Managed</p></td>
+<td><p>An agent is present and activated, with no pending operations or errors.</p></td>
+</tr>
+<tr>
+<td><p>Multiple Errors</p></td>
+<td><p>Multiple errors have occurred on this computer. See the computer's system events for details.</p></td>
+</tr>
+<tr>
+<td><p>Multiple Warnings</p></td>
+<td><p>Multiple warnings are in effect on this computer. See the computer's system events for details.</p></td>
+</tr>
+<tr>
+<td><p>Reactivation Required</p></td>
+<td><p>The agent is installed and listening and is waiting to be reactivated by Server &amp; Workload Protection.</p></td>
+</tr>
+<tr>
+<td><p>Unmanaged</p></td>
+<td><p>The computer's agent is not managed by Server &amp; Workload Protection because it hasn't been activated. Server &amp; Workload Protection can't communicate with the agent until you activate it.</p></td>
+</tr>
+<tr>
+<td><p>Upgrade Recommended</p></td>
+<td><p>A newer version of the agent is available. An software upgrade is recommended.</p></td>
+</tr>
+<tr>
+<td><p>Upgrading Agent</p></td>
+<td><p>The agent software on this computer is in the process of being upgraded to a newer version.</p></td>
+</tr>
+</tbody>
+</table>
+
+### Status column - agent states {#status-column---agent-states}
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>State</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Activated</p></td>
+<td><p>The agent has been successfully activated and is ready to be managed by Server &amp; Workload Protection.</p></td>
+</tr>
+<tr>
+<td><p>Activation Required</p></td>
+<td><p>An unactivated agent has been detected on the target machine. It must be activated before it can be managed by Server &amp; Workload Protection.</p></td>
+</tr>
+<tr>
+<td><p>Deactivation Required</p></td>
+<td><p>Server &amp; Workload Protection has attempted to activate an agent that has already been activated by another Server &amp; Workload Protection account or Deep Security Manager. The original manager must deactivate the agent before it can be activated by Server &amp; Workload Protection.</p></td>
+</tr>
+<tr>
+<td><p>No Agent</p></td>
+<td><p>No agent was detected on the computer.</p></td>
+</tr>
+<tr>
+<td><p>Offline</p></td>
+<td><p>The agent has not connected to Server &amp; Workload Protection for the number of heartbeats specified on <em>Computer or Policy editor &gt; Settings &gt; General</em>.</p>
+<p>This can occur when connectivity is interrupted by a network firewall or proxy, AWS security group, agent software update, or when a computer is powered down for repair.</p>
+<p>Verify that firewall settings allow the <a href="trend-vision-one-swp-port-numbers">required port numbers</a>, and that the computer is powered on. Also see <a href="trend-vision-one-agent-initiated-activation">Activate and protect agents using agent-initiated activation and communication</a>.</p></td>
+</tr>
+<tr>
+<td><p>Online</p></td>
+<td><p>The agent is online and operating as expected.</p></td>
+</tr>
+<tr>
+<td><p>Unknown</p></td>
+<td><p>No attempt has been made to determine whether an agent is present.</p></td>
+</tr>
+</tbody>
+</table>
+
+### Trend Vision One Endpoint Security Agent readiness status {#trend-vision-one-endpoint-security-agent-readiness-status}
+
+:::note
+
+This is a "pre-release" feature and is not considered an official release. Review the [Pre-release Disclaimer](https://docs.trendmicro.com/en-us/enterprise/trend-micro-xdr-help/PrereleaseDisclaimer) before using the feature.
+:::
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Status</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Ready to Install</p></td>
+<td><p>The computer is ready to install Trend Vision One Endpoint Security Agent using Deep Security Agent.</p></td>
+</tr>
+<tr>
+<td><p>Install Pending</p></td>
+<td><p>Trend Vision One Endpoint Security Agent has requested installation in Workload Security, but is not yet installed on the computer.</p></td>
+</tr>
+<tr>
+<td><p>Installing</p></td>
+<td><p>Trend Vision One Endpoint Security Agent is being installed on the computer.</p></td>
+</tr>
+<tr>
+<td><p>Install Failed</p></td>
+<td><p>Trend Vision One Endpoint Security Agent failed install to the computer.</p></td>
+</tr>
+<tr>
+<td><p>Trend Vision One Endpoint Security Agent Installed.</p></td>
+<td><p>Trend Vision One Endpoint Security Agent is installed on the computer.</p></td>
+</tr>
+<tr>
+<td><p>Platform not Supported.</p></td>
+<td><p>There is no installer for the requested platform.</p></td>
+</tr>
+<tr>
+<td><p>Deep Security Agent Version not Supported.</p></td>
+<td><p>There is no installer for the current Deep Security Agent version. Upgrade to version 20.0.1.25770 (20 LTS Update 2024-12-10) or later to install Trend Vision One Endpoint Security Agent.</p></td>
+</tr>
+</tbody>
+</table>
+
+### Task(s) column {#tasks-column}
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>State</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Activating</p></td>
+<td><p>Server &amp; Workload Protection is activating the agent.</p></td>
+</tr>
+<tr>
+<td><p>Activating (Delayed)</p></td>
+<td><p>The activation of the agent is delayed by the amount of time specified in the relevant event-based task.</p></td>
+</tr>
+<tr>
+<td><p>Activation Pending</p></td>
+<td><p>A command to activate the agent has been queued.</p></td>
+</tr>
+<tr>
+<td><p>Agent Software Deployment Pending</p></td>
+<td><p>An instruction to deploy the agent software is queued to be sent to the computer.</p></td>
+</tr>
+<tr>
+<td><p>Agent Software Removal Pending</p></td>
+<td><p>An instruction to remove the agent software is queued to be sent to the computer.</p></td>
+</tr>
+<tr>
+<td><p>Application Control Inventory Scan In Progress</p></td>
+<td><p>An application control inventory scan is being performed.</p></td>
+</tr>
+<tr>
+<td><p>Application Control Inventory Scan Pending (Heatbeat)</p></td>
+<td><p>An instruction to start an application control inventory scan will be sent from Server &amp; Workload Protection during the next heartbeat.</p></td>
+</tr>
+<tr>
+<td><p>Application Control Inventory Scan Pending (Offline)</p></td>
+<td><p>The agent is currently offline. Server &amp; Workload Protection will initiate an application control inventory scan when communication is reestablished.</p></td>
+</tr>
+<tr>
+<td><p>Application Control Ruleset Update In Progress</p></td>
+<td><p>The application control ruleset is being updated.</p></td>
+</tr>
+<tr>
+<td><p>Application Control Ruleset Update Pending (Heartbeat)</p></td>
+<td><p>An instruction to perform an application control ruleset update will be sent from Server &amp; Workload Protection during the next heartbeat.</p></td>
+</tr>
+<tr>
+<td><p>Application Control Ruleset Update Pending (Offline)</p></td>
+<td><p>The agent is currently offline. Server &amp; Workload Protection will initiate an application control ruleset update when communication is reestablished.</p></td>
+</tr>
+<tr>
+<td><p>Baseline Rebuild In Progress</p></td>
+<td><p>The Integrity Monitoring engine is currently rebuilding a system baseline.</p></td>
+</tr>
+<tr>
+<td><p>Baseline Rebuild Paused</p></td>
+<td><p>A baseline rebuild has been paused</p></td>
+</tr>
+<tr>
+<td><p>Baseline Rebuild Pending</p></td>
+<td><p>An instruction to rebuild a system baseline for Integrity Monitoring is queued to be sent.</p></td>
+</tr>
+<tr>
+<td><p>Baseline Rebuild Pending (Offline)</p></td>
+<td><p>The agent is currently offline. The Integrity Monitoring engine will rebuild a system baseline when communication between Server &amp; Workload Protection and this computer is reestablished.</p></td>
+</tr>
+<tr>
+<td><p>Baseline Rebuild Queued</p></td>
+<td><p>The instruction to perform a baseline rebuild is queued.</p></td>
+</tr>
+<tr>
+<td><p>Checking Status</p></td>
+<td><p>The agent state is being checked.</p></td>
+</tr>
+<tr>
+<td><p>Deactivate Pending (Heartbeat)</p></td>
+<td><p>A deactivate instruction will be sent from Server &amp; Workload Protection during the next heartbeat.</p></td>
+</tr>
+<tr>
+<td><p>Deactivating</p></td>
+<td><p>The agent is being deactivated. This means that the agent is available for activation and management by Server &amp; Workload Protection.</p></td>
+</tr>
+<tr>
+<td><p>Deploying Agent Software</p></td>
+<td><p>Agent software is being deployed on the computer.</p></td>
+</tr>
+<tr>
+<td><p>File Backup Cancellation In Progress</p></td>
+<td><p>A file backup is being canceled.</p></td>
+</tr>
+<tr>
+<td><p>File Backup Cancellation Pending</p></td>
+<td><p>An instruction to cancel a file backup is queued to be sent.</p></td>
+</tr>
+<tr>
+<td><p>File Backup Cancellation Pending (Offline)</p></td>
+<td><p>The agent is currently offline. Server &amp; Workload Protection will initiate the cancellation of the file backup when communication is reestablished.</p></td>
+</tr>
+<tr>
+<td><p>File Backup In Progress</p></td>
+<td><p>A file backup is being performed.</p></td>
+</tr>
+<tr>
+<td><p>File Backup Pending</p></td>
+<td><p>An instruction to start a file backup is queued to be sent.</p></td>
+</tr>
+<tr>
+<td><p>File Backup Pending (Offline)</p></td>
+<td><p>The agent is currently offline. Server &amp; Workload Protection will initiate a file backup when communication is reestablished.</p></td>
+</tr>
+<tr>
+<td><p>File Backup Queued</p></td>
+<td><p>The instruction to perform a file backup is queued.</p></td>
+</tr>
+<tr>
+<td><p>Getting Events</p></td>
+<td><p>Server &amp; Workload Protection is retrieving events from the agent.</p></td>
+</tr>
+<tr>
+<td><p>Integrity Scan In Progress</p></td>
+<td><p>An Integrity Scan is currently in progress.</p></td>
+</tr>
+<tr>
+<td><p>Integrity Scan Paused</p></td>
+<td><p>An integrity scan has been paused.</p></td>
+</tr>
+<tr>
+<td><p>Integrity Scan Pending</p></td>
+<td><p>A command to start an integrity scan is queued to be sent.</p></td>
+</tr>
+<tr>
+<td><p>Integrity Scan Pending (Offline)</p></td>
+<td><p>The agent is currently offline. Server &amp; Workload Protection will initiate an Integrity Scan when communication is reestablished.</p></td>
+</tr>
+<tr>
+<td><p>Integrity Scan Queued</p></td>
+<td><p>An instruction to start an integrity scan is queued to be sent.</p></td>
+</tr>
+<tr>
+<td><p>Malware Manual Scan Cancellation In Progress</p></td>
+<td><p>The instruction to cancel a manually-initiated Malware Scan has been sent.</p></td>
+</tr>
+<tr>
+<td><p>Malware Manual Scan Cancellation Pending</p></td>
+<td><p>The command to cancel a manually-initiated malware scan is queued to be sent.</p></td>
+</tr>
+<tr>
+<td><p>Malware Manual Scan Cancellation Pending (Offline)</p></td>
+<td><p>The agent is offline. The instruction to cancel a manually-initiated Malware Scan will be sent when communication is reestablished.</p></td>
+</tr>
+<tr>
+<td><p>Malware Manual Scan In Progress</p></td>
+<td><p>A manually-initiated Malware Scan is in progress.</p></td>
+</tr>
+<tr>
+<td><p>Malware Manual Scan Paused</p></td>
+<td><p>A manually-initiated Malware Scan has been paused.</p></td>
+</tr>
+<tr>
+<td><p>Malware Manual Scan Pending</p></td>
+<td><p>The instruction to perform a manually-initiated Malware Scan has not yet been sent.</p></td>
+</tr>
+<tr>
+<td><p>Malware Manual Scan Pending (Offline)</p></td>
+<td><p>The agent is offline. The instruction to start a manually-initiated Malware Scan will be sent when communication is reestablished.</p></td>
+</tr>
+<tr>
+<td><p>Malware Manual Scan Queued</p></td>
+<td><p>The instruction to perform a manually-initiated Malware Scan is queued.</p></td>
+</tr>
+<tr>
+<td><p>Malware Scheduled Scan Cancellation In Progress</p></td>
+<td><p>The instruction to cancel a scheduled Malware Scan has been sent.</p></td>
+</tr>
+<tr>
+<td><p>Malware Scheduled Scan Cancellation Pending</p></td>
+<td><p>The instruction to cancel a scheduled Malware Scan is queued to be sent.</p></td>
+</tr>
+<tr>
+<td><p>Malware Scheduled Scan Cancellation Pending (Offline)</p></td>
+<td><p>The agent is offline. The instruction to cancel a scheduled Malware Scan will be sent when communication is reestablished.</p></td>
+</tr>
+<tr>
+<td><p>Malware Scheduled Scan In Progress</p></td>
+<td><p>A scheduled Malware Scan is in progress.</p></td>
+</tr>
+<tr>
+<td><p>Malware Scheduled Scan Paused</p></td>
+<td><p>A scheduled Malware Scan has been paused.</p></td>
+</tr>
+<tr>
+<td><p>Malware Scheduled Scan Pending</p></td>
+<td><p>The command to cancel a scheduled malware scan has not yet been sent.</p></td>
+</tr>
+<tr>
+<td><p>Malware Scheduled Scan Pending (Offline)</p></td>
+<td><p>The agent is offline. The instruction to start a scheduled Malware Scan will be sent when communication is reestablished.</p></td>
+</tr>
+<tr>
+<td><p>Malware Scheduled Scan Queued</p></td>
+<td><p>The instruction to cancel a scheduled Malware Scan is queued.</p></td>
+</tr>
+<tr>
+<td><p>Quick Malware Scan Cancellation In Progress</p></td>
+<td><p>A quick malware scan is being canceled.</p></td>
+</tr>
+<tr>
+<td><p>Quick Malware Scan Cancellation Pending</p></td>
+<td><p>An instruction to cancel a quick malware scan is queued to be sent.</p></td>
+</tr>
+<tr>
+<td><p>Quick Malware Scan Cancellation Pending (Offline)</p></td>
+<td><p>The agent is currently offline. Server &amp; Workload Protection will initiate the cancellation of a quick malware scan when communication is reestablished.</p></td>
+</tr>
+<tr>
+<td><p>Quick Malware Scan In Progress</p></td>
+<td><p>A quick malware scan is being performed.</p></td>
+</tr>
+<tr>
+<td><p>Quick Malware Scan Paused</p></td>
+<td><p>A quick malware scan has been paused.</p></td>
+</tr>
+<tr>
+<td><p>Quick Malware Scan Pending</p></td>
+<td><p>An instruction to start a quick malware scan is queued to be sent.</p></td>
+</tr>
+<tr>
+<td><p>Quick Malware Scan Pending (Offline)</p></td>
+<td><p>The agent is currently offline. Server &amp; Workload Protection will initiate a quick malware scan when communication is reestablished.</p></td>
+</tr>
+<tr>
+<td><p>Quick Malware Scan Queued</p></td>
+<td><p>The instruction to perform a quick malware scan is queued.</p></td>
+</tr>
+<tr>
+<td><p>Removing Agent Software</p></td>
+<td><p>The agent software is being removed from the computer.</p></td>
+</tr>
+<tr>
+<td><p>Rollback of Component Update In Progress</p></td>
+<td><p>A component update is being rolled back.</p></td>
+</tr>
+<tr>
+<td><p>Rollback of Component Update Pending</p></td>
+<td><p>An instruction to roll back a component update is queued to be sent.</p></td>
+</tr>
+<tr>
+<td><p>Rollback of Component Update Pending (Heartbeat)</p></td>
+<td><p>An instruction to roll back a component update will be sent from Server &amp; Workload Protection during the next heartbeat.</p></td>
+</tr>
+<tr>
+<td><p>Rollback of Component Update Pending (Offline)</p></td>
+<td><p>The agent is currently offline. Server &amp; Workload Protection will initiate a rollback of the component update when communication is reestablished.</p></td>
+</tr>
+<tr>
+<td><p>Scan for Recommendations Pending (Heartbeat)</p></td>
+<td><p>Server &amp; Workload Protection will initiate a <a href="trend-vision-one-recommendation-scans-intro">recommendation scan</a> at the next heartbeat.</p></td>
+</tr>
+<tr>
+<td><p>Scan for Recommendations Pending (Offline)</p></td>
+<td><p>The agent is currently offline. Server &amp; Workload Protection will initiate a <a href="trend-vision-one-recommendation-scans-intro">recommendation scan</a> when communication is reestablished.</p></td>
+</tr>
+<tr>
+<td><p>Scanning for Open Ports</p></td>
+<td><p>Server &amp; Workload Protection is scanning the computer for open ports.</p></td>
+</tr>
+<tr>
+<td><p>Scanning for Recommendations</p></td>
+<td><p>A <a href="trend-vision-one-recommendation-scans-intro">recommendation scan</a> is underway.</p></td>
+</tr>
+<tr>
+<td><p>Component Update In Progress</p></td>
+<td><p>A component update is being performed.</p></td>
+</tr>
+<tr>
+<td><p>Component Update Pending</p></td>
+<td><p>An instruction to perform a component update is queued to be sent.</p></td>
+</tr>
+<tr>
+<td><p>Component Update Pending (Heartbeat)</p></td>
+<td><p>An instruction to perform a component update will be sent from Server &amp; Workload Protection during the next heartbeat.</p></td>
+</tr>
+<tr>
+<td><p>Component Update Pending (Offline)</p></td>
+<td><p>The agent is currently offline. Server &amp; Workload Protection will initiate a component update when communication is reestablished.</p></td>
+</tr>
+<tr>
+<td><p>Sending Policy</p></td>
+<td><p>A policy is being sent to the computer.</p></td>
+</tr>
+<tr>
+<td><p>Update of Configuration Pending (Heartbeat)</p></td>
+<td><p>An instruction to update the configuration to match the policy changes will be sent from Server &amp; Workload Protection during the next heartbeat.</p></td>
+</tr>
+<tr>
+<td><p>Update of Configuration Pending (Offline)</p></td>
+<td><p>The agent is currently offline. Server &amp; Workload Protection will initiate the configuration update to match the policy changes when communication is reestablished.</p></td>
+</tr>
+<tr>
+<td><p>Upgrading Software (In Progress)</p></td>
+<td><p>A software upgrade is being performed.</p></td>
+</tr>
+<tr>
+<td><p>Upgrading Software (Install Program Sent)</p></td>
+<td><p>A software upgrade is being performed. The install program has been sent to the computer.</p></td>
+</tr>
+<tr>
+<td><p>Upgrading Software (Pending)</p></td>
+<td><p>An instruction to perform a software upgrade is queued to be sent.</p></td>
+</tr>
+<tr>
+<td><p>Upgrading Software (Reboot to Complete Upgrade)</p></td>
+<td><p>A software upgrade has been requested but will not be complete until the agent computer is rebooted. When the computer is in this state, it is still being protected by the older version of the agent.</p></td>
+</tr>
+<tr>
+<td><p>Upgrading Software (Results Received)</p></td>
+<td><p>A software upgrade is being performed. The results have been received.</p></td>
+</tr>
+<tr>
+<td><p>Upgrading Software (Schedule)</p></td>
+<td><p>A software upgrade will be performed once the computer's access schedule permits.</p></td>
+</tr>
+</tbody>
+</table>
+
+### Computer errors {#computer-errors}
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>State</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Communication error</p></td>
+<td><p>General network error.</p></td>
+</tr>
+<tr>
+<td><p>No route to computer</p></td>
+<td><p>Typically the computer cannot be reached because of a firewall between Server &amp; Workload Protection and the computer, or if a router between them is down.</p></td>
+</tr>
+<tr>
+<td><p>Unable to resolve hostname</p></td>
+<td><p>Unresolved socket address.</p></td>
+</tr>
+<tr>
+<td><p>Activation required</p></td>
+<td><p>An instruction was sent to the agent when it was not yet activated.</p></td>
+</tr>
+<tr>
+<td><p>Unable to communicate with Agent</p></td>
+<td><p>Unable to communicate with agent.</p></td>
+</tr>
+<tr>
+<td><p>Protocol Error</p></td>
+<td><p>Communication failure at the IP, TCP, or HTTP layer.</p>
+<p>For example, if the Server &amp; Workload Protection IPaddress is unreachable because the connection is being blocked by a firewall, router, or AWS security group, then it would cause a connection to fail. To resolve the error, verify that the activation <a href="trend-vision-one-swp-port-numbers">port number</a> is allowed and that a route exists.</p></td>
+</tr>
+<tr>
+<td><p>Deactivation Required</p></td>
+<td><p>The agent is currently activated by another Server &amp; Workload Protection account or Deep Security Manager.</p></td>
+</tr>
+<tr>
+<td><p>No Agent</p></td>
+<td><p>No agent was detected on the target.</p></td>
+</tr>
+<tr>
+<td><p>No valid software version</p></td>
+<td><p>Indicates that no installer can be found for the platform and version requested.</p></td>
+</tr>
+<tr>
+<td><p>Send software failed</p></td>
+<td><p>There was an error in sending a binary package to the computer.</p></td>
+</tr>
+<tr>
+<td><p>Internal error</p></td>
+<td><p>Internal error. Please contact your support provider.</p></td>
+</tr>
+<tr>
+<td><p>Duplicate Computer</p></td>
+<td><p>Two computers in the Server &amp; Workload Protection computers list share the same IP address.</p></td>
+</tr>
+<tr>
+<td><p>Unresolved software change limit reached</p></td>
+<td><p>Software changes detected on the file system exceeded the maximum amount. Application control will continue to enforce existing rules, but will not record any more changes, and it will stop displaying any of that computer's software changes.</p>
+<p>See <a href="trend-vision-one-reset-app-control-change">Reset application control after too much software change</a>.</p></td>
+</tr>
+</tbody>
+</table>
+
+### Protection module status {#protection-module-status}
+
+When you hover over a computer name on the *Computers* page, the *Preview* icon (
+
+![](/images/icon_preview_popover=24b0da6f-3af4-4f1e-8fbf-eda1bb20dfe8.webp)) is displayed. Click the icon to display the state of the computer's protection modules.
+
+*On and Off States*:
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>State</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>On</p></td>
+<td><p>Module is configured in Server &amp; Workload Protection and is installed and operating on the agent.</p></td>
+</tr>
+<tr>
+<td><p>Off</p></td>
+<td><p>Module is either not configured in Server &amp; Workload Protection, not installed and operating on the agent, or both.</p></td>
+</tr>
+<tr>
+<td><p>Unknown</p></td>
+<td><p>Indicates an error with the protection modules.</p></td>
+</tr>
+</tbody>
+</table>
+
+*Install state*:
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>State</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Not Installed</p></td>
+<td><p>The software package containing the module has been downloaded in Server &amp; Workload Protection, but the module has not been turned on in Server &amp; Workload Protection or installed on the agent.</p></td>
+</tr>
+<tr>
+<td><p>Installation Pending</p></td>
+<td><p>Module is configured in Server &amp; Workload Protection but is not installed on the agent.</p></td>
+</tr>
+<tr>
+<td><p>Installation in Progress</p></td>
+<td><p>Module is being installed on the agent.</p></td>
+</tr>
+<tr>
+<td><p>Installed</p></td>
+<td><p>Module is installed on the agent. This state is only displayed when the state of the module is "Off". (If the state is "On", the module has been installed on the agent.)</p></td>
+</tr>
+<tr>
+<td><p>Local Plug-In In Use</p></td>
+<td><p>Protection module is on and running properly using the module installed with a local package.</p></td>
+</tr>
+<tr>
+<td><p>Matching Module Plug-In Not Found</p></td>
+<td><p>The version of the software package containing the module in Server &amp; Workload Protection does not match the version reported by the agent.</p></td>
+</tr>
+<tr>
+<td><p>Not Supported/Update Not Supported</p></td>
+<td><p>A matching software package was found on the agent, but it does not contain a module supported by the platform. "Not Supported" or "Update Not Supported" is displayed depending on whether there is already a version of this module installed on the agent.</p></td>
+</tr>
+</tbody>
+</table>
+
+### Perform other actions on your computers {#perform-other-actions-on-your-computers}
+
+On the *Computers* page, the *Actions* button provides several actions that you can perform on the selected computers.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Check Status</p></td>
+<td><p>Checks the status of a computer without performing a scan or activation attempt.</p></td>
+</tr>
+<tr>
+<td><p>Activate/Reactivate</p></td>
+<td><p>Activates or reactivates the agent on the computer. See <a href="trend-vision-one-activate-agent">Activate the agent</a></p></td>
+</tr>
+<tr>
+<td><p>Deactivate</p></td>
+<td><p>You may want to transfer control of a computer from one Deep Security Manager installation (or Server &amp; Workload Protection) to another. If so, the agent has to be deactivated and then activated again by the new manager or Server &amp; Workload Protection.</p></td>
+</tr>
+<tr>
+<td><p>Assign Policy</p></td>
+<td><p>Opens a window with a list that allows you to assign a policy to the computer. The name of the policy assigned to the computer will appear in the <em>Policy</em> column on the <em>Computers</em> page.</p>
+
+
+:::note
+
+If you apply other settings to a computer (for example, adding additional Firewall Rules, or modifying Firewall Stateful Configuration settings), the name of the policy will be in bold, indicating that the default settings have been changed.
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Send Policy</p></td>
+<td><p>When you use Server &amp; Workload Protection to change the configuration of an agent on a computer (apply a new intrusion prevention rule, change logging settings, etc.), Server &amp; Workload Protection has to send the new information to the agent. This is a Send Policy instruction. Policy updates usually happen immediately but you can force an update by clicking <em>Send Policy</em>.</p></td>
+</tr>
+<tr>
+<td><p>Download Component Update</p></td>
+<td><p>Downloads the latest component update from the configured relay to the agent. See <a href="trend-vision-one-apply-security-updates">Apply component updates</a>.</p></td>
+</tr>
+<tr>
+<td><p>Rollback Component Update</p></td>
+<td><p>Rolls back the latest component update for the agent.</p></td>
+</tr>
+<tr>
+<td><p>Get Events</p></td>
+<td><p>Override the normal event retrieval schedule (usually every heartbeat) and retrieve the event logs from the computer(s) now.</p></td>
+</tr>
+<tr>
+<td><p>Clear Warnings/Errors</p></td>
+<td><p>Use this command to clear all warnings and errors for the computer. This command is useful in these situations:</p>
+<ul>
+<li>If the agent for the computer has been reset locally</li>
+<li>If the computer has been removed from the network before you had a chance to deactivate or delete it from the list of computers</li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Upgrade Agent Software</p></td>
+<td><p>See <a href="trend-vision-one-upgrades">Upgrade software</a>.</p></td>
+</tr>
+<tr>
+<td><p>Scan for Recommendations</p></td>
+<td><p>Server &amp; Workload Protection can scan computers and then make recommendations for Security Rules. The results of a recommendation scan appear in the computer's <em>Details</em> window in the <em>Rules</em> pages. See <a href="trend-vision-one-recommendation-scans-intro">recommendation scans</a>.</p></td>
+</tr>
+<tr>
+<td><p>Clear Recommendations</p></td>
+<td><p>Clears rule recommendations resulting from a <a href="trend-vision-one-recommendation-scans-intro">recommendation scan</a> on this computer. Clearing also removes the computer from those listed in an alert produced as a result of a recommendation scan.</p>
+
+
+:::note
+
+This action will not un-assign any rules that were assigned because of past recommendations.
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Full Scan for Malware</p></td>
+<td><p>Performs a full malware scan on the selected computers. The actions taken by a full scan depend on the <em>Malware Manual Scan Configuration</em> in effect on this computer. See <a href="trend-vision-one-configure-malware-scans">Malware Scan Configurations</a>.</p></td>
+</tr>
+<tr>
+<td><p>Quick Scan for Malware</p></td>
+<td><p>Scans critical system areas for currently active threats. Quick Scan looks for currently-active malware but does not perform deep file scans to look for dormant or stored infected files. On larger drives, Quick Scan is significantly faster than a Full Scan.</p>
+
+
+:::note
+
+Quick Scan is only available on-demand. You cannot schedule a Quick Scan as part of a scheduled task.
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Scan for Open Ports</p></td>
+<td>Performs a port scan on all selected computers and checks the agent installed on the computer to determine whether its state is either Deactivation Required, Activation Required, Agent Reactivate Required, or Online. The scan operation, by default, scans ports 1-1024. This range can be changed in <em>Computer or Policy editor &gt; Settings &gt; General</em>.
+
+
+:::note
+
+The agent's listening port number for heartbeats is always scanned regardless of port range settings. When Server &amp; Workload Protection connects to communicate with the agent, it uses that port number. If communication direction is set to "Agent/Appliance Initiated" for a computer (<em>Computer or Policy editor &gt; Settings &gt; General &gt; Communication Direction</em>), however, that port number will not be open.
+
+
+:::note
+
+<table class="note-layout" data-border="0" data-cellspacing="0">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr>
+<td><img src="/resources/note.webp" alt="Note" /></td>
+<td><h5 id="note">Note</h5>
+<div class="note-body">
+New computers on the network will not be detected. To find new computers, use the <em>Discover</em> tool.
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+
+
+:::
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Cancel Currently Executing Port Scans</p></td>
+<td><p>If you have initiated a set of port scans to a large number of computers or over a large range of ports and the scan is taking too long, use the <em>Cancel Currently Executing Port Scans</em> option to cancel the scans.</p></td>
+</tr>
+<tr>
+<td><p>Scan for integrity</p></td>
+<td><p>Integrity Monitoring tracks changes to a computer's system and files. It does by creating a baseline and then performing periodic scans to compare the current state of the computer to the baseline. For more information see <a href="trend-vision-one-set-up-integrity-monitoring">Set up Integrity Monitoring</a>.</p></td>
+</tr>
+<tr>
+<td><p>Rebuild Integrity Baseline</p></td>
+<td><p>Rebuilds a baseline for Integrity Monitoring on this computer.</p></td>
+</tr>
+<tr>
+<td><p>Assign Asset Value</p></td>
+<td><p>Asset values allow you to sort computers and events by importance. The various security rules have a severity value. When rules are triggered on a computer, the severity values of the rules are multiplied by the asset value of the computer. This value is used to rank events in order of importance. See <a href="trend-vision-one-rank-events-importance">Rank events to quantify their importance</a>.</p></td>
+</tr>
+<tr>
+<td><p>Assign a Relay Group</p></td>
+<td><p>To select a relay group for this computer to download updates from, right-click the computer and choose <em>Actions &gt; Assign a Relay Group</em>.</p></td>
+</tr>
+<tr>
+<td><p>Install Trend Vision One Endpoint Security Agent</p></td>
+<td><p>See <a href="trend-vision-one-install-agent-via-deep-security">Install Trend Vision One Endpoint Security agent via Deep Security Agent</a>.</p></td>
+</tr>
+</tbody>
+</table>
+
+### Computers icons {#computers-icons}
+
+- ![](/images/servers=c88f7313-2774-403b-a9fa-755b1c77ab1d.webp) Ordinary computer
+- ![](/images/relay_server=ee64af72-a190-4a0a-b332-0bd1bcea02e9.webp) Relay (a computer with a relay-enabled agent)
+- ![](/images/server_scanner=04828025-7b59-4be1-ade9-a3a23600bf6d.webp) Scanner (a computer with a Scanner-enabled agent)
+- ![](/images/docker_server=80fc87e4-81e5-421a-a9a5-60134494bbd7.webp) Docker host (physical computer)
+- ![](/images/vm_azure_docker=eb1774b3-8c50-4619-b18a-2699ceee9d8b.webp) Azure virtual machine with Docker
+- ![](/images/vm_ec2_docker=1e085dcf-63a9-4328-9e2b-027ba1b67df1.webp) Amazon EC2 with Docker
+- ![](/images/vm_azure_scanner=3cb7b93a-4e1f-4ea5-886c-1f8bf854d738.webp) Azure virtual machine with Scanner
+- ![](/images/vm_azure_scanner_started=b81f9b4b-8139-4b3e-b7e9-9f9d005f2f3d.webp) Azure virtual machine with Scanner (started)
+- ![](/images/vm_azure_scanner_stopped=2ab2912c-47ff-47f7-9628-4db7d7178026.webp) Azure virtual machine with Scanner (stopped)
+- ![](/images/vm_azure_scanner_suspended=0aa9f3a5-3304-4781-88ca-2e727c2f9a5d.webp) Azure virtual machine with Scanner (suspended)
+- ![](/images/vm_ec2_scanner=d060cd32-6044-41de-8a9c-47718ce5d2e0.webp) Amazon EC2 with Scanner
+- ![](/images/vm_ec2_scanner_started=e029f19f-bce3-4fe8-a2f7-b4edf5ee8037.webp) Amazon EC2 with Scanner (started)
+- ![](/images/vm_ec2_scanner_stopped=394ced84-731e-409e-a4fb-3d21a965768c.webp) Amazon EC2 with Scanner (stopped)
+- ![](/images/vm_ec2_scanner_suspended=ba53dc3a-095c-4198-8106-3922e1c13b78.webp) Amazon EC2 with Scanner (suspended)
+- ![](/images/vm_workspace_started=e776724d-7bd9-420a-924f-4752294fdcd9.webp) Amazon WorkSpace (started)
+
+### Status information for different types of computers {#status-information-for-different-types-of-computers}
+
+The circular icon indicates the overall status for the agent or the module:
+
+- Green: No issues
+- Yellow: An issue has been found
+- Red: A critical issue has been found
+- Gray: Unable to find or to check for issues. It may be that a module has been turned off, or that even though the module has been turned on, there are no rules associated with the module and the module cannot report any result.
+
+### Ordinary computer {#ordinary-computer}
+
+The preview pane for an ordinary computer displays the presence of an agent, it status, and the status of the protection modules.
+
+![](/images/OrdinaryComputer=2b178602-3cae-48a3-8394-409488093d94.webp)
+
+### Relay {#relay}
+
+The preview pane for a relay-enabled agent displays its status, the number of component update components it has available for distribution, and the status of the protection modules provided by its embedded agent.
+
+![](/images/relay-agent=06cc37cd-5672-4e6a-92ef-de4a491b4493.webp)
+
+### Scanner {#scanner}
+
+The preview pane for a Scanner displays the presence of an agent, its status, the status of the protection modules, and the scanner status (SAP).
+
+![](/images/SAPModuleStatusnoDocker=a4dd41a0-2093-4382-8b8b-3fceae25e68c.webp)
+
+### Docker hosts {#docker-hosts}
+
+The preview pane for a Docker host displays the presence of an agent and its status, the status of the protection modules, and the Docker status.
+
+![](/images/SAPModuleStatuswithDocker=a6dd2c29-804e-48ad-ac0a-c5aad575529a.webp)
+::::

@@ -1,0 +1,89 @@
+---
+slug: trend-vision-one-gateway-endpoint-sizing-guide
+title: Service Gateway sizing guide for endpoints
+---
+# Service Gateway sizing guide for endpoints
+
+Select a Service Gateway appliance specification based on type and number of endpoints.
+
+When deploying a Service Gateway for endpoints, you can choose between the standard and minimal appliance specifications based on the services enabled and type and number of endpoints.
+
+- **Standard image**: 12 CPUs, 16 GB memory, 500 GB storage
+
+- **Minimal image**: 8 CPUs, 12 GB memory, 200 GB storage
+
+:::note
+
+The provided sizing data is for reference only. Actual traffic load might vary by environment.
+:::
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Endpoint type</th>
+<th>Appliance specification</th>
+<th><p>Enabled services</p></th>
+<th>Maximum number of endpoints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="2"><p>Sensor only</p></td>
+<td><p>Standard image</p></td>
+<td><ul>
+<li><p>Smart Protection Services</p></li>
+<li><p>Forward Proxy Service</p></li>
+<li><p>ActiveUpdate Service</p></li>
+<li><p>Generic Caching Service</p></li>
+</ul></td>
+<td rowspan="2"><p>30,000</p></td>
+</tr>
+<tr>
+<td><p>Minimal image</p></td>
+<td><ul>
+<li><p>Forward Proxy Service</p></li>
+</ul></td>
+</tr>
+<tr>
+<td rowspan="2"><p>Standard Endpoint Protection</p></td>
+<td><p>Standard image</p></td>
+<td><ul>
+<li><p>Smart Protection Services</p></li>
+<li><p>Forward Proxy Service</p></li>
+<li><p>ActiveUpdate Service</p></li>
+<li><p>Generic Caching Service</p></li>
+</ul></td>
+<td rowspan="2"><p>15,000</p></td>
+</tr>
+<tr>
+<td><p>Minimal image</p></td>
+<td><ul>
+<li><p>Forward Proxy Service</p></li>
+</ul></td>
+</tr>
+<tr>
+<td rowspan="2"><p>Server &amp; Workload Protection</p></td>
+<td><p>Standard image</p></td>
+<td><ul>
+<li><p>Smart Protection Services</p></li>
+<li><p>Forward Proxy Service</p></li>
+<li><p>ActiveUpdate Service</p></li>
+<li><p>Generic Caching Service</p></li>
+</ul></td>
+<td rowspan="2"><p>10,000</p></td>
+</tr>
+<tr>
+<td><p>Minimal image</p></td>
+<td><ul>
+<li><p>Forward Proxy Service</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+::::

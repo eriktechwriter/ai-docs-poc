@@ -1,0 +1,67 @@
+---
+slug: trend-vision-one-virtual-network-sensor-aws
+title: Deploying a Virtual Network Sensor with AWS
+last_updated: '2025-09-08'
+ai_context:
+  source_file: virtual-network-sensor-aws.md
+  conversion_date: '2025-09-08T23:42:11.624Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Deploy a Virtual Network Sensor to your AWS cloud environment.
+
+If your security environment uses a hybrid deployment, or you do not have VMware or Microsoft Hyper-V in your environment, you can leverage your Amazon Web Services (AWS) accounts to deploy a Virtual Network Sensor.
+
+<figure>
+<img src="./images/AWS_VNS=GUID-6b88d3c8-219c-44c0-b5e7-4bed21f2ce11.webp" />
+<figcaption>Example mapping of a Virtual Network Sensor deployment within the AWS environment</figcaption>
+</figure>
+
+Before you begin, review the [Virtual Network Sensor system requirements](network-sensor-sys-reqs.mdx) and ensure you have a sign in with permission to access the EC2 service.
+
+To deploy the Virtual Network Sensor, you must complete the following steps:
+
+1.  Choose or create a VPC for the Virtual Network Sensor instance.
+
+2.  Choose or create the subnets for the Virtual Network Sensor data port and management port.
+
+    Trend Micro recommends using different subnets for the data and management ports. For more information on how to set up a VPC and subnet, refer to the [Amazon documentation](https://docs.aws.amazon.com/index.mdx).
+
+3.  [Create security groups](aws-security-groups-network-sensor.mdx) for the data port and management port.
+
+4.  Launch an instance using one of the following deployment methods:
+
+    1.  [Use an Amazon Machine Image (AMI)](launching-ami-instance.mdx)
+
+    2.  [Use a CloudFormation template](deploy-vns-cf-template.mdx)
+
+5.  Verify the Virtual Network Sensor can connect with Network Inventory.
+
+    If the Virtual Network Sensor does not appear in Network Inventory after deployment, verify the following settings:
+
+    - Network settings (NIC/vNIC setting and order)
+
+    - Firewall settings
+
+    - Proxy settings if using a proxy
+
+    - Review the [Virtual Network Sensor FAQ](virtual-network-sensor-faqs.mdx) to verify and test the connection
+
+6.  Configure the network settings for the Virtual Network Sensor.
+
+    - For traffic mirroring settings, see [Configuring the Virtual Network Sensor as a traffic mirror target](network-sensor-traffic-mirror.mdx).
+
+    - To configure a load balancer, see [Deploying a Virtual Network Sensor behind a network load balancer](network-behind-load-balancer.mdx).
+
+    After configuring your network settings, access the Virtual Network Sensor console and use the command `show traffic` to verify the Virtual Network Sensor is receiving traffic. For more information about troubleshooting, see [Virtual Network Sensor FAQ](virtual-network-sensor-faqs.mdx) and [Virtual Network Sensor CLI commands](virtual-network-sensor-cli-commands.mdx).
+
+**Related information**
+
+- [Configuring AWS security groups for Virtual Network Sensor](aws-security-groups-network-sensor.md "Prepare security groups before deploying the instance to ensure properly configured rules for the data port and management port.")
+- [Launching a Virtual Network Sensor AMI instance](launching-ami-instance.md "Use an Amazon Machine Image (AMI) to deploy a Virtual Network Sensor to your cloud environment.")
+- [Deploying a Virtual Network Sensor from a CloudFormation template](deploy-vns-cf-template.md "Use a CloudFormation template to deploy a Virtual Network Sensor to your cloud environment.")
+- [Configuring the Virtual Network Sensor as a traffic mirror target](network-sensor-traffic-mirror.md "Configure your Virtual Network Sensor instance to receive mirrored traffic.")
+- [Deploying a Virtual Network Sensor behind a network load balancer](network-behind-load-balancer.md "Configure your Virtual Network Sensor instance for use with a network load balancer (NLB).")
+:::

@@ -1,0 +1,88 @@
+---
+slug: trend-vision-one-managing-rulesets
+title: Managing Rulesets
+last_updated: '2025-09-08'
+ai_context:
+  source_file: managing-rulesets.md
+  conversion_date: '2025-09-08T23:42:16.133Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Define Container Protection rulesets to ensure protection for your containers during Runtime Security scanning.
+
+### Procedure {#procedure}
+
+1.  Go to **Cloud Security → Container Security → Container Protection**.
+
+2.  Click the **Rulesets** tab.
+
+3.  Create, duplicate, or modify a ruleset.
+
+    - To create a new ruleset, click **New**.
+
+    - To duplicate an existing ruleset:
+
+      1.  Click to select the base ruleset from the policy list.
+
+      2.  Click **Duplicate**.
+
+          Container Protection creates a copy of the existing ruleset and appends "Copy" to the ruleset name.
+
+    - To modify an existing ruleset, click the ruleset in the ruleset list.
+
+4.  For new and duplicated rulesets, specify a unique ruleset name.
+
+    :::note
+
+    - Ruleset names must not contain spaces and only support alphanumeric characters, underscores (\_), and periods (.).
+
+    - You cannot modify the ruleset name after creating the ruleset.
+    :::
+
+5.  If you want to provide more details about the purpose for the ruleset, use the **Description** field.
+
+    The description appears under the ruleset name in the ruleset list.
+
+6.  For users that have applied labels to your Kubernetes clusters and want to apply the ruleset only to clusters with corresponding labels, click **Add Label**.
+
+    1.  Specify the **Key** and **Value** for each label.
+
+    2.  If you have multiple labels that you want to apply the ruleset to, click **Add Label** again.
+
+    :::warning[Important]
+
+    Labels are only supported on Kubernetes clusters and have no effect on Amazon ECS clusters.
+    :::
+
+7.  Apply rules to the ruleset by clicking **Add Rule**.
+
+    1.  Select the checkboxes next to the available rules you want to apply to the ruleset.
+
+    2.  Click **Submit**.
+
+    :::tip
+
+    To get more information about the attack technique that a rule is designed to prevent, search for the MITRE ID (for example `T1021.004`) on the [MITRE site](https://attack.mitre.org/).
+    :::
+
+8.  In the **Mitigation** column, select what action you want Container Security to perform when the rule is violated.
+
+    - **Log**: Log the event but allow the container to continue running
+
+    - **Isolate**: Isolate the pod from all network traffic (Kubernetes only)
+
+    - **Terminate**: Terminate the pod (Kubernetes only)
+
+    :::warning[Important]
+
+    Amazon ECS clusters only support the **Log** action. If you select to **Isolate** or **Terminate** and apply the ruleset to an Amazon ECS cluster, Container Security defaults to the **Log** action only.
+    :::
+
+9.  Click **Create**.
+
+**Related information**
+
+- [Predefined rules](predefined-rules.mdx)
+:::

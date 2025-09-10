@@ -1,0 +1,1358 @@
+---
+slug: trend-vision-one-predefined-alerts
+title: Predefined alerts
+last_updated: '2025-09-08'
+ai_context:
+  source_file: predefined-alerts.md
+  conversion_date: '2025-09-08T23:42:14.296Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Alert</p></th>
+<th><p>Default Severity</p></th>
+<th><p>Dismissible</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="vertical-align: top"><p>A computer reboot is required to enable Deep Security Agent protection</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>The agent software upgrade was successful, but a computer reboot is required to disable Windows Defender and enable agent protection.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>A Deep Security Relay cannot download security components</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>A relay cannot successfully download security components. This might be due to network connectivity issues or misconfiguration in Server &amp; Workload Protection under <strong>Administration → System Settings → Updates</strong>. Check your network configurations (for example, the proxy settings of the relay group) and <em>System Settings</em> then manually initiate an update on the relay using the <em>Download Security Update</em> option on the <strong>Administration → Updates → Software</strong> page.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Abnormal Restart Detected</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>An abnormal restart was detected on the computer. This condition may be caused by a variety of conditions. If the agent is suspected as the root cause, then the diagnostics package (in the Support section of the Computer Details dialog) should be invoked.</p>
+<p>This alert indicates that the agent service was restarted abnormally. You can safely dismiss this alert, or, if the alert reoccurs, create a diagnostics package and open a case with Technical Support.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Account Balance Depleted</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>Your prepaid account balance has been depleted. You can no longer receive updates, including security updates, until your account is replenished. To ensure your security is maintained, contact your sales representative to add credit to your account.</p></td>
+</tr>
+<tr>
+<td><p>Account Balance Low</p></td>
+<td><p>Warning</p></td>
+<td><p>No</p></td>
+<td><p>Your prepaid account balance is running low. To ensure uninterrupted service, please contact your sales representative to add more credit to your account.</p></td>
+</tr>
+<tr>
+<td><p>Activation Failed</p></td>
+<td><p>Critical</p></td>
+<td><p>No</p></td>
+<td><p>This may indicate a problem with the agent, but it also can occur if agent self-protection is enabled. In the Workload Security console, go to <strong>Computer editor → Settings → General</strong>. In <em>Agent Self Protection</em>, and then either deselect <em>Prevent local end-users from uninstalling, stopping, or otherwise modifying the Agent</em> or enter a password for local override.</p></td>
+</tr>
+<tr>
+<td><p>Agent configuration package too large</p></td>
+<td><p>Warning</p></td>
+<td><p>Yes</p></td>
+<td><p>This is usually caused by too many firewall and intrusion prevention rules being assigned. Run a recommendation scan on the computer to determine if any rules can be safely unassigned.</p></td>
+</tr>
+<tr>
+<td><p>Agent Installation Failed</p></td>
+<td><p>Critical</p></td>
+<td><p>Yes</p></td>
+<td><p>The agent failed to install successfully on one or more computers. Those computers are currently unprotected. You must reboot the computers which will automatically restart the agent install program.</p>
+<p>This may indicate a problem with the agent, but it also can occur if agent self-protection is enabled. In the Server &amp; Workload Protection console, go to <em>Computer editor &gt; Settings &gt; General</em>. In <em>Agent Self Protection</em>, and then either deselect <em>Prevent local end-users from uninstalling, stopping, or otherwise modifying the Agent</em> or enter a password for local override.</p></td>
+</tr>
+<tr>
+<td><p>Agent requires Permission for Anti-Malware</p></td>
+<td><p>Critical</p></td>
+<td><p>No</p></td>
+<td><p>Agent requires that you grant it access on the computer being protected to ensure complete protection.1. On the computer, click the agent icon in the menu bar and follow the instructions to allow the necessary permissions.2. If the issue persists, please restart your computer or prepare a diagnostic package and contact support.</p></td>
+</tr>
+<tr>
+<td><p>Agent/Appliance Upgrade Recommended</p></td>
+<td><p>Warning</p></td>
+<td><p>No</p></td>
+<td><p>Server &amp; Workload Protection has detected an older agent version on the computer that does not support all available features. An upgrade of the agent software is recommended. (Deprecated in 9.5)</p></td>
+</tr>
+<tr>
+<td><p>Agent/Appliance Upgrade Recommended (Incompatible Component Update(s))</p></td>
+<td><p>Warning</p></td>
+<td><p>No</p></td>
+<td><p>Server &amp; Workload Protection has detected a computer with a version of the agent that is not compatible with one or more component updates assigned to it. An upgrade of the agent software is recommended.</p></td>
+</tr>
+<tr>
+<td><p>Agent/Appliance Upgrade Recommended (New Version Available)</p></td>
+<td><p>Warning</p></td>
+<td><p>No</p></td>
+<td><p>Server &amp; Workload Protection has detected one or more computers with a version of the agent that is older than the latest version in Server &amp; Workload Protection. An upgrade of the agent software is recommended.</p></td>
+</tr>
+<tr>
+<td><p>Agent/Appliance Upgrade Required</p></td>
+<td><p>Warning</p></td>
+<td><p>No</p></td>
+<td><p>Server &amp; Workload Protection has detected a computer with a version of the agent that is not compatible with Server &amp; Workload Protection. An upgrade of the agent software is required.</p></td>
+</tr>
+<tr>
+<td><p>An update to the Rules is available</p></td>
+<td><p>Warning</p></td>
+<td><p>No</p></td>
+<td><p>Updated rules have been downloaded but not applied to your policies. To apply the rules, go to <em>Administration</em> &gt; <em>Updates</em> &gt; <em>Component</em> and in the <em>Rule Updates</em> column, click <em>Apply Rules to Policies</em>.</p></td>
+</tr>
+<tr>
+<td><p>Anti-Malware Alert</p></td>
+<td><p>Warning</p></td>
+<td><p>Yes</p></td>
+<td><p>A malware scan configuration that is configured for alerting has raised an event on one or more computers.</p></td>
+</tr>
+<tr>
+<td><p>Anti-Malware Component Failure</p></td>
+<td><p>Critical</p></td>
+<td><p>Yes</p></td>
+<td><p>An anti-malware component failed on one or more computers. See the event descriptions on the individual computers for specific details.</p></td>
+</tr>
+<tr>
+<td><p>Anti-Malware Component Update Failed</p></td>
+<td><p>Warning</p></td>
+<td><p>No</p></td>
+<td><p>One or more agent or relay failed to update anti-malware components. See the affected computers for more information.</p></td>
+</tr>
+<tr>
+<td><p>Anti-Malware Engine Offline</p></td>
+<td><p>Critical</p></td>
+<td><p>No</p></td>
+<td><p>The agent has reported that the anti-malware engine is not responding. Please check the system events for the computer to determine the cause of the failure.</p></td>
+</tr>
+<tr>
+<td><p>Anti-Malware module maximum disk space used to store identified files exceeded</p></td>
+<td><p>Warning</p></td>
+<td><p>Yes</p></td>
+<td><p>The Anti-Malware module was unable to analyze or quarantine a file because the maximum disk space used to store identified files was reached. To change the maximum disk space for identified files setting, open the computer or policy editor and go to the Anti-malware &gt; Advanced tab.</p></td>
+</tr>
+<tr>
+<td><p>Anti-Malware protection is absent or out of date</p></td>
+<td><p>Warning</p></td>
+<td><p>No</p></td>
+<td><p>The agent on this computer has not received its initial anti-malware protection package, or its anti-malware protection is out of date. Make sure a relay is available and that the agent has been properly configured to communicate with it. To configure relays and other update options, go to Administration &gt; System Settings &gt; Updates.</p></td>
+</tr>
+<tr>
+<td><p>APIKey Locked Out</p></td>
+<td><p>Warning</p></td>
+<td><p>No</p></td>
+<td><p>API Keys can be locked out manually, or by repeated failed validation attempts.</p></td>
+</tr>
+<tr>
+<td><p>Application Control Engine Offline</p></td>
+<td><p>Critical</p></td>
+<td><p>No</p></td>
+<td><p>The agent has reported that the Application Control engine failed to initialize. Please check the system events for the computer to determine the cause of the failure.</p></td>
+</tr>
+<tr>
+<td><p>Application Control Ruleset is incompatible with agent version</p></td>
+<td><p>Critical</p></td>
+<td><p>No</p></td>
+<td><p>An application control ruleset could not be assigned to one or more computers because the ruleset is not supported by the installed version of the agent. Typically, the problem is that a hash-based ruleset (which is compatible only with agent version 11.0 or newer) has been assigned to an older agent. Agent version 10.x supports only file-based rulesets. (For details, see <a href="trend-vision-one-application-control">Differences in how 10.x and 11.x agents compare files</a>.) To fix this issue, upgrade the agent to version 11.0 or newer. Alternatively, if you are using local rulesets, reset application control for the agent.</p></td>
+</tr>
+<tr>
+<td><p>Application Type Misconfiguration</p></td>
+<td><p>Warning</p></td>
+<td><p>No</p></td>
+<td><p>Misconfiguration of application types may prevent proper security coverage.</p></td>
+</tr>
+<tr>
+<td><p>Application Type Recommendation</p></td>
+<td><p>Warning</p></td>
+<td><p>Yes</p></td>
+<td><p>Server &amp; Workload Protection has determined that a computer should be assigned an application type. This could be because an agent was installed on a new computer and vulnerable applications were detected, or because a new vulnerability has been discovered in an installed application that was previously thought to be safe. To assign the application type to the computer, open the 'Computer Details' dialog box, click on 'Intrusion Prevention Rules', and assign the application type.</p></td>
+</tr>
+<tr>
+<td><p>AWS Contract License Exceeded</p></td>
+<td><p>Critical</p></td>
+<td><p>No</p></td>
+<td><p>AWS Contract License expired or AWS Contract entitlements have been exceeded.</p></td>
+</tr>
+<tr>
+<td><p>Azure Account Not Authorized to Read Resources Information</p></td>
+<td><p>Critical</p></td>
+<td><p>No</p></td>
+<td><p>Azure Cloud Account can't retrieve resources information from Azure API because the Azure Application is not authorized to read resources. Please verify that the Reader role has been assigned to the application.</p></td>
+</tr>
+<tr>
+<td><p>Azure Account Password Invalid</p></td>
+<td><p>Critical</p></td>
+<td><p>No</p></td>
+<td><p>Azure Cloud Account can't retrieve resources information from Azure API because the Azure Application password is invalid.</p></td>
+</tr>
+<tr>
+<td><p>Azure Account Secret Expired</p></td>
+<td><p>Critical</p></td>
+<td><p>No</p></td>
+<td><p>Azure Cloud Account can't retrieve resources information from Azure API because the Azure Application secret key has expired.</p></td>
+</tr>
+<tr>
+<td><p>Azure Key Pair Expired</p></td>
+<td><p>Critical</p></td>
+<td><p>No</p></td>
+<td><p>The key pair for Azure service(s) has expired. You can remove this alert by updating your key pair on the Azure service's property page.</p></td>
+</tr>
+<tr>
+<td><p>Azure Key Pair Expires Soon</p></td>
+<td><p>Warning</p></td>
+<td><p>No</p></td>
+<td><p>The key pair for Azure service(s) will expire soon. You can remove this alert by updating your key pair on the Azure service's property page.</p></td>
+</tr>
+<tr>
+<td><p>Azure Subscription Not Found</p></td>
+<td><p>Critical</p></td>
+<td><p>No</p></td>
+<td><p>Azure Cloud Account cannot retrieve resources information from Azure API because the Azure Subscription cannot be found.</p></td>
+</tr>
+<tr>
+<td><p>Census, Good File Reputation, and Predictive Machine Learning Service Disconnected</p></td>
+<td><p>Warning</p></td>
+<td><p>Yes</p></td>
+<td><p>Disconnected from Census, Good File Reputation, and Predictive Machine Learning Service. See the event details for possible solutions.</p>
+<p>Refer to <a href="trend-vision-one-warning-gfr-pml-disconnected">Warning: Census, Good File Reputation, and Predictive Machine Learning Service Disconnected</a> for troubleshooting tips.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Clock Change Detected</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>A clock change was detected on the computer. Unexpected clock changes may indicate a problem on the computer and should be investigated before dismissing the alert.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Cloud Computer Not Managed as Part of Cloud Account</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>An agent was activated on one or more computers belonging to a cloud account that is not synchronized with Server &amp; Workload Protection. Click the <strong>Action</strong> to add the cloud account. The computers will be moved into the account, and may be billed at a lower hourly rate.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Communications Problem Detected</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>A communications problem was detected on the computer. The computer cannot initiate communication with Server &amp; Workload Protection because of network configuration or load reasons. Check the system events in addition to verifying communications can be established from the computer to Server &amp; Workload Protection. The cause of the issue should be investigated before dismissing the alert.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Computer Not Receiving Updates</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>These computer(s) have stopped receiving updates. Manual intervention may be required.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Computer Reboot Required</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>The agent software upgrade was successful, but you must reboot the computer to complete the install. Manually update the computer(s) before dismissing the alert.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Computer Reboot Required for Activity Monitoring</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>The Activity Monitoring on the agent reported that the computer needs to be rebooted. Check the system events for the computer to determine the reason for the reboot.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Computer Reboot Required for Anti-Malware Protection</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>The anti-malware protection on the agent reported that the computer needs to be rebooted. Check the system events for the computer to determine the reason for the reboot.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Computer Reboot Required for Application Control Protection</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>The Application Control protection on the agent reported that the computer needs to be rebooted. Check the system events for the computer to determine the reason for the reboot.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Computer Reboot Required for Integrity Monitoring Protection</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>The Integrity Monitoring protection on the agent reported that the computer needs to be rebooted. Check the system events for the computer to determine the reason for the reboot.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Configuration Required</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>One or more computers are using a policy that defines multiple interface types where not all interfaces have been mapped.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Duplicate Computer Detected</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>A duplicate computer was activated or imported. Remove the duplicate computer and reactivate the original computer if necessary.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Empty Relay Group Assigned</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>These computers were assigned an empty relay group. Assign a different relay group to the computers or add relays to the empty relay group(s).</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Events Suppressed</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>The agent encountered an unexpectedly high volume of events. As a result, one or more events were not recorded (suppressed) to prevent a potential denial of service. Check the firewall events to determine the cause of the suppression.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Events Truncated</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>Some events were lost because the data file grew too large for the agent to store. This may have been caused by an unexpected increase in the number of events generated, or the inability of the agent to send the data to Server &amp; Workload Protection. For more information, see the properties of the <em>Events Truncated</em> system event on the computer.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Execution of Software Blocked</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>Execution of software was blocked on one or more computers. See the Application Control Events on the following computers for more information.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Failed to Send SNSMessage</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>Server &amp; Workload Protection was unable to forward messages to Amazon Simple Notification Service (SNS)</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Failed to Send Syslog Message</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>Server &amp; Workload Protection was unable to forward messages to one or more syslog servers.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Files could not be scanned for malware</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>Files could not be scanned for malware because the file path exceeded the maximum file path length limit or the directory depth exceeded the maximum directory depth limit. Check the system events for the computer to determine the reason.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Firewall Engine Offline</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>The agent reported that the firewall engine is offline. Check the status of the engine on the agent.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Firewall Rule Alert</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>A firewall rule that is selected for alerting was encountered on one or more computers.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Firewall Rule Recommendation</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>Server &amp; Workload Protection determined that a computer on your network should be assigned a firewall rule. This could be because an agent was installed on a new computer and vulnerable applications were detected, or because a new vulnerability was discovered in an installed application that was previously thought to be safe. To assign the firewall rule to the computer, open <em>Computer Details</em> and click <strong>Firewall Rules</strong>.</p>
+<p>This alert is not supported for <a href="trend-vision-one-enhanced-reco-scan">enhanced recommendation scan</a>.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Incompatible Agent/Appliance Version</p></td>
+<td style="vertical-align: top"><p>Error</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>Server &amp; Workload Protection detected a more recent agent version on the computer that is not compatible with Server &amp; Workload Protection.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Insufficient Disk Space</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>The agent reported that it was forced to delete an old log file to free up disk space for a new log file. Immediately free up disk space to prevent loss of intrusion prevention, firewall and agent events. See <a href="trend-vision-one-warning-insufficient-disk-space">Warning: Insufficient disk space</a>.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Integrity Monitoring Engine Offline</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>The agent reported that the integrity monitoring engine is not responding. Check the system events for the computer to determine the cause of the failure.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Integrity Monitoring Rule Alert</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>An integrity monitoring rule that is selected for alerting was encountered on one or more computers.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Integrity Monitoring Rule Compilation Error</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>An error was encountered compiling an integrity monitoring rule on a computer. This may result in the integrity monitoring rule not operating as expected.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Integrity Monitoring Rule Recommendation</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>Server &amp; Workload Protection determined that a computer on your network should be assigned an integrity monitoring rule. To assign the integrity monitoring rule to the computer, open <em>Computer Details</em> and select <strong>Integrity Monitoring → Integrity Monitoring Rules</strong>.</p>
+<p>This alert is not supported for <a href="trend-vision-one-enhanced-reco-scan">enhanced recommendation scan</a>.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Integrity Monitoring Rule Requires Configuration</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>An integrity monitoring rule that requires configuration before use was assigned to one or more computers. This rule will not be sent to the computer(s). Open the integrity monitoring rule properties and select the Configuration tab for more information.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Integrity Monitoring Trusted Platform Module Not Enabled</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>Trusted platform module not enabled. Ensure the hardware is installed and the BIOS setting is correct.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Integrity Monitoring Trusted Platform Module Register Value Changed</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>Trusted platform module register value changed. If you have not modified the ESXi hypervisor configuration this may represent an attack.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Intrusion Prevention Engine Offline</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>The agent reported that the intrusion prevention engine is offline. Check the status of the engine on the agent.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Intrusion Prevention Rule Alert</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>An intrusion prevention rule that is selected for alerting was encountered on one or more computers.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Intrusion Prevention Rule Compilation Failed</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>This is usually caused by a misconfigured IPS Rule. The Rule name can be found in the Event's Properties window. To resolve this issue, identify the Rule and unassign it or contact Trend Micro Support for assistance.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Intrusion Prevention Rule Requires Configuration</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>An intrusion prevention rule that requires configuration before use was assigned to one or more computers. This rule will not be sent to the computer(s). Open the intrusion prevention rule properties and select the Configuration tab for more information.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Invalid System Settings Detected</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>Server &amp; Workload Protection detected invalid values for one or more system settings.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>License Expired</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>Your Server &amp; Workload Protection license has expired. You will no longer receive updates, including security updates, until your license is renewed. To ensure your security is maintained, contact your sales representative to renew your license.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>License Expiring Soon</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>Your Server &amp; Workload Protection license will expire soon. Contact your sales representative to renew your license.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Log Inspection Engine Offline</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>The agent reported that the log inspection engine has failed to initialize. Check the system events for the computer to determine the cause of the failure.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Log Inspection Rule Alert</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>A log inspection rule that is selected for alerting was encountered on one or more computers.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Log Inspection Rule Recommendation</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>Server &amp; Workload Protection determined that a computer on your network should be assigned a log inspection rule. To assign the log inspection rule to the computer, open <em>Computer Details</em> and select <strong>Log Inspection → Log Inspection Rules</strong>.</p>
+<p>This alert is not supported for <a href="trend-vision-one-enhanced-reco-scan">enhanced recommendation scan</a>.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Log Inspection Rule Requires Configuration</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>A log inspection rule that requires configuration before use was assigned to one or more computers. This rule will not be sent to the computer(s). Open the Log Inspection Rule properties and select the Configuration tab for more information.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Maintenance Mode On</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p><a href="trend-vision-one-set-up-application-control">Maintenance mode</a> is currently active for application control on one or more computers. While this mode is active, application control continues to enforce block rules (if you selected <em>Block unrecognized software until it is explicitly allowed</em>), but will allow software updates, and automatically add them to the inventory part of the ruleset. When the software update is finished for each computer, disable maintenance mode so that unauthorized software is not accidentally added to the ruleset.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Microsoft Entra ID Application Certificate Expired</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>The Microsoft Entra ID application can not sync the cloud data now. The application certificate has expired. Renew the application certificate for the Azure application.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Microsoft Entra ID Application Certificate Expires Soon</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>The Microsoft Entra ID application certificate will expire soon. Renew the application certificate for the Azure application.</p></td>
+</tr>
+<tr>
+<td><p>Microsoft Entra ID Application Need Renew</p></td>
+<td><p>Critical</p></td>
+<td><p>No</p></td>
+<td><p>The Microsoft Entra ID application can not sync the cloud data now. Maybe the application password is expired or the application is deleted. Please renew the application via <em>Computers &gt; Properties (right click on the target group) &gt; Renew Application Now</em>.</p></td>
+</tr>
+<tr>
+<td><p>Microsoft Entra ID Application Not Found</p></td>
+<td><p>Critical</p></td>
+<td><p>No</p></td>
+<td><p>Azure Cloud Account can't retrieve resources information from Azure API because the Azure Application is not found. The application possibly has been removed from Microsoft Entra ID.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>MQTT Connection Configuration Failed</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>Failed to configure agent for MQTT connection.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>MQTT Connection Offline</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>The agent is unable to connect to the MQTT endpoint.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Network Engine Mode Incompatibility</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>Setting "Network Engine Mode" to "Tap" is only available on agent versions 5.2 or higher. Review and update the agent's configuration or upgrade the agent to resolve the incompatibility.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>New Pattern Update is Downloaded and Available</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>New patterns are available as part of a security update. The patterns have been downloaded to Server &amp; Workload Protection but have not yet been applied to your computers. To apply the update to your computers, go to the Administration &gt; Updates &gt; Security page.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>New Rule Update is Downloaded and Available</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>New rules are available as part of a security update. The rules have been downloaded to Server &amp; Workload Protection but have not yet been applied to policies and sent to your computers. To apply the update and send the updated policies to your computers, go to the Administration &gt; Updates &gt; Security page.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Newer Versions of Software Available</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>New software is available. Software can be downloaded from the Download Center.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Recommendation</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>Server &amp; Workload Protection determined that the security configuration of one of your computers should be updated. To see <a href="trend-vision-one-enhanced-reco-scan">recommended</a> changes, open the <a href="trend-vision-one-computers">Computer</a> editor and look through the module pages for warnings of unresolved recommendations. Under <em>Assigned Rules</em>, click <strong>Assign/Unassign</strong> and select <strong>Show Recommended for Assignment</strong>. For rules that you can safely unassign, select <strong>Show Recommended for Unassignment</strong>.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Reconnaissance Detected: Computer OS Fingerprint Probe</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>The agent detected an attempt to identify the computer operating system via a "fingerprint" probe. Such activity is often a precursor to an attack that targets specific vulnerabilities. Check the computer's events to see the details of the probe and see <a href="trend-vision-one-warning-reconnaissance-detected">Warning: Reconnaissance Detected</a>.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Reconnaissance Detected: Network or Port Scan</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>The agent detected network activity typical of a network or port scan. Such activity is often a precursor to an attack that targets specific vulnerabilities. Check the computer's events to see the details of the probe and see <a href="trend-vision-one-warning-reconnaissance-detected">Warning: Reconnaissance Detected</a>.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Reconnaissance Detected: TCP Null Scan</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>The agent detected a TCP "Null" scan. Such activity is often a precursor to an attack that targets specific vulnerabilities. Check the computer's events to see the details of the probe and see <a href="trend-vision-one-warning-reconnaissance-detected">Warning: Reconnaissance Detected</a>.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Reconnaissance Detected: TCP SYNFIN Scan</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>The agent detected a TCP "SYNFIN" scan. Such activity is often a precursor to an attack that targets specific vulnerabilities. Check the computer's events to see the details of the probe and see <a href="trend-vision-one-warning-reconnaissance-detected">Warning: Reconnaissance Detected</a>.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Reconnaissance Detected: TCP Xmas Scan</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>The agent detected a TCP "Xmas" scan. Such activity is often a precursor to an attack that targets specific vulnerabilities. Check the computer's events to see the details of the probe and see <a href="trend-vision-one-warning-reconnaissance-detected">Warning: Reconnaissance Detected</a>.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Relay Upgrade Required For Agent Integrity Check</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>To enable Agent Integrity Check, upgrade the relay.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>SAML Identity Provider Certificate expired</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>One or more Security Assertion Markup Language (SAML) Identity Provider Certificate(s) expired.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>SAML Identity Provider Certificate expires soon</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>One or more SAML Identity Provider Certificate(s) expire soon.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>SAP Virus Scan Adapter is not installed</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>The agent reported that the SAP Virus Scan Adapter is not installed. Check the system events for the computer to determine the cause of the failure.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>SAP Virus Scan Adapter is not up to date</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>The agent reported that the SAP Virus Scan Adapter is not up to date. Check the system events for the computer to determine the cause of the failure.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>SAP Virus Scan service is not working correctly</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>The SAP Virus Scan service is not functioning properly. Check the system events for the computer to determine the cause of the failure.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Scheduled Malware Scan Missed</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>Scheduled malware scan tasks were initiated on computers that already had pending scan tasks. This may indicate a scanning frequency that is too high. Consider lowering the scanning frequency, or selecting fewer computers to scan during each scheduled scan job.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Send Policy Failed</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>Inability to send policy may indicate a problem with the agent. Check the affected computers.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Smart Protection Server Connection Failed</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>Failed to connect to a Smart Protection Server. This could be due to a configuration issue or due to network connectivity.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Software Changes Detected</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>During ongoing file system monitoring, application control detected that new software was installed, which did not match any configured allow or block rule. If your system administrators did not install the software and no other users have permissions to install software, this could indicate a security compromise. Depending on your lockdown configuration, the software may be allowed to execute.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Software Package Not Found</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>An Agent Software Package is required for the proper operation of one or more virtual appliance(s). Import a Red Hat Enterprise 6 (64-bit) Agent Software Package with the correct version for each Appliance. If the required version is not available then import the latest package and upgrade the appliance to match.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Unable to communicate</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>Server &amp; Workload Protection could not query the agent status in the configured period. Check your network configuration and the connectivity of the affected computer.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Unable to Upgrade the Agent Software</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>Server &amp; Workload Protection could not upgrade the agent software on the computer.</p>
+<p>This may indicate a problem with the agent, but can also occur if agent self-protection is enabled. In Server &amp; Workload Protection, select <strong>Computer editor → Settings → General</strong>. In <em>Agent Self Protection</em>, deselect <em>Prevent local end-users from uninstalling, stopping, or otherwise modifying the Agent</em> or enter a password for local override.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Unresolved software change limit reached</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>Software changes detected on the file system exceeded the maximum amount. Application control continues to enforce existing rules, but without recording further changes, and no longer displays that computer's software changes. You must resolve and prevent excessive software change.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Upgrade of the Workload Security Software Recommended (Incompatible Component Update(s))</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>Workload Security has detected a computer that is using Component Updates that are not compatible with the current version of Workload Security. An upgrade of Workload Security software is recommended.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>User Locked Out</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>Users can be locked out manually, by repeated incorrect sign-in attempts when their password expires, or if the accounts have been imported but not yet unlocked.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>User Password Expires Soon</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>The password expiry setting is enabled and one or more users have passwords that will expire within the next seven days.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Web Reputation Event Alert</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>A web reputation event was encountered on one or more computers selected for alerting.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>WorkSpaces Disabled for AWS Account</p></td>
+<td style="vertical-align: top"><p>Warning</p></td>
+<td style="vertical-align: top"><p>Yes</p></td>
+<td style="vertical-align: top"><p>An agent was activated on one or more Amazon WorkSpaces, but WorkSpaces are not enabled for your AWS account. To enable WorkSpaces, click <strong>Edit AWS Account</strong> and select <strong>Include Amazon WorkSpaces</strong>. Your WorkSpaces will be moved into the WorkSpaces folder of the AWS account and billed at a lower hourly rate, if you are using hourly billing.</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Wrong AWS credential</p></td>
+<td style="vertical-align: top"><p>Critical</p></td>
+<td style="vertical-align: top"><p>No</p></td>
+<td style="vertical-align: top"><p>Unable to synchronize AWS account to Workload Security due to wrong AWS credential. Please verify the credential is correct, and the assigned role has sufficient permissions. <a href="trend-vision-one-adding-aws-accounts">Learn More</a></p></td>
+</tr>
+</tbody>
+</table>
+
+The following table lists alerts and their corresponding alert email subjects.
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Alert</p></th>
+<th><p>Alert Email Subject</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU Critical Threshold Exceeded</td>
+<td>The CPU critical threshold of Manager Node ({1}) was exceeded</td>
+</tr>
+<tr>
+<td>CPU Warning Threshold Exceeded</td>
+<td>The CPU warning threshold of Manager Node ({1}) was exceeded</td>
+</tr>
+<tr>
+<td>DSRU Recommended</td>
+<td>DSRU recommended</td>
+</tr>
+<tr>
+<td>Legacy Agent Software Detected</td>
+<td>Legacy Agent software detected</td>
+</tr>
+<tr>
+<td>User Locked Out</td>
+<td>{0} User(s) locked out</td>
+</tr>
+<tr>
+<td>User Password Expires Soon</td>
+<td>{0} User(s) have passwords due to expire</td>
+</tr>
+<tr>
+<td>Abnormal Restart Detected</td>
+<td>Abnormal restart detected on {0} computer(s)</td>
+</tr>
+<tr>
+<td>Clock Change Detected</td>
+<td>Clock change detected on {0} computer(s)</td>
+</tr>
+<tr>
+<td>Communications Problem Detected</td>
+<td>Communications problem detected on {0} computer(s)</td>
+</tr>
+<tr>
+<td>Events Truncated</td>
+<td>Events truncated on {0} computer(s)</td>
+</tr>
+<tr>
+<td>Agent Heartbeat Public Server Certificate Expired</td>
+<td>Agent heartbeat public server certificate expired</td>
+</tr>
+<tr>
+<td>Agent Heartbeat Public Server Certificate Expires Soon</td>
+<td>Agent heartbeat public server certificate expires soon</td>
+</tr>
+<tr>
+<td>Agent Installation Failed</td>
+<td>Agent installation failed on {0} computer(s)</td>
+</tr>
+<tr>
+<td>Insufficient Disk Space</td>
+<td>Insufficient disk space detected on {0} computer(s)</td>
+</tr>
+<tr>
+<td>Events Suppressed</td>
+<td>Events suppressed on {0} computer(s)</td>
+</tr>
+<tr>
+<td>Unable to communicate</td>
+<td>Unable to communicate with {0} computer(s)</td>
+</tr>
+<tr>
+<td>A Deep Security Relay cannot download security components</td>
+<td>Unable to update security components on {0} relay(s)</td>
+</tr>
+<tr>
+<td>Unable to Upgrade the Agent Software</td>
+<td>Unable to upgrade the Agent software on {0} computer(s)</td>
+</tr>
+<tr>
+<td>Incompatible Agent/Appliance Version</td>
+<td>Incompatible agent/appliance version detected on {0} computer(s)</td>
+</tr>
+<tr>
+<td>Agent/Appliance Upgrade Recommended (New Version Available)</td>
+<td>Upgrade of the agent/appliance software is recommended on one or more computers</td>
+</tr>
+<tr>
+<td>Agent Upgrade Recommended (Incompatible with Appliance)</td>
+<td>Upgrade of the agent software is recommended on {0} computer(s) in order to coordinate protection with the appliance</td>
+</tr>
+<tr>
+<td>Agent/Appliance Upgrade Recommended (Incompatible Security Update(s))</td>
+<td>Upgrade of the agent/appliance software is recommended on {0} computer(s) in order to support the assigned security updates</td>
+</tr>
+<tr>
+<td>Agent/Appliance Upgrade Required</td>
+<td>Upgrade of the agent/appliance software is required on {0} computer(s)</td>
+</tr>
+<tr>
+<td>Agent/Appliance Upgrade Recommended</td>
+<td>Upgrade of the agent/appliance is recommended on {0} computer(s)</td>
+</tr>
+<tr>
+<td>New Pattern Update is Downloaded and Available</td>
+<td>New pattern update available for {0} agent/appliance(s)</td>
+</tr>
+<tr>
+<td>AWS Account Migration Failed</td>
+<td>AWS account migration failed</td>
+</tr>
+<tr>
+<td>WorkSpaces Disabled for AWS Account</td>
+<td>WorkSpaces disabled for AWS account</td>
+</tr>
+<tr>
+<td>API Key Locked Out</td>
+<td>{0} API key(s) locked out</td>
+</tr>
+<tr>
+<td>Connection to Filter Driver Failure</td>
+<td>Connection to filter driver failure</td>
+</tr>
+<tr>
+<td>Software Package Not Found</td>
+<td>Software package not found</td>
+</tr>
+<tr>
+<td>Microsoft Entra ID Application Certificate Expired</td>
+<td>Microsoft Entra ID application for {0} Azure service(s) has expired</td>
+</tr>
+<tr>
+<td>Microsoft Entra ID Application Certificate Expires Soon</td>
+<td>Microsoft Entra ID application certificate for {0} Azure service(s) expires soon</td>
+</tr>
+<tr>
+<td>Microsoft Entra ID Application Need Renew</td>
+<td>Microsoft Entra ID application for {0} Azure service(s) need renew</td>
+</tr>
+<tr>
+<td>Azure Account Not Authorized to Read Resource Information</td>
+<td>Microsoft Entra ID application for {0} Azure cloud account(s) does not have read permission</td>
+</tr>
+<tr>
+<td>Microsoft Entra ID Application Not Found</td>
+<td>Microsoft Entra ID application for {0} Azure cloud account(s) not found</td>
+</tr>
+<tr>
+<td>Microsoft Entra ID Application Password Expires Soon</td>
+<td>Microsoft Entra ID application password for {0} Azure service(s) expires soon</td>
+</tr>
+<tr>
+<td>Azure Account Secret Expired</td>
+<td>Microsoft Entra ID application secret key for {0} Azure cloud account(s) has expired</td>
+</tr>
+<tr>
+<td>Azure Account Password Invalid</td>
+<td>Invalid Microsoft Entra ID application secret for {0} Azure cloud account(s)</td>
+</tr>
+<tr>
+<td>Azure Subscription Not Found</td>
+<td>Azure subscription cannot be found for {0} Azure cloud account(s)</td>
+</tr>
+<tr>
+<td>Azure Key Pair Expired</td>
+<td>Key pair for {0} Azure service(s) has expired</td>
+</tr>
+<tr>
+<td>Azure Key Pair Expires Soon</td>
+<td>Key Pair for {0} Azure service(s) will expire soon</td>
+</tr>
+<tr>
+<td>Census, Good File Reputation, and Predictive Machine Learning Service Disconnected</td>
+<td>Disconnected from Census, Good File Reputation, and Predictive Machine Learning Service</td>
+</tr>
+<tr>
+<td>Cloud Computer Not Managed as Part of Cloud Account</td>
+<td>{0} computer(s) are in cloud environment but not managed as part of cloud account</td>
+</tr>
+<tr>
+<td>Duplicate Computer Detected</td>
+<td>{0} duplicate computer(s) detected</td>
+</tr>
+<tr>
+<td>Duplicate Unique Identifiers Detected</td>
+<td>{0} duplicate unique identifiers detected</td>
+</tr>
+<tr>
+<td>Upgrade of the Filter Driver Recommended (New Version Available)</td>
+<td>Upgrade of the filter driver is recommended on {0} ESXi Server(s) in order to take advantage of the latest features</td>
+</tr>
+<tr>
+<td>Heartbeat Server Failed</td>
+<td>Heartbeat server failed to start on Manager Node ({1})</td>
+</tr>
+<tr>
+<td>Configuration Required</td>
+<td>Configuration required on {0} computer(s)</td>
+</tr>
+<tr>
+<td>Computer Not Receiving Updates</td>
+<td>{0} Computers(s) are not receiving updates</td>
+</tr>
+<tr>
+<td>A computer reboot is required to enable Deep Security Agent protection</td>
+<td>A computer reboot is required to enable Deep Security Agent protection</td>
+</tr>
+<tr>
+<td>Invalid System Settings Detected</td>
+<td>Invalid system settings detected</td>
+</tr>
+<tr>
+<td>MQTT Connection Offline</td>
+<td>MQTT connection offline for {0} computer(s)</td>
+</tr>
+<tr>
+<td>MQTT Connection Configuration Failed</td>
+<td>MQTT connection configuration failed for {0} computer(s)</td>
+</tr>
+<tr>
+<td>Protection Module Licensing Expired</td>
+<td>Licensing for {1} has expired</td>
+</tr>
+<tr>
+<td>Protection Module Licensing Expires Soon</td>
+<td>Licensing for {1} expires ({2})</td>
+</tr>
+<tr>
+<td>Low Disk Space</td>
+<td>Manager node ({1}) has low disk space</td>
+</tr>
+<tr>
+<td>Manager Offline</td>
+<td>Manager node ({1}) is offline</td>
+</tr>
+<tr>
+<td>Manager Time Out of Sync</td>
+<td>The clock on Manager Node ({1}) is not synchronized with the clock on the database</td>
+</tr>
+<tr>
+<td>Upgrade of the Workload Security Manager Software Recommended (Incompatible Security Update(s))</td>
+<td>Upgrade of the Workload Security Manager software is recommended because {0} computer(s) have assigned security updates that are incompatible with the current Workload Security Manager version</td>
+</tr>
+<tr>
+<td>Memory Critical Threshold Exceeded</td>
+<td>The memory critical threshold of Manager Node ({1}) was exceeded</td>
+</tr>
+<tr>
+<td>Memory Warning Threshold Exceeded</td>
+<td>The memory warning threshold of Manager Node ({1}) was exceeded</td>
+</tr>
+<tr>
+<td>Virtual Machine Moved to Unprotected ESXi Server</td>
+<td>Virtual Machine moved to unprotected ESXi server from a protected ESXi server</td>
+</tr>
+<tr>
+<td>Multiple Activated Appliances Detected</td>
+<td>Multiple activated appliances detected</td>
+</tr>
+<tr>
+<td>Newer Versions of Software Available</td>
+<td>Newer versions of software available</td>
+</tr>
+<tr>
+<td>Newer Version of Workload Security Manager is Available</td>
+<td>Newer version of Workload Security Manager is available</td>
+</tr>
+<tr>
+<td>Number of Computers exceeds database limit</td>
+<td>Number of computers exceeds the recommended limit for an embedded database</td>
+</tr>
+<tr>
+<td>Number of Computers exceeds License</td>
+<td>Number of computers exceeds the licensed computers allowed</td>
+</tr>
+<tr>
+<td>Number of Manager Nodes Exceeds License</td>
+<td>Number of Manager Nodes exceeds the {3} licensed Managers allowed</td>
+</tr>
+<tr>
+<td>Critical database error while creating new table partitions during maintenance job</td>
+<td>Critical database error while creating new table partitions during maintenance job</td>
+</tr>
+<tr>
+<td>Recommendation</td>
+<td>Recommendations have been made for {0} computer(s)</td>
+</tr>
+<tr>
+<td>Relay Upgrade Required For Agent Integrity Check</td>
+<td>To enable Agent Integrity Check, please upgrade relay</td>
+</tr>
+<tr>
+<td>SAML Identity Provider Certificate expired</td>
+<td>{0} SAML Identity Provider certificate(s) expired</td>
+</tr>
+<tr>
+<td>SAML Identity Provider Certificate expires soon</td>
+<td>{0} SAML Identity Provider certificate(s) expire soon</td>
+</tr>
+<tr>
+<td>SAML Service Provider Certificate expired</td>
+<td>SAML Service Provider certificate expired</td>
+</tr>
+<tr>
+<td>SAML Service Provider Certificate expires soon</td>
+<td>SAML Service Provider certificate expires soon</td>
+</tr>
+<tr>
+<td>Failed to Send SNS Message</td>
+<td>Unable to forward messages to Amazon SNS</td>
+</tr>
+<tr>
+<td>Software Updates Available for Import</td>
+<td>Software updates are available for download</td>
+</tr>
+<tr>
+<td>Failed to Send Syslog Message</td>
+<td>Unable to forward messages to {0} Syslog Server(s)</td>
+</tr>
+<tr>
+<td>Activation Failed</td>
+<td>Failed to activate {0} computer(s)</td>
+</tr>
+<tr>
+<td>Send Policy Failed</td>
+<td>Failed to send policy(ies) to {0} computer(s)</td>
+</tr>
+<tr>
+<td>Virtual Machine Unprotected after move to another ESXi</td>
+<td>Virtual Machine unprotected after move to another ESXi</td>
+</tr>
+<tr>
+<td>VMware Tools Not Installed</td>
+<td>VMware tools not installed</td>
+</tr>
+<tr>
+<td>An update to the Rules is available</td>
+<td>An update to the Rules is available</td>
+</tr>
+<tr>
+<td>New Rule Update is Downloaded and Available</td>
+<td>New Rule update not applied</td>
+</tr>
+<tr>
+<td>Anti-Malware Alert</td>
+<td>Malware Scan Configuration ({1}) alert on {0} Computer(s)</td>
+</tr>
+<tr>
+<td>Intrusion Prevention Rule Alert</td>
+<td>Intrusion Prevention Rule ({1}) alert on {0} Computer(s)</td>
+</tr>
+<tr>
+<td>Computer Reboot Required for Activity Monitoring</td>
+<td>Computer Reboot Required for Activity Monitoring</td>
+</tr>
+<tr>
+<td>Agent requires Permission for Anti-Malware</td>
+<td>Agent on {0} computer(s) requires permission for Anti-Malware</td>
+</tr>
+<tr>
+<td>Anti-Malware Engine Offline</td>
+<td>{0} Anti-Malware Engine(s) Offline</td>
+</tr>
+<tr>
+<td>Scheduled Malware Scan Missed</td>
+<td>Scheduled Malware Scan(s) missed on {0} computers</td>
+</tr>
+<tr>
+<td>Anti-Malware protection is absent or out of date</td>
+<td>Apply the latest Anti-Malware updates to the Agent on {0} computer(s)</td>
+</tr>
+<tr>
+<td>Anti-malware module maximum disk space used to store identified files exceeded</td>
+<td>Anti-malware module exceeded maximum disk space used to store identified files</td>
+</tr>
+<tr>
+<td>Computer Reboot Required for Anti-Malware Protection</td>
+<td>Computer Reboot is Required for Anti-Malware Protection</td>
+</tr>
+<tr>
+<td>Files could not be scanned for malware</td>
+<td>Files(s) on {0} Agent(s)/Appliance(s) could not be scanned for malware</td>
+</tr>
+<tr>
+<td>Smart Protection Server Connection Failed</td>
+<td>Failure to connect to a Smart Protection Server</td>
+</tr>
+<tr>
+<td>Anti-Malware Component Failure</td>
+<td>An Anti-Malware component failure occurred on {0} computer(s)</td>
+</tr>
+<tr>
+<td>Anti-Malware Component Update Failed</td>
+<td>Anti-Malware Component Update Failed on {0} computers</td>
+</tr>
+<tr>
+<td>Web Reputation Event Alert</td>
+<td>Web Reputation event alert on {0} Computer(s)</td>
+</tr>
+<tr>
+<td>Intrusion Defense Firewall Server Plug-in License has Expired or Will Expire Soon</td>
+<td>Intrusion Defense Firewall Server Plug-in license expires ({2})</td>
+</tr>
+<tr>
+<td>Agent/Appliance Upgrade Recommended (Incompatible Component Update(s))</td>
+<td>Upgrade of the Agent/Appliance software is recommended on {0} Computer(s) in order to support the assigned Component Updates</td>
+</tr>
+<tr>
+<td>Container Control authorization plugin parse request failed</td>
+<td>The Container Control authorization plugin was unable to parse a request. This may be caused by a Docker version incompatibility. Please check that you are using a supported Docker version.</td>
+</tr>
+<tr>
+<td>Container Control authorization plugin connection to Docker failed</td>
+<td>The Container Control authorization plugin cannot connect to Docker. Please try turning the Container Control module off and then on again.</td>
+</tr>
+<tr>
+<td>Container Control authorization plugin installation failed</td>
+<td>The Container Control authorization plugin is not installed. Please try turning the Container Control module off and then on again.</td>
+</tr>
+<tr>
+<td>Container Control authorization plugin failed to send configuration</td>
+<td>The Container Control authorization plugin failed to send a configuration. Please try turning the Container Control module off and then on again.</td>
+</tr>
+<tr>
+<td>Log Inspection Engine Offline</td>
+<td>{0} Log Inspection engine(s) offline</td>
+</tr>
+<tr>
+<td>Log Inspection Rule Alert</td>
+<td>Log Inspection Rule ({1}) alert on {0} Computer(s)</td>
+</tr>
+<tr>
+<td>Log Inspection Rule Requires Configuration</td>
+<td>Log Inspection Rule ({1}) requires configuration on {0} Computer(s)</td>
+</tr>
+<tr>
+<td>Log Inspection Rule Recommendation</td>
+<td>Log Inspection Rule ({1}) is recommended on {0} Computer(s)</td>
+</tr>
+<tr>
+<td>SAP Virus Scan service is not working correctly</td>
+<td>{0} SAP Virus Scan service is not working correctly</td>
+</tr>
+<tr>
+<td>SAP Virus Scan Adapter is not installed</td>
+<td>{0} SAP Virus Scan Adapter is not installed</td>
+</tr>
+<tr>
+<td>SAP Virus Scan Adapter is not up to date</td>
+<td>{0} SAP Virus Scan Adapter is not up to date</td>
+</tr>
+<tr>
+<td>Execution of Software Blocked</td>
+<td>Execution of Software Blocked on {0} {0,choice,1#computer|2#computers}</td>
+</tr>
+<tr>
+<td>Unresolved software change limit reached</td>
+<td>Unresolved software change limit reached on {0} {0,choice,1#computer|2#computers}</td>
+</tr>
+<tr>
+<td>Application Control Engine Offline</td>
+<td>{0} Application Control {0,choice,1#Engine|2#Engines} Offline</td>
+</tr>
+<tr>
+<td>Application Control Ruleset is incompatible with agent version</td>
+<td>Application Control Ruleset is incompatible with agent version on {0} {0,choice,1#computer|2#computers}</td>
+</tr>
+<tr>
+<td>Maintenance Mode On</td>
+<td>Maintenance Mode active on {0} {0,choice,1#computer|2#computers}</td>
+</tr>
+<tr>
+<td>Computer Reboot Required for Application Control Protection</td>
+<td>Computer Reboot is Required for Application Control Protection</td>
+</tr>
+<tr>
+<td>Software Changes Detected</td>
+<td>Software Changes detected on {0} {0,choice,1#computer</td>
+</tr>
+<tr>
+<td>AWS Contract License Exceeded</td>
+<td>AWS Contract License Exceeded</td>
+</tr>
+<tr>
+<td>AWS SaaS Billing is not configured correctly</td>
+<td>AWS SaaS Billing is not configured correctly</td>
+</tr>
+<tr>
+<td>License Expired</td>
+<td>License Expired</td>
+</tr>
+<tr>
+<td>License Expiring Soon</td>
+<td>License Expiring Soon</td>
+</tr>
+<tr>
+<td>License Seat Limit Exceeded</td>
+<td>License Seat Limit Exceeded</td>
+</tr>
+<tr>
+<td>License Seat Limit Almost Reached</td>
+<td>License Seat Limit Almost Reached</td>
+</tr>
+<tr>
+<td>Account Balance Depleted</td>
+<td>Account Balance Depleted</td>
+</tr>
+<tr>
+<td>Account Balance Low</td>
+<td>Account Balance Low</td>
+</tr>
+<tr>
+<td>Integrity Monitoring information collection has been delayed</td>
+<td>Integrity Monitoring information collection has been delayed</td>
+</tr>
+<tr>
+<td>Integrity Monitoring Engine Offline</td>
+<td>{0} Integrity Monitoring Engine(s) Offline</td>
+</tr>
+<tr>
+<td>Certified Safe Software Service Offline</td>
+<td>Manager node ({1}) cannot connect to Certified Safe Software Service</td>
+</tr>
+<tr>
+<td>Computer Reboot Required for Integrity Monitoring Protection</td>
+<td>Computer Reboot Required for Integrity Monitoring Protection</td>
+</tr>
+<tr>
+<td>Integrity Monitoring Rule Alert</td>
+<td>Integrity Monitoring Rule ({1}) alert on {0} Computer(s)</td>
+</tr>
+<tr>
+<td>Integrity Monitoring Rule Compilation Error</td>
+<td>Integrity Monitoring Rule Compilation Error on {0} Computer(s)</td>
+</tr>
+<tr>
+<td>Integrity Monitoring Rule Requires Configuration</td>
+<td>Integrity Monitoring Rule ({1}) requires configuration on {0} Computer(s)</td>
+</tr>
+<tr>
+<td>Integrity Monitoring Trusted Platform Module Not Enabled</td>
+<td>Integrity Monitoring Trusted Platform Module Not Enabled</td>
+</tr>
+<tr>
+<td>Integrity Monitoring Trusted Platform Module Register Value Changed</td>
+<td>Integrity Monitoring Trusted Platform Module Register Value Changed</td>
+</tr>
+<tr>
+<td>Integrity Monitoring Rule Recommendation</td>
+<td>Integrity Monitoring Rule ({1}) is recommended on {0} Computer(s)</td>
+</tr>
+<tr>
+<td>Agent configuration package too large</td>
+<td>Agent configuration package too large on {0} computer(s)</td>
+</tr>
+<tr>
+<td>Intrusion Prevention Rule Compilation Failed</td>
+<td>Intrusion Prevention Rule Compilation Failed on {0} computer(s)</td>
+</tr>
+<tr>
+<td>Reconnaissance Detected: Computer OS Fingerprint Probe</td>
+<td>Reconnaissance Detected: Computer OS fingerprint probe on {0} Computer(s)</td>
+</tr>
+<tr>
+<td>Reconnaissance Detected: TCP Null Scan</td>
+<td>Reconnaissance Detected: TCP "Null" scan on {0} Computer(s)</td>
+</tr>
+<tr>
+<td>Reconnaissance Detected: Network or Port Scan</td>
+<td>Reconnaissance Detected: Network or port scan on {0} Computer(s)</td>
+</tr>
+<tr>
+<td>Reconnaissance Detected: TCP SYNFIN Scan</td>
+<td>Reconnaissance Detected: TCP "SYNFIN" scan on {0} Computer(s)</td>
+</tr>
+<tr>
+<td>Reconnaissance Detected: TCP Xmas Scan</td>
+<td>Reconnaissance Detected: TCP "Xmas" scan on {0} Computer(s)</td>
+</tr>
+<tr>
+<td>Application Type Misconfiguration</td>
+<td>{0} Computer(s) have Application Type Misconfiguration</td>
+</tr>
+<tr>
+<td>Network Engine Mode Incompatibility</td>
+<td>{0} Agent(s) unable to implement Network Engine Mode</td>
+</tr>
+<tr>
+<td>Firewall Engine Offline</td>
+<td>{0} firewall engine(s) offline</td>
+</tr>
+<tr>
+<td>Firewall Rule Alert</td>
+<td>Firewall Rule ({1}) alert on {0} Computer(s)</td>
+</tr>
+<tr>
+<td>Intrusion Prevention Engine Offline</td>
+<td>{0} Intrusion Prevention engine(s) offline</td>
+</tr>
+<tr>
+<td>Intrusion Prevention Rule Alert</td>
+<td>Intrusion Prevention Rule ({1}) alert on {0} Computer(s)</td>
+</tr>
+<tr>
+<td>Intrusion Prevention Rule Requires Configuration</td>
+<td>Intrusion Prevention Rule ({1}) requires configuration on {0} Computer(s)</td>
+</tr>
+<tr>
+<td>Application Type Recommendation</td>
+<td>Application Type ({1}) is recommended on {0} Computer(s)</td>
+</tr>
+<tr>
+<td>Firewall Rule Recommendation</td>
+<td>Firewall Rule ({1}) is recommended on {0} Computer(s)</td>
+</tr>
+<tr>
+<td>Intrusion Prevention Rule Recommendation</td>
+<td>Intrusion Prevention Rule ({1}) is recommended on {0} Computer(s)</td>
+</tr>
+<tr>
+<td>Intrusion Prevention Rule Removal Recommendation</td>
+<td>Intrusion Prevention Rule ({1}) is recommended for removal on {0} Computer(s)</td>
+</tr>
+<tr>
+<td>Virtual Machine Interfaces Out of Sync</td>
+<td>Virtual Machine Interfaces Out of Sync</td>
+</tr>
+<tr>
+<td>Wrong AWS credential</td>
+<td>Wrong AWS credential for {0} Account(s)</td>
+</tr>
+<tr>
+<td>Virtual Appliance is Incompatible With Filter Driver</td>
+<td>Incompatibility with Filter Driver was detected for {0} Virtual Appliance(s)</td>
+</tr>
+<tr>
+<td>Empty Relay Group Assigned</td>
+<td>{0} Computers(s) are assigned an empty Relay Group</td>
+</tr>
+<tr>
+<td>Computer Reboot Required</td>
+<td>Computer reboot required on {0} Computer(s)</td>
+</tr>
+</tbody>
+</table>
+:::

@@ -1,0 +1,272 @@
+---
+slug: trend-vision-one-deploy-pac-azure
+title: Deploy the Private Access Connector on Microsoft Azure
+last_updated: '2025-09-08'
+ai_context:
+  source_file: deploy-pac-azure.md
+  conversion_date: '2025-09-08T23:42:20.651Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Connect your Azure Marketplace applications with Zero Trust Secure Access Private Access and prevent unauthorized intrusions.
+
+Private Access Connectors connect your internal applications with Zero Trust Secure Access Private Access, which allows you to control access to sensitive corporate resources. To ensure high availability (HA) and facilitate load-balancing on high traffic apps, install and group together at least 2 connectors in each environment. Before attempting to deploy the Private Access Connector, ensure that your environment meets the minimum [system requirements](pa-connector-system-reqs.mdx).
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Zero Trust Secure Access → Secure Access Configuration → Private Access Configuration**.
+
+2.  For customers that need to create a new connector group, click **Add Private Access Connector Group**.
+
+    1.  Provide a unique name and description for the group.
+
+    2.  Click **Save**.
+
+3.  Locate your **Connector group** name in the list and click the **New connector** (![](/images/add_connector=683f3c84-a774-40c0-bd9b-4663fcd2b53f.webp)) icon.
+
+    The **Private Access Connector Virtual Appliance** panel appears.
+
+4.  Select **Microsoft Azure** from the **Platform** list.
+
+5.  Copy the **Registration token** for later use.
+
+6.  Sign in to the Azure Marketplace and locate the **Trend Vision One - Zero Trust Secure Access** app.
+
+7.  On the **Trend Vision One - Zero Trust Secure Access** Azure application screen, click **Get It Now**.
+
+8.  Sign in to Azure Marketplace as a super administrator when prompted.
+
+9.  On the **Create this app in Azure** screen, click **Continue**.
+
+    The app deployment screen appears.
+
+10. Create multiple virtual machine (VM) instances for the Private Access Connector virtual appliances.
+
+    1.  On the app deployment screen, click **Create**.
+
+        Before proceeding, confirm that you have an active Microsoft subscription. If you are redirected to a page displaying the message, "Welcome to Azure! If you do not have a subscription, please check the following options," you do not have a subscription and need to create one. To create a subscription, consult the [Microsoft documentation](https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/create-subscription) or contact Microsoft support.
+
+    2.  On the **Basics** tab that appears, specify the following fields.
+
+        <table>
+        <colgroup>
+        <col style="width: 20%" />
+        <col style="width: 80%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Field</p></th>
+        <th><p>Description</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Subscription</p></td>
+        <td><p>Select the subscription to manage the VM instances.</p></td>
+        </tr>
+        <tr>
+        <td><p>Resource group</p></td>
+        <td><p>Select a new or existing resource group to organize and manage the VM instances.</p></td>
+        </tr>
+        <tr>
+        <td><p>Region</p></td>
+        <td><p>Select an Azure region.</p>
+        <p>Trend Micro recommends you select the same region as where the resource group is located.</p></td>
+        </tr>
+        <tr>
+        <td><p>Scale set instance name</p></td>
+        <td><p>Specify a uniquely identifiable name for the scale set.</p>
+        
+
+        :::note
+        
+        <p>The VM requires a public IP address to communicate with Trend Vision One.</p>
+        
+
+        :::
+
+        </td>
+        </tr>
+        <tr>
+        <td><p>Scale set instance count</p></td>
+        <td><p>Use drag-and-drop to select the number of VM instances to deploy.</p>
+        
+
+        :::note
+        
+        <p>You require a minimum of 2 instances. The number of instances on the Microsoft Azure portal can be increased during or after the deployment.</p>
+        
+
+        :::
+
+        </td>
+        </tr>
+        <tr>
+        <td><p>Appliance VM size</p></td>
+        <td><p>Select the system resources as necessary.</p></td>
+        </tr>
+        <tr>
+        <td><p>Registration token</p></td>
+        <td><p>Paste the registration token that you obtained on the Trend Vision One console.</p>
+        <p>The system automatically registers all the Connector virtual appliances in the scale set to Trend Vision One during the deployment.</p></td>
+        </tr>
+        <tr>
+        <td><p>SSH public key source</p></td>
+        <td><p>Select the SSH public key source.</p>
+        
+
+        :::warning[Important]
+        
+        <p>Trend Vision One does not support logon to a VM using a password.</p>
+        
+
+        :::
+
+        
+        <ul>
+        <li><p>Select <strong>Generate new key pair</strong> and specify a uniquely identifiable name for the key pair.</p>
+        <p>You will need to download the private key at a later step.</p></li>
+        <li><p>Select <strong>Use existing key stored in Azure</strong> and select a stored key from the drop-down list.</p></li>
+        <li><p>Select <strong>Use existing public key</strong> and paste your public key to the text box.</p></li>
+        </ul></td>
+        </tr>
+        </tbody>
+        </table>
+
+    3.  Click the **Networking** tab and specify the following fields.
+
+        <table>
+        <colgroup>
+        <col style="width: 20%" />
+        <col style="width: 80%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Field</p></th>
+        <th><p>Description</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Virtual network</p></td>
+        <td><p>Select a virtual network from the drop-down list or click <strong>Create new</strong> to add a virtual network for the scale set.</p>
+        <p>Make sure that the virtual network can connect to the internal applications that you want to protect.</p></td>
+        </tr>
+        <tr>
+        <td><p>Management subnet</p></td>
+        <td><p>Select a subnet of the virtual network from the drop-down list.</p>
+        <p>For a newly created virtual network, the subnet of the virtual network is automatically filled in.</p></td>
+        </tr>
+        </tbody>
+        </table>
+
+    4.  Click the **Advanced** tab and configure **Boot diagnostics** as necessary.
+
+    5.  Click **Review + create**.
+
+    6.  On the **Review + create** tab that appears, review and confirm the settings and click **Create**.
+
+        If you selected **Generate new key pair** at an earlier step, the **Generate new key pair** screen appears.
+
+    7.  To save the private key file to your local machine, click **Download private key and create resource.**
+
+        :::warning[Important]
+
+        Make sure your private key file is secure and accessible. You will need to use the private key to log on to the VM.
+        :::
+
+        The deployment process overview screen appears, indicating the deployment status.
+
+    8.  Wait until the deployment is complete, and then click **Go to resource**.
+
+        The **Overview** screen of the newly created virtual machine scale set appears. The number of successfully deployed VM instances displays next to **Status**.
+
+11. (Optional) Scale the VM instances either by [manually choosing a specific instance count](manual-scale.mdx) or via a [custom autoscale policy](custom-autoscale.mdx).
+
+12. (Optional) Launch and configure a Private Access Connector VM.
+
+    1.  In the left navigation, click **Instances**.
+
+    2.  From the VM instances under this scale set, click the name of a VM.
+
+    3.  On the **Overview** screen that appears, copy the public IPv4 address of the VM.
+
+    4.  Open a command prompt and run the following `ssh` command to log on to the Private Access Connector virtual appliance with the default credentials.
+
+        `ssh -i <path_of_the_private_key_file> admin@<public_IP_address_of_the_VM>`
+
+    5.  Run the following command and then press the **Enter** key to set your password for the `enable` command:
+
+        `passwd`
+
+        The **admin** user and privileged mode share the same password.
+
+    6.  Type `enable` and then press the **Enter** key to enter privileged mode. Provide the updated password when asked.
+
+        The command prompt changes from **\>** to **\#**.
+
+    7.  Run the following command to change the time zone of the Private Access Connector:
+
+        `configure timezone <timezone>`
+
+        The default time zone is **America/Los_Angeles**.
+
+    8.  Check whether the Private Access Connector can connect to the NTP server `0.pool.ntp.org`.
+
+        The Private Access Connector requires connectivity to an NTP server to synchronize its clock. By default, Trend Vision One uses the public NTP server `0.pool.ntp.org`. You can also configure the Private Access Connector to connect to another public NTP server or a local NTP server within your organization.
+
+        Run the following command to configure the NTP server: `configure ntp server <address>`
+
+        :::note
+
+        To use public NTP servers, make sure that your firewall configuration allows outbound UDP traffic on port 123.
+        :::
+
+13. Use the CLI to configure other settings, if required.
+
+    For more information on available commands, see [Private Access Connector CLI commands](private-access-connector-cli.mdx).
+
+    After successful deployment, the Private Access Connector virtual appliances appear under the corresponding connector group on the **Private Access Connectors** tab.
+
+14. (Optional) On the Microsoft Azure portal, do the following tasks to configure the VM scale set you have created when necessary.
+
+    <table>
+    <colgroup>
+    <col style="width: 20%" />
+    <col style="width: 80%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Task</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Delete a specific VM instance</p></td>
+    <td><ol>
+    <li><p>In the left navigation, click <strong>Instances</strong>.</p></li>
+    <li><p>On the <strong>Instances</strong> screen that appears, select one or multiple VM instances and click <strong>Delete</strong>.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Update the registration token</p></td>
+    <td><ol>
+    <li><p>In the left navigation, click <strong>Operating system</strong>.</p></li>
+    <li><p>On the <strong>Operating system</strong> screen that appears, select <strong>Modify user data</strong> in the <strong>User data</strong> section, and then paste the updated registration token in the <strong>User data</strong> text box.</p></li>
+    <li><p>Click <strong>Save</strong>.</p></li>
+    <li><p>In the left navigation, click <strong>Instances</strong>.</p></li>
+    <li><p>On the <strong>Instances</strong> screen that appears, select all VM instances and click <strong>Upgrade</strong>.</p>
+    <p>The update process takes about one minute. During the process, the system does not restart the instances and automatically registers the instances to Trend Vision One again.</p></li>
+    </ol></td>
+    </tr>
+    </tbody>
+    </table>
+
+**Related information**
+
+- [Manual Scale](manual-scale.md "Manually scale your Private Access Connector VM instances to a fixed instance count.")
+- [Custom Autoscale](custom-autoscale.md "Scale your Private Access Connector VM instances based on metric thresholds by creating a custom autoscale policy.")
+:::

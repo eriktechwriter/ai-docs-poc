@@ -1,0 +1,76 @@
+---
+slug: trend-vision-one-migrating-c1-payg
+title: Update from Trend Cloud One pay-as-you-go to Trend Vision One pay-as-you-go
+last_updated: '2025-09-08'
+ai_context:
+  source_file: migrating-c1-payg.md
+  conversion_date: '2025-09-08T23:42:16.005Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Update your pay-as-you-go billing from Trend Cloud One to Trend Vision One.
+
+### Procedure {#procedure}
+
+1.  Purchase and activate your Trend Vision One pay-as-you-go contract.
+
+    For information on purchasing the contract, see [Purchase a pay-as-you-go contract from AWS Marketplace](purchasing-payg-contract-aws.mdx).
+
+    :::note
+
+    If your organization does not yet have a Trend Vision One account, take the following steps to activate the contract and assign your Trend Cloud One user account as your Trend Vision One Primary User Account:
+
+    1.  When AWS Marketplace redirects you to the Trend Vision One License Activation Service, click **Continue**.
+
+    2.  Type the contact name, email address, and password for the Trend Cloud One account that you want to assign as your organization's Trend Vision One Primary User Account, and click **Verify Email**.
+
+    3.  In the **Specify the Primary User Account for your business** window, type again the email address and password for the Trend Cloud One account that you want to become your Primary User Account, and click **Next**.
+
+    4.  Specify the name and region of your organization, and click **Complete Registration**.
+    :::
+
+    Once your Trend Vision One contract is activated, you can use the specified Primary User Account to sign in to the Trend Vision One console and access all your Trend Micro SaaS solutions.
+
+    :::tip
+
+    To check that your AWS Marketplace contract is linked successfully to your Trend Vision One, go to the **Pay-as-you-go** tab in **Administration → Credits & Billing** on the Trend Vision One console and confirm that your AWS account ID appears under **Summary**.
+    :::
+
+2.  Update your Trend Cloud One solutions to Trend Vision One.
+
+    - For details on updating Trend Cloud One - Endpoint & Workload Security, see [Existing Trend Vision One customers updating Trend Cloud One - Endpoint & Workload Security from the Trend Vision One console](existing-update-dsa-console.mdx).
+
+      :::note
+
+      Before updating Trend Cloud One - Endpoint & Workload Security, you must first connect your Trend Cloud One instance to Trend Vision One in the **Product Instance**. For more information, see [Configure Trend Cloud One](configure-trend-cloud-one.mdx).
+      :::
+
+    - For details on updating Trend Cloud One File Storage Security, see [Update to Trend Vision One File Security Storage](https://docs.trendmicro.com/en-us/documentation/article/trend-micro-cloud-one-file-storage-security-what-is-fss).
+
+    - For details on updating Trend Cloud One - Conformity, see [Upgrading to Trend Vision One Cloud Risk Management](https://docs.trendmicro.com/en-us/documentation/article/trend-micro-cloud-one-conformity-upgrade-to-vision-one).
+
+    - Contact your support provider to update Trend Cloud One Container Security to Trend Vision One
+
+3.  Switch the billing model for the applicable features from credit-based licensing to pay-as-you-go.
+
+    For detailed steps, see [Credits & Billing](credits-billing.mdx).
+
+    :::warning[Important]
+
+    To ensure accurate charging after updating your Trend Cloud One - **Endpoint & Workload Security** instance to Trend Vision One, make sure to switch the billing model to Trend Vision One credits or pay-as-you-go. Otherwise, the instance continues billing to your existing Trend Cloud One AWS Marketplace contract.
+
+    For more information, see [Migrating a Trend Cloud One - Endpoint & Workload Security instance billed to AWS Marketplace](migrate-billed-aws-market.mdx).
+    :::
+
+4.  Once you have confirmed that all your Trend Cloud One solutions have updated and are deployed correctly in Trend Vision One, cancel your Trend Cloud One billing contract.
+
+    1.  Sign in to [AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-u2in6sa3igl7c?sr=0-1&ref_=beagle&applicationId=AWSMPContessa).
+
+    2.  Click **Your Software**.
+
+    3.  Find *Trend Cloud One* and click **Cancel Subscription**, then confirm the action.
+
+        Your Trend Cloud One subscription is canceled. The cancellation might take up to two hours to complete.
+:::

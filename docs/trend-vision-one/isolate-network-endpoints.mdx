@@ -1,0 +1,63 @@
+---
+slug: trend-vision-one-isolate-network-endpoints
+title: Isolating Endpoints
+---
+# Isolating Endpoints
+
+Isolate at-risk endpoints to run an investigation and resolve security issues. Restore the connection promptly when all issues have been resolved.
+
+### Procedure {#procedure}
+
+1.  Go to **Directories → Users/Endpoints**.
+
+2.  Select to view endpoints.
+
+3.  Click the name of an endpoint in the list.
+
+4.  On the **Endpoint** information screen that appears, click **Task → Isolate**.
+
+    Trend Micro Apex Central disables the **Isolate** option on endpoints for the following reasons:
+
+    - The agent on the endpoint runs an unsupported version.
+
+    - The user account used to log on to Trend Micro Apex Central does not have the necessary permissions.
+
+5.  A message appears at the top of the **Endpoint** information screen that allows you to monitor the isolation status. After isolation completes, the message closes and a notification appears on the target endpoint to inform the user.
+
+    If a problem occurs during the isolation process, the message at the top of the **Endpoint - {name}** screen informs you of the problem.
+
+6.  To view all isolated endpoints on your Trend Micro Apex Central network, click the **Endpoints → Filters → Network Connection → Isolated** node in the User/Endpoint Directory tree.
+
+7.  (Optional) To configure allowed inbound and outbound traffic to all isolated endpoints:
+
+    1.  Click the **Control** hyperlink in the note on the screen that appears.
+
+        <figure>
+        <img src="./images/endpoint_isolation=GUID-52DB90D3-D894-458C-8168-7269E8BFE7EB=1=en-us=Low.webp" />
+        </figure>
+
+    2.  Select **Control traffic on isolated endpoints**.
+
+    3.  Expand the **Inbound Traffic** or **Outbound Traffic** sections.
+
+    4.  Specify the allowed traffic by specifying the **Protocol**, **IP Address**, and **Destination Port**.
+
+        Separate multiple destination ports using commas.
+
+    5.  Add multiple inbound and outbound entries by clicking the **-** control to the right of the **Destination Port** information.
+
+    :::note
+
+    After modifying the allowed traffic settings, all previously isolated endpoints and any endpoints isolated later apply the inbound and outbound traffic settings.
+    :::
+
+8.  After you have resolved the security threats on an isolated endpoint, restore network connectivity from the following locations:
+
+    - **Endpoint** information screen: Click **Task → Restore**.
+
+    - **Endpoints → Filters → Network Connection → Isolated**: Select the endpoint row in the table and click **Task → Restore Network Connection**.
+
+9.  A message appears at the top of the screen that allows you to monitor the restoration status. After restoration completes, the message closes and a notification appears on the target endpoint to inform the user.
+
+    If a problem occurs during the restoration process, the message at the top of the screen informs you of the problem.
+:::

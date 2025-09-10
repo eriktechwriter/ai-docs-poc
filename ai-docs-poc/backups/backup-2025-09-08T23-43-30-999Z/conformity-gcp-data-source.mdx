@@ -1,0 +1,328 @@
+---
+slug: trend-vision-one-conformity-gcp-data-source
+title: Conformity Google Cloud data source setup
+last_updated: '2025-09-08'
+ai_context:
+  source_file: conformity-gcp-data-source.md
+  conversion_date: '2025-09-08T23:42:22.047Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+### Procedure {#procedure}
+
+1.  For customers that do not already have Conformity, sign up for a free trial.
+
+    1.  Go to the sign up form.
+
+        <https://cloudone.trendmicro.com/trial>
+
+    2.  Provide all the required information and complete the reCAPTCHA.
+
+    3.  Agree to the terms and conditions, privacy notice, and data collection notice.
+
+    4.  Click **Sign Up**.
+
+    5.  Click the **Verify Email** link in the confirmation email sent to your business email account.
+
+    6.  Sign in to activate your Trend Cloud One console.
+
+        Allow a few moments to provision your new console.
+
+    7.  Specify an **Account Alias** for your account.
+
+        You can change your alias later using the console.
+
+    8.  Specify the **Region** in which Trend Cloud One stores all of your data.
+
+    9.  Click **Continue**.
+
+2.  Ensure that you go to Google Cloud and enable all APIs that Conformity requires.
+
+    1.  Sign in to Google Cloud.
+
+    2.  In the left menu, click **APIs & Services**.
+
+        <figure>
+        <img src="./images/gcpEnableAPIsServicesMenu=20220830144741.webp" />
+        </figure>
+
+    3.  Verify that all of the following APIs display in the **Enabled APIs & services** table.
+
+        <table style="width:99%;">
+        <colgroup>
+        <col style="width: 33%" />
+        <col style="width: 33%" />
+        <col style="width: 33%" />
+        </colgroup>
+        <tbody>
+        <tr>
+        <td><ul>
+        <li><p>API Keys API</p></li>
+        <li><p>BigQuery API</p></li>
+        <li><p>Cloud Dataproc API</p></li>
+        <li><p>Cloud DNS API</p></li>
+        <li><p>Compute Engine API</p></li>
+        </ul></td>
+        <td><ul>
+        <li><p>Cloud Key Management Service (KMS) API</p></li>
+        <li><p>Cloud Logging API</p></li>
+        <li><p>Cloud Pub/Sub API</p></li>
+        <li><p>Cloud Resource Manager API</p></li>
+        </ul></td>
+        <td><ul>
+        <li><p>Cloud SQL Admin API</p></li>
+        <li><p>Cloud Storage API</p></li>
+        <li><p>Identity and Access Management (IAM) API</p></li>
+        <li><p>Kubernetes Engine API</p></li>
+        </ul></td>
+        </tr>
+        </tbody>
+        </table>
+
+        <figure>
+        <img src="./images/gcpEnableAPIsServicesTable=20220830144343.webp" />
+        </figure>
+
+    4.  Enable all missing APIs by repeating the following steps.
+
+        1.  Click **ENABLE APIS AND SERVICES**.
+
+            <figure>
+            <img src="./images/gcpEnableAPIsServicesButton=20220830144545.webp" />
+            </figure>
+
+        2.  Search for the API name and click the correct result.
+
+        3.  Click **Enable**.
+
+            <figure>
+            <img src="./images/gcpEnableAPIsServicesKubernetes=20220830144646.webp" />
+            </figure>
+
+3.  Create the Google Cloud role for usage with the Conformity service account.
+
+    1.  In the left menu, go to **IAM & Admin → Roles**.
+
+        <figure>
+        <img src="./images/gcpIAMRoleMenu=20220830155050.webp" />
+        </figure>
+
+    2.  Click **CREATE ROLE**.
+
+        <figure>
+        <img src="./images/gcpCreateRole=20220830155252.webp" />
+        </figure>
+
+    3.  Specify the **Title** and **ID** for the new role.
+
+    4.  (Optional) Provide a description.
+
+    5.  Do not modify the default **Role launch stage: Alpha**.
+
+    6.  Click **ADD PERMISSIONS**.
+
+        <figure>
+        <img src="./images/gcpCreateRoleSettings=20220830155959.webp" />
+        </figure>
+
+    7.  Next to the **Filter**, type the name of the permission.
+
+        <figure>
+        <img src="./images/gcpPermissionsAdd=20220830160101.webp" />
+        </figure>
+
+        The role requires all the 34 following permissions:
+
+        <table style="width:99%;">
+        <colgroup>
+        <col style="width: 33%" />
+        <col style="width: 33%" />
+        <col style="width: 33%" />
+        </colgroup>
+        <tbody>
+        <tr>
+        <td><ul>
+        <li><p>apikeys.keys.list</p></li>
+        <li><p>bigquery.datasets.get</p></li>
+        <li><p>bigquery.tables.get</p></li>
+        <li><p>cloudkms.cryptoKeys.getIamPolicy</p></li>
+        <li><p>cloudkms.cryptoKeys.list</p></li>
+        <li><p>cloudkms.keyRings.list</p></li>
+        <li><p>cloudkms.locations.list</p></li>
+        <li><p>cloudSql.instances.list</p></li>
+        <li><p>compute.backendServices.list</p></li>
+        <li><p>compute.firewalls.list</p></li>
+        <li><p>compute.globalForwardingRules.list</p></li>
+        <li><p>compute.images.getIamPolicy</p></li>
+        </ul></td>
+        <td><ul>
+        <li><p>compute.images.list</p></li>
+        <li><p>compute.instances.list</p></li>
+        <li><p>compute.networks.list</p></li>
+        <li><p>compute.projects.get</p></li>
+        <li><p>compute.sslPolicies.list</p></li>
+        <li><p>compute.subnetworks.list</p></li>
+        <li><p>compute.targetHttpsProxies.list</p></li>
+        <li><p>compute.targetSslProxies.list</p></li>
+        <li><p>compute.urlMaps.list</p></li>
+        <li><p>container.clusters.list</p></li>
+        <li><p>dataproc.clusters.list</p></li>
+        </ul></td>
+        <td><ul>
+        <li><p>dns.managedZones.list</p></li>
+        <li><p>dns.policies.list</p></li>
+        <li><p>iam.serviceAccounts.get</p></li>
+        <li><p>logging.logMetrics.list</p></li>
+        <li><p>logging.sinks.list</p></li>
+        <li><p>monitoring.alertPolicies.list</p></li>
+        <li><p>pubsub.topics.list</p></li>
+        <li><p>resourcemanager.projects.get</p></li>
+        <li><p>resourcemanager.projects.getIamPolicy</p></li>
+        <li><p>storage.buckets.getIamPolicy</p></li>
+        <li><p>storage.buckets.list</p></li>
+        </ul></td>
+        </tr>
+        </tbody>
+        </table>
+
+    8.  Select the permission in the list and click **Add**.
+
+        <figure>
+        <img src="./images/gcpAddPermissionAdd=20220830160303.webp" />
+        </figure>
+
+    9.  Repeat for all permissions.
+
+    10. After adding all the required permissions, click the check box at the top of the list for each page until all 34 permissions have been assigned.
+
+        <figure>
+        <img src="./images/gcpAssignPermissionsCreate=20220830160404.webp" />
+        </figure>
+
+    11. Click **CREATE**.
+
+4.  Create the service account in Google Cloud used for the Conformity integration.
+
+    1.  In Google Cloud, select the project that you want to protect with Conformity.
+
+    2.  In the left menu, go to **IAM & Admin → Service Accounts**.
+
+    3.  Click **CREATE SERVICE ACCOUNT**.
+
+        <figure>
+        <img src="./images/gcpCreateServiceAccount=20220831100202.webp" />
+        </figure>
+
+    4.  Specify the **Service account name** and a **Description**, and click **CREATE AND CONTINUE**.
+
+        <figure>
+        <img src="./images/gcpServiceAccountName=20220831100303.webp" />
+        </figure>
+
+    5.  Select the customer role you created in step 3 by clicking **Select a role** and locating the role.
+
+        <figure>
+        <img src="./images/gcpServiceAccountRole=20220831100404.webp" />
+        </figure>
+
+    6.  Click **CONTINUE**.
+
+    7.  Click **DONE**.
+
+        :::note
+
+        You do not need to grant users access to this service account.
+        :::
+
+    8.  Create the key used by the service account.
+
+        1.  In the **Action** column for the service account you just created, click the button and select **Manage keys**.
+
+            <figure>
+            <img src="./images/gcpManageKeys=20220831112525.webp" />
+            </figure>
+
+        2.  Click **ADD KEY** and **Create new key**.
+
+            <figure>
+            <img src="./images/gcpAddKey=20220831112626.webp" />
+            </figure>
+
+        3.  Leave the default **JSON** key type and click **CREATE**.
+
+            <figure>
+            <img src="./images/gcpJSONkey=20220831112828.webp" />
+            </figure>
+
+        4.  Save the generated JSON file in a secure location for use in the Conformity console.
+
+    :::warning[Important]
+
+    Add the service account to all projects that you want to protect with Conformity.
+    :::
+
+5.  Create your Google Cloud project in Conformity.
+
+    1.  Sign in to Trend Cloud One.
+
+    2.  Click **Conformity**.
+
+    3.  Click **Google Cloud Project** and click **Next**.
+
+    4.  Specify the display name of the service account used in the Conformity console.
+
+        :::note
+
+        The display name does not need to match the name of the service account in Google Cloud.
+        :::
+
+    5.  Upload the JSON file containing the Google Cloud service account key generated in step 4 and click **Next**.
+
+        <figure>
+        <img src="./images/gcpConformityAddAccount=20220831114141.webp" />
+        </figure>
+
+    6.  Select all the Google Cloud projects you want to protect using Conformity and click **Next**.
+
+        :::note
+
+        You can only view Google Cloud projects that you assigned the service account to in the Google Cloud console.
+        :::
+
+        <figure>
+        <img src="./images/gcpConformityProjects=20220831114545.webp" />
+        </figure>
+
+    7.  Review the settings and click **Finish**.
+
+6.  Connect Conformity with Cyber Risk Exposure Management using an API Key.
+
+    1.  Go to the home screen of the Trend Cloud One console, and click **User Management**.
+
+    2.  In the left menu, click **API Keys**.
+
+    3.  Click **New**.
+
+    4.  Specify the **API Key Alias**.
+
+    5.  In **Role**, select **Read Only**.
+
+    6.  Click **Next**.
+
+    7.  Copy the API Key immediately.
+
+        :::warning[Important]
+
+        You cannot access the API Key again after closing the dialog. Copy and store the API Key in a safe location.
+        :::
+
+    8.  In the Trend Vision One console, open the Trend Cloud One - Conformity data source panel.
+
+    9.  Paste the API Key from Conformity in the **API Key** field.
+
+    10. Acknowledge that your Conformity data may be transferred to another data center based on the configured Trend Vision One region.
+
+    11. Click **Save**.
+:::

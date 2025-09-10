@@ -1,0 +1,64 @@
+---
+slug: trend-vision-one-nsa-hardening-1-2-4210
+title: 4.2.10 - Ensure container file system is immutable (Automated)
+---
+# 4.2.10 - Ensure container file system is immutable (Automated)
+
+Profile applicability: Level 1
+
+By default, containers are permitted mostly unrestricted execution within their own context. A cyber actor who has gained execution in a container can create files, download scripts, and modify the application within the container. Kubernetes can lock down a container’s file system, thereby preventing many post-exploitation activities. However, these limitations also affect legitimate container applications and can potentially result in crashes or anomalous behavior. To prevent damaging legitimate applications, Kubernetes administrators can mount secondary read/write file systems for specific directories where applications require write access.
+
+### Audit {#audit}
+
+Run the following command and check the securityContext of each pod’s containers:
+
+```bash
+kubectl get pods --all-namespaces
+```
+
+Ensure each container has `securityContext.readOnlyRootFilesystem` set to `true`.
+
+### Remediation {#remediation}
+
+Change `containers[].securityContext.readOnlyRootFilesystem` to `true`.
+
+The following example is a Kubernetes deployment template that uses a read-only root file system.
+
+```bash
+securityContext: readOnlyRootFilesystem: true
+```
+
+The lines setting `volumeMounts` and `volumes` show how to create a writeable volume for applications requiring this capability.
+
+```bash
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web
+  name: web
+spec:
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+      name: web
+    spec:
+      containers:
+      - command: ["sleep"]
+        args: ["999"]
+        image: ubuntu:latest
+        name: web
+        securityContext:
+          readOnlyRootFilesystem: true
+        volumeMounts:
+          - mountPath: /writeable/location/here
+            name: volName
+    volumes:
+    - emptyDir: {}
+    name: volName
+```
+:::

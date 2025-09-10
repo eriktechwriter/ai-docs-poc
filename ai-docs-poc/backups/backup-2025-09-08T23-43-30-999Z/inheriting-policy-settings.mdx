@@ -1,0 +1,58 @@
+---
+slug: trend-vision-one-inheriting-policy-settings
+title: Inheriting Policy Settings
+last_updated: '2025-09-08'
+ai_context:
+  source_file: inheriting-policy-settings.md
+  conversion_date: '2025-09-08T23:42:17.235Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Create a new child policy by inheriting the settings of an existing parent policy. A child policy cannot be copied and its settings cannot be inherited.
+
+This task requires a parent policy for the Apex One agent. A parent policy for the Apex One agent has the value **N/A** displayed under the **Parent Policy** column.
+
+### Procedure {#procedure}
+
+1.  Go to **Policies → Policy Management**.
+
+    The **Policy Management** screen appears.
+
+2.  Select **Apex One Agent** from the Product list.
+
+    The screen refreshes to display policies created for the selected managed product.
+
+3.  Select a parent policy that does not have locally managed settings.
+
+4.  Click **Inherit Settings**.
+
+    The **Inherit and Create Policy** screen appears.
+
+5.  In the **Policy Name** field, type a name for the policy.
+
+6.  Assign **Targets** to the policy.
+
+7.  (Optional) Review the settings that can be customized or extended and then make changes as necessary. For a list of settings to review, see [Working with Parent Policy Settings](working-parent-policy-settings.mdx).
+
+    :::note
+
+    A setting cannot be customized or extended if the option selected on the parent policy is **Inherit from parent**.
+    :::
+
+    For example:
+
+    - If the Scheduled Scan setting is customizable, you can change the schedule from weekly to daily.
+
+    - If the scan exclusion list for Real-time Scan can be extended, you can type additional file names that you deem safe and trustworthy. After the child policy is created, it will add those file names to the scan exclusion list.
+
+8.  Click **Deploy**.
+
+    :::note
+
+    - After clicking **Deploy**, please wait two minutes for Trend Micro Apex Central to deploy the policy to the targets. Click **Refresh** on the **Policy Management** screen to update the status information in the policy list.
+
+    - Trend Micro Apex Central enforces the policy settings on the targets every 24 hours.
+    :::
+:::

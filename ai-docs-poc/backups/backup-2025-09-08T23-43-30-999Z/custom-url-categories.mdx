@@ -1,0 +1,119 @@
+---
+slug: trend-vision-one-custom-url-categories
+title: Custom URL categories
+last_updated: '2025-09-08'
+ai_context:
+  source_file: custom-url-categories.md
+  conversion_date: '2025-09-08T23:42:21.045Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Add custom URL categories to subject URLs that are not part of predefined categories to secure access rules.
+
+Adding and configuring custom URL categories allows you to apply groups of URLs you define to rules and settings throughout **Zero Trust Secure Access**.
+
+Custom URL categories can be applied to the following rules and settings:
+
+- Risk rules
+
+- Internet Access rules
+
+- HTTPS inspection rules
+
+- Bandwidth control rules
+
+- Outbound static IP settings
+
+:::note
+
+:::
+
+The following table outlines the actions available on the **Custom URL Categories** tab (**Zero Trust Secure Access → Secure Access Resources → Custom URL Categories**).
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Add a custom URL category</p></td>
+<td><ol>
+<li><p>On the <strong>Custom URL Categories</strong> tab, and click <strong>Add</strong>.</p></li>
+<li><p>Specify a unique name for the category. This name appears in the available URL categories list when you configure internet access rules and HTTPS inspection rules.</p></li>
+<li><p>Select a match mode.</p>
+<ul>
+<li><p>Domain match: Matches URLs from specified domains along with all relevant subdomains</p></li>
+<li><p>Keyword match: Matches URLs containing specified keywords</p></li>
+<li><p>URL match: Matches specific URLs</p>
+
+
+:::note
+
+<p>HTTPS URLs are not supported in bandwidth control rules, HTTPS inspection rules, or outbound static IP settings. In Internet Access and risk rules, matches for HTTPS URLs are based on the decrypted version of the URL.</p>
+
+
+:::
+
+</li>
+</ul></li>
+<li><p>Specify the desired domains, keywords, or URLs based on the match mode, separating them with spaces, and then click <strong>Add</strong>.</p>
+
+
+:::tip
+
+<p>Zero Trust Secure Access supports the following wildcard characters:</p>
+<ul>
+<li><p>* : Matches any number of characters</p></li>
+<li><p>? : Matches a single character in a specific position</p></li>
+</ul>
+
+
+:::
+
+
+<p>To remove an entry, click <img src="./images/trash_icon=GUID-47cf6867-6315-438e-8670-86ff36f22a28.webp" /> at the end of the column corresponding to the entry.</p></li>
+<li><p>Click <strong>Save</strong>.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Check custom URL category details</p></td>
+<td><p>View the basic information about a URL category.</p></td>
+</tr>
+<tr>
+<td><p>Configure a custom URL category</p></td>
+<td><p>Click the edit (<img src="./images/edit_icon=GUID-1F1D1164-5310-4D6D-ACD0-6049C86960AF.webp" />) icon in the <strong>Action</strong> column to change the basic information about a URL category.</p>
+<p>Click the copy (<img src="./images/duplicate=e79af1b6-17af-40ad-b942-53ffb9e796d2.webp" />) icon in the <strong>Action</strong> column to duplicate a URL category. This provides a convenient way of adding a new URL category with settings similar to an existing category.</p>
+<p>Click the delete (<img src="./images/trash_icon=GUID-47cf6867-6315-438e-8670-86ff36f22a28.webp" />) icon in the <strong>Action</strong> column to delete a URL category from Trend Vision One.</p>
+<p>To delete more than one URL category, select the categories and click <strong>Delete</strong> in the upper left.</p>
+
+
+:::note
+
+<p>Only custom URL categories that are not currently in use by any rules or settings can be deleted.</p>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+
+:::note
+
+Internet Access uses Trend Micro Web Reputation Services to categorize URLs. If an accessed URL is identified as "Untested" or "Newly Observed Domain", Internet Access uses Dynamic URL Categorization technology to perform real-time categorization of the website based on the website content and HTTP URL.
+:::
+
+**Related information**
+
+- [URL filtering category groups](url-filtering-categorhy-groups.mdx)
+:::::

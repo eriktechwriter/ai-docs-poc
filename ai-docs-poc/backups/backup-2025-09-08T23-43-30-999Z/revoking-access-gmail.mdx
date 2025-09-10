@@ -1,0 +1,39 @@
+---
+slug: trend-vision-one-revoking-access-gmail
+title: Revoking access to Gmail
+last_updated: '2025-09-08'
+ai_context:
+  source_file: revoking-access-gmail.md
+  conversion_date: '2025-09-08T23:42:13.670Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+The steps outlined below detail how to revoke the access of Cloud Email and Collaboration Protection to Gmail.
+
+### Procedure {#procedure}
+
+1.  Choose **Administration → Service Account**.
+
+2.  Select the Gmail service account and click **Remove**.
+
+3.  Remove the Cloud Email and Collaboration Protection application for all of your users.
+
+    :::warning[Important]
+
+    The Google Drive, Gmail, Gmail (Inline Mode) service accounts share the same *Trend Micro Cloud App Security* application. If you are still using the Gmail (Inline Mode) or Google Drive service account, skip this step and step 4.
+    :::
+
+    1.  Visit [https://admin.google.com/AdminHome?hl=en&pli=1&fral=1#AppsList:serviceType=MARKETPLACE](https://admin.google.com/AdminHome?hl=en&pli=1&fral=1).
+
+    2.  Click the application named *Trend Micro Cloud App Security*.
+
+    3.  Click the trash icon in the upper right to remove the application.
+
+4.  Remove the Cloud Email and Collaboration Protection application from the administrator's personal settings.
+
+    1.  Go to **Google Account → Security → Third-party apps with account access** and click **manage third-party access**.
+
+    2.  On the **Apps with access to your account** screen, click the application named *Trend Micro Cloud App Security*, and then click **REMOVE ACCESS**.
+:::

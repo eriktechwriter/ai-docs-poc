@@ -1,0 +1,246 @@
+---
+slug: trend-vision-one-deploy-vns-cf-template
+title: Deploying a Virtual Network Sensor from a CloudFormation template
+last_updated: '2025-09-08'
+ai_context:
+  source_file: deploy-vns-cf-template.md
+  conversion_date: '2025-09-08T23:42:20.626Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Use a CloudFormation template to deploy a Virtual Network Sensor to your cloud environment.
+
+:::note
+
+The steps contained in these instructions are valid as of February 2025.
+
+Before you begin, make sure you have completed the following tasks:
+
+- Choose or create a VPC for the Virtual Network Sensor instance.
+
+- Choose or create the subnets for the Virtual Network Sensor data port and management port.
+
+  Trend Micro recommends using different subnets for the data and management ports. For more information on how to set up a VPC and subnet, refer to the [Amazon documentation](https://docs.aws.amazon.com/index.mdx).
+
+- [Create security groups](aws-security-groups-network-sensor.mdx) for the data port and management port.
+:::
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Network Security → Network Inventory → Virtual Network Sensor**.
+
+2.  Click **Deploy Virtual Network Sensor**.
+
+    The **Virtual Network Sensor Deployment** panel appears.
+
+3.  Select **Amazon Web Services** for the platform.
+
+4.  Set the **Admin password** and confirm the password.
+
+    The password must contain the following:
+
+    - 12 to 32 characters
+
+    - Both uppercase and lowercase characters
+
+    - At least one number (0-9)
+
+    - At least one special character: ~!\`@#$%^&\*()/\_+=\[\]{}-\\\<\>',.?:;" or space
+
+    :::note
+
+    This step is used to set the default admin password to access the Virtual Network Sensor command line interface after deployment.
+    :::
+
+5.  Select the **Connection method**.
+
+    - **Direct connection**: the Virtual Network Sensor connects to Trend Vision One directly. Make sure the Virtual Network Sensor is able to connect to the internet when using this configuration.
+
+    - **Connect using a custom proxy**: the Virtual Network Sensor connects to Trend Vision One through a third-party proxy. After choosing this method, configure the following fields:
+
+      - **Proxy address**: Specify the IP address of the proxy.
+
+      - **Proxy port**: Specify the connecting port of the proxy.
+
+      - **Proxy server requires authentication**: (Optional) Select if the proxy requires authentication credentials.
+
+      - **User name**: Specify the user name for the proxy credentials.
+
+      - **Password**: Specify the password for the proxy credentials.
+
+    - **Connect using a Service Gateway as proxy**: the Virtual Network Sensor connects to Trend Vision One through a Service Gateway. Select a Service Gateway to use for this method.
+
+      :::warning[Important]
+
+      The Virtual Network Sensor must be able to connect to a Service Gateway with the Forward Proxy Service configured and enabled. For more information, see [Manage services in Service Gateway](managing-services-service-gateway.mdx).
+      :::
+
+6.  Select **CloudFormation template** for the **Deployment method**.
+
+7.  Click **Download Token** to download the token file.
+
+    :::note
+
+    The token file contains important information for the Virtual Network Sensor including the configured admin password and information that allows the Virtual Network Sensor to connect and on-board with Network Inventory automatically.
+    :::
+
+8.  In a new tab in the same browser session, sign in to the AWS Management Console.
+
+9.  Locate the S3 service and click the link to access the S3 dashboard.
+
+10. In the **General purpose buckets** tab, locate your S3 bucket and click the name.
+
+11. Click **Upload** to upload the token file to your AWS S3 bucket.
+
+12. Select the uploaded token and click **Copy S3 URI**.
+
+13. In the same browser session on the other tab with the Trend Vision One console, click **Go to AWS Marketplace** to launch the instance directly from the marketplace.
+
+    The **Trend Vision One™ XDR for Networks (BYOL)** window opens in a new tab.
+
+14. Click **View purchase options**.
+
+15. Click **Continue to Configuration**.
+
+16. Select **CloudFormation Template** for the **Fulfillment option**.
+
+17. Select the **Region**.
+
+18. Click **Continue to Launch**.
+
+19. Select **Launch CloudFormation** from the drop-down menu.
+
+20. Click **Launch**.
+
+21. On the **Create stack** screen, click **Next**.
+
+22. On the **Specify stack details** screen, specify a **Stack name**, **Instance type**, and **Disk Size (GB)**.
+
+    :::note
+
+    - The Virtual Network Sensor has been tested with the following recommended instance types:
+
+      <table>
+      <colgroup>
+      <col style="width: 50%" />
+      <col style="width: 50%" />
+      </colgroup>
+      <thead>
+      <tr>
+      <th><p>Throughput (Mbps)</p></th>
+      <th><p>Recommended Instance Type</p></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td><p>100</p></td>
+      <td><ul>
+      <li><p>t3.large</p></li>
+      <li><p>m5.large</p></li>
+      </ul></td>
+      </tr>
+      <tr>
+      <td><p>500</p></td>
+      <td><ul>
+      <li><p>t3.xlarge</p></li>
+      <li><p>m5.xlarge</p></li>
+      </ul></td>
+      </tr>
+      <tr>
+      <td><p>1000</p></td>
+      <td><ul>
+      <li><p>t3.2xlarge</p></li>
+      </ul></td>
+      </tr>
+      <tr>
+      <td><p>2000</p></td>
+      <td><ul>
+      <li><p>m5.2xlarge</p></li>
+      </ul></td>
+      </tr>
+      <tr>
+      <td><p>5000</p></td>
+      <td><ul>
+      <li><p>m5.4xlarge</p></li>
+      </ul></td>
+      </tr>
+      <tr>
+      <td><p>10000</p></td>
+      <td><ul>
+      <li><p>m5.8xlarge</p></li>
+      </ul></td>
+      </tr>
+      </tbody>
+      </table>
+
+    - Set the disk size (root volume size) according to your throughput:
+
+      <table>
+      <colgroup>
+      <col style="width: 50%" />
+      <col style="width: 50%" />
+      </colgroup>
+      <thead>
+      <tr>
+      <th><p>Throughput (Mbps)</p></th>
+      <th><p>Recommended Volume Size (GB)</p></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td><p>100</p></td>
+      <td rowspan="3"><p>50</p></td>
+      </tr>
+      <tr>
+      <td><p>500</p></td>
+      </tr>
+      <tr>
+      <td><p>1000</p></td>
+      </tr>
+      <tr>
+      <td><p>2000</p></td>
+      <td><p>100</p></td>
+      </tr>
+      <tr>
+      <td><p>5000</p></td>
+      <td><p>150</p></td>
+      </tr>
+      <tr>
+      <td><p>10000</p></td>
+      <td><p>200</p></td>
+      </tr>
+      </tbody>
+      </table>
+    :::
+
+23. Select the **Management port subnet ID** and **Management port security group**.
+
+24. Select an option for **Associate new public IP address for management port?** depending on your needs.
+
+25. Select the **Data port subnet ID** and **Data port security group**.
+
+26. Paste the copied **Token S3 URL**.
+
+    :::warning[Important]
+
+    You must paste the S3 URI (not the URL) for the sensor to be configured correctly.
+    :::
+
+27. Click **Next**.
+
+28. Configure the stack options for the deployment.
+
+29. Select all the checkboxes in the **Capabilities and transforms** section and click **Next**.
+
+30. Review all your configured settings and click **Create**.
+
+    Once you create the stack, the Virtual Network Sensor begins installation. Installation may take a few minutes to complete.
+
+31. Once the appliance is ready, configure your network settings based on your security environment needs.
+
+    - [Configure traffic mirror settings](network-sensor-traffic-mirror.mdx).
+
+    - [Configure a network load balancer](network-behind-load-balancer.mdx).
+::::

@@ -1,0 +1,76 @@
+---
+slug: trend-vision-one-v1ecs-adding-object-approved-list
+title: Adding an object to the approved list
+---
+# Adding an object to the approved list
+
+Add one or multiple approved objects into the approved list that applies to all supported Email and Collaboration Security solutions.
+
+:::note
+
+Only approved **sender address** is currently supported.
+:::
+
+### Procedure {#procedure}
+
+1.  In the **Approved list** section, click **Add**.
+
+2.  On the **Approved list settings** panel, select the method to add one or multiple approved objects.
+
+    - Wildcards (\*) are supported for sender addresses.
+
+      The following table displays format examples that are valid or not valid.
+
+      <table>
+      <colgroup>
+      <col style="width: 50%" />
+      <col style="width: 50%" />
+      </colgroup>
+      <thead>
+      <tr>
+      <th><p>Valid</p></th>
+      <th><p>Not valid</p></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td><p><code>name@example.com</code></p></td>
+      <td><p><code>name@info.*.example.com</code></p></td>
+      </tr>
+      <tr>
+      <td><p><code>name@info.example.com</code></p></td>
+      <td><p><code>name@example.com.*</code></p></td>
+      </tr>
+      <tr>
+      <td><p><code>name@*.example.com</code></p></td>
+      <td><p><code>*name@info.example.com</code></p></td>
+      </tr>
+      <tr>
+      <td><p><code>name@*</code></p></td>
+      <td><p><code>*@*</code></p></td>
+      </tr>
+      <tr>
+      <td><p><code>*@example.com</code></p></td>
+      <td> </td>
+      </tr>
+      <tr>
+      <td><p><code>*@server.example.com</code></p></td>
+      <td> </td>
+      </tr>
+      <tr>
+      <td><p><code>*@*.example.com</code></p></td>
+      <td> </td>
+      </tr>
+      </tbody>
+      </table>
+
+    - The maximum file size for import is 1 MB.
+
+    - Each CSV file can contain a maximum of 2,000 objects.
+
+3.  Provide a description to easily identify the approved objects.
+
+4.  Select how long the approved objects expire.
+
+5.  Click **Save**.
+::::

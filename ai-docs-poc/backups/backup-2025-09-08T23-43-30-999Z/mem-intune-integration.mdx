@@ -1,0 +1,81 @@
+---
+slug: trend-vision-one-mem-intune-integration
+title: Microsoft Endpoint Manager (Intune) integration
+last_updated: '2025-09-08'
+ai_context:
+  source_file: mem-intune-integration.md
+  conversion_date: '2025-09-08T23:42:16.062Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Perform the integration to discover Microsoft Intune-enrolled mobile devices and deploy the Mobile Security for Business to the devices for increased visibility and management.
+
+:::warning[Important]
+
+**Mobile Security** integrated as a Mobile Threat Defense (MTD) partner with Microsoft Intune on September 23, 2022. If you granted permissions to Microsoft Intune prior to this date, you must grant permissions again. Using a Master Administrator account, go to **Third-Party Integration** and click **Microsoft Endpoint Manager (Intune)**. Then, click **Grant Permissions**.
+
+With this integration, you can:
+
+- Send device risk level data to Microsoft Endpoint Manager (Intune), allowing you to use device risk in compliance policies
+
+- Control mobile device access to your organization's resources with risk-based access controls
+
+- Perform malware scans on iOS and iPadOS devices
+
+For more information, see the related article in [Microsoft Intune documentation](https://learn.microsoft.com/en-us/mem/intune/protect/trend-micro-mobile-threat-defense-connector).
+:::
+
+With Intune integration, you can easily deploy the Mobile Security for Business app as well as app configuration to managed mobile devices in your organization with zero touch. **Mobile Security** can then leverage the app configuration to enroll the mobile devices with it.
+
+:::note
+
+**Mobile Security** integration with Intune involves only iOS/iPadOS and Android.
+:::
+
+Integration with Microsoft Endpoint Manager (Intune) for Android supports the following enrollment profiles.
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Enrollment Profile</p></th>
+<th><p>Protection Scope</p></th>
+<th><p><strong>Mobile Security</strong> Deployment Location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Personally-owned devices with work profile</p></td>
+<td><p>Work profile</p></td>
+<td><p>Work profile</p></td>
+</tr>
+<tr>
+<td><p>Corporate-owned dedicated device profile</p></td>
+<td><p>Whole device</p></td>
+<td><p>Device</p></td>
+</tr>
+<tr>
+<td><p>Corporate-owned, fully managed user devices</p></td>
+<td><p>Whole device</p></td>
+<td><p>Device</p></td>
+</tr>
+<tr>
+<td><p>Corporate-owned devices with work profile</p></td>
+<td><p>Work profile</p></td>
+<td><p>Work profile</p></td>
+</tr>
+</tbody>
+</table>
+
+For more information about Android enrollment profiles in Microsoft Endpoint Manager (Intune), see the related article in [Microsoft Intune documentation](https://learn.microsoft.com/en-us/mem/intune/fundamentals/deployment-guide-enrollment-android).
+
+**Related information**
+
+- [Setting up Microsoft Endpoint Manager (Intune) integration](setting-up-intune-integration.md "Configure integration settings to quickly deploy the Mobile Security for Business app and app configuration to managed mobile devices.")
+:::::

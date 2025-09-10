@@ -1,0 +1,134 @@
+---
+slug: trend-vision-one-cef-url-click-tracking-logs
+title: CEF URL click tracking logs
+last_updated: '2025-09-08'
+ai_context:
+  source_file: cef-url-click-tracking-logs.md
+  conversion_date: '2025-09-08T23:42:24.084Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+**CEF URL Click Tracking Logs**
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>CEF Key</p></th>
+<th><p>Description</p></th>
+<th><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Header (logVer)</p></td>
+<td><p>CEF format version</p></td>
+<td><p>CEF: 0</p></td>
+</tr>
+<tr>
+<td><p>Header (vendor)</p></td>
+<td><p>Appliance vendor</p></td>
+<td><p>Trend Micro</p></td>
+</tr>
+<tr>
+<td><p>Header (pname)</p></td>
+<td><p>Appliance product</p></td>
+<td><p>TMES</p></td>
+</tr>
+<tr>
+<td><p>Header (pver)</p></td>
+<td><p>Appliance version</p></td>
+<td><p>Example: 1.0.0.0</p></td>
+</tr>
+<tr>
+<td><p>Header (eventid)</p></td>
+<td><p>Signature ID</p></td>
+<td><p>500101</p></td>
+</tr>
+<tr>
+<td><p>Header (eventName)</p></td>
+<td><p>Description</p></td>
+<td><p>CTP_DETECTION</p></td>
+</tr>
+<tr>
+<td><p>Header (severity)</p></td>
+<td><p>Email severity</p></td>
+<td><ul>
+<li><p>2: Safe</p></li>
+<li><p>4: Suspicious</p></li>
+<li><p>6: Highly suspicious</p></li>
+<li><p>8: Dangerous</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>rt</p></td>
+<td><p>Log generation time</p></td>
+<td><p>Example: 2021-02-18 04:05:32</p></td>
+</tr>
+<tr>
+<td><p>cs1Label</p></td>
+<td><p>Unique message identifier</p></td>
+<td><p>messageId</p></td>
+</tr>
+<tr>
+<td><p>cs1</p></td>
+<td><p>Unique message identifier</p></td>
+<td><p>Example: 202102181642138223747@trend.com</p></td>
+</tr>
+<tr>
+<td><p>cs2Label</p></td>
+<td><p>The time a URL was clicked</p></td>
+<td><p>timeOfClick</p></td>
+</tr>
+<tr>
+<td><p>cs2</p></td>
+<td><p>The time a URL was clicked</p></td>
+<td><p>Example: 2021-02-03 23:00:00</p></td>
+</tr>
+<tr>
+<td><p>request</p></td>
+<td><p>The URL that was clicked</p></td>
+<td><p>Example: <a href="http://example.com">http://example.com</a></p></td>
+</tr>
+<tr>
+<td><p>act</p></td>
+<td><p>Action taken on the URL</p></td>
+<td><ul>
+<li><p>blocked</p></li>
+<li><p>allowed</p></li>
+<li><p>warned and stopped</p></li>
+<li><p>warned but accessed</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>msg</p></td>
+<td><p>Email subject</p></td>
+<td><p>Example: hello</p></td>
+</tr>
+<tr>
+<td><p>suser</p></td>
+<td><p>Email sender</p></td>
+<td><p>Example: user1@example1.com</p></td>
+</tr>
+<tr>
+<td><p>duser</p></td>
+<td><p>Email recipients</p></td>
+<td><p>Example: user2@example2.com</p></td>
+</tr>
+</tbody>
+</table>
+
+Log sample:
+
+``` {.codeblock style="font-size: 70%;"}
+CEF:0|Trend Micro|TMES|1.0.0.0|500101|CTP_DETECTION|2|rt=2021-02-18 04:05:32 cs2Label=timeOfClick cs2=2021-02-03 23:00:00 
+request=http://example.com act=blocked msg=hello cs1Label=messageId cs1=<202102181642138223747@trend.com> 
+suser=user1@example1.com duser=user2@example2.com
+```
+:::

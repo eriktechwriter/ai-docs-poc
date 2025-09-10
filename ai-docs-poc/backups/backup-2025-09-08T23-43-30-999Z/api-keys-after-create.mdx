@@ -1,0 +1,70 @@
+---
+slug: trend-vision-one-api-keys-after-create
+title: Manage API keys after their creation
+last_updated: '2025-09-08'
+ai_context:
+  source_file: api-keys-after-create.md
+  conversion_date: '2025-09-08T23:42:24.942Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+:::tip
+
+This article describes how to create API keys for [legacy accounts](https://docs.trendmicro.com/en-us/documentation/article/trend-micro-cloud-one-identity-account-management-c1-accounts-about).
+
+If you're using a new Trend Micro Cloud One account, see [Manage API keys](https://docs.trendmicro.com/en-us/documentation/article/trend-micro-cloud-one-identity-account-management-c1-api-key) instead.
+:::
+
+You can modify the properties of an API key at any time after it is created.
+
+### Reset a secret key {#reset-a-secret-key}
+
+Use an `APIKeysApi` object to generate a new secret key for an existing API key. For example, reset the secret key when periodically rotating API keys. Once replaced, the previous secret key will no longer be authenticated by Server & Workload Protection.
+
+When you reset the secret key, the returned API key contains the new secret key in the `secret_key` (Python) or `secretKey` (JavaScript) property. For Java, you can use the `getSecretKey` method of the returned `ApiKey` object.
+
+The APIKeysApi class provides the `replace_api_secret_key` function (`replaceApiSecretKey` in JavaScript and Java) that takes the ID of the API key as a parameter. The following example creates a new secret key for an existing API key.
+
+[View source](https://github.com/deep-security/automation-center-sdk-samples/blob/master/python/src/api_key_examples.py)
+
+``` codeblock
+# Reset the key
+api_keys_api = api.APIKeysApi(api.ApiClient(configuration))
+return api_keys_api.replace_api_secret_key(key_id, api_version)
+```
+
+Also see the [Generate an API Secret Key](https://automation.trendmicro.com/cloudone/workload-security/) in the API Reference.
+
+### Control API key access after creation {#control-api-key-access-after-creation}
+
+After you create an API key you still have control over the API key's access to Server & Workload Protection:
+
+- *Modify access rights:* Modify the role that is associated with the API key or associate the API key with a different role. (See also [Control Access Using Roles](control-access-using-roles.mdx).)
+- *Revoke access:* Either lock out the key to temporarily revoke access, or delete the API key to permanently revoke access.
+
+To modify an API key, create an `ApiKey` object and set values for the properties that you want to change. Then, use the `APIKeysApi` class to modify the API key on Server & Workload Protection.
+
+The following example code changes the role that is associated with an API key.
+
+[View source](https://github.com/deep-security/automation-center-sdk-samples/blob/master/python/src/api_key_examples.py)
+
+``` codeblock
+# Create a key and set the role ID
+key = api.ApiKey()
+key.role_id = role_id
+
+# Modify the key on Server & Workload Protection
+api_keys_api = api.APIKeysApi(api.ApiClient(configuration))
+api_keys_api.modify_api_key(key_id, key, api_version)
+return key.role_id
+```
+
+Also see the [Modify an API Key](https://automation.trendmicro.com/cloudone/workload-security/), [Delete and API Key](https://automation.trendmicro.com/cloudone/workload-security/), and [Modify an Administrator Role](https://automation.trendmicro.com/cloudone/workload-security/) operations in the API Reference.
+
+:::tip
+
+To use Server & Workload Protection to modify the API key, go to **Administration → User Management → API Keys**, select the API key and click *Properties*.
+:::
+:::::

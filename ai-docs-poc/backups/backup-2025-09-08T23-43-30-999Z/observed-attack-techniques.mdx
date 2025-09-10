@@ -1,0 +1,97 @@
+---
+slug: trend-vision-one-observed-attack-techniques
+title: Observed Attack Techniques
+last_updated: '2025-09-08'
+ai_context:
+  source_file: observed-attack-techniques.md
+  conversion_date: '2025-09-08T23:42:14.870Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Review the individual events detected in your environment that might trigger a Workbench alert.
+
+Trend Vision One detects events through use of granular predefined or custom detection filters that make up the detection models that trigger alerts. Events that Trend Vision One lists on Observed Attack Techniques might not result in a Workbench insight or Workbench alert. You can use the data in the Trend Vision One app to further investigate Workbench insights and evaluate individual detections.
+
+The following table outlines the actions available in the Observed Attack Techniques app:
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Filter event data</p></td>
+<td><p>Use the lists to locate specific event data.</p>
+<ul>
+<li><p><strong>Risk level</strong>: The risk assigned to the detection filter as determined by Trend Micro threat experts</p>
+<p>Trend Micro experts continuously assess threats and may update the risk level of a detection at any time based on the latest information available.</p></li>
+<li><p><strong>Detected</strong>: When the detection occurred</p></li>
+<li><p><strong>Data source / processor</strong>: The product that detected the event</p></li>
+<li><p><strong>Detection filter</strong>: Select from <strong>Detection filter</strong>, <strong>Tactic ID</strong>, or <strong>Technique ID</strong> to locate specific filter or MITRE data</p></li>
+</ul>
+<p>You can also search by endpoint or container name in the search bar.</p></td>
+</tr>
+<tr>
+<td><p>Create a query from filters</p></td>
+<td><p>To create a query in XDR Data Explorer based on your specified filters, click <strong>Query in XDR Data Explorer</strong>.</p></td>
+</tr>
+<tr>
+<td><p>Hide detection filters from the list</p></td>
+<td><p>If you receive a lot of detections on particular detection filters that do not interest you, you can temporarily hide the data for specific filters.</p>
+<p>Right-click the unwanted <strong>Detection filter</strong> name and click <strong>Hide Value</strong>. After adding all unwanted filters to the <strong>Hidden objects</strong> list, click <strong>Apply</strong> to reload the list.</p>
+
+
+:::note
+
+<p>You cannot save the <strong>Hidden objects</strong> list. If you leave the Observed Attack Techniques, the list resets.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>View event details in <strong>XDR Data Explorer</strong></p></td>
+<td><p>Locate an event, click the options icon (<img src="./images/options=ddb0b67f-0654-4aa5-8bc7-48ec554c5448.webp" />) at the end of the row and select <strong>View Event in XDR Data Explorer</strong> to open <strong>XDR Data Explorer</strong> in a new browser tab.</p></td>
+</tr>
+<tr>
+<td><p>Add event to case</p></td>
+<td><p>Locate an event, click the options icon (<img src="./images/options=ddb0b67f-0654-4aa5-8bc7-48ec554c5448.webp" />) at the end of the row and select <strong>Add to Case</strong> to add the event as evidence of a case.</p></td>
+</tr>
+<tr>
+<td><p>Add event to Workbench insight</p></td>
+<td><p>Locate and right-click an event, then select <strong>Add to Workbench Insight</strong>.</p>
+<p>Adding events to Workbench insights updates the insight information, including impact scope and highlighted object.</p></td>
+</tr>
+<tr>
+<td><p>View detailed information about an associated entity</p></td>
+<td><p>Click the <strong>Show Detailed Profile</strong> icon (<img src="./images/details_icon=f45ada04-b746-40a7-a5f4-2166c059213c.webp" />) to view detailed information about the associated entity.</p></td>
+</tr>
+<tr>
+<td><p>View more details</p></td>
+<td><p>Expand any row to see more details related to the detection and associated entities.</p></td>
+</tr>
+<tr>
+<td><p>Chat with Trend Companion</p></td>
+<td><ul>
+<li><p>Click <img src="./images/newCompanionIcon=GUID-20240819112525.webp" /> to start a conversation with <a href="trend-vision-one-companion">Trend Companion</a>.</p></li>
+<li><p>Right-click a CLI command element (<code>parentCmd</code>, <code>processCmd</code>, and <code>objectCmd</code>) and choose <strong>Explain Command</strong> to learn about the commands executed in an event.</p></li>
+<li><p>To learn about an event, you can right-click an event or click <img src="./images/options=ddb0b67f-0654-4aa5-8bc7-48ec554c5448.webp" /> and choose <strong>Explain Event</strong>. Trend Companion cannot explain events that only contain custom filters.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Troubleshooting & FAQ](troubleshooting-faq.mdx)
+:::

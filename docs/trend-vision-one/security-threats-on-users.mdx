@@ -1,0 +1,90 @@
+---
+slug: trend-vision-one-security-threats-on-users
+title: Security Threats for Users
+---
+# Security Threats for Users
+
+The **Threats** tab on the **User** information screen allows you to view all security threats detected on endpoints assigned to the selected user.
+
+You can access this screen from the following widgets on the **Dashboard → Summary** tab on the Trend Micro Apex Central console.
+
+- **Critical Threats**: Click a number in the *Important Users* or *Other Users* columns and then click the user you want to view.
+
+- **Users with Threats**: Click the number in the *Threats* column for the user you want to view.
+
+- **Endpoints with Threats**: Click the number in the *Threats* column for the endpoint you want to view.
+
+<figure>
+<img src="./images/security_users=GUID-9E542725-52D0-4AF9-A99F-B8E93F41A968=4=en-us=Low.webp" />
+</figure>
+
+- **Security Threats Over Time**: Provides a graphical representation of threat information based on the time of the detection and whether the detection occurred on an assigned endpoint or the user's account
+
+  - Hover over a threat icon (for example, ![](/images/icon_malware=GUID-8F7D6D8C-7F89-4294-B6B1-E0C2E1C8EBC7=1=en-us=Low.webp)) to view details about the detection.
+
+  - Change the displayed time interval by changing the **Zoom** value.
+
+  - Change the end date by scrolling through the dates displayed under the graph.
+
+  - Apply filters by clicking the funnel icon (![](/images/icon_funnel=GUID-72793B76-BFB7-45AB-BCA5-AA61DBF5AB9E=1=en-us=Low.webp)) and selecting the following criteria and using the **OR** or **AND** operators to build advanced filters.
+
+    - **Threat type**: Select a threat category from the second drop-down list
+
+    - **Security threat**: Type a malware name or suspicious URL, IP address, or sender email address
+
+    - **Threat status**: Select **Resolved by product**, **Action required**, or **Resolved manually**
+
+- **Security Threat Details**: Provides more detailed information about the threats displayed on the **Security Threats Over Time** graph
+
+  - Click a value in the **Security Threat** column to view the **Affected Users** screen.
+
+    For more information, see [Affected Users](affected-users-apex.mdx).
+
+  - Click **View** link in the *Details* column to view detailed information.
+
+  - Click a flag icon in the *Threat Status* column (![](/images/threat_status_col=GUID-FFEEEEF6-1166-4FD4-8ECC-C61436D268A8=1=en-us=Low.webp)) to change the threat status for threats that require remediation.
+
+    :::note
+
+    Changing the threat status for a threat does not actually resolve the threat. The threat status is a case handling tool to help administrators track identified threats and indicate to other administrators that a threat has been resolved.
+    :::
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Threat Status</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Resolved by product (<img src="./images/action_status_none=GUID-019F7755-C4B0-438D-9250-84542D95A887=1=en-us=Low.webp" />)</p></td>
+    <td><p>Indicates that the threat has been resolved by a managed product</p>
+
+
+    :::note
+
+    <p>You cannot change this threat status.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>Action required (<img src="./images/action_status_required=GUID-27724890-0571-41CE-8C6D-8193B2DC14EE=1=en-us=Low.webp" />)</p></td>
+    <td><p>Indicates that remediation is required</p>
+    <p>Click the <strong>Action required</strong> icon (<img src="./images/action_status_required=GUID-27724890-0571-41CE-8C6D-8193B2DC14EE=1=en-us=Low.webp" />) to change the threat status to <strong>Resolved manually</strong> (<img src="./images/action_status_resolved=GUID-A7997668-25E2-44B0-AE73-3DD8529F8DF4=1=en-us=Low.webp" />).</p></td>
+    </tr>
+    <tr>
+    <td><p>Resolved manually (<img src="./images/action_status_resolved=GUID-A7997668-25E2-44B0-AE73-3DD8529F8DF4=1=en-us=Low.webp" />)</p></td>
+    <td><p>Indicates that remediation has been performed by an administrator</p>
+    <p>Click the <strong>Resolved by product</strong> icon (<img src="./images/action_status_none=GUID-019F7755-C4B0-438D-9250-84542D95A887=1=en-us=Low.webp" />) to change the threat status to <strong>Action required</strong> (<img src="./images/action_status_required=GUID-27724890-0571-41CE-8C6D-8193B2DC14EE=1=en-us=Low.webp" />).</p></td>
+    </tr>
+    </tbody>
+    </table>
+:::

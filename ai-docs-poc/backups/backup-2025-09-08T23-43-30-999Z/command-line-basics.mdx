@@ -1,0 +1,593 @@
+---
+slug: trend-vision-one-command-line-basics
+title: Command-line basics
+last_updated: '2025-09-08'
+ai_context:
+  source_file: command-line-basics.md
+  conversion_date: '2025-09-08T23:42:23.336Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::::::::: {role="main"}
+You can use the local command-line interface (CLI) to command both agents and Server & Workload Protection to perform many actions. The CLI can also configure some settings, and to display system resource usage.
+
+:::tip
+
+You can also automate many of the CLI commands below using the Server & Workload Protection API. To get started with the API, see [First Steps Toward Server & Workload Protection Automation](api-sdk-devops-tools-for-automation.mdx).
+:::
+
+Below are the CLI commands:
+
+- dsa_control
+- dsa_query
+
+## dsa_control {#dsa_control}
+
+You can use `dsa_control` to configure some agent settings, and to manually trigger some actions such as activation, anti-malware scans, and baseline rebuilds.
+
+:::note
+
+On Windows, when [self-protection is enabled](use-agent-self-protection.mdx), local users cannot uninstall, update, stop, or otherwise control the agent. They must also supply the authentication password when running CLI commands.
+:::
+
+:::note
+
+On macOS, when self-protection is enabled, local users cannot uninstall, modify, stop, or otherwise control the agent. They must also supply the authentication password when running CLI commands.
+:::
+
+:::note
+
+`Dsa_control` only supports English strings. Unicode is not supported.
+:::
+
+To use `dsa_control`:
+
+### Procedure {#procedure}
+
+- In Windows:
+
+  1.  Open a Command Prompt as Administrator.
+
+  2.  Change to the agent's installation directory. For example: `cd C:\Program Files\Trend Micro\Deep Security Agent\`
+
+  3.  Run dsa_control: `dsa_control <option>` where `<option>` is replaced with one of the options described in dsa_control options.
+
+- In Linux:
+
+  - `sudo /opt/ds_agent/dsa_control <option>` where `<option>` is replaced with one of the options described in dsa_control options.
+
+- In macOS:
+
+  1.  Open a Terminal window as an Admin.
+
+  2.  Change to the agent's installation directory. For example: `cd /Library/Application Support/com.trendmicro.DSAgent`
+
+  3.  Run dsa_control: `dsa_control <option>` where `<option>` is replaced with one of the options described in dsa_control options.
+
+## dsa_control options {#dsa_control-options}
+
+`dsa_control [-a <str>] [-b] [-c <str>] [-d] [-g <str>] [-s <num>] [-m] [-p <str>] [-r] [-R <str>] [-t <num>] [-u <str>:<str>] [-w <str>:<str>] [-x dsm_proxy://<str>] [-y relay_proxy://<str>] [--buildBaseline] [--scanForChanges] [Additional keyword:value data to send to Server & Workload Protection during activation or heartbeat...]`
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Parameter</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>-a &lt;str&gt;, --activate=&lt;str&gt;</code></p></td>
+<td><p>Activate agent with manager at the specified URL in this format:</p>
+<p><code>dsm://&lt;host&gt;:&lt;port&gt;/</code></p>
+<p>where:</p>
+<p><code>&lt;host&gt;</code> could be either the manager's fully qualified domain name (FQDN), IPv4 address, or IPv6 address</p>
+<p><code>&lt;port&gt;</code> is the manager's listening <a href="trend-vision-one-swp-port-numbers">port number</a></p>
+<p>Optionally, after the argument, you can also specify some settings such as the description to send during activation. See Agent-initiated heartbeat command ("dsa_control -m"). They must be entered as key:value pairs (with a colon as a separator). There is no limit to the number of key:value pairs that you can enter, but the key:value pairs must be separated from each other by a space. Quotation marks around the key:value pair are required if it includes spaces or special characters.</p></td>
+</tr>
+<tr>
+<td><p><code>-b, --bundle</code></p></td>
+<td><p>Create an update bundle.</p>
+<p>Not supported on macOS</p></td>
+</tr>
+<tr>
+<td><p><code>-c &lt;str&gt;, --cert=&lt;str&gt;</code></p></td>
+<td><p>Identify the certificate file.</p>
+<p>Not supported on macOS</p></td>
+</tr>
+<tr>
+<td><p><code>-d, --diag</code></p></td>
+<td><p>Generate an agent package.</p>
+<p>For more detailed instructions, see <a href="trend-vision-one-create-diagnostic-package-logs">Create an agent diagnostic package via CLI on a protected computer</a>.</p></td>
+</tr>
+<tr>
+<td><p><code>-g &lt;str&gt;, --agent=&lt;str&gt;</code></p></td>
+<td><p>Agent URL.</p>
+<p>Defaults to <code>https://localhost:&lt;port&gt;/</code> where <code>&lt;port&gt;</code> is the manager's listening <a href="trend-vision-one-swp-port-numbers">port number</a>.</p>
+<p>Not supported on macOS</p></td>
+</tr>
+<tr>
+<td><p><code>-m, --heartbeat</code></p></td>
+<td><p>Force the agent to contact the manager now.</p></td>
+</tr>
+<tr>
+<td><p><code>-p &lt;str&gt;</code> or <code>--passwd=&lt;str&gt;</code></p></td>
+<td><p>Authentication password that you might have configured in Server &amp; Workload Protection previously. See <a href="trend-vision-one-use-agent-self-protection">Configure self-protection through Workload Security</a> for details.</p>
+<p>If configured, the password must be included with all dsa_control commands <em>except</em> <code>dsa_control -a</code>, <code>dsa_control -x</code>, and <code>dsa_control -y</code>.</p>
+<p>Example: <code>dsa_control -m -p MyPa$w0rd</code></p>
+<p>If you type the password directly into the command line, it is displayed on the screen. To hide the password with asterisks (*) while you type, enter the interactive form of the command, <code>-p \*</code>, which prompts you for the password.</p>
+<p>Example:</p>
+<p><code>dsa_control -m -p *</code></p></td>
+</tr>
+<tr>
+<td><p><code>-r, --reset</code></p></td>
+<td><p>Reset the agent's configuration. This will remove the activation information from the agent and deactivate it.</p></td>
+</tr>
+<tr>
+<td><p><code>-R &lt;str&gt;, --restore=&lt;str&gt;</code></p></td>
+<td><p>Restore a quarantined file. On Windows, you can also restore cleaned and deleted files.</p></td>
+</tr>
+<tr>
+<td><p><code>-s &lt;num&gt;, --selfprotect=&lt;num&gt;</code></p></td>
+<td><p>Enable agent self-protection (1: enable, 0: disable). Self-protection prevents local end-users from uninstalling, stopping, or otherwise controlling the agent. For details, see <a href="trend-vision-one-use-agent-self-protection">Enable or disable agent self-protection</a>. <em>Note:</em> Although dsa_control lets you enable self-protection, it does not let you configure an associated authentication password. You'll need Server &amp; Workload Protection for that. See <a href="trend-vision-one-use-agent-self-protection">Configure self-protection through Workload Security</a> for details. Once configured, the password will need to be entered at the command line using the <code>-p</code> or <code>--passwd=</code> option.</p></td>
+</tr>
+<tr>
+<td><p><code>-t &lt;num&gt;, --retries=&lt;num&gt;</code></p></td>
+<td><p>If dsa_control cannot contact the agent service to carry out accompanying instructions, this parameter instructs dsa_control to retry <code>&lt;num&gt;</code> number of times. There is a 1 second pause between retries. Not supported on macOS</p></td>
+</tr>
+<tr>
+<td><p><code>-u &lt;user&gt;:&lt;password&gt;</code></p></td>
+<td><p>Used in conjunction with the <code>-x</code> option to specify the proxy's username and password, if the proxy requires authentication. Separate the username and password by a colon (:). For example, <code># ./dsa_control -x dsm_proxy://&lt;str&gt; -u &lt;new username&gt;:&lt;new password&gt;</code>. To remove the username and password, type an empty string (""). For example,<code> # ./dsa_control -x dsm_proxy://&lt;str&gt; -u &lt;existing username&gt;:""</code>. If you only want to update the proxy's password without changing the proxy's username, you can use the <code>-u</code> option without <code>-x</code>. For example, <code># ./dsa_control -u &lt;existing username&gt;:&lt;new password&gt;</code>. Basic authentication only. Digest and NTLM are not supported. <em>Note:</em> Using <code>dsa_control -u</code> only applies to the agent's local configuration. No security policy is changed on the manager as a result of running this command.</p></td>
+</tr>
+<tr>
+<td><p><code>-w &lt;user&gt;:&lt;password&gt;</code></p></td>
+<td><p>Used in conjunction with the <code>-y</code> option to specify the proxy's user name and password, if the proxy requires authentication. Separate the username and password by a colon (:). For example, <code># ./dsa_control -y relay_proxy://&lt;str&gt; -w &lt;new username&gt;:&lt;new password&gt;</code>. To remove the username and password, type an empty string (""). For example, <code># ./dsa_control -y relay_proxy://&lt;str&gt; -w &lt;existing username&gt;:""</code>. If you only want to update the proxy's password without changing the proxy's username, you can use the <code>-w</code> option without<code> -y</code>. For example, <code># ./dsa_control -w &lt;existing username&gt;:&lt;new password&gt;</code>. Basic authentication only. Digest and NTLM are not supported. <em>Note:</em> Using <code>dsa_control -w</code> only applies to the agent's local configuration. No security policy is changed on the manager as a result of running this command.</p></td>
+</tr>
+<tr>
+<td><p><code>-x dsm_proxy://&lt;str&gt;:&lt;num&gt;</code></p></td>
+<td><p>Configure a proxy between the agent and manager. Provide the proxy's IPv4/IPv6 address or FQDN and <a href="trend-vision-one-swp-port-numbers">port number</a>, separated by a colon (:). Square brackets must surround IPv6 addresses. For example: <code>dsa_control -x "dsm_proxy://[fe80::340a:7671:64e7:14cc]:808/"</code>. To remove the address, instead of a URL, type an empty string (""). See also the -u option. For more information, see <a href="trend-vision-one-configure-proxies-server-workload">Connect to Server &amp; Workload Protection via proxy</a>. <em>Note:</em> Using <code>dsa_control -x</code> only applies to the agent's local configuration. No security policy is changed on the manager as a result of running this command.</p></td>
+</tr>
+<tr>
+<td><p><code>-y relay_proxy://&lt;str&gt;:&lt;num&gt;</code></p></td>
+<td><p>Configure a proxy between an agent and relay. Provide the proxy's IP address or FQDN and <a href="trend-vision-one-swp-port-numbers">port number</a>, separated by a colon (:). Square brackets must surround IPv6 addresses. For example: <code>dsa_control -y "relay_proxy://[fe80::340a:7671:64e7:14cc]:808/"</code>. To remove the address, instead of a URL, type an empty string (""). See also the -w option. For more information, see <a href="trend-vision-one-configure-proxies-server-workload">Connect to relays via proxy</a>. <em>Note:</em> Using <code>dsa_control -y</code> only applies to the agent's local configuration. No security policy is changed on the manager as a result of running this command.</p></td>
+</tr>
+<tr>
+<td><p><code>--buildBaseline</code></p></td>
+<td><p>Build the baseline for Integrity Monitoring. Not supported on macOS</p></td>
+</tr>
+<tr>
+<td><p><code>--scanForChanges</code></p></td>
+<td><p>Scan for changes for Integrity Monitoring. Not supported on macOS</p></td>
+</tr>
+<tr>
+<td><p><code>--max-dsm-retries</code></p></td>
+<td><p>Number of times to retry an activation. Valid values are 0 to 100, inclusive. The default value is 30.</p></td>
+</tr>
+<tr>
+<td><p><code>--dsm-retry-interval</code></p></td>
+<td><p>Approximate delay in seconds between retrying activations. Valid values are 1 to 3600, inclusive. The default value is 300.</p></td>
+</tr>
+<tr>
+<td><p><code>--autoDetectOSProxy</code></p></td>
+<td><p>A flag to enable/disable auto-detect OS proxy. The flag is controlled by agent configuration in C1WS. Values are 1: Enable, 0: Disable.</p></td>
+</tr>
+<tr>
+<td><p><code>--osProxyResolveTimeout</code></p></td>
+<td><p>The timeout values of the proxy resolver, which can be set in seconds, can be set by dsa_control --osProxyResolveTimeout=&lt;resolveTimeout&gt;;&lt;connectTimeout&gt;;&lt;sendTimeout&gt;;&lt;receiveTimeout&gt;. Note they are separated by semicolons and each timeout value ranges from 10 to 180.</p></td>
+</tr>
+<tr>
+<td><p><code>--pacproxy</code></p></td>
+<td><p>Configures a <em>Proxy Auto-Configuration (PAC)</em> server to resolve the corresponding proxy for the agent. Provide the PAC server's IP address or FQDN, port number, and path of the PAC file. For example: <code>http://&lt;Host&gt;:&lt;Port&gt;/&lt;PAC file&gt;</code>To clear the PAC proxy setting, type an empty string ("").</p>
+<p>The command must assign a certain component type, for example:</p>
+<p>Set a PAC server for resolving proxy to communicate between Manager</p>
+<p><code>&gt; dsa_control --pacproxy http://pac.example/proxy.pac manager</code></p>
+<p>Set a PAC server for resolving proxy to communicate between Relay</p>
+<p><code>&gt; dsa_control --pacproxy http://pac.example/proxy.pac relay</code></p>
+<p>Set both of the above commands at once:</p>
+<p><code>&gt; dsa_control --pacproxy http://pac.example/proxy.pac manager relay</code></p>
+<p>Clear existing settings:<code>&gt; dsa_control --pacproxyunpw "" manager relay</code></p>
+<p>For more information, see <a href="https://docs.trendmicro.com/en-us/documentation/article/trend-micro-cloud-one-workload-security-proxy-set-up">Connect to relays via proxy</a>.</p>
+
+
+:::note
+
+<ul>
+<li>Using dsa_control --pacproxy only applies to the agent's local configuration. No security policy is changed on the manager as a result of running this command.</li>
+<li>This parameter is supported by the Deep Security Agent for Windows and Linux platforms only.</li>
+</ul>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><code>--pacproxyunpw</code></p></td>
+<td><p>Used in conjunction with the <code>--pacproxy</code> option. It specifies the PAC resolved proxy's user name and password, if the proxy requires authentication. Separate the username and password with a colon (:).To clear the username and password, type an empty string ("").The command must assign a certain component type, for example:Set a PAC server for resolving proxy to communicate between Manager<code>&gt; dsa_control --pacproxyunpw &lt;username&gt;:&lt;password&gt; manager</code>Set a PAC server for resolving proxy to communicate between Relay<code>&gt; dsa_control --pacproxyunpw &lt;username&gt;:&lt;password&gt; relay</code>Set both of the above commands at once:<code>&gt; dsa_control --pacproxyunpw &lt;username&gt;:&lt;password&gt; manager relay</code>Clear existing settings:<code>&gt; dsa_control --pacproxyunpw "" manager relay</code>To update the proxy's password without changing the proxy's username, use the <code>--pacproxyunpw</code> option without <code>--pacproxy</code>:<code>&gt; dsa_control --pacproxyunpw &lt;existing username&gt;:&lt;new password&gt;</code>.</p>
+
+
+:::note
+
+<ul>
+<li>This parameter is supported by Deep Security Agent for Windows and Linux platforms only.</li>
+<li>This parameter provides basic authentication only. It does not support Digest and NTLM.</li>
+<li>Using <code>dsa_control --pacproxyunpw</code> only applies to the agent's local configuration. No security policy is changed on the manager as a result of running this command.</li>
+</ul>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+
+## Agent-initiated activation ("dsa_control -a") {#agent-initiated-activation-dsa_control--a}
+
+Enabling agent-initiated activation (AIA) can prevent communication issues between the manager and agents, and simplify agent deployment when used with deployment scripts.
+
+:::note
+
+For instructions on how to configure AIA and use deployments scripts to activate agents, see [Activate and protect agents using agent-initiated activation and communication](agent-initiated-activation.mdx).
+:::
+
+The command takes the form
+
+`dsa_control -a dsm://<host>:<port>/`
+
+where:
+
+- `<host>` could be either the manager's fully qualified domain name (FQDN), IPv4 address, or IPv6 address.
+- `<port>` is the agent-to-manager communication [port number](swp-port-numbers.mdx) 443).
+
+For example:
+
+`dsa_control -a dsm://dsm.example.com:4120/ hostname:www12 "description:Long Description With Spaces"`
+
+`dsa_control -a dsm://fe80::ad4a:af37:17cf:8937:4120`
+
+## Agent-initiated heartbeat command ("dsa_control -m") {#agent-initiated-heartbeat-command-dsa_control--m}
+
+You can force the agent to immediately send a heartbeat to the manager.
+
+Like activation, the heartbeat command can also send settings to the manager during the connection.
+
+<table>
+<thead>
+<tr>
+<th><p>Parameter</p></th>
+<th><p>Description</p></th>
+<th><p>Example</p></th>
+<th><p>Use during Activation</p></th>
+<th><p>Use during Heartbeat</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>AntiMalwareCancelManualScan</code></p></td>
+<td><p>Boolean. Cancels an on-demand ("manual") scan that is currently occurring on the computer.</p></td>
+<td><p><code>"AntiMalwareCancelManualScan:true"</code></p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr>
+<td><p><code>AntiMalwareManualScan</code></p></td>
+<td><p>Boolean. Initiates an on-demand ("manual") anti-malware scan on the computer.</p></td>
+<td><p><code>"AntiMalwareManualScan:true"</code></p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr>
+<td><p><code>description</code></p></td>
+<td><p>String. Sets the computer's description. Maximum length 2000 characters.</p></td>
+<td><p><code>"description:Extra information about the host"</code></p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr>
+<td><p><code>displayname</code></p></td>
+<td><p>String. Sets the display name shown in parentheses next to the hostname on <em>Computers</em>. Maximum length 2000 characters.</p></td>
+<td><p><code>"displayname:the_name"</code></p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr>
+<td><p><code>externalid</code></p></td>
+<td><p>Integer. Sets the <code>externalid</code> value. This value can be used to uniquely identify an agent. The value can be accessed using the legacy SOAP web service API.</p></td>
+<td><p><code>"externalid:123"</code></p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr>
+<td><p><code>group</code></p></td>
+<td><p>String. Sets which group the computer belongs to on <em>Computers</em>. Maximum length 254 characters per group name per hierarchy level. The forward slash ("/") indicates a group hierarchy. The <code>group</code> parameter can read or create a hierarchy of groups. This parameter can only be used to add computers to standard groups under the main "Computers" root branch. It cannot be used to add computers to groups belonging to directories (Microsoft Active Directory), VMware vCenters, or cloud provider accounts.</p></td>
+<td><p><code>"group:Zone A web servers"</code></p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr>
+<td><p><code>groupid</code></p></td>
+<td><p>Integer.</p></td>
+<td><p><code>"groupid:33"</code></p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr>
+<td><p><code>hostname</code></p></td>
+<td><p>String. Maximum length 254 characters. The hostname can specify an IP address, hostname or FQDN that the manager can use to connect to the agent.</p></td>
+<td><p><code>"hostname:www1"</code></p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+</tr>
+<tr>
+<td><p><code>IntegrityScan</code></p></td>
+<td><p>Boolean. Initiates an integrity scan on the computer.</p></td>
+<td><p><code>"IntegrityScan:true"</code></p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr>
+<td><p><code>policy</code></p></td>
+<td><p>String. Maximum length 254 characters. The policy name is a case-insensitive match to the policy list. If the policy is not found, no policy will be assigned. A policy assigned by an event-based task will override a policy assigned during agent-initiated activation.</p></td>
+<td><p><code>"policy:Policy Name"</code></p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr>
+<td><p><code>policyid</code></p></td>
+<td><p>Integer.</p></td>
+<td><p><code>"policyid:12"</code></p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr>
+<td><p><code>relaygroup</code></p></td>
+<td><p>String. Links the computer to a specific relay group. Maximum length 254 characters. The relay group name is a case-insensitive match to existing relay group names. If the relay group is not found, the default relay group will be used. This does not affect relay groups assigned during event-based tasks. Use either this option or event-based tasks, not both.</p></td>
+<td><p><code>"relaygroup:Custom Relay Group"</code></p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr>
+<td><p><code>relaygroupid</code></p></td>
+<td><p>Integer.</p></td>
+<td><p><code>"relaygroupid:123"</code></p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr>
+<td><p><code>relayid</code></p></td>
+<td><p>Integer.</p></td>
+<td><p><code>"relayid:123"</code></p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr>
+<td><p><code>tenantID</code> and <code>token</code></p></td>
+<td><p>String. If using agent-initiated activation as a tenant, both <code>tenantID</code> and <code>token</code> are required. The <code>tenantID</code> and <code>token</code> can be obtained from the deployment script generation tool.</p></td>
+<td><p><code>"tenantID:12651ADC-D4D5"</code> and <code>"token:8601626D-56EE"</code></p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr>
+<td><p><code>RecommendationScan</code></p></td>
+<td><p>Boolean. Initiate a <a href="trend-vision-one-recommendation-scans-intro">recommendation scan</a> on the computer.</p></td>
+<td><p><code>"RecommendationScan:true"</code></p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr>
+<td><p><code>UpdateComponent</code></p></td>
+<td><p>Boolean. Instructs Server &amp; Workload Protection to perform a security update. When using the <code>UpdateComponent</code> parameter on version 12.0+ agents, make sure the relay is also at version 12.0 or later. <a href="trend-vision-one-upgrade-relay">Learn more</a>.</p></td>
+<td><p><code>"UpdateComponent:true"</code></p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr>
+<td><p><code>RebuildBaseline</code></p></td>
+<td><p>Boolean. Rebuilds the Integrity Monitoring baseline on the computer.</p></td>
+<td><p><code>"RebuildBaseline:true"</code></p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr>
+<td><p><code>UpdateConfiguration</code></p></td>
+<td><p>Boolean. Instructs Server &amp; Workload Protection to perform a "Send Policy" operation.</p></td>
+<td><p><code>"UpdateConfiguration:true"</code></p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
+</tr>
+</tbody>
+</table>
+
+## Activate an agent {#activate-an-agent}
+
+To activate an agent from the command line, you need to know the tenant ID and password. You can get them from the deployment script.
+
+### Procedure {#procedure-1}
+
+1.  In the top right corner of Server & Workload Protection, click **Administration → Updates → Software → Local → Generate Deployment Scripts**.
+
+2.  Select your platform.
+
+3.  Select *Activate Agent automatically after installation*.
+
+4.  In the deployment script, locate the strings for `tenantID` and `token`.
+
+### Next steps {#next-steps}
+
+## Windows {#windows}
+
+In PowerShell:
+
+`& $Env:ProgramFiles"\Trend Micro\Deep Security Agent\dsa_control" -a <manager URL> <tenant ID> <token>`
+
+In cmd.exe:
+
+`C:\Windows\system32>"\Program Files\Trend Micro\Deep Security Agent\dsa_control" -a <manager URL> <tenant ID> <token>`
+
+## Linux {#linux}
+
+`/opt/ds_agent/dsa_control -a <manager URL> <tenant ID> <token>`
+
+## macOS {#macos}
+
+`cd /Library/Application Support/com.trendmicro.DSAgent/`
+
+`sudo ./dsa_control -a <manager URL> <tenant ID> <token>`
+
+## Force the agent to contact the manager {#force-the-agent-to-contact-the-manager}
+
+## Windows {#windows-1}
+
+In PowerShell:
+
+`& "\Program Files\Trend Micro\Deep Security Agent\dsa_control" -m`
+
+In cmd.exe:
+
+`C:\Windows\system32>"\Program Files\Trend Micro\Deep Security Agent\dsa_control" -m`
+
+## Linux {#linux-1}
+
+`/opt/ds_agent/dsa_control -m`
+
+## macOS {#macos-1}
+
+`cd /Library/Application Support/com.trendmicro.DSAgent/`
+
+`sudo ./dsa_control -m`
+
+## Initiate a manual anti-malware scan {#initiate-a-manual-anti-malware-scan}
+
+## Windows {#windows-2}
+
+### Procedure {#procedure-2}
+
+1.  Open a command prompt (cmd.exe) as Administrator.
+
+2.  Enter these commands:
+
+    `cd C:\Program Files\Trend Micro\Deep Security Agent\`
+
+    `dsa_control -m "AntiMalwareManualScan:true"`
+
+## Linux {#linux-2}
+
+`/opt/ds_agent/dsa_control -m "AntiMalwareManualScan:true"`
+
+## macOS {#macos-2}
+
+Not supported.
+
+## Create a diagnostic package {#create-a-diagnostic-package}
+
+If you need to troubleshoot an agent issue, your support provider might ask you to create and send a diagnostic package from the computer. For more detailed instructions, see [Create an agent diagnostic package via CLI on a protected computer](create-diagnostic-package-logs.mdx).
+
+:::note
+
+You can produce a diagnostic package for an agent computer through Server & Workload Protection but if the agent computer is configured to use [Agent/Appliance Initiated communication](communication-agent.mdx), then the manager cannot collect all the required logs. So when Technical Support asks for a diagnostic package, you need to run the command directly on the agent computer.
+:::
+
+## Reset the agent {#reset-the-agent}
+
+This command will remove the activation information from the target agent and deactivate it.
+
+## Windows {#windows-3}
+
+In PowerShell:
+
+`& "\Program Files\Trend Micro\Deep Security Agent\dsa_control" -r`
+
+In cmd.exe:
+
+`C:\Windows\system32>"\Program Files\Trend Micro\Deep Security Agent\dsa_control" -r`
+
+## Linux {#linux-3}
+
+`/opt/ds_agent/dsa_control -r`
+
+## macOS {#macos-3}
+
+`cd /Library/Application Support/com.trendmicro.DSAgent/`
+
+`sudo ./dsa_control -r`
+
+## dsa_query {#dsa_query}
+
+:::note
+
+Not supported by macOS.
+:::
+
+You can use the `dsa_query` command to display agent information.
+
+## dsa_query options {#dsa_query-options}
+
+`dsa_query [-c <str>] [-p <str>] [-r <str]`
+
+<table>
+<thead>
+<tr>
+<th><p>Parameter</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>-p,--passwd &lt;string&gt;</code></p></td>
+<td><p>Authentication password used with the optional <a href="trend-vision-one-use-agent-self-protection">agent self-protection</a> feature. Required if you specified a password when enabling self-protection. <em>Note:</em> For some query-commands, authentication can be bypassed directly, in such case, password is not required.</p></td>
+</tr>
+<tr>
+<td><p><code>-c,--cmd &lt;string&gt;</code></p></td>
+<td><p>Execute query-command against the agent. The following commands are supported: <code>"GetHostInfo"</code>: to query which identity is returned to the manager during a heartbeat <code>"GetAgentStatus"</code>: to query which protection modules are enabled, the status of Anti-Malware or Integrity Monitoring scans in progress, and other miscellaneous information <code>"GetComponentInfo"</code>: to query version information of anti-malware patterns and engines <code>"GetPluginVersion"</code>: to query version information of the agent and protection modules</p></td>
+</tr>
+<tr>
+<td><p><code>-r,--raw &lt;string&gt;</code></p></td>
+<td><p>Returns the same query-command information as <code>"-c"</code> but in raw data format for third party software interpretation.</p></td>
+</tr>
+<tr>
+<td><p><code>pattern</code></p></td>
+<td><p>Wild card pattern to filter result. Optional. <em>Example:</em> <code>dsa_query -c "GetComponentInfo" -r "au" "AM*"</code></p></td>
+</tr>
+</tbody>
+</table>
+
+## Check CPU usage and RAM usage {#check-cpu-usage-and-ram-usage}
+
+## Windows {#windows-4}
+
+Use the Task Manager or procmon.
+
+## Linux {#linux-4}
+
+`top`
+
+## Check that ds_agent processes or services are running {#check-that-ds_agent-processes-or-services-are-running}
+
+## Windows {#windows-5}
+
+Use the Task Manager or procmon.
+
+## Linux {#linux-5}
+
+`ps -ef|grep ds_agent`
+
+## Restart an agent on Linux {#restart-an-agent-on-linux}
+
+`service ds_agent restart`
+
+or
+
+`/etc/init.d/ds_agent restart`
+
+or
+
+`systemctl restart ds_agent`
+
+Some actions require either a `-tenantname` parameter or a `-tenantid` parameter. If execution problems occur when you use the tenant name, try the command using the associated tenant ID.
+::::::::::

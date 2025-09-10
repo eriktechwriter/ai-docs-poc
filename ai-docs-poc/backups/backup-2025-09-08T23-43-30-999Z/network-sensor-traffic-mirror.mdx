@@ -1,0 +1,300 @@
+---
+slug: trend-vision-one-network-sensor-traffic-mirror
+title: Configuring the Virtual Network Sensor as a traffic mirror target
+last_updated: '2025-09-08'
+ai_context:
+  source_file: network-sensor-traffic-mirror.md
+  conversion_date: '2025-09-08T23:42:15.341Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure your Virtual Network Sensor instance to receive mirrored traffic.
+
+For more information about traffic mirroring in AWS, see [https://docs.aws.amazon.com/vpc/latest/mirroring/what-is-traffic-mirroring.html](https://docs.aws.amazon.com/vpc/latest/mirroring/what-is-traffic-mirroring.mdx).
+
+If you are deploying your Virtual Network Sensor behind a network load balancer (NLB), you must [create the load balancer](network-behind-load-balancer.mdx) before setting up traffic mirroring.
+
+:::note
+
+The steps contained in these instructions are valid as of January 2024.
+:::
+
+### Procedure {#procedure}
+
+1.  Sign in to the AWS Management Console.
+
+2.  Find the **Interface ID** for the mirror source and the Virtual Network Sensor data port.
+
+    :::note
+
+    If you are deploying a Virtual Network Sensor behind a network load balancer, the [network load balancer you created](network-behind-load-balancer.mdx) is the mirror source. You do not need to locate the Interface ID for the network load balancer.
+    :::
+
+    1.  Access the EC2 dashboard.
+
+    2.  Go to **Instances → Instances**.
+
+    3.  Locate the instance you want to use as the mirror source and click the instance ID.
+
+    4.  Go to **Networking**.
+
+    5.  On the **Network Interfaces** list, copy the **Interface ID** for the network interface you want to use as the mirror source.
+
+    6.  Go to **Instances → Instances**.
+
+    7.  Locate the Virtual Network Sensor instance you created and click the **Instance ID**.
+
+    8.  Go to **Networking**.
+
+    9.  On the **Network Interfaces** list, copy the **Interface ID** for the Virtual Network Sensor data port (eth0).
+
+        :::tip
+
+        If you provided a description when setting up the instance, you can use the description instead of the Interface ID to locate the network interface.
+        :::
+
+3.  Access the VPC dashboard.
+
+4.  In the top navigation bar, select the **Region** the VPC your instance is deployed to is located.
+
+5.  Go to **Traffic Mirroring → Mirror filters**.
+
+6.  Click **Create traffic mirror filter**.
+
+7.  Configure the **Filter settings**.
+
+    - **Name tag**: Specify a unique name for the filter.
+
+      Use a name that is descriptive and easy to find, such as `VirtualNetworkSensor-TrafficMirrorFilter`.
+
+    - **Description**: Specify a description for the filter.
+
+      Use a description that clearly explains the purpose of the filter, such as *Virtual Network Sensor Traffic Mirror Filter*.
+
+    - **Network services**: Select **amazon-dns**.
+
+8.  In the **Inbound rules** section, click **Add rule**.
+
+9.  Configure the new rule.
+
+    Trend Micro recommends using a permissible rule set as detailed below. Adding additional rules to limit traffic might interfere with the visibility of the Virtual Network Sensor into your environment.
+
+    **Inbound rules for Data Port traffic mirror filter**
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 25%" />
+    <col style="width: 50%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Option</p></th>
+    <th><p>Setting</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><strong>Number</strong></p></td>
+    <td><p>100</p></td>
+    <td><p>The rule priority</p>
+    <p>Lower rule numbers have priority and are applied first.</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Rule action</strong></p></td>
+    <td><p>accept</p></td>
+    <td><p>What action to take for a rule match</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Protocol</strong></p></td>
+    <td><p>All protocols</p></td>
+    <td><p>The protocol to apply the rule</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Source CIDR block</strong></p></td>
+    <td><p>0.0.0.0/0</p></td>
+    <td><p>The source IP address range in CIDR format to apply the rule</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Destination CIDR block</strong></p></td>
+    <td><p>0.0.0.0/0</p></td>
+    <td><p>The destination IP address range in CIDR format to apply the rule</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Description</strong></p></td>
+    <td><p>Mirror all inbound traffic.</p></td>
+    <td><p>A description of what the rule does</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+10. In the **Outbound rules** section, click **Add rule**.
+
+11. Configure the new rule.
+
+    Trend Micro recommends using a permissible rule set as detailed below. Adding additional rules to limit traffic might interfere with the visibility of the Virtual Network Sensor into your environment.
+
+    **Outbound rules for Data Port traffic mirror filter**
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 25%" />
+    <col style="width: 50%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Option</p></th>
+    <th><p>Setting</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><strong>Number</strong></p></td>
+    <td><p>100</p></td>
+    <td><p>The rule priority</p>
+    <p>Lower rule numbers have priority and are applied first.</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Rule action</strong></p></td>
+    <td><p>accept</p></td>
+    <td><p>What action to take for a rule match</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Protocol</strong></p></td>
+    <td><p>All protocols</p></td>
+    <td><p>The protocol to apply the rule</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Source CIDR block</strong></p></td>
+    <td><p>0.0.0.0/0</p></td>
+    <td><p>The source IP address range in CIDR format to apply the rule</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Destination CIDR block</strong></p></td>
+    <td><p>0.0.0.0/0</p></td>
+    <td><p>The destination IP address range in CIDR format to apply the rule</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Description</strong></p></td>
+    <td><p>Mirror all outbound traffic.</p></td>
+    <td><p>A description of what the rule does</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+12. Click **Create**.
+
+    Creating the mirror filter takes a moment to complete. Once finished, click **Close**.
+
+13. Go to **Traffic Mirroring → Mirror targets**.
+
+14. Click **Create traffic mirror target**.
+
+15. Configure **Target settings**.
+
+    - **Name tag**: Specify a unique name for the target settings.
+
+      Use a name that is descriptive and easy to find, such as `VirtualNetworkSensor-TrafficMirrorTarget`.
+
+    - **Description**: Specify a description for the target.
+
+      Use a description that clearly explains the purpose of the filter, such as *Virtual Network Sensor Traffic Mirror Target*.
+
+16. Configure **Choose target**.
+
+    - For normal deployments, use the following configurations:
+
+      1.  For **Target type**, select **Network Interface**.
+
+      2.  For **Target** specify the data port Interface ID or search by the network interface description.
+
+    - For deploying behind a Network Load Balancer, use the following configurations:
+
+      1.  For **Target type**, select **Network Load Balancer**.
+
+      2.  For **Target** specify the [network load balancer you created](network-behind-load-balancer.mdx).
+
+17. Click **Create**.
+
+    Creating the mirror target takes a moment to complete. Once finished, click **Close**.
+
+18. Go to **Traffic Mirroring → Mirror session**.
+
+19. Click **Create traffic mirror session**.
+
+20. Configure **Session settings**.
+
+    - **Name tag**: Specify a unique name for the mirror session.
+
+      Use a name that is descriptive and easy to find, such as `VirtualNetworkSensor-TrafficMirrorSession`.
+
+    - **Description**: Specify a description for the mirror session.
+
+      Use a description that clearly explains the purpose of the session, such as *Virtual Network Sensor Traffic Mirror Session*.
+
+    - **Mirror source**: Specify the mirror source Interface ID.
+
+    - **Mirror target**: Specify the name of the mirror target you created.
+
+21. Configure **Additional settings**.
+
+    For best results, Trend Micro recommends using the following settings. You can adjust these settings to best fit the needs of your security environment.
+
+    **Additional settings for traffic mirror session**
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 25%" />
+    <col style="width: 50%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Option</p></th>
+    <th><p>Setting</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><strong>Session number</strong></p></td>
+    <td><p>1</p></td>
+    <td><p>The session priority</p>
+    <p>The session number determines the order traffic mirror sessions are evaluated in the following situations:</p>
+    <ul>
+    <li><p>When an interface is used by multiple sessions</p>
+    <p>When an interface is used by different traffic mirror targets and traffic mirror filters</p></li>
+    </ul>
+    <p>Traffic is only mirrored one time, so use the recommended setting to ensure the highest priority.</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>VNI</strong></p></td>
+    <td><p>Leave blank</p></td>
+    <td><p>The unique VXLAN network identifier</p>
+    <p>Leave blank to allow AWS to assign a random number.</p>
+    <p>If you prefer to designate the VXLAN manually, see <a href="https://tools.ietf.org/html/rfc7348">https://tools.ietf.org/html/rfc7348</a>.</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Packet length</strong></p></td>
+    <td><p>Leave blank</p></td>
+    <td><p>The number of bytes in each packet to mirror</p>
+    <p>Leave blank to allow mirroring of the entire packet.</p>
+    <p>Specifying a number limits the packet length to the specified number of bytes. For example, setting to 100 only transfers the first 100 bytes of a packet after the VXLAN header.</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Filter</strong></p></td>
+    <td><p>Select the traffic mirror filter you created</p></td>
+    <td><p>The traffic mirror filter to use for the mirror session</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+22. Click **Create**.
+
+    Creating the mirror session takes a moment to complete. Once finished, the Virtual Network Sensor starts monitoring the mirrored traffic.
+::::

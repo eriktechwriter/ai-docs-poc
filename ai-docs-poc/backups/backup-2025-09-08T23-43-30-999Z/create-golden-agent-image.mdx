@@ -1,0 +1,219 @@
+---
+slug: trend-vision-one-create-golden-agent-image
+title: Creating a golden image with the agent software
+last_updated: '2025-09-08'
+ai_context:
+  source_file: create-golden-agent-image.md
+  conversion_date: '2025-09-08T23:42:21.431Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Prepare a template to easily deploy endpoint agents and sensors to cloned desktops on physical machines, as well as persistent and non-persistent virtual desktops.
+
+:::warning[Important]
+
+- Follow these instructions carefully. If you clone your own VDI machines, it causes agent IDs to be duplicated and deployed agents cannot perform response actions.
+
+- The Image Setup Tool only supports Windows agents.
+
+- Virtual desktops which are not powered on regularly are considered inactive and are removed automatically based on your agent settings. For more information about inactive agent removal, see [Deployment using a golden image](deployment-using-golden-image.mdx).
+
+- Non-persistent endpoints configured to require a user login only report to Trend Vision One when a user is logged in. When not logged in, Endpoint Inventory shows the status as disconnected or not available (-).
+
+- Non-persistent endpoints configured to not require a login continue reporting to Trend Vision One as long as the VM is powered on. Multiple sessions of the same VM are assigned different unique IDs to avoid duplicate ID issues.
+
+- For Standard Endpoint Protection and Server & Workload Protection endpoints, you must update the sensor to the Vision One endpoint sensor before using the Image Setup Tool.
+
+- Updating the agent program requires creating a snapshot image before running the Image Setup Tool. For more information about updating a golden image, see [Updating the agent for golden image templates](updating-agent-for-templates.mdx).
+:::
+
+Carefully review the [feature support and requirements](deployment-using-golden-image.mdx) for this deployment method before reviewing the steps.
+
+The Standard Endpoint Protection agent also supports virtual desktop deployment by manually triggering the TCacheGen tool or using the Command Line Interface.
+
+### Procedure {#procedure}
+
+1.  Power on and set up the source desktop you want to use to create the template, including configuring the operating system, VM settings, and software.
+
+2.  Configure the software for a VDI or cloned environment, including any endpoint protection software.
+
+3.  If you are deploying a Server & Workload Protection agent, configure **Agent-Initiated Activation**.
+
+    1.  In the Trend Vision One console, go to **Endpoint Security Operations → Server & Workload Protection → Administration → System Settings → Agents**.
+
+    2.  Select **Allow Agent-Initiated Activation**.
+
+    3.  Select **Allow Trend Vision One Virtual Desktop Infrastructure (VDI) support and cloned virtual machines**.
+
+        :::warning[Important]
+
+        Enabling this feature locks other Agent-Initiated Activation settings. For more information, see [Agent settings](agent-settings.mdx).
+        :::
+
+4.  In the Trend Vision One console, go to **Endpoint Security Operations → Endpoint Inventory** and click **Agent Installer**.
+
+5.  Download the Agent Installer package you want to use and install the agent on the source desktop.
+
+    Follow the steps in the linked topics based on the agent type you wish to use to install the agent program on the source desktop:
+
+    - [Standard Endpoint Protection agent deployment](sep-agent-deployment.mdx)
+
+    - [Server & Workload Protection agent deployment](swp-agent-deployment.mdx)
+
+    - [Endpoint Sensor agent deployment](endpoint-sensor-agent-deployment.mdx)
+
+6.  After installation finishes, go to **Endpoint Security Operations → Endpoint Inventory** and locate the source desktop on the list.
+
+7.  Verify that the desired endpoint policy settings are correct.
+
+8.  If you want to facilitate future agent upgrades, create a snapshot of your source desktop.
+
+    For more information, see [Updating the agent for golden image templates](updating-agent-for-templates.mdx).
+
+    The following the steps detail how to download and run the Image Setup Tool. Trend Micro recommends using the Image Setup Tool for all of your template-based deployments.
+
+    :::warning[Important]
+
+    - The Image Setup Tool does not support Linux or macOS deployments. Skip ahead to complete the setup.
+
+    - You must use the Image Setup Tool for deploying non-persistent Windows virtual desktops.
+
+    - The Image Setup Tool disables updates for the endpoint agent. To maintain the ability to update the agent program in the future, you must create a snapshot of the source desktop before installing and running the Image Setup Tool.
+    :::
+
+9.  In the Trend Vision One console, go to **Endpoint Security Operations → Endpoint Inventory** and click **Agent Installer**.
+
+10. Click the **Download Image Setup Tool** icon (![](/images/ImageSetupToolIcon=GUID-4fdde7d3-cec0-4d8b-8400-f108bd98db23.webp)) for your agent type.
+
+    The **Virtual Desktop Image Setup Tool** screen appears.
+
+11. Click **Download** to download the Image Setup Tool.
+
+    :::warning[Important]
+
+    The downloaded Image Setup Tool package is specific to your organization.
+    :::
+
+12. Copy the **Admin token**.
+
+    <figure>
+    <img src="./images/vdiImageSetupToolAdminToken=20230629144444.webp" />
+    </figure>
+
+13. Extract the contents of the `ImageSetupTool.zip` package onto the source desktop.
+
+14. For customers installing the Standard Endpoint Protection agent, run the TCacheGen tool found in `<ImageSetupTool folder>\TCacheGen` before running the Image Setup Tool.
+
+    - Use the graphics user interface:
+
+      1.  Double-click the executable (**TCacheGen.exe** or **TCacheGen_x64.exe**).
+
+      2.  Select **Generate the pre-scan template and remove the GUID** or **Remove the GUID from the pre-scan template**.
+
+      3.  Click **Next**.
+
+    - Use the command line:
+
+      1.  Unload the Agent.
+
+      2.  Put a copy of the following files under \<Agent installation folder\>:
+
+          - 32-bit platform: **TCacheGen.exe** and **TCacheGenCli.exe**
+
+          - 64-bit platform: **TCacheGen_x64.exe** and **TCacheGenCli_x64.exe**
+
+      3.  Start the Agent again from the Start Menu.
+
+      4.  Run one of the following commands as an administrator:
+
+          1.  To scan and remove the GUID:
+
+              - `TCacheGenCli Generate_Template`
+
+              - `TcacheGenCli_x64 Generate_Template`
+
+          2.  To only remove the GUID:
+
+              - `TCacheGenCli Remove_GUID`
+
+              - `TcacheGenCli_x64 Remove_GUID`
+
+      5.  Provide the agent unload password.
+
+    :::note
+
+    The TCacheGen executable is automatically deleted after generating the template to avoid unexpectedly triggering this tool again. Running the tool again re-creates the agent GUID and causes the agent to register as a new entry, breaking the association to current settings and logs.
+    :::
+
+15. Run `ImageSetupTool.exe` as an administrator on the source desktop to prepare the agent.
+
+    :::warning[Important]
+
+    Specify if your cloned machine is physical/persistent or non-persistent.
+    :::
+
+    <table>
+    <colgroup>
+    <col style="width: 50%" />
+    <col style="width: 25%" />
+    <col style="width: 25%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Command</p></th>
+    <th><p>Use Case</p></th>
+    <th><p>Supported Features</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><code>ImageSetupTool.exe --persistent </code></p></td>
+    <td><ul>
+    <li><p>Persistent virtual desktops</p></li>
+    <li><p>Physical desktop clones</p></li>
+    </ul></td>
+    <td><ul>
+    <li><p>Standard agent auto-removal</p></li>
+    <li><p>Vulnerability Assessment available</p></li>
+    <li><p>In-place upgrades</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p><code>ImageSetupTool.exe --non-persistent </code></p></td>
+    <td><ul>
+    <li><p>Non-persistent virtual desktops</p></li>
+    </ul></td>
+    <td><ul>
+    <li><p>Non-persistent agent auto-removal available from Endpoint Inventory</p></li>
+    <li><p>Vulnerability Assessment disabled</p></li>
+    <li><p>In-place upgrades disabled</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p><code>ImageSetupTool.exe --persistent --no-login</code></p>
+    <p><code>ImageSetupTool.exe --non-persistent --no-login</code></p></td>
+    <td><p>Do not require a login for the newly provisioned machine</p></td>
+    <td><ul>
+    <li><p>Citrix ICA virtual channels</p></li>
+    </ul></td>
+    </tr>
+    </tbody>
+    </table>
+
+    :::warning[Important]
+
+    - Non-persistent endpoints configured to require a user login only report to Trend Vision One when a user is logged in. When not logged in, Endpoint Inventory shows the status as disconnected or not available (-).
+
+    - Non-persistent endpoints configured to not require a login continue reporting to Trend Vision One as long as the VM is powered on. Multiple sessions of the same VM are assigned different unique IDs to avoid duplicate ID issues.
+    :::
+
+16. Paste the admin token copied from the Endpoint Inventory app when prompted.
+
+17. Delete the Image Setup Tool from the source desktop once image setup completes.
+
+18. Export your source desktop as a golden image template.
+
+    When signing into a desktop created using the golden image template, the newly-provisioned endpoint appears in the Endpoint Inventory list.
+::::

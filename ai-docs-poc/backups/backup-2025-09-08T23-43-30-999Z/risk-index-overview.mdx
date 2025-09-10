@@ -1,0 +1,222 @@
+---
+slug: trend-vision-one-risk-index-overview
+title: Cyber Risk Index overview
+last_updated: '2025-09-08'
+ai_context:
+  source_file: risk-index-overview.md
+  conversion_date: '2025-09-08T23:42:13.574Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+View detailed information about your company's Cyber Risk Index and the contributing risk factors in Threat and Exposure Management.
+
+The **Cyber Risk Index** is the risk score for your organization derived from a comprehensive assessment of a variety of risk categories and factors. The all-encompassing index incorporates risk events that impact a wide range of assets, including users, devices, applications, internet-facing domains and IP addresses, and cloud-based assets. [Risk assessment](risk-assessment.mdx) relies on connected data sources to assess how risk factors affect your specific environment and to calculate your organization's total Cyber Risk Index. For a more comprehensive risk assessment, configure more [data sources](configuring-data-sources.mdx).
+
+The Cyber Risk Index automatically updates every four hours. Changes to the status of risk events are reflected in the Cyber Risk Index after up to one hour. You may also manually recalculate the Cyber Risk Index by clicking the **Recalculate** button. Manual recalculations take up to one hour to display.
+
+:::warning[Important]
+
+- The **Cyber Risk Index** is calculated using all data received from your business without applying asset visibility scope limits.
+
+- Event counts of risk factors are only visible for users with full asset visibility scope.
+
+- When you allocate credits to Cyber Risk Exposure Management, only assets you have enabled for assessment are used to calculate the Cyber Risk Index. If you have recently enabled only desktop and server or cloud account assessment, your displayed Cyber Risk Index may drop significantly due to fewer assets available for assessment. To learn more about Cyber Risk Exposure Management credit requirements, see [Credit requirements for Trend Vision One solutions, capabilities, and features](credit-req-for-apps-services.mdx).
+:::
+
+You may remediate or dismiss detected risk events to lower your overall Cyber Risk Index. For Vulnerability risk events, you may apply available [attack prevention/detection rules](attack-prevention.mdx) to mitigate the vulnerability. You may also accept the risk from risk events you are unable to remediate. To see the total points currently contributed by risk events within each risk factor, hover over the corresponding section of the radar chart in **Threat and Exposure Management**.
+
+:::warning[Important]
+
+- The Cyber Risk Index graph presents a 30-day rolling window of the fluctuations in your Cyber Risk Index. Hover over the graph to see the index for an individual day, including the point change from the previous day, specific risk factor contribution, and the number of contributing assets. Detailed daily increase and decrease information is only available when the change from the previous day is more than one point.
+
+- Because the Cyber Risk Index is rounded up to the nearest tenth of a point, the point contributions from each risk factor may add up to less than the total Cyber Risk Index.
+
+- Points contributed to the Cyber Risk Index by accepted risk cannot be subtracted from the Cyber Risk Index until accepted risk events are remediated or dismissed.
+:::
+
+The following tables offer examples of the risk factors that contribute to the Cyber Risk Index, organized by category: Exposure, Attack, and Security Configuration.
+
+**Exposure Risk Factors**
+
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Risk Factor</p></th>
+<th><p>Indicator</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="3"><p><a href="trend-vision-one-account-compromise">Account compromise</a></p></td>
+<td><p>Leaked account</p></td>
+<td><p>The detection of a user's account on the dark web</p></td>
+</tr>
+<tr>
+<td><p>Suspicious user activity</p></td>
+<td><p>Activity that may indicate the malicious intent of a user purposefully creating anomalous activity</p></td>
+</tr>
+<tr>
+<td><p>Targeted user account</p></td>
+<td><p>The most at-risk user accounts that exhibited high risk anomalous activities or were specifically targeted by malicious email campaigns during the evaluation period</p></td>
+</tr>
+<tr>
+<td rowspan="3"><p><a href="trend-vision-one-vulnerabilities">Vulnerabilities</a></p></td>
+<td><p>OS vulnerability</p></td>
+<td><p>The detection of exploitable operating system vulnerabilities on the endpoint</p></td>
+</tr>
+<tr>
+<td><p>Application vulnerability</p></td>
+<td><p>The detection of exploitable application vulnerabilities on the endpoint</p></td>
+</tr>
+<tr>
+<td><p>Cloud VM vulnerability</p></td>
+<td><p>The detection of exploitable operating system and application vulnerabilities in a cloud VM</p></td>
+</tr>
+<tr>
+<td rowspan="4"><p><a href="trend-vision-one-activity-behaviors">Activity and behaviors</a></p></td>
+<td><p>Network activity</p></td>
+<td><p>Anomalous or malicious network activity</p></td>
+</tr>
+<tr>
+<td><p>Storage activity</p></td>
+<td><p>Cloud storage use by the account appears abnormal compared to use by other company accounts</p></td>
+</tr>
+<tr>
+<td><p>User activity</p></td>
+<td><p>Abnormal user behavior patterns or preferences</p></td>
+</tr>
+<tr>
+<td><p>Device activity</p></td>
+<td><p>Abnormal device behavior patterns or preferences</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-cloud-app-activity">Public cloud app activity</a></p></td>
+<td><p>Reputation</p></td>
+<td><p>Calculated by Trend Micro threat experts based on historical app data, known security features, and community knowledge</p></td>
+</tr>
+<tr>
+<td rowspan="5"><p><a href="trend-vision-one-system-configuration">System configuration</a></p></td>
+<td><p>Internet-facing asset configuration</p></td>
+<td><p>Misconfigured settings on publicly facing domains and IP addresses</p></td>
+</tr>
+<tr>
+<td><p>Cloud infrastructure configuration</p></td>
+<td><p>Misconfigured settings on cloud infrastructure, such as cloud instances and platforms</p></td>
+</tr>
+<tr>
+<td><p>IAM configuration</p></td>
+<td><p>Misconfigured settings on IAM services</p></td>
+</tr>
+<tr>
+<td><p>Cloud service configuration</p></td>
+<td><p>Misconfigured settings on cloud-based applications, software, and services</p></td>
+</tr>
+<tr>
+<td><p>Endpoint configuration</p></td>
+<td><p>Misconfigured security settings on endpoint devices</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-predictive-analytics">Predictive analytics</a></p></td>
+<td><p>Attack path inference</p></td>
+<td><p>Potential attack paths identified based on detected internet-exposed assets with misconfigurations or vulnerabilities</p></td>
+</tr>
+</tbody>
+</table>
+
+**Attack Risk Factors**
+
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Risk Factor</p></th>
+<th><p>Indicator</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="2"><p><a href="trend-vision-one-xdr-detection">XDR detection</a></p></td>
+<td><p>Workbench alerts</p></td>
+<td><p>Detection of malicious or risky events events by XDR sensors</p></td>
+</tr>
+<tr>
+<td><p>Targeted Attack Detection</p></td>
+<td><p>Detection of early attack indicators through the scanning of Smart Protection Network data</p></td>
+</tr>
+<tr>
+<td rowspan="6"><p><a href="trend-vision-one-threat-detection">Threat detection</a></p></td>
+<td><p>Web threats</p></td>
+<td><p>The web reputation score of the URLs the user visited or the detection of malicious activity within network traffic</p></td>
+</tr>
+<tr>
+<td><p>Email threats</p></td>
+<td><p>Detection of malicious or anomalous email activity</p></td>
+</tr>
+<tr>
+<td><p>Network threats</p></td>
+<td><p>Detection of malicious activity in monitored endpoint traffic</p></td>
+</tr>
+<tr>
+<td><p>Endpoint threats</p></td>
+<td><p>Detection of events on endpoints that may be malicious</p></td>
+</tr>
+<tr>
+<td><p>Mobile device threats</p></td>
+<td><p>Detection of possible malicious events on mobile devices</p></td>
+</tr>
+<tr>
+<td><p>Connected app activity</p></td>
+<td><p>Detection of possibly malicious events on Office 365 apps (Teams, SharePoint, OneDrive)</p></td>
+</tr>
+</tbody>
+</table>
+
+**Security Configuration Risk Factors**
+
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Risk Factor</p></th>
+<th><p>Indicator</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="3"><p><a href="trend-vision-one-security-configuration-intro">Security configuration</a></p></td>
+<td><p>Endpoint security</p></td>
+<td><p>Detection of agent and sensor deployment, key feature adoption, license health, and agent versions.</p></td>
+</tr>
+<tr>
+<td><p>Email security</p></td>
+<td><p>Coming soon</p></td>
+</tr>
+<tr>
+<td><p>Network security</p></td>
+<td><p>Coming soon</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Risk Reduction Measures](risk-reduction-measures.md "View information about high-impact risk events and remediation steps that you must complete to achieve specific risk reduction goals.")
+:::::

@@ -1,0 +1,81 @@
+---
+slug: trend-vision-one-cloud-accounts-api-key-faq
+title: Cloud Accounts Trend Vision One API key FAQ
+last_updated: '2025-09-08'
+ai_context:
+  source_file: cloud-accounts-api-key-faq.md
+  conversion_date: '2025-09-08T23:42:23.540Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Get an overview of how the Trend Vision One API key is used and what to do when the key expires.
+
+**Related information**
+
+- What is the Trend Vision One API key?
+- When does the Trend Vision One API key expire?
+- What happens when the Trend Vision One API key expires?
+- Does an expired Trend Vision One API key interrupt monitoring and security services?
+- How to fix an expired Trend Vision One API key?
+
+## What is the Trend Vision One API key? {#what-is-the-trend-vision-one-api-key}
+
+The Cloud Accounts app uses the Trend Vision One API key to establish or update the connection between Trend Vision One and your cloud account. The Cloud Accounts app generates a new API key when you create a new CloudFormation template or Terraform script to connect a new account or update a legacy connection. The API key is valid for up to 90 days.
+
+The API key is used in the following scenarios:
+
+- Connecting a new cloud account for the first time.
+
+- Updating a legacy connection.
+
+- Updating features or enabling new permissions.
+
+The Trend Vision One API key is not used for normal communication between your cloud account and Trend Vision One security services and monitoring.
+
+:::warning[Important]
+
+A new API key is always generated when you create a new CloudFormation template to connect a new account. Generating a new API key is optional when using a CloudFormation template to update the feature stack.
+
+A new API key is always generated when connecting or updating with a Terraform script.
+:::
+
+## When does the Trend Vision One API key expire? {#when-does-the-trend-vision-one-api-key-expire}
+
+The Trend Vision One API key for Cloud Accounts is valid for 90 days.
+
+## What happens when the Trend Vision One API key expires? {#what-happens-when-the-trend-vision-one-api-key-expires}
+
+After 90 days, the Trend Vision One API key expires. This has no affect on communication between your connected cloud accounts and the Trend Vision One security services.
+
+The Trend Vision One API key expiring has the following effects:
+
+- For AWS accounts connected using a CloudFormation template, you must generate a new API key to update the feature stack.
+
+- Attempting to update features with the old API key automatically fails.
+
+- Attempting to connect to a new account using a CloudFormation template or Terraform script older than 90 days automatically fails.
+
+## Does an expired Trend Vision One API key interrupt monitoring and security services? {#does-an-expired-trend-vision-one-api-key-interrupt-monitoring-and-security-services}
+
+No, an expired Trend Vision One API key has no effect on your enabled features and permissions. Any enabled security and monitoring features, such as XDR for Cloud log monitoring, function as normal.
+
+The Trend Vision One API key is not used for maintaining the connection between Trend Vision One services and your cloud account.
+
+## How to fix an expired Trend Vision One API key? {#how-to-fix-an-expired-trend-vision-one-api-key}
+
+An expired Trend Vision One API key has no affect on your enabled security features. If you are attempting to connect a new account or update a connection, use the following methods to generate a new API key:
+
+- If you are connecting a new account, follow the connection steps for your cloud provider as normal to generate a new CloudFormation template or Terraform script.
+
+- If you are updating a legacy account, follow the steps for your cloud provider as normal to generate a new CloudFormation template or Terraform script.
+
+- If you are updating features for an account using a Terraform script, follow the update steps as normal to generate a new script with a new API key. Terraform scripts automatically generate a new API key when created.
+
+- If you are updating features for an AWS account using a CloudFormation template, follow the steps in [AWS Stack Update](stack-update.mdx) and make sure to:
+
+  1.  Click **Copy Vision One API Key** to obtain a new key in the Stack Update screen.
+
+  2.  Include the new Trend Vision One API key when configuring the **Parameters** screen on your AWS console during stack deployment.
+::::

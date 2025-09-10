@@ -1,0 +1,115 @@
+---
+slug: trend-vision-one-attack-path-predict
+title: Attack Path Prediction
+last_updated: '2025-09-08'
+ai_context:
+  source_file: attack-path-predict.md
+  conversion_date: '2025-09-08T23:42:24.726Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Get a comprehensive view of all potential attack paths through your organization's assets to take proactive measures that strengthen your security posture.
+
+Attack Path Prediction is a proactive approach to evaluating potential attack scenarios across discovered assets in your organization. Using real-time insights from an attacker’s perspective, you can better understand how threat actors might reach your critical assets and mitigate risks before the risks are exploited.
+
+Attack Path Prediction analyzes issues detected in your organization's security posture, including:
+
+- [Vulnerabilities](vulnerabilities.mdx)
+
+- [Misconfigurations](system-configuration.mdx)
+
+- [Threat detections](threat-detection.mdx)
+
+- [Security controls](security-configuration-intro.mdx)
+
+- [Internet exposure](internet-facing-assets.mdx)
+
+Analysis is performed using Cyber Risk Exposure Management core features, including:
+
+- [Asset discovery](attack-surface-discovery.mdx), profiling, and criticality identification
+
+  - Automatically identify assets in your environment
+
+  - Assess asset criticality and interdependencies
+
+- [Risk assessment](risk-assessment.mdx) and [risk event detection](risk-factors.mdx)
+
+  - Analyze vulnerabilities, misconfigurations, threat detections, security controls, and other risk factors
+
+- Asset relationships and [asset risk graphs](device-profile.mdx)
+
+  - Map connections and interactions between assets
+
+  - Provide essential insights to support lateral movement analysis
+
+The goal of analysis is to identify the three essential components of a potential attack path within your organization's environment:
+
+- Entry point assets: Vulnerable assets that attackers could use to gain access to your environment
+
+- Lateral movement paths: Collections of activities, actions, and permissions attackers could use to reach critical assets
+
+- Target point assets: High-value critical assets that represent desirable targets for attackers
+
+The resulting predicted attack paths help you visualize exploitable vulnerabilities, misconfigurations, and insufficient security measures in your environment and enable prioritized, foresighted remediation efforts.
+
+:::note
+
+In some potential attack paths, the entry point and target point may be the same, which means a lateral movement path is not required.
+:::
+
+Attack Path Prediction analyzes your assets and security posture daily. Displayed information is based on data collected over the last 30 days. Data for analysis comes from connected Trend Micro products and third-party data sources. For more comprehensive attack path analysis, connect more [data sources](configuring-data-sources.mdx).
+
+When Attack Path Prediction identifies a potential attack path, an attack path risk event is generated in addition to the risk events detected on the associated assets. Multiple attack paths may share the same entry point, resulting in multiple attack path risk events. Attack path risk events affect your Cyber Risk Index. Trend Micro recommends eliminating entry point and attack path events through remediation to prevent abuse by attackers.
+
+Attack Path Prediction displays the following information for each potential attack path identified.
+
+<table>
+<thead>
+<tr>
+<th><p>Information</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Attack path risk score</p></td>
+<td><p>Attack path risk scores are based on:</p>
+<ul>
+<li><p>Likelihood of exploitation: The ease with which attackers could abuse the attack path and reach high-criticality assets, based on the risk scores of the associated assets. Riskier entry points and nodes along the attack path result in a higher likelihood of exploitation.</p></li>
+<li><p>Impact: The impact that exploitation of the attack path could have on your organization, determined by the asset criticality of associated assets.</p></li>
+</ul>
+<p>Only the highest score within each attack path group is displayed.</p></td>
+</tr>
+<tr>
+<td><p>Entry point and target point</p></td>
+<td>At-risk assets at the beginning and end of an attack path. Attack paths may only contain a single asset as both the entry and target point if the asset is highly critical and has a high risk score.</td>
+</tr>
+<tr>
+<td><p>Entry point risk events</p></td>
+<td>The number of risk events on the entry point that could facilitate the attack path. Click the number displayed to see a list of all entry point risk events for the attack path.</td>
+</tr>
+<tr>
+<td><p>Attack path description</p></td>
+<td>A description of the potential attack path, including:
+<ul>
+<li><p>Potential threat sources</p></li>
+<li><p>Identified vulnerabilities in associated assets</p></li>
+<li><p>Potential lateral movement relationships</p></li>
+<li><p>Target asset type</p></li>
+</ul>
+Some descriptions are dynamically generated by AI and are unique to the attack path.</td>
+</tr>
+<tr>
+<td><p>Remediation steps</p></td>
+<td>Recommended remediation steps you can take to eliminate the attack path. Some descriptions are dynamically generated by AI based on the details of the specific attack path.</td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Investigate and remediate potential attack paths](potential-attack-path.md "Identify high-risk assets, discover attack choke points, and remediate attack path-related risk events in Attack Path Prediction.")
+- [How potential attack paths are detected and analyzed](attack-paths-detected.md "Learn how Attack Path Prediction detects attack paths before the paths are exploited.")
+::::

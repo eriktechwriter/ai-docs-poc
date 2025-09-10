@@ -1,0 +1,51 @@
+---
+slug: trend-vision-one-pure-ipv6-agent-limitations
+title: Pure IPv6 Agent Limitations
+---
+# Pure IPv6 Agent Limitations
+
+The following table lists the limitations when Trend Vision One Endpoint Security agents only have an IPv6 address.
+
+**Pure IPv6 Agent Limitations**
+
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Item</p></th>
+<th><p>Limitation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Parent server</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Pure IPv6 agents cannot be managed by a pure IPv4 server.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Updates</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>A pure IPv6 agent cannot update from pure IPv4 update sources, such as:</p>
+<ul>
+<li><p>Trend Micro ActiveUpdate Server</p></li>
+<li><p>A pure IPv4 Apex One (Mac) server</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Web Reputation queries</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>A pure IPv6 agent cannot send Web Reputation queries to Trend Micro Smart Protection Network.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Proxy connection</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>A pure IPv6 agent cannot connect through a pure IPv4 proxy server.</p></td>
+</tr>
+<tr>
+<td style="border-right-width: 1px; border-right-style: solid"><p>Agent deployment</p></td>
+<td><p>Apple Remote Desktop is unable to deploy the agent to pure IPv6 endpoints because these endpoints always appear as offline.</p></td>
+</tr>
+</tbody>
+</table>
+
+Most of these limitations can be overcome by setting up a dual-stack proxy server that can convert between IPv4 and IPv6 addresses (such as DeleGate). Position the proxy server between the agents and the entities to which they connect.
+:::

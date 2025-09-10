@@ -1,0 +1,123 @@
+---
+slug: trend-vision-one-granting-access-gmail-inline-mode
+title: Granting access to Gmail (inline mode)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: granting-access-gmail-inline-mode.md
+  conversion_date: '2025-09-08T23:42:18.665Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Grant Cloud Email and Collaboration Protection access to Gmail (Inline Mode) to allow Cloud Email and Collaboration Protection to run advanced threat protection and data loss prevention scanning in Inline Mode on email messages in protected Gmail mailboxes.
+
+The steps outlined below detail how to grant access to Gmail (Inline Mode) from **Dashboard** for Inline Protection over inbound and outbound emails.
+
+:::note
+
+If you have granted access to Gmail (Inline Mode) for inbound protection using a Gmail (Inline Mode) - Inbound Protection service account, upgrade the service account to a Gmail (Inline Mode) service account to have outbound protection in addition to inbound protection:
+
+Go to **Administration → Service Account**, locate your Gmail (Inline Mode) - Inbound Protection service account, click **Upgrade to Have Outbound Protection**, and follow the onscreen instructions to complete the procedure.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Dashboard → Service Status**.
+
+2.  Click **Grant Access** in the **Action** column for Gmail (Inline Mode).
+
+    The **Grant Access to Gmail (Inline Mode)** screen appears.
+
+3.  Install the Trend Micro Cloud App Security app by clicking **Click here** in **Step 1**.
+
+    The **Trend Micro Cloud App Security** application screen in the Google Workspace Marketplace appears.
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Condition</p></th>
+    <th><p>Steps</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>The Cloud Email and Collaboration Protection application is not installed.</p></td>
+    <td><ol>
+    <li><p>Click <strong>Admin install</strong>.</p>
+    <p>A new window appears for you to sign in to Google.</p></li>
+    <li><p>Specify your Google Super Admin credentials, and click <strong>Next</strong> and then <strong>CONTINUE</strong>.</p>
+    <p>An authorization screen appears.</p></li>
+    <li><p>Choose who to install the app for.</p>
+    <ul>
+    <li><p><strong>Everyone at your organization</strong> (recommended)</p></li>
+    <li><p><strong>Certain groups or organizational units</strong></p>
+    
+
+    :::note
+    
+    <p>If you select this option, make sure the selected groups or organizational units include the Google Super Admin account to be used for access grant in step 5.</p>
+    
+
+    :::
+
+    </li>
+    </ul></li>
+    <li><p>Select <strong>I agree to the application's Terms of Service, Privacy Policy, and Google Workspace Marketplace's Terms of Service</strong> and click <strong>Finish</strong> to start installation.</p>
+    <p>The application is successfully installed.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>The Cloud Email and Collaboration Protection application is already installed.</p></td>
+    <td><ol>
+    <li><p>Log on to <a href="https://admin.google.com">https://admin.google.com</a> as a Google Super Admin.</p></li>
+    <li><p>Go to <strong>Apps → Google Workspace Marketplace apps → Apps list</strong> and click <strong>Trend Micro Cloud App Security</strong>.</p></li>
+    <li><p>Click <strong>Grant access</strong> in the <strong>Data Access</strong> section.</p>
+    <p>The "Status: Granted" message appears on the screen.</p></li>
+    </ol>
+    
+
+    :::note
+    
+    <p>If you change the application scope for <strong>Trend Micro Cloud App Security</strong> in the <strong>User Access</strong> section, make sure the selected groups or organizational units include the Google Super Admin account to be used for access grant in step 5.</p>
+    
+
+    :::
+
+    </td>
+    </tr>
+    </tbody>
+    </table>
+
+4.  Go back to the Cloud Email and Collaboration Protection management console as instructed and grant Cloud Email and Collaboration Protection the permission on required APIs by clicking **Click here** in **Step 2**.
+
+5.  In the new browser tab that appears, click your Google Super Admin account.
+
+6.  Go back to the Cloud Email and Collaboration Protection management console as instructed and create user groups for routing inbound and outbound emails to Cloud Email and Collaboration Protection by clicking **Click here** in **Step 3**.
+
+    The groups named **TMCAS Inline Incoming Gmail Virtual Group** and **TMCAS Inline Outgoing Gmail Virtual Group** are created in **Directory → Groups** in the Google Workspace Admin console.
+
+7.  Configure settings in the Google Workspace Admin console for routing inbound and outbound emails to Cloud Email and Collaboration Protection for Inline Protection.
+
+    For details, see [Configuring email routing for inline protection](email-routing-inline-prot.mdx).
+
+8.  Wait until the process is completed.
+
+    If the message "Successfully created a service account and synced data." appears on the screen, the access grant is successful.
+
+    :::warning[Important]
+
+    After the access grant is completed, enable the default Advanced Threat Protection policy and Data Loss Prevention policy or create custom policies for Gmail (Inline Mode). After you enable the policies, make sure you enable the rules **TMCAS Content Compliance Rule for Incoming Message** and **TMCAS Content Compliance Rule for Outgoing Message** in the Google Workspace Admin console.
+    :::
+
+    If for some reason the access token becomes invalid, a notification appears on **Dashboard**. Cloud Email and Collaboration Protection also sends an email message to notify the administrator of this event. To continue using the service account, go to **Administration → Service Account** to create a new access token. For more information, see [Service account](service-account-cloud-apps.mdx).
+
+**Related information**
+
+- [Configuring email routing for inline protection](email-routing-inline-prot.mdx)
+- [Configuring email routing for outbound protection](email-routing-outbound.mdx)
+::::

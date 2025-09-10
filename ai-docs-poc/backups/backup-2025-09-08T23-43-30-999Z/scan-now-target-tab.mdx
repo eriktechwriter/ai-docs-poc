@@ -1,0 +1,94 @@
+---
+slug: trend-vision-one-scan-now-target-tab
+title: 'Scan Now: Target Tab'
+last_updated: '2025-09-08'
+ai_context:
+  source_file: scan-now-target-tab.md
+  conversion_date: '2025-09-08T23:42:13.145Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+### Procedure {#procedure}
+
+1.  In the **Files to Scan** section, select from the following:
+
+    - **All scannable files**: Includes all scannable files. Unscannable files are password protected files, encrypted files, or files that exceed the user-defined scanning restrictions.
+
+      :::note
+
+      This option provides the maximum security possible. However, scanning every file requires a lot of time and resources and might be redundant in some situations. Therefore, you might want to limit the amount of files the agent includes in the scan.
+      :::
+
+    - **File types scanned by IntelliScan**: Scans files based on true-file type.
+
+    - **Files with the following extensions (use commas to separate entries)**: Manually specify the files to scan based on their extensions. Separate multiple entries with commas.
+
+      :::note
+
+      When configuring a parent policy, specify how other users can configure child policies.
+
+      - **Inherit from parent**: Child policies must use the settings configured in the parent policy
+
+      - **Extend from parent**: Child policies can append additional settings to the settings inherited from the parent policy
+      :::
+
+2.  In the **Scan Settings** section, configure the required settings.
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Setting</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><strong>Scan compressed files</strong></p></td>
+    <td><p>Scans the specified number of compression layers within an archived file</p>
+    
+
+    :::note
+    
+    <p>Scanning through more layers may detect malware intentionally buried within a compressed archive, however, the scan may affect system performance.</p>
+    
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p><strong>Scan OLE objects</strong></p></td>
+    <td><p>Scans the specified number of Object Linking and Embedding (OLE) layers in a file</p>
+    <p><strong>Detect exploit code in OLE files</strong>: OLE Exploit Detection heuristically identifies malware by checking Microsoft Office files for exploit code.</p>
+    
+
+    :::note
+    
+    <p>The specified number of layers is applicable to both the <strong>Scan OLE objects</strong> and <strong>Detect exploit code in OLE files</strong> options.</p>
+    
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p><strong>Scan boot area</strong></p></td>
+    <td><p>Scans the boot sector of the hard disk on the endpoint for virus/malware</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+3.  In the **CPU Usage** section, select from the following:
+
+    - **High**: No pausing between scans
+
+    - **Medium**: Pause between file scans if CPU consumption is higher than 50%, and do not pause if 50% or lower
+
+    - **Low**: Pause between file scans if CPU consumption is higher than 20%, and do not pause if 20% or lower
+:::

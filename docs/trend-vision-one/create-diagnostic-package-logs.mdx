@@ -1,0 +1,107 @@
+---
+slug: trend-vision-one-create-diagnostic-package-logs
+title: Create a diagnostic package and logs
+---
+# Create a diagnostic package and logs
+
+::To diagnose an issue, your support provider may ask you to send a diagnostic package containing debug information for the agent.
+
+## Agent diagnostics {#agent-diagnostics}
+
+For an agent, you can create a diagnostic package either:
+
+- via Server & Workload Protection
+- using the CLI on a protected computer (if the Server & Workload Protection cannot reach the agent remotely)
+
+For Linux-specific information on increasing or decreasing the anti-malware debug logging for the diagnostic package, see [Increase debug logging for anti-malware in protected Linux instances](debug-antimalware-linux.mdx).
+
+Your support provider may also ask you collect:
+
+- a screenshot of Task Manager (Windows) or output from `top` (Linux) or `prstat` (Solaris) or `topas` (AIX)
+- debug logs
+- [Perfmon log](https://support.microsoft.com/en-us/help/248345/how-to-create-a-log-using-system-monitor-in-windows) (Windows) or Syslog
+- [memory dumps](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/forcing-a-system-crash-from-the-keyboard?redirectedfrom=MSDN) (Windows) or core dumps (Linux, , [AIX](https://www.ibm.com/developerworks/community/blogs/KRblog/entry/aix_core_dump_facility?lang=en))
+
+## Create an agent diagnostic package via Server & Workload Protection {#create-an-agent-diagnostic-package-via-server-workload-protection}
+
+:::note
+
+Server & Workload Protection must be able to connect to an agent remotely to create a diagnostic package for it. If Server & Workload Protection cannot reach the agent remotely, or if the agent is using agent-initiated activation, you must create the diagnostic package directly from the agent.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to *Computers*.
+
+2.  Double-click the name of the computer you want to generate the diagnostic package for.
+
+3.  Select the *Actions* tab.
+
+4.  Under *Support*, click *Create Diagnostics Package*.
+
+5.  Click *Next*. The package will take several minutes to create. After the package has been generated, a summary will be displayed and your browser will download a ZIP file containing the diagnostic package.
+
+### Next steps {#next-steps}
+
+:::note
+
+When the *System Information* check box is selected, it might create a huge diagnostic package that could have a negative impact on performance. The check box is greyed out if you are not a primary tenant or do not have the proper viewing rights.
+:::
+
+## Create an agent diagnostic package via CLI on a protected computer {#create-an-agent-diagnostic-package-via-cli-on-a-protected-computer}
+
+### Procedure {#procedure-1}
+
+- Linux, AIX, and Solaris
+
+  1.  Connect to the server that you want to generate the diagnostic package for.
+
+  2.  Enter the command: `sudo /opt/ds_agent/dsa_control -d` The output shows the name and location of the diagnostic package: `/var/opt/ds_agent/diag`
+
+- Windows
+
+  1.  Connect to the computer that you want to generate the diagnostic package for.
+
+  2.  Open a command prompt as an administrator, and enter the command. In PowerShell: `& "\Program Files\Trend Micro\Deep Security Agent\dsa_control" -d` In cmd.exe: `cd C:\Program Files\Trend Micro\Deep Security Agent` `dsa_control.cmd -d` The output shows the name and location of the diagnostic package: C:\ProgramData\Trend Micro\Deep Security Agent\diag
+
+## Collect debug logs with DebugView {#collect-debug-logs-with-debugview}
+
+On Windows computers, you can collect debug logs using DebugView software.
+
+:::danger[Warning]
+
+Only collect debug logs if your support provider asks for them. During debug logging, CPU usage will increase, which will make high CPU usage issues worse.
+:::
+
+### Procedure {#procedure-2}
+
+1.  Download the [DebugView utility](https://docs.microsoft.com/en-us/sysinternals/downloads/debugview).
+
+2.  If self-protection is enabled, disable it.
+
+3.  Stop the Trend Micro Deep Security Agent service.
+
+4.  In the C:\Windows directory, create a plain text file named ds_agent.ini.
+
+5.  In the ds_agent.ini file, add this line: `trace=*`
+
+6.  Launch DebugView.exe.
+
+7.  Go to *Menu* \> *Capture*.
+
+8.  Enable these settings:
+
+    - *Capture Win32*
+
+    - *Capture Kernel*
+
+    - *Capture Events*
+
+9.  Start the Trend Micro Deep Security Agent service.
+
+10. Export the information in DebugView to a CSV file.
+
+11. Re-enable self-protection if you disabled it at the beginning of this procedure.
+
+### Next steps {#next-steps-1}
+::::::

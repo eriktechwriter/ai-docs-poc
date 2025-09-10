@@ -1,0 +1,112 @@
+---
+slug: trend-vision-one-scheduled-scan-action-tab
+title: 'Scheduled Scan: Action Tab'
+last_updated: '2025-09-08'
+ai_context:
+  source_file: scheduled-scan-action-tab.md
+  conversion_date: '2025-09-08T23:42:13.125Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+On the **Actions** tab, configure the scan actions Apex One (Mac) performs on detected security threats.
+
+### Procedure {#procedure}
+
+1.  Under **Action**, specify the scan actions.
+
+    <table>
+    <colgroup>
+    <col style="width: 40%" />
+    <col style="width: 60%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Option</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><strong>Use ActiveAction</strong></td>
+    <td><p>ActiveAction is a set of pre-configured scan actions for different types of security risks. If you are unsure which scan action is suitable for a certain type of security risk, Trend Micro recommends using ActiveAction.</p>
+    <p>ActiveAction settings are constantly updated in the pattern files to protect endpoints against the latest security risks and the latest methods of attacks.</p></td>
+    </tr>
+    <tr>
+    <td><strong>Use the same action for all security risk types</strong></td>
+    <td><p>Select this option if you want the same action performed on all types of security risks, except probable virus/malware. For Probable Virus/Malware, the action is always "Pass".</p>
+    <p>If you choose "Clean" as the first action, select a second action that Apex One (Mac) performs if cleaning is unsuccessful. If the first action is not "Clean", no second action is configurable.</p>
+    <p>For details about scan actions, see <a href="trend-vision-one-scan-actions">Scan Actions</a>.</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+2.  Under **Scheduled Scan Privileges**, specify whether users can postpone or skip a scheduled scan.
+
+    <table>
+    <colgroup>
+    <col style="width: 30%" />
+    <col style="width: 70%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Privilege</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Postpone Scheduled Scan</p></td>
+    <td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Users with the "Postpone Scheduled Scan" privilege can perform the following actions:</p>
+    <ul>
+    <li><p>Postpone Scheduled Scan before it runs and then specify the postpone duration. Scheduled Scan can only be postponed once.</p></li>
+    <li><p>If Scheduled Scan is in progress, users can stop scanning and restart it later. Users then specify the amount of time that should elapse before scanning restarts. When scanning restarts, all previously scanned files are scanned again. Scheduled Scan can be stopped and then restarted only once.</p></li>
+    </ul>
+    <p>Configure the number of hours and minutes, which corresponds to:</p>
+    <ul>
+    <li><p>The maximum postpone duration</p></li>
+    <li><p>The maximum amount of time that should elapse before scanning restarts</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td style="border-right-width: 1px; border-right-style: solid"><p>Skip and Stop Scheduled Scan</p></td>
+    <td><p>This privilege allows users to perform the following actions:</p>
+    <ul>
+    <li><p>Skip Scheduled Scan before it runs</p></li>
+    <li><p>Stop Scheduled Scan when it is in progress</p></li>
+    </ul></td>
+    </tr>
+    </tbody>
+    </table>
+
+3.  Under **Scheduled Scan Settings**, specify the notification and battery power settings.
+
+    <table>
+    <colgroup>
+    <col style="width: 30%" />
+    <col style="width: 70%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Setting</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Display a notification before Scheduled Scan runs</p></td>
+    <td><p>When you enable this option, a notification message displays on the endpoint several minutes before Scheduled Scan runs. Users are notified of the scan schedule (date and time) and their Scheduled Scan privileges, such as postponing, skipping, or stopping Scheduled Scan.</p>
+    <p>Configure the timing for displaying the notification message, in number of minutes.</p></td>
+    </tr>
+    <tr>
+    <td><p>Automatically stop Scheduled Scan when scanning lasts more than __ hours and __ minutes</p></td>
+    <td><p>The Trend Vision One Endpoint Security agent stops scanning when the specified amount of time is exceeded and scanning is not yet complete. The Trend Vision One Endpoint Security agent immediately notifies users of any security risk detected during scanning.</p></td>
+    </tr>
+    <tr>
+    <td><p>Skip Scheduled Scan When a Wireless Endpoint's Battery Life is Less Than __ % and its AC Adapter is Unplugged</p></td>
+    <td><p>Apex One (Mac) skips a Scheduled Scan if it detects that a wireless endpoint's battery life is running low and its AC adapter is not connected to any power source. If battery life is low but the AC adapter is connected to a power source, scanning proceeds. If a scan is in progress when the battery life is low, the scan is not terminated.</p></td>
+    </tr>
+    </tbody>
+    </table>
+:::

@@ -2,54 +2,28 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch Development Server",
+      "name": "Debug AI Content Generator",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/node_modules/@docusaurus/core/bin/docusaurus.mjs",
-      "args": ["start"],
+      "program": "${workspaceFolder}/scripts/generate-content.js",
       "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
-      "env": {
-        "NODE_ENV": "development"
-      }
+      "skipFiles": ["<node_internals>/**"]
     },
     {
-      "name": "Debug Build Process",
+      "name": "Debug Review Workflow",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/node_modules/@docusaurus/core/bin/docusaurus.mjs",
-      "args": ["build"],
+      "program": "${workspaceFolder}/scripts/review-workflow.js",
       "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
-      "env": {
-        "NODE_ENV": "production"
-      }
+      "skipFiles": ["<node_internals>/**"]
     },
     {
-      "name": "Debug Conversion Script",
+      "name": "Debug System Health Check",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/scripts/convert-md-to-mdx.js",
+      "program": "${workspaceFolder}/scripts/system-health-check.js",
       "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
-      "args": ["--debug"]
-    },
-    {
-      "name": "Debug AI Content Planner",
-      "type": "node",
-      "request": "launch",
-      "program": "${workspaceFolder}/scripts/ai-content-planner.js",
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
-      "args": ["--debug"]
-    },
-    {
-      "name": "Attach to Chrome",
-      "type": "chrome",
-      "request": "attach",
-      "port": 9222,
-      "webRoot": "${workspaceFolder}",
-      "url": "http://localhost:3000"
+      "skipFiles": ["<node_internals>/**"]
     }
   ]
 }

@@ -1,0 +1,116 @@
+---
+slug: trend-vision-one-cis-aks17-327
+title: >-
+  3.2.7 - Ensure that the –eventRecordQPS argument is set to 0 or a level which
+  ensures appropriate event capture (Automated)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: cis-aks17-327.md
+  conversion_date: '2025-09-08T23:42:23.826Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Profile Applicability: Level 2
+
+Security relevant information should be captured. The `--eventRecordQPS` flag on the Kubelet can be used to limit the rate at which events are gathered. Setting this too low could result in relevant events not being logged, however the unlimited setting of 0 could result in a denial of service on the kubelet.
+
+It is important to capture all events and not restrict event creation. Events are an important source of security information and analytics that ensure that your environment is consistently monitored using the event data.
+
+:::note
+
+See the Azure AKS documentation for the default value.
+:::
+
+### Audit {#audit}
+
+**Audit Method 1:**
+
+1.  SSH to the relevant node and run the following command on each node to find the Kubelet process:
+
+    ``` codeblock
+    ps -ef | grep kubelet
+    ```
+
+2.  In the output of the above command, review the value set for the `--eventRecordQPS` argument and determine whether this has been set to an appropriate level for the cluster. The value of 0 can be used to ensure that all events are captured.
+
+3.  If the `--eventRecordQPS` argument does not exist, check that there is a Kubelet config file specified by `--config` and review the value in this location.
+
+    The output of the above command should return something similar to `--config /etc/kubernetes/kubelet/kubelet-config.json` which is the location of the Kubelet config file.
+
+4.  Open the Kubelet config file:
+
+    ``` codeblock
+    cat /etc/kubernetes/kubelet/kubelet-config.json
+    ```
+
+5.  Verify that `"eventRecordQPS"` is set to `0` or another appropriate level for the cluster.
+
+**Audit Method 2:**
+
+If using the API configz endpoint, search for the status of `eventRecordQPS` by extracting the live configuration from the nodes running Kubelet.:
+
+1.  Set the local proxy port and the following variables and provide proxy port number and node name:
+
+    - `HOSTNAME_PORT="localhost-and-port-number"`
+    - `NODE_NAME="The-Name-Of-Node-To-Extract-Configuration" from the output of "kubectl get nodes"`
+
+    ``` codeblock
+    kubectl proxy --port=8001 & 
+
+    export HOSTNAME_PORT=localhost:8001 (example host and port number) 
+    export NODE_NAME=ip-192.168.31.226.aks.internal (example node name 
+    from "kubectl get nodes") 
+
+    curl -sSL "http://${HOSTNAME_PORT}/api/v1/nodes/${NODE_NAME}/proxy/configz"
+    ```
+
+### Remediation {#remediation}
+
+**Remediation Method 1:**
+
+If modifying the Kubelet config file, edit `/etc/kubernetes/kubelet/kubelet-config.json` and set the below parameter to 5 or a value greater or equal to 0:
+
+``` codeblock
+"eventRecordQPS": 5
+```
+
+Check that `/etc/systemd/system/kubelet.service.d/10-kubelet-args.conf` does not define an executable argument for `eventRecordQPS` because this would override your Kubelet config.
+
+**Remediation Method 2:**
+
+If using executable arguments, edit the Kubelet service file `/etc/systemd/system/kubelet.service.d/10-kubelet-args.conf` on each worker node and add the below parameter at the end of the `KUBELET_ARGS` variable string:
+
+``` codeblock
+--eventRecordQPS=5
+```
+
+**Remediation Method 3:**
+
+If using the API configz endpoint, search for the status of `"eventRecordQPS"` by extracting the live configuration from the nodes running Kubelet.
+
+See step-by-step configmap procedures in the [Kubernetes documentation](https://kubernetes.io/docs/home/), and rerun the curl command from the audit process to check for kubelet configuration changes:
+
+``` codeblock
+     kubectl proxy --port=8001 &
+     
+     export HOSTNAME_PORT=localhost:8001 (example host and port number) 
+     export NODE_NAME=ip-192.168.31.226.aks.internal (example node name from 
+     "kubectl get nodes")
+     
+     curl -sSL "http://${HOSTNAME_PORT}/api/v1/nodes/${NODE_NAME}/proxy/configz"
+    
+```
+
+**For all three remediations:**
+
+Restart the `kubelet` service and check status:
+
+``` codeblock
+     systemctl daemon-reload
+     systemctl restart kubelet.service
+     systemctl status kubelet -l
+    
+```
+::::

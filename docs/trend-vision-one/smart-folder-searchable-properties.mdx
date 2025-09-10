@@ -1,0 +1,457 @@
+---
+slug: trend-vision-one-smart-folder-searchable-properties
+title: Searchable properties
+---
+# Searchable properties
+
+Review the properties you can use to create the search rules and groups for your smart folders.
+
+Properties are an attribute that some or all computers you want to find have. Smart folders show computers that have the selected property, and its value matches.
+
+Type your search exactly as that property appears in Server & Workload Protection, as opposed to, for example, AWS, Azure, or GCP. Otherwise, your smart folder query cannot match. To find the exact matching text (unless otherwise noted), go to **Computers** and look in the navigation pane on the left.
+
+- General
+
+- Active Directory
+
+- AWS
+
+- Azure
+
+- Google Cloud (GCP)
+
+- vCenter
+
+- vCloud
+
+### General {#general}
+
+<table>
+<thead>
+<tr>
+<th><p>Property</p></th>
+<th><p>Description</p></th>
+<th><p>Data type</p></th>
+<th><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Hostname</p></td>
+<td><p>The computer's host name, as seen on <strong>Computers &gt; Details</strong> in Hostname.</p></td>
+<td><p>string</p></td>
+<td><p>ca-staging-web1</p></td>
+</tr>
+<tr>
+<td><p>Computer Display Name</p></td>
+<td><p>The computer's display name in the Server &amp; Workload Protection console (if any), as seen on <strong>Computers &gt; Details</strong> in Display Name.</p></td>
+<td><p>string</p></td>
+<td><p>nginxTest</p></td>
+</tr>
+<tr>
+<td><p>Folder Name</p></td>
+<td><p>The computer's assigned group.</p></td>
+<td><p>string</p></td>
+<td><p>US-East</p></td>
+</tr>
+<tr>
+<td><p>Operating System</p></td>
+<td><p>The computer's operating system, as seen on <strong>Computers &gt; Details</strong> in Platform.</p></td>
+<td><p>string</p></td>
+<td><p>Microsoft Windows 7 (64 bit) Service Pack 1 Build 7601</p></td>
+</tr>
+<tr>
+<td><p>IP Address</p></td>
+<td><p>The computer's IP address.</p>
+<p>You can find the IP address in the Server &amp; Workload Protection console.</p>
+<ul>
+<li><p>To find the IP of an AWS instance, GCP VM, or Azure VM that was added to Server &amp; Workload Protection through <strong>Add &gt; Add AWS|Azure|GCP Account</strong>, go the computer's details page, and under the <strong>General</strong> tab, scroll to the <strong>Virtual machine Summary</strong> section. The AWS IP addresses are listed in these fields:</p>
+<ul>
+<li><p><strong>Private IP Address</strong></p></li>
+<li><p><strong>Public IP (PIP) Address</strong></p></li>
+</ul>
+
+
+:::note
+
+<p>If you added the AWS, GCP, or Azure computer through <strong>Add &gt; Add Computers</strong>, its IP address is located in the same place as a physical computer's.</p>
+
+
+:::
+
+</li>
+<li><p>To find the IP of a physical computer, go to the computer's details page and on the left, click <strong>Interfaces</strong>.</p>
+
+
+:::note
+
+If "DHCP" is displayed instead of a static IP address, it won't match the smart folder query.
+
+
+:::
+
+</li>
+<li><p>To find the IP of a vCenter or vCloud VM, go to the vCenter computer's details page, and under the <strong>General</strong> tab, scroll to the <strong>Virtual machine Summary</strong> section. The vCenter or vCloud IP address is listed in the <strong>IP Address</strong> field.</p></li>
+</ul></td>
+<td><p>IPv4 or IPv6 address, or an IPv4 range</p></td>
+<td><p>172.20.1.5-172.20.1.55</p>
+<p>2001:db8:face::5</p></td>
+</tr>
+<tr>
+<td><p>Policy</p></td>
+<td><p>The computer's assigned Server &amp; Workload Protection policy, as seen on <strong>Computers &gt; Details</strong>.</p></td>
+<td><p>string</p>
+<p>(option in drop-down list)</p></td>
+<td><p>Base Policy</p></td>
+</tr>
+<tr>
+<td><p>Activated</p></td>
+<td><p>Whether or not the computer has been activated with Workload Security, as seen on <strong>Computers &gt; Details</strong>.</p></td>
+<td><p>Boolean</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>Docker Host</p></td>
+<td><p>Whether or not <a href="trend-vision-one-protect-docker-containers">Docker</a> is installed on the computer, as seen on <strong>Computers &gt; Details</strong>.</p></td>
+<td><p>Boolean</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>Computer Type</p></td>
+<td><p>The type of computer. Options are: Physical Computer, Amazon EC2 Instance, Amazon WorkSpace, vCenter VM, Azure Instance, Azure ARM Instance, GCP VM Instance.</p></td>
+<td><p>string (option in drop-down list)</p></td>
+<td><p>Examples: Physical Computer, Amazon EC2 Instance</p></td>
+</tr>
+<tr>
+<td><p>Last Successful Recommendation Scan</p></td>
+<td><p>Whether or not the computer has had a successful recommendation scan within a specified time period. The last recommendation scan date and results can be seen on <strong>Computers &gt; Details &gt; General &gt; Intrusion Prevention</strong> or <strong>Integrity Monitoring</strong> or <strong>Log Inspection</strong> <strong>&gt; Recommendations</strong>.</p></td>
+<td><p>Date operator drop-down list, String, Date unit drop-down list</p></td>
+<td><p><strong>OLDER THAN</strong>, 7, <strong>DAYS</strong></p></td>
+</tr>
+<tr>
+<td><p>Last Agent Communication</p></td>
+<td><p>Whether or not the agent has communicated with Server &amp; Workload Protection within a specified time period. The Last Communication date can be seen on <strong>Computers &gt; Details &gt; General &gt; Last Communication</strong>.</p></td>
+<td><p>Date operator drop-down list, String, Date unit drop-down list</p></td>
+<td><p><strong>OLDER THAN</strong>, 3, <strong>DAYS</strong></p></td>
+</tr>
+<tr>
+<td><p>Agent Offline</p></td>
+<td><p>Whether or not the agent is offline. This is displayed as <strong>Managed (Offline)</strong> or <strong>Offline</strong> on <strong>Computers &gt; Details &gt; General &gt; Last Communication</strong>.</p></td>
+<td><p>Boolean</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>Task(s)</p></td>
+<td><p>State of the computer's tasks, as displayed in the <strong>Task(s)</strong> column on the <strong>Computers</strong> page. For a list of all possible tasks, see <a href="trend-vision-one-computer-agent-statuses">Computer and agent statuses</a>.</p></td>
+<td><p>string</p></td>
+<td><p>Activating</p></td>
+</tr>
+<tr>
+<td><p>Host Created Date</p></td>
+<td><p>Date when the computer was added to Server &amp; Workload Protection.</p></td>
+<td><p>string (date)</p></td>
+<td><p>2019-03-15</p></td>
+</tr>
+<tr>
+<td><p>Version</p></td>
+<td><p>Agent version.</p></td>
+<td><p>string</p></td>
+<td><p>12.0.0.1</p></td>
+</tr>
+<tr>
+<td><p>Trend Vision One Endpoint Security agent readiness status</p>
+
+
+:::note
+
+<p>This is a "pre-release" feature and is not considered an official release. Review the <a href="https://docs.trendmicro.com/en-us/enterprise/trend-micro-xdr-help/PrereleaseDisclaimer">Pre-release Disclaimer</a> before using the feature.</p>
+
+
+:::
+
+</td>
+<td><p>The Trend Vision One Endpoint Security agent readiness status of a computer.</p>
+<p>Options: Ready to Install, Install Pending, Installing, Install Failed, Trend Vision One Endpoint Security agent Installed, Platform not Supported, Deep Security Agent Version not Supported</p></td>
+<td>string</td>
+<td>Ready to Install</td>
+</tr>
+</tbody>
+</table>
+
+### AWS {#aws}
+
+<table>
+<thead>
+<tr>
+<th><p>Property</p></th>
+<th><p>Description</p></th>
+<th><p>Data type</p></th>
+<th><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Tag</p></td>
+<td><p>The computer's AWS tag key:value pair, as seen on <strong>Computers &gt; Details &gt; Overview &gt; General</strong> under Virtual machine Summary, in Cloud Instance Metadata.</p>
+<p>Type the tag name, then its value. Case-sensitive.</p></td>
+<td><p>string</p></td>
+<td><p>Tag Key: env</p>
+<p>Tag Value: staging</p></td>
+</tr>
+<tr>
+<td><p>Security Group Name</p></td>
+<td><p>The computer's associated AWS security group name, as seen on <strong>Computers &gt; Details &gt; Overview &gt; General</strong> under Virtual machine Summary, in Security Group(s).</p></td>
+<td><p>string</p></td>
+<td><p>SecGrp1</p></td>
+</tr>
+<tr>
+<td><p>Security Group ID</p></td>
+<td><p>The computer's AWS security group ID, as seen on <strong>Computers &gt; Details &gt; Overview &gt; General</strong> under Virtual machine Summary, in Security Group(s).</p></td>
+<td><p>string</p></td>
+<td><p>sg-12345678</p></td>
+</tr>
+<tr>
+<td><p>AMI ID</p></td>
+<td><p>The computer's Amazon Machine AMI ID, as seen on <strong>Computers &gt; Details &gt; Overview &gt; General</strong> under Virtual machine Summary, in AMI ID.</p></td>
+<td><p>string</p></td>
+<td><p>ami-23c44a56</p></td>
+</tr>
+<tr>
+<td><p>Account ID</p></td>
+<td><p>The computer's associated 12-digit <a href="https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-identifiers">AWS Account ID</a>, as seen on <strong>Computers</strong> when you right-click <strong>Amazon Account</strong> and select <strong>Properties</strong>.</p>
+<p>Results include computers in sub-folders.</p></td>
+<td><p>string</p></td>
+<td><p>123456789012</p></td>
+</tr>
+<tr>
+<td><p>Account Name</p></td>
+<td><p>The computer's associated <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/console-account-alias">AWS Account Alias</a>, as seen on <strong>Computers</strong> when you right-click the AWS Cloud Connector and select <strong>Properties</strong>.</p>
+<p>Results include computers in sub-folders.</p></td>
+<td><p>string</p></td>
+<td><p>MyAccount-123</p></td>
+</tr>
+<tr>
+<td><p>Region ID</p></td>
+<td><p>The computer's <a href="https://docs.aws.amazon.com/general/latest/gr/rande">AWS region suffix</a>.</p>
+<p>Results include computers in sub-folders.</p></td>
+<td><p>string</p></td>
+<td><p>us-east-1</p></td>
+</tr>
+<tr>
+<td><p>Region Name</p></td>
+<td><p>The computer's associated AWS region name.</p>
+<p>Results include computers in sub-folders.</p></td>
+<td><p>string</p></td>
+<td><p>US East (Ohio)</p></td>
+</tr>
+<tr>
+<td><p>VPC ID</p></td>
+<td><p>The computer's Virtual Private Cloud (VPC) ID.</p>
+<p>If an alias exists, the folder name is the alias, followed by the VPC ID in parentheses. Otherwise the folder's name is the VPC ID.</p>
+<p>Results include computers in sub-folders.</p></td>
+<td><p>string</p></td>
+<td><p>vpc-3005e48a</p></td>
+</tr>
+<tr>
+<td><p>Subnet ID</p></td>
+<td><p>The computer's associated Virtual Private Cloud (VPC) subnet ID.</p>
+<p>If an alias exists, the folder name is the alias, followed by the VPC subnet ID in parentheses. Otherwise the folder's name is the VPC subnet ID.</p>
+<p>Results include computers in sub-folders.</p></td>
+<td><p>string</p></td>
+<td><p>subnet-b1c2e468</p></td>
+</tr>
+<tr>
+<td><p>Directory ID</p></td>
+<td><p>The ID of the AWS directory where the user entry associated with an Amazon WorkSpace resides. The directory ID is seen on the <strong>Computers &gt; Details &gt; Virtual machine Summary</strong>, in the <strong>WorkSpace Directory</strong> field. That field takes the format &lt;directory_alias&gt;(&lt;directory_ID&gt;), for example, myworkspacedir(d-9367232d89).</p></td>
+<td><p>string</p></td>
+<td><p>d-9367232d89</p></td>
+</tr>
+</tbody>
+</table>
+
+### Azure {#azure}
+
+<table>
+<thead>
+<tr>
+<th><p>Property</p></th>
+<th><p>Description</p></th>
+<th><p>Data type</p></th>
+<th><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Subscription Name</p></td>
+<td><p>The Subscription Name is no longer collected. It remains visible in the drop-down list of properties in case the information was obtained through a previous version of the Server &amp; Workload Protection console.</p>
+<p>The computer's associated Azure subscription account ID, as seen on <strong>Computers</strong> when you right-click <strong>Azure</strong> and select <strong>Properties</strong>.</p>
+<p>Results include computers in sub-folders.</p></td>
+<td><p>string</p></td>
+<td><p>MyAzureAccount</p></td>
+</tr>
+<tr>
+<td><p>Resource Group</p></td>
+<td><p>The computer's associated resource group</p></td>
+<td><p>string</p></td>
+<td><p>MyResourceGroup</p></td>
+</tr>
+<tr>
+<td><p>Location</p></td>
+<td><p>The computer's location name</p></td>
+<td><p>string</p></td>
+<td><p>East US</p></td>
+</tr>
+<tr>
+<td><p>Tag</p></td>
+<td><p>The computer's Azure tag key:value pair, as seen on <strong>Computers &gt; Details &gt; Overview &gt; General</strong> under under <strong>Virtual machine Summary</strong>, in <strong>Cloud Instance Metadata</strong>.</p>
+<p>Type the tag name, then its value. Case-sensitive.</p></td>
+<td><p>string</p></td>
+<td><p>Tag Key: env</p>
+<p>Tag Value: staging</p></td>
+</tr>
+</tbody>
+</table>
+
+### Google Cloud (GCP) {#google-cloud-gcp}
+
+<table>
+<thead>
+<tr>
+<th><p>Property</p></th>
+<th><p>Description</p></th>
+<th><p>Data type</p></th>
+<th><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Label</p></td>
+<td><p>The computer's GCP label key:value pair, as seen on <strong>Computers &gt; Details &gt; Overview &gt; General</strong> under <strong>Virtual machine Summary</strong>, in <strong>Cloud Instance Metadata</strong>.</p>
+<p>Type the label key, and then its value. Case-sensitive.</p></td>
+<td><p>string</p></td>
+<td><p>Label Key: env</p>
+<p>Label Value: staging</p></td>
+</tr>
+<tr>
+<td><p>Network Tag</p></td>
+<td><p>The computer's <a href="https://cloud.google.com/vpc/docs/add-remove-network-tags">network tag</a>, as seen on <strong>Computers &gt; Details &gt; Overview &gt; General</strong> under <strong>Virtual machine Summary</strong>, in <strong>Cloud Instance Metadata</strong>.</p></td>
+<td><p>string</p></td>
+<td><p>production</p></td>
+</tr>
+</tbody>
+</table>
+
+### vCenter {#vcenter}
+
+<table>
+<thead>
+<tr>
+<th><p>Property</p></th>
+<th><p>Description</p></th>
+<th><p>Data type</p></th>
+<th><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Name</p></td>
+<td><p>The computer's associated vCenter.</p>
+<p>Results include computers in sub-folders.</p></td>
+<td><p>string</p></td>
+<td><p>vCenter - lab13-vc.example.com</p></td>
+</tr>
+<tr>
+<td><p>Datacenter</p></td>
+<td><p>The computer's associated vCenter data center.</p>
+<p>Results include computers in sub-folders.</p></td>
+<td><p>string</p></td>
+<td><p>lab13-datacenter</p></td>
+</tr>
+<tr>
+<td><p>Folder</p></td>
+<td><p>The computer's vCenter folder.</p>
+<p>Results include computers in sub-folders.</p></td>
+<td><p>string</p></td>
+<td><p>db_dev</p></td>
+</tr>
+<tr>
+<td><p>Parent ESX Hostname</p></td>
+<td><p>The hostname of the ESXi hypervisor where the computer's guest VM is running, as seen on <strong>Computers</strong>.</p></td>
+<td><p>string</p></td>
+<td><p>lab13-esx2.example.com</p></td>
+</tr>
+<tr>
+<td><p>Custom Attribute</p></td>
+<td><p>The computer's assigned vCenter custom attribute, as seen on <strong>Computers &gt; Details</strong> in Virtual machine Summary.</p></td>
+<td><p>string</p>
+<p>(comma-separated attribute name and value)</p></td>
+<td><p>env, production</p></td>
+</tr>
+</tbody>
+</table>
+
+### vCloud {#vcloud}
+
+<table>
+<thead>
+<tr>
+<th><p>Property</p></th>
+<th><p>Description</p></th>
+<th><p>Data type</p></th>
+<th><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Name</p></td>
+<td><p>The computer's associated vCloud.</p>
+<p>Results include computers in sub-folders.</p></td>
+<td><p>string</p></td>
+<td><p>vCloud-lab23</p></td>
+</tr>
+<tr>
+<td><p>Datacenter</p></td>
+<td><p>The computer's associated vCloud data center.</p>
+<p>Results include computers in sub-folders.</p></td>
+<td><p>string</p></td>
+<td><p>lab13-datacenter</p></td>
+</tr>
+<tr>
+<td><p>vApp</p></td>
+<td><p>The computer's associated vCloud data center folder.</p>
+<p>Results include computers in sub-folders.</p></td>
+<td><p>string</p></td>
+<td><p>db_dev</p></td>
+</tr>
+</tbody>
+</table>
+
+### Active Directory {#active-directory}
+
+<table>
+<thead>
+<tr>
+<th><p>Property</p></th>
+<th><p>Description</p></th>
+<th><p>Data type</p></th>
+<th><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Name</p></td>
+<td>The hostname of the Microsoft Active Directory or LDAP directory.
+<p>Results include computers in sub-folders.</p></td>
+<td><p>string</p></td>
+<td><p>ad01.example.com</p></td>
+</tr>
+<tr>
+<td><p>Folder</p></td>
+<td><p>The computer's Microsoft Active Directory or LDAP folder name.</p>
+<p>Results include computers in sub-folders.</p></td>
+<td><p>string</p></td>
+<td><p>Computers</p></td>
+</tr>
+</tbody>
+</table>
+:::

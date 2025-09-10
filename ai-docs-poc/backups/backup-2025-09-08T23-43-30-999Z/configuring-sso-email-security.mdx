@@ -1,0 +1,109 @@
+---
+slug: trend-vision-one-configuring-sso-email-security
+title: Configuring single sign-on
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configuring-sso-email-security.md
+  conversion_date: '2025-09-08T23:42:22.134Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Before specifying SSO settings on the administrator console, configure the identity provider you choose for single sign-on, that is, AD FS 4.0, Microsoft Entra ID or Okta:
+
+- [Configuring Active Directory Federation Services](configuring-adfs-email-security.mdx)
+
+- [Configuring Microsoft ENTRA ID](configuring-entra-id-email-security.mdx)
+
+- [Configuring Okta](configure-okta-email-security.mdx)
+
+:::note
+
+Gather required settings from your identity provider before setting up the administrator console.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Administration → End User Management → Logon Methods**.
+
+2.  In the **Single Sign-On** section, click the toggle button to enable SSO.
+
+3.  Click **Add** to create an SSO profile.
+
+4.  Configure general information for SSO.
+
+    1.  Specify an SSO profile name.
+
+    2.  Specify an identifier that is globally unique at your site.
+
+        The End User Console URL is generated.
+
+        If you have to change the unique identifier due to conflict with another identifier, make sure you also change it in your identity provider configuration.
+
+5.  Select the domains to which the current profile applies:
+
+    - **My organization**: applies this profile to all existing domains and any new domains added in the future.
+
+      :::note
+
+      You can create only one profile that is applied to **My organization**.
+      :::
+
+    - **Specified domains**: applies this profile to specified domains.
+
+      Select domains from the **Available** pane and click **Add \>** to add them to the **Selected** pane.
+
+6.  Complete identity provider configuration for SSO.
+
+    1.  Select your identity provider from the **Identity provider** drop-down list.
+
+    2.  Specify the logon and logoff URLs for your identity provider.
+
+        :::note
+
+        Use the logon URL collected from AD FS, Microsoft Entra ID or Okta configurations.
+
+        The logoff URL logs you off and also terminates the current identity provider logon session.
+        :::
+
+    3.  (For Okta only) Click **Download Logoff Certificate** to obtain the certificate file to upload to your federation server.
+
+    4.  (Optional) Enable signature validation.
+
+        :::note
+
+        A signature is returned from the identity provider server during SSO. To avoid forgery logon by attackers, the signature must be checked against the certificate file you obtained from your identity provider.
+        :::
+
+        1.  Click the **Signature validation** toggle button.
+
+        2.  Locate the certificate file you downloaded from AD FS, Microsoft Entra ID or Okta configurations and upload it for signature validation.
+
+    5.  Specify the identity claim type based on the claim you configured for AD FS, Microsoft Entra ID or Okta. For example, if you use `email` as the claim name, type `email`.
+
+    6.  (Optional) Enable SSO management by group.
+
+        :::note
+
+        If you enable this function, only end users with valid email addresses in the specified group can be logged on to the End User Console through SSO:
+        :::
+
+        1.  Click the `Group allow list` toggle button.
+
+        2.  Specify the group claim type based on the group claim you configured for AD FS, Microsoft Entra ID or Okta. For example, if you use `euc_group` as the group attribute name, type `euc_group`.
+
+        3.  Specify group claim values based on the group claim you configured for AD FS, Microsoft Entra ID or Okta. If your identity provider is AD FS or Okta, type group names; if your identity provider is Microsoft Entra ID, type group IDs.
+
+7.  Click **Save** to save the profile.
+
+8.  Click **Save** to save SSO settings.
+
+    Once you have completed the configuration, an end user can log on using the End User Console URL generated in Step 4 to initiate SSO from the identity provider to the End User Console. The identity claim type and group claim type specified in Step 6 are used to get the mapping claim values from your identity provider. In this case, Cloud Email Gateway Protection obtains the email address and user group of the logon account to verify the identity of the end user. Once verified, the end user will be successfully logged on to the End User Console.
+
+**Related information**
+
+- [Configuring Active Directory Federation Services](configuring-adfs-email-security.mdx)
+- [Configuring Microsoft ENTRA ID](configuring-entra-id-email-security.mdx)
+- [Configuring Okta](configure-okta-email-security.mdx)
+::::

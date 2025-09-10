@@ -1,0 +1,137 @@
+---
+slug: trend-vision-one-configure-security-features
+title: Edit a policy and security modules
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configure-security-features.md
+  conversion_date: '2025-09-08T23:42:22.671Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+View, manage, and configure security module settings for your Endpoint Security Policies.
+
+:::warning[Important]
+
+- Policies, Threat Prevention, Access Control, Data Security Sensor, Sandbox Submission, Exclusions, and Brower Extention are "Pre-release" features and are not considered an official release. Please review the [Pre-Release Disclaimer](pre-release-disclaimer.mdx) before using the feature.
+
+- These features are not available in all regions.
+
+- Configure your [policy resources](endpoint-security-policy-resources.mdx) before creating a policy.
+
+- Navigating between the security modules or leaving the **Policy Settings** screen discards any unsaved changes. To avoid losing your work, always click **Save** before leaving the current screen.
+:::
+
+Security modules consist of a collection of features and settings organized around endpoint agent capabilities. After you create a policy, you can view and edit the security module settings from the **Policy Settings** window. Security modules control a range of settings including monitoring levels, exclusions, rules, and user permissions. Some modules use policy resources to manage their settings. For more information, see [Policy Resources](endpoint-security-policy-resources.mdx).
+
+Endpoint Security Policies supports configuring the following security modules:
+
+**Endpoint security policy modules**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Category</p></th>
+<th><p>Module name</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="4"><p>Threat Prevention</p></td>
+<td><p><a href="trend-vision-one-policies-anti-malware">Anti-Malware</a></p></td>
+<td><p>Actively protects endpoints by detecting and eliminating threats in real time</p>
+<p>Use this module to set your Anti-Malware monitoring level, scheduled scans, and scan exclusions.</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-policies-web-reputation">Web Reputation</a></p></td>
+<td><p>Protects against web threats by blocking access to malicious URLs</p>
+<p>Use this module to set your Web Reputation scan settings, access rules, and port monitoring.</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-policies-intrusion-prevention">Intrusion Prevention</a></p></td>
+<td><p>Protects your endpoints from known and zero-day vulnerability attacks</p>
+<p>Use this module to configure rule statuses and recommendation settings.</p></td>
+</tr>
+<tr>
+<td><p>Hardening Rules</p></td>
+<td><p>Provides protection by regulating programs that trigger certain events in commonly targeted system areas</p>
+<p>Support for configuring Hardening Rules is coming soon.</p></td>
+</tr>
+<tr>
+<td rowspan="3"><p>Access Control</p></td>
+<td><p><a href="trend-vision-one-policies-application-control">Application Control</a></p></td>
+<td><p>Monitors endpoints for software changes and allows or blocks software actions based on configured settings and rules</p>
+<p>Use this module to enable or disable Application Control rules. You can also enforce lockdown mode with Application Control.</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-policies-device-control">Device Control</a></p></td>
+<td><p>Regulates access to external storage devices when connected to your endpoints</p>
+<p>Use this module to configure device permissions and to specify allowed devices</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-policies-firewall">Firewall</a></p></td>
+<td><p>Provides bidirectional stateful inspection of incoming and outgoing network traffic</p>
+<p>Use this module to configure the firewall security level, enabled rules, and specify allowed programs.</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p>Advanced Capabilities</p></td>
+<td><p>Log Inspection</p></td>
+<td><p>Helps identify important events within your operating system and application logs</p>
+<p>Support for configuring Log Inspection is coming soon.</p></td>
+</tr>
+<tr>
+<td><p>Integrity Monitoring</p></td>
+<td><p>Scans for unexpected changes to registry values, keys, services, processes, installed software, ports, and files on endpoints</p>
+<p>Support for configuring Integrity Monitoring is coming soon.</p></td>
+</tr>
+<tr>
+<td rowspan="5"><p>Cyber Risk &amp; Security Operations</p></td>
+<td><p><a href="trend-vision-one-policies-advanced-risk-telemetry">Advanced Risk Telemetry</a></p></td>
+<td><p>Analyzes endpoints for potential security posture weaknesses and performs vulnerability assessments</p>
+<p>Use this module to enable or disable Advanced Risk Telemetry</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-policies-endpoint-sensor">Endpoint Sensor</a></p></td>
+<td><p>Sends activity data for state-of-the-art threat detection and alerting</p>
+<p>Previously called Endpoint sensor detection and response, use this module to configure the Endpoint Sensor monitoring level and deepfake detector.</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-policies-data-security-sensor">Data Security Sensor</a></p></td>
+<td><p>Sends activity data to trace the movement of sensitive data within the Data Security module</p></td>
+</tr>
+<tr>
+<td><p>Identity Security Sensor</p></td>
+<td><p>Monitors your identity management solutions to ensure robust and effective identity security</p>
+<p>Support for configuring Identity Security Sensor is coming soon.</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-policies-sandbox-submission">Sandbox Submission</a></p></td>
+<td><p>Allows agents to automatically submit suspicious objects for analysis in a secure, virtual cloud sandbox environment</p>
+<p>When enabled, you can view analysis results in Sandbox Analysis.</p></td>
+</tr>
+<tr>
+<td rowspan="3"><p>Management Settings</p></td>
+<td><p><a href="trend-vision-one-policies-exclusions">Exclusions</a></p></td>
+<td><p>Manage exceptions across endpoint protection features</p>
+<p>Use this module to manage rule exceptions and configure the trusted programs list.</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-policies-browser-extension">Browser Extension</a></p></td>
+<td><p>Deploy the Trend Micro™ Toolbar for Enterprise browser extension to provide additional visibility and enhanced monitoring capabilities for endpoint protection features</p>
+<p>Browser extension helps enhance monitoring and detection for Web Reputation, Suspicious Objects, and Data Security.</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-policies-agent-interface">Agent Interface</a></p></td>
+<td><p>Provides a user interface on the endpoint for users to interact with the Trend Vision One Endpoint Security agent</p>
+<p>Use this module to configure endpoint user permissions to interact with the agent, perform manual scans, receive notifications, and terminate the agent program.</p></td>
+</tr>
+</tbody>
+</table>
+::::

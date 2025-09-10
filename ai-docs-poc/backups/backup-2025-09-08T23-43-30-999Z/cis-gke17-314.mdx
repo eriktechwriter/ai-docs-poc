@@ -1,0 +1,119 @@
+---
+slug: trend-vision-one-cis-gke17-314
+title: >-
+  3.1.4 - Ensure that the kubelet configuration file ownership is set to -
+  root:root (Automated)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: cis-gke17-314.md
+  conversion_date: '2025-09-08T23:42:23.695Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Profile applicability: Level 1
+
+Ensure that if the kubelet configuration file exists, it is owned by `root:root`.
+
+The kubelet reads various parameters, including security settings, from a config file specified by the `--config` argument. If this file is specified you should restrict its file permissions to maintain the integrity of the file. The file should be owned by `root:root`.
+
+:::note
+
+The default file ownership is `root:root`.
+:::
+
+### Impact {#impact}
+
+Overly permissive file access increases the security risk to the platform.
+
+### Audit {#audit}
+
+Using Google Cloud Console
+
+1.  Go to [Kubernetes Engine](https://console.cloud.google.com/kubernetes/list).
+2.  Click on the desired cluster to open the Details page, then click on the desired Node pool to open the Node pool Details page.
+3.  Note the name of the desired node.
+4.  Go to [VM Instances](https://console.cloud.google.com/compute/instances).
+5.  Find the desired node and click on **SSH** to open an SSH connection to the node.
+
+Using Command Line
+
+Method 1: SSH to the worker nodes
+
+1.  To check to see if the Kubelet Service is running:
+
+    ``` codeblock
+    sudo systemctl status kubelet
+    ```
+
+2.  The output should return `Active: active (running) since...`. Run the following command on each node to find the appropriate Kubelet config file:
+
+    ``` codeblock
+    ps -ef | grep kubelet
+    ```
+
+3.  The output of the above command should return something similar to `--config/etc/kubernetes/kubelet/kubelet-config.yaml`, which is the location of the Kubelet config file.
+
+4.  Run this command :
+
+    ``` codeblock
+    stat -c %U:%G /etc/kubernetes/kubelet/kubelet-config.yaml
+    ```
+
+5.  The output of the above command gives you the Kubelet config file's ownership. Verify that the ownership is set to `root:root`.
+
+Method 2: Create and Run a Privileged Pod
+
+1.  Run a pod that is privileged enough to access the host's file system by deploying a pod that uses the hostPath volume to mount the node's file system into the pod. Here's an example of a simple pod definition that mounts the root of the host to /host within the pod:
+
+    ``` codeblock
+    apiVersion: v1
+    kind: Pod
+    metadata:
+    name: file-check
+    spec:
+    volumes:
+    - name: host-root
+    hostPath:
+    path: /
+    type: Directory
+    containers:
+    - name: nsenter
+    image: busybox
+    command: ["sleep", "3600"]
+    volumeMounts:
+    - name: host-root
+    mountPath: /host
+    securityContext:
+    privileged: true
+    ```
+
+2.  Save this to a file (e.g., file-check-pod.yaml) and create the pod:
+
+    ``` codeblock
+    kubectl apply -f file-check-pod.yaml
+    ```
+
+3.  Once the pod is running, you can exec into it to check file ownership on the node:
+
+    ``` codeblock
+    kubectl exec -it file-check -- sh
+    ```
+
+4.  Now you are in a shell inside the pod, but you can access the node's file system through the /host directory and check the ownership of the file:
+
+    ``` codeblock
+    ls -l /etc/kubernetes/kubelet/kubelet-config.yaml
+    ```
+
+5.  Verify that the ownership is set to `root:root`.
+
+### Remediation {#remediation}
+
+Run the below command (using the config file location identified in the Audit step):
+
+``` codeblock
+chown root:root <kubelet_config_file>
+```
+::::

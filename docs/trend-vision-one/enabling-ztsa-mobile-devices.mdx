@@ -1,0 +1,56 @@
+---
+slug: trend-vision-one-enabling-ztsa-mobile-devices
+title: Enabling Zero Trust Secure Access on managed mobile devices
+---
+# Enabling Zero Trust Secure Access on managed mobile devices
+
+Use Zero Trust Secure Access features to control web and private resource access on compatible managed mobile devices.
+
+For mobile devices running [supported operating systems](secure-access-module-sys-reqs.mdx), Zero Trust Secure Access services are enabled through a configured Mobile Agent. To deploy the Mobile Agent to end user devices, you must first integrate an MDM solution with Mobile Security. Supported third-party MDM solutions include:
+
+- [Microsoft Intune](setting-up-intune-integration.mdx)
+
+- [Google Workspace](google-workspace-integration.mdx)
+
+You may also set up [Mobile Device Director](mobile-device-director-setup.mdx) as your MDM solution and use it directly from the Trend Vision One console.
+
+:::note
+
+Trend Micro has comprehensively tested the above MDM solutions. However, it is possible to use any MDM solution that supports device enrollment [using managed configuration](enroll-devices-managed-config.mdx) and allows deployment of mobile VPN profiles and gateway certificates, including [VMWare Workspace ONE UEM](vmware-workspace-one-uem.mdx) and Ivanti (Mobileiron).
+:::
+
+### Procedure {#procedure}
+
+1.  On the Trend Vision One console, go to **Zero Trust Secure Access → Secure Access Configuration → Secure Access Module**, and select **Mobile Devices**.
+
+2.  Click **Deploy Mobile Agent** to go to the **Groups** tab in [Mobile Inventory](mobile-inventory.mdx).
+
+3.  After ensuring the **View** menu displays your integrated MDM solution, click **Add Assignments**.
+
+4.  Type the names of one or more groups or organizational units as defined in your integrated MDM solution.
+
+    The group appears in the **Groups** tab in **Mobile Inventory** as well as in the **Mobile Devices** tab in **Zero Trust Secure Access → Secure Access Configuration → Secure Access Module**. The Mobile Agent deploys to all mobile devices in the group.
+
+5.  Instruct end users to open the Mobile Security app on group devices in order to complete device enrollment.
+
+    The selected mobile devices are now enrolled in Mobile Security and are capable of enabling Zero Trust Secure Access services.
+
+    :::note
+
+    If using a third-party MDM solution other than Microsoft Intune, you may need to [deploy a VPN profile](vpn-profile-devices-managed-config.mdx) and [Internet Access gateway certificates](deploying-ztsa-certificates.mdx) to your end-user devices in order to enable Zero Trust Secure Access services.
+    :::
+
+6.  Ensure [Private Access](setup-ztsa-private-access.mdx) and [Internet Access and AI Service Access](setup-ztsa-internet-access.mdx) services are provisioned and configured in **Zero Trust Secure Access**.
+
+7.  Go to **Zero Trust Secure Access → Secure Access Configuration → Secure Access Module → Mobile Devices** and select one or more device groups.
+
+8.  Using the dropdown menus, select whether to enable Private Access, Internet Access and AI Service Access, or both services.
+
+    You may view the service configuration status for the device groups from the **Mobile Devices** tab.
+
+**Related information**
+
+- [Deploying the Zero Trust Secure Access certificates to devices using managed configuration](deploying-ztsa-certificates.md "Allow your users to take advantage of the security features of Zero Trust Secure Access by downloading and deploying the necessary certificates to your managed mobile devices.")
+- [Deploying a VPN profile to devices using managed configuration](vpn-profile-devices-managed-config.md "Allow your users to take advantage of the security features of Zero Trust Secure Access by deploying a VPN profile to your managed mobile devices.")
+- [VPN and Accessibility Service compatibility](vpn-access-service-compatibility.mdx)
+::::

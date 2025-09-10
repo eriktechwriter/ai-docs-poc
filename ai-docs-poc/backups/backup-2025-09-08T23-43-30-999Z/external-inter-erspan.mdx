@@ -1,0 +1,204 @@
+---
+slug: trend-vision-one-external-inter-erspan
+title: Configuring external inter-VM traffic with ERSPAN
+last_updated: '2025-09-08'
+ai_context:
+  source_file: external-inter-erspan.md
+  conversion_date: '2025-09-08T23:42:19.431Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure network settings in VMware vCenter to allow Virtual Network Sensor to monitor data.
+
+:::warning[Important]
+
+- The following instructions are valid as of July 2023.
+
+- If your throughput is less than 2 Gbps, your data port configuration may use VSS, VDS, or PCI passthrough. If your throughput is equal to or greater than 2 Gbps, then using a PCI passthrough is recommended. Your data port must be able to connect to the internet.
+:::
+
+### Procedure {#procedure}
+
+1.  On the Virtual Network Sensor CLI console, type `show interface` and choose a network interface that shows "Supported" for Encapsulated Remote Mirroring.
+
+    <figure>
+    <img src="./images/External_ERSPAN1=GUID-20230807180101.webp" />
+    </figure>
+
+2.  Execute the `enable` command.
+
+    <figure>
+    <img src="./images/External_ERSPAN2=GUID-20230807180102.webp" />
+    </figure>
+
+3.  Execute the `configure interface <network_interface>` command.
+
+4.  Execute the `ip-encap enable [xxx.xxx.xxx.xxx]` command.
+
+5.  Type `# exit` to return to basic commands and verify that the IP address is shown next to Encapsulated Remote Mirroring.
+
+    <figure>
+    <img src="./images/External_ERSPAN3=GUID-20230807180103.webp" />
+    </figure>
+
+6.  On the VMware vCenter console, click the ![](/images/circle_icon=GUID-20230729150101.webp) tab.
+
+7.  Right-click the name of your data center, and go to **Distributed Switch → New Distributed Switch...**.
+
+    <figure>
+    <img src="./images/External_ERSPAN4=GUID-20230807180104.webp" />
+    </figure>
+
+8.  On the **Name and location** screen, specify the distributed switch name and location and click **NEXT**.
+
+    <figure>
+    <img src="./images/External_ERSPAN5=GUID-20230807180105.webp" />
+    </figure>
+
+9.  On the **Select version** screen, select your distributed switch version and click **NEXT**.
+
+    <figure>
+    <img src="./images/External_ERSPAN6=GUID-20230807180106.webp" />
+    </figure>
+
+10. On the **Configure settings** screen, specify the port group name and the number of uplinks, and click **NEXT**.
+
+    <figure>
+    <img src="./images/External_ERSPAN7=GUID-20230807180107.webp" />
+    </figure>
+
+11. On the **Ready to complete** screen, review the settings and click **FINISH**.
+
+    <figure>
+    <img src="./images/External_ERSPAN8=GUID-20230807180108.webp" />
+    </figure>
+
+12. Right-click the name of your switch and select **Add and Manage Hosts...**.
+
+    <figure>
+    <img src="./images/External_ERSPAN9=GUID-20230807180109.webp" />
+    </figure>
+
+13. On the **Select task** screen, select **Add hosts** and click **NEXT**.
+
+    <figure>
+    <img src="./images/External_ERSPAN10=GUID-20230807180110.webp" />
+    </figure>
+
+14. On the **Select hosts** screen, select your virtual machine and click **NEXT**.
+
+    <figure>
+    <img src="./images/External_ERSPAN11=GUID-20230807180111.webp" />
+    </figure>
+
+15. On the **Manage physical adapters** screen, right-click the name of your NIC and select **Uplink 1**.
+
+    <figure>
+    <img src="./images/External_ERSPAN12=GUID-20230807180112.webp" />
+    </figure>
+
+    :::danger[Warning]
+
+    If there are other virtual appliances using this network interface, the network settings need to be modified so that the appliances do not disconnect from the internet.
+    :::
+
+16. Click **NEXT**.
+
+17. On the **Manage VMkernel adapters** screen, click **NEXT**.
+
+    <figure>
+    <img src="./images/External_ERSPAN13=GUID-20230807180113.webp" />
+    </figure>
+
+18. On the **Migrate VM networking** screen, click **NEXT**.
+
+    <figure>
+    <img src="./images/External_ERSPAN14=GUID-20230807180114.webp" />
+    </figure>
+
+19. On the **Ready to complete** screen, click **FINISH**.
+
+    <figure>
+    <img src="./images/External_ERSPAN15=GUID-20230807180115.webp" />
+    </figure>
+
+20. Click the name of your switch and click **Networks**.
+
+    <figure>
+    <img src="./images/External_ERSPAN16=GUID-20230807180116.webp" />
+    </figure>
+
+21. Right-click the name of your port group and select **Edit Settings...**.
+
+22. Click **VLAN**, select **VLAN trunking** for VLAN type, and click **OK**.
+
+    <figure>
+    <img src="./images/External_ERSPAN17=GUID-20230807180117.webp" />
+    </figure>
+
+23. Click the ![](/images/VMware_vCenter_server_icon=GUID-20230329175050.webp) tab and then click the name of your client.
+
+    <figure>
+    <img src="./images/External_ERSPAN18=GUID-20230807180118.webp" />
+    </figure>
+
+24. Click ![](/images/edit_settings_icon=GUID-20230729150707.webp).
+
+25. On the **Edit Settings** screen, click **Network adapter 1** and select **Browse...**.
+
+    <figure>
+    <img src="./images/External_ERSPAN19=GUID-20230807180119.webp" />
+    </figure>
+
+26. Click the name of your port group and click **OK**.
+
+    <figure>
+    <img src="./images/External_ERSPAN20=GUID-20230807180120.webp" />
+    </figure>
+
+27. Click **OK**.
+
+28. Click the ![](/images/circle_icon=GUID-20230729150101.webp) tab and then click the name of your switch.
+
+    <figure>
+    <img src="./images/External_ERSPAN21=GUID-20230807180121.webp" />
+    </figure>
+
+29. Click **Configure**, click **Port Mirroring**, and click **NEW...**.
+
+30. On the **Select session type** screen, select **Encapsulated Remote Mirroring (L3) Source** and click **NEXT**.
+
+    <figure>
+    <img src="./images/External_ERSPAN22=GUID-20230807180122.webp" />
+    </figure>
+
+31. On the **Edit properties** screen, select **Enabled** for the status and click **NEXT**.
+
+    <figure>
+    <img src="./images/External_ERSPAN23=GUID-20230807180123.webp" />
+    </figure>
+
+32. On the **Select sources** screen, select the virtual appliance you want to be monitored and click **NEXT**.
+
+    <figure>
+    <img src="./images/External_ERSPAN24=GUID-20230807180124.webp" />
+    </figure>
+
+33. On the **Select destinations** screen, click **ADD** and type the Encapsulated Remote Mirroring IP you specified for your Virtual Network Sensor.
+
+    <figure>
+    <img src="./images/External_ERSPAN25=GUID-20230807180125.webp" />
+    </figure>
+
+34. Click **NEXT**.
+
+35. On the **Ready to complete screen**, review the settings and click **FINISH**.
+
+    <figure>
+    <img src="./images/External_ERSPAN26=GUID-20230807180126.webp" />
+    </figure>
+
+    After configuring your network settings, access the Virtual Network Sensor console and use the command `show traffic` to verify the Virtual Network Sensor is receiving traffic. For more information about troubleshooting, see [Virtual Network Sensor FAQ](virtual-network-sensor-faqs.mdx) and [Virtual Network Sensor CLI commands](virtual-network-sensor-cli-commands.mdx).
+::::

@@ -1,0 +1,85 @@
+---
+slug: trend-vision-one-aws-accounts
+title: AWS accounts
+last_updated: '2025-09-08'
+ai_context:
+  source_file: aws-accounts.md
+  conversion_date: '2025-09-08T23:42:24.609Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Connect your AWS accounts and mange the features and permissions for Trend Vision One security.
+
+The AWS accounts screen allows you to view connected AWS accounts and manage connections within the Cloud Accounts app. You can access the AWS accounts screen through the Cloud Accounts app or Third-Party Integration.
+
+You can take the following actions from the AWS accounts screen.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Add an AWS account</p></td>
+<td><p>Add and connect to an AWS account to Cloud Accounts</p>
+<p>Click <strong>Add Account</strong> to connect an <a href="trend-vision-one-connecting-aws-accounts">AWS account or organization</a>.</p></td>
+</tr>
+<tr>
+<td><p>Remove accounts</p></td>
+<td><p>Remove and disconnect AWS accounts from Cloud Accounts</p>
+<p>Select one or more accounts and click <strong>Remove</strong>.</p>
+
+
+:::note
+
+<p>Removing an account from Cloud Accounts does not delete the stack from your AWS account. Copy the stack name or export the stack information to help locate the associated stacks to delete from your AWS accounts.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Manage account settings</p></td>
+<td><p>Manage account settings including enabling or disabling features and permissions</p>
+<p>Click on an account name to view and edit the <a href="trend-vision-one-cloud-account-settings">cloud account settings</a> or update the stack permissions.</p>
+
+
+:::note
+
+<p>New features and permissions are not enabled automatically when released. You must enable the permissions and update the stack to apply new features and permissions to your accounts.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Fix account status issues</p></td>
+<td><p>Use the available actions to address different account statuses</p>
+<p>Click an available action to open the <a href="trend-vision-one-cloud-account-settings">cloud account settings</a> screen.</p>
+<ul>
+<li><p><strong>Update legacy account</strong>: This account was added after updating a Trend Micro product to Server &amp; Workload Protection. To update the account, see <a href="trend-vision-one-updating-legacy-aws-connection">Updating a legacy AWS connection</a>.</p></li>
+<li><p><strong>Update feature stack</strong>: The account settings in Trend Vision One are not in sync with the stack deployed to the account. This may occur if there was a recent update to an enabled feature, or if the stack was not updated on your account. <a href="trend-vision-one-stack-update">Update the stack</a> to fix the issue.</p></li>
+<li><p><strong>Reconnect</strong>: An issue is preventing one or more features from connecting or deploying to your account. Verify the <a href="trend-vision-one-account-info">account information</a> is correct and <a href="trend-vision-one-stack-update">update the stack</a> to reconnect your account.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Connecting and updating AWS accounts](connecting-aws-accounts.md "Add your AWS accounts and organizations or update imported legacy connections.")
+- [AWS Account Settings](cloud-account-settings.md "Manage connected account settings including enabling and disabling cloud security features and permissions.")
+- [AWS features and permissions](aws-features-permissions.md "Enable cloud security features and permissions to give Trend Vision One greater visibility and protection over your cloud assets.")
+- [AWS supported regions and limitations](aws-supported-regions-limitations.md "Supported regions and deployment limitations for connecting your AWS account.")
+:::

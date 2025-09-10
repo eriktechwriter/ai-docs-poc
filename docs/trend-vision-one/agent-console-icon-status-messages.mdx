@@ -1,0 +1,98 @@
+---
+slug: trend-vision-one-agent-console-icon-status-messages
+title: Agent console icon status messages
+---
+# Agent console icon status messages
+
+A list of agent console status messages and how to troubleshoot potential issues.
+
+The Trend Vision One Endpoint Security agent console provides endpoint users with a quick way to view the status of the agent. The system tray icon displays different symbols depending on the status, and the user can hover the mouse over the icon to see a status message.
+
+**Table 1: System Tray Icon Status**
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>System tray icon</p></th>
+<th><p>Status</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><figure>
+<img src="./images/AgentStatusNormal=fbc71074-3dc1-4fb1-9996-eea7ce826335.webp" />
+</figure></td>
+<td><p>Normal status, online</p></td>
+<td><p>The Trend Vision One Endpoint Security agent is online</p></td>
+</tr>
+<tr>
+<td><figure>
+<img src="./images/AgentConsoleSysTrayIcon=4c51e4c9-adf0-4be5-84e1-0b23390537aa.webp" />
+</figure></td>
+<td><p>Normal status, waiting for information</p></td>
+<td><p>The Trend Vision One Endpoint Security agent is online and attempting to communicate with Trend Vision One servers</p>
+<p>This status normally appears while the endpoint is booting up or attempting to connect with Trend Vision One.</p></td>
+</tr>
+<tr>
+<td><figure>
+<img src="./images/AgentStatusAbnormal=09ed4f61-9c35-4566-9a1e-fff21d46c537.webp" />
+</figure></td>
+<td><p>Abnormal status</p></td>
+<td><p>The Trend Vision One Endpoint Security agent is not operating normally</p>
+<p>This status might occur if the agent is unable to communicate with Trend Vision One servers, or if the Isolate Endpoint response action is applied.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Table 2: Status Messages**
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Status message</p></th>
+<th><p>Description</p></th>
+<th><p>Troubleshooting</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Trend Vision One Endpoint Security is online</p></td>
+<td><p>The agent is operating normally and successfully connected to Trend Vision One servers</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Trend Vision One Endpoint Security is waiting for information</p></td>
+<td><p>The agent is operating normally and is connecting or attempting to connect to Trend Vision One servers</p></td>
+<td><p>This status is normal behavior. If the agent takes a long time to connect, check your network settings. Make sure the endpoint can connect to the internet, or that the agent can connect to a Service Gateway.</p></td>
+</tr>
+<tr>
+<td><p>Trend Vision One Endpoint Security is offline</p></td>
+<td><p>The agent is unable to connect to Trend Vision One servers</p>
+<p>The agent is unable to retrieve updated security settings or download software and component updates.</p></td>
+<td><p>Check your network settings. Make sure the endpoint can connect to the internet, or that the agent can connect to a Service Gateway.</p></td>
+</tr>
+<tr>
+<td><p>Your device is isolated</p></td>
+<td><p>The Isolate Endpoint response action has been applied to the endpoint</p></td>
+<td><p>Investigate if the endpoint is safe to remove from isolation. If you determine the endpoint is safe to remove from isolation, <a href="trend-vision-one-restore-connection-task">restore the connection</a>.</p></td>
+</tr>
+<tr>
+<td><p>Trend Vision One Endpoint Security console is disabled by Admin</p></td>
+<td><p>The agent console is disabled in Endpoint Security Policies</p>
+<p>The system tray icon still appears to let you know the agent is running, but endpoint users cannot access the console or receive notifications.</p></td>
+<td><p>If you want to allow users to access the agent console and receive notifications, enable <strong>Agent Console</strong> in your <a href="trend-vision-one-configuring-endpoint-policies">Endpoint Security policy configuration</a>.</p></td>
+</tr>
+</tbody>
+</table>
+:::

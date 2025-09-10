@@ -1,0 +1,42 @@
+---
+slug: trend-vision-one-2-1
+title: >-
+  2.1 - Ensure that the –cert-file and –key-file arguments are set as
+  appropriate (Automated)
+---
+# 2.1 - Ensure that the –cert-file and –key-file arguments are set as appropriate (Automated)
+
+Profile applicability: Level 1 - Master Node
+
+Configure TLS encryption for the etcd service.
+
+etcd is a highly-available key value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be encrypted in transit.
+
+:::note
+
+By default, TLS encryption is not set.
+:::
+
+### Impact {#impact}
+
+Client connections only over TLS would be served.
+
+### Audit {#audit}
+
+Run the following command on the etcd server node:
+
+```bash
+ps -ef | grep etcd
+```
+
+Verify that the `--cert-file` and the `--key-file` arguments are set as appropriate.
+
+### Remediation {#remediation}
+
+Follow the etcd service documentation and configure TLS encryption. Then, edit the etcd pod specification file `/etc/kubernetes/manifests/etcd.yaml` on the master node and set the below parameters.
+
+```bash
+--cert-file=</path/to/ca-file>
+--key-file=</path/to/key-file>
+```
+::::

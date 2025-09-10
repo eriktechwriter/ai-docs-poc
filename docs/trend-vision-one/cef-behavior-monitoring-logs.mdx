@@ -1,0 +1,270 @@
+---
+slug: trend-vision-one-cef-behavior-monitoring-logs
+title: CEF Behavior Monitoring Logs
+---
+# CEF Behavior Monitoring Logs
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 38%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>CEF Key</p></th>
+<th><p>Description</p></th>
+<th><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Header (logVer)</p></td>
+<td><p>CEF format version</p></td>
+<td><p>CEF:0</p></td>
+</tr>
+<tr>
+<td><p>Header (vendor)</p></td>
+<td><p>Product vendor</p></td>
+<td><p>Trend Micro</p></td>
+</tr>
+<tr>
+<td><p>Header (pname)</p></td>
+<td><p>Product name</p></td>
+<td><p>Apex Central</p></td>
+</tr>
+<tr>
+<td><p>Header (pver)</p></td>
+<td><p>Product version</p></td>
+<td><p>2019</p></td>
+</tr>
+<tr>
+<td><p>Header (eventid)</p></td>
+<td><p>Behavior Monitoring policy ID</p></td>
+<td><p>BM:1000</p></td>
+</tr>
+<tr>
+<td><p>Header (eventName)</p></td>
+<td><p>Log name</p></td>
+<td><p>Behavior Monitoring</p></td>
+</tr>
+<tr>
+<td><p>Header (severity)</p></td>
+<td><p>Severity</p></td>
+<td><p>3</p></td>
+</tr>
+<tr>
+<td><p>rt</p></td>
+<td><p>Event trigger time in UTC</p></td>
+<td><p>Example: "Mar 22 2018 08:23:23 GMT+00:00"</p></td>
+</tr>
+<tr>
+<td><p>dvchost</p></td>
+<td><p>Host name</p></td>
+<td><p>Example: "localhost"</p></td>
+</tr>
+<tr>
+<td><p>cs2Label</p></td>
+<td><p>Corresponding label for the "cs2" field</p></td>
+<td><p>"Policy"</p></td>
+</tr>
+<tr>
+<td><p>cs2</p></td>
+<td><p>Policy type</p></td>
+<td><ul>
+<li><p>Compromised executable file</p></li>
+<li><p>New startup program</p></li>
+<li><p>Host file modification</p></li>
+<li><p>Program library injection</p></li>
+<li><p>New Internet Explorer plugin</p></li>
+<li><p>Internet Explorer setting modification</p></li>
+<li><p>Shell modification</p></li>
+<li><p>New service</p></li>
+<li><p>Security policy modification</p></li>
+<li><p>Firewall policy modification</p></li>
+<li><p>System file modification</p></li>
+<li><p>Duplicated system file</p></li>
+<li><p>Layered service provider</p></li>
+<li><p>System process modification</p></li>
+<li><p>Suspicious behavior</p></li>
+<li><p>Newly encountered programs</p></li>
+<li><p>Unauthorized file encryption</p></li>
+<li><p>Threat behavior analysis</p></li>
+<li><p>User-defined policy</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>sproc</p></td>
+<td><p>Target of the event</p></td>
+<td><p>Example: "C:\\Windows\\SysWOW64\\rundll32.exe"</p></td>
+</tr>
+<tr>
+<td><p>cs3Label</p></td>
+<td><p>Corresponding label for the "cs3" field</p></td>
+<td><p>"Event_Type"</p></td>
+</tr>
+<tr>
+<td><p>cs3</p></td>
+<td><p>Event type</p></td>
+<td><ul>
+<li><p>Process</p></li>
+<li><p>Process image</p></li>
+<li><p>Registry</p></li>
+<li><p>File system</p></li>
+<li><p>Driver</p></li>
+<li><p>SDT</p></li>
+<li><p>System API</p></li>
+<li><p>User Mode</p></li>
+<li><p>Exploit</p></li>
+<li><p>All</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cs4Label</p></td>
+<td><p>Corresponding label for the "cs4" field</p></td>
+<td><p>"Operation"</p></td>
+</tr>
+<tr>
+<td><p>cs4</p></td>
+<td><p>The operation to be performed by the target of the event</p></td>
+<td><ul>
+<li><p>Create Process</p></li>
+<li><p>Open</p></li>
+<li><p>Terminate</p></li>
+<li><p>Delete</p></li>
+<li><p>Write</p></li>
+<li><p>Access</p></li>
+<li><p>Create File</p></li>
+<li><p>Close</p></li>
+<li><p>Execute</p></li>
+<li><p>Invoke</p></li>
+<li><p>Exploit</p></li>
+<li><p>Unhandled Operation</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cs5Label</p></td>
+<td><p>Corresponding label for the "cs5" field</p></td>
+<td><p>"Risk_Level"</p></td>
+</tr>
+<tr>
+<td><p>cs5</p></td>
+<td><p>Risk level</p></td>
+<td><p>Example: "1"</p>
+<ul>
+<li><p>0: Low</p></li>
+<li><p>1: High</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>TMCMLogTarget</p></td>
+<td><p>Target host</p></td>
+<td><p>Example: "HKCU\\Software\\Microsoft\\Windows\ \CurrentVersion\\Run\\COM+"</p></td>
+</tr>
+<tr>
+<td><p>act</p></td>
+<td><p>Translated action</p></td>
+<td><ul>
+<li><p>Allow</p></li>
+<li><p>Ask</p></li>
+<li><p>Deny</p></li>
+<li><p>Terminate</p></li>
+<li><p>Read Only</p></li>
+<li><p>Read/Write Only</p></li>
+<li><p>Read/Execute Only</p></li>
+<li><p>Feedback</p></li>
+<li><p>Clean</p></li>
+<li><p>Unknown</p></li>
+<li><p>Assess</p></li>
+<li><p>Terminated. Files were recovered.</p></li>
+<li><p>Terminated. Some files were not recovered.</p></li>
+<li><p>Terminated. Files were not recovered.</p></li>
+<li><p>Terminated. Restart result: Files were recovered.</p></li>
+<li><p>Terminated: Restart result: Some files were not recovered.</p></li>
+<li><p>Terminated: Restart result: Files were not recovered.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>shost</p></td>
+<td><p>Source host (endpoint)</p></td>
+<td><p>Example: "shost1"</p></td>
+</tr>
+<tr>
+<td><p>src</p></td>
+<td><p>Source host IP address</p></td>
+<td><p>Example: "10.0.147.105"</p></td>
+</tr>
+<tr>
+<td><p>deviceFacility</p></td>
+<td><p>Product</p></td>
+<td><p>Example: "Apex One"</p></td>
+</tr>
+<tr>
+<td><p>reason</p></td>
+<td><p>Critical threat type</p></td>
+<td><p>Example: "E"</p>
+<ul>
+<li><p>A: Known Advanced Persistent Threat (APT)</p></li>
+<li><p>B: Social engineering attack</p></li>
+<li><p>C: Vulnerability attack</p></li>
+<li><p>D: Lateral movement</p></li>
+<li><p>E: Unknown threats</p></li>
+<li><p>F: C&amp;C callback</p></li>
+<li><p>G: Ransomware</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>deviceNtDomain</p></td>
+<td><p>Active Directory domain</p></td>
+<td><p>Example: APEXTMCM</p></td>
+</tr>
+<tr>
+<td><p>dntdom</p></td>
+<td><p>Apex One domain hierarchy</p></td>
+<td><p>Example: OSCEDomain1</p></td>
+</tr>
+<tr>
+<td><p>TMCMLogDetectedHost</p></td>
+<td><p>Endpoint name where the log event occurred</p></td>
+<td><p>Example: MachineHostName</p></td>
+</tr>
+<tr>
+<td><p>TMCMLogDetectedIP</p></td>
+<td><p>IP address where the log event occurred</p></td>
+<td><p>Example: 10.1.2.3</p></td>
+</tr>
+<tr>
+<td><p>ApexCentralHost</p></td>
+<td><p>Apex Central host name</p></td>
+<td><p>Example: TW-CHRIS-W2019</p></td>
+</tr>
+<tr>
+<td><p>devicePayloadId</p></td>
+<td><p>Unique message GUID</p></td>
+<td><p>Example: 1C00290C0360-9CDE11EB-D4B8-F51F-C697</p></td>
+</tr>
+<tr>
+<td><p>TMCMdevicePlatform</p></td>
+<td><p>Endpoint operating system</p></td>
+<td><p>Example: Windows 7 6.1 (Build 7601) Service Pack 1</p></td>
+</tr>
+</tbody>
+</table>
+
+Log sample:
+
+```bash
+CEF:0|Trend Micro|Apex Central|2019|BM:1000|Behavior Monitor
+ing|3|rt=Sep 20 2019 01:02:03 GMT+00:00 dvchost=localhost cs
+5Label=Risk_Level cs5=1 cs2Label=Policy cs2=Threat Behavior
+Analysis sproc=subject cs3Label=Event_Type cs3=File system
+TMCMLogTarget=HKCU\\Software\\Microsoft\\Windows\\CurrentVer
+sion\\Run\\COM+ act=Ask cs4Label=Operation cs4=Create Proces
+s shost=shost1 src=10.0.76.40 deviceFacility=Apex One reason
+=G deviceNtDomain=APEXTMCM dntdom=OSCEDomain1 TMCMLogDetecte
+dHost=shost1 TMCMLogDetectedIP=10.0.76.40 ApexCentralHost=TW
+-CHRIS-W2019 devicePayloadId=1C00290C0360-9CDE11EB-D4B8-F51F
+-C697 TMCMdevicePlatform=Windows 7 6.1 (Build 7601) Service
+Pack 1
+```
+:::

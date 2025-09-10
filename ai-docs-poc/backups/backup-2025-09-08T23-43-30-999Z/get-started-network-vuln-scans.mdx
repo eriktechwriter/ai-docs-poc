@@ -1,0 +1,66 @@
+---
+slug: trend-vision-one-get-started-network-vuln-scans
+title: Get started with network vulnerability scans
+last_updated: '2025-09-08'
+ai_context:
+  source_file: get-started-network-vuln-scans.md
+  conversion_date: '2025-09-08T23:42:18.841Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure network vulnerability scans to scan target network assets on a specified network segment with no agent deployment required.
+
+:::warning[Important]
+
+This is a "Pre-release" feature and is not considered an official release. Please review the [Pre-release disclaimer](pre-release-disclaimer.mdx) before using the feature.
+:::
+
+To configure scans in Network Vulnerability Scanner, you need:
+
+- A [deployed Service Gateway virtual appliance](deployment-guides.mdx) with the Network Vulnerability Scanner service version 1.1.0 or later installed
+
+- IP addresses or FQDNs for the target network segment for vulnerability and discovery scans or target assets for external attack surface scans
+
+- Authentication credentials for the target network assets for vulnerability scans
+
+Available scan templates include:
+
+- [Discovery scan](discover-scan.mdx):
+
+  - Identifies live hosts, open ports, and basic system information within a network segment
+
+  - Helps security teams map out their organization’s attack surface within the network and understand what assets are connected
+
+  - Has a low impact on system resources
+
+  - Does not require credentials
+
+- [Vulnerability scan](vuln-scan.mdx):
+
+  - Conducts a deep security assessment by logging into network devices using valid credentials
+
+  - Identifies vulnerabilities that require authenticated access, such as missing patches, user permission issues, misconfigurations, and outdated applications
+
+  - Requires credentials such as SSH authentication private keys or passwords
+
+- [External attack surface scan](easm-scan.mdx):
+
+  - Detects unexpected exposures and other vulnerabilities in internet-facing assets
+
+  - Helps organizations understand their security posture from an external attacker's view
+
+  - Focuses on public IPs, domains, and subdomains
+
+  - Identifies misconfigurations, outdated software, and leaked services
+
+Results from scans can be downloaded from **Scan reports** or viewed and managed in asset profile screens in **Attack Surface Discovery** or on risk event lists in **Threat and Exposure Management**.
+
+**Related information**
+
+- [Create and run a discovery scan in Network Vulnerability Scanner](discover-scan.md "Configure and run a discovery scan in Network Vulnerability Scanner to identify live hosts, open ports, and basic system information within your network.")
+- [Create and run a vulnerability scan in Network Vulnerability Scanner](vuln-scan.md "Configure and run a vulnerability scan to assess and identify security vulnerabilities in your internal network devices using the Network Vulnerability Scanner.")
+- [Create and run an external attack surface scan in Network Vulnerability Scanner](easm-scan.md "Configure and run an external attack surface scan to detect unexpected exposures and vulnerabilities in internet-facing assets.")
+- [Network Vulnerability Scanner supported products](nvs-supported-products.md "Learn more about the products supported for vulnerability scanning by the Network Vulnerability Scanner service.")
+::::

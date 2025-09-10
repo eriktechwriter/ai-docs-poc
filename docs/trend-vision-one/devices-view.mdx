@@ -1,0 +1,99 @@
+---
+slug: trend-vision-one-devices-view
+title: Devices view
+---
+# Devices view
+
+Gain insights into the risk profile of your company's devices.
+
+The **Devices** view of **Cyber Risk Overview** provides an overview of available data about the security posture of your company's devices.
+
+:::note
+
+The **Devices** view only shows individual data for devices within the asset visibility scope of the current user.
+:::
+
+The following table outlines the available widgets of the **Devices** view.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Widget</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><strong>Risk Summary</strong></p></td>
+<td><p>A monthly summary of your company's risk scores for the current view related to exposure, attack, and security configuration</p>
+
+
+:::note
+
+<p>The risk summary is calculated using all data received from your business without applying asset visibility scope limits.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><strong>Risk Factors</strong></p></td>
+<td><p>Click on an individual risk factor to view the corresponding widget in <a href="trend-vision-one-exposure-overview">Exposure Overview</a> or <a href="trend-vision-one-attack-overview">Attack Overview</a>.</p></td>
+</tr>
+<tr>
+<td><p><strong>Attack Surface</strong></p></td>
+<td><p>A representation of the attack surface of your company's devices</p>
+<ul>
+<li><p><strong>Discovered Devices</strong>: The total number of devices identified by data sources and additional devices added by the administrator that are not connected to Trend Vision One</p>
+<p>Click <strong>Update Estimate</strong> to specify the total number of endpoints you believe are part of your environment (including devices discoverable by network discovery).</p>
+
+
+:::tip
+
+<p>Estimating the total number of devices in your environment helps identify the gap between devices visible to Trend Micro detection and security, and the actual attack surface you need to protect. Your estimate should include all devices in your environment, including devices managed by Trend Micro agents.</p>
+
+
+:::
+
+
+:::warning[Important]
+
+<p>For customers that have updated to the <a href="trend-vision-one-update-foundation-services-release">Foundation Services release</a>, <strong>Discovered Devices</strong> is only visible for users with full asset visibility scope.</p>
+
+
+:::
+
+</li>
+<li><p><strong>Discovered Devices</strong>: The level of visibility into device health for the devices connected to Trend Vision One</p>
+<ul>
+<li><p>Full: Devices managed by Trend Micro agents</p></li>
+<li><p>Partial: Devices not managed by Trend Micro agents but that have identifiable metadata (for example, host name and device name) AND that send activity data through non-agent data sources (for example, Trend Vision One Network Sensor or Microsoft Entra ID).</p></li>
+<li><p>Limited: Devices not managed by Trend Micro agents but that have identifiable metadata (for example, host name and device name) OR that send activity data through non-agent data sources (for example, Trend Vision One Network Sensor or Microsoft Entra ID).</p></li>
+</ul>
+<p>Click <strong>Extend Visibility</strong> to add <em>asset visibility</em> data sources.</p></li>
+<li><p><strong>Devices Can Be Assessed for Risk</strong>: The assessed risk level of devices based on unpatched vulnerabilities, system configurations, and internet accessibility</p>
+<p>Click <strong>Extend Risk Assessment Scope</strong> to add <em>asset exposure</em> data sources.</p></li>
+<li><p><strong>Devices with Managed Agents</strong>: The risk level of devices managed by Trend Micro agents</p>
+<p>Click <strong>Improve Security</strong> to add <em>managed security</em> data sources.</p></li>
+</ul>
+
+
+:::tip
+
+<p>Attack surface discovery continuously identifies known and unknown assets in your environment to inform your attack exposure, and security configuration. Visibility improves as you integrate more Trend Micro sensors and third-party data sources.</p>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+
+In the **Risk Reduction Measures** section, clicking **Learn more on Threat and Exposure Management** opens a new browser tab displaying suggested remediation actions for risk events detected in your organization.
+::::

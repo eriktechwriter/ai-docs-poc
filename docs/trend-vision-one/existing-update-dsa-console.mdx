@@ -1,0 +1,69 @@
+---
+slug: trend-vision-one-existing-update-dsa-console
+title: >-
+  Existing Trend Vision One customers updating Trend Cloud One - Endpoint &
+  Workload Security from the Trend Vision One console
+---
+# Existing Trend Vision One customers updating Trend Cloud One - Endpoint & Workload Security from the Trend Vision One console
+
+:::warning[Important]
+
+- **Permanent update**: You cannot undo or stop the update once you begin. The update may take some time to complete depending on the number of agents managed by your Endpoint & Workload Security instance. Trend Micro strongly recommends scheduling the update during off hours to avoid a disruption of service.
+
+- **Forced sign out during update**: Communicate with any associates that access to your Trend Cloud One Endpoint & Workload Security console will be immediately terminated once the update process begins. Finish all on-going tasks before starting the update. After the update completes, you may need to update your user accounts before re-accessing the system. If an account update is required, the affected users will receive an email notification with instructions about how to perform the update.
+
+- **Activity Monitoring**: Enabling Endpoint sensor detection and response on your updated endpoints automatically disables Activity Monitoring on your endpoints. To prevent your agents from disabling Activity Monitoring when updating to the Trend Vision One Endpoint Security agent, ensure the Endpoint detection & response setting is disabled in the **Default Endpoint Policy**. For more information about configuring endpoint security policies, see [Configure endpoint security policies](configuring-endpoint-policies.mdx).
+
+- **Post-update tasks**:
+
+  - Verify that your user accounts have the correct access permissions and roles in the new User Account app and resolve any role conflicts.
+
+  - Verify that all your endpoint groups, policies, and system settings updated properly to the Server & Workload Protection and Endpoint Inventory apps.
+
+  - Check or establish your IdP connection in Trend Vision One.
+
+  - The update process only moves your base agents and not your Endpoint Sensor agents. After the update process is complete, you must contact your support representative to re-associate your Endpoint Sensor agents with your Server & Workload Protection endpoints.
+
+- **Compliance considerations**: Ensure that you have read and understood the [Privacy and personal data collection disclosure](ppdcd-trend-vision-one.mdx) for Trend Vision One. Customers that have PCI compliance concerns should contact a sales representative before starting the update.
+
+- **AWS Marketplace billing policy**: If your Trend Cloud One account is charged through AWS Marketplace, your Trend Cloud One - Endpoint & Workload Security instance continues to bill to AWS Marketplace after updating to Trend Vision One, while other paid features require credit allocation. Ensure that you have read and understood [Migrating a Trend Cloud One - Endpoint & Workload Security instance billed to AWS Marketplace](migrate-billed-aws-market.mdx) before starting the update.
+:::
+
+### Procedure {#procedure}
+
+1.  Sign in to the Trend Vision One console using the Primary User Account for your registered business.
+
+    :::note
+
+    The Primary User Account was previously called your company's "Trend Micro Account". The account owner has licensing rights to all your Trend Micro solutions.
+    :::
+
+2.  If you have not already updated Trend Vision One to the Foundation Services release, [update Trend Vision One](update-foundation-services-release.mdx) before proceeding.
+
+3.  Go to **Point Product Connections → Product Instance**.
+
+4.  Click the display name for your Trend Cloud One instance with Endpoint & Workload Security that you want to update.
+
+5.  You must enable the **Trend Cloud One Endpoint & Workload Security** service on the **Configuration** tab that displays.
+
+6.  Click the **Update Solution** tab.
+
+7.  Read about the new updates, the Trend Micro Agreement, Global Privacy Notice, and Data Collection Notice.
+
+8.  Acknowledge that you have read the applicable legal notices by selecting the check box and click **I Agree to Update**.
+
+9.  Carefully read through the **System Update Notice**.
+
+    Please review the Important note above.
+
+    :::note
+
+    After updating to Trend Vision One Server & Workload Protection, your original Trend Cloud One instance no longer displays the option to enable the Trend Cloud One Endpoint & Workload Security service.
+    :::
+
+10. Acknowledge that you have read and understood how the update process will affect your system and click **Connect and Transfer**.
+
+11. Allow some time for the update process to complete. You can also access the [Endpoint Inventory](endpoint-inventory-intro-part.mdx) or [Product Instance](product-instance.mdx) app to monitor the update progress of your Server & Workload Protection Manager (replaces the old Endpoint & Workload Security console).
+
+    [Learn more about feature mapping in Trend Vision One](dsa-swp-feature-map.mdx)
+::::

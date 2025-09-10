@@ -1,0 +1,70 @@
+---
+slug: trend-vision-one-add-computers
+title: Add Computers
+---
+You can use the API to add computers to Server & Workload Protection as part of the process of protecting new assets.
+
+:::tip
+
+Before using the API, consider using the following types of scheduled tasks to automatically discover and add computers:
+
+- Discover Computers
+- Synchronize Cloud Account
+- Synchronize Directory
+- Synchronize VMware vCenter
+
+For more information, see [Maintain Protection Using Scheduled Tasks](protection-scheduled-tasks.mdx) or [Schedule Server & Workload Protection to perform tasks](schedule-perform-tasks.mdx).
+:::
+
+Use the following general procedure to add a computer:
+
+### Procedure {#procedure}
+
+1.  Create a `Computer` object and set the hostname. The hostname is the only required property. The value must be the hostname or IP address that resolves to the computer.
+
+    ```bash
+    computer = api.Computer()
+    computer.host_name = hostname
+    ```
+
+2.  Configure any other properties as you desire. See the [Create a Computer](https://automation.trendmicro.com/cloudone/workload-security/) operation in the API Reference for the available properties.
+
+3.  Create a `ComputersApi` object and use it to create the computer on Server & Workload Protection.
+
+    ```bash
+    computers_api = api.ComputersApi(api.ApiClient(configuration))
+    new_computer = computers_api.create_computer(computer, api_version)
+    ```
+
+    To see the properties that you can configure, see the [Create a Computer](https://automation.trendmicro.com/cloudone/workload-security/) operation in the API Reference.
+
+    :::tip
+
+    You can also use the Server & Workload Protection console to create a task that automatically configures computers when they are added. See [Automatically perform tasks when a computer is added or changed](autotasks-computer-changed-event.mdx).
+    :::
+
+    :::tip
+
+    You can use the legacy REST API to enable the relay on a computer that is running an activated agent. The Deep Security Git repository contains scripts that accomplish this task:
+
+    - [Bash](https://github.com/deep-security/ops-tools/blob/master/deepsecurity/manager-apis/bash/config-dsRelay.sh)
+    - [Powershell](https://github.com/deep-security/ops-tools/blob/master/deepsecurity/manager-apis/powershell/config-dsrelay.ps1)
+
+    For background information, see [Distribute security and software updates with relays](deploy-more-relays.mdx).
+    :::
+
+### Next steps {#next-steps}
+
+[View source](https://github.com/deep-security/automation-center-sdk-samples/blob/master/python/src/automate_deployment_examples.py)
+
+```bash
+# Create the computer object
+computer = api.Computer()
+computer.host_name = hostname
+
+# Add the computer to Server & Workload Protection
+computers_api = api.ComputersApi(api.ApiClient(configuration))
+new_computer = computers_api.create_computer(computer, api_version)
+return new_computer.id
+```
+::::

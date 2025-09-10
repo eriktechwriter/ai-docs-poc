@@ -1,0 +1,41 @@
+---
+slug: trend-vision-one-openshift-411
+title: >-
+  4.1.1 - Ensure that the kubelet service file permissions are set to 644 or
+  more restrictive (Automated)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: openshift-411.md
+  conversion_date: '2025-09-08T23:42:14.755Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Profile applicability: Level 1
+
+Ensure that the kubelet service file has permissions of 644 or more restrictive.
+
+The kubelet service file controls various parameters that set the behavior of the kubelet service in the worker node. You should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system.
+
+:::note
+
+By default, the kubelet service file has permissions of 644.
+:::
+
+### Audit {#audit}
+
+Kubelet is run as a `systemd` unit and its configuration file is created with 644 permissions.
+
+Run the following command:
+
+``` codeblock
+for node in $(oc get nodes -o jsonpath='{.items[*].metadata.name}')
+do
+       oc debug node/${node} -- chroot /host stat -c %a
+/etc/systemd/system/kubelet.service
+done
+```
+
+Verify that the permissions are 644 or more restrictive.
+::::

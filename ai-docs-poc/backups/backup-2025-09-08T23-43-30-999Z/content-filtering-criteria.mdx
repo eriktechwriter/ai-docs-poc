@@ -1,0 +1,441 @@
+---
+slug: trend-vision-one-content-filtering-criteria
+title: Configuring content filtering criteria
+last_updated: '2025-09-08'
+ai_context:
+  source_file: content-filtering-criteria.md
+  conversion_date: '2025-09-08T23:42:21.778Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+On the **Scanning Criteria** tab, select **Advanced** to display the advanced criteria.
+
+From the drop-down list, do one of the following:
+
+- Select **All Match** to trigger the policy rule only when all selected "Advanced" criteria are matched.
+
+- Select **Any Match** to do the following:
+
+  - Trigger the policy rule when any selected "Advanced" criteria are matched
+
+  - Display the **Attachment is** "**password protected**", **Attachment contains** "**active content**", and **Recipient number** criteria in the "Advanced" criteria list
+
+    <figure>
+    <img src="./images/policy_criteria_advanced_any_match_list=GUID-0BBBB3EA-D4C1-44AC-B4E9-8CA8F0739FE8=2=en-us=Low.webp" />
+    </figure>
+
+The following tables all contain the same information sorted differently. Use the following sorted tables to find appropriate "Advanced" criteria to filter messages by your desired policy rule targets:
+
+**Advanced Criteria Sorted by Display Order**
+
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Policy Rule Targets</p></th>
+<th colspan="2"><p>Criteria</p></th>
+<th><p>Filter Based On</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="18"><p>Sorted by display order</p></td>
+<td><p><strong>Envelope sender is</strong></p></td>
+<td><p>"<strong>blank</strong>"</p></td>
+<td><p>Envelope sender</p></td>
+</tr>
+<tr>
+<td><p><strong>Message header sender differs from</strong></p></td>
+<td><p>"<strong>envelope sender</strong>"</p></td>
+<td><p>Message header sender and envelope sender</p></td>
+</tr>
+<tr>
+<td><p><strong>Message header sender differs from</strong></p></td>
+<td><p>"<strong>header Reply-To</strong>"</p></td>
+<td><p>Message header sender and message header Reply-To</p></td>
+</tr>
+<tr>
+<td><p><strong>Specified header matches</strong></p></td>
+<td><p>" <strong>keyword expressions</strong> "</p></td>
+<td><p>Keywords in headers and content</p></td>
+</tr>
+<tr>
+<td><p><strong>Message size is</strong></p></td>
+<td><strong>&gt;</strong>, <strong>&lt;=</strong>
+<p>&lt;number&gt;</p>
+<strong>KB</strong>, <strong>MB</strong></td>
+<td><p>Size</p>
+
+
+:::note
+
+<p>A maximum of 150 MB is allowed.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><strong>Subject matches</strong></p></td>
+<td><p>" <strong>keyword expressions</strong> "</p></td>
+<td rowspan="4"><p>Keywords in headers and content</p></td>
+</tr>
+<tr>
+<td><p><strong>Subject is</strong></p></td>
+<td><p>" <strong>blank</strong> "</p></td>
+</tr>
+<tr>
+<td><p><strong>Body matches</strong></p></td>
+<td><p>" <strong>keyword expressions</strong> "</p></td>
+</tr>
+<tr>
+<td><p><strong>Body is</strong></p></td>
+<td><p>"<strong>blank</strong>"</p></td>
+</tr>
+<tr>
+<td rowspan="3"><p><strong>Attachment is</strong></p></td>
+<td><p>" <strong>file name or extension</strong> "</p></td>
+<td><p>Attachment file name or extension</p></td>
+</tr>
+<tr>
+<td><p>" <strong>MIME content type</strong> "</p></td>
+<td><p>Attachment MIME content type</p></td>
+</tr>
+<tr>
+<td><p>" <strong>true file type</strong> "</p></td>
+<td><p>Attachment true file type</p>
+
+
+:::note
+
+<p>For Microsoft Office files of version 2007 or later, Cloud Email Gateway Protection supports attachment true file type detection only when the files are not encrypted.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><strong>Attachment content matches</strong></p></td>
+<td><p>" <strong>keyword expressions</strong> "</p></td>
+<td><p>Keywords in headers and content</p></td>
+</tr>
+<tr>
+<td><p><strong>Attachment size is</strong></p></td>
+<td><strong>&gt;</strong>, <strong>&lt;=</strong>
+<p>&lt;number&gt;</p>
+<strong>B</strong>, <strong>KB</strong>, <strong>MB</strong></td>
+<td><p>Attachment size</p>
+
+
+:::note
+
+<p>A maximum of 150 MB is allowed.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><strong>Attachment number is</strong></p></td>
+<td><strong>&gt;</strong>, <strong>&lt;=</strong>
+<p>&lt;number&gt;</p></td>
+<td><p>Number of attachments</p></td>
+</tr>
+<tr>
+<td><p><strong>Attachment is</strong></p></td>
+<td><p>" <strong>password protected</strong> "</p></td>
+<td><p>Zipped, signed, or password-protected attachment</p></td>
+</tr>
+<tr>
+<td><p><strong>Attachment contains</strong></p></td>
+<td><p>" <strong>active content</strong> "</p></td>
+<td><p>Active content in Microsoft Word, Excel and PowerPoint attachments</p></td>
+</tr>
+<tr>
+<td><p><strong>Recipient number</strong></p></td>
+<td><strong>&gt;</strong>, <strong>&lt;=</strong>
+<p>&lt;number&gt;</p></td>
+<td><p>Number of recipients</p></td>
+</tr>
+</tbody>
+</table>
+
+**Advanced Criteria Sorted by Attribute and Content Targets**
+
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Policy Rule Targets</p></th>
+<th colspan="2"><p>Criteria</p></th>
+<th><p>Filter Based On</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="3"><p>Envelope sender and message header sender</p></td>
+<td><p><strong>Envelope sender is</strong></p></td>
+<td><p>"<strong>blank</strong>"</p></td>
+<td><p>Envelope sender</p></td>
+</tr>
+<tr>
+<td><p><strong>Message header sender differs from</strong></p></td>
+<td><p>"<strong>envelope sender</strong>"</p></td>
+<td><p>Message header sender and envelope sender</p></td>
+</tr>
+<tr>
+<td><p><strong>Message header sender differs from</strong></p></td>
+<td><p>"<strong>header Reply-To</strong>"</p></td>
+<td><p>Message header sender and message header Reply-To</p></td>
+</tr>
+<tr>
+<td rowspan="3"><p>Name and type attributes</p></td>
+<td rowspan="3"><p><strong>Attachment is</strong></p></td>
+<td><p>" <strong>file name or extension</strong> "</p></td>
+<td><p>Attachment file name or extension</p></td>
+</tr>
+<tr>
+<td><p>" <strong>MIME content type</strong> "</p></td>
+<td><p>Attachment MIME content type</p></td>
+</tr>
+<tr>
+<td><p>" <strong>true file type</strong> "</p></td>
+<td><p>Attachment true file type</p>
+
+
+:::note
+
+<p>For Microsoft Office files of version 2007 or later, Cloud Email Gateway Protection supports attachment true file type detection only when the files are not encrypted.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td rowspan="2"><p>Size attributes</p></td>
+<td><p><strong>Message size is</strong></p></td>
+<td><strong>&gt;</strong>, <strong>&lt;=</strong>
+<p>&lt;number&gt;</p>
+<strong>KB</strong>, <strong>MB</strong></td>
+<td><p>Size</p></td>
+</tr>
+<tr>
+<td><p><strong>Attachment size is</strong></p></td>
+<td><strong>&gt;</strong>, <strong>&lt;=</strong>
+<p>&lt;number&gt;</p>
+<strong>B</strong>, <strong>KB</strong>, <strong>MB</strong></td>
+<td><p>Attachment size</p></td>
+</tr>
+<tr>
+<td rowspan="6"><p>Keyword content</p></td>
+<td><p><strong>Subject matches</strong></p></td>
+<td><p>" <strong>keyword expressions</strong> "</p></td>
+<td rowspan="6"><p>Keywords in headers and content</p></td>
+</tr>
+<tr>
+<td><p><strong>Subject is</strong></p></td>
+<td><p>" <strong>blank</strong> "</p></td>
+</tr>
+<tr>
+<td><p><strong>Body matches</strong></p></td>
+<td><p>" <strong>keyword expressions</strong> "</p></td>
+</tr>
+<tr>
+<td><p><strong>Body is</strong></p></td>
+<td><p>"<strong>blank</strong>"</p></td>
+</tr>
+<tr>
+<td><p><strong>Specified header matches</strong></p></td>
+<td><p>" <strong>keyword expressions</strong> "</p></td>
+</tr>
+<tr>
+<td><p><strong>Attachment content matches</strong></p></td>
+<td><p>" <strong>keyword expressions</strong> "</p></td>
+</tr>
+<tr>
+<td><p>Active content</p></td>
+<td><p><strong>Attachment contains</strong></p></td>
+<td><p>" <strong>active content</strong> "</p></td>
+<td><p>Active content in Microsoft Word, Excel and PowerPoint attachments</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p>Quantity attributes</p></td>
+<td><p><strong>Attachment number is</strong></p></td>
+<td><strong>&gt;</strong>, <strong>&lt;=</strong>
+<p>&lt;number&gt;</p></td>
+<td><p>Number of attachments</p></td>
+</tr>
+<tr>
+<td><p><strong>Recipient number</strong></p></td>
+<td><strong>&gt;</strong>, <strong>&lt;=</strong>
+<p>&lt;number&gt;</p></td>
+<td><p>Number of recipients</p></td>
+</tr>
+<tr>
+<td><p>Compressed, signed, or encrypted attributes</p></td>
+<td><p><strong>Attachment is</strong></p></td>
+<td><p>" <strong>password protected</strong> "</p></td>
+<td><p>Zipped, signed, or password-protected attachment</p></td>
+</tr>
+</tbody>
+</table>
+
+**Advanced Criteria Sorted by Message-Only or Attachment-Only Targets**
+
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Policy Rule Targets</p></th>
+<th colspan="2"><p>Criteria</p></th>
+<th><p>Filter Based On</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="10"><p>Message-only</p></td>
+<td><p><strong>Envelope sender is</strong></p></td>
+<td><p>"<strong>blank</strong>"</p></td>
+<td><p>Envelope sender</p></td>
+</tr>
+<tr>
+<td><p><strong>Message header sender differs from</strong></p></td>
+<td><p>"<strong>envelope sender</strong>"</p></td>
+<td><p>Message header sender and envelope sender</p></td>
+</tr>
+<tr>
+<td><p><strong>Message header sender differs from</strong></p></td>
+<td><p>"<strong>header Reply-To</strong>"</p></td>
+<td><p>Message header sender and message header Reply-To</p></td>
+</tr>
+<tr>
+<td><p><strong>Message size is</strong></p></td>
+<td><strong>&gt;</strong>, <strong>&lt;=</strong>
+<p>&lt;number&gt;</p>
+<strong>KB</strong>, <strong>MB</strong></td>
+<td><p>Size</p></td>
+</tr>
+<tr>
+<td><p><strong>Subject matches</strong></p></td>
+<td><p>" <strong>keyword expressions</strong> "</p></td>
+<td rowspan="5"><p>Keywords in headers and content</p></td>
+</tr>
+<tr>
+<td><p><strong>Subject is</strong></p></td>
+<td><p>" <strong>blank</strong> "</p></td>
+</tr>
+<tr>
+<td><p><strong>Body matches</strong></p></td>
+<td><p>" <strong>keyword expressions</strong> "</p></td>
+</tr>
+<tr>
+<td><p><strong>Body is</strong></p></td>
+<td><p>"<strong>blank</strong>"</p></td>
+</tr>
+<tr>
+<td><p><strong>Specified header matches</strong></p></td>
+<td><p>" <strong>keyword expressions</strong> "</p></td>
+</tr>
+<tr>
+<td><p><strong>Recipient number</strong></p></td>
+<td><strong>&gt;</strong>, <strong>&lt;=</strong>
+<p>&lt;number&gt;</p></td>
+<td><p>Number of recipients</p></td>
+</tr>
+<tr>
+<td rowspan="8"><p>Attachment-only</p></td>
+<td rowspan="3"><p><strong>Attachment is</strong></p></td>
+<td><p>" <strong>file name or extension</strong> "</p></td>
+<td><p>Attachment file name or extension</p></td>
+</tr>
+<tr>
+<td><p>" <strong>MIME content type</strong> "</p></td>
+<td><p>Attachment MIME content type</p></td>
+</tr>
+<tr>
+<td><p>" <strong>true file type</strong> "</p></td>
+<td><p>Attachment true file type</p>
+
+
+:::note
+
+<p>For Microsoft Office files of version 2007 or later, Cloud Email Gateway Protection supports attachment true file type detection only when the files are not encrypted.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><strong>Attachment content matches</strong></p></td>
+<td><p>" <strong>keyword expressions</strong> "</p></td>
+<td><p>Keywords in headers and content</p></td>
+</tr>
+<tr>
+<td><p><strong>Attachment size is</strong></p></td>
+<td><strong>&gt;</strong>, <strong>&lt;=</strong>
+<p>&lt;number&gt;</p>
+<strong>B</strong>, <strong>KB</strong>, <strong>MB</strong></td>
+<td><p>Attachment size</p></td>
+</tr>
+<tr>
+<td><p><strong>Attachment number is</strong></p></td>
+<td><strong>&gt;</strong>, <strong>&lt;=</strong>
+<p>&lt;number&gt;</p></td>
+<td><p>Number of attachments</p></td>
+</tr>
+<tr>
+<td><p><strong>Attachment is</strong></p></td>
+<td><p>" <strong>password protected</strong> "</p></td>
+<td><p>Zipped, signed, or password-protected attachment</p></td>
+</tr>
+<tr>
+<td><p><strong>Attachment contains</strong></p></td>
+<td><p>" <strong>active content</strong> "</p></td>
+<td><p>Active content in Microsoft Word, Excel and PowerPoint attachments</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Using envelope sender is blank criteria](envelope-sender-blank.mdx)
+- [Using message header sender differs from envelope sender criteria](header-differs-envelope.mdx)
+- [Using message header sender differs from header reply-to criteria](header-differs-reply-criteria.mdx)
+- [Using attachment file name or extension criteria](attach-file-extension-criteria.mdx)
+- [Using attachment mime content type criteria](attachment-mime-criteria.mdx)
+- [Using attachment true file type criteria](attachment-true-file-type.mdx)
+- [Using message size criteria](using-message-size-criteria.mdx)
+- [Using subject matches criteria](using-subject-matches-criteria.mdx)
+- [Using subject is blank criteria](using-subject-is-blank-criteria.mdx)
+- [Using body matches criteria](using-body-matches-criteria.mdx)
+- [Using body is blank criteria](using-body-is-blank-criteria.mdx)
+- [Using specified header matches criteria](specified-header-matches.mdx)
+- [Using attachment content matches keyword criteria](attachment-match-keyword-criteria.mdx)
+- [Using attachment size criteria](using-attachment-size-criteria.mdx)
+- [Using attachment number criteria](using-attachment-number-criteria.mdx)
+- [Using attachment is password protected criteria](attachment-password-protected-crit.mdx)
+- [Using attachment contains active content criteria](attachment-active-content.mdx)
+- [Using the number of recipients criteria](using-number-recipients-criteria.mdx)
+:::

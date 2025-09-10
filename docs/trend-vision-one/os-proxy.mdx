@@ -1,0 +1,63 @@
+---
+slug: trend-vision-one-os-proxy
+title: OS Proxy
+---
+# OS Proxy
+
+Verify the OS proxy settings in Server & Workload protection and for the agent.
+
+In Server & Workload protection, the option to use the OS proxy is enabled by default and cannot be disabled. Trend Micro recommends configuring proxy settings on the endpoint operating system to ensure your endpoints can still connect with Trend Vision One if other proxies are unavailable.
+
+:::warning[Important]
+
+Proxy settings configured in Endpoint Inventory take priority over settings configured in Server & Workload protection.
+
+Server & Workload Protection supports using the OS configured proxy for the following agent versions:
+
+- Linux: agent version 20.0.0-7303 and later
+
+- Windows: agent version 20.0.0-3530 and later
+
+- macOS: agent version 20.0.0-167 and later
+:::
+
+Use the following steps to verify the OS proxy settings in your Trend Vision One console:
+
+1.  In the Trend Vision One console, go to **Endpoint Security → Server & Workload Protection → Administration → System Settings → Proxies**.
+
+2.  Under **Proxy Server Use**, check that **Allow agents to apply OS proxy when configured proxy is inaccessible** is set to **Yes** and the drop-down is disabled.
+
+You can also ensure the setting is enabled on the endpoint.
+
+1.  Open the console or command prompt with Administrator privilege and access the Deep Security Agent folder.
+
+    1.  For Windows, this is usually `C:\Program Files\Trend Micro\Deep Security Agent`.
+
+    2.  For macOS, this is usually `/Library/Application Support/com.trendmicro.DSAgent`.
+
+2.  Run the command `dsa_control --autoDetectOSProxy 1`.
+
+If any errors occur, check the following:
+
+- The option is enabled in Server & Workload Protection
+
+- Any policy has successfully deployed to the agent
+
+- The agent is activated
+
+- The proxy settings are properly configured in the OS settings
+
+- The automatic configuration script is set
+
+  If set, verify the script works.
+
+- If the endpoint is not using the OS proxy, verify if you have configured proxy settings in Trend Vision One
+
+  The endpoint uses the following hierarchy:
+
+  1.  Configured in **Endpoint Security → Endpoint Inventory → Global Settings → Proxy Settings**
+
+  2.  Configured in Server & Workload Protection
+
+  3.  OS proxy
+::::

@@ -1,0 +1,480 @@
+---
+slug: trend-vision-one-exposure-overview
+title: Exposure Overview
+last_updated: '2025-09-08'
+ai_context:
+  source_file: exposure-overview.md
+  conversion_date: '2025-09-08T23:42:19.479Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::::::: {role="main"}
+Learn about the information available in Exposure Overview within Cyber Risk Overview.
+
+**Exposure Overview** displays your company's average exposure risk level and corresponding risk score for the category over the last 30 days. The exposure score is calculated using the weight of each exposure-related risk factor and the corresponding risk events in your environment along with the potential impact if the detected issues are exploited. Time-critical vulnerabilities are given greater weight in the calculation.
+
+:::warning[Important]
+
+The exposure risk level is calculated using all data received from your business without applying asset visibility scope limits.
+:::
+
+For customers with [Vulnerability Assessment](vulnerability-assessment.mdx) enabled, the **Vulnerabilities** tab in **Exposure Overview** displays:
+
+- **Time-critical security alerts**: Alerts related to detected vulnerabilities on Windows or Linux devices that might indicate an ongoing zero-day attack, or high-profile N-day vulnerabilities that Trend Micro recommends you address immediately to bolster your security posture. The primary criteria for issuing a time-critical security alert include the potential impact, whether the vulnerability is highly likely to be exploited, and whether exploit code is publicly available. Zero-day or high-profile vulnerabilities are detected in part using Advanced Risk Telemetry enabled on your endpoints.
+
+  To learn more about a highlighted vulnerability, including affected operating systems, available attack prevention/detection rules, and recommended mitigation or remediation options, click **View details** in the security alert. Trend Micro only issues time-critical security alerts for vulnerabilities with available mitigation options. You may create a new case for the vulnerability or add the vulnerability to an existing case by clicking the options icon (![](/images/options=ddb0b67f-0654-4aa5-8bc7-48ec554c5448.webp)) in the vulnerability entry.
+
+  :::warning[Important]
+
+  Not all remediation or mitigation options are available for all supported operating systems. If automatic mitigation detection is unavailable, mitigated devices may still remain on the affected devices list after mitigation is complete.
+  :::
+
+  For high-profile N-day vulnerabilities, you can view a summary including:
+
+  - The number of assessed devices in your environment
+
+  - How many assessed devices are affected by the vulnerability
+
+  - How many endpoints have been the target of exploit attempts related to the vulnerability
+
+- **Vulnerabilities widgets**: Widgets displaying metrics about your current exposure risk and vulnerability management status as they relate to different asset types in your organization. Vulnerability widgets are available for the following supported asset types:
+
+  - Internal assets
+
+  - Internet-facing assets
+
+  - Containers
+
+  - Cloud VMs
+
+  - Serverless functions
+
+The following tables detail the vulnerabilities widgets available on the tab corresponding to each asset type.
+
+**Internal Assets**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Widget</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Vulnerability Assessment Coverage</p></td>
+<td><p>The percentage of supported endpoints on your network that have an endpoint agent or a third-party data service enabled compared to the estimated total of endpoints in your organization</p>
+
+
+:::tip
+
+<p>Increase your deployment of endpoint agents to at least 80% for better results.</p>
+
+
+:::
+
+
+<ul>
+<li><p>Click <strong>Extend Assessment Scope</strong> to configure endpoint <a href="trend-vision-one-configuring-data-sources">data sources</a>.</p></li>
+<li><p>Click <strong>View Devices</strong> to identify devices with no assessment visibility and <a href="trend-vision-one-troubleshoot-assessment-visibility">troubleshoot issues</a>.</p></li>
+<li><p>Click <strong>Configure CVE Coverage</strong> to select whether to assess for all CVEs or high-impact and medium-impact CVEs only.</p>
+<ul>
+<li>
+
+:::note
+
+This feature is not available in all regions.
+
+
+:::
+
+</li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Detected Vulnerabilities</p></td>
+<td><p>The number of unique CVEs detected in your environment, organized by CVE impact score</p>
+<ul>
+<li><p>High impact score: 70 to 100</p></li>
+<li><p>Medium impact score: 31 to 69</p></li>
+<li><p>Low impact score: 0 to 30</p></li>
+</ul>
+<p>Click <strong>View Details</strong> to go to <strong>Threat and Exposure Management → Vulnerabilities</strong> and see detailed information about CVEs detected in your environment, including individual <a href="trend-vision-one-cve-impact-score">CVE impact scores</a>, impact scope, and related exploit attempts.</p></td>
+</tr>
+<tr>
+<td><p>Mean Time to Patch (MTTP)</p></td>
+<td><p>The average time taken to apply critical patches on all managed endpoints running a supported Windows operating system</p>
+<p>The <strong>Mean Time to Patch (MTTP)</strong> widget applies only to supported Windows platforms and major patch releases. You should carefully examine the MTTP data in conjunction with the Averaged Unpatched Time (AUT) data to better mitigate vulnerabilities on your network.</p>
+<p>Click <strong>View Details</strong> to view detailed information about devices with MTTP data in <strong>Threat and Exposure Management</strong>.</p>
+<p>For more information, see <a href="trend-vision-one-mttp-average-unpatched-time">Mean time to patch (MTTP) and average unpatched time (AUT)</a>.</p>
+
+
+:::tip
+
+You can also add the MTTP widget to your custom dashboard in <strong>Dashboards</strong>.
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Average Unpatched Time</p></td>
+<td><p>The average length of time that endpoints with CVEs remain unpatched to the current date.</p>
+<p>The <strong>Average Unpatched Time</strong> widget applies only to supported Windows platforms and major patch releases. You should carefully examine the MTTP data in conjunction with the <strong>Averaged Unpatched Time</strong> data to better remediate vulnerabilities on your network.</p>
+<p>Click <strong>View Details</strong> to view detailed information about device average unpatched time in <strong>Threat and Exposure Management</strong>.</p>
+<p>For more information, see <a href="trend-vision-one-mttp-average-unpatched-time">Mean time to patch (MTTP) and average unpatched time (AUT)</a>.</p>
+
+
+:::tip
+
+You can also add the AUT widget to your custom dashboard in <strong>Dashboards</strong>.
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Vulnerable Endpoint Percentage</p></td>
+<td><p>The percentage of endpoints in your environment supporting Vulnerability Assessment that contain CVEs</p>
+<p>The <strong>Vulnerable Endpoint Percentage</strong> widget applies to all endpoints with Vulnerability Assessment.</p>
+<p>Click <strong>View Details</strong> to view detailed information about vulnerable endpoints in <strong>Threat and Exposure Management</strong>.</p>
+<p>For more information, see <a href="trend-vision-one-exploitable-cve-density-percentage">Vulnerability percentages and CVE density</a>.</p></td>
+</tr>
+<tr>
+<td><p>CVE Density</p></td>
+<td><p>The total number of detected CVEs divided by the total number of endpoints with Vulnerability Assessment</p>
+<p>The density calculation includes operating system and application CVEs.</p>
+<p>Click <strong>View Details</strong> to view detailed information about CVE density in <strong>Threat and Exposure Management</strong>.</p>
+<p>The <strong>CVE Density</strong> and <strong>Vulnerable Endpoint Percentage</strong> widgets work together to help you tailor your response to endpoint vulnerabilities. For more information, see <a href="trend-vision-one-exploitable-cve-density-percentage">Vulnerability percentages and CVE density</a>.</p></td>
+</tr>
+<tr>
+<td><p>Devices With Legacy Operating Systems</p></td>
+<td><p>Devices that run operating system versions that have already reached End of Life (EOL)</p>
+<p>Devices running legacy operating systems are more vulnerable to attack as no new security patches are available for newly identified CVEs.</p>
+<p>Click <strong>View Details</strong> to view detailed information about devices with legacy operating systems in <strong>Threat and Exposure Management</strong>.</p></td>
+</tr>
+</tbody>
+</table>
+
+:::warning[Important]
+
+Widgets in the **Internal Assets** tab of the **Vulnerabilities** section only show data for endpoints within the asset visibility scope of the current user.
+:::
+
+**Internet-facing Assets**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Widget</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Detected Vulnerabilities</p></td>
+<td><p>The number of unique CVEs detected in your internet-facing assets</p>
+<p>Host vulnerability metrics currently only include high-impact and medium-impact CVEs.</p></td>
+</tr>
+<tr>
+<td><p>Vulnerable Host Percentage</p></td>
+<td><p>The percentage of hosts with CVEs</p>
+<p>The <strong>Vulnerable Host Percentage</strong> is calculated from the total number of hosts with CVEs divided by the total number of supported hosts.</p></td>
+</tr>
+<tr>
+<td>CVE Density of Hosts</td>
+<td><p>The total number of detected CVEs divided by the total number of hosts with Vulnerability Assessment</p>
+<p>The <strong>CVE Density of Hosts</strong> is calculated from the total number of detected CVEs divided by the total number of hosts (Total CVEs / Total hosts). The density calculation includes application CVEs.</p>
+<p>The <strong>CVE Density of Hosts</strong> and <strong>Vulnerable Host Percentage</strong> work together to help you tailor your response to host vulnerabilities.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Containers**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Widget</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Detected Vulnerabilities in Container Clusters</p></td>
+<td><p>The number of CVEs detected in your container clusters</p>
+
+
+:::tip
+
+Click <strong>Extend Assessment Scope</strong> and add Kubernetes clusters with Runtime Scanning enabled or cloud accounts with Agentless Vulnerability &amp; Threat Detection enabled in order to get better visibility into container asset vulnerabilities.
+<p>For more information, see <a href="trend-vision-one-agentless-vulnerability-threat">Agentless Vulnerability &amp; Threat Detection</a> and <a href="trend-vision-one-runtime-security-scanning-kubernete">Runtime Scanning</a>.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Vulnerable Container Cluster Percentage</p></td>
+<td><p>The percentage of container clusters with CVEs</p>
+<p>The <strong>Vulnerable Container Cluster Percentage</strong> widget is calculated by dividing the total number of container clusters with CVEs by the total number of supported container clusters. The <strong>Vulnerable Container Cluster Percentage</strong> widget helps you tailor your response to container vulnerabilities.</p></td>
+</tr>
+<tr>
+<td><p>Detected Vulnerabilities in Container Images</p></td>
+<td><p>The number of CVEs detected in your container images</p></td>
+</tr>
+<tr>
+<td><p>Vulnerable Container Image Percentage</p></td>
+<td><p>The percentage of container images with CVEs</p>
+<p>The <strong>Vulnerable Container Image Percentage</strong> widget is calculated by dividing the total number of container images with CVEs by the total number of supported container images. The <strong>Vulnerable Container Image Percentage</strong> widget helps you tailor your response to vulnerable container images.</p></td>
+</tr>
+</tbody>
+</table>
+
+:::warning[Important]
+
+Widgets in the **Containers** tab of the **Vulnerabilities** section only show data for containers within the asset visibility scope of the current user.
+:::
+
+**Cloud VMs**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Widget</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Detected Vulnerabilities</p></td>
+<td><p>The number of CVEs detected in your cloud VMs</p></td>
+</tr>
+<tr>
+<td><p>Vulnerable Cloud VMs Percentage</p></td>
+<td><p>The percentage of cloud VMs with CVEs</p>
+<p>The <strong>Vulnerable Cloud VMs Percentage</strong> widget is calculated by dividing the total number of cloud VMs with CVEs by the total number of assessed cloud VMs. The <strong>Vulnerable Cloud VMs Percentage</strong> widget helps you tailor your response to vulnerable cloud VMs.</p></td>
+</tr>
+</tbody>
+</table>
+
+:::warning[Important]
+
+This is a "Pre-release" feature and is not considered an official release. Please review the [Pre-release disclaimer](pre-release-disclaimer.mdx) before using the feature.
+:::
+
+**Serverless Functions**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Widget</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Detected Vulnerabilities</p></td>
+<td><p>The number of CVEs detected in your serverless functions</p></td>
+</tr>
+<tr>
+<td><p>Vulnerable Serverless Function Percentage</p></td>
+<td><p>The percentage of serverless functions with CVEs</p>
+<p>The <strong>Vulnerable Serverless Function Percentage</strong> widget is calculated by dividing the total number of serverless functions with CVEs by the total number of assessed serverless functions. The <strong>Vulnerable Serverless Function Percentage</strong> widget helps you tailor your response to vulnerable serverless functions.</p></td>
+</tr>
+</tbody>
+</table>
+
+:::warning[Important]
+
+This is a "Pre-release" feature and is not considered an official release. Please review the [Pre-release disclaimer](pre-release-disclaimer.mdx) before using the feature.
+:::
+
+The **System Configuration** tab within **Exposure Overview** contains information on misconfigurations detected in your supported assets. The following tables detail the widgets available in the **System Configuration** tab.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Widget</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Cloud Asset Misconfigurations</p></td>
+<td><p>Cloud infrastructure misconfigurations found in your AWS, Microsoft Azure, and Google Cloud environments</p>
+<p>Click <strong>View Details</strong> to view detailed information about your cloud assets with misconfiguration risks in <strong>Threat and Exposure Management</strong>.</p></td>
+</tr>
+<tr>
+<td><p>Cloud Asset Compliance Violations</p></td>
+<td><p>Cloud asset compliance violations found in your AWS, Microsoft Azure, and Google Cloud environments</p>
+<p>To view detailed information about detected compliance violations, click <strong>View Details</strong> to access the <a href="trend-vision-one-cloud-asset-compliance-violations">Cloud Asset Compliance Violations</a> screen in <strong>Threat and Exposure Management</strong>.</p></td>
+</tr>
+<tr>
+<td><p>Connected SaaS App Misconfigurations</p></td>
+<td><p>Misconfigurations found in the connected SaaS apps managed by your organization</p>
+<p>SaaS app misconfigurations include risky configurations in your organizations' managed email, collaboration, and productivity tools.</p>
+<p>Click <strong>View Details</strong> to view detailed information about your connected SaaS apps in <strong>Threat and Exposure Management</strong>.</p></td>
+</tr>
+<tr>
+<td><p>Connected SaaS App Compliance Violations</p></td>
+<td><p>SaaS app standard or framework compliance violations found in the connected SaaS apps managed by your organization</p>
+<p>Click <strong>View Details</strong> to view more information about detected compliance violations in <strong>Threat and Exposure Management</strong>.</p></td>
+</tr>
+<tr>
+<td><p>Unexpected Internet-Facing Services/Ports</p></td>
+<td><p>Services or ports that are internet-facing but should not be exposed to the internet along with affected public IPs</p>
+<p>Threat actors can exploit exposed services and ports to gain unauthorized access to your environment. Examples include insecure file sharing or exchange services and unencrypted sign-in services.</p>
+<p>Click <strong>View Details</strong> to view detailed information about unexpected internet-facing services and ports in <strong>Threat and Exposure Management</strong>.</p></td>
+</tr>
+<tr>
+<td><p>Hosts With Insecure Connection Issues</p></td>
+<td><p>Hosts with connection issues that might result in data leaking during transmission</p>
+<p>Insecure connection issues include invalid or expired certificates and insecure or deprecated encryption protocols.</p>
+<p>Click <strong>View Details</strong> to view detailed information about hosts with insecure connections in <strong>Threat and Exposure Management</strong>.</p></td>
+</tr>
+<tr>
+<td><p>Accounts With Weak Authentication</p></td>
+<td><p>Accounts with weak authentication broken down into high-profile, highly authorized, and regular accounts as well as how safe your organization's accounts are compared to other companies in your region</p>
+<p>Causes of weak authentication include:</p>
+<ul>
+<li><p>Microsoft Entra ID:</p>
+<ul>
+<li>No multi-factor authentication (MFA)</li>
+<li>No password expiration</li>
+<li>No strong password requirement</li>
+<li>No password required</li>
+</ul></li>
+<li><p>Active Directory:</p>
+<ul>
+<li>No password expiration</li>
+<li>Legacy authentication methods</li>
+</ul></li>
+</ul>
+<p>Click <strong>View Details</strong> to view detailed information about accounts with weak authentication in <strong>Threat and Exposure Management</strong>.</p>
+<p>For more information, see <a href="trend-vision-one-accounts-weak-authentication">Accounts with weak authentication</a>.</p>
+
+
+:::note
+
+<p>Widget data is only available for users with the <strong>Accounts</strong> asset visibility scope.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Accounts That Increase Attack Surface Risk</p></td>
+<td><p>Accounts with configurations that increase your organization's attack surface risk</p>
+<p>Account configuration risks include:</p>
+<ul>
+<li>Synced admin accounts: Highly authorized Microsoft Entra ID and Active Directory admin accounts that should not be synced with admin or non-admin accounts</li>
+<li>Extra admin accounts: Additional global or company admin accounts beyond those necessary for system administration</li>
+<li>Stale accounts: Enabled accounts that have been inactive for more than 180 days</li>
+</ul>
+<p>Click <strong>View Details</strong> to view detailed information about accounts that increase attack surface risk in <strong>Threat and Exposure Management</strong>.</p>
+<p>For more information, see <a href="trend-vision-one-accounts-attack-surface-risk">Accounts that increase attack surface risk</a>.</p>
+
+
+:::note
+
+<p>Widget data is only available for users with the <strong>Accounts</strong> asset visibility scope.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Accounts With Excessive Privilege</p></td>
+<td><p>Accounts with privileges beyond those required for daily operations</p>
+<p>Excessive privilege indicators include:</p>
+<ul>
+<li>Service account misconfiguration: Service accounts with permissions beyond those required to perform required tasks</li>
+<li>Highly authorized disabled accounts: Disabled accounts assigned to highly authorized roles or groups</li>
+</ul>
+<p>Click <strong>View Details</strong> to view detailed information about accounts with excessive privilege in <strong>Threat and Exposure Management</strong>.</p>
+<p>For more information, see <a href="trend-vision-one-accounts-excessive-privilege">Accounts with excessive privilege</a>.</p>
+
+
+:::note
+
+<p>Widget data is only available for users with the <strong>Accounts</strong> asset visibility scope.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Legacy Authentication Protocol With Log On Activity</p></td>
+<td><p>Log on attempts made through legacy authentication protocols</p>
+<p>Legacy authentication may be performed by:</p>
+<ul>
+<li><p>Older Microsoft Office clients that do not use modern authentication (for example, the Microsoft Office 2010 client)</p></li>
+<li><p>Any client that uses legacy mail protocols such as IMAP, SMTP, or POP3</p></li>
+</ul>
+
+
+:::note
+
+<p>Legacy authentication does not support multi-factor authentication (MFA). Even if you have an MFA policy enabled on your directory, a threat actor can bypass MFA and authenticate using available legacy protocols.</p>
+
+
+:::
+
+
+<p>Click <strong>View Details</strong> to view detailed information about legacy authentication protocol with log on activity in <strong>Threat and Exposure Management</strong>.</p>
+
+
+:::note
+
+<p>Widget data is only available for users with the <strong>Accounts</strong> asset visibility scope.</p>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [CVE impact score](cve-impact-score.md "Identify the assets most affected by CVEs using the CVE impact score.")
+- [CVE assessment visibility and configuration](cve-visibility.md "View all CVEs detected on your assets, and configure Trend Vision One to assess for all CVEs on your internal assets, including low-impact CVEs.")
+- [Cloud asset compliance violations](cloud-asset-compliance-violations.md "Use Cyber Risk Exposure Management capabilities to continuously identify and monitor cloud asset compliance violations across multiple cloud providers.")
+- [Accounts with weak authentication](accounts-weak-authentication.md "Weak authentication allows threat actors to use legitimate accounts to access systems and possibly steal sensitive information.")
+- [Accounts that increase attack surface risk](accounts-attack-surface-risk.md "Accounts That Increase Attack Surface Risk are user accounts with configuration settings that make the accounts more vulnerable to cyber attacks.")
+- [Accounts with excessive privilege](accounts-excessive-privilege.md "Accounts With Excessive Privilege are accounts with permissions settings that are likely to cause additional risk.")
+::::::::

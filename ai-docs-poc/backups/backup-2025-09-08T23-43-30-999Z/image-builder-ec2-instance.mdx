@@ -1,0 +1,267 @@
+---
+slug: trend-vision-one-image-builder-ec2-instance
+title: >-
+  Set up the image builder and create an Amazon Elastic Compute Cloud (EC2)
+  instance
+last_updated: '2025-09-08'
+ai_context:
+  source_file: image-builder-ec2-instance.md
+  conversion_date: '2025-09-08T23:42:17.549Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+After [setting parameter store values](set-parameter-store-values.mdx), complete the following steps.
+
+### Procedure {#procedure}
+
+1.  Set up an identity access management (IAM) role for an EC2 instance.
+
+2.  Create a recipe with a Trend Vision One Endpoint Security agent component.
+
+3.  Create the infrastructure configuration.
+
+4.  Create an image pipeline.
+
+5.  Launch an EC2 from Amazon Machine Image (AMI).
+
+6.  Connect an EC2 instance to Trend Vision One.
+
+**Related information**
+
+- Set up an identity access management (IAM) role for an Amazon Elastic Compute Cloud (EC2) instance
+- Create a recipe with a Trend Vision One Endpoint Security agent component
+- Create an image pipeline
+- Create the infrastructure configuration
+- Launch an Elastic Compute Cloud (EC2) from Amazon Machine Image (AMI)
+- Connect an Amazon Elastic Compute Cloud (EC2) instance to Trend Vision One
+
+## Set up an identity access management (IAM) role for an Amazon Elastic Compute Cloud (EC2) instance {#set-up-an-identity-access-management-iam-role-for-an-amazon-elastic-compute-cloud-ec2-instance}
+
+To begin setting up the image builder and creating an Amazon Elastic Compute Cloud (EC2) instance, follow these steps:
+
+### Procedure {#procedure-1}
+
+1.  Go to **IAM → Roles**.
+
+2.  Create a new role.
+
+3.  Select EC2 as the **Trusted entity type**.
+
+4.  Add the following permission policies to the role:
+
+    - AmazonSSMFullAccess
+    - AmazonSSMManagedInstanceCore
+    - EC2InstanceProfileForImageBuilder
+
+5.  Name the role.
+
+6.  Finish creating the role.
+
+7.  Edit the role to add the following inline policy:
+
+    ``` codeblock
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "VisualEditor0",
+                "Effect": "Allow",
+                "Action": [
+                    "ssm:PutParameter",
+                    "ssm:LabelParameterVersion",
+                    "ssm:DeleteParameter",
+                    "ssm:UnlabelParameterVersion",
+                    "ssm:DescribeParameters",
+                    "ssm:GetParameterHistory",
+                    "ssm:DescribeDocumentParameters",
+                    "ssm:GetParametersByPath",
+                    "ssm:GetParameters",
+                    "ssm:GetParameter",
+                    "ssm:DeleteParameters",
+                    "s3:get*",
+                    "s3:List*",
+                    "imagebuilder:GetComponent"
+                ],
+                "Resource": "*"
+            }
+        ]
+    }
+    ```
+
+### Next steps {#next-steps}
+
+Create a recipe with a Trend Vision One Endpoint Security agent component.
+
+## Create a recipe with a Trend Vision One Endpoint Security agent component {#create-a-recipe-with-a-trend-vision-one-endpoint-security-agent-component}
+
+After setting up an IAM role for an EC2 instance, continue setting up the image builder and creating an Amazon Elastic Compute Cloud (EC2) instance by following these steps:
+
+### Procedure {#procedure-2}
+
+1.  In EC2 Image Builder, go to **Images recipes**.
+
+2.  Create an image recipe.
+
+3.  Retrieve the Trend Vision One Endpoint Security agent component corresponding to Linux or Windows from AWS Marketplace images.
+
+4.  Select a managed instance from AWS with one of the supported versions of the following operating systems:
+
+    ::: {.simpletable-container}
+    <table id="recipe_endpoint_security_agent__simpletable_jsh_hzm_3fc" class="simpletable" data-border="1">
+    <thead>
+    <tr class="sthead table-header-style">
+    <th class="stentry">Linux</th>
+    <th class="stentry">Windows</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="strow">
+    <td class="stentry"><p>Amazon Linux 2</p></td>
+    <td class="stentry"><p>Microsoft Windows Server 2019</p></td>
+    </tr>
+    <tr class="strow">
+    <td class="stentry"><p>Amazon Linux 2023</p></td>
+    <td class="stentry"><p>Microsoft Windows Server 20H2</p></td>
+    </tr>
+    <tr class="strow">
+    <td class="stentry"><p>Ubuntu 20</p></td>
+    <td class="stentry"><p>Microsoft Windows Server 2022</p></td>
+    </tr>
+    <tr class="strow">
+    <td class="stentry"><p>Ubuntu 22</p></td>
+    <td class="stentry"><p>Microsoft Windows Server 2025</p></td>
+    </tr>
+    <tr class="strow">
+    <td class="stentry"><p>Ubuntu 24.04</p></td>
+    <td class="stentry"> </td>
+    </tr>
+    <tr class="strow">
+    <td class="stentry"><p>CentOS Linux 8</p></td>
+    <td class="stentry"> </td>
+    </tr>
+    <tr class="strow">
+    <td class="stentry"><p>CentOS Stream 8</p></td>
+    <td class="stentry"> </td>
+    </tr>
+    <tr class="strow">
+    <td class="stentry"><p>Red Hat Enterprise Linux 8</p></td>
+    <td class="stentry"> </td>
+    </tr>
+    <tr class="strow">
+    <td class="stentry"><p>Red Hat Enterprise Linux 9</p></td>
+    <td class="stentry"> </td>
+    </tr>
+    <tr class="strow">
+    <td class="stentry"><p>SUSE Linux Enterprise Server 12</p></td>
+    <td class="stentry"> </td>
+    </tr>
+    <tr class="strow">
+    <td class="stentry"><p>SUSE Linux Enterprise Server 15</p></td>
+    <td class="stentry"> </td>
+    </tr>
+    </tbody>
+    </table>
+    :::
+
+5.  Ensure the working directory is `/tmp` for Linux and `C:/` for Windows.
+
+6.  Select the component for Trend Vision One Endpoint Security agent that corresponds to either Linux or Windows.
+
+7.  Finish creating the recipe.
+
+### Next steps {#next-steps-1}
+
+Create the infrastructure configuration.
+
+## Create an image pipeline {#create-an-image-pipeline}
+
+After creating the infrastructure configuration, continue setting up the image builder and creating an Amazon Elastic Compute Cloud (EC2) instance by following these steps:
+
+### Procedure {#procedure-3}
+
+1.  In the EC2 Image Builder, go to **Image pipelines**.
+
+2.  Create a new pipeline.
+
+3.  Name the pipeline.
+
+4.  Make the build schedule manual.
+
+5.  Select the recipe and infrastructure configuration.
+
+6.  Finish creating the pipeline.
+
+### Next steps {#next-steps-2}
+
+Launch an EC2 from Amazon Machine Image (AMI).
+
+## Create the infrastructure configuration {#create-the-infrastructure-configuration}
+
+After creating a recipe, continue setting up the image builder and creating an Amazon Elastic Compute Cloud (EC2) instance by following these steps:
+
+### Procedure {#procedure-4}
+
+1.  In EC2 Image Builder, go to **Infrastructure configurations**.
+
+2.  Create a new configuration.
+
+3.  Select the identity access management (IAM) role.
+
+4.  Ensure the instance type is `c3.large` or `t3.large`.
+
+5.  Finish creating the configuration.
+
+### Next steps {#next-steps-3}
+
+Create an image pipeline.
+
+## Launch an Elastic Compute Cloud (EC2) from Amazon Machine Image (AMI) {#launch-an-elastic-compute-cloud-ec2-from-amazon-machine-image-ami}
+
+After creating an image pipeline, continue setting up the image builder and creating an Amazon Elastic Compute Cloud (EC2) instance by following these steps:
+
+### Procedure {#procedure-5}
+
+1.  Run the pipeline.
+
+2.  When the pipeline is complete, launch an EC2 from the resulting AMI.
+
+3.  Ensure the instance type is `c3.large` for Linux or `t3.large` for Windows.
+
+4.  Under **Advanced details**, select the identity access management (IAM) role.
+
+5.  Launch the instance.
+
+### Next steps {#next-steps-4}
+
+Connect an EC2 instance to Trend Vision One.
+
+## Connect an Amazon Elastic Compute Cloud (EC2) instance to Trend Vision One {#connect-an-amazon-elastic-compute-cloud-ec2-instance-to-trend-vision-one}
+
+After launching an EC2 from an AMI, continue setting up the image builder and creating an Amazon Elastic Compute Cloud (EC2) instance by following these steps:
+
+### Procedure {#procedure-6}
+
+1.  Go to the instance created using the Amazon Machine Image (AMI).
+
+2.  Connect to the EC2.
+
+3.  Go to `/tmp` on Linux or `C:\tmp` on Windows.
+
+4.  Depending on your operating system, run the following commands:
+
+    - On Linux, as the root user:
+
+      `sh installVisionOneEndpoint.sh`
+
+    - On Windows:
+
+      `Invoke-WebRequest -Uri “https://awscli.amazonaws.com/AWSCLIV2.msi” -OutFile “$env:TEMP\AWSCLIV2.msi”`
+
+      `Start-Process msiexec.exe -Wait -ArgumentList ‘/i’, “$env:TEMP\AWSCLIV2.msi”, ‘/qn’`
+
+      `.\installVisionOneEndpoint.ps1`
+
+The EC2 connects to Trend Vision One and appears under **Endpoint Security → Endpoint Inventory**.
+:::

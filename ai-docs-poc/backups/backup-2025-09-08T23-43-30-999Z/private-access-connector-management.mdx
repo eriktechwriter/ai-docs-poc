@@ -1,0 +1,207 @@
+---
+slug: trend-vision-one-private-access-connector-management
+title: Private Access Connector management
+last_updated: '2025-09-08'
+ai_context:
+  source_file: private-access-connector-management.md
+  conversion_date: '2025-09-08T23:42:14.165Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Manage details and collect diagnostic information for an individual Private Access Connector.
+
+The details screen for an individual Private Access Connector allows you to view basic details about the connector, including:
+
+- Name, ID, and IP address
+
+- Version number, update time, and result
+
+- Connection status and active time
+
+- Deployment environment
+
+- Number of connected Secure Access Modules
+
+To modify the name of the Private Access Connector, click ![](/images/edit_icon=GUID-1F1D1164-5310-4D6D-ACD0-6049C86960AF.webp).
+
+To reduce latency, you may enable direct connection mode on any individual Private Access Connector. Direct connection mode allows users to connect directly to corporate resources through the connector using a supplied public IP address and port. Private Access traffic through a connector in direct connection mode does not need to pass through a relay, even if the traffic comes from outside the corporate network. To use direct connection mode:
+
+1.  In **Secure Access Configuration → Private Access Configuration**.
+
+2.  Expand the details for a Private Access Connector group and click the name of a single Private Access Connector to access the connector details.
+
+3.  Set direct connection mode to **Enabled**.
+
+4.  Specify a public IPv4 address or FQDN reachable from outside your corporate network to be used to access the connector.
+
+    :::warning[Important]
+
+    Ensure your network environment is configured to receive public traffic. Your firewall must be configured to forward traffic to port 443 on the Private Access Connector.
+    :::
+
+5.  Click **Test connection** to ensure the connector is configured correctly and is reachable from outside the corporate network.
+
+6.  After the test completes, click **Save**. You may edit these settings at any time.
+
+:::note
+
+- This feature is not available in all regions.
+
+- Direct connection mode is only supported on Private Access Connectors version 2.33.0.1205 or later deployed in on-premises environments, including:
+
+  - Microsoft Hyper-V
+
+  - VMWare ESXi
+:::
+
+You may also initiate tasks to generate temporary password tokens, collect diagnostic information, or perform troubleshooting tests for an individual Private Access Connector. The following table provides details on the available tasks.
+
+:::note
+
+For tasks other than Network Speed Test and Temporary Password Generation, only the last 50 tasks performed over the last 30 days are retained and displayed on the console.
+:::
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Task</p></th>
+<th><p>Details</p></th>
+<th><p>Procedure</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Debug Log Collection</p></td>
+<td><ul>
+<li><p>Allows you to run the connector in debug mode and collect log file of all connector activity</p></li>
+<li><p>Only supported on Private Access Connector versions 2.22.0.1037 or later</p></li>
+</ul></td>
+<td><ol>
+<li><p>Enable debug mode on the connector.</p>
+
+
+:::warning[Important]
+
+Debug mode requires increased resources and automatically turns off after successful log collection or 24 hours. Generating log files without enabling debug mode may not provide enough details to identify and diagnose a connector issue.
+
+
+:::
+
+</li>
+<li><p>Click <strong>Generate Log File</strong> to generate a file containing all available connector activity logs.</p></li>
+<li>After the task completes, click the copy (<img src="./images/duplicate=e79af1b6-17af-40ad-b942-53ffb9e796d2.webp" />) icon to copy the file path pointing to the generated log file.</li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Service Connection Test</p></td>
+<td><ul>
+<li><p>Checks connectivity between the Private Access Connector and cloud services</p></li>
+<li><p>Only supported on Private Access Connector versions 2.22.0.1037 or later</p></li>
+</ul></td>
+<td><ol>
+<li>Click <strong>Test Connectivity</strong> to begin the connection test.</li>
+<li><p>When the test is complete, click the task ID to view the results</p></li>
+</ol>
+<p>Services and connection types tested:</p>
+<ul>
+<li><p>DNS server</p></li>
+<li><p>HTTPS proxy server</p></li>
+<li><p>Private Access Connector firmware upgrade image repository</p></li>
+<li><p>NTP server</p></li>
+<li><p>Private Access Connector speed test service</p></li>
+<li><p>Private Access service accessed by the Private Access Connector</p></li>
+<li><p>Microsoft Azure IoT Hub</p></li>
+<li><p>Private Access Connector firmware upgrade service</p></li>
+<li><p>Private Access Connector Case Diagnostic Tool (log collection service)</p></li>
+<li><p>Private Access Cloud Relay Service static IP pool</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Packet Capture</p></td>
+<td><ul>
+<li><p>Captures network data packets to help with reviewing and analyzing traffic facilitated by the Private Access Connector</p></li>
+<li><p>Only supported on Private Access Connector versions 2.22.0.1037 or later</p></li>
+</ul></td>
+<td><ol>
+<li><p>Click <strong>Start Packet Capture</strong> to configure the packet capture settings.</p>
+<ol>
+<li><p>Choose the desired IP addresses and ports for capturing traffic.</p></li>
+<li><p>Specify the protocol to use.</p></li>
+<li><p>Specify the maximum capture period in seconds from 30 to 3600.</p></li>
+<li><p>Specify the maximum packet size in MB from one to 1024.</p></li>
+</ol></li>
+<li><p>Click <strong>Start</strong>.</p></li>
+<li><p>When the task is complete, click the task ID to view task details.</p></li>
+<li><p>Click the copy icon (<img src="./images/duplicate=e79af1b6-17af-40ad-b942-53ffb9e796d2.webp" />) in the entry for the task to copy the file path of the generated packet capture file.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Network Speed Test</p></td>
+<td><ul>
+<li><p>Helps verify the connection between the connector and Private Access</p></li>
+<li><p>Only supported on Private Access Connector versions 2.11.0.1015 or later</p></li>
+</ul></td>
+<td><ol>
+<li><p>Click <strong>Start Test</strong> to begin the speed test.</p></li>
+<li><p>After about 60 seconds, view the upload, download, and ping rates in the displayed graph.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Network troubleshooting</p></td>
+<td><ul>
+<li>This interface provides three core network diagnostic utilities designed to identify and resolve connectivity issues efficiently.</li>
+</ul></td>
+<td><ol>
+<li><p>Follow the instructions to fill in the corresponding value.</p>
+
+
+:::warning[Important]
+
+<p>The selected function only performs while the connector is connected.</p>
+
+
+:::
+
+
+<ul>
+<li>For the Resolve function, enter the FQDN of the internal apps.</li>
+<li>For Tracerout and Curl function, enter either the FQDN or the IPv4 address of the internal apps.</li>
+</ul></li>
+<li><p>Click <strong>Start</strong>.</p></li>
+</ol>
+<p>After a few seconds, the results appear.</p></td>
+</tr>
+<tr>
+<td><p>Temporary Password Generation</p></td>
+<td><ul>
+<li><p>Generates temporary password tokens for accessing the connector</p></li>
+<li><p>Only supported on Private Access Connector versions 2.21.0.0 or later</p></li>
+</ul></td>
+<td><ol>
+<li><p>Select the span of time for the password token to be valid.</p></li>
+<li><p>Click <strong>Generate</strong>.</p></li>
+<li><p>Click <strong>Copy to Clipboard</strong> to copy the generated token.</p>
+
+
+:::note
+
+<p>Tokens are not stored in the Trend Vision One console. Only information on the last 100 tokens generated over the last 30 days is displayed.</p>
+
+
+:::
+
+</li>
+<li><p>Use the copied password to access the connector.</p></li>
+<li><p>After use, click <strong>Expire All</strong> to expire any valid password tokens for the connector.</p></li>
+</ol></td>
+</tr>
+</tbody>
+</table>
+:::::

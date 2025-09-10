@@ -1,0 +1,157 @@
+---
+slug: trend-vision-one-roles-aws-s3-bucket
+title: Configuring roles for the AWS S3 bucket connector
+---
+# Configuring roles for the AWS S3 bucket connector
+
+Create an S3 bucket and set up a custom role with custom permissions to allow Trend Vision One to connect to your S3 buckets.
+
+The following instructions detail how to create an S3 bucket in AWS, and how to configure a custom role and permissions in the AWS IAM console to allow you to connect to your configured S3 bucket.
+
+:::warning[Important]
+
+The following instructions are valid for the Amazon AWS console, S3 console, and IAM console as of July 2023. If you are using a newer version, refer to the official product/service documentation.
+:::
+
+### Procedure {#procedure}
+
+1.  Create a new S3 bucket.
+
+    1.  Sign in to your AWS management console and navigate to the S3 console.
+
+        You can access the S3 console directly at <https://console.aws.amazon.com/s3/>.
+
+    2.  In the S3 console, click **Create bucket**.
+
+    3.  In the **General Configuration** section, specify a unique **Bucket name**.
+
+    4.  (Optional) Configure other settings as needed for your security environment.
+
+    5.  Click **Create bucket**.
+
+    6.  Find the bucket you created and click the bucket name.
+
+    7.  Click the **Properties** tab.
+
+    8.  Copy the bucket **Amazon Resource Name (ARN)**.
+
+2.  Create a role in the AWS IAM console to allow Trend Vision One to connect to your S3 bucket.
+
+    1.  In the AWS management console, navigate to the IAM console.
+
+        You can access the IAM console directly at <https://console.aws.amazon.com/iam/>.
+
+    2.  In the IAM console, go to **Access management → Roles**.
+
+    3.  Click **Create role**.
+
+    4.  For **Trusted entity type**, select **Custom trust policy**.
+
+        The **Custom trust policy** section appears.
+
+        <figure>
+        <img src="./images/S3bucket01-IAM=GUID-b25d1b14-055a-4cca-839b-3c487de8422f.webp" />
+        </figure>
+
+    5.  For `Principal`, type `"AWS":` and then the Trust Role ARN: `arn:aws:iam::466026206465:role/PROD-TrendV1S3Exporter`.
+
+        You can also copy and paste the full line as follows:
+
+        `"AWS":"arn:aws:iam::466026206465:role/PROD-TrendV1S3Exporter"`
+
+        <figure>
+        <img src="./images/awsS3bucketIAMconfig=GUID-ec888842-5878-4fda-ae92-818076c04cce.webp" />
+        </figure>
+
+    6.  Add a `Condition` element to the trust policy, then type `"sts:ExternalId":` and paste the [external ID](connecting-aws-s3-bucket.mdx) copied from the Trend Vision One console.
+
+        ```bash
+        "Principal": {"AWS": "Example Corp's AWS account ID"},
+            "Condition": {"StringEquals": {"sts:ExternalId": "Unique ID Assigned by Example Corp"}}
+        ```
+
+    7.  Click **Next**, then click **Next**.
+
+    8.  In the **Name, review, create** screen, specify a unique **Role name**.
+
+    9.  Click **Create role**.
+
+    10. Search for the role you created.
+
+    11. Click the name of the role you created.
+
+    12. Copy the **ARN**.
+
+3.  Create a policy to allow Trend Vision One to connect to the bucket and role.
+
+    1.  In the AWS management console, navigate to the IAM console.
+
+    2.  In the IAM console, go to **Access management → Policies**.
+
+    3.  Click **Create policy**.
+
+    4.  In the **Specify permissions** screen, locate **Policy editor**.
+
+    5.  Click **JSON** to view the policy code.
+
+        <figure>
+        <img src="./images/S3bucket03-emptypermission=GUID-28d792fa-08c2-4356-b5b7-f7c4b96bffc0.webp" />
+        </figure>
+
+    6.  Replace the code in the Policy editor with the following JSON format policy:
+
+        ```bash
+        {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:PutObject",
+                        "s3:ListBucket"
+                    ],
+                    "Resource": [
+                      "your-s3-bucket-arn",
+                      "your-s3-bucket-arn/*"
+                    ]
+                }
+            ]
+        }
+        ```
+
+        <figure>
+        <img src="./images/S3bucket04-exampepermission=GUID-f5df3561-6953-409a-af3d-171f35ed49e8.webp" />
+        </figure>
+
+    7.  Replace `your-s3-bucket-arn` on line 11 and line 12 with the bucket ARN for the bucket you created.
+
+        The following is an example configuration.
+
+        <figure>
+        <img src="./images/S3bucket05-demo=GUID-a99c1233-2e68-4487-acb5-29f75318bfff.webp" />
+        </figure>
+
+    8.  Click **Next**.
+
+    9.  In the **Review and create** screen, specify a unique **Policy name**.
+
+    10. Click **Create policy**.
+
+4.  Attach the policy to the role.
+
+    1.  In the AWS management console, navigate to the IAM console.
+
+    2.  In the IAM console, go to **Access management → Roles**.
+
+    3.  Search for the role you created.
+
+    4.  Click the name of the role you created.
+
+    5.  Click the **Permissions** tab.
+
+    6.  Click **Add permissions**, then click **Attach policies**.
+
+    7.  Search for the policy you created.
+
+    8.  Select the policy and click **Add permissions**.
+::::

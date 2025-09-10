@@ -2,97 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Start Development Server",
-      "type": "shell",
-      "command": "npm",
-      "args": ["start"],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "new"
-      },
-      "problemMatcher": [],
-      "runOptions": {
-        "runOn": "folderOpen"
-      }
-    },
-    {
-      "label": "Build Documentation",
-      "type": "shell",
-      "command": "npm",
-      "args": ["run", "build"],
-      "group": "build",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "shared"
-      },
-      "problemMatcher": ["$tsc"]
-    },
-    {
-      "label": "Serve Built Site",
-      "type": "shell",
-      "command": "npm",
-      "args": ["run", "serve"],
-      "group": "test",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "shared"
-      },
-      "problemMatcher": []
-    },
-    {
-      "label": "Run Quality Checks",
-      "type": "shell",
-      "command": "npm",
-      "args": ["run", "quality:check"],
-      "group": "test",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "shared"
-      },
-      "problemMatcher": ["$eslint-stylish", "$tsc"]
-    },
-    {
-      "label": "Convert MD to MDX",
-      "type": "shell",
-      "command": "npm",
-      "args": ["run", "convert:md-to-mdx"],
-      "group": "build",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": true,
-        "panel": "shared"
-      },
-      "problemMatcher": []
-    },
-    {
-      "label": "AI Content Planner",
-      "type": "shell",
-      "command": "npm",
-      "args": ["run", "ai:plan"],
-      "group": "build",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": true,
-        "panel": "shared"
-      },
-      "problemMatcher": []
-    },
-    {
-      "label": "AI Content Generator",
+      "label": "AI: Generate Content",
       "type": "shell",
       "command": "npm",
       "args": ["run", "ai:generate"],
@@ -100,16 +10,44 @@
       "presentation": {
         "echo": true,
         "reveal": "always",
-        "focus": true,
+        "focus": false,
         "panel": "shared"
       },
       "problemMatcher": []
     },
     {
-      "label": "Validate Content",
+      "label": "AI: Review Content",
       "type": "shell",
       "command": "npm",
-      "args": ["run", "validate:content"],
+      "args": ["run", "ai:review"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "AI: Plan Content",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "ai:plan"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Quality: Comprehensive Check",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "quality:comprehensive"],
       "group": "test",
       "presentation": {
         "echo": true,
@@ -120,24 +58,39 @@
       "problemMatcher": []
     },
     {
-      "label": "Clear Docusaurus Cache",
+      "label": "System: Health Check",
       "type": "shell",
       "command": "npm",
-      "args": ["run", "clear"],
-      "group": "build",
+      "args": ["run", "system:health"],
+      "group": "test",
       "presentation": {
         "echo": true,
-        "reveal": "silent",
+        "reveal": "always",
         "focus": false,
         "panel": "shared"
       },
       "problemMatcher": []
     },
     {
-      "label": "Install Dependencies",
+      "label": "Docusaurus: Start Dev Server",
       "type": "shell",
       "command": "npm",
-      "args": ["install"],
+      "args": ["run", "start"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": [],
+      "isBackground": true
+    },
+    {
+      "label": "Docusaurus: Build",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "build"],
       "group": "build",
       "presentation": {
         "echo": true,

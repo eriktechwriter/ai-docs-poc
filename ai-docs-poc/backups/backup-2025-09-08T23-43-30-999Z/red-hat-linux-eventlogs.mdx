@@ -1,0 +1,159 @@
+---
+slug: trend-vision-one-red-hat-linux-eventlogs
+title: Configure Red Hat Enterprise Linux to receive event logs
+last_updated: '2025-09-08'
+ai_context:
+  source_file: red-hat-linux-eventlogs.md
+  conversion_date: '2025-09-08T23:42:13.903Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+## Set up a Syslog on Red Hat Enterprise Linux 8 {#set-up-a-syslog-on-red-hat-enterprise-linux-8}
+
+The following steps describe how to configure rsyslog on Red Hat Enterprise Linux 8 to receive logs from Server & Workload Protection.
+
+### Procedure {#procedure}
+
+1.  Log in as root.
+
+2.  Execute: `vi /etc/rsyslog.conf`
+
+3.  Uncomment the following lines near the top of the `rsyslog.conf` to change them from:
+
+    ``` codeblock
+    #module(load="imudp")
+    #input(type="imudp" port="514")
+
+    #module(load="imtcp")
+    #input(type="imtcp" port="514")
+    ```
+
+    to
+
+    ``` codeblock
+    module(load="imudp")
+    input(type="imudp" port="514")
+
+    module(load="imtcp")
+    input(type="imtcp" port="514")
+    ```
+
+4.  Add the following two lines of text to the end of the `rsyslog.conf`:
+
+    - `#Save Manager logs to DSM.log`
+    - `Local4.* /var/log/DSM.log`
+
+    :::note
+
+    You may need to replace `Local4` with another value, depending on your Server & Workload Protection settings.
+    :::
+
+5.  Save the file and exit.
+
+6.  Create the `/var/log/DSM.log` file by typing `touch /var/log/DSM.log`.
+
+7.  Set the permissions on the DSM log so that syslog can write to it.
+
+8.  Save the file and exit.
+
+9.  Restart syslog: `systemctl restart rsyslog`
+
+### Next steps {#next-steps}
+
+## Set up a Syslog on Red Hat Enterprise Linux 6 or 7 {#set-up-a-syslog-on-red-hat-enterprise-linux-6-or-7}
+
+The following steps describe how to configure rsyslog on Red Hat Enterprise Linux 6 or 7 to receive logs from Server & Workload Protection.
+
+### Procedure {#procedure-1}
+
+1.  Log in as root.
+
+2.  Execute: `vi /etc/rsyslog.conf`
+
+3.  Uncomment the following lines near the top of the `rsyslog.conf` to change them from:
+
+    ``` codeblock
+    #$ModLoad imudp
+    #$UDPServerRun 514
+
+    #$ModLoad imtcp
+    #$InputTCPServerRun 514
+    ```
+
+    to
+
+    ``` codeblock
+    $ModLoad imudp
+    $UDPServerRun 514
+
+    $ModLoad imtcp
+    $InputTCPServerRun 514
+    ```
+
+4.  Add the following two lines of text to the end of the `rsyslog.conf`:
+
+    - `#Save Manager logs to DSM.log`
+    - `Local4.* /var/log/DSM.log`
+
+    :::note
+
+    You may need to replace `Local4` with another value, depending on your Server & Workload Protection settings.
+    :::
+
+5.  Save the file and exit.
+
+6.  Create the `/var/log/DSM.log` file by typing `touch /var/log/DSM.log`.
+
+7.  Set the permissions on the DSM log so that syslog can write to it.
+
+8.  Save the file and exit.
+
+9.  Restart syslog:
+
+    - On Red Hat Enterprise Linux 6: `service rsyslog restart`
+    - On Red Hat Enterprise Linux 7: `systemctl restart rsyslog`
+
+### Next steps {#next-steps-1}
+
+When Syslog is functioning you will see logs populated in: `/var/log/DSM.log`
+
+## Set up a Syslog on Red Hat Enterprise Linux 5 {#set-up-a-syslog-on-red-hat-enterprise-linux-5}
+
+The following steps describe how to configure Syslog on Red Hat Enterprise Linux to receive logs from Server & Workload Protection.
+
+### Procedure {#procedure-2}
+
+1.  Log in as root.
+
+2.  Execute: `vi /etc/syslog.conf`
+
+3.  Add the following two lines of text to the end of the `syslog.conf`:
+
+    - `#Save Manager logs to DSM.log`
+    - `Local4.* /var/log/DSM.log`
+
+    :::note
+
+    You may need to replace `Local4` with another value, depending on your Server & Workload Protection settings.
+    :::
+
+4.  Save the file and exit.
+
+5.  Create the `/var/log/DSM.log` file by typing `touch /var/log/DSM.log`.
+
+6.  Set the permissions on the DSM log so that syslog can write to it.
+
+7.  Execute: `vi /etc/sysconfig/syslog`
+
+8.  Modify the line " `SYSLOGD_OPTIONS` " and add a " `-r` " to the options.
+
+9.  Save the file and exit.
+
+10. Restart syslog: `/etc/init.d/syslog restart`
+
+### Next steps {#next-steps-2}
+
+When Syslog is functioning you will see logs populated in: `/var/log/DSM.log`
+:::

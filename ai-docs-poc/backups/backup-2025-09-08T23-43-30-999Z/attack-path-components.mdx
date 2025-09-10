@@ -1,0 +1,202 @@
+---
+slug: trend-vision-one-attack-path-components
+title: Key attack path components
+last_updated: '2025-09-08'
+ai_context:
+  source_file: attack-path-components.md
+  conversion_date: '2025-09-08T23:42:24.730Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Learn about the types of components found in potential attack paths and common component characteristics.
+
+A potential attack path contains:
+
+- Entry point assets with risk detections indicating the asset is vulnerable to compromise
+
+  - Entry point assets are typically accessible from the internet or displaying signs of potential compromise.
+
+- A potential path for lateral movement that could allow attackers to reach critical assets using asset relationships
+
+  - Relationships are determined by analyzing the following:
+
+    - Network activities
+
+    - User activities
+
+    - Administrative actions
+
+    - Permissions
+
+    - Cloud asset traffic
+
+- High-value critical assets that serve as desirable target points for attackers
+
+  - Asset criticality is determined based on asset attributes, represented by platform tags assigned to the asset such as job role, device ownership, or device type. For more information about platform tags, see [Asset profile platform tags](asset-profile-tags.mdx).
+
+  - You may set a custom criticality level for an asset from the asset profile page if you feel the level assigned by Trend Vision One is insufficient. For information on specific asset profile screen types, see [Asset profile screens](asset-profile-screens.mdx).
+
+:::note
+
+In certain cases, an asset may serve as the entry and target point for an attack path, so no lateral movement path is required.
+:::
+
+The tables below provide examples and descriptions of common attack path component characteristics that may be displayed in a potential attack path.
+
+**Common entry point asset risks and vulnerabilities**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Example</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Open session with detected threat source</p></td>
+<td><p>The asset has opened a legitimate session with a potential threat source.</p></td>
+</tr>
+<tr>
+<td><p>Internet exposure</p></td>
+<td><p>The asset can be accessed from the internet.</p></td>
+</tr>
+<tr>
+<td><p>Detected threat</p></td>
+<td><p>Malware, trojans, malicious traffic, or backdoors have been detected on the asset</p></td>
+</tr>
+<tr>
+<td><p>Suspicious activity/behavior</p></td>
+<td><p>The asset is displaying unusual behavior or activities that may indicate compromise</p></td>
+</tr>
+<tr>
+<td><p>Leaked credentials</p></td>
+<td><p>The credentials of an identity-related asset were leaked or otherwise compromised</p></td>
+</tr>
+<tr>
+<td><p>Administrated by detected threat source</p></td>
+<td><p>The asset is administrated by a potential threat source and can grant permissions.</p></td>
+</tr>
+<tr>
+<td><p>Detected high-impact vulnerabilities</p></td>
+<td><p>High-impact vulnerabilities have been detected on the asset.</p></td>
+</tr>
+<tr>
+<td><p>Detected misconfigurations</p></td>
+<td><p>The asset contains highly exploitable misconfigurations.</p></td>
+</tr>
+<tr>
+<td><p>Weak authentication</p></td>
+<td><p>The asset uses a weak method of authentication that could be exploited.</p></td>
+</tr>
+<tr>
+<td><p>Excessive permissions</p></td>
+<td><p>The asset has been granted more permissions than needed and can access large parts of the network.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Common asset relationships facilitating potential lateral movement**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Example</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Connects</p></td>
+<td><p>The asset has network activity with other assets.</p></td>
+</tr>
+<tr>
+<td><p>Routes traffic to</p></td>
+<td><p>The source asset can route traffic to a secondary asset.</p></td>
+</tr>
+<tr>
+<td><p>Runs</p></td>
+<td><p>The asset runs a secondary asset.</p></td>
+</tr>
+<tr>
+<td><p>Contains</p></td>
+<td><p>The asset contains a secondary asset.</p></td>
+</tr>
+<tr>
+<td><p>Uses</p></td>
+<td><p>The asset performs activities with a secondary asset.</p></td>
+</tr>
+<tr>
+<td><p>Manages</p></td>
+<td><p>The asset has administrative privileges over one or more assets.</p></td>
+</tr>
+<tr>
+<td><p>Has permission to</p></td>
+<td><p>The asset has permission to access one or a group of resources.</p></td>
+</tr>
+<tr>
+<td><p>Admin to</p></td>
+<td><p>The asset has direct administrative permission to one or more assets.</p></td>
+</tr>
+<tr>
+<td><p>Can authenticate as</p></td>
+<td><p>The asset can authenticate to a particular identity and use the identity's privileges.</p></td>
+</tr>
+<tr>
+<td><p>Controls</p></td>
+<td><p>The asset dictates or orchestrates the actions of other assets.</p></td>
+</tr>
+<tr>
+<td><p>Member of</p></td>
+<td><p>The asset is a member of another asset.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Common target point characteristics**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Example</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Critical devices or cloud infrastructure</p></td>
+<td><p>Devices or cloud resources that are highly critical to business operations and are required for the functionality of other assets</p></td>
+</tr>
+<tr>
+<td><p>Important users</p></td>
+<td><p>User accounts with high organizational ranks or functionality</p></td>
+</tr>
+<tr>
+<td><p>Highly privileged accounts</p></td>
+<td><p>User accounts granted high privileges to administrate or control multiple assets</p></td>
+</tr>
+<tr>
+<td><p>Highly privileged service accounts, IAM accounts, or keys</p></td>
+<td><p>Highly privileged non-human identities used by applications or cloud resources</p></td>
+</tr>
+<tr>
+<td><p>Assets with sensitive data</p></td>
+<td><p>A storage-related asset that contains critical data such as keys or financial information</p></td>
+</tr>
+</tbody>
+</table>
+::::

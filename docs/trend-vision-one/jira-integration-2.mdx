@@ -1,0 +1,90 @@
+---
+slug: trend-vision-one-jira-integration-2
+title: Jira integration
+---
+# Jira integration
+
+Trend Vision One™ – Cloud Risk Management integrates with Jira. This includes Jira on-premise as long as it is accessible via the Internet. If you use Jira in your business workflow, you can manually create tickets or configure triggers for automatic ticket creation for any relevant events in your account. The Jira ticket is automatically closed when you resolve a vulnerability.
+
+!!! note "" Cloud Risk Management allows the creation of issues in Jira. Notification settings for issues created in Jira can be configured within Jira. Open *Notification schemes* and configure as many users and groups as you want for newly created issues. Refer below for the links:
+
+```bash
+  * [_Jira Cloud_](https://confluence.atlassian.com/adminjiracloud/creating-a-notification-scheme-776636401.html)
+  * [_Jira Server_](https://confluence.atlassian.com/adminjiraserver073/creating-a-notification-scheme-861253478.html)
+```
+
+!!! note "" *Ticket Transition Limitations*
+
+```bash
+For a smooth ticket transition, you must ensure that:
+
+- The Jira workflow contains an `OPEN` status and a `CLOSED` status.
+- The workflow allows for a transition to `CLOSED` from any status.
+- No additional fields must be required during transition to the `CLOSED` status.
+```
+
+### Set up a Jira channel {#set-up-a-jira-channel}
+
+1.  Click on *Create an Jira channel*
+
+2.  [Set automatic notifications](toggle-automatic-notifications.mdx)
+
+3.  [Set manual notifications](toggle-manual-notifications.mdx)
+
+4.  Input *Channel Name* to distinguish the channel from others of the same type
+
+    :::note
+
+    The field is limited to 20 characters
+    :::
+
+5.  [Configure Triggers](communication-triggers.mdx)
+
+6.  Click on *Configure board now* to set up your Jira notifications.
+
+7.  You can connect to Jira using the recommended *OAuth Settings Setup* or the *Username and API Token Setup*.
+
+    1.  Connecting using the *recommended OAuth Settings Setup*, enter:
+
+        1.  *Jira URL* and click on *Connect*
+
+            :::note
+
+            Please ensure that you have [set up your Jira client to use OAuth.](oauth-client-jira-setup.mdx)
+            :::
+
+    2.  To connect to Jira using the *Username and API Token Setup*, enter the following details:
+
+        1.  *Jira URL*
+        2.  *Jira Username*
+        3.  *API Token*
+
+    3.  On successful integration, the Cloud Risk Management dashboard will automatically load the meta-data from the User's Jira account. You can then input the following *Extra settings* to customize your communication channel:
+
+        1.  *Project*
+
+        2.  *Assignee*
+
+        3.  *Issue Type*
+
+        4.  *Priority*
+
+        5.  *Custom Fields:* to view the supported custom fields, select the *Issue Type* first and then click on the *Reload Custom Fields* button.
+
+            Cloud Risk Management currently supports the following Custom Fields:
+
+            - Radio buttons
+            - Epics
+            - Single line text
+            - Number
+
+8.  [Copy communication settings](copy-communication-settings.mdx)
+
+\*\*What Jira permissions do Cloud Risk Management require for integration?\*\*The following permissions are required for integration:
+
+1.  *Project permissions* - To browse projects
+2.  *Issue permission* - To Create / Close / Resolve / Delete issues
+3.  *Comment Permissions* - To add comments
+
+\*\*I have custom project fields in Jira. Why is the Jira integration not working?\*\*If the integration is connecting to Jira but not to the project, it could be because of the custom Jira project fields that are not yet supported. In such cases, we recommend creating a new project without custom fields.
+:::

@@ -1,0 +1,47 @@
+---
+slug: trend-vision-one-internal-traffic-hyper-v-host
+title: Configuring internal network traffic on Hyper-V host
+last_updated: '2025-09-08'
+ai_context:
+  source_file: internal-traffic-hyper-v-host.md
+  conversion_date: '2025-09-08T23:42:17.016Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure internal network traffic to allow Virtual Network Sensor to monitor data.
+
+:::note
+
+The following instructions are valid as of March 2024.
+:::
+
+### Procedure {#procedure}
+
+1.  On the host machine, access the Hyper-V Manager.
+
+2.  Set the Virtual Network Sensor as the traffic mirror target.
+
+    1.  Right-click the Virtual Network Sensor virtual machine, and select **Settings...**
+
+    2.  In the settings window, use the navigation bar to go to **Network Adapter (Data Switch) → Advanced Features**.
+
+    3.  Under the **Port mirroring** section, set **Mirroring mode** to **Destination**.
+
+    4.  Click **Apply**, then click **OK**.
+
+3.  Locate the virtual machine you want to monitor and set it as the traffic mirror source.
+
+    1.  Right-click the source virtual machine, and select **Settings...**
+
+    2.  In the settings window, use the navigation bar to go to **Network Adapter (Data Switch) → Advanced Features**.
+
+    3.  Under the **Port mirroring** section, set **Mirroring mode** to **Source**.
+
+    4.  Click **Apply**, then click **OK**.
+
+    Repeat step 3 for any additional virtual machines you want to monitor with the Virtual Network Sensor.
+
+    After configuring your network settings, access the Virtual Network Sensor console and use the command `show traffic` to verify the Virtual Network Sensor is receiving traffic. For more information about troubleshooting, see [Virtual Network Sensor FAQ](virtual-network-sensor-faqs.mdx) and [Virtual Network Sensor CLI commands](virtual-network-sensor-cli-commands.mdx).
+::::

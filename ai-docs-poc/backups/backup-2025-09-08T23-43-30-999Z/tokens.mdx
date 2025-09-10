@@ -1,0 +1,134 @@
+---
+slug: trend-vision-one-tokens
+title: Tokens
+last_updated: '2025-09-08'
+ai_context:
+  source_file: tokens.md
+  conversion_date: '2025-09-08T23:42:12.004Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Use the following tokens to include variables in notifications and stamps.
+
+**Tokens**
+
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 72%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Token</p></th>
+<th><p>Variable</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>%SENDER%</code></p></td>
+<td><p>Envelope address of a message sender</p></td>
+</tr>
+<tr>
+<td><p><code>%HEADER_SENDER%</code></p></td>
+<td><p>Message sender address in the "Header From" field</p></td>
+</tr>
+<tr>
+<td><p><code>%RCPTS%</code></p></td>
+<td><p>Message recipients</p></td>
+</tr>
+<tr>
+<td><p><code>%SUBJECT%</code></p></td>
+<td><p>Message subject</p></td>
+</tr>
+<tr>
+<td><p><code>%DATE&amp;TIME%</code></p></td>
+<td><p>Date and time of incident</p></td>
+</tr>
+<tr>
+<td><p><code>%HEADERS%</code></p></td>
+<td><p>Message headers, including the original header and the headers added by Cloud Email Gateway Protection</p>
+<p>This token is supported only in stamps and notification body.</p></td>
+</tr>
+<tr>
+<td><p><code>%MAILID%</code></p></td>
+<td><p>Mail ID</p></td>
+</tr>
+<tr>
+<td><p><code>%RULENAME%</code></p></td>
+<td><p>Name of the policy rule that contained the triggered filter</p></td>
+</tr>
+<tr>
+<td><p><code>%RULETYPE%</code></p></td>
+<td><p>Type of a policy rule: Content Filter, Message Size Filter, and others</p></td>
+</tr>
+<tr>
+<td><p><code>%DETECTED%</code></p></td>
+<td><p>Scan result for virus policy matching, or name of the triggered policy rule or filter for content policy matching</p></td>
+</tr>
+<tr>
+<td><p><code>%FILENAME%</code></p></td>
+<td><p>Names of files that were affected by the policy rule</p></td>
+</tr>
+<tr>
+<td><p><code>%DEF_CHARSET%</code></p></td>
+<td><p>Default character set of the notification message</p></td>
+</tr>
+<tr>
+<td><p><code>%MSG_SIZE%</code></p></td>
+<td><p>Total size of the message and all attachments</p></td>
+</tr>
+<tr>
+<td><p><code>%ATTACH_SIZE%</code></p></td>
+<td><p>Total size of the attachment(s) that triggered the policy rule</p></td>
+</tr>
+<tr>
+<td><p><code>%ATTACH_COUNT%</code></p></td>
+<td><p>Number of attachments that triggered the policy rule</p></td>
+</tr>
+<tr>
+<td><p><code>%TACTION%</code></p></td>
+<td><p>Terminal action taken by Cloud Email Gateway Protection</p></td>
+</tr>
+<tr>
+<td><p><code>%ACTION%</code></p></td>
+<td><p>All other (non-terminal) actions taken by Cloud Email Gateway Protection</p></td>
+</tr>
+<tr>
+<td><p><code>%VIRUSNAME%</code></p></td>
+<td><p>Name of any malware detected</p>
+<p>This token will be empty if the message did not trigger a malware action.</p></td>
+</tr>
+<tr>
+<td><code>%VIRUSACTION%</code></td>
+<td><p>Action taken on any malware detected in the message</p>
+<p>This token will be empty if the message did not trigger a malware action.</p></td>
+</tr>
+<tr>
+<td><p><code>%HPU_CONFIRMED_URL%</code></p></td>
+<td><p>Option selected by a high profile user to confirm that he or she is the real sender of an email message</p></td>
+</tr>
+<tr>
+<td><p><code>%HPU_DENIED_URL%</code></p></td>
+<td><p>Option selected by a high profile user to deny that he or she is the real sender of an email message</p></td>
+</tr>
+<tr>
+<td><p><code>%SPFRESULT%</code></p></td>
+<td><p>SPF check result returned when SPF check is enabled</p></td>
+</tr>
+<tr>
+<td><p><code>%UNUSUAL_SIGNAL_NAME%</code></p></td>
+<td><p>Unusual behavior or trait in an email message</p></td>
+</tr>
+<tr>
+<td><p><code>%CI_RULE_NAME%</code></p></td>
+<td><p>Name of the Correlated Intelligence correlation rule that detected a security risk or anomaly</p></td>
+</tr>
+<tr>
+<td><p><code>%CI_RULE_DESC%</code></p></td>
+<td><p>Description of the Correlated Intelligence correlation rule that detected a security risk or anomaly</p></td>
+</tr>
+</tbody>
+</table>
+:::

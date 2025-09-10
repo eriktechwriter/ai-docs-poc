@@ -1,0 +1,40 @@
+---
+slug: trend-vision-one-scan-process-memory
+title: Scan process memory (real-time scans only)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: scan-process-memory.md
+  conversion_date: '2025-09-08T23:42:13.142Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+:::warning[Important]
+
+Scan process memory does not support Linux and macOS agents.
+:::
+
+Monitor process memory in real time and perform additional checks with the Trend Micro Smart Protection network to determine whether a suspicious process is known to be malicious. If the process is malicious, Server & Workload Protection terminates the process. For more information, see [Smart Protection in Server & Workload Protection](smart-protection.mdx)
+
+### Procedure {#procedure}
+
+1.  Open the properties of the malware scan configuration.
+
+2.  On the **General** tab, select **Scan process memory for malware**.
+
+3.  Configure the settings for **Detection level** and **Prevention level**.
+
+    :::warning[Important]
+
+    - Adjusting Detection and Prevention levels only supports agent version version 20.0.1.25770 and later. Unsupported versions use the default level of **2 - Moderate** and cannot be changed.
+
+    - Higher levels provide greater sensitivity but might generate a large number of nonessential logs and impact endpoint performance. Trend Micro recommends selecting **2 - Moderate** for more relevant data with minimal impact on your endpoints.
+
+    - The **Prevention level** must be the same or lower than **Detection level**.
+
+    - The **Action to take** selection might affect the prevention actions taken for the selected prevention level.
+    :::
+
+4.  Click **OK**.
+::::

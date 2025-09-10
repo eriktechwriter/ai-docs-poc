@@ -1,0 +1,68 @@
+---
+slug: trend-vision-one-allow
+title: Allow Security Awareness in Cloud Email Gateway Protection
+---
+# Allow Security Awareness in Cloud Email Gateway Protection
+
+Add Security Awareness Training to the allow list in Cloud Email Gateway Protection to allow all incoming emails from Security Awareness Training features.
+
+For users of **Cloud Email Gateway Protection**, you must allow all incoming emails from **Security Awareness** to ensure campaign emails reach your recipients.
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Cyber Risk Exposure Management → Security Awareness** and choose either **Phishing Simulations** or **Training Campaigns**.
+
+2.  Click the settings icon (![](/images/gear_icon=fc9a51ad-35af-4fe3-92c6-5e41b2dfc5d9.webp)) to open Settings.
+
+3.  In **Allow List Settings**, find the required allow list information for **Cloud Email Gateway Protection**.
+
+4.  Copy the following information:
+
+    - Sending domains
+
+    - Sending IP addresses
+
+5.  Allow phishing simulations to bypass scans in **Cloud Email Gateway Protection**.
+
+    1.  Go to **Email and Collaboration Security → Cloud Email Gateway Protection** and click **Administration**.
+
+    2.  Go to **Service Integration**.
+
+    3.  Enable **Bypass scans for Trend Micro phishing simulations**.
+
+6.  Allow the sending domains in **Cloud Email Gateway Protection**.
+
+    1.  In **Email and Collaboration Security → Cloud Email Gateway Protection**, go to **Inbound Protection → Domain-based Authentication** and click **SPF**.
+
+    2.  If SPF is enabled, click the default Sender Policy Framework (SPF) rule.
+
+    3.  Under **Ignored Peers**, add the domains `trendmicro.com` and `mailrelaysrv` to ensure simulation emails pass SPF checks.
+
+    4.  Go to **Spam Filtering → Spam Policy** and click your organization's spam or phish rule.
+
+    5.  In **Recipients and Senders**, set the sender to **Type address or domain** and type `*@mailrelaysrv.com`.
+
+    6.  Set the recipient to **My Organization**.
+
+    7.  Click **Add** and then **Submit**.
+
+    8.  Repeat steps e through g for your organization's newsletter or spam-like rule if necessary.
+
+    9.  Go to **Email and Collaboration Security → Cloud Email Gateway Protection** and click **Administration**.
+
+    10. Go to **Web Reputation Approved List**
+
+    11. Specify the sending domain copied from the settings in **Security Awareness**.
+
+7.  Add the sending IP addresses to **Cloud Email Gateway Protection**.
+
+    1.  In **Email and Collaboration Security → Cloud Email Gateway Protection**, go to **Inbound Protection** and click **IP Reputation**.
+
+    2.  Click **Add**.
+
+    3.  Specify the sending IP address copied from the settings in **Security Awareness**.
+
+    4.  Type a description for the IP address.
+
+    5.  Click **Save**.
+:::

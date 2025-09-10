@@ -1,0 +1,111 @@
+---
+slug: trend-vision-one-config-scheduled-update
+title: Configuring Scheduled Update Settings
+last_updated: '2025-09-08'
+ai_context:
+  source_file: config-scheduled-update.md
+  conversion_date: '2025-09-08T23:42:22.935Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Configure scheduled component update settings to allow the Trend Micro Apex Central server to download selected components from an update source based on the specified schedule.
+
+You can also configure Trend Micro Apex Central to deploy updated components to managed products based on the deployment plan.
+
+### Procedure {#procedure}
+
+1.  Go to **Administration → Updates → Scheduled Update**.
+
+2.  Use the drop-down lists to filter the component list. You can filter the component list based on the following:
+
+    - **Products**: Select one or more managed products from the drop-down and click **Apply**
+
+    - **Categories**: Select one or more component categories from the drop-down and click **Apply**
+
+    - **Types**: Select one or more component types from the drop-down and click **Apply**
+
+3.  In the **Components** section, select the component categories or expand the categories to select components to update.
+
+    For more information, see [Component List](component-list.mdx).
+
+    :::warning[Important]
+
+    If you select the **Enable intelligent component downloading** check box, Trend Micro Apex Central automatically selects all components based on the selected component categories. You cannot select individual components to update. To select individual components, clear the check box.
+    :::
+
+4.  (Optional) Select **Enable intelligent component downloading** to allow Trend Micro Apex Central to automatically detect and download new components based on the selected component categories from an update source.
+
+    When you select this option, Trend Micro Apex Central also downloads updates for all existing components in the selected categories.
+
+    :::note
+
+    If the intelligent component downloading feature is not enabled, Trend Micro Apex Central only downloads updates for existing components selected in the component list during a scheduled or manual update.
+    :::
+
+5.  In the **Update Source** section, select one of the following options and configure the required settings:
+
+    - **Trend Micro ActiveUpdate server**: Select this option to download component updates from the official Trend Micro ActiveUpdate server.
+
+    - **Other update source**: Type the URL of the update source in the text field. You can specify up to five update sources by clicking the + icon.
+
+      If server authentication is required, click **Specify authentication credentials** and type the user name and password information.
+
+      For more information, see [Update Source](update-source.mdx).
+
+6.  In the **Download Schedule** section, select **Enable scheduled downloads** and specify the component download schedule.
+
+7.  In the **Deployment Plan** section, select a deployment option and configure the required settings.
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Option</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Deploy to all selected managed products</p></td>
+    <td><p>Select this option to deploy updated components to the selected managed products based on one of the following schedules:</p>
+    <ul>
+    <li><p><strong>Immediately</strong>: Trend Micro Apex Central deploys the updated components to the managed products as soon as Trend Micro Apex Central finishes downloading new component versions.</p></li>
+    <li><p><strong>Start at</strong>: Trend Micro Apex Central deploys updated components to managed products at the specified time.</p></li>
+    <li><p><strong>Delay</strong>: Trend Micro Apex Central deploys updated components to managed products after waiting for the specified time.</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>Define different deployment plans for managed products</p></td>
+    <td><p>Select this option to configure deployment schedules for specified managed products.</p>
+    <p>Do one of the following:</p>
+    <ul>
+    <li><p>Click <strong>+ Add</strong> to add a new deployment schedule.</p>
+    <p>For more information, see <a href="trend-vision-one-adding-deployment-schedule">Adding a Deployment Schedule</a>.</p></li>
+    <li><p>Click a schedule to edit the deployment schedule settings.</p></li>
+    <li><p>Click <strong>Delete</strong> to remove a selected deployment schedule.</p></li>
+    </ul>
+    
+
+    :::note
+    
+    <p>If you do not specify a deployment schedule, Trend Micro Apex Central downloads the component updates but does not deploy updated components to managed products.</p>
+    
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>Do not deploy</p></td>
+    <td><p>Select this option if you do not want Trend Micro Apex Central to automatically deploy updated components to managed products.</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+8.  Click **Save**.
+:::

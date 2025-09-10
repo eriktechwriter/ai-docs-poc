@@ -1,0 +1,267 @@
+---
+slug: trend-vision-one-create-api-key-using-code
+title: Create an API Key Using Code
+---
+:::::tip
+
+This article describes how to create API keys for [legacy accounts](https://docs.trendmicro.com/en-us/documentation/article/trend-micro-cloud-one-identity-account-management-c1-accounts-about).
+
+If you're using a new Trend Micro Cloud One account, see [Manage API keys](https://docs.trendmicro.com/en-us/documentation/article/trend-micro-cloud-one-identity-account-management-c1-api-key) instead.
+:::
+
+To use an SDK to create an API key, you first need to obtain the ID of the role to associate with the API key. You also need to use an existing API key to authenticate the call. If no API keys have been created, you can use a username and password to create the first API key.
+
+## Obtain a role ID {#obtain-a-role-id}
+
+Obtain a role ID to assign it a role to an API key. When you do not know the ID of a role, you can search for the role and then obtain the role ID.
+
+For example, a program that generates a report on computer security statuses requires read access to all computers. The Auditor role that Server & Workload Protection provides by default provides read-only access to computers and policies, and is appropriate for this task.
+
+If you want to create a role, see [Control Access Using Roles](control-access-using-roles.mdx).
+
+Use the following general steps to search for a role and obtain the ID. For more information about searching, see [Search for Resources](search-for-resources.mdx).
+
+### Procedure {#procedure}
+
+1.  Create a `SearchCriteria` object that defines the search criteria.
+
+2.  Add the `SearchCriteria` to a `SearchFilter`.
+
+3.  Create an `AdministratorRolesApi` object and use it to perform the search.
+
+4.  Obtain the ID from the returned `Role` object.
+
+### Next steps {#next-steps}
+
+The following example searches for a role by name.
+
+[View source](https://github.com/deep-security/automation-center-sdk-samples/blob/master/python/src/search_examples.py)
+
+```bash
+# Store the role ID - default is None
+role_id = None
+
+# Search criteria
+name_criteria = api.SearchCriteria()
+name_criteria.field_name = "name"
+name_criteria.string_value = role_name
+name_criteria.string_test = "equal"
+
+# Search filter
+role_filter = api.SearchFilter()
+role_filter.search_criteria = [name_criteria]
+
+# Perform the search and obtain the ID of the returned role
+admin_roles_api = api.AdministratorRolesApi(api.ApiClient(configuration))
+roles = admin_roles_api.search_administrator_roles(api_version, search_filter=role_filter)
+
+if len(roles.roles) &gt; 0:
+    role_id = roles.roles[0].id
+
+return roles.roles[0].id
+```
+
+Also see the [Search Administrator Roles](https://automation.trendmicro.com/cloudone/workload-security/) operation in the API Reference.
+
+## Create an API key using an SDK {#create-an-api-key-using-an-sdk}
+
+To use an SDK create an API key, create an `ApiKey` object and set the name and the ID of the role to associate with the API key. You can also specify the following optional properties:
+
+- A description
+- The time zone
+- The locale
+- The expiry date
+
+Use an `APIKeysApi` object to create the API key on Server & Workload Protection. The `ApiKey` object that is returned contains the secret key.
+
+To use the API to create an API key, use the [Create an API Key](https://automation.trendmicro.com/cloudone/workload-security/) operation of the `/api/apikeys` endpoint.
+
+The following example creates an API key for auditing purposes. The key expires 2 weeks after creation.
+
+[View source](https://github.com/deep-security/automation-center-sdk-samples/blob/master/python/src/api_key_examples.py)
+
+```bash
+# Set key properties
+time_to_expiry_in_ms = 14 * 24 * 60 * 60 * 1000
+current_time_in_ms = int(round(time.time() * 1000))
+
+key = api.ApiKey()
+key.key_name = key_name
+key.description = "Read-only access"
+key.role_id = "2"
+key.locale = "en-US"
+key.time_zone = "Asia/Tokyo"
+key.expiry_date = current_time_in_ms + time_to_expiry_in_ms # expires in 2 weeks
+
+# Create the key on Server & Workload Protection
+api_keys_api = api.APIKeysApi(api.ApiClient(configuration))
+return api_keys_api.create_api_key(key, api_version)
+```
+
+For information about authenticating API calls, see [Authenticate with Server & Workload Protection](send-your-first-request-using-api.mdx).
+
+## Create an API key using a username and password {#create-an-api-key-using-a-username-and-password}
+
+To automate a task when no API key is created yet, you can use the API and a username and password to create the first API key:
+
+### Procedure {#procedure-1}
+
+1.  Use the `/api/sessions` resource to obtain a valid session cookie and request ID.
+
+2.  Use the session cookie and request ID in a request to the `/api/apikeys` resource to create the API key.
+
+### Next steps {#next-steps-1}
+
+Once created, use the API key to make subsequent calls to Server & Workload Protection.
+
+## Obtain a session cookie and a request ID {#obtain-a-session-cookie-and-a-request-id}
+
+Use an HTTP client such as Postman, Paw, or cURL to send a POST request to the `/api/sessions` resource. The response includes a cookie that contains the session ID, and the response body contains the request ID.
+
+:::note
+
+The `/api/sessions` resource is not available in an SDK at this time.
+:::
+
+Use the following information to create the request:
+
+- Request type: `POST`
+
+- URL: `https://<Server & Workload Protection Hostname>:<port>/api/sessions`, for example `https://localhost:4119/api/sessions`
+
+- First header:
+
+  - Name: `api-version`
+  - Value: `v1`
+
+- Second header:
+
+  - Name: `Content-type`
+  - Value: `application/json`
+
+- Body (include the `tenantName` and `mfaCode` as well if necessary):
+
+  ```bash
+  {
+    "userName": "myUserName",
+    "password": "myPassword"
+  }
+  ```
+
+Here is an example cURL command. The response cookies are saved in the cookie.txt file.
+
+```bash
+curl -i -X POST \
+  https://&nbsp;localhost:4119/api/sessions \
+  -H 'Cache-Control: no-cache' \
+  -H 'Content-Type: application/json' \
+  -H 'api-version: v1' \
+  -c cookie.txt \
+  -d '{
+"userName": "myUserName",
+"password": "myPassword"
+}'
+```
+
+The `Set-Cookie` response header includes the session ID in the `sID` cookie. The response body includes the response ID as the value of `RID`. The response resembles the following example:
+
+```bash
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1;mode=block
+Cache-Control: no-cache,no-store
+Pragma: no-cache
+Set-Cookie: sID=D5EE2AC155601C895B33B701080D40A6; Path=/; Secure; HttpOnly
+Content-Type: application/json
+Content-Length: 141
+Date: Wed, 24 Oct 2018 15:29:53 GMT
+
+{
+    "administratorID": 1,
+    "created": 1540309893123,
+    "lastActivity": 1540309893123,
+    "accessType": "webService",
+    "RID": "77DFF81036170DBF92CB71E4559512B9"
+}
+```
+
+## Create an API key using the session cookie and the request ID {#create-an-api-key-using-the-session-cookie-and-the-request-id}
+
+Use an HTTP client such as Postman, Paw, or cURL to send a POST request to the `/api/apikeys` resource. Use the session cookie and the response ID that you obtained from the `/api/sessions` resource to authenticate the call.
+
+:::note
+
+The SDKs do not support the use of session IDs and resource IDs for authentication at this time.
+:::
+
+Use the following information to create the request:
+
+- Request type: `POST`
+
+- URL: `https://<Server & Workload Protection Hostname>:<port>/api/apikeys`, for example `https://localhost:4119/api/sessions`
+
+- First header:
+
+  - Name: `api-version`
+  - Value: `v1`
+
+- Second header:
+
+  - Name: `Content-type`
+  - Value: `application/json`
+
+- Third header:
+
+  - Name: `rID`
+  - Value: The request ID that you obtained from the `sessions` resource, for example `77DFF81036170DBF92CB71E4559512B9`
+
+- Cookie: Include the `sID` cookie from the response that you received from the `/api/sessions` resource.
+
+- Body:
+
+  ```bash
+  {
+    "keyName": "First Key",
+    "description": "Created using a request ID",
+    "roleID: 1
+  }
+  ```
+
+  For information about obtaining the role ID, see Obtain a role ID.
+
+Here is an example cURL command. The session cookie is included via the cookie.txt file.
+
+```bash
+curl -X POST \
+  https://&nbsp;192.168.60.128:4119/api/apikeys \
+  -H 'Content-Type: application/json' \
+  -H 'Postman-Token: 6f81da09-e5e2-421b-a38a-d5679f50608d' \
+  -H 'api-version: v1' \
+  -H 'rID: 77DFF81036170DBF92CB71E4559512B9' \
+  -b cookie.txt \
+  -d '{
+  "keyName": "First Key",
+  "description": "Created using a request ID",
+  "roleID": 1
+}'
+```
+
+The response body includes the secret key as the value of `secretKey`, similar to the following example:
+
+```bash
+{
+    "keyName": "First Key",
+    "description": "Created using a request ID",
+    "locale": "en-US",
+    "roleID": 1,
+    "timeZone": "America/New_York",
+    "active": true,
+    "created": 1540310105209,
+    "unsuccessfulSignInAttempts": 0,
+    "secretKey": "8:4rFctPvno+dxntueMcso4F61SUZMFVt3I6SczG7ysOA=",
+    "serviceAccount": false,
+    "ID": 8
+}
+```
+
+Save the `secretKey` so that you can later use it in the `api-secret-key` header of your API calls.
+::::::

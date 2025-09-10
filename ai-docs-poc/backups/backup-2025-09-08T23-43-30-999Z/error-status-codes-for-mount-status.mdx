@@ -1,0 +1,225 @@
+---
+slug: trend-vision-one-error-status-codes-for-mount-status
+title: Error status codes for mount point status
+last_updated: '2025-09-08'
+ai_context:
+  source_file: error-status-codes-for-mount-status.md
+  conversion_date: '2025-09-08T23:42:19.779Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Below are status codes you might encounter when mounting the NFS and CIFS/SMB file systems:
+
+### Common mount error codes (Both NFS and CIFS) {#common-mount-error-codes-both-nfs-and-cifs}
+
+<table>
+<tbody>
+<tr>
+<td><p>Exit code</p></td>
+<td><p>Errno name</p></td>
+<td><p>Description</p></td>
+<td><p>NFS scenario</p></td>
+<td><p>CIFS/SMB scenario</p></td>
+</tr>
+<tr>
+<td>0</td>
+<td>Success</td>
+<td>Operation completed successfully</td>
+<td>Mount succeeded</td>
+<td>Mount succeeded</td>
+</tr>
+<tr>
+<td>1</td>
+<td>EPERM</td>
+<td>Operation not permitted</td>
+<td>No root privileges</td>
+<td>No root privileges</td>
+</tr>
+<tr>
+<td>2</td>
+<td>ENOENT</td>
+<td>No such file or directory</td>
+<td>Mount point is missing</td>
+<td>Mount point or share is missing</td>
+</tr>
+<tr>
+<td>5</td>
+<td>EIO</td>
+<td>Input/output error</td>
+<td>Generic I/O error</td>
+<td>Generic I/O error</td>
+</tr>
+<tr>
+<td>13</td>
+<td>EACCES</td>
+<td>Permission denied</td>
+<td>Export permission denied</td>
+<td>Authentication failed</td>
+</tr>
+<tr>
+<td>16</td>
+<td>EBUSY</td>
+<td>Device or resource busy</td>
+<td>Mount point in use</td>
+<td>Mount point in use</td>
+</tr>
+<tr>
+<td>20</td>
+<td>ENOTDIR</td>
+<td>Not a directory</td>
+<td>Mount point is not a directory</td>
+<td>Mount point is not a directory</td>
+</tr>
+<tr>
+<td>22</td>
+<td>EINVAL</td>
+<td>Invalid argument</td>
+<td>Invalid mount options</td>
+<td>Invalid mount options</td>
+</tr>
+<tr>
+<td>101</td>
+<td>ENETUNREACH</td>
+<td>Network unreachable</td>
+<td>Cannot reach NFS server</td>
+<td>Cannot reach SMB server</td>
+</tr>
+<tr>
+<td>110</td>
+<td>ETIMEDOUT</td>
+<td>Connection timed out</td>
+<td>NFS server not responding</td>
+<td>SMB server not responding</td>
+</tr>
+<tr>
+<td>111</td>
+<td>ECONNREFUSED</td>
+<td>Connection refused</td>
+<td>NFS service not running</td>
+<td>SMB service not running</td>
+</tr>
+<tr>
+<td>112</td>
+<td>EHOSTDOWN</td>
+<td>Host is down</td>
+<td>NFS server down</td>
+<td>SMB server down</td>
+</tr>
+<tr>
+<td>113</td>
+<td>EHOSTUNREACH</td>
+<td>No route to host</td>
+<td>Network routing issue</td>
+<td>Network routing issue</td>
+</tr>
+</tbody>
+</table>
+
+### NFS-specific error codes {#nfs-specific-error-codes}
+
+<table>
+<tbody>
+<tr>
+<td><p>Exit code</p></td>
+<td><p>Errno name</p></td>
+<td><p>Description</p></td>
+<td><p>Common scenario</p></td>
+</tr>
+<tr>
+<td>6</td>
+<td>ENXIO</td>
+<td>No such device or address</td>
+<td>NFS export does not exist</td>
+</tr>
+<tr>
+<td>32</td>
+<td>EPIPE</td>
+<td>Broken pipe</td>
+<td>Connection to NFS server broken</td>
+</tr>
+<tr>
+<td>74</td>
+<td>EBADMSG</td>
+<td>Bad message</td>
+<td>RPC message format error</td>
+</tr>
+<tr>
+<td>116</td>
+<td>ESTALE</td>
+<td>Stale file handle</td>
+<td>NFS file handle no longer valid</td>
+</tr>
+<tr>
+<td>118</td>
+<td>ENOTSUPP</td>
+<td>Protocol not supported</td>
+<td>Unsupported NFS version</td>
+</tr>
+<tr>
+<td>121</td>
+<td>EREMOTEIO</td>
+<td>Remote I/O error</td>
+<td>I/O error on NFS server</td>
+</tr>
+<tr>
+<td>122</td>
+<td>EDQUOT</td>
+<td>Quota exceeded</td>
+<td>User quota exceeded on NFS server</td>
+</tr>
+</tbody>
+</table>
+
+### CIFS / SMB-specific error codes {#cifs-smb-specific-error-codes}
+
+<table>
+<tbody>
+<tr>
+<td><p>Exit code</p>
+<figure>
+&#10;</figure></td>
+<td><p>Errno name</p>
+<figure>
+&#10;</figure></td>
+<td><p>Description</p>
+<figure>
+&#10;</figure></td>
+<td><p>Common scenario</p>
+<figure>
+&#10;</figure></td>
+</tr>
+<tr>
+<td>95</td>
+<td>EOPNOTSUPP</td>
+<td>Operation not supported</td>
+<td>Unsupported CIFS protocol version</td>
+</tr>
+<tr>
+<td>121</td>
+<td>EREMOTEIO</td>
+<td>Remote I/O error</td>
+<td>Windows error (often authentication)</td>
+</tr>
+<tr>
+<td>126</td>
+<td>ENOKEY</td>
+<td>Required key not available</td>
+<td>Missing Kerberos ticket</td>
+</tr>
+<tr>
+<td>127</td>
+<td>EKEYEXPIRED</td>
+<td>Key has expired</td>
+<td>Kerberos ticket expired</td>
+</tr>
+<tr>
+<td>128</td>
+<td>EKEYREVOKED</td>
+<td>Key has been revoked</td>
+<td>Credentials revoked</td>
+</tr>
+</tbody>
+</table>
+:::

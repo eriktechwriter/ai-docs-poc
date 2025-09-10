@@ -1,0 +1,63 @@
+---
+slug: trend-vision-one-ftp-proxy-internet-premises-gateway
+title: Enable FTP proxy on an Internet Access On-premises gateway
+last_updated: '2025-09-08'
+ai_context:
+  source_file: ftp-proxy-internet-premises-gateway.md
+  conversion_date: '2025-09-08T23:42:19.020Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+You can enable an FTP proxy to protect your FTP traffic. When enabling the proxy, you can select either passive or active mode. Trend Micro recommends that you use passive mode as it is more secure.
+
+:::note
+
+When the FTP client uses passive mode to connect to the FTP proxy, the proxy uses passive mode to connect to the FTP server and is not configurable. If the FTP client uses active mode to connect to the FTP proxy,the proxy defaults to use the passive mode to connect to the FTP server but allows the admin to change to the active mode through the above setting if required.
+:::
+
+The FTP proxy in a forward proxy has some limitations when applying it to an internet access rule:
+
+- The ZSTA agent does not support the FTP Proxy.
+- FTP proxy also does not support the following features:
+  - HTTPS inspection
+  - HTTP/HTTPS traffic filters
+  - Botnet detection
+  - End-user authentication
+  - Risk control rules
+  - Rate limiting
+  - Safe Search
+  - AI Service Access Rules
+- FTP proxy does not support the following features in an internet access rule, and rules with unsupported configuration cannot be applied to an FTP proxy:
+  - Target: Only custom URL, category can be supported.
+  - Device posture: Not supported.
+  - Traffic: Cannot be applied based on URL category, Cloud App category, or Cloud App with action.
+  - Locations: Only on-premises gateways can be applied.
+  - Action: Warning action is not supported, falls back to Monitor action if Warning action is selected.
+  - Tenancy restriction: Not applied (if the rule is matched, the tenancy restriction setting will be skipped here)
+- The FTP proxy in an on-premises gateway does not support upstream proxy. It always connects to the server by logon=user@host mode.
+- FTPS (FTP over SSL) and SFTP (Secure FTP) are not supported.
+
+To enable the FTP proxy on the Internet Access on-premises gateway:
+
+### Procedure {#procedure}
+
+1.  On the Trend Vision One console, go to **Zero Trust Secure Access → Secure Access Configuration → Internet Access and AI Service Access Configuration**.
+
+2.  On the **Gateways** tab, select **Forward proxy** for Service mode.
+
+3.  Click the edit icon for the **Location** to which you want to add the FTP Proxy.
+
+4.  In Advance Settings on the Corporate intranet location setting module, under FTP traffic, select **Enable FTP Proxy (Port 8021)**.
+
+    :::note
+
+    You can configure your FTP traffic to go through a different port:
+
+    - This is done in Service Gateway Management.
+    - The FTP port range is 8022 - 8031, which automatically changed accordingly if the default FTP proxy port is changed.
+    :::
+
+5.  Select the mode and click **Save**.
+::::

@@ -1,0 +1,91 @@
+---
+slug: trend-vision-one-configuring-taxii-feed
+title: Configuring a TAXII feed
+---
+# Configuring a TAXII feed
+
+You can add or edit a [TAXII feed](https://help.eset.com/eti_portal/en-US/taxii_feeds.mdx) that you want to subscribe to.
+
+### Procedure {#procedure}
+
+1.  Go to **Threat Intelligence → Third-Party Intelligence → TAXII Feeds**.
+
+    The **TAXII Feeds** screen appears.
+
+2.  Add or edit a TAXII feed.
+
+    - To add a feed, click **Add**.
+
+    - To edit a feed, click the feed name.
+
+3.  In the **General** section, complete the following settings:
+
+    1.  Select the TAXII server version for this feed.
+
+        :::note
+
+        TAXII 2.0 and 2.1 are supported. The TAXII server version cannot be modified once the feed has been added.
+        :::
+
+    2.  Type the discovery uniform resource locator (URL) for this TAXII feed.
+
+    3.  Select **Use CA certificate** if the server uses it, and then click **Select** to locate the CA certificate file.
+
+    4.  Select **Specify authentication credentials** if the server requires it, and then type the user name and password used for authentication.
+
+    5.  Select **Server requires client authentication** if the server requires it, and then click **Select** to locate the client certificate file.
+
+    6.  Type the client certificate passphrase.
+
+4.  In the **Collections** section, complete the following settings:
+
+    1.  Click **Discover** to find and select one or more available collections.
+
+    2.  For each selected collection, click the toggle to enable or disable the **Extract and block suspicious objects** option.
+
+        For an enabled option, click ![](/images/edit_icon=e867c8bf-3c64-4b15-95f5-bf7a76d585ef.webp) and select one or more of the following suspicious object types to extract from the TAXII feed collections and add to the Suspicious Object List:
+
+        - Domain
+
+        - File SHA-1
+
+        - File SHA-256
+
+        - IP address
+
+        - Sender address
+
+        - URL
+
+        By default, Trend Vision One Threat Intelligence adds only [STIX](https://docs.oasis-open.org/cti/stix/) indicator objects that are not revoked and have any of the following labels to the Suspicious Object List:
+
+        - anomalous-activity
+
+        - anonymization
+
+        - attribution
+
+        - benign
+
+        - compromised
+
+        - malicious-activity
+
+        - unknown
+
+        To specify included labels, go to **Threat Intelligence → Suspicious Object Management → Default settings**
+
+    3.  For each selected collection, click the toggle to enable or disable the **Run an auto sweep** option.
+
+        Enabling this option initiates a one-time sweeping task that runs right after successful subscription to search your historical data for any indicators extracted from the current collection. Only "report" type STIX objects are supported for sweeping.
+
+5.  In the **Polling criteria** section, complete the following settings:
+
+    1.  Select the frequency at which the TAXII feed is polled for information.
+
+    2.  Select how far in the past you want to begin polling information from.
+
+6.  Click **Save**.
+
+    The TAXII feed appears in **TAXII Feeds** for use in custom intelligence reports. To review the reports generated from your feed subscriptions, go to **Threat Intelligence → Intelligence Reports** and click the **Custom** tab.
+:::

@@ -1,0 +1,139 @@
+---
+slug: trend-vision-one-cloudtrail-demo-models
+title: CloudTrail demo models
+---
+# CloudTrail demo models
+
+A list of demo models to trigger Workbench alerts for your cloud account.
+
+The following are a list of demonstration models used to test your XDR for Cloud - AWS CloudTrail integration. Running the listed models creates an alert in the Workbench app. Trend Micro recommends using an IAM user in AWS to run the demo models so you can also test the Revoke Access Permission response task.
+
+**Related information**
+
+- Demo Model - AWS Bedrock successful guardrail deletion detected
+- Demo Model- AWS Bedrock model invocation logs successful deletion detected
+- Demo Model - AWS IAM login MFA deactivated for a user
+- Demo Model - AWS EC2 EBS snapshot shared publicly or to external account
+- Demo Model - AWS IAM administrator access policy attached to a role
+
+## Demo Model - AWS Bedrock successful guardrail deletion detected {#demo-model---aws-bedrock-successful-guardrail-deletion-detected}
+
+Use these steps to trigger the detection model and create a Workbench alert.
+
+### Procedure {#procedure}
+
+1.  Open AWS CloudShell.
+
+2.  Create a guardrail for the demo.
+
+    Use the following command, making sure to provide the required attributes.
+
+    `aws bedrock create-guardrail --name <guardrail name> --blocked-input-messaging "test" --blocked-outputs-messaging "test" --word-policy-config wordsConfig=[{text=string1},{text=string2}]`
+
+3.  Verify the guardrail creation and copy the guardrail ID.
+
+    Use the command `aws bedrock list-guardrails`.
+
+4.  To trigger the demo model, delete the guardrail you created.
+
+    Use the following command to delete the guardrail you created.
+
+    `aws bedrock delete-guardrail --guardrail-identifier <guardrail id>`
+
+5.  In the Trend Vision One console, go to **Agentic SIEM & XDR → Workbench** to view the generated alert.
+
+## Demo Model- AWS Bedrock model invocation logs successful deletion detected {#demo-model--aws-bedrock-model-invocation-logs-successful-deletion-detected}
+
+Use these steps to trigger the detection model and create a Workbench alert.
+
+### Procedure {#procedure-1}
+
+1.  In your AWS console, go to **Amazon Bedrock → Bedrock configuration → Settings**.
+
+2.  Enable **Model invocation logging**.
+
+3.  Select the log location.
+
+4.  Click **Save settings**.
+
+5.  To trigger the demo model, disable **Model invocation logging**.
+
+6.  In the Trend Vision One console, go to **Agentic SIEM & XDR → Workbench** to view the generated alert.
+
+## Demo Model - AWS IAM login MFA deactivated for a user {#demo-model---aws-iam-login-mfa-deactivated-for-a-user}
+
+Use these steps to trigger the detection model and create a Workbench alert.
+
+:::warning[Important]
+
+You must have IAM access permissions in AWS to trigger this model.
+:::
+
+### Procedure {#procedure-2}
+
+1.  In your AWS console, access the **IAM dashboard**.
+
+2.  Go to **Access management → Users**.
+
+3.  Select a user for the test, or create a test user.
+
+4.  In the user settings, go to **Security credentials** and click **Assign MFA device**.
+
+5.  Follow the on-screen steps to add an MFA device to the user.
+
+6.  To trigger the model, access the AWS CloudShell.
+
+7.  Get the user name and the serial ID of the MFA device you set up.
+
+    Use the following command to list all MFA devices. Copy the user name and the serial ID of the test device.
+
+    `aws iam list-virtual-mfa-devices`
+
+8.  Deactivate the MFA device.
+
+    Use the following command to deactivate the test MFA device.
+
+    `aws iam deactivate-mfa-device --user-name <username> --serial-number <serial number or ARN>`
+
+9.  In the Trend Vision One console, go to **Agentic SIEM & XDR → Workbench** to view the generated alert.
+
+## Demo Model - AWS EC2 EBS snapshot shared publicly or to external account {#demo-model---aws-ec2-ebs-snapshot-shared-publicly-or-to-external-account}
+
+Use these steps to trigger the detection model and create a Workbench alert.
+
+### Procedure {#procedure-3}
+
+1.  In your AWS console, access the EC2 console and go to **Elastic Block Store → Snapshots**.
+
+2.  Click **Create snapshot**.
+
+3.  To trigger the model, click the snapshot you created and go to **Snapshot settings**.
+
+4.  Click **Modify permissions**.
+
+5.  Under **Sharing options**, select **Public**.
+
+6.  Click **Modify permissions**.
+
+7.  In the Trend Vision One console, go to **Agentic SIEM & XDR → Workbench** to view the generated alert.
+
+## Demo Model - AWS IAM administrator access policy attached to a role {#demo-model---aws-iam-administrator-access-policy-attached-to-a-role}
+
+Use these steps to trigger the detection model and create a Workbench alert.
+
+### Procedure {#procedure-4}
+
+1.  In your AWS console, access the **IAM dashboard**.
+
+2.  Select an existing role, or create a new IAM role to test the model.
+
+3.  Attach an admin policy to the role.
+
+4.  To trigger the model, access the AWS CloudShell.
+
+5.  Run the following command.
+
+    `aws iam attach-role-policy --role-name <name of role you just created> --policy-arn arn:aws:iam::aws:policy/AdministratorAccess`
+
+6.  In the Trend Vision One console, go to **Agentic SIEM & XDR → Workbench** to view the generated alert.
+::::

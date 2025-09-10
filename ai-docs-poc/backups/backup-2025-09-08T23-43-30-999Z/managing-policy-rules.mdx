@@ -1,0 +1,112 @@
+---
+slug: trend-vision-one-managing-policy-rules
+title: Managing policy rules
+last_updated: '2025-09-08'
+ai_context:
+  source_file: managing-policy-rules.md
+  conversion_date: '2025-09-08T23:42:16.159Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Policy rules are the means by which messaging policies are applied to message traffic in Cloud Email Gateway Protection. At any time, administrators can see the policy rules that apply to their organizations, and make changes to the policy rules that comprise their policy, rename the policy rules, query the policy rules, reorder the policy rules, and create new policy rules. Each policy rule can be disabled if desired without losing its definition, and re-enabled at a later time.
+
+**Policy Rule Tasks**
+
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 72%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Task</p></th>
+<th><p>Step</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Adding Policy Rules</p>
+
+
+:::tip
+
+<p>A new policy rule may be similar to the one you already have. In this case, it is easier to copy the policy rule and edit it rather than create a new policy rule from scratch.</p>
+
+
+:::
+
+</td>
+<td><p>Click <strong>Add</strong>.</p>
+<ol>
+<li><p>Define the basic information about the policy rule (rule name, whether it is enabled or not, and notes about the rule).</p>
+<p>See <a href="trend-vision-one-naming-enabling-rule">Naming and enabling a policy rule</a>.</p></li>
+<li><p>Select the address(es), domains(s) or group(s) that the policy rule applies to.</p>
+<p>See <a href="trend-vision-one-specifying-recipients-senders">Specifying recipients and senders</a>.</p></li>
+<li><p>Select and configure criteria.</p>
+<p>See <a href="trend-vision-one-rule-scanning-criteria">About policy rule scanning criteria</a>.</p></li>
+<li><p>Select and configure actions.</p>
+<p>See <a href="trend-vision-one-rule-actions">About policy rule actions</a>.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Copying Policy Rules</p></td>
+<td><p>In the policy rule list, select the rule or rules to copy. Click <strong>Copy</strong>.</p></td>
+</tr>
+<tr>
+<td><p>Editing Policy Rules</p></td>
+<td><p>In the policy rule list, click the name of the rule you want to edit and follow the procedures in the "Adding Policy Rules" task.</p></td>
+</tr>
+<tr>
+<td><p>Reordering Policy Rules</p></td>
+<td><p>In the policy rule list, do either of the following to reorder policy rules:</p>
+<ul>
+<li><p>Click the up or down arrow button to move policy rules up or down.</p></li>
+<li><p>Double-click the order number of a policy rule in the <strong>Order</strong> column and specify a new order number for the policy rule.</p></li>
+</ul>
+<p>See <a href="trend-vision-one-reordering-policy-rules">Reordering policy rules</a>.</p></td>
+</tr>
+<tr>
+<td><p>Enabling or Disabling Policy Rules</p></td>
+<td><p>In the policy rule list, click the icon to the left of the rule name to enable or disable the policy rule.</p></td>
+</tr>
+<tr>
+<td><p>Deleting Policy Rules</p></td>
+<td><p>In the policy rule list, select the rule or rules to delete. Click <strong>Delete</strong>.</p></td>
+</tr>
+<tr>
+<td><p>Querying Policy Rules</p></td>
+<td><p>Use the following criteria to perform a policy rule query:</p>
+<ul>
+<li><p><strong>Sender</strong>: Specify a sender address to search for policy rules that match this address.</p></li>
+<li><p><strong>Recipient</strong>: Specify a recipient address to search for policy rules that match this address.</p>
+
+
+:::note
+
+<p>For <strong>Sender</strong> and <strong>Recipient</strong>, the supported formats are <code>name@info.example.com</code>, <code>*@example.com</code> and <code>*@info.example.com</code>. Wildcard domain is not supported in query.</p>
+
+
+:::
+
+</li>
+<li><p><strong>Rule</strong>: Specify a policy rule name to search for policy rules that match this name.</p></li>
+<li><p><strong>Status</strong>: Select <strong>Enabled</strong> or <strong>Disabled</strong> to search for policy rules in the specific status.</p>
+
+
+:::note
+
+<p>For content filtering policy rules, <strong>Criteria type</strong> is provided to narrow down the search results by certain types of criteria.</p>
+
+
+:::
+
+</li>
+<li><p><strong>Level</strong>: Select <strong>Organization</strong> or <strong>User/Group</strong> to search for policy rules at the specific level.</p></li>
+<li><p><strong>Migration status</strong>: Select <strong>Error</strong>, <strong>Warning</strong>, or <strong>Fixed/Confirmed/Successful</strong> to search for policy rules in the specific status.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+:::

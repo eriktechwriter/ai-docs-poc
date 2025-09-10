@@ -1,0 +1,125 @@
+---
+slug: trend-vision-one-service-information-windows
+title: Service information
+last_updated: '2025-09-08'
+ai_context:
+  source_file: service-information-windows.md
+  conversion_date: '2025-09-08T23:42:12.698Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Learn about the types of evidence in the service information category that the [Incident Response Evidence Collection](create-ir-collection-playbooks.mdx) playbook, [Collect Evidence task](collect-evidence-task.mdx), and [Trend Micro Incident Response Toolkit](manual-evidence-collection.mdx) collect.
+
+:::note
+
+The evidence types in this category might also contain [attribute data from complied PE files](portable-executable-pe-attributes.mdx).
+:::
+
+### Autostart entries {#autostart-entries}
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Evidence Data</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Source</p></td>
+<td><p>The registry path pattern for the autorun entry.</p></td>
+</tr>
+<tr>
+<td><p>File system creation time</p></td>
+<td><p>The time the file system created the entry.</p></td>
+</tr>
+<tr>
+<td><p>Name</p></td>
+<td><p>The name of the file associated with the autorun entry in the registry.</p></td>
+</tr>
+<tr>
+<td><p>Registry path</p></td>
+<td><p>The full registry path of the autorun entry.</p></td>
+</tr>
+<tr>
+<td><p>Entry name</p></td>
+<td><p>The registry folder or key name of the autorun entry.</p></td>
+</tr>
+<tr>
+<td><p>Execution command</p></td>
+<td><p>The registry value of the autorun entry, used to run the entry.</p></td>
+</tr>
+<tr>
+<td><p>Path</p></td>
+<td><p>The file path for the entry obtained from the registry.</p></td>
+</tr>
+<tr>
+<td><p>Registry modification time</p></td>
+<td><p>The last time the registry key or associated entry values were modified.</p></td>
+</tr>
+</tbody>
+</table>
+
+### Scheduled tasks {#scheduled-tasks}
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Evidence Data</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Name</p></td>
+<td><p>The name of the registered task.</p></td>
+</tr>
+<tr>
+<td><p>Action</p></td>
+<td><p>The executable action performed by the task.</p></td>
+</tr>
+<tr>
+<td><p>Path</p></td>
+<td><p>The path to the executable file.</p></td>
+</tr>
+<tr>
+<td><p>Enabled</p></td>
+<td><p>An indication of whether the task is currently enabled.</p></td>
+</tr>
+<tr>
+<td><p>State</p></td>
+<td><p>The operational state of the registered task.</p></td>
+</tr>
+<tr>
+<td><p>Hidden</p></td>
+<td><p>An indication of whether the task is visible on the user interface.</p></td>
+</tr>
+<tr>
+<td><p>Last run time</p></td>
+<td><p>The time the registered task was last run.</p></td>
+</tr>
+<tr>
+<td><p>Next run time</p></td>
+<td><p>The time the registered task is next scheduled to run.</p></td>
+</tr>
+<tr>
+<td><p>Last run message</p></td>
+<td><p>The messages returned on the failure of the task's last execution.</p></td>
+</tr>
+<tr>
+<td><p>Last run code</p></td>
+<td><p>The results returned on the success of the task's last execution.</p></td>
+</tr>
+</tbody>
+</table>
+::::

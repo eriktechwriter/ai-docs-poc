@@ -1,0 +1,243 @@
+---
+slug: trend-vision-one-linux-kernels-major-minor
+title: Supported Runtime Security Linux kernels (major and minor versions)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: linux-kernels-major-minor.md
+  conversion_date: '2025-09-08T23:42:16.493Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+:::note
+
+- Container Security Helm version 2.3.14 added support for the modern Berkeley Packet Filter (BPF), also known as eBPF CO-RE (Compile Once, Run Everywhere). This allows Container Security to support any Linux kernel version 5.8 or later, as long as the BTF types are exposed.
+
+- If you are using runtime scanning in an ECS instance, you must use a kernel whose version is 5.8 or later.
+
+The following is a non-exclusive list of the kernel version flavors supported by Container Security.
+:::
+
+<table>
+<thead>
+<tr>
+<th><p>Platform</p></th>
+<th>Version</th>
+<th><p>Linux kernel version</p></th>
+<th><p>Flavor</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="5"><p>Amazon Linux</p></td>
+<td rowspan="4"><p>Amazon Linux 2</p></td>
+<td><p>4.14.x</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>5.4.x</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>5.10.x</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>5.15.x and later</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Amazon Linux 2023</p></td>
+<td><p>6.1.x and later</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Bottlerocket</p></td>
+<td> </td>
+<td><p>5.10.x and later</p></td>
+<td> </td>
+</tr>
+<tr>
+<td rowspan="2"><p>Red Hat Enterprise Linux</p></td>
+<td><p>RHEL 8.x</p></td>
+<td><p>4.18.x</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>RHEL 9.x</p></td>
+<td><p>5.14.x and later</p></td>
+<td> </td>
+</tr>
+<tr>
+<td rowspan="2"><p>Red Hat Enterprise Linux (CoreOS)</p></td>
+<td><p>RHCOS 4.12</p></td>
+<td><p>4.18.x</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>RHCOS 4.13 or later</p></td>
+<td><p>5.14.x and later</p></td>
+<td> </td>
+</tr>
+<tr>
+<td rowspan="21"><p>Ubuntu</p></td>
+<td rowspan="5"><p>Ubuntu 18</p></td>
+<td><p>4.15.x</p></td>
+<td><p>generic</p></td>
+</tr>
+<tr>
+<td><p>5.4.x and later</p></td>
+<td><p>generic</p></td>
+</tr>
+<tr>
+<td><p>5.4.x and later</p></td>
+<td><p>Azure</p></td>
+</tr>
+<tr>
+<td><p>5.4.x and later</p></td>
+<td><p>AWS</p></td>
+</tr>
+<tr>
+<td><p>5.4.x and later</p></td>
+<td><p>GKE</p></td>
+</tr>
+<tr>
+<td rowspan="15"><p>Ubuntu 20</p></td>
+<td><p>5.4.x</p></td>
+<td><p>generic</p></td>
+</tr>
+<tr>
+<td><p>5.4.x</p></td>
+<td><p>Azure</p></td>
+</tr>
+<tr>
+<td><p>5.4.x</p></td>
+<td><p>AWS</p></td>
+</tr>
+<tr>
+<td><p>5.4.x</p></td>
+<td><p>GKE</p></td>
+</tr>
+<tr>
+<td><p>5.11.x</p></td>
+<td><p>generic</p></td>
+</tr>
+<tr>
+<td><p>5.11.x</p></td>
+<td><p>Azure</p></td>
+</tr>
+<tr>
+<td><p>5.11.x</p></td>
+<td><p>AWS</p></td>
+</tr>
+<tr>
+<td><p>5.13.x</p></td>
+<td><p>AWS</p></td>
+</tr>
+<tr>
+<td><p>5.13.x</p></td>
+<td><p>Azure</p></td>
+</tr>
+<tr>
+<td><p>5.13.x</p></td>
+<td><p>GKE</p></td>
+</tr>
+<tr>
+<td><p>5.13.x</p></td>
+<td><p>generic</p></td>
+</tr>
+<tr>
+<td><p>5.15.x and later</p></td>
+<td><p>AWS</p></td>
+</tr>
+<tr>
+<td><p>5.15.x and later</p></td>
+<td><p>Azure</p></td>
+</tr>
+<tr>
+<td><p>5.15.x and later</p></td>
+<td><p>GKE</p></td>
+</tr>
+<tr>
+<td><p>5.15.x and later</p></td>
+<td><p>generic</p></td>
+</tr>
+<tr>
+<td><p>Ubuntu 22</p></td>
+<td><p>5.15.x and later</p></td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="3"><p>Debian</p></td>
+<td><p>Debian 10</p></td>
+<td><p>5.10.x</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Debian 11</p></td>
+<td><p>5.10.x and later</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Debian 12</p></td>
+<td><p>6.1.x and later</p></td>
+<td> </td>
+</tr>
+<tr>
+<td rowspan="2"><p>SUSE Linux</p></td>
+<td rowspan="2"><p>SUSE 15</p></td>
+<td><p>5.3.x</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>5.14.x and later</p></td>
+<td> </td>
+</tr>
+<tr>
+<td rowspan="2"><p>Garden Linux OS</p></td>
+<td rowspan="2">Garden Linux 934 and later</td>
+<td><p>5.15.x</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>6.1.x and later</p></td>
+<td> </td>
+</tr>
+<tr>
+<td rowspan="2"><p>Flatcar Container Linux</p></td>
+<td><p>Stable channel 2765.2.0</p></td>
+<td><p>5.10.19 and later</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>LTS channel 3033.3.0</p></td>
+<td><p>5.10.109 and later</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Talos Linux</p></td>
+<td><p>1.3.0 and later</p></td>
+<td><p>5.15.83 Talos and later</p></td>
+<td> </td>
+</tr>
+<tr>
+<td rowspan="2"><p>AlmaLinux</p></td>
+<td><p>AlmaLinux 8</p></td>
+<td><p>4.18.0-305 and later</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>AlmaLinux 9</p></td>
+<td><p>5.10.x and later</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Fedora</p></td>
+<td><p>Fedora CoreOS 39.20240210.3.0</p></td>
+<td><p>6.7.4-200.fc39.x86_64</p></td>
+<td><p>cloudone-container-security-helm &gt;= 2.4.0</p></td>
+</tr>
+</tbody>
+</table>
+::::

@@ -1,0 +1,85 @@
+---
+slug: trend-vision-one-risk-control-playbook-view
+title: Risk Control Rule components in playbook view
+last_updated: '2025-09-08'
+ai_context:
+  source_file: risk-control-playbook-view.md
+  conversion_date: '2025-09-08T23:42:13.600Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Risk Control rules are composed of the following types of components:
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Component</p></th>
+<th><p>Description</p></th>
+<th><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Condition</p></td>
+<td><p>Circumstance or event that triggers the rule. Some conditions allow configuration of details.</p>
+
+
+:::tip
+
+<p>You add more than one condition to trigger the rule by clicking <strong><img src="./images/add_condition=20220217104515.webp" /></strong> to the right of <strong>Start</strong>. Events must meet all conditions to trigger the rule.</p>
+
+
+:::
+
+
+<p>Targets can also be refined by additional action conditions (below).</p></td>
+<td><ul>
+<li><p>The user risk score is at least 50 within the last 2 days.</p></li>
+<li><p>The user risk score is at least 50 within the last 2 days AND leaked accounts in discovered users.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Time</p></td>
+<td><p>The weekly period that the rule is applied, and (optional) the start and end dates of the schedule</p>
+<p><strong>Always</strong> checks conditions continuously.</p></td>
+<td><ul>
+<li><p>Always</p></li>
+<li><p>From Monday 01:12 to Sunday 01:12</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Target</p></td>
+<td><p>Devices, users, or user groups on which actions are performed.</p></td>
+<td><ul>
+<li><p>All users/user groups</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Action condition</p></td>
+<td><p>Additional conditions can be added to refine targets or choose among different actions.</p></td>
+<td><p>If the user risk score is at least 50</p></td>
+</tr>
+<tr>
+<td><p>Action</p></td>
+<td><p>Automatically executed tasks triggered on selected targets.</p></td>
+<td><p>Disable user account</p></td>
+</tr>
+<tr>
+<td><p>Revoke Action</p></td>
+<td><p>Automatically revokes the action once specified conditions are met.</p>
+<p>Some actions are irrevocable.</p></td>
+<td><ul>
+<li><p>The risk score drops below the minimum score specified.</p></li>
+<li><p>None of the specified risk events is triggered again within 24 hours after the action is taken.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+:::

@@ -1,0 +1,109 @@
+---
+slug: trend-vision-one-file-timeline-windows
+title: File timeline
+last_updated: '2025-09-08'
+ai_context:
+  source_file: file-timeline-windows.md
+  conversion_date: '2025-09-08T23:42:19.235Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Learn about the types of evidence in the file timeline category that the [Incident Response Evidence Collection](create-ir-collection-playbooks.mdx) playbook, [Collect Evidence task](collect-evidence-task.mdx), and [Trend Micro Incident Response Toolkit](manual-evidence-collection.mdx) collect.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Evidence Data</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Creation time ($FN)</p></td>
+<td><p>The time and date the file was created, according to the NTFS $FILE_NAME attribute.</p></td>
+</tr>
+<tr>
+<td><p>Path</p></td>
+<td><p>The absolute path of the file.</p></td>
+</tr>
+<tr>
+<td><p>Modification time ($FN)</p></td>
+<td><p>The time and date the file was last modified, according to the NTFS $FILE_NAME attribute.</p></td>
+</tr>
+<tr>
+<td><p>Access time ($FN)</p></td>
+<td><p>The time and date the file was last accessed, according to the NTFS $FILE_NAME attribute.</p></td>
+</tr>
+<tr>
+<td><p>Record time ($FN)</p></td>
+<td><p>The time and date the file's MFT entry was last modified, according to the NTFS $FILE_NAME attribute (often reflects metadata changes).</p></td>
+</tr>
+<tr>
+<td><p>Directory</p></td>
+<td><p>The directory in which the file is located.</p></td>
+</tr>
+<tr>
+<td><p>Filename</p></td>
+<td><p>The name portion of the file path.</p></td>
+</tr>
+<tr>
+<td><p>Inode</p></td>
+<td><p>The number of the file system index node (often referred to as the MFT Record Number in NTFS).</p></td>
+</tr>
+<tr>
+<td><p>File ID</p></td>
+<td><p>The unique identifier value assigned to the file within the filesystem.</p></td>
+</tr>
+<tr>
+<td><p>UID</p></td>
+<td><p>The User ID (UID) of the file's owner.</p></td>
+</tr>
+<tr>
+<td><p>Attributes</p></td>
+<td><p>A string or set of flags defining the file's attributes (for example, Read-only, Hidden, System).</p></td>
+</tr>
+<tr>
+<td><p>Symlink</p></td>
+<td><p>An indication of whether the file path is a symbolic link.</p></td>
+</tr>
+<tr>
+<td><p>Type</p></td>
+<td><p>The type of the file entry (for example, regular file, directory, symbolic link).</p></td>
+</tr>
+<tr>
+<td><p>Creation time ($STD)</p></td>
+<td><p>The time and date the file was created, according to the NTFS $STANDARD_INFORMATION attribute.</p></td>
+</tr>
+<tr>
+<td><p>Modification time ($STD)</p></td>
+<td><p>The time and date the file was last modified, according to the NTFS $STANDARD_INFORMATION attribute.</p></td>
+</tr>
+<tr>
+<td><p>Access time ($STD)</p></td>
+<td><p>The time and date the file was last accessed, according to the NTFS $STANDARD_INFORMATION attribute.</p></td>
+</tr>
+<tr>
+<td><p>MFT Change time ($STD)</p></td>
+<td><p>The time and date the file's MFT entry was last modified, according to the NTFS $STANDARD_INFORMATION attribute.</p></td>
+</tr>
+<tr>
+<td><p>Hard links</p></td>
+<td><p>The number of hard links pointing to the file.</p></td>
+</tr>
+<tr>
+<td><p>File version</p></td>
+<td><p>The version number associated with the file, if available (often relevant for executables or libraries).</p></td>
+</tr>
+<tr>
+<td><p>Size</p></td>
+<td><p>The size of the file, typically measured in bytes.</p></td>
+</tr>
+</tbody>
+</table>
+:::

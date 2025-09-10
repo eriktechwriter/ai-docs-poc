@@ -1,0 +1,124 @@
+---
+slug: trend-vision-one-adding-spf-settings
+title: Adding SPF settings
+last_updated: '2025-09-08'
+ai_context:
+  source_file: adding-spf-settings.md
+  conversion_date: '2025-09-08T23:42:25.664Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Cloud Email Gateway Protection allows you to add SPF settings to validate an inbound message comes from the authorized IP address stated in the DNS record for the sender domain within the *envelope address*.
+
+:::note
+
+Cloud Email Gateway Protection provides a built-in default rule that has the lowest priority to ensure you receive a baseline level of protection. The default rule cannot be deleted.
+
+You can create only one single rule for each "Managed Domain". The default rule will be applied if no other rules are matched based on the "Managed Domain".
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Inbound Protection → Domain-based Authentication → Sender Policy Framework (SPF)**.
+
+2.  Click **Add**.
+
+    The **Add SPF Settings** screen appears.
+
+3.  Select a specific recipient domain from the **Managed domain** drop-down list.
+
+4.  Select **Enable SPF** to enable SPF check in Cloud Email Gateway Protection.
+
+5.  Optionally select **Insert an X-Header into email messages** to add the SPF check result into the email message's X-Header.
+
+    Cloud Email Gateway Protection adds messages similar to the following in email message's X-Header named *X-TM-Received-SPF*:
+
+    <table>
+    <colgroup>
+    <col style="width: 44%" />
+    <col style="width: 56%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Status</p></th>
+    <th><p>X-Header</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Pass</p></td>
+    <td><p><code>X-TM-Received-SPF: Pass (domain of example_address@example.com designates 10.64.72.206 as permitted sender) client-ip=10.64.72.206; envelope-from=example_address@example.com; helo=mailserver.example.com</code></p></td>
+    </tr>
+    <tr>
+    <td><p>Fail</p></td>
+    <td><p><code>X-TM-Received-SPF: Fail (domain of example_address@example.com does not designates 10.64.72.206 as permitted sender) client-ip=10.64.72.206; envelope-from=example_address@example.com; helo=mailserver.example.com</code></p></td>
+    </tr>
+    <tr>
+    <td><p>SoftFail</p></td>
+    <td><p><code>X-TM-Received-SPF: SoftFail (domain of transitioning example_address@example.com discourages use of 10.64.72.206 as permitted sender) client-ip=10.64.72.206; envelope-from=example_address@example.com; helo=mailserver.example.com</code></p></td>
+    </tr>
+    <tr>
+    <td><p>Neutral</p></td>
+    <td><p><code>X-TM-Received-SPF: Neutral (10.64.72.206 is neither permitted nor denied by domain of example_address@example.com) client-ip=10.64.72.206; envelope-from=example_address@example.com; helo=mailserver.example.com</code></p></td>
+    </tr>
+    <tr>
+    <td><p>None</p></td>
+    <td><p><code>X-TM-Received-SPF: None (domain of example_address@example.com does not designate permitted sender hosts) client-ip=10.64.72.206; envelope-from=example_address@example.com; helo=mailserver.example.com</code></p></td>
+    </tr>
+    <tr>
+    <td><p>PermError</p></td>
+    <td><p><code>X-TM-Received-SPF: PermError (domain of example_address@example.com uses mechanism not recognized by this client) client-ip=10.64.72.206; envelope-from=example_address@example.com; helo=mailserver.example.com</code></p></td>
+    </tr>
+    <tr>
+    <td><p>TempError</p></td>
+    <td><p><code>X-TM-Received-SPF: TempError (error in processing during lookup of example_address@example.com) client-ip=10.64.72.206; envelope-from=example_address@example.com; helo=mailserver.example.com</code></p></td>
+    </tr>
+    </tbody>
+    </table>
+
+    :::note
+
+    If the value of `envelope-from` is blank, the value of `helo` will be used instead for the SPF check.
+    :::
+
+6.  Under **Actions**, specify the action to take based on the SPF check result and select whether to tag the subject or send a notification for the message that fails SPF check.
+
+7.  Under **Tag and Notify**, customize the tag and select **Do not tag digitally signed messages** if necessary.
+
+    :::note
+
+    The **Tag subject** action may destroy the existing DKIM signatures in email messages, leading to a DKIM verification failure by the downstream mail server. To prevent tags from breaking digital signatures, select **Do not tag digitally signed messages**.
+    :::
+
+8.  Under **Ignored Peers**, do any of the following:
+
+    - To add ignored peers to skip SPF check for a specific sender, specify the sender's domain name, IP address or CIDR block in the text box and click **Add**.
+
+      :::note
+
+      Cloud Email Gateway Protection will not implement SPF check for email messages from the specific domain, IP address or CIDR block. The email messages will continue to the next step in the regular delivery process.
+
+      However, this does not mean the email messages have passed SPF check. They will fail subsequent DMARC authentication if they do not actually meet specific criteria of the SPF standard.
+      :::
+
+    - To search for existing ignored peers, type a keyword and click **Search**.
+
+    - To import ignored peers from a CSV file, click **Import**.
+
+      The following import options are available:
+
+      - **Merge**: append the ignored peers to the existing list.
+
+      - **Overwrite**: replace the existing list with the ignored peers in the file.
+
+    - To export all ignored peers to a CSV file, click **Export**.
+
+9.  Click **Add** to finish adding the SPF settings.
+
+    :::note
+
+    All the settings you added take effect only when you click **Add**.
+    :::
+::::

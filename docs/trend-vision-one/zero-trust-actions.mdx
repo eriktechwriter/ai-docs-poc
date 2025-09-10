@@ -1,0 +1,190 @@
+---
+slug: trend-vision-one-zero-trust-actions
+title: Zero Trust actions
+---
+# Zero Trust actions
+
+Response actions allow you to directly respond to risks without leaving the Trend Vision One console.
+
+You can take specific actions on users, endpoints, or their app/URL access activity manually or automatically based on risk status. After triggering an action, the **Zero Trust Secure Access** app creates a task and sends the command to the respective enforcement point.
+
+:::note
+
+Actions taken manually take precedence over the automated control configured in secure access rules.
+:::
+
+The following tables describe the actions you can take on users, endpoints, internal apps, and cloud apps/URLs found in your environment for risk remediation.
+
+**User**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Disable User Account</p></td>
+<td><p>Signs the user out of all active application and browser sessions of the user account. This task might take a few minutes to complete. Users are prevented from signing in any new session.</p>
+<p>For more information, see <a href="trend-vision-one-disabling-user-account-task-ztsa">Disable User Account task</a>.</p></td>
+</tr>
+<tr>
+<td><p>Enable User Account</p></td>
+<td><p>Allows the user to sign in to new application and browser sessions. This task might take a few minutes to complete. The user's subsequent sign-in attempts and access requests follow the control by secure access rules.</p>
+<p>For more information, see <a href="trend-vision-one-enable-user-account-task-ztsa">Enable User Account task</a>.</p></td>
+</tr>
+<tr>
+<td><p>Force Password Reset</p></td>
+<td><p>Signs the user out of all active application and browser sessions, and forces the user to create a new password during the next sign-in attempt. This task might take a few minutes to complete.</p>
+
+
+:::note
+
+<p>For extra security, require multi-factor authentication (MFA) before allowing users to change passwords.</p>
+
+
+:::
+
+
+<p>For more information, see <a href="trend-vision-one-force-password-reset-task-ztsa">Force Password Reset task</a>.</p></td>
+</tr>
+<tr>
+<td><p>Force Sign Out</p></td>
+<td><p>Signs the user out of all active application and browser sessions of the user account. This task might take a few minutes to complete. Users are not prevented from immediately signing back in the closed sessions or signing in new sessions.</p>
+
+
+:::note
+
+<p>This action is not available for users on your Active Directory (on-premises) or OpenLDAP server.</p>
+
+
+:::
+
+
+<p>For more information, see <a href="trend-vision-one-force-sign-out-task">Force Sign Out task</a>.</p></td>
+</tr>
+<tr>
+<td><p>Monitor Sign-In Attempt</p></td>
+<td><p>Allows the user to continue with or sign in to new app and browser sessions, monitors and logs all user sign in attempts and browser activity for 24 hours after the rule is triggered, and shows the detection on the <strong>Secure Access History</strong> screen</p></td>
+</tr>
+</tbody>
+</table>
+
+**Endpoint**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Isolate Endpoint</p></td>
+<td><p>Disconnects the target endpoint from the network, except for communication with the managing Trend Micro endpoint protection product.</p>
+<p>For more information, see <a href="trend-vision-one-isolate-endpoint-task-ztsa">Isolate Endpoint task</a>.</p></td>
+</tr>
+<tr>
+<td><p>Restore Connection</p></td>
+<td><p>Restores network connectivity to an endpoint that already applied the Isolate Endpoint action.</p>
+<p>For more information, see <a href="trend-vision-one-restore-connection-task-ztsa">Restore Connection task</a>.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Cloud App/URL Access**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Allow Cloud App/URL Access</p></td>
+<td><p>Allows the access to cloud apps and external URLs on the internet, but does not show the activity on the <strong>Secure Access History</strong> screen</p></td>
+</tr>
+<tr>
+<td><p>Block Cloud App/URL Access</p></td>
+<td><p>Blocks the access to cloud apps and external URLs on the internet, and shows the activity on the <strong>Secure Access History</strong> screen</p>
+<p>For more information, see <a href="trend-vision-one-block-cloud-app-url-access-task">Block AI Service, Cloud App, or URL Access task</a>.</p></td>
+</tr>
+<tr>
+<td><p>Monitor Cloud App/URL Access</p></td>
+<td><p>Allows the access to cloud apps and external URLs on the internet, and shows the activity on the <strong>Secure Access History</strong> screen</p></td>
+</tr>
+<tr>
+<td><p>Unblock Cloud App/URL Access</p></td>
+<td><p>Allows access to cloud apps and external URLs on the internet</p>
+<p>For more information, see <a href="trend-vision-one-unblock-cloud-app-url-access-task">Unblock AI Service, Cloud App, or URL Access task</a>.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Internal App Access**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Allow Internal App Access</p></td>
+<td><p>Allows the access to internal apps configured on Trend Vision One, but does not show the activity on the <strong>Secure Access History</strong> screen</p></td>
+</tr>
+<tr>
+<td><p>Block Internal App Access</p></td>
+<td><p>Blocks access to internal apps configured on Trend Vision One, and shows the activity on the <strong>Secure Access History</strong> screen</p>
+<p>For more information, see <a href="trend-vision-one-block-internal-app-access-task">Block Internal App Access task</a>.</p></td>
+</tr>
+<tr>
+<td><p>Monitor Internal App Access</p></td>
+<td><p>Allows the access to internal apps configured on Trend Vision One, and shows the activity on the <strong>Secure Access History</strong> screen</p></td>
+</tr>
+<tr>
+<td><p>Unblock Internal App Access</p></td>
+<td><p>Allows access to internal apps configured on Trend Vision One</p>
+<p>For more information, see <a href="trend-vision-one-unblock-internal-app-access-task">Unblock Internal App Access task</a>.</p></td>
+</tr>
+</tbody>
+</table>
+
+For more information about how to use the Zero Trust actions in Secure Access rules, see [Secure access rules](secure-access-rules.mdx).
+
+**Related information**
+
+- [Block AI Service, Cloud App, or URL Access task](block-cloud-app-url-access-task.md "You can take remediation measures on user accounts that may pose a security risk to your network environment on the Trend Vision One console.")
+- [Block Internal App Access task](block-internal-app-access-task.md "You can take remediation measures on user accounts that may pose a security risk to your network environment on the Trend Vision One console.")
+- [Disable User Account task](disabling-user-account-task-ztsa.md "You can take remediation measures on user accounts that may pose a security risk to your network environment on the Trend Vision One console.")
+- [Enable User Account task](enable-user-account-task-ztsa.md "After resolving the risk issues on the disabled user account, you can enable the user account using the Zero Trust Secure Access or Threat and Exposure Management app.")
+- [Force Password Reset task](force-password-reset-task-ztsa.md "You can take remediation measures on user accounts that may pose a security risk to your network environment on the Trend Vision One console.")
+- [Force Sign Out task](force-sign-out-task.md "You can take remediation measures on user accounts that may pose a security risk to your network environment on the Trend Vision One console.")
+- [Isolate Endpoint task](isolate-endpoint-task-ztsa.md "You can take remediation measures on user accounts that may pose a security risk to your network environment on the Trend Vision One console.")
+- [Restore Connection task](restore-connection-task-ztsa.md "After resolving the risk issues on the isolated endpoint, you can restore network connectivity using the Zero Trust Secure Access or Threat and Exposure Management app.")
+- [Unblock AI Service, Cloud App, or URL Access task](unblock-cloud-app-url-access-task.md "After resolving the risk issues on the user account, you can allow the user account to access cloud apps and websites using the Zero Trust Secure Access or Threat and Exposure Management app.")
+- [Unblock Internal App Access task](unblock-internal-app-access-task.md "After resolving the risk issues on the user account, you can allow the user account to access your internal apps using the Zero Trust Secure Access or Threat and Exposure Management app.")
+::::

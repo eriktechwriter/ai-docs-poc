@@ -1,0 +1,548 @@
+---
+slug: trend-vision-one-private-access-connector-cli
+title: Private Access Connector CLI commands
+last_updated: '2025-09-08'
+ai_context:
+  source_file: private-access-connector-cli.md
+  conversion_date: '2025-09-08T23:42:14.171Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+A list of available CLI commands for managing the Private Access Connector virtual appliance.
+
+To access the CLI, connect to and open the Connector virtual appliance (either directly or through SSH). Log on to the CLI with your account credentials.
+
+To view basic information of the Private Access Connector, such as network settings and service status, run the `show` command. For example, use `show ip route` to check the network IP route. For a list of available commands, type `show` and then press the ? key.
+
+To view a list of tasks you can perform and enable administrative commands, run the `enable` command. Enabling administrative commands changes the command prompt from **\>** to **\#**.
+
+The following table lists out the administrative commands you can use to manage the Connector virtual appliance.
+
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 27%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Command</p></th>
+<th><p>Syntax</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>enable</code></p></td>
+<td><p><code>enable</code></p></td>
+<td><p>Enters privileged mode to enable administrative commands</p></td>
+</tr>
+<tr>
+<td><p><code>clear</code></p></td>
+<td><p><code>clear</code></p></td>
+<td><p>Clears the content on the screen</p></td>
+</tr>
+<tr>
+<td><p><code>exit</code></p></td>
+<td><p><code>exit</code></p></td>
+<td><p>Exits the session</p></td>
+</tr>
+<tr>
+<td><p><code>reboot</code></p></td>
+<td><p><code>reboot</code></p></td>
+<td><p>Restarts a Private Access Connector immediately</p></td>
+</tr>
+<tr>
+<td><p><code>shutdown</code></p></td>
+<td><p><code>shutdown</code></p></td>
+<td><p>Shuts down a Private Access Connector immediately</p></td>
+</tr>
+<tr>
+<td><p><code>passwd</code></p></td>
+<td><p><code>passwd</code></p></td>
+<td><p>Changes the password of running the <code>enable</code> command</p></td>
+</tr>
+<tr>
+<td><p><code>register</code></p></td>
+<td><p><code>register &lt;registration_token&gt;</code></p></td>
+<td><p>Registers a Private Access Connector to Trend Vision One</p>
+
+
+:::note
+
+<p>This command is not available for Connectors deployed on Microsoft Azure using scale set VM deployment.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><code>unregister</code></p></td>
+<td><p><code>unregister</code></p></td>
+<td><p>Unregisters a Private Access Connector from Trend Vision One</p></td>
+</tr>
+<tr>
+<td><p><code>unregister force</code></p></td>
+<td><p><code>unregister force</code></p></td>
+<td><p>Forcibly unregisters a Private Access Connector from Trend Vision One</p></td>
+</tr>
+<tr>
+<td><p><code>register auto</code></p></td>
+<td><p><code>register auto</code></p></td>
+<td><p>Registers a Private Access Connector to Trend Vision One when automatic registration fails</p>
+
+
+:::note
+
+<p>This command is available only for Connectors deployed on Microsoft Azure using scale set VM deployment.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><code>ifconfig</code></p></td>
+<td><p><code>ifconfig</code></p></td>
+<td><p>Shows information about an interface</p></td>
+</tr>
+<tr>
+<td><p><code>ping</code></p></td>
+<td><p><code>ping [-c num_echos] [-i interval] &lt;dest&gt;</code></p></td>
+<td><p>Checks the connection to a destination</p>
+<p>[num_echos]: Number of echo requests to be sent</p>
+<p>[-i interval]: Delay interval in seconds between each packet</p>
+<p>&lt;dest&gt;: Destination host name or IP address</p></td>
+</tr>
+<tr>
+<td><p><code>traceroute</code></p></td>
+<td><p><code>traceroute &lt;dest&gt;</code></p></td>
+<td><p>Tracks route to a destination</p>
+<p>&lt;dest&gt;: Destination host name or IP address</p></td>
+</tr>
+<tr>
+<td><p><code>resolve</code></p></td>
+<td><p><code>resolve &lt;dest&gt;</code></p></td>
+<td><p>Resolves an IP address from a host name or resolve a host name from an IP address</p>
+<p>&lt;dest&gt;: Destination host name or IP address</p></td>
+</tr>
+<tr>
+<td><p><code>proxytest</code></p></td>
+<td><p><code>proxytest</code></p></td>
+<td><p>Tests the connection to the proxy server</p></td>
+</tr>
+<tr>
+<td><p><code>show interface</code></p></td>
+<td><p><code>show interface</code></p></td>
+<td><p>Displays information about all interfaces in use</p></td>
+</tr>
+<tr>
+<td><p><code>show dpid bypass</code></p></td>
+<td><p><code>show dpid bypass</code></p></td>
+<td><p>Displays whether the rule enforcement function of a Private Access Connector is disabled</p></td>
+</tr>
+<tr>
+<td><p><code>show dns</code></p></td>
+<td><p><code>show dns</code></p></td>
+<td><p>Displays the DNS settings of a Private Access Connector</p></td>
+</tr>
+<tr>
+<td><p><code>show proxy</code></p></td>
+<td><p><code>show proxy</code></p></td>
+<td><p>Displays details of the proxy server connection</p></td>
+</tr>
+<tr>
+<td><p><code>show hostname</code></p></td>
+<td><p><code>show hostname</code></p></td>
+<td><p>Displays the host name of a Private Access Connector</p></td>
+</tr>
+<tr>
+<td><p><code>show uptime</code></p></td>
+<td><p><code>show uptime</code></p></td>
+<td><p>Displays the time when a Private Access Connector is up and running, as well as its load information</p></td>
+</tr>
+<tr>
+<td><p><code>show version</code></p></td>
+<td><p><code>show version</code></p></td>
+<td><p>Displays the version of a Private Access Connector</p></td>
+</tr>
+<tr>
+<td><p><code>show ip route</code></p></td>
+<td><p><code>show ip route</code></p></td>
+<td><p>Displays the routing table of a router</p></td>
+</tr>
+<tr>
+<td><p><code>show register</code></p></td>
+<td><p><code>show register</code></p></td>
+<td><p>Displays the registration status of a Private Access Connector</p></td>
+</tr>
+<tr>
+<td><p><code>show region</code></p></td>
+<td><p><code>show region</code></p></td>
+<td><p>The <code>show region</code> command lists the <code>preferred</code>, <code>detected</code>, and <code>connected</code> regions:</p>
+<ul>
+<li>The preferred region is the region set by the <code>configure region</code> command.</li>
+<li>The detected region is the closest detected region.</li>
+<li>The connected region is the region the Connector is currently connected to.</li>
+</ul>
+<p>The Connector uses the preferred region first when attempting to connect to a ZTNP server, if that is not possible (either by failure, or not being set) then the Connector attempts to use the detected region to connect to a ZTNP server.</p></td>
+</tr>
+<tr>
+<td><p><code>show timezone</code></p></td>
+<td><p><code>show timezone</code></p></td>
+<td><p>Displays the time zone of a Private Access Connector</p></td>
+</tr>
+<tr>
+<td><p><code>show timezonelist</code></p></td>
+<td><p><code>show timezonelist [country_or_region_or_city]</code></p></td>
+<td><p>Displays the available time zones to configure for a Private Access Connector</p>
+<p>[country_or_region_or_city]: Keyword to list the available time zones for a specific country, region, or city, for example, <code>Africa</code>, <code>shanghai</code></p></td>
+</tr>
+<tr>
+<td><p><code>show time</code></p></td>
+<td><p><code>show time</code></p></td>
+<td><p>Displays system time</p></td>
+</tr>
+<tr>
+<td><p><code>show ntp server</code></p></td>
+<td><p><code>show ntp server</code></p></td>
+<td><p>Displays the NTP server of a Private Access Connector</p></td>
+</tr>
+<tr>
+<td><p><code>show ntp status</code></p></td>
+<td><p><code>show ntp status</code></p></td>
+<td><p>Displays the status of NTP</p></td>
+</tr>
+<tr>
+<td><p><code>show maintenance</code></p></td>
+<td><p><code>show maintenance</code></p></td>
+<td><p>Displays the current maintenance mode status</p></td>
+</tr>
+<tr>
+<td><p><code>configure interface ip</code></p></td>
+<td><p><code>configure interface &lt;interface&gt; &lt;ip&gt; &lt;mask&gt;</code></p></td>
+<td><p>Configures the IP address for your Ethernet interface</p>
+<p>&lt;interface&gt;: Name of the interface</p>
+<p>&lt;ip&gt;: IP address for the interface</p>
+<p>&lt;mask&gt;: Network mask for the interface</p></td>
+</tr>
+<tr>
+<td><p><code>configure hostname</code></p></td>
+<td><p><code>configure hostname &lt;hostname&gt;</code></p></td>
+<td><p>Configures the host name for a Private Access Connector</p>
+<p>&lt;hostname&gt;: Host name or FQDN for the Connector</p></td>
+</tr>
+<tr>
+<td><p><code>configure dns primary</code></p></td>
+<td><p><code>configure dns primary &lt;dns&gt;</code></p></td>
+<td><p>Configures a DNS server as the primary DNS server</p>
+<p>&lt;dns&gt;: IP address of a DNS server</p></td>
+</tr>
+<tr>
+<td><p><code>configure dns secondary</code></p></td>
+<td><p><code>configure dns secondary &lt;dns&gt;</code></p></td>
+<td><p>Configures a DNS server as the secondary DNS server</p>
+<p>&lt;dns&gt;: IP address of a DNS server</p></td>
+</tr>
+<tr>
+<td><p><code>configure no dns primary</code></p></td>
+<td><p><code>configure no dns primary</code></p></td>
+<td><p>Deletes the primary DNS server</p></td>
+</tr>
+<tr>
+<td><p><code>configure no dns secondary</code></p></td>
+<td><p><code>configure no dns secondary</code></p></td>
+<td><p>Deletes the secondary DNS server</p></td>
+</tr>
+<tr>
+<td><p><code>configure ip route</code></p></td>
+<td><p><code>configure ip route &lt;dest&gt; &lt;via&gt; &lt;dev&gt;</code></p></td>
+<td><p>Adds a static route entry for traffic to a destination network</p>
+<p>&lt;dest&gt;: Destination network segment, for example, <code>0.0.0.0/0</code></p>
+<p>&lt;via&gt;: IP address of the default gateway</p>
+<p>&lt;dev&gt;: Name of your Ethernet interface</p>
+<p>For example, the default routing strategy is making all egress to gateway <code>192.168.232.2</code> through <code>eth0</code> adapter:</p>
+<p><code>configure ip route 0.0.0.0/0 192.168.232.2 eth0</code></p></td>
+</tr>
+<tr>
+<td><p><code>configure no ip route</code></p></td>
+<td><p><code>configure no ip route &lt;dest&gt; &lt;via&gt; &lt;dev&gt;</code></p></td>
+<td><p>Deletes the static route entry for traffic to a destination network</p>
+<p>&lt;dest&gt;: Destination network segment, for example, <code>0.0.0.0/0</code></p>
+<p>&lt;via&gt;: IP address of the default gateway</p>
+<p>&lt;dev&gt;: Name of your Ethernet interface</p>
+<p>For example, to delete the default routing strategy of making all egress to gateway <code>192.168.232.2</code> through <code>eth0</code> adapter:</p>
+<p><code>configure no ip route 0.0.0.0/0 192.168.232.2 eth0</code></p></td>
+</tr>
+<tr>
+<td><p><code>configure dpid bypass</code></p></td>
+<td><p><code>configure dpid bypass &lt;on/off&gt;</code></p></td>
+<td><p>Disables or enables the rule enforcement function of a Private Access Connector</p>
+<p>If &lt;on/off&gt; is set to <code>on</code>, the Connector does not enforce rules to user access requests and allows all access to destinations. The default value is <code>off</code>.</p></td>
+</tr>
+<tr>
+<td><p><code>configure ping</code></p></td>
+<td><p><code>configure ping &lt;interface&gt; &lt;on/off&gt;</code></p></td>
+<td><p>Allows or blocks ping packages for your Ethernet interface</p>
+<p>&lt;interface&gt;: Name of the interface</p></td>
+</tr>
+<tr>
+<td><p><code>configure ssh</code></p></td>
+<td><p><code>configure ssh &lt;interface&gt; &lt;on/off&gt;</code></p></td>
+<td><p>Allows or blocks ssh traffic for your Ethernet interface</p>
+<p>&lt;interface&gt;: Name of the interface</p></td>
+</tr>
+<tr>
+<td><p><code>configure proxy</code></p></td>
+<td><p><code>configure proxy &lt;proxy_addr&gt; &lt;proxy_port&gt; [proxy_type]</code></p></td>
+<td><p>Configures a proxy server connection</p>
+<p>&lt;proxy_addr&gt;: FDQN or IP address of the proxy server</p>
+<p>&lt;proxy_port&gt;: Port of the proxy server</p>
+<p>[proxy_type]: Parameter that indicates the type of traffic the proxy server accepts. Options include: <code>http</code>, <code>https</code>, <code>all</code></p>
+
+
+:::note
+
+<p>If no value is specified, <code>[proxy_type]</code> defaults to <code>all</code></p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><code>configure no proxy</code></p></td>
+<td><p><code>configure no proxy [proxy_type]</code></p></td>
+<td><p>Deletes a proxy server connection</p>
+<p>[proxy_type]: Parameter that indicates the type of traffic the proxy server accepts. Options include: <code>http</code>, <code>https</code>, <code>all</code></p>
+
+
+:::note
+
+<p>If no value is specified, <code>[proxy_type]</code> defaults to <code>all</code></p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><code>configure dhcp</code></p></td>
+<td><p><code>configure dhcp &lt;interface&gt;</code></p></td>
+<td><p>Configures the DHCP mode for your Ethernet interface</p>
+<p>&lt;interface&gt;: Name of the interface</p></td>
+</tr>
+<tr>
+<td><p><code>configure region</code></p></td>
+<td><code>configure region &lt;region code&gt;</code></td>
+<td><p>The <code>configure region</code> command is used to set a <strong>preferred</strong> region for the Connector to search for a ZTNP (relay server) to connect to.</p>
+<p>Note that the region input is a free form input and thus could be invalid. The Connector will not connect to an invalid or unavailable region.</p>
+<p>Examples of valid regions are:</p>
+<ul>
+<li>anz (Australia)</li>
+<li>br (Brazil)</li>
+<li>ca (Canada)</li>
+<li>co (Colombia)</li>
+<li>de (Germany)</li>
+<li>eu (Europe Netherlands)</li>
+<li>in (India)</li>
+<li>is (Israel)</li>
+<li>mea (United Arab Emirates)</li>
+<li>mx (Mexico)</li>
+<li>sa (South Africa)</li>
+<li>sg (Singapore)</li>
+<li>uk (United Kingdom)</li>
+<li>us (United States East)</li>
+<li>us2 (United States West)</li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>configure timezone</code></p></td>
+<td><p><code>configure timezone &lt;timezone&gt;</code></p></td>
+<td><p>Configures the time zone for a Private Access Connector</p>
+<p>Options for <code>&lt;timezone&gt;</code> include:</p>
+<ul>
+<li><p><code>&lt;region&gt;/&lt;city&gt;</code>: Sets the time zone in <strong>region/city</strong> format, for example, Asia/Shanghai</p>
+
+
+:::note
+
+<p>Use <code>show timezonelist</code> to view available time zones.</p>
+
+
+:::
+
+</li>
+<li><p><code>UTC</code>: Sets the time zone to UTC time</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>configure ntp server</code></p></td>
+<td><p><code>configure ntp server &lt;address&gt;</code></p></td>
+<td><p>Configures the NTP server for a Private Access Connector</p>
+<p>&lt;address&gt;: FQDN or IP address of the NTP server</p></td>
+</tr>
+<tr>
+<td><p><code>configure maintenance</code></p></td>
+<td><p><code>configure maintenance &lt;mode&gt;</code></p></td>
+<td><p>Configures maintenance mode for a Private Access Connector</p>
+<p>&lt;mode&gt;: Maintenance mode setting. Options include:</p>
+<ul>
+<li><code>on</code>: Enables maintenance mode, disconnecting all users</li>
+<li><code>off</code>: Disables maintenance mode and allows normal operation</li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>curl</code></p></td>
+<td><p><code>curl [-X method] [-k insecure] [-v verbose] [-L location] [--tlsv tlsvX] [--http httpX] [--proxy proxy] &lt;URL&gt;</code></p></td>
+<td>Diagnoses your network using the curl command line tool.</td>
+</tr>
+<tr>
+<td><p><code>dpid restart</code></p></td>
+<td><p><code>dpid restart</code></p></td>
+<td>Restarts the DPID process.</td>
+</tr>
+<tr>
+<td><p><code>log collect</code></p></td>
+<td><p><code>log collect</code></p></td>
+<td><p>Collects and uploads logs to Trend Vision One</p>
+
+
+:::note
+
+<p>To collect debug logs, run the <code>log debug on</code> command first.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><code>log debug</code></p></td>
+<td><p><code>log debug &lt;mode&gt;</code></p></td>
+<td><p>Enables or disables debug logging</p>
+<p>&lt;mode&gt;: Debug logging mode. Options include:</p>
+<ul>
+<li><code>on</code>: Turn on debug logging
+
+
+:::note
+
+<p>By default, The debug logging mode is turned off. To collect debug logs for troubleshooting, run the <code>log debug on</code> command first.</p>
+
+
+:::
+
+</li>
+<li><code>off</code>: Turn off debug logging
+
+
+:::note
+
+<p>Trend Micro recommends turning off debug logging when it is no longer needed.</p>
+
+
+:::
+
+</li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>log upload</code></p></td>
+<td><p><code>log upload</code></p></td>
+<td><p>Uploads the already collected logs to Trend Vision One</p></td>
+</tr>
+<tr>
+<td><p><code>opti disk clear</code></p></td>
+<td><p><code>opti disk clear</code></p></td>
+<td><p>Deletes any log files in the <code>/opt/ztna-connector/log</code> folder that were modified more than 5 days ago, and deletes all files in the <code>/var/vtm/coredump/</code>, <code>/var/vtm/tmp/pkt_capture</code> and <code>/var/log/cdt</code> folders.</p></td>
+</tr>
+<tr>
+<td><p><code>opti disk clear all</code></p></td>
+<td><p><code>opti disk clear all</code></p></td>
+<td><p>Deletes all files in the <code>/opt/ztna-connector/log</code>, <code>/var/vtm/coredump/</code>, <code>/var/vtm/tmp/pkt_capture</code>, and <code>/var/log/cdt</code> folders, and then reboots the connector.</p></td>
+</tr>
+<tr>
+<td><p><code>pkt capture</code></p></td>
+<td><p><code>pkt capture [interface] [timeout] [size] [express]</code></p></td>
+<td><p>Captures packets on your interface</p>
+<p>[interface]: Name of the interface</p>
+
+
+:::note
+
+<p>To capture packets on interfaces eth0 and tun0 in one command, set &lt;interface&gt; to <code>default</code>.</p>
+
+
+:::
+
+
+<p>[timeout]: Time in seconds to stop the packet capturing process</p>
+<p>[size]: Maximum size in megabytes (MB) of the packet file to stop the packet capturing process</p>
+<p>[expression]: Filter expression to match the packets to be captured, for example, <code>"dst 1.1.1.1 and tcp port 22"</code>, <code>"port not 22"</code></p></td>
+</tr>
+<tr>
+<td><p><code>pkt stop</code></p></td>
+<td><p><code>pkt stop [interface]</code></p></td>
+<td><p>Stops the packet capturing process on your interface</p>
+<p>[interface]: Name of the interface</p>
+
+
+:::note
+
+<p>If no value is specified, <code>[interface]</code> defaults to <code>all</code></p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><code>pkt upload</code></p></td>
+<td><p><code>pkt upload</code></p></td>
+<td><p>Uploads the existing packet files to Trend Vision One</p></td>
+</tr>
+<tr>
+<td><p><code>pkt scp</code></p></td>
+<td><p><code>pkt scp &lt;address&gt; &lt;port&gt; &lt;remote_path&gt;</code></p></td>
+<td><p>Sends the packet files to a remote server using SSH</p>
+<p>&lt;address&gt;: FDQN or IP address of the remote server</p>
+<p>&lt;port&gt;: Port of the remote server</p>
+<p>&lt;remote_path&gt;: Path in the remote server to store the files</p></td>
+</tr>
+<tr>
+<td><p><code>pkt list</code></p></td>
+<td><p><code>pkt list</code></p></td>
+<td><p>Shows the existing packet files</p></td>
+</tr>
+<tr>
+<td><p><code>pkt ps</code></p></td>
+<td><p><code>pkt ps</code></p></td>
+<td><p>Shows the on-going packet capturing processes</p></td>
+</tr>
+<tr>
+<td><p><code>pkt del</code></p></td>
+<td><p><code>pkt del</code></p></td>
+<td><p>Deletes the existing packet files</p></td>
+</tr>
+<tr>
+<td><p><code>connectiontest</code></p></td>
+<td><p><code>connectiontest [region]</code></p></td>
+<td><p>Tests the connectivity to the services used by Private Access</p>
+<p>[region]: Trend Vision One data center region to which a Private Access Connector is registered. Values include:</p>
+<ul>
+<li><p><code>anz</code>: Australia</p></li>
+<li><p><code>eu</code>: Europe</p></li>
+<li><p><code>in</code>: India</p></li>
+<li><p><code>jp</code>: Japan</p></li>
+<li><p><code>sg</code>: Singapore</p></li>
+<li><p><code>us</code>: United States</p></li>
+<li><p><code>[auto]</code>: The registered region of the Private Access Connector</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+:::

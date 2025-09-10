@@ -1,0 +1,36 @@
+---
+slug: trend-vision-one-adjust-cpu-memory-ecs
+title: Adjust the CPU and memory allocations for ECS clusters
+last_updated: '2025-09-08'
+ai_context:
+  source_file: adjust-cpu-memory-ecs.md
+  conversion_date: '2025-09-08T23:42:25.647Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+For Amazon EC2 Scout and Falco containers, Trend recommends allocating a minimum of 256 CPU units and 512MB memory (a total of 512 CPU and 1GB memory per cluster node). This allocation can be adjusted based on cluster node size and observed CPU and memory usage.
+
+### Procedure {#procedure}
+
+1.  Sign in to your AWS account.
+
+2.  Navigate to **Amazon Elastic Container Service → Task definitions → trendmicro-scout**.
+
+3.  Click **Create new revision**.
+
+4.  Under Resource allocation limits, adjust the CPU and Memory hard limit fields.
+
+5.  Click **Create**.
+
+6.  Navigate to the ECS clusters page, and select `trendmicro-scout` for your cluster under Services.
+
+7.  Under Deployment configuration, check **Force new deployment**.
+
+8.  Under Task definition revision, select the revision that you just created **(LATEST)**.
+
+9.  Click **Update**.
+
+10. Repeat these steps if you make any updates to the Cloud Account Management stack.
+:::

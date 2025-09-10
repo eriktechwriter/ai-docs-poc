@@ -1,0 +1,204 @@
+---
+slug: trend-vision-one-get-list-computers-bash-powershell
+title: Get a List of Computers (Bash and PowerShell)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: get-list-computers-bash-powershell.md
+  conversion_date: '2025-09-08T23:42:18.889Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Get a list of the computers that Server & Workload Protection protects (or has detected) and focus the returned data to include the security status of each computer. Use the [List Computers](https://automation.trendmicro.com/cloudone/workload-security/) operation to get a list of computers. Use the optional `expand` query parameter to focus on the status information.
+
+When you list computers, by default all available computer information is returned. You can use the `expand` query parameter so that only the information in which you are interested is returned. At a minimum the basic information about each computer is returned, such as the computer ID, policy ID, and platform.
+
+:::note
+
+When you do not include the `expand` query string, all computer information is returned.
+:::
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Category of returned information</p></th>
+<th><p>Supported values for <code>expand</code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Minimum information</p></td>
+<td><p><code>none</code></p></td>
+</tr>
+<tr>
+<td><p>All information</p></td>
+<td><p><code>all</code>(default)</p></td>
+</tr>
+<tr>
+<td><p>Current status</p></td>
+<td><p><code>computerStatus</code>, <code>securityUpdates</code>,<code>tasks</code></p></td>
+</tr>
+<tr>
+<td><p>Configuration</p></td>
+<td><p><code>computerSettings</code>,<code>interfaces</code></p></td>
+</tr>
+<tr>
+<td><p>Security module configuration</p></td>
+<td><p><code>allSecurityModules</code> (includes information for all modules), <code>antiMalware</code>, <code>applicationControl</code>, <code>firewall</code>, <code>integrityMonitoring</code>, <code>intrusionPrevention</code>, <code>logInspection</code>, <code>SAP</code>, <code>webReputation</code></p></td>
+</tr>
+<tr>
+<td><p>Virtual machine information</p></td>
+<td><p><code>allVirtualMachineSummaries</code> (includes information for all types of virtual machines), <code>azureARMVirtualMachineSummary</code>, <code>azureVMVirtualMachineSummary</code>, <code>ec2VirtualMachineSummary</code>,<code>ESXSummary</code>, <code>noConnectorVirtualMachineSummary</code>,<code>vcloudVMVirtualMachineSummary</code>, <code>vmwareVMVirtualMachineSummary</code>, <code>workspaceVirtualMachineSummary</code>,</p></td>
+</tr>
+</tbody>
+</table>
+
+### Before you begin {#before-you-begin}
+
+You should have already verified that your environment is [set up to use the API using Bash or PowerShell](set-up-use-bash-or-powershell.mdx).
+
+Gather the following information that you need to complete this recipe:
+
+- The URL of Server & Workload Protection
+- The secret key for your API key
+
+### Bash {#bash}
+
+1.  Open Terminal or your preferred command line tool.
+
+2.  Enter the following commands to store details about your request, replacing `<YOUR URL>` with the URL of Server & Workload Protection, and `<YOUR SECRET KEY>` with the secret from your API key:
+
+    - `url=<YOUR URL>`
+
+      for example, `url=https://cloudone.trendmicro.com`
+
+    - `secret=<YOUR SECRET KEY>`
+
+      for example, `secret=5C58EADA-04BC-4ABC-45CF-B72925A0B674:aFBgpPV8eJQGaY2Dk0LmyQMD7nUGvyIDfIbIQo8Zgm8=`
+
+    - `expand=computerStatus`
+
+3.  Enter the following command to specify the JSON file where you want to save the response data, replacing `<FILE PATH>` with the file to create. Specify a file name with the .json extension:
+
+    `file=<FILE PATH>`
+
+    For example, `file=~/Documents/computers_status.json` saves the file below your home directory.
+
+4.  Enter the following command to send the request:
+
+    `curl -X GET "$url/api/computers?expand=$expand" -H "api-secret-key: $secret" -H "api-version: v1" > $file`
+
+    :::tip
+
+    To print the returned JSON in the terminal in a readable format (instead of writing to a file), pipe the results of the cURL command to [jq](https://stedolan.github.io/jq/). In the above command, replace `> $file` with `| jq .`.
+    :::
+
+5.  Open the JSON file in a Web browser. (The Web browser should format the JSON so that it is readable.) You should see JSON code that represents an array of computers. Each computer is represented with code that is similar to the following example:
+
+    ``` codeblock
+    {
+        "hostName": "gui2-336",
+        "displayName": "",
+        "description": "",
+        "lastIPUsed": "127.0.1.1",
+        "platform": "Unknown",
+        "groupID": 0,
+        "policyID": 1,
+        "relayListID": 0,
+        "lastSendPolicyRequest": 1566335191390,
+        "agentVersion": "0.0.0.0",
+        "computerStatus": {
+            "agentStatus": "inactive",
+            "agentStatusMessages": [
+                "Unmanaged (Unknown)"
+            ]
+        },
+        "ID": 201
+    }
+    ```
+
+    The `computerStatus` key contains the status information. In this example, the computer is not protected.
+
+6.  (Optional) Try changing the value of the `expand` variable to see how it affects the returned JSON. For example, enter `expand=computerProperties` and re-run the `curl` command.
+
+### PowerShell {#powershell}
+
+1.  Open PowerShell.
+
+2.  Enter the following command to use TLS 1.2, which the manager requires to create a secure connection:
+
+    ``` codeblock
+    [Net.ServicePointManager]::SecurityProtocol += [Net.SecurityProtocolType]::Tls12
+    ```
+
+3.  Enter the following commands to store details about your request, replacing `<YOUR URL>` with the URL of Server & Workload Protection, and `<YOUR SECRET KEY>` with the secret from your API key:
+
+    - `$url = "<YOUR URL>"`
+
+      for example, `url=https://cloudone.trendmicro.com`
+
+    - `$secret = "<YOUR API KEY SECRET>"`
+
+      for example,`$secret="5C58EADA-04BC-4ABC-45CF-B72725A0B674:aFBgpPV8eJQGaY2Dk0LmyQMD7nUGvyIDfIbIQo8Zgm8="`
+
+    - `$headers = @{api-version = v1; api-secret-key = $secret}`
+
+    - `$expand="computerStatus"`
+
+4.  Enter the following command to specify the JSON file where you want to save the response data, replacing `<FILE PATH>` with the file to create. Specify a file name with the .json extension:
+
+    `$file="<FILE PATH>"`
+
+    For example, $`file="$HOME\Documents\computers_status.json"` saves the file below your home directory.
+
+5.  Enter the following command to send the request:
+
+    ``` codeblock
+    Invoke-RestMethod "$url/api/computers?expand=$expand" -Headers $headers -OutFile $file
+    ```
+
+6.  Open the JSON file in a Web browser. (The Web browser should format the JSON so that it is readable.) You should see JSON code that represents an array of computers. Each computer is represented with code that is similar to the following example:
+
+    ``` codeblock
+    {
+        "hostName": "gui2-336",
+        "displayName": "",
+        "description": "",
+        "lastIPUsed": "127.0.1.1",
+        "platform": "Unknown",
+        "groupID": 0,
+        "policyID": 1,
+        "relayListID": 0,
+        "lastSendPolicyRequest": 1566335191390,
+        "agentVersion": "0.0.0.0",
+        "computerStatus": {
+            "agentStatus": "inactive",
+            "agentStatusMessages": [
+                "Unmanaged (Unknown)"
+            ]
+        },
+        "ID": 201
+    }
+    ```
+
+    The `computerStatus` key contains the status information. In this example, the computer is not protected.
+
+7.  (Optional) Try changing the value of the `expand` variable to see how it affects the returned JSON. For example, enter `$expand="computerProperties"` and re-run the `Invoke-RestMethod` command.
+
+### Notes {#notes}
+
+- If you open the JSON file in a text editor, the code appears on a single line which is difficult to read. Web browsers tend to format JSON so that it is readable. If your browser does not automatically format the JSON, consider installing a browser plugin that does.
+- To include multiple values for the `expand` query parameter, the URL in the API call must include an `expand` query string for each value, for example: `?expand=computerStatus&expand=computerProperties`
+
+### Related resources {#related-resources}
+
+- [Set Up to Use Bash or PowerShell](set-up-use-bash-or-powershell.mdx)
+- [List Computers](https://automation.trendmicro.com/cloudone/workload-security/) (API Reference)
+- [Report on Computer Status](report-computer-status.mdx) (Guide)
+- [Performance Tips](performance-tips.mdx) (Guide)
+::::

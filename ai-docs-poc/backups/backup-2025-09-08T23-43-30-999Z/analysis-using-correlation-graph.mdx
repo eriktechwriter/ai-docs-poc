@@ -1,0 +1,104 @@
+---
+slug: trend-vision-one-analysis-using-correlation-graph
+title: Analysis using the Correlation Graph
+last_updated: '2025-09-08'
+ai_context:
+  source_file: analysis-using-correlation-graph.md
+  conversion_date: '2025-09-08T23:42:25.219Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+View a visual representation of relationships between the trigger object and related objects.
+
+The **Correlation Graph** provides an interactive visual graph you can use to investigate security events. There are several tools and actions you can take to focus on objects and relationships.
+
+<figure>
+<img src="./images/CorrelationGraph=83317e79-9d78-42fb-af3d-893101ccf139.webp" />
+<figcaption>Correlation graph</figcaption>
+</figure>
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Detail</p></th>
+<th><p>Description</p></th>
+<th><p>Available actions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Playback bar</p></td>
+<td><p>The playback bar provides a historical review of the events and connections detailed in the Network Analytics report</p></td>
+<td><p>Click play, pause, or stop to control the playback.</p>
+<p>Use the time sliders to limit the events displayed in the correlation graph to the specific time frame.</p></td>
+</tr>
+<tr>
+<td><p>Advanced search filter</p></td>
+<td><p>Advanced search filters provide customization to find specific events or objects in the correlation graph</p></td>
+<td><p>Click the filter icon (<img src="./images/dddna_graph_filter=GUID-1A803C70-BBB6-4F2B-BF16-6B5CFFFAC409=1=en-us=Low.webp" />) to apply an advanced search filter. For more information, see <a href="trend-vision-one-correlation-graph-advanced-search">Correlation Graph advanced search filter</a>.</p></td>
+</tr>
+<tr>
+<td><p>Correlation line</p></td>
+<td><p>Correlation lines show the relationships between internal hosts, IoCs, and other objects detected by the network analytics report</p>
+<ul>
+<li><p>Each correlation line represents one or more transactions between two hosts.</p></li>
+<li><p>The thickness of the line is proportional to the number of transactions occurring between the hosts.</p></li>
+<li><p>Correlation lines can be between an internal host and external server or between two internal hosts (lateral movement).</p></li>
+<li><p>Each correlation line has a label with the protocols used in transactions between the hosts. An arrow within the correlation line indicates the direction of the transactions, from source to destination.</p>
+<p>Correlation lines involving email senders have the label <em>Suspicious Email Activity</em>.</p></li>
+</ul></td>
+<td><p>Click a correlation line to filter the details provided in Transactions and IOCs</p></td>
+</tr>
+<tr>
+<td><p>Internal hosts</p></td>
+<td><p>Internal hosts are endpoints and other network devices located within your network</p>
+<p>The graph identifies internal hosts by internet protocol (IP address) as well as host name and user are, if known.</p>
+<p>Icons representing relevant information might appear next to an internal host. For example, if the internal host is on the Priority Server List or on a Trusted Service Source List, the graph displays the appropriate icon. For more information, see <a href="trend-vision-one-network-resource-lists">Network Resource Lists</a>.</p></td>
+<td><p>Hover over the actions icon (<img src="./images/dddna_graph_icon_plus=GUID-674BF3B2-46AB-4463-AEB9-658F8598E69D=2=en-us=Low.webp" />) to view a list of additional actions you can take for that host.</p>
+<ul>
+<li><p><strong>Copy to clipboard</strong>: Copy the value to your clipboard.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>External servers</p></td>
+<td><p>External servers are IP addresses, domains, and other related objects detected by Network Analytics</p>
+<p>External servers are identified by IP address; the domain name is also supplied if known.</p>
+<p>Email senders are identified by email address and are always displayed at the top of the <em>External Servers</em> side.</p>
+<p>Other relevant information might be displayed for external hosts.</p></td>
+<td><p>Hover over the actions icon (<img src="./images/dddna_graph_icon_plus=GUID-674BF3B2-46AB-4463-AEB9-658F8598E69D=2=en-us=Low.webp" />) to view a list of additional actions you can take for that host.</p>
+<ul>
+<li><p><strong>Copy to clipboard</strong>: Copy the value to your clipboard.</p></li>
+<li><p><strong>Threat Connect</strong>: Open Trend Micro Threat Connect in a new browser tab with a query for this object.</p></li>
+<li><p><strong>DomainTools (WHOIS)</strong>: Open DomainTools in a new browser tab with a query for this IP address or domain.</p></li>
+<li><p><strong>VirusTotal</strong>: Open VirusTotal in a new browser tab with a query for this object.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Activity legend</p></td>
+<td><p>The activity legend identifies key activities for the internal host and external server participants in the graph.</p>
+<ul>
+<li><p>Activities vary for each specific correlation graph.</p></li>
+<li><p>Can include activities similar to the following: Brute Force Authentication, C&amp;C Callback, Data Exfiltration, Lateral Movement, Malicious Transfer, Other Malicious Activities, and Vulnerability Exploit.</p></li>
+</ul></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Participant icons</p></td>
+<td><p>Participant icons help show which activities each internal host or external server participated in</p>
+<p>You can determine the activities in which each internal host or external server participated by checking the presence of an icon in the corresponding activity column.</p></td>
+<td><p>Hover over an internal host or external server to see the activities in which they are participants highlighted in blue.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Correlation Graph advanced search filter](correlation-graph-advanced-search.md "Use the advanced search filter to create and apply customized searches.")
+:::

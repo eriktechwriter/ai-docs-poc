@@ -1,0 +1,184 @@
+---
+slug: trend-vision-one-agent-interface-status-messages
+title: Agent Interface status messages
+last_updated: '2025-09-08'
+ai_context:
+  source_file: agent-interface-status-messages.md
+  conversion_date: '2025-09-08T23:42:25.491Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Learn about the agent status messages and how to troubleshoot potential issues.
+
+The Trend Vision One Endpoint Security Agent Interface provides endpoint users with a quick way to view the status of the agent. Users can view detailed information in the Protection status screen of the Agent Interface, or hover the mouse over the system tray icon to get a quick status message.
+
+**Table 1: System tray icon statuses**
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>System tray icon</p></th>
+<th><p>Message</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="3"><figure>
+<img src="./images/AgentStatusNormal=fbc71074-3dc1-4fb1-9996-eea7ce826335.webp" />
+</figure></td>
+<td><p>Protection is online</p></td>
+<td><p>The Trend Vision One Endpoint Security agent is online</p></td>
+</tr>
+<tr>
+<td><p>Scanning for threats</p></td>
+<td><p>The Trend Vision One Endpoint Security agent is running a scan</p></td>
+</tr>
+<tr>
+<td><p>Updating software</p></td>
+<td><p>The Trend Vision One Endpoint Security agent is updating</p></td>
+</tr>
+<tr>
+<td><figure>
+<img src="./images/AgentConsoleSysTrayIcon=4c51e4c9-adf0-4be5-84e1-0b23390537aa.webp" />
+</figure></td>
+<td><p>Loading information</p></td>
+<td><p>The Trend Vision One Endpoint Security agent is online and attempting to communicate with Trend Vision One servers</p>
+<p>This status normally appears while the endpoint is starting up or attempting to connect with Trend Vision One.</p></td>
+</tr>
+<tr>
+<td rowspan="6"><figure>
+<img src="./images/AgentStatusAbnormal=09ed4f61-9c35-4566-9a1e-fff21d46c537.webp" />
+</figure></td>
+<td><p>Protection is offline</p></td>
+<td><p>The Trend Vision One Endpoint Security agent is not operating normally or is offline</p>
+<p>This status might occur if the agent is unable to communicate with Trend Vision One servers, or if protection is disabled.</p></td>
+</tr>
+<tr>
+<td><p>Restart your computer</p></td>
+<td><p>The Trend Vision One Endpoint Security agent requires the user to restart the computer to finish a task</p>
+<p>This status might occur after installing an update or cleaning malicious files from the system.</p></td>
+</tr>
+<tr>
+<td><p>Features are disabled</p></td>
+<td><p>The Trend Vision One Endpoint Security agent is online, but protection features are disabled</p></td>
+</tr>
+<tr>
+<td><p>Protection at risk</p></td>
+<td><p>The Trend Vision One Endpoint Security agent is online, but Anti-malware protection is not running</p>
+<p>This status might occur if Anti-malware is disabled in policies, or if there is an issue with the Anti-malware components.</p></td>
+</tr>
+<tr>
+<td><p>Your computer is isolated</p></td>
+<td><p>The Isolate Endpoint response action was applied to the endpoint</p></td>
+</tr>
+<tr>
+<td><p>Smart Protection is unavailable</p></td>
+<td><p>The Trend Vision One Endpoint Security agent is online, but unable to connect to the Smart Protection network</p>
+<p>This status might occur if the agent is unable to communicate with Trend Micro services.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Table 2: Protection status messages**
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Status message</p></th>
+<th><p>Description</p></th>
+<th><p>Troubleshooting</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Protection enabled</p>
+<p>You are protected and your software is up to date</p></td>
+<td><p>The agent is operating normally and successfully connected to Trend Vision One servers</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Loading information</p>
+<p>Trend Vision One Endpoint Security is connecting. Please wait a moment.</p></td>
+<td><p>The agent is operating normally and is connecting or attempting to connect to Trend Vision One servers</p></td>
+<td><p>This status is normal behavior. If the agent takes a long time to connect, check your network settings. Make sure the endpoint can connect to the internet, or that the agent can connect to a Service Gateway.</p></td>
+</tr>
+<tr>
+<td><p>Scanning your computer</p>
+<p>Trend Vision One Endpoint Security is scanning for security risks. Do not disconnect from the network until finished.</p></td>
+<td><p>The agent is running a scan</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Updating</p></td>
+<td><p>The agent is updating</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Permission required</p>
+<p>Grant permission to allow the security agent to run on your computer</p></td>
+<td><p>macOS requires the user to grant permission for the Trend Vision One Endpoint Security agent to run on the endpoint</p></td>
+<td><p>Click <strong>Grand permission</strong> to allow the agent to run.</p></td>
+</tr>
+<tr>
+<td><p>Restart your computer</p>
+<p>Trend Vision One Endpoint Security has discovered threats on your computer. Restart to finish resolving the threats.</p></td>
+<td><p>The agent has detected a threat and needs to restart the endpoint to finish cleaning the threat</p></td>
+<td><p>Click <strong>Restart Now</strong> to restart the endpoint.</p></td>
+</tr>
+<tr>
+<td><p>Restart your computer</p>
+<p>A recent update requires you to restart your computer to finish installation.</p></td>
+<td><p>The agent needs to restart the endpoint to finish applying updates</p></td>
+<td><p>Click <strong>Restart Now</strong> to restart the endpoint.</p></td>
+</tr>
+<tr>
+<td><p>Features are disabled</p></td>
+<td><p>Protection features are disabled on the endpoint</p></td>
+<td><p>Enable the features in Endpoint Security Policies.</p></td>
+</tr>
+<tr>
+<td><p>Your computer is isolated from the network</p></td>
+<td><p>The Isolate Endpoint response task targeted the endpoint</p>
+<p>The endpoint is now isolated from your network.</p></td>
+<td><p>If the threat on the endpoint has been removed, use the <a href="trend-vision-one-restore-connection-task">Restore Connection task</a> to remove the endpoint from isolation.</p></td>
+</tr>
+<tr>
+<td><p>Protection at risk</p>
+<p>Real-time scan is not enabled. Contact your administrator for assistance.</p></td>
+<td><p>Anti-malware real-time scan is disabled in the policy settings</p></td>
+<td><p>Enable <a href="trend-vision-one-policies-anti-malware">Anti-Malware</a> real-time scan in Endpoint security policies.</p></td>
+</tr>
+<tr>
+<td><p>Unable to connect to management server</p>
+<p>Check that you are able to access the internet. If restoring access does not solve the problem, contact your administrator for assistance</p></td>
+<td><p>The agent is unable to connect to the Protection Manager</p></td>
+<td><p>Check that the endpoint is able to connect to the internet. Verify your firewall is configured to allow the agent to communicate with Trend Vision One. For more information, see <a href="trend-vision-one-firewall-exception-requirements-for">Firewall exception requirements for Trend Vision One</a>.</p></td>
+</tr>
+<tr>
+<td><p>Protection at risk</p>
+<p>Anti-malware protection is not functioning. Contact your administrator for assistance</p></td>
+<td><p>Anti-malware is not running on the endpoint</p></td>
+<td><p>Enable <a href="trend-vision-one-policies-anti-malware">Anti-Malware</a> in Endpoint security policies. If the issue is not resolved, update or reinstall the agent on the endpoint.</p></td>
+</tr>
+<tr>
+<td><p>Smart Protection is unavailable</p>
+<p>Check that you are able to access the internet. If restoring access does not solve the problem, contact your administrator for assistance.</p></td>
+<td><p>The agent is unable to connect to Trend Micro services</p></td>
+<td><p>Check that the endpoint is able to connect to the internet. Verify your firewall is configured to allow the agent to communicate with Trend Vision One. For more information, see <a href="trend-vision-one-firewall-exception-requirements-for">Firewall exception requirements for Trend Vision One</a>.</p></td>
+</tr>
+</tbody>
+</table>
+:::

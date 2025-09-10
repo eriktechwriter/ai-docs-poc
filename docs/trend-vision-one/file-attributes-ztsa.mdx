@@ -1,0 +1,71 @@
+---
+slug: trend-vision-one-file-attributes-ztsa
+title: File attributes
+---
+# File attributes
+
+Use file attributes in conjunction with other identifiers to detect sensitive files.
+
+File attributes are specific properties of a file. You can use two file attributes when defining data identifiers, namely, file type and file size. For example, a software development company may want to limit the sharing of the company's software installer to the R&D department, whose members are responsible for the development and testing of the software. In this case, the Trend Vision One administrator can create a policy that blocks the transmission of executable files that are 10 to 40 MB in size to all departments except R&D.
+
+By themselves, file attributes are poor identifiers of sensitive files. Continuing the example in this topic, third-party software installers shared by other departments will most likely be blocked. Trend Micro therefore recommends combining file attributes with other DLP data identifiers for a more targeted detection of sensitive files.
+
+For a complete list of supported file types, see the Data Protection Lists document at:
+
+<http://docs.trendmicro.com/en-us/enterprise/data-protection-reference-documents.aspx>
+
+The following table outlines the actions available on the **File Attributes** tab.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Add a custom file attribute list</p></td>
+<td><p>Click <strong>Add</strong> and follow the instructions to add a custom file attribute list.</p>
+<p>For more information, see <a href="trend-vision-one-adding-custom-file-attribute-list">Adding a custom file attribute list</a>.</p></td>
+</tr>
+<tr>
+<td><p>Manage file attribute lists</p></td>
+<td><ul>
+<li><p>Click <img src="./images/edit_icon=GUID-1F1D1164-5310-4D6D-ACD0-6049C86960AF.webp" /> to change the settings of a custom file attribute list.</p></li>
+<li><p>Click <img src="./images/Custom_Category_Detail=4fdb9dfd-9bb3-422a-a1ff-971fade887f7.webp" /> to view the settings of the predefined file attribute list.</p></li>
+<li><p>Click <img src="./images/duplicate=e79af1b6-17af-40ad-b942-53ffb9e796d2.webp" /> to duplicate a file attribute list. This provides a convenient way of adding a new custom file attribute list with settings similar to an existing file attribute list.</p></li>
+<li><p>Click <img src="./images/trash_icon=GUID-47cf6867-6315-438e-8670-86ff36f22a28.webp" /> to delete a custom file attribute list from Trend Vision One.</p>
+<p>To delete more than one custom file attribute list, select the lists and click <strong>Delete</strong> in the upper left.</p>
+
+
+:::note
+
+<p>Only a custom file attribute list that is not in use by any DLP template can be deleted.</p>
+
+
+:::
+
+</li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Export file attribute lists</p></td>
+<td><p>Click <strong>Export All</strong> to export all predefined and custom file attribute lists to a XML file to your local machine.</p></td>
+</tr>
+<tr>
+<td><p>Import custom file attribute lists</p></td>
+<td><p>Click <strong>Import</strong> to add custom file attribute lists to Trend Vision One if you have a properly-formatted XML file containing the lists. You can generate the file by exporting the lists from the Trend Vision One console.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Predefined file attributes list](predefined-file-attributes-list.md "Learn details about the predefined file attributes list used in data loss prevention.")
+- [Adding a custom file attribute list](adding-custom-file-attribute-list.md "Create a custom list of file attributes for use in data loss prevention templates.")
+:::

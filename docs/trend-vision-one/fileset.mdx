@@ -1,0 +1,148 @@
+---
+slug: trend-vision-one-fileset
+title: FileSet
+---
+# FileSet
+
+::::::note
+
+The Integrity Monitoring module scans for unexpected changes to [directories](directoryset.mdx), [registry values](registryvalueset.mdx), [registry keys](registrykeyset.mdx), [services](serviceset.mdx), [processes](processset.mdx), [installed software](installedsoftwareset.mdx), [ports](portset.mdx), [groups](groupset.mdx), [users](userset.mdx), files, and the [WQL](wqlset.mdx) query statement on agents. To enable and configure Integrity Monitoring, see [Set up integrity monitoring](set-up-integrity-monitoring.mdx).
+:::
+
+The FileSet tag describes a set of Files.
+
+### Tag Attributes {#tag-attributes}
+
+These are XML attributes of the tag itself, as opposed to the attributes of the Entity monitored by Integrity Monitoring Rules.
+
+<table>
+<thead>
+<tr>
+<th><p>Attribute</p></th>
+<th><p>Description</p></th>
+<th><p>Required</p></th>
+<th><p>Default Value</p></th>
+<th><p>Allowed Values</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>base</p></td>
+<td><p>Sets the base directory of the FileSet. Everything else in the tag is relative to this directory.</p></td>
+<td><p>Yes</p></td>
+<td><p>N/A</p></td>
+<td><p>String values resolving to syntactically valid path (Path is not required to exist). <em>Note</em>: UNC paths are allowed by Windows Agents, but require that the remote system allow access by the "LocalSystem" account of the Agent computer. The Agent is a Windows service and runs as LocalSystem, aka NT AUTHORITY\SYSTEM. When accessing a network resource, the LocalSystem uses the computer's credentials, which is an account named DOMAIN\MACHINE$. The access token presented to the remote computer also contains the "Administrators" group for the computer, so remote shares must grant read privileges to either the Agent computer's account, the Agent computer's Administrators group, or "Everyone". If the base value is not syntactically valid, the FileSet will not be processed. The rest of the config will be evaluated.</p></td>
+</tr>
+<tr>
+<td><p>onChange</p></td>
+<td><p>Whether the files returned should be monitored in real time.</p></td>
+<td><p>No</p></td>
+<td><p>false</p></td>
+<td><p>true, false</p></td>
+</tr>
+<tr>
+<td><p>followLinks</p></td>
+<td><p>Will this FileSet follow symbolic links.</p></td>
+<td><p>No</p></td>
+<td><p>false</p></td>
+<td><p>true, false</p></td>
+</tr>
+</tbody>
+</table>
+
+### Entity Set Attributes {#entity-set-attributes}
+
+These are the attributes of the FileSet that can be monitored by Integrity Monitoring Rules.
+
+:::note
+
+For Created, LastModified, and LastAccessed in a Linux environment, the Real-time Integrity Monitoring module detects scans where the file contents have changed, but does not detect a change such as touching a file, reading a file, or any other change that updates only metadata such as the time a file was altered.
+:::
+
+- *Created:* Timestamp when the file was created
+- *LastModified:* Timestamp when the file was last modified
+- *LastAccessed:* Timestamp when the file was last accessed. On Windows this value does not get updated immediately, and recording of the last accessed timestamp can be disabled as a performance enhancement. See [File Times](https://docs.microsoft.com/en-us/windows/win32/sysinfo/file-times?redirectedfrom=MSDN) for details. The other problem with this attribute is that the act of scanning a file requires that the Agent open the file, which will change its last accessed timestamp. On Unix, the Agent will use the O_NOATIME flag if it is available when opening the file, which prevents the OS from updating the last accessed timestamp and speeds up scanning.
+- *Permissions:* The file's security descriptor (in [SDDL](https://docs.microsoft.com/en-us/windows/win32/secauthz/security-descriptor-string-format?redirectedfrom=MSDN) format) on Windows or Posix-style ACLs on Unix systems that support ACLs, otherwise the Unix style rwxrwxrwx file permissions in numeric (octal) format.
+- *Owner:* User ID of the file owner (commonly referred to as the "UID" on Unix)
+- *Group:* Group ID of the file owner (commonly referred to as the "GID" on Unix)
+- *Size:* size of the file
+- *Sha1:* SHA-1 hash
+- \*\*Sha256:\*\*SHA-256 hash
+- *Md5:* MD5 hash (deprecated)
+- *Flags:* Windows-only. Flags returned by the [GetFileAttributes()](https://docs.microsoft.com/en-ca/windows/win32/api/fileapi/nf-fileapi-getfileattributesa) Win32 API. Windows Explorer calls these the "Attributes" of the file: Read-only, Archived, Compressed, etc.
+- *SymLinkPath* (Unix and Linux only): If the file is a symbolic link, the path of the link is stored here. Windows NTFS supports Unix-like symlinks, but only for directories, not files. Windows shortcut objects are not true symlinks since they are not handled by the OS; the Windows Explorer handles shortcut files (\*.lnk) but other applications that open a \*.lnk file will see the contents of the lnk file.
+- *InodeNumber* (Unix and Linux only): Inode number of the disk on which the inode associated with the file is stored
+- *DeviceNumber* (Unix and Linux only): Device number of the disk on which the inode associated with the file is stored
+- *BlocksAllocated* (Linux and Unix only): The number of blocks allocated to store the file.
+- *Growing:* (DSA 7.5+) contains the value "true" if the size of the file stays the same or increases between scans, otherwise "false". This is mainly useful for log files that have data appended to them. Note that rolling over a log file will trigger a change in this attribute.
+- *Shrinking:* (DSA 7.5+) contains the value "true" if the size of the file stays the same or decreases between scans, otherwise "false".
+
+### Short Hand Attributes {#short-hand-attributes}
+
+The following are the Short Hand Attributes, and the attributes to which they map.
+
+- *CONTENTS:* Resolves to the content hash algorithm set in **Computer or Policy editor → Integrity Monitoring → Advanced**.
+- *STANDARD:* Created, LastModified, Permissions, Owner, Group, Size, Contents, Flags (Windows only), SymLinkPath (Unix only)
+
+### Drives Mounted as Directories {#drives-mounted-as-directories}
+
+Drives mounted as directories are treated as any other directory, unless they are a network drive in which case they are ignored.
+
+### Alternate Data Streams {#alternate-data-streams}
+
+NTFS based file systems support the concept of alternate data streams. When this feature is used it behaves conceptually like files within the file.
+
+:::note
+
+To demonstrate this, type the following at the command prompt:
+
+```bash
+       echo plain > sample.txt  echo alternate > sample.txt:s  more < sample.txt  more < sample.txt:s
+
+```
+
+The first "more" will show only the text "plain", the same text that will be displayed if the file is opened with a standard text editor, such as notepad. The second "more", which accesses the "s" stream of sample.txt will display the string "alternate".
+:::
+
+For FileSets, if no stream is specified, then all streams are included. Each stream is a separate Entity entry in the baseline. The available attributes for streams are:
+
+- *size*
+- *Sha1*
+- *Sha256*
+- *Md5* (deprecated)
+- *Contents*
+
+The following example would include both streams from the demonstration above:
+
+`<include key="**/sample.txt" />`
+
+To include or exclude specific streams, the ":" notation is used. The following example matches only the "s" stream on sample.txt and not the main sample.txt stream:
+
+`<include key="**/sample.txt:s" />`
+
+Pattern matching is supported for the stream notation. The following example would include sample.txt, but exclude all of its alternate streams:
+
+`<include key="**/sample.txt" />`
+
+`<exclude key="**/sample.txt:\*" />`
+
+### Meaning of "Key" {#meaning-of-key}
+
+Key is a pattern to match against the path of the file relative to the directory specified by "base". This is a hierarchical pattern, with sections of the pattern separated by "/" matched against sections of the path separated by the file separator of the given OS.
+
+### Sub Elements {#sub-elements}
+
+- *Include*
+- *Exclude*
+
+See [Integrity monitoring rules language](integrity-monitoring-language-swp.mdx) for a general description of Include and Exclude for their allowed attributes and sub elements. Only information specific to includes and excludes relating to the FileSet Entity Set class are included here.
+
+### Special attributes of Include and Exclude for FileSets {#special-attributes-of-include-and-exclude-for-filesets}
+
+*executable*: Determines if the file is executable. This does not mean that its permissions allow it to be executed. Instead the contents of the file are checked, as appropriate for platform, to determine if the file is an executable file.
+
+:::note
+
+This is a relatively expensive operation since it requires the Agent to open the file and examine the first kilobyte or two of its content looking for a valid executable image header. Opening and reading every file is much more expensive than simply scanning directories and matching file names based on wild card patterns, so any include and exclude rules using "executable" will result in slower scan times than those that do not use it.
+:::
+:::::::

@@ -1,0 +1,26 @@
+---
+slug: trend-vision-one-non-domain-controllers-admin-signin
+title: Non-domain controllers with domain admin sign-ins
+---
+# Non-domain controllers with domain admin sign-ins
+
+Learn more about non-domain controllers with domain admin sign-ins and how to mitigate this type of identity-related risk.
+
+Domain admins should only sign in to domain controllers, and use user accounts with less privileges for day-to-day activities on non-domain controller devices. When a domain admin signs in to a non-domain controller device, the admin's credentials become vulnerable to bad actors who could extract the credentials via various tactics, including:
+
+- Credential theft in memory (pass-the-hash): Attackers can employ techniques to extract a domain admin's credentials from the device's memory, allowing them unauthorized access to other systems within the domain.
+
+- Credential sniffing: Attackers can intercept network traffic and capture plain text or hashed credentials, including those of domain admins, which would allow bad actors to gain access to sensitive accounts.
+
+- Man-in-the-Middle attacks: Attackers can secretly intercept and possibly alter communications between two parties. If domain admins use an unencrypted protocol to sign in, attackers can intercept and manipulate the authentication process to capture the credentials.
+
+To mitigate the risk of domain admins signing in to non-domain controller devices, Trend Micro recommends:
+
+- Reboot the device to clear the memory, which typically erases any credentials stored in the memory.
+
+- Immediately reset the passwords of the affected domain admin accounts, invalidating any potentially compromised credentials and ensuring that subsequent attempts to sign in require newly generated passwords.
+
+- Enable multi-factor authentication (MFA) for the affected domain admin accounts to add another layer of security.
+
+- Review and limit the permissions of domain admin accounts to the minimum required for the role. Avoid assigning unnecessary privileges, especially on non-domain controller devices.
+:::

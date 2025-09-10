@@ -1,0 +1,123 @@
+---
+slug: trend-vision-one-adding-azure-subscription
+title: Adding an Azure subscription
+---
+# Adding an Azure subscription
+
+Add and connect an Azure subscription to the Cloud Accounts app to allow Trend Vision One to provide security for your cloud assets.
+
+Adding an Azure subscription to the Cloud Accounts app allows Trend Vision One to access your cloud service to provide security and visibility into your cloud assets. Before you begin, review the [permission requirements](azure-required-granted-permissions.mdx) and [region limitations](azure-supported-regions-limitations.mdx) for connecting an Azure subscription to Cloud Accounts.
+
+:::warning[Important]
+
+The steps are valid for Azure Cloud Shell as of December, 2023.
+:::
+
+### Procedure {#procedure}
+
+1.  Sign in to the Trend Vision One console.
+
+2.  In a new tab in the same browser session, sign in to the Azure subscription you want to connect and access the Azure Cloud Shell.
+
+3.  In the Trend Vision One console, go to **Cloud Security → Cloud Accounts → Azure**.
+
+4.  In the **Cloud Accounts** screen, click **Add**.
+
+    The **Add Azure Subscription** screen appears.
+
+5.  Choose a subscription type to onboard:
+
+    1.  To connect a single subscription, continue with step 6.
+
+    2.  To connect multiple subscriptions in a management group, see [Adding an Azure Management Group](adding-azure-management-group.mdx).
+
+6.  Specify the **Subscription ID** for the Azure subscription you want to connect.
+
+    The subscription ID is a twelve digit number unique to your subscription.
+
+7.  Specify a **Name** for the subscription which appears in the Cloud Accounts list.
+
+8.  Specify a **Description** to help identify the purpose of the connection.
+
+9.  Specify the **Region** as the main region where the resources will be deployed.
+
+10. If you have more than one Server & Workload Protection Manager instance, select the instance to associate with the connected subscription.
+
+    :::note
+
+    - If you have one Server & Workload Protection Manager instance, the subscription is automatically associated with that instance.
+
+    - When updating a legacy connection, the subscription disconnects from any other Server & Workload Protection instances. For more information, see [Updating a legacy Azure connection](updating-legacy-azure-connection.mdx).
+    :::
+
+11. Configure the **Features and Permissions** you want to grant access to your cloud environment.
+
+    - **Core Features**: Connect your Azure subscription to Trend Vision One to discover your cloud assets and rapidly identify risks such as compliance and security best practice violations on your cloud infrastruture.
+
+    - **Agentless Vulnerability & Threat Detection**: Deploy this feature set in your Azure subscription to allow Trend Vision One to discover vulnerabilities and malware in your Azure Virtual Machines, disks, and Azure Container Registry images. For more information, see [Agentless Vulnerability & Threat Detection](agentless-vulnerability-threat.mdx).
+
+      Select the Azure regions you want to deploy the feature to.
+
+    - **Real-Time Posture Monitoring**: Deploy this feature set in your Azure subscription to enable live monitoring of activities and events in your cloud accounts. Scan for security compliance issues in your Azure Kubernetes Service (AKS) clusters, and receive instant threat and remediation alerts. For more information, see [Real-Time Posture Monitoring](real-time-threat-monitoring.mdx) and
+
+      [Compliance](compliance.mdx).
+
+    - **Data Security Posture**: Discover and classify sensitive data in your Azure subscription, and predict potential attack paths for data leakage due to misconfiguration and vulnerability. For more information, see [Data Security Posture](data-posture.mdx).
+
+      Select the Azure regions you want to deploy the feature to.
+
+    - **Microsoft Defender for Endpoint Log Collection**: Deploy Microsoft Defender for Endpoint Log Collection in your environment to gain actionable insight into endpoint activities. Detection models identify behaviors such as malware execution, suspicious file modifications, lateral movement attempts, and unauthorized access to sensitive data. For more information, see [Enable Microsoft Defender for Endpoint Log Collection](ms-defender-endpoint-log-collection.mdx).
+
+    - **Cloud Detections for Azure Activity Log**: Deploy Cloud Detections for Azure Activity Log in your Azure account to gain actionable insight into user, service, and resource activity. This feature set uses detection models to identify behaviors such as privilege escalation, password modification, attempted data exfiltration, and potentially unauthorized changes to MFA settings. For more information, see [Enable Cloud Detections for Azure Activity Logs](azure-cloud-detection.mdx).
+
+      For more information about each feature and permission set, see [Azure features and permissions](azure-features-permissions.mdx).
+
+12. Click **Next**.
+
+13. In Azure Cloud Shell, access the command line interface.
+
+    :::note
+
+    The **Add Azure Subscription** screen in the Trend Vision One console provides a set of commands to help complete the following steps. To complete the connection process, you must copy each command provided in the screen to enable the **Done** button. While you can alter some parameters, Trend Micro recommends using the commands as provided to prevent the deployment failing.
+    :::
+
+14. Create a new directory for the deployment folder and then access the folder.
+
+    Copy the command or type `mkdir[Subscription ID] && cd [Subscription ID]`.
+
+    :::note
+
+    The commands provided by Trend Vision One use your subscription ID as the directory name. While you can specify any directory name you want, you must ensure the folder has a unique name and that there are no other Terraform files in the deployment folder.
+    :::
+
+15. Upload the resource creation script to your Azure Cloud Shell.
+
+    - To use a command to upload the template directly to Cloud Shell, select **Curl Command**.
+
+      Copy and paste the **Curl Command** into Cloud Shell to retrieve the template package. The command is dynamically generated based on your account and region.
+
+    - To download the template first and upload from your local machine, select **Manual**.
+
+      Click **Download the Terraform Template** to save the template to your local machine. Make sure your Cloud Shell environment is set to the same region you selected for the Terraform deployment before uploading the package.
+
+16. Extract the template using the command in the **Subscription Settings** screen.
+
+    The zip file name contains a randomly-generated number. Copy the command to extract the file: `unzip -o cloud-account-management-terraform-package-[randomly generated number].zip -d cloud-account-management-terraform-package`.
+
+17. Access the deployment folder.
+
+    Copy the command or type `cd cloud-account-management-terraform-package`.
+
+18. Run the deployment script.
+
+    Copy the command or type `./deploy.sh`. Azure Cloud Shell begins the Terraform process to deploy Trend Vision One security resources.
+
+19. In the Trend Vision One console, in the **Connect Azure Subscription** screen, click **Done**.
+
+    :::note
+
+    If the **Done** button is not enabled, make sure you have copied the command line for each step on the screen.
+    :::
+
+    The connection process might take a few moments to complete. You can refresh the Cloud Accounts screen to check the status of your added subscription.
+::::

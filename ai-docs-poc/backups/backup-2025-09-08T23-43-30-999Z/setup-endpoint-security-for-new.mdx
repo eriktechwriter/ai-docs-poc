@@ -1,0 +1,116 @@
+---
+slug: trend-vision-one-setup-endpoint-security-for-new
+title: Setting up Endpoint Security for new Trend Micro customers
+last_updated: '2025-09-08'
+ai_context:
+  source_file: setup-endpoint-security-for-new.md
+  conversion_date: '2025-09-08T23:42:12.595Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Provision and set up your Endpoint Security environment to begin using Trend Vision One security features.
+
+:::warning[Important]
+
+This guide is for customers who have never used a Trend Micro endpoint security product.
+
+Go to [Update Trend Micro Endpoint Solutions](update-endpoint-solutions.mdx) if you are a current customer using one of the following solutions and would like to upgrade to Trend Vision One Endpoint Security:
+
+- Trend Micro Apex One as a Service
+
+- Trend Micro Apex One on-premises
+
+- Trend Cloud One - Server & Workload Security
+:::
+
+Before you begin, make sure you have accessed your Trend Vision One console. For more information, see [Getting started with Trend Vision One](getting-started-trend-vision.mdx).
+
+### Procedure {#procedure}
+
+1.  In your Trend Vision One console, go to **Endpoint Security → Endpoint Inventory**.
+
+    The first time you visit Endpoint Inventory, Trend Vision One provisions the app. Once the process is complete, Endpoint Inventory opens and the **Get Started with Endpoint Inventory** screen appears. You can review the steps or close the screen.
+
+2.  Choose your protection solution.
+
+    Provisioning Endpoint Security gives you access to the sensor-only agent deployment. To take advantage of advanced features and management options, provision one or more Protection Managers.
+
+    - **Standard Endpoint Protection** helps monitor your end-user endpoint devices and provides helpful management tools through the use of Endpoint Group Managers and endpoint groups.
+
+    - **Server & Workload Protection** helps monitor your servers as well as VMware hosted virtual machines and virtual machines hosted by your cloud service provider.
+
+    Endpoint Security provides flexibility to support the needs of your security environment. Provisioning a Protection Manager does not limit your ability to deploy sensor-only agents or agents from another Protection Manager.
+
+    Taking the step to choose which kind of deployment to use at this time does not limit you from deploying Protection Managers in the future or modifying your agent deployments. If you do not wish to provision a Protection Manager at this time, skip ahead to set up a proxy.
+
+3.  Provision the Protection Manager.
+
+    1.  Go to **Service Management → Product Instance**.
+
+    2.  Click **Create Product Instance**.
+
+    3.  Select an **Instance Type**.
+
+        Select **Standard Endpoint Protection** or **Server & Workload Protection**. Each type has certain limitations based on if you have already created instances or connected existing solutions.
+
+        <table>
+        <colgroup>
+        <col style="width: 25%" />
+        <col style="width: 25%" />
+        <col style="width: 50%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Protection Manager</p></th>
+        <th><p>Associated App</p></th>
+        <th><p>Notes and Limitations</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Standard Endpoint Protection</p></td>
+        <td><p>Endpoint Security</p></td>
+        <td><ul>
+        <li><p>You can create up to five instances from Product Instance.</p></li>
+        </ul></td>
+        </tr>
+        <tr>
+        <td><p>Server &amp; Workload Protection</p></td>
+        <td><p>Endpoint Security</p></td>
+        <td><ul>
+        <li><p>You can create up to five instances from Product Instance.</p></li>
+        </ul></td>
+        </tr>
+        </tbody>
+        </table>
+
+    4.  Specify a unique **Display name** to identify the instance in Endpoint Security.
+
+    5.  Select the **Region** for the geographic location of the data center that hosts data being sent from endpoints to Trend Micro.
+
+    6.  Specify a description of the instance.
+
+    7.  Click **Save**.
+
+        The Product Instance app starts provisioning the new Protection Manager. This process might take a few minutes to complete. Once the process is finished, you can access and configure the Protection Managers from the Endpoint Security app.
+
+4.  Configure a proxy connection and review the firewall requirements.
+
+    Trend Micro recommends deploying a Service Gateway with the Forward Proxy Service to help reduce and manage agent bandwidth usage within your security network.
+
+    Otherwise, configure your proxy settings for installation and runtime in the [Global Settings menu](global-settings-endpoint-inventory.mdx) to ensure your agents can connect to Trend Vision One if a Service Gateway is not available.
+
+    - Configure your [Agent Installer Proxy Settings](agent-installer-proxy-settings.mdx) to allow the agent installer package to download components and register to Trend Vision One. If a Service Gateway with the Forward Proxy Service is available, the agents use the Service Gateway instead.
+
+    - Configure your [Runtime Proxy Policies](runtime-proxy-settings.mdx) to manage how endpoints connect to Trend Vision One after installation and registration successfully completes.
+
+    The Endpoint Inventory app automatically adds the Service Gateway information and proxy settings to the agent installer package.
+
+    To ensure your agents can communicate with Trend Vision One, review the [Firewall exception requirements for Trend Vision One](firewall-exception-requirements-for.mdx).
+
+5.  Deploy agents to your endpoints.
+
+    For detailed instructions, see [Deploy agents](deploy-agents.mdx).
+::::

@@ -1,0 +1,92 @@
+---
+slug: trend-vision-one-risk-index-reduction
+title: Cyber Risk Index reduction
+last_updated: '2025-09-08'
+ai_context:
+  source_file: risk-index-reduction.md
+  conversion_date: '2025-09-08T23:42:13.571Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+View the types of actions you can take to reduce the Cyber Risk Index.
+
+The following table outlines the actions that directly impact the Cyber Risk Index.
+
+:::note
+
+The Cyber Risk Index automatically updates every four hours. Changes to the status of risk events are reflected in the Cyber Risk Index after up to one hour. You may also manually recalculate the Cyber Risk Index by clicking the **Recalculate** button. Manual recalculations take up to one hour to display.
+:::
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Remediate risk events</p></td>
+<td><p>Taking the recommended remediation steps might automatically adjust the Cyber Risk Index, depending on the risk event.</p>
+<p>For example, Cyber Risk Exposure Management recommends applying the latest patches or upgrading the operating system whenever vulnerability-related risk events are detected. As vulnerability assessments are conducted daily, vulnerabilities that are patched today do not affect the calculation of tomorrow's Cyber Risk Index.</p></td>
+</tr>
+<tr>
+<td><p>Apply attack prevention/detection rules</p></td>
+<td><p>If you have other Trend Micro products connected to Trend Vision One, you may apply rules or filters to the affected assets to mitigate vulnerabilities and lower the Cyber Risk Index. Supported Trend Micro products include:</p>
+<ul>
+<li><p>Trend Cloud One - Endpoint &amp; Workload Security</p></li>
+<li><p>Trend Micro Apex One</p></li>
+<li><p>Trend Micro Deep Security</p></li>
+<li><p>Standard Endpoint Protection</p></li>
+<li><p>Server &amp; Workload Protection</p></li>
+<li><p>TippingPoint Security Management System</p></li>
+<li><p>Worry Free Services</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Change the status of risk events</p></td>
+<td><p>To track your remediation progress, you can change the status of risk events. Changing the status of risk events affects individual asset risk scores and ultimately your organization's Cyber Risk Index.</p>
+<p>Risk events for all <a href="trend-vision-one-risk-factors">risk factors</a> except for <a href="trend-vision-one-xdr-detection">XDR detection</a> can be marked as one of the five following statuses:</p>
+<ul>
+<li><p><strong>New</strong>: Newly reported events requiring processing. New events affect individual risk scores and the Cyber Risk Index.</p></li>
+<li><p><strong>In progress</strong>: Events that are undergoing processing. In progress events affect individual risk scores and the Cyber Risk Index.</p></li>
+<li><p><strong>Remediated</strong>: Events that have been properly handled. Remediated events do not affect the Cyber Risk Index until a new instance of the event is reported.</p></li>
+<li><p><strong>Dismissed</strong>: Events that have been manually marked as posing no risk to your organization. Dismissed events do not affect the Cyber Risk Index until a new instance of the event is reported or an event rule for the risk event is created.</p></li>
+<li><p><strong>Accepted</strong>: Events that have been marked as too difficult or expensive to address. Accepted events continue to affect the Cyber Risk Index until the events are remediated or dismissed.</p></li>
+</ul>
+
+
+:::note
+
+<p>The Cyber Risk Index might take up to 30 minutes to update after changing the status of a risk event.</p>
+
+
+:::
+
+
+<p>The status of <a href="trend-vision-one-xdr-detection">XDR detection-related risk events</a> that have an assigned workbench alert can only be changed in <a href="trend-vision-one-workbench">Workbench</a>.</p></td>
+</tr>
+<tr>
+<td><p>Create event rules for risk event instances</p></td>
+<td><p>When marking a risk event as Dismissed or Accepted, you may create an event rule so that future instances of the event are not reported.</p>
+<ol>
+<li><p>Change the status of a risk event to Accepted or Dismissed.</p></li>
+<li><p>In the <strong>Mark as Dismissed</strong> or <strong>Mark as Accepted</strong> dialog, select <strong>Create event rule for the selected risk event</strong>.</p></li>
+<li><p>Click <strong>Event rule settings</strong>.</p></li>
+<li><p>Select the scope for the new event rule under <strong>Apply to</strong>.</p></li>
+<li><p>If supported for the risk event type, you may also set <a href="trend-vision-one-event-rule-management">additional parameters</a> for the event rule.</p>
+<ul>
+<li>Event rules with set parameters only apply when the parameters are met. Risk event instances that do not meet rule parameters are still reported, which impacts your Cyber Risk Index.</li>
+</ul></li>
+</ol>
+<p>To view, remove, reactivate, or edit event rules, go to <a href="trend-vision-one-event-rule-management">Event Rule Management</a>.</p></td>
+</tr>
+</tbody>
+</table>
+::::

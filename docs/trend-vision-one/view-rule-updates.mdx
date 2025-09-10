@@ -1,0 +1,74 @@
+---
+slug: trend-vision-one-view-rule-updates
+title: Rule updates
+---
+# Rule updates
+
+:View, manage, and rollback rule updates.
+
+The **Rule Updates** screen provides a list of the most recent Intrusion Prevention, Integrity Monitoring, and Log Inspection Rules downloaded to the Server & Workload Protection database. You can view details for updates or delete, rollback, and export rule updates. To access the list, go to **Administration → Updates → Component → Rules**.
+
+:::tip
+
+To check which rule update version a relay is distributing, go to **Computers**, double-click the relay, and go to **Updates**. If Anti-Malware is enabled, the pattern version for that computer is also displayed.
+
+If your Server & Workload Protection Manager is enrolled in version control policies, the relay displays the currently assigned update policy.
+:::
+
+The follow table details the actions you can take:
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Delete a rule update</p></td>
+<td><p>Select a rule update and click <strong>Delete...</strong></p>
+<p>Deleting a rule update removes the package from the database.</p></td>
+</tr>
+<tr>
+<td><p>View rule update details</p></td>
+<td><p>Select a rule update and click <strong>View</strong></p>
+<p>Clicking <strong>View</strong> opens a new window with details about the update version and update contents.</p></td>
+</tr>
+<tr>
+<td><p>Rollback rule updates</p></td>
+<td><p>Select a rule update and click <strong>Rollback...</strong></p>
+<p>If a recent update is causing issues, you can rollback rule updates to the previous version.</p></td>
+</tr>
+<tr>
+<td><p>Export a rule update</p></td>
+<td><p>Select a rule update and click <strong>Export</strong></p>
+<p>Trend Micro recommends only using this action when asked by your support provider.</p></td>
+</tr>
+<tr>
+<td><p>Import a rule update</p></td>
+<td><p>Click <strong>Import</strong> to import a rule update</p>
+<p>This action is not available to all consoles and is only used for importing updates in air-gapped environments or when asked by your support provider.</p></td>
+</tr>
+<tr>
+<td><p>Reapply a rule update</p></td>
+<td><p>Right click the rule update with the check icon (</p>
+<img src="./images/check=cc625691-c961-4102-a09e-6f7d842323d9.webp" />) in the <strong>Applied</strong> column and select <strong>Reapply</strong>
+<p>Use this action to reapply the current rule update to your protected computers.</p></td>
+</tr>
+</tbody>
+</table>
+
+:::warning[Important]
+
+You can only rollback applied updates.
+
+Policies affected by the rollback automatically revert on all computers using the policies.
+:::
+
+Component update packages must have a valid digital signature. If you try to view or use an invalid package (including old component updates that don't have a signature), then Server & Workload Protection displays an error message. See [How Server & Workload Protection validates update integrity](upgrades.mdx).
+:::::

@@ -1,0 +1,107 @@
+---
+slug: trend-vision-one-avtd-manual-scan
+title: Scan manually for vulnerabilities and malware
+---
+# Scan manually for vulnerabilities and malware
+
+Use Agentless Vulnerability & Threat Detection to scan manually for vulnerabilities and malware in your connected AWS, Google Cloud, and Microsoft Azure cloud accounts.
+
+You can use Agentless Vulnerability & Threat Detection to scan your connected cloud accounts manually for vulnerabilities and malware outside of scheduled times. Scan types and resources available for scanning depend on the configuration you applied when you connected your cloud account in **Cloud Accounts**.
+
+:::warning[Important]
+
+You must have sufficient asset visibility scope to scan cloud assets. The manual scanning feature requires the latest stack versions. If the **Scan** action is disabled, update your stacks in **Cloud Accounts**.
+:::
+
+The following scan types and resources are available for each supported cloud provider.
+
+**Scan type and cloud resource availability for Agentless Vulnerability & Threat Detection manual scanning**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Cloud provider</p></th>
+<th><p>Scan type and resource availability</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><a href="trend-vision-one-get-start-agentless-vulnerbaility">AWS</a></p></td>
+<td><ul>
+<li><p>Scan type availability</p>
+<ul>
+<li><p>Vulnerabilities: Enabled by default, configure in <strong>Cloud Accounts</strong></p></li>
+<li><p>Anti-malware: Disabled by default, configure in <strong>Cloud Accounts</strong></p></li>
+</ul></li>
+<li><p>Resource type availability:</p>
+<ul>
+<li><p>Cloud VMs: EBS volumes</p></li>
+<li><p>Container images: ECR images</p></li>
+<li><p>Serverless functions: Lambda functions, Lambda layers</p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-get-started-google-cloud">Google Cloud</a></p></td>
+<td><ul>
+<li><p>Scan type availability</p>
+<ul>
+<li><p>Vulnerabilities: Enabled by default, not configurable</p></li>
+<li><p>Anti-malware: Enabled by default, not configurable</p></li>
+</ul></li>
+<li><p>Resource type availability:</p>
+<ul>
+<li><p>Cloud VMs: Hyperdisks, Persistent Disks</p></li>
+<li><p>Container images: Artifact Registry images</p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-get-started-azure">Microsoft Azure</a></p></td>
+<td><ul>
+<li><p>Scan type availability</p>
+<ul>
+<li><p>Vulnerabilities: Enabled by default, not configurable</p></li>
+<li><p>Anti-malware: Enabled by default, not configurable</p></li>
+</ul></li>
+<li><p>Resource type availability:</p>
+<ul>
+<li><p>Cloud VMs: Premium and Standard SSDs, Standard HDDs</p></li>
+<li><p>Container images: Container Registry images</p></li>
+</ul></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+To manually scan your cloud resources for vulnerabilities and malware:
+
+### Procedure {#procedure}
+
+1.  Go to **Cyber Risk Exposure Management → Security Posture Management → Cloud Security Posture** or **Cloud Security → Cloud Security Posture → Cloud Security Posture**.
+
+2.  Select a connected account under the desired cloud provider to view **Cloud Overview** for the account.
+
+3.  In the **Account details** widget, click **Scan** next to the entry for Agentless Vulnerability & Threat Detection.
+
+    :::tip
+
+    If Agentless Vulnerability & Threat Detection isn't displayed in the widget, enable the feature for the account in **Cloud Accounts**.
+    :::
+
+4.  Select one or more available regions and click **Start scanning**. Only regions where Agentless Vulnerability & Threat Detection is deployed are available.
+
+    The scan status for the region changes to **Scanning**. Scan times depend on the number of resources in your cloud account and the number of regions you have selected.
+
+5.  After the scan is complete, view any detected vulnerabilities or malware in the following locations:
+
+    - **Cyber Risk Exposure Management → Continuous Threat Management → Threat and Exposure Management → All risk events** filtered by asset type: cloud assets
+
+    - Asset profile screens for scanned cloud assets
+
+    - Search results in **Search** queried by productCode: sss (Cloud Sentry)
+::::

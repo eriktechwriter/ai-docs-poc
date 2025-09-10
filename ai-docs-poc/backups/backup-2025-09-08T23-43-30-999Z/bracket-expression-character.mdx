@@ -1,0 +1,124 @@
+---
+slug: trend-vision-one-bracket-expression-character
+title: Bracket expression and character classes
+last_updated: '2025-09-08'
+ai_context:
+  source_file: bracket-expression-character.md
+  conversion_date: '2025-09-08T23:42:24.193Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Bracket expressions are a list of characters and/or character classes enclosed in brackets \[\]. Use bracket expressions to match single characters in a list, or a range of characters in a list. If the first character of the list is the carat ^ then it matches characters that are not in the list.
+
+For example:
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>EXPRESSION</p></th>
+<th><p>MATCHES</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>[abc]</p></td>
+<td><p>a, b, or c</p></td>
+</tr>
+<tr>
+<td><p>[a-z]</p></td>
+<td><p>a through z</p></td>
+</tr>
+<tr>
+<td><p>[^abc]</p></td>
+<td><p>Any character except a, b, or c</p></td>
+</tr>
+<tr>
+<td><p>[[:alpha:]]</p></td>
+<td><p>Any alphabetic character (see below)</p></td>
+</tr>
+</tbody>
+</table>
+
+The following character classes must be within a bracket expression or it will be treated as a common expression.
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>CHARACTER CLASS</p></th>
+<th><p>DESCRIPTION</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>[:alpha:]</p></td>
+<td><p>Alphabetic characters</p></td>
+</tr>
+<tr>
+<td><p>[:digit:]</p></td>
+<td><p>Digits</p></td>
+</tr>
+<tr>
+<td><p>[:alnum:]</p></td>
+<td><p>Alphabetic characters and numeric characters</p></td>
+</tr>
+<tr>
+<td><p>[:cntrl:]</p></td>
+<td><p>Control character</p></td>
+</tr>
+<tr>
+<td><p>[:blank:]</p></td>
+<td><p>Space and tab</p></td>
+</tr>
+<tr>
+<td><p>[:space:]</p></td>
+<td><p>All white space characters</p></td>
+</tr>
+<tr>
+<td><p>[:graph:]</p></td>
+<td><p>Non-blank (not spaces, control characters, or the like)</p></td>
+</tr>
+<tr>
+<td><p>[:print:]</p></td>
+<td><p>Like [:graph:], but includes the space character</p></td>
+</tr>
+<tr>
+<td><p>[:punct:]</p></td>
+<td><p>Punctuation characters</p></td>
+</tr>
+<tr>
+<td><p>[:lower:]</p></td>
+<td><p>Lowercase alphabetic character</p></td>
+</tr>
+<tr>
+<td><p>[:upper:]</p></td>
+<td><p>Uppercase alphabetic character</p></td>
+</tr>
+<tr>
+<td><p>[:xdigit:]</p></td>
+<td><p>Digits allowed in a hexadecimal number (0-9a-fA-F)</p></td>
+</tr>
+</tbody>
+</table>
+
+For example:
+
+- **a\[\[:digit:\]\]b** matches "a0b", "a1b", ..., "a9b".
+
+- **a\[:digit:\]b** matches "a:b", "adb", …, "atb".
+
+- **\[\[:digit:\]abc\]** matches any digit or any of "a", "b", and "c".
+
+- **\[abc\[:digit:\]\]** matches any digit or any of "a", "b", and "c".
+
+For a case-insensitive expression, \[:lower:\] and \[:upper:\] are equivalent to \[:alpha:\].
+:::

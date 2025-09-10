@@ -1,0 +1,148 @@
+---
+slug: trend-vision-one-configure-mdm-macos-agent
+title: >-
+  Configure Mobile Device Management on Server & Workload Protection for the
+  macOS agent
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configure-mdm-macos-agent.md
+  conversion_date: '2025-09-08T23:42:22.736Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::::: {role="main"}
+Using Mobile Device Management (MDM), administrators can configure the necessary permissions for macOS agents to work without additional operations required from the end-user. In addition to setting permissions, the sections below provide instructions to properly deploy MDM so that Server & Workload Protection for macOS agents operates for the end-user without pop-ups (asking for permission, for example).
+
+### Configure required permissions {#configure-required-permissions}
+
+Before creating MDM profiles for Server & Workload Protection for macOS agents, the following items must be configured to ensure no pop-ups will show on the macOS endpoint after the initial installation of Server & Workload Protection for macOS agents.
+
+### Configure kernel extensions {#configure-kernel-extensions}
+
+macOS10.15 requires user approval before loading new third-party kernel extensions. Server & Workload Protection for Mac agents uses kernel extensions for the Core Shields real-time protection features. To ensure that your product can fully protect your system, you need to manually allow the extensions.
+
+The following kernel extension MDM profile creation fields are required:
+
+``` codeblock
+<key>AllowedKernelExtensions</key>
+<dict>
+    <key>E8P47U2H32</key>
+    <array>
+        <string>com.trendmicro.kext.KERedirect</string>
+        <string>com.trendmicro.kext.filehook</string>
+        </array>
+</dict>
+<key>AllowedTeamIdentifiers</key>
+<array>
+    <string>E8P47U2H32</string>
+</array>
+<key>PayloadType</key>
+<string>com.apple.syspolicy.kernel-extension-policy</string>
+```
+
+### Configure system extensions {#configure-system-extensions}
+
+To comply with changes to the Apple guidelines for software developers, starting from macOS Big Sur 11.0, kernel extensions are not loaded by the system. With that, Server & Workload Protection for macOS agent has been updated with our Endpoint Security and Network Extension frameworks.
+
+- `com.trendmicro.icore.es.sa`: Endpoint Security is a C API for monitoring system events for potentially malicious activity. These events include process executions, mounting file systems, forking processes, and raising signals. For reference, see: <https://developer.apple.com/documentation/endpointsecurity>.
+
+- `com.trendmicro.icore.netfilter.sa`: Customize and extend core networking features. For reference, see: <https://developer.apple.com/documentation/networkextension>.
+
+The following system extension fields are required:
+
+``` codeblock
+<key>AllowUserOverrides</key>
+<true/>
+<key>AllowedSystemExtensionTypes</key>
+<dict>
+    <key>E8P47U2H32</key>
+        <array>
+            <string>EndpointSecurityExtension</string>
+            <string>NetworkExtension</string>
+        </array>
+</dict>
+<key>AllowedSystemExtensions</key>
+<dict>
+    <key>E8P47U2H32</key>
+    <array>
+        <string>com.trendmicro.icore.es</string>
+        <string>com.trendmicro.icore.netfilter</string>
+    </array>
+</dict>
+<key>PayloadType</key>
+<string>com.apple.system-extension-policy</string>
+<key>PayloadDisplayName</key>
+<string>System Extension</string>
+```
+
+### Configure web content filter {#configure-web-content-filter}
+
+An on-device network content filter examines user network content as it passes through the network stack and determines if that content should be blocked or allowed to pass on to its final destination. For more details, see [Content Filter Providers](https://developer.apple.com/documentation/networkextension/content_filter_providers?language=objc).
+
+When creating an MDM profile, the following web content filter fields are required:
+
+``` codeblock
+<key>FilterBrowsers</key>
+<true/>
+<key>FilterDataProviderBundleIdentifier</key>
+<string>com.trendmicro.icore.netfilter</string>
+<key>FilterDataProviderDesignatedRequirement</key>
+<string>identifier "com.trendmicro.icore.netfilter" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = E8P47U2H32</string>
+<key>FilterGrade</key>
+<string>firewall</string>
+<key>FilterPackets</key>
+<false/>
+<key>FilterSockets</key>
+<true/>
+<key>FilterType</key>
+<string>Plugin</string>
+<key>PayloadType</key>
+<string>com.apple.webcontent-filter</string>
+<key>PluginBundleID</key>
+<string>com.trendmicro.icore</string>
+```
+
+### Configure full disk access {#configure-full-disk-access}
+
+:::note
+
+For specific configuration instructions, see <https://success.trendmicro.com/dcx/s/solution/000277823?language=en_US>.
+:::
+
+Full disk access permission is a privacy feature introduced in macOS Mojave (10.14) that prevents some applications from accessing your important data in your Mail, Messages, TimeMachine, and Safari files, for example. You'll need to manually grant permission for certain applications to access these protected areas of your macOS endpoint.
+
+:::note
+
+In earlier versions of macOS (10.13 and lower), this permission is automatically granted during installation of your product.
+:::
+
+:::danger[Warning]
+
+If full disk access is not enabled, Server & Workload Protection is unable to scan all areas of your macOS endpoint. This means it cannot fully protect your endpoint against malware and other network security threats, and can only scan a limited portion of your system folders and hard drive.
+:::
+
+### Configure browser plugin extension {#configure-browser-plugin-extension}
+
+(Optional) Add the profile settings below into MDM and deploy them to the managed macOS computer to enable Chrome or Firefox extensions automatically and avoid pop-up messages:
+
+- [Google Chrome Extension](https://powerbox-na-file.trend.org/SFDC/DownloadFile_iv.php?jsonInfo=%7B%22Query%22%3A%223ZwRWMhe37TH6B5cHQbQGubmzWKNZdxeKga%2F%2BMCDVNNkplYM8TkGiUYh8d26YYAlTLTTa9MAwlRGaT%2FgMRfDvQGucrWUO1loddV3vg9x%2FDY%2BfRnSX%2BJlC8G56iaQVrHVU0IgOV%2BAgVJcjBNtCgUrImbww6jedo%2FkG7zjmcDjV%2B63EckwxVNTOtd%2BKAGAmud90nWRh00Dl0702CKpM%2Bq10eJjmEO8SUKBaT9e4KsY30NpvYcF54XPNfODTNjK8BYIp6OhPXugCVSnl07J8WDdhJzA81iq9s%2BoZkmbv4GgxKQ%3D%22%2C%22iv%22%3A%2206bbb2961ebfbf7b727139402969cc34%22%7D)
+
+After installing the "Google Chrome Extension", Chrome will download and install "Trend Micro Toolbar for Mac" from the Chrome Store, even if the Server & Workload Protection agent for macOS has not been installed. The function of "Trend Micro Toolbar for Mac" does not work yet, and cannot be uninstalled by the uninstaller.
+
+- [Mozilla Firefox Extension](https://powerbox-na-file.trend.org/SFDC/DownloadFile_iv.php?jsonInfo=%7B%22Query%22%3A%22EiPwcnos6DH4eTA5opiaAUuL0UarRFVNFRgOAQMd4gaKD0IgaZyg%2B%2FnURblbKYY7ygoWd%2B8xz7vf5RGad5xj%2FvgUNGrWbdjRa2E50x%2FAMYt1lieimhE8CbxHwf42VcAx5nnod1u92rjnUUmP2eSV1%2FSAp6VgwyT4B8P9Js%2FNXmwy89jN02pd3LK8yNXzwM1QkhVV4Ic0OlWzbVAFFb8Re2gUDDar4JWPaqL9aGKzzs8fJB9jpwvYWGoyH3xJ3WQ96ZnR6AVUkGx37twx8Iy2oS8VGT0GugmPgInvBAuuQzQ%3D%22%2C%22iv%22%3A%22748f6351acb9136ae05ac4383aa0fb62%22%7D)
+
+After installing the "Mozilla Firefox Extension", it may appear that MDM has been configured but a pop-up will still prompt you to install the Firefox Extension. This is a timing issue. In fact, Firefox Extension has been installed successfully and you can ignore the pop-up.
+
+:::note
+
+For the Safari browser, it is impossible to automate browser extension deployment via MDM due to Apple restrictions.
+:::
+
+### Deploy agents from Mobile Device Management (MDM) {#deploy-agents-from-mobile-device-management-mdm}
+
+After you configure Mobile Device Management on Server & Workload Protection for the macOS agent, you can import deployment scripts in your MDM solution to install the agent.
+
+- For information on deployment scripts, see: [Use deployment scripts to add and protect computers](deployment-scripts-add-computers.mdx).
+- For instructions on deploying the agent using the AirWatch or Intune MDM console, see: [Install Endpoint and Server & Workload Protection Agent for Mac via AirWatch (Workspace One) and Microsoft Intune](https://success.trendmicro.com/dcx/s/solution/000291576?language=en_US).
+:::::::

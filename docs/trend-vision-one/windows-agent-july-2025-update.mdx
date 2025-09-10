@@ -1,0 +1,82 @@
+---
+slug: trend-vision-one-windows-agent-july-2025-update
+title: Trend Vision One Endpoint Security agent July 2025 update - Windows
+---
+# Trend Vision One Endpoint Security agent July 2025 update - Windows
+
+July 9, 2025—Trend Vision One Endpoint Security agent version 202507 includes security enhancements, bug fixes, and feature releases. Updates to individual components and agent modules may follow different batch release schedules.
+
+This update includes the following changes:
+
+- Agent program services package (Endpoint Basecamp) 1.1.0.5557
+
+- Service communication manager (VOM) plug-in version 1.2.0.1141
+
+- Endpoint sensor version 1.2.0.6543
+
+- Attack Surface Discovery version 1.0.0.3895
+
+- Standard Endpoint Protection version 14.0.20114
+
+- Server & Workload Protection version 20.0.2.14490
+
+Detailed release notes:
+
+- **New features**
+
+  - Add support for the updated Endpoint Security Policies (unified assignment). This is a pre-release feature with limited release.
+
+  - Agent includes new Windows Filtering Platform driver, `tbimwfp`, for Firewall feature in Endpoint Security Policies (unified assignment). This is a pre-release feature with limited release.
+
+  - All configurations of the agent now support the Agent Interface on Windows platforms (previously called Agent Console). This is a pre-release feature with limited release.
+
+  - Add support for terminating the agent using the Agent Interface. This is a pre-release feature with limited release.
+
+- **Enhancements**
+
+  - Attack surface discovery includes enhanced data collection of hardware and network information
+
+  - Attack surface discovery includes enhanced data collection of registry and local user group information
+
+  - Standard Endpoint Protection updates Curl module to version 8.14.1 and OpenSSL to version 3.0.16 to enhance product security and address the vulnerability CVE-2025-5025.
+
+  - Standard Endpoint Protection updates Data Loss Prevention module to version 6.2.6090 providing enhanced performance
+
+  - Standard Endpoint Protection system logs can now display policy names with non-English characters
+
+  - Standard Endpoint Protection updates Boost C++ libraries to version 1.88.0 to enhance security
+
+  - Server & Workload Protection adds a function to inject a packet when connection is not locked to avoid crashing
+
+- **Bug fixes and resolved issues**
+
+  - Standard Endpoint Protection: resolved an issue related to the trusted program list which might cause performance issues for listed programs
+
+  - Standard Endpoint Protection: resolved an issue related to the firewall exception profile rule set which might prevent the system from applying the firewall exception rules correctly
+
+  - Standard Endpoint Protection: resolved an issue related to update process which might prevent the system from updating Trend Micro Endpoint Security agents correctly
+
+  - Standard Endpoint Protection: resolved an issue where after updating to 202501 release, the TMBMSRV.exe service might cause high memory usage
+
+  - Standard Endpoint Protection: resolved an issue related to Behavior Monitoring that might cause false positive alerts for Microsoft applications
+
+  - Standard Endpoint Protection: resolved an issue where enabling Data Loss Prevention might cause the system to not block the transmission of sensitive data through webmail
+
+  - Standard Endpoint Protection: resolved an issue where Data Loss Prevention might not block the upload of sensitive files with a non-English filename to Microsoft OneDrive
+
+  - Server & Workload Protection: fixed issue where the "Scan Now" button for on-demand Enhanced Recommendation Scans doesn't work until the first automatic scan is triggered after agent activation or after agent restart
+
+  - Server & Workload Protection: agent language now reverts to the system default language after remote upgrade
+
+  - Server & Workload Protection: fixed an issue where a file detected by Predictive Machine Learning is not scanned after changing to a higher detection level
+
+  - Server & Workload Protection: adds a hidden setting to prevent setting relative registry keys for Windows Defender
+
+Release schedule:
+
+- Batch 1: July 2, 2025
+
+- Batch 2: July 9, 2025
+
+- Batch 3: July 16, 2025
+:::

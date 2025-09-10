@@ -1,0 +1,70 @@
+---
+slug: trend-vision-one-adding-dkim-signing-settings
+title: Adding DKIM signing settings
+last_updated: '2025-09-08'
+ai_context:
+  source_file: adding-dkim-signing-settings.md
+  conversion_date: '2025-09-08T23:42:25.783Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Cloud Email Gateway Protection supports DKIM signing for all outgoing messages from a specific domain. Recipients can verify that the email messages from the domain are authorized by the domain's administrator and that the messages, including attachments, have not been modified during transport.
+
+The DKIM signing settings apply only to the selected sender domain.
+
+### Procedure {#procedure}
+
+1.  Go to **Outbound Protection → Domain-based Authentication → DomainKeys Identified Mail (DKIM) Signing**.
+
+2.  Click **Add**.
+
+    The **Add DKIM Signing Settings** screen appears.
+
+3.  Select a specific sender domain from the **Managed domain** drop-down list.
+
+4.  Select **Enable DKIM signing**.
+
+5.  Optionally select **Sign email messages with no envelope sender addresses**.
+
+    For email messages with no envelope sender addresses (such as auto-reply messages or bounced messages), Cloud Email Gateway Protection attempts to find the sender domain from the email header **From** and applies DKIM signing settings of the sender domain.
+
+6.  Configure general settings for DKIM signing.
+
+    - **SDID**: select a signing domain identifier from the drop-down list.
+
+    - **Selector**: selector to subdivide key namespace. Retain the default value.
+
+    - **Headers to sign**: select one or multiple headers to sign and customize more headers if necessary.
+
+    - **Wait time**: specify how long it takes for a key pair to take effect. Cloud Email Gateway Protection starts to count the wait time once it finds the public key in the DNS.
+
+    - **Key pair**: select a key length and click **Generate** to generate a key pair.
+
+      :::note
+
+      Use the generated **DNS TXT record name** and **DNS TXT record value** to publish the public key to your DNS server.
+
+      If your domain provider supports the 2048-bit domain key length but limits the size of the TXT record value to 255 characters, split the key into multiple quoted text strings and paste them together in the TXT record value field.
+      :::
+
+7.  Configure advanced settings for DKIM signing.
+
+    - **Header canonicalization**: select **Simple** or **Relaxed**.
+
+    - **Body canonicalization**: select **Simple** or **Relaxed**.
+
+      :::note
+
+      Two canonicalization algorithms are defined for each of the email header and the email body: a "simple" algorithm that tolerates almost no modification and a "relaxed" algorithm that tolerates common modifications such as whitespace replacement and header field line rewrapping.
+      :::
+
+    - **Signature expiration**: set the number of days that the signature will be valid.
+
+    - **Body length**: set the number of bytes allowed for the email body.
+
+    - **AUID**: specify the Agent or User Identifier on behalf of which SDID is taking responsibility.
+
+8.  Click **Add** to finish adding the DKIM signing settings.
+:::

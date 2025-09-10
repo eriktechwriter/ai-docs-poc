@@ -1,0 +1,42 @@
+---
+slug: trend-vision-one-helm-chart-314
+title: Helm Chart 3.1.4
+last_updated: '2025-09-08'
+ai_context:
+  source_file: helm-chart-314.md
+  conversion_date: '2025-09-08T23:42:18.172Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+August 18, 2025—The Helm Chart 3.1.4 release includes the following:
+
+- **Features**
+
+  - Added a new environment variable `LOG_LEVEL` to configure logging levels for ECS Fargate in task definitions.
+
+- **Enhancements**
+
+  - Added image version tags to task definitions to facilitate easier version comparison.
+
+- **Bug fixes**
+
+  - Resolved issues with malware/secret scan timeouts and job creation failures.
+
+- **Upgrade instractions**
+
+  - Sample upgrade command:
+
+    ``` codeblock
+    helm upgrade \
+    --values overrides.yaml \
+    --namespace trendmicro-system \
+    trendmicro \
+    https://github.com/trendmicro/visionone-container-security-helm/archive/3.1.4.tar.gz
+    ```
+
+- **References**
+
+  - <https://github.com/trendmicro/visionone-container-security-helm/releases/tag/3.1.4>
+:::

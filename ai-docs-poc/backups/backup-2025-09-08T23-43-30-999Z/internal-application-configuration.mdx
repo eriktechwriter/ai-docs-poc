@@ -1,0 +1,121 @@
+---
+slug: trend-vision-one-internal-application-configuration
+title: Internal application configuration
+last_updated: '2025-09-08'
+ai_context:
+  source_file: internal-application-configuration.md
+  conversion_date: '2025-09-08T23:42:17.049Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Add your corporate applications and manage them on the Trend Vision One console to enforce access control by the **Zero Trust Secure Access** app.
+
+Your corporate applications are hosted in your on-premises data center or a cloud IaaS environment on your corporate network. Determine the applications that you want access control over and associate it with a group of Private Access Connectors in the same environment.
+
+You can configure the way you allow your users to authenticate themselves and request access to an internal app, that is, via the Secure Access Module (**Client Access**) or the Trend Micro provided user portal (**Browser Access**) or both. For more information about the Secure Access Module and the user portal, see [Secure Access Module](secure-access-module.mdx) and [User portal for Private Access configuration](user-portal-for-pa-config.mdx).
+
+The **Internal Applications** tab provides an overview of your organization's private apps that you want to protect against unauthorized access.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Add an internal app</p></td>
+<td><ul>
+<li><p>For more information, see <a href="trend-vision-one-add-internal-application-pac">Adding an internal application to Private Access</a>.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Check internal app details</p></td>
+<td><ul>
+<li><p>View the basic information about an internal app and its associated connector group.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Modify an internal app</p></td>
+<td><ul>
+<li><p>To change the basic information about an internal app, click <img src="./images/edit_icon=GUID-1F1D1164-5310-4D6D-ACD0-6049C86960AF.webp" /> in the <strong>Action</strong> column.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Delete an internal app</p></td>
+<td><ul>
+<li><p>To delete an internal app from Trend Vision One, click <img src="./images/trash_icon=GUID-47cf6867-6315-438e-8670-86ff36f22a28.webp" /> in the <strong>Action</strong> column.</p></li>
+<li><p>To delete more than one internal app, select the apps and click <strong>Delete</strong> in the upper left.</p>
+
+
+:::note
+
+<p>Only the internal application that is not in use by any secure access rule can be deleted.</p>
+
+
+:::
+
+</li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Check reachability of an internal app</p></td>
+<td><ul>
+<li><p>To manually trigger the Private Access Connector of the selected group to perform a check and report on it, click <img src="./images/check_app_reachability=20220823084242.webp" /> in the <strong>Action</strong> column.</p>
+
+
+:::note
+
+<p>This action is available only when <strong>Reachability check</strong> for the internal app is enabled and configured.</p>
+
+
+:::
+
+</li>
+</ul></td>
+</tr>
+<tr>
+<td><p>View reachability status of an internal app</p></td>
+<td><ul>
+<li><p>View the icon in front of the app name that indicates the reachability status of the internal app.</p>
+<p>Reachability status includes:</p>
+<ul>
+<li><p><img src="./images/successful=d385863c-ae1f-4a76-8500-6d60d7a2de8f.webp" />: The internal app is reachable by all Private Access Connectors under the selected group.</p></li>
+<li><p><img src="./images/unsuccessful=e4c3ece6-3776-45dc-b99a-67195d7d21e0.webp" />: The internal app is not reachable by at least one Private Access Connector under the selected group.</p></li>
+<li><p><img src="./images/inProgress=763d5319-3680-4b10-abca-a75782d8eb48.webp" />: The Private Access Connector is checking reachability to the internal app.</p></li>
+<li><p><img src="./images/pending_approval=6fd5282c-abf5-4f88-92f4-24d42491ffa4.webp" />: The reachability check task is queued.</p></li>
+<li><p><img src="./images/queued=74fd3fa8-3cad-4955-9410-e97bbded1732.webp" />: Reachability check for the internal app is not configured.</p></li>
+</ul></li>
+<li><p>To view details about the reachability check, click the arrow for each internal app.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Manage app group tags</p></td>
+<td><ul>
+<li><p>To add an app group tag, specify a tag name in the <strong>App group tag</strong> text box when configuring an internal app.</p></li>
+<li><p>To modify or delete the custom tags used to identify a group of internal apps, click <img src="./images/manage_appgroup_tag=c6ae64f5-a299-42e2-8bc4-63edebd5864f.webp" /> in the upper right of the screen.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Manage certificates</p></td>
+<td><ul>
+<li><p>To upload and manage the web server certificates of your internal applications that are used for Browser Access, click <strong>Manage Certificates</strong> in the upper right of the screen.</p>
+<p>For more information, see <a href="trend-vision-one-managing-certificates">Managing certificates</a>.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Adding an internal application to Private Access](add-internal-application-pac.mdx)
+- [Discovering internal applications](discover-internal-apps-section.md "Allow Zero Trust Secure Access to discover internal applications used in your organization, by configuring an application with a wider domain name or IP range.")
+- [Managing certificates](managing-certificates.md "Manage server certificates for internal applications and enrollment certificates for Zero Trust Secure Access modules and connectors.")
+:::

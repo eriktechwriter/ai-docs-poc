@@ -1,0 +1,82 @@
+---
+slug: trend-vision-one-fs-cs-autoscale-configuration
+title: Autoscaling configuration
+last_updated: '2025-09-08'
+ai_context:
+  source_file: fs-cs-autoscale-configuration.md
+  conversion_date: '2025-09-08T23:42:19.033Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+The Helm chart supports Horizontal Pod Autoscaling (HPA) for the scanner component to automatically scale the number of scanner pods based on CPU and memory utilization.
+
+Autoscaling works best when combined with appropriate resource requests and limits. Monitor your workload patterns to determine optimal scaling thresholds.
+
+### Prerequisites for Autoscaling {#prerequisites-for-autoscaling}
+
+- Metrics Server: The Kubernetes Metrics Server must be deployed in your cluster for HPA to collect CPU and memory metrics. If not already installed, deploy it using:
+
+  ``` codeblock
+  kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+  ```
+
+  Verify the Metrics Server is running:
+
+  ``` codeblock
+  kubectl get deployment metrics-server -n kube-system
+  kubectl top nodes  # This should return node metrics
+  ```
+
+- Resource Requests: The scanner pods must have CPU and memory resource requests defined (which are included by default in this chart).
+
+### Default autoscaling settings {#default-autoscaling-settings}
+
+Autoscaling is disabled by default. The following settings are configured in the `values.yaml`:
+
+Scanner Autoscaling (`scanner.autoscaling`):
+
+- enabled: `false` (autoscaling is disabled by default)
+- minReplicas: `1` (minimum number of scanner pods)
+- maxReplicas: `5` (maximum number of scanner pods)
+- targetCPUUtilizationPercentage: `80` (target CPU utilization to trigger scaling)
+- targetMemoryUtilizationPercentage: `80` (target memory utilization to trigger scaling)
+
+### Enable autoscaling {#enable-autoscaling}
+
+You can enable autoscaling during installation by using the `--set` flags. You can also enable autoscaling by overriding the values in your custom `values.yaml` file:
+
+``` codeblock
+# Example: Enable autoscaling with custom thresholds
+scanner:
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 70
+    targetMemoryUtilizationPercentage: 80
+```
+
+Or by using the Helm command line:
+
+``` codeblock
+helm install my-release visionone-filesecurity/visionone-filesecurity \
+  -n visionone-filesecurity \
+  --set scanner.autoscaling.enabled=true \
+  --set scanner.autoscaling.maxReplicas=10 \
+  --set scanner.autoscaling.targetCPUUtilizationPercentage=70
+```
+
+### Monitor autoscaling {#monitor-autoscaling}
+
+You can monitor the HPA status using:
+
+``` codeblock
+# Check HPA status
+kubectl get hpa -n visionone-filesecurity
+
+# Get detailed HPA information
+kubectl describe hpa -n visionone-filesecurity
+```
+:::

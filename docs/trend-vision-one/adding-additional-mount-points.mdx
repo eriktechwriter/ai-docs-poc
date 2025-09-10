@@ -1,0 +1,62 @@
+---
+slug: trend-vision-one-adding-additional-mount-points
+title: Add a mount point
+---
+# Add a mount point
+
+When you add the Trend Micro File Security Virtual Appliance to your Service Gateway, the Service Gateway appears on the File Security Inventory page. Virtual appliances can have multiple servers, and servers can have multiple mount points with a scanner on each mount point. From this page you can add, modify, remove, or turn off servers and mount points for a specific Virtual Appliance.
+
+Virtual Appliance can be used with the following file systems:
+
+- NFS3, NFS4
+- SMB 3.0, SMB 3.1
+
+  :::note
+
+  SMB requires Service Gateway 3.0.19 or higher.
+  :::
+
+### Procedure {#procedure}
+
+1.  In Trend Vision One go to **Cloud Security → File Security**.
+
+2.  Click **Inventory**.
+
+3.  Click the **Virtual Appliance** node.
+
+4.  Under **Actions**, click the **Modify Mount Point** (pen) icon for the Service Gateway that you want to add the mount point.
+
+    The **Add Mount Point** drawer opens.
+
+5.  Click **Add**.
+
+6.  Select the **Protocol**.
+
+    :::note
+
+    Depending on your protocol, you may need to enter the **Username** and **Password** to access the folder.
+    :::
+
+7.  Enter the **Server IP**.
+
+8.  Enter the **Server folder path**.
+
+9.  Enable **Scanning**.
+
+    You can enable scanning later if you want.
+
+10. If you want to enable **Predictive Machine Learning**.
+
+11. If you want to quarantine suspicious files:
+
+    1.  Enable **Quarantine**.
+
+    2.  Enter the name of the folder in which the files are to be quarantined in the **Quarantine destination** field.
+
+        :::warning[Important]
+
+        The **Quarantine destination** folder must be a subfolder of the Server folder path that you entered in step 9 and have write access enabled.
+        :::
+
+12. Click **Add**.
+:::

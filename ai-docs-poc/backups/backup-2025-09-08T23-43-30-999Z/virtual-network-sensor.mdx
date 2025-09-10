@@ -1,0 +1,133 @@
+---
+slug: trend-vision-one-virtual-network-sensor
+title: Virtual Network Sensor
+last_updated: '2025-09-08'
+ai_context:
+  source_file: virtual-network-sensor.md
+  conversion_date: '2025-09-08T23:42:11.615Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Check the Virtual Network Sensor status, deploy the Virtual Network Sensor, and configure settings in Network Inventory.
+
+The **Virtual Network Sensors** inventory on the **Network Inventory** screen provides an overview of connected Virtual Network Sensors within your environment. Virtual Network Sensor feeds Trend Vision One with network activity data, which enables you to play back detailed network activity. You can also discover unmanaged and unknown assets, allowing for a more holistic view of your attack surface.
+
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 68%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Deploy the Virtual Network Sensor</p></td>
+<td><p>Click <strong>Deploy Virtual Network Sensor</strong> to configure and deploy a Virtual Network Sensor.</p>
+<p>Virtual Network Sensor supports the following deployments:</p>
+<ul>
+<li><p>Hosted virtual machine:</p>
+<ul>
+<li><p><a href="trend-vision-one-deploy-network-sensor-hyper-v">Hyper-V</a></p></li>
+<li><p><a href="trend-vision-one-deploy-network-sensor-kvm">KVM</a></p></li>
+<li><p><a href="trend-vision-one-network-sensor-vmware-esxi">VMware ESXi</a></p></li>
+<li><p><a href="trend-vision-one-network-sensor-vmware-vcenter">VMware vCenter</a></p></li>
+<li><a href="trend-vision-one-file:/source/en-us/appContent/VisionOneNetworkInventory/deploy-vns-with-nutanix-ahv.xml">Nutanix AHV</a></li>
+</ul></li>
+<li><p>Cloud environments:</p>
+<ul>
+<li><p><a href="trend-vision-one-virtual-network-sensor-aws">AWS</a></p></li>
+<li><p><a href="trend-vision-one-deploy-network-sensor-azure">Azure</a></p></li>
+<li><p><a href="trend-vision-one-launching-vns-instance-google-cloud">Google Cloud</a></p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>View setup guide</p></td>
+<td><p>Click <strong>Setup Guide</strong> to view instructions about how to deploy and configure a Virtual Network Sensor.</p></td>
+</tr>
+<tr>
+<td><p>View sensor details</p></td>
+<td><p>View detailed information about the appliance including sensor version and status</p>
+<p>Click the sensor identifier to view the <a href="trend-vision-one-sensor-details">Sensor Details</a> screen.</p></td>
+</tr>
+<tr>
+<td><p>Update sensor</p></td>
+<td><p>Hover over the out-of-date icon (<img src="./images/diamondWarningIcon=GUID-ec75f229-4f04-49eb-9615-8b6072cb1cee.webp" />) next to the sensor version and click <strong>Update now</strong> to manually update to the latest version</p>
+<p>You can view update settings in the <a href="trend-vision-one-sensor-details">Sensor Details</a> screen.</p>
+
+
+:::warning[Important]
+
+<p>Manually updating always updates to the latest version.</p>
+<p>Network Inventory only maintains update support for Virtual Network Sensor versions released within the last six months. Versions older than six months might require redeployment to use the latest version.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Manage connection settings</p></td>
+<td>
+
+:::warning[Important]
+
+<p>Network Inventory only supports managing connection settings for Virtual Network Sensor version TBD or later.</p>
+
+
+:::
+
+
+<p>Manage how your Virtual Network Sensors connect to Trend Vision One</p>
+<p>Select one or more Virtual Network Sensors and click <strong>Configure Connection Settings</strong> to change the connection method. For more information, see <a href="trend-vision-one-virtual-network-sensor-connections">Configuring Virtual Network Sensor connections</a>.</p></td>
+</tr>
+<tr>
+<td><p>Manage sandbox settings</p></td>
+<td><p>Enable or disable <strong>Send to sandbox</strong> to control if a Virtual Network Sensor sends files to a cloud-based virtual sandbox for analysis</p>
+<p>Turn on <em>send to sandbox</em> to enable the Virtual Network Sensor to submit suspicious files and other objects to a virtual sandbox for analysis. You can view the results in the Sandbox Analysis app. You can select multiple Virtual Network Sensors to configure more than one at a time.</p>
+
+
+:::warning[Important]
+
+<p><em>Send to sandbox</em> is a paid feature and requires allocating credits to enable.</p>
+<p>Send to sandbox supports Virtual Network Sensor version 1.0.1235 or later.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Remove a Virtual Network Sensor</p></td>
+<td><p>Click <img src="./images/trash_icon=GUID-47cf6867-6315-438e-8670-86ff36f22a28.webp" /> to disconnect a Virtual Network Sensor from <strong>Network Security</strong>.</p></td>
+</tr>
+<tr>
+<td><p>Manage network resources</p></td>
+<td><p>Click <strong>Network Resources</strong> to view, import, and export lists of your important network assets such as trusted domains and trusted service sources.</p></td>
+</tr>
+<tr>
+<td><p>Check credit usage</p></td>
+<td><p>Hover over <strong>Credit Usage</strong> to view details such as credit requirements and credits allocated to <strong>Network Inventory</strong>.</p></td>
+</tr>
+<tr>
+<td><p>View bandwidth usage</p></td>
+<td><p>View the current allocated and total bandwidth usage, and click <strong>Bandwidth usage</strong> to view bandwidth usage for all network appliances, as well as the allocated and available bandwidth for your Trend Micro license.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Sensor Details](sensor-details.md "Manage settings and review information about your Virtual Network Sensors.")
+- [Configuring Virtual Network Sensor connections](virtual-network-sensor-connections.md "Manage how the Virtual Network Sensor connects to Trend Vision One.")
+- [Virtual Network Sensor system requirements](network-sensor-sys-reqs.md "View the system requirements for Virtual Network Sensor.")
+- [Resizing the Virtual Network Sensor](resize-vns.md "Learn how to resize the Virtual Network Sensor according to the needs of your environment.")
+- [Ports and URLs used by Virtual Network Sensor](ports-urls-used-network-sensor.md "Use these settings to configure your firewall and connected products.")
+- [Virtual Network Sensor CLI commands](virtual-network-sensor-cli-commands.md "A list of available CLI commands for managing the Virtual Network Sensor.")
+:::

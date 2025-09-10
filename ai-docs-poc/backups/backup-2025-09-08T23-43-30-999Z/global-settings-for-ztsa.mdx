@@ -1,0 +1,87 @@
+---
+slug: trend-vision-one-global-settings-for-ztsa
+title: Global settings
+last_updated: '2025-09-08'
+ai_context:
+  source_file: global-settings-for-ztsa.md
+  conversion_date: '2025-09-08T23:42:18.769Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Configure the settings that apply to all Internet Access gateways.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Setting</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Safe Search Settings</p></td>
+<td><p>Enforce the use of Restricted Mode when users use YouTube and a strict SafeSearch setting when users use Google, Yahoo!, or Microsoft Bing.</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-ntlm-kerberos-sso-ad">Single Sign-On with Active Directory (On-Premises)</a></p></td>
+<td><p>Set up NTLM v2 or Kerberos authentication to transparently identify your on-premises Active Directory users using their Windows logon credentials. If both services are enabled, NTLM v2 handles authentication if the Kerberos service fails.</p>
+<p>After users sign in to their Windows operating system, Internet Access automatically authenticates the users with your on-premises Active Directory server. Users do not need to sign in again on the Secure Access Module deployed to their endpoints or on a browser-based authentication page if they do not use the Secure Access Module.</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-outbound-static-ip-settings">Outbound Static IP Settings</a></p></td>
+<td>
+
+:::note
+
+<p>This feature is not available in all regions.</p>
+
+
+:::
+
+
+<p>Forward selected outbound web traffic through provisioned static IP addresses originating from a chosen location.</p></td>
+</tr>
+<tr>
+<td><p>Disable Access Protection</p></td>
+<td><p>Generate an access key to allow users to temporarily bypass internet traffic on the Secure Access Module and visit the internet without going through Internet Access Gateway.</p>
+<ol>
+<li><p>Click the calendar icon to select an expiration time or date, provide a description, and click <strong>Generate Access Key</strong>.</p></li>
+<li><p>Provide the access key to the requesting users.</p></li>
+</ol>
+<p>Access keys with the same expiration time/date are identical.</p>
+<p>To revoke and delete an access key, click the icon (<img src="./images/delete_connector=3fc07446-32b8-4304-a62e-6c9ecc08d84f.webp" />). Revoking and deleting an access key removes it from Trend Vision One. Any active endpoints using the token automatically re-enable the Internet Access service within a few minutes.</p></td>
+</tr>
+<tr>
+<td><p>Configuration Backup and Restoration</p></td>
+<td><p>Create backups of your Internet Access service configurations and restore created backups as necessary. Data backed up includes:</p>
+<ul>
+<li><p>Internet Access rules</p></li>
+<li><p>Secure access resources in use by Internet Access rules</p></li>
+<li><p>PAC files</p></li>
+<li><p>HTTPS inspection rules and exceptions</p></li>
+<li><p>Allow and deny list configurations</p></li>
+<li><p>Safe search settings</p></li>
+<li><p>Internet Access-related custom notification settings</p></li>
+</ul>
+<p>You may save up to 10 configuration backups. During the backup creation and restoration process, you may not make any changes to configurations, settings, or resources.</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-ztsa-x-forwarded-for-headers">X-Forwarded-For headers</a></p></td>
+<td>The X-Forwarded-For header allows you to insert your own public IP address to the header for inspected HTTP/HTTPS traffic.</td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Configuring NTLM or Kerberos single sign-on with Active Directory (on-premises)](ntlm-kerberos-sso-ad.md "Set up NTLM v2 or Kerberos-based single sign-on to transparently authenticate on-premises Active Directory users using their Windows logon credentials.")
+- [Outbound static IP settings](outbound-static-ip-settings.md "Configure outbound static IP settings to forward outbound web traffic through static IP addresses provisioned via the Internet Access Cloud Gateway.")
+- [X-Forwarded-For headers](ztsa-x-forwarded-for-headers.mdx)
+- [Data Loss Prevention (DLP) / AI matching result visibility](dlp-forensic-data-capturing.mdx)
+:::

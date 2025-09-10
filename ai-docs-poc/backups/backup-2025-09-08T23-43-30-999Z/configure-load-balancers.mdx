@@ -1,0 +1,45 @@
+---
+slug: trend-vision-one-configure-load-balancers
+title: >-
+  Configure load balancers to use multiple Internet Access on-premises gateways
+  as the authentication proxy
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configure-load-balancers.md
+  conversion_date: '2025-09-08T23:42:22.764Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Ensure high authentication proxy availability by configuring a load balancer for use with multiple Internet Access on-premises gateways.
+
+When configuring the authentication proxy to be used for Internet Access services, you may choose to use multiple on-premises gateways located behind a load balancer in order to ensure high service availability. The load balancer evenly dispatches authentication requests to the on-premises gateways and adjusts request distribution if one or more on-premises gateways becomes unavailable.
+
+Once a load balancer is deployed and connected to multiple on-premises gateways, you may specify the FQDN or IP address of your load balancer by going to **Zero Trust Secure Access → Secure Access Configuration → Internet Access and AI Service Access Configuration → Global Settings** and clicking **Single Sign-On with Active Directory (On-Premises)**. For more information, see [Configuring NTLM or Kerberos single sign-on with Active Directory (on-premises)](ntlm-kerberos-sso-ad.mdx).
+
+:::warning[Important]
+
+This feature only supports layer 4 and layer 7 load balancing.
+:::
+
+The following common load balancers can be used to configure multiple on-premises gateways for use as the authentication proxy:
+
+- [Nginx](configuring-nginx.mdx)
+
+- [HAProxy](configuring-haproxy.mdx)
+
+- [F5 BIG-IP LTM](configuring-f5-big-ip.mdx)
+
+- [LVS (Linux Virtual Server)](configuring-lvs.mdx)
+
+- [DNS Round Robin](configure-dns-round-robin.mdx)
+
+**Related information**
+
+- [Configuring Nginx as a load balancer for use with multiple Internet Access on-premises gateways](configuring-nginx.md "Configure and deploy Nginx as your load balancer to support using multiple Internet Access on-premises gateways as the authentication proxy for single sign-on.")
+- [Configuring HAProxy as a load balancer for use with multiple Internet Access on-premises gateways](configuring-haproxy.md "Configure and deploy HAProxy as your load balancer to support using multiple Internet Access on-premises gateways as the authentication proxy for single sign-on.")
+- [Configuring F5 BIG-IP LTM as a load balancer for use with multiple Internet Access on-premises gateways](configuring-f5-big-ip.md "Configure and deploy F5 BIG-IP LTM as your load balancer to support using multiple Internet Access on-premises gateways as the authentication proxy for single sign-on.")
+- [Configuring Linux Virtual Server (LVS) as a load balancer for use with multiple Internet Access on-premises gateways](configuring-lvs.md "Configure and deploy Linux Virtual Server (LVS) as your load balancer to support using multiple Internet Access on-premises gateways as the authentication proxy for single sign-on.")
+- [Configuring DNS round-robin mode as a load balancing method for use with multiple Internet Access on-premises gateways](configure-dns-round-robin.md "Configure DNS round-robin mode to support load balancing among multiple Internet Access on-premises gateways for the authentication proxy.")
+::::

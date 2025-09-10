@@ -1,0 +1,139 @@
+---
+slug: trend-vision-one-monitoring-dmarc-setup
+title: Monitoring DMARC setup
+last_updated: '2025-09-08'
+ai_context:
+  source_file: monitoring-dmarc-setup.md
+  conversion_date: '2025-09-08T23:42:15.803Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Monitor whether your configurations for implementing DMARC is complete and quickly review the current DMARC policy tag setting for domains.
+
+To maximize the benefits of your DMARC enforcement, Cloud Email Gateway Protection also helps you implement Brand Indicators for Message Identification (BIMI), allowing your brand's logo to appear alongside the emails you send. This enables your customers to see your logo in their inbox, helping to eliminate online impersonators, build customer trust, and increase the likelihood that your emails are opened.
+
+### Procedure {#procedure}
+
+1.  Go to **Outbound Protection → Domain-based Authentication → Domain-based Message Authentication, Reporting and Conformance (DMARC) Monitoring**.
+
+2.  Go to **DMARC Record Check**.
+
+3.  Optionally specify the search criteria and click **Search**.
+
+4.  Check the DMARC setup status for the managed domains.
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Item</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Managed domain</p></td>
+    <td><p>Domain protected by Cloud Email Gateway Protection. All protected domains are listed in the table.</p></td>
+    </tr>
+    <tr>
+    <td><p>Outbound Protection</p></td>
+    <td><p>Whether outbound protection is enabled for the domain.</p>
+    <ul>
+    <li><p>Enabled</p></li>
+    <li><p>Disabled</p>
+    <p>To enable outbound protection, go to <strong>Domains</strong>, click the domain, and select <strong>Enable outbound protection</strong> on the displayed screen for editing domain information.</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>SPF</p></td>
+    <td><p>Whether SPF is enabled for the domain.</p>
+    <ul>
+    <li><p>Enabled</p></li>
+    <li><p>Disabled</p>
+    <p>SPF is disabled in either of the following scenarios:</p>
+    <ul>
+    <li><p>No SPF record is available for the domain.</p></li>
+    <li><p>The Cloud Email Gateway Protection server is not included in the SPF record.</p></li>
+    </ul>
+    <p>To enable SPF, depending on your scenario, set up an SPF record for the domain or add the Cloud Email Gateway Protection server address to the SPF record for the domain.</p>
+    <p>You can click <strong>Disabled</strong> to go to the <strong>Domains</strong> screen and follow the onscreen instructions for SPF setup in the <strong>Outbound Servers</strong> section. For more information, see <a href="trend-vision-one-adding-spf-records">Adding SPF records</a>.</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>DKIM</p></td>
+    <td><p>Whether DKIM is enabled for the domain.</p>
+    <ul>
+    <li><p>Enabled</p></li>
+    <li><p>Disabled</p>
+    <p>DKIM is disabled in any of the following scenarios:</p>
+    <ul>
+    <li><p>The DKIM record is not published or is published incorrectly.</p></li>
+    <li><p>The DKIM record is published but is still being propagated.</p>
+    <p>DKIM is enabled after the DKIM record propagation is completed.</p></li>
+    <li><p>No DKIM signing policy is created in Cloud Email Gateway Protection.</p></li>
+    <li><p>The DKIM signing policy is disabled in Cloud Email Gateway Protection.</p></li>
+    </ul>
+    <p>To enable DKIM, depending on your scenario, check the publish of your DKIM record for the domain, or click <strong>Disabled</strong> to go to the <strong>DKIM Signing</strong> screen and <a href="trend-vision-one-adding-dkim-signing-settings">create or enable a DKIM signing policy for the domain</a>.</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>DMARC</p></td>
+    <td><p>Whether DMARC is enabled for the domain.</p>
+    <ul>
+    <li><p>Enabled</p>
+    <p>The screen also shows the policy tag specified in the DMARC record, which can be none, quarantine, or reject, and whether the policy is inherited from an organizational domain,</p>
+    <p>You can click <strong>Enabled</strong> to view the details about the published DMARC record. If you want to update the DMARC record, click <strong>Modify</strong> to generate a new record and publish it to the DNS server. For details about DMARC record options, see <a href="trend-vision-one-generating-dmarc-record">Generating a DMARC record</a>.</p></li>
+    <li><p>Disabled</p>
+    <p>DMARC is disabled in any of the following scenarios:</p>
+    <ul>
+    <li><p>No DMARC record is available for the domain.</p></li>
+    <li><p>No policy tag is specified in the DMARC record.</p></li>
+    </ul>
+    <p>To enable DMARC, depending on your scenario, set up a DMARC record for the domain or specify a policy tag in the DMARC record.</p>
+    <p>Cloud Email Gateway Protection provides a DMARC record generator to facilitate your DMARC setup. You can click <strong>Disabled</strong> to create a DMARC record for the domain. For details, see <a href="trend-vision-one-generating-dmarc-record">Generating a DMARC record</a>.</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>BIMI</p></td>
+    <td><p>Whether BIMI is enabled for the domain.</p>
+    <ul>
+    <li><p>Enabled</p>
+    <p>Though enabled, BIMI may not work properly in the following scenarios:</p>
+    <ul>
+    <li><p>No Verified Mark Certificate (VMC) is provided.</p></li>
+    <li><p>DMARC policy for the domain and the organizational domain (if different) is not enforced.</p>
+    
+
+    :::note
+    
+    <p>BIMI only works when the DMARC policy for the domain and the organizational domain (if different) is at enforcement.</p>
+    
+
+    :::
+
+    </li>
+    </ul></li>
+    <li><p>Disabled</p>
+    <p>BIMI is disabled in any of the following scenarios:</p>
+    <ul>
+    <li><p>No BIMI record is available for the domain.</p></li>
+    <li><p>The BIMI record is published incorrectly.</p></li>
+    <li><p>The SVG image or VMC certificate provided in BIMI record generation is invalid.</p></li>
+    </ul></li>
+    </ul>
+    <p>To make BIMI work, depending on your scenario, update your DMARC record or generate a BIMI record for the domain. Cloud Email Gateway Protection provides a BIMI setup wizard where you can view the details about your DMARC and BIMI status and update the problematic record. You can click <strong>Enabled</strong> or <strong>Disabled</strong> to open the BIMI setup wizard.</p>
+    <p>Cloud Email Gateway Protection also provides a BIMI record generator to facilitate your BIMI setup. For details, see <a href="trend-vision-one-generating-bimi-record">Generating a BIMI record and Implementing BIMI</a>.</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+**Related information**
+
+- [Generating a DMARC record](generating-dmarc-record.mdx)
+- [Generating a BIMI record and Implementing BIMI](generating-bimi-record.md "Use the BIMI setup wizard to generate a BIMI record and ensure your BIMI implementation works properly.")
+:::

@@ -1,0 +1,227 @@
+---
+slug: trend-vision-one-misp-threat-intel-feed
+title: Configure MISP for the Trend Threat Intelligence feed
+last_updated: '2025-09-08'
+ai_context:
+  source_file: misp-threat-intel-feed.md
+  conversion_date: '2025-09-08T23:42:15.986Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+The Malware Information Sharing Platform (MISP) can receive events and indicators from the Trend Threat Intelligence feed.
+
+Prerequisites:
+
+- [MISP version 2.4](https://github.com/MISP/MISP/tree/2.4) or later
+
+- [MISP privileges](https://www.circl.lu/doc/misp/administration/)
+
+  - Perm site admin
+
+  - Perm auth
+
+  - Galaxy editor
+
+  - Write access at the operating system level
+
+- [Trend Vision One application programming interface (API) token](api-for-threat-intelligence-feed.mdx)
+
+- [Credits allocated to the Trend Threat Intelligence Feed](credit-req-for-apps-services.mdx)
+
+## Add the feed in MISP {#add-the-feed-in-misp}
+
+Access the Trend Threat Intelligence Feed through the built-in feeds functionality in MISP.
+
+### Procedure {#procedure}
+
+1.  In the MISP web interface, select **Sync Actions → Feeds**.
+
+2.  Click **Add Feed** to display the configuration page.
+
+3.  Select **Enabled**.
+
+4.  Enter the **Name** and **Provider** for the feed.
+
+5.  Enter the regional feed **URL** from the table below.
+
+    **Feed URLs**
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead style="text-align: left;">
+    <tr>
+    <th style="text-align: left;"><p>Region</p></th>
+    <th style="text-align: left;"><p>MISP feed URL</p></th>
+    </tr>
+    </thead>
+    <tbody style="text-align: left;">
+    <tr>
+    <td style="text-align: left;"><p>Australia</p></td>
+    <td style="text-align: left;"><p><a href="https://api.au.xdr.trendmicro.com/v3.0/threatintel/misp/feed">https://api.au.xdr.trendmicro.com/v3.0/threatintel/misp/feed</a></p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><p>European Union</p></td>
+    <td style="text-align: left;"><p><a href="https://api.eu.xdr.trendmicro.com/v3.0/threatintel/misp/feed">https://api.eu.xdr.trendmicro.com/v3.0/threatintel/misp/feed</a></p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><p>India</p></td>
+    <td style="text-align: left;"><p><a href="https://api.in.xdr.trendmicro.com/v3.0/threatintel/misp/feed">https://api.in.xdr.trendmicro.com/v3.0/threatintel/misp/feed</a></p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><p>Japan</p></td>
+    <td style="text-align: left;"><p><a href="https://api.xdr.trendmicro.co.jp/v3.0/threatintel/misp/feed">https://api.xdr.trendmicro.co.jp/v3.0/threatintel/misp/feed</a></p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><p>Singapore</p></td>
+    <td style="text-align: left;"><p><a href="https://api.sg.xdr.trendmicro.com/v3.0/threatintel/misp/feed">https://api.sg.xdr.trendmicro.com/v3.0/threatintel/misp/feed</a></p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><p>United Arab Emirates</p></td>
+    <td style="text-align: left;"><p><a href="https://api.mea.xdr.trendmicro.com/v3.0/threatintel/misp/feed">https://api.mea.xdr.trendmicro.com/v3.0/threatintel/misp/feed</a></p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><p>United States</p></td>
+    <td style="text-align: left;"><p><a href="https://api.xdr.trendmicro.com/v3.0/threatintel/misp/feed">https://api.xdr.trendmicro.com/v3.0/threatintel/misp/feed</a></p></td>
+    </tr>
+    </tbody>
+    </table>
+
+6.  Enter the API token as follows: `Authorization: Bearer <your_token>`
+
+7.  Click **Submit** to save the configuration.
+
+## Add custom galaxies {#add-custom-galaxies}
+
+After adding the Trend Threat Intelligence Feed in MISP, you can add or update Trend Micro galaxies using the Python script [available here](https://ohc.blob.core.windows.net/o-help/manual/7d34d63c-e9ae-4328-81be-0e6081012335/misp-galaxy-updater.mdx).
+
+Alternatively, you can manually add custom galaxies by following the steps below.
+
+### Procedure {#procedure-1}
+
+1.  Download the relevant galaxy JavaScript Object Notation (JSON) files from the URL for your region shown in the table below.
+
+    Available Trend Micro galaxy types:
+
+    - trendmicro-campaign-galaxy
+
+    - trendmicro-intrusion-set-galaxy
+
+    - trendmicro-malware-galaxy
+
+    - trendmicro-tool-galaxy
+
+    - trendmicro-vulnerability-galaxy
+
+    **Galaxy URLs**
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead style="text-align: left;">
+    <tr>
+    <th style="text-align: left;"><p>Region</p></th>
+    <th style="text-align: left;"><p>Galaxy URL template</p></th>
+    </tr>
+    </thead>
+    <tbody style="text-align: left;">
+    <tr>
+    <td style="text-align: left;"><p>Australia</p></td>
+    <td style="text-align: left;"><p><a href="https://api.au.xdr.trendmicro.com/v3.0/threatintel/misp/galaxies/%7Bgalaxy">https://api.au.xdr.trendmicro.com/v3.0/threatintel/misp/galaxies/%7Bgalaxy</a></p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><p>European Union</p></td>
+    <td style="text-align: left;"><p><a href="https://api.eu.xdr.trendmicro.com/v3.0/threatintel/misp/galaxies/%7Bgalaxy">https://api.eu.xdr.trendmicro.com/v3.0/threatintel/misp/galaxies/%7Bgalaxy</a></p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><p>India</p></td>
+    <td style="text-align: left;"><p><a href="https://api.in.xdr.trendmicro.com/v3.0/threatintel/misp/galaxies/%7Bgalaxy">https://api.in.xdr.trendmicro.com/v3.0/threatintel/misp/galaxies/%7Bgalaxy</a></p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><p>Japan</p></td>
+    <td style="text-align: left;"><p><a href="https://api.xdr.trendmicro.co.jp/v3.0/threatintel/misp/galaxies/%7Bgalaxy">https://api.xdr.trendmicro.co.jp/v3.0/threatintel/misp/galaxies/%7Bgalaxy</a></p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><p>Singapore</p></td>
+    <td style="text-align: left;"><p><a href="https://api.sg.xdr.trendmicro.com/v3.0/threatintel/misp/galaxies/%7Bgalaxy">https://api.sg.xdr.trendmicro.com/v3.0/threatintel/misp/galaxies/%7Bgalaxy</a></p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><p>United Arab Emirates</p></td>
+    <td style="text-align: left;"><p><a href="https://api.mea.xdr.trendmicro.com/v3.0/threatintel/misp/galaxies/%7Bgalaxy">https://api.mea.xdr.trendmicro.com/v3.0/threatintel/misp/galaxies/%7Bgalaxy</a></p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><p>United States</p></td>
+    <td style="text-align: left;"><p><a href="https://api.xdr.trendmicro.com/v3.0/threatintel/misp/galaxies/%7Bgalaxy">https://api.xdr.trendmicro.com/v3.0/threatintel/misp/galaxies/%7Bgalaxy</a></p></td>
+    </tr>
+    </tbody>
+    </table>
+
+2.  Copy the files to the galaxies folder (location may vary): `/var/www/MISP/app/files/misp-galaxy/galaxies/`
+
+3.  Click **Force Update Galaxies** to save changes.
+
+## Add custom clusters {#add-custom-clusters}
+
+After adding the Trend Threat Intelligence Feed in MISP, you can add or update Trend Micro clusters using the Python script [available here](https://ohc.blob.core.windows.net/o-help/manual/7d34d63c-e9ae-4328-81be-0e6081012335/misp-galaxy-updater.mdx).
+
+Alternatively, you can manually add custom galaxies by following the steps below.
+
+### Procedure {#procedure-2}
+
+1.  Download the relevant cluster JSON files from the URL for your region shown in the table below.
+
+    **Cluster URLs**
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead style="text-align: left;">
+    <tr>
+    <th style="text-align: left;"><p>Region</p></th>
+    <th style="text-align: left;"><p>Cluster URL template</p></th>
+    </tr>
+    </thead>
+    <tbody style="text-align: left;">
+    <tr>
+    <td style="text-align: left;"><p>Australia</p></td>
+    <td style="text-align: left;"><p><a href="https://api.au.xdr.trendmicro.com/v3.0/threatintel/misp/clusters/%7Bcluster">https://api.au.xdr.trendmicro.com/v3.0/threatintel/misp/clusters/%7Bcluster</a></p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><p>European Union</p></td>
+    <td style="text-align: left;"><p><a href="https://api.eu.xdr.trendmicro.com/v3.0/threatintel/misp/clusters/%7Bcluster">https://api.eu.xdr.trendmicro.com/v3.0/threatintel/misp/clusters/%7Bcluster</a></p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><p>India</p></td>
+    <td style="text-align: left;"><p><a href="https://api.in.xdr.trendmicro.com/v3.0/threatintel/misp/clusters/%7Bcluster">https://api.in.xdr.trendmicro.com/v3.0/threatintel/misp/clusters/%7Bcluster</a></p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><p>Japan</p></td>
+    <td style="text-align: left;"><p><a href="https://api.xdr.trendmicro.co.jp/v3.0/threatintel/misp/clusters/%7Bcluster">https://api.xdr.trendmicro.co.jp/v3.0/threatintel/misp/clusters/%7Bcluster</a></p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><p>Singapore</p></td>
+    <td style="text-align: left;"><p><a href="https://api.sg.xdr.trendmicro.com/v3.0/threatintel/misp/clusters/%7Bcluster">https://api.sg.xdr.trendmicro.com/v3.0/threatintel/misp/clusters/%7Bcluster</a></p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><p>United Arab Emirates</p></td>
+    <td style="text-align: left;"><p><a href="https://api.mea.xdr.trendmicro.com/v3.0/threatintel/misp/clusters/%7Bcluster">https://api.mea.xdr.trendmicro.com/v3.0/threatintel/misp/clusters/%7Bcluster</a></p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><p>United States</p></td>
+    <td style="text-align: left;"><p><a href="https://api.xdr.trendmicro.com/v3.0/threatintel/misp/clusters/%7Bcluster">https://api.xdr.trendmicro.com/v3.0/threatintel/misp/clusters/%7Bcluster</a></p></td>
+    </tr>
+    </tbody>
+    </table>
+
+2.  Copy the files to the clusters folder (location may vary): `/var/www/MISP/app/files/misp-galaxy/clusters/`
+
+3.  Click **Force Update Galaxies** to save changes.
+:::

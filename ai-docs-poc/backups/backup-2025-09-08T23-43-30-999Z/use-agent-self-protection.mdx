@@ -1,0 +1,120 @@
+---
+slug: trend-vision-one-use-agent-self-protection
+title: Enable or disable agent self-protection
+last_updated: '2025-09-08'
+ai_context:
+  source_file: use-agent-self-protection.md
+  conversion_date: '2025-09-08T23:42:11.718Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Agent self-protection prevents local users from tampering with the agent. When enabled, if a local user tries to tamper with the agent, a message such as "Removal or modification of this application is prohibited by its security settings" or "You don’t have permission to rename the item DSAService.app" is displayed.
+
+To update or uninstall an agent or relay, or if you are a local user trying to create a diagnostic package for support from the command line (see [Create a diagnostic package](create-diagnostic-package-logs.mdx)), you must temporarily disable agent self-protection.
+
+Anti-Malware protection must be enabled to prevent users from stopping the agent, as well as from modifying agent-related files and Windows registry entries. However, self-protection is not required to prevent uninstalling the agent.
+
+Before stopping Deep Security Agent, its self-protection, which is, essentially, a safeguard against unauthorized modifications, must be disabled to avoid problems and ensure a smooth operation.
+
+You can configure agent self-protection using either the Server & Workload Protection console or the command line on the agent's computer.
+
+## Configure self-protection through the Server & Workload Protection console {#configure-self-protection-through-the-server-workload-protection-console}
+
+### Procedure {#procedure}
+
+1.  Open the *Computer or Policy editor* where you want to enable agent self-protection.
+
+2.  Click **Settings → General**.
+
+3.  To enable self-protection, in the **Agent Self-Protection** section, for **Prevent local end-users from uninstalling, stopping, or otherwise modifying the Agent**, select **Yes**.
+
+    For **Local override requires password**, select **Yes**, type an authentication password. The authentication password is highly recommended because it prevents unauthorized use of the [dsa_control command](command-line-basics.mdx). After specifying the password, it must be entered with the `dsa_control` command using the `-p` or `--passwd=` option whenever a command is executed on the agent. Note that the password cannot be longer than 32 characters; if this length is exceeded, the password is automatically truncated.
+
+4.  Click **Save**.
+
+5.  To disable agent self-protection, select **No**, and then click **Save**.
+
+## Configure self-protection using the command line {#configure-self-protection-using-the-command-line}
+
+You can enable and disable self-protection using the command line. The command line has one limitation: you cannot specify an authentication password. You need to use the Server & Workload Protection console for that. See Configure self-protection through the Server & Workload Protection console for details.
+
+## For agents on Windows {#for-agents-on-windows}
+
+### Procedure {#procedure-1}
+
+1.  Log in to the Windows computer which has the agent installed.
+
+2.  Open the command prompt (`cmd.exe`) as Administrator.
+
+3.  Change the current directory to the agent installation folder. The default installation folder is `cd C:\Program Files\Trend Micro\Deep Security Agent`
+
+4.  Enter one of the following commands:
+
+    - To enable agent self-protection, enter `dsa_control --selfprotect=1`
+
+    - To disable agent self-protection, enter `dsa_control --selfprotect=0 -p <password>`
+
+    where `-p <password>` is the authentication password, if it was specified previously in Server & Workload Protection. For details on this, see Configure self-protection through the Server & Workload Protection console. Note that the password cannot be longer than 32 characters; if this length is exceeded, the password is automatically truncated.
+
+## For agents on Linux {#for-agents-on-linux}
+
+### Procedure {#procedure-2}
+
+1.  Log in to the Linux computer which has the agent installed.
+
+2.  Open the command prompt as Administrator.
+
+3.  Change the current directory to the agent installation folder. The default installation folder is `cd /opt/ds_agent`
+
+4.  Enter one of the following commands:
+
+    - To enable agent self-protection, enter `dsa_control --selfprotect=1`
+
+    - To disable agent self-protection, enter `dsa_control --selfprotect=0 -p <password>`
+
+    where `-p <password>` is the authentication password, if it was specified previously in Server & Workload Protection. For details, see Configure self-protection through the Server & Workload Protection console. Note that the password cannot be longer than 32 characters; if this length is exceeded, the password is automatically truncated.
+
+## For agents on macOS {#for-agents-on-macos}
+
+### Procedure {#procedure-3}
+
+1.  Log in to the macOS computer which has the agent installed.
+
+2.  Open the Terminal, switch to root, and enter the following command: `sudo su`
+
+3.  Change the current directory to the agent installation folder. For example `cd /Library/Application Support/com.trendmicro.DSAgent`
+
+4.  Enter one of the following commands:
+
+    - To enable agent self-protection, enter `dsa_control -s 1`
+
+    - To disable agent self-protection, enter `dsa_control -s 0 -p <password>`
+
+    where `-p <password>` is the authentication password, if it was specified previously in Server & Workload Protection. For details, see Configure self-protection through the Server & Workload Protection console. Note that the password cannot be longer than 32 characters; if this length is exceeded, the password is automatically truncated.
+
+## Limitations on Linux {#limitations-on-linux}
+
+When working with the agent on Linux, consider the following:
+
+- The agent service might not stop when the system is shutting down or rebooting. The agent service might not work properly after the reboot.
+
+- The status of the agent service may not be accurate. If you try to stop the agent service, it returns the result as successful. However, the agent service could still be running.
+
+- If another running service has the same process name as the agent, then that other process will be added to the self-protection list.
+
+- The agent service cannot be killed if Out-Of-Memory (OOM) happens.
+
+- If you have enabled secure boot and self-protection is not working, please check your machine's kernel version. If the kernel version is 5.4 or earlier, upgrade to a kernel version that is later than 5.4.
+
+## Troubleshooting the Linux agent {#troubleshooting-the-linux-agent}
+
+To recover the agent self-protection service:
+
+### Procedure {#procedure-4}
+
+1.  Stop the agent self-protection.
+
+2.  Restart the agent service. Agent self-protection will restart after the agent service restarts.
+:::

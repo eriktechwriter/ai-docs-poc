@@ -1,0 +1,133 @@
+---
+slug: trend-vision-one-integrate-ai-guard
+title: Integrate AI Guard
+last_updated: '2025-09-08'
+ai_context:
+  source_file: integrate-ai-guard.md
+  conversion_date: '2025-09-08T23:42:17.145Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Integrate AI Guard within your application to scan your AI usage for harmful content generation, sensitive information leakage, and prompt injections.
+
+### Procedure {#procedure}
+
+1.  Configure the AI Guard settings.
+
+    1.  Type a **Name** for the settings.
+
+    2.  Select a security level from the following:
+
+        - Cautious
+
+        - Moderate
+
+        - Aggressive
+
+        :::note
+
+        Trend Micro recommends selecting **Moderate**.
+        :::
+
+    3.  Use the toggles to determine which content types AI Guard scans for:
+
+        - **Scan for harmful content**
+
+        - **Scan for sensitive information**
+
+        - **Scan for prompt attacks**
+
+    4.  You can click **Copy settings code** to test the AI Guard settings in your environment.
+
+2.  Click **Apply** to save the settings.
+
+3.  Create an API key for AI Guard.
+
+    1.  Go to **Administration → API Keys**.
+
+    2.  Click **Add API Key** to create a new API key.
+
+    3.  Specify a name, user role, and expiration time for the API key.
+
+        :::warning[Important]
+
+        When adding the API key, you must select a **Role** with permission to run scans in AI Scanner. If your organization does not have an existing user role with the necessary permissions, create a [custom role](custom-user-roles-trend-vision-one.mdx) or contact your administrator.
+        :::
+
+        For more information, see [API Keys](platform-api-keys.mdx).
+
+    4.  Click **Add**.
+
+    5.  Copy and retain the API key.
+
+4.  Integrate AI Guard with your application.
+
+    Refer to the following code snippet for the integration.
+
+    ``` codeblock
+    import os
+    import requests
+
+    # Get your Trend Vision One API key from environment variable
+    api_key = os.environ.get("V1_API_KEY")
+    if not api_key:
+        raise ValueError("Missing V1_API_KEY environment variable")
+
+    # Configure headers
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json"
+    }
+
+    # Prepare the payload for AI security scanning
+    payload = {
+        "guard": "your_prompt_or_response_here"
+    }
+
+
+    url = "https://<BASE_V1_URL>/beta/aiSecurity/guard?detailedResponse=false"
+
+    # Make the API request
+    response = requests.post(
+        url,
+        headers=headers,
+        json=payload
+    )
+
+    # Check response status
+    if response.status_code == 200:
+        result = response.json()
+        print("Scan completed successfully")
+    else:
+        print(f"Error: {response.status_code} - {response.text}")
+    ```
+
+    :::note
+
+    Trend Micro recommends storing your API key for AI Guard under the name `$V1_API_KEY`.
+
+    Set the following as the base URL in the API request: `<https://api.{region}.xdr.trendmicro.com/beta/aiSecurity>`
+
+    Unless your Trend Vision One account region is the US (the default region), replace `{region}` with the applicable region code in the base URL:
+
+    - `eu`
+
+    - `jp`
+
+    - `au`
+
+    - `in`
+
+    - `sg`
+
+    - `mea`
+    :::
+
+    For more information, see the [AI Guard API reference](ai-guard-api-reference.mdx).
+
+**Related information**
+
+- [AI Guard API reference](ai-guard-api-reference.mdx)
+:::

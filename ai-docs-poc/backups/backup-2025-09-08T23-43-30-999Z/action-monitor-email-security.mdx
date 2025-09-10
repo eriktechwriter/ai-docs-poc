@@ -1,0 +1,31 @@
+---
+slug: trend-vision-one-action-monitor-email-security
+title: '"monitor" actions'
+last_updated: '2025-09-08'
+ai_context:
+  source_file: action-monitor-email-security.md
+  conversion_date: '2025-09-08T23:42:26.184Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+"Monitor" actions do not change the original message or its attachments. The original sender will still receive the message, assuming that the message does not trigger other policy rules with intercept actions.
+
+There are two "Monitor" actions:
+
+- **Send notification** action
+
+- **BCC** action
+
+You can combine the first action with any other kind of action. You can combine the BCC action with "modify" actions (and with the first "monitor" action). However, the BCC action cannot be combined with terminal "intercept" actions.
+
+:::tip
+
+The notification email message sent to "monitor" actions can be customized using the variables shown in [Policy Rule Tokens/Variables](tokens.mdx).
+:::
+
+**Related information**
+
+- [Using the bcc action](using-bcc-action.mdx)
+::::

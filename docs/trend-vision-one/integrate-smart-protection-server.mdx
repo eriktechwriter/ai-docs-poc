@@ -1,0 +1,78 @@
+---
+slug: trend-vision-one-integrate-smart-protection-server
+title: Integrate with Smart Protection Server
+---
+# Integrate with Smart Protection Server
+
+If you you want your agents to be able to use the Trend Micro Smart Protection Network, then you must allow them to connect to the Internet on [required port numbers](swp-port-numbers.mdx).) If a direct connection is not possible, or if you have many agents and want to reduce bandwidth usage on your Internet connection, you can deploy your own Smart Protection Server (SPS) within your Virtual Private Network (VPC) in AWS, or another local VPC. The Smart Protection Server will connect to the Trend Micro Smart Protection Network to retrieve the latest anti-malware, file reputation, and web reputation information and then pass it to your agents.
+
+To deploy a Smart Protection Server, you can either:
+
+- Use an AWS CloudFormation template created by Trend Micro for easy, automated deployment.
+- Install it manually. See the [Smart Protection Server documentation](http://docs.trendmicro.com/en-us/enterprise/smart-protection-server.aspx).
+
+The instructions below describe how to deploy the Smart Protection Server using the CloudFormation template.
+
+### Procedure {#procedure}
+
+1.  In AWS, at the top, click *Services* and search for the *CloudFormation* service.
+
+2.  On the *CloudFormation* service page, click *Create Stack*. The *Select Template* page appears.
+
+    ![](/images/SPSinAWS-1=c2fca72e-00ac-49f5-a963-9bef50d64e2f.webp)
+
+3.  Select *Specify an Amazon S3 template URL* and enter this URL into the underlying field: `https://s3.amazonaws.com/trend-micro-quick-start/latest/templates/common/sps.template`
+
+4.  Click *Next*.
+
+    Finish entering settings in the template. Choose the AWS key pairs you would like to use to authenticate to the server, the VPC and subnet where the Smart Protection Server will reside, and an administrator password. The password cannot contain special characters such as: `!@#$%^&*().`
+
+    :::danger[Warning]
+
+    Do not enter a password that contains dictionary words. It should be at least 8 characters in length. Failure to do this will result in a weak password that is vulnerable to guessing and brute force attacks, and could compromise the security of your network.
+    :::
+
+    ![](/images/SPSinAWS-2=7897a611-7221-4683-9f65-15ccf5d64415.webp)
+
+5.  Click *Next*.
+
+6.  Optionally, create any tags that you would like to associate with this server, then click *Next*.
+
+    ![](/images/SPSinAWS-3=6ac3765e-8d30-458d-a163-cb3b2d6947bf.webp)
+
+7.  Review your settings, and then click *Create*.
+
+    ![](/images/SPSinAWS-4=11d8ebbf-2e37-47df-8a3a-bec9f7f88a31.webp)
+
+    While your server is being installed, the screen will indicate progress. To verify that the process has completed, you may need to click *Refresh* at the top of the screen.
+
+    ![](/images/SPSinAWS-5=59318bb1-24dc-400c-8c44-5d99cb058d39.webp)
+
+    ![](/images/SPSinAWS-6=4c7350c5-825f-423f-95f4-46f24a236a74.webp)
+
+8.  Click the *Outputs* tab at the bottom of the screen. There are three URLS. In the Server & Workload Protection console, you must configure your computers to use the Smart Protection Server.
+
+9.  Log in to the Server & Workload Protection console.
+
+10. At either the policy level (recommended method) or at the computer level, go to the anti-malware section.
+
+11. Click the *Smart Protection* tab at the top. Toward the bottom of the screen, deselect *Inherited* under *Smart Protection Server for File Reputation Service*.
+
+12. Select *Use locally installed Smart Protection Server*.
+
+13. Enter in the URL from the *Outputs* screen in your AWS console labeled "FRSurl" and click *Add*.
+
+14. Click *Save*.
+
+15. Open the web reputation section of the policy or computer and click the *Smart Protection* tab at the top.
+
+16. Deselect *Inherited* under *Smart Protection Server for Web Reputation Service*.
+
+17. Select *Use locally installed Smart Protection Server*.
+
+18. Add the URL from the *Outputs screen* in your AWS console labeled "WRSurl" or "WRSHTTPSurl" and click *Add*. You can use the HTTP or HTTPS URL, but HTTPS is only supported with agent version 11.0+.
+
+19. Click *Save*.
+
+20. If you didn't configure Server & Workload Protection to automatically send policies, then manually send the policy.
+:::

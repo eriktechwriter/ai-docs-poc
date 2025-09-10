@@ -1,0 +1,159 @@
+---
+slug: trend-vision-one-adfs-user-access-control
+title: Configuring data synchronization and user access control
+last_updated: '2025-09-08'
+ai_context:
+  source_file: adfs-user-access-control.md
+  conversion_date: '2025-09-08T23:42:25.650Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Synchronize data from an on-premises Active Directory server through a Service Gateway.
+
+Configuring Data Synchronization and User Access Control allows your Active Directory servers to share data with Trend Vision One and enable certain features and apps to perform actions on users listed in your servers.
+
+:::warning[Important]
+
+- Before you begin, you must have at least one [Service Gateway virtual appliance](service-gateway-management.mdx) deployed and configured.
+
+- To integrate AWS Managed Microsoft AD, you must have at least one [Service Gateway virtual appliance deployed to AWS](deploy-service-gateway-aws.mdx).
+
+- Ensure you configure the Active Directory server connection using an [Active Directory account with sufficient permissions](active-directory-permissions.mdx).
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Workflow and Automation → Third-Party Integration → Active Directory (on-premises)**.
+
+2.  Use the toggle to enable or disable the integration.
+
+3.  In the **Data Synchronization & User Access Control** tab, configure object sharing criteria.
+
+    **Sync Frequency**: The frequency at which data is shared.
+
+4.  Configure the connection between the Service Gateway and your Active Directory server.
+
+    1.  Click **Connect Active Directory Server**.
+
+    2.  Under **Service Gateway Connection**, select your service gateway.
+
+    3.  Under **Domain information**, configure the following settings.
+
+        <table>
+        <colgroup>
+        <col style="width: 25%" />
+        <col style="width: 75%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Setting</p></th>
+        <th><p>Description</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p><strong>Server type</strong></p></td>
+        <td><p>The type of Active Directory server you want to connect to.</p>
+        <p>Available options:</p>
+        <ul>
+        <li><p><strong>Microsoft Active Directory</strong></p></li>
+        <li><p><strong>Microsoft Active Directory Global Catalog</strong></p>
+        
+
+        :::warning[Important]
+        
+        <p>This server type does not support the following features:</p>
+        <ul>
+        <li><p>User access control (All apps)</p></li>
+        <li><p>NTLM Single Sign-On for Internet Access (Zero Trust Secure Access)</p></li>
+        </ul>
+        <p>This server type partially supports the following features:</p>
+        <ul>
+        <li><p>Risk Overview (Cyber Risk Exposure Management)</p></li>
+        </ul>
+        <p>For full support, select <strong>Microsoft Active Directory</strong>.</p>
+        
+
+        :::
+
+        </li>
+        </ul></td>
+        </tr>
+        <tr>
+        <td><p><strong>Server address</strong></p></td>
+        <td><p>The IP address or public FQDN of the Active Directory server.</p></td>
+        </tr>
+        <tr>
+        <td><p><strong>Encryption</strong></p></td>
+        <td><p>The protocol used to protect data during communication between the Service Gateway and the Active Directory server.</p>
+        <p>Available options:</p>
+        <ul>
+        <li><p><strong>NONE</strong></p></li>
+        <li><p><strong>SSL</strong></p></li>
+        <li><p><strong>STARTTLS</strong></p></li>
+        </ul></td>
+        </tr>
+        <tr>
+        <td><p><strong>Port</strong></p></td>
+        <td><p>The network port number used for communication with the Active Directory server.</p></td>
+        </tr>
+        <tr>
+        <td><p><strong>Base distinguished name</strong></p></td>
+        <td><p>The starting point in the Active Directory hierarchy from which Trend Vision One syncs data.</p>
+        <p>Available options:</p>
+        <ul>
+        <li><p><strong>Default</strong></p></li>
+        <li><p><strong>Specific</strong></p></li>
+        </ul></td>
+        </tr>
+        </tbody>
+        </table>
+
+    4.  Under **Permission settings**, configure the following settings.
+
+        <table>
+        <colgroup>
+        <col style="width: 25%" />
+        <col style="width: 75%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Setting</p></th>
+        <th><p>Description</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p><strong>Permission scope</strong></p></td>
+        <td><p>The <a href="trend-vision-one-active-directory-permissions">permissions granted</a> in Active Directory to Trend Vision One.</p>
+        <p>Available options:</p>
+        <ul>
+        <li><p><strong>Read</strong>: Allows you to sync Active Directory data, such as user lists and group memberships.</p></li>
+        <li><p><strong>Read &amp; Write</strong>: Allows you to sync Active Directory data and perform user access control response actions, such as disabling user accounts and forcing password reset.</p></li>
+        </ul></td>
+        </tr>
+        <tr>
+        <td><p><strong>User name</strong></p></td>
+        <td><p>The user name of your Active Directory server</p></td>
+        </tr>
+        <tr>
+        <td><p><strong>Password</strong></p></td>
+        <td><p>The password associated with the user account.</p></td>
+        </tr>
+        </tbody>
+        </table>
+
+    5.  (Optional) Click **Test Connection** to verify if the settings are valid.
+
+    6.  Click **Connect**.
+
+5.  Repeat the previous step to add multiple connection configurations for this integration.
+
+6.  Click **Save**.
+
+**Related information**
+
+- [Active Directory permissions](active-directory-permissions.md "Grant sufficient permissions in Active Directory to enable user access control in Trend Vision One.")
+::::

@@ -1,0 +1,66 @@
+---
+slug: trend-vision-one-reverse-dns-validation
+title: Configuring reverse DNS validation settings
+last_updated: '2025-09-08'
+ai_context:
+  source_file: reverse-dns-validation.md
+  conversion_date: '2025-09-08T23:42:13.690Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Cloud Email Gateway Protection allows you to configure rules for reverse DNS validation based on the sender domain, namely the domain in the **envelope address** of the email sender.
+
+For each rule, Cloud Email Gateway Protection supports two levels of reverse DNS validation:
+
+- Whether there is a PTR record for the email sending IP address
+
+- If a PTR record exists, whether the PTR record for the email sending IP address has a matching Address record (A record)
+
+If the sender domain of an incoming message meets multiple rules, Cloud Email Gateway Protection uses the most matched rule. For example, if you have configured the following three rules:
+
+- Rule 1 for subdomain.example.com
+
+- Rule 2 for \*.example.com
+
+- Rule 3 for \*.subdomain.example.com
+
+The match results for different incoming sender domains are as follows:
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Incoming Sender Domain</p></th>
+<th><p>Matched Rule</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>subdomain.example.com</p></td>
+<td><p>Rule 1</p></td>
+</tr>
+<tr>
+<td><p>a.example.com</p></td>
+<td><p>Rule 2</p></td>
+</tr>
+<tr>
+<td><p>a.subdomain.example.com</p></td>
+<td><p>Rule 3</p></td>
+</tr>
+<tr>
+<td><p>a.b.com</p></td>
+<td><p>Default rule</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Adding reverse DNS validation settings](reverse-dns-validate.mdx)
+- [Editing reverse DNS validation settings](edit-reverse-dns-validation.mdx)
+:::

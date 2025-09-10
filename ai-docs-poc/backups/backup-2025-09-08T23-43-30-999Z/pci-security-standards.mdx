@@ -1,0 +1,69 @@
+---
+slug: trend-vision-one-pci-security-standards
+title: PCI Security Standards
+last_updated: '2025-09-08'
+ai_context:
+  source_file: pci-security-standards.md
+  conversion_date: '2025-09-08T23:42:14.642Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Ensure your Trend Vision One configuration is compliant with PCI Security Standards.
+
+Trend Vision One offers robust security features, but certain configurations may impact PCI DSS compliance.
+
+The following table outlines potential PCI DSS compliance risks to consider when using Trend Vision One and the configurations required to eliminate the risks.
+
+:::warning[Important]
+
+To adhere to PCI compliance standards, ensure that your Trend Vision One has [updated to the Foundation Services release](update-foundation-services-release.mdx).
+:::
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Feature</p></th>
+<th><p>Compliance risk</p></th>
+<th><p>Recommendation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Standard Endpoint Protection - Data Loss Prevention</p></td>
+<td><p>Standard Endpoint Protection includes Data Loss Prevention (DLP) features that can detect and prevent unauthorized actions with cardholder data. DLP filters logs at the endpoint to retain no more than the first six and last four digits of cardholder data.</p>
+<p>However, the optional "Forensic Evidence Collection" feature introduces a critical compliance risk. When activated, this feature can capture complete data payloads, potentially including unmasked cardholder data.</p></td>
+<td><p>Disable the "Forensic Evidence Collection" feature.</p>
+<p>For more information, see <a href="trend-vision-one-apex-one-dlp-policies">Apex One Data Loss Prevention Policies</a>.</p></td>
+</tr>
+<tr>
+<td><p>Zero Trust Secure Access - Private Access</p></td>
+<td><p>ZTSA Private Access provides SASE-based VPN services between remote endpoints and internal applications through the use of Private Access Connectors deployed in your corporate environment. Traffic from endpoints to Private Access Connectors is not encrypted by default for traffic sent using an unencrypted protocol. If encryption is not enabled, ZTSA Private Access could potentially transmit cardholder data in an unencrypted format.</p></td>
+<td><p>Enable <strong>Encrypt app traffic transmitted using unencrypted protocols</strong> in the configurations for your internal applications.</p>
+<p>For more information, see <a href="trend-vision-one-add-internal-application-pac">Adding an internal application to Private Access</a>.</p>
+
+
+:::warning[Important]
+
+<p>Encrypting app traffic transmitted using an unencrypted protocol consumes a high amount of system resources and will impact performance when connecting to internal apps.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Zero Trust Secure Access - Internet Access</p></td>
+<td><p>ZTSA Internet Access offers a proxy-based service to facilitate secure public internet access for users. The service decrypts all HTTPS traffic by default to enforce policies and conduct security checks, a process that temporarily exposes cardholder data within the proxy infrastructure.</p></td>
+<td><p>Exclude any domains which may transmit cardholder data by adding them to inspection exceptions.</p>
+<p>For more information, see <a href="trend-vision-one-inspection-exceptions">Inspection exceptions</a>.</p></td>
+</tr>
+</tbody>
+</table>
+::::

@@ -1,0 +1,42 @@
+---
+slug: trend-vision-one-adding-region-buckets
+title: Add by-region quarantine and promote buckets in single accounts
+last_updated: '2025-09-08'
+ai_context:
+  source_file: adding-region-buckets.md
+  conversion_date: '2025-09-08T23:42:25.691Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+By default, the `FileSecurityStorageQuarantineBucket` and the `FileStorageSecurityCleanBucket` in the CloudFormation template are global parameters. You can specify them to be global, by-region or a combination of both by entering a JSON script.
+
+If you have already set up your CloudFormation template and want to use by-region quarantine buckets, you need to re-deploy or update the CloudFormation template using Cloud Account Management.
+
+Use the one of the following JSON scripts in the `FileSecurityStorageQuarantineBucket` or the `FileStorageSecurityCleanBucket` field when creating or updating your CloudFormation templates:
+
+1.  To enable the bucket to be global, you include only the global key:
+
+    `{"global":"s3-global-bucket-name"}`
+
+    All files are moved to the global bucket.
+
+2.  To enable the bucket to be by-region, you include only the region ID keys:
+
+    `{"us-east-2":"s3-by-region-us-east-2-bucket-name","ap-south-2":"s3-by-region-ap-south-2-bucket-name"}`
+
+    The system checks if the current scanner region has a specified bucket:
+
+    - If the current scanner region has a specified bucket, the file is moved to that regional bucket.
+    - If the current scanner region does not have a specified bucket, the file is tagged with the original source file information, and an additional tag is added to inform the customer that the "quarantine/promote" feature is enabled, but no specific region bucket was configured.
+
+3.  To enable the bucket to be both global and by-region, you include both the global and region ID keys:
+
+    `{"global":"s3-global-bucket-name","us-east-1":"s3-by-region-us-east-1-bucket-name"}`
+
+    The system checks if the current scanner region has a specified bucket:
+
+    - If the current scanner region has a specified bucket, the file is moved to that regional bucket.
+    - If the current scanner region does not have a specified bucket, the file is moved to the global bucket.
+:::

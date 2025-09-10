@@ -1,0 +1,85 @@
+---
+slug: trend-vision-one-custom-filter-data
+title: Custom filter data
+last_updated: '2025-09-08'
+ai_context:
+  source_file: custom-filter-data.md
+  conversion_date: '2025-09-08T23:42:21.174Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Understand the fields available for each custom filter, including name, description, severity, and associated models.
+
+The following table describes the information available for each custom filter.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Field</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Filter name</p></td>
+<td><p>The name of the custom filter</p>
+
+
+:::warning[Important]
+
+<p>An exclamation icon (<img src="./images/disabled=6e5bd66a-4b63-4096-867e-128dce2c0ebf.webp" />) next to the filter name indicates Trend Vision One disabled the filter due to excessive execution time, which might negatively affect the associated models.</p>
+<p>To re-enable the filter, <a href="trend-vision-one-creating-custom-filter">edit the query</a> in the filter event settings.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Description</p></td>
+<td><p>The short description or notes of the custom filter</p></td>
+</tr>
+<tr>
+<td><p>Severity</p></td>
+<td><p>The severity associated with the event you want to detect</p>
+<p>A severity of medium, high, or critical affects the Cyber Risk Index on the <a href="trend-vision-one-executive-dashboard">Cyber Risk Overview</a> and <a href="trend-vision-one-operations-dashboard">Threat and Exposure Management</a>. When testing or tuning a model, select low to avoid affecting indexes.</p></td>
+</tr>
+<tr>
+<td><p>Filter ID</p></td>
+<td><p>The unique ID of the custom filter</p></td>
+</tr>
+<tr>
+<td><p>Event type</p></td>
+<td><p>The data source the custom filter uses</p></td>
+</tr>
+<tr>
+<td><p>Event ID</p></td>
+<td><p>The Trend Micro event type the custom filter targets</p></td>
+</tr>
+<tr>
+<td><p>Vendor</p></td>
+<td><p>The vendor event targeted by the custom filter</p>
+<p>This field is only available for the <code>THIRD_PARTY_LOG</code> event type.</p></td>
+</tr>
+<tr>
+<td><p>Query</p></td>
+<td><p>The query used to detect events</p></td>
+</tr>
+<tr>
+<td><p>Associated model</p></td>
+<td><p>The custom detection models that use the filter</p></td>
+</tr>
+<tr>
+<td><p>Custom tags</p></td>
+<td><p>The labels for grouping and identifying events and filters</p>
+<p>Tags can be up to 64 characters long.</p></td>
+</tr>
+</tbody>
+</table>
+:::

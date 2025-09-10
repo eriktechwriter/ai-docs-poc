@@ -1,0 +1,54 @@
+---
+slug: trend-vision-one-adding-custom-expression
+title: Adding a custom expression
+last_updated: '2025-09-08'
+ai_context:
+  source_file: adding-custom-expression.md
+  conversion_date: '2025-09-08T23:42:25.792Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+### Procedure {#procedure}
+
+1.  On the **Expressions** tab, click **Add**.
+
+2.  Type an expression name that does not exceed 256 characters.
+
+3.  Type a description that does not exceed 256 characters.
+
+4.  Define an expression and specify whether the expression is case-sensitive.
+
+5.  Type the displayed data.
+
+    For example, if you are creating an expression for ID numbers, type a sample ID number. This data is used for reference purposes only and will not appear elsewhere in the product.
+
+6.  Choose one of the following criteria and configure additional settings for the chosen criteria (see [Criteria for custom expressions](criteria-for-custom-expressions.mdx)):
+
+    - None
+
+    - Specific characters
+
+    - Suffix
+
+    - Single-character separator
+
+7.  Select a validator for the expression.
+
+    :::note
+
+    Data units follow semantic rules. Not every 9-digit number is a valid social security number and not every 15- or 16-digit number is a valid credit card number. To reduce false positives, expression validators check if the extracted data units follow these rules.
+    :::
+
+8.  Test the expression against an actual data.
+
+    For example, if the expression is for a national ID, type a valid ID number in the **Test data** text box, click **Test**, and then check the result.
+
+9.  Click **Save** if you are satisfied with the result.
+
+    :::note
+
+    Save the settings only if the testing was successful. An expression that cannot detect any data wastes system resources and may impact performance.
+    :::
+:::

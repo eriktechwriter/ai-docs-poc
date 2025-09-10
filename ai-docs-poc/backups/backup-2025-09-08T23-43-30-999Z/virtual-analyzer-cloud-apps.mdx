@@ -1,0 +1,278 @@
+---
+slug: trend-vision-one-virtual-analyzer-cloud-apps
+title: Virtual Analyzer
+last_updated: '2025-09-08'
+ai_context:
+  source_file: virtual-analyzer-cloud-apps.md
+  conversion_date: '2025-09-08T23:42:11.626Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Virtual Analyzer is a cloud sandbox designed for analyzing suspicious files and URLs. Sandbox images allow observation of file and URL behavior in an environment that simulates endpoints on your network without any risk of compromising the network.
+
+Virtual Analyzer works in conjunction with Threat Connect, the Trend Micro global intelligence network that provides actionable information and recommendations for dealing with threats.
+
+Cloud Email and Collaboration Protection sends suspicious files (including email attachments and uploaded files) and URLs (included in files and email message bodies) to Virtual Analyzer when a file or URL exhibits suspicious characteristics and signature-based scanning technologies cannot find a known threat. Virtual Analyzer performs static analysis and behavior simulation in various runtime environments to identify potentially malicious characteristics. During analysis, Virtual Analyzer rates the characteristics in context and then assigns a risk level to the sample based on the accumulated ratings.
+
+:::note
+
+A suspicious object is a known malicious or potentially malicious IP address, domain, URL, SHA-1 value, SHA-256 value, or sender address found in submitted samples. Trend Micro Threat Connect correlates suspicious objects detected in your environment and threat data from the Trend Micro Smart Protection Network to provide relevant and actionable intelligence.
+:::
+
+**Related information**
+
+- Virtual Analyzer risk levels
+- Configuring Virtual Analyzer
+
+## Virtual Analyzer risk levels {#virtual-analyzer-risk-levels}
+
+The following table explains the Virtual Analyzer risk levels after sample analysis. View the table to understand why a suspicious object was classified as high, medium, or low risk.
+
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 78%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Risk Level</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>High risk</p></td>
+<td><p>The sample exhibited highly suspicious characteristics that are commonly associated with malware.</p>
+<p>Examples:</p>
+<ul>
+<li><p>Malware signatures; known exploit code</p></li>
+<li><p>Disabling of security software agents</p></li>
+<li><p>Connection to malicious network destinations</p></li>
+<li><p>Self-replication; infection of other files</p></li>
+<li><p>Dropping or downloading of executable files by documents</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Medium risk</p></td>
+<td><p>The sample exhibited moderately suspicious characteristics that are also associated with benign applications.</p>
+<p>Examples:</p>
+<ul>
+<li><p>Modification of startup and other important system settings</p></li>
+<li><p>Connection to unknown network destinations; opening of ports</p></li>
+<li><p>Unsigned executable files</p></li>
+<li><p>Memory residency</p></li>
+<li><p>Self-deletion</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Low risk</p></td>
+<td><p>The sample exhibited mildly suspicious characteristics that are most likely benign.</p></td>
+</tr>
+<tr>
+<td><p>No risk</p></td>
+<td><p>The sample did not exhibit suspicious characteristics.</p></td>
+</tr>
+<tr>
+<td><p>Unrated</p></td>
+<td><p>The sample was not analyzed by Virtual Analyzer for a certain reason.</p>
+<p>Possible reasons include:</p>
+<ul>
+<li><p>Unsupported file type.</p></li>
+<li><p>Cloud sandbox analysis timed out.</p></li>
+<li><p>Unable to connect to the cloud sandbox.</p></li>
+<li><p>Internal error occurred on the cloud sandbox.</p></li>
+</ul>
+<p>If you need technical assistance, contact Trend Micro technical support.</p></td>
+</tr>
+</tbody>
+</table>
+
+## Configuring Virtual Analyzer {#configuring-virtual-analyzer}
+
+### Procedure {#procedure}
+
+1.  Select **Virtual Analyzer**.
+
+2.  Enable Virtual Analyzer.
+
+    :::note
+
+    It takes three minutes on average for Virtual Analyzer, if enabled, to analyze and identify the risk of an attachment or file, and the time could be as long as 30 minutes for some files.
+    :::
+
+3.  Optionally select the **Monitor and log only** check box to enable Virtual Analyzer to work in monitor mode.
+
+    :::note
+
+    - This option is not available for Gmail.
+
+    - Virtual Analyzer in monitor mode still analyzes suspicious URLs, email messages, and files sent by Cloud Email and Collaboration Protection, which, however, only records them in logs and delivers them to end users without taking any actions configured here. This helps evaluate the Virtual Analyzer capability with zero impact on mail flow and file sharing.
+
+    - If Virtual Analyzer in monitor mode is enabled, all the following settings do not apply except that Cloud Email and Collaboration Protection notifies administrators upon detection of security risks, if enabled in **Action**.
+    :::
+
+4.  Configure rule settings.
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Setting</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Analyze the following</p></td>
+    <td><p>Select the type of objects that Virtual Analyzer applies to.</p>
+    <ul>
+    <li><p><strong>Files</strong></p>
+    
+
+    :::note
+    
+    <p>This check box is selected by default and cannot be cleared.</p>
+    
+
+    :::
+
+    </li>
+    <li><p><strong>URLs</strong></p>
+    
+
+    :::note
+    
+    <ul>
+    <li><p>This check box can be selected only when <strong>Web Reputation</strong> is enabled.</p></li>
+    <li><p>If <strong>Web Reputation</strong> is disabled, this check box is cleared automatically.</p></li>
+    </ul>
+    
+
+    :::
+
+    </li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>Apply to</p></td>
+    <td><p>(Exchange Online and Gmail only) Select the scope of email messages that Virtual Analyzer applies to.</p>
+    <ul>
+    <li><p><strong>All messages</strong>: means that this policy applies to incoming, outgoing, and internal email messages. Incoming/outgoing email messages are sent from/to non-internal domains.</p></li>
+    <li><p><strong>Incoming messages</strong>: means that this policy applies only to incoming email messages sent from non-internal domains.</p></li>
+    </ul>
+    
+
+    :::note
+    
+    <p>For details about internal domains, see <a href="trend-vision-one-configuring-internal-domain-list">Configuring the internal domain list</a></p>
+    <p>For Exchange Online (Inline Mode), the scope is fixed to <strong>Inbound messages</strong> for inbound protection and <strong>Outbound messages</strong> for outbound protection. Inbound messages are sent from outside your organization to an address inside the organization, while outbound messages are sent from your organization to external addresses.</p>
+    
+
+    :::
+
+    </td>
+    </tr>
+    </tbody>
+    </table>
+
+5.  Click **Approved/Blocked List**.
+
+6.  (Exchange Online and Gmail only) Configure the approved sender list.
+
+    1.  Enable the approved sender list.
+
+    2.  Specify a sending email address or domain to bypass Virtual Analyzer scanning and click **Add \>**.
+
+        :::note
+
+        You can use the wildcard character (\*) to represent any characters in the email address or domain name. Examples: `*@example.com`, `name@*.com`, `*@*.example.com`
+
+        The following formats are invalid: `*@*`, `*`
+        :::
+
+    3.  Optionally click **Import** to import sender email addresses in batches.
+
+7.  Configure **Approved File List** to add files that you do not want to send for further analysis by Virtual Analyzer.
+
+    :::note
+
+    In this release, this option is not available for Microsoft Teams (Chat).
+    :::
+
+    1.  Enable the approved file list.
+
+    2.  Specify the file name to exclude from scanning and click **Add \>**.
+
+        :::note
+
+        You can use the wildcard character (\*) to represent any characters in the file name. Examples: `*.exe`, `file*.exe`, `file*`
+
+        The following formats are invalide: `*.*`, `*`
+
+        File names are case-insensitive, cannot exceed 255 characters, and cannot contain any of the following characters: `/ \ : ? < > " |`
+
+        A maximum of 1,024 file names is supported.
+        :::
+
+    3.  Optionally click **Import** to import file names in batches.
+
+    4.  Optionally click **Export** to export the specified file names as a `.txt` file.
+
+8.  Click **Action & Notifications**.
+
+9.  Configure **Action** settings.
+
+    Virtual Analyzer assigns a risk level to analyzed files based on the file's behavior in the virtual sandbox. Select the action based on this assigned risk level.
+
+    For details about the actions, see [Actions available for different services](actions-different-services.mdx).
+
+10. Configure **Notification** settings.
+
+    ::: {.simpletable-container}
+    <table id="GUID-CDF934ED-43D7-42DC-989C-3F2CF3F68A88__CHOICETABLE_GDD_W41_1Q" class="choicetable" data-border="1">
+    <colgroup>
+    <col style="width: 50%" />
+    <col style="width: 50%" />
+    </colgroup>
+    <thead>
+    <tr class="chhead table-header-style">
+    <th class="choptionhd">Option</th>
+    <th class="chdeschd">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="chrow">
+    <td class="choption"><p>Notify administrator</p></td>
+    <td class="chdesc"><ol>
+    <li><p>Specify the administrators to notify by selecting a recipient group or specifying individual recipients. You can click Manage recipient groups to edit the members in a group or add more groups.</p></li>
+    <li><p>Specify message details to notify administrators that Cloud Email and Collaboration Protection detected a security risk and took action on an email message, attachment, or file.</p></li>
+    <li><p>Set the notification threshold which limits the number of notification messages to send. Threshold settings include:</p>
+    <ul>
+    <li><p><strong>Send consolidated notifications periodically</strong>: Cloud Email and Collaboration Protection sends an email message that consolidates all the notifications for a period of time. Specify the period of time by typing a number in the box and selecting hour(s) or day(s).</p></li>
+    <li><p><strong>Send consolidated notifications by occurrences</strong>: Cloud Email and Collaboration Protection sends an email message that consolidates notifications for a set number of filtering actions. Specify the number of virus/malware occurrences by typing a number in the box.</p></li>
+    <li><p><strong>Send individual notifications</strong>: Cloud Email and Collaboration Protection sends an email message notification every time Cloud Email and Collaboration Protection performs a filtering action.</p></li>
+    </ul></li>
+    </ol></td>
+    </tr>
+    <tr class="chrow">
+    <td class="choption"><p>Notify User</p></td>
+    <td class="chdesc"><p><strong>Exchange Online and Gmail</strong>: Specify message details that notify recipients that Cloud Email and Collaboration Protection detected a security risk and took action on their email message or attachment.</p>
+    <p><strong>SharePoint Online, OneDrive, Microsoft Teams (Teams), Box, Dropbox, and Google Drive</strong>: Specify message details that notify the user who updated a file that Cloud Email and Collaboration Protection detected a security risk and took action on their file.</p>
+    <p><strong>Teams Chat</strong>: Cloud Email and Collaboration Protection does not provide this option. When a chat message was blocked, a notification "This message was blocked." provided by Microsoft appears in the sender's private chat window. Message senders can click <strong>What can I do?</strong> to view more information about the blocked messages.</p></td>
+    </tr>
+    </tbody>
+    </table>
+    :::
+
+    :::note
+
+    When specifying a notification message, include relevant tokens and edit the message content as desired. For details about tokens, see [Token list](token-list.mdx).
+    :::
+
+11. Click **Save** or select another policy configuration on the left navigation to continue with additional rules.
+::::

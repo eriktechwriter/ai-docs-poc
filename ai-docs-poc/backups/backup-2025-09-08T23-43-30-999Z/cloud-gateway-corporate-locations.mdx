@@ -1,0 +1,53 @@
+---
+slug: trend-vision-one-cloud-gateway-corporate-locations
+title: Adding Corporate Locations to the Internet Access Cloud Gateway
+last_updated: '2025-09-08'
+ai_context:
+  source_file: cloud-gateway-corporate-locations.md
+  conversion_date: '2025-09-08T23:42:23.469Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Define your corporate networks on the Internet Access Cloud Gateway to identify your internal users and apply more granular Secure Access Rules.
+
+The Internet Access Cloud Gateway uses your corporate network locations to help identify your internal users' internet traffic. You can use these locations to create specific HTTPS inspection and Secure Access Rules for branch offices or departments, and define rule enforcement schedules based on time zones specified for these locations.
+
+:::warning[Important]
+
+Customers using a proxy-based solution instead of the Secure Access Module are strongly recommended to configure corporate network locations to ensure that Zero Trust Secure Access Internet Access Gateway can properly identify your users' internet traffic.
+:::
+
+### Procedure {#procedure}
+
+1.  On the Trend Vision One console, go to **Zero Trust Secure Access → Secure Access Configuration → Internet Access and AI Service Access Configuration**.
+
+2.  On the **Gateways** tab, click **Add Corporate Location**.
+
+3.  Specify a unique name and a description for the gateway.
+
+4.  Specify the static public IP addresses you would like to manage through the gateway.
+
+5.  Select the geographical **Time zone** of the location.
+
+6.  (Optional) Choose whether to allow endpoints without the Secure Access Module installed to bypass user authentication when connecting from specific private IP addresses.
+
+    1.  Search for existing private IP address groups to bypass authentication or create a new private IP address group.
+
+    2.  Choose specific private IP addresses from the selected groups to not be permitted to bypass authentication.
+
+    :::warning[Important]
+
+    - Private IP addresses must be present in the X-Forwarded-For HTTP request header in order to successfully bypass authentication.
+
+    - When bypassing authentication while connecting through the Cloud Gateway, each private IP address is counted as a user in the Internet Access user count. For more information, see [Credit requirements for Trend Vision One solutions, capabilities, and features](credit-req-for-apps-services.mdx).
+    :::
+
+7.  Click **Save**.
+
+    :::note
+
+    Zero Trust Secure Access Internet Access verifies each location added to the list. If the location is not verified within 7 days, Internet Access automatically removes the location from the list.
+    :::
+::::

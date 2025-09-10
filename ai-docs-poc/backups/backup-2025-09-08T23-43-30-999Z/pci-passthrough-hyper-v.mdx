@@ -1,0 +1,61 @@
+---
+slug: trend-vision-one-pci-passthrough-hyper-v
+title: Configuring external network traffic with PCI passthrough (Hyper-V host)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: pci-passthrough-hyper-v.md
+  conversion_date: '2025-09-08T23:42:14.643Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure external network traffic with a PCI passthrough to allow Virtual Network Sensor to monitor data.
+
+:::note
+
+The following instructions are valid as of March 2024.
+
+These instructions are only for Virtual Network Sensors deployed on a Hyper-V host machine.
+:::
+
+### Procedure {#procedure}
+
+1.  Access PowerShell on the host machine.
+
+2.  Get the instance IDs of your physical ports.
+
+    `(Get-PnpDevice -PresentOnly).Where{ $_.Class -eq 'Net'} | Select-Object -Property FriendlyName, InstanceId`
+
+    The command returns a list of ports and their Instance IDs. Find the port you want to use and copy the ID. The ID should follow the format `PCI\n...n\n...n`
+
+3.  Assign the instance ID to the variable `Data_port_instance_id`.
+
+    `$Data_port_instance_id = "PCI\n...n\n...n"`
+
+4.  Get the motherboard position of your data port and assign it to the variable `locationPath`.
+
+    `$locationPath = (Get-PnpDeviceProperty -KeyName DEVPKEY_Device_LocationPaths -InstanceId $Data_port_instance_id).Data[0]`
+
+5.  Disable the data port.
+
+    `Disable-PnpDevice -InstanceId $Data_port_instance_id -Confirm:$false`
+
+6.  Detach the data port.
+
+    `Dismount-VmHostAssignableDevice -LocationPath $locationPath -Force –Verbose`
+
+7.  Disable auto stop.
+
+    `Set-VM -VMname 'VNS-VM-name' -AutomaticStopAction TurnOff`
+
+    Replace `VNS-VM-name` with the name of the Virtual Network Sensor virtual machine.
+
+8.  Add the data port to your virtual machine.
+
+    `Add-VMAssignableDevice -VMname 'VNS-VM-name' -LocationPath $locationPath –Verbose`
+
+    Replace `VNS-VM-name` with the name of the Virtual Network Sensor virtual machine.
+
+    After configuring your network settings, access the Virtual Network Sensor console and use the command `show traffic` to verify the Virtual Network Sensor is receiving traffic. For more information about troubleshooting, see [Virtual Network Sensor FAQ](virtual-network-sensor-faqs.mdx) and [Virtual Network Sensor CLI commands](virtual-network-sensor-cli-commands.mdx).
+::::

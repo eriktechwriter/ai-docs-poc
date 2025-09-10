@@ -1,0 +1,498 @@
+---
+slug: trend-vision-one-configuring-data-sources
+title: Configure Cyber Risk Exposure Management data sources
+---
+# Configure Cyber Risk Exposure Management data sources
+
+Gain more access to risk indicators across your organization's environment by connecting multiple data sources to Cyber Risk Exposure Management.
+
+Trend Vision One allows you to connect multiple Trend Micro or third-party data sources to **Cyber Risk Exposure Management** in order to gain extra visibility into your organization’s attack surface, risk indicators, and vulnerabilities. The more data sources you connect to **Cyber Risk Exposure Management**, the more complete a picture you can get of your organization's security posture.
+
+Different data sources have different requirements when connecting to **Cyber Risk Exposure Management**. The following procedure outlines the basic steps required to connect a data source.
+
+### Procedure {#procedure}
+
+1.  Go to **Cyber Risk Exposure Management → Threat and Exposure Management**.
+
+2.  Click the **Data sources** button in the upper right.
+
+    :::tip
+
+    You can also access **Data sources** by clicking the button in **Cyber Risk Overview** or **Attack Surface Discovery**, or by going to **Workflow and Automation → Data Source and Log Management → Cyber Risk Exposure Management**.
+    :::
+
+    A list of all Trend Micro and third-party data sources supported by **Cyber Risk Exposure Management** appears. Click a risk factor to highlight the data sources used to collect data for the specified risk factor.
+
+3.  Find and click the data source you wish to connect. A screen appears to explain the data permissions needed and the connection requirements for the specified data source.
+
+    :::warning[Important]
+
+    You must have allocated credits, a valid license, or an established account for the Trend Micro or third-party data source you wish to connect. Most Trend Micro data sources must be configured, connected, and managed in the app corresponding to the source. Most third-party data sources must be configured, connected, and managed in **Third-Party Integration** unless otherwise specified. Once a data source is connected, it may take a few minutes for the data source status to change.
+    :::
+
+    The following tables detail the data sources supported by **Cyber Risk Exposure Management**, the type of data collected from the data source, and the connection method.
+
+    **Trend Vision One XDR Sensors**
+
+    <table>
+    <colgroup>
+    <col style="width: 20%" />
+    <col style="width: 20%" />
+    <col style="width: 60%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Source</p></th>
+    <th><p>Data collected</p></th>
+    <th><p>Connection method</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Endpoint Sensor</p></td>
+    <td><p>User, app, and web activities, and vulnerability assessment on monitored endpoints</p></td>
+    <td><p>Configure in <strong>Endpoint Inventory</strong>.</p></td>
+    </tr>
+    <tr>
+    <td><p>Email Sensor</p></td>
+    <td><p>Email activities in Office 365 Exchange Online</p></td>
+    <td><p>Configure in <strong>Email Asset Inventory</strong>.</p></td>
+    </tr>
+    <tr>
+    <td><p>Network Sensor</p></td>
+    <td><p>Detected threats in monitored endpoint traffic</p></td>
+    <td><p>Configure in <strong>Network Inventory</strong>.</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+    **Trend Micro Security Services**
+
+    <table>
+    <colgroup>
+    <col style="width: 20%" />
+    <col style="width: 20%" />
+    <col style="width: 60%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Source</p></th>
+    <th><p>Data target</p></th>
+    <th><p>Connection method</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Standard Endpoint Protection</p></td>
+    <td><p>Users, applications, web activities, security settings, and detected threats on monitored endpoints</p></td>
+    <td><p>Install Trend Vision One Endpoint Security agents with the Standard Endpoint Protection configuration on your endpoints and enable endpoint sensor detection and response in Endpoint Inventory.</p></td>
+    </tr>
+    <tr>
+    <td><p>Server &amp; Workload Protection</p></td>
+    <td><p>Users, applications, web activities, and detected threats on monitored endpoints</p></td>
+    <td><p>Install Trend Vision One Endpoint Security agents with the Server &amp; Workload Protection configuration on your endpoints and enable endpoint sensor detection and response in Endpoint Inventory.</p></td>
+    </tr>
+    <tr>
+    <td><p>Trend Micro Apex One as a Service</p></td>
+    <td><p>Users, applications, web activities, and detected threats on monitored endpoints</p></td>
+    <td><p>Connect Trend Micro Apex One as a Service to Trend Vision One in Product Instance.</p></td>
+    </tr>
+    <tr>
+    <td><p>Trend Micro Apex One On-premises</p></td>
+    <td><p>Security settings and detected threats on monitored endpoints</p></td>
+    <td><p>Connect your Trend Micro Apex One On-premises servers to a Trend Micro Apex Central management server, then connect your Trend Micro Apex Central management server to Trend Vision One in Product Instance.</p></td>
+    </tr>
+    <tr>
+    <td><p>Cloud Email and Collaboration Protection</p></td>
+    <td><p>Detected threats and security settings from Google Gmail and Microsoft Office 365 apps.</p></td>
+    <td><p>Configure Cloud Email and Collaboration Protection in Product Instance.</p></td>
+    </tr>
+    <tr>
+    <td><p>Trend Cloud One - Conformity</p></td>
+    <td><p>Cloud asset configurations in AWS, Microsoft Azure, and Google Cloud environments</p></td>
+    <td><ol>
+    <li><p>Ensure you have a license for Conformity. You may <a href="https://cloudone.trendmicro.com/trial">sign up for a free trial</a> if necessary.</p></li>
+    <li><p>Connect and configure your cloud accounts in Conformity.</p>
+    <ol>
+    <li><p><a href="trend-vision-one-conformity-aws-data-source-setup">Conformity AWS data source setup</a></p></li>
+    <li><p><a href="trend-vision-one-conformity-azure-data-source-setup">Conformity Azure data source setup</a></p></li>
+    <li><p><a href="trend-vision-one-conformity-gcp-data-source">Conformity Google Cloud data source setup</a></p></li>
+    </ol></li>
+    <li><p>Create and copy a new read-only API key in the Trend Cloud One console.</p></li>
+    <li><p>In the Trend Vision One console, click on the Trend Cloud One - Conformity data source.</p></li>
+    <li><p>Paste the API key into the corresponding field and click <strong>Check</strong></p></li>
+    <li><p>After the API key has been successfully checked, turn on <strong>Data upload permission</strong>.</p></li>
+    <li><p>Click <strong>Save</strong>.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Trend Cloud One - Endpoint &amp; Workload Security</p></td>
+    <td><p>User, applications, web activities, security settings, and detected threats on monitored endpoints</p></td>
+    <td><p>Connect Trend Cloud One - Endpoint &amp; Workload Security to Trend Vision One in Product Instance.</p></td>
+    </tr>
+    <tr>
+    <td><p>Trend Micro Deep Discovery Inspector</p></td>
+    <td><p>Targeted attacks and advanced threats in monitored network traffic, and network security configuration data</p></td>
+    <td><p>Configure in <strong>Network Inventory</strong>.</p></td>
+    </tr>
+    <tr>
+    <td><p>Trend Micro Deep Security</p></td>
+    <td><p>Users, applications, web activities, and detected threats on monitored endpoints</p></td>
+    <td><p>Configure in <strong>Product Instance</strong>.</p></td>
+    </tr>
+    <tr>
+    <td><p>Cloud Email Gateway Protection</p></td>
+    <td><p>Email activities, security settings, and detected threats on monitored email domains</p></td>
+    <td><p>Configure in <strong>Product Instance</strong>.</p></td>
+    </tr>
+    <tr>
+    <td><p>Trend Micro Web Security</p></td>
+    <td><p>Web activity and web application-related data of monitored devices and users</p></td>
+    <td><p>Connected when <strong>Zero Trust Secure Access - Internet Access</strong> is configured and deployed.</p></td>
+    </tr>
+    <tr>
+    <td><p>Trend Vision One Mobile Security</p></td>
+    <td><p>Public cloud apps, mobile apps, threats, and user activities detected on monitored mobile devices</p></td>
+    <td><p>Deploy mobile agents to your managed mobile devices in Mobile Inventory.</p></td>
+    </tr>
+    <tr>
+    <td><p>Trend Vision One Phishing Simulations</p></td>
+    <td><p>Risky user accounts and breach events from phishing simulations</p></td>
+    <td><p>Configure in <strong>Security Awareness</strong>.</p></td>
+    </tr>
+    <tr>
+    <td><p>Trend Vision One Container Security</p></td>
+    <td><p>Vulnerabilities, detected threats, and system configuration risks on monitored containers and images</p></td>
+    <td><p>Configure in <strong>Container Inventory</strong>.</p></td>
+    </tr>
+    <tr>
+    <td><p>TippingPoint Security Management System</p></td>
+    <td><p>Network detection logs and filter rule status</p></td>
+    <td><ol>
+    <li><p>Connect TippingPoint in <strong>Network Inventory</strong>.</p></li>
+    <li><p>Ensure you have installed and configured a Service Gateway virtual appliance.</p></li>
+    <li><p>Enable the following on your Service Gateway:</p>
+    <ul>
+    <li><p>Forward proxy</p></li>
+    <li><p>Log forwarding</p></li>
+    <li><p>Suspicious Object List synchronization</p></li>
+    <li><p>TippingPoint policy management</p></li>
+    </ul></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Zero Trust Secure Access - Private Access</p></td>
+    <td><p>Users, devices, threat detections, and internal app activities from your internal network</p></td>
+    <td><p>Configure in <strong>Zero Trust Secure Access</strong>.</p></td>
+    </tr>
+    <tr>
+    <td><p>Zero Trust Secure Access - Internet Access</p></td>
+    <td><p>Users, devices, threat detections, and cloud app activities to external networks</p></td>
+    <td><p>Configure in <strong>Zero Trust Secure Access</strong>.</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+    **Third-Party Data Sources**
+
+    <table>
+    <colgroup>
+    <col style="width: 20%" />
+    <col style="width: 20%" />
+    <col style="width: 60%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Source</p></th>
+    <th><p>Data collected or function performed</p></th>
+    <th><p>Connection method</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Active Directory (on-premises)</p></td>
+    <td><p>Internal network user and device information</p></td>
+    <td><ol>
+    <li><p>Go to <strong>Workflow and Automation → Third-Party Integration</strong>.</p></li>
+    <li><p>Find and click <strong>Active Directory (on-premises)</strong>.</p></li>
+    <li><p>Enable Active Directory integration.</p></li>
+    <li><p>Follow the onscreen instructions to add your Active Directory server.</p></li>
+    </ol>
+
+
+    :::warning[Important]
+
+    <p><strong>Threat and Exposure Management</strong> and <strong>Zero Trust Secure Access</strong> both require data upload permission to ensure certain features function properly. Revoking data upload permission may prevent secure access policy enforcement and risk analysis.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>Microsoft Defender for Endpoint</p></td>
+    <td><p>Device information, activity data, operating system and application configuration information, and threat detection data</p></td>
+    <td><ol>
+    <li><p>Go to <strong>Cloud Security → Cloud Accounts</strong> and select an existing Azure subscription or <a href="trend-vision-one-file:/source/en-us/topics/adding-azure-subscription.xml">add a new subscription</a>.</p></li>
+    <li><p>Enable Microsoft Defender for Endpoint Log Collection in the subscription settings.</p></li>
+    <li><p>Configure your Microsoft Defender for Endpoint settings to export events.</p></li>
+    </ol>
+
+
+    :::warning[Important]
+
+    <p>This is a "Pre-release" feature and is not considered an official release. Please review the <a href="trend-vision-one-pre-release-disclaimer">Pre-release disclaimer</a> before using the feature.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>Microsoft Entra ID</p></td>
+    <td><p>User and device information, identity information, public cloud app data, and activity data</p></td>
+    <td><ol>
+    <li><p>Go to <strong>Workflow and Automation → Third-Party Integration</strong> and click <strong>Microsoft Entra ID</strong>.</p></li>
+    <li><p>Locate one or multiple Microsoft Entra ID tenants that you want to grant permissions for, and click <strong>Grant permissions</strong> in the <strong>Status</strong> column for <strong>Cyber Risk Exposure Management</strong>.</p></li>
+    <li><p>Follow the onscreen instructions to enable the data connection. For more information, see <a href="trend-vision-one-integration-aad-third-party">Microsoft Entra ID integration</a>.</p></li>
+    <li>Go back to <strong>Data sources</strong>, turn on <strong>Data upload permission</strong> and click <strong>Save</strong>.</li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Google Cloud Identity</p></td>
+    <td><p>Directory data and activity data</p></td>
+    <td><ol>
+    <li><p><a href="trend-vision-one-gcp-identity-integration">Grant access permissions</a> in your Google Cloud Identity tenant.</p></li>
+    <li><p>Go to <strong>Workflow and Automation → Third-Party Integration</strong>.</p></li>
+    <li><p><a href="trend-vision-one-identity-integration-gcp">Configure your Google Cloud Identity tenant</a>. You must configure the same tenant in which you granted permissions.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Claroty xDome</p></td>
+    <td><p>Third-party vulnerability assessment tool (SaaS)</p></td>
+    <td><p>Turn on <strong>Data upload permission</strong> and provide the country or region-specific Claroty xDome URL and API key created for a Claroty xDome user account with the appropriate role. For more information, see <a href="trend-vision-one-medigate-integration">Claroty xDome integration</a>.</p></td>
+    </tr>
+    <tr>
+    <td><p>Nessus Pro</p></td>
+    <td><p>Device information and CVE detections from your on-premises network</p></td>
+    <td><ol>
+    <li><p>Go to <strong>Workflow and Automation → Third-Party Integration</strong>.</p></li>
+    <li><p>Find and click Nessus Pro and follow the onscreen instructions to connect your account. For more information, see <a href="trend-vision-one-nessus-pro-integration">Nessus Pro Integration</a>.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Microsoft 365</p></td>
+    <td><p>Usage data, activity data, system configuration and compliance information for Microsoft 365 apps including OneDrive, SharePoint, Outlook, and Teams.</p></td>
+    <td><p>Turn on <strong>Data upload permission</strong> after you have connected Microsoft Entra ID. If desired, you may also turn permission off.</p>
+
+
+    :::warning[Important]
+
+    <p>Connecting Microsoft 365 as a data source requires that you configure and connect Microsoft Entra ID as a data source. To do so, enable the <strong>Data upload permission</strong> toggle for Microsoft Entra ID and configure in <strong>Third-Party Integration</strong>.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>Okta</p></td>
+    <td><p>User information, public cloud app data, and activity data</p></td>
+    <td><ol>
+    <li><p>Obtain the <strong>Okta URL domain</strong> and <strong>API token</strong> from your Okta environment. For more information, see <a href="trend-vision-one-okta-url-api-token">Obtaining your Okta URL domain and API token</a>.</p>
+
+
+    :::note
+
+    <p>Your Okta user account must have one of the following administrator privileges in Okta:</p>
+    <ul>
+    <li><p>API Access Management Admin</p></li>
+    <li><p>Mobile Admin</p></li>
+    <li><p>Read-Only Admin</p></li>
+    <li><p>App Admin</p></li>
+    <li><p>Org Admin</p></li>
+    <li><p>Super Admin</p></li>
+    </ul>
+
+
+    :::
+
+    </li>
+    <li><p>Go to <strong>Workflow and Automation → Third-Party Integration</strong>.</p></li>
+    <li><p>Find and click <strong>Okta</strong> and follow the onscreen instructions to connect your account. For more information, see <a href="trend-vision-one-okta-integration">Okta integration</a>.</p></li>
+    </ol>
+
+
+    :::warning[Important]
+
+    <p><strong>Threat and Exposure Management</strong> and <strong>Zero Trust Secure Access</strong> both require data upload permission to ensure certain features function properly. Revoking data upload permission may prevent secure access policy enforcement and risk analysis.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>OpenLDAP</p></td>
+    <td><p>User information from your internal network</p></td>
+    <td><ol>
+    <li><p>Ensure you have installed a Service Gateway and enabled the On-premises directory connection service.</p></li>
+    <li><p>Go to <strong>Workflow and Automation → Third-Party Integration</strong>.</p></li>
+    <li><p>Find and click <strong>OpenLDAP</strong> and follow the onscreen instructions to connect your server. For more information, see <a href="trend-vision-one-openldap-integration">OpenLDAP integration</a>.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Qualys</p></td>
+    <td><p>Device information and CVEs detected through third-party vulnerability assessments</p></td>
+    <td><ol>
+    <li>In your Qualys console, create a new account with an active subscription and the following permissions:
+    <ul>
+    <li><p>Role: Reader</p></li>
+    <li><p>Asset Management Permissions: Read Asset</p></li>
+    <li><p>Allow access: API</p></li>
+    <li><p>Asset Groups (assigned to)</p></li>
+    </ul></li>
+    <li><p>Add your Trend Vision One <a href="trend-vision-one-asrm-regional-ip-addresses">regional IP addresses</a> for Cyber Risk Exposure Management to the list of trusted IP addresses in the Qualys console.</p></li>
+    <li><p>Go back to <strong>Data sources</strong> and provide the username and password for the newly created account.</p></li>
+    <li><p>Turn on <strong>Data upload permission</strong> and click <strong>Save and Verify</strong>. If desired, you may also turn permissions off.</p></li>
+    </ol>
+
+
+    :::note
+
+    <p>Qualys integration only provides CVE detection data and limited device information. For complete activity monitoring of exploit attempts and comprehensive device insights, install and enable Endpoint Sensor.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>Rapid7 - InsightVM</p></td>
+    <td><p>Device information and CVEs detected through third-party vulnerability assessments</p></td>
+    <td><ol>
+    <li><p>From your Rapid7 console, obtain the Insight Platform URL and API key for a Rapid7 Insight user account with the Platform Admin role. For more information, see <a href="trend-vision-one-rapid7-insighttvm-integrate">Rapid7 - InsightVM integration</a>.</p></li>
+    <li><p>Go back to <strong>Data sources</strong> and provide the newly obtained Platform URL and API key.</p></li>
+    <li><p>Turn on <strong>Data upload permission</strong> and click <strong>Save</strong>. If desired, you may also turn permissions off.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Rapid7 - Nexpose</p></td>
+    <td><p>Device information and CVE detections from your on-premises network</p></td>
+    <td><ol>
+    <li><p>Ensure you have installed a Service Gateway with the Rapid7 - Nexpose connector service enabled.</p></li>
+    <li><p>Go to <strong>Workflow and Automation → Third-Party Integration</strong>.</p></li>
+    <li><p>Find and click <strong>Rapid7 - Nexpose</strong> and follow the onscreen instructions to connect your server. For more information, see <a href="trend-vision-one-rapid7-nexpose-integration">Rapid7 - Nexpose integration</a>.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Rescana</p></td>
+    <td><p>Internet-facing asset data including detected CVEs and misconfigurations</p></td>
+    <td>
+
+:::warning[Important]
+
+    Enabling the Rescana integration switches the Cyber Risk Exposure Management data source for collecting internet-facing asset data to Rescana. After switching the data source, internet-facing asset data previously collected by Trend Micro solutions will no longer be available.
+
+
+    :::
+
+
+    <ol>
+    <li><p>Obtain the URL and API token for your Rescana account in your Rescana console.</p></li>
+    <li><p>Go back to <strong>Data sources</strong> and provide the newly obtained URL and API token.</p></li>
+    <li><p>Click <strong>Test connection</strong> to verify connectivity.</p></li>
+    <li><p>Provide the URL and API token for your Rescana account.</p></li>
+    <li><p>Click <strong>Connect</strong>.</p></li>
+    </ol>
+
+
+    :::warning[Important]
+
+    <p>This is a "Pre-release" feature and is not considered an official release. Please review the <a href="trend-vision-one-pre-release-disclaimer">Pre-release disclaimer</a> before using the feature.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>Salesforce</p></td>
+    <td><p>Salesforce metadata and information on system misconfigurations</p></td>
+    <td><p>Turn on <strong>Data upload permission</strong> after you have connected Salesforce in <strong>Third-Party Integration</strong>.</p>
+    <p>For more information, see <a href="trend-vision-one-salesforce-integrate">Salesforce integration</a>.</p>
+
+
+    :::warning[Important]
+
+    <p>This is a "Pre-release" feature and is not considered an official release. Please review the <a href="trend-vision-one-pre-release-disclaimer">Pre-release disclaimer</a> before using the feature.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>Splunk - Network Firewall / Web Gateway Logs</p></td>
+    <td><p>User activities on detected public cloud apps</p></td>
+    <td><ol>
+    <li><p>Go to <strong>Workflow and Automation → Third-Party Integration</strong>.</p></li>
+    <li><p>Find and click <strong>Cyber Risk Exposure Management for Splunk</strong>.</p></li>
+    <li><p>Copy the displayed authentication token.</p></li>
+    <li>Download and install the <a href="https://splunkbase.splunk.com/app/5350">Cyber Risk Exposure Management for Splunk</a> app.</li>
+    <li><p>Use the authentication token to configure the app. For more information, see <a href="trend-vision-one-asrm-splunk-integration">Cyber Risk Exposure Management for Splunk integration</a>.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Tanium Comply</p></td>
+    <td>Device information and CVEs detected through third-party vulnerability assessments</td>
+    <td><ol>
+    <li>Obtain the Tanium Comply URL and API token from the Tanium console using an account with the appropriate role. For more information, see <a href="trend-vision-one-tanium-comply-integrate">Tanium Comply integration</a>.</li>
+    <li><p>Add your Trend Vision One <a href="trend-vision-one-asrm-regional-ip-addresses">regional IP addresses</a> for Cyber Risk Exposure Management to the list of trusted IP addresses in the Tanium console.</p></li>
+    <li><p>Go back to <strong>Data sources</strong> and provide the newly obtained URL and API token.</p></li>
+    <li><p>Turn on <strong>Data upload permission</strong> and click <strong>Save</strong>. If desired, you may also turn permissions off.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Greenbone</p></td>
+    <td><p>Third-party vulnerability assessment tool (on-premises)</p></td>
+    <td><ol>
+    <li><p>Enable the Greenbone Management Protocol (GMP) on your Greenbone Enterprise Appliance.</p></li>
+    <li><p>Go to <strong>Workflow and Automation → Third-Party Integration</strong>.</p></li>
+    <li><p>Find and click <strong>Greenbone</strong>.</p></li>
+    <li><p>Select a Service Gateway with the Greenbone Connector service installed. If no Service Gateway is available, deploy a Service Gateway with the Greenbone Connector service or install the service on an existing Service Gateway.</p></li>
+    <li><p>Supply the username and password for your Greenbone server.</p></li>
+    <li><p>Click <strong>Connect</strong>. For more information, see <a href="trend-vision-one-greenbone-integration">Greenbone Integration</a>.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Tenable Security Center</p></td>
+    <td><p>Device information and CVE detections from your on-premises network</p></td>
+    <td><ol>
+    <li><p>Ensure you have a Service Gateway installed with the Tenable Security Center connector service enabled.</p></li>
+    <li><p>Go to <strong>Workflow and Automation → Third-Party Integration</strong>.</p></li>
+    <li><p>Find and click <strong>Tenable Security Center</strong> and follow the onscreen instructions to connect your server. For more information, see <a href="trend-vision-one-data-source-setup">Tenable Security Center data source setup</a>.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Tenable Vulnerability Management</p></td>
+    <td><p>Device information and CVEs detected through third-party vulnerability assessments</p></td>
+    <td><ol>
+    <li><p>Obtain the Tenable Vulnerability Management secret key and access key from the Tenable Vulnerability Management console using an account with the appropriate permissions. For more information, see <a href="trend-vision-one-data-source-tenable-setup">Tenable Vulnerability Management integration</a>.</p></li>
+    <li><p>Go back to <strong>Data sources</strong> and provide the newly obtained secret key and access key.</p></li>
+    <li><p>Turn on <strong>Data upload permission</strong> and click <strong>Save</strong>. If desired, you may also turn permissions off.</p></li>
+    </ol></td>
+    </tr>
+    </tbody>
+    </table>
+
+**Related information**
+
+- [Risk visibility support for Trend Micro products](risk-visibility-tm-products.mdx)
+- [Cyber Risk Exposure Management regional IP addresses](asrm-regional-ip-addresses.md "Add the regional Trend Vision One IP address to the list of trusted IP addresses when configuring specific data sources for use in Cyber Risk Exposure Management.")
+- [Conformity AWS data source setup](conformity-aws-data-source-setup.mdx)
+- [Conformity Azure data source setup](conformity-azure-data-source-setup.mdx)
+- [Conformity Google Cloud data source setup](conformity-gcp-data-source.mdx)
+- [Tenable Security Center data source setup](data-source-setup.md "Gain vulnerability insights by connecting your Tenable Security Center data source with Trend Vision One.")
+- [Tenable Vulnerability Management integration](data-source-tenable-setup.md "Gain vulnerability insights by connecting your Tenable Vulnerability Management data source with Trend Vision One.")
+:::

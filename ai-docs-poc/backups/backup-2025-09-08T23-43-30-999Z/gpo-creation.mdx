@@ -1,0 +1,104 @@
+---
+slug: trend-vision-one-gpo-creation
+title: GPO creation
+last_updated: '2025-09-08'
+ai_context:
+  source_file: gpo-creation.md
+  conversion_date: '2025-09-08T23:42:18.725Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Use an Active Directory Group Policy Object (GPO) to enforce the use of a PAC file.
+
+Before you start, get the file path of the desired PAC file in the **PAC file location** column on the **PAC Files** tab (**Zero Trust Secure Access → Secure Access Configuration → Internet Access and AI Service Access Configuration**).
+
+This task uses the Active Directory domain controller server running Windows Server 2019 as an example to illustrate proxy configuration via GPO.
+
+:::note
+
+The steps contained in these instructions were valid as of September 2022.
+:::
+
+**Related information**
+
+- Deployment for Windows 8 and 10
+- Deployment for Windows 10 and 11
+
+## Deployment for Windows 8 and 10 {#deployment-for-windows-8-and-10}
+
+This task applies the GPO using Internet Settings to end-user devices running Windows 8 or 10.
+
+### Procedure {#procedure}
+
+1.  Log on to the Active Directory domain controller server as an administrator.
+
+2.  Go to **Start → Server Manager → Tools → Group Policy Management**.
+
+    The **Group Policy Management** window appears.
+
+3.  From the left navigation, go to **Forest: \[your forest\] → Domains → \[your domain\]**, right-click **\[your domain\]**, and then select **Create a GPO in this domain, and Link it here...**.
+
+    The **New GPO** window appears.
+
+4.  Type a name for the new Group Policy Object in the **Name** text box and click **OK**.
+
+    The newly created GPO displays under **Group Policy Objects** in the left navigation.
+
+5.  Right-click the GPO and select **Edit**.
+
+    The **Group Policy Management Editor** window appears.
+
+6.  From the left navigation, go to **User Configuration → Preferences → Control Panel Settings → Internet Settings**, right-click **Internet Settings**, and then select **New → Internet Explorer 10**.
+
+    The **New Internet Explorer 10 Properties** window appears.
+
+7.  Click the **Connections** tab, and then click **LAN Settings**.
+
+    The **Local Area Network (LAN) Settings** window appears.
+
+8.  Type the PAC file path in the **Address** text box under the **Automatic configuration** section, and then press **F5** to enable the setting.
+
+9.  Click **OK**.
+
+10. Click **Apply**, and then click **OK**.
+
+## Deployment for Windows 10 and 11 {#deployment-for-windows-10-and-11}
+
+This task applies the GPO using Registry to end-user devices running Windows 10 or 11.
+
+### Procedure {#procedure-1}
+
+1.  Log on to the Active Directory domain controller server as an administrator.
+
+2.  Go to **Start → Server Manager → Tools → Group Policy Management**.
+
+    The **Group Policy Management** window appears.
+
+3.  From the left navigation, go to **Forest: \[your forest\] → Domains → \[your domain\]**, right-click **\[your domain\]**, and then select **Create a GPO in this domain, and Link it here...**.
+
+    The **New GPO** window appears.
+
+4.  Type a name for the new Group Policy Object in the **Name** text box and click **OK**.
+
+    The newly created GPO displays under **Group Policy Objects** in the left navigation.
+
+5.  Right-click the GPO and select **Edit**.
+
+    The **Group Policy Management Editor** window appears.
+
+6.  From the left navigation, go to **User Configuration → Preferences → Windows Settings → Registry**, right-click **Registry**, and then select **New → Registry Item**.
+
+    The **New Registry Properties** window appears.
+
+7.  On the **General** tab, specify the following fields:
+
+    - Key Path: Set the key path to `SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings`.
+
+    - Value name: Set the value name to `AutoConfigURL`.
+
+    - Value data: Type the PAC file path.
+
+8.  Click **Apply**, and then click **OK**.
+::::

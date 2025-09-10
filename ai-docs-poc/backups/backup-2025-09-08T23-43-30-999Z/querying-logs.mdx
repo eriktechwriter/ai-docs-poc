@@ -1,0 +1,146 @@
+---
+slug: trend-vision-one-querying-logs
+title: Querying Logs
+last_updated: '2025-09-08'
+ai_context:
+  source_file: querying-logs.md
+  conversion_date: '2025-09-08T23:42:13.959Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Use the **Log Query** screen to query Trend Micro Apex Central generated logs and log data from registered managed products. You can also narrow the search results by using advanced custom filters, export the search results in XML or CSV format, or save and share the log query search criteria with other Trend Micro Apex Central administrators.
+
+### Procedure {#procedure}
+
+1.  Go to **Detections → Logs → Log Query**.
+
+    The **Log Query** screen appears.
+
+2.  Specify the log type.
+
+    :::note
+
+    Log types correspond to specific data views used in Trend Micro Apex Central reports.
+
+    For more information about log types and data views, see [Log Names and Data Views](log-names-data-views.mdx).
+    :::
+
+    1.  Select a log type from the first drop-down control.
+
+    2.  Click **OK** to apply the selected log type.
+
+3.  To filter your search results to data from specific managed products:
+
+    1.  Click the second drop-down control.
+
+    2.  Select targets for the query by using one of the following options:
+
+        - **Directory**: Allows you to locate and select managed products from the Product Directory structure
+
+        - **Type**: Allows you to choose a product type and select from a list of all registered managed products of the same type
+
+        - **Tags and filters**: Allows you to select custom tags, filters, or important labels from the User/Endpoint Directory to query specific endpoints
+
+          :::note
+
+          - You can select up to 10 custom tags, filters, or important labels to perform a log query.
+
+          - Custom filters that contain Compliance, Important, Threat Type, Security Threat, or Threat Status Criteria information cannot be used to perform a log query.
+          :::
+
+    3.  Click **OK** to apply the selected targets.
+
+4.  Select a time period from the **Time** drop-down control.
+
+5.  To filter search results using custom criteria:
+
+    1.  Click **Show advanced filters**.
+
+    2.  Specify the **Match** rule for the custom filter:
+
+        - **All of the criteria**: Data must match all the specified criteria
+
+        - **Any of the criteria**: Data can match any of the specified criteria
+
+    3.  In the **Select criteria...** drop-down list, select a data column to filter.
+
+        :::note
+
+        The data columns in the **Select criteria...** drop-down list dynamically change based on the log type you select in the first drop-down control.
+
+        For more information about the data columns, see [Log Names and Data Views](log-names-data-views.mdx) and refer to the corresponding data view details.
+        :::
+
+        The filtering criteria that appear in the second and third drop-down lists dynamically change based on the data column you select.
+
+    4.  In the second drop-down list, select an operator.
+
+    5.  In the third drop-down list, define the criteria.
+
+    :::note
+
+    Trend Micro Apex Central supports up to 20 custom filtering criteria for each log query.
+    :::
+
+6.  Click **Search**.
+
+    The search results appear in the table on the **Log Query** screen.
+
+    :::note
+
+    - The *Generated* column displays the local date and time on the endpoint for when the managed product first detected the threat.
+
+    - The *Received* column displays the local date and time on the Trend Micro Apex Central server for when the Trend Micro Apex Central server received the data from the managed product server.
+    :::
+
+7.  (Optional) Click a link in a data column to drill down for more information.
+
+8.  (Optional) Customize the data columns in the search results.
+
+    - Click **Customize Columns** to add or remove columns that display in the table.
+
+    - Rearrange the order in which the columns display by dragging the column headings.
+
+9.  (Optional) Export the log query results.
+
+    1.  Click **Export to CSV** or **Export to XML**.
+
+        The **Log Query Exporting page** screen appears.
+
+    2.  After the export completes, open or save the file.
+
+10. (Optional) Save log query search criteria.
+
+    :::note
+
+    - Saving a log query only saves the search criteria for the query. To save log query search results, export the results or create a report using a grid table.
+
+      For more information about creating reports, see [Reports](reports-section-apex.mdx).
+
+    - Saved queries are automatically visible to all users from the same Active Directory group.
+
+    - A gray user icon (![](/images/log_query_saved_query_user_icon=GUID-CED9EB62-A0CD-4CCC-A6D8-66A651AB7779=1=en-us=Low.webp)) next to a saved query indicates a log query shared by a user from outside your Active Directory group. Hover over the icon to view the name of the user who shared the query.
+    :::
+
+    1.  Click the save button (![](/images/log_query_save=GUID-D1BA96C8-9E06-431A-8722-74F5E931E1ED=1=en-us=Low.webp)).
+
+    2.  Specify a name for the saved query.
+
+    3.  Click **Save**.
+
+    After saving a log query, you can click the saved queries button (![](/images/log_query_saved_search_list=GUID-7C9D3116-6ADE-4E48-B805-61D2D122A936=1=en-us=Low.webp)) to view a list of saved queries and perform the following actions.
+
+    - Click the name of a saved query to run the log query.
+
+    - Click the share icon (![](/images/log_query_share=GUID-E44F736B-6925-4034-9866-9C442C353E94=1=en-us=Low.webp)) next to a saved query name to share the log query with all Trend Micro Apex Central users.
+
+    - Click the stop sharing icon (![](/images/log_query_unshare=GUID-C1FC6294-5E07-4B9B-A6CB-B098DE04A3D7=1=en-us=Low.webp)) next to a saved query name to stop sharing the log query with all Trend Micro Apex Central users.
+
+    - Click the delete icon (![](/images/log_query_delete=GUID-6E150AAC-BF2F-4A2F-92F4-1E60AF769AE9=1=en-us=Low.webp)) to remove the saved query.
+
+**Related information**
+
+- [Log Names and Data Views](log-names-data-views.mdx)
+:::

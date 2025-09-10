@@ -1,0 +1,45 @@
+---
+slug: trend-vision-one-user-or-endpoint-importance
+title: User or Endpoint Importance
+---
+# User or Endpoint Importance
+
+Assigning importance to groups of users and endpoints allows you to quickly monitor and respond to threats against these targets from the **Dashboard** screen. Trend Micro Apex Central provides several widgets that highlight threat events for "important" users and endpoints. You may want to apply stricter policies to important users or endpoints and constantly monitor their protection status.
+
+You must first assign custom tags, or create custom filters, to identify the important users or endpoints. After identifying the important users or endpoints on your network, you can assign the "important" tag to provide greater visibility on the **Dashboard**.
+
+For more information see [Custom Tags and Filters](custom-tags-filters.mdx).
+
+:::note
+
+- Manually assign importance to users/endpoints grouped using custom tags and filters.
+
+- Any Trend Micro Apex Central user account that has permission to create or modify custom tags, filters, or important labels in the **User/Endpoint Directory** can view or modify custom tags, filters, or important labels created by all other user accounts.
+
+- Editing a tag, filter, or importance label on the **User/Endpoint Directory** screen also modifies the corresponding tag, filter, or importance label used by log queries and reports. For example, if the an endpoint is removed from a custom filter on the **User/Endpoint Directory** screen, then log queries and generated reports that use the filter will exclude data from the removed endpoint.
+
+- Trend Micro Apex Central automatically assigns importance to "Domain Admins" (users) and "Domain Controllers" (endpoints) after Active Directory synchronization.
+
+  - The current version of Trend Micro Apex Central only supports one important "Domain Admin" and one important "Domain Controller" for each integrated Active Directory domain. Individual user accounts can no longer assign separate "important" tags for the same "Domain Admins" and "Domain Controllers".
+
+  - If you have preexisting "important" tags for "Domain Admins" and "Domain Controllers" created by separate user accounts on a previous version of Trend Micro Apex Central, the preexisting "Domain Admins" and "Domain Controllers" will be deleted and replaced with one important "Domain Admin" and one important "Domain Controller" for each integrated Active Directory domain.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Directories → Users/Endpoints**.
+
+2.  Expand the **Importance** node under **Users** or **Endpoints** in the tree.
+
+3.  Click **Important** and click the edit icon (![](/images/update_filter=GUID-CF22E87B-65C0-4AA1-8AC4-D98F0FC27FF3=1=en-us=Low.webp)).
+
+4.  On the screen that displays:
+
+    - Assign importance by selecting one or several custom tags or custom filters, and then click **Save**.
+
+    - Remove importance by clearing one or several custom tags or custom filters, and then click **Save**.
+
+    The table in the main screen is updated with the list of endpoints or users that match the custom tags or custom filters.
+
+    For details about the table columns and the data they contain, see [User Details](user-details-for-apex.mdx).
+::::

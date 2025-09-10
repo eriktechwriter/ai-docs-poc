@@ -1,0 +1,289 @@
+---
+slug: trend-vision-one-preparing-for-integration
+title: Preparing for VMware Workspace ONE UEM integration
+last_updated: '2025-09-08'
+ai_context:
+  source_file: preparing-for-integration.md
+  conversion_date: '2025-09-08T23:42:14.199Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Make some preparations on the VMware Workspace ONE UEM console before integration.
+
+The integration between **Mobile Security** and VMware Workspace ONE UEM uses REST APIs over HTTPS to transfer data. The REST APIs require authentication to integrate with Workspace ONE UEM. Prior to authentication, API access must be enabled on the Workspace ONE UEM console.
+
+To integrate **Mobile Security** with Workspace ONE UEM, you also need to have an account with required permissions for the communication between **Mobile Security** and Workspace ONE UEM.
+
+:::warning[Important]
+
+The following Workspace ONE UEM instructions and screen captures were valid as of July, 2022. For further help, check your Workspace ONE UEM documentation.
+:::
+
+### Procedure {#procedure}
+
+1.  Enable API access on the VMware Workspace ONE UEM console.
+
+    1.  Sign into the Workspace ONE UEM console, and select any level of organization group (OG) from the hierarchy structure.
+
+        **Mobile Security** supports not only the "Customer" type OG, but also all other levels of OGs.
+
+    :::warning[Important]
+
+    Workspace ONE UEM integration is associated with OGs. Once the integration is completed, only administrator accounts within the selected OG will have permission to edit the integration settings.
+    :::
+
+    1.  Go to **GROUPS & SETTINGS → All Settings**.
+
+    2.  On the **Settings** screen, go to **System → Advanced → API → REST API**.
+
+    3.  On the **General** tab, select **ENABLED** for **Enable API Access**.
+
+        Enabling API access automatically generates an API key for the OG, which is necessary for API authentication.
+
+    4.  On the **Authentication** tab, select **Override** for **Current Settings** and select **ENABLED** for **Basic** if the previously selected OG is the "Customer" type OG; select **Inherit** for **Current Settings** if the previously selected OG is a child OG of the "Customer" type OG.
+
+        :::note
+
+        **Mobile Security** does not support certificate-based or directory-based API authentication.
+        :::
+
+        APIs get authenticated using basic account credentials (user name and password).
+
+2.  Create an account with the required API permissions.
+
+    You can either add an account with the Console Administrator role, or add an account with a custom role that has been granted minimum required permissions.
+
+    :::note
+
+    The Console Administrator role allows comprehensive access in the console. With this role, you do not need to assign the role any new permissions required by new features released in the future.
+
+    A custom role with minimum required permissions offers better security. However, custom roles must be manually maintained over time and updated with new features.
+    :::
+
+    - To add an account with the Console Administrator role, perform the following steps:
+
+      1.  On the VMware Workspace ONE UEM console, go to **ACCOUNTS → Administrators → List View**.
+
+      2.  Select **Add** and then **Add Admin**.
+
+      3.  On the **Add Admin** screen, select **Basic** and click **Next**.
+
+      4.  On the **Definition** tab, specify all required fields including username, password, first name, last name, and email address and click **Next**.
+
+      5.  On the **Roles** tab, choose the specific OG you selected in step 1, select **Console Administrator** from the **Role** drop-down list, and click **Next**.
+
+      6.  On the **Details** and **Settings** tabs, specify additional information if necessary, and click **Save**.
+
+          The Mobile Security for Business can be deployed to the devices of any user groups or smart groups within the selected OG, as well as any of its child OGs.
+
+    - To add an account with a custom role granted minimum required permissions, perform the following steps:
+
+      1.  On the VMware Workspace ONE UEM console, go to **ACCOUNTS → Administrators → Roles**.
+
+      2.  On the **Roles** screen, click **ADD ROLE**, and create a custom administrator role and grant minimum required permissions to the role.
+
+          :::tip
+
+          To quickly assign all required permissions to the categories falling under **Accounts**, click the circular icon to the right of these categories and select **Read** under **Choose Edit Mode**.
+          :::
+
+          **Minimum permissions required to complete the integration**
+
+          <table>
+          <colgroup>
+          <col style="width: 40%" />
+          <col style="width: 20%" />
+          <col style="width: 20%" />
+          <col style="width: 20%" />
+          </colgroup>
+          <thead>
+          <tr>
+          <th><p>Category</p></th>
+          <th><p>Name</p></th>
+          <th>Read</th>
+          <th>Edit</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td rowspan="2"><strong>Accounts → Administrators → Admin Groups</strong></td>
+          <td><p>Members</p></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          <td> </td>
+          </tr>
+          <tr>
+          <td><p>View</p></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          <td> </td>
+          </tr>
+          <tr>
+          <td rowspan="6"><p><strong>Accounts → Users → Accounts</strong></p></td>
+          <td><p>Add Device</p></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          <td> </td>
+          </tr>
+          <tr>
+          <td><p>Batch Import</p></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          <td> </td>
+          </tr>
+          <tr>
+          <td><p>Migration</p></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          <td> </td>
+          </tr>
+          <tr>
+          <td><p>Search</p></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          <td> </td>
+          </tr>
+          <tr>
+          <td><p>User Detail</p></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          <td> </td>
+          </tr>
+          <tr>
+          <td><p>View</p></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          <td> </td>
+          </tr>
+          <tr>
+          <td rowspan="2"><p><strong>Accounts → Users → User Groups</strong></p></td>
+          <td><p>Members</p></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          <td> </td>
+          </tr>
+          <tr>
+          <td><p>View</p></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          <td> </td>
+          </tr>
+          <tr>
+          <td rowspan="5"><p><strong>API → REST</strong></p></td>
+          <td><p>Admins</p></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          <td> </td>
+          </tr>
+          <tr>
+          <td><p>Apps</p></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          </tr>
+          <tr>
+          <td><p>Devices</p></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          </tr>
+          <tr>
+          <td><p>Groups</p></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          </tr>
+          <tr>
+          <td><p>Users</p></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          <td> </td>
+          </tr>
+          <tr>
+          <td rowspan="3"><p><strong>Apps &amp; Books</strong></p></td>
+          <td><p>Application Publish</p></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          </tr>
+          <tr>
+          <td><p>Public Apps</p></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          </tr>
+          <tr>
+          <td><p>Purchased Applications</p></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          </tr>
+          <tr>
+          <td rowspan="2"><p><strong>Device Management → Device Details</strong></p></td>
+          <td><p>Enterprise Wipe</p></td>
+          <td> </td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          </tr>
+          <tr>
+          <td><p>Lock</p></td>
+          <td> </td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          </tr>
+          <tr>
+          <td rowspan="2"><strong>Settings → System</strong></td>
+          <td><p>General</p></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          </tr>
+          <tr>
+          <td><p>View</p></td>
+          <td><figure>
+          <img src="./images/circle_bk_min=GUID-39D946EA-9831-4579-B34C-8015F7A8ACDF=2=en-us=Low.webp" />
+          </figure></td>
+          <td> </td>
+          </tr>
+          </tbody>
+          </table>
+
+      3.  Go to **ACCOUNTS → Administrators → List View**, and add an account with the newly created role.
+::::

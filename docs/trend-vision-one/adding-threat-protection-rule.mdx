@@ -1,0 +1,148 @@
+---
+slug: trend-vision-one-adding-threat-protection-rule
+title: Adding a threat protection rule
+---
+# Adding a threat protection rule
+
+Configure URL and file scanning settings to form a threat protection rule.
+
+### Procedure {#procedure}
+
+1.  On the **Secure Access Resources** screen, click the **Threat Protection** tab and then click **Add**.
+
+    The **Threat Protection Rule** screen appears.
+
+2.  Specify a unique name and a description for the rule.
+
+3.  On the **Web Reputation** tab, configure the following settings.
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Setting</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Enable Web Reputation</p></td>
+    <td><p>Click the toggle to determine whether to leverage Trend Micro Web Reputation Services to verify the credibility of websites.</p></td>
+    </tr>
+    <tr>
+    <td><p>Security level</p></td>
+    <td><ul>
+    <li><p>Select the security level for the Internet Access Gateway to block users from accessing URLs.</p>
+    <p>Each security level comes with a description to help you make an informed decision.</p></li>
+    <li><p>Select whether to block websites that have not been tested by Web Reputation Services.</p>
+
+
+    :::note
+
+    <p>Enabling this feature may produce false positives.</p>
+
+
+    :::
+
+    </li>
+    </ul></td>
+    </tr>
+    </tbody>
+    </table>
+
+4.  On the **File Scanning** tab, configure the following settings.
+
+    The Internet Access Gateway does not scan files that meet the specified criteria and allows users to access these files.
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Setting</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Do not scan specified file types</p></td>
+    <td><p>Select one of the configured file profiles from the drop-down list.</p>
+    <p>The Internet Access Gateway does not scan the files that match the selected file profile.</p></td>
+    </tr>
+    <tr>
+    <td><p>Do not scan files larger than</p></td>
+    <td><p>Specify the size limit for file scanning.</p>
+    <p>The Internet Access Gateway does not scan files that exceed the size limit.</p>
+    <p>The file size limit cannot be greater than 2 GB.</p></td>
+    </tr>
+    <tr>
+    <td><p>Do not scan files whose compression layers exceed</p></td>
+    <td><p>Specify the maximum number of compression layers for file scanning.</p>
+    <p>The Internet Access Gateway does not scan files that have more compression layers than the limit.</p>
+    <p>The range is from 1 through 20, and the default value is 10.</p></td>
+    </tr>
+    <tr>
+    <td><p>Allow unscannable files</p></td>
+    <td><p>Select the check box to allow users to access unscannable files.</p>
+    <p>A file may be unscannable because it is:</p>
+    <ul>
+    <li>compressed with an unsupported file format</li>
+    <li>password protected</li>
+    <li>corrupted</li>
+    <li>exceeds the compression layer limit</li>
+    </ul></td>
+    </tr>
+    </tbody>
+    </table>
+
+5.  On the **Advanced Scanning** tab, configure the following settings.
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Setting</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Action to take upon detection of botnets</p></td>
+    <td><p>Select whether to block or monitor web traffic when botnet activity is detection.</p>
+    <ul>
+    <li><p>Block: The Internet Access Gateway blocks the web traffic.</p></li>
+    <li><p>Monitor: The Internet Access Gateway allows the web traffic but logs it for botnet activity monitoring and analysis.</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>Enable Predictive Machine Learning</p></td>
+    <td><p>Select the check box to enable scanning for emerging unknown security risks in files.</p>
+    <p>When enabled, the Internet Access Gateway sends suspicious file features to the cloud-based Predictive Machine Learning engine that uses advanced analytics to detect unknown threats, and blocks access to the files if any unknown threat is detected.</p></td>
+    </tr>
+    <tr>
+    <td><p>Action to take upon detection of suspicious objects</p></td>
+    <td><p>Select whether to block or monitor suspicious objects per suspicious object type, or apply the <a href="trend-vision-one-add-import-suspicious-objects">action configured for each specific suspicious object</a> in the Suspicious Object Management app.</p>
+    <p>Internet Access retrieves the Suspicious Object List from the Suspicious Object Management app to identify suspicious IP addresses, URLs, domains, and files in your users' internet traffic.</p></td>
+    </tr>
+    <tr>
+    <td><p>Sandbox Analysis</p></td>
+    <td>Select whether to allow the Internet Access Cloud Gateway or On-premises Gateway to automatically submit files for analysis in the <strong>Sandbox</strong> after Internet Access identifies highly suspicious files or files with certain file types. To use the Sandbox, you must enable <strong>Send to Sandbox</strong> for your Internet Access users on the Credit Settings page. Note that the Internet Access On-premises Gateway submits files first to the Deep Discovery Analyzer appliance if it is configured on that gateway.
+    <p>For more information about the file objects that Internet Access submits, see <a href="trend-vision-one-supported-files-for-sandbox">Supported files for Sandbox Analysis</a>.</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+6.  Click **Save**.
+
+**Related information**
+
+- [Supported files for Sandbox Analysis](supported-files-for-sandbox.md "Understand the files that Internet Access submits to the Sandbox Analysis app for analysis.")
+:::

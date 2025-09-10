@@ -1,0 +1,333 @@
+---
+slug: trend-vision-one-remote-shell-linux-endpoints
+title: Remote Shell Commands for Linux Endpoints
+---
+# Remote Shell Commands for Linux Endpoints
+
+Use the available remote shell commands to investigate Linux endpoints.
+
+:::note
+
+When specifying a file location, be aware that UNC paths are not supported.
+:::
+
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Command</p></th>
+<th><p>Description</p></th>
+<th><p>Syntax</p></th>
+<th><p>Example</p></th>
+<th><p>Supported on</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>bashhistory</code></p></td>
+<td><p>List command/bash history (/root/.bash_history)</p></td>
+<td><p><code>bashhistory</code></p></td>
+<td><p><code>bashhistory</code></p></td>
+<td><ul>
+<li><p>Deep Security Agent (managed by Trend Cloud One - Endpoint &amp; Workload Security)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>cat</code></p></td>
+<td><p>Output the specified content of the selected file (max size 1MB)</p></td>
+<td><p><code>cat [--offset &lt;offset&gt; &lt;size&gt;] [--hex] &lt;file_location_and_extension&gt;</code></p>
+
+
+:::note
+
+<p>For the <code>&lt;file_location_and_extension&gt;</code>, specify the absolute or relative path to the file, the file name, and the file extension.</p>
+
+
+:::
+
+
+:::warning[Important]
+
+<p>The following optional parameters are only available on endpoints with the XDR Endpoint Sentor.</p>
+
+
+:::
+
+
+<ul>
+<li><p><code>--offset</code>: Optional parameter to specify the start location in the file (in bytes)</p></li>
+<li><p><code>--size</code>: Optional parameter to specify the size of the output from the start location (in bytes).</p></li>
+<li><p><code>--hex</code>: Optional parameter to output binary file content in hexadecimal format.</p></li>
+</ul></td>
+<td><ul>
+<li><p>To output the content of the <code>example.txt</code> file located in the current directory (<code>/root/Downloads</code>):</p>
+<p>Downloads&gt;<code>cat example.txt</code></p></li>
+<li><p>To output the content of the <code>example.txt</code> file located in the <code>/root/temp</code> directory:</p>
+<p>Downloads&gt;<code>cat /root/temp/example.txt</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>XDR Endpoint Sensor</p></li>
+<li><p>Deep Security Agent (managed by Trend Cloud One - Endpoint &amp; Workload Security)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>cd</code></p></td>
+<td><p>Change the current working directory</p></td>
+<td><p><code>cd &lt;path&gt;</code></p>
+
+
+:::note
+
+<p>For the <code>&lt;path&gt;</code>, specify the absolute or relative path.</p>
+
+
+:::
+
+</td>
+<td><p><code>cd /root</code></p></td>
+<td><ul>
+<li><p>XDR Endpoint Sensor</p></li>
+<li><p>Deep Security Agent (managed by Trend Cloud One - Endpoint &amp; Workload Security)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>clear</code></p></td>
+<td><p>Clear screen</p></td>
+<td><p><code>clear</code></p></td>
+<td><p><code>clear</code></p></td>
+<td><ul>
+<li><p>XDR Endpoint Sensor</p></li>
+<li><p>Deep Security Agent (managed by Trend Cloud One - Endpoint &amp; Workload Security)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>drivelist</code></p></td>
+<td><p>Lists drives with details</p></td>
+<td><p><code>drivelist</code></p></td>
+<td><p><code>drivelist</code></p></td>
+<td><p>XDR Endpoint Sensor</p></td>
+</tr>
+<tr>
+<td><p><code>env</code></p></td>
+<td><p>List environment variables</p></td>
+<td><p><code>env</code></p></td>
+<td><p><code>env</code></p></td>
+<td><ul>
+<li><p>Deep Security Agent (managed by Trend Cloud One - Endpoint &amp; Workload Security)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>fileinfo</code></p></td>
+<td><p>List detailed file properties</p></td>
+<td><p><code>fileinfo &lt;file_location_and_extension&gt;</code></p></td>
+<td><ul>
+<li><p>To list the file properties of the <code>example.txt</code> file located in the current directory (<code>/root/Downloads</code>):</p>
+<p>Downloads&gt;<code>fileinfo example.txt</code></p></li>
+<li><p>To list the file properties of the <code>example.txt</code> file located in the <code>/root/temp</code> directory:</p>
+<p>Downloads&gt;<code>fileinfo /root/temp/example.txt</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Deep Security Agent (managed by Trend Cloud One - Endpoint &amp; Workload Security)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>get</code></p></td>
+<td><p>Collect a specific file and upload to Trend Vision One</p>
+<p>Maximum file size: 4 GB</p></td>
+<td><p><code>get &lt;file_location_and_extension&gt;</code></p></td>
+<td><ul>
+<li><p>To collect the file <code>example.txt</code> file in the current directory <code>/Users/admin/Downloads</code> :</p>
+<p>Downloads&gt;<code>get example.txt</code></p></li>
+<li><p>To collect the file <code>example.txt</code> file located in the <code>/tmp</code> directory:</p>
+<p>Downloads&gt;<code>get /tmp/example.txt </code></p></li>
+</ul></td>
+<td><ul>
+<li><p>XDR Endpoint Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>group list</code></p></td>
+<td><p>List local group information</p></td>
+<td><p><code>group list</code></p></td>
+<td><p><code>group list</code></p></td>
+<td><ul>
+<li><p>Deep Security Agent (managed by Trend Cloud One - Endpoint &amp; Workload Security)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>help</code></p></td>
+<td><p>Display help information</p></td>
+<td><p><code>help</code></p></td>
+<td><p><code>help</code></p></td>
+<td><ul>
+<li><p>XDR Endpoint Sensor</p></li>
+<li><p>Deep Security Agent (managed by Trend Cloud One - Endpoint &amp; Workload Security)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>ipconfig</code></p></td>
+<td><p>Display network configuration information</p></td>
+<td><p><code>ipconfig</code></p></td>
+<td><p><code>ipconfig</code></p></td>
+<td><ul>
+<li><p>XDR Endpoint Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>kill</code></p></td>
+<td><p>Terminate a running process</p></td>
+<td><p><code>kill &lt;PID&gt;</code></p></td>
+<td><p><code>kill 1234</code></p></td>
+<td><ul>
+<li><p>XDR Endpoint Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>listenports</code></p></td>
+<td><p>List listening ports</p></td>
+<td><p><code>listenports</code></p></td>
+<td><p><code>listenports</code></p></td>
+<td><ul>
+<li><p>Deep Security Agent (managed by Trend Cloud One - Endpoint &amp; Workload Security)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>ls</code></p></td>
+<td><p>List contents of the directory</p></td>
+<td><p><code>ls [-a] [-l] [path]</code></p>
+<ul>
+<li><p><code>-a</code>: Optional parameter that includes entries starting with .</p></li>
+<li><p><code>-l</code>: Optional parameter that displays output in long list format</p></li>
+</ul>
+
+
+:::note
+
+<p>For the <code>&lt;path&gt;</code>, specify the absolute or relative path.</p>
+
+
+:::
+
+</td>
+<td><p><code>ls</code></p></td>
+<td><ul>
+<li><p>XDR Endpoint Sensor</p></li>
+<li><p>Deep Security Agent (managed by Trend Cloud One - Endpoint &amp; Workload Security)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>netstat</code></p></td>
+<td><p>List network statistics and active connections</p></td>
+<td><p><code>netstat</code></p></td>
+<td><p><code>netstat</code></p></td>
+<td><ul>
+<li><p>XDR Endpoint Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>ps</code></p></td>
+<td><p>List running process information</p></td>
+<td><p><code>ps</code></p></td>
+<td><p><code>ps</code></p></td>
+<td><ul>
+<li><p>XDR Endpoint Sensor</p></li>
+<li><p>Deep Security Agent (managed by Trend Cloud One - Endpoint &amp; Workload Security)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>pwd</code></p></td>
+<td><p>Display current directory</p></td>
+<td><p><code>pwd</code></p></td>
+<td><p><code>pwd</code></p></td>
+<td><ul>
+<li><p>XDR Endpoint Sensor</p></li>
+<li><p>Deep Security Agent (managed by Trend Cloud One - Endpoint &amp; Workload Security)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>run</code></p></td>
+<td><p>Execute a previously uploaded script</p></td>
+<td><p><code>run &lt;script_name_and_extension&gt; [arguments]</code></p></td>
+<td><p><code>run demo.sh 1 "22 33" 44</code></p></td>
+<td><ul>
+<li><p>XDR Endpoint Sensor</p></li>
+<li><p>Deep Security Agent (managed by Trend Cloud One - Endpoint &amp; Workload Security)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>scheduletasks</code></p></td>
+<td><p>List scheduled tasks</p></td>
+<td><p><code>scheduletasks</code></p></td>
+<td><p><code>scheduletasks</code></p></td>
+<td><ul>
+<li><p>Deep Security Agent (managed by Trend Cloud One - Endpoint &amp; Workload Security)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>service list</code></p></td>
+<td><p>List service information</p></td>
+<td><p><code>service list</code></p></td>
+<td><p><code>service list</code></p></td>
+<td><ul>
+<li><p>XDR Endpoint Sensor</p></li>
+<li><p>Deep Security Agent (managed by Trend Cloud One - Endpoint &amp; Workload Security)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>systeminfo</code></p></td>
+<td><p>List system information</p></td>
+<td><p><code>systeminfo</code></p></td>
+<td><p><code>systeminfo</code></p></td>
+<td><ul>
+<li><p>XDR Endpoint Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>taskstatus</code></p></td>
+<td><p>List status of response tasks created in the current session</p></td>
+<td><p><code>taskstatus [--id=&lt;task_id&gt;]</code></p>
+<p><code>&lt;task_id&gt;</code>: Optional parameter to specify the identifier of the response task.</p></td>
+<td><p><code>taskstatus [--id=RM-20241207-00025]</code></p></td>
+<td><ul>
+<li><p>XDR Endpoint Sensor</p></li>
+<li><p>Deep Security Agent (managed by Trend Cloud One - Endpoint &amp; Workload Security)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>user info</code></p></td>
+<td><p>List account properties</p></td>
+<td><p><code>user info &lt;username&gt;</code></p>
+
+
+:::note
+
+<p>&lt;username&gt; supports the use of the UID (for example, "0" for the root account).</p>
+
+
+:::
+
+</td>
+<td><p><code>user info john_doe</code></p></td>
+<td><ul>
+<li><p>XDR Endpoint Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>user list</code></p></td>
+<td><p>List local user accounts</p></td>
+<td><p><code>user list</code></p></td>
+<td><p><code>user list</code></p></td>
+<td><ul>
+<li><p>XDR Endpoint Sensor</p></li>
+<li><p>Deep Security Agent (managed by Trend Cloud One - Endpoint &amp; Workload Security)</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+::::

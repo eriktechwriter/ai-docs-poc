@@ -1,0 +1,78 @@
+---
+slug: trend-vision-one-pac-file-configuration-tips
+title: PAC file configuration guidance
+last_updated: '2025-09-08'
+ai_context:
+  source_file: pac-file-configuration-tips.md
+  conversion_date: '2025-09-08T23:42:14.675Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+When configuring an existing PAC file, or creating a new one, you should be aware of the following configurations. If these are not followed, may cause the PAC file to fail.
+
+### Configure Bypass domains (Basic mode) or SkipHosts (Advanced mode) {#configure-bypass-domains-basic-mode-or-skiphosts-advanced-mode}
+
+When adding domains, remember the following:
+
+- Domain configurations:
+  - `example.com` domain only matches \<example.com\> itself, but not its subdomains, for example `<www.example.com>`
+
+  - `*.example.com` matches all subdomains of \<example.com\>, such as `<www.example.com>`, but not the main domain, \<example.com\>.
+
+  - `.example.com` is an invalid configuration which does not match either `<example.com> `or `<www.example.com>`
+
+- Do not modify the variable name of SkipHosts in advanced mode
+
+Domain entries must not include ports, paths or protocols.
+
+- Invalid with ports: `10.206.199.33:8843`, `*example.com:8443`
+
+- Invalid with paths (including/): `abc.example.com/`,` abc.example.com/category`, `http://http.badssl.com:9998/`， `172.16.0.0/16`
+
+- Invalid with protocol prefixes: `http://example.com`, `https://www.example.com`
+
+- 
+
+### Configure PROXY entry in Advanced Mode {#configure-proxy-entry-in-advanced-mode}
+
+<figure>
+<figure>
+<img src="./images/pac_tips_2=b271f546-e285-42e2-b97e-40a3d2ba6ef5.webp" alt="PAC file content - Advanced mode" />
+<figcaption aria-hidden="true">PAC file content - Advanced mode</figcaption>
+</figure>
+</figure>
+
+When configuring your proxy entries in the advanced mode, ensure that:
+
+- Each PROXY entry (except DIRECT) must start with PROXY (in all uppercase letters)
+
+- Each PROXY entry (except DIRECT) must include a port number
+
+- Each PROXY entry (except DIRECT) must not include protocol, such as http:// or https://
+
+- Multiple PROXY entries must be separated by semicolons (;)
+
+Here are some common errors:
+
+- A missing port number for the first proxy entry:
+
+  `var DefaultScanner = "PROXY 10.206.199.222; PROXY proxy.ztsa-iag-int.trendmicro.com:80; DIRECT";`
+
+- Missing PROXY keyword for the second proxy entry:
+
+  `var DefaultScanner = "PROXY 10.206.199.222:8088; proxy.ztsa-iag-int.trendmicro.com:80; DIRECT";`
+
+- Incorrect lowercase for PROXY keyword for the second proxy entry:
+
+  `var DefaultScanner = "PROXY 10.206.199.222:8088; proxy proxy.ztsa-iag-int.trendmicro.com:80; DIRECT";`
+
+### Configure PAC file in Advanced Mode {#configure-pac-file-in-advanced-mode}
+
+When configuring your PAC file in advanced mode, do not:
+
+- Change any existing function name and how they are being called.
+
+- Modify any content in functions with `skip_ `prefix.
+:::

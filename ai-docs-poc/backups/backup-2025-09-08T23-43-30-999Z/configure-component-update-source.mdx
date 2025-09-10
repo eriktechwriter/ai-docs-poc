@@ -1,0 +1,39 @@
+---
+slug: trend-vision-one-configure-component-update-source
+title: Configure the component update source
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configure-component-update-source.md
+  conversion_date: '2025-09-08T23:42:22.803Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Trend Micro recommends using the default configuration for most security environments. To customize the settings, use the following steps to configure the component update source:
+
+### Procedure {#procedure}
+
+1.  Go to **Administration → System Settings → Updates**.
+
+    ![](/images/SystemSettingsUpdates=1726681c-e0c6-4979-b323-17f4beff3ae0.webp)
+
+2.  Select an option for the **Primary Component Update Source**.
+
+    The default primary source is **Trend Micro Update Server**, which agents access using the Internet. Do not select **Other update source** unless instructed by your support provider. Alternative update source URLs must include `http://` or `https://`.
+
+3.  Configure the **Secondary Source** for component updates. Usually, agents connect to a relay to obtain component updates when Server & Workload Protection tells them to. But if your computers can't always connect with Server & Workload Protection or relays (such as during scheduled maintenance times) and enough Internet/WAN bandwidth is available, these options are useful:
+
+    Agents normally connect to a relay to retrieve component updates depending on your Server & Workload Protection configurations. Select the following options to retrieve component updates if agents are unable to connect to your relays or Server & Workload Protection.
+
+    - **Allow Agents/Appliances to download component updates directly from Primary Component Update Source if Relays are not accessible**
+
+    - **Allow Agents/Appliances to download component updates when Workload Security Manager is not accessible**
+
+    :::tip
+
+    Trend Micro recommends not enabling Secondary Source options for protected laptops and portable computers to avoid potential issues when updating components while away from support services.
+    :::
+
+4.  Select **Automatically apply Rule Updates to Policies** to ensure existing security rules apply the updates to assigned policies.
+:::

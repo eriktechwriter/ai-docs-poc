@@ -1,0 +1,170 @@
+---
+slug: trend-vision-one-enrolling-android-devices
+title: Enrolling Android devices
+---
+# Enrolling Android devices
+
+Enroll Android devices in Mobile Device Director by connecting to managed Google Play and configuring enrollment settings.
+
+Mobile Device Director can enroll and manage Android devices using the following enrollment profiles.
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Enrollment Profile</p></th>
+<th><p>Protection Scope</p></th>
+<th><p><strong>Mobile Security</strong> Deployment Location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Personally-owned devices with work profile</p></td>
+<td><p>Work profile</p></td>
+<td><p>Work profile</p></td>
+</tr>
+<tr>
+<td><p>Corporate-owned dedicated device profile</p></td>
+<td><p>Whole device</p></td>
+<td><p>Device</p></td>
+</tr>
+<tr>
+<td><p>Corporate-owned, fully managed user devices</p></td>
+<td><p>Whole device</p></td>
+<td><p>Device</p></td>
+</tr>
+</tbody>
+</table>
+
+### Procedure {#procedure}
+
+1.  Click the **Android Enrollment** tab.
+
+2.  Connect to your company's managed Google Play.
+
+    1.  Click **Connect to Managed Google Play**.
+
+    2.  Click **Sign in to a Google Account**.
+
+    3.  In managed Google Play, click **SIGN IN** and sign in to the Google account you want to associate with all management tasks.
+
+        :::warning[Important]
+
+        The following Google Play screen captures were valid as of June 30, 2023. For further help, check your Google Play documentation.
+        :::
+
+        <figure>
+        <img src="./images/managedGooglePlay=129150d2-d027-4de7-8cae-0f299c73ea49.webp" />
+        </figure>
+
+        :::note
+
+        Trend Micro recommends using an account set up for work or business. Keep in mind that the account you use should be one that is easily shared or transferred in case the person setting up the managed Google Play connection leaves the company or moves teams.
+
+        If you do not have a Google account for business, sign in to your managed Google Play and create an account by selecting **For work or my business**.
+
+        ![](/images/Google_Account=c4854f71-a74e-4bc3-85b9-c2bb8b72ac34.webp)
+        :::
+
+    4.  Click **Get started**.
+
+        <figure>
+        <img src="./images/managedGooglePlay2=5d2e412b-8010-4202-8982-440018d8f349.webp" />
+        </figure>
+
+    5.  Type your domain name or business name and click **Next**.
+
+        <figure>
+        <img src="./images/managedGooglePlay3=ad927cfb-cdee-4fc9-a66a-fa2c65cbd980.webp" />
+        </figure>
+
+    6.  (Optional) Type your contact details in case Google needs to contact you with any data privacy related questions or notifications.
+
+        <figure>
+        <img src="./images/managedGooglePlay4=81cba45b-28af-4800-930b-074bbac6889b.webp" />
+        </figure>
+
+    7.  Select **I have read and agree to the Managed Google Play agreement.** and click **Confirm**.
+
+        <figure>
+        <img src="./images/managedGooglePlay5=da9455f0-bdcb-4d51-97fe-6f7e4cf3607c.webp" />
+        </figure>
+
+    8.  Click **Complete registration**. Wait for Trend Vision One to process data from Google Play.
+
+        <figure>
+        <img src="./images/managedGooglePlay6=7125315d-ed8f-4dc0-baf7-1e81a420f461.webp" />
+        </figure>
+
+    9.  To view Google Play connection details or disconnect the Google account, click **View the connection details**.
+
+3.  Configure device enrollment settings based on the enrollment profile.
+
+    <table>
+    <colgroup>
+    <col style="width: 13%" />
+    <col style="width: 38%" />
+    <col style="width: 50%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Enrollment Profile</p></th>
+    <th><p>Description</p></th>
+    <th><p>Configuration Steps</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>User-owned devices with a work profile</p></td>
+    <td><ul>
+    <li><p><em>User-owned devices with a work profile</em> are mobile devices owned by the user. During enrollment, a work profile is created on the device to house work apps and work data. The work profile can be managed by <strong>Mobile Security</strong>. Personal apps and data stay separate in another part of the device and remain unaffected by <strong>Mobile Security</strong>.</p></li>
+    <li><p>Enrollment of user-owned devices with a work profile is allowed by default.</p></li>
+    </ul></td>
+    <td><ol>
+    <li><p>To manage devices with user information from Microsoft Entra ID, select <strong>Require users to sign into Microsoft Entra ID before enrolling</strong>.</p>
+    <p>If Microsoft Entra ID is not configured, click <strong>Go to User Configuration</strong> to configure Microsoft Entra ID before enabling this function.</p></li>
+    <li><p>Scan the QR code with the user's device, or click <strong>Download Email Template</strong> to send enrollment instructions to users via email.</p></li>
+    <li><p>If you email users enrollment instructions, ask your users to install the Mobile Security for Business and follow the enrollment instructions in the Mobile Security for Business to finish enrolling the device.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Company-owned, fully-managed devices</p></td>
+    <td><ul>
+    <li><p><em>Company-owned, fully-managed devices</em> are fully-managed devices associated with a single user, used exclusively for specific work purposes. Mobile Device Director can manage the whole device and enforce policy controls.</p></li>
+    <li><p>Company-owned, fully-managed devices must be new or reset to factory settings to be enrolled. The steps below are for devices running Android 9.0 or later.</p></li>
+    <li><p>Microsoft Entra ID must be configured to allow fully-managed device enrollment.</p>
+    <p><a href="trend-vision-one-setting-up-mobile-device-director">Learn more about configuring Microsoft Entra ID</a></p></li>
+    <li><p>For company-owned, fully-managed devices, users are always required to sign into Microsoft Entra ID before enrolling.</p></li>
+    </ul></td>
+    <td><ol>
+    <li><p>If Microsoft Entra ID is not configured, click <strong>Go to User Configuration</strong> to configure Microsoft Entra ID before enabling this function.</p></li>
+    <li><p>Enable <strong>Allow company-owned, fully managed devices</strong>.</p></li>
+    <li><p>Power on the device.</p></li>
+    <li><p>Tap the Welcome screen six times to open the device camera.</p></li>
+    <li><p>Scan the QR code, or enter the code manually.</p></li>
+    <li><p>Connect to Wi-Fi so the device can connect to <strong>Mobile Security</strong> and start enrollment.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Company-owned, dedicated devices</p></td>
+    <td><ul>
+    <li><p><em>Company-owned, dedicated devices</em> are corporate-owned, single-use, kiosk-style devices. Such devices are used for a single purpose, such as digital signage, ticket printing, or inventory management. Admins can lock down the usage of a device to a single app, or a limited set of apps, inclusive of web apps. Users are prevented from adding other apps or taking actions on the device unless explicitly approved by admins. These devices are enrolled in Mobile Device Director without a user account and aren't associated with a user.</p></li>
+    <li><p>Company-owned, dedicated devices must be new or reset to factory settings to be enrolled. The steps below apply to devices running Android 9.0 or later.</p></li>
+    </ul></td>
+    <td><ol>
+    <li><p>Enable <strong>Allow company-owned, dedicated devices</strong>.</p></li>
+    <li><p>Power on the device.</p></li>
+    <li><p>Tap the Welcome screen six times to open the device camera.</p></li>
+    <li><p>Scan the QR code, or enter the code manually.</p></li>
+    <li><p>Connect to Wi-Fi so the device can connect to <strong>Mobile Security</strong> and start enrollment.</p></li>
+    </ol></td>
+    </tr>
+    </tbody>
+    </table>
+
+4.  Click **Finish**.
+:::

@@ -1,0 +1,42 @@
+---
+slug: trend-vision-one-firewall
+title: About Firewall
+last_updated: '2025-09-08'
+ai_context:
+  source_file: firewall.md
+  conversion_date: '2025-09-08T23:42:19.105Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+The Firewall module provides bidirectional stateful inspection of incoming and outgoing traffic. Firewall rules define what actions to take on individual packets in that traffic. Packets can be filtered by IP and MAC address, port and packet flag across all IP-based protocols and frame types. The Firewall module can also help prevent denial of service attacks and detect and prevent reconnaissance scans.
+
+To enable and configure the Firewall, see [Set up the Server & Workload Protection Firewall](set-up-firewall.mdx).
+
+:::note
+
+For a list of operating systems where the Firewall is supported, see [Supported features by platform](supported-features-linux-platform.mdx).
+:::
+
+### Firewall rules {#firewall-rules}
+
+Firewall rules can process traffic using one of the following actions, listed in order of precedence:
+
+- Bypass
+- Log Only
+- Force Allow
+- Deny
+- Allow
+
+Rules also have a priority level between 4 (highest priority) to 0 (lowest priority). Within a specific priority level rules are processed in order based on the precedence of the action type of the rule as listed above. This means that unlike what you may have experienced when configuring other firewalls, the Server & Workload Protection Firewall processes rules independently of their assignment order.
+
+For more information on how rule priorities and actions determine processing order, see [Firewall rule actions and priorities](firewall-rule-actions-priorities.mdx).
+
+For more detailed information on how to create Firewall rules, see [Create a Firewall rule](create-firewall-rule.mdx).
+
+:::note
+
+When creating your rules, make sure to test them using the Tap and Inline modes of the Firewall module before deploying them. For information on how to do so, see the "Test Firewall rules before deploying them" section of [Set up the Server & Workload Protection Firewall](set-up-firewall.mdx).
+:::
+:::::

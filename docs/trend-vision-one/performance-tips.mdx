@@ -1,0 +1,164 @@
+---
+slug: trend-vision-one-performance-tips
+title: Performance tips
+---
+# Performance tips
+
+:::Use the following strategies to improve the performance of your API and SDK calls.
+
+### Minimize computer response size {#minimize-computer-response-size}
+
+When you [describe](https://automation.trendmicro.com/cloudone/workload-security/), [list](https://automation.trendmicro.com/cloudone/workload-security/), and [search](https://automation.trendmicro.com/cloudone/workload-security/) computers, you can specify the information that is included in the returned `Computer` object. When you return only the information that you need, it takes less time for the response to reach your client.
+
+Computer properties that are simple values are always included in the returned `Computer` object. However, you control the inclusion of properties that have complex values (the values are other objects). The following JSON represents the data structure of a `Computer` object. The values of complex properties are represented by brace symbols `{...}`.
+
+```bash
+{
+  "hostName": "string",
+  "displayName": "string",
+  "description": "string",
+  "lastIPUsed": "string",
+  "platform": "string",
+  "groupID": 0,
+  "policyID": 0,
+  "assetImportanceID": 0,
+  "relayListID": 0,
+  "agentFingerPrint": "string",
+  "applianceFingerPrint": "string",
+  "lastAgentCommunication": 0,
+  "lastApplianceCommunication": 0,
+  "lastSendPolicyRequest": 0,
+  "lastSendPolicySuccess": 0,
+  "agentVersion": "string",
+  "computerStatus": {...},
+  "computerSettings": {...},
+  "interfaces": {...},
+  "biosUUID": "string",
+  "azureARMVirtualMachineSummary": {...},
+  "azureVMVirtualMachineSummary": {...},
+  "ec2VirtualMachineSummary": {...},
+  "noConnectorVirtualMachineSummary": {...},
+  "vmwareVMVirtualMachineSummary": {...},
+  "workspaceVirtualMachineSummary": {...},
+  "esxsummary": {...},
+  "ID": 0,
+  "antiMalware": {...},
+  "webReputation": {...},
+  "firewall": {...},
+  "intrusionPrevention": {...},
+  "integrityMonitoring": {...},
+  "logInspection": {...},
+  "applicationControl": {...},
+  "ESXSummary": {...},
+  "SAP": {...}
+}
+```
+
+For example, if you need a list of computer IDs you can list all computers and specify that none of the complex properties are included in the returned `Computer` objects. If you are interested in the agent status, include the `computerStatus` property and no other complex properties.
+
+:::danger[Warning]
+
+All properties are included in the returned Computer objects by default.
+:::
+
+The methods or functions of the `ComputersApi` class that describe, list, and search computers define an `expand` parameter that controls which properties are included. The `expand` parameter is a list of string values. The `Expand` class defines the string values that can be included in the list. (For a list of the string values, see the description of the expand parameter for the describe, list, and search operations of [Computers](https://automation.trendmicro.com/cloudone/workload-security/) in the API Reference.)
+
+The following code, from an [example](report-computer-status.mdx) in the [Report on Computer Status](report-computer-status.mdx) guide, obtains a list of computers that include the computer status property.
+
+```bash
+expand = api.Expand()
+expand.add(api.Expand.computer_status)
+
+computers_api = api.ComputersApi(api.ApiClient(configuration))
+computers = computers_api.list_computers(api_version, expand=expand.list(), overrides=False)
+```
+
+For this example, the information returned in the `Computer` objects resembles the following JSON:
+
+```bash
+{
+  "hostName": "string",
+  "displayName": "string",
+  "description": "string",
+  "lastIPUsed": "string",
+  "platform": "string",
+  "groupID": 0,
+  "policyID": 0,
+  "assetImportanceID": 0,
+  "relayListID": 0,
+  "agentFingerPrint": "string",
+  "applianceFingerPrint": "string",
+  "lastAgentCommunication": 0,
+  "lastApplianceCommunication": 0,
+  "lastSendPolicyRequest": 0,
+  "lastSendPolicySuccess": 0,
+  "agentVersion": "string",
+  "computerStatus": {...},
+  "biosUUID": "string",
+  "ID": 0,
+}
+```
+
+:::tip
+
+The `Expand` class defines several strings that make it easier to specify the properties to include in the `Computer` objects (the exact name of the string varies with the SDK language):
+
+- *none:* Includes only the simple property values and none of the complex properties. *This value significantly increases performance* and is useful when minimal information is required such as the computer IDs.
+- *all:* Includes all properties. This is the default value.
+- *allVirtualMachineSummaries:* Includes all of the virtual machine summary properties such as EC2, Azure, VMWare.
+- *allSecurityModules:* Includes all of the security module properties such as Anti-Malware, Intrusion Prevention, and Application Control.
+:::
+
+:::danger[Warning]
+
+The default value for the `expand` parameter is `all`. If you provide `null` or no value for the parameter, all computer information is returned.
+:::
+
+### Use the overrides parameter {#use-the-overrides-parameter}
+
+When you are retrieving many large objects from Server & Workload Protection, including only overridden property values can substantially reduce the size of the returned objects. Many API calls define an `overrides` parameter that controls whether the response includes only overrides that are configured on the targeted resource, or includes all effective properties.
+
+:::tip
+
+For more information, see the [About the Overrides Parameter](overrides-parameter.mdx) guide.
+:::
+
+For example, if you need the IDs of all policies, you can use the method or function of the `PoliciesApi` class that lists policies with `overrides` set to `true`. When many of the policy's properties are inherited, retrieving overrides can significantly reduce the response size. The ID is always returned regardless of the value of the overrides parameter.
+
+```bash
+policies_api = api.PoliciesApi(api.ApiClient(configuration))
+policies_with_overrides = policies_api.list_policies(api_version, overrides=True)
+```
+
+### Directly configure rule assignments {#directly-configure-rule-assignments}
+
+You can configure rule assignments for policies and computers using the following classes:
+
+- `PolicyFirewallRuleAssignmentsApi` and `ComputerFirewallRuleAssignmentsApi`
+- `PolicyIntegrityMonitoringRuleAssignmentsRecommendationsApi` and `ComputerIntegrityMonitoringRuleAssignmentsRecommendationsApi`
+- `PolicyIntrusionPreventionRuleAssignmentsRecommendationsApi` and `ComputerIntrusionPreventionRuleAssignmentsRecommendationsApi`
+- `PolicyLogInspectionRuleAssignmentsRecommendationsApi` and `ComputerLogInspectionRuleAssignmentsRecommendationsApi`
+
+Using these classes is more performant than configuring rule assignments using the security module extension object of a `Policy` or `Computer` object. For example, to assign a Firewall rule, use the method or function of the `PolicyFirewallRuleAssignmentsApi` class that adds a Firewall rule to a specific policy. The less performant way to assign the rule is to add the rule to a `FirewallPolicyExtension` object, add the object to a `Policy` object, then use `PoliciesApi` to modify the policy.
+
+For complete information about the capabilities of these classes, find them in the [Policies](https://automation.trendmicro.com/cloudone/workload-security/) and [Computers](https://automation.trendmicro.com/cloudone/workload-security/) sections of the API Reference.
+
+### Interact directly with single settings {#interact-directly-with-single-settings}
+
+To minimize the response size when interacting with policy, computer, and system settings, interact directly with individual policy settings rather than through the modification of a policy.
+
+As described in [Create and Configure a Policy](create-configure-policy.mdx), there are two ways that you can interact with policy settings:
+
+- Use the `PoliciesApi` class to retrieve, modify, or reset a single policy setting. The response includes a `SettingValue` object.
+- Use the `PoliciesApi` class retrieve or modify a policy. The response contains a `Policy` object, which includes a `PolicySettings` object.
+
+A `SettingValue` object, which contains a String value, is much smaller than a `Policy` object, which contains all of the property values and setting values of a policy.
+
+Similarly, use the `PoliciesApi` class to interact directly with individual default policy settings, use the `ComputersApi` class for individual computer settings, and use the `SystemSettingsApi` class for individual system settings (see [Configure Computers to Override Policies](override-policies-computer.mdx) and [Configure Server & Workload Protection System Settings](configure-system-settings.mdx)).
+
+### Page your search results {#page-your-search-results}
+
+When possible, retrieve search results in pages when retrieving large numbers of objects from Server & Workload Protection to avoid overwhelming server resources. If you observe a decrease in manager performance when performing a search, refactor your code to perform a series of searches that return smaller result sets.
+
+For more information, see the "Limit search results and paging" section of the [Search for Resources](search-for-resources.mdx) guide.
+:::::::

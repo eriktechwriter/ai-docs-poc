@@ -1,0 +1,82 @@
+---
+slug: trend-vision-one-config-troubleshootings
+title: Configuring Troubleshooting Settings
+last_updated: '2025-09-08'
+ai_context:
+  source_file: config-troubleshootings.md
+  conversion_date: '2025-09-08T23:42:22.914Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+### Procedure {#procedure}
+
+1.  Go to **Administration → Settings → Troubleshooting Settings**.
+
+    The **Troubleshooting Settings** screen appears.
+
+2.  In the **Security Agents** section, enable the required settings.
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Setting</p></th>
+    <th><p>Possible Remediation Actions</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><strong>Allow Trend Micro Support to enable debug logging and collect the following data for troubleshooting purposes</strong></p></td>
+    <td><p>For Windows endpoints:</p>
+    <ul>
+    <li><p>Enable and collect debug logs from the Security Agent program</p></li>
+    <li><p>Collect Windows Event Logs and Performance Counter data</p></li>
+    </ul>
+    <p>For Mac endpoints:</p>
+    <ul>
+    <li><p>Enable and collect debug logs from the Security Agent program</p></li>
+    <li><p>System information, kernel dump, crash information, System Profiler data, and Security Agent configuration files (.plist)</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p><strong>Allow Trend Micro Support to take proactive, remote troubleshooting actions on the Security Agent program</strong></p></td>
+    <td>
+
+:::note
+
+    <p>You must enable <strong>Allow Trend Micro Support to enable debug logging and collect the following data for troubleshooting purposes</strong> if you want to allow Trend Micro Support to take remote actions.</p>
+    
+
+    :::
+
+    
+    <ul>
+    <li><p>Deploy hotfixes to replace Security Agent files</p></li>
+    <li><p>Modify Security Agent settings including:</p>
+    <ul>
+    <li><p>Configuration file settings (INI or PLIST files)</p></li>
+    <li><p>Registry keys</p>
+    <ul>
+    <li><p><code>HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\TrendMicro</code></p></li>
+    <li><p><code>HKEY_LOCAL_MACHINE\SOFTWARE\TrendMicro</code></p></li>
+    </ul></li>
+    </ul></li>
+    <li><p>Reload the Security Agent program:</p>
+    <ul>
+    <li><p>Stop and restart Security Agent services</p></li>
+    <li><p>Force stop Security Agent processes</p></li>
+    </ul></li>
+    </ul></td>
+    </tr>
+    </tbody>
+    </table>
+
+3.  In the **Server** section, enable **Allow Trend Micro Support to access the Apex One as a Service server console for assessment and troubleshooting** to permit engineers to assess server settings that may adversely affect system performance and to perform debug log collection.
+
+4.  Click **Save**.
+:::

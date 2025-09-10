@@ -1,0 +1,110 @@
+---
+slug: trend-vision-one-deploying-built-ca-certificate
+title: Deploying the built-in CA certificate
+last_updated: '2025-09-08'
+ai_context:
+  source_file: deploying-built-ca-certificate.md
+  conversion_date: '2025-09-08T23:42:20.614Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Deploy the Internet Access built-in CA certificate for the Internet Access Cloud or On-Premises Gateway to use on supported browsers to avoid certificate warnings when users visit HTTPS websites.
+
+### Procedure {#procedure}
+
+1.  Go to **Zero Trust Secure Access → Secure Access Configuration → Internet Access Configuration** and click the **HTTPS Inspection** tab.
+
+2.  Click the settings icon (![](/images/gear_icon=fc9a51ad-35af-4fe3-92c6-5e41b2dfc5d9.webp)).
+
+    The **Manage Default Certificate** panel opens.
+
+3.  Click **Download built-in certificate (provided by the Internet Access Service)** for the type of gateway you are using.
+
+    Default certificate name for each gateway type: `cloud_gateway.cer`, `on-premises_gateway.cer`
+
+4.  Deploy the desired CA certificate to the supported browsers on your users' devices.
+
+    :::note
+
+    The following browser setting instructions were valid as of November 2022.
+    :::
+
+    <table>
+    <colgroup>
+    <col style="width: 20%" />
+    <col style="width: 20%" />
+    <col style="width: 60%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Browser</p></th>
+    <th><p>Version</p></th>
+    <th><p>Setting</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Google Chrome™</p>
+    <p>Microsoft Edge™ (Chromium-based)</p></td>
+    <td><p>Newest and most recent previous version</p></td>
+    <td>
+
+:::note
+
+    <p>This task uses Windows 10 as an example.</p>
+    
+
+    :::
+
+    
+    <ol>
+    <li><p>Open the certificate file.</p></li>
+    <li><p>Click <strong>Install Certificate</strong>.</p>
+    <p>The <strong>Certificate Import Wizard</strong> opens.</p></li>
+    <li><p>Click <strong>Next</strong>.</p></li>
+    <li><p>Select <strong>Place all certificates in the following store</strong> and click <strong>Browse</strong>.</p></li>
+    <li><p>Select <strong>Trusted Root Certification Authorities</strong> and click <strong>OK</strong>.</p></li>
+    <li><p>Click <strong>Next</strong>, and then click <strong>Finish</strong>.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Apple™ Safari™</p></td>
+    <td><p>Newest and most recent previous version</p></td>
+    <td><ol>
+    <li><p>Locate the certificate file in Finder, and double-click it.</p>
+    <p>The <strong>Keychain Access</strong> window appears.</p></li>
+    <li><p>Locate and open the certificate.</p>
+    <p>The <strong>Certificate</strong> window opens.</p></li>
+    <li><p>Expand <strong>Trust</strong>, and then set <strong>When using this certificate</strong> to <strong>Always Trust</strong>.</p></li>
+    <li><p>Close the window.</p>
+    <p>A screen shows and prompts for a password.</p></li>
+    <li><p>Type your password and click <strong>Update Settings</strong>.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Mozilla® Firefox®</p></td>
+    <td><p>Newest and most recent previous version</p></td>
+    <td><ol>
+    <li><p>Click the <strong>Open menu</strong> icon in the top-right corner of the browser, and then select <strong>Settings</strong>.</p></li>
+    <li><p>Click the <strong>Privacy &amp; Security</strong> tab.</p></li>
+    <li><p>Under <strong>Certificates</strong>, click <strong>View Certificates</strong> and then select <strong>Authorities</strong>.</p>
+    
+
+    :::note
+    
+    <p>You cannot import the certificate to both the server and authorities. If the certificate is already imported to the server, delete it.</p>
+    
+
+    :::
+
+    </li>
+    <li><p>Click <strong>Import</strong>.</p></li>
+    <li><p>Navigate to the download folder and select the certificate file.</p></li>
+    <li><p>Select <strong>Trust this CA to identify websites</strong> and then click <strong>OK</strong>.</p></li>
+    </ol></td>
+    </tr>
+    </tbody>
+    </table>
+:::

@@ -1,0 +1,43 @@
+---
+slug: trend-vision-one-nsa-hardening-1-2-1217
+title: >-
+  1.2.17 - Ensure that the –audit-log-maxage argument is set to 30 or as
+  appropriate (Automated)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: nsa-hardening-1-2-1217.md
+  conversion_date: '2025-09-08T23:42:14.978Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Profile applicability: Level 1 - Master Node
+
+Retain the logs for at least 30 days or as appropriate.
+
+Retaining logs for at least 30 days ensures that you can go back in time and investigate or correlate any events. Set your audit log retention period to 30 days or as per your business requirements.
+
+:::note
+
+By default, auditing is not enabled.
+:::
+
+### Audit {#audit}
+
+Run the following command on the Control Plane node:
+
+``` codeblock
+ps -ef | grep kube-apiserver
+```
+
+Verify that the `--audit-log-maxage` argument is set to 30 or as appropriate.
+
+### Remediation {#remediation}
+
+Edit the API server pod specification file `/etc/kubernetes/manifests/kube-apiserver.yaml` on the Control Plane node and set the -`-audit-log-maxage` parameter to 30 or as an appropriate number of days:
+
+``` codeblock
+--audit-log-maxage=30
+```
+::::

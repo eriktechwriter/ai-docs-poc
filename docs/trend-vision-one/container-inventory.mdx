@@ -1,0 +1,165 @@
+---
+slug: trend-vision-one-container-inventory
+title: Container Inventory
+---
+# Container Inventory
+
+Connect Kubernetes and Amazon ECS clusters, deploy Container Protection policies and proxy settings, create and manage Kubernetes cluster groups, and monitor your container environment from Container Inventory.
+
+Different options are available for Kubernetes and Amazon ECS clusters. The options are outlined in the tables below.
+
+:::tip
+
+- You can find assets by using the search function or clicking the filter icon (![](/images/filter_icon=GUID-1d5c17ad-8efa-46f7-a1c7-33cbc1b1329c.webp)) to apply filters by column headings.
+- You can create, manage, and assign tags to any cluster by clicking **Add filter → Tags**. For more information on tags, see [Tag Management](tag-management.mdx).
+:::
+
+### Kubernetes {#kubernetes}
+
+The following table outlines the options available for Kubernetes clusters.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Option</p></th>
+<th><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>View details about your container environment</p></td>
+<td><p>Container Inventory provides a tree view to manage the protection of all your connected Kubernetes clusters.</p>
+<p>Kubernetes tree hierarchy: Orchestration system (Kubernetes) &gt; Orchestration platform &gt; Cluster &gt; Node &gt; Pod &gt; Container</p>
+<p>The following orchestrations platforms are available:</p>
+<ul>
+<li><p>Amazon EKS</p></li>
+<li><p>Microsoft AKS</p></li>
+<li><p>Google Cloud GKE</p></li>
+<li><p>Self-managed</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Add new Kubernetes clusters</p></td>
+<td><p>Select an orchestration platform from the tree. Click <strong>Add Cluster</strong> (if clusters have previously been added to the orchestration platform) or <strong>Deploy protection to a Kubernetes Cluster</strong> (if no clusters have previously been added to the orchestration platform).</p>
+<p>For detailed instructions, see:</p>
+<ul>
+<li><p><a href="trend-vision-one-connect-amazon-eks-clusters">Connect Amazon EKS clusters (with and without Fargate)</a></p></li>
+<li><p><a href="trend-vision-one-connect-microsoft-aks-clusters">Connect Microsoft AKS clusters</a></p></li>
+<li><p><a href="trend-vision-one-connect-google-gke-clusters">Connect Google GKE clusters</a></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Stop protecting Kubernetes clusters</p></td>
+<td><p>Select <strong>Kubernetes</strong> or an orchestration platform from the tree, select the radio button next to the cluster name, and then click <strong>Remove Cluster</strong>.</p>
+
+
+:::note
+
+<p>Removing a cluster from the list does not delete existing data received by Trend Vision One.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Create and manage cluster groups</p></td>
+<td><p>Organize Kubernetes clusters into groups for enhanced control and streamlined management.</p>
+<ul>
+<li><p><strong>Create a new group</strong>: Select the options icon (<img src="./images/options=ddb0b67f-0654-4aa5-8bc7-48ec554c5448.webp" />) next to the orchestration platform or an existing group. The new group will be created within the selected group.</p></li>
+<li><p><strong>Create a new cluster within a group</strong>: Select a group from the tree and click <strong>Add Cluster</strong> or <strong>Deploy protection to a Kubernetes Cluster</strong>. The new cluster will be added within the selected group.</p></li>
+<li><p><strong>Move clusters to a different group</strong>: Select the orchestration platform from the tree and then select the clusters from the list. Click <strong>Change Cluster Group</strong> and then follow the on-screen instructions.</p>
+
+
+:::note
+
+You can only move clusters between groups that are the same type. For example, you cannot move an EKS cluster to an AKS group.
+
+
+:::
+
+</li>
+<li><p><strong>Edit group settings</strong>: Click the options icon (<img src="./images/options=ddb0b67f-0654-4aa5-8bc7-48ec554c5448.webp" />) next to the group to rename, or remove the group.</p></li>
+</ul>
+
+
+:::note
+
+<p>Asset Visibility Scope supports this feature by allowing specific permissions to be assigned by groups, facilitating more efficient management of clusters.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Change cluster settings</p></td>
+<td><p>Select a cluster from the tree to manage settings. You can change the following settings.</p>
+<ul>
+<li><p><strong>Proxy Settings Tool</strong>: Generate a Helm script that you can use to <a href="trend-vision-one-proxy-kubernetes-clusters">deploy new proxy settings to your cluster</a>.</p></li>
+<li><p><strong>Policy</strong>: Select from existing Container Protection policies or click <strong>View Policy editor in Container Protection App</strong> to modify the current policy settings.</p></li>
+<li><p><strong>Policy</strong>: Select from existing Container Protection policies or click <strong>View Policy editor in Container Protection App</strong> to modify the current policy settings.</p></li>
+<li><p><strong>Map to cloud account</strong>: Turn on, specify the required information (ARN, Resource ID), and click <strong>Save</strong>.</p>
+<p>Hover over the link below the text field to find out how to locate the required information in your management service.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+### Amazon ECS {#amazon-ecs}
+
+The following table outlines the options available for Amazon ECS cluster.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Option</p></th>
+<th><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>View details about your container environment</p></td>
+<td><p>Container Inventory provides a tree view to manage the protection of all your connected Amazon ECS clusters.</p>
+<p>Amazon ECS hierarchy: Orchestration platform (Amazon ECS) &gt; Cloud account &gt; Region &gt; Cluster &gt; Services &gt; Tasks &gt; Containers</p></td>
+</tr>
+<tr>
+<td><p>Add new Amazon ECS clusters</p></td>
+<td><p>Select <strong>Amazon ECS</strong>, a cloud account, or a region from the tree. Click <strong>Add account</strong> (if other clusters have previously been added) or <strong>Add and protect Amazon ECS assets</strong> (if no clusters have previously been added).</p>
+<p>For detailed instructions, see:</p>
+<ul>
+<li><p><a href="trend-vision-one-ecs-clusters-new-aws-account">Connect Amazon ECS clusters using a new AWS account</a></p></li>
+<li><p><a href="trend-vision-one-fargate-clusters-amazon-ecs">Set up connected Amazon ECS Fargate clusters</a></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Enable or disable runtime security and scanning on clusters</p></td>
+<td><p>Select one or more clusters from the tree to enable or disable runtime security or runtime scanning.</p>
+<ul>
+<li><p><strong>Runtime security</strong>: Provides visibility into any activity of your running containers that violates a customizable set of rules.</p></li>
+<li><p><strong>Runtime scanning</strong>: Provides visibility of operating system and open source code vulnerabilities that are part of containers running in clusters.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Assign new policies</p></td>
+<td><p>Select a cluster from the tree. In the <strong>Policy</strong> field, select from existing Container Protection policies or click <strong>View Policy editor in Container Protection App</strong> to modify the current policy settings.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Kubernetes clusters](kubernetes-clusters.mdx)
+- [Amazon ECS clusters](amazon-ecs-clusters.mdx)
+- [Container Security Protection status](container-protection-status.mdx)
+- [Container response actions (Isolate/Resume, Terminate)](isolate-resume-terminate.md "Through integration with the Response Management app, you can isolate, restore connection, and terminate containers throughout the Trend Vision One console using the context menu.")
+- [Disabling Container Security](disable-container-security.md "You can easily disable Container Security on a cluster if you no longer require protection.")
+::::

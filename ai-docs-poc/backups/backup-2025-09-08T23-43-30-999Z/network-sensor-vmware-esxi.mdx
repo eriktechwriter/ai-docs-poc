@@ -1,0 +1,132 @@
+---
+slug: trend-vision-one-network-sensor-vmware-esxi
+title: Deploying a Virtual Network Sensor with VMware ESXi
+last_updated: '2025-09-08'
+ai_context:
+  source_file: network-sensor-vmware-esxi.md
+  conversion_date: '2025-09-08T23:42:15.331Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Learn how to deploy your own Virtual Network Sensor on VMware ESXi.
+
+Virtual Network Sensor is a lightweight network sensor that scans your network activity and feeds network activity data to Trend Vision One and allows you to discover unmanaged assets and gain a holistic view of your attack surface. Before using the features of **Network Security**, you need to set up your Virtual Network Sensor and connect your sensor to Trend Vision One.
+
+:::warning[Important]
+
+- If the throughput exceeds 2000 Mbps, Trend Micro recommends configuring your Virtual Network Sensor using a PCI passthrough that is compliant with the following drivers: Broadcom tg3 and bnxt_en, and Intel i40e, igb, ixgbe, and e1000.
+:::
+
+:::note
+
+Review the [Virtual Network Sensor system requirements](network-sensor-sys-reqs.mdx) before starting and ensure you have adequate resources for Virtual Network Sensor.
+:::
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Network Security → Network Inventory → Virtual Network Sensor**.
+
+2.  Click **Deploy Virtual Network Sensor**.
+
+    The **Virtual Network Sensor Deployment** panel appears.
+
+3.  Select **VMware ESXi (OVA)** for the platform.
+
+4.  Select the **Connection method**.
+
+    - **Direct connection**: the Virtual Network Sensor connects to Trend Vision One directly. Make sure the Virtual Network Sensor is able to connect to the internet when using this configuration.
+
+    - **Connect using a custom proxy**: the Virtual Network Sensor connects to Trend Vision One through a third-party proxy. After choosing this method, configure the following fields:
+
+      - **Proxy address**: Specify the IP address of the proxy.
+
+      - **Proxy port**: Specify the connecting port of the proxy.
+
+      - **Proxy server requires authentication**: (Optional) Select if the proxy requires authentication credentials.
+
+      - **User name**: Specify the user name for the proxy credentials.
+
+      - **Password**: Specify the password for the proxy credentials.
+
+    - **Connect using a Service Gateway as proxy**: the Virtual Network Sensor connects to Trend Vision One through a Service Gateway. Select a Service Gateway to use for this method.
+
+      :::warning[Important]
+
+      The Virtual Network Sensor must be able to connect to a Service Gateway with the Forward Proxy Service configured and enabled. For more information, see [Manage services in Service Gateway](managing-services-service-gateway.mdx).
+      :::
+
+5.  Click **Download Disk Image**.
+
+6.  In the VMware ESXi console, [configure network settings](exttraffic-vsphere-st-promiscuous.mdx) to allow Virtual Network Sensor to monitor data in VMware ESXi.
+
+7.  On the VMware ESXi console, go to **Virtual Machines → Create / Register VM**.
+
+8.  On the **Select creation type** screen, select **Deploy a virtual machine from an OVF or OVA file** from the dropdown, and click **Next**.
+
+9.  On the **Select OVF and VMDK files** screen, provide a name for the virtual machine, and select or drag and drop the Virtual Network Sensor disk image.
+
+10. Click **Next**.
+
+11. On the **Select storage** screen, select the storage type and datastore, and click **Next**.
+
+12. Click **Next**.
+
+13. On the **Deployment options** screen, specify the following settings:
+
+    - Select **VM Network** as the management network (NIC 1), and **Data port group** as the data network (NIC 2).
+
+      :::note
+
+      The NIC you chose for the management network must be able to connect to the internet.
+      :::
+
+    - Select a deployment type from the dropdown to configure the hardware setting automatically.
+
+    - Select **Thick** for disk provisioning.
+
+    - Select **Power on automatically**.
+
+14. Click **Next**.
+
+15. On the **Additional settings** screen, specify the following settings:
+
+    - Expand **System Settings**, select the **Bandwidth** specified in the deployment type on the previous screen, and enter the **Administrator password**.
+
+    - Expand **Network Settings** and configure the settings.
+
+      :::note
+
+      The device name or FQDN may not include underlines.
+      :::
+
+    - Expand **Proxy Settings** and configure the settings.
+
+16. Click **Next**.
+
+17. On the **Ready to complete** screen, review your settings and click **Finish**.
+
+    Your Virtual Network Sensor deploys and automatically connects to Network Inventory.
+
+18. To confirm that your Virtual Network Sensor has successfully deployed, go to **Network Security → Network Inventory → Virtual Network Sensor** on the Trend Vision One console to view information about your deployed Virtual Network Sensor.
+
+    If the Virtual Network Sensor does not appear in Network Inventory after deployment, verify the following settings:
+
+    - Network settings (NIC/vNIC setting and order)
+
+    - Firewall settings
+
+    - Proxy settings if using a proxy
+
+    - Review the [Virtual Network Sensor FAQ](virtual-network-sensor-faqs.mdx) to verify and test the connection
+
+    :::note
+
+    For information about troubleshooting Virtual Network Sensor, see [Virtual Network Sensor CLI commands](virtual-network-sensor-cli-commands.mdx).
+    :::
+
+**Related information**
+
+- [Configuring External Network Traffic with the VMware vSphere Standard Switch (Promiscuous Mode)](exttraffic-vsphere-st-promiscuous.md "Configure network settings in VMware ESXi to allow Virtual Network Sensor to monitor data.")
+:::::

@@ -1,0 +1,222 @@
+---
+slug: trend-vision-one-data-that-will-be-migrated
+title: Data that will be migrated
+---
+# Data that will be migrated
+
+All settings in IMSS or IMSVA will be migrated to Cloud Email Gateway Protection completely or partially except those listed in [Data that will not be migrated](data-not-migrated-email-security.mdx). Among the settings that are partially migrated, some are modified to adapt to Cloud Email Gateway Protection due to the feature differences between IMSS or IMSVA and Cloud Email Gateway Protection. Therefore, you need to confirm or fix these settings according to the on-screen instructions after migration.
+
+The following table lists some examples of the settings that will be partially migrated and describes the feature differences.
+
+:::note
+
+For details about all the settings that are completely or partially migrated, see the data migration report downloaded from the Cloud Email Gateway Protection administrator console when the migration completes.
+:::
+
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 24%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Navigation in IMSS or IMSVA</p></th>
+<th><p>Source Settings</p></th>
+<th>Navigation in Cloud Email Gateway Protection</th>
+<th><p>Destination Settings</p></th>
+<th><p>Feature Differences</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="4"><p><strong>Policy → Policy List</strong></p></td>
+<td><p>The following settings on the <strong>Step 1: Select Recipients and Senders</strong> screen:</p>
+<ul>
+<li>Sender</li>
+<li>Recipient</li>
+<li>Sender to recipient exception</li>
+</ul></td>
+<td><p>The following submenus under the <strong>Inbound Protection</strong> and <strong>Outbound Protection</strong> menus:</p>
+<ul>
+<li><p><strong>Virus Scan</strong></p></li>
+<li><strong>Spam Filtering</strong></li>
+<li><p><strong>Content Filtering</strong></p></li>
+<li><p><strong>Data Loss Prevention → Data Loss Prevention (DLP) Policy</strong></p></li>
+</ul></td>
+<td><p>The following settings in the <strong>Senders</strong> section of the <strong>Recipients and Senders</strong> tab:</p>
+<ul>
+<li>Sender</li>
+<li>Recipient</li>
+<li>Sender to recipient exception</li>
+</ul></td>
+<td><p>LDAP users in IMSS or MISVA are migrated as static email addresses in Cloud Email Gateway Protection.</p></td>
+</tr>
+<tr>
+<td><p>Condition match settings on the <strong>Step 2: Select Scanning Conditions</strong> screen</p></td>
+<td><ul>
+<li><p><strong>Inbound Protection → Content Filtering</strong></p></li>
+<li><strong>Outbound Protection → Content Filtering</strong></li>
+</ul></td>
+<td>Condition match settings in the <strong>Advanced</strong> section of the <strong>Scanning Criteria</strong> tab</td>
+<td><p>Only content filtering supports <strong>all condition matched (AND)</strong>.</p></td>
+</tr>
+<tr>
+<td><p>True file type settings in the <strong>Attachment</strong> section of the <strong>Step 2: Select Scanning Conditions</strong> screen</p></td>
+<td><ul>
+<li><p><strong>Inbound Protection → Content Filtering</strong></p></li>
+<li><p><strong>Outbound Protection → Content Filtering</strong></p></li>
+</ul></td>
+<td><p>True file type settings in the <strong>Advanced</strong> section of the <strong>Scanning Criteria</strong> tab</p></td>
+<td><p>Cloud Email Gateway Protection does not support MSI, PNG, 7-Zip, or Microsoft Windows shortcuts.</p></td>
+</tr>
+<tr>
+<td><p><strong>Global DKIM Enforcement rule</strong></p></td>
+<td><p><strong>Inbound Protection → Domain-based Authentication → DomainKeys Identified Mail (DKIM) Verification</strong></p></td>
+<td><p>Settings in the <strong>Default (for unspecified domains)</strong> policy (including the action and <strong>Enforced Peers</strong>)</p></td>
+<td><p>Cloud Email Gateway Protection uses both the header sender address and envelope sender address instead of only the header sender address for matching the list of enforced peers.</p></td>
+</tr>
+<tr>
+<td><p><strong>Policy → Approved List</strong></p></td>
+<td><p>The settings of the following approved lists:</p>
+<ul>
+<li>DKIM approved list</li>
+<li>Web reputation approved list</li>
+<li>URL keyword list</li>
+</ul></td>
+<td><ul>
+<li><p><strong>Inbound Protection → Domain-based Authentication → DomainKeys Identified Mail (DKIM) Verification</strong></p></li>
+<li><p><strong>Administration → Policy Objects → Web Reputation Approved List</strong></p></li>
+<li><p><strong>Administration → Policy Objects → URL Keyword Exception List</strong></p></li>
+</ul></td>
+<td><p>The settings of the following approved lists:</p>
+<ul>
+<li>DKIM approved list (<strong>Ignored Peers</strong> section in the <strong>Default (for unspecified domains)</strong> policy)</li>
+<li>Web reputation approved list</li>
+<li>URL keyword exception list</li>
+</ul></td>
+<td><p>Cloud Email Gateway Protection uses the envelope sender address instead of the header sender address for matching the list of ignored peers.</p></td>
+</tr>
+<tr>
+<td><p><strong>Policy → Policy Objects → Address Groups</strong></p></td>
+<td><p>Name and address settings of an address group</p></td>
+<td><p><strong>Administration → Policy Objects → Address Groups</strong></p></td>
+<td><p>Name and address settings of an address group</p></td>
+<td><p>Cloud Email Gateway Protection supports wildcard domains (for example, *@*.example.com) in hybrid address groups, and does not support wildcard domains in internal address groups.</p>
+<p>If an address group is used as senders (or sender exceptions) in outbound policies or recipients (or recipient exceptions) in inbound policies and the group contains email addresses from unmanaged domains, Cloud Email Gateway Protection will create a copy of the address group, delete those email addresses from the copy, and suffix the copy name with " - internal".</p></td>
+</tr>
+<tr>
+<td><p><strong>Policy → Policy Objects → Keywords &amp; Expressions</strong></p></td>
+<td><p>Match settings of a keyword or expression</p></td>
+<td><p><strong>Administration → Policy Objects → Keywords and Expressions</strong></p></td>
+<td><p>Match settings of a keyword or expression</p></td>
+<td><p>None</p></td>
+</tr>
+<tr>
+<td><p><strong>Policy → Policy Objects → Policy Notification</strong></p></td>
+<td><p>Variables list in the settings of a policy notification</p></td>
+<td><p><strong>Administration → Policy Objects → Notification</strong></p></td>
+<td><p>Variables list in the settings of a policy notification</p></td>
+<td><p>Cloud Email Gateway Protection does not support the following variables:</p>
+<ul>
+<li><p>%RULETYPE%</p></li>
+<li><p>%ENTITY%</p></li>
+<li><p>%QUARANTINE_PATH%</p></li>
+<li><p>%QUARANTINE_AREA%</p></li>
+<li><p>%PROTOCOL%</p></li>
+<li><p>%HOSTNAME%</p></li>
+<li><p>%MAILCHARSET%</p></li>
+<li><p>%SUSPICIOUS_URL%</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><strong>Sender Filtering → Approved List</strong></p></td>
+<td><p>The following settings of an approved list:</p>
+<ul>
+<li><p>IP addresses</p></li>
+<li><p>Groups of computers</p></li>
+</ul>
+
+
+:::note
+
+<p>Cloud Email Gateway Protection migrates IP addresses and groups of computers from IMSVA only if the <strong>Email Reputation and IP Profiler</strong> check box to the right of <strong>Apply to</strong> is selected. This restriction does not apply to IMSS.</p>
+
+
+:::
+
+</td>
+<td><p><strong>Inbound Protection → Connection Filtering → IP Reputation → Approved IP Addresses</strong></p></td>
+<td><p>IP address settings in the <strong>IP addresses</strong> section</p></td>
+<td><p>Cloud Email Gateway Protection does not support the following settings:</p>
+<ul>
+<li><p>IP addresses resolved from domains</p></li>
+<li><p>Private IP addresses</p></li>
+<li><p>IP addresses in disabled approved lists</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><strong>Sender Filtering → Blocked List</strong></p></td>
+<td><p>The following settings of a blocked list:</p>
+<ul>
+<li><p>IP addresses</p></li>
+<li><p>Groups of computers</p></li>
+</ul>
+
+
+:::note
+
+<p>Cloud Email Gateway Protection migrates only IP addresses and groups of computers whose <strong>Action</strong> is <strong>Block Permanently</strong>.</p>
+
+
+:::
+
+</td>
+<td><p><strong>Inbound Protection → Connection FilteringIP Reputation → Blocked IP Addresses</strong></p></td>
+<td><p>IP address settings in the <strong>IP addresses</strong> section</p></td>
+<td><p>Cloud Email Gateway Protection does not support the following settings:</p>
+<ul>
+<li><p>IP addresses resolved from domains</p></li>
+<li><p>Private IP addresses</p></li>
+<li><p>IP addresses in disabled blocked lists</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><strong>Sender Filtering → DMARC</strong></p></td>
+<td><p>DMARC settings</p>
+
+
+:::note
+
+<p>DMARC settings are available only in IMSVA.</p>
+
+
+:::
+
+</td>
+<td><p><strong>Inbound Protection → Domain-based Authentication → Domain-based Message Authentication, Reporting and Conformance (DMARC)</strong></p></td>
+<td><p>DMARC settings</p></td>
+<td><p>Cloud Email Gateway Protection uses both the header sender address and envelope sender address instead of only the header sender address for matching the list of enforced peers.</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → IMSVA Configuration → DKIM Signature</strong></p></td>
+<td><p>Advanced settings of DKIM signatures</p>
+
+
+:::note
+
+<p>DKIM signatures are available only in IMSVA.</p>
+
+
+:::
+
+</td>
+<td><p><strong>Outbound Protection → Domain-based Authentication → DomainKeys Identified Mail (DKIM) Signing</strong></p></td>
+<td><p>Advanced settings of DKIM signatures</p></td>
+<td><p>Cloud Email Gateway Protection does not support exempt domains.</p></td>
+</tr>
+</tbody>
+</table>
+::::

@@ -1,0 +1,1098 @@
+---
+slug: trend-vision-one-integrate-sap-netweaver
+title: Integrate with SAP NetWeaver
+---
+# Integrate with SAP NetWeaver
+
+:::The Scanner feature enables you to protect your SAP deployments using Server & Workload Protection, helping to secure critical information from attack, including a wide variety of threats such as malware, cross-site scripting and SQL injection. Server & Workload Protection scans content uploaded to the SAP NetWeaver technology platform to determine its true type and reports this to SAP systems via the NetWeaver-VSI interface. Content scanning protects against possible malicious script content that might be embedded or disguised inside documents. SAP administrators can then set policy according to which document types should be allowed.
+
+:::note
+
+Scanner is not supported on computers with a relay-enabled agent.
+:::
+
+### How it works {#how-it-works}
+
+1.  SAP customer environments are secured through the SAP Virus Scan Interface (VSI), the security component of the SAP NetWeaver platform. The VSI is used to secure all forms of customer content including documents, embedded images, and active content including JavaScript and scripts in PDF and Office documents. The Scanner feature works seamlessly with SAP NetWeaver technology and the SAP HANA® platform.
+2.  The Server & Workload Protection Scanner feature scans the content uploaded to the SAP NetWeaver technology platform to determine its true type and reports this to SAP systems via the NetWeaver VSI interface. Content scanning protects against possible malicious script content that might be embedded or disguised inside documents.
+3.  SAP administrators can then set policy according to which actual document types should be allowed.
+
+![](/images/scanner-workflow=8be4fded-d924-406c-84d6-e3d98bd53ce1.webp)
+
+### Server & Workload Protection and SAP components {#server-workload-protection-and-sap-components}
+
+Server & Workload Protection connects with the agent located on the SAP NetWeaver server. The agent connects with libsapvsa or dsvsa.dll, which are the virus adapters provided by Trend Micro for scanning purposes.
+
+The components involved in this solution are:
+
+- **Server & Workload Protection**: The centralized web-based management console that administrators use to configure security policy and deploy protection to the agent.
+- *Agent*: A security agent deployed directly on a computer. The nature of that protection depends on the rules and security settings that each agent receives from Server & Workload Protection.
+- *SAP NetWeaver*: SAP integrated technology computing platform. The SAP NetWeaver Virus Scan Interface (NW-VSI) provides virus scanning capabilities for third-party products that perform the actual scan. The NW-VSI interface must be activated.
+- *SAP NetWeaver ABAP WinGUI*: A Windows management console used for SAP NetWeaver. In this document, it is used for the configuration of the agent and the SAP NetWeaver Virus Scan Interface.
+
+![](/images/sap-architecture=408b596e-53e2-4bdd-8b6a-59a8ef3d6883.webp)
+
+### Set up the integration between Server & Workload Protection Scanner and SAP NetWeaver {#set-up-the-integration-between-server-workload-protection-scanner-and-sap-netweaver}
+
+1.  Check the [Supported features by platform](supported-features-linux-platform.mdx) page to see which operating systems support the Scanner feature.
+
+2.  Install the agent on an SAP application server that's running one of the supported operating systems. See Install the agent‌.
+
+3.  Add the SAP server to Server & Workload Protection and activate the agent on the SAP server. See Add the SAP server to Server & Workload Protection and activate the agent.
+
+4.  Open the computer or policy editor and go to **Settings → Scanner**.
+
+5.  Enable the SAP integration. See Assign a security profile‌.
+
+6.  Configure the SAP Virus Scan Interface (VSI) by calling the following transactions. See Configure SAP to use the agent:
+
+    - VSCANGROUP
+
+    - VSCAN
+
+    - VSCANPROFILE
+
+    - VSCANTEST
+
+:::note
+
+Depending on your operating system and environment, the output that you see may differ slightly from what is shown in this article.
+:::
+
+### Install the agent {#install-the-agent}
+
+The agent is installed with core agent functionality only. After the agent is installed on SUSE Linux Enterprise Server or Red Hat Enterprise Linux, you can enable protection modules on the agent. At that point, the plug-ins required for the protection modules will be downloaded and installed.
+
+1.  Go to the [Deep Security software download page](https://help.deepsecurity.trendmicro.com/software.mdx) and download the agent package for your OS.
+
+2.  Install the agent on the target system. You can use rpm or zypper, depending on the OS. In this example, rpm is used by typing: `rpm -ihv Agent-Core-SuSE_<version>.x86_64.rpm`
+
+3.  You should see output similar to what's shown in this example, which indicates that the agent installation is complete:
+
+    ![](/images/sap-agent-install=f06d23d3-bdc7-4883-a95d-ccd58a83121f.webp)
+
+:::tip
+
+You can also deploy the agent using a deployment script generated from Server & Workload Protection.
+:::
+
+The agent is now installed on the SAP server but no protection modules are active. To enable protection, you need to add the SAP server to Server & Workload Protection.
+
+### Add the SAP server to Server & Workload Protection and activate the agent {#add-the-sap-server-to-server-workload-protection-and-activate-the-agent}
+
+To add the SAP server, open the Server & Workload Protection console and on the *Computers* tab, click *New*. There are several ways to add the server, including synchronization with Microsoft Active Directory, VMware vCenter, Amazon Web Services, or Microsoft Azure. You can also add the computer using an FQDN or IP address. For detailed instructions, see [About adding computers](adding-computers.mdx).
+
+The status of your instance will be either *Unmanaged (Activation Required)* or *Unmanaged (Unknown)*. Next, you will need to activate the agent before Server & Workload Protection can assign rules and policies to protect the computer. The activation process includes the exchange of unique fingerprints between the agent and Server & Workload Protection. There are two ways to activate the agent: agent-initiated or manager-initiated.
+
+*Manager-initiated activation:* This method requires that Server & Workload Protection (the manager) can connect to the FQDN or the IP of the agent via the [agent's listening port number for heartbeats](swp-port-numbers.mdx). This can sometimes be difficult due to NAT port forwarding, firewall, or AWS security groups. To perform manager-initiated activation, go to the *Computers* tab in the Server & Workload Protection console, right-click the instance where the agent is installed and click **Actions → Activate**. If you use manager-initiated activation, we strongly recommend you also [Protect the agent](protect-agent.mdx) from unauthorized managers.
+
+*Agent-initiated activation:* The agent-initiated method requires that the agent can connect to Server & Workload Protection.
+
+You will also need to enable agent-initiated activation from the Server & Workload Protection console, by clicking **Administration → System Settings → Agents** and selecting *Allow Agent-Initiated Activation*.
+
+Next, use a locally-run command-line tool on the agent to initiate the activation process. The minimum activation instruction contains the activation command and the Server & Workload Protection URL (including the port number):
+
+`dsa_control -a dsm://[managerurl]:[port]/`
+
+where:
+
+- `-a` is the command to activate the agent, and
+- `dsm://managerurl:443/` is the parameter that points the agent to Server & Workload Protection. ("managerurl" is the URL of Server & Workload Protection, and "443" is the default agent-to-manager communication port.)
+
+The manager URL is the only required parameter for the activation command. Additional parameters are also available. (For a list of available parameters, see [Command-line basics](command-line-basics.mdx).)
+
+To confirm the activation:
+
+1.  In the Server & Workload Protection console, go to the *Computers* tab.
+2.  Click the computer name and then click *Details* and check that the computer's status is "Managed".
+
+### Assign a security profile‌ {#assign-a-security-profile}
+
+At this point, the status of the agent is *Managed (Online)* but there is no protection module installed. This means that the agent and Server & Workload Protection are communicating but the agent is not using any configuration.
+
+There are several ways to apply protection. In this example, the configuration is done directly on the SAP instance by activating anti-malware and SAP and assigning the default *Scan Configurations*.
+
+1.  In the Computer or Policy editor, go to **Anti-Malware → General**.
+
+2.  In the *Anti-Malware* section, set *Configuration* to *On* (or *Inherited On*) and then click *Save*.
+
+    ![](/images/SAPDemoPage=5d9fdce5-4076-4ffa-a4fb-ffe81be041c7.webp)
+
+3.  In the *Real-Time Scan*, *Manual Scan*, or *Scheduled Scan* sections, set the *Malware Scan Configuration* and *Schedule*, or allow those settings to be inherited from the parent policy.
+
+4.  Click *Save*. The status of the anti-malware module changes to *Off, installation pending*. This means that the agent is retrieving the required module from Server & Workload Protection. For this to work, the client needs to access the Relay on the [relay's listening port number](swp-port-numbers.mdx). A few moments later, the agent should start downloading component updates such as anti-malware patterns and scan engines.
+
+5.  In the Computer editor, go to **Settings → Scanner**.
+
+6.  In the *SAP* section, set *Configuration* to *On* (or *Inherited On*) and then click *Save*.
+
+After status of the agent changes to *Managed (Online)* again and the anti-malware and Scanner (SAP) modules are *On*, you can proceed with the SAP configuration.
+
+![](/images/SAPComputerOverview=454ec9e6-2cd9-4fb8-ad8b-90d15ab163f7.webp)
+
+### Configure SAP to use the agent {#configure-sap-to-use-the-agent}
+
+The agent is now up and running and is able to scan the file system of its operating system. Next, we need to make the agent aware of the SAP application server. To use this, we must create a virus scan adapter inside the application server. The virus scan adapter must be part of a group. After the virus scan adapter and virus scan group are created, we can use virus scan profiles to configure what to scan and how to behave.
+
+These are the required steps:
+
+1.  Configure the Trend Micro scanner group
+2.  Configure the Trend Micro virus scan provider
+3.  Configure the Trend Micro virus scan profile
+4.  Test the virus scan interface
+
+:::note
+
+The virus scan group and the virus scan adapter are both global configurations (client 00). The virus scan profile must be configured in each tenant (client 01, 02, etc.).
+:::
+
+### Configure the Trend Micro scanner group {#configure-the-trend-micro-scanner-group}
+
+1.  In the SAP WinGUI, run the *VSCANGROUP* transaction. In Edit mode, click *New Entries*.
+
+    ![](/images/sap-vscangroup=3d0bb358-27ae-4f29-9eb7-8a77cad1f2a9.webp)
+
+2.  Create a new scanner group, specifying a group name in the *Scanner Group* area and a description of the scanner group in the *Group Text* area.
+
+    ![](/images/sap-vscangroup-edit=460fe407-7f78-4e5f-ad60-746b71cb5017.webp)
+
+3.  Click the Save icon or leave the edit mode.
+
+    A dialog box named "Prompt for Workbench request" will appear. In the example shown below, a new workbench request is created to keep track of all the VSI-related changes:
+
+    ![](/images/sap-vscangroup-save=d2d9fd65-f890-4278-ab1e-8ac8756e7307.webp)
+
+The next step is the actual configuration of the VSI integration. It is called a *Virus Scan Adapter*.
+
+### Configure the Trend Micro virus scan provider {#configure-the-trend-micro-virus-scan-provider}
+
+1.  In the SAP WinGUI, run the *VSCAN* transaction. In Edit mode, click *New Entries*.
+
+    ![](/images/sap-vscan=42fa171d-06f1-49c3-8581-cf49279c6289.webp)
+
+2.  Enter a configuration for a VSI-certified solution.
+
+    In the example below, the following configuration parameters are set:
+
+    ![](/images/sap-vscan-edit=52cc8c9d-fa4c-426a-bb8f-13dec767a51c.webp)
+
+    <table>
+    <thead>
+    <tr>
+    <th><p>Setting</p></th>
+    <th><p>Value</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Provider Type</p></td>
+    <td><p>ADAPTER (Virus Scan Adapter)</p></td>
+    <td><p>Automatically set (default)</p></td>
+    </tr>
+    <tr>
+    <td><p>Provider Name</p></td>
+    <td><p>VSA_&lt;host name&gt;</p></td>
+    <td><p>Automatically set, serves as alias</p></td>
+    </tr>
+    <tr>
+    <td><p>Scanner Group</p></td>
+    <td><p>Select the group that you configured earlier</p></td>
+    <td><p>All previously created scanner groups, which you can display using the input help</p></td>
+    </tr>
+    <tr>
+    <td><p>Status</p></td>
+    <td><p>Active (Application Server)</p></td>
+    <td><p>Automatically set (default)</p></td>
+    </tr>
+    <tr>
+    <td><p>Server</p></td>
+    <td><p>nplhost_NPL_42</p></td>
+    <td><p>Automatically set, hostname</p></td>
+    </tr>
+    <tr>
+    <td><p>Reinit. Interv.</p></td>
+    <td><p>8 Hours</p></td>
+    <td><p>Specifies the number of hours after which the Virus Scan Adapter will be reinitialized and load new virus definitions.</p></td>
+    </tr>
+    <tr>
+    <td><p>Adapter Path (Linux)</p></td>
+    <td><p>/lib64/libsapvsa.so</p></td>
+    <td><p>Default path</p></td>
+    </tr>
+    <tr>
+    <td><p>Adapter Path (Windows)</p></td>
+    <td><p>C:\Program Files\Trend Micro\Deep Security Agent\lib\dsvsa.dll</p></td>
+    <td><p>Default path</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+3.  Click the Save icon or leave the edit mode.
+
+    A prompt to pack this into a workbench request appears.
+
+4.  Confirm the request, then click the *Start* button.
+
+    The Status light turns green, which means the adapter is loaded and active.
+
+    ![](/images/sap-vscan-save=710d78ef-2a2b-4d1f-81a2-a61a747e9445.webp)
+
+At this point, the VSI configuration is nearly finished. The application server is now ready to process file transactions using a virus scan provided by Trend Micro.
+
+### Configure the Trend Micro virus scan profile {#configure-the-trend-micro-virus-scan-profile}
+
+1.  In the SAP WinGUI, run the *VSCANPROFILE* transaction, then select the SAP operation that requires virus scan.
+
+    For example, check the "Active" checkbox for */SCET/GUI_UPLOAD* or */SCET/GUI_DOWNLOAD* and then click the Save icon.
+
+    ![](/images/sap-vscanprofile=d18ac585-7bf6-4163-9064-611e6d7ebc4a.webp)
+
+2.  In Edit mode, click *New Entries*.
+
+    The virus scan profiles will define how specific transactions (file uploads, file downloads, etc.) are handled corresponding to the virus scan interface. To use the previously configured virus scan adapter in the application server, you need to create a new virus scan profile:
+
+3.  In the *Scan Profile* box, enter "Z_TMProfile" and select the *Active*, *Default Profile*, and *Evaluate Profile Configuration Param* check boxes.
+
+    ![](/images/sap-vscanprofile-edit=7d9f9131-08df-4273-b5ef-c8a7003b6620.webp)
+
+4.  While still in edit mode, double-click the *Steps* folder to configure the steps:
+
+    ![](/images/sap-vscanprofile-steps=4515e0b2-100a-451d-ac95-54cc63c648d9.webp)
+
+5.  Click *New Entries*.
+
+    The steps define what to do when the profile is called by a transaction.
+
+6.  Set the *Position* to "0", *Type* to "Group" and the *Scanner Group* to the name of the group that you configured earlier.
+
+7.  Click the Save icon or leave the edit mode.
+
+    A notification will (eventually) appear about an existing virus scan profile, */SCET/DP_VS_ENABLED*.
+
+8.  Ignore the notification about an existing profile because the profile is not active and is not used.
+
+    After confirming this notification, you will be asked to pack this configuration in a "customization request". Creating a new request will help keep track of the changes that have been made:
+
+    ![](/images/sap-vscanprofile-save=9a61387b-0a84-44c9-9af5-ec6c6d065d90.webp)
+
+9.  To create configuration parameters for a step, double-click the *Profile Configuration Parameters* folder, then click *New Entries* and set the parameters:
+
+    <table>
+    <thead>
+    <tr>
+    <th><p>Parameter</p></th>
+    <th><p>Type</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>CUST_ACTIVE_CONTENT</p></td>
+    <td><p>BOOL</p></td>
+    <td><p>Check whether a file contains script (JavaScript, PHP, or ASP script) and block</p></td>
+    </tr>
+    <tr>
+    <td><p>CUST_CHECK_MIME_TYPE</p></td>
+    <td><p>BOOL</p></td>
+    <td>Check whether the file extension name matches its MIME type. If they do not match, the file will be blocked. All MIME types and extension names can be exactly matched. For example:
+    <ul>
+    <li>Word files must be .doc or .dot</li>
+    <li>JPEG files must be .jpg</li>
+    <li>Text and binary files could be any extension (won’t block)</li>
+    </ul>
+    <p>See Supported MIME types.</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+10. Double-click the *Step Configuration Parameters* folder. Click *New Entries* and set the parameters:
+
+    <table>
+    <thead>
+    <tr>
+    <th><p>Parameter</p></th>
+    <th><p>Type</p></th>
+    <th><p>Description</p></th>
+    <th><p>Default (Linux)</p></th>
+    <th><p>Default (Windows)</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>SCANBESTEFFORT</p></td>
+    <td><p>BOOL</p></td>
+    <td><p>The scan should be performed on the "best effort" basis; that is, all (security critical) flags that allow a VSA to scan an object should be activated, such as SCANALLFILES and SCANEXTRACT, but also internal flags. Details about exactly which flags these are can be stored in the certification.</p></td>
+    <td><p>(not set)</p></td>
+    <td><p>(not set)</p></td>
+    </tr>
+    <tr>
+    <td><p>SCANALLFILES</p></td>
+    <td><p>BOOL</p></td>
+    <td><p>Scans for all files regardless of their file extension.</p></td>
+    <td><p>disabled</p></td>
+    <td><p>disabled</p></td>
+    </tr>
+    <tr>
+    <td><p>SCANEXTENSIONS</p></td>
+    <td><p>CHAR</p></td>
+    <td><p>List of the file extensions for which the VSA should scan. Only files with the configured extensions will be checked. Other extensions are blocked. Wildcards can also be used here to search for patterns. \* stands for this location and following and ? stands for only this character. For example, exe;com;do?;ht* =&gt; \`\*\` means to scan all files.</p></td>
+    <td><p>null</p></td>
+    <td><p>""</p></td>
+    </tr>
+    <tr>
+    <td><p>SCANLIMIT</p></td>
+    <td><p>INT</p></td>
+    <td><p>This setting applies to compressed files. It specifies the maximum number of files that will be unpacked and scanned.</p></td>
+    <td><p>INT_MAX</p></td>
+    <td><p>65535</p></td>
+    </tr>
+    <tr>
+    <td><p>SCANEXTRACT</p></td>
+    <td><p>BOOL</p></td>
+    <td><p>Archives or compressed objects are to be unpacked</p></td>
+    <td><p>enabled</p></td>
+    <td><p>enabled</p></td>
+    </tr>
+    <tr>
+    <td><p>SCANEXTRACT_SIZE</p></td>
+    <td><p>SIZE_T</p></td>
+    <td><p>Maximum unpack size</p></td>
+    <td><p>0x7FFFFFFF</p></td>
+    <td><p>62914560 (60 MB)</p></td>
+    </tr>
+    <tr>
+    <td><p>SCANEXTRACT_DEPTH</p></td>
+    <td><p>INT</p></td>
+    <td><p>Maximum depth to which an object is to be unpacked.</p></td>
+    <td><p>20</p></td>
+    <td><p>20</p></td>
+    </tr>
+    <tr>
+    <td><p>SCANMIMETYPES</p></td>
+    <td><p>CHAR</p></td>
+    <td><p>List of the MIME types to be scanned for. Only files with configured MIME types will be checked. Other MIME types are blocked. This parameter works only if CUST_CHECK_MIME_TYPE is enabled.</p></td>
+    <td><p>(not set)</p></td>
+    <td><p>(not set)</p></td>
+    </tr>
+    <tr>
+    <td><p>BLOCKMIMETYPES</p></td>
+    <td><p>CHAR</p></td>
+    <td><p>List of MIME types that will be blocked. This parameter works only if CUST_CHECK_MIME_TYPE is enabled.</p></td>
+    <td><p>(not set)</p></td>
+    <td><p>(not set)</p></td>
+    </tr>
+    <tr>
+    <td><p>BLOCKEXTENSIONS</p></td>
+    <td><p>CHAR</p></td>
+    <td><p>List of file extensions that will be blocked.</p></td>
+    <td><p>(not set)</p></td>
+    <td><p>(not set)</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+This configuration is per-client, so it must be done in each tenant of the SAP application server.
+
+### Test the virus scan interface {#test-the-virus-scan-interface}
+
+1.  In the SAP WinGUI, run the *VSCANTEST* transaction.
+
+    ![](/images/sap-vscantest=46600992-0437-4f38-a42e-d14f4ca3ca1e.webp)
+
+    Every VSI-aware SAP application server also has a built-in test to check whether the configuration steps were done correctly. For this, an EICAR test virus (www.eicar.org) is packed in a transaction that can call a specific scanner.
+
+2.  Not filling in anything will call the default profile, which was configured in the last step, so do not fill in anything.
+
+3.  Click Execute.
+
+    A notification appears that explains what an EICAR test virus is.
+
+4.  Confirm the notification.
+
+    The transaction is intercepted:
+
+    ![](/images/sap-vscantest-execute=a928d08a-4a2e-426d-91b0-39ac5c07e995.webp)
+
+*Infections* shows information about the detected malware.
+
+*Content Information* shows the correct MIME-type of the file.
+
+The file name is always a randomly generated 7-letter alphabetic string followed by the virus scan profile name.
+
+After this, there is an output about each step of the transaction:
+
+1.  The transaction called the default virus scan profile, which is the virus scan profile Z_TMPROFILE.
+2.  The virus scan profile Z_TMPROFILE is configured to call an adapter from the virus scan group Z_TMGROUP.
+3.  The virus scan group Z_TMGROUP has multiple adapters configured and calls one of them (in this case, VSA_NPLHOST).
+4.  The virus scan adapter returns value 2-, which means a virus was found.
+5.  Information about the detected malware is displayed by showing Eicar_test_1 and the file object /tmp/ zUeEbZZ_TMPROFILE.
+6.  The called default virus scan profile Z_TMPROFILE fails because step 00 (the virus scan group) was not successful and therefore the file transaction is stopped from further processing.
+
+For a cross-check, there is also information about this "malware" event in the Server & Workload Protection console. To see the event, open the Computer editor and click **Anti-Malware → Events**.
+
+### Supported MIME types {#supported-mime-types}
+
+The MIME types supported by the Scanner vary depending on which version of the agent you are using.
+
+- Agent version 9.6 uses VSAPI 9.85
+- Agent version 10.0 uses ATSE 9.861
+- Agent version 10.1 uses ATSE 9.862
+- Agent version 10.2, 10.3, 11.0, 11.1, and 11.2 uses ATSE 10.000
+- Agent version 11.3 and higher uses ATSE 11.0.000
+
+<table>
+<thead>
+<tr>
+<th><p>MIME Type</p></th>
+<th><p>Description</p></th>
+<th><p>Extension</p></th>
+<th><p>Supported in 9.6 Agent</p></th>
+<th><p>Supported in 10.0 Agent</p></th>
+<th><p>Supported in 10.1 Agent or higher</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>application/octet-stream</p></td>
+<td></td>
+<td><p>*</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/com</p></td>
+<td><p>COM File</p></td>
+<td><p>com</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/ecmascript</p></td>
+<td><p>EMCScript File</p></td>
+<td><p>es</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/hta</p></td>
+<td><p>HTA File</p></td>
+<td><p>hta</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/java-archive</p></td>
+<td><p>Java Archive (JAR) file</p></td>
+<td><p>jar</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/javascript</p></td>
+<td><p>Javascript File</p></td>
+<td><p>js, jsxinc, jsx</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/msword</p></td>
+<td><p>Word for Windows</p></td>
+<td><p>doc, dot</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/vnd.ms-access</p></td>
+<td><p>MS Access</p></td>
+<td><p>mdb</p></td>
+<td><p><em>No</em></p></td>
+<td><p><em>No</em></p></td>
+<td><p><em>No</em></p></td>
+</tr>
+<tr>
+<td><p>application/vnd.ms-project</p></td>
+<td><p>MS Project</p></td>
+<td><p>mpp</p></td>
+<td><p><em>No</em></p></td>
+<td><p><em>No</em></p></td>
+<td><p><em>No</em></p></td>
+</tr>
+<tr>
+<td><p>application/msword</p></td>
+<td><p>MS Word</p></td>
+<td><p>doc, dot</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/octet-stream</p></td>
+<td><p>COM File</p></td>
+<td><p>com</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/octet-stream</p></td>
+<td><p>EXE File</p></td>
+<td><p>exe</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/pdf</p></td>
+<td><p>Adobe Portable Document Format file</p></td>
+<td><p>pdf</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/postscript</p></td>
+<td><p>Postscript</p></td>
+<td><p>ai</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/postscript</p></td>
+<td><p>Postscript</p></td>
+<td><p>ps</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/postscript</p></td>
+<td><p>Postscript</p></td>
+<td><p>ps</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/rar</p></td>
+<td><p>RAR File</p></td>
+<td><p>rar</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/rtf</p></td>
+<td><p>Microsoft RTF</p></td>
+<td><p>rtf</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/sar</p></td>
+<td><p>Sar File</p></td>
+<td><p>sar</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/vnd.ms-excel</p></td>
+<td><p>Excel for Windows</p></td>
+<td><p>xls, xlt, xla</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/vnd.ms-outlook</p></td>
+<td><p>Outlook for Windows</p></td>
+<td><p>msg</p></td>
+<td><p><em>No</em></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/vnd.ms-powerpoint</p></td>
+<td><p>Windows PowerPoint</p></td>
+<td><p>ppt, pot, pps, ppa</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/vnd.ms-publisher</p></td>
+<td><p>MS Publisher</p></td>
+<td><p>pub</p></td>
+<td><p><em>No</em></p></td>
+<td><p><em>No</em></p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/vnd.oasis.opendocument</p></td>
+<td><p>Open Document</p></td>
+<td><p>odf</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/vnd.openxmlformats-officedocument.presentationml.presentation</p></td>
+<td><p>MS Office File</p></td>
+<td><p>pptx, potx, ppsx, ppam, pptm, potm, ppsm</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</p></td>
+<td><p>MS Office File</p></td>
+<td><p>xlsx, xltx, xlsm, xltm, xlam, xlsb</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/vnd.openxmlformats-officedocument.wordprocessingml.document</p></td>
+<td><p>MS Office File</p></td>
+<td><p>docx, dotx, docm, dotm</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/vnd.rn-realmedia</p></td>
+<td><p>Real Media</p></td>
+<td><p>rm</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/wordperfect</p></td>
+<td><p>WOrdPerfect</p></td>
+<td><p>wp, wp5, wp6, wpd, w60, w61</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/x-alf</p></td>
+<td></td>
+<td><p>alf</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/x-arc-compressed</p></td>
+<td><p>ARC File</p></td>
+<td><p>arc</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/x-bzip2</p></td>
+<td><p>bZIP File</p></td>
+<td><p>*</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/x-cpio</p></td>
+<td><p>CPIO File</p></td>
+<td><p>*</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/x-director</p></td>
+<td><p>Macromedia Director Shockwave Movie</p></td>
+<td><p>dcr</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/x-gzip</p></td>
+<td><p>Gzip</p></td>
+<td><p>*</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/xhtml+xml</p></td>
+<td><p>XHTML</p></td>
+<td><p>dhtm, dhtml, htm, html, htx, sht, shtm, shtml, stml, xht, xhtm, xhtml, xml, txt</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/x-java-class</p></td>
+<td><p>JAVA Applet</p></td>
+<td><p>class</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/x-kep</p></td>
+<td></td>
+<td><p>kep</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/x-otf</p></td>
+<td></td>
+<td><p>otf</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/x-sapshortcut</p></td>
+<td></td>
+<td><p>sap, sapc</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/x-shockwave-flash</p></td>
+<td><p>Macromedia Flash</p></td>
+<td><p>swf</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/x-silverlight-app</p></td>
+<td><p>PKZIP</p></td>
+<td><p>xap</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/x-sim</p></td>
+<td></td>
+<td><p>sim</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/x-tar</p></td>
+<td><p>TAR File</p></td>
+<td><p>tar</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/x-vbs</p></td>
+<td></td>
+<td><p>*</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>application/zip</p></td>
+<td><p>ZIP File</p></td>
+<td><p>zip, zipx</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>audio/basic</p></td>
+<td><p>Audio</p></td>
+<td><p>snd, au</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>audio/midi</p></td>
+<td><p>MIDI</p></td>
+<td><p>mid, midi, rmi, mdi, kar</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>audio/x-aiff</p></td>
+<td><p>Audio InterChange File Format from Apple/SGI</p></td>
+<td><p>aiff, aif, aifc</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>audio/x-mpeg-3</p></td>
+<td><p>MP3</p></td>
+<td><p>mp3</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>audio/x-realaudio</p></td>
+<td><p>Real Audio</p></td>
+<td><p>ra</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>audio/x-voc</p></td>
+<td><p>Creative Voice Format(VOC)</p></td>
+<td><p>voc</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>image/bmp</p></td>
+<td><p>Windows BMP</p></td>
+<td><p>bmp</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>image/gif</p></td>
+<td><p>GIF</p></td>
+<td><p>gif</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>image/ico</p></td>
+<td><p>Windows Icon</p></td>
+<td><p>ico</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>image/jpeg</p></td>
+<td><p>JPEG</p></td>
+<td><p>jpg, jpeg, jpe, jif, jfif, jfi</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>image/msp</p></td>
+<td><p>Microsoft Paint</p></td>
+<td><p>msp</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>image/png</p></td>
+<td><p>Portable Network Graphics</p></td>
+<td><p>png</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>image/ppm</p></td>
+<td><p>PPM image</p></td>
+<td><p>ppm</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>image/svg+xml</p></td>
+<td></td>
+<td><p>svg</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>image/tiff</p></td>
+<td><p>TIFF</p></td>
+<td><p>tif, tiff</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>image/vnd.ms-modi</p></td>
+<td><p>Microsoft Document Imaging</p></td>
+<td><p>mdi</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>image/x-cpt</p></td>
+<td><p>Corel PhotoPaint</p></td>
+<td><p>cpt</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>image/x-pcx</p></td>
+<td><p>PCX</p></td>
+<td><p>pcx</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>image/x-pict</p></td>
+<td><p>Macintosh Bitmap</p></td>
+<td><p>pct</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>image/x-ras</p></td>
+<td><p>Sun Raster(RAS)</p></td>
+<td><p>ras</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>image/x-wmf</p></td>
+<td><p>Windows Metafile</p></td>
+<td><p>wmf</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>text/csv</p></td>
+<td><p>CSV</p></td>
+<td><p>csv, txt</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>text/html</p></td>
+<td><p>HTML</p></td>
+<td><p>dhtm, dhtml, htm, html, htx, sht, shtm, shtml, stml, xht, xhtm, xhtml, xml, txt</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>text/plain</p></td>
+<td></td>
+<td><p>*</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>text/plain</p></td>
+<td><p>Text File</p></td>
+<td><p>txt</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>text/xml</p></td>
+<td><p>XML</p></td>
+<td><p>dhtm, dhtml, htm, html, htx, sht, shtm, shtml, stml, xht, xhtm, xhtml, xml, txt</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>text/xsl</p></td>
+<td><p>XSL</p></td>
+<td><p>xsl</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>unknown/unknown</p></td>
+<td></td>
+<td><p>*</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>video/mpeg</p></td>
+<td></td>
+<td><p>*</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>video/quicktime</p></td>
+<td><p>Quick Time Media</p></td>
+<td><p>qt</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>video/x-fli</p></td>
+<td><p>AutoDesk Animator</p></td>
+<td><p>fli</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>video/x-flv</p></td>
+<td><p>Macromedia Flash FLV Video</p></td>
+<td><p>flv</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>video/x-ms-asf</p></td>
+<td><p>Advanced Streaming Format</p></td>
+<td><p>asf</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>video/x-scm</p></td>
+<td><p>Lotus ScreenCam Movie</p></td>
+<td><p>scm</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+</tbody>
+</table>
+:::::::

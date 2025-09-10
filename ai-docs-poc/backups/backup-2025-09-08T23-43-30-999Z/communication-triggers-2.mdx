@@ -1,0 +1,30 @@
+---
+slug: trend-vision-one-communication-triggers-2
+title: Communication triggers
+last_updated: '2025-09-08'
+ai_context:
+  source_file: communication-triggers-2.md
+  conversion_date: '2025-09-08T23:42:23.212Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Communication triggers allows you to select criteria based on which [Checks](model-check.mdx) trigger automatic notifications to be sent via a [communication channel](communication-integrations.mdx) that has been set up. You can filter the Checks that trigger notifications using check/rule attributes and compliance standards. By default, the filter is set to 'All checks', meaning that you will be notified of all the failing Checks across all the *Categories* and *Risk Level*.
+
+An alert consists of rule details including Account name, Risk Level, Region, Resource, Description, and Introduced by: "user name" (only for the RTPM Rules). The alerts also include ARN with an exception to Email and SMS communication channels.
+
+:::note
+
+For SNS and PagerDuty's channels ARN is displayed as providerResourceId.
+:::
+
+For example, the alert generated below was sent to a user's Jira for the 'Rule S3 Configuration Changes':
+
+![](/images/jira-alert=19fb93bf-3ef9-4ac2-8be5-0591a9c38eee.webp){.zoom}
+
+:::note
+
+We recommended that you set up notifications for *Extreme*, *Very High*, and *High*-Risk Levels so your channel is not cluttered by all checks and your teams get notified on priority risks.
+:::
+:::::

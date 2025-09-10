@@ -1,0 +1,78 @@
+---
+slug: trend-vision-one-data-posture
+title: Data Security Posture
+last_updated: '2025-09-08'
+ai_context:
+  source_file: data-posture.md
+  conversion_date: '2025-09-08T23:42:20.857Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Get instant visibility into cloud assets containing sensitive data. Data Security Posture helps you understand your organization's data risk, and to view and address cloud assets with the riskiest sensitive data.
+
+Data Security Posture uses Terraform templates to deploy and execute a script in your AWS or Azure cloud environment. You can enable Data Security Posture when adding a new cloud account or updating an existing one in Cloud Accounts. The process to enable Data Security Posture differs for AWS and Azure accounts:
+
+- For AWS accounts, you deploy a CloudFormation template in your AWS environment. For more information, see [Enable Data Security Posture for your AWS cloud accounts](data-posture-for-aws-accounts.mdx).
+
+- For Azure subscriptions, you deploy a Terraform template, which runs a script in your Azure environment to allow Trend Vision One to monitor changes in your storage accounts. For more information, see [Enable Data Security Posture on an Azure subscription](data-security-posture-azure.mdx).
+
+After enabling Data Security Posture, Trend Vision One can discover and classify sensitive data in your cloud accounts, and predict potential attack paths for data leakage due to misconfigurations or vulnerabilities.
+
+:::tip
+
+Data Security Posture monitors cloud assets for sensitive data. To monitor devices and files in a network location, you must create data policies that identify the network locations that you want to monitor. For more information, see [Data Policy](data-policy-overview.mdx).
+:::
+
+The following table describes each widget in Data Security Posture.
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Widget</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data Risk</td>
+<td><p>A graphical representation of your organization's data risk over time. Data Risk is calculated as a summary of all risk events for assets with sensitive data.</p>
+<p>For more information, see <a href="trend-vision-one-data-risk">Data Risk</a>.</p></td>
+</tr>
+<tr>
+<td>Top Risky Assets with Sensitive Data</td>
+<td><p>A list of the assets in your organization with sensitive data that have the highest risk scores among all monitored assets in your environment.</p>
+<p>For more information, see <a href="trend-vision-one-top-risky-assets-sensitive-data">Top Risky Assets with Sensitive Data</a>.</p></td>
+</tr>
+<tr>
+<td>Sensitive Data Overview</td>
+<td><p>A summary of sensitive data, including a breakdown of sensitive data types and a summary of contributing sources.</p>
+<p>For more information, see <a href="trend-vision-one-sensitive-data-overview">Sensitive Data Overview</a>.</p></td>
+</tr>
+<tr>
+<td>Sensitive Data by Location</td>
+<td><p>Displays a map with the number of assets with sensitive data by geographical location. Hover over each number to view details.</p>
+<p>For more information, see <a href="trend-vision-one-sensitive-data-location">Sensitive Data by Location</a>.</p></td>
+</tr>
+<tr>
+<td>Exposure Risk Events</td>
+<td><p>A list of exposure-related risk events.</p>
+<p>For more information, see <a href="trend-vision-one-exposure-risk-events">Exposure Risk Events</a>.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Get started with Data Security Posture](getting-started-data-posture.mdx)
+- [Data Risk](data-risk.mdx)
+- [Top Risky Assets with Sensitive Data](top-risky-assets-sensitive-data.mdx)
+- [Sensitive Data Overview](sensitive-data-overview.mdx)
+- [Sensitive Data by Location](sensitive-data-location.mdx)
+- [Exposure Risk Events](exposure-risk-events.mdx)
+::::

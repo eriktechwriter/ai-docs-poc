@@ -1,0 +1,70 @@
+---
+slug: trend-vision-one-asset-profile-tags
+title: Asset profile platform tags
+last_updated: '2025-09-08'
+ai_context:
+  source_file: asset-profile-tags.md
+  conversion_date: '2025-09-08T23:42:24.781Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Find more information about asset profile platform tags defined by Trend Micro and used in Cyber Risk Exposure Management.
+
+Platform tags on the profile page of an asset are tags defined by Trend Micro that give more context about an asset and assist in evaluating asset criticality.
+
+The following table outlines the different components of a platform tag defined by Trend Micro for an asset.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Tag component</p></th>
+<th><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Attribute</p></td>
+<td><p>Account/Device access</p></td>
+</tr>
+<tr>
+<td><p>Description</p></td>
+<td><p>Access history of the account/device</p></td>
+</tr>
+<tr>
+<td><p>Value</p></td>
+<td><p>All possible values:</p>
+<ul>
+<li><p>New access: First accessed within the last five days</p></li>
+<li><p>Regular access: Accessed within the last 10 days</p></li>
+<li><p>Extended non-use: Not accessed for more than 10 days</p></li>
+<li><p>Resumed access: Accessed again after more than 10 days of non-use</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Details</p></td>
+<td><p>First seen: {firstDate} | Last seen: {lastDate}</p></td>
+</tr>
+</tbody>
+</table>
+
+Cyber Risk Exposure Management only considers significant platform tags as part of the asset criticality assessment. Additional platform tags are displayed for informational purposes, but the tags do not affect the asset risk score.
+
+Certain platform tags allow you to provide a custom value to replace the system-derived value. Tags you can customize have an edit icon (![](/images/edit_icon=GUID-1F1D1164-5310-4D6D-ACD0-6049C86960AF.webp)) next to the tag.
+
+:::warning[Important]
+
+When the collected activity data and available platform tags are insufficient for determining asset criticality, Cyber Risk Exposure Management assigns the default criticality level for the asset type.
+
+Connect more data sources so that Cyber Risk Exposure Management can identify significant platform tags and evaluate asset criticality. For more information, see [Configure Cyber Risk Exposure Management data sources](configuring-data-sources.mdx).
+:::
+
+**Related information**
+
+- [Custom asset tags](custom-asset-tags.md "Add, remove, assign, and modify custom asset tags in Attack Surface Discovery to add context to assets and improve asset organization.")
+::::

@@ -1,0 +1,72 @@
+---
+slug: trend-vision-one-vmware-vcenter-network-settings
+title: VMware vCenter network settings
+last_updated: '2025-09-08'
+ai_context:
+  source_file: vmware-vcenter-network-settings.md
+  conversion_date: '2025-09-08T23:42:11.600Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+After successfully deploying your Virtual Network Sensor, decide which network configurations to use based on your requirements.
+
+:::warning[Important]
+
+- Throughput is calculated as the sum of all data ports. If your deployment requires multiple data ports, add the additional data ports after powering off the deployed Virtual Network Sensor.
+
+- If your throughput is less than 2 Gbps, your [ERSPAN](external-inter-erspan.mdx) data port configuration can use a vSphere Distributed Switch, a vSphere Standard Switch, or a PCI passthrough.
+
+- If your throughput is equal to or greater than 2 Gbps, using a PCI passthrough is recommended. Your data port must be able to connect to the internet.
+:::
+
+To determine which deployment scenario is best for your network security needs, see [Mapping your deployment with VMware vCenter](map-deployment-vmware-vcenter.mdx).
+
+<table>
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Throughput</p></th>
+<th><p>Recommended Network Settings</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="2"><p>Throughput of monitored traffic is less than 2 Gbps</p></td>
+<td><ul>
+<li><p>For information about monitoring internal network traffic, see:</p>
+<ul>
+<li><p><a href="trend-vision-one-vsphere-dist-switch-promiscuous">Configuring internal network traffic with the VMware vSphere Distributed Switch (promiscuous mode)</a></p></li>
+<li><p><a href="trend-vision-one-intertraffic-vsphere-promiscuous">Configuring internal network traffic with the VMware vSphere Standard Switch (promiscuous mode)</a></p></li>
+<li><p><a href="trend-vision-one-vsphere-distributed-switch-span">Configuring internal network traffic with the VMware vSphere Distributed Switch (SPAN)</a></p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td><ul>
+<li><p>For information about monitoring external inter-VM traffic, see:</p>
+<ul>
+<li><p><a href="trend-vision-one-vm-vsphere-switch-rspan">Configuring external inter-VM traffic with the VMware vSphere Distributed Switch (RSPAN)</a></p></li>
+<li><p><a href="trend-vision-one-external-inter-erspan">Configuring external inter-VM traffic with ERSPAN</a></p></li>
+</ul></li>
+<li><p>For information about monitoring external network traffic from other external sources, see:</p>
+<ul>
+<li><p><a href="trend-vision-one-external-vsphere-switch-rspan">Configuring external network traffic with the VMware vSphere Distributed Switch (RSPAN)</a></p></li>
+<li><p><a href="trend-vision-one-external-vsphere-dist-switch-span">Configuring external network traffic with the VMware vSphere Distributed Switch (SPAN)</a></p></li>
+<li><p><a href="trend-vision-one-vsphere-st-switch-promiscuous-rspan">Configuring external network traffic with the VMware vSphere Standard Switch (promiscuous mode/RSPAN)</a></p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Throughput of monitored traffic is equal to or more than 2 Gbps</p></td>
+<td><ul>
+<li><p><a href="trend-vision-one-external-pci-passthrough-rspan">Configuring external network traffic with PCI passthrough (SPAN/RSPAN)</a></p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+::::

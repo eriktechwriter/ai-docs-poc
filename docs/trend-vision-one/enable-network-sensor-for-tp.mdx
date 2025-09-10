@@ -1,0 +1,84 @@
+---
+slug: trend-vision-one-enable-network-sensor-for-tp
+title: Enable TippingPoint Network Sensor
+---
+# Enable TippingPoint Network Sensor
+
+Enable TippingPoint Network Sensor to provide greater detection capability and visibility into your network environment and enables greater sharing of network telemetry with Trend Vision One.
+
+Before enabling TippingPoint Network Sensor on a device in a TPS stack, consider the following:
+
+- Make sure every device in the stack has TippingPoint Network Sensor either enabled or disabled.
+
+- After enabling or disabling TippingPoint Network Sensor on a stacked device, you must reboot the device. Repeat this sequence on every device in the stack.
+
+- Allow each device to finish the boot sequence completely, ensuring that the SMS no longer displays the `Not Communicating` status for the managed TPS device before rebooting the next device. After each reboot, wait for the SMS client to display a Ready to Inspect status (`RTI – Normal`).
+
+- After enabling or disabling a device, refresh the Trend Vision One window to ensure that the TippingPoint Network Sensor status has been updated accordingly and no longer instructs you to reboot the device.
+
+- Learn more about configuring a TPS stack in the *Trend Micro™ TippingPoint™ TPS Stacking User Guide*.
+
+:::warning[Important]
+
+TippingPoint Network Sensor has the following system requirements:
+
+- **Network Security** only supports Network Sensor on TippingPoint TXE-Series TPS devices, including the 5600, 8600, and 9200 TXE devices.
+
+- IPv6 device management for TippingPoint Network Sensor is not supported. From the SMS client, select **Devices → All Devices**, and then click **Device Configuration** for your device. Select **Management Information** and make sure that **Use IPv6 address to manage this device** is *not* selected.
+
+- TippingPoint Network Sensor uses 50GB of user disk space on the TPS device.
+
+- You must reboot the TPS device after TippingPoint Network Sensor is installed. This reboot does not cause any downtime for the device.
+
+- Enabling TippingPoint Network Sensor reduces the bandwidth capacity of TippingPoint devices as follows:
+
+  - 5600 TXE devices reduced from 10 Gbps to 5 Gbps (TippingPoint Network Sensor max capacity: 2 Gbps)
+
+  - 8600 TXE devices reduced from 40 Gbps to 20 Gbps (TippingPoint Network Sensor max capacity: 10 Gbps)
+
+  - 9200 TXE devices reduced from 100 Gbps to 60 Gbps (TippingPoint Network Sensor max capacity: 10 Gbps)
+
+- TippingPoint Network Sensor requires configuring additional ports and firewall exceptions. For more information, see [Ports and URLs used by TippingPoint](ports-urls-used-tippingpoint.mdx).
+:::
+
+Follow the steps below to enable TippingPoint Network Sensor on your TippingPoint TXE-Series TPS devices.
+
+### Procedure {#procedure}
+
+1.  On the Trend Vision One console, go to **Network Security → Network Inventory → TippingPoint**.
+
+2.  Locate the TippingPoint TXE device you want to use with TippingPoint Network Sensor and click the toggle to enable the feature.
+
+    A confirmation window appears. If internet or firewall issues prevent your TippingPoint device from [accessing required domains](https://docs.trendmicro.com/en-us/documentation/article/trend-vision-one-firewall-exception-requirements-for), continue to step 3 to configure a proxy server so that Trend Vision One can continue to receive network telemetry from your device. Otherwise, skip to step 4.
+
+    :::note
+
+    - The option to configure a proxy is available only when you enable TippingPoint Network Sensor.
+    - When you enable Network Sensor on the TPS, not only is firewall access to the domains required, but the Domain Name Server (DNS) on the TPS must also be configured to resolve those domains.
+    :::
+
+3.  Click **Configure** to configure a proxy if internet or firewall issues prevent your TippingPoint device from [accessing required domains](https://docs.trendmicro.com/en-us/documentation/article/trend-vision-one-firewall-exception-requirements-for).
+
+    1.  Specify an address for your HTTP proxy. HTTPS and SOCKS proxies are not supported.
+
+        You can enter an IPv4 address or an FQDN if your TPS device has a DNS server configured for resolving domain names.
+
+    2.  Specify the port number of your proxy server (1 - 65535).
+
+    3.  If your proxy requires authentication, select **Require authentication credentials**, and enter a user name and password.
+
+    4.  Click **Save**.
+
+4.  Click **Enable** to install TippingPoint Network Sensor on the TippingPoint device.
+
+    :::note
+
+    The Network Administrator must reboot the device from the SMS console. This reboot does not cause any downtime for the device.
+    :::
+
+5.  Click the management console link to access the TippingPoint SMS console that is managing the TippingPoint TXE device you want to use.
+
+6.  From the SMS console, navigate to **Devices → All Devices** and click on the TXE device where you enabled TippingPoint Network Sensor to reboot the device.
+
+7.  After the device finishes rebooting, refresh the **Network Inventory** page on the Trend Vision One console to view the updated device status.
+::::

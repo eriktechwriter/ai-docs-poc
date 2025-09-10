@@ -1,0 +1,307 @@
+---
+slug: trend-vision-one-node-js-api-reference
+title: Node.js API reference
+last_updated: '2025-09-08'
+ai_context:
+  source_file: node-js-api-reference.md
+  conversion_date: '2025-09-08T23:42:15.100Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+An API reference for the Node.js SDK for Trend Vision One™ File Security
+
+### AmaasGrpcClient {#amaasgrpcclient}
+
+The `AmaasGrpcClient` class is the main class of the SDK and provides methods to interact with the API.
+
+Create a new instance of the `AmaasGrpcClient` class.
+
+``` codeblock
+constructor( amaasHostName: string, credent: string, timeout: number | undefined = 180, enableTLS: boolean | undefined = true)
+```
+
+**AmaasGrpcClient Parameters**
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 60%" />
+<col style="width: 20%" />
+</colgroup>
+<thead style="text-align: left;">
+<tr>
+<th style="text-align: left;"><p>Parameter</p></th>
+<th style="text-align: left;"><p>Description</p></th>
+<th style="text-align: left;"><p>Default value</p></th>
+</tr>
+</thead>
+<tbody style="text-align: left;">
+<tr>
+<td style="text-align: left; vertical-align: top;"><p><code>amaasHostName</code></p></td>
+<td style="text-align: left; vertical-align: top;"><p>The File Security server address or the region of your Trend Vision One account. The region is the location where you acquire your API key. Value provided must be one of the Vision One regions, for example:</p>
+<ul>
+<li><code>ap-northeast-1</code></li>
+<li><code>ap-south-1</code></li>
+<li><code>ap-southeast-1</code></li>
+<li><code>ap-southeast-2</code></li>
+<li><code>eu-central-1</code></li>
+<li><code>us-east-1</code></li>
+</ul></td>
+<td style="text-align: left; vertical-align: top;"></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p><code>credent</code></p></td>
+<td style="text-align: left; vertical-align: top;"><p>Your Vision One API key.</p></td>
+<td style="text-align: left; vertical-align: top;"></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p><code>timeout</code></p></td>
+<td style="text-align: left; vertical-align: top;"><p>Timeout to cancel the connection to the server, in seconds.</p></td>
+<td style="text-align: left; vertical-align: top;"><p>180</p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p><code>enableTLS</code></p></td>
+<td style="text-align: left; vertical-align: top;"><p>Enable or disable transport layer security (TLS). You should always enable TLS when connecting to the File Security server.</p></td>
+<td style="text-align: left; vertical-align: top;"><p>True</p></td>
+</tr>
+</tbody>
+</table>
+
+*Return* An AmaasGrpcClient instance
+
+### Scan file {#scan-file}
+
+Scan a file for malware and retrieve response data from the API.
+
+``` codeblock
+scanFile (name: string, tags?: string[]), Promise<AMaaSScanResultObject
+```
+
+**scanFile Parameters**
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 44%" />
+<col style="width: 44%" />
+</colgroup>
+<thead style="text-align: left;">
+<tr>
+<th style="text-align: left;"><p>Parameter</p></th>
+<th style="text-align: left;"><p>Description</p></th>
+<th><p>Default Value</p></th>
+</tr>
+</thead>
+<tbody style="text-align: left;">
+<tr>
+<td style="text-align: left; vertical-align: top;"><p><code>name</code></p></td>
+<td style="text-align: left; vertical-align: top;"><p>The name of the file with the path of the directory containing the file to scan.</p></td>
+<td style="vertical-align: top"> </td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p><code>tags</code></p></td>
+<td style="text-align: left; vertical-align: top;"><p>The list of tags that can be used to tag the scan. Tags are optional. The maximum number of tags is eight. The maximum size of each tag is 63 characters.</p></td>
+<td style="vertical-align: top"> </td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><code>pml</code></td>
+<td style="text-align: left; vertical-align: top;"><p>Enables Predictive Machine Learning (PML).</p></td>
+<td><p>false</p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><code>feedback</code></td>
+<td style="text-align: left; vertical-align: top;"><p>Enables Trend Micro Smart Protection Network (SPN) Smart Feedback.</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+
+*Return* A Promise that resolves to the API response data.
+
+### Scan buffer {#scan-buffer}
+
+Scan a buffer for malware and retrieve response data from the API.
+
+``` codeblock
+scanBuffer(fileName: string, buff: buffer, tags?: string[]): Promise<AmaasScanResultObject>
+```
+
+**scanBuffer Parameters**
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 44%" />
+<col style="width: 44%" />
+</colgroup>
+<thead style="text-align: left;">
+<tr>
+<th style="text-align: left;"><p>Parameter</p></th>
+<th style="text-align: left;"><p>Description</p></th>
+<th></th>
+</tr>
+</thead>
+<tbody style="text-align: left;">
+<tr>
+<td style="text-align: left; vertical-align: top;"><p><code>fileName</code></p></td>
+<td style="text-align: left; vertical-align: top;"><p>The name of the file or object the buffer is created from. The name is used to identify the buffer.</p></td>
+<td style="vertical-align: top"> </td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p><code>buff</code></p></td>
+<td style="text-align: left; vertical-align: top;"><p>The buffer to scan.</p></td>
+<td style="vertical-align: top"> </td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p><code>tags</code></p></td>
+<td style="text-align: left; vertical-align: top;"><p>The list of tags that can be used to tag the scan. Tags are optional. The maximum number of tags is eight. The maximum size of each tag is eight characters.</p></td>
+<td style="vertical-align: top"> </td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><code>pml</code></td>
+<td style="text-align: left; vertical-align: top;"><p>Enables Predictive Machine Learning (PML).</p></td>
+<td><p>false</p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><code>feedback</code></td>
+<td style="text-align: left; vertical-align: top;"><p>Enables Trend Micro Smart Protection Network (SPN) Smart Feedback.</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+
+*Return* A promise that resolves to the API response data.
+
+### Close connection {#close-connection}
+
+Close connection to the AMaaS server.
+
+``` codeblock
+close(): void
+```
+
+**close Parameters**
+
+<table>
+<thead style="text-align: left;">
+<tr>
+<th style="text-align: left;"><p>Parameter</p></th>
+<th style="text-align: left;"><p>Description</p></th>
+</tr>
+</thead>
+<tbody style="text-align: left;">
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>none</p></td>
+<td style="text-align: left; vertical-align: top;"><p>none</p></td>
+</tr>
+</tbody>
+</table>
+
+*Return* Void
+
+### Set the logging level {#set-the-logging-level}
+
+**setLoggingLevel(level: Loglevel): void**
+
+Configure the active logging level of the SDK. The change applies globally to all AMaaS Client instances. The default level, `LogLevel.OFF`, corresponds to all logging disabled. When logging is enabled, logs write to `stdout` unless custom logging is configured using `configLoggingCallback()`.
+
+**setLoggingLevel Parameters**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 50%" />
+<col style="width: 25%" />
+</colgroup>
+<thead style="text-align: left;">
+<tr>
+<th style="text-align: left;"><p>Parameter</p></th>
+<th style="text-align: left;"><p>Description</p></th>
+<th style="text-align: left;"><p>Default value</p></th>
+</tr>
+</thead>
+<tbody style="text-align: left;">
+<tr>
+<td style="text-align: left; vertical-align: top;"><p><code>level (Loglevel)</code></p></td>
+<td style="text-align: left; vertical-align: top;"><p>Valid values:</p>
+<ul>
+<li>LogLevel.DEBUG</li>
+<li>LogLevel.ERROR</li>
+<li>LogLevel.FATAL</li>
+<li>LogLevel.INFO</li>
+<li>LogLevel.OFF</li>
+<li>LogLevel.WARN</li>
+</ul></td>
+<td style="text-align: left; vertical-align: top;"><p>LogLevel.OFF</p></td>
+</tr>
+</tbody>
+</table>
+
+*Return* Void
+
+### Logging callback {#logging-callback}
+
+Set up custom logging by provisioning the SDK with a custom callback function that is invoked whether the SDK wants to record a log.
+
+``` codeblock
+configLoggingCallBack (LogCallback: Function): void
+```
+
+**configLoggingCallBack Parameters**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead style="text-align: left;">
+<tr>
+<th style="text-align: left;"><p>Parameter</p></th>
+<th style="text-align: left;"><p>Description</p></th>
+</tr>
+</thead>
+<tbody style="text-align: left;">
+<tr>
+<td style="text-align: left; vertical-align: top;"><p><code>LogCallback</code></p></td>
+<td style="text-align: left; vertical-align: top;"><p>A function with the type <code>(level LogLevel, message: string) =&gt; void</code></p></td>
+</tr>
+</tbody>
+</table>
+
+*Return* Void
+
+### AmaasScanResult {#amaasscanresult}
+
+The AmaasScanResultObject interface defines the structure of the response data that is retrieved from our API. The following are the fields in the interface.
+
+``` codeblock
+interface AmaasScanResultObject {
+  scanTimestamp: string        // Timestamp of the scan in ISO 8601 format
+  version: string              // Scan result schema version
+  fileName: string             // Name of the file scanned
+  scanId: string               // ID of the scan
+  scanResult: number           // Number of malwares found. A value of 0 means no malware was found
+  foundMalwares: [             // A list of malware names and the filenames found by AMaaS
+    {
+      fileName: string; // File name which found the malware
+      malwareName: string; // Malware name
+    },
+  ];
+}
+```
+
+### LogLevel {#loglevel}
+
+``` codeblock
+enum LogLevel {
+  OFF, // 0
+  FATAL, // 1
+  ERROR, // 2
+  WARN, // 3
+  INFO, // 4
+  DEBUG, // 5
+}
+```
+:::

@@ -1,0 +1,23 @@
+---
+slug: trend-vision-one-delegate-account
+title: Delegate account
+---
+# Delegate account
+
+A Delegate Account is not associated with an actual person. A Delegate Account is a tenant account that Cloud Email and Collaboration Protection requires to integrate with Exchange Online, SharePoint Online, and OneDrive.
+
+Cloud Email and Collaboration Protection creates the Delegate Account to use basic authentication (pass of the username and password with every request) when connecting to a protected Microsoft 365 service. Through the Delegate Account, Cloud Email and Collaboration Protection scans files in real-time to protect end users from advanced threats and to enforce compliance based on Data Loss Prevention policies.
+
+:::warning[Important]
+
+Cloud Email and Collaboration Protection uses the Delegate Account to integrate with Microsoft 365 services and access Microsoft 365 data under your authorization to protect your email messages and files from network threats.
+
+To guarantee stringent protection of data from unauthorized access, Cloud Email and Collaboration Protection secures Delegate Account credentials by encrypting the credential password with AES-256. Cloud Email and Collaboration Protection creates and manages the 256-bit encryption key using the Trend Micro Key Management Service through the Microsoft Azure Key Vault service.
+
+Access to your Delegate Account is restricted to the Cloud Email and Collaboration Protection service only.
+:::
+
+For Exchange Online, Cloud Email and Collaboration Protection uses the Delegate Account to access mailbox accounts designated for protection, and "listens" for arriving email messages. Through the Delegate Account, Cloud Email and Collaboration Protection gets access to email messages on the Microsoft 365 cloud, scans them, and then takes pre-configured actions as necessary.
+
+For SharePoint Online and OneDrive, Cloud Email and Collaboration Protection uses the Delegate Account to access site collections and user profiles designated for protection, "listens" for users uploading, creating, synchronizing, or modifying files, and then takes pre-configured actions as necessary.
+::::

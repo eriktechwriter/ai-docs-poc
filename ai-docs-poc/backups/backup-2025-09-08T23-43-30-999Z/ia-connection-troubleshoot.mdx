@@ -1,0 +1,63 @@
+---
+slug: trend-vision-one-ia-connection-troubleshoot
+title: Internet Access connection troubleshooting
+last_updated: '2025-09-08'
+ai_context:
+  source_file: ia-connection-troubleshoot.md
+  conversion_date: '2025-09-08T23:42:18.029Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Collect information to troubleshoot internet connectivity and latency issues.
+
+Internet Access Diagnostics is a browser-based tool that collects troubleshooting information for endpoints when they connect to the internet through the Internet Access Gateway. To identify internet connectivity and latency issues between the endpoint, the Internet Access Gateway, and the destination website, instruct your end user to follow these instruction to access **Internet Access Diagnostics** and provide the debug log to you or your support provider.
+
+:::note
+
+Trend Micro recommends you use the Internet Access Diagnostics rather than other third-party test tools to avoid introducing extra latency or variables that affect troubleshooting.
+:::
+
+### Procedure {#procedure}
+
+1.  Access the **Internet Access Diagnostics** page `http://auth.ztsa-iag.trendmicro.com/diagnose`.
+
+    :::note
+
+    - To ensure that Internet Access uses the tool properly, Trend Mico recommends not adding `auth.ztsa-iag.trendmicro.com` or any domain with wildcard characters that matches `auth.ztsa-iag.trendmicro.com` to the proxy bypass list in your [PAC files](configuring-pac-files.mdx).
+
+    - The diagnostics page supports HTTP only. For browsers that automatically redirect HTTP to HTTPS for security purposes, change browser settings to open the diagnostics page properly.
+    :::
+
+    - From the *Secure Access Module*: Sign in to the Secure Access Module, click **Debug Settings**, and then click **Diagnose Internet Access**.
+
+      The diagnostics page opens in a supported browser.
+
+    - From the browser: Open the diagnostics page in a supported browser.
+
+2.  Test network connectivity.
+
+    1.  Verify that the status of "Internet Access Gateway connection" is "Connected as proxy server", which means Internet Access is working properly.
+
+    2.  Browse a website.
+
+        The website opens.
+
+3.  Test the latency to access a website.
+
+    1.  Confirm that the user has signed in from either the Secure Access Module or the Internet Access sign-in page.
+
+    2.  On the **Internet Access Diagnostics** page, type an HTTP or HTTPS URL in the **Round-Trip Time (RTT) Test** text box, and click **Test**.
+
+        The round-trip test result page opens in a new browser tab, indicating the time spent on request transmission and processing, and the matched secure access rule and/or HTTPS inspection rule.
+
+        :::note
+
+        - If the URL is blocked by a configured secure access rule, [a customized rule block page](customization-settings.mdx) appears.
+
+        - If an HTTPS URL does not match a configured HTTPS inspection rule and the request is initiated from a defined corporate network location, the actual website instead of the test result page opens.
+        :::
+
+    3.  (Optional) Download and provide the debug log for further analysis.
+::::

@@ -1,0 +1,73 @@
+---
+slug: trend-vision-one-network-sensors-deploy-guides
+title: Virtual Network Sensor deployment guides
+last_updated: '2025-09-08'
+ai_context:
+  source_file: network-sensors-deploy-guides.md
+  conversion_date: '2025-09-08T23:42:15.294Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Connect and configure the Virtual Network Sensor to monitor network traffic in Network Security.
+
+The **Network Security** app enables greater visibility of your environment through deployment of appliances which monitor traffic and collect data to help determine if there is an active attack on your network. Virtual Network Sensor is recommended for new users or users wishing to take advantage of a lightweight network sensor that is easier to set up and manage.
+
+The following steps provide a high-level overview of how to deploy and connect Virtual Network Sensor to Trend Vision One.
+
+### Procedure {#procedure}
+
+1.  Review the [Virtual Network Sensor system requirements](network-sensor-sys-reqs.mdx) before starting and ensure you have adequate resources for the Virtual Network Sensor.
+
+2.  Download the Virtual Network Sensor disk image or token from **Network Inventory**.
+
+3.  Configure network settings and deploy a Virtual Network Sensor.
+
+    Review the deployment guide for your desired platform and security environment.
+
+    - [AWS cloud accounts using an Amazon Machine Image (AMI)](virtual-network-sensor-aws.mdx)
+
+    - [AWS S3 buckets using a CloudFormation template](deploy-vns-cf-template.mdx)
+
+    - [Google Cloud projects](launching-vns-instance-google-cloud.mdx)
+
+    - [Microsoft Azure cloud subscriptions](deploy-network-sensor-azure.mdx)
+
+    - [Microsoft Hyper-V on Windows Server 2016 or later](deploy-network-sensor-hyper-v.mdx)
+
+    - [KVM](deploy-network-sensor-kvm.mdx)
+
+    - [Nutanix AHV](deploy-vns-with-nutanix-ahv.mdx)
+
+    - [VMware ESXi version 6.5 (Build: 19092475) or later](network-sensor-vmware-esxi.mdx)
+
+    - [VMware vCenter](network-sensor-vmware-vcenter.mdx)
+
+    If you want to use a third-party network switch or device to configure traffic mirroring for your Virtual Network Sensor, see [Traffic mirroring with network devices](traffic-mirroring-network-devices.mdx).
+
+4.  Verify your Virtual Network Sensors appear in **Network Inventory**.
+
+5.  If your Virtual Network Sensor does not appear in **Network Inventory**, check the following:
+
+    - Network settings (NIC/vNIC setting and order)
+
+    - Firewall settings
+
+    - Proxy settings if using a proxy
+
+    - Review the [Virtual Network Sensor FAQ](virtual-network-sensor-faqs.mdx) to verify and test the connection.
+
+**Related information**
+
+- [Deploying a Virtual Network Sensor with AWS](virtual-network-sensor-aws.md "Deploy a Virtual Network Sensor to your AWS cloud environment.")
+- [Deploying a Virtual Network Sensor with Google Cloud](deploying-vns-google-cloud.md "Deploy a Virtual Network Sensor to your Google Cloud environment.")
+- [Deploying a Virtual Network Sensor with Microsoft Azure](deploy-network-sensor-azure.md "Deploy your Virtual Network Sensor to your Azure cloud environment.")
+- [Deploying a Virtual Network Sensor with Hyper-V](deploy-network-sensor-hyper-v.md "Learn how to deploy your own Virtual Network Sensor with Microsoft Hyper-V.")
+- [Deploying a Virtual Network Sensor with KVM](deploy-network-sensor-kvm.md "Learn how to deploy your own Virtual Network Sensor with KVM, using Red Hat Enterprise Linux 9.2 as an example.")
+- [Deploying a Virtual Network Sensor with Nutanix AHV](deploy-vns-with-nutanix-ahv.md "Learn how to deploy your own Virtual Network Sensor on Nutanix AHV.")
+- [Deploying a Virtual Network Sensor with VMware ESXi](network-sensor-vmware-esxi.md "Learn how to deploy your own Virtual Network Sensor on VMware ESXi.")
+- [Deploying a Virtual Network Sensor with VMware vCenter](network-sensor-vmware-vcenter.md "Learn how to deploy your own Virtual Network Sensor on VMware vCenter.")
+- [Virtual Network Sensor system requirements](network-sensor-system-requirements.md "View the system requirements for Virtual Network Sensor.")
+- [Traffic mirroring with network devices](traffic-mirroring-network-devices.md "Information regarding traffic mirroring with physical switches and network devices.")
+:::

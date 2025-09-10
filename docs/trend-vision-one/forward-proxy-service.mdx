@@ -1,0 +1,76 @@
+---
+slug: trend-vision-one-forward-proxy-service
+title: Forward Proxy Service
+---
+# Forward Proxy Service
+
+Specify the Trend Micro services that your on-premises Trend Micro products can access through the Forward Proxy Service.
+
+### Procedure {#procedure}
+
+1.  Go to **Workflow and Automation → Service Gateway Management**.
+
+2.  Click the name of the Service Gateway appliance with **Forward Proxy Service** installed.
+
+3.  In the **Installed Services** list, locate **Forward Proxy Service** and click the configure icon (![](/images/configure=GUID-657DB993-ADC7-4DEC-8C62-C8739D74760E.webp)).
+
+4.  In the **Forward Proxy Service** panel, select whether you allow your on-premises Trend Micro products to access only specified Trend Micro services through the Forward Proxy Service.
+
+    The Forward Proxy Service comes with a list of [predefined allowed Trend Micro services](predefined-allow-list.mdx) in "FQDN and port" pair, as well as services submitted via API. You can also add allowed services as needed.
+
+5.  Click **Add**, and then specify the FQDN, IP address, or CIDR, as well as the port number of an allowed Trend Micro service.
+
+    You can only modify service information that is added manually or via API.
+
+    :::warning[Important]
+
+    Trend Micro recommends keeping the predefined allowed services. Deleting these services might interference with the normal operations of the associated Trend Vision One features and apps.
+    :::
+
+6.  Repeat step 5 to add more allowed services.
+
+7.  In the **Custom Port** section, configure a custom port for the Forward Proxy Service if the default port (8080) is restricted or already in use in your network environment.
+
+    The following Trend Micro services currently support custom ports:
+
+    - Server & Workload Protection (Windows/Linux ) version 20.0.1.9400 or later
+
+    - Standard Endpoint Protection (Windows) version 14.0.13139 or later
+
+    - Trend Vision One Endpoint Security agent June 2024 release or later
+
+    - Trend Micro Endpoint Basecamp
+
+    - Apex One as a Service
+
+    - Trend Vision One Mobile Security
+
+    - Trend Micro Deep Discovery Inspector
+
+    - Trend Micro Deep Discovery Email Inspector 5.1.0 3342 or later
+
+    - TXOne StellarOne
+
+    - TXOne EdgeOne
+
+    :::note
+
+    The Deep Security Agent does not support custom ports. If you need to use a non-default port, upgrade to Trend Vision One Endpoint Security - Server & Workload Protection, which supports custom ports for the Forward Proxy Service.
+
+    For more information, see [Upgrade to Trend Vision One Endpoint Security - Server & Workload Protection](https://help.deepsecurity.trendmicro.com/20_0/on-premise/migration.mdx) and [Integrate Workload Security with Trend Vision One](https://docs.trendmicro.com/en-us/documentation/article/trend-micro-cloud-one-workload-security-xdr).
+    :::
+
+    :::warning[Important]
+
+    Changing the port might temporarily interrupt the connection with Trend Micro services if the Service Gateway is the only configured proxy for your connected Trend Micro products. Ensure you have a secondary Service Gateway or fallback mechanism in place before applying changes.
+
+    For guidance on safely changing the port, see [Best practices for changing the port](best-practices-for-changing-port.mdx).
+    :::
+
+8.  Click **Submit**.
+
+**Related information**
+
+- [Predefined allow list for Trend Micro services](predefined-allow-list.md "A list of FQDNs and ports for Trend Micro services that are allowed to access through the Forward Proxy Service.")
+- [Best practices for changing the port](best-practices-for-changing-port.md "Learn how to minimize service disruption during Forward Proxy Service port changes.")
+:::

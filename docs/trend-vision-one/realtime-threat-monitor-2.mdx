@@ -1,0 +1,131 @@
+---
+slug: trend-vision-one-realtime-threat-monitor-2
+title: Real-Time Posture Monitoring settings
+---
+# Real-Time Posture Monitoring settings
+
+The [Real-Time Posture Monitoring (RTPM)](https://docs.trendmicro.com/en-us/documentation/article/trend-micro-cloud-one-conformity-real-time-threat-monitoring) settings allow you to install, update and delete the required resources for RTPM. Once you create the required resources, events from the cloud account appear on the RTPM event monitoring dashboard, and a [subset of Rules](https://docs.trendmicro.com/en-us/documentation/article/trend-micro-cloud-one-conformity-rules) start to update based on these events. We provide both Powershell and Bash scripts to set up RTPM.
+
+:::note
+
+- For AWS Accounts: Real-Time Posture Montoring can be enabled through Account Management in Trend Vision One.
+- For Azure and Google Cloud Accounts: You can enable the feature by running the executable scripts mentioned in the sections below.
+:::
+
+### Content {#content}
+
+- RTPM for AWS
+- RTPM for Azure
+- RTPM for GCP
+
+### RTPM for AWS (Through Account Management) {#rtpm-for-aws-through-account-management}
+
+### Set up Requirements {#set-up-requirements}
+
+- Ensure that you have CloudTrail enabled. For help, see the Cloud Risk Management Rule [CloudTrail Enabled](https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/CloudTrail/cloudtrail-enabled.mdx).
+
+- For Existing Cloud Posture Users: Ensure that you have uninstalled the legacy RTPM for Cloud Posture, if you haven’t already:
+
+- For Existing Cloud Risk Management Users: Ensure that you have uninstalled the legacy RTPM for Cloud Posture, if you haven’t already:
+
+- 1.  Open a command prompt or shell
+
+  2.  Run the following command:
+
+      ```bash
+      curl -L https://us-west-2.cloudconformity.com/v1/monitoring/uninstall.sh | bash
+            -s
+      ```
+
+### Installing RTPM for AWS {#installing-rtpm-for-aws}
+
+**Installing RTPM for a new AWS Account:**
+
+1.  Go to *Service Management* \> *Cloud accounts.*
+2.  Under the **AWS** tab, click on **Add Account.**
+3.  Under *All Features*, toggle *Real-Time Posture Monitoring* and select the regions.
+4.  Click on **Launch Stack** and follow the instructions on the screen.
+
+**Installing RTPM for a new AWS Organisation:**
+
+1.  Go to *Service Management* \> *Cloud accounts*.
+2.  Under the **AWS** tab, click on **Add Account**.
+3.  Under *All Features*, toggle *Real-Time Posture Monitoring* and select the regions.
+4.  Click on **Launch Stack** and follow the instructions on the screen.
+
+**Installing RTPM for an existing AWS Account:**
+
+1.  Go to *Service Management* \> *Cloud accounts*.
+2.  Click on the AWS account name you wish to install **Real-Time Posture Monitoring.**
+3.  From *Cloud Accounts Settings* \> click on the **Stack Update** tab
+4.  From *Select Features*, toggle *Real-Time Posture Monitoring*
+5.  Follow the instructions under **Update CloudFormation Template.** .
+
+### Uninstalling RTPM for AWS {#uninstalling-rtpm-for-aws}
+
+To uninstall RTPM from an AWS account in your organisation:
+
+1.  Sign into the Vision One console, go to ***Service Management*** \> ***Cloud accounts***.
+2.  Click on the account name you wish to uninstall ***Real-Time Posture Monitoring***.
+3.  From ***Cloud Accounts Settings*** \> click on the ***Stack Update*** tab.
+4.  From ***Select Features***, un-toggle ***Real-Time Posture Monitoring***
+5.  Follow the instructions under *Update CloudFormation Template.*
+
+### RTPM for Google Cloud {#rtpm-for-google-cloud}
+
+**Installing RTPM for a new Google Cloud project**
+
+1.  Go to **Cloud Security → Cloud Accounts → Google Cloud**.
+2.  Click **Add Project** .
+3.  Specify the general information for the project and click **Next**. For more details, see [Adding a Google Cloud project.](adding-google-cloud-project.mdx) The **Features and Permissions** screen appears.
+4.  In **Features and Permissions**, enable **Real-Time Posture Monitoring.** The **Launch** screen appears.
+5.  Follow the instructions on the **Launch** screen.
+6.  Click on **Done** to save changes.
+
+**Installing RTPM for an existing Google Cloud Project**
+
+1.  Select the Google Cloud project you wish to install RTPM.
+2.  Go to **Features and Permissions → Resource** tab.
+3.  Enable **Real-Time Posture Monitoring** and follow the instructions to complete the set-up.
+
+    :::note
+
+    The Cloud Accounts terraform script automatically handles the transition from legacy Real-Time Monitoring (RTM) to the new Real-Time Posture Monitoring (RTPM) feature. If the legacy RTM is detected, it will be uninstalled before the new RTPM resources are deployed.
+    :::
+
+**Uninstalling RTPM from a Google Cloud account**
+
+1.  Go to **Cloud Security → Cloud Accounts → Google Cloud**.
+2.  Click on the Google cloud proect account name you wish to uninstall **Real-Time Threat Monitoring**.
+3.  Go to **Resource Update → Features and Permissions**.
+4.  Un-toggle ***Real-Time Posture Monitoring*** and follow the instructions to complete the action. RTPM for Azure
+
+### RTPM for Azure {#rtpm-for-azure}
+
+**Installing RTPM for a new Azure Subscriptiont**
+
+1.  Go to **Cloud Security → Cloud Accounts → Azure**.
+2.  Click **Add Project** .
+3.  Specify the general information for the project and click **Next**. For more details, see [Adding an Azure subscription](adding-azure-subscription.mdx) The **Features and Permissions** screen appears.
+4.  In **Features and Permissions**, enable **Real-Time Posture Monitoring.** The **Launch** screen appears.
+5.  Follow the instructions on the **Launch** screen.
+6.  Click on **Done** to save changes.
+
+**Installing RTPM for an existing Azure Subscriptiont**
+
+1.  Select the Azure subscription you wish to install RTPM.
+2.  Go to **Features and Permissions → Resource** tab.
+3.  Enable **Real-Time Posture Monitoring** and follow the instructions to complete the set-up.
+
+    :::note
+
+    The Cloud Accounts terraform script automatically handles the transition from legacy Real-Time Monitoring (RTM) to the new Real-Time Posture Monitoring (RTPM) feature. If the legacy RTM is detected, it will be uninstalled before the new RTPM resources are deployed.
+    :::
+
+**Uninstalling RTPM from an Azure subscription**
+
+1.  Go to **Cloud Security → Cloud Accounts → Azure**.
+2.  Click on the account name you wish to uninstall **Real-Time Threat Monitoring**.
+3.  Go to **Resource Update → Features and Permissions**.
+4.  Un-toggle ***Real-Time Posture Monitoring*** and follow the instructions to complete the action.
+::::

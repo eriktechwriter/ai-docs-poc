@@ -1,0 +1,61 @@
+---
+slug: trend-vision-one-version-control-policies-faq
+title: Version control policies FAQ
+last_updated: '2025-09-08'
+ai_context:
+  source_file: version-control-policies-faq.md
+  conversion_date: '2025-09-08T23:42:11.641Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Frequently asked questions about version control policies.
+
+**Related information**
+
+- Why is my Protection Manager not on the enrollment list?
+- Do agents continue to update if the operating system has reached End of Service?
+- Do fixed agent versions update if the current version is no longer available or reaches end of support?
+
+## Why is my Protection Manager not on the enrollment list? {#why-is-my-protection-manager-not-on-the-enrollment-list}
+
+When using the **Protection Manager enrollment** you might find that some of your Protection Managers are not listed. This can be due to a couple of reasons:
+
+- You created a new Protection Manager Instance after the release of Version Control Policies.
+
+  Newly created Protection Managers are not included on the enrollment list. If you want to unenroll a newly created Protection Manager, please contact your support provider.
+
+- You updated from Trend Cloud One Endpoint & Workload Security to Server & Workload Protection.
+
+  When updating to Server & Workload Protection, your Trend Cloud One instance generates three API keys to interface with Trend Vision One. If any of the API keys fail to generate, your Server & Workload Protection instance cannot appear on the enrollment list.
+
+  You can verify the API keys in your Trend Cloud One console by going to **Administration → API Keys**. If one or more API keys are missing, please contact your support provider.
+
+  <figure>
+  <img src="./images/TrendCloudOneAPIKeysforSWP=9d183c41-a8e1-4c01-97cc-c96e10a0b8ce.webp" />
+  <figcaption>API Keys for updating to Server &amp; Workload Protection</figcaption>
+  </figure>
+
+## Do agents continue to update if the operating system has reached End of Service? {#do-agents-continue-to-update-if-the-operating-system-has-reached-end-of-service}
+
+Once an operating system reaches End of Service (EOS) and is no longer supported by Trend Micro products, the Trend Vision One Endpoint Security agent stops applying updates. The agent displays an unsupported status in **Endpoint Inventory** to help inform about the situation.
+
+For more information about the Trend Micro platform support policy, see [Standard and extended support policies for agents](extended-support-for-agents.mdx).
+
+## Do fixed agent versions update if the current version is no longer available or reaches end of support? {#do-fixed-agent-versions-update-if-the-current-version-is-no-longer-available-or-reaches-end-of-support}
+
+If you have selected the **Fixed Version** policy for your endpoint agents, the agents only update to the selected version and no later. The assigned agents maintain the following behaviors:
+
+- The fixed version policy applies even if the selected version is no longer available in Version Control Policies.
+
+- If the selected agent version package has reached End of Support (EoS), agents maintain the policy and do not update beyond the selected version. However, agents using earlier versions might not be able to update to the selected version.
+
+- If an endpoint has installed a newer agent version than the selected version, the agent stays on that version. The agent does not update to newer versions and does not revert to the selected version.
+
+If the agent version is too outdated, you might need to redeploy to update to the latest version. Trend Micro recommends updating your agents frequently to ensure you have the latest protection features available.
+
+You can select up to the last 12 agent update releases when configuring a **Fixed Version** policy. For more information, see [Configuring version control policies](configuring-update-policies.mdx).
+
+Support for specific agent versions depends on the endpoint protection type and the operating system the agent supports. For more details, see [Standard and extended support policies for agents](extended-support-for-agents.mdx).
+:::

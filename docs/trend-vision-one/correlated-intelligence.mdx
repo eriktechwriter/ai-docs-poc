@@ -1,0 +1,145 @@
+---
+slug: trend-vision-one-correlated-intelligence
+title: Correlated Intelligence
+---
+# Correlated Intelligence
+
+Detect security risks and identify anomalies by correlating signals across different sources.
+
+Designed to empower you with enhanced detection capabilities, Correlated Intelligence correlates suspicious signals from various sources to detect security risks and anomalies.
+
+:::note
+
+- Correlated Intelligence is available for Exchange Online, Exchange Online (Inline Mode), Gmail, and Gmail (Inline Mode).
+
+- Currently, Correlated Intelligence collects signals from Advance Spam Protection, Malware Scanning, and Web Reputation.
+:::
+
+One key advantage of Correlated Intelligence is its capability to see and analyze signals from multiple sources to identify security risks that may go unnoticed by a single security filter. This multi-source approach adds an extra layer of protection to detect potential threats.
+
+Another highlight of Correlated Intelligence is its ability to alert you of anomalies, which shows one or multiple signals that deviate from normal behaviors. Anomalies may not necessarily indicate a security risk, but are unusual enough to warrant attention. With this feature, you can have a more comprehensive view of your security landscape.
+
+Correlated Intelligence operates by first gathering signals from various security filters and then matching the signals against the predefined or user-defined rules. The aim of this process is to identify any matches that could indicate a security risk or anomaly, providing a more thorough and nuanced analysis of potential security threats.
+
+Cloud Email and Collaboration Protection comes with a set of [predefined correlation rules and detection signals](correlation-rules-detect.mdx) to detect [Trend Micro specified security risks and anomalies](security-risks-types-signals.mdx). You can also define custom detection signals that are unique and critical to your environment, and then incorporate them into custom correlation rules. This provides you with flexibility of configuring Correlated Intelligence policies that meet your actual needs.
+
+**Related information**
+
+- Configuring Correlated Intelligence
+
+## Configuring Correlated Intelligence {#configuring-correlated-intelligence}
+
+Enable detection of security risks and anomalies through correlation of signals across different sources and specify the action to apply to any match.
+
+### Procedure {#procedure}
+
+1.  Select **Correlated Intelligence**.
+
+    By default, this security filter is enabled with the following settings:
+
+    - The action for security risk detection is set to **Quarantine**.
+
+    - **All pre-defined rules** is selected for anomaly detection. This enforces all existing and future predefined correlation rules to automatically detect anomalies.
+
+    You can work with the default settings or configure the settings to meet your requirements.
+
+2.  Configure **Action** settings for emails detected as security risks.
+
+    Security risks are high-confidence detections by Correlated Intelligence. These are usually sophisticated attacks that are difficult to detect with a single protection layer. Correlated Intelligence combines signals from various sources to identify advanced attacks designed to bypass traditional, layer-by-layer defenses.
+
+    For details about the actions, see [Actions available for different services](actions-different-services.mdx).
+
+3.  Turn on notification for Cloud Email and Collaboration Protection to send notification emails upon security risk detection.
+
+4.  Determine to enforce all or partial predefined correlation rules to detect anomalies.
+
+    - **All pre-defined rules**
+
+      This option is automatically selected when you enable the **Correlated Intelligence** toggle.
+
+      Trend Micro classifies its predefined correlation rules for anomaly detection into three aggressive levels: **Moderate**, **Aggressive**, and **Extra aggressive**. For details about these rules and what scenarios that rules of each aggressive level are suitable for, see [Viewing correlation rules and detection signals](correlation-rules-detect.mdx).
+
+      1.  Click the digit next to each aggressive level to view the associated predefined rules.
+
+      2.  Select an action for anomaly detection of each threat type under each aggressive level.
+
+          If you do not want to enforce rules of a certain aggressive level to a certain threat type, select **Pass without logging** as the action.
+
+      3.  If you want to exclude certain predefined rules during anomaly detection, select the rules in the **Exceptions** area.
+
+    - **Specified pre-defined rules**
+
+      Select one or multiple rules and then select an action for each rule.
+
+    :::warning[Important]
+
+    Anomaly detection by Correlated Intelligence correlation rules may not always indicate malicious activity; they align with certain suspicious signals and can vary in effectiveness and expectation. We recommend initially setting actions to **Tag subject**, **Add disclaimer**, or **Label email** to monitor outcomes before applying stronger actions. You can also [create custom correlation rules](add-custom-correlation-rule.mdx) and add them in the **Custom Correlated Intelligence** section to better fit your environment.
+    :::
+
+    For details about the actions, see [Actions available for different services](actions-different-services.mdx).
+
+5.  Turn on notification for Cloud Email and Collaboration Protection to send notification emails upon anomaly detection.
+
+6.  (Exchange Online only) Turn on **Warning banner** to display a cautionary message at the top of the email body when end users receive an email flagged as an anomaly by predefined correlation rules.
+
+    The banner explains the reason for the warning, advising end users to exercise caution when interacting with the email. Click **Preview** to see how the warning banner will appear in end users' mailboxes.
+
+    Upon configuration, Cloud Email and Collaboration Protection can activate the options in the warning banner for end users to report emails as spam, phishing, wanted, or not a risk to Trend Micro or specified administrators. This serves as another approach, in addition to the Add-in for Outlook, to help improve threat detection by allowing end users to report emails. When receiving a reported email, Cloud Email and Collaboration Protection can send a confirmation email to the end user.
+
+    You can also choose to alert end users about potential risks without activating the reporting actions. To disable these actions, turn off **Report to Trend Micro** and **Report to administrators** in **Administration → Email Reporting**. For details, see [Email reporting](email-reporting.mdx).
+
+    To get visibility into the emails reported by end users, go to **Operations → User-Reported Emails**. For details, see [User-reported emails](user-reported-emails.mdx).
+
+7.  Select one or multiple custom correlation rules, and then select an action for each rule.
+
+    In addition to the correlation rules predefined by Trend Micro, you can add custom correlation rules to accommodate detection requirements in your environment. For details, see [Adding a custom correlation rule](add-custom-correlation-rule.mdx).
+
+8.  Turn on notification for Cloud Email and Collaboration Protection to send notification emails upon anomaly detection.
+
+9.  Configure **Notification** settings.
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <tbody>
+    <tr>
+    <td><p>Notify administrator</p></td>
+    <td><ol>
+    <li><p>Specify the administrators to notify by selecting a recipient group or specifying individual recipients. You can click Manage recipient groups to edit the members in a group or add more groups.</p></li>
+    <li><p>Specify message details to notify administrators that Cloud Email and Collaboration Protection detected a security risk and took action on an email message, attachment, or file.</p></li>
+    <li><p>Set the notification threshold which limits the number of notification messages to send. Threshold settings include:</p>
+    <ul>
+    <li><p><strong>Send consolidated notifications periodically</strong>: Cloud Email and Collaboration Protection sends an email message that consolidates all the notifications for a period of time. Specify the period of time by typing a number in the box and selecting hour(s) or day(s).</p></li>
+    <li><p><strong>Send consolidated notifications by occurrences</strong>: Cloud Email and Collaboration Protection sends an email message that consolidates notifications for a set number of filtering actions. Specify the number of virus/malware occurrences by typing a number in the box.</p></li>
+    <li><p><strong>Send individual notifications</strong>: Cloud Email and Collaboration Protection sends an email message notification every time Cloud Email and Collaboration Protection performs a filtering action.</p></li>
+    </ul></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Notify User</p></td>
+    <td><p>Specify message details that notify recipients that Cloud Email and Collaboration Protection detected a security risk and took action on their email message or attachment.</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+10. Click the **Approved List** tab and configure the approved sender list.
+
+    1.  Enable the approved sender list.
+
+    2.  Specify a sending email address or domain to bypass Correlated Intelligence scanning and click **Add \>**.
+
+        :::note
+
+        You can use the wildcard character (\*) to represent any characters in the email address or domain name. Examples: `*@example.com`, `name@*.com`, `*@*.example.com`
+
+        The following formats are invalid: `*@*`, `*`
+        :::
+
+    3.  Optionally click **Import** to import sender email addresses in batches, or click **Export** to export and download the approved senders to your local machine.
+
+11. Click **Save**.
+
+    You can [check the detection results and learn about the reasons behind the detections](correlated-intelligence-cloud-apps.mdx) in the **Operations → Correlated Intelligence** screen.
+::::

@@ -1,0 +1,107 @@
+---
+slug: trend-vision-one-configuring-virus-scan-criteria
+title: Configuring virus scan criteria
+---
+# Configuring virus scan criteria
+
+The virus scan criteria allow you to create policy rules that take actions on messages that contain malware, worms, or other malicious code.
+
+### Procedure {#procedure}
+
+1.  Click **Scanning Criteria**.
+
+2.  Specify at least one of the following detection types under the **Specify at least one detection type** section.
+
+    ::: {.simpletable-container}
+    <table id="GUID-A7077C71-C918-4B9B-9506-3EDB7675A568__CHOICETABLE_B45_SQF_BN" class="choicetable" data-border="1">
+    <colgroup>
+    <col style="width: 50%" />
+    <col style="width: 50%" />
+    </colgroup>
+    <thead>
+    <tr class="chhead table-header-style">
+    <th class="choptionhd">Option</th>
+    <th class="chdeschd">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="chrow">
+    <td class="choption"><p><strong>Cleanable malware or malicious code</strong></p></td>
+    <td class="chdesc"><p>Apply the policy rule to messages or attachments that contain cleanable malware. Cleanable malware are those that can be safely removed from the contents of the infected file, resulting in an uninfected copy of the original message or attachment.</p>
+
+
+    :::danger[Warning]
+
+    <p>Selecting <strong>Cleanable malware or malicious code</strong> as a policy rule criterion, and then selecting a policy rule action other than Delete or Clean, can result in infected messages or attachments entering your messaging environment. By default, Cloud Email Gateway Protection is configured with malware policy rules to appropriately handle threats when it is installed.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr class="chrow">
+    <td class="choption"><p><strong>Uncleanables with mass-mailing behavior</strong></p></td>
+    <td class="chdesc"><p>Apply the policy rule to messages that contain uncleanable malware, worms, or other threats that cannot be removed from messages or attachments, and that propagate by mass-mailing copies of themselves.</p></td>
+    </tr>
+    <tr class="chrow">
+    <td class="choption"><p><strong>Uncleanables without mass-mailing behavior</strong></p></td>
+    <td class="chdesc"><p>Apply the policy rule to messages that contain the following:</p>
+    <ul>
+    <li><p>Spyware</p></li>
+    <li><p>Dialers</p></li>
+    <li><p>Hacking tools</p></li>
+    <li><p>Password cracking applications</p></li>
+    <li><p>Adware</p></li>
+    <li><p>Joke programs</p></li>
+    <li><p>Remote access tools</p></li>
+    <li><p>All others</p></li>
+    </ul></td>
+    </tr>
+    </tbody>
+    </table>
+    :::
+
+3.  Configure Predictive Machine Learning settings to leverage the Predictive Machine Learning engine to detect emerging unknown security risks.
+
+    1.  Select **Enable Predictive Machine Learning** under the **Specify Predictive Machine Learning settings** section.
+
+        For details, see [About Predictive Machine Learning](pml-email-security.mdx).
+
+    2.  Optionally select the **Allow Trend Micro to collect suspicious files to improve its detection capabilities** check box.
+
+        :::note
+
+        By default, this option is selected.
+
+        If you enable this option, Trend Micro only checks potentially risky messages and encrypts all content before transferring any information.
+        :::
+
+4.  Specify advanced settings.
+
+    1.  Select **Submit suspicious files to Virtual Analyzer** and select the security level from the drop-down list to perform further observation and analysis on the submitted files.
+
+        Whether a file is suspicious is determined by the Advanced Threat Scan Engine based on the scan results.
+
+        Virtual Analyzer performs observation and analysis on samples in a closed environment. It takes 3 minutes on average to analyze and identify the risk of a file, and the time could be as long as 30 minutes for some files.
+
+        :::note
+
+        - When an eligible file is contained in another file, such as included in an archive file or embedded in a file, Cloud Email Gateway Protection extracts the file and submits it to Virtual Analyzer.
+        :::
+
+    2.  Select **Submit suspicious JSE/VBE files, suspicious files with QR codes, and any files with macros** if you want to submit these files to Virtual Analyzer.
+
+        Submitting suspicious files with QR codes helps you detect quishing, which is a type of phishing that uses QR codes to deceive users into visiting malicious websites and revealing sensitive information.
+
+        :::note
+
+        Currently, only suspicious PDF files with QR codes are submitted to Virtual Analyzer.
+        :::
+
+5.  Click **Submit**.
+
+**Related information**
+
+- [About Advanced Threat Scan Engine](advanced-threat-scan-engine.mdx)
+- [About Predictive Machine Learning](pml-email-security.mdx)
+:::

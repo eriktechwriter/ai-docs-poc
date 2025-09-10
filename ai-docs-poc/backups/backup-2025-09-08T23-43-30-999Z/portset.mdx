@@ -1,0 +1,136 @@
+---
+slug: trend-vision-one-portset
+title: PortSet
+last_updated: '2025-09-08'
+ai_context:
+  source_file: portset.md
+  conversion_date: '2025-09-08T23:42:14.403Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+:::note
+
+The Integrity Monitoring module scans for unexpected changes to [directories](directoryset.mdx), [registry values](registryvalueset.mdx), [registry keys](registrykeyset.mdx), [services](serviceset.mdx), [processes](processset.mdx), [installed software](installedsoftwareset.mdx), ports, [groups](groupset.mdx), [users](userset.mdx), [files](fileset.mdx), and the [WQL](wqlset.mdx) query statement on agents. To enable and configure Integrity Monitoring, see [Set up integrity monitoring](set-up-integrity-monitoring.mdx).
+:::
+
+Represents a set of listening ports.
+
+### Tag Attributes {#tag-attributes}
+
+These are XML attributes of the tag itself, as opposed to the attributes of the Entity monitored by Integrity Monitoring Rules.
+
+<table>
+<thead>
+<tr>
+<th><p>Attribute</p></th>
+<th><p>Description</p></th>
+<th><p>Required</p></th>
+<th><p>Default Value</p></th>
+<th><p>Allowed Values</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>onChange</p></td>
+<td><p>Will be monitored in real time</p></td>
+<td><p>No</p></td>
+<td><p>false</p></td>
+<td><p>true, false</p></td>
+</tr>
+</tbody>
+</table>
+
+### Entity Set Attributes {#entity-set-attributes}
+
+These are the attributes of the Entity that can be monitored by Integrity Monitoring Rules.
+
+- *Created:* Windows only - XP SP2+ and Server 2003 SP1+ required. Returned by the GetExtendedTcpTable() or GetExtendedUdpTable() functions of the Windows API. Indicates when the bind operation that created this TCP or UDP link occurred.
+- *Listeners:* The number of active listeners on this protocol, IP address, and port number combination. This reflects the number of sockets bound-to and listening-on the given port, and may be greater than the number of processes listening on the port if processes bind multiple sockets to the port. This attribute has no value if only one socket is bound to the given port.
+- *Path:* (Windows only - XP SP2+ and Server 2003 SP1+ required.) Gives the full path, if available, of the module that owns the port. On Windows this comes from the GetOwnerModuleFromXxxEntry() functions of the Windows API. According to Microsoft documentation, the resolution of connection table entries to owner modules is a best practice.
+- *Process:* (Windows only - XP SP2+ and Server 2003 SP1+ required.) Gives the short name, if available, of the module that owns the port. On Windows this comes from the GetOwnerModuleFromXxxEntry() functions of the Windows API. According to Microsoft documentation, the resolution of connection table entries to owner modules is a best practice. In a few cases, the owner module name returned can be a process name, such as "svchost.exe", a service name (such as "RPC"), or a component name, such as "timer.dll".
+- *ProcessId:* (Windows only - XP SP2+ and Server 2003 SP1+ required.) Gives the PID of the process that issued the bind for this port.
+- *User:* (Linux only.) Gives the user that owns the port.
+
+### Meaning of "Key" {#meaning-of-key}
+
+The key is in the following format:
+
+`<PROTOCOL>/<IP ADDRESS>/<PORT>`
+
+For example:
+
+``` codeblock
+tcp/172.14.207.94/80  
+udp/172.14.207.94/68
+```
+
+### IPV6 {#ipv6}
+
+If the IP address is IPv6 the key is in the same format, but the protocol is TCP6 or UDP6 and the IP address is an IPv6 address as returned by the getnameinfo command:
+
+``` codeblock
+tcp6/3ffe:1900:4545:3:200:f8ff:fe21:67cf/80
+udp6/3ffe:1900:4545:3:200:f8ff:fe21:67cf/68
+```
+
+### Matching of the Key {#matching-of-the-key}
+
+This is not a hierarchical key, so \*\* is not applicable. Unix-style glob matching is possible using \* and ?. The following pattern matches port 80 on the IP addresses 72.14.207.90 through 72.14.207.99:
+
+`*/72.14.207.9?/80`
+
+The following pattern matches port 80 on the IP addresses 72.14.207.2, 72.14.207.20 through 72.14.207.29 as well as 72.14.207.200 through 72.14.207.255:
+
+`*/72.14.207.2*/80`
+
+The following pattern matches port 80 on any IP.
+
+`*/80`
+
+The following example would monitor for any change in the listening ports but ignore port 80 for TCP in IPv4 and IPv6:
+
+``` codeblock
+<PortSet>
+<include key="*"/>
+<exclude key="tcp*/*/80"/>
+</PortSet>
+```
+
+### Sub Elements {#sub-elements}
+
+- *Include*
+- *Exclude*
+
+See [Integrity monitoring rules language](integrity-monitoring-language-swp.mdx) for a general description of Include and Exclude and their allowed attributes and sub elements. Only information specific to includes and excludes relating to this EntitySet class are included here.
+
+### Special attributes of Include and Exclude for PortSets {#special-attributes-of-include-and-exclude-for-portsets}
+
+Various other attributes of the port may be used in include and exclude feature tests. These tests compare a value against the value of an attribute of the port; take note of the platform support for various attributes - not all attributes are available across platforms or even platform revisions, hence the use of these tests in include and exclude tags is of limited use. The feature tests support Unix glob-style wildcarding with \* and ?, and there is no normalization of path separators or other characters - it is a simple match against the value of the attribute.
+
+*Path*: Checks for a wildcard match against the path attribute of the port. The following example would monitor ports owned by processes running the main IIS binary:
+
+``` codeblock
+<PortSet>
+<include path="*\system32\inetsrv\inetinfo.exe"/>
+</PortSet>
+```
+
+*Process*: Checks for a wildcard match against the process attribute of the port. The following example would monitor ports owned by anything running in a svchost.exe or outlook.\* binary:
+
+``` codeblock
+<PortSet>
+<include process="svchost.exe"/>
+<include process="outlook.\*"/>
+</PortSet>
+```
+
+*User*: Checks for a wildcard match against the user attribute of the port. The following example would monitor ports on a Unix system that were owned by the super-user (root):
+
+``` codeblock
+<PortSet>
+<include user="root"/>
+</PortSet>
+```
+::::

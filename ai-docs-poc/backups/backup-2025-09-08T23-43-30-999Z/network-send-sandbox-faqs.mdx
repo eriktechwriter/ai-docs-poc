@@ -1,0 +1,102 @@
+---
+slug: trend-vision-one-network-send-sandbox-faqs
+title: Send to sandbox FAQ
+last_updated: '2025-09-08'
+ai_context:
+  source_file: network-send-sandbox-faqs.md
+  conversion_date: '2025-09-08T23:42:15.369Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Frequently asked questions about the send to sandbox feature.
+
+**Related information**
+
+- How does the Virtual Network Sensor determine whether to send a file to the sandbox?
+- How does enabling TippingPoint Network Sensor and Send to Sandbox at the same time affect credits?
+- What is required for enabling Send to Sandbox on a TPS device in a stack?
+
+## How does the Virtual Network Sensor determine whether to send a file to the sandbox? {#how-does-the-virtual-network-sensor-determine-whether-to-send-a-file-to-the-sandbox}
+
+With **Send to sandbox** enabled, the Virtual Network Sensor uses the following rules, in step-by-step order, to determine whether to submit a file to the sandbox for analysis. If a file does not match the criteria for any step, the Virtual Network Sensor does not submit the file to the sandbox.
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 50%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Rule</p></th>
+<th><p>Criteria</p></th>
+<th><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>1</p></td>
+<td><ul>
+<li><p>No detection types <strong>AND</strong></p></li>
+<li><p>File type is CHM, JAR, JAVA Applet, LNK, Mach-O, or WIN_EXE</p></li>
+</ul></td>
+<td><p>Submit file</p></td>
+</tr>
+<tr>
+<td><p>2</p></td>
+<td><ul>
+<li><p>No detection types <strong>AND</strong></p></li>
+<li><p>Protocol is HTTP <strong>AND</strong></p></li>
+<li><p>File extension is .vbs, .vbe, .ps1, .hta, or .wsf</p></li>
+</ul></td>
+<td><p>Submit file</p></td>
+</tr>
+<tr>
+<td><p>3</p></td>
+<td><ul>
+<li><p>No detection types <strong>AND</strong></p></li>
+<li><p>Protocol is SMTP <strong>AND</strong></p></li>
+<li><p>File extension is .vbs, .vbe, .ps1, .hta, .wsf, .js, .jse, .bat, .cmd, .html, or .htm</p></li>
+</ul></td>
+<td><p>Submit file</p></td>
+</tr>
+<tr>
+<td><p>4</p></td>
+<td><ul>
+<li><p>No detection types <strong>AND</strong></p></li>
+<li><p>Protocol is SMTP <strong>AND</strong></p></li>
+<li><p>File type is SWF</p></li>
+</ul></td>
+<td><p>Submit file</p></td>
+</tr>
+<tr>
+<td><p>5</p></td>
+<td><p>Detected activity matches one of the following rules:</p>
+<ul>
+<li><p><a href="https://www.trendmicro.com/vinfo/us/threat-encyclopedia/network/ddi-rule-28">Rule 28</a>: Unregistered service running on non-standard port</p></li>
+<li><p><a href="https://www.trendmicro.com/vinfo/us/threat-encyclopedia/network/ddi-rule-29">Rule 29</a>: Unregistered sender and recipient domains - Email</p></li>
+<li><p><a href="https://www.trendmicro.com/vinfo/us/threat-encyclopedia/network/ddi-rule-40">Rule 40</a>: Unregistered service</p></li>
+<li><p><a href="https://www.trendmicro.com/vinfo/us/threat-encyclopedia/network/ddi-rule-52">Rule 52</a>: Unregistered mail server - Email</p></li>
+</ul></td>
+<td><p>Do not submit file</p></td>
+</tr>
+<tr>
+<td><p>6</p></td>
+<td><p>Heuristic detections, highly suspicious files</p></td>
+<td><p>Submit file</p></td>
+</tr>
+</tbody>
+</table>
+
+## How does enabling TippingPoint Network Sensor and Send to Sandbox at the same time affect credits? {#how-does-enabling-tippingpoint-network-sensor-and-send-to-sandbox-at-the-same-time-affect-credits}
+
+When you enable TippingPoint Network Sensor in conjunction with Send to Sandbox, files are sent for analysis in addition to URLs. An additional 2,000 credits per 500 Mbps of bandwidth is required.
+
+## What is required for enabling Send to Sandbox on a TPS device in a stack? {#what-is-required-for-enabling-send-to-sandbox-on-a-tps-device-in-a-stack}
+
+For TPS devices configured in a stack, make sure you enable Send to Sandbox on each device in the stack. Refresh the Trend Vision One display to ensure that Send to Sandbox has been enabled.
+
+When you use Send to Sandbox in conjunction with TippingPoint Network Sensor in a TPS stack, you must enable both services on each device in the stack. Reboot each enabled device sequentially before enabling the services on the next device in the stack. [Learn more](enable-network-sensor-for-tp.mdx) about sequential rebooting. Learn more about configuring a TPS stack in the *Trend Micro™ TippingPoint™ TPS Stacking User Guide*.
+:::

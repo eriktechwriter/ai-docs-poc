@@ -1,0 +1,168 @@
+---
+slug: trend-vision-one-assign-rules-recommendation-scans
+title: Assign rules with recommendation scans
+last_updated: '2025-09-08'
+ai_context:
+  source_file: assign-rules-recommendation-scans.md
+  conversion_date: '2025-09-08T23:42:24.765Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+[Recommendation scans](recommendation-scans-intro.mdx) identify [Intrusion Prevention](intrusion-prevention.mdx), [Integrity Monitoring](integrity-monitoring.mdx), and [Log Inspection](log-inspection.mdx) rules that you should assign to or remove from a computer or policy. The application programming interface (API) provides access to recommendation scan results for these protection modules at the computer and policy levels via the following classes:
+
+- `ComputerIntrusionPreventionAssignmentsRecommendationsApi`
+- `ComputerIntegrityMonitoringAssignmentsRecommendationsApi`
+- `ComputerLogInspectionAssignmentsRecommendationsApi`
+- `PolicyIntrusionPreventionAssignmentsRecommendationsApi`
+- `PolicyIntegrityMonitoringAssignmentsRecommendationsApi`
+- `PolicyLogInspectionAssignmentsRecommendationsApi`
+
+The methods and functions of these classes return objects that include the latest recommendations and scan information. The following JSON represents the data structure of the returned objects:
+
+``` codeblock
+{
+    "assignedRuleIDs": [],
+    "recommendationScanStatus": "valid",
+    "lastRecommendationScanDate": "1562702362438",
+    "recommendedToAssignRuleIDs": [],
+    "recommendedToUnassignRuleIDs": []
+}
+```
+
+When running [enhanced recommendation scans](enhanced-reco-scan.mdx), the following API classes return empty values for `recommendedToAssignRuleIDs` and `recommendedToUnassignRuleIDs`:
+
+- `PolicyIntrusionPreventionAssignmentsRecommendationsApi`
+- `PolicyIntegrityMonitoringAssignmentsRecommendationsApi`
+- `PolicyLogInspectionAssignmentsRecommendationsApi`
+
+When a recommendation scan runs, it determines recommendations for the Intrusion Prevention, Integrity Monitoring, and Log Inspection security modules. Therefore, the methods and functions of the `ComputerIntrusionPreventionAssignmentsRecommendationsApi`, `ComputerIntegrityMonitoringAssignmentsRecommendationsApi`, and `ComputerLogInspectionAssignmentsRecommendationsApi` return the same value for the date and status of the last scan.
+
+For example, obtain a list of all computers in your environment (you only need the ID so set the `expand` parameter to `none` to return the minimal information):
+
+``` codeblock
+expand = api.Expand(api.Expand.none)
+computers_api = api.ComputersApi(api.ApiClient(configuration))
+computers = computers_api.list_computers(api_version, expand=expand.list(), overrides=False)
+```
+
+For each computer, obtain the applied rules and recommendation scan results:
+
+``` codeblock
+computer_ips_assignments_recommendations_api = (
+    api.ComputerIntrusionPreventionRuleAssignmentsRecommendationsApi(api.ApiClient(configuration)))
+intrusion_prevention_assignments = (
+    computer_ips_assignments_recommendations_api.list_intrusion_prevention_rule_ids_on_computer(
+        computer.id,
+        api_version,
+        overrides=False)
+```
+
+Finally, extract the date of the last scan. Note that when no recommendation scan has run, the property is `None`:
+
+``` codeblock
+reco_scan_info = list()
+if intrusion_prevention_assignments.last_recommendation_scan_date is not None:
+    d = datetime.datetime.utcfromtimestamp(intrusion_prevention_assignments.last_recommendation_scan_date/1000)
+    reco_scan_info.append(d.strftime('%Y-%m-%d %H:%M:%S'))
+else:
+    reco_scan_info.append("No scan on record")
+```
+
+To run a recommendation scan using the API, [use scheduled tasks](protection-scheduled-tasks.mdx). Also see the [List Intrusion Prevention Rule IDs](https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Computer-Intrusion-Prevention-Rule-Assignments-and-Recommendations) operation in the API Reference.
+
+## Determine when a recommendation scan last ran {#determine-when-a-recommendation-scan-last-ran}
+
+Obtain the date of the last [recommendation scan](recommendation-scans-intro.mdx) to verify that your computers were recently scanned. A computer might not be scanned, for example, if it is offline when a recommendation scan runs. You can run a script that discovers when a scan last ran for each computer in your environment. Depending on the results, you can immediately run a recommendation scan.
+
+Use the following general steps to get the date of the last recommendation scan for one or more computers:
+
+### Procedure {#procedure}
+
+1.  Create a `ComputersApi` object to obtain the IDs of the computers to check.
+
+2.  Create a `ComputerIntrusionPreventionAssignmentsRecommendationsApi` object and use it to list the Intrusion Prevention rule assignments and recommendations.
+
+3.  Obtain the date of the last scan from the returned `IntrusionPreventionAssignments` object.
+
+## Example: Get the date of the last recommendation scan for all computers {#example-get-the-date-of-the-last-recommendation-scan-for-all-computers}
+
+The following example retrieves a list of all computers and determines the date and status of the last recommendation scan. The information, along with the computer hostnames, are returned in comma separated value (CSV) format that can be opened as a spreadsheet.
+
+[View source](https://github.com/deep-security/automation-center-sdk-samples/blob/master/python/src/computer_status_examples.py)
+
+``` codeblock
+# Include minimal information in the returned Computer objects
+expand = api.Expand(api.Expand.none)
+
+# Get the list of computers and iterate over it
+computers_api = api.ComputersApi(api.ApiClient(configuration))
+computers = computers_api.list_computers(api_version, expand=expand.list(), overrides=False)
+
+computer_ips_assignments_recommendations_api = (
+    api.ComputerIntrusionPreventionRuleAssignmentsRecommendationsApi(api.ApiClient(configuration)))
+
+for computer in computers.computers:
+    # Get the recommendation scan information
+    intrusion_prevention_assignments = (
+        computer_ips_assignments_recommendations_api.list_intrusion_prevention_rule_ids_on_computer(
+            computer.id,
+            api_version,
+            overrides=False))
+    reco_scan_info = list()
+
+    # Computer name
+    reco_scan_info.append(computer.host_name)
+
+    # Scan date
+    if intrusion_prevention_assignments.last_recommendation_scan_date is not None:
+        d = datetime.datetime.utcfromtimestamp(intrusion_prevention_assignments.last_recommendation_scan_date/1000)
+        reco_scan_info.append(d.strftime('%Y-%m-%d %H:%M:%S'))
+    else:
+        reco_scan_info.append("No scan on record")
+
+    # Scan status
+    reco_scan_info.append(intrusion_prevention_assignments.recommendation_scan_status)
+
+    # Add to the CSV string
+    csv += format_for_csv(reco_scan_info)
+
+return csv
+```
+
+## Apply recommendations {#apply-recommendations}
+
+The API provides access to [recommendation scan](recommendation-scans-intro.mdx) results for a computer for the Integrity Monitoring, Intrusion Prevention, and Log Inspection. Use a `ComputerIntrusionPreventionAssignmentsRecommendationsApi` object to obtain an `IntrusionPreventionAssignments` object for a computer. The `IntrusionPreventionAssignments` object contains and provides access to the recommendations for that computer:
+
+- Recommended Intrusion Prevention rules to assign and unassign
+- Scan status
+- When the last scan occurred
+
+After you obtain the rule recommendations, you can apply them to computer policies, as illustrated in the [Add intrusion prevention rules to computers' policies](patch-unprotected-computers.mdx) example.
+
+When a recommendation scan has not been run on a computer, `ComputerIntrusionPreventionAssignmentsRecommendationsApi` returns `null` for rule IDs and the last scan occurrence.
+
+Similar classes are provided for Integrity Monitoring and Log Inspection:
+
+- Integrity Monitoring
+  - `ComputerIntegrityMonitoringAssignmentsRecommendationsApi`
+  - `IntegrityMonitoringAssignments`
+- Log Inspection
+  - `ComputerLogInspectionAssignmentsRecommendationsApi`
+  - `LogInspectionAssignments`
+
+The following example obtains the recommendations for Intrusion Prevention for a computer.
+
+[View source](https://github.com/deep-security/automation-center-sdk-samples/blob/master/python/src/computer_status_examples.py)
+
+``` codeblock
+ip_recommendations_api = api.ComputerIntrusionPreventionRuleAssignmentsRecommendationsApi(api.ApiClient(configuration))
+ip_assignments = None
+
+ip_assignments = ip_recommendations_api.list_intrusion_prevention_rule_ids_on_computer(computer_id, api_version, overrides=False)
+return ip_assignments.recommended_to_assign_rule_ids
+```
+
+Also see the [List Intrusion Prevention Rule IDs](https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Computer-Intrusion-Prevention-Rule-Assignments-and-Recommendations) operation in the API Reference. For information about authenticating API calls, see [Authenticate with Server & Workload Protection](send-your-first-request-using-api.mdx).
+:::

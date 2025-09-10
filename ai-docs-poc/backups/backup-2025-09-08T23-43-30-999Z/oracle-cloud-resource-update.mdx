@@ -1,0 +1,46 @@
+---
+slug: trend-vision-one-oracle-cloud-resource-update
+title: Resource Update
+last_updated: '2025-09-08'
+ai_context:
+  source_file: oracle-cloud-resource-update.md
+  conversion_date: '2025-09-08T23:42:14.710Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Update deployed resources in your Oracle Cloud compartment to the latest version.
+
+The Resource Update tab in the Compartment Settings screen allows you to update the Trend Vision One resources deployed to your compartment. This may be required as support for new features or functions are added to Cloud Accounts. Make sure you have the [required permissions](oracle-required-granted-permissions.mdx) to update the compartment.
+
+### Procedure {#procedure}
+
+1.  Sign in to the Trend Vision One console.
+
+2.  In a new tab in the same browser session, log in to the Oracle Cloud Console.
+
+3.  In the Trend Vision One console, go to **Cloud Security → Cloud Accounts → Oracle**.
+
+4.  Click the name of the compartment you want to update.
+
+5.  In the Compartment Settings screen, navigate to the **Resource Update** tab.
+
+6.  Click **Download Terraform Template Package** to download the template to your local machine.
+
+7.  In the Oracle Cloud Console, open the navigation menu and select **Developer Services**. In the **Resource Manager** area click **Stacks**
+
+8.  In the **List Scope** area, select the compartment you want to update and select the stack that was created in the connection process.
+
+    The stack is named using the following format: `Vision-One-Cloud-Account-Management-{compartment id}-{hash}`, where `{compartment id}` is the OCID, and `{hash}` is a randomly-generated hash.
+
+9.  Select **Upload** to upload the template that you downloaded in step 6.
+
+10. Click **Next**, and then click **Run apply**.
+
+11. Click **Save Changes**.
+
+12. In the Trend Vision One console, in the Compartment Settings screen, click **Save Changes**.
+
+    The update process might take a few moments to complete. You can refresh the Cloud Accounts screen to check the status of your update.
+:::

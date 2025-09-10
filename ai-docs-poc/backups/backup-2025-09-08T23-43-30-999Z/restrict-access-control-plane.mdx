@@ -1,0 +1,52 @@
+---
+slug: trend-vision-one-restrict-access-control-plane
+title: 5.4.1 - Restrict Access to the Control Plane Endpoint (automated)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: restrict-access-control-plane.md
+  conversion_date: '2025-09-08T23:42:13.702Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Profile applicability: Level 1 - Cluster / Control Plane
+
+Enable Endpoint Private Access to restrict access to your cluster's control plane to only a list of authorized IP addresses. This measure specifies a restricted range of IP addresses that are allowed to access your cluster’s control plane, which, in combination with Transport Layer Security (TLS) and authentication, secures access from the public internet. Although Kubernetes Engine provides the capability to manage your cluster from anywhere, you might opt to limit access further to specific IP addresses under your control. Authorized networks enhance security by shielding your cluster from potential outsider attacks by limiting external access to designated addresses, and from insider threats by preventing access even if master certificates are accidentally leaked outside your organization. Care must be taken when setting up Endpoint Private Access to include all necessary IP addresses in the authorized list to avoid unintentionally blocking legitimate access to the cluster’s control plane.
+
+### Impact {#impact}
+
+When implementing Endpoint Private Access, ensure all required networks are included in the allowlist to avoid blocking access to your cluster's control plane.
+
+### Audit {#audit}
+
+Check the following settings to confirm they are 'enabled: true':
+
+``` codeblock
+    export CLUSTER_NAME=<your cluster name>
+    aws eks describe-cluster --name ${CLUSTER_NAME} --query "cluster.resourcesVpcConfig.endpointPublicAccess"
+    aws eks describe-cluster --name ${CLUSTER_NAME} --query "cluster.resourcesVpcConfig.endpointPrivateAccess"
+   
+```
+
+Verify that the following is not null:
+
+``` codeblock
+    export CLUSTER_NAME=<your cluster name>
+    aws eks describe-cluster --name ${CLUSTER_NAME} --query "cluster.resourcesVpcConfig.publicAccessCidrs"
+   
+```
+
+### Remediation {#remediation}
+
+Enable private endpoint access to ensure that all communication between your nodes and the API server stays within your VPC. This also allows you to restrict IP addresses that can access your API server from the internet or disable internet access entirely.
+
+For example, use the following command to enable private access and limited public access:
+
+``` codeblock
+    aws eks update-cluster-config --region $AWS_REGION --name $CLUSTER_NAME --resources-vpc-config endpointPrivateAccess=true, endpointPublicAccess=true, publicAccessCidrs="203.0.113.5/32"
+   
+```
+
+Note: CIDR blocks cannot include reserved addresses. Refer to the EKS Cluster Endpoint documentation for detailed information.
+:::

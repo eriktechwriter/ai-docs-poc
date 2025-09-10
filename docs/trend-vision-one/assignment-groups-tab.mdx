@@ -1,0 +1,143 @@
+---
+slug: trend-vision-one-assignment-groups-tab
+title: Assignment Groups tab
+---
+# Assignment Groups tab
+
+View information about assignment groups and manage assignment groups on the **Assignment Groups** tab.
+
+You can view the following information on the **Assignment Groups** tab.
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Data</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Assignment group</p></td>
+<td><p>The assignment group name</p>
+<p>Assignment groups are created to manage enrolled users and devices that security policies and compliance policies can be assigned to. Assignment groups can contain the user groups synchronized from your Microsoft Entra ID.</p>
+<p>The built-in assignment group "All devices" contains all devices managed by the organization.</p></td>
+</tr>
+<tr>
+<td><p>Membership type</p></td>
+<td><p>The type of assignment group membership</p>
+<ul>
+<li><p><strong>Microsoft Entra ID groups</strong></p>
+<p>You manually assign Microsoft Entra ID groups to this assignment group and manually remove the Microsoft Entra ID groups.</p></li>
+<li><p><strong>Selected devices</strong></p>
+<p>You manually assign your organization's devices to this assignment group and manually remove the devices.</p></li>
+<li><p><strong>Dynamic devices</strong></p>
+<p>You create dynamic membership criteria to automatically add and remove devices. Dynamic group membership adds and removes group members automatically using membership criteria based on member attributes. When the attributes of a device change, the system evaluates all dynamic group criteria to see if the change would trigger any group adds or removes. If a device satisfies the criteria on a group, they are added as a member of that group. If they no longer satisfy the criteria, they are removed. You cannot manually add or remove a member of a dynamic group.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Applied compliance policies</p></td>
+<td><p>The number of compliance policies that apply to the assignment groups</p></td>
+</tr>
+<tr>
+<td><p>Applied security policies</p></td>
+<td><p>The number of security policies that apply to the assignment groups</p></td>
+</tr>
+<tr>
+<td><p>User count</p></td>
+<td><p>The number of users that belong to the assignment group</p></td>
+</tr>
+<tr>
+<td><p>Device count</p></td>
+<td><p>The number of devices that belong to the assignment group</p></td>
+</tr>
+<tr>
+<td><p>Membership last updated</p></td>
+<td><p>The time the group membership was last calculated based on the synchronization from Microsoft Entra ID or the dynamic membership criteria</p>
+<p>This data applies only to the following group membership types: <strong>Microsoft Entra ID groups</strong> and <strong>Dynamic devices</strong>.</p></td>
+</tr>
+</tbody>
+</table>
+
+You can perform the following actions on the **Assignment Groups** tab.
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Filter group data</p></td>
+<td><p>Use the search box to locate specific group data.</p></td>
+</tr>
+<tr>
+<td><p>Show the compliance policies applied to a group</p></td>
+<td><p>In the <strong>Applied compliance policies</strong> column, click the number to see a list of compliance policies filtered by "Assignment group".</p></td>
+</tr>
+<tr>
+<td><p>Show the security policies applied to a group</p></td>
+<td><p>In the <strong>Applied security policies</strong> column, click the number to see a list of security policies filtered by "Assignment group".</p></td>
+</tr>
+<tr>
+<td><p>Show the users of a group</p></td>
+<td><p>In the <strong>User count</strong> column, click the number to see a list of users filtered by "Assignment group".</p></td>
+</tr>
+<tr>
+<td><p>Show the enrolled devices of a group</p></td>
+<td><p>In the <strong>Device count</strong> column, click the number to see a list of devices filtered by "Assignment group".</p></td>
+</tr>
+<tr>
+<td><p>View details of a group with some user groups deleted from Microsoft Entra ID</p></td>
+<td><p>Hover over the Information icon (<img src="./images/information_icon=f933cb98-a237-4e4b-844e-cfad9894d2a7.webp" />) next to a group name, and click <strong>View Details</strong>.</p></td>
+</tr>
+<tr>
+<td><p>Delete a group that has no group members</p></td>
+<td><p>Hover over the Information icon (<img src="./images/information_icon=f933cb98-a237-4e4b-844e-cfad9894d2a7.webp" />) next to a group name, and click <strong>Delete from Mobile Inventory</strong>.</p></td>
+</tr>
+<tr>
+<td><p>Sync user data from Microsoft Entra ID</p></td>
+<td><p>Click the Sync icon (<img src="./images/calculate_icon=a2e509e3-0e6c-45a4-806a-4376e81e9147.webp" />) corresponding to a group to synchronize user data from Microsoft Entra ID.</p>
+<p>Based on the synchronization result, Mobile Device Director updates the membership for groups of the "Microsoft Entra ID groups" type.</p>
+
+
+:::note
+
+<p>This action applies only to the groups of the "Microsoft Entra ID groups" type.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Calculate memberships</p></td>
+<td><p>Click the Calculate icon (<img src="./images/Sync_icon=bc994a2c-3a6c-419b-a584-a12efb14eacc.webp" />) to calculate the group membership.</p>
+<p>Based on the calculation result, Mobile Device Director updates the membership for groups of the "Dynamic devices" type.</p>
+
+
+:::note
+
+<p>This action applies only to the groups of the "Dynamic devices" type.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Delete groups</p></td>
+<td><p>Click the Delete icon (<img src="./images/delete_policy=cce60f96-0e5c-4565-895f-d648c42e8495.webp" />) corresponding to a group, or select one or more groups from the list and click <strong>Delete</strong>.</p></td>
+</tr>
+</tbody>
+</table>
+:::

@@ -1,0 +1,81 @@
+---
+slug: trend-vision-one-restore-network-sensor-connection
+title: Restoring an unhealthy Virtual Network Sensor connection
+last_updated: '2025-09-08'
+ai_context:
+  source_file: restore-network-sensor-connection.md
+  conversion_date: '2025-09-08T23:42:13.705Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Fix a disconnected or unhealthy connection between your Virtual Network Sensor and Trend Vision One.
+
+If your Virtual Network Sensor is unable to connect to Trend Vision One, use the following steps to restore the connection.
+
+:::warning[Important]
+
+Before you begin, make verify the Virtual Network Sensor can successfully connect using a supported connection method:
+
+- Direct connection
+
+- Custom proxy
+
+- Service Gateway as a proxy
+:::
+
+### Procedure {#procedure}
+
+1.  Hover your mouse over the **Unhealthy** status to view more information about the status.
+
+2.  Click the link to try **connecting your sensor again**.
+
+    The **Restore Sensor Connection** window appears.
+
+3.  Select the **Connection method**.
+
+    - **Direct connection**: the Virtual Network Sensor connects to Trend Vision One directly. Make sure the Virtual Network Sensor is able to connect to the internet when using this configuration.
+
+    - **Connect using a custom proxy**: the Virtual Network Sensor connects to Trend Vision One through a third-party proxy. After choosing this method, configure the following fields:
+
+      - **Proxy address**: Specify the IP address of the proxy.
+
+      - **Proxy port**: Specify the connecting port of the proxy.
+
+      - **Proxy server requires authentication**: (Optional) Select if the proxy requires authentication credentials.
+
+      - **User name**: Specify the user name for the proxy credentials.
+
+      - **Password**: Specify the password for the proxy credentials.
+
+    - **Connect using a Service Gateway as proxy**: the Virtual Network Sensor connects to Trend Vision One through a Service Gateway. Select a Service Gateway to use for this method.
+
+      :::warning[Important]
+
+      The Virtual Network Sensor must be able to connect to a Service Gateway with the Forward Proxy Service configured and enabled. For more information, see [Manage services in Service Gateway](managing-services-service-gateway.mdx).
+      :::
+
+4.  After configuring the connection method, click **Generate Connection Token**.
+
+5.  Click the copy icon (![](/images/ServiceGatewayCopyIcon=GUID-EE08C798-0F99-467B-996A-93D14044BF0E.webp)) to copy the **Connection token**.
+
+6.  Click **Save**.
+
+    :::warning[Important]
+
+    - Make sure you have copied the connection token. You cannot retrieve the connection token after closing the **Restore Sensor Connection** window.
+
+    - You must click **Save** to update the connection information in your Trend Vision One console. Leaving the screen without saving discards the connection token. You cannot restore a connection with an unsaved connection token.
+    :::
+
+7.  Access the Virtual Network Sensor command line interface (CLI).
+
+8.  To enable administrative commands, type `enable`.
+
+9.  Run the command `switch-connection-method [connection_token]`.
+
+    Replace the value `[connection_token]` with the connection token you copied from Network Inventory.
+
+    The connection restoration process might take a few moments to complete. Once the process successfully completes, the Virtual Network Sensor reestablishes the connection with Trend Vision One. You can view the status by refreshing the Network Inventory screen.
+::::

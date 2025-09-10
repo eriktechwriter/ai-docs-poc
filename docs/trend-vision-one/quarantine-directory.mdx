@@ -1,0 +1,78 @@
+---
+slug: trend-vision-one-quarantine-directory
+title: Quarantine Directory
+---
+# Quarantine Directory
+
+If the action for an infected file is "Quarantine", the Trend Vision One Endpoint Security agent encrypts the file and moves it to a temporary quarantine folder located in \<Agent installation folder\>\SUSPECT and then sends the file to the designated quarantine directory.
+
+:::note
+
+You can restore encrypted quarantined files in case you need to access them in the future.
+:::
+
+Accept the default quarantine directory, which is located on the Apex One server computer. The directory is in URL format and contains the server's host name or IP address.
+
+- If the server is managing both IPv4 and IPv6 agents, use the host name so that all Trend Vision One Endpoint Security agents can send quarantined files to the server.
+
+- If the server only has or is identified by its IPv4 address, only pure IPv4 and dual-stack Trend Vision One Endpoint Security agents can send quarantined files to the server.
+
+- If the server only has or is identified by its IPv6 address, only pure IPv6 and dual-stack Trend Vision One Endpoint Security agents can send quarantined files to the server.
+
+You can also specify an alternative quarantine directory by typing the location in URL, UNC path, or absolute file path format. Trend Vision One Endpoint Security agents should be able to connect to this alternative directory. For example, the alternative directory should have an IPv6 address if it will receive quarantined files from dual-stack and pure IPv6 Trend Vision One Endpoint Security agents. Trend Micro recommends designating a dual-stack alternative directory, identifying the directory by its host name, and using UNC path when typing the directory.
+
+Refer to the following table for guidance on when to use URL, UNC path, or absolute file path:
+
+**Quarantine Directory**
+
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 14%" />
+<col style="width: 24%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Quarantine Directory</p></th>
+<th><p>Accepted Format</p></th>
+<th><p>Example</p></th>
+<th><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="2" style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>A directory on the managing server computer</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>URL</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>http:// &lt;osceserver&gt;</code></p></td>
+<td rowspan="2" style="border-bottom-width: 1px; border-bottom-style: solid"><p>This is the default directory.</p>
+<p>Configure settings for this directory, such as the size of the quarantine folder.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>UNC path</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>\\&lt;osceserver&gt;\ ofcscan\Virus</code></p></td>
+</tr>
+<tr>
+<td rowspan="2" style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>A directory on another Apex One server computer (if you have other Apex One servers on the network)</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>URL</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>http:// &lt;osceserver2&gt;</code></p></td>
+<td rowspan="4"><p>Ensure that Trend Vision One Endpoint Security agents can connect to this directory. If you specify an incorrect directory, the Trend Vision One Endpoint Security agent keeps the quarantined files on the SUSPECT folder until a correct quarantine directory is specified. In the server's virus/malware logs, the scan result is "Unable to send the quarantined file to the designated quarantine folder".</p>
+<p>If you use UNC path, ensure that the quarantine directory folder is shared to the group "Everyone" and that you assign read and write permission to this group.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>UNC path</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>\\&lt;osceserver2&gt;\ ofcscan\Virus</code></p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Another endpoint on the network</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>UNC path</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>\\&lt;computer_ name&gt;\temp</code></p></td>
+</tr>
+<tr>
+<td style="border-right-width: 1px; border-right-style: solid"><p>A different directory on the Trend Vision One Endpoint Security agent</p></td>
+<td style="border-right-width: 1px; border-right-style: solid"><p>Absolute path</p></td>
+<td style="border-right-width: 1px; border-right-style: solid"><p><code> C:\temp</code></p></td>
+</tr>
+</tbody>
+</table>
+::::

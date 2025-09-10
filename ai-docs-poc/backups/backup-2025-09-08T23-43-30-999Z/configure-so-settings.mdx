@@ -1,0 +1,47 @@
+---
+slug: trend-vision-one-configure-so-settings
+title: Configuring suspicious object settings
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configure-so-settings.md
+  conversion_date: '2025-09-08T23:42:22.661Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Trend Micro Trend Micro Apex Central consolidates and synchronizes the Virtual Analyzer and user-defined suspicious object lists with Cloud Email Gateway Protection. Enable this feature to implement the lists during scanning.
+
+Before you begin configuring this feature, make sure that:
+
+- You have installed Trend Micro Apex Central, and your Trend Micro Apex Central has a serving Deep Discovery product, which can be a Deep Discovery Inspector, Deep Discovery Email Inspector, or Deep Discovery Analyzer.
+
+- Your Cloud Email Gateway Protection has been registered to a required Trend Micro Trend Micro Apex Central.
+
+- You have enabled Web Reputation settings in the spam policy you want to apply the suspicious URL list to.
+
+### Procedure {#procedure}
+
+1.  Go to **Administration → Other Settings → Service Integration**.
+
+2.  Click **Apex Central**.
+
+3.  Enable **Check for suspicious objects during scanning**.
+
+4.  Under **Security Level for Files**, specify the security level to determine whether to take actions on messages when suspicious files are detected during virus scanning.
+
+    The actions to take are defined in the virus policy.
+
+    :::note
+
+    Cloud Email Gateway Protection classifies all files and URLs in the user-defined suspicious object lists as the "High" risk.
+    :::
+
+5.  Under **Security Level for URLs**, make sure your specify the security level for Web Reputation in your spam policy to determine whether to take actions on messages when suspicious URLs are detected during spam scanning.
+
+    The actions to take are defined in the spam policy.
+
+6.  Check additional information about suspicious object synchronization from the Trend Micro Apex Central.
+
+7.  Click **Save**.
+:::

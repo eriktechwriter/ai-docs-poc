@@ -1,0 +1,72 @@
+---
+slug: trend-vision-one-configuration-notes
+title: Configuration Notes
+---
+# Configuration Notes
+
+After successfully setting up the Suspicious Object Hub and registering the Suspicious Object Node Apex Central servers, note the following configuration information.
+
+:::note
+
+After unregistering a Node Apex Central server, all previously synchronized objects remain in the Node Apex Central server suspicious object lists.
+:::
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 38%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Configuration</p></th>
+<th><p>Hub Apex Central</p></th>
+<th><p>Node Apex Central</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Synchronization interval</p></td>
+<td><p>N/A</p></td>
+<td><p>5 minutes (default)</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p>Suspicious Object list synchronization</p></td>
+<td><p>From the Hub Apex Central to Nodes:</p>
+<ul>
+<li><p>Virtual Analyzer list</p></li>
+<li><p>User-Defined list</p></li>
+</ul></td>
+<td><p>From a Node Apex Central to the Hub:</p>
+<ul>
+<li><p>Virtual Analyzer list</p></li>
+</ul></td>
+</tr>
+<tr>
+<td colspan="2">
+
+:::note
+
+<ul>
+<li><p>The Hub Apex Central server does not send data from the <em>Notes</em> column of the User-Defined list or the Exception list to the Node Apex Central servers.</p></li>
+<li><p>When synchronizing lists, the User-Defined list has a higher priority than the Virtual Analyzer list.</p>
+<ul>
+<li><p>If an object is added to both the User-Defined list and the Virtual Analyzer list on the Hub Apex Central before the next synchronization, the Hub Apex Central server deploys both lists to the Node Apex Central servers.</p></li>
+<li><p>If an object in the Node Apex Central Virtual Analyzer list also exists in the Hub Apex Central User-Defined list, the suspicious object risk level changes to "High" on the Node Apex Central Virtual Analyzer list during the next synchronization.</p></li>
+</ul></li>
+</ul>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Configuring Suspicious Object settings</p></td>
+<td><p>Recommended</p>
+<p>Configuring Suspicious Objects through the Hub Apex Central ensures consistency across the registered Node Apex Central servers.</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+::::

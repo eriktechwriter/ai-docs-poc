@@ -1,0 +1,77 @@
+---
+slug: trend-vision-one-set-up-permissions-sam-macos-15
+title: >-
+  Setting up permissions for the Secure Access Module on endpoints using macOS
+  version 15 or later
+last_updated: '2025-09-08'
+ai_context:
+  source_file: set-up-permissions-sam-macos-15.md
+  conversion_date: '2025-09-08T23:42:12.626Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Grant the permissions required to allow the Secure Access Module to run on endpoints on macOS versions 15 or later.
+
+:::warning[Important]
+
+The steps and screens contained in these instructions were valid as of February 2025.
+:::
+
+After the Secure Access Module is deployed to a macOS endpoint, the end user must grant a series of required permissions when opening or signing into Zero Trust Secure Access for the first time.
+
+### Procedure {#procedure}
+
+1.  Allow the Zero Trust Secure Access system extension to control network access:
+
+    1.  Sign into Zero Trust Secure Access on the end-user device.
+
+    2.  Click **Continue** on the dialog box that appears.
+
+        A screen with instructions for allowing system extensions appears.
+
+    3.  Click **Open Login Items & Extensions**.
+
+        A System Settings page open along with a pop-up message stating that Zero Trust Secure Access would like to use a the network extension.
+
+    4.  Click **Open System Settings**.
+
+        The Network Extensions popup opens.
+
+    5.  Toggle on the Zero Trust Secure Access network extension and click **Done**.
+
+    6.  On the Zero Trust Secure Access Allow System Extension page, click **Verify**.
+
+2.  Update the **Certificate Trust Settings** by entering your password and clicking **Update**.
+
+3.  Grant notification permissions to be alerted when Zero Trust Secure Access blocks network access:
+
+    1.  Sign into Zero Trust Secure Access on the end-user device.
+
+    2.  Click **Options** on the notification that appears.
+
+    3.  Click **Allow**.
+
+        :::tip
+
+        Notifications can also be enabled later from System Settings/Notifications Zero Trust Secure Access item.
+        :::
+
+4.  Allow Zero Trust Secure Access to access system events to enable the collection of device posture information.
+
+    1.  Sign into Zero Trust Secure Access on the end-user device..
+
+    2.  Click **OK** to allow control of system events.
+
+        :::note
+
+        System event access can also be enabled later from Permission Management within Zero Trust Secure Access.
+        :::
+
+5.  Allow Zero Trust Secure Access to set up the required VPN:
+
+    1.  Open Zero Trust Secure Access on the end-user device.
+
+    2.  Click **Allow** to allow Zero Trust Secure Access to add VPN configurations.
+::::

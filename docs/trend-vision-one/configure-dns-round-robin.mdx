@@ -1,0 +1,75 @@
+---
+slug: trend-vision-one-configure-dns-round-robin
+title: >-
+  Configuring DNS round-robin mode as a load balancing method for use with
+  multiple Internet Access on-premises gateways
+---
+# Configuring DNS round-robin mode as a load balancing method for use with multiple Internet Access on-premises gateways
+
+Configure DNS round-robin mode to support load balancing among multiple Internet Access on-premises gateways for the authentication proxy.
+
+DNS round-robin mode is a simple load balancing method that does not use dedicated hardware or software. Instead, multiple IP addresses are assigned to a single host name on the DNS nameserver. When queried for an IP address, the DNS server returns the next IP address in the cycle, evenly distributing requests.
+
+:::warning[Important]
+
+Before you begin:
+
+- Determine the IP addresses of the on-premises gateways you wish to use when load balancing.
+
+- Ensure you have access to the DNS server and permission to modify DNS records.
+:::
+
+### Procedure {#procedure}
+
+1.  Sign in to your DNS management platform using an account with administrative privileges.
+
+2.  Choose the domain you wish to use as the address for load balancing.
+
+3.  Add an A record pointing to each on-premises gateway IP address you wish to load balance.
+
+    Using the domain `authproxy.example.com` as your load balancing address, you wish to balance loads among on-premises gateways with the IP addresses 192.0.2.1, 192.0.2.2, and 192.0.2.3. You must create three new DNS records with the following information.
+
+    <table style="width:99%;">
+    <colgroup>
+    <col style="width: 33%" />
+    <col style="width: 33%" />
+    <col style="width: 33%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Host name</p></th>
+    <th><p>Record type</p></th>
+    <th><p>IP address</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>authproxy.example.com</p></td>
+    <td><p>A</p></td>
+    <td><p>192.0.2.1</p></td>
+    </tr>
+    <tr>
+    <td><p>authproxy.example.com</p></td>
+    <td><p>A</p></td>
+    <td><p>192.0.2.2</p></td>
+    </tr>
+    <tr>
+    <td><p>authproxy.example.com</p></td>
+    <td><p>A</p></td>
+    <td><p>192.0.2.3</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+4.  From the command line, run the nslookup tool to ensure the new DNS records are properly configured.
+
+    ```bash
+    nslookup authproxy.example.com
+    ```
+
+    The first configured IP address is returned.
+
+5.  Run the nslookup tool several more times to ensure the next IP addresses in the cycle are returned.
+
+6.  When configuring multiple on-premises gateways for use as the Internet Access authentication proxy, specify the domain used for the A records as the load balancer address.
+::::

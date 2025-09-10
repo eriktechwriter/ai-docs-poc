@@ -1,0 +1,80 @@
+---
+slug: trend-vision-one-ews-activity-monitoring
+title: >-
+  Connect Trend Cloud One - Endpoint & Workload security and enable activity
+  monitoring
+---
+# Connect Trend Cloud One - Endpoint & Workload security and enable activity monitoring
+
+Get Vulnerability Assessment data from your connected Endpoint & Workload Security agents by enabling Activity Monitoring.
+
+:::note
+
+If you encounter any issues attempting to connect Trend Cloud One with Trend Vision One, check that you have the correct license provisioned. Contact your support provider for more information.
+:::
+
+### Procedure {#procedure}
+
+1.  Copy the enrollment token used in the Trend Cloud One console to identify your Trend Vision One console.
+
+    1.  In the Trend Vision One console, go to **Service Management → Product Instance**.
+
+    2.  Click **Connect**.
+
+    3.  Select **Trend Cloud One**.
+
+    4.  Click the **Click to generate the enrollment token** link.
+
+    5.  Copy the enrollment token.
+
+2.  Use the enrollment token to integrate your Trend Cloud One environment with Trend Vision One.
+
+    1.  Open your Trend Cloud One console and click **Integrations** at the bottom of the screen.
+
+        <figure>
+        <img src="./images/trendMicroCloudOneIntegrations=20221018145151.webp" />
+        </figure>
+
+    2.  Click **Trend Vision One™** on the navigation bar.
+
+    3.  In the **Enrollment Token** section, click **Register enrollment token**.
+
+    4.  Paste the enrollment token and click **Register**.
+
+        :::note
+
+        After successful registration, Trend Cloud One - Endpoint & Workload Security automatically enables **Forward activity logs to Trend Micro XDR** and changes the *Enrollment Status* to "Registered".
+        :::
+
+    5.  For customers that want to allow SSO from Trend Vision One to Trend Cloud One - Endpoint & Workload Security, enable the **Single Sign On from Trend Vision One** toggle and click **Save**.
+
+3.  In Trend Vision One Product Instance, enable the connection to Trend Cloud One - Endpoint & Workload Security.
+
+    1.  Go to **Service Management → Product Instance**.
+
+    2.  Click **Trend Cloud One**.
+
+    3.  Enable **Endpoint & Workload Security**.
+
+    4.  Click **Save**.
+
+4.  Enable Activity Monitoring on Deep Security Agents.
+
+    1.  Go to **Policies**, select a policy and click **Details**.
+
+    2.  Go to **Activity Monitoring → General**.
+
+    3.  Set the **Activity Monitoring State** to **On**.
+
+    4.  Click **Save**.
+
+5.  Ensure that the Cyber Risk Exposure Management app group has permission to read the vulnerability data.
+
+    1.  Go to **Cyber Risk Exposure Management → Cyber Risk Overview**.
+
+    2.  Click the **Data source** button at the top right of the screen.
+
+    3.  In the **Trend Micro Security Services** section, click **Trend Cloud One - Endpoint & Workload Security**.
+
+    4.  Verify that the **Data upload permission** toggle is **On**.
+::::

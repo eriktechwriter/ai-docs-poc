@@ -1,0 +1,96 @@
+---
+slug: trend-vision-one-granting-access-gmail-cloud-apps
+title: Granting access to Gmail
+---
+# Granting access to Gmail
+
+Grant Cloud Email and Collaboration Protection access to Gmail to allow Cloud Email and Collaboration Protection to run advanced threat protection and data loss prevention scanning on email messages in protected Gmail mailboxes.
+
+The steps outlined below detail how to grant access to Gmail from **Dashboard**.
+
+### Procedure {#procedure}
+
+1.  Go to **Dashboard → Service Status**.
+
+2.  Click **Grant Access** in the **Action** column for Gmail.
+
+    The **Grant Access to Gmail** screen appears.
+
+3.  Click **Click here** in **Step 1**.
+
+    The **Trend Micro Cloud App Security** application screen in the Google Workspace Marketplace appears.
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Condition</p></th>
+    <th><p>Steps</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>The Cloud Email and Collaboration Protection application is not installed.</p></td>
+    <td><ol>
+    <li><p>Click <strong>Admin install</strong>.</p>
+    <p>A new window appears for you to sign in to Google.</p></li>
+    <li><p>Specify your Google Super Admin credentials, and click <strong>Next</strong> and then <strong>CONTINUE</strong>.</p>
+    <p>An authorization screen appears.</p></li>
+    <li><p>Choose who to install the app for.</p>
+    <ul>
+    <li><p><strong>Everyone at your organization</strong> (recommended)</p></li>
+    <li><p><strong>Certain groups or organizational units</strong></p>
+
+
+    :::note
+
+    If you select this option, make sure the selected groups or organizational units include the Google Super Admin account to be used for access grant in step 6.
+
+
+    :::
+
+    </li>
+    </ul></li>
+    <li><p>Select <strong>I agree to the application's Terms of Service, Privacy Policy, and Google Workspace Marketplace's Terms of Service</strong> and click <strong>Finish</strong> to start installation.</p>
+    <p>The application is successfully installed.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>The Cloud Email and Collaboration Protection application is already installed.</p></td>
+    <td><ol>
+    <li><p>Log on to <a href="https://admin.google.com">https://admin.google.com</a> as a Google Super Admin.</p></li>
+    <li><p>Go to <strong>Apps → Google Workspace Marketplace apps → Apps list</strong> and click <strong>Trend Micro Cloud App Security</strong>.</p></li>
+    <li><p>Click <strong>Grant access</strong> in the <strong>Data Access</strong> section.</p>
+    <p>The "Status: Granted" message appears on the screen.</p></li>
+    </ol>
+
+
+    :::note
+
+    <p>If you change the application scope for <strong>Trend Micro Cloud App Security</strong> in the <strong>User Access</strong> section, make sure the selected groups or organizational units include the Google Super Admin account to be used for access grant in step 6.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    </tbody>
+    </table>
+
+4.  Select the policy to enable automatically when the access grant is complete.
+
+5.  Click **Grant Permission**.
+
+6.  In the new browser tab that appears, click your Google Super Admin account.
+
+7.  Wait until the process is completed.
+
+    If the message "Successfully created a service account and synced data." appears on the screen, the access grant is successful.
+
+### Next steps {#next-steps}
+
+If for some reason the access token becomes invalid, a notification appears on **Dashboard**. Cloud Email and Collaboration Protection also sends an email message to notify the administrator of this event. To continue using the service account, go to **Administration → Service Account** to create a new access token. For more information, see [Service account](service-account-cloud-apps.mdx).
+:::

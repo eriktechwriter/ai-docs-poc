@@ -1,0 +1,89 @@
+---
+slug: trend-vision-one-aws-auto-scaling-2
+title: AWS Auto Scaling and Server & Workload Protection
+---
+# AWS Auto Scaling and Server & Workload Protection
+
+:::::::warning[Important]
+
+AWS Accounts in Trend Vision One are now managed by the Cloud Accounts app. To add new AWS accounts, see [Adding an AWS account using CloudFormation](adding-aws-account.mdx).
+
+You can still use APIs to add new accounts to Server & Workload Protection. However, Trend Micro recommends using the Cloud Accounts app, which provides access to more advanced cloud security and XDR capabilities. This topic is for reference only.
+:::
+
+You can set up automatic protection in Server & Workload Protection for new instances created by AWS Auto Scaling.
+
+Each instance created by Auto Scaling will need to have an agent installed on it. There are two ways that you can do this: you can include a pre-installed agent in the EC2 instance used to create the AMI, or you install the agent by including a deployment script in the launch configuration for the AMI. There are pros and cons for each option:
+
+- If you include a pre-installed agent, instances will spin up more quickly because there is no need to download and install the agent software. The downside is that the agent software might not be the latest. To work around this issue, you can enable the [upgrade on activation](autoupgrade-agents-activation.mdx) feature.
+
+- If you use a deployment script to install the agent, it will always get the latest version of the agent software from Server & Workload Protection.
+
+## Pre-install the agent {#pre-install-the-agent}
+
+If you have an EC2 instance already configured with an agent, you can use that instance to create the AMI for Auto Scaling. Before creating the AMI, you must deactivate the agent on the EC2 instance and stop the instance:
+
+`dsa_control -r`
+
+Each new EC2 instance created by Auto Scaling needs to have its agent activated and a policy applied to it, if it doesn’t have one already. There are two ways to do this:
+
+- You can create a deployment script that activates the agent and optionally applies a policy. Then add the deployment script to the AWS launch configuration so that it is run when a new instance is created. For instructions, see the "Install the Agent with a deployment script" section below, but omit the section of the deployment script that gets and installs the agent. You will only need the dsa_control -a section of the script.
+
+:::note
+
+For the deployment scripts to work, agent-initiated communication must be enabled in Server & Workload Protection. For details on this setting, see [Activate and protect agents using agent-initiated activation and communication](agent-initiated-activation.mdx)
+:::
+
+- You can set up an event-based task in Server & Workload Protection that will activate the agent and optionally apply a policy when an instance it launched and the "Computer Created (By System)" event occurs.
+
+## Install the agent with a deployment script {#install-the-agent-with-a-deployment-script}
+
+Server & Workload Protection provides the ability to generate customized deployment scripts that you can run when EC2 instances are created. If the EC2 instance does not contain a pre-installed agent, the deployment script should install the agent, activate it, apply a policy, and optionally assign the machine to a computer group and relay group.
+
+:::tip
+
+You can generate deployment scripts to automate the agent installation using the Server & Workload Protection API. For more information, see [Generate a deployment script](api-generate-agent-deploy.mdx).
+:::
+
+In order for the deployment script to work:
+
+- You must create AMIs from machines that are stopped.
+
+- Agent-initiated communication must be enabled in Server & Workload Protection. For details on this setting, see [Activate and protect agents using agent-initiated activation and communication](agent-initiated-activation.mdx).
+
+To set up automatic protection for instances using a deployment script:
+
+### Procedure {#procedure}
+
+1.  Sign in to the Server & Workload Protection console.
+
+2.  From the *Support* menu in the top right-hand corner, select *Deployment Scripts*.
+
+3.  Select your platform.
+
+4.  Select *Activate Agent automatically after installation*.
+
+5.  Select the appropriate *Security Policy*, *Computer Group* and *Relay Group*.
+
+6.  Click *Copy to Clipboard*.
+
+7.  Go to the AWS launch configuration, expand *Advanced Details* and paste the deployment script into *User Data*.
+
+    ![](/images/aws-autoscaling-and-ds-launchconfig_2=29683548-1e58-4790-b9b2-2fe764e16090.webp)
+
+### Next steps {#next-steps}
+
+:::note
+
+If you are encountering issues getting the PowerShell deployment script to run on a Microsoft Windows-based AMI, the issues may be caused by creating the AMI from a running instance. AWS supports creating AMIs from running instances, but this option disables ALL of the `Ec2Config` tasks that would run at start time on any instance created from the AMI. This behavior prevents the instance from attempting to run the PowerShell script.
+:::
+
+:::note
+
+When you build an AMI on Windows, you need to re-enable user-data handling manually or as part of your image-building process. The user-data handling only runs in the first boot of the Windows base AMI unless it’s explicitly told otherwise (it’s disabled during the initial boot process), so instances built from a custom AMI won’t run user-data unless the feature is re-enabled. [Configuring a Windows Instance Using the EC2Config Service](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-service.mdx) has a detailed explanation and instructions for how to reset the feature or ensure it’s not disabled on first boot. The easiest mechanism is to include `<persist>true</persist>` in your user data, providing that you have EC2Config version 2.1.10 or later.
+:::
+
+## Delete instances from Server & Workload Protection as a result of Auto Scaling {#delete-instances-from-server-workload-protection-as-a-result-of-auto-scaling}
+
+After you have added an AWS Account in Server & Workload Protection, instances that no longer exist in AWS as a result of Auto Scaling will be automatically removed from Server & Workload Protection.
+::::::::

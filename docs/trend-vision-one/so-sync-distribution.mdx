@@ -1,0 +1,76 @@
+---
+slug: trend-vision-one-so-sync-distribution
+title: Suspicious Object Sync - Distribution Settings
+---
+# Suspicious Object Sync - Distribution Settings
+
+Configure distribution settings to enable Apex Central to consolidate and send Virtual Analyzer and user-defined suspicious objects (excluding exceptions) to certain managed products. These products synchronize and use all or some of these objects.
+
+Apex Central can also send suspicious IP addresses and domains to TippingPoint.
+
+:::note
+
+The **Distribution Settings** also allows you to configure Suspicious Object Hub and Node Apex Central server settings to synchronize suspicious object lists across multiple Apex Central servers.
+
+For more information, see [Suspicious Object Hub and Node Architecture](so-hub-node-arch.mdx).
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Threat Intel → Distribution Settings**.
+
+    The **Distribution Settings** screen appears.
+
+2.  To send suspicious objects to managed products:
+
+    1.  Click the **Managed Products** tab.
+
+    2.  Select the **Send suspicious objects to managed products** check box.
+
+    3.  Record the following information for use when configuring Apex Central as the Virtual Analyzer source in managed products:
+
+        - **Service URL**: The service URL of Apex Central
+
+        - **API key**: The code that identifies Apex Central to the managed product
+
+    4.  Click **Save**.
+
+    5.  Click **Sync Now**.
+
+3.  To send suspicious objects to TippingPoint:
+
+    1.  Click the **TippingPoint** tab.
+
+    2.  Select the **Send suspicious objects (IP addresses and domain names only) to TippingPoint** check box.
+
+        :::note
+
+        Apex Central sends suspicious IP addresses and domain names analyzed by Virtual Analyzer. TippingPoint uses reputation filters to apply block, permit, or notify actions across an entire reputation group. For more information about reputation filters, refer to your TippingPoint documentation.
+        :::
+
+    3.  Specify the following:
+
+        - **Server name**: Type the server URL and port number for your TippingPoint deployment.
+
+        - **User name**: Type the user name of an account with sufficient privileges to access the TippingPoint console.
+
+        - **Password**: Type the password for the account.
+
+    4.  (Optional) Click **Test Connection** to confirm the connection.
+
+    5.  Select the severity level that triggers Apex Central to send domain names or IP address information to TippingPoint.
+
+        - **High only**: IP addresses and domain names with high severity
+
+        - **High and medium**: IP addresses and domain names with high and medium severity
+
+        - **All**: Includes IP addresses and domain names with high, medium, and low severity
+
+    6.  Click **Save**.
+
+    7.  Click **Sync Now**.
+
+**Related information**
+
+- [Suspicious Object Hub and Node Architecture](so-hub-node-arch.mdx)
+::::

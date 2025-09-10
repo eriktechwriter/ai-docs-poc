@@ -1,0 +1,123 @@
+---
+slug: trend-vision-one-uninstall-swp-agent
+title: Uninstall the Server & Workload Protection Agent
+---
+:When you manually uninstall an activated agent from a computer, the computer doesn't notify Server & Workload Protection that the software has been uninstalled. On the Computers page in the Server & Workload Protection console, the computer's status will be "Managed (Offline)" or similar, depending on the context. To avoid this, in Server & Workload Protection, either:
+
+- Deactivate the agent before you uninstall it, or
+- Delete the computer from the list after you uninstall
+
+## Uninstall an agent (Windows) {#uninstall-an-agent-windows}
+
+:::note
+
+Before updating or uninstalling an agent or relay on Windows, you must disable agent self-protection. To do this, in the Server & Workload Protection console, go to **Computer editor → Settings → General**. In *Agent Self Protection*, and then either deselect *Prevent local end-users from uninstalling, stopping, or otherwise modifying the Agent* or enter a password for local override.
+:::
+
+### Procedure {#procedure}
+
+1.  Deactivate the agent using the Server & Workload Protection console by going to the *Computers* page, right-clicking the computer and selecting **Actions → Deactivate**.
+
+    If you are unable to deactivate the agent because Server & Workload Protection is unable to communicate with the agent, you will need to do the following before continuing to the next step:
+
+    `C:\Program Files\Trend Micro\Deep Security Agent>dsa_control --selfprotect 0`
+
+2.  Go to the Control Panel and select *Uninstall a program*. Look for the Trend Micro Deep Security Agent and then select *Uninstall*.
+
+### Next steps {#next-steps}
+
+Alternatively, you can uninstall from the command line:
+
+`msiexec /x <package name including extension>`
+
+For a silent uninstall, add `/quiet`.
+
+## Uninstall an agent (Linux) {#uninstall-an-agent-linux}
+
+If your version of Linux provides a graphical package management tool, you can search for the `ds_agent` package and use the tool remove the package. Otherwise, use the command line instructions below.
+
+To completely remove the agent and any configuration files it created on a platform that uses the Red Hat package manager (rpm), such as CentOS, Amazon Linux, Oracle Linux, SUSE, or Cloud Linux, enter the command:
+
+```bash
+# sudo rpm -ev ds_agent
+Stopping ds_agent: [ OK ]
+Unloading dsa_filter module [ OK ]
+```
+
+If iptables was enabled prior to installing agent, it will be re-enabled when the agent is uninstalled.
+
+If the platform uses Debian package manager (dpkg), such as Debian and Ubuntu, enter the command:
+
+```bash
+$ sudo dpkg -r ds-agent
+$ sudo dpkg --purge ds-agent
+Removing ds-agent...
+Stopping ds_agent: .[OK]
+```
+
+## Uninstall an agent (Solaris 10) {#uninstall-an-agent-solaris-10}
+
+Enter the command:
+
+`pkgrm ds-agent`
+
+(Note that uninstall may require a reboot.)
+
+## Uninstall an agent (Solaris 11) {#uninstall-an-agent-solaris-11}
+
+Enter the command:
+
+`pkg uninstall ds-agent`
+
+Uninstall may require a reboot.
+
+## Uninstall an agent (AIX) {#uninstall-an-agent-aix}
+
+Enter the command:
+
+`installp -u ds_agent`
+
+## Uninstall an agent (macOS) {#uninstall-an-agent-macos}
+
+Use the built-in DSAUninstaller tool to uninstall:
+
+:::note
+
+To uninstall the agent you first need to disable self-protection.
+:::
+
+### Procedure {#procedure-1}
+
+1.  From the terminal, enter `cd /Library/Application Support/com.trendmicro.DSAgent`.
+
+2.  Enter `sudo ./dsa_control -s 0`.
+
+    Self-protection is now disabled.
+
+    :::tip
+
+    To disable self-protection from Server & Workload Protection, see [Configure self-protection through the Server & Workload Protection console](https://docs.trendmicro.com/en-us/documentation/article/trend-micro-cloud-one-workload-security-agent-self-protection) for instructions.
+    :::
+
+3.  Enter `sudo /opt/dsa/DSAUninstaller`.
+
+### Next steps {#next-steps-1}
+
+"Uninstallation is complete” indicates successful uninstallation.
+
+## Uninstall an agent (Red Hat OpenShift) {#uninstall-an-agent-red-hat-openshift}
+
+Enter the command:
+
+`helm uninstall ds-agent`
+
+## Uninstall the notifier {#uninstall-the-notifier}
+
+From the Windows Control Panel, select *Add/Remove Programs*. Double-click *Trend Micro Deep Security Notifier*, and click *Remove*.
+
+To uninstall from the command line:
+
+`msiexec /x <package name including extension>`
+
+For a silent uninstall, add `/quiet`.
+:::::

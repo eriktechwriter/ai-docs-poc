@@ -1,0 +1,51 @@
+---
+slug: trend-vision-one-external-traffic-hyper-v-host
+title: Configuring external network traffic on Hyper-V host
+---
+# Configuring external network traffic on Hyper-V host
+
+Configure external network traffic to allow Virtual Network Sensor to monitor data.
+
+### Procedure {#procedure}
+
+1.  On the host machine, access the Hyper-V Manager.
+
+2.  Verify the virtual switch connecting to the Virtual Network Sensor data port has the connection type set to **External network**.
+
+3.  Set the Virtual Network Sensor as the traffic mirror target.
+
+    1.  Right-click the Virtual Network Sensor virtual machine, and select **Settings...**
+
+    2.  In the settings window, use the navigation bar to go to **Network Adapter (Data Switch) → Advanced Features**.
+
+    3.  Under the **Port mirroring** section, set **Mirroring mode** to **Destination**.
+
+    4.  Click **Apply**, then click **OK**.
+
+4.  Access PowerShell.
+
+5.  Use the following commands to configure the monitor mode of the data port.
+
+    The example code uses `Data Switch` as the name of the switch the data port connects to.
+
+    ```bash
+    $DataSwitch = "Data Switch"
+    $extFeature = Get-VMSystemSwitchExtensionPortFeature -FeatureName "Ethernet Switch Port Security Settings"
+    $extFeature.SettingData.MonitorMode = 2
+    Add-VMSwitchExtensionPortFeature -ExternalPort -SwitchName $DataSwitch -VMSwitchExtensionFeature $extFeature
+    ```
+
+6.  Use the following commands to configure the VM VLAN mode of the data port.
+
+    These commands are used to set the VLAN ID to be mirrored. The example code uses `VirtualNetworkSensor_0101` as the target VLAN to mirror traffic from. `$DataSwitch` is the name of the switch the data port connects to.
+
+    ```bash
+    $VMName = "VirtualNetworkSensor_0101"
+    $DataSwitch = "Data Switch"
+    Get-VMNetworkAdapter -VMName $VMName | ? SwitchName -eq "$DataSwitch" | % {
+        Set-VMNetworkAdapterVlan -VMNetworkAdapter $_ -Trunk -AllowedVlanIdList 1-4094 -NativeVlanId 0
+    }
+    ```
+
+    After configuring your network settings, access the Virtual Network Sensor console and use the command `show traffic` to verify the Virtual Network Sensor is receiving traffic. For more information about troubleshooting, see [Virtual Network Sensor FAQ](virtual-network-sensor-faqs.mdx) and [Virtual Network Sensor CLI commands](virtual-network-sensor-cli-commands.mdx).
+:::

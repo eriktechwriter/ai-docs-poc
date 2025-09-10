@@ -1,0 +1,67 @@
+---
+slug: trend-vision-one-policy-rule-overview
+title: Policy rule overview
+last_updated: '2025-09-08'
+ai_context:
+  source_file: policy-rule-overview.md
+  conversion_date: '2025-09-08T23:42:14.444Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Cloud Email Gateway Protection supports policy rules at the following levels in your organization: organization, group, and user.
+
+- An organization-level policy rule applies to all of your organization's domains added to Cloud Email Gateway Protection.
+
+  Organization-level policy rules ease your policy management by automatically applying to all of your organization's domains including the new ones added in the future. With organization-level policy rules, you do not need to manually create new policy rules in case that a new domain is added.
+
+  Trend Micro recommends that you configure organization-level policy rules under **Inbound Protection** and **Outbound Protection** to provide organization-level protection.
+
+- A group-level policy rule applies to one or more specific groups (including domains, LDAP groups and address groups) in your organization.
+
+  :::tip
+
+  If an existing domain-level policy rule is applying to all or the great majority of your organization's domains, you are advised to convert it into an organization-level policy rule and configure the rest of the domains as an exception list of the policy rule. This will simplify your policy management.
+  :::
+
+- A user-level policy rule applies to discrete email addresses that are or may be used by single users in your organization.
+
+A policy rule level is determined by the **Recipients** or **Senders** addresses (depending on the mail traffic direction) that the policy applies to. The following table describes how to configure **Recipients** or **Senders** addresses for the policy rules at different levels. For more information, see [Specifying recipients and senders](specifying-recipients-senders.mdx).
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 39%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Policy Rule Level</p></th>
+<th><p>Inbound Protection</p></th>
+<th><p>Outbound Protection</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Organization</p></td>
+<td><p>Select <strong>My organization</strong> for <strong>Recipients</strong> addresses on the <strong>Recipients and Senders</strong> tab.</p></td>
+<td><p>Select <strong>My organization</strong> for <strong>Senders</strong> addresses on the <strong>Recipients and Senders</strong> tab.</p></td>
+</tr>
+<tr>
+<td><p>Group</p></td>
+<td><p>Specify domains, LDAP groups or address groups, or type email addresses in the format *@example.com for <strong>Recipients</strong> addresses on the <strong>Recipients and Senders</strong> tab.</p></td>
+<td><p>Specify domains, LDAP groups or address groups, or type email addresses in the format *@example.com for <strong>Senders</strong> addresses on the <strong>Recipients and Senders</strong> tab.</p></td>
+</tr>
+<tr>
+<td><p>User</p></td>
+<td><p>Type one or more discrete email addresses for <strong>Recipients</strong> addresses on the <strong>Recipients and Senders</strong> tab.</p></td>
+<td><p>Type one or more discrete email addresses for <strong>Senders</strong> addresses on the <strong>Recipients and Senders</strong> tab.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Default policy rules](default-policy-rules.mdx)
+:::

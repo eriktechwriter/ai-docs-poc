@@ -1,0 +1,75 @@
+---
+slug: trend-vision-one-web-app-discovery-chrome
+title: Trend Micro Web App Discovery Chrome extension
+---
+# Trend Micro Web App Discovery Chrome extension
+
+Discover the associated web apps that run when accessing your internal apps through the use of Trend Micro Web App Discovery.
+
+### Procedure {#procedure}
+
+1.  Locate and install the extension.
+
+    1.  In the Trend Vision One console, go to **Zero Trust Secure Access → Secure Access Configuration → Private Access Configuration**.
+
+    2.  Click the **Internal Applications** tab.
+
+    3.  Click **Add Internal Application**.
+
+        The **Add Internal Application** screen appears.
+
+    4.  Click the **Browser Access** tab, and enable **Allow users to access via a user portal provided by Trend Micro**.
+
+    5.  Under the **Protocol** dropdown list, click the **Trend Micro Web App Discovery** link.
+
+    6.  Click **Add to Chrome** to download and install the Chrome extension.
+
+    7.  In the confirmation dialog that appears, click **Add extension**.
+
+2.  (Recommended) Configure Chrome to allow the extension to operate in Incognito mode.
+
+    1.  In the browser window, go to **Settings () → More tools → Extensions**.
+
+    2.  In the **Extensions** screen, find Trend Micro Web App Discovery, and click **Details**.
+
+    3.  Enable **Allow in Incognito**.
+
+        :::note
+
+        If you choose not to use Incognito mode, ensure that you close all additional tabs and clear the browser cache before executing Web App Discovery to avoid false positives.
+        :::
+
+3.  Locate all associated applications for your target internal app.
+
+    1.  Close all open Chrome browser sessions.
+
+    2.  Open Chrome in Incognito mode.
+
+    3.  Click **Extensions () → Trend Micro Web App Discovery**.
+
+        A normal Chrome browser session opens, displaying the Trend Micro Web App Discovery extension.
+
+    4.  Go back to the Incognito window, and specify your app's URL in the address bar.
+
+        Trend Micro Web App Discovery, which is still open in the normal Chrome browser, automatically starts populating the list with apps associated with the URL specified in the Incognito window.
+
+    5.  To located all associated web apps, ensure that you complete all necessary app processes, such as sign on and authorization.
+
+    6.  View all domains and corresponding IP addresses that the browser requested on the Trend Micro Web App Discovery extension.
+
+    :::tip
+
+    All possible corporate assets have a star next to the URL. To view only the corporate assets, select **Possible corporate assets** from the dropdown.
+
+    You can temporarily pause web app discovery by disabling the toggle.
+    :::
+
+4.  Add the discovered web apps to the list of internal applications in Zero Trust Secure Access in the **Add Internal Application** panel.
+
+    :::note
+
+    Configuring internal apps with your company's IP address is recommended.
+    :::
+
+5.  Close the Trend Micro Web App Discovery tab to end app discovery.
+:::

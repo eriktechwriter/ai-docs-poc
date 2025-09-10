@@ -1,0 +1,60 @@
+---
+slug: trend-vision-one-creating-amazon-ecs-policy
+title: Creating an Amazon ECS policy
+last_updated: '2025-09-08'
+ai_context:
+  source_file: creating-amazon-ecs-policy.md
+  conversion_date: '2025-09-08T23:42:21.330Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Container Protection policies for Amazon ECS clusters contain runtime rules that you can apply to entire clusters.
+
+:::warning[Important]
+
+Policy configuration for Kubernetes clusters differs greatly from a Amazon ECS environment. To properly configure Kubernetes protection policies, see [Creating a Kubernetes protection policy](kubernetes-prot-policy.mdx).
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Cloud Security → Container Security → Container Protection**.
+
+2.  Click the **Policies** tab.
+
+3.  Create a policy by clicking **New**.
+
+4.  Specify a unique policy name.
+
+    :::note
+
+    - Policy names must not contain spaces and only support alphanumeric characters, underscores (\_), and periods (.).
+
+    - You cannot modify the policy name after creating the policy.
+    :::
+
+5.  If you want to provide more details about the purpose for the policy, use the **Description** field.
+
+    The description appears under the policy name in the policy list.
+
+6.  To receive [CREM Risk Insights](executive-dashboard.mdx), [Workbench alerts](workbench.mdx), and use the [Search app](search-app.mdx) to investigate security threats throughout your network environment, turn on **XDR Telemetry**.
+
+    Trend Vision One can correlate and assess XDR telemetry data across all configured data sources to provide insights into your network's security and risk posture.
+
+7.  Amazon ECS policies do not support **Deployment** or **Continuous** policies.
+
+8.  Define the cluster-wide rules that apply while a pod is running by clicking the **Runtime** tab.
+
+    The runtime policy consists of the [rulesets you create](runtime-security-ruleset.mdx) on the **Rulesets** tab.
+
+    1.  Click **Add Ruleset**.
+
+    2.  Select the checkbox of the ruleset you want to apply to the policy.
+
+    3.  Click **Submit**.
+
+9.  Amazon ECS policies do not support namespace (**NamespacedPolicyDefinition**) policies.
+
+10. Click **Create**.
+::::

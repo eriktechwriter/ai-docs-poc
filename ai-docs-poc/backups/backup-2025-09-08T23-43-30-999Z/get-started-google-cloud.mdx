@@ -1,0 +1,210 @@
+---
+slug: trend-vision-one-get-started-google-cloud
+title: Get started with Agentless Vulnerability & Threat Detection in Google Cloud
+last_updated: '2025-09-08'
+ai_context:
+  source_file: get-started-google-cloud.md
+  conversion_date: '2025-09-08T23:42:18.843Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::::: {role="main"}
+Learn how to enable Agentless Vulnerability & Threat Detection in your Google Cloud project and understand provider-specific feature requirements and limitations.
+
+:::warning[Important]
+
+This is a "Pre-release" feature and is not considered an official release. Please review the [Pre-release disclaimer](pre-release-disclaimer.mdx) before using the feature.
+:::
+
+To start scanning for vulnerabilities and malware in your cloud resources, connect your Google Cloud project to Trend Vision One in [Cloud Accounts](cloud-accounts.mdx) using the Terraform template. Enable Agentless Vulnerability & Threat Detection in Features and Permissions.
+
+Agentless Vulnerability & Threat Detection scans the following Google Cloud resource types:
+
+- Hyperdisks and Persistent Disks attached to Compute Engine instances
+
+- Artifact Registry container images
+
+:::warning[Important]
+
+- Agentless Vulnerability & Threat Detection vulnerability and anti-malware scanning options are enabled by default for all supported Google Cloud resources. Scan settings are not currently configurable. For detailed instructions, see [Adding a Google Cloud project](adding-google-cloud-project.mdx).
+
+- During initial Agentless Vulnerability & Threat Detection deployment in Google Cloud Shell, it may take 20 minutes or more for Google Cloud deployment packages to download for all supported regions. The delay only takes place during initial deployment in Google Cloud Shell and does not occur in subsequent deployments.
+:::
+
+Agentless Vulnerability & Threat Detection works in Google Cloud by taking a snapshot of disks and collecting container images. The collected resources are then scanned for vulnerabilities or malware.
+
+:::warning[Important]
+
+Agentless Vulnerability & Threat Detection takes snapshots of your disks prior to scanning and tags the snapshots with the tag `trend-micro-product:avtd`. Use the tag to identify snapshots waiting to be scanned and to exclude the snapshots from any automated deletion processes you have configured. Snapshots are automatically deleted from your Google Cloud project after the scan completes.
+:::
+
+You can deploy Agentless Vulnerability & Threat Detection in your Google Cloud project using one of two methods:
+
+- Traditional: Agentless Vulnerability & Threat Detection is deployed directly into your project. The function runs using your project's cloud resources, which increases the costs associated with your cloud project. Using the traditional deployment method, you might not be able to differentiate between your direct cloud resource usage and Agentless Vulnerability & Threat Detection resource usage.
+
+  ![Agentless Vulnerability & Threat Detection architecture diagram for Google Cloud traditional deployments](/images/GCP_AVTD_diagramTraditional=GUID-202a1159-6aef-41d6-9eb1-4d1a329c5d79.webp)
+
+- Sidecar: Agentless Vulnerability & Threat Detection runs in a separate project in your organization for each project you wish to scan. Only the resource collecting component of the function runs directly in your project. Sidecar deployment allows you to have separate resource quotas for your project and Agentless Vulnerability & Threat Detection, so resource usage is easier to monitor. You can initiate sidecar deployment in one of three ways:
+  - Allow Agentless Vulnerability & Threat Detection to automatically find and use your Google Cloud billing information to create the sidecar project.
+
+  - Manually specify your Google Cloud billing information when enabling Agentless Vulnerability & Threat Detection and then allow Agentless Vulnerability & Threat Detection to automatically create the sidecar project.
+
+  - Manually create the sidecar project before deploying Agentless Vulnerability & Threat Detection and specify the created sidecar project during deployment.
+
+  ![Agentless Vulnerability & Threat Detection architecture diagram for Google Cloud sidecar deployments](/images/GCP_AVDT_diagramSidecar=GUID-ff027017-e0ec-4b30-85eb-c3498754adca.webp)
+
+Scan results are sent to Trend Vision One and can be seen in **Cloud Risk Management**, **Cyber Risk Overview**, **Threat and Exposure Management**, and asset profile screens in **Attack Surface Discovery**. After you patch vulnerabilities or remediate malware in disks, the detections no longer appear after the next daily scan. Vulnerability detections in container images remain visible in **Threat and Exposure Management → Vulnerabilities** for seven days after mitigation. Malware detections in container images remain visible in **Threat and Exposure Management → All Risk Events** for seven days after remediation.
+
+The following table lists scanning limitations that apply to each supported Google Cloud resource type.
+
+**Google Cloud resource scanning limitations**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Google Cloud resource</p></th>
+<th><p>Limitations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Disks</p></td>
+<td><ul>
+<li><p>Only Hyperdisks or Persistent Disks attached to Compute Engine instances are supported. Local SSD disks are not supported.</p></li>
+<li><p>Agentless Vulnerability &amp; Threat Detection cannot scan multi-write disks attached to multiple Compute Engine instances</p></li>
+<li><p>Anti-malware scans skip files larger than 2 GB.</p></li>
+<li><p>Agentless Vulnerability &amp; Threat Detection does not currently support scans of disks that are part of a single file system, such as RAID or LVM.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Container images</p></td>
+<td><ul>
+<li><p>Vulnerability scans of container images larger than 10 GB in size might fail due to Google Cloud image size limitations.</p></li>
+<li><p>Anti-malware scans skip container images larger than 2 GB.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+For a list of operating systems supported by Agentless Vulnerability & Threat Detection see [Agentless Vulnerability & Threat Detection supported operating systems](avtd-supported-operating-systems.mdx).
+
+Agentless Vulnerability & Threat Detection supports [all Google Cloud regions](https://cloud.google.com/about/locations), but only regions where Google Cloud Scheduler is available can serve as primary deployment regions. Your primary deployment region is the region you selected when adding your Google Cloud project in Cloud Accounts. Agentless Vulnerability & Threat Detection deploys to and scans your primary region by default in addition to any selected regions. The following regions are supported as primary deployment regions.
+
+**Primary Google Cloud deployment regions**
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Region code</p></th>
+<th><p>Region name (Location)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>us-west1</p></td>
+<td><p>US West (Oregon)</p></td>
+</tr>
+<tr>
+<td><p>us-west2</p></td>
+<td><p>US West (Los Angeles)</p></td>
+</tr>
+<tr>
+<td><p>us-west3</p></td>
+<td><p>US West (Salt Lake City)</p></td>
+</tr>
+<tr>
+<td><p>us-west4</p></td>
+<td><p>US West (Las Vegas)</p></td>
+</tr>
+<tr>
+<td><p>us-central1</p></td>
+<td><p>US Central (Iowa)</p></td>
+</tr>
+<tr>
+<td><p>us-east1</p></td>
+<td><p>US East (South Carolina)</p></td>
+</tr>
+<tr>
+<td><p>us-east4</p></td>
+<td><p>US East (N. Virginia)</p></td>
+</tr>
+<tr>
+<td><p>northamerica-northeast1</p></td>
+<td><p>North America (Montréal)</p></td>
+</tr>
+<tr>
+<td><p>southamerica-east1</p></td>
+<td><p>South America (São Paulo)</p></td>
+</tr>
+<tr>
+<td><p>europe-west1</p></td>
+<td><p>Europe (Belgium)</p></td>
+</tr>
+<tr>
+<td><p>europe-west2</p></td>
+<td><p>Europe (London)</p></td>
+</tr>
+<tr>
+<td><p>europe-west3</p></td>
+<td><p>Europe (Frankfurt)</p></td>
+</tr>
+<tr>
+<td><p>europe-west6</p></td>
+<td><p>Europe (Frankfurt)</p></td>
+</tr>
+<tr>
+<td><p>europe-central2</p></td>
+<td><p>Europe (Warsaw)</p></td>
+</tr>
+<tr>
+<td><p>asia-south1</p></td>
+<td><p>Asia Pacific (Mumbai)</p></td>
+</tr>
+<tr>
+<td><p>asia-southeast1</p></td>
+<td><p>Asia Pacific (Singapore)</p></td>
+</tr>
+<tr>
+<td><p>asia-southeast2</p></td>
+<td><p>Asia Pacific (Jakarta)</p></td>
+</tr>
+<tr>
+<td><p>asia-east1</p></td>
+<td><p>Asia Pacific (Taiwan)</p></td>
+</tr>
+<tr>
+<td><p>asia-east2</p></td>
+<td><p>Asia Pacific (Hong Kong)</p></td>
+</tr>
+<tr>
+<td><p>asia-northeast1</p></td>
+<td><p>Asia Pacific (Tokyo)</p></td>
+</tr>
+<tr>
+<td><p>asia-northeast2</p></td>
+<td><p>Asia Pacific (Osaka)</p></td>
+</tr>
+<tr>
+<td><p>asia-northeast3</p></td>
+<td><p>Asia Pacific (Seoul)</p></td>
+</tr>
+<tr>
+<td><p>australia-southeast1</p></td>
+<td><p>Asia Pacific (Sydney)</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Agentless Vulnerability & Threat Detection estimated deployment costs for Google Cloud](costs-google-cloud.md "Estimate and track the costs of deploying and operating Agentless Vulnerability & Threat Detection in your Google Cloud projects.")
+::::::

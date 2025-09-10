@@ -1,0 +1,67 @@
+---
+slug: trend-vision-one-create-log-repository-2
+title: Create a log repository
+last_updated: '2025-09-08'
+ai_context:
+  source_file: create-log-repository-2.md
+  conversion_date: '2025-09-08T23:42:21.398Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Create a log repository to organize collected log data according to specified ingestion and retention settings.
+
+### Before you begin {#before-you-begin}
+
+To begin managing log data in a log repository, you must have one or more deployed Service Gateways with the [Third-Party Log Collection service installed](install-tplc-service.mdx).
+
+### Procedure {#procedure}
+
+1.  In **Workflow and Automation → Third-Party Integration → Third-Party Log Collection** or **Service Management → Data Source and Log Management → Third-party log repositories**, click **Create New Log Repository**.
+
+2.  Specify a name and description for the log repository.
+
+3.  Select the desired ingestion and retention type.
+
+    - Ingestion types
+
+      - Analytic: Ingests log data for analysis, correlation, and threat hunting
+
+        - Supports both analytic and archival retention
+
+      - Archival: Ingests log data for infrequent queries or to meet compliance requirements
+
+        - Only supports archival retention
+
+      :::warning[Important]
+
+      - To ingest log data, you must allocate credits to Agentic SIEM.
+
+      - You cannot change the ingestion type for a log repository after you create the repository.
+      :::
+
+    - Retention types:
+
+      - Analytic: Allows for frequent retrieval of log data for analysis, correlation, and threat hunting. Default retention period: 30 days
+
+      - Archival: Stores data for compliance purposes or infrequent queries
+
+      :::note
+
+      Retention of data beyond the default period requires additional credits in Agentic SIEM.
+      :::
+
+4.  Click **Create**.
+
+    The log repository is created and the log repository details drawer appears.
+
+5.  [Add one or more collectors](create-collector.mdx) to the log repository to begin ingesting and retaining log data from your third-party data sources.
+
+    :::warning[Important]
+
+    Ensure you have installed the Third-Party Log Collection service on your deployed Service Gateways in Service Gateway Management before adding collectors.
+    :::
+
+6.  Monitor your data ingestion and retention in **Data Source and Log Management → Data usage and monitoring**.
+:::

@@ -1,0 +1,141 @@
+---
+slug: trend-vision-one-notifications-sg
+title: >-
+  Configuring notifications for Service Gateway critical service status or
+  performance
+last_updated: '2025-09-08'
+ai_context:
+  source_file: notifications-sg.md
+  conversion_date: '2025-09-08T23:42:15.000Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Send Trend Vision One notifications about **Service Gateway critical service status or performance** alerts by configuring email, webhook, and mobile app account lists.
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Administration → Notifications**.
+
+2.  Click **Service Gateway critical service status or performance** to open its settings panel.
+
+3.  Enable the alert toggle in the panel.
+
+4.  Configure which service status alerts or performance alerts trigger a notification.
+
+    <table style="width:99%;">
+    <colgroup>
+    <col style="width: 22%" />
+    <col style="width: 44%" />
+    <col style="width: 33%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Alert</p></th>
+    <th><p>Description</p></th>
+    <th><p>Setting</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Service Gateway critical service status</p></td>
+    <td><p>The alert sends notifications when there is a critical change in the service status of a Service Gateway appliance.</p>
+    
+
+    :::note
+    
+    <p>Monitored service statuses include connection status, storage availability, and configuration status.</p>
+    
+
+    :::
+
+    </td>
+    <td><p>Enable the <strong>Service Gateway critical service status</strong> toggle.</p></td>
+    </tr>
+    <tr>
+    <td><p>CPU usage threshold reached</p></td>
+    <td><p>The alert sends notifications when the CPU usage of a Service Gateway appliance reaches the specified threshold in percentage.</p></td>
+    <td><ol>
+    <li><p>Enable the <strong>CPU usage threshold reached</strong>toggle.</p></li>
+    <li><p>Type a number ranging from <code>1</code> to <code>100</code>. The default value is <code>80</code>.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Memory usage threshold reached</p></td>
+    <td><p>The alert sends notifications when the memory usage of a Service Gateway appliance reaches the specified threshold in percentage.</p></td>
+    <td><ol>
+    <li><p>Enable the <strong>Memory usage threshold reached</strong> toggle.</p></li>
+    <li><p>Type a number ranging from <code>1</code> to <code>100</code>. The default value is <code>80</code>.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Remaining storage threshold reached</p></td>
+    <td><p>The alert sends notifications when the remaining storage of a Service Gateway appliance reaches the specified threshold in GB.</p></td>
+    <td><ol>
+    <li><p>Enable the <strong>Remaining storage threshold reached</strong> toggle.</p></li>
+    <li><p>Type a number. The default value is <code>20</code>.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Active connection count changed</p></td>
+    <td><p>The alert sends notifications when the number of active connections changes, based on the <strong>Percentage change threshold</strong> and your specified exceptions.</p>
+    <ul>
+    <li><p><strong>Percentage change threshold</strong></p>
+    <p>This setting specifies the minimum percentage change in the number of active connections that trigger a notification.</p>
+    <p>If set to 20%, and the initial number of active connections is 100, notifications will be sent only if the active connections increase to 120 or more, or decrease to 80 or fewer.</p></li>
+    <li><p><strong>Ignore change in active connection count of less than</strong></p>
+    <p>This setting specifies the maximum number of active connection changes that suppress notifications.</p>
+    <p>If set to 100, notifications will be suppressed unless the number of active connections changes by 100 or more, either increasing or decreasing.</p></li>
+    <li><p><strong>Ignore change within X minutes of Service Gateway appliance startup</strong></p>
+    <p>This setting suppresses notifications for changes in the number of active connections that occur within a specified number of minutes after the Service Gateway appliance starts up.</p>
+    <p>If set to 10 minutes, any changes in active connections within the first 10 minutes after startup will not trigger notifications.</p></li>
+    </ul></td>
+    <td><ol>
+    <li><p>Enable the <strong>Active connection count changed</strong> toggle.</p></li>
+    <li><p>Type a number ranging from 1 to 100 for <strong>Percentage change threshold</strong>. The default value is <code>20</code>.</p></li>
+    <li><p>Type a number for <strong>Ignore change in active connection count of less than</strong>. The default value is <code>100</code>.</p></li>
+    <li><p>Type a number ranging from <code>1</code> to <code>30</code> for <strong>Ignore change within X minutes of Service Gateway appliance startup</strong>. The default value is <code>10</code>.</p></li>
+    </ol></td>
+    </tr>
+    </tbody>
+    </table>
+
+5.  To send notifications to users by email, on the **Email** tab configure the **Recipients** list.
+
+    1.  Specify email addresses or select from the list of Trend Vision One accounts.
+
+        :::note
+
+        Recently created Trend Vision One accounts may not immediately appear on the list.
+        :::
+
+    2.  Click **Send Test Message** to send a test notification. To send the test message only to emails you are adding to the recipient list, select **Send only to newly added recipients**. To send the test message to all recipients, select **Send to all recipients**.
+
+        :::note
+
+        You must wait a few minutes between sending test messages.
+        :::
+
+6.  To send notifications to webhook channels, on the **Webhook** tab configure the **Webhooks** list.
+
+    1.  Select webhooks from the managed **Webhook List**.
+
+        :::note
+
+        If your webhook is not listed, create a new webhook connection by [managing webhooks](managing-webhooks.mdx) in the **Webhook List**.
+        :::
+
+7.  To send notifications to users by the Trend Vision One mobile app, on the **Mobile** tab configure the **Accounts** list.
+
+    1.  Specify the Trend Vision One accounts you want to send notifications to using the mobile app.
+
+        :::note
+
+        Recently created Trend Vision One accounts may not immediately appear on the list.
+        :::
+
+    2.  Click **Send Mobile App Installation Link** to send users an installation link for the mobile app. To send the installation link only to the accounts you are adding to the **Accounts** list, select **Send only to newly added accounts**. To send the installation link to all accounts, select **Send to all accounts**.
+
+8.  Click **Save**.
+:::

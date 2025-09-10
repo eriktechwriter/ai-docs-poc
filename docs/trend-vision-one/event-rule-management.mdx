@@ -1,0 +1,146 @@
+---
+slug: trend-vision-one-event-rule-management
+title: Event Rule Management
+---
+# Event Rule Management
+
+View and manage event rules for risk events marked as Dismissed or Accepted.
+
+The **Event Rule Management** screen provides a centralized location to view and manage event rules. You may create event rules when changing the status of risk events and vulnerabilities. Statuses that support rule creation include:
+
+- **Dismissed**: Marking a risk event as Dismissed and creating a related event rule prevents the reporting of future instances of the risk event, keeping them from affecting the Cyber Risk Index.
+
+- **Accepted**: Marking a risk event as Accepted and creating a related event rule ensures existing and future instances of the risk event are marked as Accepted for the specified time period. Events marked as Accepted still contribute to your Cyber Risk Index.
+
+Removing an event rule enables reporting for future instances of the related risk event.
+
+The following table outlines the actions available on the **Event Rule Management** screen.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Filter event rules</p></td>
+<td><p>Use the drop-down menus and <strong>Search</strong> field to locate specific event rules.</p>
+<ul>
+<li><p><strong>Group by</strong>: Group event rules by the original <strong>Risk event</strong> or by <strong>Assets</strong></p></li>
+<li><p><strong>Risk factor</strong>: Filter event rules by the risk factor of the original risk event</p>
+<p>The <strong>Risk factor</strong> drop-down menu is only available when viewing event rules grouped by <strong>Risk event</strong>.</p></li>
+<li><p><strong>Impacted assets</strong>: Filter event rules by the type of asset impacted by the original risk event</p>
+<p>The <strong>Impacted assets</strong> drop-down menu is only available when viewing event rules grouped by <strong>Risk event</strong>.</p></li>
+<li><p><strong>Asset type</strong>: Filter event rules by the type of asset</p>
+<p>The <strong>Asset type</strong> drop-down menu is only available when viewing event rules grouped by <strong>Assets</strong>.</p></li>
+<li><p><strong>Status</strong>: Filter event rules by whether the rules are currently active, expired, or planned</p>
+<p>The <strong>Status</strong> drop-down menu is only available for rules in the <strong>Accepted</strong> event rules tab.</p></li>
+<li><p><strong>Created by</strong>: Sort filter event rules by the Trend Vision One user that created the event rule.</p></li>
+<li><p><strong>Search</strong>: Provides partial matching by risk event when grouping by <strong>Risk event</strong> or by asset when grouping by <strong>Assets</strong>.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>View information about event rules</p></td>
+<td><p>Click any risk event or asset to view a list of related event rules</p>
+<ul>
+<li><p>When grouping by <strong>Risk event</strong>, clicking a risk event displays a list of the event rules related the selected risk event.</p></li>
+<li><p>When grouping by <strong>Assets</strong>, clicking an asset displays a list of the event rules related to the selected asset.</p></li>
+</ul>
+<p>To remove event rules, select the event rules and then click <strong>Remove Event Rules</strong>.</p>
+<p>To change the status of an active or planned accepted event rule, click the time period field and enter a new applicable time period.</p>
+<p>To activate an expired accepted event rule, select the rule and click <strong>Activate Event Rules</strong>. Set a new applicable time period and description and then click <strong>Activate</strong>.</p></td>
+</tr>
+<tr>
+<td><p>Manage event rule parameters</p></td>
+<td><p>Click on an active supported event rule type to add or remove rule parameters. Event rules with set parameters only apply when the parameters are met. Risk event instances that do not meet rule parameters are still reported, which impacts your Cyber Risk Index.</p>
+<p>The following table details the risk event types that currently support parameters along with the supported parameter content.</p>
+<strong></strong>
+<table>
+<thead>
+<tr>
+<th><p>Risk event type</p></th>
+<th><p>Risk factor</p></th>
+<th><p>Supported parameter content</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Potential Impersonation Attempt - Impossible Travel</p></td>
+<td><p>Account compromise</p></td>
+<td><p>IPv4 addresses and ranges</p></td>
+</tr>
+<tr>
+<td><p>Potential Impersonation Attempt - Atypical Travel</p></td>
+<td><p>Account Compromise</p></td>
+<td><p>IPv4 addresses and ranges</p></td>
+</tr>
+<tr>
+<td><p>Potential Brute Force Attack Via Okta - Password Spraying</p></td>
+<td><p>Account compromise</p></td>
+<td><p>IPv4 addresses and ranges</p></td>
+</tr>
+<tr>
+<td><p>Unusual Device Access from IP Addresses</p></td>
+<td><p>Activity and behaviors</p></td>
+<td><p>IPv4 addresses and ranges</p></td>
+</tr>
+<tr>
+<td><p>Unusual Internal IP Connection</p></td>
+<td><p>Activity and behaviors</p></td>
+<td><p>IPv4 addresses and ranges</p></td>
+</tr>
+<tr>
+<td><p>Unusual User Access Day</p></td>
+<td><p>Activity and behaviors</p></td>
+<td><p>Days of the week</p></td>
+</tr>
+<tr>
+<td><p>Risky Cloud App Access</p></td>
+<td><p>Cloud app activity</p></td>
+<td><p>Apps</p></td>
+</tr>
+<tr>
+<td><p>Risky Mobile App Access</p></td>
+<td><p>Cloud app activity</p></td>
+<td><p>Apps</p></td>
+</tr>
+<tr>
+<td><p>Network Sensor - Security Risk Detection</p></td>
+<td><p>Threat detection</p></td>
+<td><p>Rules</p></td>
+</tr>
+<tr>
+<td><p>Trend Cloud One - Endpoint &amp; Workload Security - Security Risk Detection</p></td>
+<td><p>Threat detection</p></td>
+<td><p>Rules</p></td>
+</tr>
+<tr>
+<td><p>Trend Vision One Container Security - Security Risk Detection</p></td>
+<td><p>Threat detection</p></td>
+<td><p>Rules</p></td>
+</tr>
+<tr>
+<td><p>Network Sensor - Activity and Behavior Detection</p></td>
+<td><p>Threat detection</p></td>
+<td><p>Rules</p></td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+<tr>
+<td><p>View assets affected by an event rule</p></td>
+<td><p>When grouping by <strong>Risk event</strong>, clicking the number of impacted assets for a risk event displays a list of assets affected by the event rule</p></td>
+</tr>
+<tr>
+<td><p>Remove event rules</p></td>
+<td><p>Select event rules and click <strong>Remove Event Rules</strong> to remove the event rule and enable reporting for future instances of the related risk events</p></td>
+</tr>
+</tbody>
+</table>
+:::

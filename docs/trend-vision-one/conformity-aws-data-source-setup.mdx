@@ -1,0 +1,107 @@
+---
+slug: trend-vision-one-conformity-aws-data-source-setup
+title: Conformity AWS data source setup
+---
+# Conformity AWS data source setup
+
+### Procedure {#procedure}
+
+1.  For customers that do not already have Conformity, sign up for a free trial.
+
+    1.  Go to the sign up form.
+
+        <https://cloudone.trendmicro.com/trial>
+
+    2.  Provide all the required information and complete the reCAPTCHA.
+
+    3.  Agree to the terms and conditions, privacy notice, and data collection notice.
+
+    4.  Click **Sign Up**.
+
+    5.  Click the **Verify Email** link in the confirmation email sent to your business email account.
+
+    6.  Sign in to activate your Trend Cloud One console.
+
+        Allow a few moments to provision your new console.
+
+    7.  Specify an **Account Alias** for your account.
+
+        You can change your alias later using the console.
+
+    8.  Specify the **Region** in which Trend Cloud One stores all of your data.
+
+    9.  Click **Continue**.
+
+2.  Create your Conformity account in AWS.
+
+    1.  Click **Conformity**.
+
+    2.  Click **AWS Account** and click **Next**.
+
+    3.  Specify the **Account name** and **Environment**, and click **Next**.
+
+    4.  Choose the **Automated setup (recommended)** authentication type, which uses CloudFormation to enable Cross-Account Access, delegating access to your resources from your Conformity account using a predefined policy.
+
+        :::note
+
+        Advanced users can perform a **Manual setup** and delegate access to your resources from your Conformity account using a custom policy. For more information, consult your Trend Cloud One - Conformity online help.
+        :::
+
+    5.  Sign in to your target AWS account in another browser tab.
+
+    6.  Download and review the CloudFormation template.
+
+        The CloudFormation template contains information about all the read-only permissions that Conformity requires to analyze your AWS environment.
+
+    7.  Click the **Launch Stack** button to switch to your AWS browser window and display the **Create Stack** screen.
+
+        :::warning[Important]
+
+        Do not modify the automatically populated **AccountId** and **ExternalId** fields.
+        :::
+
+    8.  Enable the **I acknowledge that AWS CloudFormation might create IAM resources with custom names** check box.
+
+    9.  Click **Create**.
+
+        Allow a few moments for the process to complete.
+
+    10. On the **CloudConformity** screen that appears, expand the **Outputs** section.
+
+    11. Copy the **CloudConformityRoleArn** value.
+
+    12. Switch back to your Conformity browser window and paste the value in the **ARN** field.
+
+    13. Click **Next**.
+
+        Allow a few moments for the process to complete.
+
+3.  Connect Conformity with Cyber Risk Exposure Management using an API Key.
+
+    1.  Go to the home screen of the Trend Cloud One console, and click **Administration**.
+
+    2.  In the left menu, click **API Keys**.
+
+    3.  Click **New**.
+
+    4.  Specify the **API Key Alias**.
+
+    5.  In **Role**, select **Full Access**.
+
+    6.  Click **Next**.
+
+    7.  Copy the API Key immediately.
+
+        :::warning[Important]
+
+        You cannot access the API Key again after closing the dialog. Copy and store the API Key in a safe location.
+        :::
+
+    8.  In the Trend Vision One console, open the Trend Cloud One - Conformity Data Source panel.
+
+    9.  Paste the API Key from Conformity in the **API Key** field.
+
+    10. Acknowledge that your Conformity data may be transferred to another data center based on the Trend Vision One data center.
+
+    11. Click **Save**.
+:::

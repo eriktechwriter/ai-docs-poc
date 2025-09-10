@@ -1,0 +1,311 @@
+---
+slug: trend-vision-one-deploy-service-gateway-aws
+title: Deploying a Service Gateway virtual appliance with AWS
+---
+# Deploying a Service Gateway virtual appliance with AWS
+
+Launch a Service Gateway virtual appliance from Amazon Web Services using Amazon Machine Images.
+
+If you do not have VMware, Microsoft Hyper-V, or Nutanix AHV in your environment, you can deploy the Service Gateway virtual appliance from Amazon Web Services (AWS) using Amazon Machine Images (AMI). Before you begin, review the [Service Gateway appliance system requirements](sg-sys-requirements.mdx) to ensure your virtual appliance has the settings needed to deploy the services you want to use.
+
+:::note
+
+The steps contained in these instructions are valid as of April 2023.
+:::
+
+### Procedure {#procedure}
+
+1.  Obtain the Service Gateway registration token.
+
+    1.  On the Trend Vision One console, go to **Workflow and Automation → Service Gateway Management**.
+
+    2.  Click **Download Virtual Appliance**.
+
+    3.  Copy the **Registration Token**.
+
+        :::note
+
+        The registration token is used to register the Service Gateway virtual appliance to Service Gateway Inventory after installation and setup are complete. The registration token expires after 24 hours if not used.
+        :::
+
+2.  To initiate the instance launch, sign in to the AWS Management Console.
+
+    You must use an account that has permission to access the EC2 service.
+
+3.  Locate the EC2 service and click the link to access the EC2 dashboard.
+
+    :::tip
+
+    If you don't see the EC2 service, use the search bar at the top of the screen to search for EC2. Find EC2 under **Services**.
+    :::
+
+4.  In the top navigation bar, select the **Region** for your instance.
+
+    :::note
+
+    The region can be set to any region you require the Service Gateway to be deployed. If you are unsure which region to select, use the default region for your AWS account.
+    :::
+
+5.  Click **Launch instance**, then select **Launch instance**.
+
+    The **Launch an instance** screen appears.
+
+6.  In the **Names and tags** section, provide a name or add tags to the instance.
+
+    :::tip
+
+    Adding tags helps with managing virtual machines by providing a way to track ownership or locate resources associated with deployed instances.
+    :::
+
+7.  In the **Application and OS Images (Amazon Machine Image)** section, find and select the Service Gateway AMI.
+
+    1.  In the **Application and OS Images (Amazon Machine Image)** section, click **Browse more AMIs**.
+
+        <figure>
+        <img src="./images/AWS-01=GUID-735eadd6-073f-4dba-b329-04e0fbffedf5.webp" />
+        </figure>
+
+    2.  In the **Choose an Amazon Machine Image (AMI)** screen, select **AWS Marketplace AMIs** under the search bar.
+
+        <figure>
+        <img src="./images/AWS-02=GUID-5ca51921-f6d1-4574-a4ae-6494c411ecd6.webp" />
+        </figure>
+
+    3.  Search for **Trend Micro Service Gateway**.
+
+    4.  Find **Trend Micro Service Gateway BYOL** and click **Select**.
+
+        <figure>
+        <img src="./images/AWS-03=GUID-d0ec01c2-16dd-4c6e-90de-46bd5a47eacb.webp" />
+        </figure>
+
+    5.  Review the details and click **Continue**.
+
+8.  In the **Instance Type** section, select an instance that meets the specifications for your deployment.
+
+    :::note
+
+    The default instance is **C5.2xlarge** with 8 vCPU and 16 GiB memory.
+
+    Service Gateway supports the following recommended instance types. Select the one best suited for your needs.
+
+    - C5.2xlarge
+
+    - C5.4xlarge
+
+    For more information, see [Service Gateway appliance system requirements](sg-sys-requirements.mdx).
+    :::
+
+9.  In the **Key pair (login)** section, select an existing key pair or create a new key pair.
+
+    Trend Micro recommends accessing the Service Gateway virtual machine using an SSH client. Use the following settings for a new key pair to enable SSH access:
+
+    - **Key pair type**: RSA
+
+    - **Private key file format**: .PEM
+
+    :::note
+
+    If you choose to use an existing key pair, make sure that the key is at least 2,048 bits in length.
+    :::
+
+10. In the **Network settings** section, click **Edit** and configure the settings.
+
+    1.  Configure the network deployment settings.
+
+        - Select the **VPC** to use for the instance.
+
+        - Select a **Subnet** that you want to use.
+
+        - Set the **Auto-assign Public IP** to **Disable**.
+
+        For more information on how to set up a VPC and subnet, refer to the Amazon documentation .
+
+        :::warning[Important]
+
+        Do not select "No preference" for the subnet.
+        :::
+
+    2.  Under **Firewall (security groups)**, select **Create security group**.
+
+        :::warning[Important]
+
+        AWS may automatically fill in the firewall settings and **Inbound security groups rules**. However, the settings may be incomplete. Review the settings and configure as needed.
+        :::
+
+        - Specify the **Security group name**.
+
+        - Provide a **Description** of the security group.
+
+    3.  Review and configure **Inbound security groups rules**.
+
+        Add **Security group rules** for each of the required Service Gateway ports.
+
+        <table style="width:99%;">
+        <colgroup>
+        <col style="width: 14%" />
+        <col style="width: 14%" />
+        <col style="width: 14%" />
+        <col style="width: 14%" />
+        <col style="width: 14%" />
+        <col style="width: 28%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Type</p></th>
+        <th><p>Protocol</p></th>
+        <th><p>Port Range</p></th>
+        <th><p>Source Type</p></th>
+        <th><p>Source</p></th>
+        <th><p>Purpose</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>SSH</p></td>
+        <td><p>TCP</p></td>
+        <td><p>22</p></td>
+        <td><p>Recommended: Custom</p></td>
+        <td><p>See note</p></td>
+        <td><p>For accessing Service Gateway virtual appliance CLISH command</p></td>
+        </tr>
+        <tr>
+        <td><p>HTTP</p></td>
+        <td><p>TCP</p></td>
+        <td><p>80</p></td>
+        <td><p>Recommended: Custom</p></td>
+        <td><p>See note</p></td>
+        <td><p>Service enabled queries for on-premises Active Directory servers, connected Trend Micro products (such as endpoint agents), Predictive Machine Learning, File Reputation Services, or Third-Party Integration</p></td>
+        </tr>
+        <tr>
+        <td><p>HTTPS</p></td>
+        <td><p>TCP</p></td>
+        <td><p>443</p></td>
+        <td><p>Recommended: Custom</p></td>
+        <td><p>See note</p></td>
+        <td><p>Service enabled queries for on-premises Active Directory servers, connected Trend Micro products (such as endpoint agents), Predictive Machine Learning, File Reputation Services, or Third-Party Integration</p></td>
+        </tr>
+        <tr>
+        <td><p>Custom TCP</p></td>
+        <td><p>TCP</p></td>
+        <td><p>5274</p></td>
+        <td><p>Recommended: Custom</p></td>
+        <td><p>See note</p></td>
+        <td><p>Web Reputation Services or Web Inspection Service queries</p></td>
+        </tr>
+        <tr>
+        <td><p>Custom TCP</p></td>
+        <td><p>TCP</p></td>
+        <td><p>5275</p></td>
+        <td><p>Recommended: Custom</p></td>
+        <td><p>See note</p></td>
+        <td><p>Web Reputation Services or Web Inspection Service queries</p></td>
+        </tr>
+        <tr>
+        <td><p>Custom TCP</p></td>
+        <td><p>TCP</p></td>
+        <td><p>8080</p></td>
+        <td><p>Recommended: Custom</p></td>
+        <td><p>See note</p></td>
+        <td><p>Forward Proxy Service listening port for connection</p></td>
+        </tr>
+        <tr>
+        <td><p>Custom TCP</p></td>
+        <td><p>TCP</p></td>
+        <td><p>8088</p></td>
+        <td><p>Recommended: Custom</p></td>
+        <td><p>See note</p></td>
+        <td><p>Zero Trust Secure Access On-Premises Gateway listening port for connection</p></td>
+        </tr>
+        </tbody>
+        </table>
+
+        :::note
+
+        **Source type** controls which IP addresses are allowed to connect to the Service Gateway virtual appliance. Trend Micro suggests setting **Source type** to **Custom**, then specifying **Source** IP addresses or security groups.
+
+        See the AWS help for more information about assigning IP addresses and security groups.
+
+        Trend Micro recommends using default settings for outbound port rules. Setting additional outbound rules may affect the ability of Service Gateway to connect to Service Gateway Inventory.
+        :::
+
+11. Use the **Configure storage** settings to specify the size of the root volume for your instance.
+
+    :::note
+
+    The minimum size for a volume is 200 GiB. If you need to extend the storage, you can increase the size of the volume or click **Add new volume** to add a disk.
+    :::
+
+12. Use default settings for **Advanced details**.
+
+13. Review the settings in the **Summary** panel and click **Launch instance**
+
+    Once you launch the instance, the Service Gateway virtual appliance begins installation. Installation may take a few minutes to complete. You can view the status of the instance in the EC2 console by going to **Instances → Instances**.
+
+    The Service Gateway virtual appliance is ready to connect and configure when the **Instance state** is **Running** and the **Status check** shows **2/2 checks passed**.
+
+14. Connect to the instance.
+
+    :::note
+
+    Trend Micro recommends using an SSH client to connect to the Service Gateway virtual appliance to make copying the registration token easier. The following steps outline how to connect with an SSH client.
+    :::
+
+    1.  In the EC2 console, go to **Instances → Instances** and click the **Instance ID** of the Service Gateway virtual appliance.
+
+    2.  In the **Instance summary** screen, click **Connect**.
+
+    3.  Click **SSH client**.
+
+    4.  Review the steps in the **Connect to instance** screen and copy the Private IP address listed.
+
+    5.  Open an SSH client.
+
+    6.  Type the following command to connect to the Service Gateway virtual appliance:
+
+        `ssh -i "<keypair.pem>" admin@<IPaddress>`
+
+        :::note
+
+        Use the full file name of your key pair including the file extension.
+
+        The user name is `admin`.
+
+        Use the Private IP address copied from AWS.
+
+        For example, if your key pair file is named `my_key_pair.pem` and the Private IP address is 127.0.0.1, type the command:
+
+        `ssh -i "my_key_pair.pem" admin@127.0.0.1`
+        :::
+
+        :::warning[Important]
+
+        If you are unable to immediately connect to the appliance, follow these steps to resolve the issue:
+
+        - If you created a new key pair, EC2 may take some time to sync with the new key pair. Wait five minutes and try again.
+
+        - The trusted hosts file cannot be automatically updated from EC2. In your SSH client, type the command `~/.ssh/known_hosts` to remove the known hosts in the trusted file, then try connecting again.
+
+        - You cannot configure a Network Time Protocol server on the Service Gateway virtual appliance. Because the appliance is deployed to the cloud, time settings are automatically synchronized.
+        :::
+
+15. Configure and register the Service Gateway.
+
+    1.  After connecting to the instance and signing on, the Command Line Interface (CLI) appears.
+
+    2.  Type `enable` and press the **ENTER** key to enable administrative commands.
+
+        The command prompt changes from from \> to \#.
+
+    3.  Use the `configure` command to configure the required network settings, such as the IP address and DNS settings.
+
+    4.  Type the following command to register the Service Gateway virtual appliance to Trend Vision One.
+
+        `register <registration_token>`
+
+        Use the registration token you obtained from Service Gateway Inventory.
+
+16. Use the CLI to configure other settings, if required.
+
+    For more information on available commands, see [Service Gateway CLI commands](service-gateway-cli-commands.mdx).
+::::

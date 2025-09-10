@@ -1,0 +1,104 @@
+---
+slug: trend-vision-one-configuring-packet-capture
+title: Configuring Packet Capture
+---
+# Configuring Packet Capture
+
+Enable and configure packet capture rules.
+
+:::warning[Important]
+
+The packet capture feature in **Network Security** only supports Deep Discovery Inspector version 6.7 or later.
+
+Packet capture increases processor and disk space usage on enabled appliances.
+
+Enabling packet capture requires the appliance to restart. Disabling packet capture does not require a restart.
+:::
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Network Security → Network Analysis Configuration → Monitoring / Scanning → Packet Capture**.
+
+2.  Enable packet capture.
+
+    1.  Select one or more appliances.
+
+    2.  Click the **Configure Packet Capture** drop down and click **Enable**.
+
+    3.  Click **Save**.
+
+        :::warning[Important]
+
+        The request to enable or disable packet capture is not sent until you click **Save** on the main **Packet Capture** screen.
+        :::
+
+3.  Click the name of an appliance to configure packet capture settings.
+
+    The packet capture rule list for the appliance appears.
+
+4.  To import the packet capture settings from another appliance, click **Replace with Existing List**.
+
+    :::warning[Important]
+
+    Using this method replaces any currently configured packet capture rules on the target appliance.
+    :::
+
+    1.  Select the source appliance to import settings.
+
+    2.  Click **Replace**.
+
+    3.  Click **Save**.
+
+        The console returns to the main **Packet Capture** screen. You may need to click **Save** again to ensure your changes are kept.
+
+5.  Click **Add** to add a new packet capture rule.
+
+    1.  Configure the settings in the **Capture Settings** window.
+
+        <table>
+        <colgroup>
+        <col style="width: 33%" />
+        <col style="width: 67%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Setting</p></th>
+        <th><p>Description</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Status</p></td>
+        <td><p>The status of the packet capture rule</p></td>
+        </tr>
+        <tr>
+        <td><p>Priority</p></td>
+        <td><p>The priority order in which the rule is applied</p>
+        <p>Packet capture rules are applied in order of priority, with 1 having the highest priority.</p></td>
+        </tr>
+        <tr>
+        <td><p>Description</p></td>
+        <td><p>A description of the rule which appears on the packet capture rule list</p></td>
+        </tr>
+        <tr>
+        <td><p>Host IP address / range</p></td>
+        <td><p>The IP address or range the rule applies to</p></td>
+        </tr>
+        <tr>
+        <td><p>Detection criteria</p></td>
+        <td><p>Which kinds of detections the rule applies to</p>
+        <p>Select <strong>Add specific criteria</strong> if you want to limit the detection types the rule applies to.</p></td>
+        </tr>
+        <tr>
+        <td><p>Action</p></td>
+        <td><p>Whether the packet is captured for the rule or not</p></td>
+        </tr>
+        </tbody>
+        </table>
+
+    2.  Click **Save**.
+
+    3.  In the packet capture list, click **Save**.
+
+        The console returns to the main **Packet Capture** screen. You may need to click **Save** again to ensure your changes are kept.
+::::

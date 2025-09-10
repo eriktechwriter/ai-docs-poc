@@ -1,0 +1,81 @@
+---
+slug: trend-vision-one-compliance-reports-2
+title: Compliance reports
+last_updated: '2025-09-08'
+ai_context:
+  source_file: compliance-reports-2.md
+  conversion_date: '2025-09-08T23:42:23.112Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+The Compliance and Cloud Risk Management Report scores your cloud infrastructure as PASS or FAIL for each control within [supported Standards and Frameworks](compliance-in-cloud-posture.mdx).
+
+- All controls are organized into sections and headers that map to those within the Standards and Frameworks itself as set by the standard or framework authority.
+- The report comes with % pass and % fail scores based on the total checks that have passed and failed for Trend Vision One™ – Cloud Risk Management rules mapped to the standard or framework controls.
+- Using the report, you can get an instant assessment of your organization’s cloud infrastructure compliance, and accordingly, take remediation measures to improve compliance levels, thereby potentially avoiding non-compliance reactive fixes and expenditures.
+
+### What is a control? {#what-is-a-control}
+
+A control is the passable element of a standard or framework that can be determined to PASS, FAIL, or be otherwise assessed.
+
+### How is PASS or FAIL determined for each control? {#how-is-pass-or-fail-determined-for-each-control}
+
+Each Cloud Risk Management rule that is applicable to control within the selected standard or framework is run against your selected account(s) and [Checks](model-check.mdx) are sent back and totaled as PASS or FAIL for each control.
+
+*Supported Standards and Frameworks:*
+
+1.  AWS Well-Architected Framework
+2.  [CIS AWS Foundations v1.2.0](https://www.cloudconformity.com/compliance/CIS/)
+3.  [NIST 800-53 (Rev. 4)](https://www.cloudconformity.com/conformity-rules/Compliance/NIST/)
+4.  PCI DSS
+5.  HIPAA
+6.  GDPR
+7.  Monetary Authority of Singapore TRM
+8.  System and Organization Controls 2 (SOC 2)
+9.  IST Cybersecurity Framework v1.1
+10. ASAE 3150 Security of CDR Data
+11. PCI DSS v3.2.1
+12. APRA CPS 234 June 2019
+
+### Compliance and Cloud Risk Management Report Layout {#compliance-and-cloud-risk-management-report-layout}
+
+In the Compliance and Cloud Risk Management Report, the grouping of the controls is defined by the control family. Cloud Risk Management interprets the standards and frameworks and map rules to each control and control family. Each rule has a pre-existing category assigned to it based on an assessment of which pillar of the AWS Well-Architected framework a rule belongs to. These pillars may or may not align with the categorizations used by a framework or standard Cloud Risk Management audits against.
+
+![](/images/all-checks-updated=b3378b4c-9251-41a8-8e0d-64b9f5afd38d.webp)
+
+### Improve your organization's compliance {#improve-your-organizations-compliance}
+
+Clicking on the [Resolve](failed-check-resolution.mdx) button against the failed [Checks](model-check.mdx) will direct you to the related rule and remediation steps on the Cloud Risk Management Knowledge Base, which provides a step-by-step guide on how to resolve the failure.
+
+You also have the following options on clicking the expand button on a rule:
+
+1.  [Send rule to](send-rule.mdx)
+2.  [Configure rule](rules-configuration.mdx)
+3.  [Suppress](rules-suppress-check.mdx)
+4.  Create tickets depending on [communication channels](communication-integrations.mdx) configured
+
+### Customize and Download your Compliance and Cloud Risk Management Report {#customize-and-download-your-compliance-and-cloud-risk-management-report}
+
+1.  You can create customized views of the rules and checks on your *All accounts*, *Individual accounts*, or *Groups* using [filters](filter-search.mdx).
+
+    - !!! note "" Some controls might return 0 checks i.e. 0 under *Total Counts* columns because
+      - You have selected a filter that excludes services, rules, or checks that map to that specific control
+      - Or, you do not have access to applicable services for rules within the control
+      - Or controls that aren't applicable to cloud infrastructure or immeasurable by Cloud Risk Management will not have any rules
+
+2.  Download the report result
+
+    1.  Click on [Generate report](generate-download-report.mdx) to generate and download Compliance and Cloud Risk Management report ![](/images/generate-compliance-conformity-report-fhzpwd=d7051a01-d81a-40d7-a818-7df0788d8514.webp){.zoom}
+
+3.  Download previously generated reports from the history
+
+    1.  Click to expand *Other reports* from the [Configured reports](configured-reports.mdx) list
+    2.  Select either *CSV* or *PDF* format to download
+
+    ``` codeblock
+    Compliance and Cloud Risk Management Reports can also be downloaded from_ the [_All Generated Reports_](generate-download-report.xml#all-generated-reports) list
+    {: .note }
+    ```
+:::

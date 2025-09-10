@@ -1,0 +1,231 @@
+---
+slug: trend-vision-one-users-tab
+title: Users Tab
+last_updated: '2025-09-08'
+ai_context:
+  source_file: users-tab.md
+  conversion_date: '2025-09-08T23:42:11.683Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+View information about users and manage users on the **Users** tab.
+
+:::note
+
+This tab is not available when you integrate with an MDM through managed configuration.
+:::
+
+You can view the following information on the **Users** tab.
+
+- For integration with Microsoft Endpoint Manager (Intune), VMware Workspace ONE UEM, or Microsoft Entra ID
+
+  <table>
+  <colgroup>
+  <col style="width: 33%" />
+  <col style="width: 67%" />
+  </colgroup>
+  <thead>
+  <tr>
+  <th><p>Column</p></th>
+  <th><p>Description</p></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td><p>User</p></td>
+  <td><p>The user's name</p></td>
+  </tr>
+  <tr>
+  <td><p>Enrollment status</p></td>
+  <td><p>The status of users that received an enrollment invitation or installed Mobile Security for Business on their devices</p>
+  <ul>
+  <li><p><strong>Pending</strong></p>
+  <p><strong>Mobile Security</strong> is waiting for the user to enroll.</p></li>
+  <li><p><strong>Enrolled</strong></p>
+  <p>The user has enrolled at least one device.</p>
+  
+
+  :::note
+  
+  <p>The status does not change even after you have unenrolled all mobile devices of the user.</p>
+  
+
+  :::
+
+  </li>
+  <li><p><strong>No response</strong></p>
+  <p>The user did not enroll any device within seven days of receiving the invitation. After seven days, <strong>Mobile Security</strong> moves the user from <strong>Pending</strong> to <strong>No response</strong>.</p>
+  
+
+  :::note
+  
+  <p>The enrollment invitation does not expire, and the user can still enroll devices using the invitation.</p>
+  
+
+  :::
+
+  </li>
+  </ul></td>
+  </tr>
+  <tr>
+  <td><p>Email address</p></td>
+  <td><p>The user's email address</p></td>
+  </tr>
+  <tr>
+  <td><p>Group</p></td>
+  <td><p>The group to which the user belongs</p>
+  <p>For MDM integration, this is a group created in the MDM. For Microsoft Entra ID integration, this is an Entra ID group.</p></td>
+  </tr>
+  <tr>
+  <td><p>Department</p></td>
+  <td><p>The user's department</p></td>
+  </tr>
+  <tr>
+  <td><p>Job title</p></td>
+  <td><p>The user's job title</p></td>
+  </tr>
+  <tr>
+  <td><p>Region</p></td>
+  <td><p>The region where the user is located</p></td>
+  </tr>
+  <tr>
+  <td><p>Device count</p></td>
+  <td><p>The total number of enrolled devices owned by the user</p></td>
+  </tr>
+  </tbody>
+  </table>
+
+  :::note
+
+  For integration with Microsoft Entra ID, except for the enrollment status and device count, the displayed user attributes are synchronized from Microsoft Entra ID.
+  :::
+
+- For integration with Google Workspace
+
+  <table>
+  <colgroup>
+  <col style="width: 33%" />
+  <col style="width: 67%" />
+  </colgroup>
+  <thead>
+  <tr>
+  <th><p>Column</p></th>
+  <th><p>Description</p></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td><p>User</p></td>
+  <td><p>The user's name</p></td>
+  </tr>
+  <tr>
+  <td><p>Enrollment status</p></td>
+  <td><p>The status of users that received an enrollment invitation or installed Mobile Security for Business on their devices</p>
+  <ul>
+  <li><p><strong>Pending</strong></p>
+  <p><strong>Mobile Security</strong> is waiting for the user to enroll.</p></li>
+  <li><p><strong>Enrolled</strong></p>
+  <p>The user has enrolled at least one device.</p>
+  
+
+  :::note
+  
+  <p>The status does not change even after you have unenrolled all mobile devices of the user.</p>
+  
+
+  :::
+
+  </li>
+  <li><p><strong>No response</strong></p>
+  <p>The user did not enroll any device within seven days of receiving the invitation. After seven days, <strong>Mobile Security</strong> moves the user from <strong>Pending</strong> to <strong>No response</strong>.</p>
+  
+
+  :::note
+  
+  <p>The enrollment invitation does not expire, and the user can still enroll devices using the invitation.</p>
+  
+
+  :::
+
+  </li>
+  </ul></td>
+  </tr>
+  <tr>
+  <td><p>Email address</p></td>
+  <td><p>The user's email address</p></td>
+  </tr>
+  <tr>
+  <td><p>Organizational unit</p></td>
+  <td><p>The organizational unit to which the user belongs</p></td>
+  </tr>
+  <tr>
+  <td><p>Device count</p></td>
+  <td><p>The total number of enrolled devices owned by the user</p></td>
+  </tr>
+  </tbody>
+  </table>
+
+You can perform the following actions on the **Users** tab.
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Filter user data</p></td>
+<td><p>Use the following drop-down lists and the search box to locate specific user data:</p>
+<ul>
+<li><p><strong>Enrollment status</strong></p></li>
+<li><p><strong>User</strong></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Resend enrollment invitations</p></td>
+<td>
+
+:::note
+
+<p>This action is available only when you integrate with Microsoft Entra ID.</p>
+
+
+:::
+
+
+<p>Select one or more users from the list and click <strong>Resend Invitation</strong>.</p>
+<p>If a user's enrollment status is <strong>No response</strong>, resending an invitation changes that user's enrollment status to <strong>Pending</strong>.</p></td>
+</tr>
+<tr>
+<td><p>Remove users</p></td>
+<td><p>Select one or more users from the list and click <strong>Remove User</strong>.</p>
+<p>Removing a user unenrolls all the devices that belong to the user.</p>
+
+
+:::note
+
+<ul>
+<li><p>This action is only available when using Microsoft Entra ID integration.</p></li>
+<li><p>Group users cannot be removed.</p></li>
+</ul>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Show the devices owned by a user</p></td>
+<td><p>In the <strong>Device count</strong> column, click the number to see a list of enrolled devices filtered by "User:".</p></td>
+</tr>
+</tbody>
+</table>
+::::

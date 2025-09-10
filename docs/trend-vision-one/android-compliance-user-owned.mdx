@@ -1,0 +1,159 @@
+---
+slug: trend-vision-one-android-compliance-user-owned
+title: Android compliance policy criteria (user-owned devices with a work profile)
+---
+# Android compliance policy criteria (user-owned devices with a work profile)
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 33%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Section</p></th>
+<th><p>Setting</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="2"><p><strong>Device Health</strong></p></td>
+<td><p>Device unrooted</p></td>
+<td><p>Specify whether this setting is required for compliance evaluation.</p>
+<p>Options are as follows:</p>
+<ul>
+<li><p><strong>Not required</strong> (default)</p></li>
+<li><p><strong>Medium</strong></p></li>
+<li><p><strong>Low</strong></p></li>
+<li><p><strong>Secured</strong></p></li>
+</ul>
+<p>If <strong>Required</strong>, any rooted devices will be evaluated as noncompliant.</p></td>
+</tr>
+<tr>
+<td><p>Device at or under specific risk level</p></td>
+<td><p>Select the maximum allowed risk level for devices evaluated by <strong>Mobile Security</strong>. Devices that are higher than the risk level get evaluated as noncompliant.</p></td>
+</tr>
+<tr>
+<td rowspan="12"><p><strong>Device Health</strong></p></td>
+<td><p>Data storage encrypted</p></td>
+<td><p>Specify whether this setting is required for compliance evaluation.</p>
+<p>If <strong>Required</strong>, any devices with data storage unencrypted get evaluated as noncompliant.</p></td>
+</tr>
+<tr>
+<td><p>Block apps from unknown sources</p></td>
+<td><p>Specify whether this setting is required for compliance evaluation.</p>
+<p>If <strong>Required</strong>, any devices that turn off this permission get evaluated as noncompliant.</p></td>
+</tr>
+<tr>
+<td><p>Developer mode disabled</p></td>
+<td><p>Specify whether this setting is required for compliance evaluation.</p>
+<p>If <strong>Required</strong>, any devices with developer mode enabled get evaluated as noncompliant.</p></td>
+</tr>
+<tr>
+<td><p>USB debugging disabled</p></td>
+<td><p>Specify whether this setting is required for compliance evaluation.</p>
+<p>If <strong>Required</strong>, any devices with USB debugging enabled get evaluated as noncompliant.</p></td>
+</tr>
+<tr>
+<td><p>Lock screen enabled</p></td>
+<td><p>Specify whether this setting is required for compliance evaluation.</p>
+<p>If <strong>Required</strong>, any devices without a lock screen enabled get evaluated as noncompliant.</p></td>
+</tr>
+<tr>
+<td><p>Minimum OS version</p></td>
+<td><p>Type an OS version.</p>
+<p>Examples:</p>
+<ul>
+<li><p>12</p></li>
+<li><p>12.0</p></li>
+<li><p>12.0.0</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Minimum security patch level</p></td>
+<td><p>Specify whether this setting is required for compliance evaluation, and select the oldest security patch level a device can have.</p>
+<p>If <strong>Required</strong> and a security patch level is specified, any devices with an older security patch level get evaluated as noncompliant.</p></td>
+</tr>
+<tr>
+<td><p>Password required to unlock device</p></td>
+<td><p>Specify whether this setting is required for compliance evaluation.</p>
+<p>If <strong>Required</strong>, any devices without a password get evaluated as noncompliant.</p></td>
+</tr>
+<tr>
+<td><p>Password complexity</p></td>
+<td><p>Select the minimum allowed password complexity for devices.</p>
+<p>Devices that do not meet the password complexity requirements get evaluated as noncompliant. Your users must update the device password to meet the complexity requirements.</p></td>
+</tr>
+<tr>
+<td><p>Number of days until password expires</p></td>
+<td><p>Type a number from 1 to 365.</p>
+<p>This setting is available only when <strong>Password complexity</strong> is required.</p></td>
+</tr>
+<tr>
+<td><p>Number of passwords required before user can reuse an old one</p></td>
+<td><p>Type a number from 1 to 24.</p>
+
+
+:::note
+
+<p>This setting is available only when <strong>Password complexity</strong> is required.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Maximum minutes of inactivity before password is required</p></td>
+<td><p>Type a number from 1 to 480.</p>
+
+
+:::note
+
+<p>This setting is available only when <strong>Password complexity</strong> is required.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td rowspan="7"><p><strong>Mobile Agent</strong></p></td>
+<td><p>Number of days of no check-in until agent becomes inactive</p></td>
+<td><p>Select a number from the drop-down list. The default value is <strong>30</strong>. This means the Mobile Security for Business enters the inactive state when the agent has not check in with <strong>Mobile Security</strong> for 30 consecutive days.</p></td>
+</tr>
+<tr>
+<td><p>Device access permissions</p></td>
+<td><p>Specify whether this setting is required for compliance evaluation.</p>
+<p>If <strong>Required</strong>, any devices that disable the specified permissions get evaluated as noncompliant.</p></td>
+</tr>
+<tr>
+<td><p>Storage</p></td>
+<td><p>Specify whether this setting is required for compliance evaluation.</p>
+<p>If <strong>Required</strong>, any devices that disable the Storage permission get evaluated as noncompliant.</p></td>
+</tr>
+<tr>
+<td><p>Location</p></td>
+<td><p>Specify whether this setting is required for compliance evaluation.</p>
+<p>If <strong>Required</strong>, any devices that disable the Location permission get evaluated as noncompliant.</p></td>
+</tr>
+<tr>
+<td><p>Running in background</p></td>
+<td><p>Specify whether this setting is required for compliance evaluation.</p>
+<p>If <strong>Required</strong>, any devices that disable the Running in background permission get evaluated as noncompliant.</p></td>
+</tr>
+<tr>
+<td><p>Notifications</p></td>
+<td><p>Specify whether this setting is required for compliance evaluation.</p>
+<p>If <strong>Required</strong>, any devices that disable the Notifications permission get evaluated as noncompliant.</p></td>
+</tr>
+<tr>
+<td><p>VPN</p></td>
+<td><p>Specify whether this setting is required for compliance evaluation.</p>
+<p>If <strong>Required</strong>, any devices that disable the VPN permission get evaluated as noncompliant.</p></td>
+</tr>
+</tbody>
+</table>
+:::

@@ -1,0 +1,36 @@
+---
+slug: trend-vision-one-cloud-pak-for-security-integration
+title: Cloud Pak for Security integration
+last_updated: '2025-09-08'
+ai_context:
+  source_file: cloud-pak-for-security-integration.md
+  conversion_date: '2025-09-08T23:42:23.456Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Configure the IBM Cloud Pak for Security integration to enable Cloud Pak for Security to simulate attacks on endpoints and pull information from Trend Vision One.
+
+### Procedure {#procedure}
+
+1.  Find and download the Trend Micro connector from [IBM X-Force Exchange / App Exchange](https://exchange.xforce.ibmcloud.com/hub/extension/7938c510d0ab7d511a3437281a61ea3c).
+
+2.  In the Trend Vision One console, obtain the authentication token and management IP address or host name.
+
+    1.  Go to **Workflow and Automation → Third-Party Integration**.
+
+    2.  Click **Cloud Pak for Security**.
+
+    3.  Copy the values from the following fields.
+
+        - Click ![](/images/dddna_summary_detection_copy=GUID-4DE35BE5-57A5-4919-BF9C-5EC95F9CA8FD=1=en-us=Low.webp) to copy the **Management IP address or hostname**.
+
+        - Click **Generate** and copy the **Authentication token**.
+
+3.  Deploy the Trend Micro connector into your existing IBM Cloud Pak for Security cluster.
+
+    For more information, see [Installing or updating a connector](https://www.ibm.com/docs/en/cp-security/saas?topic=SSTDPP_serv/docs/scp-core/deploy_connector_online.htm).
+
+    IBM Cloud Pak for Security begins collecting data from Trend Vision One. Cloud Pak for Security can only collect data generated after connecting to Trend Vision One. You might need to allow some time before new data starts to appear.
+:::

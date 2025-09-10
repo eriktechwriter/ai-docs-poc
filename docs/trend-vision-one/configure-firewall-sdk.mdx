@@ -1,0 +1,153 @@
+---
+slug: trend-vision-one-configure-firewall-sdk
+title: Configure Firewall
+---
+::Configure the Firewall module to define its behavior for a policy.
+
+When designing the module's behavior and implementing it using the API, use the background information and guidance that is provided in [About Firewall](firewall.mdx).
+
+Policy objects contain two objects that you use to configure the Firewall module:
+
+- `FirewallPolicyExtension`: Controls the module state (on or off), identifies the applied firewall rules, and identifies the stateful configuration to use with the module.
+- `PolicySettings`: Policy settings include many Firewall-related settings that control the runtime behavior of the module, such as the behavior of reconnaissance scans, network engine mode (tap or inline), network engine settings, and event management.Configure Firewall-related policy settings as described in [Configure policy and default policy settings](create-configure-policy.mdx).
+
+The following JSON represents the data structure of a `FirewallPolicyExtension` object:
+
+```bash
+{
+
+    "state": "off",
+    "moduleStatus": {...},
+    "globalStatefulConfigurationID": 1,
+    "ruleIDs": [...]
+}
+```
+
+The `moduleStatus` property is read-only. It provides the runtime status of the Firewall module. (See [Report on Computer Status](report-computer-status.mdx)).
+
+## General steps {#general-steps}
+
+To configure Firewall, use the following general steps:
+
+### Procedure {#procedure}
+
+1.  Create a `FirewallPolicyExtension` object and set the properties.
+
+2.  Create a `PolicySettings` object to configure runtime settings of the module.
+
+3.  Create a `Policy` object and add the `FirewallPolicyExtension` and `PolicySettings` objects.
+
+4.  Use a `PoliciesApi` object to add or update the policy on Server & Workload Protection.
+
+    :::tip
+
+    If you only need to set a single Firewall-related policy setting, see [Configure a single policy or default policy setting](create-configure-policy.mdx).
+    :::
+
+### Next steps {#next-steps}
+
+Create a `FirewallPolicyExtension` object and set the state and rule IDs:
+
+```bash
+firewall_policy_extension = api.FirewallPolicyExtension()
+firewall_policy_extension.state = "on"
+firewall_policy_extension.rule_ids = rule_ids;
+```
+
+Next, create a `PolicySettings` object to configure Firewall-related settings. (For detailed information about policy settings, see [Configure policy and default policy settings](create-configure-policy.mdx).) For example, you can enable reconnaissance scans:
+
+```bash
+policy_settings = api.PolicySettings()
+setting_value = api.SettingValue()
+setting_value.value = True
+policy_settings.firewall_setting_reconnaissance_enabled = setting_value
+```
+
+At this point, the Firewall policy extension and the policy settings are configured. Next, add them to a `Policy` object, and use a `PoliciesApi` object to modify a policy on Server & Workload Protection.
+
+```bash
+policy = api.Policy()
+policy.firewall = firewall_policy_extension
+policy.policy_settings = policy_settings
+
+policies_api = api.PoliciesApi(api.ApiClient(configuration))
+returned_policy = policies_api.modify_policy(policy_id, policy, api_version)
+```
+
+The `policy_id` (or `policyID`) parameter of `modifyPolicy` identifies the actual policy on Server & Workload Protection that is to be modified. This policy is modified according to the policy object that is used as the `policy` parameter. Any properties of the `policy` parameter that are not set remain unchanged on the actual policy.
+
+## Example {#example}
+
+The following example creates a `Policy` object, modifies its `FirewallPolicyExtension`, and configures a policy setting. The policy is then updated on Server & Workload Protection.
+
+[View source](https://github.com/deep-security/automation-center-sdk-samples/blob/master/python/src/firewall_examples.py)
+
+```bash
+policies_api = api.PoliciesApi(api.ApiClient(configuration))
+policy = api.Policy()
+firewall_policy_extension = api.FirewallPolicyExtension()
+
+# Turn on firewall
+firewall_policy_extension.state = "on"
+
+# Assign rules
+firewall_policy_extension.rule_ids = rule_ids;
+
+# Add the firewall state to the policy
+policy.firewall = firewall_policy_extension
+
+# Turn on reconnaissance scan
+policy_settings = api.PolicySettings()
+setting_value = api.SettingValue()
+setting_value.value = True
+policy_settings.firewall_setting_reconnaissance_enabled = setting_value
+
+# Add reconnaissance scan state to the policy
+policy.policy_settings = policy_settings
+
+# Modify the policy on Server & Workload Protection
+return policies_api.modify_policy(policy_id, policy, api_version)
+```
+
+:::tip
+
+Also see the [Modify a Policy](https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Policies) operation in the API Reference.
+:::
+
+:::tip
+
+If you only need to add, remove, or list Firewall rules for a policy, use the `PolicyFirewallRuleAssignmentsApi` class. The previous example uses the `FirewallPolicyExtension`, `Policy`, and `PoliciesApi` classes to add Firewall rules, but this can also be done using only the `PolicyFirewallRuleAssignmentsApi` class. For more information, see [Policy Firewall Rule Assignments](https://automation.trendmicro.com/cloudone/workload-security/) in the Policies section of the API Reference.
+:::
+
+For information about authenticating API calls, see [Authenticate with Server & Workload Protection](send-your-first-request-using-api.mdx).
+
+## Create a firewall rule {#create-a-firewall-rule}
+
+Generally, to create a Firewall rule you perform the following steps:
+
+### Procedure {#procedure-1}
+
+1.  Create a `FirewallRule` object.
+
+2.  Set the rule properties. The properties are as described in [Create a firewall rule](create-firewall-rule.mdx). You can use the API to create related objects that can be used with multiple rules, such as MAC lists, rule contexts, and schedules. See [Create and Modify Lists](create-modify-lists.mdx) and [Create and Configure Schedules](create-configure-schedules.mdx).
+
+3.  Create a `FirewallRulesApi` object to create the rule on Server & Workload Protection.
+
+### Next steps {#next-steps-1}
+
+:::tip
+
+Although Log Inspection rules have different properties than Firewall rules, the way you create the rules are similar. You might find the [Create a basic Log Inspection rule](config-log-inspection-swp.mdx) example helpful.
+:::
+
+To use the API to create a Firewall rule, send a POST request to the `firewallrules` endpoint. (See the [Create a Firewall Rule](https://automation.trendmicro.com/cloudone/workload-security/) operation in the API Reference.)
+
+## Limitations to configuring stateful configurations {#limitations-to-configuring-stateful-configurations}
+
+The following properties of stateful configurations are supported only for version 8.0 and earlier agents:
+
+- ACK storm protection
+- Allow incoming or outgoing passive and active FTP connections
+
+Therefore, these properties are not configurable using the API or an SDK. You must use the Server & Workload Protection console to configure these settings. See [Define stateful firewall configurations](define-stateful-firewall.mdx).
+::::::

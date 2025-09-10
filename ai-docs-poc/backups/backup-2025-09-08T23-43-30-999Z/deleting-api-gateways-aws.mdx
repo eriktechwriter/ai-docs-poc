@@ -1,0 +1,54 @@
+---
+slug: trend-vision-one-deleting-api-gateways-aws
+title: Delete API gateways in AWS
+last_updated: '2025-09-08'
+ai_context:
+  source_file: deleting-api-gateways-aws.md
+  conversion_date: '2025-09-08T23:42:20.720Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+You can delete an AWS API gateway or endpoint in the AWS Management Console, AWS CLI, or SDKs.
+
+:::note
+
+Before deleting an API gateway or endpoint, consider the following:
+
+- **Check dependencies**: Ensure that no resources depend on the API Gateway you plan to delete.
+- **Backup configuration**: Before deleting, consider exporting the API configuration in case you need it later.
+- **Permissions**: You need appropriate permissions to delete API gateways.
+- **Irreversible**: Deletion is irreversible. After you delete an API gateway, you cannot recover it.
+:::
+
+### Procedure {#procedure}
+
+1.  Sign in to the AWS Management Console and open the AWS API Gateway console at <https://console.aws.amazon.com/apigateway>.
+
+2.  Select the API gateway you want to delete.
+
+3.  Click **Delete**.
+
+4.  Confirm your deletion.
+
+## Delete an endpoint path {#delete-an-endpoint-path}
+
+### Procedure {#procedure-1}
+
+1.  Sign in to the AWS Management Console and open the Amazon API Gateway console at <https://console.aws.amazon.com/apigateway>.
+
+2.  In the left navigation pane, select the API that contains the endpoint you want to delete.
+
+3.  Expand the resource tree and navigate to the endpoint you want to delete.
+
+4.  Select the endpoint to view its details and methods.
+
+5.  For each method on the endpoint:
+
+    1.  Select the method.
+
+    2.  In the **Method Execution** pane, click **Delete**.
+
+    3.  Confirm the deletion.
+::::

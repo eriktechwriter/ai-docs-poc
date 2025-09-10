@@ -1,0 +1,107 @@
+---
+slug: trend-vision-one-migrating-sms-latest-version
+title: Migrating a connected TippingPoint SMS to the latest version
+last_updated: '2025-09-08'
+ai_context:
+  source_file: migrating-sms-latest-version.md
+  conversion_date: '2025-09-08T23:42:15.994Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Migrate an existing TippingPoint Security Management System (SMS) that is already connected to Network Security to the latest version.
+
+TippingPoint SMS deployments that are connected to Network Security can be seamlessly migrated to newer versions. The current enrollment token, Service Gateway, and function settings are all preserved during migration. However, any additional functionality introduced since the release of your current deployment must be manually enabled.
+
+### Procedure {#procedure}
+
+1.  If the TippingPoint SMS connects to Trend Vision One through a Service Gateway, you must enable additional services to support newer functionality added since the release of the current version.
+
+    1.  In the Trend Vision One console, go to **Workflow and Automation → Service Gateway Management**.
+
+        :::note
+
+        Connecting a TippingPoint SMS using a Service Gateway requires a Service Gateway 2.0 or later appliance. You can check the Service Gateway version in **Service Gateway Management**.
+        :::
+
+    2.  Click the name of the Service Gateway appliance currently used to connect the TippingPoint SMS.
+
+    3.  Click **Manage Services**.
+
+    4.  Click the install icon (![](/images/SG2_install_icon=GUID-feef28dd-2ddb-4093-b4e4-5455a0b110bb.webp)) to install and then enable the following services.
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Service</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td id="GUID-D182900E-BE0D-4C06-9BE4-8929FF3EB14B__SGServicesTableProxy"><p>Forward proxy</p></td>
+    <td id="GUID-D182900E-BE0D-4C06-9BE4-8929FF3EB14B__SGServicesTableProxyDesc"><p>Required for data sharing between the TippingPoint SMS and Trend Vision One, allowing users to view filter and profile distribution statuses</p></td>
+    </tr>
+    <tr>
+    <td id="GUID-D182900E-BE0D-4C06-9BE4-8929FF3EB14B__SGServicesTableSO"><p>Suspicious Object List Synchronization</p></td>
+    <td><p>Required for the Suspicious Object Sync function, which synchronizes the centralized Trend Vision One Suspicious Object List with the TippingPoint SMS</p></td>
+    </tr>
+    <tr>
+    <td id="GUID-D182900E-BE0D-4C06-9BE4-8929FF3EB14B__SGServicesTableTPLog"><p>TippingPoint log forwarding</p></td>
+    <td id="GUID-D182900E-BE0D-4C06-9BE4-8929FF3EB14B__SGServicesTableTPLogDesc"><p>Required for the Event and Filter Status Sharing function, which transfers detection data from the TippingPoint SMS for use by <strong>XDR Data Explorer</strong> and widgets</p></td>
+    </tr>
+    <tr>
+    <td id="GUID-D182900E-BE0D-4C06-9BE4-8929FF3EB14B__SGServicesTableTPPolicy"><p>TippingPoint policy management</p></td>
+    <td id="GUID-D182900E-BE0D-4C06-9BE4-8929FF3EB14B__SGServicesTableTPPolicyDesc"><p>Required for filter policy distribution and enforcement from Intrusion Prevention Configuration in Trend Vision One to TippingPoint SMS devices</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+    :::note
+
+    If you are migrating to TippingPoint SMS 6.1.0 or later, TippingPoint log forwarding and TippingPoint policy management are no longer required.
+    :::
+
+2.  Migrate the TippingPoint SMS to the latest version.
+
+3.  Check and enable TippingPoint SMS functions.
+
+    1.  On the TippingPoint SMS web management console, go to **Administration → Connect to Trend Vision One**.
+
+    2.  Click **Configure**.
+
+    3.  Enable and configure the Suspicious Object Sync function.
+
+        1.  In the **Suspicious Object Sync (Service Gateway Required)** section, enable the **State** toggle.
+
+        2.  In the **Download Interval** field, specify how often you want the Suspicious Object List to be synchronized.
+
+    4.  In the **Security Policy and Inventory** section, enable the **State** toggle.
+
+    5.  In the **Event and Filter Status Sharing** section, enable the **State** toggle.
+
+    6.  (Optional) If you would like to submit suspicious URL objects for sandbox analysis, enable the Cloud Sandbox URL analysis.
+
+        1.  In the **Cloud Sandbox URL Analysis** section, enable the **State** toggle.
+
+        2.  In the **Saved Query** dropdown menu, select your desired query.
+
+    7.  Click **Save**.
+
+4.  Verify the connection status.
+
+    1.  In the Trend Vision One console:
+
+        - For customers that have updated to the [Foundation Services release](update-foundation-services-release.mdx), go to **Point Product Connection → Product Instance**.
+
+        - For customers using the legacy Trend Vision One console, go to **Point Product Connection → Product Connector**.
+
+    2.  Check that the **Connection status** for TippingPoint Security Management System is green.
+
+    Devices managed by the TippingPoint SMS can be viewed in **Network Security → Network Inventory**.
+:::

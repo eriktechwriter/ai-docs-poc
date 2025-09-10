@@ -1,0 +1,92 @@
+{
+  "folders": [
+    {
+      "name": "AI Docs POC",
+      "path": "."
+    },
+    {
+      "name": "Source Documentation",
+      "path": "../source/trend-vision-one-md"
+    }
+  ],
+  "settings": {
+    // Inherit from .vscode/settings.json but add workspace-specific overrides
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/.git": true,
+      "**/.DS_Store": true,
+      "**/build": true,
+      "**/.docusaurus": true,
+      "**/dist": true,
+      "**/.next": true,
+      "**/.cache": true
+    },
+    
+    // Multi-root workspace specific settings
+    "search.useGlobalIgnoreFiles": true,
+    "search.useParentIgnoreFiles": true,
+    
+    // Git settings for multi-folder workspace
+    "git.detectSubmodules": false,
+    "git.scanRepositories": [
+      "./",
+      "../source/trend-vision-one-md"
+    ],
+    
+    // Terminal settings
+    "terminal.integrated.cwd": "${workspaceFolder:AI Docs POC}",
+    
+    // Task settings
+    "task.autoDetect": "on",
+    "task.showDecorations": true
+  },
+  "extensions": {
+    "recommendations": [
+      // Core extensions from .vscode/extensions.json
+      "unifiedjs.vscode-mdx",
+      "yzhang.markdown-all-in-one",
+      "github.copilot",
+      "github.copilot-chat",
+      "continue.continue",
+      "streetsidesoftware.code-spell-checker",
+      "eamodio.gitlens"
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Full Development Setup",
+        "dependsOrder": "sequence",
+        "dependsOn": [
+          "Install Dependencies",
+          "Setup Development Environment",
+          "Start Docusaurus Dev Server"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "shared"
+        },
+        "problemMatcher": []
+      }
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [],
+    "compounds": [
+      {
+        "name": "Full Development Environment",
+        "configurations": [
+          "Debug Docusaurus Dev Server"
+        ]
+      }
+    ]
+  }
+}

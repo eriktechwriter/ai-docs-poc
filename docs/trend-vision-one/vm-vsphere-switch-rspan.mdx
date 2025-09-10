@@ -1,0 +1,181 @@
+---
+slug: trend-vision-one-vm-vsphere-switch-rspan
+title: >-
+  Configuring external inter-VM traffic with the VMware vSphere Distributed
+  Switch (RSPAN)
+---
+# Configuring external inter-VM traffic with the VMware vSphere Distributed Switch (RSPAN)
+
+:Configure network settings in VMware vCenter to allow Virtual Network Sensor to monitor data.
+
+:::warning[Important]
+
+The following instructions are valid as of July 2023.
+:::
+
+:::note
+
+The following steps are for configuring the sender virtual appliance. For information about configuring the receiver virtual appliance (Virtual Network Sensor), see [Configuring external network traffic with the VMware vSphere Distributed Switch (RSPAN)](external-vsphere-switch-rspan.mdx).
+:::
+
+### Procedure {#procedure}
+
+1.  On the VMware vCenter console, click the ![](/images/circle_icon=GUID-20230729150101.webp) tab.
+
+2.  Right-click the name of your data center, and go to **Distributed Switch → New Distributed Switch...**.
+
+    <figure>
+    <img src="./images/External_VM2VM1=GUID-20230807175301.webp" />
+    </figure>
+
+3.  On the **Name and location** screen, specify the distributed switch name and location and click **NEXT**.
+
+    <figure>
+    <img src="./images/External_VM2VM2=GUID-20230807175302.webp" />
+    </figure>
+
+4.  On the **Select version** screen, select your distributed switch version and click **NEXT**.
+
+    <figure>
+    <img src="./images/External_VM2VM3=GUID-20230807175303.webp" />
+    </figure>
+
+5.  On the **Configure settings** screen, specify the port group name and the number of uplinks, and click **NEXT**.
+
+    <figure>
+    <img src="./images/External_VM2VM4=GUID-20230807175304.webp" />
+    </figure>
+
+6.  On the **Ready to complete** screen, review the settings and click **FINISH**.
+
+    <figure>
+    <img src="./images/External_VM2VM5=GUID-20230807175305.webp" />
+    </figure>
+
+7.  Right-click the name of your switch and select **Add and Manage Hosts...**.
+
+    <figure>
+    <img src="./images/External_VM2VM6=GUID-20230807175306.webp" />
+    </figure>
+
+8.  On the **Select task** screen, select **Add hosts** and click **NEXT**.
+
+    <figure>
+    <img src="./images/External_VM2VM7=GUID-20230807175307.webp" />
+    </figure>
+
+9.  On the **Select hosts** screen, select your virtual machine and click **NEXT**.
+
+    <figure>
+    <img src="./images/External_VM2VM8=GUID-20230807175308.webp" />
+    </figure>
+
+10. On the **Manage physical adapters** screen, right-click the name of your NIC and select **Uplink 1**.
+
+    <figure>
+    <img src="./images/External_VM2VM9=GUID-20230807175309.webp" />
+    </figure>
+
+11. Click **NEXT**.
+
+12. On the **Manage VMkernel adapters** screen, click **NEXT**.
+
+    <figure>
+    <img src="./images/External_VM2VM10=GUID-20230807175310.webp" />
+    </figure>
+
+13. On the **Migrate VM networking** screen, click **NEXT**.
+
+    <figure>
+    <img src="./images/External_VM2VM11=GUID-20230807175311.webp" />
+    </figure>
+
+14. On the **Ready to complete** screen, click **FINISH**.
+
+    <figure>
+    <img src="./images/External_VM2VM12=GUID-20230807175312.webp" />
+    </figure>
+
+15. Click the name of your switch and click **Networks**.
+
+    <figure>
+    <img src="./images/External_VM2VM13=GUID-20230807175313.webp" />
+    </figure>
+
+16. Right-click the name of your port group and select **Edit Settings...**.
+
+17. Click **VLAN**, select **VLAN trunking** for VLAN type, and click **OK**.
+
+    <figure>
+    <img src="./images/External_VM2VM14=GUID-20230807175314.webp" />
+    </figure>
+
+18. Click the ![](/images/VMware_vCenter_server_icon=GUID-20230329175050.webp) tab and then click the name of your client.
+
+    <figure>
+    <img src="./images/External_VM2VM15=GUID-20230807175315.webp" />
+    </figure>
+
+19. Click ![](/images/edit_settings_icon=GUID-20230729150707.webp).
+
+20. On the **Edit Settings** screen, click **Network adapter 1** and select **Browse...**.
+
+    <figure>
+    <img src="./images/External_VM2VM16=GUID-20230807175316.webp" />
+    </figure>
+
+21. Click the name of your port group and click **OK**.
+
+    <figure>
+    <img src="./images/External_VM2VM17=GUID-20230807175317.webp" />
+    </figure>
+
+22. Click **OK**.
+
+23. Click the ![](/images/circle_icon=GUID-20230729150101.webp) tab and then click the name of your switch.
+
+    <figure>
+    <img src="./images/External_VM2VM18=GUID-20230807175318.webp" />
+    </figure>
+
+24. Click **Configure**, click **Port Mirroring**, and click **NEW...**.
+
+25. On the **Select session type** screen, select **Remote Mirroring Source** and click **NEXT**.
+
+    <figure>
+    <img src="./images/External_VM2VM19=GUID-20230807175319.webp" />
+    </figure>
+
+26. On the **Edit properties** screen, select **Enabled** for the status and enter your encapsulation VLAN ID for the destination VDS.
+
+    <figure>
+    <img src="./images/External_VM2VM20=GUID-20230807175320.webp" />
+    </figure>
+
+27. Click **NEXT**.
+
+28. On the **Select sources** screen, select the virtual appliance you want to be monitored and click **NEXT**.
+
+    <figure>
+    <img src="./images/External_VM2VM21=GUID-20230807175321.webp" />
+    </figure>
+
+29. On the **Select destinations** screen, select the uplink that you bound your NIC to and click **ADD**.
+
+    <figure>
+    <img src="./images/External_VM2VM22=GUID-20230807175322.webp" />
+    </figure>
+
+30. Click **NEXT**.
+
+31. On the **Ready to complete screen**, review the settings and click **FINISH**.
+
+32. Configure the port mirror on your physical switch.
+
+    :::warning[Important]
+
+    Do not unpack the VLAN settings.
+    :::
+
+    After configuring your network settings, access the Virtual Network Sensor console and use the command `show traffic` to verify the Virtual Network Sensor is receiving traffic. For more information about troubleshooting, see [Virtual Network Sensor FAQ](virtual-network-sensor-faqs.mdx) and [Virtual Network Sensor CLI commands](virtual-network-sensor-cli-commands.mdx).
+:::::

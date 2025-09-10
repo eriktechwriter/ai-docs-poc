@@ -1,0 +1,68 @@
+---
+slug: trend-vision-one-cis-gke17-583
+title: 5.8.3 - Ensure Legacy Authorization (ABAC) is Disabled (Automated)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: cis-gke17-583.md
+  conversion_date: '2025-09-08T23:42:23.581Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Profile applicability: Level 1
+
+Legacy Authorization, also known as Attribute-Based Access Control (ABAC) has been superseded by Role-Based Access Control (RBAC) and is not under active development. RBAC is the recommended way to manage permissions in Kubernetes.
+
+In Kubernetes, RBAC is used to grant permissions to resources at the cluster and namespace level. RBAC allows the definition of roles with rules containing a set of permissions, whilst the legacy authorizer (ABAC) in Kubernetes Engine grants broad, statically defined permissions. As RBAC provides significant security advantages over ABAC, it is recommended option for access control. Where possible, legacy authorization must be disabled for GKE clusters.
+
+:::note
+
+Kubernetes Engine clusters running GKE version 1.8 and later disable the legacy authorization system by default, and thus role-based access control permissions take effect with no special action required.
+:::
+
+### Impact {#impact}
+
+Once the cluster has the legacy authorizer disabled, the user must be granted the ability to create authorization roles using RBAC to ensure that the role-based access control permissions take effect.
+
+### Audit {#audit}
+
+Using Google Cloud Console:
+
+1.  Go to [Kubernetes Engine website](https://console.cloud.google.com/kubernetes/list).
+2.  From the list of clusters, click on each cluster to open the Details pane, and make sure 'Legacy Authorization' is set to Disabled.
+
+Using Command Line:
+
+To check Legacy Authorization status for an existing cluster, run the following command:
+
+``` codeblock
+gcloud container clusters describe <cluster_name> --zone <compute_zone> 
+--format json | jq '.legacyAbac'
+```
+
+The output should return null (`{}`) if Legacy Authorization is Disabled. If Legacy Authorization is Enabled, the above command will return `true` value.
+
+### Remediation {#remediation}
+
+Using Google Cloud Console:
+
+1.  Go to [Kubernetes Engine website](https://console.cloud.google.com/kubernetes/list).
+2.  Select Kubernetes clusters for which Legacy Authorization is enabled.
+3.  Click **EDIT**.
+4.  Set Legacy Authorization to Disabled.
+5.  Click **SAVE**.
+
+Using Command Line:
+
+To disable Legacy Authorization for an existing cluster, run the following command:
+
+``` codeblock
+gcloud container clusters update <cluster_name> --zone <compute_zone> 
+--no-enable-legacy-authorization
+```
+
+### Additional Information: {#additional-information}
+
+On clusters running GKE 1.6 or 1.7, Kubernetes Service accounts have full permissions on the Kubernetes API by default. To ensure that the role-based access control permissions take effect for a Kubernetes service account, the cluster must be created or updated with the option `--no-enable-legacy-authorization`. This requirement is removed for clusters running GKE version 1.8 or higher.
+::::

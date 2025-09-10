@@ -1,0 +1,301 @@
+---
+slug: trend-vision-one-groups-tab
+title: Groups / Organizational Units / Assignment Groups Tab
+last_updated: '2025-09-08'
+ai_context:
+  source_file: groups-tab.md
+  conversion_date: '2025-09-08T23:42:18.266Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+View information about groups and manage groups on the **Groups** tab.
+
+You can view the following information on the **Groups** tab.
+
+- For integration with Microsoft Endpoint Manager (Intune), VMware Workspace ONE UEM, or Microsoft Entra ID
+
+  <table>
+  <colgroup>
+  <col style="width: 33%" />
+  <col style="width: 67%" />
+  </colgroup>
+  <thead>
+  <tr>
+  <th><p>Data</p></th>
+  <th><p>Description</p></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td><p>Group</p></td>
+  <td><p>The group name</p>
+  <p>For MDM integration, this is a group created in the MDM. For Microsoft Entra ID integration, this is an Entra ID group.</p></td>
+  </tr>
+  <tr>
+  <td><p>Group type</p></td>
+  <td>
+
+:::note
+
+  <p>This attribute is available only when you integrate with VMware Workspace ONE UEM.</p>
+  
+
+  :::
+
+  
+  <p>The type of group in VMware Workspace ONE UEM</p></td>
+  </tr>
+  <tr>
+  <td><p>Applied Android policy</p></td>
+  <td><p>The Android policy that applies to the enrolled devices of the group</p></td>
+  </tr>
+  <tr>
+  <td><p>Applied iOS/iPadOS policy</p></td>
+  <td><p>The iOS/iPadOS policy that applies to the enrolled devices of the group</p></td>
+  </tr>
+  <tr>
+  <td><p>User count</p></td>
+  <td><p>The total number of users who belong to the group</p></td>
+  </tr>
+  <tr>
+  <td><p>Device count</p></td>
+  <td><p>The total number of enrolled devices owned by the group users</p></td>
+  </tr>
+  </tbody>
+  </table>
+
+- For integration with Google Workspace
+
+  <table>
+  <colgroup>
+  <col style="width: 33%" />
+  <col style="width: 67%" />
+  </colgroup>
+  <thead>
+  <tr>
+  <th><p>Data</p></th>
+  <th><p>Description</p></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td><p>Organizational unit</p></td>
+  <td><p>The organizational unit name</p></td>
+  </tr>
+  <tr>
+  <td><p>Applied ChromeOS policy</p></td>
+  <td><p>The ChromeOS policy that applies to the enrolled devices of the group</p></td>
+  </tr>
+  <tr>
+  <td><p>Applied Android policy</p></td>
+  <td><p>The Android policy that applies to the enrolled devices of the group</p></td>
+  </tr>
+  <tr>
+  <td><p>Applied iOS/iPadOS policy</p></td>
+  <td><p>The iOS/iPadOS policy that applies to the enrolled devices of the group</p></td>
+  </tr>
+  <tr>
+  <td><p>User count</p></td>
+  <td><p>The total number of users who belong to the group</p></td>
+  </tr>
+  <tr>
+  <td><p>Device count</p></td>
+  <td><p>The total number of enrolled devices owned by the group users</p></td>
+  </tr>
+  </tbody>
+  </table>
+
+- For integration with other MDMs through managed configuration
+
+  <table>
+  <colgroup>
+  <col style="width: 33%" />
+  <col style="width: 67%" />
+  </colgroup>
+  <thead>
+  <tr>
+  <th><p>Data</p></th>
+  <th><p>Description</p></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td><p>Assignment group</p></td>
+  <td><p>The assignment group name</p>
+  <p>Assignment groups are created to manage enrolled users and devices that security policies and compliance policies can be assigned to.</p>
+  <p>The built-in assignment group "All devices" contains all devices managed by the organization.</p></td>
+  </tr>
+  <tr>
+  <td><p>Membership type</p></td>
+  <td><p>The type of assignment group membership</p>
+  <ul>
+  <li><p><strong>Selected devices</strong></p>
+  <p>You manually assign your organization's devices to this assignment group and manually remove the devices.</p></li>
+  <li><p><strong>Dynamic devices</strong></p>
+  <p>You create dynamic membership criteria to automatically add and remove devices. Dynamic group membership adds and removes group members automatically using membership criteria based on member attributes. When the attributes of a device change, the system evaluates all dynamic group criteria to see if the change would trigger any group adds or removes. If a device satisfies the criteria on a group, they are added as a member of that group. If they no longer satisfy the criteria, they are removed. You cannot manually add or remove a member of a dynamic group.</p></li>
+  </ul></td>
+  </tr>
+  <tr>
+  <td><p>Applied security policies</p></td>
+  <td><p>The number of security policies that apply to the assignment groups</p></td>
+  </tr>
+  <tr>
+  <td><p>Device count</p></td>
+  <td><p>The number of devices that belong to the assignment group</p></td>
+  </tr>
+  <tr>
+  <td><p>Membership last updated</p></td>
+  <td><p>The time the group membership was last calculated</p>
+  <p>This data applies only to the group membership type <strong>Dynamic devices</strong>.</p></td>
+  </tr>
+  </tbody>
+  </table>
+
+You can perform the following actions on the **Groups** tab.
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Filter group data</p></td>
+<td><p>Use the search box to locate specific group data.</p></td>
+</tr>
+<tr>
+<td><p>Remove groups</p></td>
+<td><p>Select one or more groups from the list and click <strong>Remove Group</strong>.</p>
+<p>Removing a group unenrolls all the devices that belong to the group users.</p>
+
+
+:::note
+
+<p>This action is not available when you integrate with Google Workspace.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Delete assignments</p></td>
+<td><p>Click the delete icon (<img src="./images/delete_policy=cce60f96-0e5c-4565-895f-d648c42e8495.webp" />) corresponding to a device or select one or more groups from the list and click <strong>Delete</strong>.</p>
+<p>Removing assignments deletes the groups and unenrolls all the devices that belong to the group users.</p>
+
+
+:::note
+
+<p>This action is only available when using MDM integration.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Show the users of a group</p></td>
+<td><p>In the <strong>User count</strong> column, click the number to see a list of users filtered by "Group:".</p></td>
+</tr>
+<tr>
+<td><p>Show the enrolled devices owned by the group users</p></td>
+<td><p>In the <strong>Device count</strong> column, click the number to see a list of enrolled devices filtered by "Group:".</p></td>
+</tr>
+<tr>
+<td><p>Add assignment groups</p></td>
+<td>
+
+:::note
+
+<p>This action is available only when you integrate with an MDM through managed configuration.</p>
+
+
+:::
+
+
+<ol>
+<li><p>Click <strong>Add Assignment Group</strong>.</p></li>
+<li><p>Specify the group name.</p></li>
+<li><p>Specify the membership type.</p>
+<ul>
+<li><p>If you select <strong>Selected devices</strong>, add devices as group members.</p></li>
+<li><p>If you select <strong>Dynamic devices</strong>, specify the dynamic membership criteria.</p>
+<p>Devices meeting the criteria will be automatically added to the group.</p></li>
+</ul></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Edit assignment groups</p></td>
+<td>
+
+:::note
+
+<p>This action is available only when you integrate with an MDM through managed configuration.</p>
+
+
+:::
+
+
+<p>In the <strong>Assignment group</strong> column, click the assignment group name number to edit the group name and group members.</p></td>
+</tr>
+<tr>
+<td><p>Calculate memberships</p></td>
+<td>
+
+:::note
+
+<p>This action is available only when you integrate with an MDM through managed configuration.</p>
+
+
+:::
+
+
+<p>Click the calculate memberships icon (<img src="./images/Sync_icon=bc994a2c-3a6c-419b-a584-a12efb14eacc.webp" />) to calculate the group membership.</p>
+<p>Based on the calculation result, Mobile Security updates the membership for groups of the "Dynamic devices" type.</p>
+
+
+:::note
+
+<p>This action applies only to the groups of the "Dynamic devices" type.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Sync user data from Microsoft Entra ID</p></td>
+<td>
+
+:::note
+
+<p>This action is available only when you integrate with an MDM through managed configuration.</p>
+
+
+:::
+
+
+<p>Click the Sync icon (<img src="./images/calculate_icon=a2e509e3-0e6c-45a4-806a-4376e81e9147.webp" />) corresponding to a group to synchronize user data from Microsoft Entra ID.</p>
+<p>Based on the synchronization result, Mobile Device Director updates the membership for groups of the "Microsoft Entra ID groups" type.</p>
+
+
+:::note
+
+<p>This action applies only to the groups of the "Microsoft Entra ID groups" type.</p>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+:::

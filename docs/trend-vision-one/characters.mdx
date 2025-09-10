@@ -1,0 +1,91 @@
+---
+slug: trend-vision-one-characters
+title: Characters
+---
+# Characters
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>REGULAR EXPRESSION</p></th>
+<th><p>DESCRIPTION</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>. (dot)</p></td>
+<td><p>Any character (byte) except newline</p></td>
+</tr>
+<tr>
+<td><p>x</p></td>
+<td><p>The character 'x'</p></td>
+</tr>
+<tr>
+<td><p>\\</p></td>
+<td><p>The character '\'</p></td>
+</tr>
+<tr>
+<td><p>\a</p></td>
+<td><p>The alert (bell) character (ASCII 0x07)</p></td>
+</tr>
+<tr>
+<td><p>\b</p></td>
+<td><ul>
+<li><p>If this meta-symbol is within square brackets [] or by itself, it will be treated as the backspace character (ASCII 0x08). For example, [\b] or \b</p></li>
+<li><p>If this meta-symbol is at the beginning (or end) of a regular expression, it means any matched string of the regular expression must check whether the left (or right) side of the matched string is a boundary. For example:</p>
+<ul>
+<li><p>\bluck &gt; left side must be the boundary</p></li>
+<li><p>luck\b &gt; right side must be the boundary</p></li>
+<li><p>\bluck\b &gt; both sides must be the boundary</p></li>
+</ul></li>
+<li><p>If this meta-symbol appears in the middle of a regular expression, it will cause a syntax error.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>\f</p></td>
+<td><p>The form-feed character (ASCII 0x0C)</p></td>
+</tr>
+<tr>
+<td><p>\n</p></td>
+<td><p>The newline (line feed) character (ASCII 0x0A)</p></td>
+</tr>
+<tr>
+<td><p>\r</p></td>
+<td><p>The carriage-return character (ASCII 0x0D)</p></td>
+</tr>
+<tr>
+<td><p>\t</p></td>
+<td><p>The normal (horizontal) tab character (ASCII 0x09)</p></td>
+</tr>
+<tr>
+<td><p>\v</p></td>
+<td><p>The vertical tab character (ASCII 0x0B)</p></td>
+</tr>
+<tr>
+<td><p>\n</p></td>
+<td><p>The character with octal value 0n (0 &lt;= n &lt;= 7)</p></td>
+</tr>
+<tr>
+<td><p>\nn</p></td>
+<td><p>The character with octal value 0nn (0 &lt;= n &lt;= 7)</p></td>
+</tr>
+<tr>
+<td><p>\mnn</p></td>
+<td><p>The character with octal value 0mnn (0 &lt;= m &lt;= 3, 0 &lt;= n &lt;= 7)</p></td>
+</tr>
+<tr>
+<td><p>\xhh</p></td>
+<td><p>The character with a hexadecimal value 0xhh, for example, \x20 means the space character</p></td>
+</tr>
+</tbody>
+</table>
+
+:::tip
+
+If your expression includes the characters \\ | ( ) { } \[ \] . ^ $ \* + or ?, you must escape them by using a \\ immediately before the character. Otherwise, they will be assumed to be regular expression operators rather than literal characters.
+:::
+::::

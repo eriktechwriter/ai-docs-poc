@@ -1,0 +1,183 @@
+---
+slug: trend-vision-one-ecs-feature-cost
+title: Amazon ECS feature costs
+last_updated: '2025-09-08'
+ai_context:
+  source_file: ecs-feature-cost.md
+  conversion_date: '2025-09-08T23:42:20.316Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Estimate the costs of using Amazon ECS for your container environment. All cost estimations are for one account per month.
+
+:::note
+
+The following data are estimates provided with no guarantees. Changes to Amazon ECS pricing, or differences between environments, might incur costs that are inconsistent with the estimated costs.
+:::
+
+**Total Cost**
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Type</p></th>
+<th><p>Number of Regions</p></th>
+<th><p>AWS Cost</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>10k unique images per region</p></td>
+<td><p>19 AWS regions</p></td>
+<td><p>USD970.00</p></td>
+</tr>
+<tr>
+<td> </td>
+<td><p>1 AWS region</p></td>
+<td><p>USD52.00</p></td>
+</tr>
+<tr>
+<td><p>1K uniqe images per region</p></td>
+<td><p>19 AWS regions</p></td>
+<td><p>USD100.00</p></td>
+</tr>
+<tr>
+<td> </td>
+<td><p>1 AWS region</p></td>
+<td><p>USD5.00</p></td>
+</tr>
+</tbody>
+</table>
+
+**Root Stack**
+
+The root stack cost is negligible.
+
+**Regional Stack**
+
+The following estimates are for 19 regions, with 10,000 unique images running in each region every day.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Type</p></th>
+<th><p>Resource</p></th>
+<th><p>Cost Estimation</p></th>
+<th>Additional Information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Lambda</p></td>
+<td><p>ScanLambda</p></td>
+<td><p>19 x USD.50.00 = USD950.00</p></td>
+<td><p>This cost estimation assumes 5000 ms average duration per execution.</p>
+
+
+:::note
+
+The Lambda time out is 30 seconds. The cost of this Lambda can increase up to USD300.00 per region if all Lambda executions time out.
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>CloudWatch Logs</p></td>
+<td><p>ScanLambdaLoggroup</p></td>
+<td><p>&lt; USD0.50 per region x 19</p>
+<p>&lt;USD10.00</p></td>
+<td><p>This cost estimation assumes that debug log is turned on, and that there are less than 1MB logs per day.</p></td>
+</tr>
+<tr>
+<td><p>SQS</p></td>
+<td><p>ScanRequestQueue</p>
+<p>ScanRequestDLQ</p></td>
+<td><p>&lt; USD0.40 per region x 19</p>
+<p>&lt;USD3.00</p></td>
+<td><p>This cost estimated is calculated as USD0.40 per million requests.</p></td>
+</tr>
+<tr>
+<td><p>Custom Resource IAM</p></td>
+<td> </td>
+<td><p>Free</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p><strong>Total</strong></p></td>
+<td> </td>
+<td><strong>&lt;USD970.00</strong></td>
+<td> </td>
+</tr>
+</tbody>
+</table>
+
+**Regional Stack**
+
+The following estimates are for 19 regions, with 1,000 unique images running in each region every day.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Type</p></th>
+<th><p>Resource</p></th>
+<th><p>Cost Estimation</p></th>
+<th><p>Additional Information</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Lambda</p></td>
+<td><p>ScanLambda</p></td>
+<td><p>19 x USD5.00 = USD95.00</p></td>
+<td><p>This cost estimation assumes 5000 ms average duration per execution.</p></td>
+</tr>
+<tr>
+<td><p>CloudWatch Logs</p></td>
+<td><p>ScanLambdaLoggroup</p></td>
+<td><p>&lt; USD0.10 per region x 19</p>
+<p>&lt;USD2.00</p></td>
+<td><p>This cost estimation assumes that debug log is turned on, and that there are less than 1MB logs per day.</p></td>
+</tr>
+<tr>
+<td><p>SQS</p></td>
+<td><p>ScanRequestQueue</p>
+<p>ScanRequestDLQ</p></td>
+<td><p>Free</p></td>
+<td><p>This cost estimated is calculated as USD0.40 per million requests.</p></td>
+</tr>
+<tr>
+<td><p>Custom Resource IAM</p></td>
+<td> </td>
+<td><p>Free</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p><strong>Total</strong></p></td>
+<td> </td>
+<td><p>&lt;USD100.00</p></td>
+<td> </td>
+</tr>
+</tbody>
+</table>
+::::

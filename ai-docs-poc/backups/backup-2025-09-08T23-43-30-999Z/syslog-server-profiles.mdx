@@ -1,0 +1,113 @@
+---
+slug: trend-vision-one-syslog-server-profiles
+title: Syslog server profiles
+last_updated: '2025-09-08'
+ai_context:
+  source_file: syslog-server-profiles.md
+  conversion_date: '2025-09-08T23:42:12.148Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Cloud Email Gateway Protection allows you to add, edit or delete syslog server profiles for syslog forwarding.
+
+### Procedure {#procedure}
+
+1.  Go to **Logs → Syslog Settings**.
+
+    The **Syslog Forwarding** tab appears by default.
+
+2.  Click the **Syslog Server Profiles** tab.
+
+3.  Click **Add** or click the name of an existing profile name.
+
+    The **Add Syslog Server Profile** or **Edit Syslog Server Profile** screen appears.
+
+4.  Specify or edit the following for a syslog server:
+
+    - **Profile name**: Unique profile name for a syslog server.
+
+    - **Description**: Description of this profile.
+
+    - **Server address**: IP address or FQDN of the syslog server.
+
+    - **Port**: Port number of the syslog server.
+
+    - **Protocol**: Protocol to be used to transport logs to the syslog server.
+
+      - **TCP**
+
+      - **TLS+TCP**
+
+        This option applies the Transport Layer Security (TLS) encryption for messages sent to the syslog server.
+
+    - **Format**: Format in which logs are sent to the syslog server.
+
+      - **Key value**
+
+      - **CEF**
+
+        For details about the Common Event Format (CEF) format, see [Content mapping between log output and CEF syslog type](cef-syslog-type-email-security.mdx).
+
+    - **Severity**: Severity level assigned to syslog messages.
+
+      - **Emergency**
+
+      - **Alert**
+
+      - **Critical**
+
+      - **Error**
+
+      - **Warning**
+
+      - **Notice**
+
+      - **Informational**
+
+      - **Debug**
+
+    - **Facility**:
+
+      - **user**
+
+      - **mail**
+
+      - **auth**
+
+      - **authpriv**
+
+      - **local0**
+
+      - **local1**
+
+      - **local2**
+
+      - **local3**
+
+      - **local4**
+
+      - **local5**
+
+      - **local6**
+
+      - **local7**
+
+    - **Enable TLS authentication**: Whether to enable TLS authentication for the connection between the syslog server and Cloud Email Gateway Protection.
+
+5.  Click **Save**.
+
+    If you select the **Enable TLS authentication** check box, Cloud Email Gateway Protection starts to execute TLS authentication.
+
+    - If the TLS authentication is successful, the new syslog server profile appears in the profile list on the **Syslog Server Profiles** tab or the existing profile is updated.
+
+    - If the TLS authentication is unsuccessful, the **Peer Certificate Summary** dialog box pops up, displaying peer certificate information such as the certificate ID, subject, and subject key ID.
+
+      When detecting that the certificate is not issued by a known Certificate Authority (CA), Cloud Email Gateway Protection prompts you to trust or not trust the certificate. In other cases, an error message is displayed, instructing you how to fix the error.
+
+    :::note
+
+    To test the connection between the syslog server and Cloud Email Gateway Protection, click **Test** under **Connection**.
+    :::
+:::

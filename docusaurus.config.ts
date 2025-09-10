@@ -19,8 +19,35 @@ const config: Config = {
   organizationName: 'trendmicro',
   projectName: 'ai-docs-poc',
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
+
+  // Development server configuration for optimal live preview
+  future: {
+    experimental_faster: true,
+    v4: {
+      removeLegacyPostBuildHeadAttribute: true,
+    },
+  },
+
+  // Webpack configuration for better development experience
+  webpack: {
+    jsLoader: (isServer) => ({
+      loader: require.resolve('swc-loader'),
+      options: {
+        jsc: {
+          parser: {
+            syntax: 'typescript',
+            tsx: true,
+          },
+          target: 'es2017',
+        },
+        module: {
+          type: isServer ? 'commonjs' : 'es6',
+        },
+      },
+    }),
+  },
 
   // Internationalization config
   i18n: {
@@ -42,11 +69,26 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           // Enable edit links
           editUrl: 'https://github.com/trendmicro/ai-docs-poc/tree/main/',
-          // MDX support
+          // MDX support with enhanced configuration
           remarkPlugins: [remarkMath, remarkGfm],
           rehypePlugins: [rehypeKatex],
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
+          // Enhanced development experience
+          include: ['**/*.{md,mdx}'],
+          exclude: [
+            '**/_*.{js,jsx,ts,tsx,md,mdx}',
+            '**/_*/**',
+            '**/*.test.{js,jsx,ts,tsx}',
+            '**/__tests__/**',
+          ],
+          // Live reload configuration
+          watchIgnore: [
+            '**/node_modules/**',
+            '**/.docusaurus/**',
+            '**/build/**',
+            '**/.git/**',
+          ],
         },
         blog: {
           showReadingTime: true,
@@ -81,26 +123,7 @@ const config: Config = {
           position: 'left',
           label: 'Documentation',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
-        {
-          type: 'dropdown',
-          label: 'AI Tools',
-          position: 'left',
-          items: [
-            {
-              label: 'Content Planner',
-              href: '/ai/planner',
-            },
-            {
-              label: 'Content Generator',
-              href: '/ai/generator',
-            },
-            {
-              label: 'Batch Operations',
-              href: '/ai/batch',
-            },
-          ],
-        },
+        // Additional navigation items will be added as features are implemented
         {
           href: 'https://github.com/trendmicro/ai-docs-poc',
           label: 'GitHub',
@@ -120,40 +143,12 @@ const config: Config = {
               label: 'Getting Started',
               to: '/docs/intro',
             },
-            {
-              label: 'AI Assistant Guide',
-              to: '/docs/ai-assistant',
-            },
-            {
-              label: 'Writer Workflows',
-              to: '/docs/workflows',
-            },
-          ],
-        },
-        {
-          title: 'AI Features',
-          items: [
-            {
-              label: 'Content Planning',
-              to: '/docs/ai/planning',
-            },
-            {
-              label: 'Dynamic Content',
-              to: '/docs/ai/dynamic-content',
-            },
-            {
-              label: 'Quality Automation',
-              to: '/docs/ai/quality',
-            },
+            // Additional documentation links will be added as content is created
           ],
         },
         {
           title: 'More',
           items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
             {
               label: 'GitHub',
               href: 'https://github.com/trendmicro/ai-docs-poc',

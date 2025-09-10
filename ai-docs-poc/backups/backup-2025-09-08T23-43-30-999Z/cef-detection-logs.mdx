@@ -1,0 +1,192 @@
+---
+slug: trend-vision-one-cef-detection-logs
+title: CEF detection logs
+last_updated: '2025-09-08'
+ai_context:
+  source_file: cef-detection-logs.md
+  conversion_date: '2025-09-08T23:42:24.119Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+**CEF Detection Logs**
+
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 30%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>CEF Key</p></th>
+<th><p>Description</p></th>
+<th><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Header (logVer)</p></td>
+<td><p>CEF format version</p></td>
+<td><p>CEF: 0</p></td>
+</tr>
+<tr>
+<td><p>Header (vendor)</p></td>
+<td><p>Appliance vendor</p></td>
+<td><p>Trend Micro</p></td>
+</tr>
+<tr>
+<td><p>Header (pname)</p></td>
+<td><p>Appliance product</p></td>
+<td><p>TMES</p></td>
+</tr>
+<tr>
+<td><p>Header (pver)</p></td>
+<td><p>Appliance version</p></td>
+<td><p>Example: 1.0.0.0</p></td>
+</tr>
+<tr>
+<td><p>Header (eventid)</p></td>
+<td><p>Signature ID</p></td>
+<td><p>100101</p></td>
+</tr>
+<tr>
+<td><p>Header (eventName)</p></td>
+<td><p>Description</p></td>
+<td><p>DETECTION</p></td>
+</tr>
+<tr>
+<td><p>Header (severity)</p></td>
+<td><p>Email severity</p></td>
+<td><p>6</p></td>
+</tr>
+<tr>
+<td><p>rt</p></td>
+<td><p>Log generation time</p></td>
+<td><p>Example: 2019-12-10T08:26:46.728Z</p></td>
+</tr>
+<tr>
+<td><p>cs1Label</p></td>
+<td><p>Event type</p></td>
+<td><p>eventType</p></td>
+</tr>
+<tr>
+<td><p>cs1</p></td>
+<td><p>Event type</p></td>
+<td><p>Example: ransomware</p></td>
+</tr>
+<tr>
+<td><p>cs2Label</p></td>
+<td><p>Domain name</p></td>
+<td><p>domainName</p></td>
+</tr>
+<tr>
+<td><p>cs2</p></td>
+<td><p>Domain name</p></td>
+<td><p>Example: example1.com</p></td>
+</tr>
+<tr>
+<td><p>suser</p></td>
+<td><p>Email sender</p></td>
+<td><p>Example: user1@example1.com</p></td>
+</tr>
+<tr>
+<td><p>duser</p></td>
+<td><p>Email recipients</p></td>
+<td><p>Example: user2@example2.com</p></td>
+</tr>
+<tr>
+<td><p>cs3Label</p></td>
+<td><p>Email message direction</p></td>
+<td><p>direction</p></td>
+</tr>
+<tr>
+<td><p>cs3</p></td>
+<td><p>Email message direction</p></td>
+<td><ul>
+<li><p>incoming</p></li>
+<li><p>outgoing</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cs4Label</p></td>
+<td><p>Unique message identifier</p></td>
+<td><p>messageId</p></td>
+</tr>
+<tr>
+<td><p>cs4</p></td>
+<td><p>Unique message identifier</p></td>
+<td><p>Example: 201605181642138223747@trend.com</p></td>
+</tr>
+<tr>
+<td><p>msg</p></td>
+<td><p>Email subject</p></td>
+<td><p>Example: hello</p></td>
+</tr>
+<tr>
+<td><p>cn1Label</p></td>
+<td><p>Email message size</p></td>
+<td><p>messageSize</p></td>
+</tr>
+<tr>
+<td><p>cn1</p></td>
+<td><p>Email message size</p></td>
+<td><p>Example: 1809</p></td>
+</tr>
+<tr>
+<td><p>cs5Label</p></td>
+<td><p>Violated event analysis</p></td>
+<td><p>policyName</p></td>
+</tr>
+<tr>
+<td><p>cs5</p></td>
+<td><p>Violated event analysis</p></td>
+<td><p>Example: Spam</p></td>
+</tr>
+<tr>
+<td><p>cs6Label</p></td>
+<td><p>Violated event details</p></td>
+<td><p>details</p></td>
+</tr>
+<tr>
+<td><p>cs6</p></td>
+<td><p>Violated event details</p></td>
+<td><p>Example: <code>{"threatNames":"Troj", "fileInfo":[{"fileName":"file1","fileSha256":"abcd1234dae60bcae54516be6c9953b4bb9644e188606ceac00feebf95bbf10e", "threatName":"Troj"}]}</code></p></td>
+</tr>
+<tr>
+<td><p>act</p></td>
+<td><p>Action in the event</p></td>
+<td><ul>
+<li><p>Quarantine</p></li>
+<li><p>Bypass</p></li>
+<li><p>Delete Attachment</p></li>
+<li><p>Insert Stamp</p></li>
+<li><p>Tag Subject</p></li>
+<li><p>Change Recipient</p></li>
+<li><p>Delete Message</p></li>
+<li><p>Send Notification</p></li>
+<li><p>Clean</p></li>
+<li><p>BCC</p></li>
+<li><p>Deliver</p></li>
+<li><p>Insert X-Header</p></li>
+<li><p>Encryption in progress</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+Log sample:
+
+``` {.codeblock style="font-size: 70%;"}
+CEF:0|Trend Micro|TMES|1.0.0.0|100101|DETECTION|6|rt=2019-12-10T08:26:46.728Z 
+cs1Label=eventType cs1=virus cs2Label=domainName cs2=example1.com 
+suser=user1@example1.com duser=user2@example2.com cs3Label=direction
+cs3=incoming cs4Label=messageId cs4=201605181642138223747@trend.com 
+msg=test sample cn1Label=messageSize cn1=1809 cs5Label=policyName 
+cs5=Test Rule act=Quarantine cs6Label=details cs6={"threatNames":"Troj",
+"fileInfo":[{"fileName":"file1",
+"fileSha256":"abcd1234dae60bcae54516be6c9953b4bb9644e188606ceac00feebf95bbf10e",
+"threatName":"Troj"}]}
+```
+:::

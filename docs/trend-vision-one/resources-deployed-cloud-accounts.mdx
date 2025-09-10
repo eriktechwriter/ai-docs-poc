@@ -1,0 +1,451 @@
+---
+slug: trend-vision-one-resources-deployed-cloud-accounts
+title: Resources deployed by Cloud Accounts
+---
+# Resources deployed by Cloud Accounts
+
+Review the services deployed to your cloud environment when connecting to Cloud Accounts.
+
+When connecting your cloud resources to the Cloud Accounts app, certain features and services are deployed to your environment to facilitate the connection and enable detection and response capabilities. The following tables list the services deployed within your environment.
+
+**Related information**
+
+- AWS
+- Azure
+- Google Cloud
+
+## AWS {#aws}
+
+The deployment template includes tagging when connecting your AWS account, allowing you to identify which services are associated with Trend Vision One security applications and resources. You can also add custom tags when connecting an account using the CloudFormation template. For more information, see [Adding an AWS account using CloudFormation](adding-aws-account.mdx).
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Feature name</p></th>
+<th><p>AWS tag</p></th>
+<th><p>Services deployed (number)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Core features and Cyber Risk Exposure Management</p></td>
+<td><p><code>"TrendMicroProduct": "cam"</code></p></td>
+<td><ul>
+<li><p>Cloudformation Stack (1)</p></li>
+<li><p>Cloudformation Stack Nested (0~3)</p></li>
+<li><p>IAM Managed Policy (3~4)</p></li>
+<li><p>IAM OIDC Provider (1)</p></li>
+<li><p>IAM Policy (2~4)</p></li>
+<li><p>IAM role (3~5)</p></li>
+<li><p>Lambda (2~4)</p></li>
+<li><p>LogGroup (2~3)</p></li>
+<li><p>Custom (4)</p></li>
+<li><p>SSM (1)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Cloud Detection for AWS CloudTrail</p></td>
+<td><p><code>"TrendMicroProduct": "ct"</code></p></td>
+<td><p>Single Account:</p>
+<ul>
+<li><p>Lambda (10-12)</p></li>
+<li><p>Event bridge (1)</p></li>
+<li><p>IAM (7)</p></li>
+<li><p>SQS (1)</p></li>
+</ul>
+<p>Control Tower:</p>
+<ul>
+<li><p>Lambda (10-12)</p></li>
+<li><p>Event bridge (1)</p></li>
+<li><p>IAM (7)</p></li>
+<li><p>SQS (1)</p></li>
+<li><p>EventBridge (1) (User provided)</p></li>
+<li><p>SNS (1) (User provided)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Cloud Response for AWS</p></td>
+<td><p>n/a</p></td>
+<td><ul>
+<li><p>Only uses IAM permissions</p></li>
+<li><p>Creates one IAM Policy to revoke an IAM user's permissions.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Container Protection for AWS ECS</p></td>
+<td><p><code>"TrendMicroProduct": "cs"</code></p></td>
+<td><ul>
+<li><p>Cloudformation Stackset (1)</p></li>
+<li><p>IAM Roles (8)</p></li>
+<li><p>Lambda (4)</p></li>
+<li><p>Log group (5)</p></li>
+<li><p>Custom (4)</p></li>
+<li><p>SQS (1)</p></li>
+<li><p>ECS task def (1)</p></li>
+<li><p>SSM parameters (1)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Agentless Vulnerability &amp; Threat Detection</p></td>
+<td><p><code>"TrendMicroProduct": "avtd"</code></p></td>
+<td><p>This feature deploys a base stack to the region you select when connecting the account, as well as additional resources to each monitored region. The number of resources deployed depends of the number of regions monitored.</p>
+<ul>
+<li><p>Lambda (8 in base stack, plus 24 per region)</p></li>
+<li><p>S3 Buckets (2 per region)</p></li>
+<li><p>IAM Roles (9 in base stack, plus 25 per region)</p></li>
+<li><p>Event Rules (2 in base stack, plus 10 per region</p></li>
+<li><p>SQS (5 per region)</p></li>
+<li><p>Custom (5 in base stack, plus 4 per region)</p></li>
+<li><p>Secrets (1 in base stack, plus 1 per region)</p></li>
+<li><p>Parameter Store Parameter (1 per region)</p></li>
+<li><p>Step Function (1 per region)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>File Security Storage</p></td>
+<td><p><code>"TrendMicroProduct": "fss"</code></p></td>
+<td><ul>
+<li><p>CloudFormation StackSets (1)</p></li>
+<li><p>CloudFormation Stack (1 per region)</p></li>
+<li><p>EventBridge (1)</p></li>
+<li><p>IAM Roles (13)</p></li>
+<li><p>IAM Policies (4)</p></li>
+<li><p>SNS Topics (1)</p></li>
+<li><p>SNS Subscriptions (2)</p></li>
+<li><p>Lambda Permissions (3)</p></li>
+<li><p>Lambda Functions (10)</p></li>
+<li><p>Lambda EventSourceMapping (4)</p></li>
+<li><p>SQS Queue (4)</p></li>
+<li><p>SQS Queue Policy (4)</p></li>
+<li><p>CloudWatch LogGroup (6)</p></li>
+<li><p>System Manager Parameter Store (3)</p></li>
+<li><p>Custom (10)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Data Security Posture</p></td>
+<td><p><code>"TrendMicroProduct": "dspm"</code></p></td>
+<td><p>Uses IAM permissions only</p></td>
+</tr>
+<tr>
+<td><p>Real-Time Posture Monitoring</p></td>
+<td><p><code>"TrendMicroProduct": "rtpm"</code></p></td>
+<td><p>Information is coming soon</p></td>
+</tr>
+<tr>
+<td><p>Cloud Detections for VPC Flow Logs</p></td>
+<td><p><code>"TrendMicroProduct": "vpcflow"</code></p></td>
+<td><ul>
+<li><p>Lambda Functions (6 in base stack, plus 14 per region)</p></li>
+<li><p>S3 Buckets (2 per region)</p></li>
+<li><p>IAM roles (6)</p></li>
+<li><p>Event Rules (2 in base stack, plus 6 per region)</p></li>
+<li><p>SQS (4 per region)</p></li>
+<li><p>Custom (3 in base stack, plus 5 per region)</p></li>
+<li><p>Secrets (1 in base stack, plus 1 per region)</p></li>
+<li><p>AppConfig (1 per region)</p></li>
+<li><p>CloudWatch Log Group (6 in base stack, plus 14 per region)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Cloud Detections for Amazon Security Lake</p></td>
+<td><p><code>"TrendMicroProduct": "seclake"</code></p></td>
+<td><ul>
+<li><p>CloudFormation StackSets (1)</p></li>
+<li><p>CloudFormation Stack (1 per region)</p></li>
+<li><p>Event Rules (2)</p></li>
+<li><p>IAM roles (10)</p></li>
+<li><p>Lambda Permissions (2)</p></li>
+<li><p>Lambda Functions (8)</p></li>
+<li><p>Lambda EventSourceMapping (3)</p></li>
+<li><p>SQS Queue (2)</p></li>
+<li><p>System Manager ParameterStore (3)</p></li>
+<li><p>S3 Bucket (1)</p></li>
+<li><p>SecurityLake Subscriber (1)</p></li>
+<li><p>SecurityLake SubscriberNotification (1)</p></li>
+<li><p>Custom Resource (3)</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+## Azure {#azure}
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Feature name</p></th>
+<th><p>Services deployed (number)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Core features and Cyber Risk Exposure Management</p></td>
+<td><p><strong>Resources:</strong></p>
+<ul>
+<li><p>App Registration (1)</p></li>
+<li><p>Federated Credential (1)</p></li>
+<li><p>Applications (1)</p></li>
+<li><p>Role and Role Assignments of the Service Principal (1)</p></li>
+</ul>
+<p><strong>API Permissions:</strong></p>
+<ul>
+<li><p>Azure Active Directory Graph (4)</p>
+<ul>
+<li><p>Directory.Read.All | Delegated</p></li>
+<li><p>Directory.Read.All | Application</p></li>
+<li><p>User.Read | Delegated</p></li>
+<li><p>User.Read.All | Delegated</p></li>
+</ul></li>
+<li><p>Microsoft Graph (4)</p>
+<ul>
+<li><p>Directory.Read.All | Application</p></li>
+<li><p>User.Read | Delegated</p></li>
+<li><p>User.Read.All | Delegated</p></li>
+<li><p>User.Read.All | Application</p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Agentless Vulnerability &amp; Threat Detection</p></td>
+<td><p><strong>Resource Groups</strong>:</p>
+<ul>
+<li><p><code>azurem_resource_group</code> (1 common)</p></li>
+<li><p><code>azurem_resource_group</code> (3, one each for US/AS/EU)</p></li>
+</ul>
+<p><strong>IAM and Security</strong>:</p>
+<ul>
+<li><p>Custom Role Definition (1 for sentry)</p></li>
+<li><p><code>azurem_role_assignment</code> (32 per region)</p></li>
+</ul>
+<p><strong>Key Vault</strong></p>
+<ul>
+<li><p><code>azurem_key_vault</code> (1)</p></li>
+<li><p><code>azurerm_key_vault_access_policy</code> (1 for primary location, 2 per region)</p></li>
+<li><p><code>azurerm_key_vault_secret</code> (2 for primary location)</p></li>
+</ul>
+<p><strong>Storage</strong></p>
+<ul>
+<li><p><code>azurerm_storage_account</code> (1 per region)</p></li>
+<li><p><code>azurerm_storage_container</code> (3 per region)</p></li>
+<li><p><code>azurerm_storage_blob</code> (21 per region)</p></li>
+<li><p><code>azurerm_storage_queue</code> (8 per region)</p></li>
+<li><p><code>azurerm_storage_table</code> (1 per region)</p></li>
+<li><p><code>azurerm_storage_share</code> (2 per region)</p></li>
+<li><p><code>azurerm_storage_management_policy</code> (1 per region)</p></li>
+</ul>
+<p><strong>Service Bus</strong></p>
+<ul>
+<li><p><code>azurerm_servicebus_namespace</code> (1 per region)</p></li>
+<li><p><code>azurerm_servicebus_queue</code> (1 dispatcher for primary location, 3 per region)</p></li>
+</ul>
+<p><strong>App Services</strong></p>
+<ul>
+<li><p><code>azurerm_service_plan</code> (1 dispatcher for primary location, 5 per region)</p></li>
+<li><p><code>azurerm_linux_function_app</code> (1 dispatcher for primary location, 16 per region)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Real-Time Posture Monitoring</p></td>
+<td><p><strong>Resources</strong>:</p>
+<ul>
+<li><p>Resource Group (1)</p></li>
+<li><p>Logic App Workflow (1)</p></li>
+<li><p>Logic App HTTP Request Trigger (1)</p></li>
+<li><p>Monitor Action Group (1)</p></li>
+<li><p>Monitor Activity Log Alert (1)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Data Security Posture</p></td>
+<td><p><strong>Resources</strong>:</p>
+<ul>
+<li><p>azurem_network_security_group</p>
+<p><strong>Required permissions</strong></p>
+<ul>
+<li><p><code>Microsoft.Network/networkSecurityGroups/read</code></p></li>
+<li><p><code>Microsoft.Network/networkSecurityGroups/write</code></p></li>
+<li><p><code>Microsoft.Network/networkSecurityGroups/delete</code></p></li>
+</ul></li>
+<li><p>azurem_network_security_rule</p>
+<p><strong>Required permissions</strong>:</p>
+<ul>
+<li><p><code>Microsoft.Network/networkSecurityGroups/securityRules/read</code></p></li>
+<li><p><code>Microsoft.Network/networkSecurityGroups/securityRules/write</code></p></li>
+<li><p><code>Microsoft.Network/networkSecurityGroups/securityRules/delete</code></p></li>
+</ul></li>
+<li><p>azurem_resource_group</p>
+<p><strong>Required permissions</strong>:</p>
+<ul>
+<li><p><code>Microsoft.Resources/subscriptions/resourceGroups/read</code></p></li>
+<li><p><code>Microsoft.Resources/subscriptions/resourceGroups/write</code></p></li>
+<li><p><code>Microsoft.Resources/subscriptions/resourceGroups/delete</code></p></li>
+</ul></li>
+<li><p>azurem_automation_account</p>
+<p><strong>Required permissions</strong>:</p>
+<ul>
+<li><p><code>Microsoft.Automation/automationAccounts/read</code></p></li>
+<li><p><code>Microsoft.Automation/automationAccounts/write</code></p></li>
+<li><p><code>Microsoft.Automation/automationAccounts/delete</code></p></li>
+</ul></li>
+<li><p>azurem_role_assignment</p>
+<p><strong>Required permissions</strong>:</p>
+<ul>
+<li><p><code>Microsoft.Authorization/roleAssignments/read</code></p></li>
+<li><p><code>Microsoft.Authorization/roleAssignments/write</code></p></li>
+<li><p><code>Microsoft.Authorization/roleAssignments/delete</code></p></li>
+</ul></li>
+<li><p>azurem_automation_webhook</p>
+<p><strong>Required permissions</strong>:</p>
+<ul>
+<li><p><code>Microsoft.Automation/automationAccounts/webhooks/read</code></p></li>
+<li><p><code>Microsoft.Automation/automationAccounts/webhooks/write</code></p></li>
+<li><p><code>Microsoft.Automation/automationAccounts/webhooks/delete</code></p></li>
+</ul></li>
+<li><p>azurem_monitor_action_group</p>
+<p><strong>Required permissions</strong>:</p>
+<ul>
+<li><p><code>Microsoft.Insights/actionGroups/read</code></p></li>
+<li><p><code>Microsoft.Insights/actionGroups/write</code></p></li>
+<li><p><code>Microsoft.Insights/actionGroups/delete</code></p></li>
+</ul></li>
+<li><p>azurem_automation_python3_package</p>
+<p><strong>Required permissions</strong>:</p>
+<ul>
+<li><p><code>Microsoft.Automation/automationAccounts/python3Packages/read</code></p></li>
+<li><p><code>Microsoft.Automation/automationAccounts/python3Packages/write</code></p></li>
+<li><p><code>Microsoft.Automation/automationAccounts/python3Packages/delete</code></p></li>
+</ul></li>
+<li><p>azurem_automation_runbook</p>
+<p><strong>Required permissions</strong>:</p>
+<ul>
+<li><p><code>Microsoft.Automation/automationAccounts/runbooks/read</code></p></li>
+<li><p><code>Microsoft.Automation/automationAccounts/runbooks/write</code></p></li>
+<li><p><code>Microsoft.Automation/automationAccounts/runbooks/delete</code></p></li>
+</ul></li>
+<li><p>azurem_automation_job_schedule</p>
+<p><strong>Required permissions</strong>:</p>
+<ul>
+<li><p><code>Microsoft.Automation/automationAccounts/jobSchedules/read</code></p></li>
+<li><p><code>Microsoft.Automation/automationAccounts/jobSchedules/write</code></p></li>
+<li><p><code>Microsoft.Automation/automationAccounts/jobSchedules/delete</code></p></li>
+</ul></li>
+<li><p>azurem_public_ip</p>
+<p><strong>Required permissions</strong>:</p>
+<ul>
+<li><p><code>Microsoft.Network/publicIPAddresses/read</code></p></li>
+<li><p><code>Microsoft.Network/publicIPAddresses/write</code></p></li>
+<li><p><code>Microsoft.Network/publicIPAddresses/delete</code></p></li>
+</ul></li>
+<li><p>azurem_subnet</p>
+<p><strong>Required permissions</strong>:</p>
+<ul>
+<li><p><code>Microsoft.Network/virtualNetworks/subnets/read</code></p></li>
+<li><p><code>Microsoft.Network/virtualNetworks/subnets/write</code></p></li>
+<li><p><code>Microsoft.Network/virtualNetworks/subnets/delete</code></p></li>
+</ul></li>
+<li><p>azurem_subnet_network_security_group_association</p>
+<p><strong>Required permissions</strong>:</p>
+<ul>
+<li><p><code>Microsoft.Network/virtualNetworks/subnets/join/action</code></p></li>
+</ul></li>
+<li><p>azurem_bastion_host</p>
+<p><strong>Required permissions</strong>:</p>
+<ul>
+<li><p><code>Microsoft.Network/bastionHosts/read</code></p></li>
+<li><p><code>Microsoft.Network/bastionHosts/write</code></p></li>
+<li><p><code>Microsoft.Network/bastionHosts/delete</code></p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Microsoft Defender for Endpoint Log Collection</p></td>
+<td><p><strong>Resources</strong>:</p>
+<ul>
+<li><p>Resource Groups (1)</p></li>
+<li><p>Event Hubs Namespace (1)</p></li>
+<li><p>Event Hubs (1)</p></li>
+<li><p>App Service Plans (1)</p></li>
+<li><p>Function Apps (6)</p></li>
+<li><p>Application Insights (6)</p></li>
+<li><p>Log Analytics Workspaces (1)</p></li>
+<li><p>Key Vault (1)</p></li>
+<li><p>Key Vault Secrets (3)</p></li>
+<li><p>Storage Accounts (1)</p></li>
+<li><p>Storage Tables (1)</p></li>
+<li><p>Storage Containers (1)</p></li>
+<li><p>Role Assignments (12)</p></li>
+<li><p>Azure AD App Role Assignments (7)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Cloud Detections for Azure Activity Log</p></td>
+<td><p><strong>Resources</strong>:</p>
+<ul>
+<li><p>Resource Groups (1)</p></li>
+<li><p>Event Hubs Namespace (1)</p></li>
+<li><p>Event Hubs (1)</p></li>
+<li><p>App Service Plans (1)</p></li>
+<li><p>Function Apps (3)</p></li>
+<li><p>Application Insights (3)</p></li>
+<li><p>Log Analytics Workspaces (1)</p></li>
+<li><p>Key Vault (1)</p></li>
+<li><p>Key Vault Secrets (2)</p></li>
+<li><p>Storage Accounts (1)</p></li>
+<li><p>Storage Tables (1)</p></li>
+<li><p>Storage Queues (1)</p></li>
+<li><p>Storage Containers (1)</p></li>
+<li><p>Role Assignments (8)</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+## Google Cloud {#google-cloud}
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Feature name</p></th>
+<th><p>Services deployed (number)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Core features and permissions</p></td>
+<td><p><strong>Resources:</strong></p>
+<ul>
+<li><p>Service Account (1)</p></li>
+<li><p>Workload Identity Pool Provider (1)</p></li>
+<li><p>IAM (3)</p></li>
+<li><p>Tag Key (1)</p></li>
+<li><p>Tag Value (1)</p></li>
+</ul>
+<p><strong>Enabled APIs:</strong></p>
+<ul>
+<li><p>IAM Service Account Credentials</p></li>
+<li><p>Cloud Resource Manager</p></li>
+<li><p>Identity and Access Management</p></li>
+<li><p>Cloud Build</p></li>
+<li><p>Deployment Manager</p></li>
+<li><p>Cloud Funcitons</p></li>
+<li><p>Cloud Pub/Sub</p></li>
+<li><p>Secret Manager</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+:::

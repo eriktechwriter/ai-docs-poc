@@ -1,0 +1,33 @@
+---
+slug: trend-vision-one-config-access-risky-users
+title: Configuring conditional access policies for risky users
+---
+# Configuring conditional access policies for risky users
+
+By integrating with Microsoft Entra ID Conditional Access, Cloud Email and Collaboration Protection allows you to control risky users' access to resources by configuring conditional access policies. Cloud Email and Collaboration Protection synchronizes the policies to Microsoft Entra ID, which applies the corresponding actions on the users when they attempt to access apps.
+
+:::warning[Important]
+
+Before you proceed, make sure the following requirements are met:
+
+- You have [granted access to Microsoft Identity Protection](ms-identity-protection-account.mdx).
+
+- You have not enabled security defaults in Microsoft Entra ID. Microsoft does not support using Conditional Access and security defaults simultaneously. For more information, see Microsoft documentation.
+:::
+
+### Procedure {#procedure}
+
+1.  In Cloud Email and Collaboration Protection, go to **Policies → Global Settings → Other Settings → Conditional Access Policies for Risky Users**.
+
+2.  Click a policy name.
+
+3.  In the **Available Targets** area, select one or multiple targets, and add them to the **Selected Targets** area.
+
+    By default, the **Available Targets** area displays **Top Users with High Risk Events**, which are all the users in the dashboard widget **Top 5 Users with High Risk Events** detected over the last 24 hours, last 7 days, and last 30 days.
+
+    To search for other users, type an email address and click **Search**.
+
+4.  Click **Save**.
+
+    The policy will be synchronized to Microsoft Entra ID.
+::::

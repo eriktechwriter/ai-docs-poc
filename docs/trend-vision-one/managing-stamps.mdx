@@ -1,0 +1,88 @@
+---
+slug: trend-vision-one-managing-stamps
+title: Managing stamps
+---
+# Managing stamps
+
+Cloud Email Gateway Protection supports both HTML stamps and plain text stamps.
+
+You can use **Stamps** screen to manage stamps in Cloud Email Gateway Protection.
+
+For information on inserting and configuring stamps, see [Inserting a stamp](inserting-stamp.mdx).
+
+**Stamps Screen**
+
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 72%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Tasks</p></th>
+<th><p>Steps</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Adding a Stamp</p>
+
+
+:::tip
+
+<p>Often a new stamp will be very similar to one you already have. In that case, it is usually easier to copy the stamp and edit it rather than create a new stamp from scratch.</p>
+
+
+:::
+
+</td>
+<td><p>Click <strong>Add</strong>.</p>
+<ol>
+<li><p>Provide the following information:</p>
+<ul>
+<li><p><strong>Name</strong>: A name for the stamp.</p>
+<p>Optionally select <strong>Do not stamp message formats that might become corrupted or unreadable, such as digitally signed and Outlook TNEF.</strong> if necessary.</p></li>
+<li><p><strong>Insert at</strong>: Select whether you want to insert the stamp at the beginning or at the end of the message body.</p></li>
+<li><p><strong>HTML</strong>: Specify the HTML content for the stamp as desired.</p>
+<ol>
+<li><p>Select a style type:</p>
+<ul>
+<li><p><strong>Predefined style</strong>:</p>
+<p>Cloud Email Gateway Protection provides a predefined style for HTML stamps that indicate <strong>Information</strong>, <strong>Suspicious</strong>, or <strong>Dangerous</strong> risk level. Select a risk level and modify the HTML content with the rich text editor. Cloud Email Gateway Protection offers a preview of the stamp and automatically generates a plain text stamp with same content in real time.</p></li>
+<li><p><strong>Customized style</strong>:</p>
+<p>Cloud Email Gateway Protection allows you to specify HTML stamp content and plain text stamp content separately.</p></li>
+</ul></li>
+<li><p>Edit the stamp content.</p>
+<p>Optionally include variables in your stamps by using the tokens listed in <a href="trend-vision-one-tokens">Tokens</a>.</p>
+<p>When you use the token %DATE&amp;TIME%, select <strong>Customize time zone for %DATE&amp;TIME%</strong> and select a time zone. By default, the time zone UTC+0 is used.</p>
+<p>Optionally select <strong>Display UTC offset</strong> if you want to include the UTC offset (such as UTC+0800) to the end of the date and time.</p></li>
+</ol>
+
+
+:::note
+
+&#10;
+
+:::
+
+
+<p>When a message triggers the policy rule, the HTML stamp will be inserted into <strong>HTML</strong> content of the message, and the plain text stamp will be inserted into <strong>Plain text</strong> content of the message.</p></li>
+</ul></li>
+<li><p>Click <strong>Save</strong>.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Copying Stamps</p></td>
+<td><p>In the <strong>Stamps</strong> list, select the stamp to copy. Click <strong>Copy</strong>.</p></td>
+</tr>
+<tr>
+<td><p>Editing Stamps</p></td>
+<td><p>In the <strong>Stamps</strong> list, click the name of the stamp you want to edit and follow the instructions in <em>Adding a Stamp</em> procedure in this table.</p></td>
+</tr>
+<tr>
+<td><p>Deleting Stamps</p></td>
+<td><p>In the <strong>Stamps</strong> list, select the stamps to delete. Click <strong>Delete</strong>, and click <strong>OK</strong> to confirm.</p></td>
+</tr>
+</tbody>
+</table>
+:::

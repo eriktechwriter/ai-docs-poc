@@ -1,0 +1,56 @@
+---
+slug: trend-vision-one-adding-https-inspection-rule
+title: Adding an HTTPS inspection rule
+last_updated: '2025-09-08'
+ai_context:
+  source_file: adding-https-inspection-rule.md
+  conversion_date: '2025-09-08T23:42:25.740Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Create an HTTPS inspection rule to decrypt content of specified URL categories, and apply the rule to selected locations.
+
+### Procedure {#procedure}
+
+1.  Go to **Zero Trust Secure Access → Secure Access Configuration → Internet Access Configuration**.
+
+2.  Click the **HTTPS Inspection** tab.
+
+3.  Click **Add**.
+
+4.  Specify a **Rule name** and a **Description**.
+
+5.  Automatically activate the HTTPS inspection rule by enabling the **Status** toggle.
+
+6.  Configure **Locations** by selecting one of the following:
+
+    - **All locations**: The rule affects users from all gateways, IP addresses, and geographic locations.
+
+    - **Selected locations**: The rule only affects users located at specified corporate network locations or public/home network locations with specified IP addresses or geographic regions.
+
+    For more information, see [Internet Access gateways and corporate network locations](corporate-network-locations-ia.mdx).
+
+7.  Select the **URLs** that the rule applies to.
+
+    (Optional) Click **Add Custom URL Category** to specify new [Custom URL categories](custom-url-categories.mdx).
+
+8.  (Optional) Click **Manage Inspection Exceptions** to exclude HTTPS requests towards certain domains from being inspected by the Internet Access Gateway.
+
+    For more information, see [Inspection exceptions](inspection-exceptions.mdx).
+
+9.  Click the **Certificate** tab.
+
+    The default CA certificate configured for the Internet Access Cloud and On-Premises Gateway on the **Manage Default Certificate** screen automatically loads.
+
+10. (Optional) If you want to use another CA certificate in the current rule, perform the following steps:
+
+    1.  Click **Custom certificate** under the desired gateway type.
+
+    2.  [Cross-sign your CA certificate](cross-signing-ca-certificate.mdx) with the CSR file specific for the gateway type.
+
+    3.  Click **Upload Custom Certificate** and upload the cross-signed CA certificate to the console.
+
+11. Click **Save**.
+:::

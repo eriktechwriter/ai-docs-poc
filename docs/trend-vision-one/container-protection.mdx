@@ -1,0 +1,68 @@
+---
+slug: trend-vision-one-container-protection
+title: Container Protection
+---
+# Container Protection
+
+Configure security policies and Runtime Scanning rulesets, monitor vulnerability detections and security events, and access the Artifact Scanner for pre-runtime scanning of your Kubernetes clusters using the Container Protection screen.
+
+The following table provides an overview the main sections in Container Protection.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Section</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Policies</p></td>
+<td><p><a href="trend-vision-one-policies">Configure and manage policies</a> that you can then assign to Amazon ECS and Kubernetes clusters.</p></td>
+</tr>
+<tr>
+<td><p>Rulesets</p></td>
+<td><p><a href="trend-vision-one-rulesets">Configure rulesets</a> that you can apply to policies that are assigned to clusters with Runtime Scanning turned on</p></td>
+</tr>
+<tr>
+<td><p>Compliance</p></td>
+<td><p><a href="trend-vision-one-compliance-scanning">Enable compliance scanning</a> to scan your Amazon EKS clusters for security compliance issues and generate reports with actionable insights.</p>
+
+
+:::warning[Important]
+
+<p>Compliance scanning is currently only supported on EKS clusters mapped within Trend Vision One to a connected AWS account. Real-Time Posture Monitoring must be enabled in that account, and the latest Container Security software must be installed.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Vulnerabilities</p></td>
+<td><p><a href="trend-vision-one-vulnerabilities-container-prot">View vulnerabilities</a> detected on clusters by Runtime Scanning.</p></td>
+</tr>
+<tr>
+<td><p>Events</p></td>
+<td><p><a href="trend-vision-one-events">View policy violations</a> detected by Runtime Security.</p></td>
+</tr>
+<tr>
+<td><p>Container Image Scanning</p></td>
+<td><p><a href="trend-vision-one-artifact-scanner-tmas">Learn how to set up and deploy artifact scanners</a> in your CI/CD pipelines. After artifact scanning is set up, you can view the scan results of registry image artifacts for vulnerabilities, malware, and secrets from this page.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Policies](policies.md "Define Container Protection policies to ensure protection and vulnerability detection for your containers during deployment and run time.")
+- [Rulesets](rulesets.md "Define Container Protection rulesets to ensure protection for your containers during Runtime Security scanning.")
+- [Compliance](compliance-scanning.md "Scan your Amazon EKS, Kubernetes, Red Hat OpenShift, Google GKE, and Microsoft AKS clusters for security compliance issues and generate reports with actionable insights.")
+- [Vulnerabilities](vulnerabilities-container-prot.md "Find out which clusters host containers with vulnerabilities detected by Runtime Scanning.")
+- [Events](events.md "View policy violations detected on containers by Runtime Security.")
+- [Container Image Scanning](container-image-scanning.mdx)
+:::

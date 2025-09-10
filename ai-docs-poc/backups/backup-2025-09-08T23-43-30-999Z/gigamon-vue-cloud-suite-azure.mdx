@@ -1,0 +1,56 @@
+---
+slug: trend-vision-one-gigamon-vue-cloud-suite-azure
+title: Tips for setting up traffic mirroring with Gigamon VUE Cloud Suite for Azure
+last_updated: '2025-09-08'
+ai_context:
+  source_file: gigamon-vue-cloud-suite-azure.md
+  conversion_date: '2025-09-08T23:42:18.774Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Review tips and recommendations for configuring your Azure environment to enable traffic mirroring with Gigamon.
+
+The list below includes some tips and recommendations for setting up [Gigamon VUE Cloud Suite for Azure](https://www.gigamon.com/) to enable traffic mirroring with the Virtual Network Sensor. Gigamon is a third-party provider recommended by Microsoft for use in the Azure environment, and has been tested by Trend Micro for use with the Virtual Network Sensor. You can also use any third-party network packet broker by following the setup instructions for your preferred solution.
+
+For a detailed guide on setting up and deploying Gigamon, refer to the [Gigamon documentation](https://docs.gigamon.com/doclib65/Content/GV-Cloud-Azure/preface-Azure-VS2.md?tocpath=GigaVUE%20Cloud%20Suite%7CGigaVUE%C2%A0Cloud%20Suite%20for%20Azure%7C_____0).
+
+**Before starting deployment**, take into consideration that Gigamon requires the following four packages; three VMs from Azure marketplace, and one agent downloaded from Gigamon:
+
+- **GigaVUE-FM**: Provides UI management
+
+- **GigaVUE V Series Node**: Provides traffic mirroring functions
+
+- **UCT-V controllers**: Provides the connection between the V Series Node and agents
+
+- **UCT-V agents**: Mirrors traffic
+
+**Additional tips and recommendations**:
+
+- The default account credentials for GigaVUE-FM are:
+
+  - User: admin
+
+  - Password: admin123A!!
+
+  Refer to the help topic [Install GigaVUE-FM on Azure](https://docs.gigamon.com/doclib65/Content/GV-Cloud-Azure/Launch_GigaVUE_FM_VM_from_Azure_VM_Dashboard.mdx).
+
+- Make sure you have the required permissions to deploy GigaVUE-FM. Refer to the help topic [Permissions and Privileges](https://docs.gigamon.com/doclib65/Content/GV-Cloud-Azure/Minimum_Permission.mdx).
+
+- The V Series Node needs to attach to the Virtual Network Sensor data port for the traffic mirror. Make sure to configure the following:
+
+  - Enable Accelerated networking. Refer to the help topic [Prerequisites](https://docs.gigamon.com/doclib65/Content/GV-Cloud-Azure/3rd_party_prerequisites.md?tocpath=GigaVUE%20Cloud%20Suite%7CGigaVUE%C2%A0Cloud%20Suite%20for%20Azure%7CDeploy%20GigaVUE%20Cloud%20Suite%20for%20Azure%7CConfigure%20GigaVUE%20Fabric%20Components%20in%20Azure%7C_____1).
+
+  - Make sure the V Series Node shares the same subnet with the Virtual Network Sensor data port. Refer to the help topic [Prerequisites](https://docs.gigamon.com/doclib65/Content/GV-Cloud-Azure/3rd_party_prerequisites.mdx).
+
+- When created Monitoring Domains, disable **Use FM to Launch Fabric**.
+
+- Once you have finished deploying the required VMs and configuring the agent, all related assets are viewable in the GigaVUE-FM inventory.
+
+- When editing the mirror session keep the following in mind:
+
+  - Mirror sources are located in the bottom right corner of the screen.
+
+  - You must assign a network interface for the tunnel. This can be configured after deployment.
+:::

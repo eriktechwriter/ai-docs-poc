@@ -1,0 +1,149 @@
+---
+slug: trend-vision-one-set-up-use-bash-or-powershell
+title: Set Up to Use Bash or PowerShell
+last_updated: '2025-09-08'
+ai_context:
+  source_file: set-up-use-bash-or-powershell.md
+  conversion_date: '2025-09-08T23:42:12.624Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Set up your environment to use Bash (cURL) or PowerShell to send HTTP requests to Server & Workload Protection using the API.
+
+:::note
+
+Complete this recipe before performing any other cookbook recipes.
+:::
+
+## Bash or PowerShell? {#bash-or-powershell}
+
+If you are new to scripting you might not be familiar with these tools, which is fine. Your operating system determines which one you'll be using:
+
+- *Windows:* PowerShell
+- *Mac or Linux:* Bash
+
+If you're on Windows you can ignore the information about Bash (and cURL). Conversely, if you'll be using Bash you can ignore all the PowerShell information.
+
+## Check your environment {#check-your-environment}
+
+Check that you can access Server & Workload Protection and that you have the required software installed. You will check the version of your software to make sure it supports TLS 1.2 which Server & Workload Protection uses for securing HTTPS connections.
+
+## Check your connection to Server & Workload Protection {#check-your-connection-to-server-workload-protection}
+
+Use your Web browser to navigate to Server & Workload Protection <https://cloudone.trendmicro.com>:
+
+- If the page opens then you have the required network access
+- If you cannot open the page, check that you have a network connection and that your URL is correct
+
+## Check your cURL software (for Bash) {#check-your-curl-software-for-bash}
+
+If you want to use Bash (typically Linux or Mac users), check the version of cURL and OpenSSL or NSS or LibreSSL that are installed. Open Terminal or your preferred command line tool and enter the following command:
+
+`curl --version`
+
+- Make sure you have cURL 7.34.0 or later
+- Locate one of the following libraries in the output:
+  - OpenSSL 1.01 or later (1.02 recommended)
+  - Network Security Services (NSS) 3.15.1 or later
+  - LibreSSL 2.1.4 or later
+  - A different library that secures network communications and supports TLS 1.2
+
+If any of the required software is not installed or is too old, refer to your operating system's documentation for information about installing or upgrading it.
+
+## Check your PowerShell software {#check-your-powershell-software}
+
+If you want to use PowerShell (Windows), check the version of PowerShell and .NET Framework that is installed.
+
+### Procedure {#procedure}
+
+1.  To check that your version of PowerShell is 3.0 or later, open PowerShell, enter the following command, and check that the value of `PSVersion` is 3.0 or higher:
+
+    `$psversiontable`
+
+2.  To check that your version of .NET Framework is 4.5 or later, enter the following command that returns the version from the registry:
+
+    `(Get-Childitem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full').GetValue("Version")`
+
+### Next steps {#next-steps}
+
+If PowerShell or .NET Framework is not installed or is too old, refer to your Windows documentation for information about installing or upgrading it.
+
+## Create an API key {#create-an-api-key}
+
+Create an API key for authenticating your API calls. When you create the key, a key secret is presented that you must store for later use.
+
+:::note
+
+Store the key secret in a secure manner and do not share it.
+:::
+
+- For information on how to create an API key for legacy accounts, see [Create and Manage API Keys](api-keys-server-workload.mdx).
+- For information on how to create an API key for new Trend Micro Cloud One accounts, see [Manage API keys](https://docs.trendmicro.com/en-us/documentation/article/trend-micro-cloud-one-identity-account-management-c1-api-key).
+
+If you're not sure whether you're using a new account or a legacy account, see [Changes to Trend Micro Cloud One accounts](https://docs.trendmicro.com/en-us/documentation/article/trend-micro-cloud-one-identity-account-management-c1-accounts-about).
+
+## Test your setup {#test-your-setup}
+
+## Bash {#bash}
+
+### Procedure {#procedure-1}
+
+1.  Open Terminal or your preferred command line tool.
+
+2.  Enter the following commands to store details about your request, replacing `<YOUR URL>` with the URL of yServer & Workload Protection, and `<YOUR SECRET KEY>` with the secret from your API key:
+
+    - `url=<YOUR URL>`
+
+      for example, `url=https://cloudone.trendmicro.com`
+
+    - `secret=<YOUR SECRET KEY>`
+
+      for example, `secret=5C58EADA-04BC-4ABC-45CF-B72925A0B674:aFBgpPV8eJQGaY2Dk0LmyQMD7nUGvyIDfIbIQo8Zgm8=`
+
+3.  Enter the following command to send the request:
+
+    `curl -X GET $url/api/apikeys -H "api-secret-key: $secret" -H "api-version: v1" -s -w "\n\nresponse code: %{response_code}\n"`
+
+4.  If the response ends with `response code: 200`, your call was successful and your setup is validated.
+
+### Next steps {#next-steps-1}
+
+## PowerShell {#powershell}
+
+### Procedure {#procedure-2}
+
+1.  Open PowerShell.
+
+2.  Enter the following command to use TLS 1.2:
+
+    `[Net.ServicePointManager]::SecurityProtocol += [Net.SecurityProtocolType]::Tls12`
+
+3.  Enter the following commands to store details about your request, replacing `<YOUR URL>` with the URL of Server & Workload Protection, and `<YOUR SECRET KEY>` with the secret from your API key:
+
+    - `$url = "_<YOUR URL>_"` for example, `url=https://cloudone.trendmicro.com`
+    - `$secret = "_<YOUR API KEY SECRET>_"` for example, `$secret="5C58EADA-04BC-4ABC-45CF-B72725A0B674:aFBgpPV8eJQGaY2Dk0LmyQMD7nUGvyIDfIbIQo8Zgm8="`
+    - `$headers = @{'api-version' = "v1"; 'api-secret-key' = $secret}`
+
+4.  Enter the following command to send the request: `Invoke-WebRequest "$url/api/apikeys" -Headers $headers`
+
+5.  If the response that appears includes `StatusCode : 200`, your call was successful and your setup is validated.
+
+    :::tip
+
+    If you receive the error message `The underlying connection was closed: An unexpected error occurred on a send`, close PowerShell, open PowerShell again, and try repeating the test.
+    :::
+
+### Next steps {#next-steps-2}
+
+## Final comments {#final-comments}
+
+After you have successfully sent a request to Server & Workload Protection to validate your setup, you are ready to use the other cookbook recipes.
+
+## Related resources {#related-resources}
+
+- API Cookbooks
+- [Control Access Using Roles](control-access-using-roles.mdx)
+- [Create and Manage API Keys](api-keys-server-workload.mdx)
+:::::

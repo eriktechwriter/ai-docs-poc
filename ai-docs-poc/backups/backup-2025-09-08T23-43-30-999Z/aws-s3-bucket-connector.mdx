@@ -1,0 +1,68 @@
+---
+slug: trend-vision-one-aws-s3-bucket-connector
+title: AWS S3 bucket connector
+last_updated: '2025-09-08'
+ai_context:
+  source_file: aws-s3-bucket-connector.md
+  conversion_date: '2025-09-08T23:42:24.432Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Share XDR data with your AWS environment by configuring the AWS S3 bucket connector.
+
+The AWS S3 bucket connector utilizes AWS cross account trust relationships to send XDR data to a configured S3 bucket. You can connect multiple S3 buckets and configure the data sent to each bucket individually. The AWS S3 bucket connector requires a [custom AWS IAM role](roles-aws-s3-bucket.mdx) with custom permissions to connect an S3 bucket.
+
+The following table outlines the actions you can take in the AWS S3 bucket connector screen.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Connect an AWS S3 bucket</p></td>
+<td><p>Connect an S3 bucket to share XDR data</p>
+<p>Click <strong>Connect AWS S3 Bucket</strong> to <a href="trend-vision-one-connecting-aws-s3-bucket">connect a bucket</a>.</p></td>
+</tr>
+<tr>
+<td><p>Manage S3 bucket connections</p></td>
+<td><p>Enable or disable sharing data with connected S3 buckets</p></td>
+</tr>
+<tr>
+<td><p>Edit a connection</p></td>
+<td><p>Edit a connected S3 bucket</p>
+<p>Click the edit icon (<img src="./images/editIcon=6e8dd682-4c7a-4aaa-8aed-6c50cfa750b2.webp" />) to <a href="trend-vision-one-connecting-aws-s3-bucket">edit a connected bucket</a>.</p>
+
+
+:::note
+
+<p>You cannot change the name of a connected bucket.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Disconnect a bucket</p></td>
+<td><p>Remove a connected S3 bucket and stop sharing XDR data</p>
+<p>Click the disconnect icon (<img src="./images/garbage_can_icon=GUID-11dc859c-fd77-4863-a448-d88c5a1cafd4.webp" />) to disconnect a bucket.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Connecting an AWS S3 bucket](connecting-aws-s3-bucket.md "Connect to your AWS S3 bucket to start sharing XDR data.")
+- [Configuring roles for the AWS S3 bucket connector](roles-aws-s3-bucket.md "Create an S3 bucket and set up a custom role with custom permissions to allow Trend Vision One to connect to your S3 buckets.")
+- [Data specification for AWS S3 buckets](data-spec-for-aws-s3-buckets.md "Review the type of data and format shared to your S3 buckets by Third-Party Integration.")
+:::

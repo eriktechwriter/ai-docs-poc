@@ -1,0 +1,55 @@
+---
+slug: trend-vision-one-suspicious-connection-config
+title: Configuring Suspicious Connection Settings
+last_updated: '2025-09-08'
+ai_context:
+  source_file: suspicious-connection-config.md
+  conversion_date: '2025-09-08T23:42:12.210Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Trend Vision One Endpoint Security agents can log and block all connections made between endpoints and addresses in the Global C&C IP list. You can also log, but still allow access to, IP addresses configured in the User-defined Blocked IP List.
+
+Trend Vision One Endpoint Security agents can also monitor connections that may be the result of a botnet or other malware threat. After detecting a malware threat, Trend Vision One Endpoint Security agents can attempt to clean the infection.
+
+### Procedure {#procedure}
+
+1.  Enable the **Detect network connections made to addresses in the Global C&C IP list** setting to monitor connections made to Trend Micro confirmed C&C servers and select to **Log only** or **Block** connections.
+
+    - To allow agents to connect to addresses in the User-defined Blocked IP list, enable the **Log and allow access to User-defined Blocked IP list addresses** setting.
+
+    :::note
+
+    You must enable network connection logging before Trend Vision One Endpoint Security agents can allow access to addresses in the User-defined Blocked IP list.
+    :::
+
+2.  Select **Detect connections using malware network fingerprinting** to enable the feature.
+
+3.  Configure the **Monitoring Level** settings for **Detection** and **Prevention**.
+
+    :::warning[Important]
+
+    - Higher monitoring levels provide greater sensitivity but might generate a large number of nonessential logs and impact endpoint performance. Trend Micro recommends selecting **2 - Moderate** for more relevant data with minimal impact on your endpoints.
+
+    - The **Prevention** level must be the same or lower than **Detection**.
+
+    - The **Threats to block** selection might affect the prevention actions taken for the selected prevention level.
+    :::
+
+4.  Select the **Action to take**.
+
+    - **Log only**: Record the event and take no action.
+
+    - **Block**: Block the connection.
+
+5.  To allow Trend Vision One Endpoint Security agents to attempt to clean connections made to C&C servers, enable the **Clean suspicious connections when a C&C callback is detected** setting.
+
+    Trend Vision One Endpoint Security agents use GeneriClean to clean the malware threat and terminate the connection to the C&C server.
+
+    :::warning[Important]
+
+    You must enable **Log connections using malware network fingerprinting** before Trend Vision One Endpoint Security agents can attempt to clean the connections made to C&C servers detected by packet structure matching.
+    :::
+:::

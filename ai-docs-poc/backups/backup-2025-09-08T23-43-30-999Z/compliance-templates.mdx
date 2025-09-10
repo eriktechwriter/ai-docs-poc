@@ -1,0 +1,100 @@
+---
+slug: trend-vision-one-compliance-templates
+title: Compliance templates
+last_updated: '2025-09-08'
+ai_context:
+  source_file: compliance-templates.md
+  conversion_date: '2025-09-08T23:42:23.082Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Compliance templates combine data identifiers and operators (And, Or) in condition statements to tag and detect sensitive content. A Data Loss Prevention policy action triggers when a data set matches condition criteria. For example, a file containing data matching the "All: Names from US Census Bureau AND US: HICN (Health Insurance Claim Number)" templates, triggers the HIPAA policy.
+
+Out-of-the-box templates for regulatory compliance initiatives include GLBA, PCI-DSS, SB-1386, US PII, and HIPAA. Companies can also create custom templates or modify existing templates to suit business requirements. Companies that have pre-existing, user-defined templates can import and export templates to maintain policy consistency throughout their organization.
+
+Create company-specific templates after configuring data identifiers or use the predefined templates.
+
+Currently, over one hundred predefined templates are available for use.
+
+## Predefined compliance templates {#predefined-compliance-templates}
+
+Cloud Email and Collaboration Protection comes with a set of predefined templates that you can use to comply with various regulatory standards. You cannot modify or delete predefined templates.
+
+For a detailed list on the purposes of all predefined templates, and examples of data being protected, see the Data Protection Lists document at [Learn about Data Loss Prevention predefined compliance templates](https://docs.trendmicro.com/all/ent/dp-ref/v7.0/en-us/dp_7.0_lists.pdf).
+
+:::note
+
+Cloud Email and Collaboration Protection does not support the predefined template "All File Extension".
+:::
+
+## Adding compliance templates {#adding-compliance-templates}
+
+Compliance templates define the sensitive data in your organization using keyword lists and expressions. Define templates to protect sensitive information specific to your business.
+
+:::note
+
+Use a predefined compliance template as a base for the new compliance template by selecting the template and clicking **Copy**. This creates a new template with the prefix "Copy of" in its name.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Data Loss Prevention → Compliance Templates**.
+
+2.  Click **Add**.
+
+    :::note
+
+    Optionally click **Import** to import compliance templates from other Trend Micro products.
+
+    Note the following:
+
+    - Each template contains a unique ID value. If a template with the same ID already exists, Cloud Email and Collaboration Protection overwrites the existing template. If a template with the same display name already exists, Cloud Email and Collaboration Protection appends a time stamp suffix to the new template before adding it to the list.
+
+    - Template files save in .xml format.
+    :::
+
+3.  Specify compliance template settings.
+
+    ::: {.simpletable-container}
+    <table id="GUID-B8817F59-5B99-49E0-AE3D-AA61F5A8B602__CHOICETABLE_RTF_DBS_BQ" class="choicetable" data-border="1">
+    <colgroup>
+    <col style="width: 50%" />
+    <col style="width: 50%" />
+    </colgroup>
+    <thead>
+    <tr class="chhead table-header-style">
+    <th class="choptionhd">Option</th>
+    <th class="chdeschd">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="chrow">
+    <td class="choption"><p>Basic Properties</p></td>
+    <td class="chdesc"><p>Specify basic settings.</p></td>
+    </tr>
+    <tr class="chrow">
+    <td class="choption"><p>Rule Definitions</p></td>
+    <td class="chdesc"><p>Use the plus or minus icons to add or remove keyword list and expression conditions, then click <strong>Add</strong>.</p>
+    
+
+    :::note
+    
+    <p>When adding <strong>Expressions</strong> criteria, type the number of <strong>Occurrences</strong> necessary for the template to trigger. This value designates the number of times an expression must be present in a file (email message, attachment) before Cloud Email and Collaboration Protection triggers an action.</p>
+    
+
+    :::
+
+    </td>
+    </tr>
+    <tr class="chrow">
+    <td class="choption"><p>Template Rules</p></td>
+    <td class="chdesc"><p>Confirm the keyword list and expressions conditions. When adding multiple conditions, select the <strong>And</strong> or <strong>Or</strong> operator from the drop-down box beside the template.</p></td>
+    </tr>
+    </tbody>
+    </table>
+    :::
+
+4.  Click **Save**.
+:::::

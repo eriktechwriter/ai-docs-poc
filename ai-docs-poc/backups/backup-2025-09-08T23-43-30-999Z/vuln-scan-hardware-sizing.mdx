@@ -1,0 +1,95 @@
+---
+slug: trend-vision-one-vuln-scan-hardware-sizing
+title: Vulnerability scan hardware sizing requirements
+last_updated: '2025-09-08'
+ai_context:
+  source_file: vuln-scan-hardware-sizing.md
+  conversion_date: '2025-09-08T23:42:11.576Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::::: {role="main"}
+View the minimum hardware requirements for running vulnerability scans in Network Vulnerability Scanner to ensure the best performance.
+
+To run vulnerability scans, you require one or more deployed Service Gateways with the Network Vulnerability Scanner service installed. The recommended configuration and virtual hardware requirements depend on the number of assets you intend to scan.
+
+The following table details the Service Gateway hardware and configuration recommendations for daily vulnerability scans according to asset total.
+
+:::warning[Important]
+
+Network Vulnerability Scanner is a memory-intensive service. Make sure you have sufficient memory capacity reserved in your Service Gateways. The information presented on this page is based on experimental results under ideal network conditions within Trend Micro's internal network. The requirements remain the same, but results may vary when used in your organization's environment.
+:::
+
+<table>
+<thead>
+<tr>
+<th><p>Daily asset count</p></th>
+<th><p>Recommended configuration</p></th>
+<th><p>Hardware requirements</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Less than 1,000</p></td>
+<td><p>One Service Gateway using a single configured vulnerability scan</p></td>
+<td><p>2 CPUs, 4 GB RAM</p></td>
+</tr>
+<tr>
+<td>1,000 to 19,862</td>
+<td><p>One Service Gateway using multiple configured vulnerability scans</p></td>
+<td><p>2 CPUs, 4 GB RAM</p></td>
+</tr>
+<tr>
+<td><p>More than 19,862</p></td>
+<td><p>Multiple Service Gateways using one or more configured vulnerability scans</p></td>
+<td><p>Horizontally scaled according to the number of assets scanned by each Service Gateway</p></td>
+</tr>
+</tbody>
+</table>
+
+:::tip
+
+The following tips can help you optimize scan performance:
+
+- When scanning large numbers of IP addresses, break any large IP ranges into smaller segments.
+
+- Run multiple concurrent scans of fewer IP addresses instead of single scans of larger numbers of IP addresses whenever possible.
+
+- In large network environments, deploy and use multiple Service Gateways.
+:::
+
+The following table shows the average scan time of a single asset for each supported platform using a single scan configuration.
+
+:::note
+
+Actual scan durations may be longer than the times stated in the table due to information collection and report generation. You can find the actual scan duration in the scan report for each scan.
+:::
+
+<table>
+<thead>
+<tr>
+<th><p>Device platform</p></th>
+<th><p>Total scan time per asset in seconds</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Linux</p></td>
+<td><p>80</p></td>
+</tr>
+<tr>
+<td><p>Windows</p></td>
+<td><p>100</p></td>
+</tr>
+<tr>
+<td><p>Cisco IOS</p></td>
+<td><p>300</p></td>
+</tr>
+<tr>
+<td><p>Fortinet FortiOS</p></td>
+<td><p>60</p></td>
+</tr>
+</tbody>
+</table>
+::::::

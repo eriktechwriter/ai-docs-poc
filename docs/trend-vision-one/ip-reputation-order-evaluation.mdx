@@ -1,0 +1,41 @@
+---
+slug: trend-vision-one-ip-reputation-order-evaluation
+title: IP reputation order of evaluation
+---
+# IP reputation order of evaluation
+
+Message sender IP addresses go through IP reputation-based filtering. IP addresses are evaluated until the first match is found.
+
+Messages from approved sender IP addresses bypass IP reputation-based filtering at the MTA connection level. Messages from blocked sender IP addresses are blocked.
+
+Evaluation is done in the following order:
+
+1.  IP addresses
+
+    1.  In the **Approved IP Address** list
+
+    2.  In the **Blocked IP Address** list
+
+2.  Countries/regions
+
+    1.  In the **Approved Country/Region** list
+
+    2.  In the **Blocked Country/Region** list
+
+3.  The Emerging Threat List (ETL) in the IP Reputation settings
+
+4.  The Known Spam Source (KSS) in the IP Reputation settings
+
+5.  The Dynamic User List (DUL) in the IP Reputation settings
+
+6.  The Quick IP List (QIL) in the IP Reputation settings
+
+An IP address added to the **Approved IP Address** list will not be blocked even if that IP address is also in a CIDR block listed in the **Blocked IP Address** list. Furthermore, that IP address will not be blocked even if it is also in the **Known Spam Source** standard IP reputation database list.
+
+:::warning[Important]
+
+IP reputation-based filters use only IP address data to filter messages. You can also use sender email address and domain to filter incoming messages. Approved senders bypass IP reputation-based filtering at the MTA connection level.
+
+See [Managing sender filter](managing-sender-filter.mdx).
+:::
+::::

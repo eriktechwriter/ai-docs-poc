@@ -1,0 +1,54 @@
+---
+slug: trend-vision-one-config-header-exchange-online
+title: Configuring approved header field list for Exchange Online
+last_updated: '2025-09-08'
+ai_context:
+  source_file: config-header-exchange-online.md
+  conversion_date: '2025-09-08T23:42:22.988Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+The Approved Header Field List for Exchange Online specifies the header field criteria for email messages in Exchange Online to bypass policy scanning when a message matches any of the criteria.
+
+Cloud Email and Collaboration Protection allows you to set up approved email header field lists in policies and in administrative settings for different purposes. If you want certain email messages to skip scanning by all policies, for example, to do a phishing simulation campaign via email, you can create a global approved list so messages that match the header field criteria will not be scanned by all enabled Advanced Threat Protection and Data Loss Prevention policies for Exchange Online and will be delivered to the intended recipients.
+
+For more information about how to configure an approved header field list that applies only to the ATP policy where it is configured, see the **Configuring Advanced Spam Protection** and **Configuring Web Reputation** sections in Chapter **Advanced Threat Protection**.
+
+### Procedure {#procedure}
+
+1.  In Cloud Email and Collaboration Protection, go to **Policies → Global Settings → User-Defined Lists → Approved/Blocked Lists**, click **Exchange Online**, and locate the **Approved Header Fields** section.
+
+2.  Enable the approved header field list for Exchange Online.
+
+    You can configure the list first and enable it later when you need to.
+
+3.  Specify a header field name in the **Name** text box and a value for the field in the **Value** text box, and select **Contains** or **Equals** as necessary.
+
+4.  Click **Add**.
+
+    The specified entry appears in the area below.
+
+    When the specified header field of an email message contains or exactly matches with the specified value depending on whether **Contains** or **Equals** is selected, the message will not be scanned by all enabled ATP and DLP policies for Exchange Online.
+
+    :::note
+
+    Be aware that **Name** and **Value** are case sensitive, and wildcard characters and regular expressions are not supported.
+
+    The header field name and value cannot exceed 128 characters.
+    :::
+
+5.  Optionally add another header field as necessary.
+
+    The email message whose header field hits any of the specified entries will bypass policy scanning.
+
+    :::note
+
+    A maximum of 50 header fields is supported.
+    :::
+
+6.  To delete a specified header field, select it from the list and click **Delete**.
+
+7.  Click **OK**.
+:::

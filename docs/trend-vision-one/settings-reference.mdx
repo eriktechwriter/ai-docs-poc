@@ -1,0 +1,1611 @@
+---
+slug: trend-vision-one-settings-reference
+title: Settings reference
+---
+# Settings reference
+
+:The following tables list the settings that are available in the API with a description. Setting names are prefixed with `platform` or the name of the associated protection module. Suffixes can indicate the nature of the setting. For example, the `Enabled` suffix indicates a Boolean value.
+
+:::tip
+
+For information about how to configure settings see the following sections:
+
+- [Configure policy and default policy settings](create-configure-policy.mdx)
+- [Configure Computers to Override Policies](override-policies-computer.mdx)
+- [Configure Server & Workload Protection System Settings](configure-system-settings.mdx)
+:::
+
+### Default policy, policy, and computer settings {#default-policy-policy-and-computer-settings}
+
+:::note
+
+The following table lists the settings that are included in default policy settings, policy settings, and computer settings. Note that these settings are included only in `DefaultPolicySettings`:
+
+- antiMalwareSettingState
+- applicationControlSettingState
+- firewallSettingState
+- integrityMonitoringSettingState
+- intrusionPreventionSettingState
+- logInspectionSettingState
+- sapSettingState
+- webReputationSettingState
+:::
+
+<table>
+<colgroup>
+<col style="width: 67%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Setting</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2"><p><em>Anti-Malware Settings</em></p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingBehaviorMonitoringScanExclusionList</p></td>
+<td><p>Scan Exclusions for Suspicious Activity/Unauthorized Change</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingCombinedModeProtectionSource</p></td>
+<td><p>Anti-Malware</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingConnectedThreatDefenseSuspiciousFileDdanSubmissionEnabled</p></td>
+<td><p>Submit files identified as suspicious by Document Exploit Protection scanning to Deep Discovery Analyzer</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingConnectedThreatDefenseUseControlManagerSuspiciousObjectListEnabled</p></td>
+<td><p>Use Apex Central's Suspicious Object List</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingDocumentExploitProtectionRuleExceptions</p></td>
+<td><p>Allowed Advanced Threat Detection Rules</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingFileHashEnabled</p></td>
+<td><p>Calculate Hash values of all anti-malware events (at least SHA1 by default)</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingFileHashMd5Enabled</p></td>
+<td><p>MD5</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingFileHashSha256Enabled</p></td>
+<td><p>SHA256</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingFileHashSizeMaxMbytes</p></td>
+<td><p>Skip hash values calculation if file size is large than (64MB~512MB)</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingIdentifiedFilesSpaceMaxMbytes</p></td>
+<td><p>Maximum disk space used to store identified files</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingMalwareScanMultithreadedProcessingEnabled</p></td>
+<td><p>Use multithreaded processing for Malware scans (if available)</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingNsxSecurityTaggingEnabled</p></td>
+<td><p>Anti-Malware NSX Security Tagging State</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingNsxSecurityTaggingOnRemediationFailureEnabled</p></td>
+<td><p>Anti-Malware NSX Only Tag on Failure to Remediate</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingNsxSecurityTaggingRemoveOnCleanScanEnabled</p></td>
+<td><p>Anti-Malware NSX Remove Tag</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingNsxSecurityTaggingValue</p></td>
+<td><p>Anti-Malware NSX Security Tag</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingPredictiveMachineLearningExceptions</p></td>
+<td><p>Predictive Machine Learning Exclusion List</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingScanCacheOnDemandConfigId</p></td>
+<td><p>Anti-Malware On Demand Scan Cache Configuration</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingScanCacheRealTimeConfigId</p></td>
+<td><p>Anti-Malware Real-Time Scan Cache Configuration</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingScanFileSizeMaxMbytes</p></td>
+<td><p>Maximum file size to scan</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingSmartProtectionGlobalServerEnabled</p></td>
+<td><p>Use Global Smart Protection Service for Smart Scan</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingSmartProtectionGlobalServerUseProxyEnabled</p></td>
+<td><p>Use Proxy when accessing Smart Protection Service for Smart Scan</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingSmartProtectionLocalServerAllowOffDomainGlobal</p></td>
+<td><p>When off domain, connect to global Smart Protection Service. (Windows only)</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingSmartProtectionLocalServerUrls</p></td>
+<td><p>Local Smart Protection Servers for Smart Scan</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingSmartProtectionServerConnectionLostWarningEnabled</p></td>
+<td><p>Warn if connection to Smart Protection Server is lost</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingSmartScanState</p></td>
+<td><p>Smart Scan State</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingSpywareApprovedList</p></td>
+<td><p>Allowed Spyware/Grayware</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingState (Default policy settings only)</p></td>
+<td><p>Anti-Malware State</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingSyslogConfigId</p></td>
+<td><p>Anti-Malware Syslog Configuration</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingVirtualApplianceOnDemandScanCacheEntriesMax</p></td>
+<td><p>Max On-Demand Malware Scan Cache Entries</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingVirtualApplianceRealTimeScanCacheEntriesMax</p></td>
+<td><p>Max Real-Time Malware Scan Cache Entries</p></td>
+</tr>
+<tr>
+<td colspan="2"><p><em>Application Control Settings</em></p></td>
+</tr>
+<tr>
+<td><p>applicationControlSettingExecutionEnforcementLevel</p></td>
+<td><p>Enforcement:</p></td>
+</tr>
+<tr>
+<td><p>applicationControlSettingRulesetMode</p></td>
+<td><p>Ruleset mode:</p></td>
+</tr>
+<tr>
+<td><p>applicationControlSettingSharedRulesetId</p></td>
+<td><p>Shared Application Control Ruleset</p></td>
+</tr>
+<tr>
+<td><p>applicationControlSettingState (Default policy settings only)</p></td>
+<td><p>Application Control State</p></td>
+</tr>
+<tr>
+<td><p>applicationControlSettingSyslogConfigId</p></td>
+<td><p>Application Control Syslog Configuration</p></td>
+</tr>
+<tr>
+<td colspan="2"><p><em>Firewall Settings</em></p></td>
+</tr>
+<tr>
+<td><p>firewallSettingAntiEvasionCheckEvasiveRetransmit</p></td>
+<td><p>Evasive Retransmit</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingAntiEvasionCheckFinNoConnection</p></td>
+<td><p>FIN packet out of connection</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingAntiEvasionCheckFragmentedPackets</p></td>
+<td><p>Fragmented Packets</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingAntiEvasionCheckOutNoConnection</p></td>
+<td><p>Outgoing packet out of connection</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingAntiEvasionCheckPaws</p></td>
+<td><p>Invalid TCP Timestamps</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingAntiEvasionCheckRstNoConnection</p></td>
+<td><p>RST packet out of connection</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingAntiEvasionCheckTcpChecksum</p></td>
+<td><p>TCP Checksum</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingAntiEvasionCheckTcpCongestionFlags</p></td>
+<td><p>TCP Congestion Flags</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingAntiEvasionCheckTcpPawsZero</p></td>
+<td><p>Timestamp PAWS Zero Allowed</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingAntiEvasionCheckTcpRstFinFlags</p></td>
+<td><p>TCP Rst Fin Flags</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingAntiEvasionCheckTcpSplitHandshake</p></td>
+<td><p>TCP Split Handshake</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingAntiEvasionCheckTcpSynFinFlags</p></td>
+<td><p>TCP Syn Fin Flags</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingAntiEvasionCheckTcpSynRstFlags</p></td>
+<td><p>TCP Syn Rst Flags</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingAntiEvasionCheckTcpSynWithData</p></td>
+<td><p>TCP Syn with Data</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingAntiEvasionCheckTcpUrgentFlags</p></td>
+<td><p>TCP Urgent Flags</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingAntiEvasionCheckTcpZeroFlags</p></td>
+<td><p>TCP Zero Flags</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingAntiEvasionSecurityPosture</p></td>
+<td><p>Anti-Evasion Posture</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingAntiEvasionTcpPawsWindowPolicy</p></td>
+<td><p>TCP Timestamp PAWS Window</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingCombinedModeProtectionSource</p></td>
+<td><p>Firewall</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingConfigPackageExceedsAlertMaxEnabled</p></td>
+<td><p>Advanced - Generate an Alert when Agent configuration package exceeds maximum size</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionAckTimeout</p></td>
+<td><p>ACK Storm Timeout</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionAllowNullIpEnabled</p></td>
+<td><p>Allow Null IP</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionBlockIpv6Agent8AndEarlierEnabled</p></td>
+<td><p>Advanced - Block IPv6 on Agents and Appliances versions 8 and earlier</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionBlockIpv6Agent9AndLaterEnabled</p></td>
+<td><p>Advanced - Block IPv6 on Agents and Appliances verions 9 and later</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionBlockSameSrcDstIpEnabled</p></td>
+<td><p>Block Same Src-Dest IP Address</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionBootStartTimeout</p></td>
+<td><p>Boot Start Timeout</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionBypassCiscoWaasConnectionsEnabled</p></td>
+<td><p>Bypass Cisco WAAS Connections</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionCloseTimeout</p></td>
+<td><p>CLOSED Timeout</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionCloseWaitTimeout</p></td>
+<td><p>CLOSE_WAIT Timeout</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionClosingTimeout</p></td>
+<td><p>CLOSING Timeout</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionColdStartTimeout</p></td>
+<td><p>Cold Start Timeout</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionConnectionCleanupTimeout</p></td>
+<td><p>Connection Cleanup Timeout</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionConnectionsCleanupMax</p></td>
+<td><p>Maximum Connections per Cleanup</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionConnectionsNumIcmpMax</p></td>
+<td><p>Maximum ICMP Connections</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionConnectionsNumTcpMax</p></td>
+<td><p>Maximum TCP Connections</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionConnectionsNumUdpMax</p></td>
+<td><p>Maximum UDP Connections</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionDebugModeEnabled</p></td>
+<td><p>Enable Debug Mode</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionDebugPacketNumMax</p></td>
+<td><p>Number of Packets to retain in Debug Mode</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionDisconnectTimeout</p></td>
+<td><p>DISCONNECT Timeout</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionDrop6To4BogonsAddressesEnabled</p></td>
+<td><p>Drop 6to4 Bogon Addresses</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionDropEvasiveRetransmitEnabled</p></td>
+<td><p>Drop Evasive Retransmit</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionDropIpZeroPayloadEnabled</p></td>
+<td><p>Drop IP Packet with Zero Payload</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionDropIpv6BogonsAddressesEnabled</p></td>
+<td><p>Drop IPv6 Bogon Addresses</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionDropIpv6ExtType0Enabled</p></td>
+<td><p>Drop IPv6 Extension Type 0</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionDropIpv6FragmentsLowerThanMinMtuEnabled</p></td>
+<td><p>Drop IPv6 Fragments Lower Than minimum MTU</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionDropIpv6ReservedAddressesEnabled</p></td>
+<td><p>Drop IPv6 Reserved Addresses</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionDropIpv6SiteLocalAddressesEnabled</p></td>
+<td><p>Drop IPv6 Site Local Addresses</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionDropTeredoAnomaliesEnabled</p></td>
+<td><p>Drop Teredo Anomalies</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionDropUnknownSslProtocolEnabled</p></td>
+<td><p>Drop Unknown SSL Protocol</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionErrorTimeout</p></td>
+<td><p>ERROR Timeout</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionEstablishedTimeout</p></td>
+<td><p>ESTABLISHED Timeout</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionEventNodesMax</p></td>
+<td><p>Number of Event Nodes</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionFilterIpv4Tunnels</p></td>
+<td><p>Filter IPv4 Tunnels</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionFilterIpv6Tunnels</p></td>
+<td><p>Filter IPv6 Tunnels</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionFinWait1Timeout</p></td>
+<td><p>FIN_WAIT1 Timeout</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionForceAllowDhcpDns</p></td>
+<td><p>Force Allow DHCP DNS</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionForceAllowIcmpType3Code4</p></td>
+<td><p>Force Allow ICMP type3 code4</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionFragmentOffsetMin</p></td>
+<td><p>Minimum Fragment Offset</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionFragmentSizeMin</p></td>
+<td><p>Minimum Fragment Size</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionGenerateConnectionEventsIcmpEnabled</p></td>
+<td><p>Generate Connection Events for ICMP</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionGenerateConnectionEventsTcpEnabled</p></td>
+<td><p>Generate Connection Events for TCP</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionGenerateConnectionEventsUdpEnabled</p></td>
+<td><p>Generate Connection Events for UDP</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionIcmpTimeout</p></td>
+<td><p>ICMP Timeout</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionIgnoreStatusCode0</p></td>
+<td><p>Ignore Status Code</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionIgnoreStatusCode1</p></td>
+<td><p>Ignore Status Code</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionIgnoreStatusCode2</p></td>
+<td><p>Ignore Status Code</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionLastAckTimeout</p></td>
+<td><p>LAST_ACK Timeout</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionLogAllPacketDataEnabled</p></td>
+<td><p>Log All Packet Data</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionLogEventsPerSecondMax</p></td>
+<td><p>Maximum Events Per Second</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionLogOnePacketPeriod</p></td>
+<td><p>Period for Log only one packet within period</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionLogOnePacketWithinPeriodEnabled</p></td>
+<td><p>Log only one packet within period</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionLogPacketLengthMax</p></td>
+<td><p>Maximum data size to store when packet data is captured</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionLoggingPolicy</p></td>
+<td><p>Advanced Logging Policy</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionSilentTcpConnectionDropEnabled</p></td>
+<td><p>Silent TCP Connection Drop</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionSslSessionSize</p></td>
+<td><p>SSL Session Size</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionSslSessionTime</p></td>
+<td><p>SSL Session Time</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionStrictTerodoPortCheckEnabled</p></td>
+<td><p>Strict Teredo Port Check</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionSynRcvdTimeout</p></td>
+<td><p>SYN_RCVD Timeout</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionSynSentTimeout</p></td>
+<td><p>SYN_SENT Timeout</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionTcpMssLimit</p></td>
+<td><p>TCP MSS Limit</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionTunnelDepthMax</p></td>
+<td><p>Maximum Tunnel Depth</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionTunnelDepthMaxExceededAction</p></td>
+<td><p>Action if Maximum Tunnel Depth Exceeded</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionUdpTimeout</p></td>
+<td><p>UDP Timeout</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionVerifyTcpChecksumEnabled</p></td>
+<td><p>Verify TCP Checksum</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEngineOptionsEnabled</p></td>
+<td><p>Use custom driver settings</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEventLogFileCachedEntriesLifeTime</p></td>
+<td><p>Cache Lifetime</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEventLogFileCachedEntriesNum</p></td>
+<td><p>Cache Size</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEventLogFileCachedEntriesStaleTime</p></td>
+<td><p>Cache Stale time</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEventLogFileIgnoreSourceIpListId</p></td>
+<td><p>Do not record events with source IP of</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEventLogFileRetainNum</p></td>
+<td><p>Number of event log files to retain (on Agent/Appliance)</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEventLogFileSizeMax</p></td>
+<td><p>Maximum size of the event log files (on Agent/Appliance)</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEventsOutOfAllowedPolicyEnabled</p></td>
+<td><p>Generate Firewall Events for packets that are 'Out Of Allowed Policy'</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingFailureResponseEngineSystem</p></td>
+<td><p>Network Engine System Failure</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingFailureResponsePacketSanityCheck</p></td>
+<td><p>Network Packet Sanity Check Failure</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingInterfaceIsolationEnabled</p></td>
+<td><p>Enable Interface Isolation</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingInterfaceLimitOneActiveEnabled</p></td>
+<td><p>Limit to one active interface</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingInterfacePatterns</p></td>
+<td><p>Interface Patterns</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingNetworkEngineMode</p></td>
+<td><p>Network Engine Mode</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingReconnaissanceBlockFingerprintProbeDuration</p></td>
+<td><p>Computer OS Fingerprint Probe - Block Traffic</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingReconnaissanceBlockNetworkOrPortScanDuration</p></td>
+<td><p>Network or Port Scan - Block Traffic</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingReconnaissanceBlockTcpNullScanDuration</p></td>
+<td><p>TCP Null Scan - Block Traffic</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingReconnaissanceBlockTcpSynFinScanDuration</p></td>
+<td><p>TCP SYNFIN Scan - Block Traffic</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingReconnaissanceBlockTcpXmasAttackDuration</p></td>
+<td><p>TCP Xmas Scan - Block Traffic</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingReconnaissanceDetectFingerprintProbeEnabled</p></td>
+<td><p>Computer OS Fingerprint Probe - Enabled</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingReconnaissanceDetectNetworkOrPortScanEnabled</p></td>
+<td><p>Network or Port Scan - Enabled</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingReconnaissanceDetectTcpNullScanEnabled</p></td>
+<td><p>TCP Null Scan - Enabled</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingReconnaissanceDetectTcpSynFinScanEnabled</p></td>
+<td><p>TCP SYNFIN Scan - Enabled</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingReconnaissanceDetectTcpXmasAttackEnabled</p></td>
+<td><p>TCP Xmas Scan - Enabled</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingReconnaissanceEnabled</p></td>
+<td><p>Reconnaissance Scan Detection - Enabled</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingReconnaissanceExcludeIpListId</p></td>
+<td><p>Reconnaissance Scan Detection - Do not perform detection on traffic coming from</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingReconnaissanceIncludeIpListId</p></td>
+<td><p>Reconnaissance Scan Detection - Computers/Networks on which to perform detection</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingReconnaissanceNotifyFingerprintProbeEnabled</p></td>
+<td><p>Computer OS Fingerprint Probe - Notify DSM Immediately</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingReconnaissanceNotifyNetworkOrPortScanEnabled</p></td>
+<td><p>Network or Port Scan - Notify DSM Immediately</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingReconnaissanceNotifyTcpNullScanEnabled</p></td>
+<td><p>TCP Null Scan - Notify DSM Immediately</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingReconnaissanceNotifyTcpSynFinScanEnabled</p></td>
+<td><p>TCP SYNFIN Scan - Notify DSM Immediately</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingReconnaissanceNotifyTcpXmasAttackEnabled</p></td>
+<td><p>TCP Xmas Scan - Notify DSM Immediately</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingState (Default policy settings only)</p></td>
+<td><p>Firewall State</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingSyslogConfigId</p></td>
+<td><p>Firewall and Intrusion Prevention Syslog Configuration</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingVirtualAndContainerNetworkScanEnabled</p></td>
+<td><p>Scan container network traffic</p></td>
+</tr>
+<tr>
+<td colspan="2"><p><em>Integrity Monitoring Settings</em></p></td>
+</tr>
+<tr>
+<td><p>integrityMonitoringSettingAutoApplyRecommendationsEnabled</p></td>
+<td><p>Automatically assign/unassign recommended Integrity Monitoring Rules to Computer during <a href="trend-vision-one-recommendation-scans-intro">Recommendation Scans</a></p></td>
+</tr>
+<tr>
+<td><p>integrityMonitoringSettingCombinedModeProtectionSource</p></td>
+<td><p>Integrity Monitoring</p></td>
+</tr>
+<tr>
+<td><p>integrityMonitoringSettingContentHashAlgorithm</p></td>
+<td><p>Integrity Monitoring Hash Algorithm</p></td>
+</tr>
+<tr>
+<td><p>integrityMonitoringSettingCpuUsageLevel</p></td>
+<td><p>Integrity Monitoring CPU Usage Level:</p></td>
+</tr>
+<tr>
+<td><p>integrityMonitoringSettingRealtimeEnabled</p></td>
+<td><p>Real Time</p></td>
+</tr>
+<tr>
+<td><p>integrityMonitoringSettingScanCacheConfigId</p></td>
+<td><p>Integrity Scan Cache Configuration:</p></td>
+</tr>
+<tr>
+<td><p>integrityMonitoringSettingState (Default policy settings only)</p></td>
+<td><p>Integrity Monitoring State</p></td>
+</tr>
+<tr>
+<td><p>integrityMonitoringSettingSyslogConfigId</p></td>
+<td><p>Integrity Monitoring Syslog Configuration</p></td>
+</tr>
+<tr>
+<td><p>integrityMonitoringSettingVirtualApplianceOptimizationScanCacheEntriesMax</p></td>
+<td><p>Max Integrity Monitoring Scan Cache Entries</p></td>
+</tr>
+<tr>
+<td colspan="2"><p><em>Intrusion Prevention Settings</em></p></td>
+</tr>
+<tr>
+<td><p>intrusionPreventionSettingAutoApplyRecommendationsEnabled</p></td>
+<td><p>Automatically implement Recommendations</p></td>
+</tr>
+<tr>
+<td><p>intrusionPreventionSettingCombinedModeProtectionSource</p></td>
+<td><p>Intrusion Prevention</p></td>
+</tr>
+<tr>
+<td><p>intrusionPreventionSettingEngineOptionFragmentedIpKeepMax</p></td>
+<td><p>Maximum number of fragmented IP packets to keep</p></td>
+</tr>
+<tr>
+<td><p>intrusionPreventionSettingEngineOptionFragmentedIpPacketSendIcmpEnabled</p></td>
+<td><p>Send ICMP to indicate fragmented packet timeout exceeded</p></td>
+</tr>
+<tr>
+<td><p>intrusionPreventionSettingEngineOptionFragmentedIpTimeout</p></td>
+<td><p>Fragment Timeout</p></td>
+</tr>
+<tr>
+<td><p>intrusionPreventionSettingEngineOptionFragmentedIpUnconcernedMacAddressBypassEnabled</p></td>
+<td><p>Bypass MAC addresses that don't belong to host</p></td>
+</tr>
+<tr>
+<td><p>intrusionPreventionSettingEngineOptionsEnabled</p></td>
+<td><p>Use custom driver settings</p></td>
+</tr>
+<tr>
+<td><p>intrusionPreventionSettingLogDataRuleFirstMatchEnabled</p></td>
+<td><p>Allow Intrusion Prevention Rules to capture data for first hit of each rule (in period)</p></td>
+</tr>
+<tr>
+<td><p>intrusionPreventionSettingNsxSecurityTaggingDetectModeLevel</p></td>
+<td><p>Detect Mode</p></td>
+</tr>
+<tr>
+<td><p>intrusionPreventionSettingNsxSecurityTaggingPreventModeLevel</p></td>
+<td><p>Prevent Mode</p></td>
+</tr>
+<tr>
+<td><p>intrusionPreventionSettingState (Default policy settings only)</p></td>
+<td><p>Intrusion Prevention State</p></td>
+</tr>
+<tr>
+<td><p>intrusionPreventionSettingVirtualAndContainerNetworkScanEnabled</p></td>
+<td><p>Scan container network traffic</p></td>
+</tr>
+<tr>
+<td colspan="2"><p><em>Log Inspection Settings</em></p></td>
+</tr>
+<tr>
+<td><p>logInspectionSettingAutoApplyRecommendationsEnabled</p></td>
+<td><p>Automatically assign/unassign recommended Log Inspection Rules to Computer during <a href="trend-vision-one-recommendation-scans-intro">Recommendation Scans</a></p></td>
+</tr>
+<tr>
+<td><p>logInspectionSettingSeverityClippingAgentEventSendSyslogLevelMin</p></td>
+<td><p>Send Agent/Appliance events to syslog when they equal or exceed the following severity level</p></td>
+</tr>
+<tr>
+<td><p>logInspectionSettingSeverityClippingAgentEventStoreLevelMin</p></td>
+<td><p>Store events at the Agent/Appliance for later retrieval by DSM when they equal or exceed the following severity level</p></td>
+</tr>
+<tr>
+<td><p>logInspectionSettingState (Default policy settings only)</p></td>
+<td><p>Log Inspection State</p></td>
+</tr>
+<tr>
+<td><p>logInspectionSettingSyslogConfigId</p></td>
+<td><p>Log Inspection Syslog Configuration</p></td>
+</tr>
+<tr>
+<td colspan="2"><p><em>Platform Settings</em></p></td>
+</tr>
+<tr>
+<td><p>platformSettingAgentCommunicationsDirection</p></td>
+<td><p>Direction of Server &amp; Workload Protection to Agent/Appliance communication</p></td>
+</tr>
+<tr>
+<td><p>platformSettingAgentEventsSendInterval</p></td>
+<td><p>Period between sending of events</p></td>
+</tr>
+<tr>
+<td><p>platformSettingAgentSelfProtectionEnabled</p></td>
+<td><p>Prevent local end-users from uninstalling, stopping, or otherwise modifying the Agent</p></td>
+</tr>
+<tr>
+<td><p>platformSettingAgentSelfProtectionPassword</p></td>
+<td><p>Password</p></td>
+</tr>
+<tr>
+<td><p>platformSettingAgentSelfProtectionPasswordEnabled</p></td>
+<td><p>Local override requires password</p></td>
+</tr>
+<tr>
+<td><p>platformSettingAutoAssignNewIntrusionPreventionRulesEnabled</p></td>
+<td><p>Automatically assign new Intrusion Prevention Rules as required by updated Application Types and Intrusion Prevention Rule dependencies</p></td>
+</tr>
+<tr>
+<td><p>platformSettingAutoUpdateAntiMalwareEngineEnabled</p></td>
+<td><p>Automatically update anti-malware engine</p></td>
+</tr>
+<tr>
+<td><p>platformSettingCombinedModeNetworkGroupProtectionSource</p></td>
+<td><p>Network Combined Mode Affinity</p></td>
+</tr>
+<tr>
+<td><p>platformSettingEnvironmentVariableOverrides</p></td>
+<td><p>Environment Variable Overrides</p></td>
+</tr>
+<tr>
+<td><p>platformSettingHeartbeatInactiveVmOfflineAlertEnabled</p></td>
+<td><p>Raise Offline Errors For Inactive Virtual Machines</p></td>
+</tr>
+<tr>
+<td><p>platformSettingHeartbeatInterval</p></td>
+<td><p>Heartbeat Interval</p></td>
+</tr>
+<tr>
+<td><p>platformSettingHeartbeatLocalTimeShiftAlertThreshold</p></td>
+<td><p>Maximum change (in minutes) of the local system time on the computer between heartbeats before an alert is raised</p></td>
+</tr>
+<tr>
+<td><p>platformSettingHeartbeatMissedAlertThreshold</p></td>
+<td><p>Number of Heartbeats that can be missed before an alert is raised</p></td>
+</tr>
+<tr>
+<td><p>platformSettingInactiveAgentCleanupOverrideEnabled</p></td>
+<td><p>Prevent this computer from being deleted if Inactive Agent Cleanup is enabled:</p></td>
+</tr>
+<tr>
+<td><p>platformSettingNotificationsSuppressPopupsEnabled</p></td>
+<td><p>Suppress all pop-up notifications on host</p></td>
+</tr>
+<tr>
+<td><p>platformSettingOverwriteHostnameDuringHeartbeatEnabled</p></td>
+<td><p>Automatically update the computer name to the latest reported by the agent</p></td>
+</tr>
+<tr>
+<td><p>platformSettingRecommendationOngoingScansInterval</p></td>
+<td><p>Ongoing Scan Interval</p></td>
+</tr>
+<tr>
+<td><p>platformSettingRelayState</p></td>
+<td><p>Relay State</p></td>
+</tr>
+<tr>
+<td><p>platformSettingScanCacheConcurrencyMax</p></td>
+<td><p>Max Concurrent Scans</p></td>
+</tr>
+<tr>
+<td><p>platformSettingScanOpenPortListId</p></td>
+<td><p>Ports to scan</p></td>
+</tr>
+<tr>
+<td><p>platformSettingSmartProtectionAntiMalwareGlobalServerProxyId</p></td>
+<td><p>Use Proxy when accessing Smart Protection Service for Smart Scan</p></td>
+</tr>
+<tr>
+<td><p>platformSettingSmartProtectionGlobalServerEnabled</p></td>
+<td><p>Use Global Service for Census</p></td>
+</tr>
+<tr>
+<td><p>platformSettingSmartProtectionGlobalServerProxyId</p></td>
+<td><p>Use Proxy when accessing Global Service for Census</p></td>
+</tr>
+<tr>
+<td><p>platformSettingSmartProtectionGlobalServerUseProxyEnabled</p></td>
+<td><p>Use Proxy when accessing Global Service for Census</p></td>
+</tr>
+<tr>
+<td><p>platformSettingTroubleshootingLoggingLevel</p></td>
+<td><p>Logging Level</p></td>
+</tr>
+<tr>
+<td><p>platformSettingUpgradeOnActivationEnabled</p></td>
+<td><p>Automatically upgrade agents on activation</p></td>
+</tr>
+<tr>
+<td colspan="2"><p><em>SAP Settings</em></p></td>
+</tr>
+<tr>
+<td><p>sapSettingState (Default policy settings only)</p></td>
+<td><p>Configuration</p></td>
+</tr>
+<tr>
+<td colspan="2"><p><em>Sensing Mode Settings</em></p></td>
+</tr>
+<tr>
+<td><p>sensingModeSettingActivityEnabled</p></td>
+<td><p>Sensor Activity Enabled</p></td>
+</tr>
+<tr>
+<td><p>sensingModeSettingIndicatorEnabled</p></td>
+<td><p>Sensor Indicator Enabled</p></td>
+</tr>
+<tr>
+<td><p>sensingModeSettingState (Default policy settings only)</p></td>
+<td><p>Sensing Mode State</p></td>
+</tr>
+<tr>
+<td><p>sensingModeSettingSyslogConfigId</p></td>
+<td><p>Sensing Mode Configuration</p></td>
+</tr>
+<tr>
+<td colspan="2"><p><em>Web Reputation Settings</em></p></td>
+</tr>
+<tr>
+<td><p>webReputationSettingAlertingEnabled</p></td>
+<td><p>Alert</p></td>
+</tr>
+<tr>
+<td><p>webReputationSettingAllowedUrlDomains</p></td>
+<td><p>Allowed Domain URLs</p></td>
+</tr>
+<tr>
+<td><p>webReputationSettingAllowedUrls</p></td>
+<td><p>Allowed Page URLs</p></td>
+</tr>
+<tr>
+<td><p>webReputationSettingBlockedUrlDomains</p></td>
+<td><p>Blocked Domain URLs</p></td>
+</tr>
+<tr>
+<td><p>webReputationSettingBlockedUrlKeywords</p></td>
+<td><p>Blocked Keywords</p></td>
+</tr>
+<tr>
+<td><p>webReputationSettingBlockedUrls</p></td>
+<td><p>Blocked Page URLs</p></td>
+</tr>
+<tr>
+<td><p>webReputationSettingBlockingPageLink</p></td>
+<td><p>Blocked Page Link</p></td>
+</tr>
+<tr>
+<td><p>webReputationSettingCombinedModeProtectionSource</p></td>
+<td><p>Web Reputation</p></td>
+</tr>
+<tr>
+<td><p>webReputationSettingMonitorPortListId</p></td>
+<td><p>Ports to monitor</p></td>
+</tr>
+<tr>
+<td><p>webReputationSettingSecurityBlockUntestedPagesEnabled</p></td>
+<td><p>Block Untested Pages</p></td>
+</tr>
+<tr>
+<td><p>webReputationSettingSecurityLevel</p></td>
+<td><p>Security Level</p></td>
+</tr>
+<tr>
+<td><p>webReputationSettingSmartProtectionGlobalServerUseProxyEnabled</p></td>
+<td><p>Use Proxy when accessing Smart Protection Service for Web Reputation</p></td>
+</tr>
+<tr>
+<td><p>webReputationSettingSmartProtectionLocalServerAllowOffDomainGlobal</p></td>
+<td><p>When off domain, connect to global Smart Protection Service. (Windows only)</p></td>
+</tr>
+<tr>
+<td><p>webReputationSettingSmartProtectionLocalServerEnabled</p></td>
+<td><p>Use Local Smart Protection Server for Web Reputation Service</p></td>
+</tr>
+<tr>
+<td><p>webReputationSettingSmartProtectionLocalServerUrls</p></td>
+<td><p>Local Smart Protection Servers for Web Reputation</p></td>
+</tr>
+<tr>
+<td><p>webReputationSettingSmartProtectionServerConnectionLostWarningEnabled</p></td>
+<td><p>Warn if connection to Smart Protection Server is lost</p></td>
+</tr>
+<tr>
+<td><p>webReputationSettingSmartProtectionWebReputationGlobalServerProxyId</p></td>
+<td><p>Use Proxy when accessing Smart Protection Service for Web Reputation</p></td>
+</tr>
+<tr>
+<td><p>webReputationSettingState (Default policy settings only)</p></td>
+<td><p>Web Reputation State</p></td>
+</tr>
+<tr>
+<td><p>webReputationSettingSyslogConfigId</p></td>
+<td><p>Web Reputation Syslog Configuration</p></td>
+</tr>
+</tbody>
+</table>
+
+### System settings {#system-settings}
+
+<table>
+<thead>
+<tr>
+<th><p>Setting</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2"><p><em>Anti-Malware Settings</em></p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingEventEmailBodyTemplate</p></td>
+<td><p>Email Template</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingEventEmailEnabled</p></td>
+<td><p>Anti-Malware Email Notifications Enabled</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingEventEmailRecipients</p></td>
+<td><p>Email Recipients</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingEventEmailSubject</p></td>
+<td><p>Email Subject Text</p></td>
+</tr>
+<tr>
+<td><p>antiMalwareSettingRetainEventDuration</p></td>
+<td><p>Automatically delete Anti-Malware Events older than</p></td>
+</tr>
+<tr>
+<td colspan="2"><p><em>Application Control Settings</em></p></td>
+</tr>
+<tr>
+<td><p>applicationControlSettingRetainEventDuration</p></td>
+<td><p>Automatically delete Application Control Events older than</p></td>
+</tr>
+<tr>
+<td><p>applicationControlSettingServeRulesetsFromRelaysEnabled</p></td>
+<td><p>Serve application control rulesets from relays</p></td>
+</tr>
+<tr>
+<td colspan="2"><p><em>Firewall Settings</em></p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEventRankSeverityDeny</p></td>
+<td><p>Deny</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEventRankSeverityLogOnly</p></td>
+<td><p>Log Only</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingEventRankSeverityPacketRejection</p></td>
+<td><p>Packet Rejection</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingGlobalStatefulConfigId</p></td>
+<td><p>Global Firewall Stateful Configuration</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingInternetConnectivityTestExpectedContentRegex</p></td>
+<td><p>Regular Expression for returned content used to confirm Connectivity</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingInternetConnectivityTestInterval</p></td>
+<td><p>Test Interval</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingInternetConnectivityTestUrl</p></td>
+<td><p>URL for testing Internet Connectivity Status</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingIntranetConnectivityTestExpectedContentRegex</p></td>
+<td><p>Regular Expression for returned content used to confirm Intranet Connectivity</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingIntranetConnectivityTestUrl</p></td>
+<td><p>URL for testing Intranet Connectivity Status</p></td>
+</tr>
+<tr>
+<td><p>firewallSettingRetainEventDuration</p></td>
+<td><p>Automatically delete Firewall Events older than</p></td>
+</tr>
+<tr>
+<td colspan="2"><p><em>Integrity Monitoring Settings</em></p></td>
+</tr>
+<tr>
+<td><p>integrityMonitoringSettingEventRankSeverityCritical</p></td>
+<td><p>Critical</p></td>
+</tr>
+<tr>
+<td><p>integrityMonitoringSettingEventRankSeverityHigh</p></td>
+<td><p>High</p></td>
+</tr>
+<tr>
+<td><p>integrityMonitoringSettingEventRankSeverityLow</p></td>
+<td><p>Low</p></td>
+</tr>
+<tr>
+<td><p>integrityMonitoringSettingEventRankSeverityMedium</p></td>
+<td><p>Medium</p></td>
+</tr>
+<tr>
+<td><p>integrityMonitoringSettingRetainEventDuration</p></td>
+<td><p>Automatically delete Integrity Monitoring Events older than</p></td>
+</tr>
+<tr>
+<td colspan="2"><p><em>Intrusion Prevention Settings</em></p></td>
+</tr>
+<tr>
+<td><p>intrusionPreventionSettingEventRankSeverityFilterCritical</p></td>
+<td><p>Critical</p></td>
+</tr>
+<tr>
+<td><p>intrusionPreventionSettingEventRankSeverityFilterError</p></td>
+<td><p>Error</p></td>
+</tr>
+<tr>
+<td><p>intrusionPreventionSettingEventRankSeverityFilterHigh</p></td>
+<td><p>High</p></td>
+</tr>
+<tr>
+<td><p>intrusionPreventionSettingEventRankSeverityFilterLow</p></td>
+<td><p>Low</p></td>
+</tr>
+<tr>
+<td><p>intrusionPreventionSettingEventRankSeverityFilterMedium</p></td>
+<td><p>Medium</p></td>
+</tr>
+<tr>
+<td><p>intrusionPreventionSettingRetainEventDuration</p></td>
+<td><p>Automatically delete Intrusion Prevention Events older than</p></td>
+</tr>
+<tr>
+<td colspan="2"><p><em>Log Inspection Settings</em></p></td>
+</tr>
+<tr>
+<td><p>logInspectionSettingEventRankSeverityCritical</p></td>
+<td><p>Critical</p></td>
+</tr>
+<tr>
+<td><p>logInspectionSettingEventRankSeverityHigh</p></td>
+<td><p>High</p></td>
+</tr>
+<tr>
+<td><p>logInspectionSettingEventRankSeverityLow</p></td>
+<td><p>Low</p></td>
+</tr>
+<tr>
+<td><p>logInspectionSettingEventRankSeverityMedium</p></td>
+<td><p>Medium</p></td>
+</tr>
+<tr>
+<td><p>logInspectionSettingRetainEventDuration</p></td>
+<td><p>Automatically delete Log Inspection Events older than</p></td>
+</tr>
+<tr>
+<td colspan="2"><p><em>Platform Settings</em></p></td>
+</tr>
+<tr>
+<td><p>platformSettingActiveSessionsMax</p></td>
+<td><p>Number of concurrent sessions allowed per User</p></td>
+</tr>
+<tr>
+<td><p>platformSettingActiveSessionsMaxExceededAction</p></td>
+<td><p>Action when concurrent session limit is exceeded</p></td>
+</tr>
+<tr>
+<td><p>platformSettingAgentInitiatedActivationDuplicateHostnameMode</p></td>
+<td><p>If a computer already exists</p></td>
+</tr>
+<tr>
+<td><p>platformSettingAgentInitiatedActivationEnabled</p></td>
+<td><p>Allow Agent-Initiated Activation</p></td>
+</tr>
+<tr>
+<td><p>platformSettingAgentInitiatedActivationPolicyId</p></td>
+<td><p>Policy to assign (if Policy not assigned by activation script):</p></td>
+</tr>
+<tr>
+<td><p>platformSettingAgentInitiatedActivationReactivateClonedEnabled</p></td>
+<td><p>Reactivate cloned Agents</p></td>
+</tr>
+<tr>
+<td><p>platformSettingAgentInitiatedActivationReactivateUnknownEnabled</p></td>
+<td><p>Reactivate unknown Agents</p></td>
+</tr>
+<tr>
+<td><p>platformSettingAgentInitiatedActivationSpecifyHostnameEnabled</p></td>
+<td><p>Allow Agent to specify hostname</p></td>
+</tr>
+<tr>
+<td><p>platformSettingAgentInitiatedActivationWithinIpListId</p></td>
+<td><p>Agent-Initiated Activation IP List</p></td>
+</tr>
+<tr>
+<td><p>platformSettingAgentlessVcloudProtectionEnabled</p></td>
+<td><p>Allow Appliance protection of vCloud VMs</p></td>
+</tr>
+<tr>
+<td><p>platformSettingAlertAgentUpdatePendingThreshold</p></td>
+<td><p>Length of time an Update can be pending before raising an Alert</p></td>
+</tr>
+<tr>
+<td><p>platformSettingAlertDefaultEmailAddress</p></td>
+<td><p>Alert Email Address - The email address to which all alert emails should be sent</p></td>
+</tr>
+<tr>
+<td><p>platformSettingAwsManagerIdentityAccessKey</p></td>
+<td><p>Access Key - The Access Key of an AWS User used for the manager identity</p></td>
+</tr>
+<tr>
+<td><p>platformSettingAwsManagerIdentitySecretKey</p></td>
+<td><p>Secret Key - The Secret Access Key of an AWS User used for the manager identity</p></td>
+</tr>
+<tr>
+<td><p>platformSettingAwsManagerIdentityUseInstanceRoleEnabled</p></td>
+<td><p>Use Instance Role</p></td>
+</tr>
+<tr>
+<td><p>platformSettingCaptureEncryptedTrafficEnabled</p></td>
+<td><p>Allow packet data capture on encrypted traffic (SSL)</p></td>
+</tr>
+<tr>
+<td><p>platformSettingConnectedThreatDefenseControlManagerManualSourceApiKey</p></td>
+<td><p>API Key</p></td>
+</tr>
+<tr>
+<td><p>platformSettingConnectedThreatDefenseControlManagerManualSourceServerUrl</p></td>
+<td><p>Server URL (ex: "https://[server]/webapp")</p></td>
+</tr>
+<tr>
+<td><p>platformSettingConnectedThreatDefenseControlManagerProxyId</p></td>
+<td><p>Use Proxy when accessing Apex Central</p></td>
+</tr>
+<tr>
+<td><p>platformSettingConnectedThreatDefenseControlManagerSourceOption</p></td>
+<td><p>Suspicious Object List Source</p></td>
+</tr>
+<tr>
+<td><p>platformSettingConnectedThreatDefenseControlManagerSuspiciousObjectListComparisonEnabled</p></td>
+<td><p>Compare objects against Suspicious Object List</p></td>
+</tr>
+<tr>
+<td><p>platformSettingConnectedThreatDefenseControlManagerUseProxyEnabled</p></td>
+<td><p>When accessing Apex Central, use proxy:</p></td>
+</tr>
+<tr>
+<td><p>platformSettingConnectedThreatDefensesUsePrimaryTenantServerSettingsEnabled</p></td>
+<td><p>Use default server settings</p></td>
+</tr>
+<tr>
+<td><p>platformSettingDdanAutoSubmissionEnabled</p></td>
+<td><p>Enable automatic file submission</p></td>
+</tr>
+<tr>
+<td><p>platformSettingDdanManualSourceApiKey</p></td>
+<td><p>API Key</p></td>
+</tr>
+<tr>
+<td><p>platformSettingDdanManualSourceServerUrl</p></td>
+<td><p>Server URL (ex: "https://[server]/")</p></td>
+</tr>
+<tr>
+<td><p>platformSettingDdanProxyId</p></td>
+<td><p>Use Proxy when accessing Deep Discovery Analyzer</p></td>
+</tr>
+<tr>
+<td><p>platformSettingDdanSourceOption</p></td>
+<td><p>Deep Discovery Analyzer Source</p></td>
+</tr>
+<tr>
+<td><p>platformSettingDdanSubmissionEnabled</p></td>
+<td><p>Enable submission of suspicious files to Deep Discovery Analyzer</p></td>
+</tr>
+<tr>
+<td><p>platformSettingDdanUseProxyEnabled</p></td>
+<td><p>When accessing Deep Discovery Analyzer, use proxy:</p></td>
+</tr>
+<tr>
+<td><p>platformSettingDemoModeEnabled</p></td>
+<td><p>Demo Mode Enabled</p></td>
+</tr>
+<tr>
+<td><p>platformSettingEventForwardingSnsAccessKey</p></td>
+<td><p>Access Key - The Access Key of an AWS User with access to the SNS Topic</p></td>
+</tr>
+<tr>
+<td><p>platformSettingEventForwardingSnsAdvancedConfigEnabled</p></td>
+<td><p>Amazon SNS Advanced Configuration</p></td>
+</tr>
+<tr>
+<td><p>platformSettingEventForwardingSnsConfigJson</p></td>
+<td><p>Amazon SNS Configuration</p></td>
+</tr>
+<tr>
+<td><p>platformSettingEventForwardingSnsEnabled</p></td>
+<td><p>Publish Events to Amazon Simple Notification Service</p></td>
+</tr>
+<tr>
+<td><p>platformSettingEventForwardingSnsSecretKey</p></td>
+<td><p>Secret Key - The Secret Key of an AWS User with access to the SNS Topic</p></td>
+</tr>
+<tr>
+<td><p>platformSettingEventForwardingSnsTopicArn</p></td>
+<td><p>SNS Topic ARN</p></td>
+</tr>
+<tr>
+<td><p>platformSettingExportedDiagnosticPackageLocale</p></td>
+<td><p>Exported Diagnostic Package Language</p></td>
+</tr>
+<tr>
+<td><p>platformSettingExportedFileCharacterEncoding</p></td>
+<td><p>Exported file Character Encoding</p></td>
+</tr>
+<tr>
+<td><p>platformSettingInactiveAgentCleanupDuration</p></td>
+<td><p>Delete Agents that have been inactive for:</p></td>
+</tr>
+<tr>
+<td><p>platformSettingInactiveAgentCleanupEnabled</p></td>
+<td><p>Delete Agents that have been inactive for:</p></td>
+</tr>
+<tr>
+<td><p>platformSettingManagedDetectResponseCompanyGuid</p></td>
+<td><p>Company GUID</p></td>
+</tr>
+<tr>
+<td><p>platformSettingManagedDetectResponseEnabled</p></td>
+<td><p>Enable the MDR service</p></td>
+</tr>
+<tr>
+<td><p>platformSettingManagedDetectResponseProxyId</p></td>
+<td><p>Use Proxy when accessing MDR server</p></td>
+</tr>
+<tr>
+<td><p>platformSettingManagedDetectResponseServerUrl</p></td>
+<td><p>Server URL (ex: "https://[server]/")</p></td>
+</tr>
+<tr>
+<td><p>platformSettingManagedDetectResponseServiceToken</p></td>
+<td><p>Service Token</p></td>
+</tr>
+<tr>
+<td><p>platformSettingManagedDetectResponseUsePrimaryTenantSettingsEnabled</p></td>
+<td><p>Use default server settings</p></td>
+</tr>
+<tr>
+<td><p>platformSettingManagedDetectResponseUseProxyEnabled</p></td>
+<td><p>When accessing MDR server, use proxy:</p></td>
+</tr>
+<tr>
+<td><p>platformSettingProxyAgentUpdateProxyId</p></td>
+<td><p>Primary Component Update Proxy used by Agents, Appliances, and Relays:</p></td>
+</tr>
+<tr>
+<td><p>platformSettingRecommendationOngoingScansEnabled</p></td>
+<td><p>Perform ongoing <a href="trend-vision-one-recommendation-scans-intro">Recommendation Scans</a></p></td>
+</tr>
+<tr>
+<td><p>platformSettingRetainAgentInstallersPerPlatformMax</p></td>
+<td><p>Number of older software versions to keep per platform</p></td>
+</tr>
+<tr>
+<td><p>platformSettingRetainCountersDuration</p></td>
+<td><p>Automatically delete Counters older than</p></td>
+</tr>
+<tr>
+<td><p>platformSettingRetainSecurityUpdatesMax</p></td>
+<td><p>Number of older Rule Updates to keep</p></td>
+</tr>
+<tr>
+<td><p>platformSettingRetainSystemEventDuration</p></td>
+<td><p>Automatically delete System Events older than</p></td>
+</tr>
+<tr>
+<td><p>platformSettingSamlIdentityProviderCertificateExpiryWarningDays</p></td>
+<td><p>Warn when a SAML identity provider certificate will expire within (days)</p></td>
+</tr>
+<tr>
+<td><p>platformSettingSamlRetainInactiveExternalAdministratorsDuration</p></td>
+<td><p>Automatically delete inactive identity provider users after (days)</p></td>
+</tr>
+<tr>
+<td><p>platformSettingSmartProtectionFeedbackBandwidthMaxKbytes</p></td>
+<td><p>Maximum bandwidth:</p></td>
+</tr>
+<tr>
+<td><p>platformSettingSmartProtectionFeedbackEnabled</p></td>
+<td><p>Enable Trend Micro Smart Feedback (recommended)</p></td>
+</tr>
+<tr>
+<td><p>platformSettingSmartProtectionFeedbackForSuspiciousFileEnabled</p></td>
+<td><p>Send suspicious file signatures along with feedback</p></td>
+</tr>
+<tr>
+<td><p>platformSettingSmartProtectionFeedbackIndustryType</p></td>
+<td><p>Your industry (optional):</p></td>
+</tr>
+<tr>
+<td><p>platformSettingSmartProtectionFeedbackInterval</p></td>
+<td><p>Feedback Interval (min)</p></td>
+</tr>
+<tr>
+<td><p>platformSettingSmartProtectionFeedbackThreatDetectionsThreshold</p></td>
+<td><p>Feedback Interval by threats</p></td>
+</tr>
+<tr>
+<td><p>platformSettingSmtpBounceEmailAddress</p></td>
+<td><p>"Bounce" email address (optional) - The email address to which delivery failure notifications should be sent</p></td>
+</tr>
+<tr>
+<td><p>platformSettingSmtpFromEmailAddress</p></td>
+<td><p>"From" email address - The email address from which outgoing emails should be sent</p></td>
+</tr>
+<tr>
+<td><p>platformSettingSmtpPassword</p></td>
+<td><p>SMTP password</p></td>
+</tr>
+<tr>
+<td><p>platformSettingSmtpRequiresAuthenticationEnabled</p></td>
+<td><p>Mail server requires authentication</p></td>
+</tr>
+<tr>
+<td><p>platformSettingSmtpServerAddress</p></td>
+<td><p>SMTP mail server address (optionally include :port)</p></td>
+</tr>
+<tr>
+<td><p>platformSettingSmtpStartTlsEnabled</p></td>
+<td><p>STARTTLS</p></td>
+</tr>
+<tr>
+<td><p>platformSettingSmtpUsername</p></td>
+<td><p>SMTP username</p></td>
+</tr>
+<tr>
+<td><p>platformSettingSyslogConfigId</p></td>
+<td><p>Forward System Events to a remote computer (via Syslog) using configuration</p></td>
+</tr>
+<tr>
+<td><p>platformSettingSystemEventForwardingSnmpAddress</p></td>
+<td><p>Hostname or IP address to which events should be sent</p></td>
+</tr>
+<tr>
+<td><p>platformSettingSystemEventForwardingSnmpEnabled</p></td>
+<td><p>Forward System Events to a remote computer (via SNMP)</p></td>
+</tr>
+<tr>
+<td><p>platformSettingSystemEventForwardingSnmpPort</p></td>
+<td><p>UDP port to which events should be sent</p></td>
+</tr>
+<tr>
+<td><p>platformSettingTenantAllowImpersonationByPrimaryTenantEnabled</p></td>
+<td><p>Allow Primary Tenant access to my Server &amp; Workload Protection Environment</p></td>
+</tr>
+<tr>
+<td><p>platformSettingTenantAutoRevokeImpersonationByPrimaryTenantEnabled</p></td>
+<td><p>Automatically revoke Primary Tenant access after</p></td>
+</tr>
+<tr>
+<td><p>platformSettingTenantAutoRevokeImpersonationByPrimaryTenantTimeout</p></td>
+<td><p>Automatically revoke Primary Tenant access after</p></td>
+</tr>
+<tr>
+<td><p>platformSettingTenantUseDefaultRelayGroupFromPrimaryTenantEnabled</p></td>
+<td><p>Use the Primary Tenant Relay Group as my Default Relay Group</p></td>
+</tr>
+<tr>
+<td><p>platformSettingTrendMicroXdrApiKey</p></td>
+<td><p>API Key</p></td>
+</tr>
+<tr>
+<td><p>platformSettingTrendMicroXdrApiServerUrl</p></td>
+<td><p>API Server URL</p></td>
+</tr>
+<tr>
+<td><p>platformSettingTrendMicroXdrApiUser</p></td>
+<td><p>API User</p></td>
+</tr>
+<tr>
+<td><p>platformSettingTrendMicroXdrCompanyId</p></td>
+<td><p>Company ID</p></td>
+</tr>
+<tr>
+<td><p>platformSettingTrendMicroXdrEnabled</p></td>
+<td><p>Forward activity data to Trend Micro XDR data lake</p></td>
+</tr>
+<tr>
+<td><p>platformSettingTrendMicroXdrLogServerUrl</p></td>
+<td><p>Log Server URL</p></td>
+</tr>
+<tr>
+<td><p>platformSettingUpdateAgentSecurityContactPrimarySourceOnMissingRelayEnabled</p></td>
+<td><p>Allow Agents/Appliances to download component updates directly from Primary Component Update Source if Relays are not accessible</p></td>
+</tr>
+<tr>
+<td><p>platformSettingUpdateAgentSecurityOnMissingDeepSecurityManagerEnabled</p></td>
+<td><p>Allow Agents/Appliances to download component updates when Server &amp; Workload Protection is not accessible</p></td>
+</tr>
+<tr>
+<td><p>platformSettingUpdateApplianceDefaultAgentVersion</p></td>
+<td><p>Upon deployment, update Virtual Appliances to</p></td>
+</tr>
+<tr>
+<td><p>platformSettingUpdateHostnameOnIpChangeEnabled</p></td>
+<td><p>Update the "Hostname" entry if an IP is used as a hostname and a change in IP is detected on the computer after Agent/Appliance-initiated communication or discovery</p></td>
+</tr>
+<tr>
+<td><p>platformSettingUpdateRelaySecurityAllRegionsPatternsDownloadEnabled</p></td>
+<td><p>Download Patterns for all Regions</p></td>
+</tr>
+<tr>
+<td><p>platformSettingUpdateRelaySecuritySupportAgent9AndEarlierEnabled</p></td>
+<td><p>Allow supported 8.0 and 9.0 Agents to be updated</p></td>
+</tr>
+<tr>
+<td><p>platformSettingUpdateRulesPolicyAutoApplyEnabled</p></td>
+<td><p>Automatically apply Rule Updates to Policies</p></td>
+</tr>
+<tr>
+<td><p>platformSettingUpdateSecurityPrimarySourceMode</p></td>
+<td><p>Relay Update Source</p></td>
+</tr>
+<tr>
+<td><p>platformSettingUpdateSecurityPrimarySourceUrl</p></td>
+<td><p>URL</p></td>
+</tr>
+<tr>
+<td><p>platformSettingUpdateSoftwareAlternateUpdateServerUrls</p></td>
+<td><p>Alternate Software Update Web Server(s)</p></td>
+</tr>
+<tr>
+<td><p>platformSettingUserHideUnlicensedModulesEnabled</p></td>
+<td><p>Hide unlicensed Protection Modules for new Users</p></td>
+</tr>
+<tr>
+<td><p>platformSettingUserPasswordExpiry</p></td>
+<td><p>User password expires</p></td>
+</tr>
+<tr>
+<td><p>platformSettingUserPasswordExpirySendEmailEnabled</p></td>
+<td><p>Send email when a user's password is about to expire</p></td>
+</tr>
+<tr>
+<td><p>platformSettingUserPasswordLengthMin</p></td>
+<td><p>User password minimum length</p></td>
+</tr>
+<tr>
+<td><p>platformSettingUserPasswordRequireLettersAndNumbersEnabled</p></td>
+<td><p>User password requires both letters and numbers</p></td>
+</tr>
+<tr>
+<td><p>platformSettingUserPasswordRequireMixedCaseEnabled</p></td>
+<td><p>User password requires both upper and lower case characters</p></td>
+</tr>
+<tr>
+<td><p>platformSettingUserPasswordRequireNotSameAsUsernameEnabled</p></td>
+<td><p>User password cannot match username or username spelled backward</p></td>
+</tr>
+<tr>
+<td><p>platformSettingUserPasswordRequireSpecialCharactersEnabled</p></td>
+<td><p>User password requires non-alphanumeric characters</p></td>
+</tr>
+<tr>
+<td><p>platformSettingUserSessionDurationMax</p></td>
+<td><p>Maximum session duration</p></td>
+</tr>
+<tr>
+<td><p>platformSettingUserSessionIdleTimeout</p></td>
+<td><p>Session idle timeout</p></td>
+</tr>
+<tr>
+<td><p>platformSettingUserSignInAttemptsAllowedNumber</p></td>
+<td><p>Number of incorrect sign-in attempts allowed (before lock out)</p></td>
+</tr>
+<tr>
+<td><p>platformSettingWhoisUrl</p></td>
+<td><p>Whois URL - The full URL to a Whois lookup with the IP represented as [IP]</p></td>
+</tr>
+<tr>
+<td colspan="2"><p><em>Web Reputation Settings</em></p></td>
+</tr>
+<tr>
+<td><p>webReputationSettingEventRankRiskBlockedByAdministratorRank</p></td>
+<td><p>Blocked By Administrator</p></td>
+</tr>
+<tr>
+<td><p>webReputationSettingEventRankRiskDangerous</p></td>
+<td><p>Dangerous</p></td>
+</tr>
+<tr>
+<td><p>webReputationSettingEventRankRiskHighlySuspicious</p></td>
+<td><p>Highly Suspicious</p></td>
+</tr>
+<tr>
+<td><p>webReputationSettingEventRankRiskSuspicious</p></td>
+<td><p>Suspicious</p></td>
+</tr>
+<tr>
+<td><p>webReputationSettingEventRankRiskUntested</p></td>
+<td><p>Untested</p></td>
+</tr>
+<tr>
+<td><p>webReputationSettingRetainEventDuration</p></td>
+<td><p>Automatically delete Web Reputation Events older than</p></td>
+</tr>
+</tbody>
+</table>
+:::::

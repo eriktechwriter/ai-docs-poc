@@ -1,0 +1,28 @@
+---
+slug: trend-vision-one-firewall-rule-webhook-gke
+title: Adding a firewall rule for admission-webhook in private GKE clusters
+last_updated: '2025-09-08'
+ai_context:
+  source_file: firewall-rule-webhook-gke.md
+  conversion_date: '2025-09-08T23:42:19.133Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Private GKE clusters require an additional VPC network firewall rule for the `admission-webhook` to work. Follow the instructions in Google Cloud Documentation ([Adding firewall rules for specific use cases](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters)) to add a firewall rule allowing traffic from your master’s source IP range to the `trendmicro-admission-controller` pod.
+
+When creating the rule, you need to specify the port that allows traffic. The `trendmicro-admission-controller` pod has port `8443` enabled.
+
+The following is an example of the `gcloud` command for adding the firewall rule:
+
+``` codeblock
+gcloud compute firewall-rules create "allow-apiserver-to-admission-webhook-8443" \
+    --action ALLOW \
+    --direction INGRESS \
+    --source-ranges ${CONTROL_PLANE_RANGE} \
+    --rules tcp:8443 \
+    --description="Allow apiserver access to admission webhook pod on port 8443" \
+    --target-tags ${TARGET}
+```
+:::

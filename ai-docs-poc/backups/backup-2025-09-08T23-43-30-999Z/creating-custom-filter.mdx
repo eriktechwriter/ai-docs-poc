@@ -1,0 +1,57 @@
+---
+slug: trend-vision-one-creating-custom-filter
+title: Create a custom filter
+last_updated: '2025-09-08'
+ai_context:
+  source_file: creating-custom-filter.md
+  conversion_date: '2025-09-08T23:42:21.322Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Define a custom filter with specific settings to detect events in your environment based on your criteria.
+
+### Procedure {#procedure}
+
+1.  Go to **Agentic SIEM & XDR → Detection Model Management → Custom Filters → Create new filter**.
+
+2.  Specify the general settings of the filter:
+
+    - **Filter name**
+
+    - **Description**
+
+    - **Severity**
+
+      A severity of medium, high, or critical affects the Cyber Risk Index on the [Cyber Risk Overview](executive-dashboard.mdx) and [Threat and Exposure Management](operations-dashboard.mdx). When testing or tuning a model, select low to avoid affecting indexes.
+
+3.  Specify the event settings of the filter:
+
+    1.  Select an event type.
+
+    2.  If you select **THIRD_PARTY_LOG**, specify the vendor associated with the event you want to detect. Otherwise select an event ID.
+
+    3.  Specify a query to locate the target events in the activity data.
+
+        For more information about formatting filter queries, see [Filter query format](custom-filter-query-format.mdx) and [Use regex in custom filters](using-regex-custom-filters.mdx).
+
+    4.  Validate the query by clicking **Validate Query**.
+
+        If the query is valid, you can click **Preview Search Results** to see the search results your query returns.
+
+    5.  Specify up to 10 custom tags.
+
+        Custom tags help you identify events detected by custom filters in **Workbench**, **Observed Attack Techniques**, and **XDR Data Explorer**.
+
+        Tags can be up to 64 characters long.
+
+4.  Click **Save**.
+
+Trend Vision One saves and enables the custom filter. This action might require a few minutes before taking effect.
+
+:::tip
+
+You can use custom filters to [create detection models](configuring-custom-model.mdx) that generate Workbench alerts based on your detections.
+:::
+::::

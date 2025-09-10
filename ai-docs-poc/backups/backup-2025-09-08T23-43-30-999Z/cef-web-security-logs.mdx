@@ -1,0 +1,333 @@
+---
+slug: trend-vision-one-cef-web-security-logs
+title: CEF Web Security Logs
+last_updated: '2025-09-08'
+ai_context:
+  source_file: cef-web-security-logs.md
+  conversion_date: '2025-09-08T23:42:24.079Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 38%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>CEF Key</p></th>
+<th><p>Description</p></th>
+<th><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Header (logVer)</p></td>
+<td><p>CEF format version</p></td>
+<td><p>CEF:0</p></td>
+</tr>
+<tr>
+<td><p>Header (vendor)</p></td>
+<td><p>Appliance vendor</p></td>
+<td><p>Trend Micro</p></td>
+</tr>
+<tr>
+<td><p>Header (pname)</p></td>
+<td><p>Appliance product</p></td>
+<td><p>Apex Central</p></td>
+</tr>
+<tr>
+<td><p>Header (pver)</p></td>
+<td><p>Appliance version</p></td>
+<td><p>2019</p></td>
+</tr>
+<tr>
+<td><p>Header (eventid)</p></td>
+<td><p>WB:Filter/Blocking Type</p></td>
+<td><p>WB:1</p></td>
+</tr>
+<tr>
+<td><p>Header (eventName)</p></td>
+<td><p>"Blocking Rule" or "Filter/Blocking Type"</p></td>
+<td><p>5</p></td>
+</tr>
+<tr>
+<td><p>Header (severity)</p></td>
+<td><p>Severity</p></td>
+<td><p>3</p></td>
+</tr>
+<tr>
+<td><p>app</p></td>
+<td><p>Protocol</p></td>
+<td><p>Example: "3"</p>
+<p>For more information, see <a href="trend-vision-one-protocol-mapping-table">Protocol Mapping Table</a>.</p></td>
+</tr>
+<tr>
+<td><p>cnt</p></td>
+<td><p>Detections</p></td>
+<td><p>Example: "10"</p></td>
+</tr>
+<tr>
+<td><p>dpt</p></td>
+<td><p>Server port</p></td>
+<td><p>Example: "80"</p></td>
+</tr>
+<tr>
+<td><p>act</p></td>
+<td><p>Action</p></td>
+<td><p>Example: "0"</p>
+<ul>
+<li><p>0: Unknown</p></li>
+<li><p>1: Pass</p></li>
+<li><p>2: Block</p></li>
+<li><p>3: Monitor</p></li>
+<li><p>4: Delete</p></li>
+<li><p>5: Quarantine</p></li>
+<li><p>6: Warn</p></li>
+<li><p>7: Warn and continue</p></li>
+<li><p>8: Override</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>rt</p></td>
+<td><p>Event trigger time in UTC</p></td>
+<td><p>Example: "Mar 22 2018 08:23:23 GMT+00:00"</p></td>
+</tr>
+<tr>
+<td><p>src</p></td>
+<td><p>Endpoint IPv4 address</p></td>
+<td><p>Example: "10.1.128.34"</p></td>
+</tr>
+<tr>
+<td><p>c6a2Label</p></td>
+<td><p>Corresponding label for the "c6a2" field</p></td>
+<td><p>Example: "SLF_SourceIP"</p></td>
+</tr>
+<tr>
+<td><p>c6a2</p></td>
+<td><p>Endpoint IPv6 address</p></td>
+<td><p>Example: "2620:101:4003:7a0:fd4b:52ed:53bd:ae3d"</p></td>
+</tr>
+<tr>
+<td><p>cs1Label</p></td>
+<td><p>Corresponding label for the "cs1" field</p></td>
+<td><p>Example: "SLF_PolicyName"</p></td>
+</tr>
+<tr>
+<td><p>cs1</p></td>
+<td><p>Policy</p></td>
+<td><p>Example: "External User Policy"</p></td>
+</tr>
+<tr>
+<td><p>cs4Label</p></td>
+<td><p>Corresponding label for the "cs4" field</p></td>
+<td><p>Example: "CLF_ReasonCode"</p></td>
+</tr>
+<tr>
+<td><p>cs4</p></td>
+<td><p>Reason Code</p></td>
+<td><p>Example: "access"</p></td>
+</tr>
+<tr>
+<td><p>cs5Label</p></td>
+<td><p>Corresponding label for the "cs5" field</p></td>
+<td><p>Example: "CLF_ReasonCodeSource"</p></td>
+</tr>
+<tr>
+<td><p>cs5</p></td>
+<td><p>Reason code source</p></td>
+<td><p>Example: "web"</p></td>
+</tr>
+<tr>
+<td><p>deviceDirection</p></td>
+<td><p>Traffic/Connection</p></td>
+<td><p>Example: "2"</p>
+<ul>
+<li><p>0: None</p></li>
+<li><p>1: Inbound</p></li>
+<li><p>2: Outbound</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cat</p></td>
+<td><p>Filter/Blocking Type</p></td>
+<td><p>Example: "7"</p>
+<p>For more information, see <a href="trend-vision-one-filter-blocking-type-mapping-table">Filter/Blocking Type Mapping Table</a>.</p></td>
+</tr>
+<tr>
+<td><p>dvchost</p></td>
+<td><p>Endpoint host name</p></td>
+<td><p>Example: "ApexOneClient08"</p></td>
+</tr>
+<tr>
+<td><p>cn1Label</p></td>
+<td><p>Corresponding label for the "cn1" field</p></td>
+<td><p>Example: "CLF_SeverityCode"</p></td>
+</tr>
+<tr>
+<td><p>cn1</p></td>
+<td><p>Severity code</p></td>
+<td><p>Example: "0"</p>
+<ul>
+<li><p>0: Unknown</p></li>
+<li><p>1: Information</p></li>
+<li><p>2: Warning</p></li>
+<li><p>3: Error</p></li>
+<li><p>4: Critical</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>deviceExternalId</p></td>
+<td><p>ID</p></td>
+<td><p>Example: "38"</p></td>
+</tr>
+<tr>
+<td><p>fname</p></td>
+<td><p>File</p></td>
+<td><p>Example: "test.txt"</p></td>
+</tr>
+<tr>
+<td><p>request</p></td>
+<td><p>URL</p></td>
+<td><p>Example: "http://www.violetsoft.net/counter/insert.php?dbserver\=db1&amp;c_pcode\=25&amp;c_pid\=funpop1&amp;c_kind\=4&amp;c_mac\=FE-ED-BE-EF-0C-E1"</p></td>
+</tr>
+<tr>
+<td><p>deviceFacility</p></td>
+<td><p>Product</p></td>
+<td><p>Example: "Apex One"</p></td>
+</tr>
+<tr>
+<td><p>duser</p></td>
+<td><p>User name</p></td>
+<td><p>Example: "Admin004"</p></td>
+</tr>
+<tr>
+<td><p>shost</p></td>
+<td><p>Client host name</p></td>
+<td><p>Exmaple: "ABC-HOST-WKS12"</p></td>
+</tr>
+<tr>
+<td><p>cs2Label</p></td>
+<td><p>Corresponding label for the "cs2" field</p></td>
+<td><p>Example: "Blocking_Rule"</p></td>
+</tr>
+<tr>
+<td><p>cs2</p></td>
+<td><p>Blocking rule</p></td>
+<td><p>Example: "content filter"</p></td>
+</tr>
+<tr>
+<td><p>deviceProcessName</p></td>
+<td><p>Process name</p></td>
+<td><p>Example: "C:\\Windows\ \system32\\svchost-1.exe"</p></td>
+</tr>
+<tr>
+<td><p>cn3Label</p></td>
+<td><p>Corresponding label for the "cn3" field</p></td>
+<td><p>Example: "ReputationScore"</p></td>
+</tr>
+<tr>
+<td><p>cn3</p></td>
+<td><p>Reputation score</p></td>
+<td><p>Example: "49"</p></td>
+</tr>
+<tr>
+<td><p>dst</p></td>
+<td><p>Server IP address</p></td>
+<td><p>Example: "10.69.81.64"</p></td>
+</tr>
+<tr>
+<td><p>cn2Label</p></td>
+<td><p>Corresponding label for the "cn2" field</p></td>
+<td><p>Example: "SLF_SeverityLevel"</p></td>
+</tr>
+<tr>
+<td><p>cn2</p></td>
+<td><p>Severity level</p></td>
+<td><p>Example: "100"</p>
+<ul>
+<li><p>100: High</p></li>
+<li><p>300: Medium high</p></li>
+<li><p>500: Medium</p></li>
+<li><p>700: Medium low</p></li>
+<li><p>900: Low</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>reason</p></td>
+<td><p>Critical threat type</p></td>
+<td><p>Example: "E"</p>
+<ul>
+<li><p>A: Known Advanced Persistent Threat (APT)</p></li>
+<li><p>B: Social engineering attack</p></li>
+<li><p>C: Vulnerability attack</p></li>
+<li><p>D: Lateral movement</p></li>
+<li><p>E: Unknown threats</p></li>
+<li><p>F: C&amp;C callback</p></li>
+<li><p>G: Ransomware</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>deviceNtDomain</p></td>
+<td><p>Active Directory domain</p></td>
+<td><p>Example: APEXTMCM</p></td>
+</tr>
+<tr>
+<td><p>dntdom</p></td>
+<td><p>Apex One domain hierarchy</p></td>
+<td><p>Example: OSCEDomain1</p></td>
+</tr>
+<tr>
+<td><p>TMCMLogDetectedHost</p></td>
+<td><p>Endpoint name where the log event occurred</p></td>
+<td><p>Example: MachineHostName</p></td>
+</tr>
+<tr>
+<td><p>TMCMLogDetectedIP</p></td>
+<td><p>IP address where the log event occurred</p></td>
+<td><p>Example: 10.1.2.3</p></td>
+</tr>
+<tr>
+<td><p>ApexCentralHost</p></td>
+<td><p>Apex Central host name</p></td>
+<td><p>Example: TW-CHRIS-W2019</p></td>
+</tr>
+<tr>
+<td><p>devicePayloadId</p></td>
+<td><p>Unique message GUID</p></td>
+<td><p>Example: 1C00290C0360-9CDE11EB-D4B8-F51F-C697</p></td>
+</tr>
+<tr>
+<td><p>TMCMdevicePlatform</p></td>
+<td><p>Endpoint operating system</p></td>
+<td><p>Example: Windows 7 6.1 (Build 7601) Service Pack 1</p></td>
+</tr>
+</tbody>
+</table>
+
+Log sample:
+
+``` codeblock
+CEF:0|Trend Micro|Apex Central|2019|WB:7|7|3|deviceExterna
+lId=38 rt=Nov 15 2017 08:43:57 GMT+00:00 app=17 cntLabel=Agg
+regatedCount cnt=1 dpt=80 act=1 src=10.1.128.46 cs1Label=SLF
+_PolicyName cs1=External User Policy deviceDirection=2 cat=7
+ dvchost=ApexOneClient08 fname=test.txt request=http://www.v
+ioletsoft.net/counter/insert.php?dbserver\=db1&c_pcode\=25&c
+_pid\=funpop1&c_kind\=4&c_mac\=FE-ED-BE-EF-0C-E1 deviceFacil
+ity=Apex One shost=ABC-HOST-WKS12 reason=G deviceNtDomain=AP
+EXTMCM dntdom=OSCEDomain1 TMCMLogDetectedHost=ABC-HOST-WKS12 
+TMCMLogDetectedIP=10.1.128.46 ApexCentralHost=TW-CHRIS-W2019
+devicePayloadId=1C00290C0360-9CDE11EB-D4B8-F51F-C697 TMCMdev
+icePlatform=Windows 7 6.1 (Build 7601) Service Pack 1
+```
+
+**Related information**
+
+- [Filter/Blocking Type Mapping Table](filter-blocking-type-mapping-table.mdx)
+- [Protocol Mapping Table](protocol-mapping-table.mdx)
+:::

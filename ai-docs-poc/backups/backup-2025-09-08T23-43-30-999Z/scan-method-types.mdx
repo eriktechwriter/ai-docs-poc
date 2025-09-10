@@ -1,0 +1,43 @@
+---
+slug: trend-vision-one-scan-method-types
+title: General Settings
+last_updated: '2025-09-08'
+ai_context:
+  source_file: scan-method-types.md
+  conversion_date: '2025-09-08T23:42:13.156Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+The General Settings screen is where you can select the **Scan Methods**, enable **Dynamic Intelligence Mode**, and configure **Monitoring Level**.
+
+Trend Vision One Endpoint Security agents can use one of two scan methods when scanning for security risks. The scan methods are smart scan and conventional scan.
+
+- *Smart Scan*
+
+  Trend Vision One Endpoint Security agents that use smart scan are referred to as *smart scan agents* in this document. Smart scan agents benefit from local scans and in-the-cloud queries provided by File Reputation Services.
+
+- *Conventional Scan*
+
+  Agents that do not use smart scan are called *conventional scan agents*. A conventional scan agent stores all Trend Vision One Endpoint Security agent components on the endpoint and scans all files locally.
+
+Before changing the scan methods, review [Guidelines for Switching Scan Methods](guidelines-switch-scan-methods.mdx).
+
+:::warning[Important]
+
+Dynamic Intelligence Mode only supports agents deployed on Windows 64-bit (x86-64) endpoints.
+
+For maximum security capability, enable Anti-Malware, Behavior Monitoring, Predictive Machine Learning, and Suspicious Connection features.
+:::
+
+In addition to selecting the scan method, you can also enable Dynamic Intelligence Mode or manually configure the Monitoring Level.
+
+Enabling Dynamic Intelligence Mode allows the agent to automatically adjust monitoring levels to optimize security responses based on analyzing detected threats, user behavior, and system context. With Dynamic Intelligence Mode enabled, the **Detection** and **Prevention** levels are automatically adjusted by the agent in General Settings, Behavior Monitoring, Predictive Machine Learning, and Suspicious Connection.
+
+Monitoring level is the degree of vigilance and strictness applied when detecting and responding to potential threats. Raising the level increases the sensitivity of the sensor, which increases the number of detections and alerts. Higher levels allow for more strict monitoring to help with situations like on-going threat investigations, but might generate a large number of nonessential logs and impact endpoint performance. Trend Micro recommends setting your monitoring level to 2 - Moderate to balance more relevant data with minimal impact on your endpoints. Some components used by higher monitoring levels are not available on all platforms.
+
+**Related information**
+
+- [Guidelines for Switching Scan Methods](guidelines-switch-scan-methods.mdx)
+::::

@@ -1,0 +1,161 @@
+---
+slug: trend-vision-one-security-settings
+title: Security Settings
+---
+# Security Settings
+
+### Procedure {#procedure}
+
+1.  Select **Global Agent Settings**.
+
+2.  Click the **Security Settings** tab.
+
+3.  Configure settings as required.
+
+    <table>
+    <colgroup>
+    <col style="width: 20%" />
+    <col style="width: 80%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Section</p></th>
+    <th><p>Settings</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><strong>Scan Settings</strong> (general)</p></td>
+    <td><ul>
+    <li><p><strong>Exclude Microsoft Exchange server folders and files from scans</strong>: Prevents the Trend Vision One Endpoint Security agent installed on the Microsoft Exchange server from scanning the following Exchange server folders:</p>
+    <ul>
+    <li><p>The following folders in <code>\Exchsrvr\Mailroot\vsi 1</code>: <code>Queue</code>, <code>PickUp</code>, and <code>BadMail</code></p></li>
+    <li><p><code>.\Exchsrvr\mdbdata</code>, including these files: <code>priv1.stm</code>, <code>priv1.edb</code>, <code>pub1.stm</code>, and <code>pub1.edb</code></p></li>
+    <li><p><code>.\Exchsrvr\Storage Group</code></p></li>
+    </ul>
+    <p>For Microsoft Exchange 2007 or later folders, you need to manually add the folders to the scan exclusion list. For scan exclusion details, see the following website:</p>
+    <p><a href="http://technet.microsoft.com/en-us/library/bb332342.aspx">http://technet.microsoft.com/en-us/library/bb332342.aspx</a></p></li>
+    <li><p><strong>Enable deferred scanning on file operations</strong>: Allows users to copy files and then scans the files after the copy process completes to improve the performance of the copy and scan processes</p>
+
+
+    :::warning[Important]
+
+    <p>Deferred scanning requires that the Virus Scan Engine (VSAPI) be version 9.713 or later.</p>
+
+
+    :::
+
+    </li>
+    <li><p><strong>Enable Early Launch Anti-Malware protection on endpoints</strong>: Allows the Trend Vision One Endpoint Security agent to load and start scanning before other third-party software drivers during start up (only supported on Windows 8, Windows Server 2012 or later versions)</p>
+
+
+    :::note
+
+    <p>After scanning all third-party software drivers, the Trend Vision One Endpoint Security agent reports the driver classification information to the system kernel. Administrators can define actions based on the driver classifications in Group Policy in Windows and view scan results using Event Viewer on endpoints.</p>
+
+
+    :::
+
+    </li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p><strong>Scan Settings for Large Compressed Files</strong></p></td>
+    <td><p>In the <strong>Real-time Scan</strong> and <strong>Manual Scan/Scheduled Scan/Scan Now</strong> sections, configure the following settings:</p>
+    <ul>
+    <li><p><strong>Do not scan files if the compressed file size exceeds XX MB</strong>: Enables the Trend Vision One Endpoint Security agent to check the sizes of individual files within a compressed archive and skips scanning files if the individual file size exceeds the configured threshold</p></li>
+    <li><p><strong>In a compressed file, scan only the first XX files</strong>: Prevents the Trend Vision One Endpoint Security agent from scanning all files in archives that contain more files than the configured threshold</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p><strong>Virus/Malware Scan Settings Only</strong></p></td>
+    <td><p><strong>Clean/Delete infected files within compressed files</strong>: The Trend Vision One Endpoint Security agent attempts to perform the "Clean" or "Delete" action on compressed files within certain archive types that contain malware threats</p>
+
+
+    :::note
+
+    <p>The Trend Vision One Endpoint Security agent only attempts to "Clean" or "Delete" malware threats within compressed archives if you have configured the "Clean" or "Delete" action for the type of malware detected.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p><strong>Spyware/Grayware Scan Settings Only</strong></p></td>
+    <td><p><strong>Scan for cookies</strong>: The Trend Vision One Endpoint Security agent scans all cookies for spyware/grayware</p>
+    <ul>
+    <li><p><strong>Count cookie into spyware log</strong>: The Trend Vision One Endpoint Security agent creates logs for cookies detected as spyware/grayware</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p><strong>Scheduled Scan Settings</strong></p></td>
+    <td><ul>
+    <li><p><strong>Remind users of the Scheduled Scan XX minutes before it runs</strong>: Displays a notification message on the endpoint before Scheduled Scan begins</p>
+
+
+    :::note
+
+    <p>You can disable the notification message on the <strong>Other Settings</strong> tab of the <strong>Privileges and Other Settings</strong> screen.</p>
+
+
+    :::
+
+    </li>
+    <li><p><strong>Postpone Scheduled Scan for up to XX hour(s) and XX minute(s)</strong>: Sets the maximum amount of time users with the <strong>Postpone Scheduled Scan</strong> privilege can delay or pause a Scheduled Scan for</p>
+
+
+    :::note
+
+    <p>You can grant the <strong>Postpone Scheduled Scan</strong> privilege on the <strong>Privileges</strong> tab of the <strong>Privileges and Other Settings</strong> screen.</p>
+
+
+    :::
+
+    </li>
+    <li><p><strong>Automatically stop Scheduled Scan when scanning lasts more than XX hour(s) and XX minute(s)</strong>: Stops a long Scheduled Scan after reaching the configured time duration</p></li>
+    <li><p><strong>Skip Scheduled Scan when a wireless endpoint's battery life is less than XX% and its AC adapter is unplugged</strong>: Prevents the Trend Vision One Endpoint Security agent from starting a Scheduled Scan if the battery life is low</p></li>
+    </ul>
+    <p><strong>Resume Scheduled Scan</strong></p>
+    <ul>
+    <li><p><strong>Resume an interrupted Scheduled Scan</strong>: Resumes a Scheduled Scan at the specified time if the user interrupted the scan by turning off the endpoint</p></li>
+    <li><p><strong>Resume a missed Scheduled Scan</strong>: Starts a Scheduled Scan at the specified time if the endpoint was not running when the Scheduled Scan should have started</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p><strong>Firewall Settings</strong></p></td>
+    <td><ul>
+    <li><p><strong>Send firewall logs to the server every</strong>: Sets the frequency that Trend Vision One Endpoint Security agents with the <strong>Allow Security Agents to send firewall logs to the Apex One server</strong> privilege send Firewall logs to the server</p>
+
+
+    :::note
+
+    <p>You can grant the <strong>Allow Security Agents to send firewall logs to the Apex One server</strong> privilege on the <strong>Privileges</strong> tab of the <strong>Privileges and Other Settings</strong> screen.</p>
+
+
+    :::
+
+    </li>
+    <li><p><strong>Update the Apex One firewall driver only after a system restart</strong>: Prevents the Trend Vision One Endpoint Security agent from attempting to update the Common Firewall Driver during normal operations</p></li>
+    <li><p><strong>Send firewall log count information to the Apex One server hourly to determine the possibility of a firewall outbreak</strong>: Enables the Trend Vision One Endpoint Security agent to send Firewall detection counts to the Trend Vision One hourly</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p><strong>Behavior Monitoring Settings</strong></p></td>
+    <td><p><strong>Automatically take action if the user does not respond within: XX second(s)</strong>: Sets the maximum amount of time that users have before Behavior Monitoring allows a program to execute</p>
+
+
+    :::note
+
+    <p>You must enable Event Monitoring and set the action for the particular event to <strong>Ask when necessary</strong> before the Trend Vision One Endpoint Security agent displays the prompt.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    </tbody>
+    </table>
+
+4.  Click **Save**.
+:::

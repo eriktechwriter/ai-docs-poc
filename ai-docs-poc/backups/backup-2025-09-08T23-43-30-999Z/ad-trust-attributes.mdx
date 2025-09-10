@@ -1,0 +1,81 @@
+---
+slug: trend-vision-one-ad-trust-attributes
+title: Active Directory trust attributes
+last_updated: '2025-09-08'
+ai_context:
+  source_file: ad-trust-attributes.md
+  conversion_date: '2025-09-08T23:42:26.026Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+View and understand the meaning of trust attributes applied to trust relationships in Active Directory (on-premises).
+
+Trust attributes in Active Directory (on-premises) define the limitations of a trust relationship between domains in Active Directory (on-premises). Understanding the trust attributes for a domain can help you when trying to restrict or allow access to certain domains.
+
+The following table lists the trust attributes available for trust relationships in the **Trust relationships** tab of Identity Inventory for Active Directory (on-premises).
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Trust attribute</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>NON_TRANSITIVE</p></td>
+<td><p>Restricts trusts from being used transitively or applied between domains not directly linked</p></td>
+</tr>
+<tr>
+<td><p>UPLEVEL_ONLY</p></td>
+<td><p>Only permits clients using Windows 2000 or higher to use the trust link</p></td>
+</tr>
+<tr>
+<td><p>QUARANTINED_DOMAIN</p></td>
+<td><p>Marks the domain as quarantined and restricts trusts to established security identifier (SID) filtering rules</p></td>
+</tr>
+<tr>
+<td><p>FOREST_TRANSITIVE</p></td>
+<td><p>Indicates the trust relationship is a cross-forest trust between the root domains of two forests</p></td>
+</tr>
+<tr>
+<td><p>CROSS_ORGANIZATION</p></td>
+<td><p>Indicates the trust relationship is with a domain or forest outside of the organization</p></td>
+</tr>
+<tr>
+<td><p>WITHIN_FOREST</p></td>
+<td><p>Indicates the trust relationship is within the same forest</p></td>
+</tr>
+<tr>
+<td><p>TREAT_AS_EXTERNAL</p></td>
+<td><p>Indicates the trust relationship should be treated as an external trust in established security identifier (SID) filtering rules</p></td>
+</tr>
+<tr>
+<td><p>USES_RC4_ENCRYPTION</p></td>
+<td><p>Indicates the domain is running a non-Windows Kerberos distribution that uses RC4 keys for encryption</p></td>
+</tr>
+<tr>
+<td><p>CROSS_ORGANIZATION_NO_TGT_DELEGATION</p></td>
+<td><p>Indicates any tickets granted through the trust relationship must not be trusted for delegation purposes</p></td>
+</tr>
+<tr>
+<td><p>CROSS_ORGANIZATION_ENABLE_TGT_DELEGATION</p></td>
+<td><p>Indicates any tickets granted through the trust relationship must be trusted for delegation purposes</p></td>
+</tr>
+<tr>
+<td><p>PIM_TRUST</p></td>
+<td><p>Indicates a cross-forest trust that should be treated as a Privileged Identity Management (PIM) trust in security identifier (SID) filtering rules</p></td>
+</tr>
+<tr>
+<td><p>DISABLE_AUTH_TARGET_VALIDATION</p></td>
+<td><p>Indicates domain name validation during NTLM pass-through authentication is disabled</p></td>
+</tr>
+</tbody>
+</table>
+:::

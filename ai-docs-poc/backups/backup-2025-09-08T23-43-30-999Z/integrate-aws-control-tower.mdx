@@ -1,0 +1,58 @@
+---
+slug: trend-vision-one-integrate-aws-control-tower
+title: Integrate with AWS Control Tower
+last_updated: '2025-09-08'
+ai_context:
+  source_file: integrate-aws-control-tower.md
+  conversion_date: '2025-09-08T23:42:17.142Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Integrate Server & Workload Protection with [AWS Control Tower](https://aws.amazon.com/controltower/) to ensure that every account added through Control Tower Account Factory is automatically provisioned in Server & Workload Protection, providing centralized visibility to the security posture of EC2 instances deployed in each account as well as the foundation for policy and billing automation.
+
+## Overview {#overview}
+
+The Lifecycle Hook solution provides a CloudFormation template which, when launched in the Control Tower Master Account, deploys AWS infrastructure to ensure Server & Workload Protection monitors each Account Factory AWS account automatically. The solution consists of 2 Lambda functions; one to manage our role and access Server & Workload Protection, and another to manage the lifecycle of the first Lambda. AWS Secrets Manager is leveraged to store the API key for Server & Workload Protection in the Master account and a CloudWatch Events rule is configured to trigger the customization Lambda when a Control Tower account is successfully deployed.
+
+Once Server & Workload Protection is integrated with AWS Control Tower, it will be implemented in the following way:
+
+### Procedure {#procedure}
+
+1.  During stack launch, the lifecycle Lambda is executed for each existing Control Tower Account, including the Control Tower Master, Audit, and Log accounts.
+
+2.  After launch, a CloudWatch event rule triggers the lifecycle Lambda for each successful Control Tower CreateManagedAccount event.
+
+3.  The lifecycle Lambda function retrieves the Server & Workload Protection API Key from AWS Secrets Manager, then gets the External ID for your organization from the Server & Workload Protection API.
+
+4.  The Lambda function assumes the ControlTowerExecution role in the target Managed Account in order to create the necessary cross account role and associated policy.
+
+5.  A call is made to the Server & Workload Protection API to add this Managed Account to your tenant.
+
+### Next steps {#next-steps}
+
+## Integrate with AWS Control Tower {#integrate-with-aws-control-tower}
+
+### Procedure {#procedure-1}
+
+1.  In the Server & Workload Protection console, go to **Administration → User Management → API Keys** and click *New*. Select a name for the key and the *Full Access* role. Be sure to save the key as it cannot be retrieved later. This key will be used to authenticate the automation from the AWS Control Tower Master to the console API. For more information, see [Create an API key](send-your-first-request-using-api.mdx).
+
+2.  Log into the AWS Control Tower master account. Navigate to the CloudFormation Service, select the region in which AWS Control Tower was deployed, and [launch the lifecycle template](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1).
+
+3.  In the lifecycle template, enter your API Key generated in step 1. Leave the FQDN of your console as the default entry.
+
+4.  Check the box acknowledging that AWS CloudFormation might create IAM resources. Select *Create Stack*, and the integration will start adding your AWS accounts to Server & Workload Protection.
+
+5.  Once all your accounts have been imported, automate [agent installation](install-agent.mdx) and activate protection.
+
+### Next steps {#next-steps-1}
+
+## Upgrade AWS Control Tower integration {#upgrade-aws-control-tower-integration}
+
+As new capabilities are added to Server & Workload Protection, it might be necessary to update the permissions for the application's cross-account role. To update the role deployed by the lifecycle hook, update the Server & Workload Protection stack with the latest template, which can be found at its original URL. The parameter values should not be modified from their original values unless directed by Trend Micro Support. Updating the CloudFormation stack will update the role used by all existing accounts and the role created for future enrollments.
+
+## Remove AWS Control Tower integration {#remove-aws-control-tower-integration}
+
+To remove the lifecycle hook, identify and delete the CloudFormation stack. Protection for Managed Accounts that have already been added will remain in place. Removing an AWS account from the Trend Vision One console is now handled by the Cloud Accounts app. For details on removing an AWS account from Cloud Accounts, see [AWS accounts](aws-accounts.mdx).
+:::

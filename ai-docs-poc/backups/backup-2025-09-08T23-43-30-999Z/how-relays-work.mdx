@@ -1,0 +1,49 @@
+---
+slug: trend-vision-one-how-relays-work
+title: How relays work
+last_updated: '2025-09-08'
+ai_context:
+  source_file: how-relays-work.md
+  conversion_date: '2025-09-08T23:42:18.104Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+:::warning[Important]
+
+If you enrolled your Server & Workload Protection Manager in Version Control Policies, Trend Vision One Endpoint Security agents version 202412 or later do not use relays for updates. You must configure a Service Gateway with the Generic Caching Service for agents to retrieve updates.
+:::
+
+A relay is an agent that is configured to redistribute [software and component updates](upgrades.mdx) to other agents. Relays help your deployment perform well as it grows and scales.
+
+Default relays are available inside Server & Workload Protection. Agents should be able to use them if they can [connect to Server & Workload Protection](swp-port-numbers.mdx). You might need more relays for performance or cost reasons.
+
+Alternatively, software updates (but not component updates) can be [distributed by a local mirror web server](web-server-distribute.mdx).
+
+Relays are organized into relay groups. The relays provided by Server & Workload Protection are in a relay group named Primary Tenant Relay Group. If you decide to deploy your own relays, you will need to create at least one more relay group.
+
+Agents receive a randomly ordered list of relays for their assigned relay group. When an agent needs to download an update, it tries the first relay. If there is no response, the agent tries the next in the list until it can successfully download the update. Because the list is random for each agent, this distributes load evenly across relays in a group.
+
+The following diagram depicts the distribution of updates.
+
+<figure>
+<img src="./images/edge-relay-diagram=e4b7c4c0-223c-4481-878a-fc6562f7bcff.webp" />
+</figure>
+
+Major improvements to self-deployed relays were introduced with the Deep Security Agent version 20.0.0-3445. Earlier versions of the relay downloaded every supported agent software package (all versions, all platforms) from Server & Workload Protection, as well as every component update from their primary component update source. This took approximately 400 GB of disk space and downloads could take several hours to complete. The new relay is a reverse proxy which only downloads and caches agent software packages and component updates that are requested by agents, rather than downloading all released updates. Also, the new relay downloads both the agent software packages and component updates directly from Server & Workload Protection relays.
+
+When you deploy a new relay or upgrade an existing relay to version 20.0.0-3445 or later, you get the improved relay functionality and, if upgrading, should notice an immediate decrease in the required disk space.
+
+Consider the following when using relays:
+
+- New relays for Deep Security Agent version 20.0.0-3771 or earlier cannot connect to [Workload Security relays via proxy](configure-proxies-server-workload.mdx). This support was added in the agent version 20.0.0-3964.
+- To avoid known issues related to the upgrade, consider deploying the agent version 20.0.1-12510 or later.
+- The **Secondary Source** setting (**Administration → System Settings → Updates → Component Updates → Secondary Source**) includes a new option: *Allow Agents/Appliances to download component and software updates from Primary Tenant Relay Group if user-deployed Relays are not accessible*. This option is disabled by default, so it does not affect any existing settings. When enabled, you can download component and software updates from the Primary Tenant Relay Group to help resolve any issues arising from relays you have deployed.
+
+### When to deploy your own relays {#when-to-deploy-your-own-relays}
+
+If you need to reduce bandwidth and costs on your Internet or WAN connection, deploy a relay inside your own network. This reduces how much external traffic occurs when protected computers need to download updates. Deploying your own relays is also useful if you have network segments with limited bandwidth.
+
+For instructions on how to deploy your own relays, see [Deploy more relays](deploy-more-relays.mdx).
+::::

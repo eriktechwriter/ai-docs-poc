@@ -1,0 +1,51 @@
+---
+slug: trend-vision-one-config-app-control-policy
+title: Configure Application Control for a policy
+last_updated: '2025-09-08'
+ai_context:
+  source_file: config-app-control-policy.md
+  conversion_date: '2025-09-08T23:42:23.013Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Configure the Application Control module to define its behavior for a policy. Generally, use the following steps to configure the module:
+
+### Procedure {#procedure}
+
+1.  Create an `ApplicationControlPolicyExtension` object and add the Ruleset IDs to use. Also configure the running state (on or off).
+
+2.  Create an `PolicySettings` object to configure runtime settings of the module.
+
+3.  Create a `Policy` object and add the `ApplicationControlPolicyExtension` and `PolicySettings` objects.
+
+4.  Use a `PoliciesApi` object to add or update the policy on Server & Workload Protection.
+
+### Next steps {#next-steps}
+
+For more information about Application Control, see [About Application Control](application-control.mdx).
+
+The following example creates an `ApplicationControlPolicyExtension` object and turns on application control. The object is added to a `Policy` object which is used to modify a policy on Server & Workload Protection.
+
+[source](https://github.com/deep-security/automation-center-sdk-samples/blob/master/python/src/application_control_examples.py)
+
+``` codeblock
+# Get the policy
+policies_api = api.PoliciesApi(api.ApiClient(configuration))
+
+# Turn on Application Control
+application_control_policy_extension = api.ApplicationControlPolicyExtension()
+application_control_policy_extension.state = "on"
+
+# Update the policy
+update_policy = api.Policy()
+update_policy.application_control = application_control_policy_extension
+
+# Modify the policy on Server & Workload Protection
+app_control_policy = policies_api.modify_policy(policy_id, update_policy, api_version, overrides=False)
+return app_control_policy
+```
+
+Also see the [Modify a Policy](https://automation.trendmicro.com/cloudone/workload-security/) operation in the API Reference. For information about authenticating API calls, see [Authenticate with Server & Workload Protection](send-your-first-request-using-api.mdx).
+:::

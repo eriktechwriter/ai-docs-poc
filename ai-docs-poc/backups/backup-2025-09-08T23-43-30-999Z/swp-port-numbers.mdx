@@ -1,0 +1,266 @@
+---
+slug: trend-vision-one-swp-port-numbers
+title: Server & Workload Protection Port numbers
+last_updated: '2025-09-08'
+ai_context:
+  source_file: swp-port-numbers.md
+  conversion_date: '2025-09-08T23:42:12.185Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Server & Workload Protection components communicate over your network. They use:
+
+- Required Server & Workload Protection IP addresses and port numbers
+
+Before deployment, your network administrator might need to configure firewalls, AWS security groups, and web proxies to allow those network services.
+
+For a list of the firewall exceptions, see [Firewall exception requirements for Trend Vision One](firewall-exception-requirements-for.mdx). Firewall exception requirements differ depending on your environment. Refer to the appropriate region to ensure you configure the correct allow rules.
+
+:::note
+
+*Default settings are shown.* Many network settings are configurable. For example, if [your network has a web proxy](configure-proxies-server-workload.mdx), you could configure agents to connect through it on port 1443, instead of directly to Server & Workload Protection on port 443. If you change the default settings, then firewalls must allow communications via the new settings instead.
+:::
+
+For a basic overview, see the network diagram below. For details, see the required port numbers, IP addresses, and URLs tables after the diagram.
+
+<figure>
+<img src="./images/ports-diagram-dsaas=55900467-32c9-435a-82b9-92f3c916655e.webp" />
+</figure>
+
+### Required Server & Workload Protection IP addresses and port numbers {#required-server-workload-protection-ip-addresses-and-port-numbers}
+
+The table below is organized by source address (the deployment component which starts the TCP connection or UDP session). Replies (packets in the same connection but opposite direction, from the destination address) usually must be allowed, too.
+
+Server & Workload Protection servers usually have dynamic IP addresses (that is, other computers in your deployment use DNS queries to find the current IP address of a Server & Workload Protection FQDN when required). For the list of Server & Workload Protection domain names, see Required Server & Workload Protection URLs.
+
+Some ports are required only if you use specific components and features. Some services might have static IP addresses. These exceptions and optional features are indicated.
+
+:::note
+
+All ports in the table are *destination ports* (also called listening ports). Like many software, Server & Workload Protection also uses a range of dynamic, [ephemeral source ports](https://en.wikipedia.org/wiki/Ephemeral_port) when opening a socket. Rarely, ephemeral source ports might be blocked, which causes [connectivity issues](error-activation-failed.mdx). If that happens, then you must also open the source ports.
+:::
+
+<table>
+<thead>
+<tr>
+<th><p>Source Address</p></th>
+<th><p>Destination Address</p></th>
+<th><p>Port (Default)</p></th>
+<th><p>Protocol</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="3"><p>Administrator's computer</p></td>
+<td><p>DNS server</p></td>
+<td><p>53</p></td>
+<td><p>DNS over UDP</p></td>
+</tr>
+<tr>
+<td><p>NTP server</p></td>
+<td><p>123</p></td>
+<td><p>NTP over UDP</p></td>
+</tr>
+<tr>
+<td><p>Server &amp; Workload Protection</p></td>
+<td><p>443</p></td>
+<td><p>HTTPS over TCP</p></td>
+</tr>
+<tr>
+<td rowspan="3" id="Port_numbers_URLs_and_IP_addresses__Deep5"><p>Server &amp; Workload Protection</p>
+<p>Subnets:</p>
+<ul>
+<li><p>Australia:</p>
+<p>3.26.127.96/27</p></li>
+<li><p>Canada:</p>
+<p>3.99.65.64/27</p></li>
+<li><p>Germany:</p>
+<p>3.69.198.64/27</p></li>
+<li><p>India:</p>
+<p>3.108.13.32/27</p></li>
+<li><p>Japan:</p>
+<p>35.75.131.96/27</p></li>
+<li><p>Singapore:</p>
+<p>13.214.15.0/27</p></li>
+<li><p>UAE:</p>
+<p>40.172.62.0/27</p></li>
+<li><p>UK:</p>
+<p>18.169.230.160/27</p></li>
+<li><p>USA:</p>
+<p>3.140.136.224/27</p></li>
+</ul></td>
+<td><p><a href="trend-vision-one-forward-syslog-siem-server">SIEM or Syslog server(if any)</a></p></td>
+<td><p>514</p></td>
+<td><p>Syslog over UDP</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-forward-syslog-siem-server">SIEM or Syslog server(if any)</a></p></td>
+<td><p>6514</p></td>
+<td><p>Syslog over TLS</p></td>
+</tr>
+<tr>
+<td><p>Agents,</p>
+<p><a href="trend-vision-one-how-relays-work">Relays (if any)</a></p>
+
+
+:::note
+
+<p>Only required if you enable <a href="trend-vision-one-communication-agent">bidirectional or manager-initiated communication</a>.</p>
+
+
+:::
+
+</td>
+<td><p>4118</p></td>
+<td><p>HTTPS over TCP</p></td>
+</tr>
+<tr>
+<td rowspan="12" id="Port_numbers_URLs_and_IP_addresses__agentsrow"><p>Agents</p></td>
+<td><p>DNS server</p></td>
+<td><p>53</p></td>
+<td><p>DNS over UDP</p></td>
+</tr>
+<tr>
+<td><p>NTP server</p></td>
+<td><p>123</p></td>
+<td><p>NTP over UDP</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-forward-syslog-siem-server">SIEM or Syslog server(if any)</a></p></td>
+<td><p>514</p></td>
+<td><p>Syslog over UDP</p></td>
+</tr>
+<tr>
+<td><p>Server &amp; Workload Protection</p></td>
+<td><p>443</p></td>
+<td><p>HTTPS over TCP</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-how-relays-work">Relays (if any)</a></p></td>
+<td><p>4122</p></td>
+<td><p>HTTPS over TCP</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p>Smart Protection Network</p></td>
+<td><p>80</p></td>
+<td><p>HTTP over TCP</p></td>
+</tr>
+<tr>
+<td><p>443</p></td>
+<td><p>HTTPS over TCP</p></td>
+</tr>
+<tr>
+<td><p><a href="https://docs.trendmicro.com/en-us/enterprise/trend-micro-xdr-help/ServiceGatewayOverview">Service Gateway(if any, instead of Smart Protection Network, for File Reputation feature)</a></p></td>
+<td><p>8080</p></td>
+<td><p>HTTP over TCP</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p><a href="trend-vision-one-integrate-smart-protection-server">Smart Protection Server(if any, instead of Smart Protection Network, for File Reputation feature)</a></p></td>
+<td><p>80</p></td>
+<td><p>HTTP over TCP</p></td>
+</tr>
+<tr>
+<td><p>443</p></td>
+<td><p>HTTPS over TCP</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p><a href="trend-vision-one-integrate-smart-protection-server">Smart Protection Server(if any, instead of Smart Protection Network, for File Reputation feature)</a></p></td>
+<td><p>5274</p></td>
+<td><p>HTTP over TCP</p></td>
+</tr>
+<tr>
+<td><p>5275</p></td>
+<td><p>HTTPS over TCP</p></td>
+</tr>
+<tr>
+<td rowspan="6"><p><a href="trend-vision-one-how-relays-work">Relays (if any)</a></p></td>
+<td colspan="3"><p>All destination addresses, ports, and protocols required by agents (each relay contains an agent)</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-how-relays-work">Other relays(if any)</a></p></td>
+<td><p>4122</p></td>
+<td><p>HTTPS over TCP</p></td>
+</tr>
+<tr>
+<td><p>Localhost</p>
+<p>(on relays, its agent connects locally, not to a remote relay)</p>
+<p>Only configure if the server's other software uses the same port (a port conflict), or if <strong>host firewalls</strong> such as iptables or Windows Firewall block localhost connections (server connecting internally to itself). <strong>Network firewalls</strong> do <em>not</em> need to allow this port because localhost connections do not reach the network.</p></td>
+<td><p>4123</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p><a href="trend-vision-one-apply-security-updates">Trend Micro Update Server / Active Update</a></p></td>
+<td><p>80</p></td>
+<td><p>HTTP over TCP</p></td>
+</tr>
+<tr>
+<td><p>443</p></td>
+<td><p>HTTPS over TCP</p></td>
+</tr>
+<tr>
+<td><p>Download Center, or its <a href="trend-vision-one-web-server-distribute">mirror on a local web server(if any)</a></p>
+<p>Accounts created before 2020-11-23:</p></td>
+<td><p>443</p></td>
+<td><p>HTTPS over TCP</p></td>
+</tr>
+<tr>
+<td rowspan="6"><p><a href="trend-vision-one-set-up-data-center-gateway">Data Center Gateway(if any)</a></p></td>
+<td><p>DNS server</p></td>
+<td><p>53</p></td>
+<td><p>DNS over UDP</p></td>
+</tr>
+<tr>
+<td><p>NTP server</p></td>
+<td><p>123</p></td>
+<td><p>NTP over UDP</p></td>
+</tr>
+<tr>
+<td><p>Server &amp; Workload Protection</p></td>
+<td><p>443</p></td>
+<td><p>HTTPS over TCP</p></td>
+</tr>
+<tr>
+<td><p>VMware vCenter</p></td>
+<td><p>443</p></td>
+<td><p>HTTPS over TCP</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p>Microsoft Active Directory</p></td>
+<td><p>389</p></td>
+<td><p>STARTTLS and LDAP over TCP and UDP</p></td>
+</tr>
+<tr>
+<td><p>636</p></td>
+<td><p>LDAPS over TCP and UDP</p></td>
+</tr>
+<tr>
+<td rowspan="4"><p><a href="https://docs.trendmicro.com/en-us/enterprise/trend-micro-xdr-help/ServiceGatewayOverview">Service Gateway(if any)</a></p></td>
+<td><p>DNS server</p></td>
+<td><p>53</p></td>
+<td><p>DNS over UDP</p></td>
+</tr>
+<tr>
+<td><p>NTP server</p></td>
+<td><p>123</p></td>
+<td><p>NTP over UDP</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p>Trend Micro Smart Protection Network(for File Reputation feature)</p></td>
+<td><p>80</p></td>
+<td><p>HTTP over TCP</p></td>
+</tr>
+<tr>
+<td><p>443</p></td>
+<td><p>HTTPS over TCP</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-api-sdk-devops-tools-for-automation">API clients(if any)</a></p></td>
+<td><p>Server &amp; Workload Protection</p></td>
+<td><p>443</p></td>
+<td><p>HTTPS over TCP</p></td>
+</tr>
+</tbody>
+</table>
+:::::

@@ -1,0 +1,211 @@
+---
+slug: trend-vision-one-data-loss-prevention-cloud-app
+title: Data Loss Prevention
+---
+# Data Loss Prevention
+
+Through compliance templates and data identifiers, Data Loss Prevention policies allow companies to monitor the flow of sensitive information stored in cloud applications and services.
+
+- Define data identifiers and compliance templates for specific regulatory controls
+
+- Target specific user mailboxes, SharePoint sites, or cloud application users and groups
+
+## Configuring Data Loss Prevention {#configuring-data-loss-prevention}
+
+:::note
+
+Data Loss Prevention is not available in the inbound protection of Exchange Online in inline mode.
+:::
+
+### Procedure {#procedure}
+
+1.  Select **Data Loss Prevention**.
+
+2.  Enable **Data Loss Prevention**.
+
+3.  Select the scope of email messages that Data Loss Prevention applies to.
+
+    - **All messages**: means that this policy applies to incoming, outgoing, and internal email messages. Incoming/outgoing email messages are sent from/to non-internal domains.
+
+    - **Incoming messages**: means that this policy applies only to incoming email messages sent from non-internal domains.
+
+    - **Sent messages only**: means that this policy applies only to email messages in the Sent Items folder.
+
+4.  Optionally select **Display violating content in logs with sensitive data Masked/Unmasked**.
+
+    This provides flexibility for you to determine how sensitive data of your organization will be handled in Data Loss Prevention logs on Cloud Email and Collaboration Protection for privacy concerns.
+
+    - If the check box is not selected, Cloud Email and Collaboration Protection does not record and display violating content, including the sensitive data that triggered a Data Loss Prevention violation, in the **Violating Content** column in **Logs**.
+
+    - If **Display violating content in logs with sensitive data Unmasked** is selected, Cloud Email and Collaboration Protection records and displays violating content in the **Violating Content** column in **Logs**. The sensitive data that triggered a Data Loss Prevention violation is displayed without being masked.
+
+      :::note
+
+      Violating content including the sensitive data to display does not exceed 300 characters.
+      :::
+
+    - If **Display violating content in logs with sensitive data Masked** is selected, Cloud Email and Collaboration Protection records and displays violating content in the **Violating Content** column in **Logs**. The sensitive data that triggered a Data Loss Prevention violation is replaced with asterisks (\*), except for the last four characters.
+
+      :::note
+
+      If the sensitive data is no longer than four characters, it is displayed without being masked.
+      :::
+
+    The default value is **Display violating content in logs with sensitive data Unmasked**.
+
+    If this setting is changed, it applies only to subsequent violating content. The previous content is not affected.
+
+5.  (Exchange Online and Gmail in all protection modes only) Select one or multiple scan targets, which can be the subject, body, attachment, and header of email messages.
+
+    You can select the email header as the scan target and specify a maximum of 10 header field names. When a header field of an email message exactly matches a specified value, the header field will be scanned based on the configured compliance rules.
+
+6.  Configure **Compliance Rule(s)** settings.
+
+    1.  Add sensitivity labels and select the action.
+
+        Optionally click **Sync Labels** to sync the latest sensitivity labels from Microsoft Information Protection.
+
+        For details about the actions, see [Actions available for different services](actions-different-services.mdx).
+
+        :::note
+
+        - This feature is available for OneDrive, Microsoft Teams (Teams), Microsoft Teams (Chat), SharePoint Online, and Exchange Online (not including Exchange Online - Inline Mode).
+
+        - Sensitivity label-based actions are available only after you have granted Cloud Email and Collaboration Protection access to Microsoft Information Protection.
+        :::
+
+    2.  Add compliance templates, then select the action.
+
+        You can also import compliance templates and edit or remove the existing templates.
+
+        For details about the actions, see [Actions available for different services](actions-different-services.mdx).
+
+7.  Click **Show Advanced Options** to configure advanced settings for the actions.
+
+    :::note
+
+    The settings are not available to Exchange Online, Microsoft Teams (Chat), and Gmail.
+    :::
+
+    1.  If the **Tag file name** action is selected, specify the tag to amend to the file name.
+
+        :::note
+
+        The tag cannot exceed 20 characters or contain unsupported characters (/ \\ : \* ? &lt; &gt; " |).
+        :::
+
+    2.  If the **Quarantine** or **Delete** action is selected, specify text to replace the original file content when a file is quarantined or deleted.
+
+        :::note
+
+        This option is not available for Exchange Online, Exchange Online (Inline Mode), and Gmail.
+        :::
+
+    3.  If the **Apply sensitivity label** action is selected, configure **Sensitivity Labeling**.
+
+        1.  Select a Microsoft Information Protection sensitivity label from the drop-down list.
+
+            :::note
+
+            The sensitivity labels are defined on the Microsoft 365 compliance center and automatically sync to Cloud Email and Collaboration Protection on a daily basis. If no sensitivity has been defined, you cannot specify the "Apply sensitivity label" action, and the policy cannot be saved.
+            :::
+
+        2.  Optionally select **Override the original sensitivity label**.
+
+            :::note
+
+            The original sensitivity label refers to the sensitivity label that users have applied when uploading, creating, synchronizing, or modifying files in Microsoft Teams, SharePoint Online, or OneDrive. If you do not select this option, the original sensitivity labels are still applied to the files.
+            :::
+
+        3.  Optionally select **Take a backup action when applying the sensitivity label fails** and select an action from the drop-down list, which can be **Pass**, **Delete**, or **Quarantine**.
+
+            :::note
+
+            This backup action is taken on files that violate the Data Loss Prevention policy if Cloud Email and Collaboration Protection fails to apply the specified sensitivity label to the files for reasons such as that the specified sensitivity label has been deleted on the Microsoft 365 compliance center, or that the file type is not supported.
+            :::
+
+        4.  Optionally click **Click here** to synchronize the latest sensitivity labels from Microsoft.
+
+    4.  (Exchange Online - Inline Mode only) If the **Change recipient** action is selected, configure **Change Recipient Action Settings**.
+
+        The **Change recipient** action intercepts emails and routes them to your specified recipients, allowing related personnel to have direct access to the emails violating a Data Loss Prevention policy.
+
+        1.  Type an email address in your organization to redirect emails to.
+
+            You can add up to 5 email addresses.
+
+        2.  Type the disclaimer to inform the recipients why they receive this redirected email.
+
+            You can use tokens in the message. Currently, the disclaimer only supports the token %policy_name%.
+
+8.  Configure **Notification** settings.
+
+    ::: {.simpletable-container}
+    <table id="GUID-08ED2745-7C28-4D8C-B7B5-36FF1982A08D__CHOICETABLE_GDD_W41_1Q" class="choicetable" data-border="1">
+    <colgroup>
+    <col style="width: 50%" />
+    <col style="width: 50%" />
+    </colgroup>
+    <thead>
+    <tr class="chhead table-header-style">
+    <th class="choptionhd">Option</th>
+    <th class="chdeschd">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="chrow">
+    <td class="choption"><p>Notify administrator</p></td>
+    <td class="chdesc"><ol>
+    <li><p>Specify the administrators to notify by selecting a recipient group or specifying individual recipients. You can click Manage recipient groups to edit the members in a group or add more groups.</p></li>
+    <li><p>Specify message details to notify administrators that Cloud Email and Collaboration Protection detected a security risk and took action on an email message, attachment, or file.</p></li>
+    <li><p>Set the notification threshold which limits the number of notification messages to send. Threshold settings include:</p>
+    <ul>
+    <li><p><strong>Send consolidated notifications periodically</strong>: Cloud Email and Collaboration Protection sends an email message that consolidates all the notifications for a period of time. Specify the period of time by typing a number in the box and selecting hour(s) or day(s).</p></li>
+    <li><p><strong>Send consolidated notifications by occurrences</strong>: Cloud Email and Collaboration Protection sends an email message that consolidates notifications for a set number of filtering actions. Specify the number of virus/malware occurrences by typing a number in the box.</p></li>
+    <li><p><strong>Send individual notifications</strong>: Cloud Email and Collaboration Protection sends an email message notification every time Cloud Email and Collaboration Protection performs a filtering action.</p></li>
+    </ul></li>
+    </ol></td>
+    </tr>
+    <tr class="chrow">
+    <td class="choption"><p>Notify User</p></td>
+    <td class="chdesc"><p><strong>Exchange Online and Gmail</strong>: Specify message details that notify recipients that Cloud Email and Collaboration Protection detected a security risk and took action on their email message or attachment.</p>
+    <p><strong>SharePoint Online, OneDrive, Microsoft Teams (Teams), Box, Dropbox, and Google Drive</strong>: Specify message details that notify the user who updated a file that Cloud Email and Collaboration Protection detected a security risk and took action on their file.</p>
+    <p><strong>Teams Chat</strong>: Cloud Email and Collaboration Protection does not provide this option. When a chat message was blocked, a notification "This message was blocked." provided by Microsoft appears in the sender's private chat window. Message senders can click <strong>What can I do?</strong> to view more information about the blocked messages.</p>
+    <p><strong>Box</strong>:</p>
+    <ul>
+    <li><p>Optionally select the <strong>Allow the user to restore the quarantined file</strong> check box. This allows end users to restore a quarantined file violating a Data Loss Prevention policy.</p>
+    <ul>
+    <li><p>The email message sent to the user will contain a link. Clicking the link opens a screen where the user can view the file information, select a reason for restoration, and submit the restoration request. The link is valid only for 24 hours.</p></li>
+    <li><p>The administrator can go to the <strong>Quarantine</strong> screen to query and view data about the files restored by end users and the reason for each restoration.</p></li>
+    </ul></li>
+    <li><p>Optionally select the <strong>Do not notify external user</strong> check box. This allows the administrator to choose not to notify an end user of policy violation details if the user violating the policy does not belong to your organization.</p></li>
+    </ul></td>
+    </tr>
+    </tbody>
+    </table>
+    :::
+
+    :::note
+
+    When specifying a notification message, include relevant tokens and edit the message content as desired. For details about tokens, see [Token list](token-list.mdx).
+    :::
+
+9.  Click the **Approved List** tab and configure the approved sender list.
+
+    This approved list applies to Exchange Online and Exchange Online (Inline Mode).
+
+    1.  Enable the approved sender list.
+
+    2.  Specify a sending email address or domain to bypass Data Loss Prevention scanning and click **Add \>**.
+
+        :::note
+
+        You can use the wildcard character (\*) to represent any characters in the email address or domain name. Examples: `*@example.com`, `name@*.com`, `*@*.example.com`
+
+        The following formats are invalid: `*@*`, `*`
+        :::
+
+    3.  Optionally click **Import** to import sender email addresses in batches, or click **Export** to export and download the approved senders to your local machine.
+
+10. Click **Save**.
+::::

@@ -1,0 +1,45 @@
+---
+slug: trend-vision-one-openshift-419
+title: >-
+  4.1.9 - Ensure that the kubelet –config configuration file has permissions set
+  to 600 or more restrictive (Automated)
+---
+# 4.1.9 - Ensure that the kubelet –config configuration file has permissions set to 600 or more restrictive (Automated)
+
+Profile applicability: Level 1
+
+Ensure that if the kubelet refers to a configuration file with the `--config` argument, that file has permissions of 600 or more restrictive.
+
+The kubelet reads various parameters, including security settings, from a config file specified by the `--config` argument. If this file is specified you should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system.
+
+:::note
+
+By default, the `/var/lib/kubelet/config.json` file has permissions of 600.
+:::
+
+### Audit {#audit}
+
+In OpenShift 4, the kubelet configuration file is managed by the Machine Config Operator and is found at `/var/lib/kubelet/config.json` or `/var/data/kubelet/config.json` with file permissions set to 600.
+
+For OpenShift 4.13 and above, run the following command to check the permission:
+
+```bash
+for node in $(oc get nodes -o jsonpath='{.items[*].metadata.name}')
+do
+       oc debug node/${node} -- chroot /host stat -c %a
+/var/data/kubelet/config.json
+done
+```
+
+For earlier versions of OpenShift, run the following command to check the permission:
+
+```bash
+for node in $(oc get nodes -o jsonpath='{.items[*].metadata.name}')
+do
+       oc debug node/${node} -- chroot /host stat -c %a
+/var/lib/kubelet/config.json
+done
+```
+
+Verify that the permissions are 600.
+::::

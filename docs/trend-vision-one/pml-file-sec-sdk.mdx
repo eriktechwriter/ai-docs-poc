@@ -1,0 +1,261 @@
+---
+slug: trend-vision-one-pml-file-sec-sdk
+title: Golang API reference
+---
+# Golang API reference
+
+An API reference for the Go SDK for Trend Vision One™ File Security
+
+### Creating a new instance {#creating-a-new-instance}
+
+Create a new instance of the client object, and provision the essential settings, including authentication/authorization credentials (API key) and preferred service region.
+
+```bash
+func NewClient(key string, region string) (c *AmaasClient, e error)
+```
+
+**Parameters**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Parameter</p></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key (string)</td>
+<td><p>A valid API key must be provided if the environment variable <code>TM_AM_AUTH_KEY</code> is not set.</p></td>
+</tr>
+<tr>
+<td>region</td>
+<td><p>The region you obtained your api key. Value provided must be one of the Vision One regions:</p>
+<ul>
+<li><code>ap-northeast-1</code></li>
+<li><code>ap-south-1</code></li>
+<li><code>ap-southeast-1</code></li>
+<li><code>ap-southeast-2</code></li>
+<li><code>eu-central-1</code></li>
+<li><code>us-east-1</code></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Return values**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>c (*AmaasClient)</p></td>
+<td><p>Pointer to an client object. Nil if error encountered</p></td>
+</tr>
+<tr>
+<td>e (error)</td>
+<td><p>Nil if no error encountered; non-nil otherwise.</p></td>
+</tr>
+</tbody>
+</table>
+
+Error conditions
+
+- Invalid authentication
+- Invalid region
+
+### Submitting content {#submitting-content}
+
+Submit the content of a file or buffer to be scanned.
+
+```bash
+func (ac *AmaasClient) ScanFile(filePath string, tags []string) (resp string, e error)
+```
+
+```bash
+func (ac *AmaasClient) ScanBuffer(buffer []byte, identifier string, tags []string) (resp string, e error)
+```
+
+**Parameters**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Parameter</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>filepath (string)</p></td>
+<td><p>Path of the file to scan</p></td>
+</tr>
+<tr>
+<td><p>buffer ([]byte)</p></td>
+<td><p>Buffer containing the data to scan</p></td>
+</tr>
+<tr>
+<td><p>identifier (string)</p></td>
+<td><p>A caller-chosen string to associate with the scan that will be returned in JSON response as part of <code>fileName</code> name/value; can be empty</p></td>
+</tr>
+<tr>
+<td><p>tags ([]string)</p></td>
+<td><p>Tags to be used for scanning . The maximum number tags that you can use is 8, and the length of each tag cannot exceed 63.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Return values**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Parameter</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>resp (string)</p></td>
+<td><p>JSON-formatted response describing the scan result.</p></td>
+</tr>
+<tr>
+<td><p>e (error)</p></td>
+<td><p>Nil if no error encountered; non-nil otherwise.</p></td>
+</tr>
+</tbody>
+</table>
+
+Sample JSON response
+
+```bash
+{
+  "scannerVersion":"1.0.0-27",
+  "schemaVersion":"1.0.0",
+  "scanResult": 1,
+  "scanId": "25072030425f4f4d68953177d0628d0b",
+  "scanTimestamp": "2022-11-02T00:55:31Z",
+  "fileName": "EICAR_TEST_FILE-1.exe",
+  "filePath": "AmspBvtTestSamples/BVT_RightClickScan_DS/unclean/EICAR_TEST_FILE-1.exe",
+  "foundMalwares": [
+    {
+      "fileName": "Eicar.exe",
+      "malwareName": "Eicar_test_file"
+    }
+  ],
+  "fileSHA1":"fc7042d1d8bbe655ab950355f86a81ded9ee4903",
+  "fileSHA256":"1b9f8773919a1770fec35e2988650fde3adaae81a3ac2ad77b67cafd013afcdc"
+}
+```
+
+When malicious content is detected in the scanned object, `scanResult` will show a non-zero value. Otherwise, the value will be `0`. Moreover, when malware is detected, `foundMalwares` will be non-empty containing one or more name/value pairs of `fileName` and `malwareName`. `fileName` will be filename of malware detected while `malwareName` will be the name of the virus/malware found.
+
+Errors conditions
+
+- Invalid authentication
+- Invalid path specified
+- Request timed out (deadline exceeded)
+- Incompatible client used
+- Service unreachable
+- Client not ready for operation
+
+### Freeing up internal resources used by client {#freeing-up-internal-resources-used-by-client}
+
+Free up internal resources used by the client. It should only be invoked after one has finished scanning and no longer needs the client object.
+
+```bash
+func (ac *AmaasClient) Destroy()
+```
+
+### Configuring the logging level {#configuring-the-logging-level}
+
+You can configure the SDK's active logging level. The change is applied globally to all client instances. Default level is `LogLevelOff`, corresponding to all logging disabled. If logging is enabled, unless custom logging is configured using `ConfigLoggingCallback()` logs will be written to stdout.
+
+**Parameters**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Parameter</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>level (LogLevel)</p></td>
+<td><p>Valid values are</p>
+<ul>
+<li><code>LogLevelOff</code></li>
+<li><code>LogLevelFatal</code></li>
+<li><code>LogLevelError</code></li>
+<li><code>LogLevelWarning</code></li>
+<li><code>LogLevelInfo</code></li>
+<li><code>LogLevelDebug</code></li>
+</ul>
+. The default level is <code>LogLevelOff</code>.</td>
+</tr>
+</tbody>
+</table>
+
+### Setting up custom logging {#setting-up-custom-logging}
+
+You can set up a custom logging by provisioning the SDK with a custom callback function that is invoked whether the SDK wants to record a log.
+
+```bash
+func ConfigLoggingCallback(f func(level LogLevel, levelStr string, format string, a ...interface{}))
+```
+
+**Parameters**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Parameter</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>f (function)</p></td>
+<td><p>A function with the prototype</p>
+<pre class="codeblock"><code>func(level LogLevel, levelStr string, format string, a
+    ...interface{})</code></pre></td>
+</tr>
+</tbody>
+</table>
+
+### Thread safety {#thread-safety}
+
+`ScanFile()` or `ScanBuffer()` are designed to be thread-safe. You should be able to invoke `ScanFile()` concurrently from multiple threads without protecting `ScanFile()` with mutex or other synchronization mechanisms.
+
+The `Destroy()` method is NOT thread-safe, so it should only be called upon completion of all the scan routines.
+:::

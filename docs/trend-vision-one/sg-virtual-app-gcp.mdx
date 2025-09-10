@@ -1,0 +1,357 @@
+---
+slug: trend-vision-one-sg-virtual-app-gcp
+title: Deploying a Service Gateway virtual appliance with GCP
+---
+# Deploying a Service Gateway virtual appliance with GCP
+
+:Launch a Service Gateway virtual appliance from Google Cloud Platform (GCP) using a deployment package.
+
+If you do not have VMware, Microsoft Hyper-V, or Nutanix AHV in your environment, you can deploy the Service Gateway virtual appliance from GCP using a deployment package. Before you begin, review the [Service Gateway appliance system requirements](sg-sys-requirements.mdx) to ensure your virtual appliance has the settings needed to deploy the services you want to use.
+
+:::note
+
+The steps contained in these instructions are valid as of June 2025.
+:::
+
+:::note
+
+This feature is not available in all regions.
+:::
+
+### Procedure {#procedure}
+
+1.  Obtain the Service Gateway registration token.
+
+    1.  On the Trend Vision One console, go to **Workflow and Automation → Service Gateway Management**.
+
+    2.  Click **Download Virtual Appliance**.
+
+    3.  Copy the **Registration Token**.
+
+        :::note
+
+        The registration token is used to register the Service Gateway virtual appliance to Service Gateway Inventory after installation and setup are complete. The registration token expires after 24 hours if not used.
+        :::
+
+2.  To initiate the instance launch, sign in to the Google Cloud portal.
+
+3.  Create a firewall policy for the Service Gateway virtual appliance you want to deploy.
+
+    1.  In the Google Cloud portal, open the navigation menu at the upper left of the screen. Go to **VPC Network → Firewall**.
+
+        :::note
+
+        If you don't see the service, use the search bar at the top of the screen to search for `Firewall`. Find **Firewall** under **Search results**.
+        :::
+
+    2.  Click **Create firewall policy**.
+
+        <figure>
+        <img src="./images/sg_gcp_step4=6023ef79-f36c-47f2-b89b-9d2af493860c.webp" />
+        </figure>
+
+    3.  In the **1 Configure policy** step, specify a **Policy name**, select the deployment scope of the firewall policy, and click **Continue**.
+
+    4.  In the **2 Add rules** step, click **Create firewall rule** to create a new firewall rule for the Service Gateway virtual appliance.
+
+        <figure>
+        <img src="./images/sg_gcp_step7=b8aee372-fcdf-49ca-9f00-a796736a278b.webp" />
+        </figure>
+
+    5.  On the **Create a firewall rule** panel on the right, configure the firewall rule settings.
+
+        1.  For **Priority**, specify a positive integer.
+
+            For more information on priority, refer to the Google Cloud documentation.
+
+        2.  For **Direction of traffic**, select **Ingress**.
+
+        3.  For **Action on match**, select **Allow**.
+
+        4.  For **Target**, select the instance where you would like to apply this firewall rule.
+
+        5.  For **Source network type**, select the network type that matches the source where the ingress traffic comes.
+
+        6.  For **Source filters**, specify the IP type and IP ranges of the source.
+
+            :::note
+
+            Trend Micro recommends specifying the source IP addresses/CIDR ranges that are within your network.
+            :::
+
+        7.  For **Protocols and ports**, select **Specified protocols and ports**, select **TCP**, and add the ports according to the following table.
+
+            <table style="width:99%;">
+            <colgroup>
+            <col style="width: 14%" />
+            <col style="width: 14%" />
+            <col style="width: 14%" />
+            <col style="width: 14%" />
+            <col style="width: 43%" />
+            </colgroup>
+            <thead>
+            <tr>
+            <th><p>Service</p></th>
+            <th><p>Destination port ranges</p></th>
+            <th><p>Protocol</p></th>
+            <th><p>Action</p></th>
+            <th><p>Description</p></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td><p>SSH</p></td>
+            <td><p>22</p></td>
+            <td><p>TCP</p></td>
+            <td><p>Allow</p></td>
+            <td><p>For accessing Service Gateway virtual appliance CLISH command</p></td>
+            </tr>
+            <tr>
+            <td><p>HTTP</p></td>
+            <td><p>80</p></td>
+            <td><p>TCP</p></td>
+            <td><p>Allow</p></td>
+            <td><p>Service enabled queries for on-premises Active Directory servers, connected Trend Micro products (such as endpoint agents), Predictive Machine Learning, File Reputation Services, or Third-Party Integration</p></td>
+            </tr>
+            <tr>
+            <td><p>HTTPS</p></td>
+            <td><p>443</p></td>
+            <td><p>TCP</p></td>
+            <td><p>Allow</p></td>
+            <td><p>Service enabled queries for on-premises Active Directory servers, connected Trend Micro products (such as endpoint agents), Predictive Machine Learning, File Reputation Services, or Third-Party Integration</p></td>
+            </tr>
+            <tr>
+            <td><p>Custom TCP</p></td>
+            <td><p>5274</p></td>
+            <td><p>TCP</p></td>
+            <td><p>Allow</p></td>
+            <td><p>Web Reputation Services or Web Inspection Service queries</p></td>
+            </tr>
+            <tr>
+            <td><p>Custom TCP</p></td>
+            <td><p>5275</p></td>
+            <td><p>TCP</p></td>
+            <td><p>Allow</p></td>
+            <td><p>Web Reputation Services or Web Inspection Service queries</p></td>
+            </tr>
+            <tr>
+            <td><p>Custom TCP</p></td>
+            <td><p>8080</p></td>
+            <td><p>TCP</p></td>
+            <td><p>Allow</p></td>
+            <td><p>Forward Proxy Service listening port for connection</p></td>
+            </tr>
+            <tr>
+            <td><p>Custom TCP</p></td>
+            <td><p>8088</p></td>
+            <td><p>TCP</p></td>
+            <td><p>Allow</p></td>
+            <td><p>Zero Trust Secure Access On-Premises Gateway listening port for connection</p></td>
+            </tr>
+            </tbody>
+            </table>
+
+        8.  For **Enforcement**, select **Enabled**.
+
+        9.  Review the configuration of this firewall rule, then click **Create**.
+
+        10. Select the firewall just created, and click **Continue**.
+
+    6.  In the **3 Associate policy with VPC networks (optional)** step, click **Associate** to associate this firewall policy with existing VPC networks.
+
+        :::note
+
+        If you do not have any VPC network, refer to Google Cloud documentation to create one.
+        :::
+
+    7.  Review the configuration of this firewall policy, then click **Create**.
+
+4.  Create a VM instance.
+
+    1.  Go to **Compute Engine → VM instances**.
+
+    2.  In the **Virtual instances** screen, click **Create instance**.
+
+        <figure>
+        <img src="./images/sg_gcp_step22=5364686e-a5dd-44c8-adb9-a688271343e7.webp" />
+        </figure>
+
+    3.  In the **Create an instance** screen, choose **Create VM from… → Marketplace**.
+
+        <figure>
+        <img src="./images/sg_gcp_step23=58c1131a-cd26-4be4-b5aa-0678b7934dce.webp" />
+        </figure>
+
+    4.  In the **Marketplace** screen, select **Trend Vision One™ Service Gateway** to deploy.
+
+        1.  In the **Marketplace** screen, search for the product **Trend Vision One™ Service Gateway**.
+
+            <figure>
+            <img src="./images/sg_gcp_step24a=f3f0c152-75c3-4e49-945f-76ef3f2cb8f0.webp" />
+            </figure>
+
+        2.  Select **Trend Vision One™ Service Gateway** in the results.
+
+        3.  Click **Get Started** and agree to the terms and agreements before the deployment.
+
+        4.  A dialog for successfully agreeing to terms will pop up. Click **Deploy** to proceed.
+
+        5.  Click **Launch** to proceed with the deployment.
+
+            <figure>
+            <img src="./images/sg_gcp_step24e=b3b3a668-5bd1-46bd-8935-408ab8caa882.webp" />
+            </figure>
+
+        6.  Choose one of the following ways to deploy **Trend Vision One™ Service Gateway**.
+
+            <table>
+            <colgroup>
+            <col style="width: 25%" />
+            <col style="width: 75%" />
+            </colgroup>
+            <thead>
+            <tr>
+            <th><p>Deployment method</p></th>
+            <th><p>Steps</p></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td><p>Terraform</p></td>
+            <td><ol>
+            <li><p>Specify a <strong>Deployment name</strong>.</p></li>
+            <li><p>In the <strong>Deployment Service Account</strong> section:</p>
+            <ol>
+            <li><p>Select an <strong>Existing account</strong> which has the <strong>roles/config.agent</strong>, <strong>roles/compute.admin</strong>, and <strong>roles/iam.serviceAccountUser</strong> roles, or create a new account for the deployment.</p></li>
+            <li><p>Select a <strong>Zone</strong> for the location where <strong>Trend Vision One™ Service Gateway</strong> will be deployed.</p></li>
+            </ol></li>
+            <li><p>In the <strong>Machine type</strong> section, select a machine type that meets the specifications for your deployment.</p>
+
+
+            :::note
+
+            <p>The default machine type is <strong>e2-highcpu-16</strong> with 16 vCPU and 16 GB memory. For more information, see <a href="trend-vision-one-sg-sys-requirements">Service Gateway appliance system requirements</a>.</p>
+
+
+            :::
+
+            </li>
+            <li><p>In the <strong>Boot Disk</strong> section:</p>
+            <ul>
+            <li><p>Select the disk type that meet the specifications for your deployment in <strong>Boot disk type</strong>.</p></li>
+            <li><p>Specify a disk size for <strong>Boot disk size in GB</strong>.</p></li>
+            </ul>
+
+
+            :::note
+
+            <p>The default disk size and disk type is <strong>500 GB</strong> and <strong>Balanced Persistent Disk</strong> respectively. For more information, see <a href="trend-vision-one-sg-sys-requirements">Service Gateway appliance system requirements</a>.</p>
+
+
+            :::
+
+            </li>
+            <li><p>In the <strong>Network interfaces</strong> section, edit the following settings of the network interface:</p>
+            <ul>
+            <li><p>Select the VPC where the firewall policy created in previous steps is applied for <strong>Network</strong>.</p></li>
+            <li><p>Select the desired subnetwork for <strong>Subnetwork</strong>.</p>
+
+
+            :::note
+
+            <p>Refer to the Google Cloud documentation on how to set up a VPC network and subnets.</p>
+
+
+            :::
+
+            </li>
+            <li><p>Select <strong>None</strong> for <strong>External IP</strong>.</p></li>
+            </ul></li>
+            <li><p>Review the VM instance settings, and click <strong>Deploy</strong> to deploy <strong>Trend Vision One™ Service Gateway</strong>.</p></li>
+            </ol></td>
+            </tr>
+            <tr>
+            <td><p>Command-line deployment</p></td>
+            <td><ol>
+            <li><p>Agree to the terms of service and click <strong>Next</strong>.</p></li>
+            <li><p>In the <strong>Configure a service account (Optional)</strong> section, click <strong>Configure</strong> to select an existing account which has the <strong>roles/compute.admin</strong> and <strong>roles/iam.serviceAccountUser</strong> roles, or create a new account for the deployment.</p></li>
+            <li><p>In the <strong>Configure gcloud</strong> section, run all the mentioned commands to configure the gcloud environment.</p>
+
+
+            :::note
+
+            <p>Install <a href="https://cloud.google.com/sdk/docs/install">gcloud</a> before running these commands.</p>
+
+
+            :::
+
+            </li>
+            <li><p>In the <strong>Review VM images</strong> section, click <strong>Download</strong> to download the zipped file, which includes the Terraform scripts of deploying <strong>Trend Vision One™ Service Gateway</strong>, to your local environment.</p></li>
+            <li><p>Unzip the downloaded file.</p></li>
+            <li><p>Click <strong>SHOW COMMAND</strong> to display all the required Terraform commands for the deployment.</p></li>
+            <li><p>Open a terminal, change the current directory to the unzipped folder, and run all the Terraform commands mentioned in step 6 for deploying a <strong>Trend Vision One™ Service Gateway</strong> VM instance to the specified Google Cloud project.</p>
+            <p></p>
+            <pre class="codeblock"><code># Configure the current gcloud environment for Terraform
+            gcloud config set project &lt;project_name&gt;
+            gcloud auth application-default login
+            &#10;# Deploy Trend Vision One™ Service Gateway VM instance on Google Cloud Platform
+            cd path/to/unzipped/folder
+            terraform init
+            terraform apply
+            &#10;# There are two parameters to be input during the deployment:
+            # var.goog_cm_deployment_name
+            #   The name of the deployment and VM instance.
+            &#10;# var.project_id
+            #   The ID of the project in which to provision resources.
+            # After providing values for these parameters, type `yes` to proceed.</code></pre>
+
+
+            :::note
+
+            <p>Install <a href="https://developer.hashicorp.com/terraform/install">Terraform</a> before running these commands.</p>
+
+
+            :::
+
+            </li>
+            </ol></td>
+            </tr>
+            </tbody>
+            </table>
+
+    5.  After the deployment is completed, go to **Compute Engine → VM instances** screen.
+
+        **Trend Vision One™ Service Gateway** is ready to connect and configure when **Status** shows ![](/images/sg_gcp_step26=4eafcf23-06b3-4ca6-9107-c0308cbd8941.webp) (green check).
+
+5.  Connect to the VM instance.
+
+    1.  In the **Virtual instances** screen, click ![](/images/sg_gcp_step27a=1493711f-1a94-4837-8a6e-abd232aac3b6.webp) next to **SSH** of the Service Gateway virtual appliance instance, and select **Open in browser window**.
+
+    2.  In the SSH-in-browser that pops up, click **Authorize** to authorize this SSH connection via your Google account.
+
+        Now you are connected to the Service Gateway virtual appliance instance.
+
+6.  Configure and register the Service Gateway.
+
+    1.  Type the following command to switch the user to **admin**: `su admin`
+
+    2.  Input the default password: `V1SG@2021`.
+
+    3.  Change your password.
+
+    4.  After the new password is applied, the Command Line Interface (CLI) appears.
+
+    5.  Type `enable` and press the **ENTER** key to enable administrative commands.
+
+        The command prompt changes from \> to \#.
+
+    6.  Use the `configure` command to configure the required network settings, such as the IP address and DNS settings.
+
+    7.  Type the following command to register the Service Gateway virtual appliance to Trend Vision One. `register <registration_token>`
+
+        Use the registration token you obtained from Service Gateway Inventory.
+
+7.  Use the CLI to configure other settings, if required.
+
+    For more information on available commands, see [Service Gateway CLI commands](service-gateway-cli-commands.mdx).
+:::::

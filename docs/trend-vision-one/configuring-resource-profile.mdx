@@ -1,0 +1,82 @@
+---
+slug: trend-vision-one-configuring-resource-profile
+title: Configuring a Network Resource profile
+---
+# Configuring a Network Resource profile
+
+Create profiles to apply different sets of Network Resource lists to your Network Sensors.
+
+You can configure Network Resource profiles to provide different sets of Network Resource lists for your network asset groups. Network Resource profiles enable tailoring specific network information to your deployed Network Sensors based on location, region, or other factors which require you to define different network topographies.
+
+Use the following steps to create and configure a Network Resource profile.
+
+:::warning[Important]
+
+- Configure network asset lists from Network Inventory. For more information, see [Network Inventory](network-inventory.mdx).
+
+- If you have not created a Network Resource profile, Network Resources displays only the Base Profile. The Base Profile is applied to all network asset groups which have not been assigned to another profile. Trend Micro recommends setting up the Network Resource Lists for the Base Profile before creating a new profile. For more information, see [Network Resource Lists](network-resource-lists.mdx).
+
+- The Base Profile cannot be deleted. Network asset groups cannot be unassigned from the Base Profile. You must assign network asset groups to a new profile if you do not want to use the Base Profile.
+
+- Assigning a network asset group to a new profile overwrites the Network Resource information for the assigned Network Sensors. Always back up your Network Resource Lists using the export function before assigning new profiles. For more information, see [Network Resource Lists](network-resource-lists.mdx).
+:::
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Network Security → Network Analysis Configuration → Network Resources**.
+
+2.  Create or edit a Network Resource profile.
+
+    - To create a new profile, click **Create Network Resource Profile**.
+
+    - To edit a profile, click the edit icon (![](/images/editIcon=71125946-2a6e-4cfa-ae3f-072292c400ae.webp)) for the profile you want to configure.
+
+    The **Network Resource Profile Details** screen appears.
+
+3.  Specify a **Name** for the profile.
+
+    :::warning[Important]
+
+    You cannot assign network asset groups to the profile until after you configure the Network Resource Lists for the profile.
+    :::
+
+4.  Click **Save**.
+
+5.  Locate the profile on the list and click the profile name.
+
+    The Network Resource Lists screen appears.
+
+6.  Configure the lists for the profile.
+
+    For more information, see [Network Resource Lists](network-resource-lists.mdx).
+
+7.  Click **Save**.
+
+8.  Locate the profile on the list and click the edit icon (![](/images/editIcon=71125946-2a6e-4cfa-ae3f-072292c400ae.webp)).
+
+    The **Network Resource Profile Details** screen appears.
+
+9.  Click the edit icon (![](/images/editIcon=71125946-2a6e-4cfa-ae3f-072292c400ae.webp)) for **Network asset groups**.
+
+10. Select the network asset groups to assign to the profile.
+
+    You can assign a child group to a different profile than the parent group. You can also clear a selection to unassign a group from the policy.
+
+    :::note
+
+    Network asset groups not assigned to a policy adopt the Base Policy.
+    :::
+
+11. Click **Select**.
+
+12. Click **Save**.
+
+    A confirmation screen appears. Review the information carefully and click **Confirm** to continue.
+
+    :::warning[Important]
+
+    Assigning groups to a new profile overwrites any previously used Network Resource Lists.
+    :::
+
+    After confirming the settings, the assigned network asset groups adopt the Network Resource Lists configured in the Network Resource profile.
+::::

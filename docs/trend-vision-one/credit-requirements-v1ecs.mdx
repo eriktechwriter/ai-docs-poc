@@ -1,0 +1,210 @@
+---
+slug: trend-vision-one-credit-requirements-v1ecs
+title: Credit requirements for Email and Collaboration Security
+---
+# Credit requirements for Email and Collaboration Security
+
+::Allocate Trend Vision One credits to enable the Email and Collaboration Security offerings.
+
+The total number of credits required for each offering is calculated by multiplying the required credits per unit by the number of eligible user accounts or email addresses in each offering.
+
+### Email and Collaboration Sensor {#email-and-collaboration-sensor}
+
+The following table describes the available Trend Vision One Email and Collaboration Sensor offerings and required credits.
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Offering</p></th>
+<th><p>Required credits</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Email Sensor</p></td>
+<td><p>5 credits per user account</p></td>
+</tr>
+<tr>
+<td><p>Collaboration Sensor</p></td>
+<td><p>No credits required</p>
+
+
+:::warning[Important]
+
+<p>This is a "Pre-release" feature and is not considered an official release. Please review the <a href="trend-vision-one-pre-release-disclaimer">Pre-release disclaimer</a> before using the feature.</p>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+
+The user accounts that are counted in the credit calculation are the accounts added as [Email Sensor targets](managing-email-sensor-detection.mdx) in the **Email and Collaboration Sensor** app.
+
+### Cloud Email and Collaboration Protection {#cloud-email-and-collaboration-protection}
+
+The following table describes the available Trend Vision One Cloud Email and Collaboration Protection offerings and required credits.
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Offering</p></th>
+<th><p>Required credits</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Core protection</p></td>
+<td><p>Core protection for your email and collaboration services, including services in Microsoft 365 and Google Workspace, Box, and Dropbox</p>
+<p>25 credits per user account</p></td>
+</tr>
+<tr>
+<td><p>Advanced protection</p></td>
+<td><p>Advanced protection features including <a href="trend-vision-one-protection-modes-for-email-services">Inline Protection (for Exchange Online and Gmail)</a> and <a href="trend-vision-one-virtual-analyzer-cloud-apps">Virtual Analyzer for URLs</a> (URL sandboxing)</p>
+<p>25 credits per user account</p></td>
+</tr>
+</tbody>
+</table>
+
+The user accounts counted in the credit calculation are as follows:
+
+- **Microsoft 365 services**: The deduplicated accounts that are added as targets of enabled policies for Exchange Online, OneDrive, or Teams Chat, excluding unlicensed and guest accounts
+
+- **Microsoft 365 services (SharePoint Online or Teams only)**: The accounts that are synchronized from your organization's identity provider if only policies for SharePoint Online or Teams (Teams) are enabled.
+
+- **Box, Dropbox, Gmail, Google Drive**: The deduplicated accounts that are added as targets of enabled policies for each service, excluding unlicensed and guest users.
+
+- Policies include Advanced Threat Protection policies and Data Loss Prevention policies.
+
+- For advanced protection charges, only accounts that are added in the policies with an advanced protection feature enabled are counted.
+
+For example, your organization uses Exchange Online and SharePoint Online and has 500 users stored in Microsoft Entra ID. You add 100 users in several policies for Exchange Online without Virtual Analyzer for URLs enabled, another 100 users in other policies for Exchange Online with this feature enabled, and 2 SharePoint sites in several policies for SharePoint Online. The total number of credits required is calculated as follows: 25 \* 100 + (25 + 25) \* 100 = 7,500
+
+Advanced protection charges occur when any of the advanced protection features is enabled. Enabling multiple features still costs 25 credits per user account. If you do not wish to use advanced protection, disable all advanced protection features and wait for at least one day. The deducted credits will be returned to your account.
+
+:::warning[Important]
+
+For customers having updated from Cloud App Security, if Virtual Analyzer for URLs was used in Cloud App Security, advanced protection is automatically enabled after the update, with credits for advanced protection automatically deducted.
+:::
+
+### Cloud Email Gateway Protection {#cloud-email-gateway-protection}
+
+:::warning[Important]
+
+The following credit requirements for Cloud Email Gateway Protection are effective on January 10, 2025.
+:::
+
+The following table describes the available Trend Vision One Cloud Email Gateway Protection offerings and required credits.
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Offering</p></th>
+<th><p>Required credits</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Core protection</p></td>
+<td><p>Core protection to safeguard your emails against phishing, ransomware, BEC, other advanced email threats, and spam</p>
+<p>25 credits per user account or email address</p></td>
+</tr>
+<tr>
+<td><p>Advanced protection</p></td>
+<td><p>Advanced protection features including <a href="trend-vision-one-configuring-web-reputation-criteria">Virtual Analyzer for URLs</a> (URL sandboxing), <a href="trend-vision-one-encrypting-outbound-messages">Email Encryption</a>, <a href="trend-vision-one-email-continuity">Email Continuity</a>, <a href="trend-vision-one-message-size-settings">Extra Large Message Size</a>, and <a href="trend-vision-one-monitoring-dmarc-setup">DMARC Report Analysis</a></p>
+<p>25 credits per user account or email address</p></td>
+</tr>
+</tbody>
+</table>
+
+Depending on whether you have integrated your user directories, for example, Microsoft Entra ID, OpenLDAP, with Trend Vision One through **Workflow and Automation → Third-Party Integration** and synchronized users to Trend Vision One, you may have three credit calculation models that use different units, that is, active user accounts and/or unique active email addresses.
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Model</p></th>
+<th><p>User Directory Integration</p></th>
+<th><p>Credit Calculation Unit</p></th>
+<th><p>Description</p></th>
+<th><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Active users model</p></td>
+<td><p>Fully integrated</p></td>
+<td><p>Active user account</p></td>
+<td><p>A user account is treated as an active user account if:</p>
+<ul>
+<li><p>The domain part of the user's email address is added to and managed by Cloud Email Gateway Protection, and</p></li>
+<li><p>At least one email has been successfully delivered to or sent out from the user's email address over the past 30 days.</p></li>
+</ul></td>
+<td><p>You have added four domains to Cloud Email Gateway Protection and integrated the user directories for these domains with Trend Vision One. There are 1,000 active user accounts on these domains.</p>
+<p>Credit calculation units: 1,000</p></td>
+</tr>
+<tr>
+<td><p>Active email addresses model</p></td>
+<td><p>Not integrated</p></td>
+<td><p>Unique active email address</p></td>
+<td><p>An email address is treated as a unique active email address if:</p>
+<ul>
+<li><p>The domain part of the email address is added to and managed by Cloud Email Gateway Protection, and</p></li>
+<li><p>Duplicate email addresses with the same local part are removed. For example, the following two email addresses are treated as one email address for credit calculation: john.doe@example.com, john.doe@example.jp, and</p></li>
+<li><p>The email address matches one of the following conditions:</p>
+<ul>
+<li><p>At least three emails have been delivered successfully to the email address over the past 30 days</p></li>
+<li><p>At least one email has been sent out successfully from the email address over the past 30 days</p></li>
+</ul></li>
+</ul></td>
+<td><p>You have added four domains to Cloud Email Gateway Protection but have not integrated the user directories for these domains with Trend Vision One. There are 2,000 unique active email addresses on these domains.</p>
+<p>Credit calculation units: 2,000</p></td>
+</tr>
+<tr>
+<td><p>Mixed model</p></td>
+<td><p>Partially integrated</p></td>
+<td><p>Active user account and unique active email address depending on user directory integration</p></td>
+<td><ul>
+<li><p>For domains with user directory integrated: Follow the active users model.</p></li>
+<li><p>For domains without user directory integrated: Follow the active email addresses model.</p></li>
+</ul></td>
+<td><p>You have added two domains to Cloud Email Gateway Protection and integrated the user directories for these domains with Trend Vision One. There are 500 active user accounts on these domains.</p>
+<p>You have added another two domains to Cloud Email Gateway Protection but have not integrated the user directories for these domains with Trend Vision One. There are 1,000 unique active email addresses on these domains.</p>
+<p>Credit calculation units: 500 + 1,000 = 1500</p></td>
+</tr>
+</tbody>
+</table>
+
+Advanced protection charges occur when any of the advanced protection features is enabled and apply to all eligible user accounts or email addresses on all managed domains. Enabling multiple features still costs 25 credits per user account or email address.
+
+For example, you have added 3 domains with 500 users in Cloud Email Gateway Protection, 300 of which are active user accounts over the past 30 days. You have enable URL sandboxing and Email Continuity on one domain, which means that advanced protection is enabled on all active user accounts of the three domains. Therefore, the total number of credits required is calculated as follows: (25 + 25) \* 300 = 15,000
+
+If you do not wish to use advanced protection, disable all advanced protection features and wait for at least one day. The deducted credits will be returned to your account.
+
+:::warning[Important]
+
+For customers having updated from Trend Micro Email Security, if Email Encryption was used in Trend Micro Email Security, advanced protection is automatically enabled after the update, with credits for advanced protection automatically deducted.
+:::
+
+If you no longer need to use Cloud Email Gateway Protection, delete all managed domains in the [Domains](managing-domains.mdx) screen. All allocated credits will be returned to your account the next day.
+::::::

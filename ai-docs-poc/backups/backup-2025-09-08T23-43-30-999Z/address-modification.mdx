@@ -1,0 +1,183 @@
+---
+slug: trend-vision-one-address-modification
+title: Address modification
+last_updated: '2025-09-08'
+ai_context:
+  source_file: address-modification.md
+  conversion_date: '2025-09-08T23:42:25.652Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Rewrite email addresses of inbound or outbound traffic to help reroute emails, mask internal infrastructure, and align with organizational policies.
+
+Configure email address modification rules to:
+
+- Rewrite sender or recipient addresses in both message envelopes and headers
+
+- Rewrite domains in email addresses
+
+You can configure address or domain rewriting rules to replace the entire email address or only the domain portion of the address. The following table shows some examples.
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Original address</p></th>
+<th><p>New address</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>test@example.com</p></td>
+<td><p>myname@mydomain.com</p></td>
+</tr>
+<tr>
+<td><p>test1@example.com</p></td>
+<td><p>test2@example.com</p></td>
+</tr>
+<tr>
+<td><p>test@test.com</p></td>
+<td><p>test@example.com</p></td>
+</tr>
+</tbody>
+</table>
+
+If an email address matches both an address rewriting rule and a domain rewriting rule in the same direction, the address rewriting rule takes precedence.
+
+:::note
+
+You can create only one rewriting rule for a domain or email address in one direction.
+:::
+
+Address and domain rewriting rules apply to sender addresses for outbound traffic and recipient addresses for inbound traffic.
+
+Rewriting occurs before policy matching and message delivery. Cloud Email Gateway Protection scans emails and applies security policies based on the rewritten domains and addresses, not the original ones.
+
+:::warning[Important]
+
+Once rewriting rules are configured, existing inbound and outbound policy rules that reference original domains or email addresses will no longer apply. To ensure consistent enforcement, make sure appropriate inbound and outbound policy rules are in place for the rewritten domains and addresses.
+
+For inbound emails, if message header addresses are rewritten, DKIM and DMARC (which relies on DKIM) verification in Cloud Email Gateway Protection and downstream MTAs may fail due to modifications to the message body.
+:::
+
+### Procedure {#procedure}
+
+1.  Make sure that your account has the appropriate permissions and that you have added both the original and rewritten domains in Cloud Email Gateway Protection.
+
+    <table>
+    <colgroup>
+    <col style="width: 33%" />
+    <col style="width: 67%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Operation</p></th>
+    <th><p>Account role type and permissions</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>View and edit (add, modify, and delete) rewriting rules</p></td>
+    <td><p>Roles with the <strong>Configure settings</strong> permission under <strong>Administration - Other Settings</strong>: can edit those rewriting rules where both the original and rewritten domains are within their domain visibility scope</p></td>
+    </tr>
+    <tr>
+    <td><p>View rewriting rules only</p></td>
+    <td><ul>
+    <li><p>Roles with the <strong>Configure settings</strong> permission under <strong>Administration - Other Settings</strong> and limited domain visibility: can only view those rewriting rules where at least one domain is outside their scope</p></li>
+    <li><p>Roles with the <strong>View</strong> permission under <strong>Administration - Other Settings</strong>: can view those rewriting rules where either the original and rewritten domain is within their scope</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>View and edit settings</p></td>
+    <td><p>Roles with the <strong>Configure settings</strong> permission under <strong>Administration - Other Settings</strong> and full domain visibility</p></td>
+    </tr>
+    <tr>
+    <td><p>View settings only</p></td>
+    <td><p>Roles with the <strong>View</strong> permission under <strong>Administration - Other Settings</strong></p></td>
+    </tr>
+    </tbody>
+    </table>
+
+    To add a domain to Cloud Email Gateway Protection, go to [Domains](managing-domains.mdx).
+
+2.  Add address rewriting rules or domain rewriting rules.
+
+    - To add an address rewriting rule,
+
+      1.  On the **Address rewriting** tab, click **Add**.
+
+      2.  In the **Address rewriting rule settings** dialog, select the direction to apply the rule.
+
+      3.  Type the original email address.
+
+      4.  Type the new email address to replace the original email address.
+
+      5.  Click **Save**.
+
+    - To add a domain rewriting rule,
+
+      1.  On the **Domain rewriting** tab, click **Add**.
+
+      2.  In the **Domain rewriting rule settings** dialog, select the direction to apply the rule.
+
+      3.  Type the original domain.
+
+      4.  Type the new domain to replace the original domain.
+
+      5.  Click **Save**.
+
+      :::note
+
+      If a managed domain is deleted, the domain rewriting rules associated with the domain are unavailable.
+      :::
+
+    After you have configured one or more rules, you can:
+
+    - Click the name of a rule to edit the rule.
+
+    - Select one or more rules and click **Delete** to remove the selected rules.
+
+3.  Specify the type of email addresses that Cloud Email Gateway Protection uses to match the address modification rules and rewrite upon rule match.
+
+    1.  Click the **Settings** tab.
+
+    2.  Select how Cloud Email Gateway Protection matches and rewrites addresses: envelope addresses, message header addresses, or both
+
+        By default, all options are disabled, meaning address modification is turned off.
+
+    3.  Click **Save**.
+
+    When a rewriting rule is matched,
+
+    <table>
+    <colgroup>
+    <col style="width: 20%" />
+    <col style="width: 40%" />
+    <col style="width: 40%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Selected option</p></th>
+    <th><p>Inbound emails</p></th>
+    <th><p>Outbound emails</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><strong>Envelope addresses</strong></p></td>
+    <td><p>Rewrites recipient envelope addresses</p></td>
+    <td><p>Rewrites sender envelope addresses</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Message header addresses</strong></p></td>
+    <td><p>Rewrites addresses in the <code>To</code> and <code>Cc</code> fields</p></td>
+    <td><p>Rewrites addresses in the <code>From</code> and <code>Reply-To</code> fields</p></td>
+    </tr>
+    </tbody>
+    </table>
+:::::

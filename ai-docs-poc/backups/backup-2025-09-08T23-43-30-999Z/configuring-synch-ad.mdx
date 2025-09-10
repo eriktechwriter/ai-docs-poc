@@ -1,0 +1,111 @@
+---
+slug: trend-vision-one-configuring-synch-ad
+title: Configuring Active Directory Synchronization
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configuring-synch-ad.md
+  conversion_date: '2025-09-08T23:42:22.106Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Synchronize endpoint and user information from your Active Directory by running the Active Directory synchronization tool on any Windows endpoint that can connect to the Active Directory server.
+
+:::note
+
+Trend Micro Apex Central supports synchronization with multiple Active Directory forests. Adding an Active Directory domain automatically synchronizes all domains from the same forest.
+
+For more information about forest trusts, contact your Active Directory administrator.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Administration → Settings → Active Directory and Compliance Settings**.
+
+2.  Click the **Active Directory Settings** tab.
+
+3.  Select **Enable Active Directory synchronization**.
+
+4.  Click **Save**.
+
+5.  Download the Active Directory synchronization tool.
+
+    :::danger[Warning]
+
+    Clicking **Download the Active Directory synchronization tool** will deactivate any previously downloaded Active Directory synchronization tools and stop synchronizing Active Directory servers configured using the deactivated tool.
+    :::
+
+    1.  Click the **Download the Active Directory synchronization tool** link.
+
+        The file MD5 hash value for the synchronization agent appears.
+
+    2.  Save the `Apex_Central_ADSyncAgent_*.zip` file.
+
+    3.  Extract the `Apex_Central_ADSyncAgent_*.zip` file.
+
+6.  Execute the synchronization tool on any Windows endpoint that can connect to the Active Directory server.
+
+    :::warning[Important]
+
+    Ensure that .NET Framework 4.6.1 is installed on the Windows endpoint before executing the tool.
+    :::
+
+    1.  Open a command prompt.
+
+    2.  Use the following command to locate the directory which contains the `ADSyncAgentTool.exe` file:
+
+        `cd <Apex_Central_ADSyncAgent_directory>`
+
+        :::warning[Important]
+
+        Make sure the file path for the synchronization tool contains only printable ASCII characters.
+        :::
+
+    3.  Configure Active Directory server settings by executing the following command:
+
+        `ADSyncAgentTool.exe -i`
+
+    4.  (Optional) Configure proxy server settings by executing the following command:
+
+        `ADSyncAgentTool.exe -p`
+
+    5.  Synchronize configured servers manually by executing the following command:
+
+        `ADSyncAgentTool.exe -s`
+
+        :::note
+
+        You may also use Windows Task Scheduler to synchronize configured servers using a scheduled task that has a time interval of at least 2 hours between each task repetition.
+
+        For more information, refer to the Microsoft documentation.
+        :::
+
+7.  Verify the Active Directory synchronization.
+
+    1.  Go to **Administration → Settings → Active Directory and Compliance Settings**.
+
+    2.  Click the **Active Directory Settings** tab.
+
+        The synchronized server information appears.
+
+    :::note
+
+    - The Active Directory server connection status icon (![](/images/ad_settings_test_ok=GUID-BEE285E1-DBE9-4A44-BEBC-3C5F50080092=1=en-us=Low.webp) or ![](/images/ad_settings_test_fail=GUID-2718E418-A167-47BE-89CC-BCD65A97669E=1=en-us=Low.webp)) appears in front of the server address.
+
+    - You may also use the **Command Tracking** screen to monitor the synchronization status.
+    :::
+
+8.  To remove a synchronized Active Directory server:
+
+    1.  Clear the **Enable Active Directory synchronization** check box.
+
+    2.  Click **Clear Data** to purge the Trend Vision One server of data from the removed Active Directory server.
+
+        Trend Vision One removes the synchronized Active Directory server.
+
+        :::note
+
+        Clicking **Clear Data** triggers a scheduled task, which runs every 2 minutes, to purge all data of the removed Active Directory servers from the Apex Central database.
+        :::
+::::

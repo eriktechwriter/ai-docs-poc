@@ -1,0 +1,70 @@
+---
+slug: trend-vision-one-external-pci-passthrough-rspan
+title: Configuring external network traffic with PCI passthrough (SPAN/RSPAN)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: external-pci-passthrough-rspan.md
+  conversion_date: '2025-09-08T23:42:19.429Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Configure external network traffic with a PCI passthrough using SPAN or RSPAN to allow Virtual Network Sensor to monitor data.
+
+:::warning[Important]
+
+The following instructions are valid as of July 2023.
+:::
+
+:::note
+
+You must use a vCenter administrator account.
+:::
+
+### Procedure {#procedure}
+
+1.  Turn off your Virtual Network Sensor.
+
+2.  On the vCenter console, configure the SPAN or RSPAN protocol for the network traffic you want to monitor.
+
+3.  Click the ![](/images/VMware_vCenter_server_icon=GUID-20230329175050.webp) tab, and then click **Configure**.
+
+    <figure>
+    <img src="./images/External_PCI_SPAN_RSPAN1=GUID-20230729143131.webp" />
+    </figure>
+
+4.  Go to **Hardware → PCI Devices** and click **ALL PCI DEVICES**.
+
+5.  Select your port from the list and click **TOGGLE PASSTHROUGH**.
+
+    <figure>
+    <img src="./images/External_PCI_SPAN_RSPAN2=GUID-20230729143132.webp" />
+    </figure>
+
+6.  Click the ![](/images/VMware_vCenter_server_icon=GUID-20230329175050.webp) tab and then click the name of your virtual appliance.
+
+    <figure>
+    <img src="./images/External_PCI_SPAN_RSPAN3=GUID-20230729143133.webp" />
+    </figure>
+
+7.  Click ![](/images/edit_settings_icon=GUID-20230729150707.webp).
+
+8.  On the **Edit Settings** screen, click **ADD NEW DEVICE** and select **PCI Device**.
+
+    <figure>
+    <img src="./images/External_PCI_SPAN_RSPAN5=GUID-20230729143135.webp" />
+    </figure>
+
+9.  Select **DirecPath IO** and the port you chose before.
+
+    <figure>
+    <img src="./images/External_PCI_SPAN_RSPAN6=GUID-20230729143136.webp" />
+    </figure>
+
+10. Click **OK**.
+
+11. Turn on your Virtual Network Sensor.
+
+    After configuring your network settings, access the Virtual Network Sensor console and use the command `show traffic` to verify the Virtual Network Sensor is receiving traffic. For more information about troubleshooting, see [Virtual Network Sensor FAQ](virtual-network-sensor-faqs.mdx) and [Virtual Network Sensor CLI commands](virtual-network-sensor-cli-commands.mdx).
+:::::

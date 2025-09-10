@@ -1,0 +1,81 @@
+---
+slug: trend-vision-one-configuring-ddi-connections
+title: Configuring Deep Discovery Inspector connections
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configuring-ddi-connections.md
+  conversion_date: '2025-09-08T23:42:22.489Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Manage how Deep Discovery Inspector appliances connect to Network Security and whether to leverage a Service Gateway as a service source.
+
+You can manage and change the method your Deep Discovery Inspector appliances use to connect to Trend Vision One in the Network Inventory app. Additionally, you can configure Deep Discovery Inspector appliances which connect directly to use a Service Gateway as a service source.
+
+:::note
+
+- Connecting to **Network Security** using a Service Gateway as a proxy is only supported by Deep Discovery Inspector version 6.7 or later.
+
+- Make sure you have at least one Service Gateway configured with the following services installed and enabled:
+
+  - Forward Proxy Service (for using a Service Gateway as a proxy)
+
+  - ActiveUpdate
+
+  - Smart Protection Services
+
+  - Suspicious Object List synchronization (required for Deep Discovery Inspector version 6.7 and earlier)
+
+  For more information, see [Manage services in Service Gateway](managing-services-service-gateway.mdx).
+
+- For ActiveUpdate and Smart Protection Services, use the Service Gateway host name or IP address to configure settings on the Deep Discovery Inspector console.
+
+- Connecting to a Service Gateway is not required to integrate the Deep Discovery Inspector appliance with Sandbox as a Service.
+
+  Deep Discovery Inspector appliances can only connect to one Service Gateway at a time. If the appliance is already connected to a Service Gateway, the appliance disconnects from the currently connected Service Gateway and connects to the new Service Gateway.
+:::
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Network Security → Network Inventory → Deep Discovery Inspector**.
+
+2.  Select one or more connected appliances
+
+3.  Click **Configure Connection Settings**.
+
+    The **Appliance Connection Settings** panel appears.
+
+4.  For the **Connect method** select how to connect the selected appliances to Network Inventory.
+
+    - To connect directly to Network Inventory, select **Direct connection**.
+
+    - To connect through a Service Gateway, select **Connect using a Service Gateway as a proxy**.
+
+    :::warning[Important]
+
+    - Connect using a Service Gateway as a proxy is only supported by Deep Discovery Inspector version 6.7 or later.
+
+    - If you are changing from using a Service Gateway as a proxy to a direct connection, ensure your Deep Discovery Inspector is able to connect to the internet before updating the setting.
+    :::
+
+5.  For direct connections, configure the service source.
+
+    - To use service source configured on the Deep Discovery Inspector, select **Use the appliance settings to connect to services**.
+
+    - To connect to a Service Gateway, select **Use the configured service settings on the selected Service Gateway** and then select the Service Gateway to use as the source.
+
+6.  Click **Test Connection**.
+
+    :::warning[Important]
+
+    Network Inventory can only perform the connection test on Deep Discovery Inspector version 6.7 or later. You can confirm if the settings were applied successfully to earlier versions in the [Appliance Details](appliance-details.mdx) screen.
+    :::
+
+    You can apply the settings to Deep Discovery Inspector version 6.7 or later appliances if the status is **Successful**.
+
+    Earlier versions of Deep Discover Inspector show a status of **Not tested**. You can apply settings even if all other appliances return a status of **Failed**.
+
+7.  Click **Apply** to apply the settings to all Deep Discovery Inspector appliances with a status of **Successful** or **Not tested**.
+::::

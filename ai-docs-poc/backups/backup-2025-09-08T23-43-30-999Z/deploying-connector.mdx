@@ -1,0 +1,151 @@
+---
+slug: trend-vision-one-deploying-connector
+title: Deploy the Trend Vision One connector in Microsoft Sentinel
+last_updated: '2025-09-08'
+ai_context:
+  source_file: deploying-connector.md
+  conversion_date: '2025-09-08T23:42:20.612Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Deploy the connector using Azure Functions to enable alert data collection from Trend Vision One.
+
+### Procedure {#procedure}
+
+1.  Install the **Trend Vision One** solution in Microsoft Sentinel
+
+    1.  In your Microsoft Sentinel workspace, go to **Content management → Content hub (Preview)**.
+
+    2.  Search for **Trend Vision One** and click **Install**.
+
+    3.  Choose your workspace and click **Start**.
+
+2.  Install the **Trend Vision One** data connector:
+
+    1.  In your Microsoft Sentinel workspace, go to **Configuration → Data connectors**.
+
+    2.  Search for **Trend Vision One (using Azure Function)** and click **Open connector page**.
+
+    3.  On the connector page, go to **Instructions**.
+
+    4.  Copy the **Workspace ID** and **Workspace Key**.
+
+    5.  Click **Deploy to Azure**.
+
+        The deployment process redirects to the Microsoft Azure portal.
+
+    6.  Configure the settings on the **Custom deployment** page:
+
+        <table>
+        <colgroup>
+        <col style="width: 25%" />
+        <col style="width: 75%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Setting</p></th>
+        <th><p>Configuration Notes</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Subscription</p></td>
+        <td><p>Manages deployed resources</p></td>
+        </tr>
+        <tr>
+        <td><p>Resource group</p></td>
+        <td><p>Where to deploy the connector</p></td>
+        </tr>
+        <tr>
+        <td><p>Function Name</p></td>
+        <td><p>Must be a unique name</p></td>
+        </tr>
+        <tr>
+        <td><p>Workspace ID and Workspace Key</p></td>
+        <td><p>The information you copied from the <strong>Instructions</strong> section of the connector page.</p>
+        <p>You can also access the information from Log Analytics.</p>
+        <ol>
+        <li><p>Go to your Workspace in <strong>Log Analytics</strong>.</p></li>
+        <li><p>Go to <strong>Settings → Agents management</strong>.</p></li>
+        <li><p>The information is on <strong>Windows servers</strong>, under <strong>Download agent</strong>.</p></li>
+        </ol></td>
+        </tr>
+        <tr>
+        <td><p>API Key</p></td>
+        <td><p><a href="trend-vision-one-api-keys-third-party-apps">An API key</a> from a Trend Vision One user account</p>
+        
+
+        :::warning[Important]
+        
+        <p>The Microsoft Sentinel connector requires an API key from a Trend Vision One user account with the SIEM role or a user role with greater permissions. The user account access level must include APIs.</p>
+        
+
+        :::
+
+        </td>
+        </tr>
+        <tr>
+        <td><p>Region Code</p></td>
+        <td><p>The region code that corresponds to the location of your Trend Vision One instance</p>
+        <p>Allowed values:</p>
+        <ul>
+        <li><p><code>au</code></p></li>
+        <li><p><code>eu</code></p></li>
+        <li><p><code>in</code></p></li>
+        <li><p><code>jp</code></p></li>
+        <li><p><code>sg</code></p></li>
+        <li><p><code>us</code></p></li>
+        <li><p><code>mea</code></p></li>
+        </ul></td>
+        </tr>
+        <tr>
+        <td><p>Storage prefix</p></td>
+        <td><p>Ensure the storage prefix adheres to the Azure resource naming conventions.</p></td>
+        </tr>
+        </tbody>
+        </table>
+
+    7.  Click **Review + create**.
+
+3.  Configure the Python version the connector uses.
+
+    1.  In the Microsoft Azure console, find the resource group of the Trend Vision One connector.
+
+    2.  Under **Resources**, click the Function App in your resource group.
+
+    3.  Go to **Configuration → General Settings**.
+
+    4.  Select **Python 3.11** from the **Python Version** menu.
+
+    5.  Click **Save**.
+
+4.  If you use custom detection models or hypersensitive mode, configure the connector to pull the related alert data.
+
+    By default, the Trend Vision One connector does not pull data created by custom detection models or hypersensitive mode. You need to configure additional settings to ensure the connector ingests related alert data.
+
+    1.  In the Microsoft Azure console, find the resource group of the Trend Vision One connector.
+
+    2.  Under **Resources**, click the Function App in your resource group.
+
+    3.  Go to **Settings → Environment variables → App settings**.
+
+    4.  If you want to send custom detection models to Microsoft Sentinel, click **Add** and configure the following settings:
+
+        - **Name**: `queryCustomWorkbench`
+
+        - **Value**: `True`
+
+    5.  If you want to send hypersensitive mode alerts to Microsoft Sentinel, click **Add** and configure the following settings:
+
+        - **Name**: `queryAggressiveWorkbench`
+
+        - **Value**: `True`
+
+    6.  Click **Apply**.
+
+    7.  In the confirmation dialog, click **Confirm**.
+
+After successful deployment, Microsoft Sentinel retrieves new alert data generated by Trend Vision One. The connector does not pull preexisting alert data.
+:::

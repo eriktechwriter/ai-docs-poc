@@ -1,0 +1,93 @@
+---
+slug: trend-vision-one-new-customers-apex-one-email
+title: >-
+  New Trend Vision One Customers Updating Apex One as a Service from an
+  Activation Email
+last_updated: '2025-09-08'
+ai_context:
+  source_file: new-customers-apex-one-email.md
+  conversion_date: '2025-09-08T23:42:15.135Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+:::warning[Important]
+
+- **Permanent update**: You cannot undo or stop the update once you begin. The update may take some time to complete depending on the number of agents managed by your Apex One as a Service instance. Trend Micro strongly recommends scheduling the update during off hours to avoid a disruption of service.
+
+- **Forced sign out during update**: Communicate with any associates that access to your Trend Micro solutions (both Trend Vision One and Apex One as a Service) will be immediately terminated once the update process begins. Finish all on-going tasks before starting the update. After the update completes, you may need to update your user accounts before re-accessing the system. If an account update is required, the affected users will receive an email notification with instructions about how to perform the update.
+
+- **Post-update tasks**:
+
+  - Verify that your user accounts have the correct access permissions and roles in the new User Account app and resolve any role conflicts.
+
+  - Verify that all your endpoint groups, policies, and system settings updated properly to the Standard Endpoint Protection and Endpoint Inventory apps.
+
+  - Check or establish your IdP connection in Trend Vision One.
+
+  - The update process only moves your base agents and not your Endpoint Sensor agents. After the update process is complete, you must contact your support representative to re-associate your Endpoint Sensor agents with your Standard Endpoint Protection endpoints.
+
+- **Compliance considerations**: Ensure that you have read and understood the [Privacy and personal data collection disclosure](ppdcd-trend-vision-one.mdx) for Trend Vision One. Customers that have PCI compliance concerns should contact a sales representative before starting the update.
+:::
+
+### Procedure {#procedure}
+
+1.  Click the activation link in the email.
+
+2.  Sign in to Trend Vision One using the Primary User Account for your registered business.
+
+    :::note
+
+    The Primary User Account was previously called your company's "Trend Micro Account". The account owner has licensing rights to all your Trend Micro solutions.
+    :::
+
+3.  Review your license information.
+
+4.  Review the Trend Micro Agreement, Global Privacy Notice, and Data Collection Notice.
+
+5.  Acknowledge that you have read the applicable legal notices by clicking **Activate**.
+
+6.  If your Primary User Account does not sign in using an email address, you must assign and verify the email address that will be used to access your update services.
+
+    1.  Assign an email account to the Primary User Account and click **Verify Email**.
+
+    2.  Check your email inbox and copy the verification code that Trend Micro sent you.
+
+    3.  Paste the verification code in the console and click **Submit**.
+
+7.  You must update the Primary User Account password.
+
+8.  Allow some time for the activation process to complete.
+
+9.  If your business has other Trend Micro solutions licensed, you may see an option to access your solutions in either **Trend Vision One** or **Customer Licensing Portal**. Choose **Trend Vision One**.
+
+10. Sign in to the Trend Vision One console using your Primary User Account.
+
+11. Update your Apex One as a Service solution.
+
+    1.  Go to **Service Management → Product Instance**.
+
+    2.  Click **Add Existing Product**.
+
+    3.  From **Instance type**, select **Trend Micro Apex One SaaS**.
+
+    4.  Click the **Click to generate the enrollment token** link and copy the token.
+
+    5.  Sign in to the Apex Central console.
+
+    6.  Go to **Trend Vision One → Integration Settings**.
+
+    7.  Paste the enrollment token you obtained from Product Instance in Trend Vision One.
+
+    8.  Click **Register**.
+
+        :::danger[Warning]
+
+        After registering, the update process begins. You cannot undo or stop this action. After the update completes, you will no longer have access to your Apex Central console. You will still have access to the Apex One consoles that were managed by the retired Apex Central console.
+        :::
+
+12. Allow some time for the update process to complete. You can sign into the Trend Vision One console after the account management update has completed. You can also access the [Endpoint Inventory](endpoint-inventory-intro-part.mdx) or [Product Instance](product-instance.mdx) app to monitor the update progress of your Standard Endpoint Protection Manager (replaces the old Apex Central as a Service console).
+
+    [Learn more about feature mapping in Trend Vision One](apex-one-sep-feature-map.mdx)
+::::

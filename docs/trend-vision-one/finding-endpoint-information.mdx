@@ -1,0 +1,28 @@
+---
+slug: trend-vision-one-finding-endpoint-information
+title: Finding endpoint information
+---
+# Finding endpoint information
+
+Locate the endpoint information required to run a diagnostic test in the Self-Diagnosis app.
+
+### Procedure {#procedure}
+
+- Find the agent GUID of a Windows endpoint.
+
+  1.  Open the **Registry Editor**.
+
+      1.  Open the **Run** dialog (**WIN** + **R**).
+
+      2.  Type `regedit` and press **ENTER**.
+
+  2.  Locate the `xdr_device_id` registry key.
+
+      - In endpoints running 64-bit versions of Windows, go to `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\TrendMicro\TMSecurityService`.
+
+      - In endpoints running 32-bit versions of Windows, go to `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\TrendMicro\TMSecurityService`.
+
+      ![](/images/xdr_device_ID=1e18834e-6e9f-4d1d-9c11-426f37dd3f20.webp)
+
+  3.  Copy the value of the registry key.
+:::

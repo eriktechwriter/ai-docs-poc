@@ -1,0 +1,509 @@
+---
+slug: trend-vision-one-integrity-monitoring-language-swp
+title: About the Integrity Monitoring rules language
+last_updated: '2025-09-08'
+ai_context:
+  source_file: integrity-monitoring-language-swp.md
+  conversion_date: '2025-09-08T23:42:17.063Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::::::::::::: {role="main"}
+The Integrity Monitoring rules language is a declarative XML-based language that describes the system components and associated attributes that should be monitored by Server & Workload Protection. It also provides a means to specify what components within a larger set of components should be excluded from monitoring.
+
+:::tip
+
+If you only need to monitor for unauthorized changes to files or the Windows registry, you can use File and Registry rule templates instead of creating a custom one. For more information on using these templates, see [Create an integrity monitoring rule](create-integrity-monitoring-rule.mdx).
+:::
+
+To create a new custom Integrity Monitoring rule, start with the procedure in [Create an integrity monitoring rule](create-integrity-monitoring-rule.mdx) (selecting *Custom (XML)* as the template type), then create your custom rule according to the Integrity Monitoring rules language, as covered in the following sections:
+
+### Entity Sets {#entity-sets}
+
+System components included in an Integrity Monitoring rule are referred to as "Entities". Each type of component is a class of Entity. For example, files, registry keys, and processes are each a class of Entity. The Integrity Monitoring Rules language provides a tag for describing a set of Entities (an Entity Set) for each class of Entity. The following *Entity Set* types are available to be used in a rule:
+
+- [DirectorySet](directoryset.mdx): rules will scan the integrity of directories
+- [FileSet](fileset.mdx): rules will scan the integrity of files
+- [GroupSet](groupset.mdx): rules will scan the integrity of groups
+- [InstalledSoftwareSet](installedsoftwareset.mdx): rules will scan the integrity of installed software
+- [PortSet](portset.mdx): rules will scan the integrity of listening ports
+- [ProcessSet](processset.mdx): rules will scan the integrity of processes
+- [RegistryKeySet](registrykeyset.mdx): rules will scan registry keys
+- [RegistryValueSet](registryvalueset.mdx): rules will scan registry values
+- [ServiceSet](serviceset.mdx): rules will scan the integrity of services
+- [UserSet](userset.mdx): rules will scan the integrity of users
+- [WQLSet](wqlset.mdx): rules will monitor the integrity of the results of a [Windows Management Instrumentation](https://docs.microsoft.com/en-us/windows/win32/wmisdk/wmi-start-page?redirectedfrom=MSDN) WQL query statement
+
+A single Integrity Rule can contain multiple Entity Sets. This allows you to, for example, secure an application with a single rule that monitors multiple files and registry entries.
+
+### Hierarchies and wildcards {#hierarchies-and-wildcards}
+
+For Entity Sets that represent a hierarchical data type such as FileSet and RegistryKeySet, section-based pattern matching is supported:
+
+- `/` (forward slash) : demarcates sections of the pattern to be applied to levels of the hierarchy
+- `**` (two stars) : matches zero or more sections
+
+The following wildcards are supported:
+
+- `?` (question mark) : matches one character
+- `*` (one star) : matches zero or more characters
+
+"Escaping" characters are also supported:
+
+- `\` (back slash) : escapes the next character
+
+The pattern is divided into sections using the " `/` " character, with each section of the pattern being applied to successive levels of the hierarchy as long as it continues to match. For example, if the pattern:
+
+`/a?c/123/*.java`
+
+is applied to the path:
+
+`/abc/123/test.java`
+
+Then:
+
+- "`a?c`" matches "abc"
+- "`123`" matches "123"
+- "`*.java`" matches "test.java"
+
+When the pattern is applied to the path:
+
+`/abc/123456/test.java`
+
+Then:
+
+- "`a?c`" matches "abc"
+- "`123`" does not match "123456", and so no more matching is performed
+
+The "`**`" notation pattern matches zero or more sections, and so:
+
+`/abc/**/*.java`
+
+matches both "abc/123/test.java" and "abc/123456/test.java". It would also match "abc/test.java" and "abc/123/456/test.java".
+
+### Syntax and concepts {#syntax-and-concepts}
+
+This section will present some example Integrity Monitoring rules. The examples will use the *FileSet* Entity Set but the topics and components described are common to all Entity Sets. A minimal Integrity Monitoring rule could look like this:
+
+``` codeblock
+<FileSet base="C:\Program Files\MySQL">
+</FileSet>
+```
+
+The "base" attribute specifies the base directory for the FileSet. Everything else about the rule will be relative to this directory. If nothing further is added to the rule, everything (including subdirectories) below the "base" will be monitored for changes.
+
+:::note
+
+The "`*`" and "`?`" wildcards can be used in a "base" attribute string, but only in the last path component of the base. So this is valid:
+
+``` codeblock
+<codeblock>base="C:\program files\CompanyName * Web Server" </codeblock>
+  
+but this is not: 
+ 
+<codeblock>base="C:\* files\Microsoft Office"</codeblock>
+```
+:::
+
+Within an Entity Set, "include" and "exclude" tags can be used to control pattern matching. These tags have a "key" attribute that specifies the pattern to match against. The source of the key varies by Entity Set. For example, for Files and Directories it is their path, while for Ports it is the unique protocol/IP/portNumber tuple.
+
+:::note
+
+If a path supplied in an include or exclude rule is syntactically invalid, the Agent will generate an "Integrity Monitoring Rule Compile Issue" Agent Event and supply the rule ID and the path (after expansion) as parameters. An example of an invalid path would be `C:\test1\D:\test2` since a file name may not contain two volume identifiers.
+:::
+
+### Include tag {#include-tag}
+
+The include tag is essentially an allow list. Using it means that only those Entities matched by it (or other include tags) will be included. By adding an include tag, the following rule now only monitors changes to files with the name "\*.exe" in the "C:\Program Files\MySQL" folder and sub folders:
+
+``` codeblock
+<FileSet base="C:\Program Files\MySQL">
+<include key="**/*.exe"/>
+</FileSet>
+```
+
+"Includes" can be combined. The following rule will monitor changes to files with the names "\*.exe" and "\*.dll" in the "C:\Program Files\MySQL" folder and sub folders:
+
+``` codeblock
+<FileSet base="C:\Program Files\MySQL">
+<include key="**/*.exe"/>
+<include key="**/*.dll"/>
+</FileSet>
+```
+
+It is also possible to combine multiple criteria in a single include block, in which case *all* criteria must be true for a given Entity to be included. The following "include" tag requires that an Entity both end in ".exe" and start with "sample" to be included. Although this requirement could be represented more succinctly, the usefulness of this becomes more apparent as key patterns are combined with other features of the Entity, as described in the "Features" section below.
+
+``` codeblock
+<include>
+<key pattern="**/*.exe"/>
+<key pattern="**/sample*"/>
+</include>
+```
+
+The following is another way to express the same requirements:
+
+``` codeblock
+<include key="**/*.exe">
+<key pattern="**/sample*"/>
+</include>
+```
+
+### Exclude tag {#exclude-tag}
+
+The exclude tag functions as a block list, removing files from the set that would otherwise be returned. The following (unlikely) example would place everything but temp files under watch.
+
+``` codeblock
+<FileSet base="C:\Program Files\MySQL">
+<include key="**"/>
+<exclude key="**/*.tmp"/>
+</FileSet>
+```
+
+The following rule excludes the "MySQLInstanceConfig.exe" from the set of EXEs and DLLs:
+
+``` codeblock
+<FileSet base="C:\Program Files\MySQL">
+<include key="**/*.exe"/>
+<include key="**/*.dll" />
+<exclude key="**/MySQLInstanceConfig.exe"/>
+</FileSet>
+```
+
+Like the "include" tag, the "exclude" tag can be written to require multiple criteria. The following example shows a multi-criteria "exclude" tag.
+
+``` codeblock
+<exclude>
+<key pattern="**/MySQLInstanceConfig*" />
+<key pattern="**/*.exe" />
+</exclude>
+```
+
+### Case sensitivity {#case-sensitivity}
+
+The case sensitivity of pattern matching for an include or exclude tag may be controlled by the "casesensitive" attribute. The attribute has three allowed values:
+
+- *true*
+- *false*
+- *platform*
+
+The default value for this attribute is "platform", which means that the case sensitivity of the pattern will match the platform on which it is running. In the following example, both "Sample.txt" and "sample.txt" would be returned on a Windows system, but only "Sample.txt" would be returned on a Unix system:
+
+``` codeblock
+<FileSet base="C:\Program Files\MySQL">
+<include key="**/*Sample*"/>
+</FileSet>
+```
+
+In this example, only "Sample.txt" would be returned on Windows and Unix:
+
+``` codeblock
+<FileSet base="C:\Program Files\MySQL">
+<include key="**/*Sample*" casesensitive="true"/>
+</FileSet>
+```
+
+:::note
+
+A case sensitive setting of "true" is of limited use on a platform such as Windows which is case insensitive when it comes to most object names.
+:::
+
+### Entity features {#entity-features}
+
+The inclusion and exclusion of Entities based on features other than their "key" is also supported for some Entity types. The set of features differs by Entity type. The following example will include all executable files. It does not depend on the file extension as previous examples using file extensions did, but instead will check the first few hundred bytes of the file to determine if it is executable on the given OS.
+
+``` codeblock
+<FileSet base="C:\Program Files\MySQL">
+<include key="**" executable="true"/>
+</FileSet>
+```
+
+Feature attributes must appear in an "include" or "exclude" tag. To use them as part of a multi-criteria include or exclude, they must be specified as attributes of the enclosing include or exclude tag. The following example includes all files that contain the string "MySQL" in their name and are also executable:
+
+``` codeblock
+<include executable="true">
+<key pattern="**/*MySQL*"/>
+</include>
+```
+
+The previous example can be more succinctly expressed as:
+
+`<include key="**/*MySQL*" executable="true"/>`
+
+Some feature attributes are simply matches against the value of one of the Entity's attributes. In such cases, wildcard matches using "`*`" and "`?`" are sometimes supported. The help pages for the individual Entity Sets indicate which attributes can be used in include or exclude rules in this way, and whether they support wildcard matching or simple string matching.
+
+:::note
+
+Where wildcard matches are supported, it is important to note that the match is against the string value of the attribute and that no normalization takes place. Constructs available for Entity key matches such as "`**`" and the use of "`/`" to separate hierarchical components don't apply. Matching a path name on Windows requires the use of "`\`" since that is the character which appears in the value of the attribute being tested, whereas Unix systems will use "`/`" in path values so matches against Unix paths need to use "`/`".
+:::
+
+The following is an example of a feature match using the "state" attribute:
+
+``` codeblock
+<ServiceSet>
+<include state="running"/>
+</ServiceSet>
+```
+
+:::note
+
+Wildcards are not supported in state matches.
+:::
+
+The following example matches any processes where the path of the binary ends in "\notepad.exe":
+
+``` codeblock
+<ProcessSet>
+<include path="*\notepad.exe"/>
+</ProcessSet>
+```
+
+The following example matches any processes where the command-line begins with "/sbin/":
+
+``` codeblock
+<ProcessSet>
+<include commandLine="/sbin/*"/>
+</ProcessSet>
+```
+
+:::note
+
+Be careful when using wildcards. A wildcard expression like "`**`" will look at every file in every sub directory beneath "base". Creating a baseline for such an expression can take a lot of time and resources.
+:::
+
+### ANDs and ORs {#ands-and-ors}
+
+It is possible to express logical ANDs and ORs through the use of multi-criteria includes and excludes and multiple includes and excludes.
+
+There are several ways that a multi criteria include or exclude can be used to express an AND. The most straightforward is to include multiple criteria within a single enclosing tag. The following example shows a simple multi-criteria AND-ing:
+
+``` codeblock
+<include>
+<key pattern="**/*MySQL\*" />
+<key pattern="**/*.exe"/>
+</include>
+```
+
+As well, any criteria expressed as an attribute of the including tag will be grouped with the enclosed criteria as part of the multi-criteria requirement. The following example shows the previous multi-criteria "include" re-written in this way:
+
+``` codeblock
+<include key="**/*.exe">
+<key pattern="**/*MySQL*" />
+</include>
+```
+
+Finally, if multiple criteria are expressed as attributes of an include or exclude they are treated as an AND:
+
+`<include executable="true" key="**/*MySQL*" />`
+
+ORs are expressed simply by the inclusion of multiple include or exclude tags. The following code includes files if their extensions are ".exe" OR ".dll":
+
+``` codeblock
+<include key="**/*.dll" />
+<include key="**/*.exe" />
+```
+
+### Order of evaluation {#order-of-evaluation}
+
+All "includes" are processed first, regardless of order of appearance in the rule. If an object name matches at least one "include" tag, it is then tested against the "exclude" tags. It is removed from the set of monitored objects if it matches at least one "exclude" tag.
+
+### Entity attributes {#entity-attributes}
+
+A given Entity has a set of attributes that can be monitored. If no attributes are specified for an Entity Set (i.e. the attributes wrapper tag is not present) then the STANDARD set of attributes for that Entity is assumed. (See the Shorthand Attributes sections for the individual Entity Sets.)
+
+However, for a given Entity Set only certain attributes of the Entity may be of interest for Integrity Monitoring. For example, changes to the contents of a log file are most likely expected and allowed. However changes to the permissions or ownership should be reported.
+
+The "attributes" tag of the Entity Sets allows this to be expressed. The "attributes" tag contains a set of tags enumerating the attributes of interest. The set of allowed "attribute" tags varies depending on the Entity Set for which they are being supplied.
+
+:::note
+
+If the "attributes" tag is present, but contains no entries, then the Entities defined by the rule are monitored for existence only.
+:::
+
+The following example monitors executable files in "C:\Program Files\MySQL" whose name includes "SQL" for changes to their "last modified", "permissions", and "owner" attributes:
+
+``` codeblock
+<FileSet base="C:\Program Files\MySQL" >
+<include key="**/*SQL*" executable="true"/>
+<attributes>
+<lastModified/>
+<permissions/>
+<owner/>
+</attributes>
+</FileSet>
+```
+
+The following example monitors the "permissions", and "owner" attributes of log files in "C:\Program Files\MySQL":
+
+``` codeblock
+<FileSet base="C:\Program Files\MySQL" >
+<attributes>
+<permissions/>
+<owner/>
+</attributes>   
+<include key="**/*.log" />
+</FileSet>
+```
+
+In the following example, the STANDARD set of attributes will be monitored. (See Shorthand Attributes, below)
+
+``` codeblock
+<FileSet base="C:\Program Files\MySQL" >
+<include key="**/*.log" />
+</FileSet>
+```
+
+In the following example, no attributes will be monitored. Only the existence of the Entities will be tracked for change.
+
+``` codeblock
+<FileSet base="C:\Program Files\MySQL" >
+<attributes/>
+<include key="**/*.log" />
+</FileSet>
+```
+
+### Shorthand attributes {#shorthand-attributes}
+
+Shorthand attributes provide a way to specify a group of attributes using a single higher level attribute. Like regular attributes the set of allowed values differs based on the Entity Set for which they are being supplied.
+
+Shorthand Attributes are useful in cases where a set of attributes naturally group together, in cases where exhaustively listing the set of attributes would be tedious, and in cases where the set of attributes represented by the high level attribute may change with time or system configuration. An example of each case follows:
+
+<table>
+<thead>
+<tr>
+<th><p>Attribute</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>STANDARD</p></td>
+<td><p>The set of attributes to monitor for the Entity Set. This is different than "every possible attribute" for the Entity Set. For example, it would not include every possible hash algorithm, just the ones deemed sufficient. For the list of "standard" attributes for each Entity Set, see sections for the individual Entity Sets.</p></td>
+</tr>
+<tr>
+<td><p>CONTENTS</p></td>
+<td><p>This is Shorthand for the hash, or set of hashes, of the contents of the file. Defaults to SHA-1.</p></td>
+</tr>
+</tbody>
+</table>
+
+### onChange attribute {#onchange-attribute}
+
+An EntitySet may be set to monitor changes in real time. If the onChange attribute of an EntitySet is set to true (the default value) then the entities returned by the EntitySet will be monitored for changes in real time. When a change is detected the Entity is immediately compared against its baseline for variation. If the onChange attribute of an EntitySet is set to false, it will be run only when a baseline is built or when it is triggered via a scheduled task or on demand by Server & Workload Protection.
+
+The following sample monitors the MySQL binaries in real time:
+
+``` codeblock
+<FileSet base="C:\Program Files\MySQL" onChange="true">
+<include key="**/*.exe"/>
+<include key="**/*.dll" />
+</FileSet>
+```
+
+### Environment variables {#environment-variables}
+
+Environment variables can be included in the base value used in Entity Sets. They are enclosed in "${}". The variable name itself is prefaced with "env.".
+
+The following example sets the base directory of the FileSet to the path stored in the PROGRAMFILES environment variable:
+
+`<FileSet base="${env.PROGRAMFILES}"/>`
+
+:::note
+
+The values of referenced environment variables are read and stored by the agent on agent startup. If the value of an environment variable changes, the Agent must be restarted to register the change.
+:::
+
+If a referenced environment variable is not found, the Entity Sets referencing it are not scanned or monitored, but the rest of the configuration is used. An alert is triggered indicating that the variable is not present. The Agent reports an invalid environment variable using Agent event "Integrity Monitoring Rule Compile Issue". The ID of the Integrity Monitoring rule and the environment variable name are supplied as parameters to the event.
+
+The following are the default environment variables that Integrity Monitoring uses:
+
+<table>
+<thead>
+<tr>
+<th><p>Name</p></th>
+<th><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>ALLUSERSPROFILE</p></td>
+<td><p>C:\ProgramData</p></td>
+</tr>
+<tr>
+<td><p>COMMONPROGRAMFILES</p></td>
+<td><p>C:\Program Files\Common Files</p></td>
+</tr>
+<tr>
+<td><p>PROGRAMFILES</p></td>
+<td><p>C:\Program Files</p></td>
+</tr>
+<tr>
+<td><p>SYSTEMDRIVE</p></td>
+<td><p>C:</p></td>
+</tr>
+<tr>
+<td><p>SYSTEMROOT</p></td>
+<td><p>C:\Windows</p></td>
+</tr>
+<tr>
+<td><p>WINDIR</p></td>
+<td><p>C:\Windows</p></td>
+</tr>
+</tbody>
+</table>
+
+### Environment variable overrides {#environment-variable-overrides}
+
+Override environment variables when non-standard locations are used in the Windows operating system. For example, the *Microsoft Windows - 'Hosts' file modified* Integrity Monitoring rule, which monitors changes to the Windows hosts file, looks for that file in the C:\WINDOWS\system32\drivers\etc folder. However not all Windows installations use the C:\WINDOWS\\ directory, so the Integrity Monitoring rule uses the WINDIR environment variable and represents the directory as %WINDIR%\system32\drivers\etc.
+
+:::note
+
+Environment variables are used primarily by the virtual appliance when performing agentless Integrity Monitoring on a virtual machine. This is because the virtual appliance has no way of knowing if the operating system on a particular virtual machine is using standard directory locations.
+:::
+
+1.  Open the *Computer or Policy editor* where you want to override an environment variable.
+2.  Click **Settings → Advanced**.
+3.  In the *Environment Variable Overrides section*, click *View Environment Variables* to display the *Environment Variable Overrides* page.
+4.  Click *New* in the menu bar and enter a new name-value pair (for example, WINDIR and D:\Windows) and click *OK*.
+
+### Registry values {#registry-values}
+
+Registry values can be included in the base value used in Entity Sets. They are enclosed in ${}. The path to the registry value itself is prefaced with "reg.". The following example sets the base directory of the FileSet to the path stored in the "HKLM\Software\Trend Micro\Deep Security Agent\InstallationFolder" registry value:
+
+`<FileSet base="${reg.HKLM\Software\Trend Micro\Deep Security Agent\InstallationFolder}"/>`
+
+The values of referenced registry values are read when a new or changed rule is received by the Agent. The Agent also checks all rules at startup time and will rebuild the baseline for affected Rules if any referenced registry values change.
+
+If a referenced registry value is not found, the EntitySets referencing it are not scanned or monitored, but the rest of the configuration is used. An alert notifying that the variable is not present is raised. The Agent reports an invalid environment variable expansion using Agent Event 8012. The ID of the Integrity Monitoring rule and the registry value path are supplied as parameters to the event.
+
+:::note
+
+A wildcard is allowed only in the last hierarchical component of a base name. For example, "`base="HKLM\Software\ATI*`" is valid and will find both "HKLM\Software\ATI" and "HKLM\Software\ATI Technologies"; however, `base="HKLM\*\Software\ATI*` is invalid.
+:::
+
+### Use of ".." {#use-of-..}
+
+The ".." convention for referencing a parent directory is supported in all current versions of the Agent. The Agent will attempt to normalize base directory names for FileSet and DirectorySet elements by resolving ".." references and converting Windows short names to long names. For example, on some newer versions of Windows the following FileSet would have a base directory of C:\Users. On earlier versions of Windows it would be C:\Documents and Settings.
+
+``` codeblock
+<FileSet base="${env.USERPROFILE}\..">
+<include key="*/Start Menu/Programs/Startup/*"/>
+</FileSet>
+```
+
+### Best practices {#best-practices}
+
+Rules should be written to only include objects and attributes that are of significance. This will ensure that no events are reported if other attributes of the object change. For example, your change monitoring policy may place restrictions on permission and ownership of files in `/bin`. Your Integrity Monitoring rule should monitor owner, group, and permissions, but not other attributes like lastModified or hash values.
+
+When using Integrity Monitoring rules to detect malware and suspicious activity, monitor services, watch for use of NTFS data streams, and watch for executable files in unusual places such as "`/tmp`" or "`${env.windir}\temp`".
+
+Always be as specific as possible when specifying what objects to include in a rule. The fewer objects you include, the less time it will take to create your baseline and the less time it will take to scan for changes. Exclude objects which are expected to change and only monitor the attributes you are concerned about.
+
+When creating a rule, do not:
+
+- Use "`**/...`" from a top-level of the hierarchy such as "`/`", "`C:\`", or "`HKLM\Software`".
+- Use more than one content hash type unless absolutely necessary.
+- Reference user-specific locations such as `HKEY_CURRENT_USER`, `${env.USERPROFILE}`, or `${env.HOME}`.
+
+Any of these statements in your integrity monitoring rules will cause performance issues as the agent searches through many items in order to match the specified patterns.
+::::::::::::::

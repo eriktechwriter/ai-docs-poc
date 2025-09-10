@@ -1,0 +1,47 @@
+---
+slug: trend-vision-one-reduce-number-logged-events
+title: Reduce the number of logged events
+last_updated: '2025-09-08'
+ai_context:
+  source_file: reduce-number-logged-events.md
+  conversion_date: '2025-09-08T23:42:13.902Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+To reduce the number of events being logged, Server & Workload Protection can be configured to operate in one of several *Advanced Logging Policy* modes. These modes are set in the Computer or Policy editor on the **Settings → Advanced → Advanced Network Engine Settings** area.
+
+The following table lists the types of events that are ignored in four of the more complex Advanced Logging Policy modes:
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Mode</p></th>
+<th><p>Ignored Events</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><em>Stateful and Normalization Suppression</em></p></td>
+<td><p>Out Of Connection Invalid Flags Invalid Sequence Invalid ACK Unsolicited UDP Unsolicited ICMP Out Of Allowed Policy Dropped Retransmit</p></td>
+</tr>
+<tr>
+<td><p><em>Stateful, Normalization, and Frag Suppression</em></p></td>
+<td><p>Out Of Connection Invalid Flags Invalid Sequence Invalid ACK Unsolicited UDP Unsolicited ICMP Out Of Allowed Policy CE Flags Invalid IP Invalid IP Datagram Length Fragmented Invalid Fragment Offset First Fragment Too Small Fragment Out Of Bounds Fragment Offset Too Small IPv6 Packet Max Incoming Connections Max Outgoing Connections Max SYN Sent License Expired IP Version Unknown Invalid Packet Info Maximum ACK Retransmit Packet on Closed Connection Dropped Retransmit</p></td>
+</tr>
+<tr>
+<td><p><em>Stateful, Frag, and Verifier Suppression</em></p></td>
+<td><p>Out Of Connection Invalid Flags Invalid Sequence Invalid ACK Unsolicited UDP Unsolicited ICMP Out Of Allowed Policy CE Flags Invalid IP Invalid IP Datagram Length Fragmented Invalid Fragment Offset First Fragment Too Small Fragment Out Of Bounds Fragment Offset Too Small IPv6 Packet Max Incoming Connections Max Outgoing Connections Max SYN Sent License Expired IP Version Unknown Invalid Packet Info Invalid Data Offset No IP Header Unreadable Ethernet Header Undefined Same Source and Destination IP Invalid TCP Header Length Unreadable Protocol Header Unreadable IPv4 Header Unknown IP Version Maximum ACK Retransmit Packet on Closed Connection Dropped Retransmit</p></td>
+</tr>
+<tr>
+<td><p><em>Tap Mode</em></p></td>
+<td><p>Out Of Connection Invalid Flags Invalid Sequence Invalid ACK Maximum ACK Retransmit Packet on Closed Connection Dropped Retransmit</p></td>
+</tr>
+</tbody>
+</table>
+:::

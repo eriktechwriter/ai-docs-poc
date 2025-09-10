@@ -1,0 +1,161 @@
+---
+slug: trend-vision-one-policy-status-apex
+title: Policy Status
+---
+# Policy Status
+
+Policy status allows administrators to check if Trend Micro Apex Central has successfully deployed a policy to its targets.
+
+To check the policy deployment status, use one of the following methods:
+
+- On the **Policy Management** screen, click a number in the policy list. The **Log Query** screen appears.
+
+- On the dashboard, click a number in the **Policy Status** widget. The **Log Query** screen appears.
+
+- Perform a log query
+
+The following table provides the descriptions and suggestions about each policy status:
+
+**Policy Status**
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Policy Status</p></th>
+<th><p>Description</p></th>
+<th><p>Suggestions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Pending</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Trend Micro Apex Central is processing the policy.</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Wait a few minutes and then check the status again.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Without policy</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Trend Micro Apex Central has not assigned a policy to this endpoint or managed product.</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Assign a policy to the endpoint or managed product.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Deployed</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Trend Micro Apex Central has successfully deployed the policy.</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>N/A</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Endpoint unable to connect to server</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><ul>
+<li><p>The endpoint did not receive the policy settings.</p></li>
+<li><p>The server is currently busy.</p></li>
+</ul></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li><p>Check the connection status of the endpoint</p></li>
+<li><p>Connect the endpoint to the company network</p></li>
+<li><p>Wait for the updated policy status</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Inapplicable product settings</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>The managed product cannot process some of the policy settings.</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li><p>Verify the policy settings</p></li>
+<li><p>Update to the latest policy template version</p></li>
+<li><p>Check the settings on the managed product</p></li>
+<li><p>Verify the IP address of the managed product on the <strong>Managed Servers</strong> screen</p>
+<p>If the IP address is incorrect, unregister and then register the managed product again to Trend Micro Apex Central.</p></li>
+<li><p>Refer to the Administrator's Guide for the managed product</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Unsupported endpoint</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>The endpoint does not support some features specified in the policy settings.</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Upgrade the agent to a supported version.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Settings changed locally</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Some settings on the endpoint or managed product do not comply with the settings specified in the policy because the managed product administrator has made some changes through the managed product console.</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Verify the settings on the managed product console.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Unactivated licenses</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>The managed product has not activated the licenses for some of the services specified in the policy settings.</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Activate the licenses for the related services from the <strong>License Management</strong> screen on the Trend Micro Apex Central console</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Disabled product services</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>The managed product has disabled some of the services specified in the policy settings.</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Enable the related services on the managed product.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Partially deployed</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Trend Micro Apex Central has enforced a portion of the policy settings.</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Wait a few minutes and then check the status again.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Managed by [Trend Micro Apex Central server name]</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Another Trend Micro Apex Central is currently managing the managed product.</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Remove the managed product from the Managed Server list and add the managed product to the list again.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Invalid user name or password</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>The user name or password for authentication is incorrect.</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Verify the user name or password.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Invalid product server or authentication information</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>The server name or the authentication information is incorrect.</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Verify the server name and the authentication information.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Unable to automatically log on to product</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Trend Micro Apex Central cannot use the single sign-on function to access the managed product.</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li><p>Check the single sign-on function in the Product Directory</p></li>
+<li><p>Check the connection status of the MCP agent</p></li>
+<li><p>Change the server connection type from <strong>Automatic</strong> to <strong>Manual</strong> in the <strong>Managed Servers</strong> list.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Web server configuration error</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>A web service error has occurred.</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Check the IIS configuration.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Product communication error</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Unable to access the product console.</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li><p>Check if you can connect to the managed product's web console.</p></li>
+<li><p>Check the settings of the managed product.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Unable to connect to product</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Trend Micro Apex Central cannot establish a connection with the managed product.</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li><p>Check the connection status of the managed product.</p></li>
+<li><p>Check the network connection</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Unsupported product version</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>The managed product version is not supported.</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Upgrade the managed product to a supported version.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Network configuration error</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>A network connection error has occurred.</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Check the network connection.</p></td>
+</tr>
+<tr>
+<td style="border-right-width: 1px; border-right-style: solid"><p>System error. Error ID: [error ID number].</p></td>
+<td style="border-right-width: 1px; border-right-style: solid"><p>A system error has occurred.</p></td>
+<td><p>Contact your Trend Micro support representative.</p></td>
+</tr>
+</tbody>
+</table>
+:::

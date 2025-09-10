@@ -1,0 +1,339 @@
+---
+slug: trend-vision-one-sql-injection-rule
+title: Configure an SQL injection prevention rule
+last_updated: '2025-09-08'
+ai_context:
+  source_file: sql-injection-rule.md
+  conversion_date: '2025-09-08T23:42:12.312Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+The Intrusion Prevention module includes a built-in rule that detects SQL injection attacks and drops the connection or logs it depending on its characteristics. The rule is called *1000608 - Generic SQL Injection Prevention* and can be configured to suit your organization's needs. For example, you can change the sensitivity of the rule by modifying the drop threshold.
+
+![](/images/ips-sql-injection-rule=f41d27c4-8c53-4f51-a512-8a67344c9738.webp)
+
+### What is an SQL injection attack? {#what-is-an-sql-injection-attack}
+
+An SQL injection attack, or SQL phishing attack, is a method of attacking data-driven applications wherein an attacker includes portions of SQL statements in an entry field. The newly-formed rogue SQL command is passed by the website to your database where it is executed. The command can result in the attacker being able to read, add, delete, or change information in the database.
+
+### What are common characters and strings used in SQL injection attacks? {#what-are-common-characters-and-strings-used-in-sql-injection-attacks}
+
+Here are some commonly used characters and strings. The list is not exhaustive.
+
+- `('`
+- `%27`
+- `\x22`
+- `%22`
+- `char`
+- `;`
+- `ascii`
+- `%3B`
+- `%2B`
+- `--`
+- `%2D%2D`
+- `/*`
+- `%2F%2A`
+- `*/`
+- `%2A%2F`
+- `substring`
+- `drop table`
+- `drop+table`
+- `insert into`
+- `insert+into`
+- `version(`
+- `values`
+- `group by`
+- `group+by`
+- `create table`
+- `create+table`
+- `delete`
+- `update`
+- `bulk insert`
+- `bulk+insert`
+- `load_file`
+- `shutdown`
+- `union`
+- `having`
+- `select`
+- `declare`
+- `exec`
+- `and`
+- `or`
+- `like`
+- `@@hostname`
+- `@@tmpdir`
+- `is null`
+- `is+null`
+- `is not null`
+- `is+not+null`
+- `%3D`
+- `CONCAT`
+- `%40%40basedir`
+- `version%28,user(`
+- `user%28,system_user(`
+- `(,%28,)`
+- `%29`
+- `@`
+- `%40`
+- `cast`
+
+### How does the Generic SQL Injection Prevention rule work? {#how-does-the-generic-sql-injection-prevention-rule-work}
+
+To detect SQL injection attacks, the Generic SQL Injection Prevention rule uses a scoring system. It works like this:
+
+1.  Packets from your application arrive at the agent for analysis.
+2.  The Generic SQL Injection Prevention rule looks at the packets and determines whether any of the strings shown in the table below are present. Notice that the strings are separated by commas and divided into ten groups.
+3.  If strings are found, a score is calculated as follows:
+    - If a single string is found, then the score associated with its group constitutes the total score.
+    - If multiple strings are found in different groups, then the scores of those groups are added together.
+    - If multiple strings are found in the same group, then the score of that group is counted only once. See Examples of the rule and scoring system in action for clarification.
+4.  Using the total score, Server & Workload Protection determines whether to drop the connection or log it. If the total score exceeds the *Drop Threshold* score, then the connection is dropped, and if it exceeds the *Log Threshold* score, then it is logged.
+
+:::note
+
+Trend Micro frequently updates its rules, so the strings in the table below might not match exactly the ones in Server & Workload Protection.
+:::
+
+:::note
+
+The use of '`\W`' in the lines below means 'followed by a non-alphanumeric character'.
+:::
+
+<table>
+<thead>
+<tr>
+<th><p><em>Group</em></p></th>
+<th><p><em>Score</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>drop table,drop+table,insert into,insert+into,values\W,create table,create+table,delete\W,update\W,bulk insert,bulk+insert,shutdown\W,from\W</p></td>
+<td><p>2</p></td>
+</tr>
+<tr>
+<td><p>declare\W,select\W</p></td>
+<td><p>2</p></td>
+</tr>
+<tr>
+<td><p>cast\W,exec\W,load_file</p></td>
+<td><p>2</p></td>
+</tr>
+<tr>
+<td><p>union\W,group by,group+by,order by,order+by,having\W</p></td>
+<td><p>2</p></td>
+</tr>
+<tr>
+<td><p>and\W,or\W,like\W,is null,is+null,is not null,is+not+null,where\W</p></td>
+<td><p>1</p></td>
+</tr>
+<tr>
+<td><p>--,%2D%2D,/\*,%2F%2A,\*/,%2A%2F</p></td>
+<td><p>1</p></td>
+</tr>
+<tr>
+<td><p>',%27,\x22,%22,char\W</p></td>
+<td><p>1</p></td>
+</tr>
+<tr>
+<td><p>;,%3B</p></td>
+<td><p>1</p></td>
+</tr>
+<tr>
+<td><p>%2B,CONCAT\W</p></td>
+<td><p>1</p></td>
+</tr>
+<tr>
+<td><p>%3D</p></td>
+<td><p>1</p></td>
+</tr>
+<tr>
+<td><p>(,%28,),%29,@,%40</p></td>
+<td><p>1</p></td>
+</tr>
+<tr>
+<td><p>ascii,substring</p></td>
+<td><p>1</p></td>
+</tr>
+<tr>
+<td><p>version(,version%28,user(,user%28,system_user(,system_user%28,database(,database%28,@@hostname,%40%40hostname,@@basedir,%40%40basedir,@@tmpdir,%40%40tmpdir,@@datadir,%40%40datadir</p></td>
+<td><p>2</p></td>
+</tr>
+</tbody>
+</table>
+
+### Examples of the rule and scoring system in action {#examples-of-the-rule-and-scoring-system-in-action}
+
+Below are some examples of how the scores are tallied and what actions are undertaken in each scenario.
+
+### Example 1: Logged and dropped traffic {#example-1-logged-and-dropped-traffic}
+
+Let's assume you are using this rule configuration (where the score for the group comes after the colon (":")):
+
+`drop table,drop+table,insert into,insert+into,values\W,create table,create+table,delete\W,update\W,bulk insert,bulk+insert,shutdown\W,from\W:2declare\W,select\W:2cast\W,exec\W,load_file:2union\W,group by,group+by,order by,order+by,having\W:2and\W,or\W,like\W,is null,is+null,is not null,is+not+null,where\W:1--,%2D%2D,/*,%2F%2A,*/,%2A%2F:1',%27,\x22,%22,char\W:1;,%3B:1%2B,CONCAT\W:1%3D:1(,%28,),%29,@,%40:1ascii,substring:1version(,version%28,user(,user%28,system_user(,system_user%28,databas(,database%28,@@hostname,%40%40hostname,@@basedir,%40%40basedir,@@tmpdir,%40%40tmpdir,@@datadir,%40%40datadir:2Log Threshold: 3Drop Threshold: 4`
+
+And this attack string is encountered:
+
+`productID=BB10735166+UNION/**/+SELECT+FROM+user`
+
+Then the total score is 5 (2+1+0+2) because:
+
+- The string `UNION/` matches the fourth group for a score of 2.
+- The string `/*` matches the sixth group for a score of 1.
+- The string `*/` matches the sixth group for a score of 0 (because the score of the sixth group has already been counted).
+- The string `SELECT+` matches the second group for a score of 2.
+
+With a total score of 5, a log is generated and the traffic is dropped.
+
+### Example 2: No logged or dropped traffic {#example-2-no-logged-or-dropped-traffic}
+
+Let's assume you are using this rule configuration (where the `select\W` string has been moved to the same line as `union\W`):
+
+`drop table,drop+table,insert into,insert+into,values\W,create table,create+table,delete\W,update\W,bulk insert,bulk+insert,shutdown\W,from\W:2declare\W:2cast\W,exec\W,load_file:2union\W,select\W,group by,group+by,order by,order+by,having\W:2and\W,or\W,like\W,is null,is+null,is not null,is+not+null,where\W:1--,%2D%2D,/*,%2F%2A,*/,%2A%2F:1',%27,\x22,%22,char\W:1;,%3B:1%2B,CONCAT\W:1%3D:1(,%28,),%29,@,%40:1ascii,substring:1version(,version%28,user(,user%28,system_user(,system_user%28,databas(,database%28,@@hostname,%40%40hostname,@@basedir,%40%40basedir,@@tmpdir,%40%40tmpdir,@@datadir,%40%40datadir:2Log Threshold: 3Drop Threshold: 4`
+
+And this attack string is encountered:
+
+`productID=BB10735166+UNION/**/+SELECT+FROM+user`
+
+Then the total score is 3 (2+1+0+0) because:
+
+- The string `UNION/` matches the fourth group for a score of 2.
+- The string `/*` matches the sixth group for a score of 1.
+- The string `*/` matches the sixth group for a score of 0 (because the score of the sixth group has already been counted).
+- The string `SELECT+` matches the fourth group for a score of 0 (because the score of the fourth group has already been counted).
+
+With a total score of 3, no log is generated and no traffic is dropped. The score must exceed the thresholds for them to take effect.
+
+### Configure the Generic SQL Injection Prevention rule {#configure-the-generic-sql-injection-prevention-rule}
+
+You can configure the Generic SQL Injection Prevention rule to suit your organization's needs. The configurable options are shown in the image below.
+
+![](/images/ips-sql-injection-rule-details=cbe4edae-4116-401c-81e8-7f76c6be96fa.webp)
+
+To configure the rule:
+
+1.  Log in to the Server & Workload Protection console.
+
+2.  At the top, click *Policies*.
+
+3.  In the search box on the right, enter 1000608 which is the Generic SQL Injection Prevention rule's numeric identifier. Press Enter. The rule appears in the main pane.
+
+4.  Double-click the rule.
+
+5.  Click the *Configuration* tab. You see the SQL injection pattern in the text box at the top.
+
+6.  Update the SQL injection pattern with the latest version, if you haven't customized it yet. To update to the latest pattern, go to the *Details* tab, copy the text under the *Default SQL Pattern* heading and paste it into the *SQL Injection Patterns* text box on the *Configuration* tab. You are now working with the most up-to-date pattern from Trend Micro.
+
+7.  Edit the fields as follows:
+
+    - *SQL Injection Patterns*: This is where you to specify the list of characters and strings used in SQL injection attacks. Characters and strings are grouped and assigned a score. If you want to add or change the strings, make sure to use the proper encoding. See Character encoding rules below for details.
+    - *Drop Threshold*: This is where you specify the drop score. The connection is dropped when the score exceeds this threshold. (If the score equals the drop threshold, the connection is maintained.) The default is `4`.
+    - *Log Threshold*: This is where you specify the log score. The connection is logged when the score exceeds this threshold. (If the score equals the log threshold, nothing is logged.) The default is `4`.
+    - *Max distance between matches*: This is where you specify the number of bytes that can pass without a match to reset the score to `0`. The default is `35`.
+
+    :::note
+
+    Consider using the next two options to create overrides for pages and fields that might cause the normal thresholds to be exceeded.
+    :::
+
+    - *Pages (resource) with a non-default score to drop on*: This is where you can override the *Drop Threshold* for specific resources. For example, if your *Drop Threshold* is `4`, but you want a drop score of `8` for a questionnaire page, specify `/example/questionnaire.html:8`. With this configuration, `/example/questionnaire.html` needs to have a score higher than `8` in order for the connection to be dropped, while all other resources only need a score higher than `4`. Specify each resource on a separate line.
+    - *Form parameters with a non-default score to drop on*: This is where you can override the thresholds defined in *Drop Threshold* or the *Pages (resources)with a non-default score to drop on* fields for specific form fields. For example, if your *Drop Threshold* score is `4`, but you want a higher drop score of `10` for a username field, specify `/example/login.html:username=10`, where `/example/login.html` is replaced with the path and name of the page where the username field appears, and `username` is replaced with the username field used by your application. With this configuration, the username field needs to have a score higher than `10` for the connection to be dropped, while the page itself only needs a score higher than `4`. Specify each form field on a separate line.
+
+    :::note
+
+    The *Log Threshold* does not take effect when connections are dropped due to a match on the *Pages (resources) with a non-default score to drop on* or *Form parameters with a non-default score to drop on* fields. For example, if you set the form parameter field to `/example/login.html:username=10`, and the username field scores `11`, the connection is dropped but there is no log of this event.
+    :::
+
+8.  Click *OK*.
+
+You have now configured the Generic SQL Injection Prevention rule.
+
+### Character encoding guidelines {#character-encoding-guidelines}
+
+If you want to change or add strings to the Generic SQL Injection Prevention rule, you must encode them properly. For example, if you want to use the quote character `'` in your pattern, you must enter `\x22`.
+
+The table below shows characters and their encoded equivalents, as well as character classes that you can use to denote extended patterns.
+
+<table>
+<thead>
+<tr>
+<th><p><em>Enter this string...</em></p></th>
+<th><p><em>To denote...</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>\a</p>
+<p>\A</p></td>
+<td><p>alphabetic characters, a-z A-Z</p>
+<p>non-alphabetic characters</p>
+<p>example: <code>delete\a</code> means "the word 'delete' followed by alphabetical characters"</p></td>
+</tr>
+<tr>
+<td><p>\w</p>
+<p>\W</p></td>
+<td><p>alphanumeric characters, a-z A-Z 0-9</p>
+<p>non-alphanumeric characters</p>
+<p>example: <code>delete\W</code> means "the word 'delete' followed by non-alphanumeric characters"</p></td>
+</tr>
+<tr>
+<td><p>\d</p>
+<p>\D</p></td>
+<td><p>digits 0-9</p>
+<p>non-digit characters</p>
+<p>example: <code>delete\d</code> means "the word 'delete' followed by digits between zero and nine"</p></td>
+</tr>
+<tr>
+<td><p>\s</p>
+<p>\S</p></td>
+<td><p>whitespace</p>
+<p>not whitespace [\r,\n,\t,0x32]</p>
+<p>example: <code>delete\S</code> means "the word 'delete' followed by non-whitespace"</p></td>
+</tr>
+<tr>
+<td><p>\p</p>
+<p>\P</p></td>
+<td><p>punctuation character, printable ascii other than above</p>
+<p>non-punctuation character</p>
+<p>example: <code>delete\p</code> means "the word 'delete' followed by a punctuation character or printable ascii"</p></td>
+</tr>
+<tr>
+<td><p>\c</p>
+<p>\C</p></td>
+<td><p>control character, below 32, or greater than or equal to 127, not including whitespace</p>
+<p>non-control character</p>
+<p>You can find details on control characters <a href="https://en.wikipedia.org/wiki/Control_character">here</a>.</p></td>
+</tr>
+<tr>
+<td><p>\.</p></td>
+<td><p>any</p></td>
+</tr>
+<tr>
+<td><p>\xDD</p></td>
+<td><p>hex byte 0xDD</p></td>
+</tr>
+<tr>
+<td><p>\x2c</p></td>
+<td><p>comma character (,)</p></td>
+</tr>
+<tr>
+<td><p>\x22</p></td>
+<td><p>double-quotes character (")</p></td>
+</tr>
+<tr>
+<td><p>\\</p></td>
+<td><p>escaped backslash (\)</p></td>
+</tr>
+<tr>
+<td><p>\|</p></td>
+<td><p>escaped pipe (|)</p></td>
+</tr>
+<tr>
+<td><p>|xx xx xx...|</p></td>
+<td><p>hex pipe (byte sequence)</p></td>
+</tr>
+</tbody>
+</table>
+:::::

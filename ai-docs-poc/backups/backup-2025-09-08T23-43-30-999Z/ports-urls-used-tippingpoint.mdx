@@ -1,0 +1,86 @@
+---
+slug: trend-vision-one-ports-urls-used-tippingpoint
+title: Ports and URLs used by TippingPoint
+last_updated: '2025-09-08'
+ai_context:
+  source_file: ports-urls-used-tippingpoint.md
+  conversion_date: '2025-09-08T23:42:14.410Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Review settings to configure your firewall and connected products.
+
+In order for TippingPoint to send data to **Network Security**, you must configure your firewall to allow communication with certain ports and FQDNs.
+
+To connect TippingPoint only, configure the FQDN exceptions for Intrusion Prevention Configuration listed in [Firewall exception requirements for Trend Vision One](firewall-exception-requirements-for.mdx).
+
+To enable the Network Sensor on your TippingPoint devices, configure the FQDN exceptions for Intrusion Prevention Configuration and Virtual Network Sensor listed in [Firewall exception requirements for Trend Vision One](firewall-exception-requirements-for.mdx). Additionally, configure the following ports.
+
+**Listening Ports**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th>Port</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>22</p></td>
+<td><p>CLISH console connection, log (if the Virtual Network Sensor is registered in SSH)</p></td>
+</tr>
+<tr>
+<td><p>68</p></td>
+<td><p>DHCP server responses</p></td>
+</tr>
+<tr>
+<td><p>80</p></td>
+<td><p>Debug log export</p></td>
+</tr>
+</tbody>
+</table>
+
+**Outbound Ports**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th>Port</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>53</p></td>
+<td><p>DNS resolution</p></td>
+</tr>
+<tr>
+<td><p>67</p></td>
+<td><p>Requests to DHCP server if IP addresses are assigned dynamically</p></td>
+</tr>
+<tr>
+<td><p>123</p></td>
+<td><p>Connection to NTP server for time synchronization (default NTP server: <code>pool.ntp.org</code>)</p></td>
+</tr>
+<tr>
+<td><p>137</p></td>
+<td><p>IP address to host name resolution through NetBIOS</p></td>
+</tr>
+<tr>
+<td><p>443</p></td>
+<td><p>Smart Protection Network anonymous threat information sharing</p></td>
+</tr>
+</tbody>
+</table>
+:::

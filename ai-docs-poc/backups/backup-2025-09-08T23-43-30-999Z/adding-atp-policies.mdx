@@ -1,0 +1,85 @@
+---
+slug: trend-vision-one-adding-atp-policies
+title: Adding advanced threat protection policies
+last_updated: '2025-09-08'
+ai_context:
+  source_file: adding-atp-policies.md
+  conversion_date: '2025-09-08T23:42:25.825Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Cloud Email and Collaboration Protection provides two default ATP policies for each protected application or service.
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Policy</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Default ATP policy</p></td>
+<td><ul>
+<li><p>This policy contains preconfigured settings and you can change them as necessary.</p></li>
+<li><p>This policy applies to all targets in your company.</p></li>
+<li><p>This policy is disabled by default.</p></li>
+<li><p>This policy has the lowest priority.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Default ATP policy (monitor only)</p></td>
+<td><ul>
+<li><p>This policy works in monitor mode to scan email messages or files in your application or service and record detections in logs, without taking actions. This helps evaluate the Cloud Email and Collaboration Protection capability with zero impact on mail flow and file sharing.</p></li>
+<li><p>This policy contains preconfigured settings and you can change them as necessary, except for the following:</p>
+<ul>
+<li><p>All actions are fixed to <strong>Pass</strong> and not configurable.</p></li>
+<li><p>The <strong>Monitor and log only</strong> option in <strong>Virtual Analyzer</strong> is selected and not configurable.</p></li>
+</ul></li>
+<li><p>This policy applies to all targets in your company.</p></li>
+<li><p>This policy is disabled by default.</p></li>
+<li><p>This policy takes precedence over the default ATP policy in non-monitor mode. It has the second-to-last priority.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+Perform the following steps to add an ATP policy.
+
+### Procedure {#procedure}
+
+1.  Go to **Policies → Policy Management**.
+
+2.  From the **Organization** drop-down list, select the organization for which you need to create policies.
+
+3.  Click **Advanced Threat Protection** under **Email Policies** or **Collaboration Service Policies**, depending on the service for which you want to create policies.
+
+4.  Click **Add Policy** and select an application or service to create a policy for.
+
+    You can create policies for the applications and services that you have granted Cloud Email and Collaboration Protection access to.
+
+5.  Configure policy settings.
+
+6.  If you have configured multiple policies for one application or service, adjust policy priorities as required by dragging a policy and placing it at the desired priority.
+
+    :::note
+
+    Policies are applied in order from the highest priority to lowest priority. If you enable multiple real-time scanning policies for the same user, only the policy with the highest priority is applied. The default policy always has the lowest priority and will be applied if no other policies are matched.
+    :::
+
+**Related information**
+
+- [General](general.mdx)
+- [Advanced Spam Protection](advanced-spam-protection.mdx)
+- [Malware Scanning](malware-scanning.mdx)
+- [File Blocking](file-blocking.mdx)
+- [Web Reputation Services](web-reputation-services-cas-intro.mdx)
+- [Virtual Analyzer](virtual-analyzer-cloud-apps.mdx)
+- [Correlated Intelligence](correlated-intelligence.md "Detect security risks and identify anomalies by correlating signals across different sources.")
+:::

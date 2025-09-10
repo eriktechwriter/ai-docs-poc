@@ -1,0 +1,131 @@
+---
+slug: trend-vision-one-azure-integration
+title: Azure integration
+last_updated: '2025-09-08'
+ai_context:
+  source_file: azure-integration.md
+  conversion_date: '2025-09-08T23:42:24.395Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+## Add Access Policy for Key Vault Attributes {#add-access-policy-for-key-vault-attributes}
+
+You need to allow Trend Vision One™ – Cloud Risk Management permission to list Key Vault Attributes and Secrets in your Azure account to be able to run certain rules successfully in the Cloud Risk Management platform.
+
+You will need to set up:
+
+### Procedure {#procedure}
+
+1.  From Azure *Home*, go to *Key Vaults.*
+
+2.  Navigate to the vault containing the keys and secrets that you want the rule to monitor.
+
+3.  Go to the *Access policies* section and click on the +*Add Access policy button.*
+
+4.  To set up *Key permissions:*
+
+    1.  *For Key permissions,* select *List* from the dropdown.
+    2.  Under *Key Management Operations* check *List.* ![](/images/step-4=ad7fb167-b2ed-47c8-9509-894c40ccfdc0.webp){.zoom}
+
+5.  To set up *Secret permissions:*
+
+    1.  For *Secret permissions*, select *List* from the dropdown.
+    2.  Under *Secret Management Operations* select *List.*
+
+6.  To set up *Certificate permissions:*
+
+    1.  For *Certificate permissions*, select *List* from the dropdown.
+    2.  Under *Certificate Management Operations* select *List.*
+
+7.  Select the *App registration setup* in the Setup an Azure App registration step as the *Principal.*
+
+    ![](/images/step-6=87c34a14-a7e5-4296-ad87-26048ceb2c61.webp){.zoom}
+
+8.  Click on *Select* in the bottom right corner.
+
+9.  Click *Add.*
+
+10. Click *Save* on the next page.
+
+### Next steps {#next-steps}
+
+Once you save the changes, a notification is displayed in the top right corner of the screen confirming the key vault update.
+
+*Firewall Enabled Keyvaults*
+
+For Keyvaults that have the firewall enabled, you will need to add the Cloud Risk Management’s IPv4 addresses to allow API calls from Cloud Risk Management needed for Keyvault Rules.
+
+1.  From Azure *Home*, go to *Key Vaults.*
+
+2.  Navigate to the vault containing the keys and secrets that you want the rule to monitor.
+
+3.  Go to the *Networking* section from left navigation
+
+4.  Under the *Firewall* section, add the following IPv4 addresses or CIDR blocks:
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 83%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Region</p></th>
+<th><p>Addresses</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><em>us-west-2 (Oregon)</em></p></td>
+<td><ul>
+<li><p>34.210.51.120</p></li>
+<li><p>34.211.72.71</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><em>ap-southeast-2 (Sydney)</em></p></td>
+<td><ul>
+<li><p>52.65.53.114</p></li>
+<li><p>54.153.192.180</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><em>eu-west-1 (Ireland)</em></p></td>
+<td><ul>
+<li><p>34.251.80.176</p></li>
+<li><p>52.214.29.244</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><em>Ca-central-1 (Canada)</em></p></td>
+<td><ul>
+<li><p>15.222.199.214</p></li>
+<li><p>3.96.40.99</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><em>ap-southeast-1 (Singapore)</em></p></td>
+<td><ul>
+<li><p>54.255.49.223</p></li>
+<li><p>18.139.50.58</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><em>eu-central-1, CloudOne Germany (de-1)</em></p></td>
+<td><ul>
+<li><p>3.68.155.86</p></li>
+<li><p>35.157.123.83</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><em>ap-northeast-1, CloudOne Japan (jp-1)</em></p></td>
+<td><ul>
+<li><p>35.72.45.89</p></li>
+<li><p>54.95.48.132</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+:::

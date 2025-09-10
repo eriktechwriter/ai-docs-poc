@@ -1,0 +1,108 @@
+---
+slug: trend-vision-one-manage-scan-reports
+title: Manage scan reports
+last_updated: '2025-09-08'
+ai_context:
+  source_file: manage-scan-reports.md
+  conversion_date: '2025-09-08T23:42:16.216Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+View and download reports generated from scans, and view troubleshooting information such as authentication or network problems.
+
+:::warning[Important]
+
+This is a "Pre-release" feature and is not considered an official release. Please review the [Pre-release disclaimer](pre-release-disclaimer.mdx) before using the feature.
+:::
+
+:::note
+
+This feature is not available in all regions.
+:::
+
+In **Scan Reports**, you can view a list of your most recent network scan reports. Scan reports contain the results of the scan, including any discovered assets, vulnerable assets, and detected CVEs. Currently, only the most recent report for a scan is retained. To save earlier reports, download the reports before the next scan time.
+
+The following table details actions you can take in **Scan reports**.
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Details</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>View scan status</p></td>
+<td><p>The icon next to the scan ID indicates whether the scan is complete (<img src="./images/successful=d385863c-ae1f-4a76-8500-6d60d7a2de8f.webp" />), in progress (<img src="./images/inProgress=763d5319-3680-4b10-abca-a75782d8eb48.webp" />), or failed (<img src="./images/unsuccessful=e4c3ece6-3776-45dc-b99a-67195d7d21e0.webp" />). Scans that are in progress cannot be triggered. For failed scans, verify your network status, the status of your Service Gateway, and the status of the Network Vulnerability Scanner service.</p></td>
+</tr>
+<tr>
+<td><p>View report details</p></td>
+<td><p>Drill down from a scan ID to view details including:</p>
+<ul>
+<li><p>The Service Gateway used for the scan</p></li>
+<li><p>Target IPs</p></li>
+<li><p>Number of assets discovered during the initial discovery scan</p></li>
+<li><p>Number of assets assessed during the vulnerability scan</p></li>
+<li><p>Number of assets found to have vulnerabilities</p></li>
+<li><p>Number of CVEs detected</p></li>
+<li><p>Number of errors encountered during the scan indicating assets that could not be scanned</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>View scan errors</p></td>
+<td><p>Click the number displayed under <strong>Scan errors</strong> to view access issues encountered during the scan.</p>
+<ul>
+<li><p>Access error: Indicates a required field such as a port could not be accessed. If the problem persists, contact support.</p></li>
+<li><p>Authentication error: Indicates the device at the target IP could not be accessed using the provided authentication credentials. Verify your authentication credentials in the scan configuration. If you need to use a different set of credentials, create a new scan.</p></li>
+<li><p>Unsupported device or device version: Indicates the device at the target IP is not currently supported for network vulnerability scans. Only devices running a supported operating system are currently supported for network vulnerability scans. Authentication credentials must be for an account with the required privileges for scanning. To view supported devices, operating systems, and privilege requirements, see <a href="trend-vision-one-nvs-supported-products">Network Vulnerability Scanner supported products</a>. Click <strong>Request additional device or device version support</strong> to provide feedback on further device or version support you would like to see. If the product is supported, check your authentication credentials. If the problem persists, contact support.</p></li>
+<li><p>No device detected: Indicates no devices were detected at the target IP.</p></li>
+<li><p>No open SSH port detected: Indicates SSH login access failed. Ensure your SSH port (default port 22) is open. If the problem persists, contact support.</p></li>
+<li><p>Scan timed out: Indicates the target took too long to scan. Try running the scan again. If the problem persists, contact support.</p></li>
+</ul>
+
+
+:::warning[Important]
+
+<p>Only the first 100 inaccessible target IP addresses are displayed. Download the scan report to view the access status of all inaccessible target IP addresses.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Download scan report</p></td>
+<td><p>Click the download icon (<img src="./images/download_icon=5c7476c2-cf15-4572-b7cd-5fc67a57d22f.webp" />) to download a zip file containing the report files for the specified scan. Report files for each scan type include:</p>
+<ul>
+<li><p>Discovery scan: <code>Discovery_results.csv</code></p>
+<ul>
+<li><p>Contains information such as IP addresses, FQDNs, hostnames, asset operating systems, open ports, and TLS certificates</p></li>
+</ul></li>
+<li><p>Vulnerability scan: <code>Discovery_results.csv</code> and <code>Detected_CVE_VulnerabilityList.csv</code></p>
+<ul>
+<li><p><code>Detected_CVE_VulnerabilityList.csv</code> contains CVE IDs, hostnames, IP addresses, affected products, affected product versions, mitigation options, and security advisory links</p></li>
+</ul></li>
+<li><p>External attack surface scan: <code>InternetFacingAssetScan_results.csv</code></p>
+<ul>
+<li><p>Contains information such as IP addresses, FQDNs, hostnames, asset operating systems, open ports, and TLS certificates</p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Manually refresh scan reports</p></td>
+<td><p>Click the refresh icon (<img src="./images/refresh=5bd75452-c2fb-43ed-90e6-7b552fdc5dd2.webp" />) to manually refresh the status of displayed reports. Statuses automatically refresh after the scan completes.</p></td>
+</tr>
+<tr>
+<td><p>View scan results in <strong>Threat and Exposure Management</strong></p></td>
+<td><p>Click <strong>View scan reports in Threat and Exposure Management</strong> to view affected assets and detected vulnerabilities found by Network Vulnerability Scanner along with risk score of the affected assets.</p></td>
+</tr>
+</tbody>
+</table>
+:::::

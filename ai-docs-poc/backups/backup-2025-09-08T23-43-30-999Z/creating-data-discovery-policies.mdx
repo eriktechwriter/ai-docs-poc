@@ -1,0 +1,134 @@
+---
+slug: trend-vision-one-creating-data-discovery-policies
+title: Creating Data Discovery Policies
+last_updated: '2025-09-08'
+ai_context:
+  source_file: creating-data-discovery-policies.md
+  conversion_date: '2025-09-08T23:42:21.294Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Data Discovery searches databases, endpoints, and document management systems for the presence of sensitive information. Data Discovery widgets display data loss prevention compliance with an enterprise's policy. Using Data Discovery policies and widgets allows administrators to perform remediation actions on their network.
+
+:::note
+
+Performing a full scan of an endpoint drive or directory can cause significant system slowdown for end users.
+:::
+
+### Procedure {#procedure}
+
+1.  Select **Enable Data Discovery**.
+
+2.  Click **Add**.
+
+    The **Data Discovery Policy Settings** screen appears.
+
+3.  Select **Enable this rule**.
+
+4.  Specify a name for the rule.
+
+5.  Configure the target folder settings:
+
+    1.  Click the **Target Folder** tab.
+
+        :::note
+
+        The root folder cannot be a Windows shared folder or removable device (USB device or DVD).
+        :::
+
+    2.  In the **File Path** section, specify the scan location for files.
+
+        :::note
+
+        Data Discovery does not scan `autoexec.bat` files located in the following directories:
+
+        - `\Documents and Settings\*\Application Data\`
+
+        - `\Documents and Settings\*\Local Settings\`
+
+        - `\Documents and Settings\*\Cookies\`
+
+        - `\Program Files\`
+
+        - `\Windows\`
+
+        - `\Winnt\`
+
+        - `\Users\*\AppData\`
+
+        - `\ProgramData\`
+        :::
+
+    3.  In the **File Type Exceptions** section, specify scanning exceptions.
+
+        - **Scan**: Specify specific files or file types to scan.
+
+        - **Do not scan**: Specify specific files, file types, or folders that Data Discovery will not scan.
+
+        :::note
+
+        - Data Discovery supports the following wildcard characters:
+
+          - `*`: Substitute for any and all characters before or after the \*
+
+          - `?`: Substitute for a single character or a single double-byte character
+
+        - Separate multiple entries with pipes ( | ) and use the following format:
+
+          - For files: \*.\<file extension\> (for example: \*.exe|\*.doc)
+
+          - For folders: Specify a file path (for example: \*\Test\\|C:\My-Docs\\
+        :::
+
+6.  Configure the template settings:
+
+7.  Configure the template settings:
+
+    1.  Click the **Template** tab.
+
+    2.  Select templates from the **Available templates** list and then click **Add**.
+
+        When selecting templates:
+
+        - Select multiple entries by clicking the template names which highlights the name.
+
+        - Use the search feature if you have a specific template in mind. You can type the full or partial name of the template.
+
+        :::note
+
+        - Each rule can contain a maximum of 500 templates.
+
+        - your preferred template is not found in the **Available templates** list, go to **Policies → Policy Resources → DLP Templates** and create a new template.
+        :::
+
+8.  Configure the action settings:
+
+    1.  Click the **Action** tab.
+
+    2.  Select **Monitor** to record detections for analysis.
+
+    3.  (Optional) Select **Encrypt** to encrypt sensitive files using one of the following methods:
+
+        - **User key**
+
+        - **Group key**
+
+        - **Encryption password**: The encryption password is a global password for all Apex One servers. Click **Create encryption password** to configure a password.
+
+        :::warning[Important]
+
+        The File Encryption feature in Endpoint Encryption is deprecated and may not be available for new installation instances.
+        :::
+
+9.  Configure the schedule for the scan:
+
+    1.  Click the **Schedule** tab.
+
+    2.  Specify the frequency of the scan.
+
+    3.  Specify the time that the scan starts.
+
+10. Click **Save** to apply settings.
+::::

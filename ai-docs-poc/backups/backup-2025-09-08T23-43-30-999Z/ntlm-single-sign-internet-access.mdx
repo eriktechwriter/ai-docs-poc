@@ -1,0 +1,225 @@
+---
+slug: trend-vision-one-ntlm-single-sign-internet-access
+title: NTLM or Kerberos single sign-on for Internet Access
+last_updated: '2025-09-08'
+ai_context:
+  source_file: ntlm-single-sign-internet-access.md
+  conversion_date: '2025-09-08T23:42:14.899Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Set up NTLM v2 or Kerberos-based single sign-on to transparently authenticate on-premises Active Directory users using their Windows logon credentials.
+
+:::note
+
+NTLM v2 and Kerberos-based single sign-on applies only to user devices in an Active Directory domain. Before enabling the services, make sure you have joined the necessary user devices to your on-premises Active Directory domains and review the following topics:
+
+- [Preparing your environment for NTLM or Kerberos single sign-on](ntlm-kerberos-single-sign.mdx)
+
+- [Configuring the authentication proxy service for corporate intranet locations](authentication-proxy-intranet.mdx)
+
+- [Configuring the authentication proxy service for corporate intranet locations and public or home networks](authentication-proxy-service.mdx)
+:::
+
+Consider the following limitations when planning NTLM v2 or Kerberos-based single sign-on:
+
+- For NTLM v2-based single sign-on: If you use an Active Directory Global Catalog server, Internet Access rule mismatch might occur for users with the same user name in your organization.
+
+- For Kerberos-based single sign-on: If the user principal name of a Kerberos-authenticated user is different from the name used in Active Directory, you may not be able to apply user or group-based rules to the user.
+
+### Procedure {#procedure}
+
+1.  Go to **Zero Trust Secure Access → Secure Access Configuration → Internet Access and AI Service Access Configuration → Global Settings**, and click **Single Sign-On with Active Directory (On-Premises)**.
+
+2.  Enable single sign-on.
+
+3.  Choose a single on-premises gateway or multiple on-premises gateways behind a load balancer as the authentication proxy to communicate with Active Directory for authentication.
+
+    - Single gateway: All on-premises Active Directory users are authenticated through the specified on-premises gateway with the specified Active Directory server.
+
+      :::note
+
+      - The on-premises gateway uses port 8089 for authentication traffic.
+
+      - Only on-premises gateways with authentication proxy support are displayed on the list.
+      :::
+
+    - Multiple gateways: To ensure high service availability, users are authenticated through a load balancer to multiple on-premises gateways. You must specify the IP address or FQDN of a configured load balancer. To learn about how to assign and configure the load balancer, see [Configure load balancers to use multiple Internet Access on-premises gateways as the authentication proxy](configure-load-balancers.mdx).
+
+4.  Select and import a trusted server certificate from your organization.
+
+    :::note
+
+    - By default, Internet Access uses the built-in CA certificate for HTTPS inspection to sign the server certificate for user authentication. To use a custom certificate, select the option, upload your own certificate and private key, and provide and confirm the password.
+
+    - The common name (CN) and subject alternative name (SAN) on the certificate must match the host name of the specified on-premises gateway or load balancer.
+    :::
+
+5.  If desired, select to enable NTLM v2-based single sign-on.
+
+    1.  On the Trend Vision One console, choose your Active Directory server type.
+
+    2.  Protect authentication data during communication with Active Directory by selecting **Use LDAPS**.
+
+    3.  Specify single mode or high availability mode.
+
+        - For single mode, specify the IP address or FQDN of your Active Directory server.
+
+        - For high availability mode, select the traffic distribution method.
+
+          - If selecting fail over, specify the IP addresses or FQDNs of your primary and secondary Active Directory servers.
+
+          - If selecting round robin, specify the IP addresses and FQDNs of all of the Active Directory servers you wish to use for authentication.
+
+    4.  Specify the ports for transmitting authentication data based on the selected server type and protocol.
+
+        <table style="width:99%;">
+        <colgroup>
+        <col style="width: 33%" />
+        <col style="width: 33%" />
+        <col style="width: 33%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Protocol</p></th>
+        <th><p>Microsoft Active Directory</p></th>
+        <th><p>Microsoft Active Directory Global Catalog</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>LDAP</p></td>
+        <td><p>389</p></td>
+        <td><p>3268</p></td>
+        </tr>
+        <tr>
+        <td><p>LDAPS</p></td>
+        <td><p>636</p></td>
+        <td><p>3269</p></td>
+        </tr>
+        </tbody>
+        </table>
+
+    5.  Sign in to your primary Active Directory server using an account with administrator privileges.
+
+    6.  Go to **Start → Server Manager → Tools → Group Policy Management**.
+
+        The **Group Policy Management** screen appears.
+
+    7.  From the left-hand navigation menu, select your forest and domain.
+
+    8.  Right-click **Default Domain Policy** under your domain and select **Edit...**.
+
+        The **Group Policy Management Editor** appears.
+
+    9.  Under **Computer Configuration**, go to **Policies → Windows Settings → Security Settings → Local Policies → Security Options →** .
+
+    10. If you are using LDAP:
+
+        1.  Double-click **Domain controller: LDAP server signing requirements**.
+
+        2.  Click **Define this policy setting**.
+
+        3.  Select **None**.
+
+        4.  Click **Apply** and then **OK**.
+
+        5.  Repeat the configuration procedure for all other Active Directory servers you wish to use for authentication.
+
+    11. If you are using LDAPS:
+
+        1.  Double-click **Domain controller: LDAP server channel binding token requirements**.
+
+        2.  Click **Define this policy setting**.
+
+        3.  Select **Never**.
+
+        4.  Click **Apply** and then **OK**.
+
+        5.  Repeat the configuration procedure for all other Active Directory servers you wish to use for authentication.
+
+        NTLM v2 authentication can be successfully enabled after the group policy changes take effect, which may take up to two hours.
+
+6.  If desired, enable Kerberos-based single sign-on and upload the required keytab file.
+
+    1.  Sign in to your Active Directory domain controller using an account with administrator privileges.
+
+    2.  Create a new Active Directory user to serve as the service principal name (SPN) for Kerberos authentication.
+
+        1.  Specify the account user name and password.
+
+        2.  Select the option **Password never expires** to ensure the keytab file remains valid.
+
+        3.  Select the option **This account supports Kerberos AES 256 bit encryption** to allow the account to be used for authentication.
+
+            :::note
+
+            You may verify the configuration of the authentication account at any time by selecting the corresponding user in Active Directory and going to **Properties → Account → Account options**.
+            :::
+
+    3.  From the command line, run the following command to set the new user as the SPN.
+
+        ``` codeblock
+        setspn -a HTTP/<auth proxy fqdn> <user name>
+        ```
+
+        :::tip
+
+        For `<auth proxy fqdn>`, substitute the FQDN that matches your configuration:
+
+        - For a single gateway, use `<the single gateway FQDN>`.
+
+        - For multiple gateways behind a load balancer, use the `<load balancer FQDN>`.
+        :::
+
+        :::note
+
+        The `<auth proxy fqdn>` is the FQDN of the Service Gateway which hosts the Internet Access on-premises gateway. The FQDN is created when [configuring the Active Directory server](ntlm-kerberos-single-sign.mdx).
+        :::
+
+    4.  Run the following command to generate the keytab file associating the new SPN with the Kerberos service.
+
+        ``` codeblock
+        ktpass -princ HTTP/<auth proxy fqdn>@<DOMAIN> -mapuser <user name>@<domain> -pass <user password> -out swg.keytab -ptype KRB5_NT_PRINCIPAL -mapop add -crypto all
+        ```
+
+        A keytab file named `swg.keytab` is generated and stored under `C:\Users\Administrator`.
+
+        :::tip
+
+        For `<auth proxy fqdn>`, substitute the FQDN that matches your configuration:
+
+        - For a single gateway, use `<the single gateway FQDN>`.
+
+        - For multiple gateways behind a load balancer, use the `<load balancer FQDN>`.
+        :::
+
+        :::note
+
+        - Kerberos commands are case-sensitive. In the keytab generation command, the server FQDN based on your on-premises gateway (\<auth proxy fqdn\>) is all lowercase while the Kerberos realm (the Active Directory domain, @\<DOMAIN\>) should be all uppercase.
+
+        - If the keytab file is ever changed, users may need to clear their Kerberos cache to avoid authentication failure.
+        :::
+
+    5.  Upload the generated keytab file to the Kerberos settings in **Single Sign-On with Active Directory (On-Premises)** on the Trend Vision One console.
+
+7.  Click **Save**.
+
+    It might take a few minutes for the configuration to take effect.
+
+8.  View the on-premises gateway status in the **Gateways** screen.
+
+    - **Setting up auth proxy**: Internet Access is applying the NTLM v2 or Kerberos-based single sign-on settings to the on-premises gateway.
+
+    - **Used as auth proxy**: The on-premises gateway is successfully configured as the authentication proxy.
+
+    - **Auth proxy error**: An error occurred due to one of the following issues:
+
+      - The on-premises gateway attempted to communicate with the Active Directory server or Trend Vision One while the Zero Trust Secure Access On-Premises Gateway service is disabled or uninstalled on the Service Gateway appliance.
+
+      - The Service Gateway appliance is disconnected.
+
+      - The on-premises gateway host name is not associated with any SPN in the Kerberos keytab file.
+::::

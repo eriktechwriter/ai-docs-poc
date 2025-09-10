@@ -1,0 +1,93 @@
+---
+slug: trend-vision-one-agent-initiated-activation
+title: Activate and protect agents using agent-initiated activation and communication
+last_updated: '2025-09-08'
+ai_context:
+  source_file: agent-initiated-activation.md
+  conversion_date: '2025-09-08T23:42:25.497Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::::: {role="main"}
+When you enable agent-initiated activation (AIA), instead of Server & Workload Protection contacting the agents directly, the agents initiate communication with Server & Workload Protection and establish an encrypted TCP connection over the Server & Workload Protection heartbeat [port number](swp-port-numbers.mdx) (443).
+
+Enabling AIA can prevent communication issues between Server & Workload Protection and agents, and simplify agent deployment when used with deployment scripts. Trend Micro recommends that you use AIA if:
+
+- Your network environment prevents Server & Workload Protection from initiating connections to agents.
+- You need to deploy many agents at once.
+- You are protecting computers in cloud accounts.
+
+:::note
+
+Server & Workload Protection has agent-initiated communication enabled by default.
+:::
+
+## Enable agent-initiated activation and communication {#enable-agent-initiated-activation-and-communication}
+
+Proceed with the following steps:
+
+### Procedure {#procedure}
+
+1.  Create or modify a policy with agent-initiated communication enabled.
+
+2.  Enable agent-initiated activation.
+
+3.  Assign the policy to agents.
+
+4.  Use a deployment script to activate the agents.
+
+### Next steps {#next-steps}
+
+## Create or modify policies with agent-initiated communication enabled {#create-or-modify-policies-with-agent-initiated-communication-enabled}
+
+For your agents to continue initiating communication with Server & Workload Protection after activation, you'll need to enable agent-initiated communication on any policies the agents will use. You can do this by either modifying an existing policy or by creating a new one, which you'll assign to the agents.
+
+:::tip
+
+You can quickly create a new policy from an existing policy by right-clicking it and selecting *Duplicate*.
+:::
+
+### Procedure {#procedure-1}
+
+1.  On the *Policies* page, double-click the policy.
+
+2.  Go to **Settings → General**.
+
+3.  Under Communication Direction, select *Agent/Appliance Initiated*.
+
+4.  Click *Save*.
+
+### Next steps {#next-steps-1}
+
+## Enable agent-initiated activation {#enable-agent-initiated-activation}
+
+### Procedure {#procedure-2}
+
+1.  Go to **Administration → System Settings → Agents**.
+
+2.  Select *Allow Agent-Initiated Activation*.
+
+3.  Select *Allow Agent to specify hostname*.
+
+4.  From the *If a computer exists* list, select *Re-activate the existing computer*.
+
+5.  Click *Save*.
+
+### Next steps {#next-steps-2}
+
+:::note
+
+For a full description of each AIA setting, see the [Agent-Initiated Activation](agent-settings.mdx) section of [Agent settings](agent-settings.mdx).
+:::
+
+## Assign the policy to agents {#assign-the-policy-to-agents}
+
+You can either assign the policy to the agents during the deployment script configuration, or by using an event-based task after the deployment script has been run.
+
+If all the agents will use the same policy, you can assign the policy in the deployment script as part of the next step. If groups of agents need to use different policies, [create an event-based task to assign the policies](autotasks-computer-changed-event.mdx) before proceeding with the next step.
+
+## Use a deployment script to activate the agents {#use-a-deployment-script-to-activate-the-agents}
+
+See the [Generate a deployment](deployment-scripts-add-computers.mdx) section of [Generate a deployment script](deployment-scripts-add-computers.mdx) to learn how to use a deployment script to activate the agents. If you are assigning a policy during deployment script configuration, you'll select it from the Security Policy list.
+::::::

@@ -1,0 +1,46 @@
+---
+slug: trend-vision-one-error-mqtt-config-check-failed
+title: 'Error: MQTT Configuration Readiness Check Failed'
+last_updated: '2025-09-08'
+ai_context:
+  source_file: error-mqtt-config-check-failed.md
+  conversion_date: '2025-09-08T23:42:19.787Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+If you encounter an "MQTT Configuration Readiness Check Failed" error while enabling Activity Monitoring or if your version qualifies for [Activity Monitoring decoupling](https://success.trendmicro.com/en-US/solution/KA-0019953), it could be due to one of the following reasons:
+
+- Issues with connecting to the MQTT endpoint
+- Duplicate computer ID
+
+### Issues with connecting to the MQTT endpoint {#issues-with-connecting-to-the-mqtt-endpoint}
+
+If you cannot connect to `agent-comm.workload.<cloudoneregion>.cloudone.trendmicro.com`, it indicates a failure to establish a TCP connection to the requested MQTT FQDN. To troubleshoot, perform the following:
+
+1.  Check the outbound connectivity to Trend Vision One.
+
+2.  If you are using a firewall or proxy, add the `agent-comm.workload.<cloudoneregion>.cloudone.trendmicro.com` URL to your allow list and adjust the SSL/TLS inspection settings accordingly. For accounts created before August 4, 2021, use `us-1` for the region; for accounts created on or after August 4, 2021, verify your region in the **Account Settings**. See [Required Workload Security URLs](https://docs.trendmicro.com/en-us/documentation/article/trend-micro-cloud-one-workload-security-communication-ports-urls-ip) for the latest address list.
+
+### Duplicate computer ID detected {#duplicate-computer-id-detected}
+
+If the agent detects a potential cloned agent, resolve the issue as follows:
+
+1.  Consult the cloning best practices and ensure that you followed them. See [Cloned virtual machines using Deep Security Agent (DSA) cause conflict among multiple cloned computers](https://success.trendmicro.com/en-US/solution/KA-0015884).
+
+2.  Check the host communication to confirm that the host experiencing issues is the only agent communicating regarding the host record associated with the error.
+
+3.  Update virtual UUID. If your agent’s virtual UUID (bios-uuid) was updated recently, recover the status as follows:
+
+    1.  Deactivate the agent.
+
+    2.  Delete the corresponding host from the **Computer** page.
+
+    3.  Reactivate the agent with the required policy.
+
+If the issue persists:
+
+- Trend Vision One customers are advised to refer to [Trend Vision One Help and Support](https://success.trendmicro.com/en-US/solution/KA-0015172).
+- Trend Cloud One customers are advised to submit a ticket via [Trend Micro Cloud One Support](https://cloudone.trendmicro.com/support).
+:::

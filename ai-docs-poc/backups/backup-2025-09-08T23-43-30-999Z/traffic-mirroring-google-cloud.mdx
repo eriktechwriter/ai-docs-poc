@@ -1,0 +1,240 @@
+---
+slug: trend-vision-one-traffic-mirroring-google-cloud
+title: Configuring traffic mirroring on Google Cloud
+last_updated: '2025-09-08'
+ai_context:
+  source_file: traffic-mirroring-google-cloud.md
+  conversion_date: '2025-09-08T23:42:11.972Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Set up your VPC networks to enable traffic mirroring to your Virtual Network Sensor data port.
+
+:::note
+
+The steps contained in these instructions are valid as of July 2024.
+:::
+
+You can use your preferred method to set up traffic mirroring in your Google Cloud environment, or follow the steps outline in the Google Cloud documentation for [packet mirroring](https://cloud.google.com/vpc/docs/packet-mirroring).
+
+If you are unsure about what settings to use, follow the steps in this guide to set up traffic mirroring. This method has been tested by Trend Micro for deploying the Virtual Network Sensor.
+
+Before you get started, make sure you have decided which virtual machine (VM) to use as your mirror source. The mirror source VM is the data source for packet mirroring to the Virtual Network Sensor data port.
+
+### Procedure {#procedure}
+
+1.  Set up network peering.
+
+    Trend Micro recommends locating the Virtual Network Sensor data port to a separate VPC network than the mirror source VM. If you assigned the data port to the same network as the mirror source VM, skip to the next step.
+
+    :::warning[Important]
+
+    If you are using multiple VPC networks, you must set up network peering on both VPC networks to enable packet mirroring.
+    :::
+
+    1.  In your Google Cloud environment, go to **VPC network → VPC networks**.
+
+    2.  Find and click on the VPC network with the mirror source VM.
+
+        The **VPC network details** screen appears.
+
+    3.  Go to **VPC Network Peering**.
+
+    4.  Click **Add Peering**.
+
+        The **Create peering connection** screen appears.
+
+    5.  Specify a unique **name** for the peering connection.
+
+    6.  Under **Peered VPC netwok**, select the VPC network name where the Virtual Network Sensor data port is assigned.
+
+    7.  Click **Create**.
+
+    8.  Go back to the **VPC Networks** screen.
+
+    9.  Find and click on the VPC network with the Virtual Network Sensor data port.
+
+        The **VPC network details** screen appears.
+
+    10. Go to **VPC Network Peering**.
+
+    11. Click **Add Peering**.
+
+        The **Create peering connection** screen appears.
+
+    12. Specify a unique **name** for the peering connection.
+
+    13. Under **Peered VPC netwok**, select the VPC network name where the mirror source VM is located.
+
+    14. Click **Create**.
+
+2.  Create an unmanaged instance group.
+
+    1.  Go to **Compute Engine → Instance groups**.
+
+    2.  Click **Create Instance Group**.
+
+        The **Create Instance Group** screen appears.
+
+    3.  Click **New unmanaged instance group**.
+
+    4.  Specify a unique **name** for the instance group.
+
+    5.  Select the **Location** where the Virtual Network Sensor is deployed.
+
+    6.  Select the **Network** where the Virtual Network Sensor management port is located.
+
+    7.  Select the **Subnetwork** where the Virtual Network Sensor management port is located.
+
+    8.  For **VM instances**, select the Virtual Network Sensor instance.
+
+    9.  Click **Create**.
+
+3.  Create a health check.
+
+    1.  Go to **Compute Engine → Health checks**.
+
+    2.  Click **Create Health Check**.
+
+        The **Create a health check** screen appears.
+
+    3.  Specify a unique **name** for the health check.
+
+    4.  For **Protocol**, select **TCP**.
+
+    5.  For **Port**, type `14789`.
+
+    6.  Click **Create**.
+
+4.  Create a load balancer.
+
+    1.  Go to **Network services → Load balancing**.
+
+    2.  Click **Create Load Balancer**.
+
+        The **Create a load balancer** screen appears.
+
+    3.  For **Type of load balancer**, select **Network Load Balancer (TCP/UDP/SSL)** and click **Next**.
+
+    4.  For **Proxy or passthrough**, select **Passthrough load balancer** and click **Next**..
+
+    5.  For **Public facing or internal**, select **Internal** and click **Next**..
+
+    6.  Click **Configure**.
+
+        The **Create internal passthrough Network Load Balancer** screen appears.
+
+    7.  Specify a unique **name** for the load balancer.
+
+    8.  Select the same **Region** where the Virtual Network Sensor is deployed.
+
+    9.  Select the same **Network** where the Virtual Network Sensor data port is located.
+
+    10. If the **Backend configuration** does not automatically display, click **Backend configuration**.
+
+    11. For **Backend type**, select **Instance group**.
+
+    12. For **Protocol**, select **TCP**.
+
+    13. Under **New backend**, select **IPV4 (single-stack)** for the **IP stack type**.
+
+    14. Select the **Instance group** you created with the Virtual Network Sensor management port.
+
+    15. Select the **Health check** you created.
+
+    16. For **Session affinity**, select **None**.
+
+    17. Click **Done**.
+
+    18. Click **Frontend configuration**.
+
+    19. Select the **Subnetwork** where the Virtual Network Sensor data port is located.
+
+    20. For **Ports**, select **All**.
+
+    21. Expand **Advanced Configurations**.
+
+    22. Select **Enable this load balancer for Packet Mirroring**.
+
+    23. Click **Done**.
+
+    24. Click **Create**.
+
+5.  Create a packet mirroring policy.
+
+    1.  Go to **VPC network → Packet mirroring**.
+
+    2.  Click **Create Policy**.
+
+        The **Create policy** screen appears.
+
+    3.  Specify a unique **Policy name**.
+
+    4.  Select the same **Region** where the Virtual Network Sensor is deployed.
+
+    5.  Click **Continue**.
+
+    6.  Select the VPC networks.
+
+        - If you assigned the Virtual Network Sensor data port to the same network as the mirror source VM, select **Mirrored source and collector destination are in the same VPC network**, then select the VPC network they are located on.
+
+        - If you assigned the Virtual Network Sensor data port to a different network than the mirror source VM, select **Mirrored source and collector destination are in separate, peered VPC networks**, then select the following:.
+
+          - **Mirrored source VPC network**: Select the network of the mirror source VM
+
+          - **Collector destination VPC network**: Select the network of the Virtual Network Sensor data port
+
+    7.  Click **Continue**.
+
+    8.  For **Mirrored source**, select **Select individual instances** and click **Select**.
+
+    9.  In the screen that appears, select the mirror source VM and click **Select**.
+
+    10. Click **Continue**.
+
+    11. Select the load balancer you created as the **Collector destination**.
+
+        The load balancer might appear with the format `NAME-forwarding-rule (NAME)`.
+
+    12. Click **Continue**.
+
+    13. Select **Mirror all IPv4 traffic (default)**.
+
+    14. Click **Submit**.
+
+6.  Configure firewall rules for the Virtual Network Sensor data port.
+
+    Trend Micro recommends setting the firewall rules for the Virtual Network Sensor data port to allow all traffic into the port to allow maximum visibility into network traffic.
+
+    1.  Go to **VPC network → VPC networks**.
+
+    2.  Fine the VPC network where the Virtual Network Sensor data port is located and click the name.
+
+        The **VPC network details** screen appears.
+
+    3.  Go to **Firewalls**.
+
+    4.  Click **Add Firewall Rule**.
+
+        The **Create a firewall rule** screen appears.
+
+    5.  Specify a unique **name** for the firewall rule.
+
+    6.  For **Direction of traffic**, select **Ingress**.
+
+    7.  For **Action on match**, select **Allow**.
+
+    8.  For **Targets**, select the Virtual Network Sensor.
+
+        If you deployed the Virtual Network Sensor data port to a new VPC network by itself, you can select **All instances in the network**.
+
+    9.  For **Source IPv4 ranges**, type `0.0.0.0/0` to allow all sources.
+
+    10. For **Protocols and ports**, select **Allow all**.
+
+    11. Click **Create**.
+
+    Mirrored traffic starts flowing to the Virtual Network Sensor once all steps are successfully completed. If traffic is not reaching the Virtual Network Sensor, check your configuration.
+::::

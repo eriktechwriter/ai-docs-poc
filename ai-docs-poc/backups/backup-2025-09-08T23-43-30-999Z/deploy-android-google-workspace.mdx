@@ -1,0 +1,63 @@
+---
+slug: trend-vision-one-deploy-android-google-workspace
+title: >-
+  Deploying the Mobile Security for Business app to managed Android devices in
+  Google Workspace
+last_updated: '2025-09-08'
+ai_context:
+  source_file: deploy-android-google-workspace.md
+  conversion_date: '2025-09-08T23:42:20.701Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Add **Mobile Security for Business** to your managed web and mobile apps in Google Workspace in order to deploy the app to end user devices.
+
+**Mobile Security for Business** is the mobile agent app used to manage end user devices in Mobile Security. To deploy the app to Android devices managed in Google Workspace, you must use a Google Workspace account with admin privileges to add the app to your managed apps.
+
+:::note
+
+These steps were valid for the Google Workspace web console as of December 2, 2024.
+:::
+
+### Procedure {#procedure}
+
+1.  Add the **Mobile Security for Business** for Android to your managed apps.
+
+    1.  In the Google admin console, go to **Apps → Overview → Web and mobile apps**.
+
+    2.  Click **Add app** and select **Search for apps** from the dropdown menu and search for **Mobile Security for Business**.
+
+    3.  Click **Select** next to the entry for the app for Android.
+
+    4.  Choose whether to allow the app on all of your end user devices or only specified groups and organizational units.
+
+    5.  Click **Continue**.
+
+    6.  Keep the access method as **Available** and the managed configurations setting as **Default**.
+
+    7.  (Optional) Select the option to prevent users from uninstalling the app.
+
+    8.  Click **Save**.
+
+2.  Configure the **Mobile Security for Business** settings.
+
+    1.  In the Google admin console, go to **Apps → Web and mobile apps** and select **Mobile Security for Business**.
+
+    2.  Expand the **Settings** section and click **ADD CONFIGURATION** under **Managed configuration**.
+
+    3.  Specify a name for the configuration.
+
+    4.  In the **Work email** field, paste the work email (`$LOGIN_EMAIL`) copied from the Google Workspace integration settings page in Mobile Security.
+
+    5.  In the **Enrollment key** field, paste the enrollment key copied from the Google Workspace integration settings page in Mobile Security. For more information, see [Setting up Google Workspace integration](setup-google-workspace-integration.mdx).
+
+    6.  Click **Save**.
+
+    7.  In the app settings, select the newly created configuration as your managed configuration.
+
+    8.  Change the access method to **Force install**.
+
+    9.  Click **Save**.
+::::

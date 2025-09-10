@@ -1,0 +1,98 @@
+---
+slug: trend-vision-one-cross-signing-ca-certificate
+title: Cross-signing a CA certificate
+---
+# Cross-signing a CA certificate
+
+Cross-sign your CA certificate with the Certificate Signing Request (CSR) file provided by Internet Access for use by Internet Access Gateways.
+
+Internet Access allows administrators to cross-sign your organization's own CA certificate with the Certificate Signing Request (CSR) file provided by Trend Micro, and upload the cross-signed certificate on the Trend Vision One management console. Cross-signing the CA certificate establishes a trusted relationship between the Trend Micro CA certificate and your organization's own CA certificate.
+
+:::note
+
+Internet Access provides different CSR files for the cloud gateway and on-premises gateways.
+:::
+
+### Procedure {#procedure}
+
+1.  Check the following:
+
+    - Your organization's CA certificate and the corresponding CA private key and its passphrase are already available.
+
+    - The **Path Length Constraint** in your organization's CA certificate is set to **None**, so that there is no restriction on the CA certificates down in the hierarchy.
+
+    - The administrator has a basic knowledge of openssl commands.
+
+2.  Go to **Zero Trust Secure Access → Secure Access Configuration → Internet Access Configuration**.
+
+3.  Click the **HTTPS Inspection** tab.
+
+4.  Click the **Settings** gear icon in the upper right.
+
+5.  Click **Download CSR** and select the gateway type to download the corresponding CSR file to your local machine.
+
+6.  Create a folder on your local machine and specify a name for the folder, for example, `CrossSignIAGCA_cloud` for the cloud gateway, `CrossSignIAGCA_onprem` for the on-premises gateway.
+
+    :::note
+
+    The names of the folders and files created in this section are customizable.
+    :::
+
+7.  Go to the newly created folder.
+
+8.  Create a subfolder named `newcerts`.
+
+9.  Create an empty file named `certindex`.
+
+10. Create a file, copy and paste the following text, and then save it as `serialfile` in the folder that you created in step 6:
+
+    ```bash
+    a000
+    ```
+
+11. Move the downloaded CSR file to the folder that you created in step 6, and rename it to `iag_ca.csr`.
+
+12. Create a file, copy and paste the following text into the file, and then save it as a configuration file named `myca.conf` in the folder that you created in step 6:
+
+    ```bash
+    [ca]
+    default_ca = rootca
+
+    [crl_ext]
+    #issuerAltName=issuer:copy  #this would copy the issuer name to altname
+    authorityKeyIdentifier=keyid:always
+
+    [rootca]
+    new_certs_dir = newcerts
+    unique_subject = no
+    certificate = root.cer  #Your organization's CA certificate
+    database = certindex
+    private_key = root.key  #Your organization's CA private key
+    serial = serialfile
+    default_days = 3660     #Should be at least two years from the date of cross-signing
+    default_md = sha256     #sha256, sha 384, sha512 are supported.
+    policy = myca_policy
+    x509_extensions = myca_extensions
+
+    [ myca_policy ]
+    countryName = optional
+    stateOrProvinceName = optional
+    localityName = optional
+    organizationName = supplied
+    organizationalUnitName = optional
+    commonName = supplied
+    emailAddress = optional
+
+    [ myca_extensions ]     #These extensions are required.
+    basicConstraints = CA:true
+    subjectKeyIdentifier = hash
+    authorityKeyIdentifier = keyid:always
+    keyUsage = keyCertSign, cRLSign
+    ```
+
+13. Run the following command to cross-sign your organization's CA certificate using the CSR file:
+
+    `openssl ca -batch -config myca.conf -notext -days 7320 -in iag_ca.csr -out iag_ca.cer`
+
+    A cross-signed certificate named `0A.pem` is generated under folder `newcerts`.
+::::

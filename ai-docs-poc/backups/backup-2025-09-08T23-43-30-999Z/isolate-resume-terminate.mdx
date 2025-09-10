@@ -1,0 +1,103 @@
+---
+slug: trend-vision-one-isolate-resume-terminate
+title: 'Container response actions (Isolate/Resume, Terminate)'
+last_updated: '2025-09-08'
+ai_context:
+  source_file: isolate-resume-terminate.md
+  conversion_date: '2025-09-08T23:42:16.638Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Through integration with the Response Management app, you can isolate, restore connection, and terminate containers throughout the Trend Vision One console using the context menu.
+
+Depending on the type of container, direct response actions are available throughout the Trend Vision One console (for example, on the Workbench, Observed Attack Techniques, and Search apps) that you can then track using Response Management.
+
+:::warning[Important]
+
+Before Kubernetes isolation is available, you must [ensure that you have a network policy deployed](kubernetes-system-req.mdx) on your cluster. By default, Container Security continuous compliance creates a Kubernetes network policy but you can manually create a [Kubernetes network policy for continuous compliance](container-security-faqs.mdx).
+:::
+
+**Supported response actions**
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Container type</p></th>
+<th><p>Isolate/Resume Container</p></th>
+<th><p>Terminate Container</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Microsoft AKS</p></td>
+<td><p>Supported</p>
+
+
+:::warning[Important]
+
+<p>Requires the <strong>Calico</strong> network policy.</p>
+
+
+:::
+
+</td>
+<td><p>Supported</p></td>
+</tr>
+<tr>
+<td><p>Google GKE</p></td>
+<td><p>Supported</p>
+
+
+:::warning[Important]
+
+<p>Requires the <strong>Calico</strong> network policy.</p>
+
+
+:::
+
+</td>
+<td><p>Supported</p></td>
+</tr>
+<tr>
+<td><p>Amazon EKS (without Fargate)</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+</tr>
+<tr>
+<td><p>Amazon EKS (with Fargate)</p></td>
+<td><p>Not supported</p></td>
+<td><p>Supported</p></td>
+</tr>
+<tr>
+<td><p>Amazon ECS (with and without Fargate)</p></td>
+<td><p>Not supported</p></td>
+<td><p>Supported</p></td>
+</tr>
+<tr>
+<td><p>Red Hat OpenShift</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+</tr>
+<tr>
+<td><p>OKD</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+</tr>
+</tbody>
+</table>
+
+For more information on each task, refer to the following:
+
+- [Isolate Container task](isolate-container-task.mdx)
+
+- [Resume Container task](resume-container-task.mdx)
+
+- [Terminate Container task](terminate-container-task.mdx)
+::::

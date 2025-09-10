@@ -1,0 +1,25 @@
+---
+slug: trend-vision-one-clean-up-temporary-files
+title: Clean up temporary files
+last_updated: '2025-09-08'
+ai_context:
+  source_file: clean-up-temporary-files.md
+  conversion_date: '2025-09-08T23:42:23.563Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Each scan initiated against a registry image using the Trend Micro Artifact Scanner (TMAS) generates a new temporary directory under $TMPDIR to download and analyze the image.
+
+For version 1.35.0 and later, this tool automatically removes those temporary files after scan execution.
+
+To clean up existing temporary files that were generated with prior versions or by an interrupted scan, use the following commands (or its platform equivalent) under your discretion:
+
+``` codeblock
+echo $TMPDIR
+ls $TMPDIR | grep "stereoscope-"
+cd $TMPDIR && rm -rf ./stereoscope-*
+ls $TMPDIR | grep "stereoscope-"
+```
+:::

@@ -1,0 +1,73 @@
+---
+slug: trend-vision-one-cis-aks17-324
+title: 3.2.4 - Ensure that the –read-only-port is secured (Automated)
+---
+# 3.2.4 - Ensure that the –read-only-port is secured (Automated)
+
+Profile Applicability: Level 1
+
+Disable the read-only port.
+
+The Kubelet process provides a read-only API in addition to the main Kubelet API. Unauthenticated access is provided to this read-only API which could possibly retrieve potentially sensitive information about the cluster.
+
+:::note
+
+See the Azure AKS documentation for the default value.
+:::
+
+### Impact {#impact}
+
+Removal of the read-only port will require that any service which made use of it will need to be re-configured to use the main Kubelet API.
+
+### Audit {#audit}
+
+If using a Kubelet configuration file, check that there is an entry for `authentication: anonymous: enabled` set to `0`.
+
+1.  SSH to the relevant node and execute the following command on each node to find the appropriate Kubelet config file:
+
+    ```bash
+    ps -ef | grep kubelet
+    ```
+
+    The output of the above command should return something similar to`--config /etc/kubernetes/kubelet/kubelet-config.json` which is the location of the Kubelet config file..
+
+2.  Open the Kubelet config file:
+
+    ```bash
+    cat /etc/kubernetes/kubelet/kubelet-config.json
+    ```
+
+3.  Verify that the `--read-only-port` argument exists and is set to `0`.
+
+4.  If the `--read-only-port` argument is not present, check that there is a Kubelet config file specified by `--config`. Check that if there is a `readOnlyPort` entry in the file, it is set to `0`.
+
+### Remediation {#remediation}
+
+**Remediation Method 1:**
+
+If modifying the Kubelet config file, edit `/etc/kubernetes/kubelet/kubelet-config.json` and set the below parameter to false:
+
+```bash
+     readOnlyPort to 0
+
+```
+
+**Remediation Method 2:**
+
+If using executable arguments, edit the Kubelet service file `/etc/systemd/system/kubelet.service.d/10-kubelet-args.conf` on each worker node and add the below parameter at the end of the `KUBELET_ARGS` variable string:
+
+```bash
+--read-only-port=0
+```
+
+**For all remediations:**
+
+Restart the `kubelet` service and verify the status:
+
+```bash
+     systemctl daemon-reload
+     systemctl restart kubelet.service
+     systemctl status kubelet -l
+
+```
+::::

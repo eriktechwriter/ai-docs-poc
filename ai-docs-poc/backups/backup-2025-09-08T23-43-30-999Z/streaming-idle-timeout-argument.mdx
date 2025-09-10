@@ -1,0 +1,127 @@
+---
+slug: trend-vision-one-streaming-idle-timeout-argument
+title: >-
+  3.2.5 - Ensure that the –streaming-connection-idle-timeout argument is not set
+  to 0 (automated)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: streaming-idle-timeout-argument.md
+  conversion_date: '2025-09-08T23:42:12.276Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Profile applicability: Level 1 - Worker Node
+
+This recommendation stresses the importance of setting timeouts on streaming connections to the Kubelet to mitigate risks associated with Denial-of-Service (DoS) attacks, inactive connections, and depletion of ephemeral ports. Properly configuring these timeouts ensures the secure and efficient operation of network connections.
+
+### Impact {#impact}
+
+Long-lived connections could be interrupted.
+
+### Audit {#audit}
+
+Audit method 1:
+
+:::note
+
+Kubelets can be configured via a configuration file or command line arguments. Command line arguments take precedence. Check both command line arguments and configuration file entries when auditing Kubelet configurations.
+:::
+
+1.  SSH into each node and run the following command to view details of the active Kubelet process:
+
+    ``` codeblock
+    ps -ef | grep kubelet
+    ```
+
+2.  If the command line for the process includes the argument `--streaming-connection-idle-timeout`, verify that it is not set to 0. If the `--streaming-connection-idle-timeout` argument is not present, refer instead to the `--config` argument that specifies the location of the Kubelet config file:
+
+    ``` codeblock
+    cat /etc/kubernetes/kubelet/kubelet-config.json
+    ```
+
+3.  Open the Kubelet config file:
+
+    ``` codeblock
+    sudo less /path/to/kubelet-config.json
+    ```
+
+4.  Verify that the `streamingConnectionIdleTimeout` argument is not set to 0.
+
+Audit method 2:
+
+If using the API configz endpoint, consider searching for the status of `"streamingConnectionIdleTimeout": "4h0m0s"` by extracting the live configuration from the nodes running Kubelet.
+
+1.  Set the local proxy port and the following variables and provide proxy port number and node name:
+
+    ``` codeblock
+          export HOSTNAME_PORT=localhost:8001
+          export NODE_NAME=my-node-name
+          curl -sSL "http://${HOSTNAME_PORT}/api/v1/nodes/${NODE_NAME}/proxy/configz"
+         
+    ```
+
+### Remediation {#remediation}
+
+Method 1:
+
+1.  If modifying the Kubelet config file, edit the `/etc/kubernetes/kubelet/kubelet-config.json` file:
+
+    ``` codeblock
+          {
+          "streamingConnectionIdleTimeout": "4h0m0s"
+          }
+         
+    ```
+
+2.  You should ensure that the kubelet service file `/etc/systemd/system/kubelet.service.d/10-kubelet-args.conf` does not specify a `--streaming-connection-idle-timeout` argument because it would override the Kubelet config file.
+
+3.  Based on your system, restart the kubelet service and check status:
+
+    ``` codeblock
+          systemctl daemon-reload
+          systemctl restart kubelet.service
+          systemctl status kubelet -l
+         
+    ```
+
+Method 2:
+
+1.  If using executable arguments, edit the kubelet service file `/etc/systemd/system/kubelet.service.d/10-kubelet-args.conf` on each worker node and add the below parameter at the end of the KUBELET_ARGS variable string:
+
+    ``` codeblock
+          --streaming-connection-idle-timeout=4h0m0s
+         
+    ```
+
+2.  Based on your system, restart the kubelet service and check status:
+
+    ``` codeblock
+          systemctl daemon-reload
+          systemctl restart kubelet.service
+          systemctl status kubelet -l
+         
+    ```
+
+Method 3:
+
+1.  If using the API configz endpoint, consider searching for the status of `"streamingConnectionIdleTimeout"` by extracting the live configuration from the nodes running kubelet.
+
+    ``` codeblock
+          kubectl proxy --port=8001 &
+          export HOSTNAME_PORT=localhost:8001
+          export NODE_NAME=ip-192.168.31.226.ec2.internal
+          curl -sSL "http://${HOSTNAME_PORT}/api/v1/nodes/${NODE_NAME}/proxy/configz"
+         
+    ```
+
+2.  Based on your system, restart the kubelet service and check status:
+
+    ``` codeblock
+          systemctl daemon-reload
+          systemctl restart kubelet.service
+          systemctl status kubelet -l
+         
+    ```
+::::

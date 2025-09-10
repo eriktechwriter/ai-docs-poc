@@ -1,0 +1,96 @@
+---
+slug: trend-vision-one-agent-settings
+title: Agent settings
+last_updated: '2025-09-08'
+ai_context:
+  source_file: agent-settings.md
+  conversion_date: '2025-09-08T23:42:25.452Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Agent-related settings are located on **Administration → System Settings → Agents**. They include the following.
+
+:::tip
+
+You can automate agent-related system setting changes using the Server & Workload Protection API. For examples, see [Configure Policy, Computer, and System Settings](configure-system-settings.mdx).
+:::
+
+### Agent-initiated activation (AIA) {#agent-initiated-activation-aia}
+
+In addition to activating new agents in Server & Workload Protection (such as via a cloud connector or manually adding a new computer on **Computers**), but you can also (or instead) allow agents to automatically activate themselves. See also [Activate and protect agents using agent-initiated activation and communication](agent-initiated-activation.mdx).
+
+**Allow agent-initiated activations:** Allow agents to connect to Server & Workload Protection to activate themselves. Then select which computers are allowed to perform agent-initiated activation.
+
+- **For any computers:** Any computer, whether it is already listed on *Computers* or not.
+- **For existing computers:** Only computers already listed on *Computers*.
+- **For computers on the following IP list:** Only computers whose IP address has a match on the specified IP list.
+
+To configure initiation behavior:
+
+- **Policy to assign (if policy not assigned by activation script)**: Security policy to assign to the computer during activation. This setting only applies if no policy is specified in the agent's activation script or an AIA event-based task.
+
+- **Allow agent to specify hostname**: Allow the agent to specify its hostname by providing it to Server & Workload Protection during activation.
+
+- **Allow Trend Vision One Virtual Desktop Infrastructure (VDI) support and cloned virtual machines**: Enabling VDI support locks the following system settings.
+
+  If this setting is enabled and you do not want agents upgraded automatically, do the following:
+
+  1.  Navigate to **Administration → System Settings → Agents → Agent Upgrade**.
+  2.  Disable **Automatically upgrade agents on activation** for the corresponding operating system. See [Automatically upgrade agents on activation](autoupgrade-agents-activation.mdx).
+
+- **If a computer already exists**: Specifies how to handle the activation attempt if the new computer is trying to use the same agent GUID or certificate, or has the same BIOS UUID, as an existing computer.
+
+  - **Do not allow activation**: Don't activate the computer.
+
+  - **Activate a new computer with the same name**: Create a new computer object and activate the computer. Use this option if you are activating clones with the same BIOS UUID, so that each cloned machine has its own computer object. Note that deactivating and re-activating the same computer creates a new computer object, resulting in the previous computer object becoming permanently inactive.
+
+  - **Re-activate the existing computer**: Keeping the same name, reuse the existing computer object and activate the computer. If you are activating multiple computers with the same BIOS UUID, they will all share the same computer object, which can cause issues where a unique identifier is needed.
+
+  This setting only applies to physical computers, Azure virtual machines (VMs), Google Cloud Platform (GCP) VMs, or VMware VMs. (AWS provides a unique instance ID that Server & Workload Protection uses to differentiate all AWS instances, so this setting is ignored for those computers.)
+
+  Enabling VDI support selects and locks this setting to **Re-activate the existing computer**.
+
+- **Reactivate cloned agents**: Reactivate clones as new computers; assign the the policy selected in Policy to assign (if Policy not assigned by activation script). This can be useful when re-imaging computer hard disks, or deploying new VM instances or AMI, using a "golden image" that has an already-activated agent. It ensures that each computer has a unique agent GUID, despite being deployed by copying the same software image.
+
+  Clones are detected after the initial activation, during their first heartbeat. If the same agent GUID is being used on different computers, Server & Workload Protection detects the clones and reactivates those computers.
+
+  :::note
+
+  If you disable this option, clones will not be automatically reactivated. You'll need to activate them either manually through the Server & Workload Protection console or via an activation script.
+  :::
+
+  This setting only applies to AWS instances, Azure virtual machines (VMs), Google Cloud Platform (GCP) VMs, or VMware VMs that you added via **Computers → Add Account**.
+
+  Enabling VDI support selects and locks this setting.
+
+- **Reactivate unknown agents**: Reactivate deleted (but previously activated) computers as new computers if they connect again. The original computer's assigned policies or rules will not be assigned to the computer again by default. You should assign it again manually or use a tool such as an event-based task to assign it automatically. This setting is useful together with inactive agent cleanup, as any accidentally removed computers can automatically re-activate. See also [Automate offline computer removal with inactive agent cleanup](automate-inactive-agent-cleanup.mdx).
+
+  Previously known agents are detected after the initial activation, during their next heartbeat. If a heartbeat has an agent GUID (indicating prior activation) but its computer is not currently listed on *Computers*, Server & Workload Protection reactivates the computer. Previous event messages will still link to the old computer object, not this new one.
+
+  Enabling VDI support selects and locks this setting.
+
+### Agent Upgrade {#agent-upgrade}
+
+**Automatically upgrade agents on activation** During activation, upgrade the agent to the latest software version that's compatible with Server & Workload Protection. Linux computers only. See also [Automatically upgrade agents on activation](autoupgrade-agents-activation.mdx).
+
+### Inactive Agent Cleanup {#inactive-agent-cleanup}
+
+If you have many offline computers (that is, they are not communicating with Server & Workload Protection), and they don't need to manage them anymore, you can automatically remove them from **Computers** via inactive agent cleanup. This setting is useful together with reactivating currently unknown agents. See also [Automate offline computer removal with inactive agent cleanup](automate-inactive-agent-cleanup.mdx).
+
+**Delete agents that have been inactive for:** How much time a computer must be inactive in order to be removed.
+
+### Data Privacy {#data-privacy}
+
+**Allow packet data capture in network events:** This setting determines whether the agent captures and sends packet data to Server & Workload Protection as part of Intrusion Prevention and Firewall events. The options for this setting are:
+
+- **Yes (excluding encrypted traffic):** This is the default option. All unencrypted packet data is sent to Server & Workload Protection.
+- **Yes (all traffic):** All packet data is sent to Server & Workload Protection, including encrypted packet data. The resource requirements for capture of packet data on encrypted connections is higher than for unencrypted connections. If you select this option and encounter problems with performance on your workloads, consider switching to the option that excludes encrypted traffic.
+- **No** Packet data is not captured or transmitted from the agent to Server & Workload Protection. Customers in regulated environments or who are concerned about the transmission of network content to Server & Workload Protection can disable this setting. For more information about data transmitted to Server & Workload Protection, see the [Server & Workload Protection Data Collection Notice](https://success.trendmicro.com/solution/000258329).
+
+:::note
+
+This feature is supported in agents version 12.5.0.1001 and later, but is not supported for macOS agents.
+:::
+:::::

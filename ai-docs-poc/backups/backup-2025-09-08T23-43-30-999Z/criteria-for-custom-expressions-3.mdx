@@ -1,0 +1,79 @@
+---
+slug: trend-vision-one-criteria-for-custom-expressions-3
+title: Criteria for custom expressions
+last_updated: '2025-09-08'
+ai_context:
+  source_file: criteria-for-custom-expressions-3.md
+  conversion_date: '2025-09-08T23:42:21.219Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+View the available options for creating custom expressions.
+
+**Criteria options for customized expressions**
+
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 33%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Criteria</p></th>
+<th><p>Rule</p></th>
+<th><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>None</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>None</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>All - Names from US Census Bureau</p>
+<ul>
+<li><p>Expression: [^\w]([A-Z][a-z]{1,12}(\s?,\s?|[\s]|\s([A-Z])\.\s)[A-Z][a-z]{1,12})[^\w]</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Specific characters</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>An expression must include the characters you have specified.</p>
+<p>In addition, the number of characters in the expression must be within the minimum and maximum limits.</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>US - ABA Routing Number</p>
+<ul>
+<li><p>Expression: [^\d]([0123678]\d{8})[^\d]</p></li>
+<li><p>Characters: 0123456789</p></li>
+<li><p>Minimum characters: 9</p></li>
+<li><p>Maximum characters: 9</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Suffix</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Suffix refers to the last segment of an expression. A suffix must include the characters you have specified and contain a certain number of characters.</p>
+<p>In addition, the number of characters in the expression must be within the minimum and maximum limits.</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>All - Home Address</p>
+<ul>
+<li><p>Expression: \D(\d+\s[a-z.]+\s([a-z]+\s){0,2} (lane|ln|street|st|avenue|ave| road|rd|place|pl|drive|dr|circle| cr|court|ct|boulevard|blvd)\.? [0-9a-z,#\s\.]{0,30}[\s|,][a-z]{2}\ s\d{5}(-\d{4})?)[^\d-]</p></li>
+<li><p>Suffix characters: 0123456789-</p></li>
+<li><p>Number of characters: 5</p></li>
+<li><p>Minimum characters in the expression: 25</p></li>
+<li><p>Maximum characters in the expression: 80</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-right-width: 1px; border-right-style: solid"><p>Single- character separator</p></td>
+<td style="border-right-width: 1px; border-right-style: solid"><p>An expression must have two segments separated by a character. The character must be 1 byte in length.</p>
+<p>In addition, the number of characters left of the separator must be within the minimum and maximum limits. The number of characters right of the separator must not exceed the maximum limit.</p></td>
+<td><p>All - Email Address</p>
+<ul>
+<li><p>Expression: [^\w.]([\w\.]{1,20}@[a-z0-9]{2,20}[\.][a-z]{2,5}[a-z\.]{0,10})[^\w.]</p></li>
+<li><p>Separator: @</p></li>
+<li><p>Minimum characters to the left: 3</p></li>
+<li><p>Maximum characters to the left: 15</p></li>
+<li><p>Maximum characters to the right: 30</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+:::

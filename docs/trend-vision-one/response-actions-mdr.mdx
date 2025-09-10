@@ -1,0 +1,162 @@
+---
+slug: trend-vision-one-response-actions-mdr
+title: Response actions
+---
+# Response actions
+
+Explore the response actions available to the Managed Services operations team.
+
+**Related information**
+
+- Approval not required
+- Automatically approve
+
+## Approval not required {#approval-not-required}
+
+The following response actions do not require approval. The operations team is automatically authorized to perform these actions on your behalf:
+
+- Link or unlink [Workbench](workbench.mdx) alerts to incidents
+
+- Add exceptions in [Suspicious Object Management](suspicious-object-management.mdx)
+
+- Add exceptions in [Detection Model Management](detection-model-management.mdx)
+
+- Conduct memory dumps of processes running on endpoints
+
+  :::note
+
+  Process memory dumps on endpoints require remote shell sessions which you must approve. To auto approve operations team requests, see [Configure response approval settings](config-response-approval-settings.mdx).
+  :::
+
+## Automatically approve {#automatically-approve}
+
+You can automate the approval of the following response action requests submitted by the operations team. For instructions on enabling auto approval of requests, see [Configure response approval settings](config-response-approval-settings.mdx).
+
+**Critical Actions**
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Response Action Name</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><a href="trend-vision-one-add-block-list-task">Add to Block List</a></p></td>
+<td><p>Adds supported objects such as Secure Hash Algorithm 1 (SHA-1), uniform resource locator (URL), internet protocol (IP) address, or domain objects to the user-defined Suspicious Objects List, which blocks the objects on subsequent detections.</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-collect-evidence-task">Collect Evidence</a></p></td>
+<td><p>Collects detailed evidence from specified endpoints to support threat investigation and incident response</p>
+
+
+:::warning[Important]
+
+<p>Auto-approval must be enabled to use this response action.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-collect-file-task">Collect File</a></p></td>
+<td><p>Compresses the selected file detected by the network appliance and Trend Vision One in a password-protected archive and then sends the archive to Response Management.</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-disable-user-account-task">Disable User Account</a></p></td>
+<td><p>Signs the user out of all active application and browser sessions of the user account. This task might take a few minutes to complete. Users are prevented from signing in any new session.</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-isolate-endpoint-task">Isolate Endpoint</a></p></td>
+<td><p>Disconnects the target endpoint from the network, except for communication with the managing Trend Micro endpoint protection product.</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-quarantine-message-task">Quarantine Message</a></p></td>
+<td><p>Adds the email address to the Blocked Sender list in Cloud App Security and quarantines incoming messages.</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-restore-connection-task">Restore Connection</a></p></td>
+<td><p>Restores network connectivity to an endpoint that already applied the Isolate Endpoint action.</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-scan-for-malware-task">Scan for Malware</a></p></td>
+<td><p>Performs a one-time scan on one or more endpoints for file-based threats such as viruses, spyware, and grayware.</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-terminate-process-task">Terminate Process</a></p></td>
+<td><p>Terminates the active process and allows you to terminate the process on all affected endpoints.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Recommended Actions**
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Response Action Name</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><a href="trend-vision-one-collect-network-analysis-package">Collect Network Analysis Package</a></p></td>
+<td><p>Compresses the selected network analysis package, including an investigation package, a packet capture (PCAP) file, and a selected file detected by the network appliance, in a password-protected archive and then sends the archive to Response Management.</p></td>
+</tr>
+<tr>
+<td><p>Configure and Deploy TippingPoint Filter Policy</p></td>
+<td><p>Configures TippingPoint virtual patching filter policies in <strong>Intrusion Prevention Configuration</strong> and applies the policies on TippingPoint SMS profiles to mitigate common vulnerabilities and exposures (CVE) risks.</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-run-osquery-task">Run osquery</a></p></td>
+<td><p>Runs SQL-based queries on specified endpoints to support threat investigation and incident response</p>
+
+
+:::warning[Important]
+
+<p>Auto-approval must be enabled in order to use this response action.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-run-remote-custom-script-task">Run Remote Custom Script</a></p></td>
+<td><p>Connects to a monitored endpoint and executes a previously uploaded PowerShell or Bash script file.</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-run-yara-rules-task">Run YARA Rules</a></p></td>
+<td><p>Runs custom YARA rules on specified endpoints to support threat investigation and incident response</p>
+
+
+:::warning[Important]
+
+<p>Auto-approval must be enabled in order to use this response action.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-start-remote-shell-session-task">Start Remote Shell Session</a></p></td>
+<td><p>Connects to monitored endpoints to remotely execute commands, custom scripts or process memory dumps for investigation.</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-submit-for-sandbox-analysis-task">Submit for Sandbox Analysis</a></p></td>
+<td><p>Submits the selected file objects for automated analysis in a sandbox, a secure virtual environment.</p></td>
+</tr>
+</tbody>
+</table>
+:::

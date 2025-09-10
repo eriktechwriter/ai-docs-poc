@@ -1,0 +1,116 @@
+---
+slug: trend-vision-one-application-control-criteria
+title: Application Control Criteria
+last_updated: '2025-09-08'
+ai_context:
+  source_file: application-control-criteria.md
+  conversion_date: '2025-09-08T23:42:24.908Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure Application Control criteria that you can then assign to Security Agent policy rules. You can create "Allow" and "Block" criteria to limit the applications that users can execute or install on protected endpoints. You can also create assessment criteria to monitor the applications executing on endpoints and then refine the criteria based on the usage results.
+
+:::warning[Important]
+
+You must configure Application Control criteria before deploying an Application Control policy to Trend Vision One Endpoint Security agents.
+
+Each managed product provides different policy settings that you can configure and deploy to policy targets. You can find a complete list of supported managed products and the policy settings for each in the Apex Central as a Service Widget and Policy Management Guide.
+
+You can download a PDF version of the guide, or view the guide online, using the following link:
+
+<https://docs.trendmicro.com/en-us/enterprise/apex-one-as-a-service.aspx>
+:::
+
+The following table outlines the tasks available on the **Application Control Criteria** screen.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Task</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Add criteria</p></td>
+<td><p>Click the <strong>Add Criteria</strong> drop-down button and select from the following options:</p>
+<ul>
+<li><p><strong>Allow</strong>: Click to define "Allow" or "Lockdown" criteria</p>
+<p>For more information, see <a href="trend-vision-one-defining-allowed-apps-criteria">Defining Allowed Application Criteria</a>.</p></li>
+<li><p><strong>Block</strong>: Click to define "Block" or "Assessment" criteria</p>
+<p>For more information, see <a href="trend-vision-one-defining-blocked-app-criteria">Defining Blocked Application Criteria</a>.</p></li>
+<li><p><strong>Copy</strong>: Select an existing criteria and click <strong>Copy</strong> to define new criteria based on the existing settings</p></li>
+<li><p><strong>Import</strong>: Click to select a ZIP package exported from a compatible Application Control source</p>
+
+
+:::note
+
+<p>If the imported package contains criteria names that match preexisting criteria, you have the option to <strong>Overwrite</strong> existing criteria or <strong>Skip</strong> the import of the criteria with duplicated names.</p>
+
+
+:::
+
+</li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Export criteria</p></td>
+<td><p>Select the check box to the left of existing criteria and click <strong>Export</strong> to save the selected criteria to a ZIP package (<code>&lt;timestamp&gt;_iACRuleExport.zip</code>)</p></td>
+</tr>
+<tr>
+<td><p>Delete criteria</p></td>
+<td><p>Select the check box to the left of existing criteria and click <strong>Delete</strong> to remove the selected criteria from the list</p>
+
+
+:::danger[Warning]
+
+<p>If you selected criteria used by existing Apex One Security Agent policies, you must confirm that you want to delete and remove the criteria from all affected Security Agent policies. You cannot undo this action.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Modify criteria</p></td>
+<td><p>Click a <em>Criteria Name</em> to modify the criteria settings</p>
+
+
+:::note
+
+<p>Affected endpoints receive modified criteria settings the next time the Trend Vision One Endpoint Security agents connect to the server.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>View policy associations</p></td>
+<td><p>Click the value in the <em>Target Policies</em> column to display a list of all Apex One Security Agent policies that implement the criteria.</p>
+
+
+:::tip
+
+<p>Click a policy name to open a new browser tab on which you can view or modify the policy settings.</p>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Defining Allowed Application Criteria](defining-allowed-apps-criteria.mdx)
+- [Defining Blocked Application Criteria](defining-blocked-app-criteria.mdx)
+- [Application Match Methods](application-match-methods.mdx)
+::::

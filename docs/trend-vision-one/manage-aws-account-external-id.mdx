@@ -1,0 +1,129 @@
+---
+slug: trend-vision-one-manage-aws-account-external-id
+title: Manage an AWS account external ID
+---
+# Manage an AWS account external ID
+
+::::::warning[Important]
+
+AWS Accounts in Trend Vision One are now managed by the Cloud Accounts app. To add new AWS accounts, see [Adding an AWS account using CloudFormation](adding-aws-account.mdx).
+
+You can still use APIs to add new accounts to Server & Workload Protection. However, Trend Micro recommends using the Cloud Accounts app, which provides access to more advanced cloud security and XDR capabilities. This topic is for reference only.
+:::
+
+Topics:
+
+- What is the external ID?
+- Configure the external ID
+- Update the external ID
+- Retrieve the external ID
+- Disable retrieval of the external ID
+
+## What is the external ID? {#what-is-the-external-id}
+
+Along with the cross-account role ARN, the external ID is used to grant access from one AWS role to another. The external ID is provided by a third-party service that wants to assume the role of your account. If you trust that service to act on your behalf, you add that external ID to your cross-account role. In this case, Server & Workload Protection is the third-party service that is providing an external ID to you, in order to act on behalf of your AWS account. Server & Workload Protection uses this access to synchronize information from your AWS account and maintain an up-to-date record of your resources. For details, see this AWS document: [How to Use External ID When Granting Access to Your AWS Resources](https://aws.amazon.com/blogs/security/how-to-use-external-id-when-granting-access-to-your-aws-resources/).
+
+Notes:
+
+- The external ID is only used when adding an AWS account using a cross-account role.
+- The same external ID is used for all AWS accounts added using cross-account roles.
+
+## Configure the external ID {#configure-the-external-id}
+
+Configuring the external ID is one step in a larger process of adding a cross-account role.
+
+## Update the external ID {#update-the-external-id}
+
+If you previously added an AWS account using a cross-account role, you might have specified a user-defined external ID. To better align with AWS best-practices, Trend Micro recommends switching to the Server & Workload Protection-defined external ID.
+
+:::note
+
+AWS accounts that were previously added with a user-defined external ID will continue to function as normal.
+:::
+
+## Determine whether you're using a user- or manager-defined external ID {#determine-whether-youre-using-a-user--or-manager-defined-external-id}
+
+If you're not sure whether you're currently using a user- or manager-defined external ID, follow the procedure below to find out.
+
+### Procedure {#procedure}
+
+1.  Log in to Server & Workload Protection.
+
+2.  Click *Computers*.
+
+3.  Right-click the AWS account that was added using a cross-account role and select *Properties*.
+
+4.  If an *Update* link appears next to the external ID, it means that a user-defined external ID is currently in use and should be updated. If an *Update* link does not appear, it's because the Server & Workload Protection-defined external ID is currently in use, and no action is necessary.
+
+5.  Repeat this procedure for each account that has been added to Server & Workload Protection using a cross-account role.
+
+### Next steps {#next-steps}
+
+## Update the external ID through the Server & Workload Protection console {#update-the-external-id-through-the-server-workload-protection-console}
+
+### Procedure {#procedure-1}
+
+1.  If you have not already done so, log in to Server & Workload Protection, right-click the AWS account you want to update, and select *Properties*.
+
+2.  Click the *Update* link that appears next to the external ID. The *Update* link disappears.
+
+3.  Note the external ID. You'll need it in the next step to configure the cross-account role.
+
+4.  Log in to the AWS account whose external ID you just updated. Update the cross-account role's IAM policy by replacing the old external ID with the new one.
+
+5.  Back on the properties window, click *Apply* to apply changes. Your account's user-defined external ID has now been updated to the Server & Workload Protection-defined one.
+
+6.  Repeat this procedure for each account that has been added to Server & Workload Protection using a cross-account role.
+
+### Next steps {#next-steps-1}
+
+## Update the external ID through the Server & Workload Protection API {#update-the-external-id-through-the-server-workload-protection-api}
+
+### Procedure {#procedure-2}
+
+1.  If you don't already have the new manager-defined external ID, call the `/api/awsconnectorsettings` endpoint to retrieve it (the `ExternalId` parameter).
+
+2.  Log in to the AWS account where the cross-account role was configured. Update the cross-account role's IAM policy by replacing the old external ID with the new one. Repeat this step for each account that has been added to Server & Workload Protection using a cross-account role.
+
+3.  Using the `/api/awsconnectors` endpoint, perform an `Update action` on the account you are updating, with its `CrossAccountRoleARN` parameter set to the same role ARN as it is currently. Do not provide an external ID in the request object. Your account's user-defined external ID has now been updated to the Server & Workload Protection-defined one.
+
+### Next steps {#next-steps-2}
+
+## Retrieve the external ID {#retrieve-the-external-id}
+
+There are a few ways to retrieve the external ID for use with cross-accounts.
+
+## Through the Server & Workload Protection API {#through-the-server-workload-protection-api}
+
+- Call the `/api/awsconnectorsettings` endpoint to retrieve it (the `ExternalId` parameter).
+
+## Disable retrieval of the external ID {#disable-retrieval-of-the-external-id}
+
+You might want to disable the ability to view and retrieve the external ID in the Server & Workload Protection console to prevent unauthorized access to it. You can retrieve the ID once, store it in a safe place like your secrets manager, and then disable the retrieval for everyone else.
+
+:::note
+
+Retrieval can be enabled again at any time.
+:::
+
+To disable retrieval:
+
+### Procedure {#procedure-3}
+
+1.  Log in to Server & Workload Protection.
+
+2.  Click *Administration* at the top.
+
+3.  In the main pane, click the *Security* tab.
+
+4.  Deselect *Enable retrieval and viewing of AWS external ID*.
+
+5.  Click *Save*.
+
+### Next steps {#next-steps-3}
+
+:::tip
+
+You can also use roles to prevent access to the external ID. For details, see [User Roles](user-roles-foundation-services.mdx).
+:::
+:::::::

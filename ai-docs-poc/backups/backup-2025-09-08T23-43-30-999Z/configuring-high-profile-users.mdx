@@ -1,0 +1,87 @@
+---
+slug: trend-vision-one-configuring-high-profile-users
+title: Configuring high profile users
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configuring-high-profile-users.md
+  conversion_date: '2025-09-08T23:42:22.435Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Since BEC attacks target high profile users such as company executives, Cloud Email and Collaboration Protection allows you to add high profile users who are likely to be impersonated for detection and classification.
+
+Specify the email display names and optionally email addresses of the high profile users who might be frequently impersonated. Cloud Email and Collaboration Protection uses the High Profile Users list for the following:
+
+- Check incoming email messages claimed to be sent from those users, apply fraud checking criteria to identify forged messages, and enable you to take action if BEC attacks are detected.
+
+- Allow you to directly take action when the display name of an external sender matches the list.
+
+:::warning[Important]
+
+**High Profile Users** apply to all BEC detection technologies used by Cloud Email and Collaboration Protection. However, if you want to use writing style analysis to spot probable BEC attacks, you must specify the email address of a high profile user.
+:::
+
+As a global setting, the specified high profile users are applicable to all Advanced Spam Protection enabled policies for your email service, that is, Exchange Online or Gmail, for BEC detection. For details, see [Configuring Advanced Spam Protection](advanced-spam-protection.mdx).
+
+:::note
+
+Cloud Email and Collaboration Protection supports configuring a High Profile User Exception list to skip the scanning for BEC even when a sender's display name matches the High Profile Users list. For details, see [Configuring high profile user exception list](high-profile-exception-list.mdx).
+:::
+
+### Procedure {#procedure}
+
+1.  In Cloud Email and Collaboration Protection, go to **Policies → Global Settings → User-Defined Lists → High Profile List** and click **High Profile Users**.
+
+2.  Perform the following tasks:
+
+    - Specify individual users or select users from groups as high profile users.
+
+      :::note
+
+      A maximum of 1,000 users can be added.
+
+      The added users apply to the policies for all the organizations.
+      :::
+
+      - Click **Add → Add User Manually**, select an organization from the list that appears, specify the first name, middle name (optional), last name, and email address (optional) of the user on the **Add High Profile User** screen that appears, and then click **Save**.
+
+        :::note
+
+        To apply writing style analysis to a high profile user, make sure to enter the user's valid company email address.
+        :::
+
+      - Click **Add → Add User from Organization**, select an organization from the list that appears, select users from one or multiple groups under the organization on the **Add High Profile Users from Organization** screen that appears, and then click **Save**.
+
+    - Remove one or multiple users from the high profile user list.
+
+      1.  Select one or multiple users and click **Delete**.
+
+      2.  Click **OK**.
+
+    - Import individual users as high profile users in batches.
+
+      1.  Create a `.csv` file to specify the users to import.
+
+          :::note
+
+          Add the first name, middle name, last name, and email address of each user in the first four columns. Cloud Email and Collaboration Protection will check the user information from the second row. The first name and last name are required, the email address must be valid and belong to your company, and the total number of users, including those already added on the **High Profile Users** screen, cannot exceed 1,000.
+          :::
+
+      2.  Click **Import**, select the created `.csv` file, and then click **Import**.
+
+    - Export all or selected high profile users.
+
+      - Click **Export → All Users** to export all users specified in the list as a `.csv` file.
+
+      - Select some users specified in the list, and then click **Export → Selected Users** to export them as a `.csv` file.
+
+3.  On the **High Profile Users** screen, view the writing style training progress for high profile users under **Writing Style Training Status**.
+
+    If writing style analysis is not enabled in any of the Advanced Threat Protection policies for your email service, **Writing style analysis not enabled** displays.
+
+    Writing style training is available only for Gmail and Exchange Online (non-inline mode).
+
+4.  Click **OK**.
+:::::

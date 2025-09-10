@@ -1,0 +1,83 @@
+---
+slug: trend-vision-one-manually-stop-agent-processes
+title: How to manually terminate Trend Vision One Endpoint Security agent processes
+last_updated: '2025-09-08'
+ai_context:
+  source_file: manually-stop-agent-processes.md
+  conversion_date: '2025-09-08T23:42:16.092Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Manually stop agent processes not halted when using an authorization token to terminate the program.
+
+:::note
+
+This FAQ is about how to manually terminate agent processes when using the agent interface to shut down the Trend Vision One Endpoint Security agent on a Windows endpoint. For information about shutting down the agent, see [Agent Interface](policies-agent-interface.mdx).
+
+For steps on restarting the agent and agent services, see [How to restart the Trend Vision One Endpoint Security agent](restart-security-agent.mdx).
+
+Some services might require disabling the feature in Endpoint Security Policies before shutting down the agent.
+:::
+
+### Procedure {#procedure}
+
+1.  Disable protection features which control the affected services before terminating the agent program.
+
+    1.  In Endpoint Security Policies, disable the following protection features:
+
+        - Firewall
+
+        - Intrusion Prevention
+
+        - Web Reputation
+
+    2.  Go to **Agent Interface** and set **Browser extension** to **Disable**.
+
+    3.  Save the policy settings.
+
+2.  Allow time for the agents to update the policy settings, then terminate the agent program using the agent interface.
+
+3.  Terminate `tm_netsrv` manually.
+
+    1.  Once the agent program is successfully terminated, access Task Manager.
+
+    2.  Locate and select `tm_netsrv`.
+
+    3.  Click **End task**.
+
+4.  To terminate `dsa-wrs-app.exe` manually, exit all Chrome and Edge browser sessions.
+
+5.  Terminate the `tbimwfp` driver.
+
+    1.  Access Command Prompt as an administrator.
+
+    2.  To verify the status of the driver, use the command `sc query tbimwfp`.
+
+    3.  If the driver is running, use the command `sc stop tbimwfp`.
+
+6.  Uninstall the `tbimdsa` driver.
+
+    The `tbimdsa` driver cannot be stopped using commands. The driver must be uninstalled to stop `tbimdsa` from running.
+
+    1.  Go to **Control Panel → Network Connections**.
+
+    2.  Locate the network interface.
+
+    3.  Right click and select **Properties**.
+
+    4.  In the list **The connection uses the following items**, locate and select **Trend Micro LightWeight Filter Driver**.
+
+    5.  Click **Uninstall**.
+
+    6.  In the confirmation notice, click **Yes**.
+
+    7.  To verify the driver status, access Command Prompt as an administrator.
+
+    8.  Use the command `sc query tbimdsa`.
+
+        If uninstalling is successful, the command returns the following error:
+
+        `The specified service does not exist as an installed service.`
+::::

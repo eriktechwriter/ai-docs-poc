@@ -1,0 +1,102 @@
+---
+slug: trend-vision-one-generating-bimi-record
+title: Generating a BIMI record and Implementing BIMI
+last_updated: '2025-09-08'
+ai_context:
+  source_file: generating-bimi-record.md
+  conversion_date: '2025-09-08T23:42:18.923Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Use the BIMI setup wizard to generate a BIMI record and ensure your BIMI implementation works properly.
+
+BIMI only works when the DMARC policy for the domain and the organizational domain (if different) is at enforcement.
+
+Before implementing, make sure you have completed the following:
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Prerequisite</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Implement DMARC authentication on all your emails</p></td>
+<td><ul>
+<li><p>Emails must pass DMARC validation checks.</p></li>
+<li><p>The policies for the domain and the organizational domain (if different) must be set to either <strong>Quarantine</strong> with a <strong>policy percentage</strong> of <code>100</code> or <strong>Reject</strong>.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Produce an SVG Tiny PS version of your official logo</p></td>
+<td><ul>
+<li><p>The file must be a valid SVG or SVGZ file.</p></li>
+<li><p>The file cannot be larger than 32 KB.</p></li>
+<li><p>The file must be validated against the Scalable Vector Graphics (SVG) Tiny PS Specification</p></li>
+<li><p>For more requirements, see BIMI documentation at <a href="https://bimigroup.org/">https://bimigroup.org/</a>.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>(Optional, but highly recommended) Acquire a Verified Mark Certificate (VMC) for your logo</p></td>
+<td><ul>
+<li><p>The VMC must be valid and not expired.</p></li>
+<li><p>The VMC Mark Type must be supported.</p></li>
+<li><p>The VMC must include the Extended Key Usage.</p></li>
+<li><p>The SAN dNSName domain name in the VMC must match that in the BIMI record.</p></li>
+<li><p>The VMC's certificate chain must be validated using the Root Certificate from the accepted Mark Verifying Authorities: Entrust DataCard or DigiCert</p></li>
+<li><p>Experimental VMC elements not accepted.</p></li>
+<li><p>The SVG content in the VMC must match that in the BIMI record.</p></li>
+<li><p>For more requirements, see BIMI documentation at <a href="https://bimigroup.org/">https://bimigroup.org/</a>.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+### Procedure {#procedure}
+
+1.  Go to **Outbound Protection → Domain-based Authentication → Domain-based Message Authentication, Reporting and Conformance (DMARC) Monitoring**.
+
+2.  Go to **DMARC Record Check**.
+
+3.  View the status of BIMI for the domain, and then click **Enabled** or **Disabled** to open the BIMI setup wizard.
+
+4.  Check whether a DMARC record has been published in DNS for the domain or whether the DMARC policy for the domain and the organizational domain (if different) is enforced. If not, [generate a DMARC record or update the current DMARC record](generating-dmarc-record.mdx), and then publish it in DNS.
+
+    Updating the DMARC or BIMI setup takes some time. You can click **Refresh** to get the latest status.
+
+5.  Check whether a BIMI record has been published in DNS for the domain or whether the published BIMI record is invalid. If not, click the hyperlink to open the BIMI record generator screen.
+
+6.  Specify the URLs to your SVG image and VMC certificate, and click **Generate and Preview**.
+
+    Cloud Email Gateway Protection uses the **default** selector to generate and validate the BIMI record in DNS.
+
+7.  Click **Generate and Preview**.
+
+    Cloud Email Gateway Protection generates a BIMI record based on your settings and displays it in the **BIMI Record** area.
+
+    Example record: `v=BIMI1; l=https://example.com/logo.svg; a=https://example.com/cert.pem`
+
+    - `v=BIMI1`: This is version 1 of the BIMI specification.
+
+      This tag is automatically added during the record generation.
+
+    - `l=https://example.com/logo.svg`: The secure URL of where your SVG image is hosted.
+
+    - `a=https://trendmicro.com/cert.pem`: The secure URL of where your VMC certificate is hosted.
+
+8.  View the details or possible errors about the provided SVG image and VMC certificate in the **Preview** area.
+
+9.  If the BIMI record is generated successfully without any SVG image or VMC errors, copy the record and publish it as a TXT record at the subdomain of **default.\_bimi.example.com** in DNS.
+
+    When a mailbox provider receives an email, it first authenticates the message. If the authentication is successful, the provider checks the DNS for a corresponding BIMI record. An email receiver wishing to query for BIMI policy regarding emails with **example.com** and a selector **default** would query the TXT record located at the subdomain of **default.\_bimi.example.com**. If a BIMI record is found, the provider can display your brand's logo alongside the email in the inbox.
+
+    You can track the effects of your BIMI implementation to know whether the clicks and open rates of your emails have been increased.
+:::

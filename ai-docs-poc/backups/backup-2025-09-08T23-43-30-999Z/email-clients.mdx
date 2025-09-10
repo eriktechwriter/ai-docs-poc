@@ -1,0 +1,58 @@
+---
+slug: trend-vision-one-email-clients
+title: Email Clients
+last_updated: '2025-09-08'
+ai_context:
+  source_file: email-clients.md
+  conversion_date: '2025-09-08T23:42:20.229Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Data Loss Prevention monitors email transmitted through various email clients. Data Loss Prevention checks the email subject, body, and attachments for data identifiers. For a list of supported email clients, see the Data Protection Lists document at:
+
+<http://docs.trendmicro.com/en-us/enterprise/data-protection-reference-documents.aspx>
+
+Monitoring occurs when a user attempts to send the email. If the email contains data identifiers, Data Loss Prevention will either allow or block the email.
+
+You can define non-monitored internal email domains and monitored subdomains.
+
+- *Non-monitored email domains*: Data Loss Prevention immediately allows the transmission of emails sent to non-monitored domains.
+
+  :::note
+
+  Data transmissions to non-monitored email domains and to monitored email subdomains where "Monitor" is the action are similar in that the transmission is allowed. The only difference is that for non-monitored email domains, Data Loss Prevention does not log the transmission, whereas for monitored email subdomains, the transmission is always logged.
+  :::
+
+- *Monitored email subdomains*: When Data Loss Prevention detects email transmitted to a monitored subdomain, it checks the action for the policy. Depending on the action, the transmission is allowed or blocked.
+
+  :::note
+
+  If you select email clients as a monitored channel, an email must match a policy for it to be monitored. In contrast, an email sent to monitored email subdomains is automatically monitored, even if it does not match a policy.
+  :::
+
+Specify domains using any of the following formats, separating multiple domains with commas:
+
+- X400 format, such as /O=Trend/OU=USA, /O=Trend/OU=China
+
+- Email domains, such as `example.com`
+
+For email messages sent through the SMTP protocol, Data Loss Prevention checks if the target SMTP server is on the following lists:
+
+1.  Monitored targets
+
+2.  Non-monitored targets
+
+3.  Non-monitored email domains
+
+4.  Monitored email subdomains
+
+This means that if an email is sent to an SMTP server on the monitored targets list, the email is monitored. If the SMTP server is not on the monitored targets list, Data Loss Prevention checks the other lists.
+
+For emails sent through other protocols, Data Loss Prevention only checks the following lists:
+
+1.  Non-monitored email domains
+
+2.  Monitored email subdomains
+:::

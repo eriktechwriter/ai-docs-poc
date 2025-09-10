@@ -1,0 +1,63 @@
+---
+slug: trend-vision-one-deploy-virtual-patch-filters-sms
+title: Deploying Virtual Patch filter policies to TippingPoint SMS
+last_updated: '2025-09-08'
+ai_context:
+  source_file: deploy-virtual-patch-filters-sms.md
+  conversion_date: '2025-09-08T23:42:20.630Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Mitigate your CVE risks directly from the Network Security app by setting and deploying filter policies on TippingPoint SMS profiles.
+
+### Procedure {#procedure}
+
+1.  Go to **Network Security → Intrusion Prevention Configuration**.
+
+2.  Locate the CVE you want to virtually patch by scrolling through the table or filtering the list.
+
+    :::note
+
+    The CVE list is automatically prioritized by CVE risk. Mitigate the most critical CVE threats by starting at the top of the list.
+    :::
+
+3.  Examine the CVE details to understand how the CVE is affecting your network and the current filter status.
+
+    <figure>
+    <img src="./images/CVEpolicyRecommend=20221104133838.webp" />
+    </figure>
+
+    - **Potentially Vulnerable Endpoints**: Displays all endpoints detected to contain the CVE
+
+    - **Recommended Action**: Provides recommended mitigation options for the CVE
+
+    - **Filter status**: Displays whether the specific filter is enabled and set to block on your TippingPoint profiles
+
+4.  Mitigate the CVE threat by deploying policies to profiles that are not completely virtually patched.
+
+    1.  For the **Blocked on some profiles** and **Not blocked on any profile** filter statuses, select the filter.
+
+    2.  Click **Configure Filter Actions**.
+
+    3.  Block the CVE threat by selecting the **Apply recommended settings** action, or manually enabling the **Filter state** and setting the **Action** to **Block and notify**.
+
+    4.  Select the profiles that you want to apply the filter policy to.
+
+        :::note
+
+        Only profiles that previously applied policies appear in the list.
+
+        Check the SMS Java client to locate other unused profiles. To ensure that a profile appears in the list, distribute filters to the profile and allow some time for the data to sync back to Network Intrusion Prevention.
+        :::
+
+5.  To deploy the policy to your TippingPoint SMS for distribution to managed TippingPoint devices, click **Save and Deploy Policy**.
+
+6.  Monitor the deployment status by viewing the **Policy deployment** indicator above the table.
+
+    :::note
+
+    If you chose to **Save** the filter policy settings instead of immediately deploying, you can deploy the policy by selecting the filters and clicking **Deploy Policy**.
+    :::
+:::

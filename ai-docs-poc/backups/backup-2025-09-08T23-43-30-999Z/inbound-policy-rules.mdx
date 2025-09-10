@@ -1,0 +1,92 @@
+---
+slug: trend-vision-one-inbound-policy-rules
+title: Inbound policy rules
+last_updated: '2025-09-08'
+ai_context:
+  source_file: inbound-policy-rules.md
+  conversion_date: '2025-09-08T23:42:17.352Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+### Procedure {#procedure}
+
+1.  In the **Recipients** section, choose either of the following ways to add recipient addresses from the drop-down list:
+
+    - **My organization**: Select it to configure an organization-level policy.
+
+      :::note
+
+      This option is available only if **My organization** was specified for your subaccount during subaccount creation.
+      :::
+
+    - **Specify**:
+
+      - **My domains**: Select domains from the available domains and click **Add**.
+
+      - **My LDAP groups**: Select user groups from the available directory groups and click **Add**.
+
+      - **My address groups**: Select address groups from the available address groups and click **Add**.
+
+      - **Type address or domain**: Type a specific domain or wildcard address and click **Add**.
+
+2.  In the **Senders** section, choose one of the following ways to specify sender addresses:
+
+    - **Anyone**: Select it to apply any sender addresses for the policy rule.
+
+    - **My organization**: Select it to apply email addresses sent from your organization for the policy rule.
+
+    - **Specify**:
+
+      - **My domains**: Select domains from the available domains and click **Add**.
+
+      - **My address groups**: Select address groups from the available address groups and click **Add**.
+
+      - **Type address or domain**: Type a specific domain or wildcard address and click **Add**.
+
+3.  In the **Exceptions** section, specify one or multiple exceptions, each of which consists of a sender part and a recipient part.
+
+    1.  Next to **Sender**, choose one of the following ways to specify the sender part of an exception:
+
+        - **Anyone**
+
+        - **My organization**
+
+        - **My domains**
+
+        - **My address groups**
+
+        - **Type address or domain**
+
+    2.  Next to **Recipient**, choose one of the following ways to specify the recipient part of an exception:
+
+        - **Anyone**
+
+        - **My organization**
+
+        - **My domains**
+
+        - **My LDAP groups**
+
+        - **My address groups**
+
+        - **Type address or domain**
+
+    3.  Click **Add** to add an exception composed of both the sender and recipient parts.
+
+        The exception you added appears in the exception list.
+
+        For example, if you select **Anyone** for the sender part and specify a specific email address for the recipient part, Cloud Email Gateway Protection considers email messages sent from any senders to this recipient safe and bypasses the policy rule on these messages.
+
+    4.  Add more exceptions if necessary.
+
+    :::note
+
+    The import and export functions are available for recipients, senders and exception lists. Click **Import** to import groups, addresses or domains from a local file. Click **Export** to export groups, addresses or domains as a local file for future use.
+
+    A maximum of 500 records can be imported, and there is no upper limit for export.
+    :::
+
+4.  Proceed to the next screen to specify policy rule scanning criteria.
+:::

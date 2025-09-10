@@ -1,0 +1,179 @@
+---
+slug: trend-vision-one-kubernetes-protection-policies
+title: Managing Kubernetes protection policies
+last_updated: '2025-09-08'
+ai_context:
+  source_file: kubernetes-protection-policies.md
+  conversion_date: '2025-09-08T23:42:16.534Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Container Protection policies for Kubernetes clusters contain deployment, continuous, and runtime rules that you can apply to entire clusters and that you can apply directly to namespaces within clusters.
+
+:::warning[Important]
+
+Policy configuration for Amazon ECS clusters differs greatly from a Kubernetes environment. To properly configure Amazon ECS protection policies, see [Managing Amazon ECS policies](managing-amazon-ecs-policies.mdx).
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Cloud Security → Container Security → Container Protection**.
+
+2.  Click the **Policies** tab.
+
+3.  Create, duplicate, or modify a policy.
+
+    - To create a new policy, click **New**.
+
+    - To duplicate an existing policy:
+
+      1.  Click to select the base policy from the policy list.
+
+      2.  Click **Duplicate**.
+
+          Container Protection creates a copy of the existing policy and appends "Policy" to the policy name.
+
+    - To modify an existing policy, click the policy in the policy list.
+
+4.  For new and duplicated policies, specify a unique policy name.
+
+    :::note
+
+    - Policy names must not contain spaces and only support alphanumeric characters, underscores (\_), and periods (.).
+
+    - You cannot modify the policy name after creating the policy.
+    :::
+
+5.  If you want to provide more details about the purpose for the policy, use the **Description** field.
+
+    The description appears under the policy name in the policy list.
+
+6.  To receive [CREM Risk Insights](executive-dashboard.mdx), [Workbench alerts](workbench.mdx), and use the [Search app](search-app.mdx) to investigate security threats throughout your network environment, turn on **XDR Telemetry**.
+
+    Trend Vision One can correlate and assess XDR telemetry data across all configured data sources to provide insights into your network's security and risk posture.
+
+7.  Define the cluster-wide rules that apply before an image is deployed by clicking the **Deployment** tab and the cluster-wide rules that apply periodically while the cluster is running by clicking the **Continuous** tab.
+
+    1.  Select the rules that you want applied to the cluster.
+
+    2.  Select the action (**Log**/**Block**) to apply after a rule is triggered.
+
+    3.  If the rule provides additional parameters, define the values to check.
+
+        Some rules allow you to define different actions depending on the parameter values. Click the add symbol (**+**) next to the rule to define more actions.
+
+        For the **Container properties** rule **\[action\] containers with capabilities that do not conform with a \[predefined\] policy**, reference the following table for additional information.
+
+        <table>
+        <colgroup>
+        <col style="width: 25%" />
+        <col style="width: 75%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Predefined policy</p></th>
+        <th><p>Description</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>restrict-nondefaults</p></td>
+        <td><p>Allows capabilities which are one of the [default Docker capabilities]</p>
+        <p>For more information about default Docker policies, visit the Docker website at: <a href="https://docs.docker.com/engine/reference/run/">https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities</a></p></td>
+        </tr>
+        <tr>
+        <td><p>baseline</p></td>
+        <td><p>Allows default capabilities but not the NET_RAW capability</p>
+        
+
+        :::note
+        
+        <p>NET_RAW is a default capability that allows the use of RAW and PACKET sockets. With this capability, a malicious user may forge packets, execute MITM attacks, and perform other network exploits. This privilege is typically only used for specific networking needs, so dropping it should not have any effect on the majority of applications.</p>
+        
+
+        :::
+
+        </td>
+        </tr>
+        <tr>
+        <td><p>restricted</p></td>
+        <td><p>Allows only the NET_BIND_SERVICE capability</p>
+        
+
+        :::note
+        
+        <p>NET_BIND_SERVICE is a default capability that allows the binding to internet domain privileged ports (port numbers less than 1024). It is often used by web servers and for giving non-root users access to these ports.</p>
+        
+
+        :::
+
+        </td>
+        </tr>
+        <tr>
+        <td><p>restrict-all</p></td>
+        <td><p>Allows no capability</p></td>
+        </tr>
+        </tbody>
+        </table>
+
+        :::note
+
+        - The CIS Kubernetes Benchmarks advises to not add any new capabilities and to drop, at the very least, the NET_RAW capability.
+
+        - Trend Micro recommends considering container needs and applying a capability policy in alignment with the principle of least privileges.
+
+          For more information on capability policies and pod security best practices, see the pod security standards at: <https://kubernetes.io/docs/concepts/security/pod-security-standards/>
+        :::
+
+    4.  Configure scan exceptions as required.
+
+        :::note
+
+        An exception is automatically added to allow trusted images used by Container Security.
+        :::
+
+    5.  Configure Image Signature Verification rules as required.
+
+        This section allows you to enforce that images are signed by a trusted source before they can be deployed. This feature uses attestors, which are managed separately. For more information, see [Managing attestors](managing-attestors.mdx).
+
+        1.  Define the **Condition(s)** to specify which container images the rule applies to.
+
+        2.  From the **Signature material** dropdown menu, select one or more pre-configured attestors. Choose whether to **Match all** or **Match any** of the selected attestors. If you need to add a new attestor, you can use the **Add attestor** link in the dropdown menu.
+
+        3.  Choose the **Action** to take when an image violates the rule (**Log** or **Block**).
+
+        4.  Click **Add new verification rule** to create multiple, independent signature rules within the same policy.
+
+8.  Define the cluster-wide rules that apply while a pod is running by clicking the **Runtime** tab.
+
+    The runtime policy consists of the [rulesets you create](managing-rulesets.mdx) on the **Rulesets** tab.
+
+    1.  Click **Add Ruleset**.
+
+    2.  Select the checkbox of the ruleset you want to apply to the policy.
+
+    3.  Click **Submit**.
+
+9.  For users that need to configure special policies for specific namespaces within clusters, click the add symbol (**+**) next to the **Cluster-wide Policy Definition** header to define a **NamespacedPolicyDefinition** policy.
+
+    1.  Specify a name for the namespace-specific policy settings.
+
+    2.  Click **Add**.
+
+    3.  Specify the namespace within the cluster on which you want the policy to apply and press <span class="uicontrol keyboard">ENTER</span>.
+
+        Click **Add** again to specify multiple namespaces.
+
+    4.  Configure the **Deployment** and **Continuous** settings for the policy.
+
+        :::note
+
+        You cannot configure specific runtime rulesets for namespaces.
+        :::
+
+    5.  Define additional namespace policies by clicking the add symbol (**+**) next to the **NamespacedPolicyDefinition** headers.
+
+10. Click **Create** or **Save**.
+::::

@@ -1,0 +1,178 @@
+---
+slug: trend-vision-one-launching-network-sensor-azure
+title: Launching a Virtual Network Sensor instance on Azure
+---
+# Launching a Virtual Network Sensor instance on Azure
+
+Deploy the Virtual Network Sensor on you Azure cloud environment.
+
+If your security environment uses a hybrid deployment, or you do not have VMware or Microsoft Hyper-V in your environment, you can leverage your Azure subscriptions to deploy a Virtual Network Sensor instance.
+
+:::note
+
+The steps contained in these instructions are valid as of January 2024.
+:::
+
+Before you begin, make sure you have completed the following tasks:
+
+- Choose or create a virtual network for the Virtual Network Sensor instance.
+
+- Choose or [create the network security group and subnets](network-subnets-network-sensor.mdx) for the Virtual Network Sensor data port and management port.
+
+  Trend Micro recommends using different subnets for the data and management ports.
+
+### Procedure {#procedure}
+
+1.  Sign in to the Azure console.
+
+2.  In a separate tab, access the Trend Vision One console and go to **Network Security → Network Inventory → Virtual Network Sensor**.
+
+3.  Click **Deploy Virtual Network Sensor**.
+
+    The **Virtual Network Sensor Deployment** panel appears.
+
+4.  Select **Microsoft Azure** for the platform.
+
+5.  Set the **Admin password** and confirm the password.
+
+    The password must contain the following:
+
+    - 12 to 32 characters
+
+    - Both uppercase and lowercase characters
+
+    - At least one number (0-9)
+
+    - At least one special character: ~!\`@#$%^&\*()/\_+=\[\]{}-\\\<\>',.?:;" or space
+
+    :::note
+
+    This step is used to set the default admin password to access the Virtual Network Sensor command line interface after deployment.
+    :::
+
+6.  Select the **Connection method**.
+
+    - **Direct connection**: the Virtual Network Sensor connects to Trend Vision One directly. Make sure the Virtual Network Sensor is able to connect to the internet when using this configuration.
+
+    - **Connect using a custom proxy**: the Virtual Network Sensor connects to Trend Vision One through a third-party proxy. After choosing this method, configure the following fields:
+
+      - **Proxy address**: Specify the IP address of the proxy.
+
+      - **Proxy port**: Specify the connecting port of the proxy.
+
+      - **Proxy server requires authentication**: (Optional) Select if the proxy requires authentication credentials.
+
+      - **User name**: Specify the user name for the proxy credentials.
+
+      - **Password**: Specify the password for the proxy credentials.
+
+    - **Connect using a Service Gateway as proxy**: the Virtual Network Sensor connects to Trend Vision One through a Service Gateway. Select a Service Gateway to use for this method.
+
+      :::warning[Important]
+
+      The Virtual Network Sensor must be able to connect to a Service Gateway with the Forward Proxy Service configured and enabled. For more information, see [Manage services in Service Gateway](managing-services-service-gateway.mdx).
+      :::
+
+7.  Click **Download Token** to download the token file.
+
+    The token file contains important information for the Virtual Network Sensor including the configured admin password and information that allows the Virtual Network Sensor to connect and on-board with Network Inventory automatically.
+
+8.  Once downloading completes, click **Go to Azure Marketplace**.
+
+    The Azure Marketplace opens in a new tab with the **Trend Vision One™ XDR for Networks** page displayed.
+
+    If the tab does not open, access the Marketplace from your Azure console and search for **Trend Vision One™ XDR for Networks**.
+
+9.  Click **Create**.
+
+    The **Create Trend Vision One™ XDR for Networks** screen appears.
+
+10. In the **Basics** tab, configure the **Project details**.
+
+    1.  Select the **Subscription** where you want to deploy the Virtual Network Sensor.
+
+    2.  Select the **Resoruce group** to manage the virtual Virtual Network Sensor.
+
+11. Configure the **Instance details**.
+
+    1.  Select the **Region** where you want to deploy the Virtual Network Sensor.
+
+    2.  Specify a unique **Appliance Name**.
+
+    3.  Select the **Appliance VM Size**.
+
+        The Virtual Network Sensor has been tested with the following recommended instance types. For more information, see [Virtual Network Sensor system requirements](network-sensor-sys-reqs.mdx).
+
+        **Recommended VM Sizes for Azure Deployment**
+
+        <table style="width:99%;">
+        <colgroup>
+        <col style="width: 33%" />
+        <col style="width: 33%" />
+        <col style="width: 33%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Throughput (Mbps)</p></th>
+        <th><p>Recommended instance type</p></th>
+        <th><p>Recommended virtual disk size (GB)</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>100</p></td>
+        <td><p>D2s_v3</p></td>
+        <td><p>50</p></td>
+        </tr>
+        <tr>
+        <td><p>500</p></td>
+        <td><p>D4s_v3</p></td>
+        <td><p>50</p></td>
+        </tr>
+        <tr>
+        <td><p>1000</p></td>
+        <td><p>D8ds_v4</p></td>
+        <td><p>50</p></td>
+        </tr>
+        <tr>
+        <td><p>2000</p></td>
+        <td><p>D8ds_v4</p></td>
+        <td><p>100</p></td>
+        </tr>
+        <tr>
+        <td><p>5000</p></td>
+        <td><p>D16ds_v5</p></td>
+        <td><p>150</p></td>
+        </tr>
+        <tr>
+        <td><p>10000</p></td>
+        <td><p>D32lds_v5</p></td>
+        <td><p>200</p></td>
+        </tr>
+        </tbody>
+        </table>
+
+    4.  Select a **Diagnostics storage account** for the Virtual Network Sensor, or create a new one.
+
+12. Click **Next**.
+
+13. Configure the settings on the **Network** tab.
+
+    1.  Select the **Virtual network**.
+
+    2.  Select the **Management Subnet** for the management port.
+
+    3.  Select the **Data Subnet** for the data port.
+
+14. Click **Next** to go to the **Advanced** tab.
+
+15. For **Network Inventory registered file**, click the browse button to locate and select the token file you downloaded.
+
+16. Click **Next** to go to the **Review + create** tab.
+
+17. Once the validation shows **passed**, click **Create** to begin deployment and installation.
+
+    Deployment, installation, and on-boarding to Network Inventory might take some time to complete. Refresh the screen the **Virtual machines** screen to monitor the installation progress. You can also view the **Network Inventory** app in the Trend Vision One console to see when on-boarding completes.
+
+    Once onboarding completes, configure traffic mirroring. Traffic mirroring is used to direct traffic to the Virtual Network Sensor data ports for scanning. You can use any third-party Network Packet Broker by following the setup instructions for your preferred solution. Trend Micro has tested the third-party solution [Gigamon VUE Cloud Suite for Azure](https://www.gigamon.com/) with the Virtual Network Sensor. For full deployment instructions, refer to the [Gigamon documentation](https://docs.gigamon.com/doclib65/Content/GV-Cloud-Azure/preface-Azure-VS2.md?tocpath=GigaVUE%20Cloud%20Suite%7CGigaVUE%C2%A0Cloud%20Suite%20for%20Azure%7C_____0).
+::::

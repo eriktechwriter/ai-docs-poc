@@ -1,0 +1,413 @@
+---
+slug: trend-vision-one-transition-soap-api
+title: Transition from the SOAP API
+last_updated: '2025-09-08'
+ai_context:
+  source_file: transition-soap-api.md
+  conversion_date: '2025-09-08T23:42:11.964Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::::: {role="main"}
+Transition your code that uses the deprecated SOAP API to use the API that was introduced in Deep Security 11.1 so that you can take advantage of new features and continued support. The SOAP API was deprecated in Deep Security 11.1. Although the functionality of the SOAP API is unchanged, new Server & Workload Protection features will not be accessible via the SOAP API.
+
+:::note
+
+The Server & Workload Protection API does not provide all of the capabilities of the SOAP API. However, you can use the REST API for some of those capabilities. For more information, see the Capabilities section.
+:::
+
+To prepare for the transition, you should understand the differences in terminology between the APIs, as well as the differences in required tasks, class structure, and capabilities. After learning this information, we recommend that you use the [First Steps Toward Server & Workload Protection Automation](api-sdk-devops-tools-for-automation.mdx) guide as an introduction to the Deep Security API.
+
+### Terminology {#terminology}
+
+Some product terminology has changed since the release of the SOAP API. Note the following changes when comparing the APIs.
+
+<table>
+<thead>
+<tr>
+<th><p>SOAP API term</p></th>
+<th><p>Deep Security API term</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Host</p></td>
+<td><p>Computer</p></td>
+</tr>
+<tr>
+<td><p>Security profile</p></td>
+<td><p>Policy</p></td>
+</tr>
+<tr>
+<td><p>Deep Packet Inspection (DPI)</p></td>
+<td><p>Intrusion Prevention</p></td>
+</tr>
+</tbody>
+</table>
+
+### Specific tasks {#specific-tasks}
+
+When transitioning from the SOAP API, you'll notice that some required tasks are achieved differently or are no longer required.
+
+<table>
+<thead>
+<tr>
+<th><p>Task</p></th>
+<th><p>SOAP API</p></th>
+<th><p>Deep Security API</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Authenticate</p></td>
+<td><p>Create a Web Service administrator account and a user role that is allowed to access to the Web Service endpoints. Use the credentials of the account to authenticate your calls.</p></td>
+<td><p>Create an API key and associate it with a user role that determines feature access. Use the secret key of the API key to authenticate your calls. See <a href="trend-vision-one-send-your-first-request-using-api">Authenticate with Server &amp; Workload Protection</a> in the First Steps Toward Server &amp; Workload Protection Automation guide.</p></td>
+</tr>
+<tr>
+<td><p>Enable endpoints</p></td>
+<td><p>Enable the Web Service API in Server &amp; Workload Protection.</p></td>
+<td><p>Deep Security API endpoints are always enabled. No action is required.</p></td>
+</tr>
+<tr>
+<td><p>Obtain client libraries</p></td>
+<td><p>Generate client stubs from the WSDL file.</p></td>
+<td><p><a href="https://cloudone.trendmicro.com/docs/downloads/sdk/ws/v1/c1ws-py-sdk.zip">Download SDKs</a>.</p></td>
+</tr>
+</tbody>
+</table>
+
+### Java class structure {#java-class-structure}
+
+The Java stubs that are generated from the WSDL file and the Java SDK of the Deep Security API provide similar types of Java classes. However, the classes are structured differently.
+
+<table>
+<thead>
+<tr>
+<th><p>Java stubs class type</p></th>
+<th><p>Deep Security API (Java SDK)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Transport classes</p></td>
+<td><p>Classes in the <code>com.trendmicro.deepsecurity.model</code> package represent items in the Server &amp; Workload Protection environment, such as policies, computers, and rules. Use these classes for storing and accessing values.</p></td>
+</tr>
+<tr>
+<td><p>Enum classes</p></td>
+<td><p>Enum classes are nested in the classes of the model package.</p></td>
+</tr>
+<tr>
+<td><p>Web methods (operations of the Manager endpoint)</p></td>
+<td><p>Classes in the <code>com.trendmicro.deepsecurity.api</code> package provide create, read, update, delete, list, and search capabilities that act on many of the model classes.</p></td>
+</tr>
+</tbody>
+</table>
+
+### Capabilities {#capabilities}
+
+The Deep Security Web Service SDK PDF lists the capabilities of the SOAP API. The following table lists the classes of the Java SDK that provide the capability or indicates that the Deep Security API does not support the capability. For some of the unsupported capabilities, you can use the previously-released REST API. (See [Use the Server & Workload Protection API to automate tasks](https://cloudone.trendmicro.com/docs/workload-security/api-reference/).)
+
+:::note
+
+Endpoints are continuously being added to the Server & Workload Protection API. Periodically check this table for changes.
+:::
+
+<table>
+<thead>
+<tr>
+<th><p>Category</p></th>
+<th><p>Capability</p></th>
+<th><p>Java SDK/Deep Security API availability</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Security profile (policies)</p></td>
+<td><p>Retrieve, add, update, edit and delete a policy</p></td>
+<td><p><code>com.trendmicro.deepsecurity.api.PoliciesApi</code> See the <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Policies">Policies</a> endpoint in the API Reference.</p></td>
+</tr>
+<tr>
+<td><p>Set the running state of a security module (Firewall, Anti-Malware, etc.) at the policy level</p></td>
+<td><p><code>com.trendmicro.deepsecurity.api.PoliciesApi</code> See the <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Policies">Policies</a> endpoint in the API Reference.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Assign and unassign Firewall, Intrusion Inspection, Integrity Monitoring, and Log Inspection rules at the policy level</p></td>
+<td><p><code>com.trendmicro.deepsecurity.api.PoliciesApi</code> See the <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Policies">Policies</a> endpoint in the API Reference.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Get, set, and clear system settings at the policy level</p></td>
+<td><p><code>com.trendmicro.deepsecurity.api.PoliciesApi</code> See the <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Policies">Policies</a> endpoint in the API Reference.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Anti-Malware</p></td>
+<td><p>Retrieve, add, update, and delete malware scan configurations</p></td>
+<td><p><code>com.trendmicro.deepsecurity.api.AntiMalwareConfigurationsApi</code> See the <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Anti-Malware-Configurations">Anti-Malware Configurations</a> endpoint in the API Reference.</p></td>
+</tr>
+<tr>
+<td><p>Add, update, and delete directory lists</p></td>
+<td><p><code>com.trendmicro.deepsecurity.api.DirectoryListsApi</code> See the <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Directory-Lists">Directory Lists</a> endpoint in the API Reference.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Add, update, and delete file lists</p></td>
+<td><p><code>com.trendmicro.deepsecurity.api.FileListsApi</code> See the <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/File-Lists">File Lists</a> endpoint in the API Reference.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Add, update, and delete file extension lists</p></td>
+<td><p><code>com.trendmicro.deepsecurity.api.FileExtensionListsApi</code> See the <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/File-Extension-Lists">File Extension Lists</a> endpoint in the API Reference.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Retrieve Anti-Malware events</p></td>
+<td><p>Not available. Use the Anti-Malware Events endpoint of the <a href="trend-vision-one-use-legacy-rest-api">REST API</a>.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Web Reputation</p></td>
+<td><p>Retrieve, add, update, and delete Web Reputation configurations</p></td>
+<td><p><code>com.trendmicro.deepsecurity.api.PoliciesAPI</code> and<code>com.trendmicro.deepsecurity.model.PolicySettings</code> See the <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Policies">Policies</a> endpoint in the API Reference.</p></td>
+</tr>
+<tr>
+<td><p>Retrieve Web Reputation events</p></td>
+<td><p>Not available. Use the Web Reputation Events endpoint of the <a href="trend-vision-one-use-legacy-rest-api">REST API</a>.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Firewall</p></td>
+<td><p>Retrieve, add, update, and delete Firewall rules</p></td>
+<td><p><code>com.trendmicro.deepsecurity.api.FirewallRulesApi</code> See the <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Firewall-Rules">Firewall Rules</a> endpoint in the API Reference.</p></td>
+</tr>
+<tr>
+<td><p>Retrieve, add, update, and delete stateful configurations</p></td>
+<td><p><code>com.trendmicro.deepsecurity.api.StatefulConfigurationsApi</code> See the <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Stateful-Configurations">Stateful Configurations</a> endpoint in the API Reference.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Retrieve Firewall events</p></td>
+<td><p>Not available.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Deep Packet Inspection (Intrusion Prevention)</p></td>
+<td><p>Retrieve, add, update, and delete Deep Packet Inspection rules</p></td>
+<td><p><code>com.trendmicro.deepsecurity.api.IntrusionPreventionRulesApi</code> See the <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Intrusion-Prevention-Rules">Intrusion Prevention Rules</a> endpoint in the API Reference.</p></td>
+</tr>
+<tr>
+<td><p>Retrieve, add, update, and delete application types</p></td>
+<td><p><code>com.trendmicro.deepsecurity.api.ApplicationTypesApi</code> See the <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Application-Types">Application Types</a> endpoint in the API Reference.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Retrieve, add, update, and delete application type overrides</p></td>
+<td><p><code>com.trendmicro.deepsecurity.api.ComputerIntrusionPreventionApplicationTypeDetailsApi</code> <code>com.trendmicro.deepsecurity.api.PolicyIntrusionPreventionApplicationTypeDetailsApi</code> See the operations of <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Computer-Intrusion-Prevention-Application-Type-Details">Computer Intrusion Prevention Application Type Details</a> and <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Computer-Intrusion-Prevention-Application-Type-Details">Policy Intrusion Prevention Application Type Details</a> in the API Reference.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Retrieve Deep Package Inspection events</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Integrity Monitoring</p></td>
+<td><p>Retrieve, add, update, delete Integrity Monitoring rules</p></td>
+<td><p><code>com.trendmicro.deepsecurity.api.IntegrityMonitoringRulesApi</code> See the <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Integrity-Monitoring-Rules">Integrity Monitoring Rules</a> endpoint in the API Reference.</p></td>
+</tr>
+<tr>
+<td><p>Initiate Scan For Integrity Changes operation on computer</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Initiate Rebuild Baseline operation on computer</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Retrieve Integrity Monitoring events</p></td>
+<td><p>Not available See the Integrity Monitoring Events endpoint of the <a href="trend-vision-one-use-legacy-rest-api">REST API</a>.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Log Inspection</p></td>
+<td><p>Retrieve, add, update, and delete Log Inspection rules</p></td>
+<td><p><code>com.trendmicro.deepsecurity.api.LogInspectionRulesApi</code> See the <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Log-Inspection-Rules">Log Inspection Rules</a> endpoint in the API Reference.</p></td>
+</tr>
+<tr>
+<td><p>Retrieve, add, update, and delete Log Inspection decoders</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Retrieve Log Inspection events</p></td>
+<td><p>Not available See the Log Inspection Events endpoint of the <a href="trend-vision-one-use-legacy-rest-api">REST API</a>.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Lists</p></td>
+<td><p>Retrieve, add, update, and delete IP lists, MAC lists, and port lists</p></td>
+<td><p><code>com.trendmicro.deepsecurity.api.IpListsApi</code> <code>com.trendmicro.deepsecurity.api.MacListsApi</code> <code>com.trendmicro.deepsecurity.api.PortListsApi</code> See the <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/IP-Lists">IP Lists</a>, <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/MAC-Lists">MAC Lists</a>, and <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Port-Lists">Port Lists</a> endpoints in the API Reference.</p></td>
+</tr>
+<tr>
+<td><p>Schedules</p></td>
+<td><p>Retrieve, add, update, and delete schedules</p></td>
+<td><p><code>com.trendmicro.deepsecurity.api.SchedulesApi</code> See the <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Schedules">Schedules</a> endpoint in the API Reference.</p></td>
+</tr>
+<tr>
+<td><p>Hosts (Computers)</p></td>
+<td><p>Retrieve, add, update, delete a computer</p></td>
+<td><p><code>com.trendmicro.deepsecurity.api.ComputersApi</code> See the <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Computers">Computers</a> endpoint in the API Reference.</p></td>
+</tr>
+<tr>
+<td><p>Assign or unassign a policy</p></td>
+<td><p><code>com.trendmicro.deepsecurity.api.ComputersApi</code> See the <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Computers">Computers</a> endpoint in the API Reference.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Get or set system settings at the computer level</p></td>
+<td><p><code>com.trendmicro.deepsecurity.api.ComputersApi</code> See the <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Computers">Computers</a> endpoint in the API Reference.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Activate, deactivate, lock, unlock computer</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Retrieve computer status</p></td>
+<td><p><code>com.trendmicro.deepsecurity.model.ComputersApi::computerStatus</code> See the <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Computers">Computers</a> endpoint in the API Reference.</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Retrieve computer events</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Initiate component update or Agent upgrade</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Groups (Computer Groups)</p></td>
+<td><p>Retrieve, add, update, delete, and move a computer group</p></td>
+<td><p><code>com.trendmicro.deepsecurity.api.ComputerGroupsApi</code> See the <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Computer-Groups">Computer Groups</a> endpoint in the API Reference.</p></td>
+</tr>
+<tr>
+<td><p>System</p></td>
+<td><p>Get and set global system settings</p></td>
+<td><p><code>com.trendmicro.deepsecurity.api.SystemSettingsApi</code> See the <a href="https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/System-Settings">System Settings</a> endpoint in the API Reference.</p></td>
+</tr>
+<tr>
+<td><p>Retrieve system information</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Retrieve system events</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>License</p></td>
+<td><p>Retrieve and update license</p></td>
+<td><p>Not available See the Licenses endpoint of the <a href="trend-vision-one-use-legacy-rest-api">REST API</a>.</p></td>
+</tr>
+<tr>
+<td><p>Updates</p></td>
+<td><p>Operations on Security Center customer accounts</p></td>
+<td><p>Not available</p></td>
+</tr>
+<tr>
+<td><p>Operations on component updates</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Operations on agent or appliance software</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Dashboard</p></td>
+<td><p>Retrieve counters for dashboard widgets</p></td>
+<td><p>Not available</p></td>
+</tr>
+<tr>
+<td><p>Retrieve feature summary for the system</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Retrieve an overall computer and alert status for the system</p></td>
+<td><p>Not available</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+:::tip
+
+We encourage you to forward system and security events to an external Syslog server or security information and event management (SIEM) server. See [Handle Events for System Monitoring and Reporting](monitor-events-server-workload.mdx).
+:::
+
+### Related code examples {#related-code-examples}
+
+The following table lists some highly-used SOAP API endpoints and related code examples that the guides contain. Use the examples to formulate ideas about how you can translate your code to use the new API or SDK.
+
+<table>
+<thead>
+<tr>
+<th><p>SOAP API endpoint</p></th>
+<th><p>Server &amp; Workload Protection API operation</p></th>
+<th><p>Related code example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>securityProfileRetrieve</p></td>
+<td><p>Describe a Policy</p></td>
+<td><p><a href="trend-vision-one-patch-unprotected-computers">Add intrusion prevention rules to computers’ policies</a></p></td>
+</tr>
+<tr>
+<td><p>securityProfileRetrieveByName</p></td>
+<td><p>Search Policies, or Describe a Policy</p></td>
+<td><p><a href="trend-vision-one-create-configure-policy">Search for a policy and add it to a computer</a></p></td>
+</tr>
+<tr>
+<td><p>IPListRetrieve</p></td>
+<td><p>List Intrusion Prevention Rules</p></td>
+<td><p><a href="trend-vision-one-patch-unprotected-computers">Find the Intrusion Prevention rule for a CVE</a></p></td>
+</tr>
+<tr>
+<td><p>hostDetailRetrieve</p></td>
+<td><p>List Computers</p></td>
+<td><p><a href="trend-vision-one-report-computer-status">Get computer configurations</a></p></td>
+</tr>
+<tr>
+<td><p>hostRetrieve</p></td>
+<td><p>Describe a Computer</p></td>
+<td><p><a href="trend-vision-one-override-policies-computer">Get the overrides for a computer</a></p></td>
+</tr>
+<tr>
+<td><p>authenticate</p></td>
+<td><p>N/A</p></td>
+<td><p><a href="trend-vision-one-send-your-first-request-using-api">List policies</a></p></td>
+</tr>
+<tr>
+<td><p>securityProfileSave</p></td>
+<td><p>Create a Policy Modify a Policy</p></td>
+<td><p><a href="trend-vision-one-create-configure-policy">Create a policy below Base Policy</a></p></td>
+</tr>
+<tr>
+<td><p>securityProfileAssignToHost</p></td>
+<td><p>Modify a Computer</p></td>
+<td><p><a href="trend-vision-one-create-configure-policy">Search for a policy and add it to a computer</a></p></td>
+</tr>
+</tbody>
+</table>
+::::::

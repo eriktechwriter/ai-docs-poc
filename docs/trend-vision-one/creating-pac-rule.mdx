@@ -1,0 +1,159 @@
+---
+slug: trend-vision-one-creating-pac-rule
+title: Creating a private access rule
+---
+# Creating a private access rule
+
+Configure a private access rule to control access to your organization's internal apps based on user, device, time, and location.
+
+:::note
+
+Trend Vision One automatically creates a default private access rule to apply whenever no other private access rules are matched. The default rule blocks all access to configured internal apps.
+:::
+
+### Procedure {#procedure}
+
+1.  On the **Secure Access Rules** screen, click the **Private Access** tab and then click **Create Rule**.
+
+    The rule configuration screen appears with the *Internal app access* rule template selected.
+
+2.  Specify a unique name and a description for the rule.
+
+3.  (Optional) To enable or disable the rule, click the toggle next to **Status**.
+
+    :::tip
+
+    You can also enable or disable rules on the **Secure Access Rules** screen.
+    :::
+
+4.  Configure the following rule settings.
+
+    <table>
+    <colgroup>
+    <col style="width: 13%" />
+    <col style="width: 25%" />
+    <col style="width: 63%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Rule setting</p></th>
+    <th><p>Description</p></th>
+    <th><p>Options</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td rowspan="3"><p>Source</p></td>
+    <td rowspan="3"><p>The users, devices, and locations that the rule applies to</p></td>
+    <td><p><strong>Users / User groups/ IP addresses</strong></p>
+    <p><strong>Users / Groups/ IP address groups</strong>: Target or exclude users or groups registered with your configured SSO provider. You may alternatively target or exclude both public and private IP address groups.</p>
+    <ul>
+    <li><p>Only users or groups from the IAM system configured as your SSO provider can be used in rules.</p></li>
+    <li><p>Define a new IP address group by clicking <strong>Add</strong>, and select either a Public or Private IP address group. If you have selected Private IP address, the IP addresses or ranges must exist on your internal corporate network.</p></li>
+    </ul>
+
+
+    :::warning[Important]
+
+    <p>Rules may not apply to devices without the Secure Access Module installed that do not send HTTP/HTTPS requests containing the <code>X-Forwarded-For (XFF)</code> header field. The Internet Access Gateway cannot retrieve the private IP addresses of these devices.</p>
+
+
+    :::
+
+
+    :::note
+
+    <p>If you have configured more than one IAM system, the IAM system with SSO enabled applies.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p><strong>Device posture profile</strong></p>
+    <p>Select the device posture profile to include devices in the rule enforcement.</p>
+
+
+    :::note
+
+    <p>This option only applies to access initiated with the Secure Access Module. This means that end users using the user portal can access private applications regardless of the security posture of the their devices.</p>
+
+
+    :::
+
+
+    <p>To <a href="trend-vision-one-adding-device-posture-profile">add a device posture profile</a>, click <strong>Add custom device posture profile</strong>.</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Locations</strong></p>
+    <p>Specify public/home network locations defined by IP address groups or geographic regions.</p>
+    <ul>
+    <li><p><em>Locations</em> identify roaming users, such as users connecting to public Wi-Fi networks or working from home.</p>
+
+
+    :::tip
+
+    <p>To define a new public/home network location using one or more IP addresses, click <strong>Add public IP address group</strong>.</p>
+
+
+    :::
+
+    </li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>Destination</p></td>
+    <td><p>The internal apps that the rule applies to</p></td>
+    <td><p><strong>Applications</strong></p>
+    <p>Specify previously configured internal applications.</p>
+
+
+    :::tip
+
+    <p>To add an internal app, click <strong>Add Internal Application</strong> on the <strong>Select Apps</strong> screen. For more information, see <a href="trend-vision-one-add-internal-application-pac">Adding an internal application to Private Access</a>.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>Schedule</p></td>
+    <td><p>The weekly period that the rule is applied</p></td>
+    <td><p>To configure the recurrence of the schedule, select <strong>Only apply the rule during the specified period</strong>, and then select a start date and end date.</p>
+
+
+    :::note
+
+    <p>The schedule uses the defined time zone of the console.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>Action</p></td>
+    <td><p>The action taken when the rule is triggered</p></td>
+    <td><p><strong>Access control</strong></p>
+    <p>Allow, block, or monitor access to internal applications.</p>
+
+
+    :::note
+
+    <p>Select <strong>Monitor Internal App Access</strong> to allow the internet access but log the activity.</p>
+
+
+    :::
+
+
+    <p>For more information about actions, see <a href="trend-vision-one-zero-trust-actions">Zero Trust actions</a>.</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+5.  Click **Save**.
+
+    The rule is successfully created and listed on the **Private Access** screen.
+::::

@@ -1,0 +1,638 @@
+---
+slug: trend-vision-one-response-actions-section
+title: Response actions
+last_updated: '2025-09-08'
+ai_context:
+  source_file: response-actions-section.md
+  conversion_date: '2025-09-08T23:42:13.732Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Object-specific actions allow you to directly respond to threats without leaving the Trend Vision One console.
+
+You can take specific actions on events or objects in Trend Vision One. After triggering a response, Response Management creates a task and sends the command to the target.
+
+:::warning[Important]
+
+Before using response actions on virtual machines, see [Deployment using a golden image](deployment-using-golden-image.mdx). Cloning your own VDI machines causes agent IDs to be duplicated and prevents deployed agents from performing response actions.
+:::
+
+**General**
+
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 56%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+<th><p>Supporting Services</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="vertical-align: top"><p>Add to Block List</p></td>
+<td style="vertical-align: top"><p>Adds supported objects such as Secure Hash Algorithm 1 (SHA-1), uniform resource locator (URL), internet protocol (IP) address, or domain objects to the user-defined Suspicious Objects List, which blocks the objects on subsequent detections.</p>
+<p>Adding an object to the user-defined Suspicious Object List does not terminate any active processes or connections to the object. To terminate active processes, ensure that you also trigger the <strong>Terminate</strong> response.</p>
+<p>For more information, see <a href="trend-vision-one-add-block-list-task">Add to Block List task</a>.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Cloud App Security</p></li>
+<li><p>Deep Discovery Inspector</p></li>
+<li><p>Deep Security</p></li>
+<li><p>Trend Cloud One - Endpoint &amp; Workload Security</p>
+<ul>
+<li><p>Linux agent</p></li>
+<li><p>Windows agent</p></li>
+</ul></li>
+<li><p>Trend Micro Apex One as a Service</p>
+<ul>
+<li><p>Windows agent</p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Collect File</p></td>
+<td style="vertical-align: top"><p>Compresses the selected file detected by the network appliance and Trend Vision One in a password-protected archive and then sends the archive to Response Management.</p>
+<p>For more information, see <a href="trend-vision-one-collect-file-task">Collect File task</a>.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Deep Discovery Inspector</p></li>
+<li><p>Trend Micro Apex One as a Service</p>
+<ul>
+<li><p>Windows agent</p></li>
+</ul></li>
+<li><p>Trend Cloud One - Endpoint &amp; Workload Security</p>
+<ul>
+<li><p>Linux agent</p></li>
+<li><p>macOS agent</p></li>
+<li><p>Windows agent</p></li>
+</ul></li>
+<li><p>Trend Vision One</p>
+<ul>
+<li><p>Linux agent</p></li>
+<li><p>macOS agent</p></li>
+<li><p>Windows agent</p></li>
+</ul></li>
+<li><p>Virtual Network Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Remove from Block List</p></td>
+<td style="vertical-align: top"><p>Removes the File SHA-1, URL, IP address, or Domain object added to the user-defined Suspicious Objects List through the Add to Block List response action.</p>
+<p>For more information, see <a href="trend-vision-one-remove-block-list-task">Remove from Block List task</a>.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Cloud App Security</p></li>
+<li><p>Deep Discovery Inspector</p></li>
+<li><p>Deep Security</p></li>
+<li><p>Trend Cloud One - Endpoint &amp; Workload Security</p>
+<ul>
+<li><p>Linux agent</p></li>
+<li><p>Windows agent</p></li>
+</ul></li>
+<li><p>Trend Micro Apex One as a Service</p>
+<ul>
+<li><p>Windows agent</p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Submit for Sandbox Analysis</p></td>
+<td style="vertical-align: top"><p>Submits the selected file objects for automated analysis in a sandbox, a secure virtual environment.</p>
+<p>For more information, see <a href="trend-vision-one-submit-for-sandbox-analysis-task">Submit for Sandbox Analysis task</a>.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Deep Discovery Inspector</p></li>
+<li><p>Trend Cloud One - Endpoint &amp; Workload Security</p>
+<ul>
+<li><p>Linux agent</p></li>
+<li><p>macOS agent</p></li>
+<li><p>Windows agent</p></li>
+</ul></li>
+<li><p>Trend Micro Apex One as a Service</p>
+<ul>
+<li><p>Linux agent</p></li>
+<li><p>Windows agent</p></li>
+</ul></li>
+<li><p>Trend Vision One</p>
+<ul>
+<li><p>macOS agent</p></li>
+<li><p>Windows agent</p></li>
+</ul></li>
+<li><p>Virtual Network Sensor</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Container**
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+<th><p>Supporting Services</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="vertical-align: top"><p>Isolate Container</p></td>
+<td style="vertical-align: top"><p>Disconnects the containing pod from relevant networks and prevents data transfer into and out of the pod. Preventing data transfer to and from the pod limits the spread of suspicious processes within a container so the user can and investigate the causes.</p>
+<p>For more information, see <a href="trend-vision-one-isolate-container-task">Isolate Container task</a>.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Trend Vision One Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Resume Container</p></td>
+<td style="vertical-align: top"><p>Resumes containers within a previously isolated pod.</p>
+<p>For more information, see <a href="trend-vision-one-resume-container-task">Resume Container task</a>.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Trend Vision One Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Terminate Container</p></td>
+<td style="vertical-align: top"><p>Stops suspicious behavior of containers within a pod by terminating the containing pod.</p>
+
+
+:::warning[Important]
+
+<p>Terminating a pod destroys evidence of the suspicious behavior and does not prevent the behavior from happening again.</p>
+
+
+:::
+
+
+<p>For more information, see <a href="trend-vision-one-terminate-container-task">Terminate Container task</a>.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Trend Vision One Container Security</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Email**
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 50%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+<th><p>Supporting Services</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="vertical-align: top"><p>Delete Message</p></td>
+<td style="vertical-align: top"><p>Deletes the selected email message from the selected mailboxes.</p>
+<p>For more information, see <a href="trend-vision-one-delete-message-task">Delete Message task</a>.</p></td>
+<td><ul>
+<li><p>Cloud App Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Quarantine Message</p></td>
+<td style="vertical-align: top"><p>Moves the selected email message to the quarantine folder and allows you to quarantine the message from all affected mailboxes.</p>
+<p>For more information, see <a href="trend-vision-one-quarantine-message-task">Quarantine Message task</a>.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Cloud App Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Restore Message</p></td>
+<td style="vertical-align: top"><p>Restores the selected quarantined email message to the selected mailboxes.</p>
+<p>For more information, see <a href="trend-vision-one-restore-message-task">Restore Message task</a>.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Cloud App Security</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Endpoint**
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 50%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+<th><p>Supporting Services</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="vertical-align: top"><p>Collect Evidence</p></td>
+<td style="vertical-align: top"><p>Collects forensic evidence from the specified endpoints and uploads the evidence to <strong>Forensics</strong>.</p>
+<p>For more information, see <a href="trend-vision-one-collect-evidence-task">Collect Evidence task</a>.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Trend Vision One</p>
+<ul>
+<li><p>Windows agent</p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Dump Process Memory</p></td>
+<td style="vertical-align: top"><p>Directly accesses an endpoint and executes remote shell commands to identify currently running processes that may be causing suspicious activity during an investigation.</p>
+
+
+:::warning[Important]
+
+<p>The Dump Process Memory action is only triggered by the <code>memdump</code> command through remote shell on endpoints running Windows or macOS.</p>
+<p>For more information on supporting services and contexts for use, see <a href="trend-vision-one-start-remote-shell-session-task">Start remote access (formerly shell) session task</a>.</p>
+
+
+:::
+
+
+<p>Use an external decompression program to extract the file contents.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Trend Cloud One - Endpoint &amp; Workload Security</p>
+<ul>
+<li><p>macOS agent</p></li>
+<li><p>Windows agent</p></li>
+</ul></li>
+<li><p>Trend Vision One</p>
+<ul>
+<li><p>macOS agent</p></li>
+<li><p>Windows agent</p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Isolate Endpoint</p></td>
+<td style="vertical-align: top"><p>Disconnects the target endpoint from the network, except for communication with the managing Trend Micro endpoint protection product.</p>
+<p>For more information, see <a href="trend-vision-one-isolate-endpoint-task">Isolate Endpoint task</a>.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Trend Cloud One - Endpoint &amp; Workload Security</p>
+<ul>
+<li><p>Linux agent</p></li>
+<li><p>macOS agent</p></li>
+<li><p>Windows agent</p></li>
+</ul></li>
+<li><p>Trend Micro Apex One as a Service</p>
+<ul>
+<li><p>Windows agent</p></li>
+</ul></li>
+<li><p>Trend Vision One</p>
+<ul>
+<li><p>Linux agent</p></li>
+<li><p>macOS agent</p></li>
+<li><p>Windows agent</p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Restore Connection</p></td>
+<td style="vertical-align: top"><p>Restores network connectivity to an endpoint that already applied the Isolate Endpoint action.</p>
+<p>For more information, see <a href="trend-vision-one-restore-connection-task">Restore Connection task</a>.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Trend Cloud One - Endpoint &amp; Workload Security</p>
+<ul>
+<li><p>Linux agent</p></li>
+<li><p>macOS agent</p></li>
+<li><p>Windows agent</p></li>
+</ul></li>
+<li><p>Trend Micro Apex One as a Service</p>
+<ul>
+<li><p>Windows agent</p></li>
+</ul></li>
+<li><p>Trend Vision One</p>
+<ul>
+<li><p>Linux agent</p></li>
+<li><p>macOS agent</p></li>
+<li><p>Windows agent</p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Run osquery</p></td>
+<td style="vertical-align: top"><p>Executes SQL queries using osquery (version 5.7.0) to obtain system information of the specified endpoints.</p>
+<p>For more information, see <a href="trend-vision-one-run-osquery-task">Run osquery task</a>.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Trend Vision One</p>
+<ul>
+<li><p>Linux agent</p></li>
+<li><p>Windows agent</p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Run Remote Custom Script</p></td>
+<td style="vertical-align: top"><p>Connects to a monitored endpoint and executes a previously uploaded PowerShell or Bash script file.</p>
+<p>For more information, see <a href="trend-vision-one-run-remote-custom-script-task">Run Remote Custom Script task</a>.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Trend Cloud One - Endpoint &amp; Workload Security</p>
+<ul>
+<li><p>Linux agent</p></li>
+<li><p>macOS agent</p></li>
+<li><p>Windows agent</p></li>
+</ul></li>
+<li><p>Trend Vision One</p>
+<ul>
+<li><p>Linux agent</p></li>
+<li><p>macOS agent</p></li>
+<li><p>Windows agent</p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Run YARA Rules</p></td>
+<td style="vertical-align: top"><p>Executes custom YARA rules (version 4.2.3) on the specified endpoints.</p>
+<p>For more information, see <a href="trend-vision-one-run-yara-rules-task">Run YARA rules task</a>.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Trend Vision One</p>
+<ul>
+<li><p>Linux agent</p></li>
+<li><p>Windows agent</p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Scan for Malware</p></td>
+<td style="vertical-align: top"><p>Performs a one-time scan on one or more endpoints for file-based threats such as viruses, spyware, and grayware.</p>
+<p>For more information, see <a href="trend-vision-one-scan-for-malware-task">Scan for Malware task</a>.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Standard Endpoint Protection</p></li>
+<li><p>Trend Micro Apex One as a Service</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Start remote access session</p></td>
+<td style="vertical-align: top"><p>Connects to monitored endpoints to remotely execute commands, custom scripts or process memory dumps for investigation.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Trend Vision One</p>
+<ul>
+<li><p>Windows agent</p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Start Remote Shell Session</p></td>
+<td style="vertical-align: top"><p>Connects to a monitored endpoint and allows you to execute remote commands or a custom script file for investigation.</p>
+<p>For more information, see <a href="trend-vision-one-start-remote-shell-session-task">Start remote access (formerly shell) session task</a>.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Trend Cloud One - Endpoint &amp; Workload Security</p>
+<ul>
+<li><p>Linux agent</p></li>
+<li><p>macOS agent</p></li>
+<li><p>Windows agent</p></li>
+</ul></li>
+<li><p>Trend Vision One</p>
+<ul>
+<li><p>Linux agent</p></li>
+<li><p>macOS agent</p></li>
+<li><p>Windows agent</p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Terminate Process</p></td>
+<td style="vertical-align: top"><p>Terminates the active process and allows you to terminate the process on all affected endpoints.</p>
+<p>For more information, see <a href="trend-vision-one-terminate-process-task">Terminate Process task</a>.</p>
+
+
+:::note
+
+<p>In certain cases, the remote shell <code>kill</code> command can be used to terminate a process, rather than using the Terminate Process task.</p>
+<p>For more information on supporting services and contexts for use, see <a href="trend-vision-one-start-remote-shell-session-task">Start remote access (formerly shell) session task</a>.</p>
+
+
+:::
+
+</td>
+<td style="vertical-align: top"><ul>
+<li><p>Trend Micro Apex One as a Service</p>
+<ul>
+<li><p>Windows agent</p></li>
+</ul></li>
+<li><p>Trend Vision One</p>
+<ul>
+<li><p>Windows agent</p></li>
+</ul></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Network**
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 50%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+<th><p>Supporting Services</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="vertical-align: top"><p>Collect Investigation Package</p></td>
+<td style="vertical-align: top"><p>Compresses the selected investigation package, including OpenIOC files describing Indicators of Compromise identified on the affected host or network, in a password-protected archive and then sends the archive to Response Management.</p>
+
+
+:::warning[Important]
+
+<p>To run the Collect Investigation Package action, you must first enable the Virtual Analyzer in Deep Discovery Inspector. Refer to <a href="https://docs.trendmicro.com/en-us/documentation/deep-discovery-inspector/">the help documentation</a> for your version of Deep Discovery Inspector.</p>
+
+
+:::
+
+</td>
+<td style="vertical-align: top"><ul>
+<li><p>Deep Discovery Inspector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Collect Network Analysis Package</p></td>
+<td style="vertical-align: top"><p>Compresses the selected network analysis package, including an investigation package, a packet capture (PCAP) file, and a selected file detected by the network appliance, in a password-protected archive and then sends the archive to Response Management.</p>
+
+
+:::warning[Important]
+
+<p>To execute the Collect Network Analysis Package task, you must first enable the <a href="https://docs.trendmicro.com/all/ent/ddi/v6.5/en-us/ddi_6.5_olh/virtualAnalyzer">Virtual Analyzer</a> and <a href="https://docs.trendmicro.com/all/ent/ddi/v6.5/en-us/ddi_6.5_olh/packetCapture">packet capture</a> function in Deep Discovery Inspector.</p>
+
+
+:::
+
+
+<p>For more information, see <a href="trend-vision-one-collect-network-analysis-package">Collect Network Analysis Package task</a>.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Deep Discovery Inspector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Collect PCAP File</p></td>
+<td style="vertical-align: top"><p>Compresses the selected Packet Capture file in a password-protected archive and then sends the archive to Response Management.</p>
+
+
+:::warning[Important]
+
+<p>To execute the Collect Network Analysis Package task, you must first enable the <a href="https://docs.trendmicro.com/all/ent/ddi/v6.5/en-us/ddi_6.5_olh/virtualAnalyzer">Virtual Analyzer</a> and <a href="https://docs.trendmicro.com/all/ent/ddi/v6.5/en-us/ddi_6.5_olh/packetCapture">packet capture</a> function in Deep Discovery Inspector.</p>
+<p>The Collect PCAP File action only supports Deep Discovery Inspector 6.5 or later.</p>
+
+
+:::
+
+</td>
+<td style="vertical-align: top"><ul>
+<li><p>Deep Discovery Inspector</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**User Account / IAM**
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 50%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+<th><p>Supporting Services</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="vertical-align: top"><p>Add to Zscaler Restricted User Group</p></td>
+<td style="vertical-align: top"><p>Adds user accounts with a high risk exposure to the Zscaler-defined restricted user group to allow for Zscaler policy enforcement.</p>
+<p>For more information, see <a href="trend-vision-one-add-restricted-user-group-task">Add to Zscaler Restricted User Group task</a>.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Disable User Account</p></td>
+<td style="vertical-align: top"><p>Signs the user out of all active application and browser sessions of the user account. This task might take a few minutes to complete. Users are prevented from signing in any new session.</p>
+
+
+:::note
+
+<p>Not applicable on accounts assigned the Microsoft Entra ID Administrator role.</p>
+
+
+:::
+
+
+<p>For more information, see <a href="trend-vision-one-disable-user-account-task">Disable User Account task</a>.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Active Directory (on-premises)</p></li>
+<li><p>Google Cloud Identity</p></li>
+<li><p>Microsoft Entra ID</p></li>
+<li><p>Okta</p></li>
+<li><p>OpenLDAP</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Enable User Account</p></td>
+<td style="vertical-align: top"><p>Allows the user to sign in to new application and browser sessions. This task might take a few minutes to complete. The user's subsequent sign-in attempts and access requests follow the control by secure access rules.</p>
+<p>For more information, see <a href="trend-vision-one-enable-user-account-task">Enable User Account task</a>.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Active Directory (on-premises)</p></li>
+<li><p>Google Cloud Identity</p></li>
+<li><p>Microsoft Entra ID</p></li>
+<li><p>Okta</p></li>
+<li><p>OpenLDAP</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Force Password Reset</p></td>
+<td style="vertical-align: top"><p>Signs the user out of all active application and browser sessions, and forces the user to create a new password during the next sign-in attempt. This task might take a few minutes to complete.</p>
+<p>For more information, see <a href="trend-vision-one-force-password-reset-task">Force Password Reset task</a>.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Active Directory (on-premises)</p></li>
+<li><p>Google Cloud Identity</p></li>
+<li><p>Microsoft Entra ID</p></li>
+<li><p>Okta</p></li>
+<li><p>OpenLDAP</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Force Sign Out</p></td>
+<td style="vertical-align: top"><p>Signs the user out of all active application and browser sessions of the user account. This task might take a few minutes to complete. Users are not prevented from immediately signing back in the closed sessions or signing in new sessions.</p>
+<p>For more information, see <a href="trend-vision-one-force-sign-task">Force Sign Out task</a>.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Google Cloud Identity</p></li>
+<li><p>Microsoft Entra ID</p></li>
+<li><p>Okta</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Remove from Zscaler Restricted User Group</p></td>
+<td style="vertical-align: top"><p>Removes user accounts from the Zscaler-defined restricted user group.</p>
+<p>For more information, see <a href="trend-vision-one-remove-restricted-user-group">Remove from Zscaler Restricted User Group task</a>.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Revoke Access Permission</p></td>
+<td style="vertical-align: top"><p>Revokes the user’s access permission on the Amazon Web Services (AWS) Identity and Access Management (IAM) service. After revoking the permission, the user can no longer access any AWS resources. Allow a few minutes for this task to complete.</p>
+<p>For more information, see <a href="trend-vision-one-revoke-access-permission-task">Revoke Access Permission task</a>.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>AWS</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Add to Block List task](add-block-list-task.md "Take preventive blocking measures on suspicious objects that may pose a security risk to your network using context menus on the Trend Vision One console.")
+- [Add to Zscaler Restricted User Group task](add-restricted-user-group-task.md "Manually or autocratically add user accounts with a high risk exposure to the Zscaler-defined restricted user group to allow for Zscaler policy enforcement.")
+- [Collect Evidence task](collect-evidence-task.md "Collect evidence to support threat investigation and incident response.")
+- [Collect File task](collect-file-task.md "After identifying a suspicious file object that you want to investigate in your local environment, you can collect the file in a password-protected archive and download the file from the Response Management app.")
+- [Collect Network Analysis Package task](collect-network-analysis-package.md "After identifying a suspicious object that you want to investigate, you can collect the network analysis package (including an investigation package, a PCAP file, and a selected file detected by the network appliance) in a password-protected archive and download the file from the Response Management app.")
+- [Delete Message task](delete-message-task.md "Delete a suspicious email message from all supported mailboxes protected by Cloud App Security using context menus on the Trend Vision One console.")
+- [Disable User Account task](disable-user-account-task.md "After identifying a potentially compromised user account, you can disable the account.")
+- [Enable User Account task](enable-user-account-task.md "After verifying the safety of a disabled user account, you can re-enable the account.")
+- [Force Password Reset task](force-password-reset-task.md "After identifying a potentially compromised user account, you can force the user to create a new password.")
+- [Force Sign Out task](force-sign-task.md "After identifying a potentially compromised user account, you can sign the user out of all active application and browser sessions.")
+- [Isolate Endpoint task](isolate-endpoint-task.md "You can take preventive isolation measures on compromised endpoints that may pose a security risk to your network using context menus on the Trend Vision One console.")
+- [Isolate Container task](isolate-container-task.md "Stop the spread of suspicious behavior within a container by isolating the containing pod from the environment.")
+- [Quarantine Message task](quarantine-message-task.md "Quarantine a suspicious email message from all supported mailboxes protected by Cloud App Security using context menus on the Trend Vision One console.")
+- [Remove from Block List task](remove-block-list-task.md "After determining that a blocked object or sender is no longer a risk, you can remove the object from the applicable blocked list using the Response Management app.")
+- [Remove from Zscaler Restricted User Group task](remove-restricted-user-group.md "After determining that a high-risk user account maintains a lower risk score, remove the account from the Zscaler restricted user group using the Response Management app.")
+- [Revoke Access Permission task](revoke-access-permission-task.md "After identifying a potentially compromised IAM user, you can revoke the user's access permission to the associated AWS cloud account.")
+- [Restore Connection task](restore-connection-task.md "After resolving the security issue on an isolated endpoint, you can restore network connectivity using the Response Management app.")
+- [Restore Message task](restore-message-task.md "Restore a quarantined email message to the selected mailboxes using context menus on the Trend Vision One console.")
+- [Resume Container task](resume-container-task.md "Resume containers within previously isolated pods using the context menu in Response Management.")
+- [Run osquery task](run-osquery-task.md "Run SQL-based queries on the specified endpoints to support threat investigation and incident response.")
+- [Run Remote Custom Script task](run-remote-custom-script-task.md "Execute a PowerShell or Bash script on a target endpoint during an investigation.")
+- [Run YARA rules task](run-yara-rules-task.md "Run custom YARA rules on the specified endpoints to support threat investigation and incident response.")
+- [Scan for Malware task](scan-for-malware-task.md "Scan one or more endpoints for file-based threats such as viruses, spyware, and grayware.")
+- [Start remote access (formerly shell) session task](start-remote-shell-session-task.md "Directly access an endpoint and execute CLI commands or a custom script file during an investigation.")
+- [Start remote access session task (Windows only)](remote-access-session-task.mdx)
+- [Submit for Sandbox Analysis task](submit-for-sandbox-analysis-task.md "After identifying a suspicious file or URL object, you can submit the object for analysis in the Sandbox Analysis app using context menus on the Trend Vision One console.")
+- [Terminate Container task](terminate-container-task.md "Stop suspicious behavior of containers within a pod by terminating the pod using context menus on the Trend Vision One console.")
+- [Terminate Process task](terminate-process-task.md "After identifying a suspicious or malicious process running on an endpoint, you can terminate the process using context menus on the Trend Vision One console.")
+::::

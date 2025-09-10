@@ -1,0 +1,44 @@
+---
+slug: trend-vision-one-install-tplc-service-2
+title: Install the Third-Party Log Collection service on a Service Gateway
+---
+# Install the Third-Party Log Collection service on a Service Gateway
+
+Enable third-party log collection by installing the Third-Party Log Collection service on your deployed Service Gateway.
+
+The Third-Party Log Collection service supports receiving logs from third-party sources and forwarding the log data to Trend Vision One for analysis and correlation or compliance purposes. The service is required to use the features in Third-Party Log Collection. To install the service, you must have a compatible Service Gateway deployed. To learn how to deploy a Service Gateway, see [Deployment guides](deployment-guides.mdx).
+
+### Procedure {#procedure}
+
+1.  Go to **Workflow and Automation → Service Gateway Management**.
+
+2.  Select the Service Gateway you want to manage.
+
+    :::warning[Important]
+
+    Make sure that your selected Service Gateway virtual appliance meets the minimum specifications required to support the Third-Party Log Collection service. Minimum requirements are 1 virtual CPU and 128 MB of virtual memory, which supports sending 30,000 logs per second.
+
+    When configuring multiple services, you must allocate the minimum virtual CPU and virtual memory requirement per service to ensure proper functionality.
+
+    For more information, see [Service Gateway appliance system requirements](sg-sys-requirements.mdx).
+    :::
+
+    The details screen for the selected Service Gateway appears.
+
+3.  Click **Manage Services**.
+
+    The **Manage Services** drawer appears.
+
+4.  Find the **Third-Party Log Collection**service and click the install icon (![](/images/installService=6a80f6d7-0cae-4a25-9c85-0c61f996b89a.webp)).
+
+    For more information, see [Manage services in Service Gateway](managing-services-service-gateway.mdx).
+
+    The Third-Party Log Collection service is installed on the Service Gateway. The Service Gateway is available for selection when adding a collector in Third-Party Log Collection.
+
+5.  If you wish to receive log data in Third-Party Log Collection using the TLS protocol, you must upload a valid certificate from your organization to the Service Gateway. For instructions, see [How do I upload a certificate to a Service Gateway?](dslm-faqs.mdx)
+
+    :::warning[Important]
+
+    If Trend Vision One fails to ingest a collected log, the Third-Party Log Collection service saves the log in a backup file in the Service Gateway storage. After three days or when the backup file exceeds 50 GB in size, the Third-Party Log Collection service purges the logs.
+    :::
+:::

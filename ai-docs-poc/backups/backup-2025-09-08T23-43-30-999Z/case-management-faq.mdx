@@ -1,0 +1,94 @@
+---
+slug: trend-vision-one-case-management-faq
+title: Frequently asked questions
+last_updated: '2025-09-08'
+ai_context:
+  source_file: case-management-faq.md
+  conversion_date: '2025-09-08T23:42:24.142Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+**Related information**
+
+- What is the best practice for creating a ticket in ServiceNow for a Workbench alert using the two-way sync between a Workbench case and a ServiceNow ticket?
+- What happens if I enable both Workbench integration and Case Management integration in the ServiceNow Trend Vision One connector?
+- How do I set up Workbench alerts to automatically create tickets in ServiceNow?
+- What is the difference between ServiceNow ITSM and Trend Vision One for ServiceNow Ticketing System integration?
+- Will I lose Workbench information if Case Management only populates case information in a ServiceNow ticket?
+- Does Case Management close cases automatically?
+
+## What is the best practice for creating a ticket in ServiceNow for a Workbench alert using the two-way sync between a Workbench case and a ServiceNow ticket? {#what-is-the-best-practice-for-creating-a-ticket-in-servicenow-for-a-workbench-alert-using-the-two-way-sync-between-a-workbench-case-and-a-servicenow-ticket}
+
+1.  Use the latest ServiceNow Vision One connector (version 2.1.2 or later, available from the [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do).
+
+2.  Follow the steps for configuring a case management ticket[Configure ServiceNow ITSM to enable Trend Vision One for ServiceNow ticketing system](config-case-management-ticket.mdx).
+
+3.  In Trend Vision One **Connector Settings**, enable only **Case Management** integration (not **Workbench**). This setting displays the Case ID in the ServiceNow Incident table and Case Management tab. The setting also syncs updates to the Status, Findings, and Case priority in ServiceNow to the Trend Vision One case and associated **Workbench**.
+
+## What happens if I enable both Workbench integration and Case Management integration in the ServiceNow Trend Vision One connector? {#what-happens-if-i-enable-both-workbench-integration-and-case-management-integration-in-the-servicenow-trend-vision-one-connector}
+
+Enabling both **Workbench** and **Case Management** integration causes duplicate tickets in the Incident table: One created by **Workbench**; the other created by **Case Management**.
+
+## How do I set up Workbench alerts to automatically create tickets in ServiceNow? {#how-do-i-set-up-workbench-alerts-to-automatically-create-tickets-in-servicenow}
+
+Select **Open a Workbench case** in **Target Settings** of the [automated response playbook and enable that playbook](create-automated-response-playbooks.mdx). This setting allows **Workbench** alerts to trigger the playbook to open a case which syncs to ServiceNow.
+
+## What is the difference between ServiceNow ITSM and Trend Vision One for ServiceNow Ticketing System integration? {#what-is-the-difference-between-servicenow-itsm-and-trend-vision-one-for-servicenow-ticketing-system-integration}
+
+Trend Vision One for ServiceNow Ticketing System integration for **Case Management** creates tickets in ServiceNow in real time with bi-directional sync. That means when you update a ticket in ServiceNow, it immediately updates the Trend Vision One **Workbench** and matches corresponding fields in both applications. In comparison, ServiceNow ITSM integration for Workbench does not offer two-way sync. It periodically pulls **Workbench** alerts and creates tickets in ServiceNow. Additionally, Trend Vision One for ServiceNow Ticketing System integration populates information on the Case Management tab while ServiceNow ITSM integration populates the Workbench Alert Information tab.
+
+**Trend Vision One for ServiceNow Ticketing System & ServiceNow ITSM integration for Workbench Comparison**
+
+<table>
+<thead style="text-align: left;">
+<tr>
+<th></th>
+<th><p>Trend Vision One for ServiceNow Ticketing System</p></th>
+<th><p>ServiceNow ITSM Integration for Workbench</p></th>
+</tr>
+</thead>
+<tbody style="text-align: left;">
+<tr>
+<td><p>Real-time, bi-directional sync</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>Update frequency</p></td>
+<td><p>Immediately</p></td>
+<td><p>Periodically</p></td>
+</tr>
+<tr>
+<td><p>Info location</p></td>
+<td><p>Case Management tab</p></td>
+<td><p>Workbench Alert Information tab</p></td>
+</tr>
+</tbody>
+</table>
+
+## Will I lose Workbench information if Case Management only populates case information in a ServiceNow ticket? {#will-i-lose-workbench-information-if-case-management-only-populates-case-information-in-a-servicenow-ticket}
+
+No. When a **Workbench** case is created in Trend Vision One, the alert model name or the insight name appears in the case name by default. When the case syncs with ServiceNow, the case name shows in a short description and the Workbench ID shows in the associated item field. So, you will not lose this information.
+
+## Does Case Management close cases automatically? {#does-case-management-close-cases-automatically}
+
+Case Management automatically closes cases that have been inactive for 60 days. This applies to Trend Vision One cases only. Any update or change to a case resets the 60-day timer.
+
+### How automatic case closure works? {#how-automatic-case-closure-works}
+
+Three days before closing a case, case owners receive notifications through email and the notification center in the Trend Vision One console.
+
+When the case closes:
+
+- The case status changes to "Closed"
+- All case findings remain unchanged
+- Case Management adds a status change update to the case
+- Trend Vision One creates an audit log entry
+- Case owners receive:
+  - An email notification
+  - A notification in Trend Vision One
+
+Case Management runs the automatic closure task daily at 00:00 in your Trend Vision One console's regional time zone. For example, if your console is in the JP region, Case Management checks for inactive cases at 00:00 JST (UTC+9).
+:::

@@ -1,0 +1,119 @@
+---
+slug: trend-vision-one-ad-user-account-controls
+title: Active Directory user account controls
+last_updated: '2025-09-08'
+ai_context:
+  source_file: ad-user-account-controls.md
+  conversion_date: '2025-09-08T23:42:26.019Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Learn which controls can be applied to Active Directory accounts to control account properties.
+
+User account controls in Identity Inventory describe the flags added to the UserAccountControl attribute for Active Directory accounts. User account controls can expand or restrict the abilities of an account. Examine user account controls for an identity for more insight into an identity's capabilities and permissions.
+
+The following table lists user account controls that may be shown for an identity in Identity Inventory.
+
+**Active Directory User Account Controls**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Control</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>SCRIPT</p></td>
+<td><p>Runs the logon script</p></td>
+</tr>
+<tr>
+<td><p>ACCOUNTDISABLE</p></td>
+<td><p>Disabled account</p></td>
+</tr>
+<tr>
+<td><p>HOMEDIR_REQUIRED</p></td>
+<td><p>Required the home folder</p></td>
+</tr>
+<tr>
+<td><p>PASSWD_NOTREQD</p></td>
+<td><p>No password required</p></td>
+</tr>
+<tr>
+<td><p>PASSWD_CANT_CHANGE</p></td>
+<td><p>Unable to change own account password</p></td>
+</tr>
+<tr>
+<td><p>ENCRYPTED_TEXT_PASSWORD_ALLOWED</p></td>
+<td><p>Can use an encrypted password</p></td>
+</tr>
+<tr>
+<td><p>TEMP_DUPLICATE_ACCOUNT</p></td>
+<td><p>Gives access to a particular domain, but not other trusted domains</p></td>
+</tr>
+<tr>
+<td><p>NORMAL_ACCOUNT</p></td>
+<td><p>Default account type</p></td>
+</tr>
+<tr>
+<td><p>INTERDOMAIN_TRUST_ACCOUNT</p></td>
+<td><p>Grants trust for a system domain that trusts other domains</p></td>
+</tr>
+<tr>
+<td><p>WORKSTATION_TRUST_ACCOUNT</p></td>
+<td><p>Computer account for a computer running Microsoft Windows NT 4.0 Workstation, Microsoft Windows NT 4.0 Server, Microsoft Windows 2000 Professional, or Windows 2000 Server and is a member of the domain</p></td>
+</tr>
+<tr>
+<td><p>SERVER_TRUST_ACCOUNT</p></td>
+<td><p>Computer account for a domain controller that is a member of the domain</p></td>
+</tr>
+<tr>
+<td><p>DONT_EXPIRE_PASSWD</p></td>
+<td><p>Indicates the account password should never expire</p></td>
+</tr>
+<tr>
+<td><p>MNS_LOGON_ACCOUNT</p></td>
+<td><p>Indicates an MNS logon account</p></td>
+</tr>
+<tr>
+<td><p>SMARTCARD_REQUIRED</p></td>
+<td><p>Forces the user to log on using a smart card</p></td>
+</tr>
+<tr>
+<td><p>TRUSTED_FOR_DELEGATION</p></td>
+<td><p>Grants trust for Kerberos delegation</p></td>
+</tr>
+<tr>
+<td><p>NOT_DELEGATED</p></td>
+<td><p>Indicates a service account not delegated to a particular service</p></td>
+</tr>
+<tr>
+<td><p>USE_DES_KEY_ONLY</p></td>
+<td><p>(Windows 2000/Windows Server 2003) Restricts a service principle to use only Data Encryption Standard (DES) encryption types for keys</p></td>
+</tr>
+<tr>
+<td><p>DONT_REQUIRE_PREAUTH</p></td>
+<td><p>(Windows 2000/Windows Server 2003) Does not require Kerberos pre-authentication for sign-on</p></td>
+</tr>
+<tr>
+<td><p>PASSWORD_EXPIRED</p></td>
+<td><p>(Windows 2000/Windows Server 2003) Indicates an expired password</p></td>
+</tr>
+<tr>
+<td><p>TRUSTED_TO_AUTH_FOR_DELEGATION</p></td>
+<td><p>(Windows 2000/Windows Server 2003) Allows a service that runs under the account assume a client's identity and authenticate as that user to other remote servers</p></td>
+</tr>
+<tr>
+<td><p>PARTIAL_SECRETS_ACCOUNT</p></td>
+<td><p>(Windows Server 2008/Windows Server 2008 R2) Indicates a read-only domain controller (RODC)</p></td>
+</tr>
+</tbody>
+</table>
+:::

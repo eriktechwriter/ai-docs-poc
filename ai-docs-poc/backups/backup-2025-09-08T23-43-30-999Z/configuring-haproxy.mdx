@@ -1,0 +1,73 @@
+---
+slug: trend-vision-one-configuring-haproxy
+title: >-
+  Configuring HAProxy as a load balancer for use with multiple Internet Access
+  on-premises gateways
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configuring-haproxy.md
+  conversion_date: '2025-09-08T23:42:22.440Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure and deploy HAProxy as your load balancer to support using multiple Internet Access on-premises gateways as the authentication proxy for single sign-on.
+
+:::note
+
+- These instructions are valid as of June 15, 2024 using HAProxy 1.5.18
+:::
+
+### Procedure {#procedure}
+
+1.  Open the configuration file located at `/etc/haproxy/haproxy.cfg`.
+
+2.  In the `defaults` section, set the mode to `tcp`.
+
+3.  Complete the configuration to be used in load balancing.
+
+    ``` codeblock
+    defaults
+        mode                    tcp
+        ...
+    frontend main
+        bind *:<port>
+        default_backend             auth_proxy
+    backend auth_proxy
+        balance     <balance>
+        server  app1 <IP/FQDN 1>:<port 1> check
+        server  app2 <IP/FQDN 2>:<port 2> check
+        ...
+        server  appN <IP/FQDN n>:<port n> check
+    ```
+
+    The following table explains the values you must specify in the placeholder fields in order to complete the configuration.
+
+    <table>
+    <thead>
+    <tr>
+    <th><p>Field</p></th>
+    <th><p>Value</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Port</p></td>
+    <td>Listening port on the load balancer used as the authentication proxy</td>
+    </tr>
+    <tr>
+    <td><p>Balance</p></td>
+    <td>The desired load balancing algorithm. Use <code>source</code> if you are mapping a client-server relationship based on the client’s IP address.</td>
+    </tr>
+    <tr>
+    <td><p>IP/FQDN (1, 2, … )</p></td>
+    <td>IP or FQDN of a Service Gateway with the Internet Access on-premises gateway installed</td>
+    </tr>
+    <tr>
+    <td><p>Port (1, 2, … )</p></td>
+    <td>Listening port on a Service Gateway used for the authentication proxy</td>
+    </tr>
+    </tbody>
+    </table>
+::::

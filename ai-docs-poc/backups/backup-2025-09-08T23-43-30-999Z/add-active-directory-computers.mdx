@@ -1,0 +1,120 @@
+---
+slug: trend-vision-one-add-active-directory-computers
+title: Add Active Directory computers
+last_updated: '2025-09-08'
+ai_context:
+  source_file: add-active-directory-computers.md
+  conversion_date: '2025-09-08T23:42:25.955Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Server & Workload Protection can use an LDAP server such as Microsoft Active Directory for computer discovery. Server & Workload Protection queries the server, and then displays computer groups according to the structure in the directory.
+
+## Add a data center gateway {#add-a-data-center-gateway}
+
+A data center gateway enables communication between Server & Workload Protection and your Active Directory server, allowing Server & Workload Protection to retrieve your computer inventory from the server.
+
+Prior to adding an Active Directory, a data center gateway must be deployed and running. The Active Directory server hostname and port are required. For more information, see [Set up the data center gateway](set-up-data-center-gateway.mdx).
+
+## Add an Active Directory {#add-an-active-directory}
+
+### Procedure {#procedure}
+
+1.  In Server & Workload Protection, click *Computers*.
+
+2.  In the main pane, click **Add → Add Active Directory**.
+
+3.  If you have connected an Active Directory (on-premises) server to Trend Vision One through **Third-Party Integration**, choose whether to add the Active Directory server using **Third-Party Integration** information or by connecting it directly in Server & Workload Protection.
+
+    :::note
+
+    If adding computers from an Active Directory server connected in **Third-Party Integration**:
+
+    1.  Choose the Active Directory domain from the list.
+
+    2.  Add a name and optional description.
+
+    3.  Choose whether to use the computer descriptions already used in Active Directory.
+
+    4.  Click *Next*.
+
+    To learn how to connect your Active Directory server in **Third-Party Integration**, see [Active Directory (on-premises) integration](ad-premises-integration.mdx).
+    :::
+
+4.  Type the host name or IP address, name, description, and port number of your Active Directory server. Also enter your access method and credentials. Follow these guidelines:
+
+    - The *Server Address* must be the same as the Common Name (CN) in the Active Directory's SSL certificate if the access method is LDAPS.
+    - The *Name* doesn't have to match the directory's name in Active Directory.
+    - The *Server Port* is the Active Directory's LDAP or LDAPS port. The defaults are 389 (StartTLS) and 636 (LDAPS).
+    - The *Username* must include your domain name. Example: EXAMPLE\Administrator.
+
+5.  Click *Next* to continue.
+
+6.  Specify your directory's schema. (If you haven't customized the schema, you can use the default values for a Microsoft Active Directory server.)
+
+    - The *Details* window of each computer in Server & Workload Protection has a "Description" field. To use an attribute of the "Computer" object class from your Active Directory to populate the "Description" field, type the attribute name in the *Computer Description Attribute* textbox.
+    - Select *Create a Scheduled Task to Synchronize this Directory* if you want to automatically keep this structure in Server & Workload Protection synchronized with your Active Directory server. A Scheduled Task wizard will appear when you are finished adding the directory. (You can set this up later using the *Scheduled Tasks* wizard: **Administration → Scheduled Tasks**.)
+
+7.  Click *Next* to continue.
+
+8.  When Server & Workload Protection has imported your directory, it will display a list of computers that it added. Click *Finish*.
+
+### Next steps {#next-steps}
+
+The directory structure will appear on the Computers page.
+
+## Additional Active Directory options {#additional-active-directory-options}
+
+Right clicking an Active Directory structure gives you options that are not available for non-directory computer groups:
+
+- Remove Directory
+- Synchronize Now
+
+## Remove directory {#remove-directory}
+
+When you remove a directory from the Server & Workload Protection, you have these options:
+
+- *Remove directory and all subordinate computers/groups from Server & Workload Protection*: Removes all traces of the directory.
+- *Remove directory but retain computer data and computer group hierarchy*: Turns the imported directory structure into identically organized regular computer groups. They are no longer linked with the Active Directory server.
+- *Remove directory, retain computer data, but flatten hierarchy*: Removes links to the Active Directory server, discards directory structure, and places all the computers into the same computer group.
+
+## Synchronize now {#synchronize-now}
+
+You can manually trigger Server & Workload Protection to synchronize with the Active Directory server to refresh information on computer groups. You can automate this procedure by creating a scheduled task.
+
+## Server certificate usage {#server-certificate-usage}
+
+If it is not already enabled, enable SSL on your Active Directory server.
+
+Computer discovery can use either SSL or TLS or unencrypted clear text but importing user accounts (including passwords and contacts) requires authentication and SSL or TLS.
+
+SSL or TLS connections require a server certificate on your Active Directory server. During the SSL or TLS handshake, the server will present this certificate to clients to prove its identity. This certificate can be either self-signed or signed by a certificate authority (CA). If you don't know if your server has a certificate, on the Active Directory server, open the Internet Information Services (IIS) Manager, and then select Server Certificates. If the server doesn't have a signed server certificate, you must install it.
+
+## Keep Active Directory objects synchronized {#keep-active-directory-objects-synchronized}
+
+Once imported, Active Directory objects must be continually synchronized with their Active Directory servers to reflect the latest updates for these objects. This ensures, for example, that computers that have been deleted in Active Directory are also deleted in Server & Workload Protection. To keep the Active Directory objects that have been imported to the Server & Workload Protection synchronized with Active Directory, it is essential to set up a scheduled task that synchronizes directory data. The wizard to import computers includes the option to create these scheduled tasks.
+
+## Disable Active Directory synchronization {#disable-active-directory-synchronization}
+
+You can stop Server & Workload Protection from synchronizing with Active Directory for both computer groups and user accounts.
+
+## Remove computer groups from Active Directory synchronization {#remove-computer-groups-from-active-directory-synchronization}
+
+### Procedure {#procedure-1}
+
+1.  Go to *Computers*.
+
+2.  Right-click the directory and select *Remove Directory*.
+
+3.  Select what to do with the list of computers from this directory when Server & Workload Protection stops synchronizing with it:
+
+    - *Remove directory and all subordinate computers/groups from Server & Workload Protection*: Remove this directory's structure.
+    - *Remove directory but retain computer data and group hierarchy*: Keep the existing structure, including its user and role access to folders and computers.
+    - *Remove directory, retain computer data, but flatten hierarchy*: Convert the directory's structure to a flat list of computers inside a group that is named after the directory. The new computer group has the same user and role access as the old structure.
+
+4.  Confirm the action.
+
+### Next steps {#next-steps-1}
+:::

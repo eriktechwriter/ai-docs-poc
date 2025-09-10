@@ -1,0 +1,158 @@
+---
+slug: trend-vision-one-deploy-vns-with-nutanix-ahv
+title: Deploying a Virtual Network Sensor with Nutanix AHV
+last_updated: '2025-09-08'
+ai_context:
+  source_file: deploy-vns-with-nutanix-ahv.md
+  conversion_date: '2025-09-08T23:42:20.624Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Learn how to deploy your own Virtual Network Sensor on Nutanix AHV.
+
+Virtual Network Sensor is a lightweight network sensor that scans your network activity and feeds network activity data to Trend Vision One and allows you to discover unmanaged assets and gain a holistic view of your attack surface. Before using the features of **Network Security**, you need to set up your Virtual Network Sensor and connect your sensor to Trend Vision One.
+
+:::warning[Important]
+
+If the throughput exceeds 2000 Mbps, Trend Micro recommends configuring your Virtual Network Sensor using a PCI passthrough that is compliant with the following drivers: Broadcom tg3 and bnxt_en, and Intel i40e, igb, ixgbe, and e1000.
+
+The Virtual Network Sensor has been tested with Nutainix Community Edition (6.5.2 LTS).
+:::
+
+:::note
+
+Review the [Virtual Network Sensor system requirements](network-sensor-sys-reqs.mdx) before starting and ensure you have adequate resources for Virtual Network Sensor.
+:::
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Network Security → Network Inventory → Virtual Network Sensor**.
+
+2.  Click **Deploy Virtual Network Sensor**.
+
+    The **Virtual Network Sensor Deployment** panel appears.
+
+3.  Select **Nutanix AHV** for the platform.
+
+4.  Set the **Admin password** and confirm the password.
+
+    The password must contain the following:
+
+    - 12 to 32 characters
+
+    - Both uppercase and lowercase characters
+
+    - At least one number (0-9)
+
+    - At least one special character: ~!\`@#$%^&\*()/\_+=\[\]{}-\\\<\>',.?:;" or space
+
+    :::note
+
+    This step is used to set the default admin password to access the Virtual Network Sensor command line interface after deployment.
+    :::
+
+5.  Select the **Connection method**.
+
+    - **Direct connection**: the Virtual Network Sensor connects to Trend Vision One directly. Make sure the Virtual Network Sensor is able to connect to the internet when using this configuration.
+
+    - **Connect using a custom proxy**: the Virtual Network Sensor connects to Trend Vision One through a third-party proxy. After choosing this method, configure the following fields:
+
+      - **Proxy address**: Specify the IP address of the proxy.
+
+      - **Proxy port**: Specify the connecting port of the proxy.
+
+      - **Proxy server requires authentication**: (Optional) Select if the proxy requires authentication credentials.
+
+      - **User name**: Specify the user name for the proxy credentials.
+
+      - **Password**: Specify the password for the proxy credentials.
+
+    - **Connect using a Service Gateway as proxy**: the Virtual Network Sensor connects to Trend Vision One through a Service Gateway. Select a Service Gateway to use for this method.
+
+      :::warning[Important]
+
+      The Virtual Network Sensor must be able to connect to a Service Gateway with the Forward Proxy Service configured and enabled. For more information, see [Manage services in Service Gateway](managing-services-service-gateway.mdx).
+      :::
+
+6.  Click **Download Disk Image**.
+
+7.  Extract the installation zip file.
+
+8.  In the Nutanix AHV console, click **Settings**.
+
+9.  Click **Image Configuration** on the right navigation bar.
+
+10. Click **Upload Image**, then click **Upload a file**.
+
+11. From the zip file you extracted, upload `vns_meta.iso` and `vns_system.qcow2`.
+
+12. In the Nutanix AHV console, click **VM**.
+
+13. On the **Overview** page, click **Network Config** to create subnets and a virtual switch. If you have already created subnets and a virtual switch, skip to the next step.
+
+    1.  In the Network Configuration dialog, locate **Virtual Switch** and click **Create VS** to create a virtual switch.
+
+    2.  In the Network Configuration dialog, locate **Subnets** and click **Create Subnets** to create a subnet.
+
+        You must create two subnets, one each for the Virtual Network Sensor management port and data port. Assign each subnet to a different virtual switch.
+
+14. On the Overview page, click **Create VM** to create the Virtual Network Sensor.
+
+15. In the Create VM dialog, configure the virtual machine.
+
+    1.  Enter a name for your virtual network sensor.
+
+    2.  For Compute Details, refer to [Virtual Network Sensor system requirements](network-sensor-sys-reqs.mdx) to specify adequate throughput values.
+
+    3.  For Disks, click the pencil icon to configure a disk with the following values and click **Update**:
+
+        - Operation: **Clone from Image Service**
+
+        - Bus Type: **IDE**
+
+        - Image: select `vns_meta.iso`.
+
+    4.  Click **Add New Disk** to configure another disk with the following values and click **Update**:
+
+        - Type: **DISK**
+
+        - Operation: **Clone from Image Service**
+
+        - Bus Type: **SATA**
+
+        - Image: select `vns_system.qcow2`.
+
+    5.  For Network Adapters (NIC), click **Add New NIC** to specify your management port first.
+
+        Your Virtual Network Sensor must be able to connect to Trend Vision One through the management port. To configure your firewall, see [Ports and URLs used by Virtual Network Sensor](ports-urls-used-network-sensor.mdx).
+
+    6.  For your second Network Adapters (NIC), click **Add New NIC** to specify your data port.
+
+        The monitored network traffic must be mirrored to this port.
+
+    7.  Click **Save**.
+
+    8.  To adjust the sizes of the disks you added, right-click your Virtual Network Sensor and select **Update**.
+
+        Click the pencil icon next to the disk you want to edit, adjust the size according to [Virtual Network Sensor system requirements](network-sensor-sys-reqs.mdx), and click **Update**.
+
+    9.  Verify your size change and click **Save**.
+
+16. To apply your settings automatically, right-click your Virtual Network Sensor and select **Power on**.
+
+    If the Virtual Network Sensor does not appear in Network Inventory after deployment, verify the following settings:
+
+    - Network settings (NIC/vNIC setting and order)
+
+    - Firewall settings
+
+    - Proxy settings if using a proxy
+
+    - Review the [Virtual Network Sensor FAQ](virtual-network-sensor-faqs.mdx) to verify and test the connection
+
+**Related information**
+
+- [Configuring traffic mirroring for Nutanix AHV](config-mirroring-nutanix-ahv.md "Learn how to configure traffic mirroring for your own Virtual Network Sensor on Nutanix AHV.")
+:::::

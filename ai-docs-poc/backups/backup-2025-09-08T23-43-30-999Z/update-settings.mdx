@@ -1,0 +1,81 @@
+---
+slug: trend-vision-one-update-settings
+title: Update Settings
+last_updated: '2025-09-08'
+ai_context:
+  source_file: update-settings.md
+  conversion_date: '2025-09-08T23:42:11.810Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+To ensure that Trend Vision One Endpoint Security agents stay protected from the latest security risks, update agent components regularly. Also update Trend Vision One Endpoint Security agents with severely out-of-date components and whenever there is an outbreak. Components become severely out-of-date when the Trend Vision One Endpoint Security agent is unable to update from the Apex One (Mac) server or the ActiveUpdate server for an extended period of time.
+
+### Agent Update Methods {#agent-update-methods}
+
+There are several ways to update Trend Vision One Endpoint Security agents.
+
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Update Method</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Administrator-initiated manual update</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Initiate an update from the following web console screens:</p>
+<ul>
+<li><p>Agent Management screen.</p></li>
+<li><p>Summary screen.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Automatic update</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li><p>After the server finishes an update, it immediately notifies Trend Vision One Endpoint Security agents to update.</p></li>
+<li><p>Updates can run according to the schedule that you configured. You can configure a schedule that applies to one or several Trend Vision One Endpoint Security agents and domains, or to all the Trend Vision One Endpoint Security agents that the server manages.</p>
+<p>For details, see <a href="trend-vision-one-configuring-agent-update-settings">Configuring Agent Update Settings</a>.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-right-width: 1px; border-right-style: solid"><p>User-initiated manual update</p></td>
+<td><p>Users launch the update from their endpoints.</p></td>
+</tr>
+</tbody>
+</table>
+
+### Agent Update Source {#agent-update-source}
+
+By default, Trend Vision One Endpoint Security agents download components from the Apex One (Mac) server. In addition to components, Trend Vision One Endpoint Security agents also receive updated configuration files when updating from the Apex One (Mac) server. Trend Vision One Endpoint Security agents need the configuration files to apply new settings. Each time you modify Apex One (Mac) settings on the web console, the configuration files change.
+
+Before updating the Trend Vision One Endpoint Security agents, check if the Apex One (Mac) server has the latest components.
+
+Configure one, several, or all Trend Vision One Endpoint Security agents to download from the Trend Micro ActiveUpdate server if the Apex One (Mac) server is unavailable.
+
+For details, see [Configuring Agent Update Settings](configuring-agent-update-settings.mdx).
+
+:::note
+
+If an agent only has an IPv6 address, read the IPv6 limitations for agent updates in [Pure IPv6 Agent Limitations](pure-ipv6-agent-limitations.mdx).
+:::
+
+### Agent Update Notes and Reminders {#agent-update-notes-and-reminders}
+
+- Trend Vision One Endpoint Security agents can use proxy settings during an update. Proxy settings are configured on the agent console.
+
+- During an update, the Trend Vision One Endpoint Security agent icon on the menu bar of the endpoint indicates that the product is updating. If an upgrade to the Trend Vision One Endpoint Security agent program is available, Trend Vision One Endpoint Security agents update and then upgrade to the latest program version or build. Users cannot run any task from the console until the update is complete.
+
+- Access the Summary screen to check if all Trend Vision One Endpoint Security agents have been updated.
+
+**Related information**
+
+- [Pure IPv6 Agent Limitations](pure-ipv6-agent-limitations.mdx)
+- [Configuring Agent Update Settings](configuring-agent-update-settings.mdx)
+::::

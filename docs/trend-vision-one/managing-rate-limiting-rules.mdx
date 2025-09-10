@@ -1,0 +1,58 @@
+---
+slug: trend-vision-one-managing-rate-limiting-rules
+title: Managing rate limiting rules
+---
+# Managing rate limiting rules
+
+Create rate limiting rules to be enforced by on-premises gateways configured to protect your private generative AI services.
+
+Rate limiting rules allow you to control the number of requests endpoints can make to your protected private generative AI service, helping to prevent denial-of-service attacks. Rate limiting rules can only be enforced by on-premises gateways operating in reverse proxy mode and deployed in front of a protected generative AI service.
+
+### Procedure {#procedure}
+
+1.  In **Internet Access and AI Service Access Configuration**, click **Manage Rate Limiting Rules**.
+
+2.  To create a new rate limiting rule, click **Create Rule**.
+
+3.  Specify a name for the rule and an optional description.
+
+4.  Choose whether to enable the rule after creation.
+
+5.  Select the private IP address groups to target with the rule.
+
+    - **All private IP address groups**: All available private IP address groups are subject to rate limiting when making requests to the private generative AI service
+    - **Any selected private IP address groups**: Private IP address groups you select are subject to rate limiting when making requests to the private generative AI service
+
+    :::tip
+
+    You may also choose private IP address groups to specifically exclude from the rule.
+    :::
+
+6.  Select the on-premises gateways to apply the rule.
+
+    - **All on-premises gateways**: All supported on-premises gateways apply the rule
+    - **Any selected on-premises gateway**: Supported on-premises gateways you select apply the rule
+
+    :::warning[Important]
+
+    Only connected on-premises gateways with reverse proxy mode enabled that are protecting a private generative AI service are supported. The Internet Access On-Premises Gateway service and corresponding Service Gateway must be updated to the latest version.
+    :::
+
+7.  Specify the rate limit threshold for the rule.
+
+    - **Unlimited requests**: The specified private IP address groups are permitted to make unlimited service requests through the specified on-premises gateways
+    - **No requests**: The specified private IP address groups are not permitted to make any service requests through the specified on-premises gateways
+    - **Specified request rate**: The specified private IP address groups are permitted to make only the specified number of service requests per minute through the specified on-premises gateways. You may specify a number ranging from 1 to 2048.
+
+8.  Click **Create**.
+
+    The newly created rule appears on the **Rate Limiting Rules** screen.
+
+9.  To search for a particular rule, type the rule name in the search field or use the dropdown menu to filter the rules by target or on-premises gateway.
+
+10. To enable or disable an existing rule, click the corresponding toggle in the **Status** column.
+
+11. To duplicate a rule, click the copy icon (![](/images/duplicate=e79af1b6-17af-40ad-b942-53ffb9e796d2.webp)).
+
+12. To delete a rule, click the delete icon (![](/images/delete_connector=3fc07446-32b8-4304-a62e-6c9ecc08d84f.webp)) or select multiple rules and click **Delete**.
+:::

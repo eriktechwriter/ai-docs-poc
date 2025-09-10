@@ -1,0 +1,98 @@
+---
+slug: trend-vision-one-uninstall-macos-agents-tool
+title: Uninstall macOS Agents with the Tool
+last_updated: '2025-09-08'
+ai_context:
+  source_file: uninstall-macos-agents-tool.md
+  conversion_date: '2025-09-08T23:42:11.854Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Use the uninstall tool to remove agents from macOS endpoints.
+
+Trend Micro recommends using an mobile device manager software like Jamf Now to deploy the uninstall tool. If you do not have access to an endpoint management software, you can run the tool manually from the endpoint using Terminal.
+
+:::note
+
+Make sure your endpoint management software supports macOS deployment and is able to run commands with root permission. For more information, review the support documentation for Apple Platform Deployment on the Apple website.
+
+If you are uninstalling manually, you must have root permission on the endpoint.
+:::
+
+### Procedure {#procedure}
+
+1.  On the Trend Vision One console, go to **Endpoint Security → Endpoint Inventory**.
+
+2.  Click **Agent Installer**.
+
+3.  Click the **download the uninstall tool** link at the bottom of the **Agent Installer** screen.
+
+    :::note
+
+    If you do not see the link, you might not have permission to perform this action. Contact your system administrator.
+    :::
+
+4.  In the **Download Uninstall Tool** screen, locate **macOS** and click the **Download tool** button.
+
+    :::note
+
+    The downloaded uninstall tool expires after seven days.
+    :::
+
+5.  Deploy the uninstall tool package to the target macOS endpoint and unzip the package.
+
+6.  If you are uninstalling manually, open Terminal and navigate to the location of the tool.
+
+7.  Run the V1ESUninstallTool.app with the command `sudo V1ESUninstallTool.app/Contents/MacOS/V1ESUninstallTool --[parameter]`.
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 25%" />
+    <col style="width: 25%" />
+    <col style="width: 25%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Target Product</p></th>
+    <th><p>Parameter</p></th>
+    <th><p>Command</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Standard Endpoint Protection</p></td>
+    <td><p><code>sep</code></p></td>
+    <td><p><code>sudo V1ESUninstallTool.app/Contents/MacOS/V1ESUninstallTool --sep</code></p></td>
+    <td><p>Only uninstalls the Standard Endpoint Protection agent</p></td>
+    </tr>
+    <tr>
+    <td><p>Server &amp; Workload Protection</p></td>
+    <td><p><code>swp</code></p></td>
+    <td><p><code>sudo V1ESUninstallTool.app/Contents/MacOS/V1ESUninstallTool --swp</code></p></td>
+    <td><p>Only uninstalls the Server &amp; Workload Protection agent</p></td>
+    </tr>
+    <tr>
+    <td><p>Uninstall all</p></td>
+    <td><p><code>all</code></p></td>
+    <td><p><code>sudo V1ESUninstallTool.app/Contents/MacOS/V1ESUninstallTool --all</code></p></td>
+    <td><p>Uninstalls the Trend Vision One agent and all related components</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+    The uninstall tool supports using an alternate JWT file path if you have more than one valid JWT token. Use one of the following commands to specify the JWT file path:
+
+    - `V1ESUninstallTool.app/Contents/MacOS/V1ESUninstallTool --[parameter] -j [jwt_token_file]`
+
+    - `V1ESUninstallTool.app/Contents/MacOS/V1ESUninstallTool --[parameter] --jwt_file [jwt_token_file]`
+
+    Replace `[jwt_token_file]` with the file path and JWT file name you want to use.
+
+    For example, to remove all with an alternative JWT token: `V1ESUninstallTool.app/Contents/MacOS/V1ESUninstallTool --all --jwt_file User/MyTokens/jwt.io`
+
+    The agent is uninstalled from the endpoint. Endpoint Inventory might take some time to update the information. Some endpoints might require you to manually update the endpoint lists. For more information, see [Cleaning Up Uninstalled Agents](cleaning-up-uninstalled-agents.mdx).
+::::

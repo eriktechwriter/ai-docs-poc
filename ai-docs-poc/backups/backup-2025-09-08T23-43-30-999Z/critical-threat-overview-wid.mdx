@@ -1,0 +1,96 @@
+---
+slug: trend-vision-one-critical-threat-overview-wid
+title: Critical Threats Widget
+last_updated: '2025-09-08'
+ai_context:
+  source_file: critical-threat-overview-wid.md
+  conversion_date: '2025-09-08T23:42:21.215Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+This widget displays the total number of unique critical threat types detected on your network and the number of affected users and threat detections for each threat type.
+
+Click the settings icon ( **→** ) to change the default **View**.
+
+- On the **Summary** tab or a custom tab, the **Affected users** view is selected by default.
+
+- On the **Threat Investigation** tab, the **Threat detections** view is selected by default.
+
+:::note
+
+- The widget lists critical threat types in order of severity.
+
+- Individual users may be affected by more than one critical threat type.
+:::
+
+Use the **Period** drop-down to select the time range for the data that displays.
+
+<figure>
+<img src="./images/widget_critical_threats=GUID-C2F92B0E-49AA-47DA-9874-20702E457934=2=en-us=Low.webp" />
+<figcaption>Affected Users View</figcaption>
+</figure>
+
+The **Affected users** view displays the number of *Important Users* and *Other Users* affected by each threat type.
+
+- Click the count in the *Important Users* or *Other Users* column, and then click the affected user you want to view.
+
+- You can define important users or endpoints on the **User/Endpoint Directory** screen.
+
+<figure>
+<img src="./images/widget_criticalthreats_detections=GUID-47593C95-E7BD-439B-A02D-7D142F1475EF=3=en-us=Low.webp" />
+<figcaption>Threat Detections View</figcaption>
+</figure>
+
+The **Threat detections** view displays the number of detections for each critical threat type.
+
+- Click a critical threat type to view the specific threat detections.
+
+- Click the hyperlink for a specific threat detection to view details about the affected users and automatically start a Root Cause Analysis to determine whether the threat has affected other endpoints on your network.
+
+Critical threat detections include the following threat types.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Threat Type</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Ransomware</p></td>
+<td><p>Malware that prevents or limits users from accessing their system unless a ransom is paid</p></td>
+</tr>
+<tr>
+<td><p>Known Advanced Persistent Threats (APT)</p></td>
+<td><p>Intrusions by attackers that aggressively pursue and compromise chosen targets, often conducted in campaigns—a series of failed and successful attempts over time to get deeper and deeper into a target network—and not isolated incidents</p></td>
+</tr>
+<tr>
+<td><p>Social engineering attacks</p></td>
+<td><p>Malware or hacker attacks that exploits a security vulnerability found in documents, such as a PDF file</p></td>
+</tr>
+<tr>
+<td><p>Vulnerability attacks</p></td>
+<td><p>Malware or hacker attacks that exploits a security weakness typically found in programs and operating systems</p></td>
+</tr>
+<tr>
+<td><p>Lateral movements</p></td>
+<td><p>Searches for directories, email, and administration servers, and other assets to map the internal structure of a network, obtain credentials to access these systems, and allow the attacker to move from system to system</p></td>
+</tr>
+<tr>
+<td><p>Unknown threats</p></td>
+<td><p>Suspicious objects (IP addresses, domains, file SHA-1 hash values, email messages) with the "high" risk level, as detected by Deep Discovery Inspector, endpoint security products, or other products with Virtual Analyzer</p></td>
+</tr>
+<tr>
+<td><p>C&amp;C callbacks</p></td>
+<td><p>Attempts to communicate with a command-and-control (C&amp;C) server to deliver information, receive instructions, and download other malware</p></td>
+</tr>
+</tbody>
+</table>
+::::

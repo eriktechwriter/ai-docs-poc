@@ -1,0 +1,85 @@
+---
+slug: trend-vision-one-trusted-traffic-bypass-firewall
+title: Allow trusted traffic to bypass the firewall
+---
+# Allow trusted traffic to bypass the firewall
+
+You can set up Server & Workload Protection to allow trusted traffic to bypass the firewall.
+
+To configure this, the basic steps are as follows:
+
+1.  Create a new IP list of trusted traffic sources
+2.  Create incoming and outbound firewall rules for trusted traffic using the IP list
+3.  Assign the firewall rules to a policy used by computers that trusted traffic flows through
+
+After the firewall rules have been assigned to a policy, Server & Workload Protection will allow traffic from trusted sources in the IP list and will not scan the traffic for stateful issues or vulnerabilities.
+
+### Create a new IP list of trusted traffic sources {#create-a-new-ip-list-of-trusted-traffic-sources}
+
+1.  Click *Policies*.
+2.  In the left pane, click **Lists → IP Lists**.
+3.  Click **New → New IP List**.
+4.  Enter a name for the IP list.
+5.  Paste the IP addresses for your trusted sources into the *IP(s)* box, one per line.
+6.  Click *OK*.
+
+### Create incoming and outbound firewall rules for trusted traffic using the IP list {#create-incoming-and-outbound-firewall-rules-for-trusted-traffic-using-the-ip-list}
+
+1.  Click *Policies*.
+2.  In the left pane, click *Rules*.
+3.  Click **Firewall Rules → New → New Firewall Rule**.
+4.  Create a firewall rule for incoming trusted traffic using the values in the below:
+    <table>
+    <tbody>
+    <tr>
+    <td><p>Name:</p></td>
+    <td><p><em>source name</em> Traffic - Incoming</p></td>
+    </tr>
+    <tr>
+    <td><p>Action:</p></td>
+    <td><p>Bypass</p></td>
+    </tr>
+    <tr>
+    <td><p>Protocol:</p></td>
+    <td><p>Any</p></td>
+    </tr>
+    <tr>
+    <td><p>Packet Source:</p></td>
+    <td><p>IP List (select the IP list created above)</p></td>
+    </tr>
+    </tbody>
+    </table>
+5.  Create a firewall rule for outgoing trusted traffic using the values in the below:
+    <table>
+    <tbody>
+    <tr>
+    <td><p>Name:</p></td>
+    <td><p><em>source name</em> Traffic - Outgoing</p></td>
+    </tr>
+    <tr>
+    <td><p>Action:</p></td>
+    <td><p>Bypass</p></td>
+    </tr>
+    <tr>
+    <td><p>Protocol:</p></td>
+    <td><p>Any</p></td>
+    </tr>
+    <tr>
+    <td><p>Packet Destination:</p></td>
+    <td><p>IP List (select the IP list created above)</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+### Assign the firewall rules to a policy used by computers that trusted traffic flows through {#assign-the-firewall-rules-to-a-policy-used-by-computers-that-trusted-traffic-flows-through}
+
+1.  Click *Policies*.
+2.  In the left pane, click *Policies*.
+3.  Double-click a policy to open its properties window.
+4.  In the left pane of the policy's properties window, click *Firewall*.
+5.  Click *Assign/Unassign*.
+6.  Ensure your view at the top left shows *All* firewall rules.
+7.  Use the search window to find the rules you created and select them.
+8.  Click *OK*.
+9.  Repeat the steps above for each computer that trusted traffic flows through.
+:::

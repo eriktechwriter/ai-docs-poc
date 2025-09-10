@@ -1,0 +1,400 @@
+---
+slug: trend-vision-one-web-reputation-services-cas-intro
+title: Web Reputation Services
+last_updated: '2025-09-08'
+ai_context:
+  source_file: web-reputation-services-cas-intro.md
+  conversion_date: '2025-09-08T23:42:11.549Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+With one of the largest domain-reputation databases in the world, Trend Micro web reputation technology tracks the credibility of web domains by assigning a reputation score based on factors including website's age, historical location changes and indications of suspicious activities discovered through malware behavior analysis, such as phishing attacks that are designed to trick users into providing personal information. To increase accuracy and reduce false positives, Trend Micro Web Reputation Services assigns reputation scores to specific pages or links within sites instead of classifying or blocking entire sites, since often, only portions of legitimate sites are hacked and reputations can change dynamically over time.
+
+Attackers may use phishing websites that disguise as legitimate websites to steal user credentials that provide access to your network. To enhance its capability of spotting these credential phishing websites, Cloud Email and Collaboration Protection integrates with dynamic URL scanning and applies it to URLs such as those classified as Untested by Trend Micro Web Reputation Services. By crawling the web pages of these URLs in real time, Cloud Email and Collaboration Protection determines whether the pages contain malicious patterns and takes pre-configured actions to keep users from zero-day phishing attacks.
+
+Cloud Email and Collaboration Protection also leverages artificial intelligence (AI)-based computer vision to protect cloud service users against credential phishing attacks. It uses this advanced technology to recognize key elements of a valid cloud service logon page to help prevent users from submitting credentials to untrusted sites and help them get rid of account compromise.
+
+In this release, for a URL detected as a credential phish, Cloud Email and Collaboration Protection takes the action configured by the administrator under **Action** on this URL.
+
+**Related information**
+
+- Web Reputation risk levels
+- Configuring Web Reputation
+
+## Web Reputation risk levels {#web-reputation-risk-levels}
+
+The following table explains the Web Reputation risk levels. View the table to understand why a URL is classified as dangerous, highly suspicious, or suspicious.
+
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 78%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Risk Level</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Dangerous</p></td>
+<td><p>The URL is verified to be fraudulent or known sources of threats.</p></td>
+</tr>
+<tr>
+<td><p>Highly suspicious</p></td>
+<td><p>The URL is suspected to be fraudulent or possible sources of threats.</p></td>
+</tr>
+<tr>
+<td><p>Suspicious</p></td>
+<td><p>The URL is associated with spam or possibly compromised.</p></td>
+</tr>
+<tr>
+<td><p>Untested</p></td>
+<td><p>The URL has not been tested by Trend Micro yet. While Trend Micro actively tests web pages for safety, users may encounter untested pages when visiting new or less popular websites. Blocking access to untested pages can improve safety but can also prevent access to safe pages.</p></td>
+</tr>
+<tr>
+<td><p>Safe</p></td>
+<td><p>The URL contains no malicious software and shows no signs of phishing.</p></td>
+</tr>
+</tbody>
+</table>
+
+## Configuring Web Reputation {#configuring-web-reputation}
+
+### Procedure {#procedure}
+
+1.  Select **Web Reputation**.
+
+2.  Enable Web Reputation.
+
+3.  Configure rule settings.
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Setting</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Apply to</p></td>
+    <td><p>(Exchange Online and Gmail only) Select the scope of email messages that Web Scanning applies to.</p>
+    <ul>
+    <li><p><strong>All messages</strong>: means that this policy applies to incoming, outgoing, and internal email messages. Incoming/outgoing email messages are sent from/to non-internal domains.</p></li>
+    <li><p><strong>Incoming messages</strong>: means that this policy applies only to incoming email messages sent from non-internal domains.</p></li>
+    </ul>
+    
+
+    :::note
+    
+    <p>For details about internal domains, see <a href="trend-vision-one-configuring-internal-domain-list">Configuring the internal domain list</a></p>
+    <p>For Exchange Online (Inline Mode), the scope is fixed to <strong>Inbound messages</strong> for inbound protection and <strong>Outbound messages</strong> for outbound protection. Inbound messages are sent from outside your organization to an address inside the organization, while outbound messages are sent from your organization to external addresses.</p>
+    
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>Security Level</p></td>
+    <td><p>Select <strong>Security Level</strong> and then the security level that Web Reputation applies to.</p>
+    <p>Trend Micro considers a URL a web threat if its reputation score falls within a defined threshold, and safe if its score exceeds the threshold.</p>
+    <p>Cloud Email and Collaboration Protection has three security levels that determine whether it will apply the configured action to a URL with a certain risk level. For details about the risk levels, see Web Reputation risk levels.</p>
+    <ul>
+    <li><p><em>High</em>: Blocks pages that are:</p>
+    <ul>
+    <li><p><em>Dangerous</em></p></li>
+    <li><p><em>Highly suspicious</em></p></li>
+    <li><p><em>Suspicious</em></p></li>
+    <li><p><em>Untested</em></p></li>
+    </ul></li>
+    <li><p><em>Medium</em>: Blocks pages that are:</p>
+    <ul>
+    <li><p><em>Dangerous</em></p></li>
+    <li><p><em>Highly suspicious</em></p></li>
+    </ul></li>
+    <li><p><em>Low</em>: Blocks pages that are:</p>
+    <ul>
+    <li><p><em>Dangerous</em></p></li>
+    </ul></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>Message Attachments</p></td>
+    <td><p>(Exchange Online and Gmail only) Select whether to scan message attachment content, including QR codes, for suspicious URLs.</p>
+    
+
+    :::note
+    
+    <p>For more information about QR code scanning, see <a href="trend-vision-one-quishing-detection">Quishing detection</a>.</p>
+    <p>When you enable this option, Cloud Email and Collaboration Protection also scans the QR code images in the email body.</p>
+    
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>Dynamic URL Scanning</p></td>
+    <td><p>Select whether to further perform real-time analysis on URLs, such as those classified as Untested by the Web Reputation Services, to detect phishing websites.</p>
+    <p>For more information about dynamic URL scanning, see Web Reputation Services.</p></td>
+    </tr>
+    <tr>
+    <td><p>Computer Vision</p></td>
+    <td><p>(Exchange Online and Gmail only) Select whether to use computer vision techniques to detect phishing websites.</p>
+    <p>Computer vision is an AI-based advanced detection technology that uses image analysis to detect phishing.</p></td>
+    </tr>
+    <tr>
+    <td><p>Retro Scan &amp; Auto Remediate</p></td>
+    <td><p>(Exchange Online and Gmail only) This option is disabled by default.</p>
+    
+
+    :::note
+    
+    <p>This feature is not available for Exchange Online (Inline Mode).</p>
+    
+
+    :::
+
+    
+    <ol>
+    <li><p>Select whether to rescan historical URLs in users' email metadata using newer patterns updated by the Web Reputation Services.</p>
+    <p>Users' email metadata may include undetected suspicious or dangerous URLs that have only recently been discovered. Examination of such metadata is an important part of forensic investigations to determine if your email service is affected by attacks. Cloud Email and Collaboration Protection collects email metadata of users in your organization and retroactively scans the historical URLs using newer web reputation patterns. Based on the latest scan result, Cloud Email and Collaboration Protection automatically takes remedial action on the affected email messages.</p>
+    
+
+    :::note
+    
+    <p>URLs in the <strong>Approved / Blocked URL List</strong>s and in the email messages that fall into the <strong>Approved Sender List</strong> or <strong>Approved Header Field List</strong> will be excluded from scanning.</p>
+    
+
+    :::
+
+    </li>
+    <li><p>On the screen that appears, click <strong>OK</strong> to allow Cloud Email and Collaboration Protection to collect users' email metadata.</p></li>
+    </ol>
+    <p>After this option is enabled, Cloud Email and Collaboration Protection periodically examines historical URLs. Based on the retro scan results:</p>
+    <ul>
+    <li><p>If the risk level of a URL changes and thus it hits the current policy, Cloud Email and Collaboration Protection takes the administrator-configured action on the affected email message.</p></li>
+    <li><p>If the risk level of a URL changes and thus it no longer hits the current policy, Cloud Email and Collaboration Protection restores the affected email message when <strong>Action</strong> was set to <strong>Quarantine</strong>. Cloud Email and Collaboration Protection does not undo the action that was set to other values than <strong>Quarantine</strong>.</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td>Time-of-Click Protection</td>
+    <td><ol>
+    <li><p>Select <strong>Enable Time-of-Click Protection</strong>.</p>
+    
+
+    :::note
+    
+    <ul>
+    <li><p>Time-of-Click Protection applies to real-time scans for URLs in incoming email messages. To configure actions for those URLs, go to <strong>Administration → Global Settings → Time-of-Click Protection Settings</strong>.</p></li>
+    <li><p>This feature is not available for the outbound protection of Exchange Online (Inline Mode).</p></li>
+    </ul>
+    
+
+    :::
+
+    </li>
+    <li><p>Select the range of URLs to which Time-of-Click Protection applies.</p></li>
+    </ol></td>
+    </tr>
+    </tbody>
+    </table>
+
+4.  Click **Approved/Blocked List**.
+
+5.  (Exchange Online and Gmail only) Configure the approved sender list.
+
+    1.  Select **Enable the approved sender list**.
+
+    2.  Specify a sending email address or domain to bypass Web Reputation scanning and click **Add \>**.
+
+        :::note
+
+        You can use the wildcard character (\*) to represent any characters in the email address or domain name. Examples: `*@example.com`, `name@*.com`, `*@*.example.com`
+
+        The following formats are invalid: `*@*`, `*`
+        :::
+
+    3.  Optionally click **Import** to import sender email addresses in batches.
+
+6.  Configure the approved/blocked URL lists for Web Reputation.
+
+    1.  Enable the approved URL list.
+
+    2.  (Exchange Online only) Select **Add internal domains to the approved URL list** to exclude your internal domains from scanning.
+
+    3.  Specify a URL to exclude from Web Reputation scanning and click **Add**.
+
+        :::note
+
+        Be aware that regular expressions are not supported.
+
+        For URLs with query parameters, Cloud Email and Collaboration Protection uses exact match. Wildcard characters are not supported.
+
+        For URLs without query parameters, wildcard characters only in the `*.example.com` and `*.example.com/example/*` formats are supported.
+
+        For Gmail, only URLs without query parameters are supported.
+        :::
+
+    4.  Optionally click **Import** to import URLs in batches.
+
+    5.  Enable the blocked URL list.
+
+    6.  Specify a URL to block without scanning and click **Add**.
+
+        :::note
+
+        The approved URL list takes precedence over the blocked URL list. If a URL is added into both lists, it will be treated as an approved URL.
+
+        Be aware that regular expressions are not supported.
+
+        For URLs with query parameters, Cloud Email and Collaboration Protection uses exact match. Wildcard characters are not supported.
+
+        For URLs without query parameters, wildcard characters only in the `*.example.com` and `*.example.com/example/*` formats are supported.
+
+        For Gmail, only URLs without query parameters are supported.
+        :::
+
+    7.  Optionally click **Export** to export URLs in batches.
+
+    8.  Go to **Action** to set an action for the blocked URL list.
+
+        - For Gmail, **Label email**, **Delete**, and **Quarantine** are supported.
+
+        - For the other applications and services, **Quarantine** and **Delete** are supported.
+
+7.  (Exchange Online only) Configure the approved header field list.
+
+    1.  Enable the approved header field list.
+
+    2.  Specify a header field name in the **Name** text box and a value for the field in the **Value** text box, and select **Contains** or **Equals** as necessary.
+
+    3.  Click **Add**.
+
+        The specified entry appears in the area below.
+
+        When the specified header field of an email message contains or exactly matches with the specified value depending on whether **Contains** or **Equals** is selected, the message will not be scanned by Web Reputation for malicious and suspicious URL detection, but will still go through the other security filters in the policy.
+
+        :::note
+
+        Be aware that **Name** and **Value** are case sensitive, and wildcard characters and regular expressions are not supported.
+
+        The header field name and value cannot exceed 128 characters.
+        :::
+
+    4.  Optionally repeat steps **b** and **c** to add another header field as necessary.
+
+        The email message whose header field hits any of the specified entries will not be scanned by Web Reputation.
+
+        :::note
+
+        A maximum of 10 header fields is supported.
+        :::
+
+    5.  To delete a specified header field, select it from the list and click **Delete**.
+
+    The approved header field list configured here applies only to the current policy. You can also create an approved header field list that is applicable to all enabled policies for Exchange Online. For more information, see [Configuring approved header field list for Exchange Online](config-header-exchange-online.mdx).
+
+8.  (Exchange Online only) Configure the approved URL list for Time-of-Click Protection.
+
+    1.  Enable the approved URL list for specified URLs to bypass Time-of-Click Protection, which rewrites suspicious URLs in incoming email messages to redirect the URLs to the Web Reputation Services.
+
+    2.  Specify a URL to exclude from Time-of-Click Protection scanning and click **Add**.
+
+        :::note
+
+        Be aware that regular expressions are not supported.
+
+        For URLs with query parameters, Cloud Email and Collaboration Protection uses exact match. Wildcard characters are not supported.
+
+        For URLs without query parameters, wildcard characters only in the `*.example.com` and `*.example.com/example/*` formats are supported.
+        :::
+
+    3.  Optionally click **Import** to import URLs in batches.
+
+    4.  Optionally click **Export** to export URLs in batches.
+
+9.  Click **Action & Notifications**.
+
+10. Configure **Action** settings.
+
+    Cloud Email and Collaboration Protection protects services by executing specified actions on email messages or files that match scanning conditions.
+
+    For details about the actions, see [Actions available for different services](actions-different-services.mdx).
+
+    1.  Optionally select the **Take action on URLs that have not been tested by Trend Micro Web Reputation Services** check box to apply the configured action to the URLs not yet tested by Trend Micro, for example, new born URLs or shortened URLs.
+
+    2.  Optionally select the **Configure actions dedicated to files** check box to separately configure actions for files and whether to send notifications when the specified action is taken.
+
+        :::note
+
+        When this option is selected, for a file, Cloud Email and Collaboration Protection takes the action specified here instead of the policy-level action described in the above tables in step 7.
+        :::
+
+    3.  If the **Tag file name** action is selected, specify the tag to append to the file name.
+
+        :::note
+
+        The tag cannot exceed 20 characters or contain unsupported characters (/ \\ : \* ? &lt; &gt; " |).
+
+        The tag applies to the **Tag file name** action specified in the **Action** section.
+        :::
+
+    4.  Specify text to replace the original file content when a file is quarantined or deleted.
+
+        The text applies to the **Quarantine** and **Delete** actions in the **Action** section.
+
+11. Configure **Notification** settings.
+
+    ::: {.simpletable-container}
+    <table id="GUID-D9ACE030-85B4-4E61-A1A0-6B94958FCBB9__CHOICETABLE_GDD_W41_1Q" class="choicetable" data-border="1">
+    <colgroup>
+    <col style="width: 50%" />
+    <col style="width: 50%" />
+    </colgroup>
+    <thead>
+    <tr class="chhead table-header-style">
+    <th class="choptionhd">Option</th>
+    <th class="chdeschd">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="chrow">
+    <td class="choption"><p>Notify administrator</p></td>
+    <td class="chdesc"><ol>
+    <li><p>Specify the administrators to notify by selecting a recipient group or specifying individual recipients. You can click Manage recipient groups to edit the members in a group or add more groups.</p></li>
+    <li><p>Specify message details to notify administrators that Cloud Email and Collaboration Protection detected a security risk and took action on an email message, attachment, or file.</p></li>
+    <li><p>Set the notification threshold which limits the number of notification messages to send. Threshold settings include:</p>
+    <ul>
+    <li><p><strong>Send consolidated notifications periodically</strong>: Cloud Email and Collaboration Protection sends an email message that consolidates all the notifications for a period of time. Specify the period of time by typing a number in the box and selecting hour(s) or day(s).</p></li>
+    <li><p><strong>Send consolidated notifications by occurrences</strong>: Cloud Email and Collaboration Protection sends an email message that consolidates notifications for a set number of filtering actions. Specify the number of virus/malware occurrences by typing a number in the box.</p></li>
+    <li><p><strong>Send individual notifications</strong>: Cloud Email and Collaboration Protection sends an email message notification every time Cloud Email and Collaboration Protection performs a filtering action.</p></li>
+    </ul></li>
+    </ol></td>
+    </tr>
+    <tr class="chrow">
+    <td class="choption"><p>Notify User</p></td>
+    <td class="chdesc"><p><strong>Exchange Online and Gmail</strong>: Specify message details that notify recipients that Cloud Email and Collaboration Protection detected a security risk and took action on their email message or attachment.</p>
+    <p><strong>SharePoint Online, OneDrive, Microsoft Teams (Teams), Box, Dropbox, and Google Drive</strong>: Specify message details that notify the user who updated a file that Cloud Email and Collaboration Protection detected a security risk and took action on their file.</p>
+    <p><strong>Teams Chat</strong>: Cloud Email and Collaboration Protection does not provide this option. When a chat message was blocked, a notification "This message was blocked." provided by Microsoft appears in the sender's private chat window. Message senders can click <strong>What can I do?</strong> to view more information about the blocked messages.</p></td>
+    </tr>
+    </tbody>
+    </table>
+    :::
+
+    :::note
+
+    When specifying a notification message, include relevant tokens and edit the message content as desired. For details about tokens, see [Token list](token-list.mdx).
+    :::
+
+12. Click **Save** or select another policy configuration on the left navigation to continue with additional rules.
+:::

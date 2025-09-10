@@ -1,0 +1,75 @@
+---
+slug: trend-vision-one-data-spec-for-aws-s3-buckets
+title: Data specification for AWS S3 buckets
+---
+# Data specification for AWS S3 buckets
+
+Review the type of data and format shared to your S3 buckets by Third-Party Integration.
+
+:::note
+
+Sending activity data to an S3 bucket requires Trend Vision One credits. [Configure the data allowance for transferring activity data and manage credit allocation](credit-req-for-apps-services.mdx) in the Credits & Billing app.
+:::
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Data</p></th>
+<th><p>Output Path</p></th>
+<th><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Workbench alerts</p></td>
+<td><p><code>/workbench/packages/customerId={CUSTOMER_ID}/pipelineId={PIPELINE_ID}/workbenchId={WORKBENCH_ID}/eventType={EVENT_TYPE}/{PACKAGE_ID}.json.gz</code></p></td>
+<td><ul>
+<li><p><code>CUSTOMER_ID</code>: Customer ID in UUID format</p></li>
+<li><p><code>PIPELINE_ID</code>: Back-end pipeline ID in UUID format</p></li>
+<li><p><code>WORKBENCH_ID</code>: Workbench ID given in the following format:</p>
+<p><code>WB-{COMPANY_ID}-{DATE}-{SERIAL_NUMBER}</code></p>
+<ul>
+<li><p><code>COMPANY_ID</code>: A unique integer for each company</p></li>
+<li><p><code>DATE</code>: UTC+0 in "yyyyMMDD" format</p></li>
+<li><p>SERIAL_NUMBER</p>
+<p>: Automatically generated number for each Workbench created</p></li>
+</ul></li>
+<li><p><code>EVENT_TYPE</code>: Action taken or performed on the Workbench:</p>
+<ul>
+<li><p><code>WORKBENCH_CREATED</code></p></li>
+<li><p><code>WORKBENCH_UPDATED</code></p></li>
+<li><p><code>WORKBENCH_FP_REMOVED</code></p></li>
+</ul></li>
+<li><p><code>PACKAGE_ID</code>: Package ID in UUID format</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Observed Attack Techniques</p></td>
+<td><p><code>/oat/packages/customerId={CUSTOMER_ID}/pipelineId={PIPELINE_ID}/dateHour={DATE_HOUR}/{PACKAGE_ID}.json.gz</code></p></td>
+<td rowspan="4"><ul>
+<li><p><code>CUSTOMER_ID</code>: Customer ID in UUID format</p></li>
+<li><p><code>PIPELINE_ID</code>: Back-end pipeline ID in UUID format</p></li>
+<li><p><code>DATE_HOUR</code>: UTC+0 in "yyyyMMDDHH" format</p></li>
+<li><p><code>PACKAGE_ID</code>: Package ID in UUID format</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Activity</p></td>
+<td><p><code>/activity/packages/customerId={CUSTOMER_ID}/pipelineId={PIPELINE_ID}/dateHour={DATE_HOUR}/{PACKAGE_ID}.json.gz</code></p></td>
+</tr>
+<tr>
+<td><p>Detections</p></td>
+<td><p><code>/detection/packages/customerId={CUSTOMER_ID}/pipelineId={PIPELINE_ID}/dateHour={DATE_HOUR}/{PACKAGE_ID}.json.gz</code></p></td>
+</tr>
+<tr>
+<td><p>Container vulnerabilities</p></td>
+<td><p><code>/containerVulnerability/packages/customerId={CUSTOMER_ID}/pipelineId={PIPELINE_ID}/{PACKAGE_ID}.json.gz</code></p></td>
+</tr>
+</tbody>
+</table>
+::::

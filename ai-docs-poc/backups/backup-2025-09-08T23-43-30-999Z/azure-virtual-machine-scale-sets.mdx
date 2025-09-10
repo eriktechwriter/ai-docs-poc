@@ -1,0 +1,192 @@
+---
+slug: trend-vision-one-azure-virtual-machine-scale-sets
+title: Azure virtual machine scale sets and Server & Workload Protection
+last_updated: '2025-09-08'
+ai_context:
+  source_file: azure-virtual-machine-scale-sets.md
+  conversion_date: '2025-09-08T23:42:24.301Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Azure virtual machine scale sets (VMSS) provide the ability to deploy and manage a set of identical VMs. The number of VMs can increase or decrease automatically based on configurable scaling rules. For more information, see [What are virtual machine scale sets in Azure?](https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview)
+
+You can set up your VMSS to include a base VM image that has the agent pre-installed and pre-activated. As the VMSS scales up, the new VM instances in the scale set automatically include the agent.
+
+To add the agent to your VMSS:
+
+- Step 1: Add your Azure subscription to Cloud Accounts
+
+- Step 2: Prepare a deployment script
+
+- Step 3: Add the agent through a custom script extension to your VMSS instances
+
+### Step 1: Add your Azure subscription to Cloud Accounts {#step-1-add-your-azure-subscription-to-cloud-accounts}
+
+Trend Micro recommends connecting your Azure subscription using **Cloud Accounts**. By connecting to Cloud Accounts, you gain access to the latest cloud security features available in Trend Vision One. Additionally, Server & Workload Protection monitors your Azure instances and can automatically add or remove virtual machines from both **Computers** and **Endpoint Inventory** as you scale up or scale down your scale set. Instances added to Server & Workload Protection individually are not automatically removed from the inventory when you scale down.
+
+Server & Workload Protection adds Azure instances to your inventory lists regardless of whether the VMs have an agent installed or not. The instances that do not have an agent installed have a status of No Agent. After you install and activate the agent on your instances, the status changes to Managed (Online).
+
+To learn more about adding Azure subscriptions, see [Connecting and updating Azure subscriptions](connecting-azure-subscriptions.mdx).
+
+### Step 2: Prepare a deployment script {#step-2-prepare-a-deployment-script}
+
+You can configure and download the deployment script for the Trend Vision One Endpoint Security agent with Server & Workload Protection features from **Endpoint Inventory**. For more information about using the deployment script, see [Run the deployment script](using-endpoint-deployment-script.mdx).
+
+The following information is for reference use only.
+
+In Server & Workload Protection, prepare a deployment script. For instructions, see [Use deployment scripts to add and protect computers](deployment-scripts-add-computers.mdx). This deployment script will be referenced in a custom script extension that you'll configure next.
+
+To run a custom script with the following VMSS script, the script must be stored in Azure Blob storage or in any other location accessible through a valid URL. For instructions on how to upload a file to Azure Blob storage, see [Perform Azure Blob storage operations with Azure PowerShell](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-how-to-use-blobs-powershell).
+
+### Step 3: Add the agent through a custom script extension to your VMSS instances {#step-3-add-the-agent-through-a-custom-script-extension-to-your-vmss-instances}
+
+The following are examples on how to use PowerShell to add the agent:
+
+- Example 1 shows how to create a new VMSS that includes the agent
+- Example 2 shows how to add the agent to an existing VMSS
+
+Both examples:
+
+- use the `Add-AzureRmVmssExtension` cmdlet to add an extension to the VMSS
+- use Azure PowerShell version 5.1.1
+
+For instructions on creating a new VMSS using PowerShell cmdlets, refer to [this Microsoft tutorial](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/tutorial-create-vmss). For the Linux platform, see <https://github.com/Azure/custom-script-extension-linux>.
+
+### Example 1: Create a new VMSS that includes the agent {#example-1-create-a-new-vmss-that-includes-the-agent}
+
+``` codeblock
+$resourceGroupName = <The resource group of the VMSS>
+$vmssname = <The name of the VMSS>
+
+# Create ResourceGroup
+New-AzureRmResourceGroup -ResourceGroupName $resourceGroupName -Location EastUS
+
+# Create a config object
+$vmssConfig = New-AzureRmVmssConfig `
+ -Location EastUS `
+ -SkuCapacity 2 `
+ -SkuName Standard_DS2 `
+ -UpgradePolicyMode Automatic
+
+# Define the script for your Custom Script Extension to run on the Windows Platform
+$customConfig = @{
+ "fileUris" = (,"A URL of your copy of deployment script, ex. deploymentscript.ps1");
+ "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File deploymentscript.ps1"
+}
+
+# Define the script for your Custom Script Extension to run on the Linux Platform
+#$customConfig = @{
+# "fileUris" = (,"A URL of your copy of deployment script, ex. deploymentscript.sh");
+# "commandToExecute" = "bash deploymentscript.sh"
+#}
+
+# The section is required only if deploymentscript has been located within Azure StorageAccount
+$storageAccountName = <StorageAccountName if deploymentscript is locate in Azure Storage>
+$key = (Get-AzureRmStorageAccountKey -Name $storageAccountName -ResourceGroupName $resourceGroupName).Value[0]
+$protectedConfig = @{
+ "storageAccountName" = $storageAccountName;
+ "storageAccountKey" = $key
+}
+
+# Use Custom Script Extension to install the agent (Windows)
+Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmssConfig `
+ -Name "customScript" `
+ -Publisher "Microsoft.Compute" `
+ -Type "CustomScriptExtension" `
+ -TypeHandlerVersion 1.8 `
+ -Setting $customConfig `
+ -ProtectedSetting $protectedConfig
+
+# Use Custom Script Extension to install the agent (Linux)
+#Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmssConfig `
+# -Name "customScript" `
+# -Publisher "Microsoft.Azure.Extensions" `
+# -Type "customScript" `
+# -TypeHandlerVersion 2.0 `
+# -Setting $customConfig `
+# -ProtectedSetting $protectedConfig
+
+# Create a public IP address
+# Create a frontend and backend IP pool
+# Create the load balancer
+# Create a load balancer health probe on port 80
+# Create a load balancer rule to distribute traffic on port 80
+# Update the load balancer configuration
+# Reference a virtual machine image from the gallery
+# Set up information for authenticating with the virtual machine
+# Create the virtual network resources
+# Attach the virtual network to the config object
+
+# Create the scale set with the config object (this step might take a few minutes)
+New-AzureRmVmss `
+ -ResourceGroupName $resourceGroupName `
+ -Name $vmssname `
+ -VirtualMachineScaleSet $vmssConfig
+```
+
+### Example 2: Add the agent to an existing VMSS {#example-2-add-the-agent-to-an-existing-vmss}
+
+``` codeblock
+$resourceGroupName = <The resource group of the VMSS>
+$vmssname = <The name of the VMSS>
+
+# Get the VMSS model
+$vmssobj = Get-AzureRmVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $vmssname
+
+# Show model data if you prefer
+# Write-Output $vmssobj
+
+# Define the script for your Custom Script Extension to run on the Windows platform
+$customConfig = @{
+ "fileUris" = (,"A URL of your copy of deployment script, ex. deploymentscript.ps1");
+ "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File deploymentscript.ps1"
+}
+
+# Define the script for your Custom Script Extension to run on the Linux platform
+#$customConfig = @{
+# "fileUris" = (,"A URL of your copy of deployment script, ex. deploymentscript.sh");
+# "commandToExecute" = "bash deploymentscript.sh"
+#}
+
+# The section is required only if deploymentscript has been located within Azure StorageAccount
+$storageAccountName = <StorageAccountName if deploymentscript is locate in Azure Storage>
+$key= (Get-AzureRmStorageAccountKey -Name $storageAccountName -ResourceGroupName $resourceGroupName).Value[0]
+$protectedConfig = @{
+ "storageAccountName" = $storageAccountName;
+ "storageAccountKey" = $key
+}
+
+# Use Custom Script Extension to install the agent (Windows)
+$newvmssobj = Add-AzureRmVmssExtension `
+ -VirtualMachineScaleSet $vmssobj `
+ -Name "customScript" `
+ -Publisher "Microsoft.Compute" `
+ -Type "CustomScriptExtension" `
+ -TypeHandlerVersion 1.8 `
+ -Setting $customConfig `
+ -ProtectedSetting $protectedConfig
+
+# Use Custom Script Extension to install the agent (Linux)
+#$newvmssobj = Add-AzureRmVmssExtension `
+# -VirtualMachineScaleSet $vmssobj `
+# -Name "customScript" `
+# -Publisher "Microsoft.Azure.Extensions" `
+# -Type "customScript" `
+# -TypeHandlerVersion 2.0 `
+# -Setting $customConfig `
+# -ProtectedSetting $protectedConfig
+
+# Update the virtual machine scale set model
+Update-AzureRmVmss -ResourceGroupName $resourceGroupName -name $vmssname -VirtualMachineScaleSet $newvmssobj -Verbose
+
+# Get Instance ID for all instances in this VMSS, and decide which instance you'd like to update
+# Get-AzureRmVmssVM -ResourceGroupName $resourceGroupName -VMScaleSetName $vmssname
+
+# Now start updating instances
+# If upgradePolicy is Automatic in the VMSS, do NOT execute the next command Update-AzureRmVmssInstance. Azure will auto-update the VMSS.
+# There's no PowerShell command to update all instances at once. But you could refer to the output of Update-AzureRmVmss, and loop all instances into this command.
+Update-AzureRmVmssInstance -ResourceGroupName $resourceGroupName -VMScaleSetName $vmssname -InstanceId 0
+```
+:::

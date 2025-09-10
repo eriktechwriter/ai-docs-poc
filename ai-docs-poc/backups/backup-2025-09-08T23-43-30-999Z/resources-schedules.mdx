@@ -1,0 +1,72 @@
+---
+slug: trend-vision-one-resources-schedules
+title: Schedules
+last_updated: '2025-09-08'
+ai_context:
+  source_file: resources-schedules.md
+  conversion_date: '2025-09-08T23:42:13.751Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Create schedules to configure Anti-Malware Scheduled Scans in Endpoint Security Policies.
+
+:::warning[Important]
+
+If you are working on a policy, make sure to save your settings before leaving the screen. Leaving the screen without saving discards any changes.
+:::
+
+Schedules are a policy resource you can configure to control when [Anti-Malware](policies-anti-malware.mdx) runs Scheduled Scans. You can add up to 50 schedules.
+
+### Procedure {#procedure}
+
+1.  Go to **Endpoint Security → Endpoint Security Configuration → Policy Resources → Schedules**.
+
+2.  Create or edit a schedule.
+
+    - To create a new list, click **Add schedule**.
+
+    - To edit an existing schedule, click the schedule name and go to **General**
+
+3.  Specify a name and description for the schedule.
+
+4.  Specify the **Start date**.
+
+    The start date controls the earliest date the schedule can occur. Depending on your settings, the schedule might not run on the start date, but instead runs the first time the frequency conditions are met after the start date.
+
+    For example, if the start date is set to February 15, but the frequency is monthly on the 20th, the first run of the schedule is February 20.
+
+5.  Specify the **Frequency**.
+
+    - **Daily**: Schedule occurs once per calendar day.
+
+    - **Weekly**: Schedule occurs once per calendar week.
+
+    - **Monthly**: Schedule occurs once per calendar month.
+
+    1.  If you select **Weekly**, specify **On** which day to run the schedule.
+
+    2.  If you select **Monthly**, specify the numerical **Day** on which to run the schedule.
+
+        If a month has fewer days than the selected day, the schedule runs on the last day of that month. For example, if you select `31`, the schedule runs on April 30.
+
+6.  Specify the **Start time**.
+
+    The start time specifies at what time the schedule runs. Agents use the timezone settings on the endpoint to determine start time.
+
+    For example, if you set the start time to 8 PM, an agent in New York City starts the scan at 8 PM Eastern Time. An agent in Seattle starts three hours later, at 8 PM Pacific Time.
+
+7.  Specify the **Timeout**.
+
+    The timeout setting determines when to fail a scheduled task. A timeout might occur if the agent fails to start the scan or if the scan takes too long.
+
+    :::note
+
+    Agents with Standard Endpoint Protection attempt to resume the scan the next day at the same scheduled time. If the scan failed because the task took too long, the agent skips previously scanned files and resumes the scan.
+
+    If agents consistency timeout while scanning, try increasing the timeout period.
+    :::
+
+8.  Click **Save**.
+::::

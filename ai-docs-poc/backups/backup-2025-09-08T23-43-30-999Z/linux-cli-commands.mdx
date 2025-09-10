@@ -1,0 +1,82 @@
+---
+slug: trend-vision-one-linux-cli-commands
+title: Linux CLI commands
+last_updated: '2025-09-08'
+ai_context:
+  source_file: linux-cli-commands.md
+  conversion_date: '2025-09-08T23:42:16.503Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Trend Vision One provides CLI commands when installing or uninstalling the Endpoint Basecamp XDR sensor and Linux endpoint sensor on a Linux endpoint.
+
+:::warning[Important]
+
+The listed CLI commands require root privileges to run.
+:::
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Command or Parameter</p></th>
+<th><p>Description</p></th>
+<th><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>install</p></td>
+<td><p>Installs Endpoint Basecamp</p></td>
+<td><p><code># ./tmxbc install</code></p></td>
+</tr>
+<tr>
+<td><p>config set --proxyURL &lt;proxy_server_URL&gt;</p></td>
+<td><p>Configures the Endpoint Basecamp program to use the specified proxy server</p>
+
+
+:::warning[Important]
+
+<p>Endpoint Basecamp does not support the use of proxy credentials.</p>
+
+
+:::
+
+</td>
+<td><ul>
+<li><p><code># ./tmxbc config set --proxyURL http://10.1.1.1:80</code></p></li>
+<li><p><code># ./tmxbc config set --proxyURL http://[fe80::340a:7671:64e7:14cc]:80</code></p></li>
+<li><p><code># ./tmxbc config set --proxyURL ""</code></p>
+<p>Removes the proxy server from the configuration</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>-v, --version</p></td>
+<td><p>Displays the Endpoint Basecamp version</p></td>
+<td><ul>
+<li><p><code># ./tmxbc -v</code></p></li>
+<li><p><code># ./tmxbc --version</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>-h, --help</p></td>
+<td><p>Displays help information</p></td>
+<td><ul>
+<li><p><code># ./tmxbc -h</code></p></li>
+<li><p><code># ./tmxbc config --help</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>uninstall</p></td>
+<td><p>Uninstalls Endpoint Basecamp</p></td>
+<td><p><code># ./tmxbc uninstall</code></p></td>
+</tr>
+</tbody>
+</table>
+::::

@@ -1,0 +1,205 @@
+---
+slug: trend-vision-one-advthreat-activity-token-vars
+title: Advanced Threat Activity Token Variables
+last_updated: '2025-09-08'
+ai_context:
+  source_file: advthreat-activity-token-vars.md
+  conversion_date: '2025-09-08T23:42:25.576Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+:::note
+
+For the list of standard token variables supported by all event notifications, see [Standard Token Variables](standard-token-variables.mdx).
+:::
+
+The following table describes token variables for customizing Advanced Threat Activity event notification messages.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Variable</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>%hostIP%</code></p></td>
+<td><p>Depending on the traffic direction, %hostIP% is IP address determined by Deep Discovery Inspector:</p>
+<ul>
+<li><p>Outbound traffic (internal traffic going to an external network): <code>%hostIP%</code> is the IP address of the endpoint in the network (source)</p></li>
+<li><p>Traffic within the network: <code>%hostIP%</code> is the IP address of the endpoint in the network</p></li>
+<li><p>External traffic to an endpoint in a network: <code>%hostIP%</code> is the IP address of the endpoint in the network</p></li>
+<li><p>Traffic outside the network: <code>%hostIP%</code> is the IP address of the endpoint outside the network</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>%group%</code></p></td>
+<td><p>The name of the subnetwork</p></td>
+</tr>
+<tr>
+<td><p><code>%START_TIME%</code></p></td>
+<td><p>The start date and time of the detection period</p>
+
+
+:::note
+
+<p>The specified time period for the notification criteria determines the start and end times.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><code>%END_TIME%</code></p></td>
+<td><p>The end date and time of the detection period</p>
+<p>The start and end times define the time range interval. When logs are received during a certain interval, Apex Central calculates those logs. If the alert criteria is met, Apex Central counts the logs. <code>%START_TIME%</code> is the start time of the interval and <code>%END_TIME%</code> is the end time of the interval. The length of the interval is determined by the period threshold in the alert settings.</p>
+
+
+:::note
+
+<p>The specified time period for the notification criteria determines the start and end times.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><code>%detections%</code></p></td>
+<td><p>The number of detections</p>
+<p>For example:</p>
+<p><code>Event: High risk Virtual Analyzer detections </code></p>
+<p><code>IP address: %hostIP% </code></p>
+<p><code>Host name: %computer% </code></p>
+<p><code>Group: %group% </code></p>
+<p><code>Time range: %START_TIME% - %END_TIME% </code></p>
+<p><code>Detections: %detections%</code></p></td>
+</tr>
+</tbody>
+</table>
+
+The following table describes token variables for customizing event notification messages for Behavior Monitoring violations and Predictive Machine Learning detections.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Variable</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>%hostIP%</code></p></td>
+<td><p>Depending on the traffic direction, %hostIP% is IP address determined by Deep Discovery Inspector:</p>
+<ul>
+<li><p>Outbound traffic (internal traffic going to an external network): <code>%hostIP%</code> is the IP address of the endpoint in the network (source)</p></li>
+<li><p>Traffic within the network: <code>%hostIP%</code> is the IP address of the endpoint in the network</p></li>
+<li><p>External traffic to an endpoint in a network: <code>%hostIP%</code> is the IP address of the endpoint in the network</p></li>
+<li><p>Traffic outside the network: <code>%hostIP%</code> is the IP address of the endpoint outside the network</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>%START_TIME%</code></p></td>
+<td><p>The start date and time of the detection period</p>
+
+
+:::note
+
+<p>The specified time period for the notification criteria determines the start and end times.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><code>%END_TIME%</code></p></td>
+<td><p>The end date and time of the detection period</p>
+<p>The start and end times define the time range interval. When logs are received during a certain interval, Apex Central calculates those logs. If the alert criteria is met, Apex Central counts the logs. <code>%START_TIME%</code> is the start time of the interval and <code>%END_TIME%</code> is the end time of the interval. The length of the interval is determined by the period threshold in the alert settings.</p>
+
+
+:::note
+
+<p>The specified time period for the notification criteria determines the start and end times.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><code>%detections%</code></p></td>
+<td><p>The number of detections</p>
+<p>For example:</p>
+<p><code>Event: High risk Virtual Analyzer detections </code></p>
+<p><code>IP address: %hostIP% </code></p>
+<p><code>Host name: %computer% </code></p>
+<p><code>Group: %group% </code></p>
+<p><code>Time range: %START_TIME% - %END_TIME% </code></p>
+<p><code>Detections: %detections%</code></p></td>
+</tr>
+<tr>
+<td><p><code>%domain%</code></p></td>
+<td><p>The root domain of the target in the Apex One domain hierarchy</p></td>
+</tr>
+<tr>
+<td><p><code>%hierarchy%</code></p></td>
+<td><p>The full path of the target in the Apex One domain hierarchy</p></td>
+</tr>
+<tr>
+<td><p><code>%BM_policy%</code></p></td>
+<td><p>The Behavior Monitoring policy ID</p>
+
+
+:::note
+
+<p>This token variable is available for Behavior Monitoring violation notification messages only.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><code>%risklevel%</code></p></td>
+<td><p>The risk level of the event</p>
+
+
+:::note
+
+<p>This token variable is available for Behavior Monitoring violation notification messages only.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><code>%target%</code></p></td>
+<td><p>The target of the event</p>
+
+
+:::note
+
+<p>This token variable is available for Behavior Monitoring violation notification messages only.</p>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+::::

@@ -1,0 +1,63 @@
+---
+slug: trend-vision-one-pac-files
+title: PAC files
+last_updated: '2025-09-08'
+ai_context:
+  source_file: pac-files.md
+  conversion_date: '2025-09-08T23:42:14.668Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Manage proxy auto-configuration (PAC) files that you can use to forward web traffic from your organization's devices to the Internet Access Gateway.
+
+Internet Access provides a default PAC file for endpoints and mobile devices. The default PAC file is deployed automatically when deploying the Secure Access Module to endpoints or enabling secure access on Mobile Agents for mobile devices. You can also manually specify a different PAC file to be applied to the module.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Add a PAC file</p></td>
+<td><p>Click <strong>Add</strong> to create a new PAC file with custom domain settings.</p>
+<p>For more information, see <a href="trend-vision-one-configuring-pac-files">Configuring PAC files</a>.</p></td>
+</tr>
+<tr>
+<td><p>Check PAC file details</p></td>
+<td><p>View basic information about a PAC file, such as:</p>
+<ul>
+<li><p><strong>Referenced gateways</strong>: The information (in "FQDN:port" or "IP:port" pair) of each cloud or on-premises gateway that is referenced in the PAC file.</p></li>
+<li><p><strong>PAC file location</strong>: Use this information when configuring the PAC file address on supported browsers.</p></li>
+<li><p><strong>Automatically applied platforms</strong>: The operating system of endpoints or mobile devices on which the PAC file is applied.</p></li>
+<li><p><strong>Manually specified on the module</strong>: Link to providing the details of the applied PAC file.</p></li>
+<li><p><strong>Updated</strong>: The most recent time when the PAC file was modified.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Edit a PAC file</p></td>
+<td><p>Click the <strong>Edit</strong> (<img src="./images/edit_icon=GUID-1F1D1164-5310-4D6D-ACD0-6049C86960AF.webp" />) icon in the <strong>Action</strong> column to change the contents of the PAC file.</p></td>
+</tr>
+<tr>
+<td><p>Apply a PAC file to the Secure Access Module</p></td>
+<td><p>Click <img src="./images/apply_PAC_file=c95a7e15-901f-4293-aea0-a557e44d3145.webp" /> in the <strong>Applied platforms</strong> column and select to apply the PAC file to the Secure Access Module on devices running the desired operating system. This allows you to replace the default PAC file built in the Secure Access Module.</p>
+<p>Each operating system can only have one applied PAC file.</p>
+<p>The selected PAC file takes effect within a few minutes.</p>
+<p>The PAC file that is in use by the Secure Access Module cannot be deleted.</p>
+<p>To apply a PAC file to endpoints without installing the Secure Access Module, see <a href="trend-vision-one-pac-file-deployment">PAC file deployment</a>.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Configuring PAC files](configuring-pac-files.md "Add domains to your existing PAC files to bypass proxy handling, or add new custom PAC files.")
+:::

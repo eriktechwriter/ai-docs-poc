@@ -1,0 +1,40 @@
+---
+slug: trend-vision-one-post-migration-checklist-iwss
+title: Post-Migration Checklist
+last_updated: '2025-09-08'
+ai_context:
+  source_file: post-migration-checklist-iwss.md
+  conversion_date: '2025-09-08T23:42:14.401Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Verify that your Trend Micro Web Security settings correctly migrated to Trend Vision One and direct end user internet traffic to the Internet Access Gateway.
+
+As many Trend Micro Web Security settings are not directly migratable to Zero Trust Secure Access Internet Access, you should verify that your settings are correct after upgrading. For more information, see [Trend Micro Web Security Features and Settings Migration](tmws-features-migration.mdx).
+
+### Procedure {#procedure}
+
+1.  [Configure your firewall exceptions to allow ports and FQDNs required by Zero Trust Secure Access services](port-fqdn-ip-address-requirements.mdx).
+
+2.  Check whether your Secure Access Rules require additional configuration.
+
+    1.  Go to **Zero Trust Secure Access → Secure Access Rules** and click the **Internet Access Control** tab.
+
+    2.  If any of the rules has an adjacent warning icon (![](/images/warning_icon=GUID-DCD5DE12-BF72-495F-8AD7-9EFFB7927E56.webp)), hover over the icon.
+
+    3.  Follow the instructions in the tooltip.
+
+3.  Deploy a CA certificate on your end users' browsers.
+
+    - [Cross-sign your existing CA certificate](cross-signing-ca-certificate.mdx).
+
+    - [Deploy the built-in CA certificate](deploying-built-ca-certificate.mdx).
+
+4.  Determine how you want to direct end user internet traffic to the Internet Access Gateway.
+
+    - [Deploy the Secure Access Module on endpoints](secure-access-module-deployment.mdx)
+
+    - [Forward internet traffic without the Secure Access Module](traffic-forwarding-internet-access.mdx).
+:::

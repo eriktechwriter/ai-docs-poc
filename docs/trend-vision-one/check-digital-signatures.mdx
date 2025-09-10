@@ -1,0 +1,232 @@
+---
+slug: trend-vision-one-check-digital-signatures
+title: Check digital signatures of software packages
+---
+# Check digital signatures of software packages
+
+Before installing the agent, check the digital signature on the software .zip packages and installer files. A correct digital signature indicates that the software is authentically from Trend Micro and hasn't been corrupted or tampered with.
+
+- Check the signature on software .zip packages
+- Check the signature on installers (.exe, .msi, .rpm, or .dep)
+
+You can also validate the software's checksums and digital signatures for the security updates and agent modules. See [How Server & Workload Protection validates update integrity](upgrades.mdx).
+
+**Related information**
+
+- Check the signature on software .zip packages
+- Check the signature on installer files (.exe, .msi, .rpm or .deb)
+
+## Check the signature on software .zip packages {#check-the-signature-on-software-.zip-packages}
+
+Trend Micro provides the Deep Security Agent and online help in .zip packages. These packages are digitally signed. You can check the digital signature on the .zip file in the following ways:
+
+- Export the .zip from the manager.
+
+- View the properties of the .zip file.
+
+- Use jarsigner.
+
+## Export the .zip from the manager {#export-the-.zip-from-the-manager}
+
+### Procedure {#procedure}
+
+- Export a .zip file following the instructions in [Export the agent installer](get-agent-software.mdx).
+
+  On export, Server & Workload Protection checks the digital signature on the .zip file.
+
+  - If the signature is good, Server & Workload Protection allows the export to proceed.
+
+  - If the signature is bad or does not exist, Server & Workload Protection disallows the action, deletes the file, and logs an event.
+
+## View the properties of the .zip file {#view-the-properties-of-the-.zip-file}
+
+### Procedure {#procedure-1}
+
+1.  Log in to Server & Workload Protection.
+
+2.  Click *Administration* at the top.
+
+3.  Select **Updates → Software → Local**.
+
+4.  Find and double-click the .zip package whose digital signature you want to check.
+
+    The *Properties* for the .zip file opens and the manager checks the digital signature.
+
+    If the signature is good, you'll see a green check mark in *Signature*.
+
+    If the signature is bad or doesn't exist, the manager deletes the .zip and logs an event.
+
+## Use jarsigner {#use-jarsigner}
+
+Use the jarsigner Java utility to check a signature on a .zip when you cannot check it through the manager. For example, you want to manually install an agent .zip package from the [Deep Security Software](https://help.deepsecurity.trendmicro.com/software.mdx) page. In this scenario, you would use the jarsigner utility because the manager is not involved.
+
+### Procedure {#procedure-2}
+
+1.  Install the latest [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.mdx).
+
+2.  Use the [jarsigner utility](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/jarsigner.mdx) in the JDK to check the signature. The command is:
+
+    `jarsigner -verify -verbose -certs -strict <.zip_file>`
+
+    `jarsigner -verify -verbose -certs -strict Agent-RedHat_EL7-11.2.0-124.x86_64.zip`
+
+3.  Review any errors as well as the content of the certificate to determine whether to trust the signature.
+
+## Check the signature on installer files (.exe, .msi, .rpm or .deb) {#check-the-signature-on-installer-files-.exe-.msi-.rpm-or-.deb}
+
+Trend Micro uses the Rivest–Shamir–Adleman (RSA) public-key cryptosystem to digitally sign the installers for Deep Security Agent and Deep Security Notifier. The installer is an .exe or .msi file on Windows, an .rpm file on Linux operating systems (Amazon, CloudLinux, Oracle, Red Hat, and SUSE), or a .deb file on Debian and Ubuntu.
+
+The procedures below describe how to manually check a digital signature on an installer file. To automate this check, include it in your [agent deployment scripts](deployment-scripts-add-computers.mdx).
+
+Follow the instructions that correspond to the type of installer file you want to check.
+
+- Check the signature on an .exe or .msi file
+- Check the signature on an .rpm file
+- Check the signature on a DEB file
+
+## Check the signature on an .exe or .msi file {#check-the-signature-on-an-.exe-or-.msi-file}
+
+### Procedure {#procedure-3}
+
+1.  Right-click the .exe or .msi file and select **Properties**.
+
+2.  Click **Digital Signatures** to check the signature.
+
+## Check the signature on an .rpm file {#check-the-signature-on-an-.rpm-file}
+
+Instead of checking the signature on the .rpm file manually, consider [using a deployment script](deployment-scripts-add-computers.mdx). Otherwise, continue with the below steps.
+
+### Procedure {#procedure-4}
+
+1.  Install GnuPG (GPG) on the agent computer where you intend to check the signature. This utility includes the GPG command-line tool for importing the signing key and checking the digital signature. GPG is installed by default on most Linux distributions.
+
+2.  Locate the `3trend_public.asc` file in the root folder of the .zip file. The .asc file contains a GPG public signing key for verifying the digital signature.
+
+3.  Verify the SHA-256 hash digest of the .asc file using a hashing utility.
+
+    - The hash for agent versions 20.0.0-2971 or later is:
+
+      `bd3b00763db11cee2a6b990428d506f11cf86c68354388fe9cc41fa7e6c9ddae`
+
+    - The hash for agent versions 20.0.0-2593 or earlier is:
+
+      `c59caa810a9dc9f4ecdf5dc44e3d1c8a6342932ca1c9573745ec9f1a82c118d7`
+
+4.  Import the .asc file:
+
+    `gpg --import 3trend_public.asc`
+
+    A message similar to the following appears:
+
+    ```bash
+    gpg: directory '/home/build/.gnupg' created
+    gpg: new configuration file '/home/build/.gnupg/gpg.conf' created
+    gpg: WARNING: options in '/home/build/.gnupg/gpg.conf' are not yet active during this run
+    gpg: keyring '/home/build/.gnupg/secring.gpg' created
+    gpg: keyring '/home/build/.gnupg/pubring.gpg' created
+    gpg: /home/build/.gnupg/trustdb.gpg: trustdb created
+    gpg: key E1051CBD: public key "Trend Micro (trend linux sign) <alloftrendetscodesign@trendmicro.com>" imported
+    gpg: Total number processed: 1
+    gpg: imported: 1 (RSA: 1)
+    ```
+
+5.  Export the GPG public signing key from the ASC file:
+
+    `gpg --export -a 'Trend Micro' > .rpm-GPG-KEY-CodeSign`
+
+6.  Import the GPG public signing key to the .rpm database:
+
+    `sudo rpm --import .rpm-GPG-KEY-CodeSign`
+
+7.  Verify import of the GPG public signing key:
+
+    `rpm -qa gpg-pubkey*`
+
+    The fingerprints of imported GPG public keys appear. You have imported the signing key and can use it to check the digital signature on the agent .rpm file.
+
+    - The Trend Micro key for agent versions 20.0.0-3180 or later is `gpg-pubkey-e1051cbd-659d0a3e`.
+    - The Trend Micro key for agent versions 20.0.0-2593 or earlier is `gpg-pubkey-e1051cbd-5b59ac99`.
+
+8.  Run this command on `Agent-**PGP**Core-<...>.rpm`.
+
+    `rpm -K Agent-PGPCore-<OS agent version>.rpm`
+
+    `rpm -K Agent-PGPCore-RedHat_EL7-11.0.0-950.x86_64.rpm`
+
+    If `Agent-PGPCore-<...>.rpm` is not in the agent .zip file, get one of these .zip files:
+
+    - Deep Security Agent 11.0 update 15 or a later
+
+    - Deep Security Agent 12 update 2 or later
+
+    - Deep Security Agent 20 or later
+
+    A successful signature verification displays the following message:
+
+    `Agent-PGPCore-RedHat_EL7-11.0.0-950.x86_64.rpm: rsa sha1 (md5) pgp md5 OK`
+
+## Check the signature on a DEB file {#check-the-signature-on-a-deb-file}
+
+Instead of checking the signature on the .deb file manually, consider [using a deployment script](deployment-scripts-add-computers.mdx).
+
+### Procedure {#procedure-5}
+
+1.  Install the [GnuPG command-line tool](https://www.gnupg.org/) on the agent computer where you intend to check the signature, if it is not already installed. This is required for importing the signing key and checking the digital signature.
+
+    Note that the dpkg-sig utility is no longer available.
+
+2.  Locate `3trend_public.asc` in the root folder of the .zip file. The .asc file contains a GPG public signing key for verifying the digital signature.
+
+3.  Verify the SHA-256 hash digest of the .asc file using a hashing utility.
+
+    - The hash for agent version 20.0.0-2593 or earlier is:
+
+      `c59caa810a9dc9f4ecdf5dc44e3d1c8a6342932ca1c9573745ec9f1a82c118d7`
+
+    - The hash for agent version 20.0.0-2971 or later is:
+
+      `bd3b00763db11cee2a6b990428d506f11cf86c68354388fe9cc41fa7e6c9ddae`
+
+4.  Import the .asc file to the GPG keyring:
+
+    `gpg --import 3trend_public.asc`
+
+    A message similar to the following appears:
+
+    ```bash
+    gpg: key E1051CBD: public key "Trend Micro (trend linux sign) <alloftrendetscodesign@trendmicro.com>" imported
+    gpg: Total number processed: 1
+    gpg: imported: 1 (RSA: 1)
+    ```
+
+5.  Display the Trend Micro key information:
+
+    `gpg --list-keys`
+
+    A message similar to the following appears:
+
+    ```bash
+    /home/user01/.gnupg/pubring.gpg
+    -------------------------------
+    pub 2048R/E1051CBD 2018-07-26 [expires: 2021-07-25]
+    uid Trend Micro (trend linux sign) <alloftrendetscodesign@trendmicro.com>
+    sub 2048R/202C302E 2018-07-26 [expires: 2021-07-25]
+    ```
+
+6.  Verify the signature on the .deb file:
+
+    `gpg --verify <agent_deb_file>`
+
+    where `<agent_deb_file>` is the name and path of the agent .deb file. For example:
+
+    `gpg --verify Agent-Core-Ubuntu_24.04-20.0.2-1390.x86_64.deb`
+
+    If the signature is verified, the following message appears:
+
+    ```bash
+    gpg: Signature made Thu Jan  2 08:55:50 2025 UTC
+    gpg: using RSA key CF5EBBC17D8178A7776C1D365B09AD42E1051CBD
+    gpg: Good signature from "Trend Micro (trend linux sign) <alloftrendetscodesign@trendmicro.com>" [unknown]
+    Primary key fingerprint: CF5E BBC1 7D81 78A7 776C  1D36 5B09 AD42 E105 1CBD
+    ```
+:::

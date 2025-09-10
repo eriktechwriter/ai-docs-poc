@@ -1,0 +1,174 @@
+---
+slug: trend-vision-one-conformity-azure-data-source-setup
+title: Conformity Azure data source setup
+last_updated: '2025-09-08'
+ai_context:
+  source_file: conformity-azure-data-source-setup.md
+  conversion_date: '2025-09-08T23:42:22.049Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+### Procedure {#procedure}
+
+1.  For customers that do not already have Conformity, sign up for a free trial.
+
+    1.  Go to the sign up form.
+
+        <https://cloudone.trendmicro.com/trial>
+
+    2.  Provide all the required information and complete the reCAPTCHA.
+
+    3.  Agree to the terms and conditions, privacy notice, and data collection notice.
+
+    4.  Click **Sign Up**.
+
+    5.  Click the **Verify Email** link in the confirmation email sent to your business email account.
+
+    6.  Sign in to activate your Trend Cloud One console.
+
+        Allow a few moments to provision your new console.
+
+    7.  Specify an **Account Alias** for your account.
+
+        You can change your alias later using the console.
+
+    8.  Specify the **Region** in which Trend Cloud One stores all of your data.
+
+    9.  Click **Continue**.
+
+2.  Create your Conformity Azure Subscription.
+
+    1.  Sign in to Trend Cloud One.
+
+    2.  Click **Conformity**.
+
+    3.  Click **Azure Subscription** and click **Next**.
+
+    4.  Specify the **Active Directory Name** used by the Conformity console.
+
+    5.  Obtain the **Active Directory Tenant ID** from your Azure console.
+
+        :::warning[Important]
+
+        The following Microsoft Entra ID instructions and screen captures were valid as of August 30, 2022. For further help, check your Azure documentation.
+        :::
+
+        1.  Sign in to your Azure portal.
+
+        2.  Select **Microsoft Entra ID**
+
+        3.  Select **Properties**.
+
+        4.  Scroll down to locate the **Tenant ID** field and copy the value.
+
+            <figure>
+            <img src="./images/azureOverviewTenantID=20220830092828.webp" />
+            </figure>
+
+        5.  In the Conformity console, paste the value in the **Active Directory Tenant ID** field.
+
+        6.  Click **Next**.
+
+    6.  Register a Conformity application in Azure.
+
+        1.  Sign in to your Azure portal.
+
+        2.  Select **Microsoft Entra ID**.
+
+        3.  In the left menu, click **App registrations**.
+
+        4.  Click **New registration**.
+
+            <figure>
+            <img src="./images/azureNewAppRegistration=20220830093035.webp" />
+            </figure>
+
+        5.  Specify the application name.
+
+            For example, `Conformity`.
+
+        6.  Under **Supported account types**, select **Accounts in this organizational directory only (XXXX - Single tenant)**.
+
+        7.  Click **Register**.
+
+            <figure>
+            <img src="./images/azureAppRegister=20220830093131.webp" />
+            </figure>
+
+    7.  Obtain and record your registered Azure application's ID and registration key.
+
+        1.  Sign in to your Azure portal.
+
+        2.  Select **Microsoft Entra ID**.
+
+        3.  In the left menu, click **App registrations**.
+
+        4.  Click the **Display name** of your application.
+
+        5.  Copy the **Application (client) ID** value.
+
+            <figure>
+            <img src="./images/azureAppIDfield=20220830093535.webp" />
+            </figure>
+
+        6.  In Conformity, paste the value in the **App registration Application ID** field.
+
+        7.  In the Azure left menu, click **Certificates & secrets** and click **New client secret**.
+
+            <figure>
+            <img src="./images/azureNewClientSecret=20220830093838.webp" />
+            </figure>
+
+        8.  Specify a description and expiration period.
+
+        9.  Click **Add**.
+
+        10. Copy the **Value** of your secret.
+
+            <figure>
+            <img src="./images/aAzureAppcertificateSecrets=20220830092929.webp" />
+            </figure>
+
+        11. In Conformity, paste the value in the **App registration Key** field.
+
+            <figure>
+            <img src="./images/conformityAppRegister=20220830094040.webp" />
+            </figure>
+
+        12. Click **Next**.
+
+    8.  Select an Azure subscription to apply to Conformity.
+
+    9.  Click **Next**.
+
+3.  Connect Conformity with Cyber Risk Exposure Management using an API Key.
+
+    1.  Go to the home screen of the Trend Cloud One console, and click **Administration**.
+
+    2.  In the left menu, click **API Keys**.
+
+    3.  Click **New**.
+
+    4.  Specify the **API Key Alias**.
+
+    5.  In **Role**, select **Read Only**.
+
+    6.  Click **Next**.
+
+    7.  Copy the API Key immediately.
+
+        :::warning[Important]
+
+        You cannot access the API Key again after closing the dialog. Copy and store the API Key in a safe location.
+        :::
+
+    8.  In the Trend Vision One console, open the Trend Cloud One - Conformity Data Source panel.
+
+    9.  Paste the API Key from Conformity in the **API Key** field.
+
+    10. Acknowledge that your Conformity data may be transferred to another data center based on the Trend Vision One data center.
+
+    11. Click **Save**.
+:::

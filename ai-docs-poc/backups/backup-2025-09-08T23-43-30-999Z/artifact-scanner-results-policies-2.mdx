@@ -1,0 +1,55 @@
+---
+slug: trend-vision-one-artifact-scanner-results-policies-2
+title: Integrate Trend Micro Artifact Scanner results into your policies
+last_updated: '2025-09-08'
+ai_context:
+  source_file: artifact-scanner-results-policies-2.md
+  conversion_date: '2025-09-08T23:42:24.844Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::::: {role="main"}
+:::note
+
+The TMAS scan results are only valid for admission control policy for 35 days after the scan is completed. After this period, the image is treated as if it was not scanned. If using the admission control policy, you must scan the same image at least once every 35 days. This ensures that admission control decisions are based on relatively recent vulnerability, malware, and secret findings.
+:::
+
+### Code Security {#code-security}
+
+:::warning[Important]
+
+This is a "Pre-release" feature and is not considered an official release. Please review the [Pre-release disclaimer](pre-release-disclaimer.mdx) before using the feature.
+:::
+
+Scan results are automatically sent to Code Security and can be seen on the Artifacts/Inventory page. For more information, see Code Security policies.
+
+### Container Security {#container-security}
+
+You can integrate Trend Micro Artifact Scanner (TMAS) results into Container Security admission control policies. For information on how to install and set up the CLI, see [Integrate Trend Micro Artifact Scanner (TMAS) into a CI/CD pipeline](integrating-tmas-ci-cd-pipeline.mdx).
+
+::: {.div}
+The scan result is automatically sent to Container Security. However, you must scan using the `registry` artifact type (`registry:yourrepo/yourimage@digest`) to be able to use the results.
+:::
+
+For example:
+
+``` codeblock
+tmas scan registry:nginx@sha256:08e9c086194875334d606765bd60aa064abd3c215abfbcf5737619110d48d114 -VMS
+```
+
+This pulls the image from your registry, generates an SBOM, and performs an open source vulnerability, malware, and secret scan.
+
+When deploying a container into a cluster, specify the image digest for the image you wish to deploy. This digest is generated when the image is pushed to a registry and should also be used when scanning images with TMAS. This allows scan results to be automatically correlated with the images being deployed into the cluster.
+
+Although TMAS supports scanning multiple-architecture (multi-arch) images, only one image from the manifest list is scanned when a multi-arch image digest or tag is specified. The scanned image is chosen based on the platform flag, with the default scanned architecture being `linux/amd64`. Scan results are architecture-specific to ensure that the assessed vulnerabilities are tailored to a selected architecture.
+
+Using multi-arch tags or digests to scan and deploy images introduces a security risk if the cluster has nodes with different architectures than what was scanned.
+
+:::danger[Warning]
+
+To accurately evaluate the risks and threats associated with image deployment, provide the architecture-specific digest when scanning an image and deploying it into your cluster. This ensures that the scanned image matches what will be deployed into your cluster. This correlation allows you to easily configure an admission control policy. For example, you could block any container images which have CRITICAL vulnerabilities from being deployed into your clusters.
+:::
+
+Next, create a [Container Protection policy](policies.mdx) that utilizes the artifact scanner's results.
+:::::::

@@ -1,0 +1,109 @@
+---
+slug: trend-vision-one-defining-allowed-apps-criteria
+title: Defining Allowed Application Criteria
+last_updated: '2025-09-08'
+ai_context:
+  source_file: defining-allowed-apps-criteria.md
+  conversion_date: '2025-09-08T23:42:20.731Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Application Control provides the ability to define criteria that specifically allow certain applications to execute. You can define allow criteria to ensure that Application Control never blocks a certain application, or you can create a complete list of applications allowed to execute on endpoints and then deploy a *Lockdown* policy to the endpoints. While in *Lockdown* mode, users cannot execute, access, or install any application that you did not include in the allow criteria.
+
+For more information about Lockdown policies, see Application Control Policy Settings.
+
+### Procedure {#procedure}
+
+1.  Go to **Policies → Policy Resources → Application Control Criteria**.
+
+    The **Application Control Criteria** screen appears.
+
+2.  Click **Add Criteria** and select **Allow**.
+
+    The **Allow Criteria Settings** screen appears.
+
+3.  Type a unique **Name** for the criteria.
+
+4.  Select the level of **Trust permission** for the applications.
+
+    <table>
+    <colgroup>
+    <col style="width: 20%" />
+    <col style="width: 40%" />
+    <col style="width: 40%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Permission</p></th>
+    <th><p>Description</p></th>
+    <th><p>Example Use</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><strong>Application cannot execute external processes</strong></p></td>
+    <td><p>Applications cannot access any external processes or start any other applications</p></td>
+    <td><p>Use when you want to allow standalone applications to run on endpoints but prevent access to other processes</p>
+    <p>For example, this setting allows Microsoft Word to run but prevents embedded OLE objects from executing.</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Application can execute other processes</strong></p></td>
+    <td><p>Applications can start external processes and applications that users are unable to access directly</p></td>
+    <td><p>Use when you want to allow applications to run on endpoints and still allow access to required child processes or add-ons.</p>
+    <p>For example, this setting allows Internet Explorer to run and also allows Internet Explorer to execute any installed plug-ins.</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Inheritable execution rights (not recommended)</strong></p></td>
+    <td><p>Applications can install and start external processes and applications, and the child applications can also install and start external processes and applications</p></td>
+    <td><p>Use when you want to allow installation packages to execute on the endpoint</p>
+    <p><strong>Inheritable execution rights (not recommended)</strong> allows the installation package to perform all installation tasks and then also allows the installed application to run all required processes.</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+5.  Select the **Match method** used to identify applications and configure required settings.
+
+    <table>
+    <colgroup>
+    <col style="width: 20%" />
+    <col style="width: 80%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Method</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><strong>Application Reputation List</strong></p></td>
+    <td><p>Allows you to apply the criteria to applications that Trend Micro has tested and assigned a security score for</p>
+    <p>For more information, see <a href="trend-vision-one-application-reputation-list">Application Reputation List</a>.</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>File paths</strong></p></td>
+    <td><p>Allows you to apply the criteria to any application installed in the specified location</p>
+    <p>For more information, see <a href="trend-vision-one-file-paths">File Paths</a>.</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Certificates</strong></p></td>
+    <td><p>Allows you to apply the criteria to applications based on certificate validity and certificate attributes</p>
+    <p>For more information, see <a href="trend-vision-one-certificates">Certificates</a>.</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Hash values</strong></p></td>
+    <td><p>Allows you to apply the criteria to applications based on SHA-1 or SHA-256 hash values</p>
+    <p>For more information, see <a href="trend-vision-one-hash-values">Hash Values</a>.</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Gray Software List</strong></p></td>
+    <td><p>Allows you to include applications to the criteria that Trend Micro has tested and found to be potentially harmful</p>
+    <p>The Gray Software List is a subset of the Application Reputation List and contains applications that may be malicious if not used properly. Trend Micro recommends blocking or monitoring applications in the Gray Software List to ensure that your network remains secure.</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+6.  Click **Save**.
+:::

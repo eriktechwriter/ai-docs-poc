@@ -1,0 +1,219 @@
+---
+slug: trend-vision-one-configuring-mobile-policies
+title: Configuring mobile policies for Android devices
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configuring-mobile-policies.md
+  conversion_date: '2025-09-08T23:42:22.332Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure mobile policies for Android devices in your organization based on your security requirements.
+
+:::warning[Important]
+
+- A group, assignment group, or organizational unit can only be on the target list of one policy at a time.
+
+- In Google Workspace, one user can only be assigned to one organizational unit.
+
+- If a user is the member of multiple groups and the groups are targets of different policies, only the highest priority policy affects the user.
+:::
+
+### Procedure {#procedure}
+
+1.  On the Trend Vision One console, go to **Mobile Security → Mobile Policy**.
+
+2.  Click the **Android** tab.
+
+3.  Click **Create** or click the name of an existing policy.
+
+4.  On the **General Settings** screen, specify a policy name and select the protection strength that best suits your needs, or click **Custom** to customize your own policy.
+
+    :::warning[Important]
+
+    The protection strength selected in the **General Settings** screen provides predefined settings accordingly in subsequent steps. You can modify the predefined settings during later configuration.
+
+    If you modify the predefined settings, the protection strength changes to **Custom**.
+    :::
+
+5.  Configure proxy settings.
+
+    To use Service Gateway as a proxy to connect managed devices to Trend Vision One services and other internet resources, select **Send Mobile Agent traffic through the Service Gateway proxy service**. This feature helps you control mobile device access within your company.
+
+    For this feature to work, make sure that you have deployed Service Gateway in your network with the Forward Proxy Service enabled and properly configured to allow connection to destination services. If you have deployed multiple Service Gateways in the network, the Mobile Agent will connect to any Service Gateway based on availability.
+
+    :::warning[Important]
+
+    - The Mobile Agent uses a local VPN to connect to the Service Gateway. Make sure that your end users have enabled the local VPN in their Mobile Agents for the traffic to be forwarded to Service Gateway.
+
+    - Compared with Service Gateway, Zero Trust Secure Access (ZTSA) provides more powerful Internet access control functionality. If your network is using ZTSA with Internet Access and AI Service Access enabled, Mobile Agents in the network will send traffic to ZTSA instead of the Service Gateway proxy service.
+    :::
+
+6.  Configure Malware Detection settings.
+
+    1.  Click **Malware Detection**.
+
+    2.  Choose the scan scope.
+
+    3.  Configure malware scan criteria.
+
+        - **Malware**
+
+        - **Unofficially modified app content/data**
+
+        - **Transmission of personal data without consent**
+
+        - **System/App vulnerabilities**
+
+7.  Configure Wi-Fi Protection settings.
+
+    1.  Click **Wi-Fi Protection**.
+
+    2.  Configure Wi-Fi scan criteria.
+
+        - **Automatic decryption of HTTPS traffic**
+
+          The Wi-Fi network traffic is decrypted, which may result in data leakage.
+
+        - **Unsafe access point**
+
+          The device is connected to an insecure Wi-Fi network.
+
+8.  Configure Configuration Manager settings.
+
+    :::note
+
+    This feature is not available when you integrate with an MDM through managed configuration.
+    :::
+
+    1.  Click **Configuration Manager**.
+
+    2.  Configure configuration scan criteria.
+
+        <table>
+        <colgroup>
+        <col style="width: 25%" />
+        <col style="width: 75%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Criteria</p></th>
+        <th><p>Description</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p><strong>Rooted device</strong></p></td>
+        <td><p>The device is rooted.</p></td>
+        </tr>
+        <tr>
+        <td><p><strong>Developer mode enabled</strong></p></td>
+        <td><p>The developer mode is enabled.</p></td>
+        </tr>
+        <tr>
+        <td><strong>USB debugging enabled</strong></td>
+        <td><p>USB debugging is enabled.</p></td>
+        </tr>
+        <tr>
+        <td><p><strong>Lock screen disabled</strong></p></td>
+        <td><ul>
+        <li><p>(For Android) The device is not locked with a PIN, pattern, or password.</p></li>
+        <li><p>(For iOS/iPadOS) The device is not locked with a passcode, Touch ID, or Face ID.</p></li>
+        </ul></td>
+        </tr>
+        <tr>
+        <td><p><strong>Outdated OS</strong></p></td>
+        <td><p>The device operating system is out of date.</p></td>
+        </tr>
+        <tr>
+        <td><p><strong>Outdated security patch</strong></p></td>
+        <td><p>The device security patch is out of date.</p></td>
+        </tr>
+        </tbody>
+        </table>
+
+9.  Configure Web Reputation settings.
+
+    Trend Micro Web Reputation technology assigns websites a "reputation" based on an assessment of the trustworthiness of a URL, derived from an analysis of the domain.
+
+    :::warning[Important]
+
+    Make sure that the local VPN in the Mobile Agent remains enabled on the devices for Web Reputation to work properly. The local VPN setting is on the **Web Reputation** or **Secure Access** tab in the Mobile Agent.
+    :::
+
+    1.  Click **Web Reputation**.
+
+    2.  Select a security level.
+
+    3.  To automatically approve or block certain websites, specify the websites in the following formats based on device platforms and add them to the allow list or to the block list.
+
+        <table>
+        <colgroup>
+        <col style="width: 50%" />
+        <col style="width: 50%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Item</p></th>
+        <th><p>Format</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Website format</p></td>
+        <td><ul>
+        <li><p>URL</p></li>
+        <li><p>FQDN</p></li>
+        </ul></td>
+        </tr>
+        <tr>
+        <td><p>Wildcard character support</p></td>
+        <td><p>*</p></td>
+        </tr>
+        </tbody>
+        </table>
+
+        :::tip
+
+        - \* : Matches any number of characters
+
+        - ? : Matches a single character in a specific position
+        :::
+
+10. Configure permission settings by specifying the permissions that you do not want to prompt users to grant upon installation of the Mobile Security for Business app.
+
+    - **Do not require phone number access permission**
+
+    - **Do not require phone battery access permission**
+
+    Users will later be prompted to grant these permissions on their devices when they need to use the related functions.
+
+11. Configure policy targets.
+
+    1.  Click **Targets**.
+
+    2.  Specify one or more groups, assignment groups, or organizational units.
+
+        :::note
+
+        Specifying a group, assignment group, or organizational unit that is on the target list of another policy removes it from the previous policy. The previous policy no longer affects the group, assignment group, or organizational unit.
+        :::
+
+12. Configure advanced settings to schedule Mobile Security scanning by selecting **Scheduled scan** and specifying the scan frequency.
+
+    :::note
+
+    This feature is not available when you integrate with an MDM through managed configuration.
+    :::
+
+13. Click **Save**.
+
+14. (Optional) Click **Continue** if you are prompted to confirm the policy changes.
+
+    :::note
+
+    This step is required only if you have added or deleted policy targets when editing a policy.
+    :::
+::::

@@ -1,0 +1,58 @@
+---
+slug: trend-vision-one-resources-web-lists
+title: Web Lists
+last_updated: '2025-09-08'
+ai_context:
+  source_file: resources-web-lists.md
+  conversion_date: '2025-09-08T23:42:13.748Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Configure a list of URLs and Domains for Web Reputation to allow or block.
+
+:::warning[Important]
+
+If you are working on a policy, make sure to save your settings before leaving the screen. Leaving the screen without saving discards any changes.
+:::
+
+Web lists are a policy resource you can use to define website domains and URLs for [Web Reputation](policies-web-reputation.mdx) to allow or block regardless of which rules you have enabled. You can add up to 250 web lists.
+
+:::warning[Important]
+
+Web lists are only a list of website domains or URLs. You can configure the action to allow or block in [Web Reputation](policies-web-reputation.mdx). For best results, make sure to put websites you want to allow or block into separate lists.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Endpoint Security → Endpoint Security Configuration → Policy Resources → Web Lists**.
+
+2.  Create or edit a list.
+
+    - To create a new list, click **Add web list**.
+
+    - To edit an existing list, click the list name and go to **General**
+
+3.  Specify a name and description for the list.
+
+4.  For a new list, select the web objects **Type**.
+
+    - **Domain**: Select to apply Web Reputation rules to all URLs within the domain.
+
+    - **URL**: Select to apply Web Reputation rules to specific URLs.
+
+5.  Specify the **Domain** or **URL**.
+
+    - For domains, specify the domain. For example, `example.com`
+
+    - For URLs, specify the full URL. For example, `https://this.is.com/an/example`
+
+    - Domains and URLs can be up to a maximum length of 500 characters.
+
+6.  To add more programs, click **Add**.
+
+    You can specify up to 125 items per list.
+
+7.  Click **Save**.
+:::::

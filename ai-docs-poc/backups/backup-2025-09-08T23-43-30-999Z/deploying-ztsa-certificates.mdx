@@ -1,0 +1,33 @@
+---
+slug: trend-vision-one-deploying-ztsa-certificates
+title: >-
+  Deploying the Zero Trust Secure Access certificates to devices using managed
+  configuration
+last_updated: '2025-09-08'
+ai_context:
+  source_file: deploying-ztsa-certificates.md
+  conversion_date: '2025-09-08T23:42:20.583Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Allow your users to take advantage of the security features of Zero Trust Secure Access by downloading and deploying the necessary certificates to your managed mobile devices.
+
+Devices enrolled in Mobile Security using a solution other than Intune integration or Mobile Device Director may still use Zero Trust Secure Access Internet Access and Private Access features, including web reputation, internal app access, and protected internet access. Zero Trust Secure Access requires other managed mobile devices to have the [Mobile Agent](enabling-ztsa-mobile-devices.mdx) installed, [VPN enforcement enabled](vpn-profile-devices-managed-config.mdx), and the necessary certificates deployed. Certificates may be obtained within the Zero Trust Secure Access app.
+
+### Procedure {#procedure}
+
+1.  On the Trend Vision One console, go to **Zero Trust Secure Access → Secure Access Configuration → Internet Access and AI Service Access Configuration**, select the **HTTPS Inspection** tab, and click the settings (![](/images/configure=GUID-657DB993-ADC7-4DEC-8C62-C8739D74760E.webp)) icon.
+
+2.  From the screen that appears, download both the built-in cloud gateway certificate and the built-in on-premises gateway certificate.
+
+3.  In your MDM solution, follow the instructions for uploading root CA certificates from a third-party certifying authority.
+
+4.  After uploading, deploy the certificates to your managed mobile devices according to your MDM solution.
+
+    :::note
+
+    Depending on the MDM solution you use, you may need to remind end users to approve the certificates before installation on user devices.
+    :::
+:::

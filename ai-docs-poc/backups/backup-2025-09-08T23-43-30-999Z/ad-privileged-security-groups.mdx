@@ -1,0 +1,77 @@
+---
+slug: trend-vision-one-ad-privileged-security-groups
+title: Active Directory (on-premises) default privileged security groups
+last_updated: '2025-09-08'
+ai_context:
+  source_file: ad-privileged-security-groups.md
+  conversion_date: '2025-09-08T23:42:26.036Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Learn which Active Directory identities may have default privileges due to default security group membership.
+
+Certain default security groups in Active Directory (on-premises) that are created when the domain is created grant privileged status by default. Membership in privileged security groups can be used to control access to shared resources and delegate administrative roles. You should investigate privileged identities that do not require privileged status to see if the identities are part of privileged groups. If possible, remove these identities from the groups to strengthen your organization's identity posture.
+
+The following table details default security groups that grant privileged status.
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Group</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Account Operators</p></td>
+<td><p>Can create and modify most account types</p></td>
+</tr>
+<tr>
+<td><p>Administrators</p></td>
+<td><p>Has unrestricted access to computers or domain controllers</p></td>
+</tr>
+<tr>
+<td><p>Backup Operators</p></td>
+<td><p>Can back up and restore all files on a computer regardless of protected status</p></td>
+</tr>
+<tr>
+<td><p>Domain Admins</p></td>
+<td><p>Controls access to all domain controllers and administrative accounts in a domain</p></td>
+</tr>
+<tr>
+<td><p>Domain Controllers</p></td>
+<td><p>Has access to all domain controllers in a domain</p></td>
+</tr>
+<tr>
+<td><p>Enterprise Admins</p></td>
+<td><p>Can make forest-wide modifications including the addition of child domains</p></td>
+</tr>
+<tr>
+<td><p>Print Operators</p></td>
+<td><p>Can manage, create, share, and delete printers connected to domain controllers in the domain</p></td>
+</tr>
+<tr>
+<td><p>Read-only Domain Controllers</p></td>
+<td><p>Has read-only access to all domain controllers in a domain</p></td>
+</tr>
+<tr>
+<td><p>Replicator</p></td>
+<td><p>Can replicate file data, including system policies and logon scripts, across a domain</p></td>
+</tr>
+<tr>
+<td><p>Schema Admins</p></td>
+<td><p>Can modify the Active Directory schema</p></td>
+</tr>
+<tr>
+<td><p>Server Operators</p></td>
+<td><p>Can access and modify server configuration options on domain controllers; has no members by default</p></td>
+</tr>
+</tbody>
+</table>
+:::

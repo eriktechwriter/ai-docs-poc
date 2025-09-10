@@ -1,0 +1,64 @@
+---
+slug: trend-vision-one-configure-cpu-usage-control
+title: Configure CPU usage control
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configure-cpu-usage-control.md
+  conversion_date: '2025-09-08T23:42:22.801Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Manage the impact on processing resources by Server & Workload Protection agent features.
+
+:::warning[Important]
+
+CPU usage control only supports Linux agents.
+:::
+
+Use the **CPU Usage Control** setting to manage the impact of the endpoint agent on the endpoint processing resources. Use the following steps to configure the setting:
+
+### Procedure {#procedure}
+
+1.  Open the details screen of the Computer you want to configure.
+
+2.  Go to **Settings → General**.
+
+3.  Locate the **CPU Usage Control** setting and select the CPU protection mode you want to use.
+
+    The settings you choose impact the behavior of certain features. Review each setting to determine the best setting for your environment.
+
+    <table>
+    <colgroup>
+    <col style="width: 20%" />
+    <col style="width: 40%" />
+    <col style="width: 40%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Setting</p></th>
+    <th><p>Anti-Malware</p></th>
+    <th><p>Activity Monitoring</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><strong>Extremely Low</strong></p></td>
+    <td><p>Provides asynchronous deferred real-time scan for newly created and modified files.</p>
+    <p>Disables Predictive Machine Learning and Behavior Monitoring.</p></td>
+    <td><p>Loss of activity logs of the busiest events might occur if the CPU usage is higher than 10%.</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Low</strong></p></td>
+    <td><p>Provides sychronous real-time scan for newly created and modified files within a certain time period, as well as executable files.</p></td>
+    <td><p>Loss of activity logs of the busiest events might occur if the CPU usage is higher than 40%.</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Unlimited</strong></p></td>
+    <td><p>Full protection via real-time scan (default).</p></td>
+    <td><p>No loss of activity logs of busiest events.</p></td>
+    </tr>
+    </tbody>
+    </table>
+::::

@@ -1,0 +1,161 @@
+---
+slug: trend-vision-one-keyword-extraction
+title: Keyword extraction
+---
+# Keyword extraction
+
+Cloud Email and Collaboration Protection also provides Keyword Extraction as a simplified keyword-based way that allows you to quickly identify sensitive information contained in Box files and create rules to limit or prevent the transmission of the data.
+
+## Configuring keyword extraction {#configuring-keyword-extraction}
+
+### Procedure {#procedure}
+
+1.  Select **Keyword Extraction**.
+
+2.  Select **Enable Keyword Extraction**.
+
+3.  Configure **Rules** settings.
+
+    1.  In **File Format**, select one or multiple file formats to apply the criterion.
+
+        :::note
+
+        Cloud Email and Collaboration Protection scans the specified keywords in text and PDF files, and in the header, footer, and properties of Microsoft Word, Excel, and PowerPoint files.
+        :::
+
+    2.  Select **Contain Type** to indicate the condition for the criterion.
+
+    3.  Specify a keyword to scan in the **Keywords** text box, and click **Add**.
+
+        The keyword appears in the blank area.
+
+        Cloud Email and Collaboration Protection scans files for the specified keyword and triggers a keyword extraction rule when the content matches the keyword, including content with the following separators to the left or right of the content: "\t", "\n", "\r", ",", ".", and spaces.
+
+        Take keyword `Internal Use Only` as an example. Cloud Email and Collaboration Protection triggers the keyword extraction rule when the content includes **Internal Use Only.** while does not when the content includes **aaINTERNAL USE ONLYbb**.
+
+    4.  Optionally repeat the above step to add more keywords for the selected file format(s).
+
+        :::note
+
+        Optionally click **Import** to import existing keywords in batches from a text file. Make sure that each line in the file contains one keyword.
+
+        Optionally select one or multiple keywords and click **Remove Selected** to delete the keywords.
+        :::
+
+    5.  Click **Add to Rule List**.
+
+        :::note
+
+        The setting appears in the **Rule List** table, each file format per line.
+
+        You can add keywords for a single file format in multiple times, and all these keywords will be combined into one rule.
+        :::
+
+    6.  Optionally repeat steps a through e if you need to set another condition for a file format.
+
+        :::note
+
+        Cloud Email and Collaboration Protection separates the **Contain** and **Not Contain** conditions in two rules for each file format. It enables you to set actions for each condition rule respectively.
+        :::
+
+    7.  Optionally click **Export** to export all the configured keywords.
+
+    8.  Select an action for each rule from the drop-down list.
+
+        In the case of two separate rules for a file format, Cloud Email and Collaboration Protection takes the action with the higher priority to a file when keyword(s) in a rule hit the corresponding criterion. The actions come with the following priorities from high to low: **Delete**, **Quarantine**, **Pass**.
+
+        <table>
+        <colgroup>
+        <col style="width: 50%" />
+        <col style="width: 50%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Option</p></th>
+        <th><p>Description</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Delete</p></td>
+        <td><p>Cloud Email and Collaboration Protection deletes the file and replaces it with a placeholder using the original file name and <code>.txt</code>.</p></td>
+        </tr>
+        <tr>
+        <td><p>Quarantine</p></td>
+        <td><p>Cloud Email and Collaboration Protection moves the file to a restricted access folder, removing it as a security risk to protected Box.</p></td>
+        </tr>
+        <tr>
+        <td><p>Pass</p></td>
+        <td><p>Cloud Email and Collaboration Protection records the detection in a log and delivers the file unchanged.</p></td>
+        </tr>
+        </tbody>
+        </table>
+
+    9.  Optionally click the trash icon to delete the corresponding rule.
+
+4.  Configure **Action** settings.
+
+    ::: {.simpletable-container}
+    <table id="GUID-C9121728-063D-4454-B783-A5BD1128E0C8__choicetable_ikr_vfj_2bb" class="choicetable" data-border="1">
+    <thead>
+    <tr class="chhead table-header-style">
+    <th class="choptionhd">Option</th>
+    <th class="chdeschd">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="chrow">
+    <td class="choption"><p>Notify</p></td>
+    <td class="chdesc"><p>Cloud Email and Collaboration Protection sends a notification email message to the administrator or user according to the <strong>Notification</strong> settings.</p></td>
+    </tr>
+    <tr class="chrow">
+    <td class="choption"><p>Do not notify</p></td>
+    <td class="chdesc"><p>Cloud Email and Collaboration Protection only takes the configured action on the file and does not send out any notification email message.</p></td>
+    </tr>
+    <tr class="chrow">
+    <td class="choption"><p>Show Advanced Options</p></td>
+    <td class="chdesc"><p>Specify text to replace the original file content when a file is quarantined or deleted.</p></td>
+    </tr>
+    </tbody>
+    </table>
+    :::
+
+5.  Configure **Notification** settings.
+
+    ::: {.simpletable-container}
+    <table class="choicetable" data-border="1">
+    <colgroup>
+    <col style="width: 50%" />
+    <col style="width: 50%" />
+    </colgroup>
+    <thead>
+    <tr class="chhead table-header-style">
+    <th class="choptionhd">Option</th>
+    <th class="chdeschd">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="chrow">
+    <td class="choption"><p>Notify administrator</p></td>
+    <td class="chdesc"><p>Specify message details to notify administrators that Cloud Email and Collaboration Protection detected a security risk and took action on an email message, attachment, or file.</p>
+    <p>Set the notification threshold which limits the number of notification messages to send. Threshold settings include:</p>
+    <ul>
+    <li><p><strong>Send consolidated notifications periodically</strong>: Cloud Email and Collaboration Protection sends an email message that consolidates all the notifications for a period of time. Specify the period of time by typing a number in the box and selecting hour(s) or day(s).</p></li>
+    <li><strong>Send consolidated notifications by occurrences</strong>: Cloud Email and Collaboration Protection sends an email message that consolidates notifications for a set number of filtering actions. Specify the number of data loss occurrences by typing a number in the box.</li>
+    <li><p><strong>Send individual notifications</strong>: Cloud Email and Collaboration Protection sends an email message notification every time Cloud Email and Collaboration Protection performs a filtering action.</p></li>
+    </ul></td>
+    </tr>
+    <tr class="chrow">
+    <td class="choption"><p>Notify User</p></td>
+    <td class="chdesc"><p><strong>Box</strong>: Specify message details that notify the user who uploaded a file that Cloud Email and Collaboration Protection detected a security risk and took action on their file.</p>
+    <p>Optionally select the <strong>Do not notify external user</strong> check box. This allows the administrator to choose not to notify an end user of policy violation details if the user violating the policy does not belong to your organization.</p></td>
+    </tr>
+    </tbody>
+    </table>
+    :::
+
+    :::note
+
+    When specifying a notification message, include relevant tokens and edit the message content as desired. For details about tokens, see [Token list](token-list.mdx).
+    :::
+:::

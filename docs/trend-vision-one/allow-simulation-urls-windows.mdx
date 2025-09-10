@@ -1,0 +1,43 @@
+---
+slug: trend-vision-one-allow-simulation-urls-windows
+title: Allow phishing simulation URLs in Google Chrome via group policy for Windows
+---
+# Allow phishing simulation URLs in Google Chrome via group policy for Windows
+
+Configure Google Chrome on Windows devices settings to stop phishing simulation URLs from triggering Safe Browsing warnings.
+
+### Procedure {#procedure}
+
+1.  Record the **Security Awareness** sending IP addresses.
+
+    1.  On the Trend Vision One console, go to **Cyber Risk Exposure Management → Security Awareness → Phishing Simulations**.
+
+    2.  Click **Settings**.
+
+    3.  Click **Settings** and copy the sending IP addresses and simulation URLs.
+
+        :::warning[Important]
+
+        The sending IP addresses change over time. Check the list before launching a training campaign or phishing simulation.
+        :::
+
+2.  Download the Chrome ADMX templates for Windows from [Google Chrome's documentation](https://support.google.com/chrome/a/answer/187202?hl=en).
+
+3.  Install the downloaded ADMX templates on your domain controller.
+
+4.  Open the group policy object (GPO) editor and configure the ADMX templates.
+
+    1.  Go to **Computer Configuration → Administrative Templates → Google → Google Chrome → Safe Browsing Settings**.
+
+    2.  Choose the setting to configure the list of domains on which Safe Browsing will not trigger warnings.
+
+5.  Enable the setting and configure the domain list.
+
+    1.  Select **Enabled** and then **Show** to see the list of allowed URLs.
+
+    2.  Add the URLs and IP addresses you copied from Security Awareness Training.
+
+6.  Apply the changes and close the settings by clicking **OK** and then **Apply**.
+
+7.  Verify you installed the policy successfully by restarting Chrome and navigating to `chrome://policy`.
+:::

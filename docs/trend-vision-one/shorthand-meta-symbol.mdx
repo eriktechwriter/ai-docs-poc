@@ -1,0 +1,110 @@
+---
+slug: trend-vision-one-shorthand-meta-symbol
+title: Shorthand and meta-symbol
+---
+# Shorthand and meta-symbol
+
+Cloud Email Gateway Protection provides the following shorthand for writing complicated regular expressions. Cloud Email Gateway Protection will pre-process expressions and translate the shorthand into regular expressions.
+
+For example, {D}+ would be translated to \[0-9\]+. If a shorthand expression is enclosed in brackets (example: {}) or double-quotes, then Cloud Email Gateway Protection will not translate that shorthand expression to a regular expression.
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>SHORTHAND</p></th>
+<th><p><strong>DESCRIPTION</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>{D}</p></td>
+<td><p>[0-9]</p></td>
+</tr>
+<tr>
+<td><p>{L}</p></td>
+<td><p>[A-Za-z]</p></td>
+</tr>
+<tr>
+<td><p>{SP}</p></td>
+<td><p>[(),;\.\\&lt;&gt;@\[\]:]</p></td>
+</tr>
+<tr>
+<td><p>{NUMBER}</p></td>
+<td><p>[0-9]+</p></td>
+</tr>
+<tr>
+<td><p>{WORD}</p></td>
+<td><p>[A-Za-z]+</p></td>
+</tr>
+<tr>
+<td><p>{CR}</p></td>
+<td><p>\r</p></td>
+</tr>
+<tr>
+<td><p>{LF}</p></td>
+<td><p>\n</p></td>
+</tr>
+<tr>
+<td><p>{LWSP}</p></td>
+<td><p>[ \t]</p></td>
+</tr>
+<tr>
+<td><p>{CRLF}</p></td>
+<td><p>(\r\n)</p></td>
+</tr>
+<tr>
+<td><p>{WSP}</p></td>
+<td><p>[ \t\f]+</p></td>
+</tr>
+<tr>
+<td><p>{ALLC}</p></td>
+<td><p>.</p></td>
+</tr>
+</tbody>
+</table>
+
+Cloud Email Gateway Protection also provides the following meta-symbols. The difference between shorthand and meta-symbols is that meta-symbols can be within a bracket expression.
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>META-SYMBOL</p></th>
+<th><p>DESCRIPTION</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>\s</p></td>
+<td><p>[[:space:]]</p></td>
+</tr>
+<tr>
+<td><p>\S</p></td>
+<td><p>[^[:space:]]</p></td>
+</tr>
+<tr>
+<td><p>\d</p></td>
+<td><p>[[:digit:]]</p></td>
+</tr>
+<tr>
+<td><p>\D</p></td>
+<td><p>[^[:digit:]]</p></td>
+</tr>
+<tr>
+<td><p>\w</p></td>
+<td><p>[_[:alnum:]]</p></td>
+</tr>
+<tr>
+<td><p>\W</p></td>
+<td><p>[^_[:alnum:]]</p></td>
+</tr>
+</tbody>
+</table>
+:::

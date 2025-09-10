@@ -1,0 +1,303 @@
+---
+slug: trend-vision-one-filter-search-2
+title: Filter and search
+---
+# Filter and search
+
+:Cloud Risk Management offers multiple filters when viewing rules and checks on available [reporting tools](rules-status-reports.mdx). You can view the filtered results by *Rule,* *Resource,* or [Standards or Frameworks](compliance-reports.mdx).
+
+Using the filter, you can take several actions such as configuring each rule according to your requirements, resolving failures, viewing only [suppressed](rules-suppress-check.mdx) or unsuppressed checks, Resource id, message, only show checks, generating a [report](rules-status-reports.mdx).
+
+## Contents {#contents}
+
+Filter tags
+
+Resource Id
+
+Only Show Checks
+
+## Filter tags {#filter-tags}
+
+## Filter tags Exact Match {#filter-tags-exact-match}
+
+Enter the Filter tags to filter checks by resource tags with their exact match.
+
+An "exact matc"h on resource tags (key::value) means:
+
+### Procedure {#procedure}
+
+1.  The input filter tags value matches the *key* of one of the resource tags of a check
+
+2.  The input filter tags value matches the *value* of one of the resource tags of a check
+
+3.  The input filter tags value matches the *full string* of one of the resource tags of a check
+
+### Next steps {#next-steps}
+
+*Example*: Given a check with a resource tag `environment::dev`
+
+<table>
+<thead>
+<tr>
+<th><p><em>filterTag</em></p></th>
+<th><p><em>Match</em></p></th>
+<th><p><em>No match</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>dev</p></td>
+<td><img src="./images/check=599d21a3-4a92-48a6-96f0-2390bf1d0db2.webp" /></td>
+<td><img src="./images/error=fcd35f56-eec6-4fb9-a57b-188dcbc76162.webp" /></td>
+</tr>
+<tr>
+<td><p>environment</p></td>
+<td><img src="./images/check=599d21a3-4a92-48a6-96f0-2390bf1d0db2.webp" /></td>
+<td><img src="./images/error=fcd35f56-eec6-4fb9-a57b-188dcbc76162.webp" /></td>
+</tr>
+<tr>
+<td><p>environment::dev</p></td>
+<td><img src="./images/check=599d21a3-4a92-48a6-96f0-2390bf1d0db2.webp" /></td>
+<td><img src="./images/error=fcd35f56-eec6-4fb9-a57b-188dcbc76162.webp" /></td>
+</tr>
+<tr>
+<td><p>Environment</p></td>
+<td><img src="./images/check=599d21a3-4a92-48a6-96f0-2390bf1d0db2.webp" /></td>
+<td><img src="./images/error=fcd35f56-eec6-4fb9-a57b-188dcbc76162.webp" /></td>
+</tr>
+<tr>
+<td><p>DEV</p></td>
+<td><img src="./images/check=599d21a3-4a92-48a6-96f0-2390bf1d0db2.webp" /></td>
+<td><img src="./images/error=fcd35f56-eec6-4fb9-a57b-188dcbc76162.webp" /></td>
+</tr>
+<tr>
+<td><p>envirONment::DEv</p></td>
+<td><img src="./images/check=599d21a3-4a92-48a6-96f0-2390bf1d0db2.webp" /></td>
+<td><img src="./images/error=fcd35f56-eec6-4fb9-a57b-188dcbc76162.webp" /></td>
+</tr>
+<tr>
+<td><p>devops</p></td>
+<td><img src="./images/error=fcd35f56-eec6-4fb9-a57b-188dcbc76162.webp" /></td>
+<td><img src="./images/check=599d21a3-4a92-48a6-96f0-2390bf1d0db2.webp" /></td>
+</tr>
+<tr>
+<td><p>environmental</p></td>
+<td><img src="./images/error=fcd35f56-eec6-4fb9-a57b-188dcbc76162.webp" /></td>
+<td><img src="./images/check=599d21a3-4a92-48a6-96f0-2390bf1d0db2.webp" /></td>
+</tr>
+<tr>
+<td><p>environ</p></td>
+<td><img src="./images/error=fcd35f56-eec6-4fb9-a57b-188dcbc76162.webp" /></td>
+<td><img src="./images/check=599d21a3-4a92-48a6-96f0-2390bf1d0db2.webp" /></td>
+</tr>
+</tbody>
+</table>
+
+## Filter tags Partial Match {#filter-tags-partial-match}
+
+Enter the filter tags to filter checks with resource tags by partial matching.
+
+Partial matching means checking if the input is a substring of any one of the resource tags of a check.
+
+*Example*: Given a check with a resource tag `environment::dev`
+
+<table>
+<thead>
+<tr>
+<th><p><em>filterTag</em></p></th>
+<th><p><em>Match</em></p></th>
+<th><p><em>No match</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>dev</p></td>
+<td><img src="./images/check=599d21a3-4a92-48a6-96f0-2390bf1d0db2.webp" /></td>
+<td><img src="./images/error=fcd35f56-eec6-4fb9-a57b-188dcbc76162.webp" /></td>
+</tr>
+<tr>
+<td><p>environment</p></td>
+<td><img src="./images/check=599d21a3-4a92-48a6-96f0-2390bf1d0db2.webp" /></td>
+<td><img src="./images/error=fcd35f56-eec6-4fb9-a57b-188dcbc76162.webp" /></td>
+</tr>
+<tr>
+<td><p>environment::dev</p></td>
+<td><img src="./images/check=599d21a3-4a92-48a6-96f0-2390bf1d0db2.webp" /></td>
+<td><img src="./images/error=fcd35f56-eec6-4fb9-a57b-188dcbc76162.webp" /></td>
+</tr>
+<tr>
+<td><p>Environment</p></td>
+<td><img src="./images/check=599d21a3-4a92-48a6-96f0-2390bf1d0db2.webp" /></td>
+<td><img src="./images/error=fcd35f56-eec6-4fb9-a57b-188dcbc76162.webp" /></td>
+</tr>
+<tr>
+<td><p>DEV</p></td>
+<td><img src="./images/check=599d21a3-4a92-48a6-96f0-2390bf1d0db2.webp" /></td>
+<td><img src="./images/error=fcd35f56-eec6-4fb9-a57b-188dcbc76162.webp" /></td>
+</tr>
+<tr>
+<td><p>envirONment::DEv</p></td>
+<td><img src="./images/check=599d21a3-4a92-48a6-96f0-2390bf1d0db2.webp" /></td>
+<td><img src="./images/error=fcd35f56-eec6-4fb9-a57b-188dcbc76162.webp" /></td>
+</tr>
+<tr>
+<td><p>devops</p></td>
+<td><img src="./images/error=fcd35f56-eec6-4fb9-a57b-188dcbc76162.webp" /></td>
+<td><img src="./images/check=599d21a3-4a92-48a6-96f0-2390bf1d0db2.webp" /></td>
+</tr>
+<tr>
+<td><p>environmental</p></td>
+<td><img src="./images/error=fcd35f56-eec6-4fb9-a57b-188dcbc76162.webp" /></td>
+<td><img src="./images/check=599d21a3-4a92-48a6-96f0-2390bf1d0db2.webp" /></td>
+</tr>
+<tr>
+<td><p>environ</p></td>
+<td><img src="./images/check=599d21a3-4a92-48a6-96f0-2390bf1d0db2.webp" /></td>
+<td><img src="./images/error=fcd35f56-eec6-4fb9-a57b-188dcbc76162.webp" /></td>
+</tr>
+</tbody>
+</table>
+
+:::note
+
+Both Exact and Partial Match fields are case insensitive and you can separate multiple search tags by adding a comma or pressing enter.
+:::
+
+## Resource Id syntax {#resource-id-syntax}
+
+## Regular expression syntax {#regular-expression-syntax}
+
+A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) is a way to match patterns in data using placeholder characters, called operators.
+
+Cloud Risk Management browsers All checks uses [Apache Lucene](https://lucene.apache.org/core/)'s regular expression engine to parse these queries.
+
+## Reserved characters {#reserved-characters}
+
+Lucene’s regular expression engine supports all Unicode characters. However, the following characters are reserved as operators:
+
+. ? + \* | { } \[ \] ( ) " \\
+
+To use one of these characters literally, escape it with a preceding backslash or surround it with double-quotes. For example:
+
+\\ \# renders as a literal '@'
+
+\\ \# renders as a literal '\\
+
+"john@smith.com" \# renders as 'john@smith.com'
+
+Anchor operators, such as ^ (beginning of line) or $ (end of line) are *not* supported. To match a term, the regular expression must match the entire string.
+
+## Standard operators {#standard-operators}
+
+Lucene’s regular expression engine does not use the [Perl Compatible Regular Expressions (PCRE)](https://en.wikipedia.org/wiki/Perl_Compatible_Regular_Expressions) library, but it does support the following standard operators.
+
+*.*
+
+Matches any character. For example:
+
+ab. \# matches 'aba', 'abb', 'abz', etc.
+
+*?*
+
+Repeat the preceding character zero or one times. Often used to make the preceding character optional. For example:
+
+abc? \# matches 'ab' and 'abc'
+
+*+*
+
+Repeat the preceding character one or more times. For example:
+
+ab+ \# matches 'ab', 'abb', 'abbb', etc.
+
+*\**
+
+Repeat the preceding character zero or more times. For example:
+
+ab\* \# matches 'a', 'ab', 'abb', 'abbb', etc.
+
+*{}*
+
+Minimum and maximum number of times the preceding character can repeat. For example:
+
+a{2} \# matches 'aa'
+
+a{2,4} \# matches 'aa', 'aaa', and 'aaaa'
+
+a{2,} \# matches 'a\` repeated two or more times
+
+*|*
+
+OR operator. The match will succeed if the longest pattern on either the left side OR the right side matches. For example:
+
+abc|xyz \# matches 'abc' and 'xyz'
+
+*( … )*
+
+Forms a group. You can use a group to treat part of the expression as a single character. For example:
+
+abc(def)? \# matches 'abc' and 'abcdef' but not 'abcd'
+
+*\[ … \]*
+
+Match one of the characters in the brackets. For example:
+
+\[abc\] \# matches 'a', 'b', 'c'
+
+Inside the brackets, - indicates a range unless - is the first character or escaped. For example:
+
+\[a-c\] \# matches 'a', 'b', or 'c'
+
+\[-abc\] \# '-' is first character. Matches '-', 'a', 'b', or 'c'
+
+\[abc\\\] \# Escapes '-'. Matches 'a', 'b', 'c', or '-'
+
+A ^ before a character in the brackets negates the character or range. For example:
+
+\[^abc\] \# matches any character except 'a', 'b', or 'c'
+
+\[^a-c\] \# matches any character except 'a', 'b', or 'c'
+
+\[^-abc\] \# matches any character except '-', 'a', 'b', or 'c'
+
+\[^abc\\\] \# matches any character except 'a', 'b', 'c', or '-'
+
+## Wildcard syntax {#wildcard-syntax}
+
+Wildcard syntax supports two wildcard operators:
+
+- *'?', Question Mark :* which matches any single character
+- *''\*'' Star :* which can match zero or more characters, including an empty one Example: "sg-\*" // finds all resources starting with "sg" and ending with any number of characters "sg-?s" // finds all resources starting with "sg" and ending with any one character+ the letter “s”
+
+## Only show checks {#only-show-checks}
+
+## Only show checks {#only-show-checks-1}
+
+The *Older than* and *Newer than* range enables you to view all checks generated for a selected number of days in the past.
+
+- *Older than X days ago*: select a value to display all checks older than (before) the entered number of days from today.
+- *Newer than X days ago*: select a value to display all checks newer than (after) the required number of days up to today.
+- *Older than X days ago AND Newer than X days ago*: Enter values for both *Older than* and *Newer than* to display checks for the required date range i.e from the *newer than* to the *older than* date.
+
+## How it works {#how-it-works}
+
+The filter converts the values entered in *Older than* and *Newer than* fields to the date of check creation and assigned a status, or the change of status from "Success" to "Failure", or from "Failure" to "Success".
+
+![](/images/only-show-checks=3004bc1e-d667-47f4-a951-223287f8b787.webp){.zoom} For example:
+
+Today is the 10th November.
+
+- If you enter "2" for *Older than days ago*, then
+
+The date calculated = 2 days from today = Nov 8. And you can view all checks that are older than (*before*) November 8.
+
+- If you enter "3" for *Newer than days ago,* then
+
+The date calculated = 3 days from today = Nov 7. Only checks newer than (*after*)7 November upto today will display.
+
+- If you enter values in both the fields i.e. *2 for Older than AND 3 for Newer than*, then the date range to display checks will be from 7th -8th November.
+
+:::note
+
+The availability of options on filter depends on the functionality that you are accessing.
+:::
+:::::

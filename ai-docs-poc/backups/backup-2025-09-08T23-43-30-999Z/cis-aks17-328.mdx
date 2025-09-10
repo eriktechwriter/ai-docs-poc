@@ -1,0 +1,73 @@
+---
+slug: trend-vision-one-cis-aks17-328
+title: >-
+  3.2.8 - Ensure that the –rotate-certificates argument is not set to false
+  (Automated)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: cis-aks17-328.md
+  conversion_date: '2025-09-08T23:42:23.822Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Profile Applicability: Level 2
+
+Enable kubelet client certificate rotation.
+
+The `--rotate-certificates` setting causes the kubelet to rotate its client certificates by creating new CSRs as its existing credentials expire. This automated periodic rotation ensures that the there is no downtime due to expired certificates and thus addressing availability in the CIA (Confidentiality, Integrity, and Availability) security triad.
+
+This recommendation only applies if you let kubelets get their certificates from the API server. In case your kubelet certificates come from an outside authority/tool (e.g. Vault) then you need to implement rotation yourself. This feature also requires the `RotateKubeletClientCertificate` feature gate to be enabled.
+
+:::note
+
+See the Azure AKS documentation for the default value.
+:::
+
+### Impact {#impact}
+
+Disabling certificate rotation may cause expired Kubelet certificates to interrupt communication with the API server, potentially causing node or pod issues. This may require manual intervention and is not sustainable in production environments.
+
+### Audit {#audit}
+
+1.  SSH to each node and run the following command to find the Kubelet process:
+
+    ``` codeblock
+    ps -ef | grep kubelet
+    ```
+
+2.  If the output includes the `--RotateCertificate` executable argument, verify that it is set to `true`.
+
+3.  If the output of the command above does not include the `--RotateCertificate` executable argument then check the Kubelet config file.
+
+    The output of the above command should return something similar to `--config /etc/kubernetes/kubelet/kubelet-config.json`, which is the location of the Kubelet config file.
+
+4.  Open the Kubelet config file:
+
+    ``` codeblock
+    cat /etc/kubernetes/kubelet/kubelet-config.json
+    ```
+
+5.  Verify that the `RotateCertificate` argument is not present, or is set to `true`.
+
+### Remediation {#remediation}
+
+**Remediation Method 1:**
+
+If modifying the Kubelet config file, edit `/etc/kubernetes/kubelet/kubelet-config.json`and set the below parameter to `true`:
+
+``` codeblock
+"rotateCertificates": true
+```
+
+Make sure that the kubelet service file `/etc/systemd/system/kubelet.service.d/10-kubelet-args.conf` does not set the `--RotateCertificate` executable argument to `false` because this would override the Kubelet config file.
+
+**Remediation Method 2:**
+
+If using executable arguments, edit the kubelet service file `/etc/systemd/system/kubelet.service.d/10-kubelet-args.conf` on each worker node and add the below parameter at the end of the `KUBELET_ARGS` string:
+
+``` codeblock
+--RotateCertificate=true
+```
+::::

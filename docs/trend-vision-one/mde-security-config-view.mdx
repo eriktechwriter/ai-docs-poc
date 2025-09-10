@@ -1,0 +1,82 @@
+---
+slug: trend-vision-one-mde-security-config-view
+title: Microsoft Defender for Endpoint security configuration
+---
+# Microsoft Defender for Endpoint security configuration
+
+:View your Microsoft Defender for Endpoint security configuration status in Security Configuration Overview.
+
+:::warning[Important]
+
+This is a "Pre-release" feature and is not considered an official release. Please review the [Pre-release disclaimer](pre-release-disclaimer.mdx) before using the feature.
+:::
+
+If you have [enabled Microsoft Defender for Endpoint Log Collection](ms-defender-endpoint-log-collection.mdx) through a connected Azure subscription in Cloud Accounts, you can change the Endpoint Security data source in **Security Configuration Overview** to view your endpoint protection status based on Microsoft Defender for Endpoint data.
+
+:::warning[Important]
+
+- Data from Microsoft Defender for Endpoint might take up to one day to display after the integration is first enabled.
+
+- Data from Microsoft Defender for Endpoint contributes to asset discovery and risk analyses, which affects your Cyber Risk Index and may affect credit requirements. For more information, see [Credit requirements for Trend Vision One solutions, capabilities, and features](credit-req-for-apps-services.mdx).
+
+- Data in Microsoft Defender for Endpoint widgets is for security configuration visibility only. Access your Microsoft Defender for Endpoint console to manage assets and perform remediation.
+:::
+
+The following table details the widgets available in the Microsoft Defender for Endpoint view within the Endpoint Security layer of **Security Configuration Overview**.
+
+**Endpoint Security Widgets - Microsoft Defender for Endpoint**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Widget</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Endpoint operating system distribution</p></td>
+<td><p>The distribution of operating systems on your Microsoft Defender for Endpoint-managed endpoints. Supported operating systems include:</p>
+<ul>
+<li><p>Windows</p></li>
+<li><p>macOS</p></li>
+<li><p>Linux</p></li>
+</ul>
+<p>Click the discovered endpoint total to view your discovered Microsoft Defender for Endpoint endpoints on the device list in Attack Surface Discovery. Click the total for each operating system to view discovered endpoints filtered by operating system.</p></td>
+</tr>
+<tr>
+<td><p>Risk events by category</p></td>
+<td><p>Total security configuration risk events detected by security category. Click a total to view corresponding risk events in Risk Reduction Measures within Threat and Exposure Management. Available categories and corresponding risk events include:</p>
+<ul>
+<li><p>Account misconfigurations: Microsoft Defender for Endpoint - Non-Compliant or Insecure Account Configuration</p></li>
+<li><p>Application misconfigurations: Microsoft Defender for Endpoint - Non-Compliant or Insecure Application Configuration</p></li>
+<li><p>Network misconfigurations: Microsoft Defender for Endpoint - Non-Compliant or Insecure Network Configuration</p></li>
+<li><p>Network exposures: Microsoft Defender for Endpoint - Exposed or Misconfigured Network Resource or Service</p></li>
+<li><p>Operating system misconfigurations: Microsoft Defender for Endpoint - Non-Compliant Operating System Configuration</p></li>
+<li><p>Security controls: Microsoft Defender for Endpoint - Missing or Disabled Security Controls</p></li>
+</ul>
+
+
+:::note
+
+<ul>
+<li><p>Microsoft Defender for Endpoint risk events correspond with security recommendations in the Microsoft Defender for Endpoint Console.</p></li>
+<li><p>You must have credits allocated to Cyber Risk Exposure Management in order to view Microsoft Defender for Endpoint risk events in Threat and Exposure Management. For more information, see <a href="trend-vision-one-credit-req-for-apps-services">Credit requirements for Trend Vision One solutions, capabilities, and features</a>.</p></li>
+</ul>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Endpoint protection version status</p></td>
+<td><p>Total endpoints running outdated, up-to-date, and unknown Microsoft Defender for Endpoint update components, including engine, platform, and security intelligence components. You should apply the latest Microsoft security intelligence update for any endpoints with outdated versions to strengthen your security posture. For information on the latest Microsoft security intelligence updates, see the <a href="https://www.microsoft.com/en-us/wdsi/defenderupdates">Microsoft documentation</a>.</p></td>
+</tr>
+</tbody>
+</table>
+:::::

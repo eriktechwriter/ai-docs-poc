@@ -1,0 +1,68 @@
+---
+slug: trend-vision-one-scan-actions
+title: Scan Actions
+last_updated: '2025-09-08'
+ai_context:
+  source_file: scan-actions.md
+  conversion_date: '2025-09-08T23:42:13.185Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Specify the action Apex One (Mac) performs when a particular scan type detects a security risk.
+
+The action Apex One (Mac) performs depends on the scan type that detected the security risk. For example, when Apex One (Mac) detects a security risk during Manual Scan (scan type), it cleans (action) the infected file.
+
+The following are the actions Apex One (Mac) can perform against security risks:
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Scan Action</p></th>
+<th><p>Details</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Delete</p></td>
+<td><p>Apex One (Mac) removes the infected file from the endpoint.</p></td>
+</tr>
+<tr>
+<td><p>Quarantine</p></td>
+<td><p>Apex One (Mac) renames and then moves the infected file to the quarantine directory on the endpoint located in <code>&lt;Agent installation folder&gt;/common/lib/vsapi/quarantine</code>.</p>
+<p>Once in the quarantine directory, Apex One (Mac) can perform another action on the quarantined file, depending on the action specified by the user. Apex One (Mac) can delete, clean, or restore the file. Restoring a file means moving it back to its original location without performing any action. Users may restore the file if it is actually harmless. Cleaning a file means removing the security risk from the quarantined file and then moving it to its original location if cleaning is successful.</p></td>
+</tr>
+<tr>
+<td><p>Clean</p></td>
+<td><p>Apex One (Mac) removes the security risk from an infected file before allowing users to access it.</p>
+<p>If the file is uncleanable, Apex One (Mac) performs a second action, which can be one of the following actions: Quarantine, Delete, and Pass. To configure the second action, navigate to <strong>Agent Management → Settings → {Scan Type}</strong> and click the <strong>Action</strong> tab.</p></td>
+</tr>
+<tr>
+<td><p>Pass</p></td>
+<td><p>Apex One (Mac) performs no action on the infected file but records the detected security risk in the logs. The file stays where it is located.</p>
+<p>Apex One (Mac) always performs "Pass" on files infected with the Probable Virus/Malware type to mitigate a False Positive. If further analysis confirms that probable virus/malware is indeed a security risk, a new pattern will be released to allow Apex One (Mac) to perform the appropriate scan action. If actually harmless, probable virus/malware will no longer be detected.</p>
+<p>For example: Apex One (Mac) detects "x_probable_virus" on a file named "123.pdf" and performs no action at the time of detection. Trend Micro then confirms that "x_probable_virus" is a Trojan horse program and releases a new Virus Pattern version. After loading the new pattern, Apex One (Mac) will detect "x_probable_virus" as a Trojan program and, if the action against such programs is "Delete", will delete "123.pdf".</p>
+
+
+:::note
+
+<p>This action is not available for Real-time Scan.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Deny access</p></td>
+<td><p>When Apex One (Mac) detects an attempt to open or execute an infected file, it immediately blocks the operation.</p>
+<p>Users can manually delete the infected file.</p></td>
+</tr>
+</tbody>
+</table>
+:::

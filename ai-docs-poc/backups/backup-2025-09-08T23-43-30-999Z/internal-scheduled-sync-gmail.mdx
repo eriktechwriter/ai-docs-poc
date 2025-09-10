@@ -1,0 +1,24 @@
+---
+slug: trend-vision-one-internal-scheduled-sync-gmail
+title: Internal domain scheduled synchronization failure for Gmail
+last_updated: '2025-09-08'
+ai_context:
+  source_file: internal-scheduled-sync-gmail.md
+  conversion_date: '2025-09-08T23:42:17.025Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Problem: An error message indicating the failure to synchronize internal domains in scheduled user data synchronization for Gmail.
+
+The possible reason is as follows:
+
+This occurs if your organization started to use the Gmail protection functionality in public preview. During that stage, Cloud Email and Collaboration Protection was not granted the domain read-only permission during access grant, and thus not able to synchronize the internal domains of your organization.
+
+Perform either of the following:
+
+- Remove the Gmail service account that you used in public preview, and grant Cloud Email and Collaboration Protection access to Gmail again.
+
+- Go to **Advanced Threat Protection → Internal Domains** or **Administration → Global Settings → Internal Domains** to manually add the internal domains of your organization. Repeat this every time there is a new domain created for your organization.
+:::

@@ -1,0 +1,78 @@
+---
+slug: trend-vision-one-enrolling-ios-ipados-devices
+title: Enrolling iOS/iPadOS devices
+---
+# Enrolling iOS/iPadOS devices
+
+To enroll iOS/iPadOS devices in Mobile Device Director, upload an Apple MDM push certificate and then email users enrollment instructions.
+
+### Procedure {#procedure}
+
+1.  Click the **iOS/iPadOS** tab.
+
+2.  Under **Grant permission**, select **I agree.** to grant Trend Micro permission to send user and device information to Apple.
+
+3.  Click **Download** to download the certificate signing request (CSR) file required to create an Apple MDM push certificate.
+
+4.  Create an Apple MDM push certificate.
+
+    An Apple MDM push certificate allows **Mobile Security** to send push notifications to your iOS devices.
+
+    :::warning[Important]
+
+    The following Apple Push Certificates Portal screen captures were valid as of June 30, 2023. For further help, check your Apple documentation.
+    :::
+
+    1.  Under **Create an Apple MDM push certificate**, click **Create**.
+
+        You are redirected to the Apple Push Certificates Portal.
+
+    2.  In the Apple Push Certificates Portal, sign in with your organization's Apple ID.
+
+    3.  Click **Create a Certificate**.
+
+        <figure>
+        <img src="./images/CreateMdmPushCertificate=c56b63d4-4e95-40a5-aa48-580379102a22.webp" />
+        </figure>
+
+    4.  Read and agree to the terms and conditions. Then select **Accept**.
+
+        <figure>
+        <img src="./images/CreateMdmPushCertificate3=7557870f-20a4-4bcb-9ce7-a43c5f14860d.webp" />
+        </figure>
+
+    5.  Click **Choose File** and then select the CSR file you downloaded in Trend Vision One and click **Open**.
+
+        <figure>
+        <img src="./images/CreateMdmPushCertificate4=739e7aca-d777-4f00-954c-94d362f8a701.webp" />
+        </figure>
+
+    6.  Click **Upload**.
+
+        Apple creates an MDM push certificate for you.
+
+    7.  On the confirmation page, click **Download** to download the certificate file (.pem) to your computer. Save this file for later.
+
+        <figure>
+        <img src="./images/CreateMdmPushCertificate2=76fe34d8-0cba-44c4-8fad-3a5b90f4b5b7.webp" />
+        </figure>
+
+5.  On the Trend Vision One console, specify the Apple ID you used to create the certificate.
+
+    :::note
+
+    Trend Micro records the Apple ID used to create the original certificate. You will need to use the same Apple ID to renew the expired certificate.
+    :::
+
+6.  Click **Upload**, and upload the Apple MDM push certificate you created and downloaded in step 3.
+
+7.  Click **Submit**.
+
+8.  1.  To manage devices with user information from Microsoft Entra ID, select **Require users to sign into Active Directory before enrolling**.
+
+        If Microsoft Entra ID is not configured, click **Go to User Configuration** to configure Microsoft Entra ID before enabling this function.
+
+    2.  Scan the QR code with the user's device, or click **Download Email Template** to send enrollment instructions to users via email.
+
+    3.  If you email users enrollment instructions, ask your users to install the Mobile Security for Business and follow the enrollment instructions in the Mobile Security for Business to finish enrolling the device.
+:::

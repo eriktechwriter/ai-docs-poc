@@ -1,0 +1,77 @@
+---
+slug: trend-vision-one-gcp-auto-scaling
+title: GCP auto scaling and Server & Workload Protection
+---
+# GCP auto scaling and Server & Workload Protection
+
+:You can set up automatic protection in Server & Workload Protection for new GCP VM instances created through GCP [managed instance groups (MIGs)](https://cloud.google.com/compute/docs/instance-groups) to support [auto scaling](https://cloud.google.com/compute/docs/autoscaler).
+
+Each GCP VM instance created through a MIG will need to have an agent installed on it. There are two ways that you can do this: you can include a pre-installed agent in the GCP VM instance used to create the instance template, or you can install the agent by including a deployment script in the [instance template](https://cloud.google.com/compute/docs/instance-templates) for the image. There are pros and cons for each option:
+
+- If you include a pre-installed agent, instances will spin up more quickly because there is no need to download and install the agent software. The downside is that the agent software might not be the latest. To work around this issue, you can enable the [upgrade on activation](autoupgrade-agents-activation.mdx) feature.
+- If you use a deployment script to install the agent, it will always get the latest version of the agent software from Server & Workload Protection.
+
+## Pre-install the agent {#pre-install-the-agent}
+
+If you have a GCP VM instance already configured with an agent, you can use that instance to create the instance template for the MIG. Before creating the instance template, you must deactivate the agent on the GCP VM instance and stop the instance:
+
+`dsa_control -r`
+
+Each new GCP VM instance created by the MIG needs to have its agent activated and a policy applied to it, if it doesn’t have one already. There are two ways to do this:
+
+- You can create a deployment script that activates the agent and optionally applies a policy. Then add the deployment script to the GCP instance template so that it is run when a new instance is created. For instructions, see the Install the agent with a deployment script section below, but omit the section of the deployment script that gets and installs the agent. You will only need the `dsa_control -a` section of the script.
+
+  :::note
+
+  For the deployment scripts to work, agent-initiated communication must be enabled in Server & Workload Protection. For details on this setting, see [Activate and protect agents using agent-initiated activation and communication](agent-initiated-activation.mdx).
+  :::
+
+- You can set up an event-based task in the Server & Workload Protection console that will activate the agent and optionally apply a policy when an instance is launched and the "Computer Created (By System)" event occurs.
+
+## Install the agent with a deployment script {#install-the-agent-with-a-deployment-script}
+
+Server & Workload Protection provides the ability to generate customized deployment scripts that you can run when GCP VM instances are created. If the GCP VM instance does not contain a pre-installed agent, the deployment script should install the agent, activate it, apply a policy, and optionally assign the machine to a computer group and relay group.
+
+:::tip
+
+You can generate deployment scripts to automate the agent installation using the Server & Workload Protection API. For more information, see [Generate a deployment script](api-generate-agent-deploy.mdx).
+:::
+
+In order for the deployment script to work:
+
+- You must create images from machines that are stopped.
+- Agent-initiated communication must be enabled in Server & Workload Protection. For details on this setting, see [Activate and protect agents using agent-initiated activation and communication](agent-initiated-activation.mdx).
+
+:::note
+
+The displayed code is an example of a generated deployment script. Depending on your region, the deployment script you generate might be different.
+:::
+
+To set up automatic protection for instances using a deployment script:
+
+### Procedure {#procedure}
+
+1.  Sign in to the Server & Workload Protection console.
+
+2.  From the *Support* menu in the top right-hand corner, select *Deployment Scripts*.
+
+3.  Select your platform.
+
+4.  Select *Activate Agent automatically after installation*.
+
+5.  Select the appropriate *Security Policy*, *Computer Group* and *Relay Group*.
+
+6.  Click *Copy to Clipboard*.
+
+7.  Go to the GCP instance templates, expand *Management, security, disks, networking, sole tenancy* and paste the deployment script into *Startup script*.
+
+    ![](/images/google-gcp-instance-template=9647ddb1-dfe1-4fdc-806e-e0127195ea9f.webp)
+
+### Next steps {#next-steps}
+
+## Delete instances from Server & Workload Protection as a result of GCP MIGs {#delete-instances-from-server-workload-protection-as-a-result-of-gcp-migs}
+
+After you have added a GCP account in Server & Workload Protection, instances that no longer exist in GCP as a result of Managed Instance Group will be automatically removed from Server & Workload Protection.
+
+See [Add a Google Cloud Platform account](add-google-cloud-platform-account.mdx) for details on adding a GCP account.
+:::::

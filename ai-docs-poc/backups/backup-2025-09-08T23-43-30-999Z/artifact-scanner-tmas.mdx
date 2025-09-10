@@ -1,0 +1,87 @@
+---
+slug: trend-vision-one-artifact-scanner-tmas
+title: Trend Micro Artifact Scanner (TMAS)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: artifact-scanner-tmas.md
+  conversion_date: '2025-09-08T23:42:24.840Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Trend Micro Artifact Scanner (TMAS) performs pre-runtime vulnerability, malware, and secret scans on artifacts (see [supported artifacts](artifact-scanner-cli.mdx)), enabling you to identify and fix issues before they reach a production environment, like Kubernetes for container images, for example. After TMAS is integrated into your CI/CD pipeline, you can view the scan results of registry image artifacts for vulnerabilities, malware, and secrets in **Code Security** as well as **Container Protection → Container Image Scanning**.
+
+Supported scanners:
+
+- **Vulnerabilities:** TMAS performs open source vulnerability scanning. The vulnerability database receives up-to-date threat data from open source vulnerability feeds. TMAS can find vulnerabilities in supported operating systems and programming languages (see table below).
+- **Malware:** TMAS detects all types of malware, including trojans, ransomware, and spyware, using the latest file reputation and variant protection technologies backed by threat research. TMAS detects obfuscated or polymorphic variants of malware based on fragments of previously encountered malware.
+- **Secrets:** TMAS scans artifacts for secret data, which is sensitive data that should not be exposed. Leaked secrets can leave your resources open to attack through impersonation. TMAS can detect hard-coded secrets such as passwords, API keys and tokens in container images, directories containing source code, and files.
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Supported operating systems</p></th>
+<th><p>Supported ecosystems and programming languages</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><ul>
+<li><p>AlmaLinux</p></li>
+<li><p>Alpine</p></li>
+<li><p>Amazon Linux</p></li>
+<li><p>Android</p></li>
+<li><p>Arch Linux</p></li>
+<li><p>CentOS</p></li>
+<li><p>Chainguard</p></li>
+<li><p>CloudLinux</p></li>
+<li><p>Debian</p></li>
+<li><p>Distroless</p></li>
+<li><p>Linux (Kernel)</p></li>
+<li><p>Mariner</p></li>
+<li><p>Oracle Linux</p></li>
+<li><p>OSS-Fuzz</p></li>
+<li><p>Photon</p></li>
+<li><p>Red Hat (RHEL)</p></li>
+<li><p>Rocky Linux</p></li>
+<li><p>SUSE</p></li>
+<li><p>Ubuntu</p></li>
+<li><p>Wolfi</p></li>
+</ul></td>
+<td><ul>
+<li><p>Bitnami</p></li>
+<li><p>CPP</p></li>
+<li><p>CURL</p></li>
+<li><p>Composer</p></li>
+<li><p>Erlang</p></li>
+<li><p>GIT</p></li>
+<li><p>GitHub Actions</p></li>
+<li><p>Golang (go.mod)</p></li>
+<li><p>Haskell</p></li>
+<li><p>Maven</p></li>
+<li><p>npm</p></li>
+<li><p>NuGet</p></li>
+<li><p>pip</p></li>
+<li><p>pub</p></li>
+<li><p>R</p></li>
+<li><p>Ruby (Gems)</p></li>
+<li><p>Rust (Cargo)</p></li>
+<li><p>Swift</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Integrate Trend Micro Artifact Scanner (TMAS) into a CI/CD pipeline](integrating-tmas-ci-cd-pipeline.mdx)
+- [Trend Micro Artifact Scanner and with AI Scanner](tmas-ai-scanner.mdx)
+- [What to do after the Artifact Scanner scans](after-artifact-scanner.mdx)
+- [Artifact Scanner CLI](artifact-scanner-cli.mdx)
+- [Trend Micro Artifact Scanner (TMAS) Examples](tmas-examples.mdx)
+:::

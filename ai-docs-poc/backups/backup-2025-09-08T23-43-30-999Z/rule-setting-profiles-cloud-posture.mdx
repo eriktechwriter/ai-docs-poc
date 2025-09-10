@@ -1,0 +1,232 @@
+---
+slug: trend-vision-one-rule-setting-profiles-cloud-posture
+title: Rule setting profiles
+last_updated: '2025-09-08'
+ai_context:
+  source_file: rule-setting-profiles-cloud-posture.md
+  conversion_date: '2025-09-08T23:42:13.468Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::::: {role="main"}
+Profiles allow your organization to store and manage rule settings in reusable templates (e.g. rule settings for a specific environment type, security level, or application). You can apply a profile to one or more [Cloud Accounts](cloud-accounts-cloud-posture-setup.mdx) and also apply multiple profiles to an account to achieve the desired outcome for your rule settings.
+
+### Content {#content}
+
+- Cloud Risk Management default
+- Organisation profile
+- Custom Profile
+- How Cloud Risk Management Scan runs Rules
+- Create a Profile
+- Configure rules within Profile
+- Apply Profile
+- Recommended usage of Profiles and rule exceptions maintenance
+
+:::note
+
+Refer to Cloud Risk Management's [Public API](https://automation.trendmicro.com/cloudone/conformity/) for API support on Profiles.
+:::
+
+When you sign up with Cloud Risk Management, the Cloud Risk Management Default and *Organisation* Profiles are available to you as default profiles when an organisation is created for you. These profiles are automatically linked to all your new and existing accounts.
+
+### Cloud Risk Management default {#cloud-risk-management-default}
+
+Consists of all Rules in their default settings and cannot be configured within conformity.
+
+### Downloading the default profile {#downloading-the-default-profile}
+
+Click on the *Download* button to keep this profile as a reference for all default rule settings. Although this profile consists of all the rules, not all of them are configured by default. You will need to configure the un-configured rules before uploading the default profile. Hence we recommend you copy rule settings from the default profile and apply to new or existing profiles.
+
+### Viewing the default profile rule settings {#viewing-the-default-profile-rule-settings}
+
+Since the Cloud Risk Management default profile is read-only, you can only view and not configure any rule settings in this profile. However, you can copy individual rule settings in their default state and paste them into a profile if required.
+
+1.  Click on *View rule settings*
+2.  Pick a rule and click on *View.* The View rule settings pop-up window opens with a JSON format of the selected rule setting.
+3.  Click on the *Copy to clipboard button* and paste it to another profile as required.
+
+### Organisation Profile {#organisation-profile}
+
+By default, an Organisation profile has the same rule settings as a Cloud Risk Management profile, but you can configure the rules within Cloud Risk Management.
+
+Once you configure rules in an Organisation profile, all your current and newly added accounts will inherit the updated rule settings.
+
+### Configuring an Organisation Profile {#configuring-an-organisation-profile}
+
+You have the following options to configure an Organisation profile:
+
+1.  *Copy from a profile:* allows you to copy an existing profile’s settings into the organisation profile.
+    1.  Click on *Copy from a profile.*
+    2.  From the *Copy from a profile pop-up window,* select a profile from the profile you wish to copy the settings from. Please note that any changes to the Organisation profile will be reflected in all your current and newly added accounts in your Organisation.
+    3.  Click *Next*.
+    4.  Click on *Yes, proceed* to confirm your selection. Your Organisation profile Rule configuration is now copied from your selected profile. All the new Rule settings are displayed on the Organisation profile home page.
+2.  Update Rule Settings: allows you to configure Rules for the default Organisation profile as per your requirements. Please note that any Rules configured at an organisation profile will be applied to all the accounts.
+3.  Upload: allows you to create a new organisation profile by uploading a profile to Cloud Risk Management.
+4.  Download: allows you to download the Organisation profile in a JSON format.
+5.  Reset all settings: allows you to set the Organisation profile to its default settings and removes all rule configurations.
+
+### Custom Profile {#custom-profile}
+
+A user created Profile is referred to as a custom profile within Cloud Risk Management.
+
+### How Cloud Risk Management Scan runs Rules? {#how-cloud-risk-management-scan-runs-rules}
+
+1.  Cloud Risk Management Scan runs rules at the Account level first.
+2.  If the rule/s is not configured at the Account level, then it will run checks at the Organisation Profile level.
+3.  If a rule has not been configured either at an Account level or the Organisation Profile level, Cloud Risk Management Scan will run checks at the Cloud Risk Management default level.
+
+### Create a Profile {#create-a-profile}
+
+1.  Click on *Profiles* from the top navigation panel.
+
+2.  Under *Custom profiles,* click on \*\*+ Create Profile.
+
+3.  Select the method of profile creation.
+
+    - *Create new*
+      1.  Enter *New* *Profile* *name* and *New* *Profile description.*
+      2.  Select an account from the *Use existing configurations from an account* drop-down to copy profile configurations already applied to existing accounts.
+    - *Create new using downloaded Profile*
+      1.  Click *Browse* to select a downloaded profile.
+      2.  Enter *New Profile name, New Profile description.* The Profile rule configurations automatically get copied over from the selected profile.
+    - !!! note ""
+      - Use unique profile names for better identification.
+      - Add instructions for your team regarding profile usage and the accounts to apply to.
+
+### Profile management {#profile-management}
+
+Once you have created a profile, you can access it from the left-hand navigation. From the Manage Profiles page, you can:
+
+- Edit the profile name and description
+- Update rule settings
+- Download
+- Upload
+- Apply the selected profile to your account(s)
+- Delete the profile
+
+:::note
+
+Deleting a profile cannot be undone. You can download the profile and save it as a backup copy before deleting.
+:::
+
+### Profile rule configurations {#profile-rule-configurations}
+
+1.  Click on *Update rule settings.*
+2.  Filter rules as per your requirements, for example you can filter by *Services*, *Rule ID*, *Categories*, *Active rules,* *Non-active rules*, *new* or *updated* rules.
+3.  You can [configure every rule](rules-configuration.mdx) within a profile as per your requirements.
+
+### Resetting Profile rules {#resetting-profile-rules}
+
+- *Reset:* returns a selected rule within a profile to its default settings.
+- *Reset all to default*: returns all profile rules to their default settings.
+
+:::note
+
+Disabled rules are considered as configured rules i.e. you are configuring to disable the rule. Resetting all rules to default will reset your disabled rules as well.
+:::
+
+![](/images/profile-rule-configurations-b3uvp2=d877d3e0-a69e-45fc-bf79-94be403dbb67.webp)
+
+<table>
+<thead>
+<tr>
+<th><p><em>Rule Icon</em></p></th>
+<th><p><em>Status</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="./images/screen-20shot-202019-12-23-20at-2010=9407b65b-4cbb-48cf-9249-5969092b48f4.webp" /></td>
+<td><p>Un-configured rule. Click on <em>Configure</em> to enable and apply rule settings.</p></td>
+</tr>
+<tr>
+<td><img src="./images/screen-20shot-202019-12-23-20at-2010=18059237-fba2-44d5-a2f0-5c6b5d543e80.webp" /></td>
+<td><p>Rule with default settings. Click on <em>Configure</em> to apply rule settings.</p></td>
+</tr>
+<tr>
+<td><img src="./images/screen-20shot-202019-12-23-20at-2010=0dc1a06f-c1cd-45ad-980c-a225572a3974.webp" /></td>
+<td><p>Manually configured rule. Click on <em>Configure</em> to update settings or <em>Reset</em> to default.</p></td>
+</tr>
+</tbody>
+</table>
+
+### Download Profile {#download-profile}
+
+You can download profile settings in JSON format and used the downloaded profile while creating a new profile or managing an existing profile.
+
+### Upload Profile {#upload-profile}
+
+You can upload a downloaded JSON file to replace the selected profile's configurations i.e. profile name, description, and rule settings.
+
+1.  Click on *Upload.*
+2.  *Browse* to select the downloaded profile.
+3.  Select one of the replacement options:
+    1.  *Replace settings only*
+    2.  *Replace settings, name and description.*
+4.  Click *Next.*
+5.  Review the warning before clicking on *Proceed.*
+
+### Apply Profile to Account {#apply-profile-to-account}
+
+You can apply a profile to desired account(s) either from the Profile or from Rule Settings within an account.
+
+1.  Click on *Apply to*
+
+2.  Select account(s) from the list or search for it using [name, environment](cloud-account-general-settings.mdx), or [account tags](cloud-account-tags.mdx).
+
+3.  Select the desired overwrite option: Replace, Merge, use profile, and Merge, use account.
+
+4.  Enter *Notes* and click on *Next* .
+
+    Include exceptions
+
+    Before you click on the *Next* button, make sure that you review the “Include exceptions” option checked by default. This option allows you to handle your exceptions using Profiles without maintaining them on an account-level.
+
+    Keep “*Include exceptions*” checked if you wish to overwrite the current account exceptions with those in the merged profile. Or you can uncheck to retain existing account exceptions when the profile is merged.
+
+    You can use Profiles as a source of truth to manage an account’s settings like exceptions and rule configurations without affecting the basic rule configuration in an account.
+
+5.  Review the summary
+
+    1.  You can *Download* the account's existing rule settings as a backup
+    2.  *Apply* profile, or
+    3.  Go *Back* to the overwrite options.
+
+### Replace {#replace}
+
+This overwrite option allows you to overwrite all existing account settings and replace them with the profile's settings being applied.
+
+### Merge, use profile {#merge-use-profile}
+
+This overwrite options allows you to use the new profile settings along with the existing account settings. If there are any conflicts during the merge, the profile settings are applied by default.
+
+### Merge, use account {#merge-use-account}
+
+This overwrite options allows you to use the new profile settings with the existing account settings. If there are any conflicts during the merge, the account settings are applied by default.
+
+1.  Apply the profile to the relevant account.
+
+### Recommended usage of Profiles and rule exceptions maintenance: {#recommended-usage-of-profiles-and-rule-exceptions-maintenance}
+
+The “Include exceptions” feature allows users to handle their exceptions solely using Profiles without maintaining any on an account-level. This is achieved by:
+
+1.  Creating a new profile and configuring rules with baseline exceptions.
+2.  Applying the profile to the account/s with “Merge, use profile” and the “Include exceptions” box checked for the accounts that should inherit their exception resources and tags from a profile.
+3.  Whenever exceptions require updating, only the profile needs to be modified and can be subsequently applied to the account/s.
+
+### Example of Account Management with Profiles {#example-of-account-management-with-profiles}
+
+For example, you can create two profiles named “Exceptions” and “Settings” to manage exceptions and rule configurations for an account called “Live Production Account”:
+
+- *Exceptions* - basic profile with default exceptions
+- *Settings* - with configured rule settings. (“Enabled”, “Risk level” or “Settings” fields) You do not need to update any “exceptions” on this profile as they should be stored in the “*Exceptions*” profile you created.
+
+1\. First apply the “*Exceptions*” profile to the “Live Production Account” using the *“Merge, use profile”* with the “*include exceptions*” option checked.
+
+2\. Then apply the “*Settings*” profile to the same account using the “*Merge, use profile*” option with the “include exceptions” option unchecked.
+
+3\. Whenever you need to update exceptions for the “Live Production Account”, just update the “Exceptions profile” and re-apply both the “*Exceptions*” and “*Settings*” profile.
+
+Similarly, update the “*Settings*” profile to update rule settings for the same account and re-apply the “*Settings*” profile only.
+::::::

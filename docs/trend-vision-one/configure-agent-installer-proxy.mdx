@@ -1,0 +1,65 @@
+---
+slug: trend-vision-one-configure-agent-installer-proxy
+title: Configuring a custom agent installer proxy
+---
+# Configuring a custom agent installer proxy
+
+Set up a custom proxy for newly deployed endpoints to connect and register.
+
+Use the [Agent Installer Proxy Settings](agent-installer-proxy-settings.mdx) tab in [Global Settings](global-settings-endpoint-inventory.mdx) to configure a custom proxy for your Protection Managers or sensor only agents to perform initial connection and registration during deployment.
+
+:::warning[Important]
+
+- If you have configured a Service Gateway appliance with Forward Proxy Service enabled, your endpoint agents prioritize connecting through the Service Gateway over your custom proxy if the endpoint is able to connect to the appliance.
+
+- Configuring a custom proxy for a Server & Workload Protection Manager overwrites any proxy settings currently configured for that Protection Manager. This cannot be undone, and deleting the custom proxy settings from Global Settings deletes all proxy settings from that Protection Manager as well.
+
+  Verify the proxy configuration for your Server & Workload Protection Manager before configuring a custom proxy. Trend Micro recommends using the Protection Manager settings to test the proxy configuration before applying the settings in Global Settings.
+:::
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision Oneconsole, go to **Endpoint Security → Endpoint Inventory**
+
+2.  Click the **Default and Global Settings** icon (![](/images/Global_Settings=GUID-1E10BFBD-3AFF-46DD-B853-0438EC2FD3F9.webp)) and then click **Global settings**.
+
+3.  Go to the **Agent Installer Proxy Settings** tab.
+
+4.  Locate the management service you want to configure and click the edit icon (![](/images/proxyConfigIcon=20230614160101.webp)).
+
+    :::warning[Important]
+
+    Configuring a custom proxy for **Sensor only** agents applies the settings to all sensor only agents.
+    :::
+
+5.  Configure the **Primary Custom Proxy Settings**.
+
+    Specify the following:
+
+    - **Proxy address**: The IP address of the proxy server
+
+    - **Port**: The connection port of the proxy server
+
+6.  If the proxy requires credentials, select **Require authentication credentials** and specify the account and password for the proxy server.
+
+7.  For Standard Endpoint Protection, configure the **Default System Proxy Settings**.
+
+    If the default system proxy requires credentials, select **Require authentication credentials** and specify the account and password for the proxy server.
+
+    :::warning[Important]
+
+    - Default system proxy does not support Linux agents.
+
+    - The Standard Endpoint Protection default system proxy is defined by your IAM policies, Windows, or macOS policies.
+
+    - The Server & Workload Protection default system proxy is defined by your IAM policies or Windows policies.
+
+    - Server & Workload Protection agents do not support the use of authentication credentials for connecting to the default system proxy. Using a proxy with credential requirements might cause connectivity issues.
+
+    - Sensor only agents default system proxy is defined by your IAM policies.
+    :::
+
+8.  Click **Save**.
+
+    Your configured custom proxy IP address and port appear on the table of the Agent Installer Proxy Settings tab. Agents receive the updated proxy settings the next time they connect to Trend Vision One. Configured proxy settings are automatically added to the installation package for new agent deployments.
+::::

@@ -1,0 +1,65 @@
+---
+slug: trend-vision-one-real-time-demand-scanning
+title: Real-time and on-demand scanning
+last_updated: '2025-09-08'
+ai_context:
+  source_file: real-time-demand-scanning.md
+  conversion_date: '2025-09-08T23:42:13.938Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Cloud Email and Collaboration Protection searches for security risks and undesirable data by scanning messages and their attached files in email services, files stored in other cloud applications, and messages in private Teams chats.
+
+Cloud Email and Collaboration Protection performs real-time scans and on-demand (manual) scans. When detecting malicious or undesirable content, Cloud Email and Collaboration Protection automatically takes action against the email message, file, or Teams chat message according to scanning rules. Configure policies to scan specific targets and then take certain action or send a notification based on the security risk.
+
+:::note
+
+Manual scan is not applicable for Microsoft Teams (Chat).
+:::
+
+By default, Cloud Email and Collaboration Protection scans all possible email messages, files, and private Teams chats in the cloud applications and services it protects. Scannable files include any file that is not encrypted, password protected, or exceeds user-configured scanning restrictions.
+
+Real-time scanning and on-demand scanning apply to Advanced Threat Protection policies and Data Loss Prevention policies.
+
+## Real-time scan {#real-time-scan}
+
+Cloud Email and Collaboration Protection scans the following in real time:
+
+- For email services, scanning occurs when an email message arrives at a protected mailbox.
+
+- For cloud storage applications, scanning occurs when a user uploads, creates, synchronizes, or modifies a file.
+
+- For Teams Chat, scanning occurs when a user sends a private chat message.
+
+## Manual scan {#manual-scan}
+
+Cloud Email and Collaboration Protection provides two manual scan types:
+
+- **Scan and protect**: Analyzes email messages or files, and takes action upon detecting any violation triggering the selected policy.
+
+- **Scan only**: Analyzes email messages or files, logs the analysis, and delivers the messages or files to users without taking any action configured in the selected policy. This helps evaluate the Cloud Email and Collaboration Protection performance with zero impact on mail flow and file sharing.
+
+  :::note
+
+  This scan type applies to Microsoft 365 services and Gmail only.
+  :::
+
+Run a manual scan to ensure that Cloud Email and Collaboration Protection scans all messages and files. Completely scanning cloud applications and services in this way minimizes the risk of advanced threats or data protection violations. A manual scan affects all users, groups and sites; however optionally configure Cloud Email and Collaboration Protection to scan specific targets, as needed.
+
+Cloud Email and Collaboration Protection generates and sends a comprehensive report after a manual scan to specified users, consolidating the scan results and displaying detailed information.
+
+Manual scan requirements:
+
+- For a full license, run a manual scan on up to 31 days of data.
+
+  :::note
+
+  A trial license supports a manual scan only on one day of data, and a manual scan covers 25 mailboxes, 5 SharePoint sites, 5 teams, or 5 cloud application service accounts.
+  :::
+
+- Run only one manual scan for one kind of policy at a time.
+
+  For example, you can perform a manual scan for Exchange Data Loss Prevention policies and SharePoint Online Data Loss Prevention policies at the same time. You cannot simultaneously perform two manual scans for Exchange Data Loss Prevention policies.
+::::

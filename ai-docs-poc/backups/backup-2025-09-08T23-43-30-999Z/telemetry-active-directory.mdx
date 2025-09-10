@@ -1,0 +1,204 @@
+---
+slug: trend-vision-one-telemetry-active-directory
+title: Active Directory data used by Identity Security
+last_updated: '2025-09-08'
+ai_context:
+  source_file: telemetry-active-directory.md
+  conversion_date: '2025-09-08T23:42:12.106Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Identity Security uses data from Active Directory (on-premises) for identity-related threat detection and identity asset discovery.
+
+The following table lists the Windows event data used by Identity Security for identity-related threat detection.
+
+<table>
+<thead>
+<tr>
+<th><p>Category</p></th>
+<th><p>Event ID</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><a href="https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/audit-logon">Audit Logon</a></p></td>
+<td><p>4624</p></td>
+<td><p>An account was successfully logged on.</p></td>
+</tr>
+<tr>
+<td><p><a href="https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/audit-account-lockout">Audit Account Lockout</a> and <a href="https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/audit-logon">Audit Logon</a></p></td>
+<td><p>4625</p></td>
+<td><p>An account failed to log on.</p></td>
+</tr>
+<tr>
+<td><p><a href="https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/audit-logoff">Audit Logoff</a></p></td>
+<td><p>4634</p></td>
+<td><p>An account was logged off.</p></td>
+</tr>
+<tr>
+<td><p><a href="https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/audit-special-logon">Audit Special Logon</a></p></td>
+<td><p>4672</p></td>
+<td><p>Special privileges assigned to new logon.</p></td>
+</tr>
+<tr>
+<td><p><a href="https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/audit-directory-service-access">Audit Directory Service Access</a> and <a href="https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/audit-sam">Audit SAM</a></p></td>
+<td><p>4661</p></td>
+<td><p>A handle to an object was requested.</p></td>
+</tr>
+<tr>
+<td><p><a href="https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/audit-file-system">Audit Directory Service Access</a></p></td>
+<td><p>4662</p></td>
+<td><p>An operation was performed on an object.</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p><a href="https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/audit-user-account-management">Audit User Account Management</a></p></td>
+<td><p>4720</p></td>
+<td><p>A user account was created.</p></td>
+</tr>
+<tr>
+<td><p>4726</p></td>
+<td><p>A user account was deleted.</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p><a href="https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/audit-security-group-management">Audit Security Group Management</a></p></td>
+<td><p>4728</p></td>
+<td><p>A member was added to a security-enabled global group.</p></td>
+</tr>
+<tr>
+<td><p>4732</p></td>
+<td><p>A member was added to a security-enabled local group</p></td>
+</tr>
+<tr>
+<td><p><a href="https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations">Audit Kerberos Service Ticket Operations</a></p></td>
+<td><p>4769</p></td>
+<td><p>A Kerberos service ticket was requested.</p></td>
+</tr>
+<tr>
+<td><p><a href="https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/audit-credential-validation">Audit Credential Validation</a></p></td>
+<td><p>4776</p></td>
+<td><p>The computer attempted to validate the credentials for an account.</p></td>
+</tr>
+</tbody>
+</table>
+
+The following table lists the Active Directory data used by Identity Security for identity asset discovery.
+
+<table>
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Category</p></th>
+<th><p>Data</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>User information</p></td>
+<td><ul>
+<li><p>Canonical name</p></li>
+<li><p>Username</p></li>
+<li><p>SAM account name</p></li>
+<li><p>User principal name</p></li>
+<li><p>User display name</p></li>
+<li><p>Description</p></li>
+<li><p>Distinguished name</p></li>
+<li><p>Given name</p></li>
+<li><p>Surname</p></li>
+<li><p>Email address</p></li>
+<li><p>Company name</p></li>
+<li><p>Department</p></li>
+<li><p>Job title</p></li>
+<li><p>SID</p></li>
+<li><p>Account enabled</p></li>
+<li><p>Domain</p></li>
+<li><p>Direct parent group</p></li>
+<li><p>All parent groups</p></li>
+<li><p>Usage location</p></li>
+<li><p>Last password change time</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Group information</p></td>
+<td><ul>
+<li><p>Canonical name</p></li>
+<li><p>Description</p></li>
+<li><p>Distinguished name</p></li>
+<li><p>Member</p></li>
+<li><p>SAM account name</p></li>
+<li><p>Display name</p></li>
+<li><p>Email address</p></li>
+<li><p>Direct parent group</p></li>
+<li><p>All parent groups</p></li>
+<li><p>Direct members</p></li>
+<li><p>All members</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Computer information</p></td>
+<td><ul>
+<li><p>Canonical name</p></li>
+<li><p>Distinguished name</p></li>
+<li><p>Country code</p></li>
+<li><p>Display name</p></li>
+<li><p>Description</p></li>
+<li><p>SAM account name</p></li>
+<li><p>DNS host name</p></li>
+<li><p>Bad password time</p></li>
+<li><p>Bad password count</p></li>
+<li><p>Last logon</p></li>
+<li><p>Last logoff</p></li>
+<li><p>Logon count</p></li>
+<li><p>OS</p></li>
+<li><p>Service principal name</p></li>
+<li><p>Direct parent group</p></li>
+<li><p>All parent groups</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Event log</p></td>
+<td><ul>
+<li><p>Timestamp</p></li>
+<li><p>Agent ID</p></li>
+<li><p>System event ID</p></li>
+<li><p>System time created</p></li>
+<li><p>System security</p></li>
+<li><p>System computer</p></li>
+<li><p>IP address</p></li>
+<li><p>IP port</p></li>
+<li><p>Logon type</p></li>
+<li><p>Member SID</p></li>
+<li><p>New UAC value</p></li>
+<li><p>Old UAC value</p></li>
+<li><p>Password last set</p></li>
+<li><p>Primary group ID</p></li>
+<li><p>Privilege list</p></li>
+<li><p>Process ID</p></li>
+<li><p>Process name</p></li>
+<li><p>Service name</p></li>
+<li><p>Service SID</p></li>
+<li><p>Status</p></li>
+<li><p>Sub-status</p></li>
+<li><p>Subject domain name</p></li>
+<li><p>Subject logon ID</p></li>
+<li><p>Subject username</p></li>
+<li><p>Subject user SID</p></li>
+<li><p>Target domain name</p></li>
+<li><p>Target linked logon ID</p></li>
+<li><p>Target logon ID</p></li>
+<li><p>Target SID</p></li>
+<li><p>Target username</p></li>
+<li><p>Target user SID</p></li>
+<li><p>Virtual account</p></li>
+<li><p>Workstation</p></li>
+<li><p>Workstation name</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+:::

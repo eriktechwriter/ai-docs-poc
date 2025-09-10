@@ -1,0 +1,28 @@
+---
+slug: trend-vision-one-find-uuid-windows
+title: Find the UUID in Windows
+last_updated: '2025-09-08'
+ai_context:
+  source_file: find-uuid-windows.md
+  conversion_date: '2025-09-08T23:42:19.189Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Find the UUID for a Windows-based resource to assist with remediation when malware is detected by Agentless Vulnerability & Threat Detection.
+
+Universally unique identifiers (UUIDs) are used to help identify partitions related to malware detections by Agentless Vulnerability & Threat Detection. You may use the UUID to search for more information about the detection, such as the location of the malware, in **XDR Data Explorer**. To find the UUID for a Windows-based resource:
+
+### Procedure {#procedure}
+
+1.  Log into the device.
+
+2.  Open a CLI as an administrator.
+
+3.  Type the following command:
+
+    ``` codeblock
+    wimc path win32_computersystemproduct get UUID
+    ```
+:::

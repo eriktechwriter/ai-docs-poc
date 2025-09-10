@@ -1,0 +1,70 @@
+---
+slug: trend-vision-one-agent-package-integrity-check
+title: Agent package integrity check
+---
+# Agent package integrity check
+
+Server & Workload Protection verifies the signature on the agent to ensure that the software files have not changed since the time of signing. An integrity check occurs when:
+
+1.  You're upgrading the agent.
+2.  You're enabling a new security module so the kernel support is being updated. If the validation fails, plugin installations and agent upgrades are blocked.
+
+### Troubleshoot {#troubleshoot}
+
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>ID</p></th>
+<th><p>Event</p></th>
+<th><p>Reason</p></th>
+<th><p>Solution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>5302</p></td>
+<td><p>Agent/Plugin package signature download failed.</p></td>
+<td><p>The signature files used to check the integrity of the agent are not available in your update source. Your relay might not be upgraded to the required version.</p></td>
+<td><p>If you do <em>not</em> have a relay in your environment:</p>
+<ol>
+<li><a href="trend-vision-one-create-diagnostic-package-logs">Create a diagnostic package and logs</a> and send it to the Trend Micro support team.</li>
+</ol>
+<p>If you <em>have</em> a relay in your environment:</p>
+<ol>
+<li>On the <em>Alerts</em> page, check for the "Relay Upgrade Required For Agent Integrity Check" alert. If the alert exists, see Supported relay versions and <a href="trend-vision-one-upgrade-relay">Upgrade the relay</a> accordingly. Confirm signature files sync to your update source.</li>
+<li>Confirm your signature files have synced to your update source.</li>
+<li>Attempt to upgrade your agent or send your updated policy again.</li>
+<li>If the issue isn't resolved, <a href="trend-vision-one-create-diagnostic-package-logs">Create a diagnostic package and logs</a> and send it to the Trend Micro support team.</li>
+</ol></td>
+</tr>
+<tr>
+<td><p>5300</p></td>
+<td><p>Agent/Plugin package signature validation failed.</p></td>
+<td rowspan="3"><p>The agent package might have been tampered with or something is wrong on the package.</p></td>
+<td rowspan="3"><p><a href="trend-vision-one-create-diagnostic-package-logs">Create a diagnostic package and logs</a> and send it to the Trend Micro support team.</p></td>
+</tr>
+<tr>
+<td><p>5301</p></td>
+<td><p>Agent/Plugin package validation failed.</p></td>
+</tr>
+<tr>
+<td><p>5303</p></td>
+<td><p>Agent/Plugin package signature mismatch with the one in our policy.</p></td>
+</tr>
+</tbody>
+</table>
+
+### Supported relay versions {#supported-relay-versions}
+
+The following relay versions are supported:
+
+- Deep Security 20
+- Deep Security 12.0 update 8 (12.0.0.967)
+- Deep Security 11.0 update 23 (11.0.1617)
+:::

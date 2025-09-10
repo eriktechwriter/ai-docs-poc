@@ -1,0 +1,84 @@
+---
+slug: trend-vision-one-managing-domains
+title: Managing domains
+last_updated: '2025-09-08'
+ai_context:
+  source_file: managing-domains.md
+  conversion_date: '2025-09-08T23:42:16.174Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Use the **Domains** screen to add, modify, or delete domains.
+
+To go to the **Dashboard** screen, choose **Email and Collaboration Security Operations → Cloud Email Gateway Protection → Domain**.
+
+**Fields on the **Domains** screen**
+
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 78%" />
+</colgroup>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><strong>Domain name</strong></p></td>
+<td><p>Name of a domain you added.</p></td>
+</tr>
+<tr>
+<td><p><strong>Inbound Servers</strong></p></td>
+<td><p>Recipient: Recipient can be a wildcard (*) or an exact email address.</p>
+<p>IP address or FQDN: Fully qualified domain name (FQDN) is a unique name, which includes both host name and domain name, and resolves to a single IP address.</p>
+<ul>
+<li><p>For example: <code>hostmaster1.example.com</code> or <code>mailhost.example.com</code></p></li>
+<li><p>Not valid: <code>example.com</code></p></li>
+</ul>
+<p>Port: Port is a number from 1 to 65535 that an inbound server listens on. These ports vary based on server configuration.</p>
+<p>Preference: Preference, sometimes referred to as distance, is a value from 1 to 100. The lower the preference value, the higher the priority.</p>
+
+
+:::note
+
+<p>If more than one mail server is available, delivery is prioritized to servers with lower values. Using the same value will balance delivery to each server.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><strong>Outbound Servers</strong></p></td>
+<td><p>If outbound protection is enabled, this is the information for the MTA(s) that Cloud Email Gateway Protection relays your outbound messages from.</p>
+<p>The following options are available:</p>
+<p><strong>Microsoft 365</strong>: Relays your outbound messages from your Microsoft 365 solution.</p>
+<p><strong>Google Workspace</strong>: Relays your outbound messages from your Google Workspace solution.</p>
+<p><strong>User-defined mail servers</strong>: Relays your outbound messages from the mail servers you specified for your managed domain.</p></td>
+</tr>
+<tr>
+<td><p><strong>Time Added</strong></p></td>
+<td><p>Time when a domain was added.</p></td>
+</tr>
+<tr>
+<td><p><strong>Status</strong></p></td>
+<td><p>Status of a domain, which can be one of the following:</p>
+<ul>
+<li><p><strong>Completed</strong>: All required information and operations have been completed. The domain is successfully added.</p></li>
+<li><p><strong>Configuration Required</strong>: Certain required information or configurations are missing or incorrect.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Adding a domain](adding-domain.mdx)
+- [Configuring a domain](configuring-domain.mdx)
+- [Editing or deleting domains](editing-or-deleting-domains.mdx)
+:::

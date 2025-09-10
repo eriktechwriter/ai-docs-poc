@@ -1,0 +1,82 @@
+---
+slug: trend-vision-one-configuring-managed-android-apps
+title: Configuring managed mobile apps for Android devices
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configuring-managed-android-apps.md
+  conversion_date: '2025-09-08T23:42:22.356Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Add mobile apps to manage from your managed Google Play and configure settings for the apps.
+
+### Procedure {#procedure}
+
+1.  Go to **Mobile Security → Managed Mobile Apps**.
+
+2.  Add an app from Managed Google Play.
+
+    1.  Choose **Add → Managed Google Play app**.
+
+    2.  On the **Select an app from Managed Google Play** screen, locate and click an app.
+
+    3.  On the app screen, click **Select**.
+
+        The **App Details** screen appears, displaying basic information about the app.
+
+3.  Assign the app to groups and specify app settings for the selected groups.
+
+    1.  In the **Assignments** section, click **Add Assignment**.
+
+    2.  Select assignment groups to assign the app to and click **Next**.
+
+    3.  Select an install type for the app.
+
+        - **Force install**: The app will be automatically installed on devices. The app cannot be removed after installation.
+
+        - **Available**: The app will not be automatically installed. It will be available from Managed Google Play for manual installation.
+
+        - **Block**: The app cannot be searched for in Managed Google Play. If the app has been installed on devices, it will be automatically uninstalled.
+
+    4.  Specify a default policy for granting device permissions to the app.
+
+        - **Grant**: Automatically grant permissions without notifying the user.
+
+        - **Prompt**: Prompt the user to grant or deny permissions.
+
+        - **Deny**: Automatically deny permissions without notifying the user.
+
+    5.  Specify the permissions that will override the default permission policy.
+
+        1.  Click **Add Override**.
+
+        2.  On the **Permissions** screen, select permissions and click **Add Permissions**.
+
+        3.  Specify the permission policy for each of the selected permissions.
+
+    6.  Select the app auto-update priority.
+
+        - **Default**: Update the app when the impact on the user is minimal.
+
+        - **High priority**: Update the app as soon as possible.
+
+        - **Postpone**: Delay the app update for a maximum of 90 days.
+
+    7.  Pre-configure the app to customize its functions and behavior.
+
+        1.  Click **Add Configuration**.
+
+        2.  Select the app configurations you want to specify and click **Add Configurations**.
+
+        3.  Specify the value for each of the selected configurations.
+
+            The key values support wildcards. Hover over **wildcard** to check the list of supported wildcards.
+
+    8.  Click **Save**.
+
+        The assignment appears in the **Assignments** section. **Mobile Security** starts pushing the app to target devices.
+
+        To update the app assignment and related settings later, click the assignment group in the **Assignments** section to make the changes.
+:::

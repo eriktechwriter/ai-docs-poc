@@ -1,0 +1,128 @@
+---
+slug: trend-vision-one-deploy-more-relays
+title: Deploy more relays
+---
+# Deploy more relays
+
+:[If you need to deploy more relays](how-relays-work.mdx), you must:
+
+### Procedure {#procedure}
+
+1.  Plan the best number and location of relays
+
+2.  Create relay groups
+
+3.  Enable relays
+
+4.  Assign agents to a relay group
+
+5.  Connect agents to a relay's private IP address
+
+### Next steps {#next-steps}
+
+## Plan the best number and location of relays {#plan-the-best-number-and-location-of-relays}
+
+The best number and placement of relays depends on:
+
+- *Geographic region and distance*: If you're deploying your own relays, each geographic region should have its own [relay group](how-relays-work.mdx) with at least 2 relays and agents should use relays in their same geographic region. Long distance and network latency can slow down update redistribution. Downloading from other geographic regions can also increase network bandwidth and/or cloud costs.
+- *Network architecture and bandwidth limits*: If you have network segments with limited bandwidth, those segments should each have their own relay group with at least 2 relays. Low bandwidth Internet/WAN connections, routers, firewalls, VPNs, VPCs, or proxy devices (which can all define a network segment) can be bottlenecks when large traffic volumes travel between the networks. Bottlenecks slow down update redistribution. Agents therefore usually should use local relays inside the same network segment — not relays outside on bottlenecked external networks.
+- *Use of Application Control shared rulesets through a proxy connection*: If you will use shared Application Control rulesets and [agents connect through a proxy](configure-proxies-server-workload.mdx), you might want to add more relays to handle large rulesets and improve performance. See [Deploy Application Control rulesets via relays](api-shared-global-rulesets.mdx) and [Server & Workload Protection Sizing](sizing-server-workload.mdx).
+
+## Create relay groups {#create-relay-groups}
+
+Relays must be organized into relay groups. The default relays provided by the Server & Workload Protection service are in a relay group named "Primary Tenant Relay Group". If you want to add your own relays, add a new relay group.
+
+### Procedure {#procedure-1}
+
+1.  Go to **Administration → Updates → Relay Management**.
+
+2.  Select *New Relay Group*.
+
+3.  In the *Relay Group Properties* in the right pane, type a *Name* for the relay group.
+
+4.  Leave the *Update Source Proxy* settings as-is.
+
+### Next steps {#next-steps-1}
+
+:::tip
+
+To minimize latency and external/Internet bandwidth usage, create groups for each geographic region and/or network segment.
+:::
+
+## Enable relays {#enable-relays}
+
+### Procedure {#procedure-2}
+
+1.  Make sure the relay computer meets the requirements.
+
+2.  Make sure you allow inbound and outbound communication to and from the relay on the appropriate port numbers. See [Server & Workload Protection port numbers](swp-port-numbers.mdx).
+
+3.  Deploy an agent on the chosen computer. See [Get Deep Security Agent software](get-agent-software.mdx) and [Install the agent](install-agent.mdx).
+
+4.  Enable the agent as a relay:
+
+    1.  Go to **Administration → Updates → Relay Management**.
+
+    2.  Select the relay group into which the relay will be placed.
+
+    3.  Select *Add Relay*.
+
+    4.  In *Available Computers*, select the agent you just deployed.
+
+        :::tip
+
+        Use the search field to filter the list of computers.
+        :::
+
+    5.  Select *Enable Relay and Add to Group*. The agent is enabled as a relay and is displayed with a relay icon (
+
+        ![](/images/relay_server=ee64af72-a190-4a0a-b332-0bd1bcea02e9.webp){:}).
+
+## Assign agents to a relay group {#assign-agents-to-a-relay-group}
+
+You must indicate which relay group each agent should use. Either assign each agent to a relay group manually, or set up an [event-based task](autotasks-computer-changed-event.mdx) to assign new agents automatically.
+
+To manually assign a computer to a relay group:
+
+### Procedure {#procedure-3}
+
+1.  Go to *Computers*.
+
+2.  Right-click the computer and select **Actions → Assign Relay Group**.
+
+    To assign multiple computers, Shift-click or Ctrl-click computers in the list, and then select **Actions → Assign Relay Group**.
+
+3.  Select the relay group that computer should use.
+
+    :::tip
+
+    To minimize latency and external/Internet bandwidth usage, assign agents to relays that are in the same geographic region and/or network segment.
+    :::
+
+### Next steps {#next-steps-2}
+
+## Connect agents to a relay's private IP address {#connect-agents-to-a-relays-private-ip-address}
+
+If your relay has an elastic IP address, agents within an AWS VPC may not be able to reach the relay via that IP address. Instead, they must use the private IP address of the relay group.
+
+### Procedure {#procedure-4}
+
+1.  Go to **Administration → System Settings → Updates**.
+
+2.  Under *Software Updates*, in *Alternate software update distribution server(s) to replace Deep Security Relays*, type:
+
+    `https://<IP>:<port>/`
+
+    where `<IP>` is the private network IP address of the relay, and `<port>` is the [relay port number](swp-port-numbers.mdx)
+
+3.  Select *Add*.
+
+4.  Select *Save*.
+
+### Next steps {#next-steps-3}
+
+:::note
+
+If your relay group’s private IP changes, you must manually update this setting. It will not be updated automatically.
+:::
+:::::

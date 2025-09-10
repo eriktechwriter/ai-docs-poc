@@ -1,0 +1,47 @@
+---
+slug: trend-vision-one-adding-domain-exception
+title: Adding a domain exception
+last_updated: '2025-09-08'
+ai_context:
+  source_file: adding-domain-exception.md
+  conversion_date: '2025-09-08T23:42:25.774Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Add a domain exception to allow HTTPS traffic from the matched domains to be automatically passed to users.
+
+### Procedure {#procedure}
+
+1.  Go to **Zero Trust Secure Access → Secure Access Configuration → Internet Access Configuration**.
+
+    The **Internet Access Configuration** screen appears.
+
+2.  Select **Inspection Exceptions** from the **HTTPS Inspection** drop-down list.
+
+3.  Click **Add**.
+
+4.  Specify a unique name and a description for the rule.
+
+5.  Specify a domain.
+
+    Trend Vision One uses domain match for adding inspection exceptions. If you input `example.com`, it only matches the domain **https://example.com**. It cannot match https://www.example.com or https://xxexample.com. If you wish to match the subdomains, you need to add wildcards to create the following pattern \*.example.com.
+
+    :::tip
+
+    Zero Trust Secure Access supports the following wildcard characters:
+
+    - \* : Matches any number of characters
+
+    - ? : Matches a single character in a specific position
+    :::
+
+6.  (Optional) Select **Exclude the following subdomains**, add one or multiple domains in the text box, and then click **Add**.
+
+    HTTPS traffic from the specified subdomains follows HTTPS inspection rules and is blocked when decryption fails.
+
+    The added domain names appear in the area under the text box.
+
+7.  Click **Save**.
+:::

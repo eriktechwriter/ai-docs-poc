@@ -1,0 +1,106 @@
+---
+slug: trend-vision-one-mobile-device-permission-req
+title: Mobile device permission requirements
+last_updated: '2025-09-08'
+ai_context:
+  source_file: mobile-device-permission-req.md
+  conversion_date: '2025-09-08T23:42:15.971Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Allow the necessary mobile platform permissions to ensure all **Mobile Security** features function properly. Note that some applications, such as banking applications may not function correctly after enabling the VPN or Accessibility. For more information, see [VPN and Accessibility Service compatibility](vpn-access-service-compatibility.mdx).
+
+The following tables outline the permissions that you must allow for Android and iOS/iPadOS devices.
+
+:::note
+
+Users must manually grant permissions to permissions and services not managed by your MDM solution.
+:::
+
+**Android Permission Requirements**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 50%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Permission/Service</p></th>
+<th><p>Related Usage</p></th>
+<th><p>Managed by MDM Solution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Storage</p>
+<p>(Android 10 and earlier)</p></td>
+<td><p>Used to access internal storage for file scanning</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>Managed Storage</p>
+<p>(Android 11 and later)</p></td>
+<td><p>Used to access internal storage for file scanning</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>Location</p></td>
+<td><p>Used to perform Wi-Fi scanning</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>Running in Background</p></td>
+<td><p>Used to provide continuous protection</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>Accessibility</p></td>
+<td><p>Used for Web Reputation analysis</p></td>
+<td><p>Partial</p></td>
+</tr>
+<tr>
+<td><p>VPN</p></td>
+<td><p>Used for Web Reputation analysis</p></td>
+<td><p>Partial</p></td>
+</tr>
+</tbody>
+</table>
+
+**iOS/iPadOS Permission Requirements**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 50%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Permission/Service</p></th>
+<th><p>Related Usage</p></th>
+<th><p>Managed by MDM Solution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Location</p></td>
+<td><p>Used to perform Wi-Fi scanning</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>Push Notifications</p></td>
+<td><p>Used ensure that Mobile Security continues to run in the background on special device types</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>Personal VPN</p></td>
+<td><p>Used for Web Reputation analysis</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+::::

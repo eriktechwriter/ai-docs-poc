@@ -1,0 +1,43 @@
+---
+slug: trend-vision-one-endpoint-list-faq
+title: Endpoint list FAQ
+---
+# Endpoint list FAQ
+
+Frequently asked questions about the Endpoint Inventory list, columns, and agent statuses.
+
+**Related information**
+
+- What is an unmanaged endpoint?
+- How does the Protection Manager column sort unmanaged endpoints?
+
+## What is an unmanaged endpoint? {#what-is-an-unmanaged-endpoint}
+
+An unmanaged endpoint is an endpoint which does not have the Trend Vision One Endpoint Security agent software installed, but appears in Trend Vision One Endpoint Inventory. An unmanaged endpoint may still be connected to a Protection Manager or a managed by a connected endpoint security product, such as Trend Cloud One Workload Security.
+
+The following are typical reasons why an endpoint listed in Endpoint Inventory may be considered unmanaged:
+
+- You recently updated a connected endpoint product to Server & Workload Protection and the connected endpoint agent software has not been updated.
+
+- You connected or deployed agent software using a method other than the installation package or script from Endpoint Inventory.
+
+- You connected a cloud account and associated it with a Server & Workload Protection instance. Assets within cloud accounts, such as virtual machines (VMs) appear in the Endpoint Inventory and are considered unmanaged if they do not have the endpoint agent software installed.
+
+- You connected a Trend Micro endpoint security product but did not deploy the Trend Vision One Endpoint Security agent software.
+
+- An endpoint with no endpoint security software installed is discoverable within your security environment. Discoverable endpoints might be found by Trend Micro security products or by connected third-party applications such as IAMs.
+
+## How does the Protection Manager column sort unmanaged endpoints? {#how-does-the-protection-manager-column-sort-unmanaged-endpoints}
+
+The **Protection Manager** column typically shows the either the Protection Manager instance or connected endpoint security product the endpoint is connected to, both for managed and unmanaged endpoints.
+
+For endpoints discoverable within your security environment which do not have a protection manager or the agent software installed, the **Protection Manager** column shows the product or service which found the endpoint.
+
+When sorting the **Protection Manager** column, be aware of the following behavior:
+
+- Unmanaged endpoints connected to either a Protection Manager or connected endpoint security product are sorted normally with managed endpoints.
+
+- Discoverable endpoints appear either at the top or bottom of the list depending on how you sort the column.
+
+- Discoverable endpoints are mixed together and may appear out of order with each other.
+:::

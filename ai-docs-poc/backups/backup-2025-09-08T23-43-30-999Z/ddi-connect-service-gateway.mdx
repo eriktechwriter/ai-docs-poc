@@ -1,0 +1,68 @@
+---
+slug: trend-vision-one-ddi-connect-service-gateway
+title: >-
+  Connecting a Deep Discovery Inspector appliance using Service Gateway as a
+  proxy
+last_updated: '2025-09-08'
+ai_context:
+  source_file: ddi-connect-service-gateway.md
+  conversion_date: '2025-09-08T23:42:20.781Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Connect a Deep Discover Inspector appliance using a Service Gateway as a proxy.
+
+Connecting your Deep Discovery Inspector appliance to **Network Security** using a Service Gateway as a proxy automatically configures the appliance connection settings, including using the Service Gateway as a service source.
+
+Before connecting to **Network Security** using a Service Gateway as a proxy, make sure you have configured a Service Gateway with the following services enabled. For more information, see [Manage services in Service Gateway](managing-services-service-gateway.mdx).
+
+- Forward Proxy Service
+
+- ActiveUpdate
+
+- Smart Protection Services
+
+- Suspicious Object List synchronization (only required for Deep Discovery Inspector version 6.7)
+
+:::warning[Important]
+
+- Connecting to **Network Security** using a Service Gateway as a proxy is only supported by Deep Discovery Inspector version 6.7 or later.
+
+- If you are connecting a Deep Discovery Inspector virtual appliance deployed using an image that is not company-specific, you must [activate the license](activate-ddi-clp.mdx) before connecting to **Network Security**.
+:::
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Network Security → Network Inventory → Deep Discovery Inspector**.
+
+2.  Click **Connect Appliance**.
+
+3.  For **Product**, select **Deployed Deep Discovery Inspector**.
+
+4.  Select **6.7 or later**.
+
+5.  Select **Connect using a Service Gateway as proxy** from the connection method list.
+
+6.  Select a Service Gateway from the list.
+
+7.  Specify the Deep Discovery Inspector appliance IP address or FQDN.
+
+    :::warning[Important]
+
+    You can only access appliances that are part of your corporate network or that you can reach directly.
+    :::
+
+8.  Click **Go**.
+
+    The Deep Discovery Inspector appliance console opens.
+
+9.  On the Deep Discovery Inspector console, sign in with an administrator account.
+
+10. (Optional) Change the password.
+
+11. In the **Registering to Trend Vision One** dialog, click **Continue** to confirm the process.
+
+12. In the Trend Vision One console, go to **Network Security → Network Inventory → Deep Discovery Inspector** to verify the connection status.
+::::

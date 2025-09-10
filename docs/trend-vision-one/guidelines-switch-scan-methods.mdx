@@ -1,0 +1,88 @@
+---
+slug: trend-vision-one-guidelines-switch-scan-methods
+title: Guidelines for Switching Scan Methods
+---
+# Guidelines for Switching Scan Methods
+
+The following table outlines some considerations you should be aware of before switching the scan method that Trend Vision One Endpoint Security agents use.
+
+**Considerations When Switching to Smart Scan**
+
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Consideration</p></th>
+<th><p>Details</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Product license</p></td>
+<td><p>Ensure that you have activated all required licenses for the new scan method.</p></td>
+</tr>
+<tr>
+<td><p>Apex One server</p></td>
+<td><p>Ensure that agents can connect to the Apex One server. Apex One only notifies online agents to switch scan methods. Offline agents get notified when they become online. Independent agents are notified when they become online or, if the agent has scheduled update privileges, when scheduled update runs.</p>
+<p>Also verify that the Apex One server has the latest components to ensure that Trend Vision One Endpoint Security agents can download the correct patterns from the server.</p></td>
+</tr>
+<tr>
+<td><p>Number of Trend Vision One Endpoint Security agents to switch</p></td>
+<td><p>Switching a relatively small number of Trend Vision One Endpoint Security agents at a time allows efficient use of the Apex One server and Smart Protection Server resources. These servers can perform other critical tasks while Trend Vision One Endpoint Security agents change scan methods.</p></td>
+</tr>
+<tr>
+<td><p>Timing</p></td>
+<td><p>When switching scan methods, Trend Vision One Endpoint Security agents need to download full versions of the required pattern files for the new scan method.</p>
+<p>Consider switching during off-peak hours to minimize the impact to network bandwidth and interruption to end user daily operations. Trend Micro recommends disabling "Update Now" on Trend Vision One Endpoint Security agents during the conversion process.</p></td>
+</tr>
+<tr>
+<td><p>IPv6 support</p>
+
+
+:::warning[Important]
+
+<p>Only available for Trend Vision One Endpoint Security agents reporting to an on-premises Apex One server.</p>
+
+
+:::
+
+</td>
+<td><p>Smart scan agents send scan queries to smart protection sources.</p>
+<p>A pure IPv6 smart scan agent cannot send queries directly to pure IPv4 sources, such as:</p>
+<ul>
+<li><p>Smart Protection Server 2.0 (integrated or standalone)</p>
+
+
+:::note
+
+<p>IPv6 support for Smart Protection Server starts in version 2.5.</p>
+
+
+:::
+
+</li>
+<li><p>Trend Micro Smart Protection Network</p></li>
+</ul>
+<p>Similarly, a pure IPv4 smart scan agent cannot send queries to pure IPv6 Smart Protection Servers.</p>
+<p>A dual-stack proxy server that can convert IP addresses, such as DeleGate, is required to allow smart scan agents to connect to the sources.</p></td>
+</tr>
+<tr>
+<td><p>Smart Protection Services</p>
+
+
+:::warning[Important]
+
+<p>Only available for Trend Vision One Endpoint Security agents reporting to an on-premises Apex One server.</p>
+
+
+:::
+
+</td>
+<td><p>If you are switching Trend Vision One Endpoint Security agents from conventional scan to smart scan, ensure that you have set up Smart Protection Services.</p></td>
+</tr>
+</tbody>
+</table>
+:::

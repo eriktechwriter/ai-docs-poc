@@ -1,0 +1,48 @@
+---
+slug: trend-vision-one-resources-port-lists
+title: Port Lists
+last_updated: '2025-09-08'
+ai_context:
+  source_file: resources-port-lists.md
+  conversion_date: '2025-09-08T23:42:13.754Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure port lists to manage which ports Web Reputation and Firewall rules monitor.
+
+:::warning[Important]
+
+If you are working on a policy, make sure to save your settings before leaving the screen. Leaving the screen without saving discards any changes.
+:::
+
+Port lists are a policy resource used by [Web Reputation](policies-web-reputation.mdx) and [Firewall rules](resources-firewall-rules.mdx) to define which ports you want to monitor. You can add up to 250 port lists.
+
+### Procedure {#procedure}
+
+1.  Go to **Endpoint Security → Endpoint Security Configuration → Policy Resources → Port Lists**.
+
+2.  Create or edit a list.
+
+    - To create a new list, click **Add port list**.
+
+    - To edit an existing list, click the list name and go to **General**
+
+3.  Specify a name and description for the list.
+
+4.  For **Port**, specify a port or port range.
+
+    Ports must be a numeric value between 0 and 65535. Use a hyphen (-) to define a range.
+
+5.  To add more ports, click **Add**.
+
+    You can specify up to 20 items per list.
+
+    :::warning[Important]
+
+    Ports and port ranges cannot overlap. For example, specifying `0-120` and `90` is invalid.
+    :::
+
+6.  Click **Save**.
+::::

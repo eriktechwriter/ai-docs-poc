@@ -1,0 +1,31 @@
+---
+slug: trend-vision-one-collectors
+title: Collectors
+last_updated: '2025-09-08'
+ai_context:
+  source_file: collectors.md
+  conversion_date: '2025-09-08T23:42:23.342Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Use collectors to receive log data from configured third-party data sources in your organization's network via a deployed Service Gateway.
+
+To ingest log data, you must add collectors to log repositories. Collectors can receive log data in Common Event Format (CEF) or syslog format using the TCP or TLS protocol, or log data from a connected Azure subscription with Microsoft Defender for Endpoint enabled.
+
+When you configure a collector for a third-party data source using CEF or syslog, the collectors are assigned to a particular port on one of your deployed Service Gateways with the Third-Party Log Collection service installed. Collectors then receive valid logs from the IP addresses of your third-party log data sources and forward the log data to the log repository, where the data is ingested according to the settings you have specified.
+
+Collectors for log data from Microsoft Defender for Endpoint are automatically created when you enable the Microsoft Defender for Endpoint Log Collection feature for your Azure subscription in [Cloud Accounts](azure-features-permissions.mdx). Select the log repository for the collector when enabling the feature. The collector uses the settings you have specified for the selected log repository.
+
+:::warning[Important]
+
+Third-party data sources require configuration to send log data to Trend Vision One. Refer to the log forwarding topics in your product documentation to learn how to set up the correct configuration. If an IP address is required to set up a server profile, use the IP address of the Service Gateway associated with the collector. For an example, see the [Palo Alto Networks Next-Generation Firewall](https://docs.paloaltonetworks.com/pan-os/11-1/pan-os-admin/monitoring/use-external-services-for-monitoring) documentation.
+:::
+
+All log data received by a collector is ingested according to the associated log repository settings. To use different ingestion or retention settings, create a new log repository.
+
+**Related information**
+
+- [Add a collector](create-collector.md "Add collectors to your log repository to ingest log data from your third-party data sources.")
+::::

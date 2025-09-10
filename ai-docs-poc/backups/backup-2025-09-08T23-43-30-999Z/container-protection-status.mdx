@@ -1,0 +1,99 @@
+---
+slug: trend-vision-one-container-protection-status
+title: Container Security Protection status
+last_updated: '2025-09-08'
+ai_context:
+  source_file: container-protection-status.md
+  conversion_date: '2025-09-08T23:42:21.832Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+**Kubernetes status indicator**
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Icon Color</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Red</p></td>
+<td><ul>
+<li><p>The runtime security component is offline</p></li>
+<li><p>Failed to apply the policy/rule</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Yellow</p></td>
+<td><ul>
+<li><p>The applied rule is out-of-date</p></li>
+<li><p>The applied policy is out-of-date</p></li>
+<li><p>The Helm application is out-of-date</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Green</p></td>
+<td><ul>
+<li><p>The runtime security component is online and the rules, policies, and Helm application are up-to-date</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Gray</p></td>
+<td><ul>
+<li><p>Container Security is not receiving information from the Runtime Security component. This could be due to multiple reasons. For example, your operating system does not support the Runtime Security component, or the runtime security component either is not installed or has been offline for more than 2 hours.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Amazon ECS status indicator**
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Icon Color</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Red</p></td>
+<td><ul>
+<li><p>The runtime security component is offline</p></li>
+<li><p>Failed to apply policy/rule</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Yellow</p></td>
+<td><ul>
+<li><p>The applied rule is out-of-date</p></li>
+<li><p>The applied policy is out-of-date</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Green</p></td>
+<td><ul>
+<li><p>The runtime security component is online and the applied rules and policies are up-to-date</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Gray</p></td>
+<td><ul>
+<li><p>Container Security is not receiving information from the Runtime Security component. This could be due to multiple reasons. For example, your operating system does not support the Runtime Security component, or the runtime security component either is not installed or has been offline for more than 2 hours.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+:::

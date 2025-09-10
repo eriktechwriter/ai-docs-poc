@@ -1,0 +1,273 @@
+---
+slug: trend-vision-one-behavior-monitoring-policy-rules
+title: Behavior Monitoring Rules
+---
+# Behavior Monitoring Rules
+
+:::Configure how Behavior Monitoring is applied to the policy.
+
+:::warning[Important]
+
+By default, Behavior Monitoring is disabled on all versions of Windows Server platforms.
+:::
+
+Before configuring Behavior Monitoring, you must enable the feature. Once enabled, configure the following settings.
+
+**Related information**
+
+- Monitoring Level
+- Malware Behavior Blocking
+- Ransomware Protection
+- Anti-Exploit Protection
+- Newly Encountered Program Protection
+- Event Monitoring
+
+## Monitoring Level {#monitoring-level}
+
+Monitoring level is the degree of vigilance and strictness applied when detecting and responding to potential threats. Raising the level increases the sensitivity of the sensor, which increases the number of detections and alerts. Higher levels allow for more strict monitoring to help with situations like on-going threat investigations, but might generate a large number of nonessential logs and impact endpoint performance. Trend Micro recommends setting your monitoring level to 2 - Moderate to balance more relevant data with minimal impact on your endpoints. Some components used by higher monitoring levels are not available on all platforms.
+
+## Malware Behavior Blocking {#malware-behavior-blocking}
+
+Malware Behavior Blocking provides a necessary layer of additional threat protection from programs that exhibit malicious behavior. It observes system events over a period of time. As programs execute different combinations or sequences of actions, Malware Behavior Blocking detects known malicious behavior and blocks the associated programs. Use this feature to ensure a higher level of protection against new, unknown, and emerging threats.
+
+Malware Behavior Monitoring provides the following threat-level scanning options:
+
+- **Known threats**: Blocks behaviors associated with known malware threats
+
+- **Known and potential threats**: Blocks behavior associated with known threats and takes action on behavior that is potentially malicious
+
+After blocking a program with notifications enabled, the Trend Vision One Endpoint Security agent displays a notification on the endpoint.
+
+## Ransomware Protection {#ransomware-protection}
+
+Ransomware Protection prevents the unauthorized modification or encryption of files on agents by "ransomware" threats. Ransomware is a type of malware which restricts access to files and demands payment to restore the affected files.
+
+Apex One provides the following methods to protect your environment from ransomware threats.
+
+:::note
+
+To reduce the chance of the Trend Vision One Endpoint Security agent detecting a safe process as malicious, ensure that the agent has Internet access to perform additional verification processes using Trend Micro servers.
+:::
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Option</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><strong>Protect documents against unauthorized encryption or modification</strong></p></td>
+<td><p>You can configure Behavior Monitoring to detect a specific sequence of events that may indicate a ransomware attack. After Behavior Monitoring matches all of the following criteria, the Trend Vision One Endpoint Security agent terminates and attempts to quarantine malicious programs:</p>
+<ol>
+<li><p>A process not recognized as safe attempts to modify, delete, or rename three files within a certain time interval.</p></li>
+<li><p>The process attempted to modify a protected file extension type</p></li>
+</ol>
+<p>Additionally enable <strong>Automatically back up files changed by suspicious programs</strong> to create copies of files being encrypted on endpoints. After the encryption process completes and Apex One detects a ransomware threat, Apex One prompts end users to restore the affected files without suffering any loss of data.</p>
+
+
+:::note
+
+<p>Automatic file backup requires at least 100 MB of disk space on the agent endpoint and only backs up files that are less than 10 MB in size.</p>
+<p>The backup folder location on agent endpoints is: &lt;Agent installation folder&gt;<code>\CCSF\module\DRE\data</code>.</p>
+
+
+:::
+
+
+:::danger[Warning]
+
+<p>If <strong>Automatically back up files changed by suspicious programs</strong> is not enabled, Apex One cannot recover the first files affected by a ransomware threat.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><strong>Block processes commonly associated with ransomware</strong></p></td>
+<td><p>Ransomware commonly distributes executable files in specific locations on endpoints before attempting to hijack files. Blocking the processes started from these locations can help prevent the ransomware from being able to hijack files.</p></td>
+</tr>
+<tr>
+<td><p><strong>Enable program inspection to detect and block compromised executable files</strong></p></td>
+<td><p>Program inspection monitors processes and performs API hooking to determine if a program is behaving in an unexpected manner. Although this procedure increases the overall detection ratio of compromised executable files, it may result in decreased system performance.</p>
+
+
+:::tip
+
+<p>Program inspection provides increased security if you select <strong>Known and potential threats</strong> in the <strong>Threats to block</strong> drop-down.</p>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+
+## Anti-Exploit Protection {#anti-exploit-protection}
+
+Anti-exploit protection works in conjunction with program inspection to monitor the behavior of programs and detect abnormal behavior that may indicate that an attacker has exploited a program vulnerability. Once detected, Behavior Monitoring terminates the program processes.
+
+:::warning[Important]
+
+Anti-exploit Protection requires that you select **Enable program inspection to detect and block compromised executable files**.
+:::
+
+## Newly Encountered Program Protection {#newly-encountered-program-protection}
+
+Behavior Monitoring works in conjunction with Web Reputation Services and Real-time Scan to verify the prevalence of files downloaded through web channels, email applications, or Microsoft Office macro scripts. After detecting a "newly encountered" file, administrators can choose to prompt users before executing the file. Trend Micro classifies a program as newly encountered based on the number of file detections or historical age of the file as determined by the Smart Protection Network.
+
+Behavior Monitoring scans the following file types for each channel:
+
+- Web (HTTP/HTTPS): Scans `.exe` files.
+
+- Email applications: Scans `.exe`, and compressed `.exe` files in unencrypted `.zip` and `.rar` files.
+
+:::note
+
+- Administrators must enable Web Reputation Services on the agent to allow the Trend Vision One Endpoint Security agent to scan HTTP or HTTPS traffic before this prompt can display.
+
+- The Trend Vision One Endpoint Security agent matches the file names downloaded through email applications during the execution process. If the file name has been changed, the user does not receive a prompt.
+:::
+
+## Event Monitoring {#event-monitoring}
+
+Event Monitoring provides a more generic approach to protecting against unauthorized software and malware attacks. It monitors system areas for certain events, allowing administrators to regulate programs that trigger such events. Use Event Monitoring if you have specific system protection requirements that are above and beyond what is provided by Malware Behavior Blocking.
+
+The following table provides a list of monitored system events.
+
+**Monitored System Events**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Events</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Duplicated System File</p></td>
+<td><p>Many malicious programs create copies of themselves or other malicious programs using file names used by Windows system files. This is typically done to override or replace system files, avoid detection, or discourage users from deleting the malicious files.</p></td>
+</tr>
+<tr>
+<td><p>Hosts File Modification</p></td>
+<td><p>The Hosts file matches domain names with IP addresses. Many malicious programs modify the Hosts file so that the web browser is redirected to infected, non-existent, or fake websites.</p></td>
+</tr>
+<tr>
+<td><p>Suspicious Behavior</p></td>
+<td><p>Suspicious behavior can be a specific action or a series of actions that is rarely carried out by legitimate programs. Programs exhibiting suspicious behavior should be used with caution.</p></td>
+</tr>
+<tr>
+<td><p>New Internet Explorer Plugin</p></td>
+<td><p>Spyware/grayware programs often install unwanted Internet Explorer plugins, including toolbars and Browser Helper Objects.</p></td>
+</tr>
+<tr>
+<td><p>Internet Explorer Setting Modification</p></td>
+<td><p>Malware programs may change Internet Explorer settings, including the home page, trusted websites, proxy server settings, and menu extensions.</p></td>
+</tr>
+<tr>
+<td><p>Security Policy Modification</p></td>
+<td><p>Modifications in Windows Security Policy can allow unwanted applications to run and change system settings.</p></td>
+</tr>
+<tr>
+<td><p>Program Library Injection</p></td>
+<td><p>Many malicious programs configure Windows so that all applications automatically load a program library (DLL). This allows the malicious routines in the DLL to run every time an application starts.</p></td>
+</tr>
+<tr>
+<td><p>Shell Modification</p></td>
+<td><p>Many malicious programs modify Windows shell settings to associate themselves to certain file types. This routine allows malicious programs to launch automatically if users open the associated files in Windows Explorer. Changes to Windows shell settings can also allow malicious programs to track the programs used and start alongside legitimate applications.</p></td>
+</tr>
+<tr>
+<td><p>New Service</p></td>
+<td><p>Windows services are processes that have special functions and typically run continuously in the background with full administrative access. Malicious programs sometimes install themselves as services to stay hidden.</p></td>
+</tr>
+<tr>
+<td><p>System File Modification</p></td>
+<td><p>Certain Windows system files determine system behavior, including startup programs and screen saver settings. Many malicious programs modify system files to launch automatically at startup and control system behavior.</p></td>
+</tr>
+<tr>
+<td><p>Firewall Policy Modification</p></td>
+<td><p>The Windows Firewall policy determines the applications that have access to the network, the ports that are open for communication, and the IP addresses that can communicate with the computer. Many malicious programs modify the policy to allow themselves to access to the network and the Internet.</p></td>
+</tr>
+<tr>
+<td><p>System Process Modification</p></td>
+<td><p>Many malicious programs perform various actions on built-in Windows processes. These actions can include terminating or modifying running processes.</p></td>
+</tr>
+<tr>
+<td><p>New Startup Program</p></td>
+<td><p>Malicious applications usually add or modify autostart entries in the Windows registry to automatically launch every time the computer starts.</p></td>
+</tr>
+</tbody>
+</table>
+
+When Event Monitoring detects a monitored system event, it performs the action configured for the event.
+
+The following table lists possible actions that administrators can take on monitored system events.
+
+**Actions on Monitored System Events**
+
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 76%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Assess</p></td>
+<td><p>The Trend Vision One Endpoint Security agent always allows programs associated with an event to run and logs the event for assessment.</p>
+<p>This is the default action for all monitored system events.</p>
+
+
+:::note
+
+<p>This option is not supported for the Program Library Injection (DLL injection) event on 64-bit systems.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Allow</p></td>
+<td><p>The Trend Vision One Endpoint Security agent always allows programs associated with an event to run.</p></td>
+</tr>
+<tr>
+<td><p>Ask when necessary</p></td>
+<td><p>The Trend Vision One Endpoint Security agent prompts users to allow or deny programs associated with an event from running and adds the programs to the exception list</p>
+<p>If the user does not respond within a certain time period, the Trend Vision One Endpoint Security agent automatically allows the program to run. The default time period is 30 seconds.</p>
+
+
+:::note
+
+<p>This option is not supported for the Program Library Injection (DLL injection) event on 64-bit systems.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Deny</p></td>
+<td><p>The Trend Vision One Endpoint Security agent always blocks programs associated with an event from running and logs the event.</p>
+<p>After blocking a program with notifications enabled, the Trend Vision One Endpoint Security agent displays a notification on the endpoint.</p></td>
+</tr>
+</tbody>
+</table>
+:::::::

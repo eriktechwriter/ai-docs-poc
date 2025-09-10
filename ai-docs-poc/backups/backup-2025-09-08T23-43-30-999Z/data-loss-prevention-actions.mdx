@@ -1,0 +1,120 @@
+---
+slug: trend-vision-one-data-loss-prevention-actions
+title: Data Loss Prevention Actions
+last_updated: '2025-09-08'
+ai_context:
+  source_file: data-loss-prevention-actions.md
+  conversion_date: '2025-09-08T23:42:20.895Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+When Data Loss Prevention detects the transmission of data identifiers, it checks the DLP policy for the detected data identifiers and performs the action configured for the policy.
+
+The following table lists the Data Loss Prevention actions.
+
+**Data Loss Prevention Actions**
+
+<table>
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2"><p>Actions</p></td>
+</tr>
+<tr>
+<td><p>Pass</p></td>
+<td><p>Data Loss Prevention allows and logs the transmission.</p></td>
+</tr>
+<tr>
+<td><p>Block</p></td>
+<td><p>Data Loss Prevention blocks and logs the transmission.</p></td>
+</tr>
+<tr>
+<td colspan="2"><p>Additional Actions</p></td>
+</tr>
+<tr>
+<td><p>Notify the agent user</p></td>
+<td><p>Data Loss Prevention displays a notification message to inform the user of the data transmission and whether it was passed or blocked.</p></td>
+</tr>
+<tr>
+<td><p>Record data</p></td>
+<td><p>Regardless of the primary action, Data Loss Prevention records the sensitive information to <code>&lt;Security Agent installation folder&gt;\DLPLite\Forensic</code>. Select this action to evaluate sensitive information that is being flagged by Data Loss Prevention.</p>
+<p>Recorded sensitive information may consume too much hard disk space. Therefore, Trend Micro highly recommends that you choose this option only for highly sensitive information.</p></td>
+</tr>
+<tr>
+<td><p>Encrypt supported channels using the specified key/password (only available if Endpoint Encryption is installed)</p>
+
+
+:::note
+
+<p>This option is only available for Removable storage and Cloud storage service channels and when selecting the <strong>Pass</strong> action.</p>
+
+
+:::
+
+
+
+
+:::warning[Important]
+
+<p>The File Encryption feature in Endpoint Encryption is deprecated and may not be available for new installation instances.</p>
+
+
+:::
+
+</td>
+<td><p>If Trend Micro Endpoint Encryption is installed alongside theTrend Vision One Endpoint Security agents, Data Loss Prevention can automatically encrypt files before allowing a user to pass them to another location. If Endpoint Encryption is not installed, Data Loss Prevention performs the Block action on files.</p>
+<p>Choose one of the following encryption keys or a fixed password:</p>
+<ul>
+<li><p><strong>User key</strong>: Also known as a <em>Local Key</em>, this key is unique to each user and limits access to the encrypted file to the user that created the file.</p></li>
+<li><p><strong>Shared key</strong>: This key refers to the <em>Group Key</em> or <em>Enterprise Key</em> and the Endpoint Encryption administrator configures the type using PolicyServer MMC.</p></li>
+<li><p><strong>Fixed password</strong>: Users manually provide a fixed password using an on-screen prompt. Endpoint Encryption creates a self-extracting package that users can access on any endpoint after providing the decryption password.</p></li>
+</ul>
+
+
+:::warning[Important]
+
+<ul>
+<li><p>The target endpoint must have Endpoint Encryption installed and the user must log in to Endpoint Encryption in order to encrypt data.</p></li>
+<li><p>Encrypted files located on USB devices are subject to Data Loss Prevention scanning when users attempt to decrypt the files. Decrypting files containing sensitive data on a USB device triggers the USB encryption protocol resulting in the system requiring that the sensitive data be encrypted (again). To prevent Data Loss Prevention from attempting to "re-encrypt" the data, move the encrypted files to a local drive before attempting to access the data.</p></li>
+<li><p>Data Loss Prevention blocks attempts to upload files to cloud storage when using a web client. Encrypt the files manually before uploading using a web client.</p></li>
+</ul>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>User justification</p>
+
+
+:::note
+
+<p>This option is only available after selecting the <strong>Block</strong> action.</p>
+
+
+:::
+
+</td>
+<td><p>Data Loss Prevention prompts the user before performing the "Block" action. User can select to override the "Block" action by providing an explanation as to why the sensitive data is safe to pass. The available justification reasons are:</p>
+<ul>
+<li><p><strong>This is part of an established business process.</strong></p></li>
+<li><p><strong>My manager approved the data transfer.</strong></p></li>
+<li><p><strong>The data in this file is not confidential.</strong></p></li>
+<li><p><strong>Other</strong>: Users provide an alternate explanation in the text field provided.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+:::

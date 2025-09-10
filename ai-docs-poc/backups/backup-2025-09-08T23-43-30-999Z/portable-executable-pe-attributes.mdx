@@ -1,0 +1,126 @@
+---
+slug: trend-vision-one-portable-executable-pe-attributes
+title: Portable Executable (PE) attributes
+last_updated: '2025-09-08'
+ai_context:
+  source_file: portable-executable-pe-attributes.md
+  conversion_date: '2025-09-08T23:42:14.420Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Learn about the attributes embedded within Portable Executable (PE) files the [Incident Response Evidence Collection](create-ir-collection-playbooks.mdx) playbook, [Collect Evidence task](collect-evidence-task.mdx), and [Trend Micro Incident Response Toolkit](manual-evidence-collection.mdx) collect.
+
+:::note
+
+PE file attributes might appear in multiple evidence categories, including [Service Information](service-information-windows.mdx) and [System Execution Information](system-execution-windows.mdx).
+:::
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>File path</p></td>
+<td><p>The absolute path of the file.</p></td>
+</tr>
+<tr>
+<td><p>File size</p></td>
+<td><p>The size of the file in bytes.</p></td>
+</tr>
+<tr>
+<td><p>SHA1</p></td>
+<td><p>The SHA1 hash of the file contents.</p></td>
+</tr>
+<tr>
+<td><p>User account</p></td>
+<td><p>The account name or security identifier associated with the file.</p></td>
+</tr>
+<tr>
+<td><p>User domain</p></td>
+<td><p>The domain name of the security identifier associated with the file.</p></td>
+</tr>
+<tr>
+<td><p>File extension</p></td>
+<td><p>The suffix indicating the file format of the file.</p></td>
+</tr>
+<tr>
+<td><p>True file type</p></td>
+<td><p>The file type as determined by signatures in the file header.</p></td>
+</tr>
+<tr>
+<td><p>Catalog signed</p></td>
+<td><p>An indication of whether the file contains a digital signature in the catalog file.</p></td>
+</tr>
+<tr>
+<td><p>Embedded signed</p></td>
+<td><p>An indication of whether the signature on the embedded PE file is verified.</p></td>
+</tr>
+<tr>
+<td><p>Catalog signer</p></td>
+<td><p>The signer of the digital signature in the catalog file.</p></td>
+</tr>
+<tr>
+<td><p>Embedded signer</p></td>
+<td><p>The signer of the digital signature in the embedded PE file.</p></td>
+</tr>
+<tr>
+<td><p>Compiled timestamp</p></td>
+<td><p>The time the PE file was compiled.</p></td>
+</tr>
+<tr>
+<td><p>Import table hash</p></td>
+<td><p>The MD5 hash of the imported functions in the PE file.</p></td>
+</tr>
+<tr>
+<td><p>Linker version</p></td>
+<td><p>The version number of the file linker.</p></td>
+</tr>
+<tr>
+<td><p>File version</p></td>
+<td><p>The file version number represented in four 16-bit integers.</p></td>
+</tr>
+<tr>
+<td><p>Debug paths</p></td>
+<td><p>The file paths of any debug information present.</p></td>
+</tr>
+<tr>
+<td><p>Sub system</p></td>
+<td><p>The Windows subsystem required to run the image.</p></td>
+</tr>
+<tr>
+<td><p>Company name</p></td>
+<td><p>The internal company name when the file was compiled.</p></td>
+</tr>
+<tr>
+<td><p>File description</p></td>
+<td><p>The internal description of the file when the file was compiled.</p></td>
+</tr>
+<tr>
+<td><p>Internal name</p></td>
+<td><p>The internal name for the file.</p></td>
+</tr>
+<tr>
+<td><p>Create time</p></td>
+<td><p>The time the file was created in the file system.</p></td>
+</tr>
+<tr>
+<td><p>Modify time</p></td>
+<td><p>The last time the file was modified in the file system.</p></td>
+</tr>
+<tr>
+<td><p>Access time</p></td>
+<td><p>The last time the file was accessed in the file system.</p></td>
+</tr>
+</tbody>
+</table>
+::::

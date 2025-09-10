@@ -1,0 +1,47 @@
+---
+slug: trend-vision-one-dmarc
+title: 'Domain-based message authentication, reporting & conformance (DMARC)'
+last_updated: '2025-09-08'
+ai_context:
+  source_file: dmarc.md
+  conversion_date: '2025-09-08T23:42:20.430Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Domain-based Message Authentication, Reporting and Conformance (DMARC) is an email validation system designed to detect and prevent email spoofing. It is intended to combat certain techniques often used in phishing and email spam, such as email messages with forged sender addresses that appear to originate from legitimate organizations. It provides a way to authenticate email messages for specific domains, send feedback to senders, and conform to a published policy.
+
+DMARC fits into the inbound email authentication process of Cloud Email Gateway Protection. The way it works, is to help email recipients to determine if the purported message aligns with what the recipient knows about the sender. If not, DMARC provides guidance on how to handle the non-aligned messages. DMARC requires either of the following:
+
+- A message passes the SPF check, and its identifier domain is in alignment.
+
+- A message passes the DKIM signature check, and its identifier domain is in alignment.
+
+Identifier alignment requires that the domain authenticated by SPF or DKIM be the same as or belong to the same organizational domain as the message header domain. If the alignment mode is "s" (strict), the two domains must be exactly the same; if the alignment mode is "r" (relaxed), they must belong to the same organizational domain.
+
+:::note
+
+If an email message passes the Sender IP Match check, the message is also considered as passing the SPF check of DMARC authentication.
+:::
+
+However, some services like mailing lists or account forwarding (also known as intermediaries) might make changes to a legitimate message before sending it on, potentially resulting in SPF, DKIM, and/or DMARC alignment failure. Therefore, the message may not get delivered despite of its legitimacy.
+
+Authenticated Received Chain (ARC) was designed to address such problem. ARC preserves email authentication results across subsequent intermediaries (“hops”) that may modify the message, and thus would cause email authentication measures to fail to verify when that message reaches its final destination. But if an ARC chain were present and validated, a receiver who would otherwise discard the messages might choose to evaluate the ARC results and make an exception, allowing legitimate messages to be delivered.
+
+ARC-enabled intermediaries generally act as both ARC validators (when receiving messages) and ARC sealers (when sending messages onward, not originated locally).
+
+When evaluating ARC results for validity as an ARC validator, Cloud Email Gateway Protection currently evaluates only the following third-party ARC sealers:
+
+- Google
+
+- Microsoft
+
+When signing the messages' validation results as an ARC sealer, Cloud Email Gateway Protection uses the domain name "d=tmes.trendmicro.com" in the ARC headers. If the next hop intermediary is ARC-enabled, Trend Micro suggests that you enable the intermediary to add Trend Micro to its ARC sealer trust list.
+
+**Related information**
+
+- [Adding DMARC settings](adding-dmarc-settings.mdx)
+- [Editing DMARC settings](editing-dmarc-settings.mdx)
+- [Monitoring DMARC](monitoring-dmarc.mdx)
+::::

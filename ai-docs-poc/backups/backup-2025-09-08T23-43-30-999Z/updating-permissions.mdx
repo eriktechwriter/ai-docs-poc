@@ -1,0 +1,84 @@
+---
+slug: trend-vision-one-updating-permissions
+title: Migrate from Azure AD Graph APIs to Microsoft Graph APIs
+last_updated: '2025-09-08'
+ai_context:
+  source_file: updating-permissions.md
+  conversion_date: '2025-09-08T23:42:11.744Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Migrate from Azure AD Graph APIs to Microsoft Graph APIs by updating permissions granted to an app or group of apps.
+
+Microsoft will fully retire the Azure AD Graph API service on June 30, 2025. To ensure uninterrupted access to your Microsoft Entra ID data, you need to update the necessary permissions to allow Trend Vision One to access your Microsoft Entra ID data via Microsoft Graph APIs.
+
+You need to update the permissions if all of the following conditions apply:
+
+- You have received notifications from Azure about migrating your applications from Azure AD Graph to Microsoft Graph
+
+  For more information, see <https://learn.microsoft.com/en-us/graph/migrate-azure-ad-graph-overview>.
+
+- Your Azure enterprise applications include the app **Trend Micro Vision One** (ID: c00e31c9-b4e7-439d-a5ec-5b26b58764cc). You may also have another app **Trend Micro Vision One** (ID: 450abcc8-585c-4dbc-824a-e1b4af453d14).
+
+- You are using any of the following apps:
+
+  - Cyber Risk Exposure Management
+
+  - Email and Collaboration Sensor
+
+  - Identity Security
+
+  - Observed Attack Techniques
+
+  - Search
+
+  - User Accounts
+
+  - Workbench
+
+- You have received the "Permission update required" message in the Microsoft Entra ID screen in Trend Vision One
+
+:::note
+
+The migration from Azure AD Graph APIs to Microsoft Graph APIs does not affect the functionality of Trend Vision One applications. All features and services will continue to operate normally during and after the migration process.
+:::
+
+### Procedure {#procedure}
+
+1.  If you have received API migration notifications from Azure and the "Permission update required" message in the **Microsoft Entra ID** screen, follow these steps:
+
+    1.  Open the **Microsoft Entra ID** screen from **Workflow and Automation → Third-Party Integration** or from a Trend Vision One app that requires Microsoft Entra ID permissions.
+
+    2.  Locate and view the permissions that need updating, click **Update permissions** and complete the follow-up operations.
+
+        For more information, see [Configure Microsoft Entra ID integration](configuring-integration.mdx).
+
+    3.  Allow approximately 24 hours for the migration process to complete.
+
+        :::note
+
+        You may ignore the "Permission update required" message that appears again during the waiting period.
+
+        If you still see the message after the waiting period, click **Details**, block the permissions, and regrant the permissions again.
+
+        For more information, see [Block Microsoft Entra ID permissions](blocking-permissions.mdx).
+        :::
+
+    4.  Verify that the "Permission update required" message no longer appears after the waiting period.
+
+    5.  Sign in to the [Microsoft Azure](https://portal.azure.com) portal, and verify that your Azure enterprise applications include the new application (ID: 450abcc8-585c-4dbc-824a-e1b4af453d14), indicating the migration was successful.
+
+    6.  Delete the old application (ID: c00e31c9-b4e7-439d-a5ec-5b26b58764cc) from your Microsoft Entra admin center.
+
+        For more information, see the [Microsoft Entra ID documentation](https://learn.microsoft.com/en-us/azure/active-directory/manage-apps/delete-application-portal?pivots=portal).
+
+2.  If you have only received API migration notifications from Azure, follow these steps:
+
+    1.  Sign in to the [Microsoft Azure](https://portal.azure.com) portal, and verify that your Azure enterprise applications include the new application (ID: 450abcc8-585c-4dbc-824a-e1b4af453d14).
+
+    2.  Delete the old application (ID: c00e31c9-b4e7-439d-a5ec-5b26b58764cc) from your Microsoft Entra admin center.
+
+        For more information, see the [Microsoft Entra ID documentation](https://learn.microsoft.com/en-us/azure/active-directory/manage-apps/delete-application-portal?pivots=portal).
+::::

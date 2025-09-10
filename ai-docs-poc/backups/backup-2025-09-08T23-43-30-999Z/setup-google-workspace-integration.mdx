@@ -1,0 +1,91 @@
+---
+slug: trend-vision-one-setup-google-workspace-integration
+title: Setting up Google Workspace integration
+last_updated: '2025-09-08'
+ai_context:
+  source_file: setup-google-workspace-integration.md
+  conversion_date: '2025-09-08T23:42:12.592Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Configure integration settings to quickly deploy the **Mobile Security for Business** app and app configuration to managed mobile devices.
+
+Before starting the integration process, make sure that you have:
+
+- A Super Admin account for Google Workspace
+
+- Trend Vision One console admin credentials
+
+### Procedure {#procedure}
+
+1.  On the Trend Vision One console, access the configuration screen for Google Workspace integration.
+
+    - If this is the first time you set up Mobile Security, go to **Mobile Security → Mobile Inventory** to display the **Mobile Security** landing page.
+
+      Under **I have an MDM solution**, choose **Use My MDM Solution → Google Workspace**.
+
+    - If you have already set up an MDM integration or Mobile Device Director, go to **Mobile Security → Mobile Inventory**, click the settings icon (![](/images/integrationSettings=20250121101015.webp)), and click **Add MDM Solution**.
+
+      Under **I have an MDM solution**, choose **Use My MDM Solution → Google Workspace**.
+
+    - Go to **Workflow and Automation → Third-Party Integration**, and click **Google Workspace** in the integration list.
+
+    The configuration screen appears.
+
+    :::note
+
+    To edit your Google Workspace integration settings, go to **Workflow and Automation → Third-Party Integration**, and click **Google Workspace** in the integration list.
+
+    Only administrators with the Master Administrator or Operator role can edit the integration settings.
+    :::
+
+2.  In the **Integration Settings** section, do the following actions.
+
+    1.  Click **Grant Permissions**, specify your Super Admin account for Google Workspace, and click **Continue**
+
+    2.  Review the permissions you grant Mobile Security and click **Continue**.
+
+    3.  Select the platform of the mobile devices you are managing through Google Workspace.
+
+    4.  Configure the platform-specific settings.
+
+        - For iOS/iPadOS:
+
+          1.  Install the Mobile Security for Business app from the App Store on your end users' devices.
+
+          2.  Use the app on your end users' devices to scan the enrollment QR code or input the enrollment key, or send enrollment instructions to end users via email.
+
+              :::note
+
+              Enrollment keys associated with the enrollment QR codes expire after the selected validity period. When the key has expired, regenerate the key and resend the new key to any unenrolled end users.
+
+              Regenerating a key invalidate the previous key even if the key is not expired. The new key applies to both iOS/iPadOS and Android device enrollment.
+              :::
+
+        - For Android:
+
+          1.  Record the provided enrollment key and the work email for the configuration in step 2.
+
+              :::note
+
+              Enrollment keys expire after the selected validity period. If the key has expired, regenerate the key and configure the new key in the Google Workspace console.
+
+              Regenerating a key invalidate the previous key even if the key is not expired. The new key applies to both iOS/iPadOS and Android device enrollment.
+              :::
+
+          2.  Go to your Google Workspace console, add the **Mobile Security for Business** app to your managed web and mobile apps, and configure the app settings for enrolling Android devices.
+
+              For more information, see [Deploying the Mobile Security for Business app to managed Android devices in Google Workspace](deploy-android-google-workspace.mdx).
+
+        - For ChromeOS:
+
+          1.  Click **Go to Managed Google Play** to approve the **Mobile Security for Business** app in Managed Google Play.
+
+          2.  Enable Web Protection if desired and choose whether to pin the app to the device browser automatically.
+
+3.  In the **Advanced Settings** section, select the data sync frequency to sync users, devices, and organizational units from Google Workspace.
+
+4.  Click **Save**.
+:::

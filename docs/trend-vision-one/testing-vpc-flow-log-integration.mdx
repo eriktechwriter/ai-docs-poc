@@ -1,0 +1,44 @@
+---
+slug: trend-vision-one-testing-vpc-flow-log-integration
+title: Testing VPC Flow Log integration for XDR for Cloud
+---
+# Testing VPC Flow Log integration for XDR for Cloud
+
+Test XDR for Cloud - AWS VPC Flow Log integration in your AWS cloud environment.
+
+:::warning[Important]
+
+XDR for Cloud currently only supports AWS cloud accounts. Support for additional cloud providers is coming soon.
+
+Enabling XDR for Cloud - AWS VPC Flow Logs requires allocating credits. For information about estimating credit usage with XDR for Cloud, see [Estimating and monitoring XDR for Cloud usage](xdr-for-cloud-usage.mdx).
+:::
+
+XDR for Cloud - AWS VPC Flow Logs integration allows Trend Vision One to access and monitor your AWS VPC Flow Logs to detected potential threats. The following steps provide a guide on how to test the feature within your environment.
+
+### Procedure {#procedure}
+
+1.  Sign in to the AWS account you want to use to test XDR for Cloud - AWS VPC Flow Logs.
+
+2.  Review the [VPC Flow Logs recommendations and requirements](vpc-flow-logs-requirements.mdx).
+
+3.  Add your AWS account to Trend Vision One cloud accounts app.
+
+    Follow the steps in [Adding an AWS account using CloudFormation](adding-aws-account.mdx) and enable the following features and permissions:
+
+    - Core Features
+
+    - XDR for Cloud - AWS VPC Flow Logs
+
+    :::note
+
+    If you want to test integration with an AWS organization account, see [Adding an AWS Organization](adding-aws-organizations.mdx).
+    :::
+
+4.  After your account successfully connects, use **XDR Data Explorer** to verify data is being sent.
+
+5.  Use one of the following demo attacks to trigger a Workbench alert.
+
+    - Demo: Model - Network Connection to Known Suspicious IP Address
+
+    You can also run a [Threat Intelligence sweeping test](threat-intelligence-vpc-sweep-test.mdx) to generate an alert using demo data.
+::::

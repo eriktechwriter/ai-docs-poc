@@ -1,0 +1,80 @@
+---
+slug: trend-vision-one-logon-methods
+title: Logon methods
+---
+# Logon methods
+
+Cloud Email Gateway Protection allows you to control the way that end users access the End User Console.
+
+On the **Logon Methods** screen, you can enable or disable the following logon methods:
+
+- **Local Account Logon**
+
+  If this method is enabled, end users can log on to the End User Console with their user name and password of the local managed accounts they have registered on the End User Console. Enforcing two-factor authentication adds an extra layer of security to the end user accounts.
+
+- **Single Sign-On**
+
+  Once you enable single sign-on (SSO) and complete required settings, end users can log on to the End User Console through SSO with their existing identity provider credentials. You can create multiple SSO profiles so that different end users can log on to the End User Console from different identity provider servers through SSO.
+
+  When creating an SSO profile, you need to specify the domains to which the profile applies. Assume that subaccount A manages domain A, B and C, subaccount B manages domain B, subaccount C manages domain C, and subaccount D manages **My organization**. The operations that these subaccounts can perform on each SSO profile are as follows:
+
+  <table>
+  <colgroup>
+  <col style="width: 25%" />
+  <col style="width: 25%" />
+  <col style="width: 50%" />
+  </colgroup>
+  <thead>
+  <tr>
+  <th><p>SSO profile</p></th>
+  <th><p>Applied to Domains</p></th>
+  <th><p>Available operations by subaccount</p></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td><p>Profile 1</p></td>
+  <td><p>Domains A and B</p></td>
+  <td><ul>
+  <li><p>Subaccount A: read, edit, and delete</p></li>
+  <li><p>Subaccount B: read only</p></li>
+  <li><p>Subaccount C: cannot read, edit or delete</p></li>
+  <li><p>Subaccount D: read, edit, and delete</p></li>
+  </ul></td>
+  </tr>
+  <tr>
+  <td><p>Profile 2</p></td>
+  <td><p>Domain C</p></td>
+  <td><ul>
+  <li><p>Subaccount A: read, edit, and delete</p></li>
+  <li><p>Subaccount B: cannot read, edit or delete</p></li>
+  <li><p>Subaccount C: read, edit, and delete</p></li>
+  <li><p>Subaccount D: read, edit, and delete</p></li>
+  </ul></td>
+  </tr>
+  <tr>
+  <td><p>Profile 3</p></td>
+  <td><p>My organization</p></td>
+  <td><ul>
+  <li><p>Subaccount A: read only</p></li>
+  <li><p>Subaccount B: read only</p></li>
+  <li><p>Subaccount C: read only</p></li>
+  <li><p>Subaccount D: read, edit, and delete</p></li>
+  </ul></td>
+  </tr>
+  </tbody>
+  </table>
+
+  Cloud Email Gateway Protection currently supports the following identity providers for SSO:
+
+  - Microsoft Active Directory Federation Services (AD FS)
+
+  - Microsoft Entra ID
+
+  - Okta
+
+**Related information**
+
+- [Configuring local account logon](config-local-logon-email-security.mdx)
+- [Configuring single sign-on](configuring-sso-email-security.mdx)
+:::

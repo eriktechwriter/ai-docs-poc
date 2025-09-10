@@ -1,0 +1,69 @@
+---
+slug: trend-vision-one-auto-troubleshooting-apex-saas
+title: Automated Troubleshooting of Apex One as a Service
+last_updated: '2025-09-08'
+ai_context:
+  source_file: auto-troubleshooting-apex-saas.md
+  conversion_date: '2025-09-08T23:42:24.657Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Trend Micro constantly monitors your Trend Vision One servers and Security Agents for irregularities. Trend Micro engineers can take proactive actions to compensate for issues related to server resources, such as hard disk space and memory allocation. However, incorrect server settings or an unsuccessful hotfix deployment may cause service disruptions or unnecessarily high network consumption.
+
+If you grant the necessary permissions, Trend Micro engineers can take proactive, preventative measures to ensure the continuity of your business operations without interrupting you with numerous email messages and notifications. With your permission, Trend Micro engineers can take the following actions to remotely troubleshoot and, in some cases, fix issues in your Trend Vision One environment.
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Target</p></th>
+<th><p>Possible Remediation Actions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Servers</p></td>
+<td><ul>
+<li><p>Assess server settings and perform debug log collection</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Security Agents</p></td>
+<td><p><strong>Allow Trend Micro Support to enable debug logging and collect the following data for troubleshooting purposes</strong></p>
+<p>For Windows endpoints:</p>
+<ul>
+<li><p>Enable and collect debug logs from the Security Agent program</p></li>
+<li><p>Collect Windows Event Logs and Performance Counter data</p></li>
+</ul>
+<p>For Mac endpoints:</p>
+<ul>
+<li><p>Enable and collect debug logs from the Security Agent program</p></li>
+<li><p>System information, kernel dump, crash information, System Profiler data, and Security Agent configuration files (.plist)</p></li>
+</ul>
+<p><strong>Allow Trend Micro Support to take proactive, remote troubleshooting actions on the Security Agent program</strong></p>
+<ul>
+<li><p>Deploy hotfixes to replace Security Agent files</p></li>
+<li><p>Modify Security Agent settings including:</p>
+<ul>
+<li><p>Configuration file settings (INI or PLIST files)</p></li>
+<li><p>Registry keys</p>
+<ul>
+<li><p><code>HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\TrendMicro</code></p></li>
+<li><p><code>HKEY_LOCAL_MACHINE\SOFTWARE\TrendMicro</code></p></li>
+</ul></li>
+</ul></li>
+<li><p>Reload the Security Agent program:</p>
+<ul>
+<li><p>Stop and restart Security Agent services</p></li>
+<li><p>Force stop Security Agent processes</p></li>
+</ul></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+:::

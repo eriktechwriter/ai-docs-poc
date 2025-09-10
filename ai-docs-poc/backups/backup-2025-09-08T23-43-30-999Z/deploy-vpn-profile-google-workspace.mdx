@@ -1,0 +1,52 @@
+---
+slug: trend-vision-one-deploy-vpn-profile-google-workspace
+title: Deploying a VPN profile for Google Workspace
+last_updated: '2025-09-08'
+ai_context:
+  source_file: deploy-vpn-profile-google-workspace.md
+  conversion_date: '2025-09-08T23:42:20.622Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Set up a VPN profile on managed ChromeOS devices for protection through Web Reputation and Zero Trust Secure Access.
+
+### Procedure {#procedure}
+
+1.  Download gateway certificates in the Trend Vision One console.
+
+    1.  Go to **Zero Trust Secure Access → Secure Access Configuration → Internet Access Configuration → HTTPS Inspection**.
+
+    2.  Click ![](/images/settingsGearIcon=GUID-20240529104545.webp) to manage certificate settings.
+
+    3.  Under Cloud Gateway Certificate, click **Download built-in certificate (provided by the Internet Access Service)**.
+
+    4.  Under On-Premises Gateway Certificate, click **Download built-in certificate (provided by the Internet Access Service)**.
+
+2.  Add certificates in the Google Admin console.
+
+    1.  Go to **Devices → Networks → Certificates**.
+
+    2.  Click the name of your organizational unit.
+
+    3.  Click **ADD CERTIFICATE**.
+
+    4.  On the **Add certificate** screen, click **UPLOAD**, select your Cloud Gateway Certificate, and select the required items for Certificate Authority.
+
+    5.  Click **Add**.
+
+    6.  On the **Add certificate** screen, click **UPLOAD**, select your On-Premises Gateway Certificate, and select the required items for Certificate Authority.
+
+    7.  Click **Add**.
+
+3.  Configure the VPN settings in the Google Admin console.
+
+    1.  Go to **Apps → Web and mobile apps → Mobile Security for Business → Settings**.
+
+    2.  Select **ON** from the drop-down menu for **Use as the always-on VPN app**.
+
+    3.  Select **Do not allow user to disconnect from a VPN manually**.
+
+    The VPN profile is deployed to managed ChromeOS devices for protection through Web Reputation and Zero Trust Secure Access.
+:::

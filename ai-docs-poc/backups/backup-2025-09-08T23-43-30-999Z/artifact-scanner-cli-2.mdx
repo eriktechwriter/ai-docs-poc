@@ -1,0 +1,536 @@
+---
+slug: trend-vision-one-artifact-scanner-cli-2
+title: Artifact Scanner CLI
+last_updated: '2025-09-08'
+ai_context:
+  source_file: artifact-scanner-cli-2.md
+  conversion_date: '2025-09-08T23:42:24.847Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::::: {role="main"}
+- General usage
+
+- Available commands
+
+- Global flags
+
+- Scan command usage
+
+- Scan command flags
+
+- Supported artifacts
+
+- Scan subcommands
+
+- Vulnerabilities subcommand
+
+- [Malware subcommand](artifact-scanner-cli.mdx)
+
+- [Secrets subcommand](artifact-scanner-cli.mdx)
+
+- [Proxy configuration](artifact-scanner-cli.mdx)
+
+### General usage {#general-usage}
+
+For examples of commands using Trend Micro Artifact Scanner (TMAS), see [Examples](tmas-examples.mdx).
+
+``` codeblock
+tmas [command] [flags]
+```
+
+### Available commands {#available-commands}
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Command</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>scan</code></p></td>
+<td><p>Scan an artifact with any combination of scanners (at least one of vulnerabilities, malware, or secrets).</p></td>
+</tr>
+<tr>
+<td><p><code>version</code></p></td>
+<td><p>Get current CLI version (long).</p></td>
+</tr>
+<tr>
+<td><p><code>help</code></p></td>
+<td><p>Display help information.</p></td>
+</tr>
+</tbody>
+</table>
+
+### Global flags {#global-flags}
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>--version</code></p></td>
+<td><p>Get current CLI version (short).</p></td>
+</tr>
+<tr>
+<td><p><code>-v, --verbose</code></p></td>
+<td><p>Increase verbosity (-v = info, -vv = debug).</p></td>
+</tr>
+<tr>
+<td><p><code>-h, --help</code></p></td>
+<td><p>Display help information.</p></td>
+</tr>
+</tbody>
+</table>
+
+### Scan command usage {#scan-command-usage}
+
+`tmas scan [artifact] [flags]`
+
+### Scan command flags {#scan-command-flags}
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>-p, --platform</code></p></td>
+<td><p>Specify platform for multi-platform container image sources. For example: <code>linux/arm64</code>, <code>linux/arm64/v8</code>, <code>arm64</code>, <code>linux</code>.</p>
+<p>Default is <code>linux/amd64</code>.</p></td>
+</tr>
+<tr>
+<td><p><code>-r, --region</code></p></td>
+<td><p>Trend Vision One service regions: <code>ap-southeast-2</code>, <code>eu-central-1</code>, <code>ap-south-1</code>, <code>ap-northeast-1</code>, <code>ap-southeast-1</code>, <code>us-east-1</code>, <code>me-central-1</code>.</p>
+<p>Default is <code>us-east-1</code>.</p></td>
+</tr>
+<tr>
+<td><p><code>-V, --vulnerabilities</code></p></td>
+<td><p>Enable scanning for vulnerabilities (optional).</p></td>
+</tr>
+<tr>
+<td><p><code>-M, --malware</code></p></td>
+<td><p>Enable scanning for malware (optional). Supports <code>docker</code>, <code>docker-archive</code>, <code>oci-archive</code>, <code>oci-dir</code> and <code>registry</code> artifact types.</p></td>
+</tr>
+<tr>
+<td><p><code>-S, --secrets</code></p></td>
+<td><p>Enable scanning for secrets (optional).</p></td>
+</tr>
+<tr>
+<td><p><code>-o, --override</code></p></td>
+<td><p>Specify the file path to the file containing the vulnerability and secret override rules (optional). For example: <code>/path/to/tmas_overrides.yml</code>.</p></td>
+</tr>
+<tr>
+<td><p><code>--saveSBOM</code></p></td>
+<td><p>Save SBOM in the local directory (optional).</p></td>
+</tr>
+<tr>
+<td><p><code>--distro</code></p></td>
+<td><p>Specify the distribution to match vulnerabilities against file and directory artifacts (optional).</p>
+<p>Use the formation <code>&lt;distro&gt;:&lt;version&gt;</code>, like <code>ol:8.4</code>, for example.</p></td>
+</tr>
+<tr>
+<td><p><code>--evaluatePolicy</code></p></td>
+<td>
+
+:::warning[Important]
+
+<p>This is a "Pre-release" feature and is not considered an official release. Please review the <a href="trend-vision-one-pre-release-disclaimer">Pre-release disclaimer</a> before using the feature.</p>
+
+
+:::
+
+
+<p>For Code Security, you can preview the policy evaluation functionality using the <code>--evaluatePolicy</code> flag.</p>
+<p>Evaluate the scan results against your Code Security policy. A default policy is provided for all accounts, or you can customize it in the Trend Vision One console. TMAS returns the results and exits with status code <code>2</code> if the policy is violated. Learn more about Code Security policies.</p></td>
+</tr>
+<tr>
+<td><p><code>-v, --verbose</code></p></td>
+<td><p>Increase verbosity (-v = info, -vv = debug).</p></td>
+</tr>
+<tr>
+<td><p><code>-h, --help</code></p></td>
+<td><p>Display help information.</p></td>
+</tr>
+</tbody>
+</table>
+
+:::note
+
+For more information on available scanners and their flags, see Scan subcommands. Using a scanner-specific flag without enabling the associated scanner does not result in an error, but that flag will have no effect.
+:::
+
+### Supported artifacts {#supported-artifacts}
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Artifact</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>docker:yourrepo/yourimage:tag</code></p></td>
+<td><p>Use images from the Docker daemon.</p></td>
+</tr>
+<tr>
+<td><p><code>podman:yourrepo/yourimage:tag</code></p></td>
+<td><p>Use images from the Podman daemon.</p></td>
+</tr>
+<tr>
+<td><p><code>docker-archive:path/to/yourimage.tar</code></p></td>
+<td><p>Use a tarball from disk for archives created from docker save.</p></td>
+</tr>
+<tr>
+<td><p><code>oci-archive:path/to/yourimage.tar</code></p></td>
+<td><p>Use a tarball from disk for OCI archives (from Skopeo or otherwise).</p></td>
+</tr>
+<tr>
+<td><p><code>oci-dir:path/to/yourimage</code></p></td>
+<td><p>Read directly from a path on disk for OCI layout directories (from Skopeo or otherwise).</p></td>
+</tr>
+<tr>
+<td><p><code>singularity:path/to/yourimage.sif</code></p></td>
+<td><p>Read directly from a Singularity Image Format (SIF) container on disk.</p></td>
+</tr>
+<tr>
+<td><p><code>registry:yourrepo/yourimage:tag</code></p></td>
+<td><p>Pull image directly from a registry (no container runtime required).</p></td>
+</tr>
+<tr>
+<td><p><code>dir:path/to/yourproject</code></p></td>
+<td><p>Read directly from a path on disk (any directory).</p></td>
+</tr>
+<tr>
+<td><p><code>file:path/to/yourproject/file</code></p></td>
+<td><p>Read directly from a path on disk (any single file).</p></td>
+</tr>
+</tbody>
+</table>
+
+### Scan subcommands {#scan-subcommands}
+
+`tmas scan [subcommand] [artifact] [flags]`
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Subcommand</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>vulnerabilities</code></p></td>
+<td><p>Perform a vulnerability scan on an artifact.</p></td>
+</tr>
+<tr>
+<td><p><code>malware</code></p></td>
+<td><p>Perform a malware scan on an image artifact.</p></td>
+</tr>
+<tr>
+<td><p><code>secrets</code></p></td>
+<td><p>Perform a secrets scan on an artifact.</p></td>
+</tr>
+</tbody>
+</table>
+
+### Vulnerabilities subcommand {#vulnerabilities-subcommand}
+
+`tmas scan vulnerabilities <artifact_to_scan>`
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>-p, --platform</code></p></td>
+<td><p>Specify platform for multi-platform container image sources. For example: <code>linux/arm64</code>, <code>linux/arm64/v8</code>, <code>arm64</code>, <code>linux</code>.</p>
+<p>Default is <code>linux/amd64</code>.</p></td>
+</tr>
+<tr>
+<td><p><code>-r, --region</code></p></td>
+<td><p>Trend Vision One service regions: <code>ap-southeast-2</code>, <code>eu-central-1</code>, <code>ap-south-1</code>, <code>ap-northeast-1</code>, <code>ap-southeast-1</code>, <code>us-east-1</code>, <code>me-central-1</code></p>
+<p>Default is <code>us-east-1</code>.</p></td>
+</tr>
+<tr>
+<td><p><code>-o, --override</code></p></td>
+<td><p>Specify the file path to the file containing the vulnerability override rules (optional). For example: <code>/path/to/tmas_overrides.yml</code>.</p></td>
+</tr>
+<tr>
+<td><p><code>--saveSBOM</code></p></td>
+<td><p>Save SBOM in the local directory (optional).</p></td>
+</tr>
+<tr>
+<td><p><code>--distro</code></p></td>
+<td><p>Specify the distribution to match vulnerabilities against file and directory artifacts (optional).</p>
+<p>Use the formation <code>&lt;distro&gt;:&lt;version&gt;</code>, like <code>ol:8.4</code>, for example.</p></td>
+</tr>
+<tr>
+<td><p><code>--evaluatePolicy</code></p></td>
+<td>
+
+:::warning[Important]
+
+<p>This is a "Pre-release" feature and is not considered an official release. Please review the <a href="trend-vision-one-pre-release-disclaimer">Pre-release disclaimer</a> before using the feature.</p>
+
+
+:::
+
+
+<p>For Code Security, you can preview the policy evaluation functionality using the <code>--evaluatePolicy</code> flag.</p>
+<p>Evaluate the scan results against your Code Security policy. A default policy is provided for all accounts, or you can customize it in the Trend Vision One console. TMAS returns the results and exits with status code <code>2</code> if the policy is violated. Learn more about Code Security policies.</p></td>
+</tr>
+<tr>
+<td><p><code>-v, --verbose</code></p></td>
+<td><p>Increase verbosity (-v = info, -vv = debug).</p></td>
+</tr>
+<tr>
+<td><p><code>-h, --help</code></p></td>
+<td><p>Display help information.</p></td>
+</tr>
+</tbody>
+</table>
+
+:::note
+
+Vulnerability scans are limited to artifacts for which the generated SBOM data is less than 15 MB.
+:::
+
+### Malware subcommand {#malware-subcommand}
+
+`tmas scan malware <artifact_to_scan>`
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>-p, --platform</code></p></td>
+<td><p>Specify platform for multi-platform container image sources. For example: <code>linux/arm64</code>, <code>linux/arm64/v8</code>, <code>arm64</code>, <code>linux</code>.</p>
+<p>Default is <code>linux/amd64</code>.</p></td>
+</tr>
+<tr>
+<td><p><code>-r, --region</code></p></td>
+<td><p>Trend Vision One service regions: <code>ap-southeast-2</code>, <code>eu-central-1</code>, <code>ap-south-1</code>, <code>ap-northeast-1</code>, <code>ap-southeast-1</code>, <code>us-east-1</code>, <code>me-central-1</code>.</p>
+<p>Default is <code>us-east-1</code>.</p></td>
+</tr>
+<tr>
+<td><p><code>--evaluatePolicy</code></p></td>
+<td>
+
+:::warning[Important]
+
+<p>This is a "Pre-release" feature and is not considered an official release. Please review the <a href="trend-vision-one-pre-release-disclaimer">Pre-release disclaimer</a> before using the feature.</p>
+
+
+:::
+
+
+<p>For Code Security, you can preview the policy evaluation functionality using the <code>--evaluatePolicy</code> flag.</p>
+<p>Evaluate the scan results against your Code Security policy. A default policy is provided for all accounts, or you can customize it in the Trend Vision One console. TMAS returns the results and exits with status code <code>2</code> if the policy is violated. Learn more about Code Security policies.</p></td>
+</tr>
+<tr>
+<td><p><code>-v, --verbose</code></p></td>
+<td><p>Increase verbosity (-v = info, -vv = debug).</p></td>
+</tr>
+<tr>
+<td><p><code>-h, --help</code></p></td>
+<td><p>Display help information.</p></td>
+</tr>
+</tbody>
+</table>
+
+:::note
+
+- Malware scans only support `docker`, `docker-archive`, `oci-archive`, `oci-dir` and `registry` artifact types.
+
+- The maximum single file size limit is 1 GB. The scan skips files larger than 1 GB.
+
+- The maximum single layer size limit is 512 MB. The scan skips layers larger than 512 MB.
+:::
+
+### Secrets subcommand {#secrets-subcommand}
+
+`tmas scan secrets <artifact_to_scan>`
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>-p, --platform</code></p></td>
+<td><p>Specify platform for multi-platform container image sources. For example: <code>linux/arm64</code>, <code>linux/arm64/v8</code>, <code>arm64</code>, <code>linux</code>.</p>
+<p>Default is <code>linux/amd64</code>.</p></td>
+</tr>
+<tr>
+<td><p><code>-r, --region</code></p></td>
+<td><p>Trend Vision One service regions: <code>ap-southeast-2</code>, <code>eu-central-1</code>, <code>ap-south-1</code>, <code>ap-northeast-1</code>, <code>ap-southeast-1</code>, <code>us-east-1, </code><code>me-central-1</code>.</p>
+<p>Default is <code>us-east-1</code>.</p></td>
+</tr>
+<tr>
+<td><p><code>-r, --override</code></p></td>
+<td><p>Specify the file path to the file containing the secret override rules (optional). For example: <code>/path/to/tmas_overrides.yml</code>.</p></td>
+</tr>
+<tr>
+<td><p><code>-v, --verbose</code></p></td>
+<td><p>Increase verbosity (-v = info, -vv = debug).</p></td>
+</tr>
+<tr>
+<td><p><code>--evaluatePolicy</code></p></td>
+<td>
+
+:::warning[Important]
+
+<p>This is a "Pre-release" feature and is not considered an official release. Please review the <a href="trend-vision-one-pre-release-disclaimer">Pre-release disclaimer</a> before using the feature.</p>
+
+
+:::
+
+
+<p>For Code Security, you can preview the policy evaluation functionality using the <code>--evaluatePolicy</code> flag.</p>
+<p>Evaluate the scan results against your Code Security policy. A default policy is provided for all accounts, or you can customize it in the Trend Vision One console. TMAS returns the results and exits with status code <code>2</code> if the policy is violated. Learn more about Code Security policies.</p></td>
+</tr>
+<tr>
+<td><p><code>--redacted</code></p></td>
+<td>
+
+:::warning[Important]
+
+<p>This is a "Pre-release" feature and is not considered an official release. Please review the <a href="trend-vision-one-pre-release-disclaimer">Pre-release disclaimer</a> before using the feature.</p>
+
+
+:::
+
+
+<p>Redact secret finding values from the TMAS CLI output.</p>
+<p>Usage example:</p>
+<pre class="codeblock"><code>tmas scan &lt;artifact-to-scan&gt; -S --redacted</code></pre>
+<pre class="codeblock"><code>tmas scan secrets &lt;artifact-to-scan&gt; --redacted</code></pre></td>
+</tr>
+<tr>
+<td><p><code>-h, --help</code></p></td>
+<td><p>Display help information.</p></td>
+</tr>
+</tbody>
+</table>
+
+:::note
+
+- Secret scans are limited to artifacts that generate secret findings reports that are smaller than 15 MB.
+- Binary and ZIP files are not currently supported.
+- Secret scan findings are redacted prior to being sent to Trend Vision One for further processing.
+:::
+
+### Proxy configuration {#proxy-configuration}
+
+The CLI tool loads the proxy configuration from the following set of optional environment variables:
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 22%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Environment Variable</p></th>
+<th><p>Required/Optional</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>NO_PROXY</code></p></td>
+<td><p>Optional</p></td>
+<td><p>Add the Artifact Scanning as a Service and Malware Scanning as a Service endpoints to the comma-separated list of host names if you want to skip proxy settings for the CLI tool.</p>
+
+
+:::note
+
+Only an asterisk (*) matches all hosts.
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><code>HTTP_PROXY</code></p></td>
+<td><p>Optional</p></td>
+<td><p><a href="http://proxy.example.com">http://proxy.example.com</a></p></td>
+</tr>
+<tr>
+<td><p><code>HTTPS_PROXY</code></p></td>
+<td><p>Optional</p></td>
+<td><p><a href="https://proxy.example.com">https://proxy.example.com</a></p>
+<p>If the proxy server is a SOCKS5 proxy, you must specify the SOCKS5 protocol in the URL as socks5://socks_proxy.example.com.</p></td>
+</tr>
+<tr>
+<td><p><code>PROXY_USER</code></p></td>
+<td><p>Optional</p></td>
+<td><p>Optional username for authentication header used in <code>Proxy-Authorization</code>.</p></td>
+</tr>
+<tr>
+<td><p><code>PROXY_PASS</code></p></td>
+<td><p>Optional</p></td>
+<td><p>Optional password for authentication header used in <code>Proxy-Authorization</code> used only when a <code>PROXY_USER</code> is configured.</p></td>
+</tr>
+</tbody>
+</table>
+:::::::

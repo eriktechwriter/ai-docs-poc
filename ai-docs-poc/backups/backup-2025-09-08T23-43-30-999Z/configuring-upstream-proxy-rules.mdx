@@ -1,0 +1,73 @@
+---
+slug: trend-vision-one-configuring-upstream-proxy-rules
+title: Configuring upstream proxy rules
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configuring-upstream-proxy-rules.md
+  conversion_date: '2025-09-08T23:42:22.079Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Set up rules for user web activity traffic using upstream proxies on your Internet Access On-Premises Gateway.
+
+### Before you begin {#before-you-begin}
+
+:::warning[Important]
+
+- To use the proxy settings of your Service Gateway for user web activity traffic, you must configure a proxy server for your Service Gateway virtual appliance via [Service Gateway CLI commands](service-gateway-cli-commands.mdx).
+
+- Ensure you have upgraded the Internet Access On-Premises Gateway service to the latest version. If enabled on an outdated on-premises gateway, only upstream proxy rules allowing direct traffic to destinations can function. All other traffic is sent directly to your Service Gateway virtual appliance.
+:::
+
+Configuring upstream proxy rules for your Internet Access On-Premises Gateway allows you to send user web activity traffic to specified domains, subdomains, and IP addresses via proxy.
+
+:::note
+
+Upstream proxy rules only apply to user-initiated web activity traffic on the on-premises gateway. Traffic initiated directly by the on-premises gateway for administrative purposes, including traffic to Trend Vision One, Smart Protection Network, and ActiveUpdate services, automatically uses the proxy settings configured in the current Service Gateway.
+:::
+
+### Procedure {#procedure}
+
+1.  In the **Advanced Settings** tab of your on-premises gateway settings, enable upstream proxy for data traffic.
+
+2.  Select **Add Upstream Proxy Rule**.
+
+3.  In the window that appears, add the desired domains, subdomains, or IP addresses in the **Destinations** field.
+
+    :::note
+
+    - Zero Trust Secure Access supports the following wildcard characters:
+
+      - \*: Matches any number of characters
+
+      - ?: Matches a single character in a specific position
+
+    - You may add a maximum of 100 destinations.
+    :::
+
+4.  Select the desired proxy option.
+
+    - **Allow direct traffic**: Permits traffic directly to the added destinations
+    - **Use proxy settings in Service Gateway**: Sends traffic through the proxy configured in the Service Gateway virtual appliance currently running the Internet Access On-Premises Gateway service
+    - **Specify on-premises proxy**: Sends traffic through a third-party proxy determined by the FQDN or IP address and port number you provide
+
+      :::note
+
+      The on-premises proxy option does not support proxy authentication.
+      :::
+
+5.  Click **Add** to add the rule to the upstream proxy rules list.
+
+    :::warning[Important]
+
+    - You may only add one upstream proxy rule at time allowing direct traffic or using the proxy settings of the current Service Gateway, but you may specify multiple on-premises proxies.
+
+    - You may add a maximum of 10 rules.
+    :::
+
+6.  Drag individual rules to set priority.
+
+7.  Click **Save** to save the on-premises gateway settings.
+:::::

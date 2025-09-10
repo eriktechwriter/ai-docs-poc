@@ -1,0 +1,218 @@
+---
+slug: trend-vision-one-configure-agent-privileges
+title: Configuring Agent Privileges
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configure-agent-privileges.md
+  conversion_date: '2025-09-08T23:42:22.893Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+### Procedure {#procedure}
+
+1.  Configure settings as required.
+
+    <table>
+    <colgroup>
+    <col style="width: 20%" />
+    <col style="width: 80%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Section</p></th>
+    <th><p>Settings</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><strong>Independent Mode</strong></p></td>
+    <td><p><strong>Enable Independent mode</strong>: Allows users to disable the following features on the Trend Vision One Endpoint Security agent to prevent the Trend Vision One Endpoint Security agent from adversely affecting system performance:</p>
+    <ul>
+    <li><p>The Trend Vision One Endpoint Security agent does not accept policy settings from the server</p></li>
+    <li><p>The Trend Vision One Endpoint Security agent does not initiate scan commands from the server</p></li>
+    <li><p>The Trend Vision One Endpoint Security agent does not send logs to the server</p></li>
+    </ul>
+    <p>End users can manually initiate scans and updates on agents in Independent mode.</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Scans</strong></p></td>
+    <td><ul>
+    <li><p><strong>Configure Manual Scan</strong>: Allows users to configure the <strong>Manual Scan</strong> settings on the Trend Vision One Endpoint Security agent console</p></li>
+    <li><p><strong>Configure Real-time Scan</strong>: Allows users to configure the <strong>Real-time Scan</strong> settings on the Trend Vision One Endpoint Security agent console</p></li>
+    <li><p><strong>Configure Scheduled Scan</strong>: Allows users to configure the <strong>Scheduled Scan</strong> settings on the Trend Vision One Endpoint Security agent console</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p><strong>Scheduled Scans</strong></p></td>
+    <td><ul>
+    <li><p><strong>Postpone Scheduled Scan</strong>: Allows users to postpone a Scheduled Scan before the scan starts or stop a currently running scan for a specified period</p>
+    
+
+    :::note
+    
+    <p>Users can only stop a running scan once. Once the scan restarts, the Trend Vision One Endpoint Security agent rescans all files on the endpoint.</p>
+    
+
+    :::
+
+    </li>
+    <li><p><strong>Skip and stop Scheduled Scan</strong>: Allows users to skip or stop a running Scheduled Scan one time</p>
+    
+
+    :::note
+    
+    <p>Users cannot skip or stop a Scheduled Scan more than one time. Even after a system restart, Scheduled Scan resumes scanning based on the next scheduled time.</p>
+    
+
+    :::
+
+    </li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p><strong>Firewall</strong></p></td>
+    <td><ul>
+    <li><p><strong>Display the Firewall settings on the Security Agent console</strong>: Allows users to configure the <strong>Firewall</strong> settings on the Trend Vision One Endpoint Security agent console</p>
+    <ul>
+    <li><p><strong>Allow users to enable/disable the firewall, Intrusion Detection System, and the firewall violation notification message</strong>: Displays the <strong>Enable/Disable Firewall</strong> and <strong>Enable/Disable IDS Mode</strong> menu options on the Trend Vision One Endpoint Security agent system tray icon</p>
+    
+
+    :::note
+    
+    <p>The Apex One Firewall protects agents and servers on the network using stateful inspection, high performance network virus scanning, and elimination. If you grant users the privilege to enable or disable the firewall and its features, warn them not to disable the firewall for an extended period of time to avoid exposing the endpoint to intrusions and hacker attacks.</p>
+    
+
+    :::
+
+    </li>
+    </ul></li>
+    <li><p><strong>Allow Security Agents to send firewall logs to the Apex One server</strong>: Configures the Trend Vision One Endpoint Security agent to send Firewall logs to the server, allowing you to analyze network traffic</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p><strong>Behavior Monitoring</strong></p></td>
+    <td><p><strong>Display the Behavior Monitoring settings on the Security Agent console</strong>: Allows users to configure the <strong>Behavior Monitoring</strong> settings on the Trend Vision One Endpoint Security agent console</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Trusted Program List</strong></p></td>
+    <td><p><strong>Display the Trusted Program List on the Security Agent console</strong>: Allows users to configure the <strong>Trusted Program List</strong> on the Trend Vision One Endpoint Security agent console</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Mail Scan</strong></p></td>
+    <td><p><strong>Display the Mail Scan settings on the Security Agent console</strong>: Allows users to configure the <strong>Mail Scan</strong> settings on the Trend Vision One Endpoint Security agent console</p>
+    <p>If enabled, Real-time Scan can detect and take action on POP3 email messages retrieved from the mail server that contain malicious threats.</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Proxy Settings</strong></p></td>
+    <td><p><strong>Allow users to configure proxy settings</strong>: Allows users to use user-configured proxy settings only in the following instances:</p>
+    <ul>
+    <li><p>When Trend Vision One Endpoint Security agents perform "Update Now".</p></li>
+    <li><p>When users disable, or the Trend Vision One Endpoint Security agent cannot detect, automatic proxy settings.</p></li>
+    </ul>
+    
+
+    :::danger[Warning]
+    
+    <p>Incorrect user-configured proxy settings can cause update problems. Exercise caution when allowing users to configure their own proxy settings.</p>
+    
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p><strong>Component Updates</strong></p></td>
+    <td><ul>
+    <li><p><strong>Perform "Update Now"</strong>: Displays the <strong>Update Now</strong> menu option on the Trend Vision One Endpoint Security agent system tray icon</p></li>
+    <li><p><strong>Enable/Disable schedule-based updates</strong>: Displays the <strong>Enable/Disable Schedule-based Updates</strong> menu option on the Trend Vision One Endpoint Security agent system tray icon</p>
+    
+
+    :::note
+    
+    <p>Administrators must first select the <strong>Enable schedule-based updates on Security Agents</strong> setting on the <strong>Other Settings</strong> tab before the menu item appears on the Trend Vision One Endpoint Security agent menu.</p>
+    
+
+    :::
+
+    </li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p><strong>Unload and Unlock</strong></p></td>
+    <td><p>The Trend Vision One Endpoint Security agent unloading and unlocking privilege allows users to temporarily stop the Trend Vision One Endpoint Security agent or gain access to advanced web console features with or without a password.</p>
+    <ul>
+    <li><p><strong>Does not require a password</strong></p></li>
+    <li><p><strong>Requires a password</strong>: Type the required password and confirmation password</p>
+    
+
+    :::note
+    
+    <p>Passwords must meet the following complexity requirements:</p>
+    <ul>
+    <li><p>Length of 8 to 32 characters</p></li>
+    <li><p>At least one of each: uppercase (A-Z), lowercase (a-z), numeric (0-9), and special character</p></li>
+    <li><p>Cannot contain non-printable ASCII characters</p></li>
+    </ul>
+    
+
+    :::
+
+    </li>
+    </ul>
+    
+
+    :::warning[Important]
+    
+    <p>If you select <strong>Requires a password</strong> and do not specify a password, Trend Micro Apex Central applies the following default password:</p>
+    <ul>
+    <li><p>For Apex One on-premises: The password provided during server installation</p></li>
+    <li><p>For Apex One as a Service: The account name used to provision the console</p></li>
+    </ul>
+    
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p><strong>Uninstallation</strong></p></td>
+    <td><p>The Trend Vision One Endpoint Security agent uninstallation privilege allows users to uninstall the Trend Vision One Endpoint Security agent program on local endpoints.</p>
+    <ul>
+    <li><p><strong>Does not require a password</strong></p></li>
+    <li><p><strong>Requires a password</strong>: Type the required password and confirmation password</p>
+    
+
+    :::note
+    
+    <p>Passwords must meet the following complexity requirements:</p>
+    <ul>
+    <li><p>Length of 8 to 32 characters</p></li>
+    <li><p>At least one of each: uppercase (A-Z), lowercase (a-z), numeric (0-9), and special character</p></li>
+    <li><p>Cannot contain non-printable ASCII characters</p></li>
+    </ul>
+    
+
+    :::
+
+    </li>
+    </ul>
+    
+
+    :::warning[Important]
+    
+    <p>If you select <strong>Requires a password</strong> and do not specify a password, Trend Micro Apex Central applies the following default password:</p>
+    <ul>
+    <li><p>For Apex One on-premises: The password provided during server installation</p></li>
+    <li><p>For Apex One as a Service: The account name used to provision the console</p></li>
+    </ul>
+    
+
+    :::
+
+    </td>
+    </tr>
+    </tbody>
+    </table>
+:::

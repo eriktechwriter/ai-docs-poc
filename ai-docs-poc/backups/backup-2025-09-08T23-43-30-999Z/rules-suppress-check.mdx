@@ -1,0 +1,51 @@
+---
+slug: trend-vision-one-rules-suppress-check
+title: Rules suppress check
+last_updated: '2025-09-08'
+ai_context:
+  source_file: rules-suppress-check.md
+  conversion_date: '2025-09-08T23:42:13.415Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Trend Vision One™ – Cloud Risk Management provides you with the ability to suppress failed [Checks](model-check.mdx) - this may be useful for specific Rules that aren't relevant or are managed in a different way. Suppressed Checks will appear greyed out on the dashboard, and will display 'suppressed' counts on the [All Checks report](all-checks-report.mdx). Currently, we do not support batch suppression.
+
+*If a Check is suppressed, does it reduce the number of API calls that are made?*
+
+Suppressing a Check does not reduce the number of API calls made because API calls are made to resources that may be checked by more rules than just the one where the Check has been suppressed.
+
+*Is there a way to suppress certain rules?*
+
+No, Suppress is at the Check level. You have the option to [disable rules](rules-configuration.mdx).
+
+### Suppress Check {#suppress-check}
+
+1.  Click on *Suppress* against the failed Check
+
+    ![](/images/step-1-clicking-on-suppress-kkfwqd=d51eed79-39dd-4f36-8fef-cb5e856379a9.webp)
+
+2.  Checks can be suppressed in two ways
+
+    - Permanent suppression
+
+      - Ensure the checkbox 'Suppress the check until further notice' is checked
+
+    - Temporary suppression
+
+      - Ensure the checkbox 'Suppress the check until further notice' is unchecked
+      - Input the duration of suppression
+
+3.  Enter *Note* and *Suppress Check*
+
+4.  On successful suppression
+
+    - Suppressed Checks will be greyed out
+    - Suppressed Counts will be displayed
+
+### Unsuppress Check {#unsuppress-check}
+
+1.  Click on *Unsuppress* against the suppressed Check
+2.  Enter *Note* and *Unsuppress Check*Note: You can view all the previous notes (eg. why the \_check was suppressed) by clicking on *View all*
+:::

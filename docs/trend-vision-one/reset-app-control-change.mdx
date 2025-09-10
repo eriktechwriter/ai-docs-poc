@@ -1,0 +1,29 @@
+---
+slug: trend-vision-one-reset-app-control-change
+title: Reset Application Control after too much software change
+---
+# Reset Application Control after too much software change
+
+For an overview of Application Control, see [Lock down software with Application Control](application-control.mdx).
+
+Application Control is intended for use on stable servers that are not updated frequently, and not for workstations or servers that undergo a lot of software changes.
+
+Too many changes make large rulesets that consume more RAM, unless you remove old rules. If you don't use maintenance mode during authorized software updates, too many changes can also result in high administrator workload because they must manually create allow rules for each change.
+
+*If unrecognized software changes exceed the maximum, Application Control will stop detecting and displaying all of the computer's software changes.* This stoppage is designed to prevent out-of-memory and disk space errors that can occur if the ruleset grows too large.
+
+When a stoppage occurs, Server & Workload Protection notifies you through an alert ("Unresolved software change limit") and an event log ("Unresolved software change limit reached"). You must resolve the issue to continue detecting software changes.
+
+### Procedure {#procedure}
+
+1.  Examine the computer's processes and security events. Verify that the computer has not been compromised. If you are not sure, or do not have enough time, the safest and fastest way is to restore the system from a backup or VM snapshot.
+
+    :::danger[Warning]
+
+    If you don't remove any unauthorized software (including zero-day malware), Application Control will ignore it when you reset Application Control. It won't appear on the Actions tab anymore and if its process has already executed and it is in RAM, Application Control won't log any events or alerts about it until you reboot the computer.
+    :::
+
+2.  If the computer was running software updates, including auto-updates (for example, browser, Adobe Reader, or yum auto-updates), disable them or schedule them so that they occur only when you have enabled Application Control's maintenance mode (see [Turn on maintenance mode when making planned changes](set-up-application-control.mdx)).
+
+3.  Reset Application Control. To do this, disable Application Control in the Computer editor. Once the agent has acknowledged it and cleared the error status, enable Application Control again. The agent generates a new software inventory list.
+:::

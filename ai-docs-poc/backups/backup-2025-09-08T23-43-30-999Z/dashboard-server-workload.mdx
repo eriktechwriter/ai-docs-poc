@@ -1,0 +1,149 @@
+---
+slug: trend-vision-one-dashboard-server-workload
+title: Dashboard
+last_updated: '2025-09-08'
+ai_context:
+  source_file: dashboard-server-workload.md
+  conversion_date: '2025-09-08T23:42:20.932Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+The dashboard is the first page that appears after you access Server & Workload Protection (**Endpoint Security Operations → Server & Workload Protection → Dashboard**).
+
+Each user can customize the contents and layout of their dashboard. Server & Workload Protection automatically saves your settings, and will remember your dashboard the next time that you log in. You can also configure the data's time period, and which computer's or computer group's data is displayed.
+
+![](/images/2016-07-07_000105_DS10=453d6839-8bb6-4f0c-94a4-b396528ce69e.webp)
+
+### Date and time range {#date-and-time-range}
+
+The dashboard can display data from either the last 24 hours, or the last seven days.
+
+![](/images/2016-07-07_000106_DS10=bf8ac5df-a757-4506-91b7-633fa4340ad1.webp)
+
+### Computers and computer groups {#computers-and-computer-groups}
+
+Use the *Computer* menu to filter the displayed data to display only data from specific computers. For example, only those using the *Linux Server* security policy:
+
+![](/images/2016-07-22_000149_DS10=ad4d4504-4d75-4ac5-961b-9316faa36ed6.webp)
+
+### Filter by tags {#filter-by-tags}
+
+In Server & Workload Protection, a *Tag* is a unit of meta-data that you can apply to an Event in order to create an additional attribute for the Event that is not originally contained within the Event itself. Tags can be used to filter Events in order to simplify the task of Event monitoring and management. A typical use of tagging is to distinguish between Events that require action and those that have been investigated and found to be benign.
+
+The data displayed in the Dashboard can be filtered by tags:
+
+![](/images/2016-07-07_000107_DS10=8a0020cf-b510-454a-9052-10d20848f652.webp)
+
+For more information on tagging see [Apply tags to identify and group events](apply-tags-identify-group-events.mdx).
+
+### Select dashboard widgets {#select-dashboard-widgets}
+
+Click *Add/Remove Widgets* to display the widget selection window and choose which widgets to display.
+
+![](/images/2016-07-07_000108_DS10=4fc48f89-8abc-4982-9075-9e23a913afe5.webp)
+
+:::note
+
+If widgets take up extra space on the dashboard (more than 1x1), their dimensions are listed next to their names.
+:::
+
+The following widgets are available:
+
+### Monitoring {#monitoring}
+
+- *Activity Overview*: Overview of activity, including the number of protected hours and size of database.
+- *Alert History \[2x1\]*: Displays recent alert history, including the severity of alerts.
+- *Alert Status*: Summary of alerts, including their age and severity.
+- *Computer Status*: Summary of computers, including whether they are managed or unmanaged, and if there are any warnings or critical alerts.
+- *License Information*: Displays license information, including the number of protected computers.
+- *Component Update Status*: Displays the update status of computers, including the number of computers that are up-to-date, out-of-date, and unknown.
+
+### System {#system}
+
+- *My Sign-in History*: Displays the last 50 sign-in attempts and whether or not they were successful.
+- *My User Summary \[2x1\]*: Displays a summary of the user, including name, role, and sign-in information.
+- *Software Updates*: Displays out-of-date computers.
+- *System Event History \[2x1\]*: Displays recent system event history, including the number of events that are categorized as info, warning, or error.
+
+### Ransomware {#ransomware}
+
+- *Ransomware Event History \[3x1\]*: Displays recent ransomware event history, including the event type.
+- *Ransomware Status*: Displays the status of ransomware, including the number of ransomware events that occurred in the last 24 hours, the last 7 days, or the last 13 weeks.
+
+### Anti-Malware {#anti-malware}
+
+- *Anti-Malware Event History \[2x1\]*: Displays recent Anti-Malware event history, including the action taken for the events.
+- *Anti-Malware Protection Status*: Displays a summary of Anti-Malware Protection status on computers, including whether they are protected, unprotected, or not capable of being protected.
+- *Anti-Malware Status (Computers) \[2x1\]*: Displays the top five infected computers, including the amount of uncleanable files and the total number of files affected.
+- *Anti-Malware Status (Malware) \[2x1\]*: Displays the top five detected malware, including their name, amount of uncleanable files, and number of times it was triggered.
+- *Malware scan Status \[2x1\]*: Displays the top five appliances with incomplete scheduled malware scans.
+
+### Web Reputation {#web-reputation}
+
+- *Web Reputation Computer Activity*: Displays the top five computers with Web Reputation events, including the number of events.
+- *Web Reputation Event History \[2x1\]*: Displays recent Web Reputation event history, including the events severity.
+- *Web Reputation URL Activity*: Displays the top five URLs that triggered Web Reputation events, including the number of times they were accessed.
+
+### Firewall {#firewall}
+
+- *Firewall Activity (Detected)*: Displays the top five reasons packets were detected, including the number of times.
+- *Firewall Activity (Prevented)*: Displays the top five reasons packets were prevented, including the number of times.
+- *Firewall Computer Activity (Detected)*: Displays the top five computers that generated detected Firewall events and the number of times they occurred.
+- *Firewall Computer Activity (Prevented)*: Displays the top five computers that generated prevented Firewall events and the number of times they occurred.
+- *Firewall Event History \[2x1\]*: Displays recent Firewall event history, including if the events were detected or prevented.
+- *Firewall IP Activity (Detected)*: Displays the top five source IPs that generated detected Firewall events and the number of times they occurred.
+- *Firewall IP Activity (Prevented)*: Displays the top five source IPs that generated prevented Firewall events and the number of times they occurred.
+- *Firewall Port Activity (Detected)*: Displays the top five destination ports for detected Firewall events and the number of times they occurred.
+- *Firewall Port Activity (Prevented)*: Displays the top five computers that generated prevented Firewall events and the number of times they occurred.
+- *Reconnaissance Scan Activity*: Displays the top five detected reconnaissance scans, including the number of times they occurred.
+- *Reconnaissance Scan Computers*: Displays the top five computers where reconnaissance scans occurred and the number of times they occurred.
+- *Reconnaissance Scan History \[2x1\]*: Displays recent reconnaissance scan history, including the type of scan that occurred.
+
+### Intrusion Prevention {#intrusion-prevention}
+
+- *Application Type Activity (Detected)*: Displays the top five detected application types, including the number of times they were triggered.
+- *Application Type Activity (Prevented)*: Displays the top five prevented application types, including the number of times they were triggered.
+- *Application Type Treemap (Detected) \[2x2\]*: Displays a map of detected application types. Hover over the boxes to display the severity of the events, the number of times it was triggered, and the percentage for each severity level.
+- *Application Type Treemap (Prevented) \[2x2\]*: Displays a map of prevented application types. Hover over the boxes to display the severity of the events, the number of times it was triggered, and the percentage for each severity level.
+- *IPS Activity (Detected):* Displays the top five reasons Intrusion Prevention events were detected, including the number of times it was triggered.
+- *IPS Activity (Prevented)*: Displays the top five reasons Intrusion Prevention events were prevented, including the number of times it was triggered.
+- *IPS Computer Activity (Detected)*: Displays the top five computers with detected Intrusion Prevention events.
+- *IPS Computer Activity (Prevented)*: Displays the top five computers with prevented Intrusion Prevention events.
+- *IPS Event History \[2x1\]*: Displays recent Intrusion Prevention event history, including if the events were detected or prevented.
+- *IPS IP Activity (Detected)*: Displays the top five source IPs that generated detected Intrusion Prevention events.
+- *IPS IP Activity (Prevented)*: Displays the top five source IPs that generated prevented Intrusion Prevention events.
+- *Latest IPS Activity (Detected)*: Displays the top five reasons Intrusion Prevention events were detected since the latest update.
+- *Latest IPS Activity (Prevented)*: Displays the top five reasons Intrusion Prevention events were prevented since the latest update.
+
+### Integrity Monitoring {#integrity-monitoring}
+
+- *Integrity Monitoring Activity*: Displays the top five reasons Integrity Monitoring events occurred, including the number of times. In this case, the reason refers to the rule that was triggered.
+- *Integrity Monitoring Computer Activity*: Displays the top five computers where Integrity Monitoring events occurred, including the number of events.
+- *Integrity Monitoring Event History \[2x1\]*: Displays recent Integrity Monitoring event history, including the severity of events.
+- *Integrity Monitoring Key Activity*: Displays the top five keys for Integrity Monitoring events. The source of the key varies by Entity Set - for files and directories it's their path, whereas for ports it's their unique protocol, IP, port number, or tuple.
+
+### Log Inspection {#log-inspection}
+
+- *Log Inspection Activity*: Displays the top five reasons Integrity Monitoring events occurred, including the number. In this case, the reason refers to the rule that was triggered.
+- *Log Inspection Computer Activity*: Displays the top five computers where Log Inspection events occurred, including the number of events.
+- *Log Inspection Description Activity*: Displays the top five descriptions for Log Inspection events, including the number of times they occurred. The description refers to the event that was triggered.
+- *Log Inspection Event History \[2x1\]*: Displays recent Log Inspection event history, including the severity of events.
+
+### Application Control {#application-control}
+
+- *Application Control Maintenance Mode Status \[2x1\]*: Displays the computers in maintenance mode, including their start and end time.
+
+### Change the layout {#change-the-layout}
+
+The selected widgets can be moved around the dashboard by dragging them by their title bar. Move the widget over an existing one and they will exchange places. (The widget that is about to be displaced will temporarily gray out.)
+
+![](/images/2016-07-07_000109_DS10=5c9b3c00-d3f1-4b75-a10a-fd87428ac66e.webp)
+
+### Save and manage dashboard layouts {#save-and-manage-dashboard-layouts}
+
+You can create multiple dashboard layouts and save them as separate tabs. Your Dashboard settings and layouts will not be visible to other Users after you sign out. To create a new Dashboard tab, click the "plus" symbol to the right of the last tab on the Dashboard:
+
+![](/images/2016-07-07_000110_DS10=c0bb1edd-1ad8-406a-af25-3526801ef6b6.webp)
+::::

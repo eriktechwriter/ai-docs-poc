@@ -1,0 +1,91 @@
+---
+slug: trend-vision-one-vsphere-dist-switch-promiscuous
+title: >-
+  Configuring internal network traffic with the VMware vSphere Distributed
+  Switch (promiscuous mode)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: vsphere-dist-switch-promiscuous.md
+  conversion_date: '2025-09-08T23:42:11.580Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure internal network traffic with the VMware vSphere Distributed Switch using promiscuous mode to allow Virtual Network Sensor to monitor data.
+
+:::warning[Important]
+
+The following instructions are valid as of July 2023.
+:::
+
+### Procedure {#procedure}
+
+1.  Turn off your Virtual Network Sensor.
+
+2.  On the VMware vCenter console, click the ![](/images/circle_icon=GUID-20230729150101.webp) tab.
+
+3.  Right-click the name of your switch, and then select **Distributed Port Group** and **New Distributed Port Group**.
+
+    <figure>
+    <img src="./images/Internal_VDS_Prom1=GUID-20230729143531.webp" />
+    </figure>
+
+4.  On the **Name and location** screen, specify the port group name and location and click **NEXT**.
+
+    <figure>
+    <img src="./images/Internal_VDS_Prom2=GUID-20230729143532.webp" />
+    </figure>
+
+5.  On the **Configure settings** screen, view the default settings and click **NEXT**.
+
+    <figure>
+    <img src="./images/Internal_VDS_Prom3=GUID-20230729143533.webp" />
+    </figure>
+
+6.  On the **Ready to complete** screen, review the settings and click **FINISH**.
+
+    <figure>
+    <img src="./images/Internal_VDS_Prom4=GUID-20230729143534.webp" />
+    </figure>
+
+7.  Click the name of your switch.
+
+8.  Click the **Networks** tab, right-click your port group name, and select **Edit Settings...**.
+
+    <figure>
+    <img src="./images/Internal_VDS_Prom5=GUID-20230729143535.webp" />
+    </figure>
+
+9.  Click **Security**, select **Accept** for promiscuous mode, and click **OK**.
+
+    <figure>
+    <img src="./images/Internal_VDS_Prom6=GUID-20230729143536.webp" />
+    </figure>
+
+10. Click the ![](/images/VMware_vCenter_server_icon=GUID-20230329175050.webp) tab and click the name of your virtual machine.
+
+    <figure>
+    <img src="./images/Internal_VDS_Prom7=GUID-20230729143537.webp" />
+    </figure>
+
+11. Click ![](/images/edit_settings_icon=GUID-20230729150707.webp).
+
+12. On the **Edit Settings** screen, click **Network adapter 2** and select **Browse...**.
+
+    <figure>
+    <img src="./images/Internal_VDS_Prom8=GUID-20230729143538.webp" />
+    </figure>
+
+13. Click the name of your port group and click **OK**.
+
+    <figure>
+    <img src="./images/Internal_VDS_Prom9=GUID-20230729143539.webp" />
+    </figure>
+
+14. Click **OK**.
+
+15. Turn on your Virtual Network Sensor.
+
+    After configuring your network settings, access the Virtual Network Sensor console and use the command `show traffic` to verify the Virtual Network Sensor is receiving traffic. For more information about troubleshooting, see [Virtual Network Sensor FAQ](virtual-network-sensor-faqs.mdx) and [Virtual Network Sensor CLI commands](virtual-network-sensor-cli-commands.mdx).
+::::

@@ -1,0 +1,68 @@
+---
+slug: trend-vision-one-creating-new-endpoint-group-manager
+title: Create a new Endpoint Group Manager
+---
+# Create a new Endpoint Group Manager
+
+To better manage your endpoint policies and regions, you can use Product Instance to provision a new Endpoint Group Manager for your **Standard Endpoint Protection** agents.
+
+Endpoint Group Managers help you manage policy deployment and load balancing for large groups of agents.
+
+:::note
+
+- Product Instance automatically provisions a new Windows and macOS instance for each Endpoint Group Manager.
+
+- You can only move endpoints to different workgroups managed by the same Endpoint Group Manager. You cannot move agents from one Endpoint Group Manager to another.
+
+- Each Standard Endpoint Protection Manager can have up to five Endpoint Group Managers, whether created in Product Instance or updated from a connected product.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Service Management → Product Instance**.
+
+2.  Under an existing Standard Endpoint Protection Manager, click **Endpoint Group Manager**.
+
+3.  Define your new Endpoint Group Manager by specifying the required information.
+
+    <table>
+    <colgroup>
+    <col style="width: 20%" />
+    <col style="width: 80%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Setting</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Display name</p></td>
+    <td><p>Unique name that identifies the Endpoint Group Manager in Product Instance and Standard Endpoint Protection</p>
+
+
+    :::note
+
+    <p>Maximum length of 100 characters and cannot contain: &lt;, &gt;, :, ", /, , |, ?, *, &amp;.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>Region</p></td>
+    <td><p>The geographic location of the data center that hosts data being sent from endpoints to Trend Micro</p></td>
+    </tr>
+    <tr>
+    <td><p>Description</p></td>
+    <td><p>The purpose for the Protection Manager</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+4.  Click **Save**.
+
+    Product Instance starts provisioning the new environment. This process might take a few minutes to complete. Once the process is finished, you can obtain Standard Endpoint Protection agent installation packages from Endpoint Inventory and start deploying to endpoints.
+::::

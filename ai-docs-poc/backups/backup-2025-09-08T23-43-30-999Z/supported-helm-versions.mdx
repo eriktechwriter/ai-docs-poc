@@ -1,0 +1,110 @@
+---
+slug: trend-vision-one-supported-helm-versions
+title: Supported Helm versions
+last_updated: '2025-09-08'
+ai_context:
+  source_file: supported-helm-versions.md
+  conversion_date: '2025-09-08T23:42:12.221Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::::: {role="main"}
+Container Security components use the Helm package manager for Kubernetes. To ensure continued rule updates, Trend Micro recommends using the latest version of Helm chart available. See Upgrade Helm chart.
+
+:::note
+
+- Clusters that run Helm chart versions 3.0.1 and later can support both x86 and ARM platforms for runtime malware scanning.
+- Clusters that run Helm chart versions older than 2.3.25 (or 1.0.8 for ECS) will no longer receive new rule updates.
+- Clusters that run Helm chart versions 2.6.7 and later can support all proxy settings for runtime malware scanning.
+- Clusters that use unsupported Helm chart versions retain protection from their last downloaded rules file but might have error logs in Scout for rule download failures.
+:::
+
+### Install Helm chart {#install-helm-chart}
+
+Starting with version 3.0.0, Helm chart will be in a new location, <https://github.com/trendmicro/visionone-container-security-helm>. Only this new version of Helm chart will receive updates.
+
+1.  Create a file named `overrides.yaml`, which is used to contain your cluster-specific settings.
+
+    :::note
+
+    You can find the setting values in the Trend Vision One console or the Container Security API when you create a cluster. See the [Values.yaml](https://github.com/trendmicro/cloudone-container-security-helm/blob/master/values.yaml) file for a reference when creating your overrides file.
+    :::
+
+2.  Use `helm` to install Container Security components with your cluster-specific settings. We recommend that you run Container Security in its own namespace.
+
+3.  To install Helm chart into an existing Kubernetes namespace, use the `--namespace` flag with the `helm install` command:
+
+    ``` codeblock
+    helm install \
+        --values overrides.yaml \
+        --namespace ${namespace} \
+        trendmicro \
+        https://github.com/trendmicro/visionone-container-security-helm/archive/main.tar.gz
+    ```
+
+:::note
+
+For more information about `helm install`, see the [Helm installation documentation](https://helm.sh/docs/helm/helm_install/).
+:::
+
+The table below describes environments that require specific settings.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Environment</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>AWS EKS Fargate</p></td>
+<td><p>If you are using Container Security in a pure AWS EKS Fargate environment, you might need to adjust your Fargate profile to allow pods in a non-default namespace (ex: <code>trendmicro-system</code>). See <a href="https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile">AWS documentation</a> for more information on Fargate profiles.</p></td>
+</tr>
+<tr>
+<td>Red Hat OpenShift</td>
+<td><p>If you are using Container Security in a <strong>Red Hat OpenShift</strong> environment, the Helm Chart creates a <a href="https://docs.openshift.com/container-platform/4.7/authentication/managing-security-context-constraints">Security Context Constraint</a> to allow Container Security components to have the minimum security context requirements to run.</p></td>
+</tr>
+<tr>
+<td>Pod Security Admission</td>
+<td><p>If you are using Container Security in a cluster with Pod Security Admission and you have runtime security enabled, ensure the namespace where Container Security is installed is using the <a href="https://kubernetes.io/docs/concepts/security/pod-security-standards/">privileged Pod Security Standards policy</a>.</p></td>
+</tr>
+</tbody>
+</table>
+
+### Upgrade Helm chart {#upgrade-helm-chart}
+
+Use the following to upgrade an existing installation in the default Kubernetes namespace to the latest version:
+
+:::note
+
+Helm overrides the reset values in `overrides.yaml` when upgraded.
+:::
+
+``` codeblock
+helm upgrade \
+    --values overrides.yaml \
+    --namespace ${namespace} \
+    trendmicro \
+    https://github.com/trendmicro/visionone-container-security-helm/archive/main.tar.gz
+```
+
+To use the previously set values, use the `--reuse-values` option during a Helm upgrade:
+
+``` codeblock
+helm upgrade \
+    --namespace ${namespace} \
+    --reuse-values \
+    trendmicro \
+    https://github.com/trendmicro/visionone-container-security-helm/archive/main.tar.gz
+```
+
+**Related information**
+
+- [Upgrade Helm chart from Trend Cloud One to Trend Vision One](upgrade-helm-cloud-one.mdx)
+::::::

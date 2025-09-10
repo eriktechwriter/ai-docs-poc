@@ -1,0 +1,92 @@
+---
+slug: trend-vision-one-Zscaler-internet-access
+title: Zscaler Internet Access integration
+last_updated: '2025-09-08'
+ai_context:
+  source_file: Zscaler-internet-access.md
+  conversion_date: '2025-09-08T23:42:26.274Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure the Zscaler Internet Access (ZIA) integration to add Trend Vision One users with a high risk exposure to Zscaler-defined restricted user groups and apply Zscaler policies to those groups.
+
+:::warning[Important]
+
+The following instructions and screen captures were valid as of July 29, 2024. For more information, see Zscaler documentation.
+:::
+
+### Procedure {#procedure}
+
+1.  Create a user group in your selected identity provider (IdP) and sync the group to ZIA.
+
+    For more information, see the documentation for your selected IdP.
+
+    :::note
+
+    Trend Micro recommends creating a user group specifically for the Zscaler integration, rather than reusing an existing group.
+
+    Make note of the name of the user group, and avoid modifying the name or other group settings once the integration is configured.
+    :::
+
+2.  Create a ZIA policy to associate with the user group on the [Zscaler Internet Access Admin Portal](https://admin.zscaler.net/).
+
+    For more information, see [Zscaler documentation](https://help.zscaler.com/zia/configuring-advanced-settings).
+
+3.  Obtain the base URL and bearer token of the IdP from the ZIA platform.
+
+    1.  Go to **Administration → Authentication Settings → Identity Providers**.
+
+        Make sure you already have one or more IdPs configured in Zscaler. If you have not yet configured any IdPs, see [Zscaler documentation](https://help.zscaler.com/zia/adding-identity-providers) for instructions.
+
+    2.  Choose an IdP and click the edit icon.
+
+        :::note
+
+        Trend Micro recommends selecting the IdP marked **Default IdP**.
+        :::
+
+        The **Edit IdP** window appears.
+
+    3.  Under **PROVISIONING OPTIONS**, use the toggle to enable the **Enable SCIM Provisioning** setting.
+
+        :::note
+
+        Trend Vision One does not support SAML auto-provisioning.
+        :::
+
+    4.  Copy and retain the **Base URL** of the IdP.
+
+    5.  Copy and retain the **Bearer Token** of the IdP, or click **Generate Token** to create a new bearer token.
+
+        ![](/images/ziaProvisioning=GUID-6cb06bbc-fb51-4c16-a780-a3d26b27ba4e.webp)
+
+    6.  Click **Save** to leave the **Edit IdP** window.
+
+    7.  Back on the **Authentication Settings** screen, click **Save**.
+
+        For more information, see [Zscaler documentation](https://help.zscaler.com/zia/configuring-scim).
+
+4.  In the Trend Vision One console, enable the integration and configure the settings.
+
+    1.  Make sure that your selected IdP is configured as a data source in Cyber Risk Exposure Management.
+
+        For more information, see [Configure Cyber Risk Exposure Management data sources](configuring-data-sources.mdx).
+
+    2.  Go to **Workflow and Automation → Third-Party Integration**.
+
+    3.  Click **Zscaler Internet Access**.
+
+    4.  Use the **Enable Zscaler Internet Access integration** toggle to enable the service.
+
+    5.  Paste in the **Base URL** and **Bearer token** obtained from the Zscaler platform.
+
+    6.  Specify the **Restricted user group name** of the group you created in your IdP.
+
+    7.  (Optional) Click **Test Connection** to authenticate the base URL, bearer token, and selected group.
+
+    8.  Click **Save**.
+
+        The **Add to Zscaler Restricted User Group** and **Remove from Zscaler Restricted User Group** response actions appear in the context menu in Cyber Risk Exposure Management.
+::::

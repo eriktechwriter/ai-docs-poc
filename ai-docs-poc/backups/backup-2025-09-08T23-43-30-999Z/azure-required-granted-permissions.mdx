@@ -1,0 +1,119 @@
+---
+slug: trend-vision-one-azure-required-granted-permissions
+title: Azure required and granted permissions
+last_updated: '2025-09-08'
+ai_context:
+  source_file: azure-required-granted-permissions.md
+  conversion_date: '2025-09-08T23:42:24.356Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Review the permissions required to deploy resources and the permissions granted during the terraform process.
+
+The following permissions are required to be able to successfully deploy Trend Vision One cloud security resources to your subscription.
+
+- For Microsoft Entra ID users, your sign in must have the following roles:
+
+  - Application Administrator
+
+  - Privileged Role Administrator
+
+- For Microsoft Azure users, your sign in must have the following or higher role on the subscription you are connecting:
+
+  - User Access Administrator
+
+  - Contributor
+
+- To enable Microsoft Defender for Endpoint Collection or Azure Activity logs, your Microsoft Azure sign in must have the following role:
+
+  - Key Vault Secrets Officer
+
+The terraform process assigns certain permissions to itself to establish the connection with Cloud Accounts and Trend Vision One cloud security services. These permissions include enabling the Cloud Accounts app and security services to obtain temporary credentials and complete tasks within your Azure cloud environment.
+
+**Azure Required Permissions**
+
+<table>
+<thead>
+<tr>
+<th><p>Feature</p></th>
+<th><p>Service</p></th>
+<th><p>Required Permissions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Core Features</p></td>
+<td><p>Azure</p></td>
+<td><ul>
+<li><p>Microsoft.ContainerService/managedClusters/listClusterUserCredential/action</p></li>
+<li><p>Microsoft.ContainerService/managedClusters/read</p></li>
+<li><p>Microsoft.Resources/subscriptions/resourceGroups/read</p></li>
+<li><p>Microsoft.Authorization/roleAssignments/read</p></li>
+<li><p>Microsoft.Authorization/roleDefinitions/read</p></li>
+<li><p>*/read</p></li>
+</ul></td>
+</tr>
+<tr>
+<td rowspan="3"><p>Agentless Vulnerability &amp; Threat Detection</p></td>
+<td rowspan="3"><p>Azure</p></td>
+<td><p><strong>Subscription-level permissions</strong></p>
+<ul>
+<li><p>Microsoft.ContainerRegistry/registries/generateCredentials/action</p></li>
+<li><p>Microsoft.ContainerRegistry/registries/read</p></li>
+<li><p>Microsoft.ContainerRegistry/registries/pull/read</p></li>
+<li><p>Microsoft.ContainerRegistry/registries/tokens/write</p></li>
+<li><p>Microsoft.ContainerRegistry/registries/tokens/operationStatuses/read</p></li>
+<li><p>Microsoft.ContainerRegistry/registries/scopeMaps/read</p></li>
+<li><p>Microsoft.ContainerRegistry/registries/tokens/read</p></li>
+<li><p>Microsoft.Compute/disks/read</p></li>
+<li><p>Microsoft.Compute/virtualMachines//read</p></li>
+<li><p>Microsoft.HybridCompute/machines//read</p></li>
+<li><p>Microsoft.Authorization/roleAssignments/write</p></li>
+<li><p>Microsoft.Authorization/roleAssignments/delete</p></li>
+<li><p>Microsoft.Authorization/roleAssignments/read</p></li>
+<li><p>Microsoft.Compute/locations/usages/read</p></li>
+<li><p>Microsoft.Quota/quotas/read</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><strong>Trend Micro resource group-level permissions</strong></p>
+<p>Azure defined role: Contributor</p>
+<ul>
+<li><p>Allow Actions: *</p></li>
+<li><p>Microsoft.Authorization/*/Delete</p></li>
+<li><p>Microsoft.Authorization/*/Write</p></li>
+<li><p>Microsoft.Authorization/elevateAccess/Action</p></li>
+<li><p>Microsoft.Blueprint/blueprintAssignments/write</p></li>
+<li><p>Microsoft.Blueprint/blueprintAssignments/delete</p></li>
+<li><p>Microsoft.Compute/galleries/share/action</p></li>
+<li><p>Microsoft.Purview/consents/write</p></li>
+<li><p>Microsoft.Purview/consents/delete</p></li>
+<li><p>Microsoft.Resources/deploymentStacks/manageDenySetting/action</p></li>
+<li><p>Microsoft.Subscription/cancel/action</p></li>
+<li><p>Microsoft.Subscription/enable/action</p></li>
+</ul>
+<p>Azure defined role: AcrPull</p>
+<ul>
+<li><p>Microsoft.ContainerRegistry/registries/pull/read</p></li>
+</ul>
+<p>Azure defined role: Storage Blob Data Owner</p>
+<ul>
+<li><p>Microsoft.Storage/storageAccounts/blobServices/containers/*</p></li>
+<li><p>Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action</p></li>
+<li><p>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/*</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><strong>Trend Micro Storage ID-level permissions</strong></p>
+<p>Azure defined role: Storage Blob Data Reader</p>
+<ul>
+<li><p>Microsoft.Storage/storageAccounts/blobServices/containers/read</p></li>
+<li><p>Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action</p></li>
+<li><p>Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+:::

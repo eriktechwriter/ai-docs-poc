@@ -1,0 +1,197 @@
+---
+slug: trend-vision-one-service-gateway-1-0-cli-commands
+title: Service Gateway 1.0 CLI commands
+last_updated: '2025-09-08'
+ai_context:
+  source_file: service-gateway-1-0-cli-commands.md
+  conversion_date: '2025-09-08T23:42:12.828Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+A list of available CLI commands for managing the Service Gateway 1.0 virtual appliance.
+
+To access the CLI, connect to VMware ESXi (either directly or through SSH) and open the Service Gateway virtual appliance. Log on to the CLI with your account credentials.
+
+:::note
+
+Make sure you disable the `Scroll Lock` key on your keyboard when using HyperTerminal.
+:::
+
+To view basic information of the Service Gateway, such as network settings and service status, run the `show` command. For example, use `show ipv4 address` to check the network address. For a list of available commands, type `show` and then press the `?` key.
+
+To view a list of tasks you can perform and enable administrative commands, run the `enable` command. Enabling administrative commands changes the command prompt from \> to \#. The following table lists out the administrative commands you can use to manage the Service Gateway virtual appliance.
+
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 35%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th>Command</th>
+<th>Syntax</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>configure dns ipv4</code></p></td>
+<td><p><code>configure dns ipv4 &lt;dns1&gt; [dns2] </code></p></td>
+<td><p>Configure IPv4 DNS settings</p>
+<p><code>&lt;dns1&gt;</code>: IPv4 address of the primary DNS server</p>
+<p><code>[dns2]</code>: IPv4 address of the secondary DNS server</p></td>
+</tr>
+<tr>
+<td><p><code>configure dns ipv6</code></p></td>
+<td><p><code>configure dns ipv6 &lt;dns1&gt; [dns2]</code></p></td>
+<td><p>Configure IPv6 DNS settings</p>
+<p><code>&lt;dns1&gt;</code>: IPv6 address of the primary DNS server</p>
+<p><code>[dns2]</code>: IPv4 address of the secondary DNS server</p></td>
+</tr>
+<tr>
+<td><p><code>configure dump</code></p></td>
+<td><p><code>configure dump</code></p></td>
+<td><p>List commands to recreate configuration on other appliances</p></td>
+</tr>
+<tr>
+<td><p><code>configure endpoint</code></p></td>
+<td><p><code>configure endpoint &lt;hostname&gt;</code></p></td>
+<td><p>Configure the endpoint name</p>
+<p><code>&lt;hostname&gt;</code>: Endpoint name or FQDN</p></td>
+</tr>
+<tr>
+<td><p><code>configure ipv4 cni</code></p></td>
+<td><p><code>configure ipv4 cni &lt;ip&gt; &lt;mask&gt; &lt;gateway&gt; &lt;cni&gt; [vlan]</code></p></td>
+<td><p>Configure the default Ethernet interface to use the static IP configuration and setup internal network address pool</p>
+<p><code>&lt;cni&gt;</code>: Internal network address pool (IP address ending in .0.0)</p>
+<p><code>[vlan]</code>: VLAN ID (1-4094)</p></td>
+</tr>
+<tr>
+<td><p><code>configure ipv4 static</code></p></td>
+<td><p><code>configure ipv4 static &lt;ip&gt; &lt;mask&gt; &lt;gateway&gt; [vlan]</code></p></td>
+<td><p>Configure the default Ethernet interface to use the static IPv4 configuration</p>
+<p><code>[vlan]</code>: VLAN ID (1-4094)</p></td>
+</tr>
+<tr>
+<td><p><code>configure ipv6 static</code></p></td>
+<td><p><code>configure ipv6 static &lt;v6ip&gt; &lt;v6mask&gt; &lt;v6gate&gt; [vlan]</code></p></td>
+<td><p>Configure the default Ethernet interface to use the static IPv6 configuration</p>
+<p><code>[vlan]</code>: VLAN ID (1-4094)</p></td>
+</tr>
+<tr>
+<td><p><code>configure ntp</code></p></td>
+<td><p><code>configure ntp &lt;ip or FQDN&gt;</code></p></td>
+<td><p>Configure the NTP server</p></td>
+</tr>
+<tr>
+<td><p><code>configure password </code></p></td>
+<td><p><code>configure password</code></p></td>
+<td><p>Configure the account password</p></td>
+</tr>
+<tr>
+<td><p><code>configure proxy set</code></p></td>
+<td><p><code>configure proxy set &lt;proxy type&gt; &lt;proxy information&gt;</code></p></td>
+<td><p>Configure the proxy server for the Service Gateway virtual appliance</p>
+<p><code>&lt;proxy type&gt;</code>: Currently supports <code>http</code></p>
+<p><code>&lt;proxy information&gt;</code>: Credentials as <code>username:password@IP:port</code></p></td>
+</tr>
+<tr>
+<td><p><code>configure proxy delete</code></p></td>
+<td><p><code>configure proxy delete</code></p></td>
+<td><p>Delete proxy settings</p></td>
+</tr>
+<tr>
+<td><p><code>configure verify aws</code></p></td>
+<td><p><code>configure verify aws</code></p></td>
+<td><p>Verify AWS server configuration</p></td>
+</tr>
+<tr>
+<td><p><code>configure verify dns</code></p></td>
+<td><p><code>configure verify dns &lt;domain&gt;</code></p></td>
+<td><p>Verify DNS server configuration</p>
+<p><code>&lt;domain&gt;</code>: Domain used to verify DNS server (default: www.google.com)</p></td>
+</tr>
+<tr>
+<td><p><code>configure verify ntp</code></p></td>
+<td><p><code>configure verify ntp</code></p></td>
+<td><p>Verify NTP server configuration</p></td>
+</tr>
+<tr>
+<td><p><code>configure verify dbg</code></p></td>
+<td><p><code>configure verify dbg [cmd] [param] [subparam]</code></p></td>
+<td><p>Debug command for configure verify</p>
+<p><code>[cmd]</code>: debug cmd []</p>
+<p><code>[param]</code>: debug param []</p>
+<p><code>[subparam]</code>: debug subparam []</p>
+
+
+:::note
+
+<p>This command typically for support provider use only.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><code>connect</code></p></td>
+<td><p><code>connect</code></p></td>
+<td><p>Test connection to Trend Vision One</p></td>
+</tr>
+<tr>
+<td><p><code>exit</code></p></td>
+<td><p><code>exit</code></p></td>
+<td><p>Exit the CLI</p></td>
+</tr>
+<tr>
+<td><p><code>help</code></p></td>
+<td><p><code>help</code></p></td>
+<td><p>Display the CLI syntax</p></td>
+</tr>
+<tr>
+<td><p><code>history</code></p></td>
+<td><p><code>history [limit]</code></p></td>
+<td><p>Display the session's command history</p>
+<p><code>[limit]</code>: The number of CLI commands to display</p></td>
+</tr>
+<tr>
+<td><p><code>log</code></p></td>
+<td><p><code>log collect &lt;upload&gt; &lt;local&gt;</code></p></td>
+<td><p>Collect Service Gateway debugging data for troubleshooting</p>
+<p><code>&lt;upload&gt;</code>: Upload Service Gateway debugging data to Trend Vision One</p>
+<p><code>&lt;local&gt;</code>: Store Service Gateway debugging data locally</p></td>
+</tr>
+<tr>
+<td><p><code>ping</code></p></td>
+<td><p><code>ping &lt;address&gt;</code></p></td>
+<td><p>Check the connection to a specific address</p></td>
+</tr>
+<tr>
+<td><p><code>reboot</code></p></td>
+<td><p><code>reboot [time]</code></p></td>
+<td><p>Restart the Service Gateway after a specified delay or immediately</p>
+<p><code>[time]</code>: Delay in minutes</p></td>
+</tr>
+<tr>
+<td><p><code>register</code></p></td>
+<td><p><code>register &lt;regiatration_token&gt;</code></p></td>
+<td><p>Register the Service Gateway to Trend Vision One</p></td>
+</tr>
+<tr>
+<td><p><code>shutdown</code></p></td>
+<td><p><code>shutdown [time]</code></p></td>
+<td><p>Shut down the Service Gateway after a specified delay or immediately</p>
+<p><code>[time]</code>: Delay in minutes</p></td>
+</tr>
+<tr>
+<td><p><code>unregister</code></p></td>
+<td><p><code>unregister</code></p></td>
+<td><p>Unregister the Service Gateway from Trend Vision One</p></td>
+</tr>
+</tbody>
+</table>
+::::

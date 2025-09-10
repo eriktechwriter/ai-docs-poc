@@ -1,0 +1,40 @@
+---
+slug: trend-vision-one-blocking-permissions
+title: Block Microsoft Entra ID permissions
+---
+# Block Microsoft Entra ID permissions
+
+Disconnect Microsoft Entra ID from Trend Vision One apps by blocking permissions granted to an app or group of apps.
+
+If you no longer want to integrate Microsoft Entra ID with an app or group of apps, you can block the permissions to effectively disconnect Microsoft Entra ID from the specified apps. Blocking permissions disconnects Microsoft Entra ID from the apps but does not delete or revoke the permissions in Microsoft Entra ID. To delete the permissions in Microsoft Entra ID, you must delete the associated enterprise application (see step 4).
+
+:::warning[Important]
+
+- Blocking Microsoft Entra ID permissions can negatively impact the functionality of associated apps. Blocking permissions can limit the insights provided by associated apps, and you may lose the ability to perform account-related actions, such as mobile device authentication, disabling user accounts, and forcing password reset.
+
+- Blocking Microsoft Entra ID permissions for **Cyber Risk Exposure Management** and **Email Asset Inventory** also affects Office 365 integration as a data source in **Cyber Risk Exposure Management**.
+:::
+
+### Procedure {#procedure}
+
+1.  In the **Microsoft Entra ID** screen, locate the Microsoft Entra ID tenant and the associated app that you want to disconnect.
+
+2.  Click **Block permissions** in the **Status** column.
+
+3.  Click **Block**.
+
+4.  If you need to delete the permissions in Microsoft Entra ID, perform the following steps.
+
+    1.  Copy the application ID.
+
+    2.  In Microsoft Entra ID, use the application ID to locate the enterprise application associated with the app or group of apps.
+
+    3.  Delete the enterprise application.
+
+    For more information, see the [Microsoft Entra ID documentation](https://learn.microsoft.com/en-us/azure/active-directory/manage-apps/delete-application-portal?pivots=portal).
+
+    :::tip
+
+    To connect Microsoft Entra ID with the associated apps and grant permissions again, click **Grant permissions**.
+    :::
+::::

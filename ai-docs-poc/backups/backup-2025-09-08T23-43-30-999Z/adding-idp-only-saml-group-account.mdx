@@ -1,0 +1,77 @@
+---
+slug: trend-vision-one-adding-idp-only-saml-group-account
+title: Add an IdP-Only SAML Group Account
+last_updated: '2025-09-08'
+ai_context:
+  source_file: adding-idp-only-saml-group-account.md
+  conversion_date: '2025-09-08T23:42:25.738Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Add multiple users in an assigned group to sign in to the Trend Vision One console using a corporate identity provider (IdP) solution.
+
+IdP-Only SAML Group Account users must sign in via their IdP to access Trend Vision One.
+
+Once Trend Vision One and the IdP have exchanged SAML metadata documents and established a trust relationship, Trend Vision One can accept assertions coming from the IdP and use them to authenticate a user into Trend Vision One. In addition to the metadata document, Trend Vision One requires instructions for interpreting the data in the assertion from the IdP in order to know how to authenticate users. This is done using mapping and claims.
+
+- Mappings are used to associate attributes in Trend Vision One with the user attributes in your IdP.
+
+  :::note
+
+  Attributes might appear under different names in different IdPs, though this does not affect mapping.
+  :::
+
+- Claims are pieces of information about the user provided by the IdP in an assertion.
+
+:::warning[Important]
+
+- IdP-Only SAML Group Account users are not required to verify their email addresses. Therefore, notifications via email in Trend Vision One are not supported for users of this account type for security reasons.
+
+- If an IdP-Only SAML Group Account user is also added to a SAML Account or SAML Group Account, Trend Vision One authenticates the user with their email address and signs them in as a SAML Account or SAML Group Account user with the associated administrator role.
+
+- Provided that an IdP-Only SAML Group Account user is not a user of a SAML Account or SAML Group Account, the user can switch among multiple accounts with different user roles and asset visibility scopes. For more information, see [User account switch](user-account-switch.mdx).
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Administration → User Accounts**.
+
+2.  Click **Add Account**.
+
+3.  Select **IdP-Only SAML Group**.
+
+4.  Specify a **Group name** for the IdP-Only SAML Group Account.
+
+5.  Select a **Role**.
+
+    To create a custom user role, click **Create a custom role in User Roles**.
+
+    For more information, see [User Roles](user-roles-foundation-services.mdx).
+
+    :::warning[Important]
+
+    Creating a custom role leaves the User Accounts screen and discards all recent changes.
+    :::
+
+6.  (Optional) Specify a **Description** for the user account.
+
+7.  Select an IdP from which to select groups that can access the Trend Vision One console.
+
+    You can find all the IdPs that have been added in [Identity Providers](identity-providers.mdx) in the drop-down list, but only the IdPs that are configured to support IdP-Only SAML Group Account are available to select.
+
+    If no IdPs appear, go to **Administration → Identity Providers** and configure one or more existing IdPs to support IdP-Only SAML Group Accounts. There is no downtime associated with this process.
+
+8.  In the **Value** field, list the identifiers of up to 10 IdP-defined groups for the account that can access Trend Vision One.
+
+    The **Group attribute** field populates automatically based on the IdP you selected.
+
+9.  (Optional) If you want to add groups from another IdP for the user account, you can click **Add Group in Another Identity Provider** and specify group identifiers for a different IdP.
+
+    If you need to add more than 10 groups from the same IdP, you must add a new IdP-Only SAML Group Account.
+
+10. Click **Add**.
+
+11. (Optional) On the **User Accounts** screen, enable or disable added accounts using the **Status** toggle.
+::::

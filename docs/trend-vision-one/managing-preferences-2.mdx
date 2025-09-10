@@ -1,0 +1,95 @@
+---
+slug: trend-vision-one-managing-preferences-2
+title: Managing preferences
+---
+# Managing preferences
+
+In the Trend Vision One console, go to **Cyber Risk Exposure Management → Cloud Risk Management → Preferences**.
+
+## Notification preferences {#notification-preferences}
+
+## Email Notifications {#email-notifications}
+
+### Procedure {#procedure}
+
+1.  Go to **Cyber Risk Exposure Management → Cloud Risk Management → Preferences → Notification Preferences → Email Notifications**.
+
+2.  Select:
+
+    - **Weekly Organization Summary Email**: This email is a round up of the major changes in compliance across all pillars, checks performed by the Conformity Bot, and failures resolved by members of your organisation.
+
+    - **CSV Email Attachment**: Selecting this option will attach a CSV file containing all newly discovered failures to the notification email you receive after each bot run.
+
+## Mobile Notifications {#mobile-notifications}
+
+To receive SMS Communication for your rule failures [see Communication trigger: rule failures](https://docs.trendmicro.com/en-us/documentation/article/trend-micro-cloud-one-conformity-communication) you will need to add your mobile number and set up mobile notifications for Cloud Risk Management:
+
+### Procedure {#procedure-1}
+
+1.  Go to **Cyber Risk Exposure Management → Cloud Risk Management → Preferences → Notification Preferences → Mobile Notifications**.
+
+2.  Enter your **Mobile number**.
+
+3.  Select a **Country**.
+
+4.  Click **Request verification code**.
+
+5.  Enter the verification Code.
+
+    To ensure account security, please ensure that you have 2FA enabled.
+
+    Once your phone number is verified, you'll see a confirmation message on successful verification of your number.
+
+    If you want to remove your number, click **Remove mobile number**.
+
+## Rule preferences {#rule-preferences}
+
+## New Rules Behavior {#new-rules-behavior}
+
+Conformity regularly adds new rules as AWS adds and makes changes to services on their platform to ensure our offering covers the most regularly used services and potential vulnerabilities on the AWS cloud platform. You have the ability to choose whether new rules are turned on automatically or manually.
+
+### Procedure {#procedure-2}
+
+1.  Go to **Cyber Risk Exposure Management → Cloud Risk Management → Preferences → Rule Preferences**.
+
+2.  Select:
+
+    - **New rules enabled by default**: to ensure that all new rules are enabled by default when they are released.
+
+    - **New rules are any rules introduced after** - to ensure that any rules released after this set date are treated as new rules.
+
+3.  Click **Save new rules behavior**.
+
+    :::note
+
+    - New rules that are not automatically enabled by default will need to be manually enabled to become active.
+
+    - For newly added cloud accounts, we compare the account creation date with the Rule release date. If the account creation date is after the Rule release date, we do not consider them for the New rules behaviour and all new rules are enabled for the newly added account.
+    :::
+
+## Guided Exclusions {#guided-exclusions}
+
+Cloud Risk Management allows users with AVTD enabled for AWS cloud accounts to exclude resources that are currently in use by Trend Micro Vision One procucts to ensure that these resources do not conflict with the rule checks and scanning. The feature is enabled by default for all users with AVTD for AWS cloud accounts scanned with Cyber Risk Exposure Management.
+
+To disable the default the option:
+
+### Procedure {#procedure-3}
+
+1.  Go to **Cyber Risk Exposure Management → Cloud Risk Management → Preferences → Rule Preferences**.
+
+2.  Deselect **Resources excluded as part of Trend Vision One products**
+
+3.  Click**Save**.
+
+## PDF Reports Logo {#pdf-reports-logo}
+
+To add your organization's logo to a PDF report:
+
+### Procedure {#procedure-4}
+
+1.  Go to **Cyber Risk Exposure Management → Cloud Risk Management → Preferences → Notification Preferences → Reports PDF logo**.
+
+2.  Click on the pencil icon to browse and add a logo.
+
+3.  Click **Save**.
+:::

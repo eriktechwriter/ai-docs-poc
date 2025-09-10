@@ -1,0 +1,140 @@
+---
+slug: trend-vision-one-understanding-policy-list
+title: Understanding the Policy List
+last_updated: '2025-09-08'
+ai_context:
+  source_file: understanding-policy-list.md
+  conversion_date: '2025-09-08T23:42:11.861Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+The policy list displays the information and status of policies created by all users. When a new endpoint registers to Trend Micro Apex Central, it goes through the filtered policies in the list in descending order. Trend Micro Apex Central assigns the new endpoint to a filtered policy when the following conditions are both satisfied:
+
+- The new endpoint matches the target criteria of the policy
+
+- The policy creator has the permission to manage the new endpoint
+
+The following table describes the policy list columns that display on the **Policy Management** screen. Click a column to sort the data.
+
+**Policy List**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Column</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Priority</p></td>
+<td><p>Displays the priority of the policies</p>
+<ul>
+<li><p>Trend Micro Apex Central lists policies from the highest to the lowest priority.</p></li>
+<li><p>When administrators create a filtered policy, Trend Micro Apex Central saves the new policy as the lowest priority policy.</p></li>
+<li><p>A specified policy takes priority over any filtered policies and remains on the top of the list. Administrators cannot reorder specified policies.</p></li>
+<li><p>Trend Micro Apex Central places draft policies at the bottom of the list.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Policy</p></td>
+<td><p>Displays the name of the policy</p></td>
+</tr>
+<tr>
+<td><p>Policy Version</p></td>
+<td><p>This column only appears if the selected product is <strong>Apex One Security Agent</strong>.</p>
+<p>Displays the latest policy version deployed</p>
+
+
+:::note
+
+<p>Some targets might not have the latest policy version deployed. To view the current policy deployed on specific targets, click the number in the <em>Deployed</em> column.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Parent Policy</p></td>
+<td><p>This column only appears if the selected product is <strong>Apex One Security Agent</strong>.</p>
+<p>If a policy is a child policy (that is, it inherited its settings from a parent policy), this column shows the name of the parent policy. Otherwise, N/A displays.</p></td>
+</tr>
+<tr>
+<td><p>Deviations</p></td>
+<td><p>This column only appears if the selected product is <strong>Apex One Security Agent</strong>.</p>
+<p>If a policy is a child policy, this column shows the number of settings that have been changed on the policy and are therefore inconsistent with settings on the parent policy. If settings are consistent between the policy and its parent, 0 (zero) displays.</p>
+<p>If a policy is not a child policy, N/A displays.</p></td>
+</tr>
+<tr>
+<td><p>Owner</p></td>
+<td><p>Displays the user who is currently assigned the policy</p>
+
+
+:::note
+
+<p>The default owner is the user who created the policy.</p>
+<ul>
+<li><p>If you change the owner of a policy to a user account that does not have access rights to the specified targets, the new owner can modify the policy settings but cannot view the policy data.</p></li>
+<li><p>You can also assign multiple owners by assigning the policy to an Active Directory group.</p></li>
+</ul>
+<p>For more information, see <a href="trend-vision-one-changing-policy-owner">Changing the Policy Owner</a>.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Last Editor</p></td>
+<td><p>Displays the user who last edited the policy</p></td>
+</tr>
+<tr>
+<td><p>Last Edited</p></td>
+<td><p>This column only appears if the selected product is <strong>Apex One Security Agent</strong>.</p>
+<p>Displays when the policy was last edited</p></td>
+</tr>
+<tr>
+<td><p>Targets</p></td>
+<td><p>Displays how administrators select targets for the policy.</p>
+<ul>
+<li><p><strong>Specified</strong>: Uses the browse or search function to select specific targets for the policy. Specified policies remain static on the top of the policy list and take priority over filtered policies.</p></li>
+<li><p><strong>Filtered</strong>: Uses a filter to automatically assign current and future endpoints to the policy. Administrators can rearrange the priority of filtered policies. Hover over an item to conveniently view the filter criteria and make adjustments as necessary.</p></li>
+<li><p><strong>Label</strong>: Uses endpoint labels to assign endpoints to the policy.</p></li>
+<li><p><strong>None</strong>: The policy creator saved the policy as a draft without selecting any targets.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Deployed</p></td>
+<td><p>Displays the number of targets that have applied the policy settings or have unactivated product services</p>
+<p>Click the number to view the policy status.</p></td>
+</tr>
+<tr>
+<td><p>Pending</p></td>
+<td><p>Displays the number of targets that have not applied the policy settings</p>
+<p>Click the number to view the policy status.</p></td>
+</tr>
+<tr>
+<td><p>Offline</p></td>
+<td><p>Displays the number of targets that have offline agents</p>
+<p>Click the number to view the policy status.</p></td>
+</tr>
+<tr>
+<td><p>With Issues</p></td>
+<td><p>Displays the number of targets that have not applied the policy settings due to unsupported policy deployment, no policy configuration, system errors, endpoint communication errors with the product server, unsupported endpoints, locally changed settings, disabled product services, or partial deployment</p>
+<p>Click the number to view the policy status.</p></td>
+</tr>
+</tbody>
+</table>
+
+:::note
+
+The numbers in *Deployed* and *Pending* columns only reflect the endpoints or managed products that an administrator has permission to manage.
+:::
+::::

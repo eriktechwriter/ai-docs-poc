@@ -1,0 +1,625 @@
+---
+slug: trend-vision-one-config-linux-secure-boot-agents
+title: Configure Linux Secure Boot for agents
+last_updated: '2025-09-08'
+ai_context:
+  source_file: config-linux-secure-boot-agents.md
+  conversion_date: '2025-09-08T23:42:22.968Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Prepare your Linux endpoints to allow the Trend Vision One Endpoint Security agent to run within the UEFI Secure Boot environment.
+
+Some versions of the agent for Linux are [compatible](agent-platform-compatibility.mdx) with [Unified Extensible Firmware Interface (UEFI) Secure Boot](https://uefi.org/sites/default/files/resources/UEFI_Secure_Boot_in_Modern_Computer_Security_Solutions_2013.pdf).
+
+When Secure Boot is enabled, the computer's Linux kernel checks the PKI signature of each kernel module before it is loaded. It won't load unsigned kernel modules, nor modules with invalid signatures. These agent features install kernel modules:
+
+- Anti-Malware
+
+- Web Reputation
+
+- Firewall
+
+- Integrity Monitoring
+
+- Intrusion Prevention
+
+- Application Control
+
+Therefore if you want to use those features with Secure Boot, then you must enroll the public keys from Trend Micro in the computer's firmware so that it can validate those kernel module signatures.
+
+Methods vary by platform:
+
+- Enroll a Secure Boot key for AWS
+
+- Enroll a Secure Boot key for Google Cloud Platform
+
+- Enroll a Secure Boot key for VMware vSphere or physical computers
+
+- Enroll a Secure Boot key for Oracle Linux
+
+- Enroll a Secure Boot key for Azure
+
+### Download the Trend Micro public keys {#download-the-trend-micro-public-keys}
+
+Before you enroll them on Secure Boot computers, you must first download the Trend Micro public keys that will be used to validate kernel module signatures. The public keys are encoded in DER format. If you have trouble downloading the key files, right-click and select *Save Link As*.
+
+- [DS2022.der](https://help.deepsecurity.trendmicro.com/DS2022.der) SHA-256 certificate hash: `BB FA 4A B8 3C 61 A0 3F 1D D0 4B A7 A4 51 75 E7 D7 EF D3 C8 4B F3 D9 FE A0 CE AB B9 2A F4 8E 92`
+
+- [DS20_V2.der](https://help.deepsecurity.trendmicro.com/DS20_v2.der) SHA-256 certificate hash: `B3 36 43 7B 12 B3 EB 6A 4E 4A 44 62 40 4F 1F BD 21 32 70 77 4C 33 7D 1C 5A 58 7C 99 83 F7 30 C7`
+
+When the agent is deployed on SuSE 15 with kernels 5.3.18-24.34-default or later, `DS20_v2.der` is required because verification of kernel module signatures has changed.
+
+- [DS11_2022.der](https://help.deepsecurity.trendmicro.com/DS11_2022.der) SHA-256 certificate hash: `BB FA 4A B8 3C 61 A0 3F 1D D0 4B A7 A4 51 75 E7 D7 EF D3 C8 4B F3 D9 FE A0 CE AB B9 2A F4 8E 92`
+
+The old public key for agent version 11 (`DS11.der` with a SHA-1 hash `7D 96 56 5C 3A 77 B7 A7 24 49 D5 6A A5 0C 28 AA D7 3B 0B FB`) expired on December 5, 2022. To continue using the agent after this date, you must enroll this new public key. Otherwise an "Engine Offline" error message will appear in the console, and the computer will not be protected.
+
+You also must download the intermediate certificate authority (CA) certificates that are required to validate the signing chain on the Trend Micro public keys. If Microsoft updates these CA certificates, then you will need to use the new certificates. The CA certificates are X.509 v3 CRT files encoded in DER format.
+
+- [MicWinProPCA2011_2011-10-19.crt](https://go.microsoft.com/fwlink/p/?linkid=321192) Microsoft Windows Production PCA 2011 SHA-256 certificate hash: `E8 E9 5F 07 33 A5 5E 8B AD 7B E0 A1 41 3E E2 3C 51 FC EA 64 B3 C8 FA 6A 78 69 35 FD DC C7 19 61`
+
+- [MicCorUEFCA2011_2011-06-27.crt](https://go.microsoft.com/fwlink/p/?linkid=321194) Microsoft Corporation UEFI CA 2011 SHA-256 certificate hash: `48 E9 9B 99 1F 57 FC 52 F7 61 49 59 9B FF 0A 58 C4 71 54 22 9B 9F 8D 60 3A C4 0D 35 00 24 85 07`
+
+- [MicCorKEKCA2011_2011-06-24.crt](https://go.microsoft.com/fwlink/?LinkId=321185) Microsoft Corporation KEK CA 2011 SHA-256 certificate hash: `A1 11 7F 51 6A 32 CE FC BA 3F 2D 1A CE 10 A8 79 72 FD 6B BE 8F E0 D0 B9 96 E0 9E 65 D8 02 A5 03`
+
+### Update the Trend Micro public key {#update-the-trend-micro-public-key}
+
+You will be required to update your enrolled public keys for signed Trend Micro kernel modules during certain scenarios.
+
+- You upgrade the agent to a newer major release
+
+  In every major release of the agent (for example, agent 12.0 and 20.0), Trend Micro refreshes the public keys for Secure Boot kernel module signatures. New kernel module signatures cannot be validated with an old public key. As a result, when you upgrade the agent, you must also enroll the new public key.
+
+- The public key has expired
+
+  If Trend Micro extends an end-of-life date, then Trend Micro will create a new public key to match the new end-of-life date. You will need to replace the old public key with the new one and then upgrade the agent.
+
+  :::note
+
+  If a public key for Secure Boot becomes invalid for any of the above reasons and you do not replace it, then an Engine Offline message could appear in the console and the computer will not be protected.
+
+  For Deep Security Agent 20 to use Secure Boot, it is essential to have DS2022.der and DS20_V2.der keys enrolled.
+  :::
+
+  <table>
+  <thead>
+  <tr>
+  <th><p>Agent version</p></th>
+  <th><p>Key</p></th>
+  <th><p>Expiry date</p></th>
+  <th><p>Comment</p></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td rowspan="3"><p>20</p></td>
+  <td><p>DS2022.der</p></td>
+  <td><p>24-Nov-2031</p></td>
+  <td><p>A new replacement key is expected to be released one year before the expiry date.</p></td>
+  </tr>
+  <tr>
+  <td><p>DS20.der</p></td>
+  <td><p>26-Nov-2024</p></td>
+  <td><p>DS20.der was replaced by DS2022.der. DS2022.der must have been enrolled prior to the expiry date of DS20.der.</p></td>
+  </tr>
+  <tr>
+  <td><p>DS20_v2.der</p></td>
+  <td><p>24-Oct-2026 Required for SuSE 15 after 5.3.18-24.34-default</p></td>
+  <td><p>Required for SUSE 15 kernels after 5.3.18-24.34-default.</p>
+  <p>DS20_V2.der will be replaced by DS2022.der upon its expiry. Ensure that DS2022.der is enrolled prior to the expiry date of DS20_V2.der.</p></td>
+  </tr>
+  <tr>
+  <td><p>12</p></td>
+  <td><p>DS12.der</p></td>
+  <td><p>26-Nov-2024</p></td>
+  <td><p>DS12.der was replaced by DS2022.der. DS2022.der must have been enrolled prior to the expiry date of DS12.der.</p></td>
+  </tr>
+  <tr>
+  <td rowspan="2"><p>11</p></td>
+  <td><p>DS11_2022.der</p></td>
+  <td><p>24-Nov-2031</p></td>
+  <td></td>
+  </tr>
+  <tr>
+  <td><p>DS11.der</p></td>
+  <td><p>05-Dec-2022</p></td>
+  <td></td>
+  </tr>
+  </tbody>
+  </table>
+
+- Linux kernel module signature verification has changed
+
+  When you update the Linux kernel, the method that it uses to verify kernel module signatures might change. This may require you to replace the enrolled public keys. For example, SuSE 15 added extended key usage (EKU) code signing verification in kernel version 5.3.18-24.34-default, which required a new public key version, `DS20_v2.der`.
+
+### Enroll a Secure Boot key for AWS {#enroll-a-secure-boot-key-for-aws}
+
+1.  Download the required CA certificates and Trend Micro public keys for Secure Boot.
+
+2.  If you do not have a platform key, see the AWS documentation to [generate a Secure Boot platform key](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/uefi-secure-boot-create-three-key-pairs.mdx). Only replace the platform key if you can access the firmware of *all devices that are loaded during boot* (for example, the GPU). If you cannot update the firmware's signing chain to use your new platform key, then Secure Boot could make the instance permanently unable to boot.
+
+3.  Create an EC2 virtual machine instance from a Linux distribution AMI that supports Secure Boot.
+
+4.  In the console on that instance, install the Machine Owner Key (MOK) command `mokutil`, `uefivars`, and Python. For example, on Red Hat Enterprise Linux, enter the commands:
+
+    ``` codeblock
+    yum install mokutil
+    yum install python3
+    curl -L -o uefivars.zip https://github.com/awslabs/python-uefivars/archive/refs/heads/main.zip
+    unzip uefivars.zip
+    ```
+
+    On Debian or Ubuntu, enter the commands:
+
+    ``` codeblock
+    sudo apt-get update
+    sudo apt-get install efitools
+    sudo apt-get install python3
+    curl -L -o uefivars.zip https://github.com/awslabs/python-uefivars/archive/refs/heads/main.zip
+    unzip uefivars.zip
+    ```
+
+5.  Upload the CA certificates and Trend Micro public keys to the instance.
+
+6.  Put each platform key, CA certificate, and Trend Micro public key inside a UEFI signature list (`.esl`) file. Combine them into one file, and then convert it into binary (`.bin`) format. For example, depending on which Trend Micro public keys you use, you might enter the commands:
+
+    ``` codeblock
+    # Convert your platform key into signatures list format
+    cert-to-efi-sig-list YOUR_PLATFORM_KEY.crt YOUR_PLATFORM_KEY.esl
+    # Convert CA certificates
+    sbsiglist --owner 77fa9abd-0359-4d32-bd60-28f4e78f784b --type x509 --output MS_CA_KEK.esl MicCorKEKCA2011_2011-06-24.crt
+    sbsiglist --owner 77fa9abd-0359-4d32-bd60-28f4e78f784b --type x509 --output MS_CA_PROD.esl MicWinProPCA2011_2011-10-19.crt
+    sbsiglist --owner 77fa9abd-0359-4d32-bd60-28f4e78f784b --type x509 --output MS_CA_UEFI.esl MicCorUEFCA2011_2011-06-27.crt
+    # Convert Trend Micro public keys
+    sbsiglist --owner 77fa9abd-0359-4d32-bd60-28f4e78f784b --type x509 --output TREND_UEFI_db_DS11.esl DS11_2022.der
+    sbsiglist --owner 77fa9abd-0359-4d32-bd60-28f4e78f784b --type x509 --output TREND_UEFI_db_DS20_v2.esl DS20_v2.der
+    sbsiglist --owner 77fa9abd-0359-4d32-bd60-28f4e78f784b --type x509 --output TREND_UEFI_db_DS2022.esl DS2022.der
+    # Combine CA and vendor public keys into one signatures list
+    cat MS_CA_PROD.esl MS_CA_UEFI.esl TREND_UEFI_db_DS11.esl TREND_UEFI_db_DS20_v2.esl TREND_UEFI_db_DS2022.esl > ALL_SIGNATURES_db.esl
+    cp *.esl /root/
+    # Combine all and convert to binary
+    ./python-uefivars-main/uefivars.py -i none -o aws -O YOUR_BINARY_SIGNING_CHAIN.bin -P ./YOUR_PLATFORM_KEY.esl -K ./MS_CA_KEK.esl --db ./ALL_SIGNATURES_db.esl
+    ```
+
+    where `77fa9abd-0359-4d32-bd60-28f4e78f784b` is the GUID in the `SignatureOwner` field of the Microsoft Corporation KEK CA 2011 certificate.
+
+7.  Download the `.bin` file.
+
+8.  Create a new EC2 snapshot of the instance.
+
+9.  Go to AWS Cloudshell. Select **Actions → Files → Upload file** and then select the binary file.
+
+10. Create a new AMI with the snapshot ID and the `.bin` file that you uploaded. For example, you could enter the command:
+
+    ``` codeblock
+    aws ec2 register-image --name LIFT-UBUNTU20SecureBootX64 --uefi-data $(cat YOUR_BINARY_SIGNING_CHAIN.bin) --block-device-mappings "DeviceName=/dev/sda1,Ebs= {SnapshotId={{YOUR-SNAPSHOT-ID}},DeleteOnTermination=true}" --architecture x86_64 --root-device-name /dev/sda1 --virtualization-type hvm --boot-mode uefi
+    ```
+
+11. Use the customized image to create a new instance with Secure Boot enabled.
+
+12. Verify that the keys are successfully enrolled in the MOK list:
+
+    ``` codeblock
+    mokutil --db | grep Trend
+    ```
+
+    and that the kernel has successfully loaded the Trend Micro public keys:
+
+    ``` codeblock
+    dmesg | grep cert
+    ```
+
+### Enroll a Secure Boot key for Google Cloud Platform {#enroll-a-secure-boot-key-for-google-cloud-platform}
+
+1.  Download the required CA certificates and Trend Micro public keys for Secure Boot.
+
+2.  If you do not have a platform key, see the Google Cloud Platform documentation to [generate a Secure Boot platform key](https://cloud.google.com/compute/shielded-vm/docs/creating-shielded-images).
+
+    :::danger[Warning]
+
+    Only replace the platform key if you can access the firmware of *all devices that are loaded during boot (for example, the GPU).* If you cannot update the firmware's signing chain to use your new platform key, then Secure Boot could make the instance permanently unable to boot.
+    :::
+
+3.  Create [customized virtual machine images](https://cloud.google.com/security/shielded-cloud/creating-shielded-images) with the CA certificates and Trend Micro public keys that will be used by Secure Boot. For example, you could enter the command:
+
+    ``` codeblock
+    gcloud compute images create [IMAGE_NAME] \
+     --source-image=[SOURCE_IMAGE] \
+     --source-image-project=[SOURCE_PROJECT] \
+     --platform-key-file=YOUR_PLATFORM_KEY.der \
+     --signature-database-file=./MicCorUEFCA2011_2011-06-27.crt,./MicWinProPCA2011_2011-10-19.crt,./DS2022.der,./DS20_v2.der,./DS11_2022.der[,OTHER_EXISTING_KEYS] \
+     --guest-os-features=UEFI_COMPATIBLE
+    ```
+
+    Public keys must be in DER or BIN format. Separate each with a comma ( `,` ). For details on command usage and the API, see the Google Cloud Platform documentation.
+
+    :::danger[Warning]
+
+    Include all valid existing Secure Boot keys when you enter this command. This command *overwrites* all existing keys. If you do not include them, they will be deleted and their kernel modules will not load.
+    :::
+
+4.  Use the customized image to create a new instance with Secure Boot enabled.
+
+5.  Verify that the keys are successfully enrolled:
+
+    ``` codeblock
+    grep 'Trend' /proc/keys
+    ```
+
+### Enroll a Secure Boot key for VMware vSphere or physical computers {#enroll-a-secure-boot-key-for-vmware-vsphere-or-physical-computers}
+
+:::tip
+
+If many computers will use Secure Boot, then create a virtual machine or OS image file after you complete this procedure. New computers can be installed from that file.
+:::
+
+:::note
+
+If the computer uses Oracle Linux prior to UEK R6U3, then don't use this procedure. Instead, see Enroll a Secure Boot key for Oracle Linux.
+:::
+
+1.  Download the required CA certificates and Trend Micro public keys for Secure Boot.
+
+2.  If you do not have a platform key, see your Linux distribution's documentation to generate a Secure Boot platform key.
+
+    :::danger[Warning]
+
+    Only replace the platform key if you can access the firmware of *all devices that are loaded during boot (for example, the GPU).* If you cannot update the firmware's signing chain to use your new platform key, then Secure Boot could make the computer permanently unable to boot.
+    :::
+
+3.  On the computer where Secure Boot will be enabled, install the Machine Owner Key (MOK) command `mokutil`. For example, on Red Hat Enterprise Linux, enter the command:
+
+    ``` codeblock
+    yum install mokutil
+    ```
+
+    On Debian or Ubuntu, enter the commands:
+
+    ``` codeblock
+    sudo apt-get update
+    sudo apt-get install efitools
+    ```
+
+4.  Add the Trend Micro public keys to the MOK list. Separate multiple keys (if required) with a space. For example:
+
+    ``` codeblock
+    mokutil --import /opt/ds_agent/DS2022.der /opt/ds_agent/DS20_v2.der
+    ```
+
+    When prompted, enter a password that you will use later in this procedure.
+
+5.  Reboot the computer.
+
+6.  When the computer restarts, the Shim UEFI key management console opens. Press any key to continue.
+
+7.  On the `Perform MOK management` screen, select `Enroll MOK`.
+
+8.  Select `View key X` if you need to verify the certificate hashes of the public keys. Press any key to return to the `Enroll MOK` screen.
+
+9.  Select `Continue` on the `Enroll the key(s)?` screen.
+
+10. Select `Yes`, then enter the password that you entered earlier.
+
+11. On the `The system must now be rebooted` screen, select `OK` to confirm your changes and reboot.
+
+12. Verify that the keys are successfully enrolled in the MOK list:
+
+    - On most operating systems, enter the command: `mokutil --test-key /opt/ds_agent/${certificate_file}.der`
+    - On Debian 11, enter the command: `keyctl show %:.platform | grep 'Trend'`
+
+### Enroll a Secure Boot key for Oracle Linux {#enroll-a-secure-boot-key-for-oracle-linux}
+
+On Oracle Linux *UEK R6 releases prior to UEK R6U3*, Secure Boot requires slightly different steps. With Unbreakable Enterprise Kernel (UEK), the kernel will only trust keys that are in the built-in keyring. Because of this, the kernel must be recompiled with the Trend Micro public keys, and since that changes the kernel itself, you must also sign the new kernel boot image.
+
+1.  Download the required CA certificates and Trend Micro public keys for Secure Boot.
+
+2.  Follow the Oracle Linux documentation for [Signing Kernel Images and Kernel Modules for Use With Secure Boot](https://docs.oracle.com/en/operating-systems/oracle-linux/10/secure-boot/sboot-SigningKernelModulesforUseWithSecureBoot.mdx).
+
+3.  When you reach the step for **Signing the Kernel Module**, replace `pubkey.der` with the name of your Trend Micro public key. For example:
+
+    ``` codeblock
+    sudo /usr/src/kernels/$(uname -r)/scripts/insert-sys-cert -s /boot/System.map$(uname -r) -z /boot/vmlinuz$(uname -r) -c ./DS20_v2.der
+    ```
+
+4.  Continue with the remaining steps to sign the kernel boot image.
+
+5.  Verify that the key is listed in the `builtin_trusted_keys` keyring:
+
+    ``` codeblock
+    sudo keyctl show %:.builtin_trusted_keys | grep 'Trend'
+    ```
+
+### Enroll a Secure Boot key for Azure {#enroll-a-secure-boot-key-for-azure}
+
+1.  Download the required CA certificates and Trend Micro public keys for Secure Boot.
+
+2.  If you have a generation 2 Azure VM created from a Linux distribution image with support for Secure Boot, ensure that this VM meets the following criteria:
+
+    - The security type is specified as **Trusted launch virtual machines**.
+
+    - The **Enable Secure Boot** security feature is selected.
+
+    If you do not have a generation 2 Azure VM, create it from a Linux distribution image that supports Secure Boot, as follows:
+
+    - Select a VM image with generation 2 supported.
+
+    - Navigate to the **Create a virtual machine** page in the Azure portal.
+
+    - From the **Security type** list, select **Trusted launch virtual machines**.
+
+    - In Configure security features, select **Enable Secure Boot**.
+
+3.  Ensure that the Azure VM is stopped and note the VM disk name.
+
+4.  Execute the `az login` command locally or through the Cloud Shell on Azure.
+
+5.  Execute the following script line by line to generate a shared access signatures (SAS) URL:
+
+    ``` codeblock
+    read -p 'Your Subscription ID: ' subscriptionId
+    read -p 'Your Resource Group Name: ' resourceGroupName
+    read -p 'Your Disk Name for Exporting: ' diskName
+    read -p 'Input the Expiry Duration for SAS URL in seconds (for example, 3600): ' sasExpiryDuration
+    read -p 'Your Storage Account Name to Hold this VHD file: ' storageAccountName
+    read -p 'Your Storage Container Name: ' storageContainerName
+    read -p 'Your Storage Account Key: ' storageAccountKey
+    read -p 'Your Destination VHD File Name: ' destinationVHDFileName
+    az account set --subscription $subscriptionId
+    sas=$(az disk grant-access --resource-group $resourceGroupName --name $diskName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv)
+    az storage blob copy start --destination-blob $destinationVHDFileName --destination-container $storageContainerName --account-name $storageAccountName --account-key $storageAccountKey --source-uri $sas
+    ```
+
+6.  Copy the contents of the following file and save it as `CreateSIGFromOSvhdWithCustomUEFIKey.json`:
+
+    ``` codeblock
+    {
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+            "galleryName": {
+                "defaultValue": "{{ change to custom gallary name for the deployed template }}",
+                "type": "String",
+                "metadata": {
+                    "description": "Name of the gallery"
+                }
+            },
+            "imageDefinitionName": {
+                "defaultValue": "{{ change to custom image definition name }}",
+                "type": "String",
+                "metadata": {
+                    "description": "Name of the image definition"
+                }
+            },
+            "versionName": {
+                "defaultValue": "{{ change to custom image version }}",
+                "type": "String",
+                "metadata": {
+                    "description": "Name of the image version"
+                }
+            },
+            "storageAccountName": {
+                "defaultValue": "{{ change to custom storage account name contains the exported OS vhd }}",
+                "type": "string",
+                "metadata": {
+                    "description": "Storage account name containing the OS vhd"
+                }
+            },
+            "vhdURI": {
+                "defaultValue": "{{ change to custom vhd URL of the exported OS vhd }}",
+                "type": "String",
+                "metadata": {
+                    "description": "OS vhd URL"
+                }
+            },
+            "imagePublisher": {
+                "defaultValue": "{{ change to custom image publisher name }}",
+                "type": "String",
+                "metadata": {
+                    "description": "Publisher name of the image"
+                }
+            },
+            "offer": {
+                "defaultValue": "{{ change to custom image offer name }}",
+                "type": "String",
+                "metadata": {
+                    "description": "Offer of the image"
+                }
+            },
+            "sku": {
+                "defaultValue": "{{ change to custom image sku name }}",
+                "type": "String",
+                "metadata": {
+                    "description": "Sku of the image"
+                }
+            },
+            "osType": {
+                "defaultValue": "Linux",
+                "allowedValues": [
+                    "Windows",
+                    "Linux"
+                ],
+                "type": "String",
+                "metadata": {
+                    "description": "Operating system type"
+                }
+            },
+            "gallerySecurityType": {
+                "defaultValue": "TrustedLaunchSupported",
+                "type": "String",
+                "allowedValues": [
+                    "TrustedLaunchSupported",
+                    "TrustedLaunchAndConfidentialVMSupported"
+                ],
+                "metadata": {
+                    "description": "Gallery Image security type"
+                }
+           
+            },
+            "customDBKeyDS20V2": {
+                "defaultValue": "MIIFyzCCA7OgAwIBAgIJAOqCjczOdriRMA0GCSqGSIb3DQEBCwUAMGsxGjAYBgNVBAoMEVRyZW5kIE1pY3JvLCBJbmMuMSUwIwYDVQQDDBxUcmVuZCBNaWNybyBEZWVwIFNlY3VyaXR5IDIwMSYwJAYJKoZIhvcNAQkBFhdjc3VwcG9ydEB0cmVuZG1pY3JvLmNvbTAeFw0yMDExMjQwOTIzNTFaFw0yNjEwMjQwOTIzNTFaMGsxGjAYBgNVBAoMEVRyZW5kIE1pY3JvLCBJbmMuMSUwIwYDVQQDDBxUcmVuZCBNaWNybyBEZWVwIFNlY3VyaXR5IDIwMSYwJAYJKoZIhvcNAQkBFhdjc3VwcG9ydEB0cmVuZG1pY3JvLmNvbTCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAK5e7V+I80gksQSQR74uxAZylIdKaLVqBob/J6Fbca8zt7pdxCLeebu6S3yT0DRiaS5UslWO21v9q09cuqd0GoDCCaImNdMpCfTB91OZf9t3gHili0cTUyzkktT8n4g2/xw2mzoXBrm5PvX2psCFwBFh3FE7Mb5VgeA/Bh8uz7jpV9+7+TjouHQ9DXgV2dIDD2QacvtvaGyFqssNLKoKOnEm6+7o0/Cl/9eIzJT0YKzqS2BFY13ANHVTJieNVrfl9dIu1XxU7ABQ8LOVI835CAIJGJyYtIhnu2bCei7AGZzPYP7Way7djOvmG+2t+NopIE/RMTknsn3NQMJtrUi4oJOAwI36z8dMDBASUUCpglK12C9z6vHelNrE4z/tiUFYei2OBsLB/yNP9HloVDq4CMvcrZzwWbUtxmtcbTIW/uU1LOsqV92aHIMA3ZivLvvAPvlr4/8NltTvEy5N/CsxUxAeC21AbE9OXDyyE/9C+VB16YvrqQIEm5IW1Q0/fmmO6rBwy3Uu+4vZcUkq0QbOji/XcNbu17Cfg5fMuuLKu7kwqtl0JZxhZ0XBNdmhOL+XfwrZbZvCqXIKFZo1QsXsbFIoiOWVakXDonUTLPLJX5n5/7iIrw7hiUViPvTrkAUSjUm5OIu1p+hkKjGDHehdU4XX2bv9rrLAh3vIKxQSCTdlAgMBAAGjcjBwMAwGA1UdEwEB/wQCMAAwCwYDVR0PBAQDAgeAMBMGA1UdJQQMMAoGCCsGAQUFBwMDMB0GA1UdDgQWBBQ50RP6qbc9bEOp0jufVa+TgZWLlzAfBgNVHSMEGDAWgBQ50RP6qbc9bEOp0jufVa+TgZWLlzANBgkqhkiG9w0BAQsFAAOCAgEAXBhNUgJeKlB/ZwwsIjJsGXa9IPczWfTklg85hZILCT5Khcxl36zs6AEdtbW5pjV/hN+bV5LD84ZHoAa76ib4iHdU5nK4Q35AhWFdXMTCjg5bm78lESkyC7vLIjj1ITy2K3k+CgZosDXSe9V77AIN43+R4wwqbsI/FEuXmLw8UHW1DSQphjzcNGXAdbJVXhGoYLLBpyZ/OSFqhcqWwTtHZukrivtfix8fAQZ1GvfPZA0NlseXbSh883aERqwgP/etvdkUFuby0P66YTSaGZ4Dc9Q5NB4sJ+W/GcSz7Tnn2cF/hZor9ErjC+AUD0nvhn0IaJxzcCpz53XjFD8K/XeHVpBP8FqHFCoh7Ro4WcYBFR+DfoCc9Xq6tovWFZlcokybM7AmYw3DDisclkfMZFmhxi+yZQ6fmN9evVp2g7X/+w+hHrV38pnpz323186ALqSXShBPqG3HcQRvjdnS1Ve1nS8UKvy+ae+0+TKR9KTD+jQsL9daW4NfaSaBetFmdnbuNRIlKXscgoSne+Qi3YhtI93BoOnfpxEbWB4sWnSHkDO9iekSa42tabtCaY1d1MHxdYtdEBb1Gx5aWl8CmsZoWB0xRrk1NG7S8Mi+ux/2LiOfECkm1mpzaUY0w4dKfTT7/YeVAm1zgumWX+T0dsDc5Sc3t7AxiLHSmTxtYphFT4c=",
+                "type": "String",
+                "metadata": {
+                    "description": "Custom UEFI DB DS20_V2.der in base64 format"
+                }
+            },
+            "customDBKeyDS2022": {
+                "defaultValue": "MIIFzzCCA7egAwIBAgIJAIfzdTk2xdt2MA0GCSqGSIb3DQEBCwUAMG0xGjAYBgNVBAoMEVRyZW5kIE1pY3JvLCBJbmMuMScwJQYDVQQDDB5UcmVuZCBNaWNybyBEZWVwIFNlY3VyaXR5IDIwMjIxJjAkBgkqhkiG9w0BCQEWF2NzdXBwb3J0QHRyZW5kbWljcm8uY29tMB4XDTIxMTEyNjA2MzI0OVoXDTMxMTEyNDA2MzI0OVowbTEaMBgGA1UECgwRVHJlbmQgTWljcm8sIEluYy4xJzAlBgNVBAMMHlRyZW5kIE1pY3JvIERlZXAgU2VjdXJpdHkgMjAyMjEmMCQGCSqGSIb3DQEJARYXY3N1cHBvcnRAdHJlbmRtaWNyby5jb20wggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQCWb6JAyvw0PoMfHEMoBtj3hsRS8q5TPFoa6vDrAOcJZf0MTw3NZjlbnNzVP/Ri4J5DGpOWDXLte0ngugtdAG+w3y8UY8K2agEq1ehGIB3iUz45zPqDiQWs/huafj96q9FzNlWkLJT+M0E2l0qpNJ9NlyphbQ+cnccm1fHrNOMNtEbm31nW4DVD9VyB7BFf4NRS2h4FiDjRqUTAREMfk84MReQNEP98kPZLXR3ajE4MTZztYF6INR68nK9Jzig/vJjMRpMwFp+VkQaFnbiti6hbfRjS/GbCW62aJJCTHEavbyJKKY1+MRG406lYVlpH632iyvHfj2ni+B7lLvfi5qag+27mX+rBxlqLGuiwNu0geGv5GTlmDyx2onNWRz1akk5GJUloY2xG9ak92o6WsnDdJCXlFHytPc0R+FleZ/nNNpyzPYr1V8pqWenk+wpVcA7BsuRHofWYzut98GkjGYWXXjsipaDt1V2tTKNexFgzMCUIi/tJGmUe3U6czS4zk3tXiTq2Z3kZvrV59nRWJ+QEdax0ICNZH6AEqNNajgvcvP9WcZmOtgozNxoJuQrCETMKcPQ+JgLbSAiZU7zLIp1z7XF358G7Azu/AGFpJ0orSpZ9f2J7f1WQ8CsHUgz9KISw6P7b8j160CCEbLBxcRnORCGSeVpO5tdKt4a7oil5wwIDAQABo3IwcDAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIHgDATBgNVHSUEDDAKBggrBgEFBQcDAzAdBgNVHQ4EFgQUnbil6RHtl1sidPNZk/35mq9EaWAwHwYDVR0jBBgwFoAUnbil6RHtl1sidPNZk/35mq9EaWAwDQYJKoZIhvcNAQELBQADggIBADsauvVNB9jPnlkOJY48eayLDfDN6JMriDA8Q0s0X9EZtTBMcRSNGIQjtyr4LOCOMNrUGMG2XFKHa8S17QYtcFM/2Y+t7aOilSTokWTkwC9jU1XBESH7fV44d/fYEO5yD3LBYw5BIEgSqJg39rdWWWOD6N1CGRwH3SZwT1aeDj7+YqCYXIUFR/jUm6SXyenoxIlSkn6Ymf3Pil3GtnqqxW1+VfkL6YOa715/3ZxqdWfvf1ArUL0spEtQEm4yHwdCuhPWbIG1RKejSFSLk92B/RdxqvYXiCxZ5SLziOLslvW0s48LrQ0TEr/HWhiuJ2Q//NSSCllUYy9f6CwXnW38xml+zZu/I8qJ5smI19JfO77HeRGACNSp2GC/C2mamLb1dSXSDKG6YomcrEFSO9oll/gfi6hwCw5Lx21/dD2SBjKMnwBYGRvDsovE2BQ26GnzvKQbJZW+kN6s5Gi3L0C56kSLLZUFJUxkKFN2//Qyu0cMC0oeecr+CYDxAHD2FMf4HGJAAScnk9mcEhxYs+B2IW/nCaRjbYvUg1LdaOR9oCXH14rh+FJ9DZmR84ia/YArHOJXSX/ziy0ftePgAGqQBmHNIPDA0TSGUYg/P5fcfYTT2bKO6lV/uXiqmDQuuCm1ietUpaTAJ0kWdDxhDzJem+N1qABRpuT93xbaapiX3199",
+                "type": "String",
+                "metadata": {
+                    "description": "Custom UEFI DB DS2022.der in base64 format"
+                }
+            }
+        },
+        "variables": {
+            "linuxSignatureTemplate": "MicrosoftUefiCertificateAuthorityTemplate",
+            "windowsSignatureTemplate": "MicrosoftWindowsTemplate"
+        },
+        "resources": [
+            {
+                "type": "Microsoft.Compute/galleries",
+                "apiVersion": "2022-01-03",
+                "name": "[parameters('galleryName')]",
+                "location": "[resourceGroup().location]",
+                "tags": {
+                    "AzSecPackAutoConfigReady": "true"
+                },
+                "properties": {
+                    "identifier": {}
+                }
+            },
+            {
+                "type": "Microsoft.Compute/galleries/images",
+                "apiVersion": "2022-08-03",
+                "name": "[concat(parameters('galleryName'), '/', parameters('imageDefinitionName'))]",
+                "location": "[resourceGroup().location]",
+                "dependsOn": [
+                   "[resourceId('Microsoft.Compute/galleries', parameters('galleryName'))]"
+                ],
+                "tags": {
+                    "AzSecPackAutoConfigReady": "true"
+                },
+                "properties": {
+                    "hyperVGeneration": "V2",
+                    "architecture": "x64",
+                    "osType": "[parameters('osType')]",
+                    "osState": "Generalized",
+                    "identifier": {
+                        "publisher": "[parameters('imagePublisher')]",
+                        "offer": "[parameters('offer')]",
+                        "sku": "[parameters('sku')]"
+                    },
+                    "features": [
+                        {
+                            "name": "SecurityType",
+                            "value": "TrustedLaunchSupported"
+                        }
+                    ],
+                    "recommended": {
+                        "vCPUs": {
+                            "min": 1,
+                            "max": 16
+                        },
+                        "memory": {
+                            "min": 1,
+                            "max": 32
+                        }
+                    }
+                }
+            },
+            {
+                "type": "Microsoft.Compute/galleries/images/versions",
+                "apiVersion": "2022-08-03",
+                "name": "[concat(parameters('galleryName'), '/',parameters('imageDefinitionName'),'/', parameters('versionName'))]",
+                "location": "[resourceGroup().location]",
+                "dependsOn": [
+                   "[resourceId('Microsoft.Compute/galleries/images', parameters('galleryName'), parameters('imageDefinitionName'))]",
+                   "[resourceId('Microsoft.Compute/galleries', parameters('galleryName'))]"
+                ],
+                "properties": {
+                    "publishingProfile": {
+                        "targetRegions": [
+                            {
+                                "name": "[resourceGroup().location]",
+                                "regionalReplicaCount": 1
+                            }
+                        ]
+                    },
+                    "storageProfile": {
+                        "osDiskImage": {
+                            "hostCaching": "ReadOnly",
+                            "source": {
+                                "uri": "[parameters('vhdURI')]",
+                                "storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+                            }
+                        }
+                    },
+                    "securityProfile": {
+                        "uefiSettings": {
+                            "signatureTemplateNames": [
+                               "[if(equals(parameters('osType'),'Linux'), variables('linuxSignatureTemplate'), variables('windowsSignatureTemplate'))]"
+                            ],
+                            "additionalSignatures": {
+                                "db": [
+                                    {
+                                        "type": "x509",
+                                        "value": [
+                                            "[parameters('customDBKeyDS20')]"
+                                        ]
+                                    },
+                                    {
+                                        "type": "x509",
+                                        "value": [
+                                            "[parameters('customDBKeyDS20V2')]"
+                                        ]
+                                    },
+                                    {
+                                        "type": "x509",
+                                        "value": [
+                                            "[parameters('customDBKeyDS2022')]"
+                                        ]
+                                     }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+    ```
+
+7.  Replace the values inside `{{ }}` in the `"parameters"` section of the `CreateSIGFromOSvhdWithCustomUEFIKey.json` file, keeping in mind the following:
+
+    - The preceding `CreateSIGFromOSvhdWithCustomUEFIKey.json` file is an example for custom deployment. `DS20_v2.der` and `DS2022.der` have already been filled in by Base64 format.
+
+    - To enroll another public key into the template, use the following command to convert the key to Base64 format, and then add the key to the JSON file:
+
+      ``` codeblock
+      openssl base64 -in <Trend_Micro_public_key> -A
+      ```
+
+8.  Create a Shared Image Gallery (SIG) image using template deployment by Azure CLI, as follows:
+
+    ``` codeblock
+    az deployment group create --resource-group <resource-group-name> --template-file
+          CreateSIGFromOSvhdWithCustomUEFIKey.json
+    ```
+
+9.  Create an Azure VM by the custom deployment image.
+
+10. Execute the following command to verify that the keys are successfully enrolled in the Machine Owner Key (MOK) list:
+
+    ``` codeblock
+    mokutil --db | grep Trend
+    ```
+
+11. Execute the following command to verify that the kernel has loaded the Trend Micro public keys:
+
+    ``` codeblock
+    dmesg | grep cert
+    ```
+
+For more information, see [Secure Boot UEFI keys](https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch-secure-boot-custom-uefi).
+:::::

@@ -1,0 +1,126 @@
+---
+slug: trend-vision-one-resolve-available-actions
+title: Resolve available actions
+---
+# Resolve available actions
+
+Troubleshoot and resolve the endpoint status that appears in Available Actions.
+
+The **Available Actions** display in Endpoint Inventory displays messages and suggested actions to take on your visible endpoints. Some actions might require additional troubleshooting to resolve. The following table lists the typical statuses you might encounter and how to resolve them.
+
+:::warning[Important]
+
+Some troubleshooting resolutions might cause additional credits to be allocated to Endpoint Security features.
+:::
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Available action status</p></th>
+<th><p>Description</p></th>
+<th><p>Resolution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="./images/ActionCard-InternalError=d3b2c872-a04c-4aba-8ccb-265e397b7e46.webp" /></td>
+<td><p>An internal error has occurred.</p>
+<p>The description might vary depending on the cause of the error, including whether a button is available to resolve the issue.</p></td>
+<td><p>If an action button is available, click the button to resolve the issue. Otherwise, try refreshing your Endpoint Inventory. If the issue persists, contact your support provider.</p></td>
+</tr>
+<tr>
+<td><img src="./images/ActionCard-UnableReconfigure=c074f870-27ba-4eb6-8f18-fcded8ce23a4.webp" /></td>
+<td><p>Unable to enable protection features</p>
+<p>This status might occur if you have an endpoint with a Sensor-only agent deployment assigned to a policy that enables Standard Endpoint Protection or Server &amp; Workload Protection features.</p></td>
+<td><p>Click <strong>Reconfigure Trend Vision One Endpoint Security agent deployment</strong> to download and install the missing protection features. For more information, see <a href="trend-vision-one-deploy-agents">Deploy agents</a>.</p>
+<p>If you do not want Standard Endpoint Protection or Server &amp; Workload Protection features on the endpoint, consider assigning the endpoint to another policy.</p></td>
+</tr>
+<tr>
+<td><img src="./images/ActionCard-UnableManage=b9218cfd-f03c-4c0e-a6fc-1d41b915f266.webp" /></td>
+<td><p>Unable to enable protection features</p>
+<p>This status might occur if the Trend Vision One Endpoint agent is out of date and not supported by Endpoint Security Policies.</p></td>
+<td><p>Click <strong>Manage in Version Control Policies</strong> to update to the latest agent version. If the agent version is too old, you might need to manually update the agent by downloading the installation package.</p>
+<p>For more information, see <a href="trend-vision-one-security-update-policies">Version Control Policies</a>.</p></td>
+</tr>
+<tr>
+<td><img src="./images/ActionCard-UnableUpdate=2d96b5be-038d-4a7f-827c-12845750c109.webp" /></td>
+<td><p>Unable to enable protection features</p>
+<p>This status might occur if you have assigned endpoints managed by a connected protection product to Endpoint Security Policies.</p></td>
+<td><p>Click <strong>Update in Product Instance</strong> to update the connected product to Trend Vision One Endpoint Security. For more information, see <a href="trend-vision-one-product-instance">Product Instance</a>.</p>
+<p>If you do not want to update the connected product, remove the targeted endpoints from any assigned policies.</p></td>
+</tr>
+<tr>
+<td><img src="./images/ActionCard-Unmanaged=9d04a27b-d3c2-47ec-8c79-026bed846d3d.webp" /></td>
+<td><p>Unmanaged endpoint</p>
+<p>Endpoints that are visible in your security environment but do not have any Trend Micro endpoint protection products installed are unmanaged.</p></td>
+<td><p>Click <strong>Get agent installer</strong> to download and install the Trend Vision One Endpoint Security agent to install on the endpoint. For more information, see <a href="trend-vision-one-deploy-agents">Deploy agents</a>.</p></td>
+</tr>
+<tr>
+<td><img src="./images/SWP-unableApplyPolicy=e16eac94-93fa-42cd-a889-09d23e86bb45.webp" /></td>
+<td><p>Unable to apply policy</p>
+<p>The agent is unable to apply an assigned policy because the agent is out of date or missing required components.</p></td>
+<td><p>Click <strong>Update Trend Vision One Endpoint Security agent</strong> to update the agent and install missing components. For more troubleshooting steps for this issue, see <a href="trend-vision-one-unable-apply-policies">Unable to apply policies</a></p></td>
+</tr>
+<tr>
+<td><img src="./images/SEP-XBC-unableApplyPolicy=32370877-44c8-4f38-a5f8-842b380adccf.webp" /></td>
+<td><p>Unable to apply policy</p>
+<p>The agent is unable to apply an assigned policy because the agent is missing required components or the configuration is not supported.</p></td>
+<td><p>Click <strong>Reconfigure Trend Vision One Endpoint Security agent</strong> to install missing components. For more troubleshooting steps for this issue, see <a href="trend-vision-one-unable-apply-policies">Unable to apply policies</a></p></td>
+</tr>
+<tr>
+<td><img src="./images/ActionCard-ProtectionReconfigure=69f04dfb-a797-4e0e-a4aa-656699a58097.webp" /></td>
+<td><p>Protection features not installed</p>
+<p>This status might occur if you have an endpoint with a Sensor-only agent deployment assigned to a policy that enables Standard Endpoint Protection or Server &amp; Workload Protection features.</p></td>
+<td><p>Click <strong>Reconfigure Trend Vision One Endpoint Security agent deployment</strong> to download and install the missing protection features. For more information, see <a href="trend-vision-one-deploy-agents">Deploy agents</a>.</p>
+<p>If you do not want Standard Endpoint Protection or Server &amp; Workload Protection features on the endpoint, consider assigning the endpoint to another policy.</p></td>
+</tr>
+<tr>
+<td><img src="./images/ActionCard-EnableSensor=355a5200-c6be-4149-9fbe-9c9dd3855f05.webp" /></td>
+<td><p>Endpoint Sensor not enabled</p>
+<p>The Endpoint Sensor or Endpoint sensor detection and response is not enabled on the agent</p></td>
+<td><p>Click <strong>Enable Endpoint Sensor</strong>. Enabling Endpoint Sensor requires credits.</p>
+<p>Enable Endpoint Sensor in <a href="trend-vision-one-sensor-settings-policies">Endpoint Security Policies</a>.</p></td>
+</tr>
+<tr>
+<td><img src="./images/ActionCard-OutdatedVersion=3418a4b5-92b6-41bb-9c0a-a442b24b6e86.webp" /></td>
+<td><p>Protection features outdated</p>
+<p>The endpoint protection features are out of date and might not be supported.</p></td>
+<td><p>Click <strong>Manage in Version Control Policies</strong> to update to the latest agent version. If the agent version is too old, you might need to manually update the agent by downloading the installation package.</p>
+<p>For more information, see <a href="trend-vision-one-security-update-policies">Version Control Policies</a>.</p></td>
+</tr>
+<tr>
+<td><img src="./images/ActionCard-LimitedSupport=e2bb1dce-c4d0-48e5-9884-e3f09320ba24.webp" /></td>
+<td><p>Limited support for security features</p>
+<p>This status might occur if the agent configuration is not fully supported for the endpoint OS.</p></td>
+<td><p>Check the <a href="trend-vision-one-endpoint-agent-system-requirements">Trend Vision One Endpoint Security agent system requirements</a> to verify the OS is fully supported. Some OS types might be supported by one configuration but not another.</p></td>
+</tr>
+<tr>
+<td><img src="./images/ActionCard-LimitedOSSupport=a2da83d4-3555-4c60-bf6c-4de0dfc09b1c.webp" /></td>
+<td><p>Limited support for security features</p>
+<p>This status might occur if the endpoint OS is not fully supported by protection features.</p></td>
+<td><p>Check the <a href="trend-vision-one-endpoint-agent-system-requirements">Trend Vision One Endpoint Security agent system requirements</a> to verify the OS is fully supported. Some OS types might be supported by one configuration but not another.</p></td>
+</tr>
+<tr>
+<td><img src="./images/ActionCard-UnsupportedOnPrem=c03495d7-9208-46ce-a9fe-2ec64ada569c.webp" /></td>
+<td><p>Unable to enroll endpoint</p>
+<p>This status might occur if you assigned an endpoint that is managed by a connected on-premises protection product.</p></td>
+<td><p>This status is for information only. Removing the endpoint from any assigned policies might dismiss the status.</p></td>
+</tr>
+<tr>
+<td><img src="./images/ActionCard-DuplicateMonitor=ed619b20-4d9e-4640-b7b8-f664cd6b131f.webp" /></td>
+<td><p>Duplicate monitoring feature enabled</p>
+<p>This status might occur if an endpoint managed by Server &amp; Workload Protection has both Activity Monitoring and the Endpoint Sensor enabled.</p></td>
+<td><p>Disable Activity Monitoring in Server &amp; Workload Protection.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Unable to apply policies](unable-apply-policies.mdx)
+::::

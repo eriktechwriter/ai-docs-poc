@@ -1,0 +1,250 @@
+---
+slug: trend-vision-one-ports-urls-used-ddi
+title: Ports and URLs used by Deep Discovery Inspector
+last_updated: '2025-09-08'
+ai_context:
+  source_file: ports-urls-used-ddi.md
+  conversion_date: '2025-09-08T23:42:14.415Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Use these settings to configure your firewall and connected products.
+
+Use the table below to configure your ports to allow Deep Discovery Inspector to connect with **Network Security** and share data with other Trend Vision One services such as Workbench and Suspicious Object Management.
+
+For a full list of all FQDNs and firewall exceptions for Trend Vision One, see [Firewall exception requirements for Trend Vision One](firewall-exception-requirements-for.mdx).
+
+:::note
+
+Some ports are configurable for their purpose. A purpose notated with (configurable) can be configured to use a different port in the Deep Discovery Inspector management console. The default ports are listed in the table.
+:::
+
+**Listening Ports**
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Port</p></th>
+<th><p>Protocol</p></th>
+<th><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>22</p></td>
+<td><p>TCP</p></td>
+<td><p>Connection port for preconfiguration console, as well as sending logs and data to the Threat Management Services Portal if the appliance is registered over SSH</p></td>
+</tr>
+<tr>
+<td><p>68</p></td>
+<td><p>UDP</p></td>
+<td><p>Receive DHCP server responses</p></td>
+</tr>
+<tr>
+<td><p>80</p></td>
+<td><p>TCP</p></td>
+<td><p>Threat intelligence information sharing with other Trend Micro products</p></td>
+</tr>
+<tr>
+<td><p>161</p></td>
+<td><p>UDP</p></td>
+<td><p>SNMP agent listening and protocol translation</p></td>
+</tr>
+<tr>
+<td><p>443</p></td>
+<td><p>TCP</p></td>
+<td><p>Management console access through HTTPS</p></td>
+</tr>
+<tr>
+<td><p>8080</p></td>
+<td><p>TCP</p></td>
+<td><p>Share threat intelligence with other products (configurable)</p></td>
+</tr>
+</tbody>
+</table>
+
+**Outbound Ports**
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr>
+<th>Port</th>
+<th></th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>25</p></td>
+<td><p>TCP</p></td>
+<td><p>Send notifications and scheduled reports through SMTP</p></td>
+</tr>
+<tr>
+<td><p>53</p></td>
+<td><p>TCP/UDP</p></td>
+<td><p>DNS resolution</p></td>
+</tr>
+<tr>
+<td><p>67</p></td>
+<td><p>UDP</p></td>
+<td><p>Requests to DHCP server if IP addresses are assigned dynamically</p></td>
+</tr>
+<tr>
+<td><p>80</p></td>
+<td><p>TCP</p></td>
+<td><p>Communication with ActiveUpdate server to update components</p>
+<p>Also supports communication with Apex Central if the appliance is registered over HTTP.</p></td>
+</tr>
+<tr>
+<td><p>123</p></td>
+<td><p>UDP</p></td>
+<td><p>Connection to NTP server for time synchronization (default NTP server: <code>pool.ntp.org</code>)</p></td>
+</tr>
+<tr>
+<td><p>137</p></td>
+<td><p>UDP</p></td>
+<td><p>IP address to host name resolution through NetBIOS</p></td>
+</tr>
+<tr>
+<td><p>162</p></td>
+<td><p>UDP</p></td>
+<td><p>Send SNMP trap notifications</p></td>
+</tr>
+<tr>
+<td><p>389</p></td>
+<td><p>TCP/UDP</p></td>
+<td><p>Retrieve user information from LDAP servers (configurable)</p></td>
+</tr>
+<tr>
+<td><p>443</p></td>
+<td><p>TCP</p></td>
+<td><p>Used for the following purposes:</p>
+<ul>
+<li><p>Communicate with Trend Vision One</p></li>
+<li><p>Communicate with the Trend Vision One Service Gateway</p></li>
+<li><p>Share anonymous threat information with the Smart Protection Network</p></li>
+<li><p>Connect to Trend Micro Threat Connect</p></li>
+<li><p>Send files to Deep Discovery Analyzer for sandbox analysis (configurable)</p></li>
+<li><p>Communicate with Deep Discovery Director - on-premises version (configurable)</p></li>
+<li><p>Communicate with Apex Central (configurable)</p></li>
+<li><p>Share threat intelligence information with Trend Micro TXOne OT Defense Console</p></li>
+<li><p>Connect to MITRE ATT&amp;CK™ Tactics and Techniques website</p></li>
+<li><p>Query Mobile App Reputation Service through Smart Protection Server</p></li>
+<li><p>Query Predictive Machine Learning engine</p></li>
+<li><p>Query the Web Reputation Services blocking reason</p></li>
+<li><p>Register to the mitigation server</p></li>
+<li><p>Scan APK files and send detection information to the Mobile App Reputation Service</p></li>
+<li><p>Send logs and data to Threat Management Services Portal if the appliance is using SSL encryption</p></li>
+<li><p>Verify safety of files through the Certified Safe Software Service</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>465</p></td>
+<td><p>TCP</p></td>
+<td><p>Send notifications and scheduled reports through SMTP over TCP with SSL/TLS encryption</p></td>
+</tr>
+<tr>
+<td><p>514</p></td>
+<td><p>UDP</p></td>
+<td><p>Send logs to syslog server over UDP (configurable)</p>
+
+
+:::warning[Important]
+
+<p>The port must match the syslog server.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>587</p></td>
+<td><p>TCP</p></td>
+<td><p>Send notifications and scheduled reports through SMTP over TCP with STARTTLS encryption</p></td>
+</tr>
+<tr>
+<td><p>601</p></td>
+<td><p>TCP</p></td>
+<td><p>Send logs to a syslog server (configurable)</p>
+
+
+:::warning[Important]
+
+<p>The port must match the syslog server.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>636</p></td>
+<td><p>UDP</p></td>
+<td><p>Retrieve user information from LDAP servers (configurable)</p></td>
+</tr>
+<tr>
+<td><p>3268</p></td>
+<td><p>TCP</p></td>
+<td><p>Retrieve user information from LDAP servers</p></td>
+</tr>
+<tr>
+<td><p>3269</p></td>
+<td><p>TCP</p></td>
+<td><p>Retrieve user information from LDAP servers</p></td>
+</tr>
+<tr>
+<td><p>4343</p></td>
+<td><p>TCP</p></td>
+<td><p>Communicate with Smart Protection Server</p></td>
+</tr>
+<tr>
+<td><p>5275</p></td>
+<td><p>TCP</p></td>
+<td><p>Query Web Reputation Services through Smart Protection Server using HTTPS, or Service Gateway Smart Protection Server using HTTPS</p></td>
+</tr>
+<tr>
+<td><p>6514</p></td>
+<td><p>TCP</p></td>
+<td><p>Send logs to a syslog server over TCP with SSL encryption (configurable)</p>
+
+
+:::warning[Important]
+
+<p>The port must match the syslog server.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>8514</p></td>
+<td><p>UDP</p></td>
+<td><p>Send information to Deep Discovery Advisor if appliance is integrated with Deep Discovery Advisor (configurable)</p>
+
+
+:::warning[Important]
+
+<p>The port must match the syslog settings on Deep Discovery Advisor.</p>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+::::

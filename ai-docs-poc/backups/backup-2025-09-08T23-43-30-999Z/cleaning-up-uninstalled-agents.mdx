@@ -1,0 +1,45 @@
+---
+slug: trend-vision-one-cleaning-up-uninstalled-agents
+title: Cleaning Up Uninstalled Agents
+last_updated: '2025-09-08'
+ai_context:
+  source_file: cleaning-up-uninstalled-agents.md
+  conversion_date: '2025-09-08T23:42:23.560Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure automatic removal of inactive and uninstalled endpoints from Endpoint Inventory and your Protection Managers.
+
+:::warning[Important]
+
+As of March 3, 2025, Endpoint Inventory manages all settings for inactive agent removal and cleanup for all Trend Vision One Endpoint Security agents, including agents with Server & Workload Protection and Standard Endpoint Protection modules.
+
+For Server & Workload Protection, Inactive Agent Cleanup is now disabled. Server & Workload Protection applies the Inactive Endpoint Removal Settings from Endpoint Inventory.
+
+For Standard Endpoint Protection, Inactive Agent Removal disables after the March 2025 planned maintenance. Until the maintenance completes, Standard Endpoint Protection applies both the Inactive Agent Removal settings and the Inactive Endpoint Removal Settings from Endpoint Inventory. After the planned maintenance completes, Inactive Agent Removal settings are disabled and agents apply the Endpoint Inventory settings.
+:::
+
+If you used the uninstall tool to remove the Trend Vision One Endpoint Security agent from your endpoint, some agents automatically sync with Trend Vision One to remove the endpoint from Endpoint Inventory. The process might take some time to complete.
+
+Some endpoints fail to sync with Trend Vision One after uninstalling the Trend Vision One Endpoint Security agent. You can configure inactive agent removal in Endpoint Inventory to automatically remove and clean up endpoints. You might need to manually sync the endpoint list in Zero Trust Secure Access.
+
+### Procedure {#procedure}
+
+1.  For Endpoint Inventory, enable automatic removal of inactive endpoints.
+
+    1.  On the Trend Vision One console, go to **Endpoint Security → Endpoint Inventory**.
+
+    2.  Click the settings icon (![](/images/gear_icon=fc9a51ad-35af-4fe3-92c6-5e41b2dfc5d9.webp)) and go to **Global Settings**.
+
+    3.  On the **Endpoint Settings** tab, select **Automatically remove inactive endpoints**.
+
+    4.  Click **Save**.
+
+2.  For Zero Trust Secure Access, manually refresh the endpoint list on the Secure Access Module screen.
+
+    1.  On the Trend Vision One console, go to **Zero Trust Secure Access → Secure Access Configuration → Secure Access Module → Endpoints**.
+
+    2.  Click the refresh icon (![](/images/refresh=5bd75452-c2fb-43ed-90e6-7b552fdc5dd2.webp)) to update the endpoint list.
+::::

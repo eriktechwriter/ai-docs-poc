@@ -1,0 +1,99 @@
+---
+slug: trend-vision-one-foundation-update-consider
+title: Foundation Services update considerations
+last_updated: '2025-09-08'
+ai_context:
+  source_file: foundation-update-consider.md
+  conversion_date: '2025-09-08T23:42:19.046Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Consider the impacts of updating Trend Vision One to the Foundation Services release.
+
+The following table outlines considerations you should be aware of before updating.
+
+:::warning[Important]
+
+- Post-update tasks:
+
+  - Verify that your user accounts have the correct access permissions and roles in the new **User Accounts** app and resolve any role conflicts.
+
+  - Check or establish your identity provider (IdP) connections in the **Identity Providers** app.
+:::
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Consideration</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Permanent update</p></td>
+<td><p>You cannot undo or stop the update once you begin.</p></td>
+</tr>
+<tr>
+<td><p>Business-level migration</p></td>
+<td><p>The migration is only supported at the business level for each console.</p></td>
+</tr>
+<tr>
+<td><p>Communication interruptions and forced sign-out during update</p></td>
+<td><p>Communication with any associates that access your Trend Vision One console is temporarily terminated as soon as the update process begins. Trend Micro recommends finishing all ongoing tasks before starting the update.</p>
+<p>After the update completes, you might need to update your user accounts before re-accessing the system. If an account update is required, the affected users receive an email notification with instructions on updating their accounts.</p></td>
+</tr>
+<tr>
+<td rowspan="3"><p>Required update of user account sign-in credentials</p></td>
+<td><p>After updating to the Foundation Services release, the owner of the Primary User Account must update the sign-in account to a valid, unused email address. The account owner must also reset their password, and if applicable, their multi-factor authentication (MFA) credentials.</p></td>
+</tr>
+<tr>
+<td><p>All Trend Vision One local accounts receive an email with a link to reset their password, and if applicable, their MFA credentials.</p>
+
+
+:::note
+
+<p>If the email address associated with a Trend Vision One account was previously registered with a Trend Cloud One account, the accounts and sign-in credentials merge. The user can sign in to Trend Vision One with the same credentials used to sign in to Trend Cloud One.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>After the update, SAML Account and SAML Group Account users are unable to sign in to Trend Vision One until an administrator configures the required identity provider in <strong>Identity Providers</strong>, and the users verify their sign-in email addresses.</p></td>
+</tr>
+<tr>
+<td><p>Single sign-on (SSO) to licensed Trend Micro solutions</p></td>
+<td><p>After updating to the Foundation Services release, the Primary User Account can automatically sign in via SSO to all licensed Trend Micro cloud services from the console links available in Trend Vision One.</p>
+<p>For security reasons, these console links are visible only to the Primary User Account. Other Trend Vision One users, including newly accounts created after the update, must access the external consoles via the normal sign-in screens.</p>
+
+
+:::note
+
+<p>Access to any connected on-premises solutions always requires manual sign-in, and all users with permission to the view Trend Vision One apps can view the links.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Endpoint agent bandwidth usage</p></td>
+<td><p>If you currently use the toggle-based <strong>Endpoint Inventory</strong> app, your endpoints automatically download an update package to enable access to new features in the Foundation Services release and Endpoint Security. The download package size can be up to 61 MB depending on your endpoint configuration.</p>
+<p>Bandwidth usage during the update process might impact your network performance depending on the number of endpoints and if you previously configured bandwidth throttling.</p></td>
+</tr>
+<tr>
+<td><p>Updating other Trend Micro products</p></td>
+<td><p>After updating to the Foundation Services release, all existing product connections remain visible in the <strong>Product Instance</strong> app.</p>
+<p>To update your other Trend Micro solutions after updating Trend Vision One, select a product instance and begin the update manually.</p>
+<p>For more information, see <a href="trend-vision-one-foundation-services-update-impacts">Impacts of migrating user accounts from other Trend Micro products</a>.</p></td>
+</tr>
+</tbody>
+</table>
+::::

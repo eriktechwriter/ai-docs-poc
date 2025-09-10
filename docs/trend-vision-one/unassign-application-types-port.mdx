@@ -1,0 +1,32 @@
+---
+slug: trend-vision-one-unassign-application-types-port
+title: Unassign application types from a single port
+---
+# Unassign application types from a single port
+
+The Intrusion Prevention Rule Compilation Failed error can occur when a policy or computer assigns too may application types to a single port. Currently, a port can only support assigning up to eight application types.
+
+To resolve the issue, remove an assigned application type from a port.
+
+### Procedure {#procedure}
+
+1.  To determine which rule encountered the issue, double-click the error to open the **Event Viewer**.
+
+2.  Go to **Computers**.
+
+3.  Right-click the computer with the misconfigured Intrusion Prevention rule and select **Details**.
+
+4.  Go to **Intrusion Prevention**.
+
+5.  Click **Assign/Unassign**.
+
+6.  Search for the name of the misconfigured rule.
+
+7.  Right-click the rule and select **Application Type Properties**.
+
+8.  Clear the **Inherited** selection.
+
+9.  Delete the port and specify a new one.
+
+10. Click **Apply**, then **OK**.
+:::

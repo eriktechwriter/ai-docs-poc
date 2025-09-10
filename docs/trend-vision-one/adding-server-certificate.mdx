@@ -1,0 +1,46 @@
+---
+slug: trend-vision-one-adding-server-certificate
+title: Adding a server certificate
+---
+# Adding a server certificate
+
+Upload a server certificate for your organization's internal applications to facilitate browser access.
+
+For the servers that host your organization's internal applications, you can use the default self-signed certificate provided by Trend Vision One or upload your own server certificate. Complete the following steps to upload a server certificate.
+
+:::note
+
+If you use the default certificate, the web browser displays a web server certificate error when users launch the app because the hostname of the app and the certificate do not match.
+:::
+
+### Procedure {#procedure}
+
+1.  On the **Internal Applications** tab, click **Manage Certificates** on the right side of the screen.
+
+2.  Click **Add Server Certificate**.
+
+    The **Add Server Certificate** screen appears.
+
+3.  Specify a unique name and a description for the web server certificate.
+
+4.  Next to "Public key certificate", click **Select File...**.
+
+5.  Navigate to the required certificate, and then upload the certificate.
+
+    Make sure that you have selected a Base64 encoded X.509 certificate file in `.crt` or `.pem` format.
+
+6.  Next to "Private key", click **Select File...**.
+
+7.  Navigate to the private key associated with the uploaded certificate, and then upload the private key.
+
+    Make sure that the private key file is in `.key` or `.pem` format.
+
+8.  Specify the passphrase if the private key is encrypted.
+
+    :::warning[Important]
+
+    Trend Micro uses the passphrase to decrypt the private key and does NOT store the passphrase.
+    :::
+
+9.  Click **Add**.
+::::

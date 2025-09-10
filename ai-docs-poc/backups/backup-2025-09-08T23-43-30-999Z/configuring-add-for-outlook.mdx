@@ -1,0 +1,42 @@
+---
+slug: trend-vision-one-configuring-add-for-outlook
+title: Configuring the add-in for Outlook
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configuring-add-for-outlook.md
+  conversion_date: '2025-09-08T23:42:22.595Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Grant permissions on emails quarantined for different reasons and enable users to report false positives and false negatives to Trend Micro in the management console.
+
+### Procedure {#procedure}
+
+1.  In Cloud Email and Collaboration Protection, go to **Administration → Add-in for Outlook**.
+
+2.  Specify the quarantine permission settings.
+
+    1.  Under **Quarantine Management Permissions**, turn on the toggle to allow your users to manage quarantined emails.
+
+    2.  Specify the permissions that your users can have on emails quarantined for different reasons.
+
+        :::note
+
+        For emails quarantined for containing ransomware, malicious files, or malicious URLs, Trend Micros recommends that you exert caution when granting permissions to your users.
+        :::
+
+    3.  Specify whether your users can add senders to bypass Advanced Spam Protection.
+
+        The senders trusted by your users do not bypass other enabled scan filters, such as Malware Scanning, File Blocking, Web Reputation, and Virtual Analyzer.
+
+        :::note
+
+        Senders trusted by your users can not be blocked by the blocked sender list for Advanced Spam Protection in policy settings. However, such users can be blocked by the Blocked Lists for Exchange Online in global settings.
+        :::
+
+3.  Specify email reporting settings for your users to report emails to Trend Micro or administrators in your organization.
+
+    For details, see [Email reporting](email-reporting.mdx).
+:::

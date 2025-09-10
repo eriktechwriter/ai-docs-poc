@@ -1,0 +1,185 @@
+---
+slug: trend-vision-one-cef-engine-update-status-logs
+title: CEF Engine Update Status Logs
+---
+# CEF Engine Update Status Logs
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 38%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>CEF Key</p></th>
+<th><p>Description</p></th>
+<th><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Header (logVer)</p></td>
+<td><p>CEF format version</p></td>
+<td><p>CEF:0</p></td>
+</tr>
+<tr>
+<td><p>Header (vendor)</p></td>
+<td><p>Product vendor</p></td>
+<td><p>Trend Micro</p></td>
+</tr>
+<tr>
+<td><p>Header (pname)</p></td>
+<td><p>Product name</p></td>
+<td><p>Apex Central</p></td>
+</tr>
+<tr>
+<td><p>Header (pver)</p></td>
+<td><p>Product version</p></td>
+<td><p>2019</p></td>
+</tr>
+<tr>
+<td><p>Header (eventid)</p></td>
+<td><p>Event ID</p></td>
+<td><p>800102</p></td>
+</tr>
+<tr>
+<td><p>Header (eventName)</p></td>
+<td><p>Log name</p></td>
+<td><p>Engine Update Status</p></td>
+</tr>
+<tr>
+<td><p>Header (severity)</p></td>
+<td><p>Severity</p></td>
+<td><p>3</p></td>
+</tr>
+<tr>
+<td><p>rt</p></td>
+<td><p>Event trigger time in UTC</p></td>
+<td><p>Example: "Mar 22 2018 08:23:23 GMT+00:00"</p></td>
+</tr>
+<tr>
+<td><p>shost</p></td>
+<td><p>Product Entity/Endpoint</p></td>
+<td><p>Example: "shost1"</p></td>
+</tr>
+<tr>
+<td><p>cs2Label</p></td>
+<td><p>Corresponding label for the "cs2" field</p></td>
+<td><p>"Product/Endpoint IP"</p></td>
+</tr>
+<tr>
+<td><p>cs2</p></td>
+<td><p>Product/Endpoint IP</p></td>
+<td><p>Example: "10.0.17.6"</p></td>
+</tr>
+<tr>
+<td><p>cn1Label</p></td>
+<td><p>Corresponding label for the "cn1" field</p></td>
+<td><p>"Connection Status"</p></td>
+</tr>
+<tr>
+<td><p>cn1</p></td>
+<td><p>Connection status</p></td>
+<td><p>Example: "100"</p>
+<ul>
+<li><p>0: Unable to connect</p></li>
+<li><p>1: Active</p></li>
+<li><p>2: Inactive</p></li>
+<li><p>100: Product active</p></li>
+<li><p>101: Product inactive but agent is active</p></li>
+<li><p>102: Roaming</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cn2Label</p></td>
+<td><p>Corresponding label for the "cn2" field</p></td>
+<td><p>"Engine"</p></td>
+</tr>
+<tr>
+<td><p>cn2</p></td>
+<td><p>Engine</p></td>
+<td><p>Example: "4096"</p></td>
+</tr>
+<tr>
+<td><p>cn5Label</p></td>
+<td><p>Corresponding label for the "cn5" field</p></td>
+<td><p>"Engine Version"</p></td>
+</tr>
+<tr>
+<td><p>cs5</p></td>
+<td><p>Engine version</p></td>
+<td><p>Example: "9.950.1006"</p></td>
+</tr>
+<tr>
+<td><p>cn3Level</p></td>
+<td><p>Corresponding label for the "cn3" field</p></td>
+<td><p>"Engine Status"</p></td>
+</tr>
+<tr>
+<td><p>cn3</p></td>
+<td><p>Engine status</p></td>
+<td><p>Example: "1"</p>
+<ul>
+<li><p>1: Up-to-date</p></li>
+<li><p>2: Out-of-date</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cs6Label</p></td>
+<td><p>Corresponding label for the "cs6" field</p></td>
+<td><p>"AUComponent_Type"</p></td>
+</tr>
+<tr>
+<td><p>cs6</p></td>
+<td><p>ActiveUpdate component type</p></td>
+<td><p>Example: "1"</p>
+<ul>
+<li><p>1: Engine</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>deviceFacility</p></td>
+<td><p>Managed product name</p></td>
+<td><p>Example: "Apex One"</p></td>
+</tr>
+<tr>
+<td><p>msg</p></td>
+<td><p>Engine type display name</p></td>
+<td><p>Example: "Virus Scan Engine DLL (Windows 2000/NT, 32-bit)"</p></td>
+</tr>
+<tr>
+<td><p>deviceNtDomain</p></td>
+<td><p>Active Directory domain</p></td>
+<td><p>Example: APEXTMCM</p></td>
+</tr>
+<tr>
+<td><p>dntdom</p></td>
+<td><p>Apex One domain hierarchy</p></td>
+<td><p>Example: OSCEDomain1</p></td>
+</tr>
+<tr>
+<td><p>ApexCentralHost</p></td>
+<td><p>Apex Central host name</p></td>
+<td><p>Example: TW-CHRIS-W2019</p></td>
+</tr>
+<tr>
+<td><p>devicePayloadId</p></td>
+<td><p>Unique message GUID</p></td>
+<td><p>Example: 1C00290C0360-9CDE11EB-D4B8-F51F-C697</p></td>
+</tr>
+</tbody>
+</table>
+
+Log sample:
+
+```bash
+CEF:0|Trend Micro|Apex Central|2019|800102|Engine Update S
+tatus|3|rt=Apr 20 2017 12:04:34 GMT+00:00 shost=shost1 cs2La
+bel=Product/Endpoint_IP cs2=10.0.17.6 cn1Label=Connection_St
+atus cn1=100 cn2Label=Engine cn2=4096 cs5Label=Engine_Versio
+n cs5=9.950.1006 cn3Label=Engine_Status cn3=1 cs6Label=AUCom
+ponent_Type cs6=1 deviceFacility=Apex One deviceNtDomain=APE
+XTMCM dntdom=OSCEDomain1
+```
+:::

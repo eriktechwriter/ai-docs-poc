@@ -1,0 +1,158 @@
+---
+slug: trend-vision-one-mobile-inventory
+title: Mobile Inventory
+last_updated: '2025-09-08'
+ai_context:
+  source_file: mobile-inventory.md
+  conversion_date: '2025-09-08T23:42:15.966Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Manage users and mobile devices protected by **Mobile Security**.
+
+The **Mobile Inventory** screen contains the following tabs.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Tab</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><a href="trend-vision-one-devices-tab">Devices Tab</a></p></td>
+<td><p>View information about devices and manage devices</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-users-tab">Users Tab</a></p></td>
+<td><p>View information about users and manage users</p>
+
+
+:::note
+
+<p>This tab is not available when you integrate with an MDM through managed configuration.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-groups-tab">Groups / Organizational Units / Assignment Groups Tab</a></p></td>
+<td><p>View information about and manage groups, organizational units, or assignment groups</p>
+<p>The tab name varies depending on the MDM solution:</p>
+<ul>
+<li><p><strong>Groups</strong>: Microsoft Endpoint Manager (Intune), VMware Workspace ONE UEM, or Microsoft Entra ID</p></li>
+<li><p><strong>Organizational Units</strong>: Google Workspace</p></li>
+<li><p><strong>Assignment Groups</strong>: Other MDM solutions integrated through managed configuration</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+You can perform the following common actions on all tabs.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Send enrollment invitations to users or groups to install the Mobile Security for Business app</p></td>
+<td>
+
+:::note
+
+<p>This action is available only with Microsoft Entra ID integration.</p>
+
+
+:::
+
+
+<p>Click <strong>Invite User</strong>. In the <strong>Invite User to Enroll Device</strong> panel, specify one or more user names or Entra ID group names and click <strong>Invite</strong>.</p></td>
+</tr>
+<tr>
+<td><p>Deploy the Mobile Security for Business app to all the devices in a group</p></td>
+<td>
+
+:::note
+
+<p>This action is available only when you integrate with Microsoft Endpoint Manager (Intune), VMware Workspace ONE UEM, or Google Workspace.</p>
+
+
+:::
+
+
+<p>Click <strong>Add Assignments</strong>. In the <strong>Add Assignments</strong> panel, specify one or more group names or organizational units and click <strong>Add</strong>.</p>
+
+
+:::note
+
+<ul>
+<li><p>When Microsoft Endpoint Manager (Intune) is used, adding assignments synchronizes the Android dedicated devices and Apple bulk enrollment devices regardless of whether their users are in the specified group. Other Android or iOS/iPadOS devices are synchronized to Mobile Security only when their users are in the specified group.</p></li>
+<li><p>When Google Workspace is used, adding assignments deploys the Mobile Security for Business app only to the ChromeOS devices, not to the Android or iOS/iPadOS devices. Android and iOS/iPadOS devices are enrolled during integration with Google Workspace. For details, see <a href="trend-vision-one-setup-google-workspace-integration">Setting up Google Workspace integration</a>.</p></li>
+</ul>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Manually synchronize devices, users, and groups</p></td>
+<td>
+
+:::note
+
+<p>This action is available only when you integrate with Microsoft Endpoint Manager (Intune), VMware Workspace ONE UEM, Microsoft Entra ID, or Google Workspace.</p>
+
+
+:::
+
+
+<p>Click <strong>Sync</strong> (<img src="./images/Sync_icon=bc994a2c-3a6c-419b-a584-a12efb14eacc.webp" />) to manually synchronize all device, user, and group data from the MDM. The synchronization can be performed in the <strong>Devices</strong>, <strong>Users</strong>, or <strong>Groups</strong> tab. The data synchronized is not affected by the selected tab.</p>
+<p>Group contents are synchronized to reflect newly added or removed users and devices.</p>
+<p>When either manual or scheduled synchronization takes place, the status changes to "Syncing...".</p>
+<p>Hover over <strong>Sync</strong> (<img src="./images/Sync_icon=bc994a2c-3a6c-419b-a584-a12efb14eacc.webp" />) to view the last synchronization time.</p></td>
+</tr>
+<tr>
+<td><p>Export the data</p></td>
+<td><p>To export the information displayed on the <strong>Devices</strong>, <strong>Users</strong>, or <strong>Groups</strong> tab as a CSV document, click the export button (<img src="./images/msExportIcon=20230203120456.webp" />).</p>
+
+
+:::note
+
+<p>The <strong>Devices</strong> exports a ZIP archive containing a CSV file for Android devices and a CSV file for iOS/iPadOS devices.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Refresh inventory data</p></td>
+<td><p>Click the refresh icon (<img src="./images/Refresh_icon=GUID-B55739E8-3C9C-4511-9D93-A22BEA066D27=1=en-us=Low.webp" />) to display the latest inventory data.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Devices Tab](devices-tab.md "View information about devices and manage devices on the Devices tab.")
+- [Users Tab](users-tab.md "View information about users and manage users on the Users tab.")
+- [Groups / Organizational Units / Assignment Groups Tab](groups-tab.md "View information about groups and manage groups on the Groups tab.")
+:::

@@ -1,0 +1,66 @@
+---
+slug: trend-vision-one-connecting-aws-accounts
+title: Connecting and updating AWS accounts
+last_updated: '2025-09-08'
+ai_context:
+  source_file: connecting-aws-accounts.md
+  conversion_date: '2025-09-08T23:42:21.930Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Add your AWS accounts and organizations or update imported legacy connections.
+
+:::warning[Important]
+
+Some connection methods have limited support for Trend Vision One features. Review each connection method see which best suits your cloud environment and security needs.
+:::
+
+Cloud Accounts supports connecting AWS accounts individually or as part of an AWS Organization.
+
+If you updated a Trend Cloud One Workload Security product to Server & Workload Protection, the connected AWS accounts are automatically added to Cloud Accounts. Update your AWS connections to enable the additional cloud security features Trend Vision One provides.
+
+Before you begin, ensure you have access to a sign-in or user role with administrator privileges for the cloud account you wish to connect. Sign into the account on a separate tab in the same browser instance as the Trend Vision One console.
+
+- To connect AWS accounts individually, refer to the following topics to find the method that best suits your environment:
+
+  - To use a stack template to automate the conneciton process, see [Adding an AWS account using CloudFormation](adding-aws-account.mdx).
+
+  - To use a terraform script with AWS CloudShell, see [Adding an AWS account using Terraform](adding-aws-account-using-terraform.mdx).
+
+  - To connect from AWS, see [Using QuickLaunch to add an AWS account](using-quicklaunch-add-aws-account.mdx).
+
+  - To use alternative methods or connect manually, see [Connecting AWS Accounts Using APIs](connecting-aws-accounts-using-apis.mdx).
+
+- To connect an AWS Control Tower account for log monitoring, refer to the following topics:
+
+  - To configure your CloudTrail settings, see [CloudTrail configuration](cloudtrail-configuration.mdx).
+
+  - To connect an AWS Log Archive account with Control Tower, see [Adding an AWS account with CloudTrail and Control Tower](add-cloudtrail-control-tower.mdx).
+
+  - To connect an AWS Control Tower Audit account, see [Adding an AWS Control Tower audit account with CloudTrail](add-aws-control-tower-audit-account.mdx).
+
+- To add accounts managed by an AWS organization, see [Adding an AWS Organization](adding-aws-organizations.mdx).
+
+  :::warning[Important]
+
+  Adding an AWS organization forces accounts managed by that organization to apply the same settings configured for the entire organization. Settings cannot be modified for individual accounts added as part of an organization.
+
+  To apply different configurations to individual accounts managed by an AWS organization, you must add those accounts separately. Either add the accounts before adding your AWS organization, or use the **OrganizationExcludedAccounts** parameter to exclude those accounts from the stack deployment.
+  :::
+
+- To update a legacy connection added by **Cloud Security Posture** and Server & Workload Protection, see [Updating a legacy AWS connection](updating-legacy-aws-connection.mdx).
+
+**Related information**
+
+- [Adding an AWS account using CloudFormation](adding-aws-account.md "Add and connect an AWS account to Trend Vision One using a generated stack template to provide security for your cloud assets.")
+- [Adding an AWS account using Terraform](adding-aws-account-using-terraform.md "Connect your AWS account using a terraform script to deploy monitoring assets to your account.")
+- [CloudTrail configuration](cloudtrail-configuration.md "Configure your CloudTrail settings to provide greater visibility for XDR monitoring.")
+- [Adding an AWS account with CloudTrail and Control Tower](add-cloudtrail-control-tower.md "Connect your AWS Log Archive account with AWS CloudTrail and Control Tower configured to allow Trend Vision One to provide security for your multi-account AWS environment.")
+- [Adding an AWS Control Tower audit account with CloudTrail](add-aws-control-tower-audit-account.md "Add and connect an AWS audit account with AWS CloudTrail and Control Tower configured to allow Trend Vision One to provide security for your multi-account AWS environment.")
+- [Adding an AWS Organization](adding-aws-organizations.md "Quickly add your accounts to Cloud Accounts by connecting your AWS Organization.")
+- [Updating a legacy AWS connection](updating-legacy-aws-connection.md "Update your AWS accounts imported from Cloud Security Posture and Server & Workload Protection.")
+- [Using QuickLaunch to add an AWS account](using-quicklaunch-add-aws-account.md "Use QuickLaunch to connect your AWS account to the Cloud Accounts app.")
+- [Connecting AWS Accounts Using APIs](connecting-aws-accounts-using-apis.md "Use the Trend Vision One APIs to connect AWS accounts, whether your company requires manual deployment of resources, or to customize aspects of the deployment process.")
+::::

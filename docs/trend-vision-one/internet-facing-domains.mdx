@@ -1,0 +1,219 @@
+---
+slug: trend-vision-one-internet-facing-domains
+title: Internet-facing domains
+---
+# Internet-facing domains
+
+Attack Surface Discovery discovers and assesses your internet-facing domains as part of your external attack surface.
+
+Attack Surface Discovery identifies your internet-facing domains, subdomains, and hosts using your connected identity and access management (IAM) systems and Trend Vision One sign-on information. You may also add domains manually either by choosing from a suggested list or by entering specific domains. Domains undergo a secondary verification process before appearing in **Internet-Facing Assets**. Data for internet-facing domains is updated daily.
+
+:::warning[Important]
+
+It may take up to 10 days for added or removed domains to be reflected in the domains list.
+:::
+
+The following table explains the usage of domain-related terms in **Internet-Facing Assets**.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Term</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Domain</p></td>
+<td><ul>
+<li><p>Refers to the root domain</p></li>
+<li><p>Serves as a group name for a set of hosts</p></li>
+<li><p>Example: www.example.com</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Subdomain</p></td>
+<td><ul>
+<li><p>Root domain plus a prefix used to separate content for specific organizational and navigational purposes, including identifying devices</p></li>
+<li><p>Example: ex.example.com</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Host</p></td>
+<td><ul>
+<li><p>Refers to an "internet device"</p></li>
+<li><p>Assigned an identifier ("host name") that can be translated by the domain name system to one or more IP addresses</p></li>
+<li><p>Example: ExampleDesktop.example.com</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+When Attack Surface Discovery assesses your domains, domain-related risks are identified based on the following factors:
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Factor</p></th>
+<th><p>Example of risk</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Domain information</p></td>
+<td><p>Domain expired</p></td>
+</tr>
+<tr>
+<td><p>SSL/TLS information</p></td>
+<td><p>SSL/TLS certificate using weak or deprecated protocols</p></td>
+</tr>
+<tr>
+<td><p>HTTP response</p></td>
+<td><p>Server information advertised in HTTP response</p></td>
+</tr>
+</tbody>
+</table>
+
+The following table outlines the actions you can perform on the **Domains** tab:
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>View an overview of internet-facing root domains and hosts</p></td>
+<td><p>The <strong>Internet-Facing Assets</strong> widget provides the following information:</p>
+<ul>
+<li><p>Number of discovered root domains and hosts per month</p></li>
+<li><p>Discovery trend from the last 12 months</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>View the list of verified internet-facing root domains and hosts related to each root domain</p></td>
+<td><p>The list includes the following information:</p>
+<ul>
+<li><p>Root domains: Automatically discovered and manually added root domains</p></li>
+<li><p>Hosts: Risk score, number of related public IP addresses, and other key information</p></li>
+</ul>
+<p>You can filter list entries based on criteria such as criticality and host provider.</p>
+
+
+:::note
+
+<p>Assets marked with the star icon are highly critical to your organization's operations. For more information, see <a href="trend-vision-one-asset-criticality">Asset criticality</a> .</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Add root domains or subdomains/hosts to the list</p></td>
+<td><ol>
+<li><p>Click <strong>Add</strong>.</p></li>
+<li><p>Perform one of the following actions:</p>
+<ul>
+<li><p>Select from the list of recommended root domains.</p></li>
+<li><p>Specify root domains and hosts that belong to your organization.</p></li>
+</ul>
+<p>You can add a maximum of 20 domains at a time. To add more than 20 domains, contact your support provider.</p>
+<p>Attack Surface Discovery verifies the domains and discovers associated internet-facing domains. New domains may take up to 10 days to appear on the domains list.</p></li>
+<li><p>View the verification status of manually added domains by clicking <strong>Review Status</strong>.</p>
+<p>Manually added domains that have finished the verification process are marked as approved and added to the domains list along with any associated subdomains.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Remove root domains or subdomains/hosts from the list</p></td>
+<td><ol>
+<li><p>Select one or more root domain or hosts you wish to remove.</p></li>
+<li><p>Click <strong>Remove</strong>.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>View the asset details screen for each root domain and host</p></td>
+<td><p>The asset details screen includes the following tabs:</p>
+<ul>
+<li><p><strong>Risk Assessment</strong>: Displays the risk score and list of risk indicators, including descriptions of risk events and recommended remediation actions</p></li>
+<li><p><strong>Related IPs</strong>: Lists the related public IP addresses with information such as location, host provider, and detected CVEs</p></li>
+<li><p><strong>Certificates</strong>: Displays SSL/TLS information about the domain certificate</p></li>
+<li><p><strong>Asset Profile</strong>: Displays criticality-related information, including the criticality level and list of profile tags</p></li>
+</ul>
+
+
+:::note
+
+<p>If <strong>Related IPs</strong> displays the IP address 0.0.0.0, Trend Vision One was unable to find any IP addresses related to the root domain. The 0.0.0.0 address is a placeholder to allow the root domain's subdomains to be classified.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Export information about root domains and hosts discovered in the last 7 days</p></td>
+<td><ol>
+<li><p>Click <strong>Manage Reports</strong>.</p></li>
+<li><p>Select <strong>Internet-Facing Assets</strong>.</p>
+<p>The <strong>Report Management › Internet-Facing Assets Template</strong> screen appears.</p></li>
+<li><p>Configure the report settings.</p>
+
+
+:::note
+
+<p>To view the list of data fields for each asset type, click <strong>View CSV Fields</strong>.</p>
+
+
+:::
+
+</li>
+<li><p>Click <strong>Create</strong>.</p></li>
+</ol>
+<p>Each CSV file contains a maximum of 100,000 records.</p></td>
+</tr>
+<tr>
+<td><p>Scan selected subdomains for exposures</p></td>
+<td>
+
+:::warning[Important]
+
+<p>This is a "Pre-release" feature and is not considered an official release. Please review the <a href="trend-vision-one-pre-release-disclaimer">Pre-release disclaimer</a> before using the feature.</p>
+
+
+:::
+
+
+:::note
+
+<p>This feature is not available in all regions.</p>
+
+
+:::
+
+
+<ol>
+<li><p>Select up to five subdomains and click <strong>Scan for exposures</strong>.</p></li>
+<li><p>Select a Service Gateway deployed to a public cloud platform.</p></li>
+<li><p>Confirm the assets to be scanned.</p></li>
+<li><p>Click <strong>Scan for exposures</strong>.</p></li>
+</ol>
+<p>For more information, see <a href="trend-vision-one-internet-facing-asset-scan">Internet-facing asset exposure scans</a>.</p></td>
+</tr>
+</tbody>
+</table>
+::::

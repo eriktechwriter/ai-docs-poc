@@ -1,0 +1,95 @@
+---
+slug: trend-vision-one-sha-1-deny-list-detections
+title: SHA-1 Deny List Detections
+last_updated: '2025-09-08'
+ai_context:
+  source_file: sha-1-deny-list-detections.md
+  conversion_date: '2025-09-08T23:42:12.478Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Configure the following event notification to notify administrators when files with SHA-1 values that match objects in the Deny List have been detected on your network.
+
+### Procedure {#procedure}
+
+1.  Go to **Detections → Notifications → Event Notifications**.
+
+    The **Event Notifications** screen appears.
+
+2.  Click **Advanced Threat Activity**.
+
+    A list of events appears.
+
+3.  In the *Event* column, click **SHA-1 Deny List detections**.
+
+    The **SHA-1 Deny List Detections** screen appears.
+
+4.  Specify the following notification settings.
+
+    <table>
+    <colgroup>
+    <col style="width: 36%" />
+    <col style="width: 64%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Settings</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Trigger an alert for each detection</p></td>
+    <td><p>Select to send an event notification for each detection.</p></td>
+    </tr>
+    <tr>
+    <td><p>Specify the alert threshold that applies to a single endpoint</p></td>
+    <td><p>Select to send event notifications only for detections that match the specified criteria.</p>
+    <ul>
+    <li><p>Detections: Specify the number of detections</p></li>
+    <li><p>Period: Specify the time period in hours</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>Attach logs in CSV format</p></td>
+    <td><p>Select to send event notification recipients a *.csv file containing log data about the detections.</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+5.  Select recipients for the notification.
+
+    1.  From the **Available Users and Groups** list, select contact groups or user accounts.
+
+    2.  Click **\>**.
+
+        The selected contact groups or user accounts appear in the **Selected Users and Groups** list.
+
+6.  Enable one or more of the following notification methods.
+
+    <table>
+    <colgroup>
+    <col style="width: 21%" />
+    <col style="width: 79%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Method</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Email message</p></td>
+    <td><p>To customize the email notification template, use supported token variables or modify the text in the <strong>Subject</strong> and <strong>Message</strong> fields.</p>
+    <p>For more information, see <a href="trend-vision-one-standard-token-variables">Standard Token Variables</a> and <a href="trend-vision-one-advthreat-activity-token-vars">Advanced Threat Activity Token Variables</a>.</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+7.  To test if recipients can receive the event notification, click **Test**.
+
+8.  Click **Save**.
+:::

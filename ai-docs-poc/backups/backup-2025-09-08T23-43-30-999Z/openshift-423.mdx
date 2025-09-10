@@ -1,0 +1,44 @@
+---
+slug: trend-vision-one-openshift-423
+title: >-
+  4.2.3 - Ensure that the –authorization-mode argument is not set to AlwaysAllow
+  (Automated)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: openshift-423.md
+  conversion_date: '2025-09-08T23:42:14.731Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Profile applicability: Level 1
+
+Do not allow all requests. Enable explicit authorization.
+
+Kubelets, by default, allow all authenticated requests (even anonymous ones) without needing explicit authorization checks from the API server. You should restrict this behavior and only allow explicitly authorized requests.
+
+:::note
+
+By default, OpenShift uses `Webhook` authorization.
+:::
+
+### Impact {#impact}
+
+Unauthorized requests will be denied.
+
+### Audit {#audit}
+
+In OpenShift 4, the Kubernetes configuration file is managed by the Machine Config Operator. By default, OpenShift rejects unauthenticated and unauthorized users.
+
+You can verify that each node in the cluster is configured to only accept authenticated users with the following command:
+
+``` codeblock
+for node in $(oc get nodes -ojsonpath='{.items[*].metadata.name}'); do
+oc get --raw /api/v1/nodes/$node/proxy/configz | jq
+'.kubeletconfig.authorization.mode'
+done
+```
+
+Verify none of the nodes return `AlwaysAllow` for the authorization mode.
+::::

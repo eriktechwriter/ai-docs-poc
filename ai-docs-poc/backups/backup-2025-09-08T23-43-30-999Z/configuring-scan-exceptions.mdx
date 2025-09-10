@@ -1,0 +1,26 @@
+---
+slug: trend-vision-one-configuring-scan-exceptions
+title: Configuring scan exceptions
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configuring-scan-exceptions.md
+  conversion_date: '2025-09-08T23:42:22.234Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Under certain circumstances, you may want to prevent Cloud Email Gateway Protection from scanning certain types of messages that may pose security risks. For example, compressed files provide a number of special security concerns since they can harbor security risks or contain numerous compression layers. Scan exceptions are configured to instruct Cloud Email Gateway Protection to take actions on these messages.
+
+:::note
+
+If an email message triggers the scan exception "Malformed messages", Cloud Email Gateway Protection stops scanning and takes the corresponding actions.
+
+If any other scan exception is triggered, Cloud Email Gateway Protection takes the specified actions and will not stop scanning until encountering a terminal scan action. For details about terminal actions, see [intercept actions](actions.mdx).
+:::
+
+**Related information**
+
+- [Scan exception list](scan-exception-list.mdx)
+- [Configuring "scan exceptions" actions](configuring-scan-exceptions-actions.mdx)
+::::

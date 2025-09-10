@@ -1,0 +1,55 @@
+---
+slug: trend-vision-one-config-rules-friendly-accounts
+title: Configure rules for friendly accounts
+last_updated: '2025-09-08'
+ai_context:
+  source_file: config-rules-friendly-accounts.md
+  conversion_date: '2025-09-08T23:42:22.938Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+### What are friendly accounts in Cloud Risk Management? {#what-are-friendly-accounts-in-cloud-risk-management}
+
+A Friendly account is the one that is allowed to access resources on another account because it is trusted. Once a Friendly account is added to the relevant rules, it will result in a success check after a Cloud Risk Management Scan scan.
+
+Account Administrators explicitly allow specific actions or behaviours for friendly accounts. These accounts may have access to a limited set of functionality deemed safe by the administrator.
+
+For example:
+
+AWS *Account A* has access to resources in AWS *Account B*. Both accounts may or may not be owned by the same company or *Account A* might just "*trust*" the *Account B* from AWS console.
+
+In this case, *Account B* would be a friendly (trusted) account to *Account A* as determined by the customer. Therefore certain rule failures caused by *Account B* are excluded from the check.
+
+### What rules can I configure with Friendly accounts? {#what-rules-can-i-configure-with-friendly-accounts}
+
+1.  VPC-006: VPC Endpoint Cross Account Access
+2.  S3-015: S3 Cross Account Access
+3.  IAM-050: Cross-Account Access Lacks External ID and MFA
+4.  IAM-057: Check for Untrusted Cross-Account IAM Roles
+5.  KMS-006: KMS Cross Account Access
+6.  SNS-002: SNS Cross Account Access
+7.  SQS-002: SQS Cross Account Access
+8.  CWE-002: EventBus Cross Account Access
+9.  SES-004: Identify Cross-Account Access
+10. ES-005: Elasticsearch Cross Account Access
+11. Lambda-002: Lambda Cross Account Access
+12. ECR-002: Repository Cross Account Access
+
+### How do I configure Friendly accounts for a rule? {#how-do-i-configure-friendly-accounts-for-a-rule}
+
+*Please Note::* Configuring a rule with friendly accounts will allow users who do not have access to these accounts to view their AWS Account IDs in the rule check.
+
+1.  Click on the *Configure* *Rule* button on the account from the list of supported rules.
+2.  You can add Friendly accounts by either selecting one or more of the following options: :
+    - \*\*Manual addition (For All Users): enter the account name in the text box and click on the *Add new* button.
+    - *Accounts within your AWS Organization (For Admin Users Only)*
+      - Select this option to include all accounts in your AWS organization as friendly accounts.
+      - !!! note ""
+        - This option will only work for the AWS account in Cloud Risk Management that is also your AWS Organization’s management account as it requires access to account Ids of all accounts in your AWS Organization.
+        - For the rule VPC-006 - VPC Endpoint Cross Account Access only - All users can add friendly accounts using this option.
+
+    1.  All within this Cloud Risk Management organization (For Admin Users Only) Select this option to include all AWS accounts in the current Cloud Risk Management Organization as friendly accounts.
+    2.  All with the following Cloud Risk Management tags (For Admin Users Only) Enter the associated Tags for the AWS accounts from the same Cloud Risk Management organization you want to include as a Friendly account.
+:::

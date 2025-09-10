@@ -1,0 +1,68 @@
+---
+slug: trend-vision-one-setting-up-mobile-device-director
+title: Setting up Mobile Device Director
+last_updated: '2025-09-08'
+ai_context:
+  source_file: setting-up-mobile-device-director.md
+  conversion_date: '2025-09-08T23:42:12.618Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Configure enrollment settings to deploy the Mobile Security for Business app to managed mobile devices.
+
+### Procedure {#procedure}
+
+1.  Go to **Mobile Security → Mobile Inventory** to display the **Mobile Security** landing page.
+
+    If you have already set up an MDM integration, click the settings icon (![](/images/integrationSettings=20250121101015.webp)) and click **Add MDM Solution**.
+
+2.  Under **I don’t have an MDM solution**, click **Set Up Mobile Security**.
+
+    If you have already set up an MDM integration, under **I don’t have an MDM solution**,choose **Select an MDM solution → Mobile Device Director**.
+
+3.  Review the **Mobile Security** functionality and click **Next**.
+
+4.  On the **Enrollment Settings** screen, configure Android or iOS/iPadOS device enrollment.
+
+    - Click the **Android Enrollment** tab and [enroll Android devices](enrolling-android-devices.mdx).
+
+    - Click the **iOS/iPadOS** tab and [enroll iOS/iPadOS devices](enrolling-ios-ipados-devices.mdx).
+
+5.  Grant **Mobile Security** permissions on your Microsoft Entra ID data.
+
+    1.  Click the **User Configuration** tab, click **Go to Third-Party Integration**.
+
+    2.  In the **Status** column, locate the Microsoft Entra ID tenant that you want to grant permissions on, and then click **Grant permissions** for the **Mobile Security** app.
+
+    3.  Sign in to Microsoft Entra ID with an administrator account that manages the Microsoft Entra ID tenant.
+
+    4.  Review the permissions required and click **Accept**.
+
+        When permissions are successfully granted, the tenant name appears in **User Configuration**.
+
+        **Mobile Security** can access your Microsoft Entra ID data in the target tenant and send device enrollment invitations to the end users.
+
+        :::note
+
+        **Mobile Security** can access your Microsoft Entra ID data in one tenant only. To allow **Mobile Security** to access Microsoft Entra ID data in another tenant, block permissions on the current tenant and grant permissions on a new tenant in the **Microsoft Entra ID** section of the **Third-Party Integration** app.
+        :::
+
+    5.  (Optional) To require user sign-in during device enrollment, click **Require Users to Sign In** on the dialog that displays.
+
+        In enrollment settings, **Require users to sign into Azure Active Directory (AD) before enrolling** is selected. The devices will be managed with user information from Microsoft Entra ID.
+
+6.  Configure advanced settings.
+
+    1.  Click the **Advanced Settings** tab.
+
+    2.  Select the interval for synchronizing user and group data from Microsoft Entra ID.
+
+    3.  Select the interval for calculating memberships for assignment groups of the “Dynamic devices” type.
+
+**Related information**
+
+- [Enrolling Android devices](enrolling-android-devices.md "Enroll Android devices in Mobile Device Director by connecting to managed Google Play and configuring enrollment settings.")
+- [Enrolling iOS/iPadOS devices](enrolling-ios-ipados-devices.md "To enroll iOS/iPadOS devices in Mobile Device Director, upload an Apple MDM push certificate and then email users enrollment instructions.")
+:::

@@ -1,0 +1,85 @@
+---
+slug: trend-vision-one-authentication-methods-ztsa
+title: Supported authentication methods for Internet Access and AI Service Access
+last_updated: '2025-09-08'
+ai_context:
+  source_file: authentication-methods-ztsa.md
+  conversion_date: '2025-09-08T23:42:24.690Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+See the authentication methods available for connecting to the internet using Internet Access.
+
+Zero Trust Secure Access Internet Access provides several methods for authentication to the Internet Access service for access to external web sites and resources. Considerations include the gateway being used, gateway configuration options, whether the endpoint has the Secure Access Module installed, and the configured single sign-on (SSO) method.
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Authentication method</p></th>
+<th><p>Secure Access Module status</p></th>
+<th><p>Gateway</p></th>
+<th>SSO method</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>SAML-based SSO with IAM integration</p></td>
+<td><p>Installed or not installed</p></td>
+<td><p>Internet Access Cloud Gateway or On-Premises Gateway (Proxy mode)</p></td>
+<td><p>SAML-based SSO using an integrated IAM system</p></td>
+<td><p>See <a href="trend-vision-one-ia-management-integration">Identity and access management integration</a></p></td>
+</tr>
+<tr>
+<td><p>NTLM v2 or Kerberos-based SSO</p></td>
+<td><p>Installed or not installed</p></td>
+<td><p>Internet Access Cloud Gateway or On-Premises Gateway (Proxy mode)</p></td>
+<td><p>NTLM v2 or Kerberos-based SSO through Internet Access On-premises Authentication Proxy service</p></td>
+<td><p>See</p>
+<ul>
+<li><p><a href="trend-vision-one-authentication-proxy-service">Configuring the authentication proxy service for corporate intranet locations and public or home networks</a></p></li>
+<li><p><a href="trend-vision-one-ntlm-kerberos-sso-ad">Configuring NTLM or Kerberos single sign-on with Active Directory (on-premises)</a></p></li>
+<li><p><a href="trend-vision-one-ntlm-kerberos-single-sign">Configuring the client computer for Kerberos or NTLM single sign-on</a></p></li>
+<li><p><a href="trend-vision-one-ntlm-kerberos-single-sign">Configuring the Active Directory server for Kerberos or NTLM single sign-on</a></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Private IP bypass</p></td>
+<td><p>Not installed</p></td>
+<td><p>Internet Access Cloud Gateway or On-Premises Gateway (Proxy mode)</p>
+
+
+:::warning[Important]
+
+<p>IP addresses on the bypass list connecting through the cloud gateway must be present in the X-Forwarded-For traffic header to successfully authenticate. The default gateway is excluded from this method.</p>
+
+
+:::
+
+</td>
+<td><p>Not required if endpoints connect from private IP addresses on the user authentication bypass list</p></td>
+<td><p>See <a href="trend-vision-one-cloud-gateway-corporate-locations">Adding Corporate Locations to the Internet Access Cloud Gateway</a> and <a href="trend-vision-one-deploy-internet-access-prem-gateway">Deploying an Internet Access On-Premises Gateway</a></p></td>
+</tr>
+<tr>
+<td><p>Unenforced authentication</p></td>
+<td><p>Not installed</p></td>
+<td><p>Internet Access On-Premises Gateway</p></td>
+<td><p>Not required if:</p>
+<ul>
+<li><p>User authentication is disabled</p></li>
+<li><p>ICAP is enabled</p></li>
+</ul></td>
+<td><p>See <a href="trend-vision-one-deploy-internet-access-prem-gateway">Deploying an Internet Access On-Premises Gateway</a></p></td>
+</tr>
+</tbody>
+</table>
+:::

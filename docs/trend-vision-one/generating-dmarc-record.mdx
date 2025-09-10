@@ -1,0 +1,168 @@
+---
+slug: trend-vision-one-generating-dmarc-record
+title: Generating a DMARC record
+---
+# Generating a DMARC record
+
+### Procedure {#procedure}
+
+1.  Go to **Outbound Protection → Domain-based Authentication → Domain-based Message Authentication, Reporting and Conformance (DMARC) Monitoring**.
+
+2.  Go to **DMARC Record Check**.
+
+3.  Generate a DMARC record for a domain.
+
+    - For a domain with DMARC disabled, click **Disabled** in the **DMARC** column and then click **Create** on the **DMARC Record in DNS** screen to generate a DMARC record.
+
+    - For a domain with DMARC enabled, click **Enabled** in the **DMARC** column and then click **Modify** on the **DMARC Record in DNS** screen to update the DMARC record options and generate a new record.
+
+4.  On the **Generate DMARC Record** screen, specify the basic options.
+
+    :::note
+
+    If you leave an option empty, the corresponding tag does not appear in the resulting DMARC record.
+    :::
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Option</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Policy</p></td>
+    <td><p>The action that you expect the receiving server to take when messages from the domain fail DMARC checks.</p>
+    <ul>
+    <li><p>None: Take no action on messages failing DMARC checks.</p>
+    <p>This action only helps collect DMARC reports and gain insight into your current email flows and their authentication status.</p></li>
+    <li><p>Quarantine: Treat the messages failing DMARC checks as suspicious. The specific action depends on the capability of the receiving server. For example, the action can be placing the message into a spam folder or in a quarantine area.</p></li>
+    <li>Reject: Reject messages failing DMARC checks.</li>
+    </ul>
+    <p>You must specify a value for this option.</p></td>
+    </tr>
+    <tr>
+    <td><p>Send Aggregate Data to</p></td>
+    <td><p>The email address for receiving DMARC aggregate reports.</p>
+    <p>Use a comma to separate multiple email addresses. Optionally, you can specify the maximum email size allowed in the format <em>Email address</em>!<em>Size limit</em>.</p>
+    <p>Example: <code>dmarc-feedback@example.com,dmarc-admin@example.com!10m</code></p>
+    <p>If you leave this option empty, you will not receive aggregate reports.</p></td>
+    </tr>
+    <tr>
+    <td><p>Send Forensic Data to</p></td>
+    <td><p>The email address for receiving DMARC forensic reports, which are also called failure reports.</p>
+    <p>Use a comma to separate multiple email addresses. Optionally, you can specify the maximum email size allowed in the format <em>Email address</em>!<em>Size limit</em>.</p>
+    <p>Example: <code>dmarc-feedback@example.com,dmarc-admin@example.com!10m</code></p>
+    <p>If you leave this option empty, you will not receive forensic reports.</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+5.  Optionally specify the advanced options.
+
+    :::note
+
+    If you leave an option empty or select the "-" value, the corresponding tag does not appear in the resulting DMARC record.
+    :::
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Option</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Subdomain Policy</p></td>
+    <td><p>The policy you want to apply to all the subdomains of a domain.</p>
+    <p>The value "-" indicates unspecified. In this case, the policy for subdomains is the same as the policy for the primary domain.</p>
+    <p>Change the setting if you want to use a different DMARC policy for your subdomains.</p></td>
+    </tr>
+    <tr>
+    <td><p>DKIM Identifier Alignment</p></td>
+    <td><p>The alignment policy for DKIM, which defines how strictly the DKIM alignment check is.</p>
+    <ul>
+    <li><p>-: Unspecified. In this case, the policy "Relaxed" applies during DMARC evaluation.</p></li>
+    <li><p>Relaxed: Partial match is allowed. The sender domain name can be a valid subdomain of the domain name in the "d=" tag in the DKIM mail header.</p></li>
+    <li><p>Strict: The sender domain name must be identical to the domain name in the "d=" tag in the DKIM mail header.</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>SPF Identifier Alignment</p></td>
+    <td><p>The alignment policy for SPF, which defines how strictly the SPF alignment check is.</p>
+    <ul>
+    <li><p>-: Unspecified. In this case, the policy "Relaxed" applies during DMARC evaluation.</p></li>
+    <li><p>Relaxed: Partial match is allowed. The sender domain name can be a valid subdomain of the domain name in the SMTP "MAIL FROM" command.</p></li>
+    <li><p>Strict: The sender domain name must be identical to the domain name in the SMTP "MAIL FROM" command.</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>Reporting Interval</p></td>
+    <td><p>The interval for the receiving server to send aggregate reports.</p>
+    <p>If you leave this option empty, the interval "86400 seconds" (24 hours) applies during DMARC evaluation.</p></td>
+    </tr>
+    <tr>
+    <td><p>Forensic Report Options</p></td>
+    <td><p>The conditions for sending forensic reports.</p>
+    <ul>
+    <li><p>Send report only if both SPF and DKIM fail</p></li>
+    <li><p>Send report if either SPF or DKIM fails</p></li>
+    <li><p>Send report if DKIM fails</p></li>
+    <li><p>Send report if SPF fails</p></li>
+    </ul>
+    <p>If you leave this option unspecified, the condition "Send report only if both SPF and DKIM fail" applies during DMARC evaluation.</p></td>
+    </tr>
+    <tr>
+    <td><p>Forensic Report Format</p></td>
+    <td><p>The format in which reports are sent, which can be AFRF or IODEF.</p>
+    <p>The value "-" indicates unspecified, in which case the format AFRF applies during DMARC evaluation.</p></td>
+    </tr>
+    <tr>
+    <td><p>Policy Percentage</p></td>
+    <td><p>The percentage of unauthenticated messages to which the DMARC policy will be applied.</p>
+    <p>Specify an integer between 0 and 100. To roll out DMARC slowly, it is recommended that you start with a small percentage. As more messages from your domain pass DMARC checks, you can move to a higher percentage until you reach 100 percent.</p>
+    <p>If you leave this option empty, the value 100 applies during DMARC evaluation.</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+6.  Click **Generate**.
+
+    Cloud Email Gateway Protection generates a DMARC record based on your settings. You can copy the record and publish it to the DNS server.
+
+    Example record: `v=DMARC1; p=none; sp=quarantine; rua=mailto:dmarc-reports@example.com; ruf=mailto:dmarc-fail-reports@example.com; adkim=s; aspf=r; ri=86400; fo=0; rf=afrf; pct=50`
+
+    - `v=DMARC1`: This is version 1 of the DMARC specification.
+
+      This tag is automatically added during the record generation.
+
+    - `p=none`: The policy for the primary domain is none, which indicates only monitoring messages from the domain for DMARC authentication.
+
+    - `sp=quarantine`: The policy for subdomains is quarantine, which indicates that you expect the receiving server to treat the messages from the subdomains of the primary domain as suspicious.
+
+    - `rua=mailto:dmarc-reports@example.com`: The email address for receiving aggregate reports is dmarc-reports@example.com.
+
+    - `ruf=mailto:dmarc-fail-reports@example.com`: The email address for receiving aggregate reports is dmarc-fail-reports@example.com.
+
+    - `adkim=s`: The DKIM alignment policy is to apply strict DKIM alignment checks.
+
+    - `aspf=r`: The SPF alignment policy is to apply relaxed SPF alignment checks.
+
+    - `ri=86400`: The interval for sending reports is 86400 seconds.
+
+    - `fo=0`: The condition for sending forensic reports is only when both SPF and DKIM fail.
+
+    - `rf=afrf`: The format for sending forensic reports is AFRF.
+
+    - `pct=50`: The policy will be applied to 50% of the messages.
+:::

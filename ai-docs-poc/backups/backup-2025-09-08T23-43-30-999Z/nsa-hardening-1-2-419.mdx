@@ -1,0 +1,44 @@
+---
+slug: trend-vision-one-nsa-hardening-1-2-419
+title: >-
+  4.1.9 - Ensure AppArmor is configured to restrict container's access to
+  resources
+last_updated: '2025-09-08'
+ai_context:
+  source_file: nsa-hardening-1-2-419.md
+  conversion_date: '2025-09-08T23:42:14.928Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Profile applicability: Level 1
+
+AppArmor is a Linux kernel security module that supplements the standard Linux user and group based permissions to confine programs to a limited set of resources. AppArmor can be configured for any application to reduce its potential attack surface and provide greater in-depth defense. It is configured through profiles tuned to allow the access needed by a specific program or container, such as Linux capabilities, network access, and file permissions. Each profile can be run in either enforcing mode, which blocks access to disallowed resources, or complain mode, which only reports violations.
+
+AppArmor can help you to run a more secure deployment by restricting what containers are allowed to do, and/or provide better auditing through system logs. The container runtime that you use might ship with a default AppArmor profile, or you can use a custom profile.
+
+### Audit {#audit}
+
+Run the following command and review the details of each pod:
+
+``` codeblock
+kubectl get pods --all-namespaces
+```
+
+For Kubernetes versions 1.30 and later:
+
+Review each pod’s securityContext and ensure it has `appArmorProfile` configured.
+
+For Kubernetes versions prior to 1.30:
+
+Review each pod’s containers' metadata annotations for `container.apparmor.security.beta.kubernetes.io/<container name>`
+
+Ensure each container has AppArmor configured.
+
+### Remediation {#remediation}
+
+Set the `runtime/default` value from AppArmor.
+
+Use the AppArmor documentation [to restrict each container access to resources](https://kubernetes.io/docs/tutorials/security/apparmor/).
+:::

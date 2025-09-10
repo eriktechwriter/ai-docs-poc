@@ -1,0 +1,57 @@
+---
+slug: trend-vision-one-creating-template-dlp
+title: Creating a Template
+last_updated: '2025-09-08'
+ai_context:
+  source_file: creating-template-dlp.md
+  conversion_date: '2025-09-08T23:42:21.250Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+### Procedure {#procedure}
+
+1.  Go to **Policies → Policy Resources → DLP Templates**.
+
+2.  Click **Add**.
+
+    A new screen displays.
+
+3.  Type a name for the template. The name must not exceed 100 bytes in length and cannot contain the following characters:
+
+    - \> \< \* ^ | & ? \\ /
+
+4.  Type a description that does not exceed 256 bytes in length.
+
+5.  Select data identifiers and then click the "add" icon.
+
+    When selecting definitions:
+
+    - Select multiple entries by pressing and holding the <span class="uicontrol keyboard">CTRL</span> key and then selecting the data identifiers.
+
+    - Use the search feature if you have a specific definition in mind. You can type the full or partial name of the data identifier.
+
+    - Each template can contain a maximum of 30 data identifiers.
+
+6.  To create a new expression, click **Expressions** and then click **Add new expression**. In the screen that appears, configure settings for the expression.
+
+7.  To create a new file attribute list, click **File attributes** and then click **Add new file attribute**. In the screen that appears, configure settings for the file attribute list.
+
+8.  To create a new keyword list, click **Keywords** and then click **Add new keyword**. In the screen that appears, configure settings for the keyword list.
+
+9.  If you selected an expression, type the number of occurrences, which is the number of times an expression must occur before Data Loss Prevention subjects it to a policy.
+
+10. Choose a logical operator for each definition.
+
+    :::note
+
+    Use logical operators carefully when configuring condition statements. Incorrect usage leads to an erroneous condition statement that will likely produce unexpected results. For examples of correct usage, see [Condition statements and logical pperators](condition-logical-operators.mdx).
+    :::
+
+11. To remove a data identifier from the list of selected identifiers, click the trash bin icon.
+
+12. Below **Preview**, check the condition statement and make changes if this is not your intended statement.
+
+13. Click **Save**.
+:::

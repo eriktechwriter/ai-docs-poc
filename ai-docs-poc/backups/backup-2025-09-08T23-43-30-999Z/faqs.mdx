@@ -1,0 +1,175 @@
+---
+slug: trend-vision-one-faqs
+title: FAQs
+last_updated: '2025-09-08'
+ai_context:
+  source_file: faqs.md
+  conversion_date: '2025-09-08T23:42:19.369Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+**Frequently Asked Questions (FAQs)**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Question</p></th>
+<th><p>Answer</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>If <a href="https://support.google.com/a/answer/3547347?hl=en">comprehensive mail storage</a> is enabled in your Gmail environment, why don’t we suggest you use Gmail (Inline Mode) in Cloud Email and Collaboration Protection?</p></td>
+<td><p>When "comprehensive mail storage" is enabled, Gmail stores a copy of emails in the recipient’s mailbox before forwarding them to Cloud Email and Collaboration Protection for scanning, which leads Cloud Email and Collaboration Protection working in Gmail (Inline Mode) to scan emails only after they have already arrived in the user’s mailbox, rather than before. If Cloud Email and Collaboration Protection makes changes on an email, such as tagging the subject, the user will see two duplicate emails in their mailbox. This can cause confusion and clutter in the user’s inbox, which is why we do not recommend using Gmail (Inline Mode) in Cloud Email and Collaboration Protection with "comprehensive mail storage" enabled in Gmail.</p></td>
+</tr>
+<tr>
+<td><p>How does Cloud Email and Collaboration Protection ensure high availability?</p></td>
+<td><p>All Cloud Email and Collaboration Protection service components maintain a stateless design. As such, they freely scale when volume increases. By default, all customer-facing services are set up redundantly behind the Windows Azure Load Balancer to ensure high availability.</p></td>
+</tr>
+<tr>
+<td><p>How does Cloud Email and Collaboration Protection guarantee data privacy in a multi-tenant environment?</p></td>
+<td><p>Cloud Email and Collaboration Protection does not store original content (email messages and files). Cloud Email and Collaboration Protection gets access to email and file content in cloud applications and processes it in memory, without storing it upon completion.</p></td>
+</tr>
+<tr>
+<td><p>Will Cloud Email and Collaboration Protection impede access speed to messages and files?</p></td>
+<td><p>Cloud Email and Collaboration Protection has no impact on performance when customers receive email messages, upload files to, or download files from cloud applications and services.</p></td>
+</tr>
+<tr>
+<td><p>How can a customer with a trial license migrate the configurations on the trial Cloud Email and Collaboration Protection management console to the production management console after they purchase Smart Protection Complete with a full license?</p></td>
+<td><p>You need to attach the CLP account you created with the Cloud Email and Collaboration Protection trial license to your Smart Protection Complete full license first.</p>
+<ol>
+<li><p>Log on to the Trend Micro Customer Licensing Portal (CLP) <a href="https://clp.trendmicro.com">https://clp.trendmicro.com</a> using your CLP account credentials.</p></li>
+<li><p>Go to <strong>My Products/Services</strong>, and then click <strong>Provide Key</strong>.</p></li>
+<li><p>On the <strong>License Key</strong> screen, type your registration key, not the activation code, in the <strong>Provide your Activation Code or product key</strong> text box, and then click <strong>Continue</strong>.</p></li>
+<li><p>Select the check box and then click <strong>Continue</strong> to finish the process.</p></li>
+</ol>
+<p>After you re-log on to the Cloud Email and Collaboration Protection production management console, all the configurations are migrated and your license is updated.</p></td>
+</tr>
+<tr>
+<td><p>How do employees log on to Cloud Email and Collaboration Protection using Internet Explorer on Windows Server?</p></td>
+<td><p>Internet Explorer has different default settings on Windows Server and other Windows versions. Enable active scripts for the "Internet" zone to log on to Cloud Email and Collaboration Protection through Internet Explorer on Windows Server.</p>
+<ol>
+<li><p>Open Internet Explorer.</p></li>
+<li><p>Go to <strong>Tools → Internet options → Security</strong>.</p></li>
+<li><p>Select the <strong>Internet</strong> zone.</p></li>
+<li><p>Click <strong>Custom Level</strong>. The <strong>Security Settings – Internet Zone</strong> window appears.</p></li>
+<li><p>Under the <em>Scripting</em> section, enable <strong>Active scripting</strong>.</p></li>
+<li><p>Click <strong>OK</strong> to close the <strong>Security Settings – Internet Zone</strong> window.</p></li>
+<li><p>Click <strong>OK</strong> to close <strong>Internet Options</strong> window.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Is a customer who purchased Trend Micro Smart Protection Complete able to use Cloud Email and Collaboration Protection in a different site from the one dictated by the customer's registration key or activation code?</p></td>
+<td><p>No, Cloud Email and Collaboration Protection serves a customer in the site based on the region or country dictated by the customer's registration key or activation code. To use Cloud Email and Collaboration Protection in a different site, the customer needs to apply for a new Customer Licensing Portal account with a new registration key corresponding to the site they want to use.</p></td>
+</tr>
+<tr>
+<td><p>Why cannot I restore or delete an email message that has been quarantined by Cloud Email and Collaboration Protection?</p></td>
+<td><p>When an email message is quarantined, it is stored in the quarantine folder created by Cloud Email and Collaboration Protection for further processing. Upon receiving a request to restore or delete the message, Cloud Email and Collaboration Protection fails to do so if it cannot locate the message in the quarantine folder. When the issue occurs, check whether this message was moved out of the quarantine folder to somewhere else. You can go to <strong>Quarantine</strong> and view the <strong>Mail Location</strong> column to find the quarantine folder of the message.</p></td>
+</tr>
+<tr>
+<td><p>When and how does Cloud Email and Collaboration Protection remove a service account for the Microsoft 365 services if the customer's license expires?</p></td>
+<td><p>If your license has reached the end of the grace period, Cloud Email and Collaboration Protection disables your CLP account. This means that the Cloud Email and Collaboration Protection management console is no longer accessible and Cloud Email and Collaboration Protection does not protect your services any more.</p>
+<p>After 30 days of the grace period, Cloud Email and Collaboration Protection automatically removes your CLP account.</p>
+<p>Microsoft removes the SharePoint user profiles 30 days after service account removal. There is still remaining data created for Cloud Email and Collaboration Protection that requires manual cleanup. For details, see <a href="trend-vision-one-changes-made">Changes made by Cloud Email and Collaboration Protection</a>.</p></td>
+</tr>
+<tr>
+<td><p>How can a customer enable multi-factor authentication (MFA) on the Exchange Online and SharePoint Online Delegate Accounts after automatic access grant?</p></td>
+<td><p>On August 2, 2019, Microsoft implemented a mandatory Multi-Factor Authentication (MFA) policy for all partners re-selling Microsoft 365 licenses to end users. The policy requires all administrator accounts in the Cloud Solution Provider (CSP) tenant to have Multi-Factor Authentication.</p>
+<ul>
+<li><p>For the Authorized Accounts created using token-based modern authentication, it is the recommended approach and has no impact by MFA enforcement.</p></li>
+<li><p>For the Exchange Online and SharePoint Online Delegate Accounts created using the automatic access grant process, they need to meet this partner security requirement, while at the same time maintaining their capability of being used to protect the Microsoft 365 services. For more information about how to enable MFA for the Delegate Accounts, see <a href="https://success.trendmicro.com/solution/1123706">https://success.trendmicro.com/solution/1123706</a>.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>How can a customer specify a name and location when downloading quarantined items, instead of using the default name?</p></td>
+<td><p>When you download quarantined items through a web browser, Cloud Email and Collaboration Protection automatically generates a file name in a default format: &lt;timestamp&gt;_&lt;email subject or file name&gt;_&lt;affected user's name&gt;.</p>
+<p>To customize the file name and location, configure the Downloads settings of your browser to always ask where to save each file before downloading.</p></td>
+</tr>
+<tr>
+<td><p>For internal messages that are scanned by Cloud Email and Collaboration Protection Inline Protection, how can I prevent the messages from being marked as internal email spoofing by Microsoft Exchange Online Protection (EOP)?</p>
+
+
+:::note
+
+<p>Normally, Cloud Email and Collaboration Protection Inline Protection does not scan internal messages. However, in some cases, such as when internal messages are sent using a private mail server, the Exchange Online transport rule used by Cloud Email and Collaboration Protection Inline Protection can identify internal messages as inbound messages from external users and route the messages to Cloud Email and Collaboration Protection Inline Protection for scanning.</p>
+
+
+:::
+
+</td>
+<td><p>Solution: Add the record of Cloud Email and Collaboration Protection Inline Protection MTAs for inbound messages to the SPF record for your domains.</p>
+<p>The record of Cloud Email and Collaboration Protection for inbound protection are as follows:</p>
+<ul>
+<li><p>US site: spf-inpost.tmcas.trendmicro.com</p></li>
+<li><p>EU site: spf-inpost-eu.tmcas.trendmicro.com</p></li>
+<li><p>Japan site: spf-inpost.tmcas.trendmicro.co.jp</p></li>
+<li><p>Australia and New Zealand site: spf-inpost-au.tmcas.trendmicro.com</p></li>
+<li><p>Canada site: spf-inpost-ca.tmcas.trendmicro.com</p></li>
+<li><p>Singapore site: spf-inpost.tmcas.trendmicro.com.sg</p></li>
+<li><p>UK site: spf-inpost.tmcas.trendmicro.co.uk</p></li>
+<li><p>India site: spf-inpost-in.tmcas.trendmicro.com</p></li>
+<li><p>Middle East (UAE): spf-inpost-mea.tmcas.trendmicro.com</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Is it necessary to add the IP addresses of Cloud Email and Collaboration Protection Inline Protection MTAs for outbound messages to the SPF record for my domains?</p></td>
+<td><p>As recommended by Microsoft, you can add the record of Cloud Email and Collaboration Protection Inline Protection MTAs for outbound messages to the SPF record for your domains.</p>
+<p>The record of Cloud Email and Collaboration Protection for outbound protection are as follows:</p>
+<ul>
+<li><p>US site: spf-repost.tmcas.trendmicro.com</p></li>
+<li><p>EU site: spf-repost-eu.tmcas.trendmicro.com</p></li>
+<li><p>Japan site: spf-repost.tmcas.trendmicro.co.jp</p></li>
+<li><p>Australia and New Zealand site: spf-repost-au.tmcas.trendmicro.com</p></li>
+<li><p>Canada site: spf-repost-ca.tmcas.trendmicro.com</p></li>
+<li><p>Singapore site: spf-repost.tmcas.trendmicro.com.sg</p></li>
+<li><p>UK site: spf-repost.tmcas.trendmicro.co.uk</p></li>
+<li><p>India site: spf-repost-in.tmcas.trendmicro.com</p></li>
+<li><p>Middle East (UAE) site: spf-repost-mea.tmcas.trendmicro.com</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>What is the session timeout period for the Cloud Email and Collaboration Protection management console?</p></td>
+<td><p>The session timeout period for the Cloud Email and Collaboration Protection management console is 1 hour. If you perform no operation in the management console within 1 hour, you are automatically logged out of the console.</p></td>
+</tr>
+<tr>
+<td><p>Why my users cannot receive emails when I use both Cloud Email and Collaboration Protection Inline Protection and Trend Micro Email Security?</p></td>
+<td><p>If you have added the transport rule <strong>Restrict messages by sender or recipient...</strong> to accept emails only from Trend Micro Email Security, the mail server of Microsoft 365 will reject emails from Cloud Email and Collaboration Protection MTAs for Inline Protection. For Inline Protection to work properly, you need to add the IP addresses of Cloud Email and Collaboration Protection MTAs for your serving site to the exception list of the rule <strong>Restrict messages by sender or recipient...</strong>:</p>
+<p>The IP addresses of Cloud Email and Collaboration Protection for inbound protection are as follows:</p>
+<ul>
+<li><p>US site: 20.245.215.64/28, 104.42.189.70, 104.210.58.247, 20.72.147.113, 20.72.140.32</p></li>
+<li><p>EU site: 20.4.48.48/28, 20.107.69.176, 20.126.6.52, 20.54.65.186, 20.54.68.116</p></li>
+<li><p>Japan site: 13.78.70.144/28, 20.222.63.30, 20.222.57.14, 104.46.234.4, 138.91.24.196</p></li>
+<li><p>Australia and New Zealand site: 20.70.30.192/28, 20.213.240.47, 20.227.136.26, 20.39.98.128, 20.39.97.72</p></li>
+<li><p>Canada site: 52.228.5.240/28, 52.228.125.192, 52.139.13.199, 52.229.100.53, 20.104.170.121</p></li>
+<li><p>Singapore site: 52.163.102.112/28, 20.43.148.81, 20.195.17.218</p></li>
+<li><p>UK site: 20.254.97.192/28, 20.68.25.194, 20.68.210.42, 52.142.171.1, 52.142.170.52</p></li>
+<li><p>India site: 20.204.179.112/28, 20.204.44.59, 20.204.113.71, 20.219.110.223, 13.71.71.12</p></li>
+<li><p>Middle East (UAE) site: 20.233.170.224/28, 20.216.24.7, 20.216.9.36, 20.21.106.199, 20.21.252.69</p></li>
+</ul>
+<p>The IP addresses of Cloud Email and Collaboration Protection for outbound protection are as follows:</p>
+<ul>
+<li><p>US site: 20.66.85.0/28, 104.210.59.109, 104.42.190.154, 20.72.147.115, 20.72.140.41</p></li>
+<li><p>EU site: 20.160.56.80/28, 20.126.64.109, 20.126.70.251, 20.54.65.179, 20.54.68.120</p></li>
+<li><p>Japan site: 20.78.49.240/28, 20.222.60.8, 52.140.200.104, 104.46.227.238, 104.46.237.93</p></li>
+<li><p>Australia and New Zealand site: 20.227.209.48/28, 20.227.165.104, 20.213.244.63, 20.39.98.131, 20.39.97.73</p></li>
+<li><p>Canada site: 20.220.229.208/28, 52.228.125.196, 52.139.13.202, 20.104.170.106, 20.104.172.35</p></li>
+<li><p>Singapore site: 52.163.216.240/28, 20.43.148.85, 20.195.17.222</p></li>
+<li><p>UK site: 20.0.233.224/28, 20.68.214.138, 20.68.212.120, 52.142.171.6, 52.142.170.53</p></li>
+<li><p>India site: 20.235.86.144/28, 4.213.51.121, 4.213.51.126, 104.211.202.104, 52.172.7.14</p></li>
+<li><p>Middle East (UAE) site: 20.233.170.240/28, 20.74.137.84, 20.74.179.106, 20.21.106.164, 20.21.108.130</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Does Cloud Email and Collaboration Protection use Smart Scan? Do I need to configure anything to use Smart Scan?</p></td>
+<td><p>Yes, Cloud Email and Collaboration Protection uses Smart Scan, a cloud-based scanning solution with dynamically updated patterns. Cloud Email and Collaboration Protection leverage this Trend Micro-developed solution to provide up-to-date protection against malware.</p>
+<p>After enabling Malware Scanning in Cloud Email and Collaboration Protection, you do not need to make any configuration for Smart Scan to work.</p></td>
+</tr>
+</tbody>
+</table>
+:::

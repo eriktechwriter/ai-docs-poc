@@ -1,0 +1,76 @@
+---
+slug: trend-vision-one-disable-safe-links
+title: >-
+  Avoid Microsoft Safe Links alerts when opening phishing simulation landing
+  pages
+---
+# Avoid Microsoft Safe Links alerts when opening phishing simulation landing pages
+
+Ensure recipients can open phishing simulation URLs without encountering a Microsoft Safe Links alert.
+
+If your recipients are using Microsoft Defender 365, you may [configure an allow list](setup-365-defender-allow-list.mdx) to ensure delivery of Security Awareness Training content without triggering Microsoft Safe Links alerts. However, recipients using older versions of Windows may still encounter Microsoft Safe Links alerts when opening phishing simulation URLs. To avoid alerts, you may add a mail flow rule in Microsoft Exchange or manually configure Safe Links settings in Microsoft Defender 365.
+
+### Procedure {#procedure}
+
+1.  Record the **Security Awareness** sending IP addresses.
+
+    1.  On the Trend Vision One console, go to **Cyber Risk Exposure Management → Security Awareness → Phishing Simulations**.
+
+    2.  Click **Settings**.
+
+    3.  Click **Settings** and copy the sending IP addresses and simulation URLs.
+
+        :::warning[Important]
+
+        The sending IP addresses change over time. Check the list before launching a training campaign or phishing simulation.
+        :::
+
+2.  Add a mail flow rule for Microsoft Exchange.
+
+    1.  Sign in to the Exchange Admin Center using an account with admin privileges.
+
+    2.  Go to **Mail flow → Rules** and click the add (+) button.
+
+    3.  Select **Create a new rule**.
+
+    4.  Give the new rule a descriptive name such as `Bypass spam filtering`.
+
+    5.  Select **The sender**, then click **More options** and select **IP address is in any of these ranges or exactly matches:**.
+
+    6.  Specify the IP addresses you recorded from Security Awareness Training and clock **OK**.
+
+    7.  In the **Do the following...** menu, select **Modify the message properties**.
+
+    8.  Select **Set a message header**.
+
+    9.  Set the value for the message header **X-MS-Exchange-Organization-SkipSafeLinksProcessing** to `1`.
+
+        :::warning[Important]
+
+        Message headers are case-sensitive.
+        :::
+
+    10. Click **Save**.
+
+3.  Configure Safe Links settings in Microsoft Defender 365.
+
+    1.  Sign into the Defender portal using an account with admin privileges.
+
+    2.  Go to **Email & Collaboration → Policies & Rules → Threat Policies → Safe Links**.
+
+    3.  Click **Create**.
+
+    4.  Give the new policy a name and add a description if desired.
+
+    5.  Specify the users, groups, and domains to receive phishing simulation emails.
+
+    6.  Enable **URL & click protection settings** for email.
+
+    7.  Under **Do not rewrite the following URLs in email**, click **Manage 0 URLs**.
+
+    8.  Click **Add URLs**.
+
+    9.  Add the Security Awareness Training URLs you recorded in the format `*.example.com/*`.
+
+    10. Click **Save**.
+:::

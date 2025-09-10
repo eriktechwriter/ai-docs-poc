@@ -1,0 +1,104 @@
+---
+slug: trend-vision-one-add-google-cloud-platform-account
+title: Add a Google Cloud Platform account
+last_updated: '2025-09-08'
+ai_context:
+  source_file: add-google-cloud-platform-account.md
+  conversion_date: '2025-09-08T23:42:25.907Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::::: {role="main"}
+:::warning[Important]
+
+You can now use Cloud Accounts to add your Google Cloud projects to Trend Vision One. To get the latest cloud security features to protect your environment, get started by going to **Cloud Security → Cloud Accounts → Google Cloud**.
+
+For more information, see [Google Cloud projects](google-cloud-projects.mdx).
+
+The content below is kept for your reference. The ability to add Google Cloud projects to Server & Workload Protection is planned to be retired soon.
+:::
+
+When you add a Google Cloud Platform (GCP) account to Server & Workload Protection, all GCP VM instances associated with that account are imported into Server & Workload Protection and become visible in the Server & Workload Protection console in **Computers → your_GCP_service_account → your_GCP_project**
+
+Once imported, the GCP VM instances can be managed like any other computer.
+
+:::note
+
+Adding a GCP account to Server & Workload Protection is equivalent to [adding a GCP connector through the Server & Workload Protection API](add-google-cloud-platform-connector.mdx).
+:::
+
+## What are the benefits of adding a GCP account? {#what-are-the-benefits-of-adding-a-gcp-account}
+
+The benefits of adding a GCP account (through **Computers → Add GCP Account**) instead of adding individual GCP VMs (through **Computers → Add Computer**), are:
+
+- Changes in your GCP VM inventory are automatically reflected in the Server & Workload Protection console. For example, if you delete a number of VM instances in GCP, those instances disappear automatically from the manager. By contrast, if you use **Computers → Add Computer**, GCP instances that you've deleted remain visible in the manager until you manually delete them.
+- VMs are organized into projects in the manager, which lets you easily see which GCP VMs are protected and which are not. Without the GCP account, all your GCP VMs appear at the same root level under *Computers*.
+- Your smaller-sized GCP instances will be billed at a lower rate (if you are using metered billing). By contrast, if you use **Computers → Add Computer**, all your GCP instances regardless of size are billed at the highest 'Data Center' rate.
+
+## Configure a proxy setting for the GCP account {#configure-a-proxy-setting-for-the-gcp-account}
+
+Optionally, you can configure Server & Workload Protection to use a proxy server to access resources in GCP service accounts. For details, see [Connect to cloud accounts via proxy](configure-proxies-server-workload.mdx).
+
+## Add a GCP account to Server & Workload Protection {#add-a-gcp-account-to-server-workload-protection}
+
+To add a GCP account to Server & Workload Protection:
+
+### Procedure {#procedure}
+
+1.  If you have not done so already, [Create a Google Cloud Platform service account](gcp-service-account.mdx) for Server & Workload Protection.
+
+2.  In the Server & Workload Protection console, go to **Computers → Add → Add GCP Account**.
+
+    ![](/images/google-dsm-add-gcp=6affee19-a8c1-4cba-9574-a1e70752269a.webp)
+
+3.  Enter a *Display Name*. We recommend using the GCP service account name. Examples: `GCP Server & Workload Protection`, `Finance GCP Server & Workload Protection`, `Marketing GCP Server & Workload Protection`.
+
+4.  Choose the *Service Account Key*. The key is a JSON file that you saved earlier, when creating the GCP service account. See [Create a Google Cloud Platform service account](gcp-service-account.mdx) for details.
+
+5.  Click *Next*.
+
+6.  Review the summary information, and then click *Close*. The following occurs:
+
+    - The Server & Workload Protection console displays your GCP service account and its associated projects in their own branch on the left side of the *Computers* page (see image below). Associated VMs are displayed in the main pane. You can right-click your GCP service account name and select *Synchronize Now* to see the latest set of GCP VMs.
+    - If you previously added VM instances from this service account through the **Computers → Add Computers** option (instead of the **Computers → Add GCP Account** option described here), these VMs are moved to the correct project under the service account you just added. This move occurs only for VMs that have agent version 12.0 or later installed. VMs with pre-12.0 agents remain listed under the root *Computers* folder.The following image shows the imported GCP service account, projects, and a VM. ![](/images/google-dsm-project-tree=1c745b87-a636-4c4a-90b5-af96284dcefa.webp)
+
+7.  Repeat the steps in this procedure for each GCP service account you want to add.You have now added a GCP service account to Server & Workload Protection. Proceed to [Install the agent on Google Cloud Platform VMs](install-agent-gcp-vms.mdx) if you have not done so already.
+
+### Next steps {#next-steps}
+
+## Remove a GCP account {#remove-a-gcp-account}
+
+Removing a GCP account from the Server & Workload Protection console is permanent, but it does not affect the GCP account. VM instances with agents continue to be protected, but do not receive component updates. If you later reactivate agents on these VM instances, the agents will download the latest component updates at the next scheduled update.
+
+To remove a GCP account:
+
+### Procedure {#procedure-1}
+
+1.  In the Server & Workload Protection console, click *Computers* at the top.
+
+2.  Right-click the GCP account in the tree view on the left, and select *Remove Cloud Account*.
+
+3.  Confirm that you want to remove the account.The account is removed from Server & Workload Protection.
+
+### Next steps {#next-steps-1}
+
+## Synchronize a GCP account {#synchronize-a-gcp-account}
+
+When you synchronize (sync) a GCP account, Server & Workload Protection connects to the GCP API to obtain and display the latest set of GCP VMs.
+
+To force a sync immediately:
+
+### Procedure {#procedure-2}
+
+1.  In the Server & Workload Protection console, click *Computers*.
+
+2.  On the left, right-click your GCP account and select *Synchronize Now*.
+
+### Next steps {#next-steps-2}
+
+:::note
+
+There is also a background sync that occurs every 10 minutes, and this interval is not configurable. If you force a sync, the background sync is unaffected and continues to occur according to its original schedule.
+:::
+::::::

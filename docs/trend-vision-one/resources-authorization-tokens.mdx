@@ -1,0 +1,68 @@
+---
+slug: trend-vision-one-resources-authorization-tokens
+title: Authorization tokens
+---
+# Authorization tokens
+
+Create authorization tokens to allow end users to terminate the Trend Vision One Endpoint Security agent.
+
+Authorization tokens are a policy resource used for enabling endpoint users to terminate the Trend Vision One Endpoint Security agent. To use the authorization token, you must enable the Agent Interface and select **Allow users to shut down the agent using an authorization token**. For more information, see [Agent Interface](policies-agent-interface.mdx).
+
+Authorization tokens do not have a limit on number of users or uses as long as the token is valid. You can have up to 10 authorization tokens.
+
+:::note
+
+Trend Vision One does not automatically delete expired authorization tokens. Use the delete action to remove expired tokens.
+:::
+
+**Authorization tokens actions**
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Add a token</p></td>
+<td><p>Generate an authorization token from the list view.</p>
+<ol>
+<li><p>Select the <strong>Token validity period</strong>.</p></li>
+<li><p>Specify the <strong>Description</strong>.</p></li>
+<li><p>Click <strong>Generate token</strong>.</p></li>
+<li><p>Copy the token value.</p></li>
+</ol>
+
+
+:::warning[Important]
+
+<p>You cannot retrieve the token value after closing the <strong>New authorization token</strong> window. Make sure to copy and save the value to a safe location before you click <strong>Close</strong>.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Delete a token</p></td>
+<td><p>Select one or more tokens and click <strong>Delete</strong>.</p>
+
+
+:::warning[Important]
+
+<p>Deleting a token immediately invalidates the token and permanently removes any associated date from Trend Vision One. Endpoint users cannot use deleted tokens to terminate the Trend Vision One Endpoint Security agent</p>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+::::

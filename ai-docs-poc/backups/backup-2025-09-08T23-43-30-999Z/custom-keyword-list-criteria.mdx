@@ -1,0 +1,54 @@
+---
+slug: trend-vision-one-custom-keyword-list-criteria
+title: Custom keyword list criteria
+last_updated: '2025-09-08'
+ai_context:
+  source_file: custom-keyword-list-criteria.md
+  conversion_date: '2025-09-08T23:42:21.103Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+View criteria used to create custom keyword lists for use in data loss prevention templates.
+
+**Criteria for a keyword list**
+
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 81%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Criteria</p></th>
+<th><p>Rule</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid">Any keyword</td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>A file must contain at least one keyword in the keyword list.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>All keywords</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>A file must contain all the keywords in the keyword list.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>All keywords within &lt;x&gt; characters</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>A file must contain all the keywords in the keyword list. In addition, each keyword pair must be within &lt;x&gt; characters of each other.</p>
+<p>For example, your 3 keywords are WEB, DISK, and USB and the number of characters you specified is 20.</p>
+<p>If Data Loss Prevention detects all keywords in the order DISK, WEB, and USB, the number of characters from the "D" (in DISK) to the "W" (in WEB) and from the "W" to the "U" (in USB) must be 20 characters or less.</p>
+<p>The following data matches the criteria: DISK####WEB############USB</p>
+<p>The following data does not match the criteria: DISK*******************WEB****USB(23 characters between "D" and "W")</p>
+<p>When deciding on the number of characters, remember that a small number, such as 10, usually results in a faster scanning time but only covers a relatively small area. This may reduce the likelihood of detecting sensitive data, especially in large files. As the number increases, the area covered also increases but scanning time might be slower.</p></td>
+</tr>
+<tr>
+<td style="border-right-width: 1px; border-right-style: solid"><p>Combined score for keywords exceeds threshold</p></td>
+<td><p>A file must contain one or more keywords in the keyword list. If only one keyword was detected, its score must be higher than the threshold. If there are several keywords, their combined score must be higher than the threshold.</p>
+<p>Assign each keyword a score of 1 to 10. A highly confidential word or phrase, such as "salary increase" for the Human Resources department, should have a relatively high score. Words or phrases that, by themselves, do not carry much weight can have lower scores.</p>
+<p>Consider the scores that you assigned to the keywords when configuring the threshold. For example, if you have five keywords and three of those keywords are high priority, the threshold can be equal to or lower than the combined score of the three high priority keywords. This means that the detection of these three keywords is enough to treat the file as sensitive.</p></td>
+</tr>
+</tbody>
+</table>
+:::

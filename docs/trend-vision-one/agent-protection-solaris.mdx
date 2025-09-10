@@ -1,0 +1,93 @@
+---
+slug: trend-vision-one-agent-protection-solaris
+title: How does agent protection work for Solaris zones?
+---
+# How does agent protection work for Solaris zones?
+
+The agent can be deployed only on a Solaris global zone. If your Solaris environment uses any non-global zones, the protection that the agent can provide for the global zone and non-global zones will differ with each protection module:
+
+- Intrusion Prevention
+- Firewall
+- Web Reputation
+- Anti-Malware
+- Integrity Monitoring
+- Log Inspection
+
+See [Install the agent manually](install-agent.mdx) for more on installing the agent on Solaris.
+
+### Intrusion Prevention (IPS), Firewall, and Web Reputation {#intrusion-prevention-ips-firewall-and-web-reputation}
+
+If your Solaris environment uses any non-global zones, the Intrusion Prevention, Firewall, and Web Reputation modules can only provide protection to specific traffic flows between the global zone, non-global zones and any external IP addresses. Which traffic flows the agent can protect depends on if the non-global zones use a shared-IP network interface or an exclusive-IP network interface.
+
+Kernel zones use an exclusive-IP network interface and agent protection to traffic flows is limited to that network configuration.
+
+### Non-global zones use a shared-IP network interface {#non-global-zones-use-a-shared-ip-network-interface}
+
+Agent protection to traffic flows in a shared-IP configuration is as follows:
+
+<table>
+<colgroup>
+<col style="width: 67%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Traffic Flow</p></th>
+<th><p>Protected by agent</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>external address &lt;-&gt; non-global zone</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>external address &lt;-&gt; global zone</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>global zone &lt;-&gt; non-global zone</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>non-global zone &lt;-&gt; non-global zone</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+
+### Non-global zones use an exclusive-IP network interface {#non-global-zones-use-an-exclusive-ip-network-interface}
+
+Agent protection to traffic flows in a exclusive-IP configuration is as follows:
+
+<table>
+<thead>
+<tr>
+<th><p>Traffic Flow</p></th>
+<th><p>Protected by agent</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>external address &lt;-&gt; non-global zone</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>external address &lt;-&gt; global zone</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>global zone &lt;-&gt; non-global zone</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>non-global zone &lt;-&gt; non-global zone</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+
+### Anti-Malware, Integrity Monitoring, and Log Inspection {#anti-malware-integrity-monitoring-and-log-inspection}
+
+The Anti-Malware, Integrity Monitoring and Log Inspection modules provides protection to the global zone. For non-global zones, any files or directories that are also visible to the global zone are protected. Files specific to a non-global zone are not protected.
+:::

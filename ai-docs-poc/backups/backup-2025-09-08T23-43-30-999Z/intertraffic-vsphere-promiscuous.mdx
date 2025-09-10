@@ -1,0 +1,95 @@
+---
+slug: trend-vision-one-intertraffic-vsphere-promiscuous
+title: >-
+  Configuring internal network traffic with the VMware vSphere Standard Switch
+  (promiscuous mode)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: intertraffic-vsphere-promiscuous.md
+  conversion_date: '2025-09-08T23:42:16.872Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure internal network traffic with the VMware vSphere Standard Switch in promiscuous mode to allow Virtual Network Sensor to monitor data.
+
+:::warning[Important]
+
+The following instructions are valid as of July 2023.
+:::
+
+### Procedure {#procedure}
+
+1.  Turn off your Virtual Network Sensor.
+
+2.  On the VMware vCenter console, click the ![](/images/VMware_vCenter_server_icon=GUID-20230329175050.webp) tab.
+
+3.  Click the name of your virtual machine.
+
+    <figure>
+    <img src="./images/Internal_VSS_Prom1=GUID-20230729143645.webp" />
+    </figure>
+
+4.  Go to **Configure → Virtual switches → ADD NETWORKING**.
+
+5.  On the **Add Networking** screen, select **Virtual Machine Port Group for a Standard Switch** and click **NEXT**.
+
+    <figure>
+    <img src="./images/Internal_VSS_Prom2=GUID-20230729143646.webp" />
+    </figure>
+
+6.  Select **Select an existing standard switch** and click **NEXT**.
+
+    <figure>
+    <img src="./images/Internal_VSS_Prom3=GUID-20230729143647.webp" />
+    </figure>
+
+7.  Type a name for your **Network label**, select **All (4095)** for the **VLAN ID**, and click **NEXT**.
+
+    <figure>
+    <img src="./images/Internal_VSS_Prom4=GUID-20230729143648.webp" />
+    </figure>
+
+8.  Click **FINISH**.
+
+    <figure>
+    <img src="./images/Internal_VSS_Prom5=GUID-20230729143649.webp" />
+    </figure>
+
+9.  Click ![](/images/ellipsis_icon=GUID-20230330143737.webp) on your port group and select **Edit Settings**.
+
+    <figure>
+    <img src="./images/Internal_VSS_Prom6=GUID-20230729143650.webp" />
+    </figure>
+
+10. Click **Security** and then select **Override** and **Accept** for promiscuous mode.
+
+    <figure>
+    <img src="./images/Internal_VSS_Prom7=GUID-20230729143651.webp" />
+    </figure>
+
+11. Select **Reject** for MAC address changes and forged transmits and click **OK**.
+
+12. Click the name of your Virtual Network Sensor and click ![](/images/edit_settings_icon=GUID-20230729150707.webp).
+
+    <figure>
+    <img src="./images/Internal_VSS_Prom8=GUID-20230729143652.webp" />
+    </figure>
+
+13. On the **Edit Settings** screen, click **Network adapter 2** and select **Browse...**
+
+    <figure>
+    <img src="./images/Internal_VSS_Prom9=GUID-20230729143653.webp" />
+    </figure>
+
+14. Select the port group you created and click **OK**.
+
+    <figure>
+    <img src="./images/Internal_VSS_Prom10=GUID-20230729143644.webp" />
+    </figure>
+
+15. Turn on your Virtual Network Sensor.
+
+    After configuring your network settings, access the Virtual Network Sensor console and use the command `show traffic` to verify the Virtual Network Sensor is receiving traffic. For more information about troubleshooting, see [Virtual Network Sensor FAQ](virtual-network-sensor-faqs.mdx) and [Virtual Network Sensor CLI commands](virtual-network-sensor-cli-commands.mdx).
+::::

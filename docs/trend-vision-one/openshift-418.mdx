@@ -1,0 +1,35 @@
+---
+slug: trend-vision-one-openshift-418
+title: >-
+  4.1.8 - Ensure that the client certificate authorities file ownership is set
+  to root:root (Automated)
+---
+# 4.1.8 - Ensure that the client certificate authorities file ownership is set to root:root (Automated)
+
+Profile applicability: Level 1
+
+Ensure that the certificate authorities file ownership is set to `root:root`.
+
+The certificate authorities file controls the authorities used to validate API requests. You should set its file ownership to maintain the integrity of the file. The file should be owned by `root:root`.
+
+:::note
+
+By default, in OpenShift 4, the `--client-ca-file` is set to` /etc/kubernetes/kubelet-ca.crt` with ownership `root:root`.
+:::
+
+### Audit {#audit}
+
+The Client CA location for the `kubelet` is defined in `/etc/kubernetes/kubelet.conf` and is `/etc/kubernetes/kubelet-ca.crt` by default.
+
+Run the following command to view the user and group ownership:
+
+```bash
+for node in $(oc get nodes -o jsonpath='{.items[*].metadata.name}')
+do
+       oc debug node/${node} -- chroot /host stat -c %U:%G
+/etc/kubernetes/kubelet-ca.crt
+done
+```
+
+Verify that the ownership is set to `root:root`.
+::::

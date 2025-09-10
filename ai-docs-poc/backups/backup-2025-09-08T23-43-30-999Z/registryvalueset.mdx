@@ -1,0 +1,131 @@
+---
+slug: trend-vision-one-registryvalueset
+title: RegistryValueSet
+last_updated: '2025-09-08'
+ai_context:
+  source_file: registryvalueset.md
+  conversion_date: '2025-09-08T23:42:13.889Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+:::note
+
+The Integrity Monitoring module scans for unexpected changes to [directories](directoryset.mdx), registry values, [registry keys](registrykeyset.mdx), [services](serviceset.mdx), [processes](processset.mdx), [installed software](installedsoftwareset.mdx), [ports](portset.mdx), [groups](groupset.mdx), [users](userset.mdx), [files](fileset.mdx), and the [WQL](wqlset.mdx) query statement on agents. To enable and configure Integrity Monitoring, see [Set up integrity monitoring](set-up-integrity-monitoring.mdx).
+:::
+
+A set of Registry values (Windows only).
+
+### Tag Attributes {#tag-attributes}
+
+These are XML attributes of the tag itself as opposed to the attributes of the entity monitored by Integrity Monitoring Rules.
+
+<table>
+<thead>
+<tr>
+<th><p>Attribute</p></th>
+<th><p>Description</p></th>
+<th><p>Required</p></th>
+<th><p>Default Value</p></th>
+<th><p>Allowed Values</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>base</p></td>
+<td><p>Sets the base key of the RegistryValueSet. Everything else in the tag is relative to this key. The base must begin with one of the registry branch names: HKEY_CLASSES_ROOT (or HKCR), HKEY_LOCAL_MACHINE (or HKLM), HKEY_USERS (or HKU), HKEY_CURRENT_CONFIG (or HKCC)</p></td>
+<td><p>Yes</p></td>
+<td><p>N/A</p></td>
+<td><p>String values resolving to syntactically valid registry key</p></td>
+</tr>
+</tbody>
+</table>
+
+### Entity Set Attributes {#entity-set-attributes}
+
+These are the attributes of the Entity that can be monitored by Integrity Monitoring Rules:
+
+- Size
+- Type
+- Sha1
+- Sha256
+- Md5 (deprecated)
+
+### Short Hand Attributes {#short-hand-attributes}
+
+- *CONTENTS:* Resolves to the content hash algorithm set in **Computer or Policy editor → Integrity Monitoring → Advanced**.
+- *STANDARD:* Size, Type, Contents
+
+### Meaning of "Key" {#meaning-of-key}
+
+Registry Values are name-value pairs stored under a key in the registry. The key under which they are stored may in turn be stored under another key, very much like files and directories on a file system. For the purpose of this language the "key path" to a value is considered to look like the path to a file. For example, the "key path" to the InstallationFolder value of the Agent would be:
+
+`HKEY_LOCAL_MACHINE\SOFTWARE\Trend Micro\Deep Security Agent\InstallationFolder`
+
+The "key" value for includes and excludes for the RegistryValueSet is matched against the key path. This is a hierarchical pattern, with sections of the pattern separated by "/" matched against sections of the key path separated by ""
+
+### Default Value {#default-value}
+
+Each registry key has an unnamed or default value.
+
+This value can be explicitly specified for inclusion and exclusion by using a trailing "/" in patterns. For example, `**/` will match all subordinate unnamed values, and "\*Agent/\*\*/" will match all unnamed values below a key matching "\*Agent".
+
+:::note
+
+Registry value names can contain any printable character, including quotes, backslash, the "@" symbol, etc.
+:::
+
+The Agent deals with this in Entity key names by using backslash as an escape character, but only backslashes themselves are escaped. It does this so that it can tell the difference between a value name containing a backslash and a backslash that occurs as part of the registry path. This means that value names which end with a backslash character will match rules designed to match the default or unnamed value.
+
+See the table below for example registry value names and the resulting Entity key.
+
+<table>
+<thead>
+<tr>
+<th><p>Value</p></th>
+<th><p>Escaped Form</p></th>
+<th><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Hello</p></td>
+<td><p>Hello</p></td>
+<td><p>HKLM\Software\Sample\Hello</p></td>
+</tr>
+<tr>
+<td><p>"Quotes"</p></td>
+<td><p>"Quotes"</p></td>
+<td><p>HKLM\Software\Sample\"Quotes"</p></td>
+</tr>
+<tr>
+<td><p>back\slash</p></td>
+<td><p>back\\slash</p></td>
+<td><p>HKLM\Software\Sample\back\\slash</p></td>
+</tr>
+<tr>
+<td><p>trailing\</p></td>
+<td><p>trailing\\</p></td>
+<td><p>HKLM\Software\Sample\trailing\\</p></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><p>HKLM\Software\Sample\</p></td>
+</tr>
+<tr>
+<td><p>@</p></td>
+<td><p>@</p></td>
+<td><p>HKLM\Software\Sample\@</p></td>
+</tr>
+</tbody>
+</table>
+
+### Sub Elements {#sub-elements}
+
+- *Include*
+- *Exclude*
+
+See [Integrity monitoring rules language](integrity-monitoring-language-swp.mdx) for a general description of Include and Exclude for their allowed attributes and sub elements.
+:::::

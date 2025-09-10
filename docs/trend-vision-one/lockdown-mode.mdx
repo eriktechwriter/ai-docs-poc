@@ -1,0 +1,192 @@
+---
+slug: trend-vision-one-lockdown-mode
+title: Prepare for Lockdown Mode
+---
+# Prepare for Lockdown Mode
+
+How to configure your environment before enabling Lockdown Mode in Application Control.
+
+:::warning[Important]
+
+Lockdown mode can potentially block important program functions such as the Trend Vision One Endpoint Security agent installer or Windows Update. Review this topic to understand how to allow trusted programs to run and make updates during lockdown mode.
+
+Server & Workload Protection is not able to allow all Microsoft processes for updates, and Windows Security updates cannot be turned off. If you apply lockdown mode to Server & Workload Protection, monitor the Windows update release cycle and plan times for when to disable lockdown mode to allow updates to install.
+:::
+
+Lockdown mode in Application Control for Endpoint Security Policies provides an option to block any new or untrusted software from installing or running on your endpoints. When you enable lockdown mode, the Trend Vision One Endpoint Security agent runs an inventory scan to build a list of existing applications and installed software which the agent allows to run. The agent blocks applications if:
+
+- The application is not found in the inventory scan list on the endpoint
+
+- The application is not in the trusted programs list
+
+- The application does not match any Application Control rules with the **Allow** action
+
+- The application matches any Application Control rules with the **Block** action
+
+Windows Update is complex app in behavior and process usage, requiring multiple Application Control rules to allow Microsoft updates to install.
+
+- Some endpoints installed with .NET Framework or Windows Defender trigger a different update package compared to other endpoints.
+
+- Installation packages vary between Windows platforms. For example, installation packages for Windows 10 and Windows 11 might be completely different even if the update addresses the same issue.
+
+- The update package is different for endpoints installed with different language packages. The update package is chosen according to the system language of the Windows platform.
+
+Before you enable lockdown mode, use the following steps to ensure vital functions are not blocked while in lockdown.
+
+### Procedure {#procedure}
+
+1.  Add programs to the **Trusted programs list** in Exceptions.
+
+    :::warning[Important]
+
+    Only Standard Endpoint Protection endpoints support using the trusted programs list for lockdown mode. For Server & Workload Protection endpoints, you must create Application Control rules to allow trusted programs to run in lockdown mode.
+    :::
+
+2.  Create an Application Control rule to allow Trend Micro apps to run and make changes.
+
+    :::warning[Important]
+
+    Server & Workload Protection does not support rules with wildcards in the certificate value. To allow Trend Micro apps to update, Trend Micro recommends disabling lockdown mode when updates are scheduled.
+    :::
+
+    1.  In the Trend Vision One console, go to **Endpoint Security → Endpoint Security Configuration → Policy Resources → Application Control Rules**.
+
+    2.  Click **Add Application Control rule**.
+
+    3.  Type the **Name** and **Description**.
+
+        Use something easy to identify, such as `Allow Trend Micro`.
+
+    4.  Select **Allow** for the **Action**.
+
+    5.  For **Type**, select **Certificate**.
+
+    6.  For **Property**, select **Subject name (CN)**.
+
+    7.  For **Value**, type `Trend Micro*`.
+
+    8.  Click **Save**.
+
+3.  Create an Application Control rule to allow Microsoft Update to run and make changes.
+
+    1.  In the Trend Vision One console, go to **Endpoint Security → Endpoint Security Configuration → Policy Resources → Application Control Rules**.
+
+    2.  Click **Add Application Control rule**.
+
+    3.  Type the **Name** and **Description**.
+
+        Use something easy to identify, such as `Allow Windows Update`.
+
+    4.  Select **Allow** for the **Action**.
+
+    5.  For **Type**, select **File Path**.
+
+    6.  For **Path**, type `C:\Windows\System32\wuauclt.exe`.
+
+    7.  Click **Save**.
+
+4.  Create an Application Control rule for apps signed by Microsoft Corporation.
+
+    1.  To create the rule, click **Add Application Control rule**.
+
+    2.  Type the **Name** and **Description**.
+
+        Use something easy to identify, such as `Allow Microsoft Apps-1`.
+
+    3.  Select **Allow** for the **Action**.
+
+    4.  For **Type**, select **Certificate**.
+
+    5.  For **Property**, select **Subject name (CN)**.
+
+    6.  For **Value**, type `Microsoft Corporation`.
+
+    7.  Click **Save**.
+
+5.  For Standard Endpoint Protection deployments, create an additional rule to allow any app with Microsoft as an issuer.
+
+    :::warning[Important]
+
+    Server & Workload Protection does not support rules with wildcards in the certificate value. See the next step for additional rules for allowing Microsoft apps.
+    :::
+
+    1.  To create the rule, click **Add Application Control rule**.
+
+    2.  Type the **Name** and **Description**.
+
+        Use something easy to identify, such as `Allow Microsoft Apps-2`.
+
+    3.  Select **Allow** for the **Action**.
+
+    4.  For **Type**, select **Certificate**.
+
+    5.  For **Property**, select **Issuer organization (O)**.
+
+    6.  For **Value**, type `Microsoft Corporation`.
+
+    7.  Click **Add**.
+
+    8.  For **Property**, select **Issuer name (CN)**.
+
+    9.  For **Value**, type `Microsoft*`.
+
+    10. Click **Save**.
+
+6.  If you are applying the policy to Server & Workload Protection agents, create two more Application Control rules for Microsoft Signed apps.
+
+    1.  To create the first rule, click **Add Application Control rule**.
+
+    2.  Type the **Name** and **Description**.
+
+        Use something easy to identify, such as `Allow Microsoft Apps-3`.
+
+    3.  Select **Allow** for the **Action**.
+
+    4.  For **Type**, select **Certificate**.
+
+    5.  For **Property**, select **Subject name (CN)**.
+
+    6.  For **Value**, type `Microsoft Windows Publisher`.
+
+    7.  Click **Save**.
+
+    8.  To add the next rule, click **Add Application Control rule**.
+
+    9.  Type the **Name** and **Description**.
+
+        Use something easy to identify, such as `Allow Microsoft Apps-4`.
+
+    10. Select **Allow** for the **Action**.
+
+    11. For **Type**, select **Certificate**.
+
+    12. For **Property**, select **Subject name (CN)**.
+
+    13. For **Value**, type `Microsoft Windows`.
+
+    14. Click **Save**.
+
+7.  Create an Application Control rule to allow Microsoft .NET to run and make changes.
+
+    1.  Click **Add Application Control rule**.
+
+    2.  Type the **Name** and **Description**.
+
+        Use something easy to identify, such as `Allow Microsoft NET`.
+
+    3.  Select **Allow** for the **Action**.
+
+    4.  For **Type**, select **File Path**.
+
+    5.  For **Path**, type on separate lines:
+
+        - `C:\Windows\assembly\*`
+
+        - `C:\Windows\Microsoft.NET\*`
+
+    6.  Click **Save**.
+
+8.  Create Application Control rules to allow any other program you trust to run in lockdown mode.
+
+    For more information, see [Application Control rules](resources-application-control-rules.mdx) in Policy Resources.
+::::

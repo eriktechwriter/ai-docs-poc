@@ -1,0 +1,107 @@
+---
+slug: trend-vision-one-container-security
+title: Container Security
+last_updated: '2025-09-08'
+ai_context:
+  source_file: container-security.md
+  conversion_date: '2025-09-08T23:42:21.789Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Security for your containers at all stages of their life cycle
+
+- ***At deployment:*** Policy-based deployment control ensures that container images are run only when they meet the security criteria that you define.
+- ***After deployment:*** Continuous compliance allows you to intermittently scan your containers after they are deployed.
+- ***At runtime:*** Runtime Security provides visibility into any container activity that violates a customizable set of rules.
+
+<figure>
+<img src="./images/lifecycle=b8403765-1fc9-47cd-b9ee-072f49b2990b.webp" />
+</figure>
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Features</p></th>
+<th><p>Descriptions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Container image scanning</p></td>
+<td><p>Container image scanning, performed by the Trend Micro Artifact Scanner (TMAS), enables you to scan container images as part of your development pipeline and to perform ongoing scans of images in your registries so that developers can detect and fix security issues early in the container image lifecycle. With container image scanning, DevOps teams can continuously deliver production-ready applications and meet the needs of your business, without impacting build cycles.</p>
+<p>Container image scanning checks for vulnerabilities, malware, and secrets.</p>
+<p>Container image scanning detects the following:</p>
+<ul>
+<li>Threats in apps installed with a package manager, as well as direct-installed apps, from a variety of publicly available vulnerability data sources.</li>
+<li>All types of malware, including trojans, ransomware, and spyware.</li>
+<li>Secrets in your installed apps, which helps identify sensitive and confidential data that might have been inadvertently exposed, like passwords and API keys.</li>
+</ul>
+<p>The results of the container image scans are sent to Trend Vision One - Container Security, which determines whether it is safe to deploy the image by checking the scan results against a policy that you define.</p>
+<p>To enable container image scanning, install the <a href="trend-vision-one-artifact-scanner-tmas">Trend Micro™ Artifact Scanner (TMAS)</a> in your local environment.</p></td>
+</tr>
+<tr>
+<td><p>Policy-based deployment control</p></td>
+<td><p>Container Security provides policy-based deployment control through a native integration with Kubernetes to ensure the Kubernetes deployments you run in your production environment are safe.</p>
+<p>Container Security enables you to create policies that allow or block deployments based on a set of rules. The rules are based on a Kubernetes object's properties and the results of TMAS scans (if you have TMAS integrated with your environment).</p>
+<p>When an image is ready to be deployed with Kubernetes, the admission control webhook is triggered, which checks whether the image is safe to deploy and either allows or blocks it from running.</p>
+
+
+:::warning[Important]
+
+Admission Controller only works with <code>registry:type</code> artifacts.
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Continuous compliance</p></td>
+<td><p>After deployment, Container Security can continue to monitor containers. Container Security checks the policy assigned to the cluster on a regular basis, ensuring that running containers continue to conform to the policy you defined. If there are changes to the policy after the initial deployment, the updated policy is enforced. Running containers are also checked for new vulnerabilities as they are discovered.</p></td>
+</tr>
+<tr>
+<td><p>Runtime Security</p></td>
+<td><p>Runtime Security provides visibility into any activity of your running containers that violates a customizable set of rules. Currently, runtime security includes a set of predefined rules that provide visibility into MITRE ATT&amp;CK® framework tactics for containers, as well as container drift detection. Container Security can mitigate problems detected by the runtime visibility and control feature, based on a policy that you define. If a pod violates any rule during runtime, the issue is mitigated by terminating or isolating the pod based on the runtime ruleset in the policy.</p></td>
+</tr>
+<tr>
+<td><p>Runtime Vulnerability Scanning</p></td>
+<td><p>Runtime Scanning provides visibility of operating system and open source code vulnerabilities that are part of containers running in clusters where you have Container Security installed. It provides a list of vulnerabilities, sorted based on severity, which you can select for additional information. You can search for a vulnerability by name, and filter by severity level or CVE score.</p>
+
+
+:::note
+
+<p>At this time, runtime vulnerability scanning cannot be used to scan registries. If you need to scan container image registries, see <a href="trend-vision-one-artifact-scanner-tmas">About the Trend Micro™ Artifact Scanner (TMAS)</a>.</p>
+
+
+:::
+
+
+<p>Vulnerability details include:</p>
+<ul>
+<li><strong><em>Vulnerability Information</em></strong>: A description of the vulnerability, a link to details (like those listed in the <a href="https://www.cve.org">Common Vulnerabilities and Exposures (CVE®)</a> list), the vulnerable package and version, and the version of the vulnerable package which contains the fix (if available).</li>
+<li><strong><em>Image Information</em></strong>: The container image where the vulnerability was detected.</li>
+<li><strong><em>Detection Information</em></strong>: A list of workloads in which the vulnerability was detected including the namespace, type, container, and last detection time for each of these workloads.</li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Runtime Malware Scanning</p></td>
+<td><p>Runtime Malware Scanning provides detection of malware in your running containers, enabling you to identify and respond to malware threats introduced after deployment. You can configure a schedule to regularly scan for malware. Container Security logs malware events, which you can view from the Events tab.</p>
+<p>Runtime Malware Scanning also provides mitigation for malware scanning, including <code>isolate</code> and <code>terminate</code>. You can configure these options in <strong>Cloud Security → Container Security → Container Protection</strong> in the <strong>Policies</strong> tab.</p>
+<p>For more information, see <a href="trend-vision-one-kubernetes-protection-policies">Managing Kubernetes protection policies</a>.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Getting started with Container Security](get-started-container-security.md "Connect Amazon ECS or Kubernetes clusters and create protection policies to start monitoring your container environment with Container Security.")
+- [Container Inventory](container-inventory.md "Connect Kubernetes and Amazon ECS clusters, deploy Container Protection policies and proxy settings, create and manage Kubernetes cluster groups, and monitor your container environment from Container Inventory.")
+- [Container Protection](container-protection.md "Configure security policies and Runtime Scanning rulesets, monitor vulnerability detections and security events, and access the Artifact Scanner for pre-runtime scanning of your Kubernetes clusters using the Container Protection screen.")
+- [Container Security FAQs](container-security-faqs.mdx)
+:::

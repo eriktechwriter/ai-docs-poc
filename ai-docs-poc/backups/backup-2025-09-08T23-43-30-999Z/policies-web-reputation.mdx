@@ -1,0 +1,83 @@
+---
+slug: trend-vision-one-policies-web-reputation
+title: Web Reputation
+last_updated: '2025-09-08'
+ai_context:
+  source_file: policies-web-reputation.md
+  conversion_date: '2025-09-08T23:42:14.500Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure and manage the Web Reputation module settings.
+
+:::warning[Important]
+
+- Policies, Threat Prevention, and the Web Reputation module are "Pre-release" features and are not considered an official release. Please review the [Pre-Release Disclaimer](pre-release-disclaimer.mdx) before using the feature.
+
+- These features are not available in all regions.
+
+- Endpoint Security Policies supports agent version 202507 and later. Assigning policies to older agent versions might cause unwanted behavior or fail. Enabling Web Reputation on older agent versions might cause agents to install the [browser extension](policies-browser-extension.mdx) even if the feature is disabled.
+
+- Web Reputation uses several policy resources for configuring access and monitoring rules. Configure the resources before configuring Web Reputation.
+
+  - [Web lists](resources-web-lists.mdx) are used for configuring domains and URLs to allow or block with **Web access rules**. You can configure web lists to allow and web lists to block.
+
+  - [Port lists](resources-port-lists.mdx) are used for **Port monitoring for web protection**.
+
+- Navigating between the security modules or leaving the **Policy Settings** screen discards any unsaved changes. To avoid losing your work, always click **Save** before leaving the current screen.
+
+- To enhance blocking of URLs and domains added to your suspicious objects list, enable the [browser extension](policies-browser-extension.mdx) on your endpoints.
+
+- The Agent Interface provides additional settings including scan notifications. For more information, see [Agent Interface](policies-agent-interface.mdx).
+:::
+
+Web Reputation protects against web threats by blocking access to malicious URLs. The website reputation is correlated with the specific web reputation policy enforced on the endpoint, and checks HTTPS URLs to block access to suspicious pages.
+
+### Procedure {#procedure}
+
+1.  To allow Web Reputation to monitor and scan your endpoints, select **Enable**.
+
+2.  Configure the **Scan settings**.
+
+    1.  To adjust how aggressively Web Reputation responds to dangerous and suspicious pages, set the **Security level**.
+
+        - **High**: Blocks websites determined by Trend Micro to be dangerous, highly suspicious, and suspicious.
+
+        - **Medium**: Blocks websites determined by Trend Micro to be dangerous and highly suspicious.
+
+        - **Low**: Blocks websites determined by Trend Micro to be dangerous.
+
+    2.  To block access to untested websites, select **Block pages that have not been tested by Trend Micro**.
+
+        To check if Trend Micro has tested a specific website, go to the [Trend Micro Site Safety Center](https://global.sitesafety.trendmicro.com/).
+
+3.  To configure which domains and URLs to block and which to allow, configure the **Web access rules**.
+
+    :::note
+
+    Web Reputation only supports selecting one each domain and URL web lists for **Allow without logging**, and one each for **Block**. You can configure your [web lists](resources-web-lists.mdx) in Policy Resources.
+
+    Enabling the [browser extension](policies-browser-extension.mdx) enhances security by also scanning for any domains or URLs you added to the suspicious objects list.
+    :::
+
+    1.  To configure the web access rules, click **Manage rules**.
+
+    2.  To specify trusted websites to exclude from Web Reputation monitoring, select one **Domain list** and one **URL list** for **Allow without logging**.
+
+    3.  To specify websites to always block, select one **Domain list** and one **URL list** for **Block**.
+
+    4.  Click **Save**.
+
+4.  To monitor for potentially harmful web requests on specified ports, select which ports to watch for **Port monitoring for web protection**.
+
+    :::warning[Important]
+
+    Port monitoring currently only supports applying one [port list](resources-port-lists.mdx).
+    :::
+
+    - **Use default: 80, 443, 8080**: Scan ports commonly used by web protocols to make connection requests.
+
+    - **Use port list**: Select a [port list](resources-port-lists.mdx) from Policy Resources to scan.
+::::

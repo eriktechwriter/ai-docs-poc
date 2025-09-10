@@ -1,0 +1,50 @@
+---
+slug: trend-vision-one-enrolling-devices-using-mc
+title: Enrolling devices using managed configuration
+last_updated: '2025-09-08'
+ai_context:
+  source_file: enrolling-devices-using-mc.md
+  conversion_date: '2025-09-08T23:42:19.839Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Integrate Mobile Security with an MDM solution that supports managed configuration to enroll your devices for security protection.
+
+### Procedure {#procedure}
+
+1.  On the Trend Vision One console, access the configuration screen for integration with other MDMs.
+
+    - If this is the first time you set up Mobile Security, go to **Mobile Security → Mobile Inventory** to display the **Mobile Security** landing page.
+
+      Under **I have an MDM solution**, choose **Use My MDM Solution → Other MDM Solution**.
+
+    - If you have already set up an MDM integration or Mobile Device Director, go to **Mobile Security → Mobile Inventory**, click the settings icon (![](/images/integrationSettings=20250121101015.webp)), and click **Add MDM Solution**.
+
+      Under **I have an MDM solution**, choose **Use My MDM Solution → Other MDM Solution**.
+
+    The configuration screen appears.
+
+    :::note
+
+    Only administrators with the Master Administrator or Operator role can edit the integration settings.
+    :::
+
+2.  In the **Enrollment** section, follow the onscreen guide to enable the Mobile Security for Business app and create an app configuration policy for Mobile Security for Business in your MDM solution.
+
+    :::note
+
+    - The specific operations vary from MDM to MDM. This guide uses Ivanti as an example to illustrate the operations. For details, see [Managed configuration for Ivanti (MobileIron)](managed-config-ivanti-mobileiron.mdx).
+
+    - The enrollment key for enrolling devices from an MDM is valid only for the time period specified in screen. Click **Regenerate** to generate a new enrollment key when necessary. Select **Send email notification x days before enrollment key expiration** to get notified of enrollment key expiration.
+    :::
+
+3.  Click **Advanced Settings** and set a schedule to re-calculate memberships for assignment groups of the "Dynamic devices" type.
+
+4.  Click **Save Other MDM Solution X Settings**.
+
+**Related information**
+
+- [Managed configuration for Ivanti (MobileIron)](managed-config-ivanti-mobileiron.md "Integrate Mobile Security in Ivanti, formerly MobileIron, using managed configuration and allow Trend Vision One to protect your managed devices.")
+:::

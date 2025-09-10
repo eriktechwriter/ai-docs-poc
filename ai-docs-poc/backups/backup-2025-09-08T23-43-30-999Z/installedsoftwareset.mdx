@@ -1,0 +1,112 @@
+---
+slug: trend-vision-one-installedsoftwareset
+title: InstalledSoftwareSet
+last_updated: '2025-09-08'
+ai_context:
+  source_file: installedsoftwareset.md
+  conversion_date: '2025-09-08T23:42:17.150Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+:::note
+
+The Integrity Monitoring module scans for unexpected changes to [directories](directoryset.mdx), [registry values](registryvalueset.mdx), [registry keys](registrykeyset.mdx), [services](serviceset.mdx), [processes](processset.mdx), installed software, [ports](portset.mdx), [groups](groupset.mdx), [users](userset.mdx), [files](fileset.mdx), and the [WQL](wqlset.mdx) query statement on agents. To enable and configure Integrity Monitoring, see [Set up integrity monitoring](set-up-integrity-monitoring.mdx).
+:::
+
+Represents a set of installed software. The "key" used to uniquely identify an installed application is platform-specific, but it is often a shorthand version of the application name or a unique numeric value.
+
+On Windows, the key can be something readable like "FogBugz Screenshot_is1" or it can be a GUID like "{90110409-6000-11D3-8CFE-0150048383C9}". You can examine these by looking at the sub-keys of HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall.
+
+On Linux the key is the RPM package name, as shown by the command:
+
+`rpm -qa --qf "%{NAME}\n"`
+
+On Solaris the key is the package name as shown by the *pkginfo* command.
+
+### Tag Attributes {#tag-attributes}
+
+These are XML attributes of the tag itself, as opposed to the attributes of the computer where Integrity Monitoring is enabled.
+
+<table>
+<thead>
+<tr>
+<th><p>Attribute</p></th>
+<th><p>Description</p></th>
+<th><p>Required</p></th>
+<th><p>Default Value</p></th>
+<th><p>Allowed Values</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>onChange</p></td>
+<td><p>Will be monitored in real time</p></td>
+<td><p>No</p></td>
+<td><p>false</p></td>
+<td><p>true, false</p></td>
+</tr>
+</tbody>
+</table>
+
+### Entity Set Attributes {#entity-set-attributes}
+
+These are the attributes of the Entity that can be monitored by Integrity Monitoring Rules. Presence of the attributes is dependent on both the platform and the application itself - installation programs do not necessarily populate all of the attributes.
+
+- *Manufacturer*: The publisher or manufacturer of the application
+- *Name*: The friendly name or display name of the application. (Not available on Linux.)
+- *InstalledDate*: Date of installation. This is normally returned as YYYY-MM-DD \[HH:MM:SS\], but many installers on Windows format the date string in a different manner so this format is not guaranteed. (Not available on AIX.)
+- *InstallLocation*: The directory where the application is installed. (Only available on Windows and Solaris.)
+- *Parent*: For patches and updates, this gives the key name of this item's parent. (Only available on Windows.)
+- *Size*: The estimated size of the application, if available. On Windows this attribute is read from the "EstimatedSize" registry value under HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\\. The value in that location is expressed in KB, so the Agent multiplies it by 1024 before returning the value. Note that not all Windows applications populate the EstimatedSize field in the registry. (Not available on AIX.)
+- *Version*: The version of the installed application. On Windows, this comes from the "DisplayVersion" registry value.
+
+### Short Hand Attributes {#short-hand-attributes}
+
+These are the short hand attributes of the Entity and the attributes to which they resolve
+
+- *STANDARD:* InstalledDate, Name, Version
+
+### Meaning of "Key" {#meaning-of-key}
+
+The key is the name of the installed software. This is not a hierarchical key, so the \*\* pattern does not apply. On Windows the key is often a GUID, especially for anything installed via the Windows Installer (aka MSI). Use the name="XXX" feature if you need to include or exclude based on the display name rather than the GUID.
+
+The following example would monitor for the addition and deletion of new software.
+
+``` codeblock
+<InstalledSoftwareSet>
+<include key="\*"/>
+<attributes/>
+</InstalledSoftwareSet>
+```
+
+### Sub Elements {#sub-elements}
+
+- *Include*
+- *Exclude*
+
+See [Integrity monitoring rules language](integrity-monitoring-language-swp.mdx) for a general description of Include and Exclude for their allowed attributes and sub elements. Only information specific to includes and excludes relating to this EntitySet class are included here.
+
+### Special attributes of Include and Exclude for InstalledSoftwareSets {#special-attributes-of-include-and-exclude-for-installedsoftwaresets}
+
+*name (Windows only)*: Allows wildcard matching using ? and \* on the display name of the application (the "name" attribute of the Entity). For example:
+
+``` codeblock
+<InstalledSoftwareSet>
+<include name="Microsoft*"/>
+<InstalledSoftwareSet>
+```
+
+will match all installed applications whose display name (as shown by the Control Panel) starts with "Microsoft".
+
+*manufacturer*: Allows wildcard matching using ? and \* on the publisher or manufacturer of the application. For example:
+
+``` codeblock
+<InstalledSoftwareSet>
+<include manufacturer="* Company "/>
+<InstalledSoftwareSet>
+```
+
+will match all installed applications whose manufacturer ends with "Company".
+::::

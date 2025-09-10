@@ -1,0 +1,77 @@
+---
+slug: trend-vision-one-conformityentitlements-2
+title: Entitlements
+last_updated: '2025-09-08'
+ai_context:
+  source_file: conformityentitlements-2.md
+  conversion_date: '2025-09-08T23:42:22.028Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+View a summary of entitlements and permissions assigned throughout your cloud infrastructure to help identify and manage risky cloud identities that could lead to compliance violations and security incidents.
+
+:::warning[Important]
+
+- This is a "Pre-release" feature and is not considered an official release. Please review the [Pre-release disclaimer](pre-release-disclaimer.mdx) before using the feature.
+
+- Entitlements currently only supports AWS accounts.
+:::
+
+Cloud infrastructure entitlement management (CIEM) is a complex task that involves managing user and machine identities and privileges across a great volume of cloud resources. Without proper visibility and management, privileged user or machine identities with excessive permissions can lead to data breaches and other security risks. CIEM identifies risky cloud identities to help users enforce the principle of least privilege throughout the corporate cloud infrastructure.
+
+In the **Entitlements** tab of Cloud Security Posture, table view shows you all cloud identities in your organization, along with the identity risk score, number of policies assigned, and resources the identity can access. Click the corresponding number of policies or accessible resources to view a complete list. Click the corresponding icon in the **Risk graph** column to see the asset profile, risk graph, and risk assessment for the identity.
+
+In widget view, you can view a summary of your cloud identities along with the top identity-related issues detected in your cloud infrastructure. The following table outlines the widgets available in the widget view of **Entitlements**.
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Widget</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Cloud Identity Summary</p></td>
+<td><p>Displays the total number of cloud identities in your infrastructure and totals of identities that could present risk, including:</p>
+<ul>
+<li><p>Human admins</p></li>
+<li><p>Non-human (machine) admins</p></li>
+<li><p>Overprivileged identities</p></li>
+<li><p>Unused or stale identities</p></li>
+</ul>
+<p>Click an identity type to see a list of identities matching the specified type. Identity types are determined based on asset profile tags and associated risk events.</p></td>
+</tr>
+<tr>
+<td><p>Cloud Identity Risk Events</p></td>
+<td><p>Displays the total number of cloud identity-related risk events over time along with the change in total from the previous day</p></td>
+</tr>
+<tr>
+<td><p>Top Risky Identities</p></td>
+<td><p>Displays the riskiest identities in your cloud infrastructure with the greatest potential impact on your cloud resources</p>
+<p>Click <strong>View all</strong> to see a list of all cloud identities in your organization.</p></td>
+</tr>
+<tr>
+<td><p>Top Identity Misconfiguration Risk Events</p></td>
+<td><p>Displays cloud identity misconfiguration-related risk events sorted by potential impact</p>
+<p>Click <strong>View all</strong> to see all cloud identity-based misconfiguration risk events in <strong>Threat and Exposure Management</strong></p></td>
+</tr>
+<tr>
+<td><p>Top Potential Attack Paths</p></td>
+<td><p>Displays information about the top cloud identity-based risk events in your organization that could potentially facilitate an attack path</p>
+<p>Click <strong>View all</strong> to review activity and behaviors risk events in <strong>Threat and Exposure Management</strong>.</p></td>
+</tr>
+<tr>
+<td><p>Identity Distribution</p></td>
+<td><p>Provides a graph-based view of the distribution of different risky identity types in your organization over time</p>
+<p>Click an identity type to see a list of identities matching the specified type.</p></td>
+</tr>
+</tbody>
+</table>
+::::

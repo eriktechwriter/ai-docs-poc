@@ -1,0 +1,77 @@
+---
+slug: trend-vision-one-support-settings
+title: Support Settings
+---
+# Support Settings
+
+Configure settings used when working with your support provider.
+
+The following table outlines the settings available in the **Support Settings** screen.
+
+<table>
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Setting</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Trend Micro remote support</p></td>
+<td>
+
+:::warning[Important]
+
+<p>Remote support requires you to select the check box to allow Trend Micro support engineers read-only access to licensed/enabled apps on your Trend Vision One console.</p>
+
+
+:::
+
+
+<p>Enabling remote support permits Trend Micro support engineers to access your Trend Vision One console for troubleshooting and debug log collection, including the following task types:</p>
+<ul>
+<li>Allow Trend Micro support engineers to collect the diagnostic package from Endpoint Security.</li>
+<li>Allow Trend Micro support engineers to remotely deploy utilities to endpoint agents for troubleshooting and mitigation.</li>
+</ul>
+
+
+:::note
+
+<p>Diagnostic Package Collection in remote support is automatically enabled for new Endpoint Security users.</p>
+<p>The diagnostic package is stored using Azure Cloud storage in the US region and is deleted after 21 days.</p>
+<p>Add the following URL to your firewall allow list: scp-us1.manage.trendmicro.com</p>
+
+
+:::
+
+
+<p>For more information, see <a href="trend-vision-one-configuring-remote-support">Configuring remote support settings</a> and the Trend Vision One <a href="https://success.trendmicro.com/dcx/s/solution/000297795?language=en_US">data collection disclosure</a>.</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-enabling-hypersensitive-mode">Hypersensitive mode</a></p></td>
+<td><p>Enabling hypersensitive mode allows Trend Vision One to collect and analyze more detections and data. Hypersensitive mode is only recommended in response to an ongoing attack to collect vast amounts of data that is not applicable to day-to-day operations.</p>
+<p>For more information, see <a href="trend-vision-one-enabling-hypersensitive-mode">Enabling hypersensitive mode</a>.</p>
+
+
+:::warning[Important]
+
+<p>Hypersensitive mode might generate false positive detections and increase bandwidth usage.</p>
+<p>Endpoint Sensors only support hypersensitive mode on Windows agents.</p>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Configuring remote support settings](configuring-remote-support.md "Allow Trend Micro support engineers to execute remote support tasks in your Trend Vision One console.")
+- [Enabling hypersensitive mode](enabling-hypersensitive-mode.md "Allows Trend Vision One to collect and analyze more detections and data.")
+:::

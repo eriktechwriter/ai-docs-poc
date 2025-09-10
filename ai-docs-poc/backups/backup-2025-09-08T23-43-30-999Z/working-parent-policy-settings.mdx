@@ -1,0 +1,132 @@
+---
+slug: trend-vision-one-working-parent-policy-settings
+title: Working with Parent Policy Settings
+last_updated: '2025-09-08'
+ai_context:
+  source_file: working-parent-policy-settings.md
+  conversion_date: '2025-09-08T23:42:11.432Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Trend Micro Apex Central administrators who create a parent policy for an **Apex One Agent** can configure certain policy settings to be inherited, customized, or extended.
+
+:::note
+
+These options are not available on other managed products.
+:::
+
+- **Inherit from parent**
+
+  - A child policy administrator cannot change the setting at all. An Apex One administrator can manually change the setting from the Apex One server console. However, the setting will be overwritten when Trend Micro Apex Central deploys policies to the Apex One server.
+
+    For example, a Trend Micro Apex Central administrator can create a parent policy that enforces the exclusion of PDF files from a Manual Scan.
+
+  - Changes to the setting on the parent policy are always enforced on the child policy.
+
+  - If the permission on the parent policy changes from "Inherit from parent" to "Are customizable" or "Extend from parent", the child policy administrator can customize or extend the current setting. Changes to the setting on the parent policy are no longer enforced.
+
+- **Are customizable**
+
+  - A child policy can deviate from the setting configured in the parent policy.
+
+    For example, if Scheduled Scan on the parent policy runs weekly but is customizable, the child policy administrator can change the schedule to daily.
+
+  - Changes to the setting on the parent policy are never enforced on the child policy.
+
+  - If the permission on the parent policy changes from "Are customizable" to "Inherit from parent", the current setting on the parent policy overwrites the setting on the child policy. Changes to the setting on the parent policy are always enforced.
+
+- **Extend from parent**
+
+  - A child policy administrator can add to the items configured in the parent policy.
+
+    For example, if the parent policy excludes 20 file names from being scanned during a Manual Scan, the administrator can add 10 more safe and trustworthy files to the child policy.
+
+  - Items added or removed from the parent policy are also added or removed from the child policy. A removed item can be added back to the child.
+
+  - If the permission on the parent policy changes from "Extend from parent" to "Inherit from parent", items in the child policy that have no match in the parent are removed. Changes to the items on the parent policy are always enforced.
+
+The following table lists the parent policy settings that can be inherited, customized, or extended.
+
+<table>
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr>
+<th rowspan="2"><p>Setting and Path</p></th>
+<th colspan="3" style="text-align: center;"><p>Available Options</p></th>
+</tr>
+<tr>
+<th style="text-align: center;"><p>Inherit From Parent</p></th>
+<th style="text-align: center;"><p>Are Customizable</p></th>
+<th><p>Extend From Parent</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Scan schedule</p>
+<p><strong>Scheduled Scan Settings</strong> &gt; <strong>Target</strong> tab &gt; <strong>Schedule</strong> section</p></td>
+<td style="text-align: center;"><img src="./images/circle_bk=GUID-88BA962F-D178-4057-9922-1BC70D5234EE=1=en-us=Low.webp" /></td>
+<td style="text-align: center;"><img src="./images/circle_bk=GUID-88BA962F-D178-4057-9922-1BC70D5234EE=1=en-us=Low.webp" /></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>File extensions to scan</p>
+<p><strong>Manual Scan / Real-time Scan / Scan Now / Scheduled Scan Settings</strong> &gt; <strong>Target</strong> tab &gt; <strong>Files to Scan</strong> section &gt; <strong>Files with the following extensions</strong> option</p></td>
+<td style="text-align: center;"><img src="./images/circle_bk=GUID-88BA962F-D178-4057-9922-1BC70D5234EE=1=en-us=Low.webp" /></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"><img src="./images/circle_bk=GUID-88BA962F-D178-4057-9922-1BC70D5234EE=1=en-us=Low.webp" /></td>
+</tr>
+<tr>
+<td><p>Scan exclusion lists (directories, files, and file extensions to exclude from scans)</p>
+<p><strong>Manual Scan / Real-time Scan / Scan Now / Scheduled Scan Settings</strong> &gt; <strong>Scan Exclusion</strong> tab</p></td>
+<td style="text-align: center;"><img src="./images/circle_bk=GUID-88BA962F-D178-4057-9922-1BC70D5234EE=1=en-us=Low.webp" /></td>
+<td style="text-align: center;"> </td>
+<td><p><img src="./images/circle_bk=GUID-88BA962F-D178-4057-9922-1BC70D5234EE=1=en-us=Low.webp" /></p>
+
+
+:::note
+
+<p>When selecting <strong>Extend from parent</strong> from a scan exclusion list, the list expands to show a <strong>Child Policy Restrictions</strong> section where the parent policy creators can specify items that child policies cannot exclude from scans.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Approved Programs</p>
+<p><strong>Behavior Monitoring</strong>&gt;<strong>Exceptions</strong> tab</p></td>
+<td style="text-align: center;"><img src="./images/circle_bk=GUID-88BA962F-D178-4057-9922-1BC70D5234EE=1=en-us=Low.webp" /></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"><img src="./images/circle_bk=GUID-88BA962F-D178-4057-9922-1BC70D5234EE=1=en-us=Low.webp" /></td>
+</tr>
+<tr>
+<td><p>Blocked Programs</p>
+<p><strong>Behavior Monitoring</strong>&gt;<strong>Exceptions</strong> tab</p></td>
+<td style="text-align: center;"><img src="./images/circle_bk=GUID-88BA962F-D178-4057-9922-1BC70D5234EE=1=en-us=Low.webp" /></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"><img src="./images/circle_bk=GUID-88BA962F-D178-4057-9922-1BC70D5234EE=1=en-us=Low.webp" /></td>
+</tr>
+<tr>
+<td><p>Exceptions</p>
+<p><strong>Predictive Machine Learning</strong></p></td>
+<td style="text-align: center;"><img src="./images/circle_bk=GUID-88BA962F-D178-4057-9922-1BC70D5234EE=1=en-us=Low.webp" /></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"><img src="./images/circle_bk=GUID-88BA962F-D178-4057-9922-1BC70D5234EE=1=en-us=Low.webp" /></td>
+</tr>
+<tr>
+<td><p>Trusted program list</p>
+<p><strong>Trusted Program List</strong></p></td>
+<td style="text-align: center;"><img src="./images/circle_bk=GUID-88BA962F-D178-4057-9922-1BC70D5234EE=1=en-us=Low.webp" /></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"><img src="./images/circle_bk=GUID-88BA962F-D178-4057-9922-1BC70D5234EE=1=en-us=Low.webp" /></td>
+</tr>
+</tbody>
+</table>
+::::

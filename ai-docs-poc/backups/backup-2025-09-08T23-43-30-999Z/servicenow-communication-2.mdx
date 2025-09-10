@@ -1,0 +1,190 @@
+---
+slug: trend-vision-one-servicenow-communication-2
+title: ServiceNow communication
+last_updated: '2025-09-08'
+ai_context:
+  source_file: servicenow-communication-2.md
+  conversion_date: '2025-09-08T23:42:12.672Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+If you use ServiceNow in your business workflow, you can manually create tickets or configure triggers for automatic ticket creation for any relevant events in your account.
+
+### Set up a ServiceNow channel {#set-up-a-servicenow-channel}
+
+1.  Click on *Create a ServiceNow channel*.
+
+2.  [Set automatic notifications](toggle-automatic-notifications.mdx)
+
+3.  [Set manual notifications](toggle-manual-notifications.mdx)
+
+4.  Input *Channel Name* to distinguish the channel from others of the same type
+
+    :::note
+
+    The field is limited to 20 characters
+    :::
+
+5.  [Configure Triggers](communication-triggers.mdx)
+
+6.  *Configure board now* requires a three-step process
+
+    1.  Integrate with ServiceNow by entering the following details
+        1.  *ServiceNow URL*
+        2.  *Username*
+        3.  *Password*
+
+    On successful integration, the Cloud Risk Management dashboard will automatically load the meta-data from your ServiceNow account.
+
+    1.  Enter *Extra settings* to customize your communication channel. You can set a notification to be reported as either a Problem, Incident or a Configuration Test Result.
+    2.  Configure *Advanced settings* for example, Creation override and Resolution override.
+
+        :::note
+
+        To send notifications to multiple users, you can assign a ServiceNow ticket to a group directly.
+        :::
+    3.  *Test settings* to ensure correct configurations have been set up
+
+        :::note
+
+        The *itil* role does not need delete permissions, however, if you choose not to provide the delete permissions, the test record created by Cloud Risk Management will still exist after the connection is tested.
+        :::
+    4.  [Copy communication settings](copy-communication-settings.mdx)
+
+*Custom Field Examples*
+
+You can include most custom fields in the override fields under *Advanced settings.*
+
+For example:
+
+*Creation override*
+
+``` codeblock
+{
+    "impact": 1,
+    "urgency": 1,
+    "priority": 1
+}
+```
+
+*Resolution override*
+
+``` codeblock
+{
+    "close_notes": "Problem/Incident has been marked as resolved by Cloud Risk Management."
+}
+```
+
+*JSON example for override field of Service Now (SNOW) integration.*
+
+*Creation Override:*
+
+``` codeblock
+{
+    "impact": 1,
+    "urgency": 1,
+    "priority": 1
+}
+```
+
+*Resolution Override:*
+
+``` codeblock
+{
+    "close_notes": "Problem/Incident has been marked as resolved by Cloud Risk Management."
+    }
+```
+
+This will work with SNOW API [here](https://developer.servicenow.com/dev.do).
+
+Example of JSON from Cloud Risk Management
+
+Cloud Risk Management posts to Table API v1 (`/api/now/v1/table/problem` or `/api/now/v1/tableincident`).
+
+Request body looks like this:
+
+``` codeblock
+{
+
+    "short_description": "",
+    
+    "description": "",
+    
+    "comments": "",
+    
+    "urgency": "",
+    
+    "impact": "",
+    
+    "priority": "",
+    
+    "assigned_to": "" 
+    
+    "caller": ""<== Only for incidents,
+    
+    }
+```
+
+Depending on the version and configuration of your ServiceNow instance, extra fields may be available. You can refer to REST API Explorer from within ServiceNow to see which fields are available to include on request override.
+
+### Filtering Incidents/Problems {#filtering-incidentsproblems}
+
+### Option 1: Using a Source field {#option-1-using-a-source-field}
+
+1.  In *ServiceNow*, add a custom field to the *Incident/Problem* table.
+    1.  Keep a note of the Column name being generated. For example, when the custom field 'Source' was created it generated a column name 'u_source'.
+    2.  For more information about adding custom fields to a ServiceNow table, see: [Adding Fields to a Table](https://developer.servicenow.com/dev.do).
+2.  In Cloud Risk Management, add a Creation override JSON payload for the Cloud Risk Management account’s ServiceNow communications channel settings.
+    1.  Configure the ServiceNow channel by going to **Main Dashboard → Select {Account} → Settings → Communication settings → Update communication settings → Configure 'ServiceNow'**.
+    2.  Click *Configure board*.
+    3.  Under *Advanced Settings*, add the JSON payload with the custom field as key (e.g. `u_source`) and the value as `Trend Micro`. E.g. `{"u_source": "Trend Micro"}`.
+    4.  Enter the password again and press the *Connect* button to enable the *Save* button.
+3.  The custom Source field can now be used for filtering.
+
+### Option 2: Using a custom field {#option-2-using-a-custom-field}
+
+You can use a custom field to filer the description information ending with the keywords `source: Trend Micro` for an Incident/Problem generated by Cloud Risk Management.
+
+1.  In *ServiceNow*, go to *All Incidents/Problems* \> click on the *filter* icon.
+2.  Select *Description* from the first dropdown, *ends with* from the second and enter *Trend Micro*.
+3.  Click *Run* to display the Incidents/Problems generated by Cloud Risk Management with a description ending with "Trend Micro".
+
+### Additional configuration steps for the ServiceNow Problem ITSM type {#additional-configuration-steps-for-the-servicenow-problem-itsm-type}
+
+To enable the integration to update the state to *Resolved*:
+
+### Remove readonly from the 'State' field for the Problem table {#remove-readonly-from-the-state-field-for-the-problem-table}
+
+1.  Click *All* from the top menu and search for 'Dictionary'.
+2.  Under *System Definition*, click *Dictionary*.
+3.  Under the *Table* column, enter 'Task'.
+4.  Under the *Column name* column, enter 'State' and press enter.
+5.  Under the *Table* column, click on the task link.
+6.  In the second table, click on *Dictionary Overrides*.
+7.  Under the *Table* column, click on the problem link.
+8.  Uncheck *Read only* and click *Update*.
+
+### Enable the State flow from Assess to Resolved for the Problem table {#enable-the-state-flow-from-assess-to-resolved-for-the-problem-table}
+
+1.  Click on *All* from the top menu and search for 'State Models'.
+2.  Under the *Name* column, click on the *Problem Management: Default Flow* link.
+3.  Under the *State* column, click the *Resolved* link.
+4.  Under *Enter Condition*, press Cmd + Click (MacOS) / Ctrl + Click (Windows) on *Assess* to add it to the highlighted States.
+5.  Click *Update*.
+
+### Configure Resolution code as a non-mandatory field {#configure-resolution-code-as-a-non-mandatory-field}
+
+This step is vital to ensure that the state flow works with the minimum configuration changes.
+
+1.  Click *All* from the top menu and search for 'Data Policies'.
+2.  Click *Data Policies* under **System Policies → Rules**.
+3.  Click on the magnifying glass icon beside the *Short description* column to view the table filters.
+4.  Enter *Make 'Resolution code' mandatory when State is 'Resolved'* in the text field below the *Short description* column.
+5.  Click on the *Make 'Resolution code' mandatory when State is 'Resolved'* link.
+6.  Deleselect the *Active* option.
+7.  Select *Update*.
+
+You will be redirected to the *Data Policies* screen and the *Active* column is now set to `false` for the policy.
+:::

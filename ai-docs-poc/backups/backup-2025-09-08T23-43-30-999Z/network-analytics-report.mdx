@@ -1,0 +1,72 @@
+---
+slug: trend-vision-one-network-analytics-report
+title: Network analytics report
+last_updated: '2025-09-08'
+ai_context:
+  source_file: network-analytics-report.md
+  conversion_date: '2025-09-08T23:42:15.642Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+View network correlations between nodes highlighted in Workbench and related obejcts.
+
+:::warning[Important]
+
+For accurate analysis, configure your [Network Resource Lists](network-resource-lists.mdx) in **Network Security → Network Analysis Configuration → Network Resources**. Configuring Network Resource Lists provides the Network Analytics engine with context about the topography of your security environment. You can configure multiple [Network Resource profiles](configuring-resource-profile.mdx) for more granular detail, especially if you monitor multiple networks or company branches from your Trend Vision One console.
+
+The network analytics report is available for all apps that use Network Sensors as a data source, including Virtual Network Sensor, TippingPoint, and Deep Discovery Inspector.
+:::
+
+The network analytics report shows network correlations between the trigger object selected in **Observable Graph** and other related objects. The network analytics report consists of three main sections: Summary, Correlation Graph, and Transactions and IoCs.
+
+<figure>
+<img src="./images/NetworkAnalyticsSummary=908e2955-b759-4dec-b1db-f75b4958cc7e.webp" />
+<figcaption>Network analytics report summary</figcaption>
+</figure>
+
+The **Summary** includes the following information:
+
+- Severity
+
+- Number of detected internal hosts and indicators of compromise (IOCs)
+
+- Attack patterns
+
+- High-level overview of the malicious activity of the correlated event
+
+You can show or hide the summary section using the show/hide icons (![](/images/dddna_summary_collapse=GUID-30E62BCB-0E12-4C53-967D-71834FAF56FD=1=en-us=Low.webp) or ![](/images/dddna_summary_expand=GUID-CA101720-956C-4123-A237-5A030D727B17=1=en-us=Low.webp)).
+
+For more details about the information provided in summary and the actions you can take, see [Review the summary](reviewing-summary.mdx).
+
+<figure>
+<img src="./images/NetworkAnalyticsCorrelationGraph=2b91ced1-76bf-469d-a2c8-5cce6ea73150.webp" />
+<figcaption>Network analytics correlation graph</figcaption>
+</figure>
+
+The **Correlation Graph** provides a visual representation of correlations made between the selected suspicious object and other related objects.
+
+Click ![](/images/dddna_graph_filter=GUID-1A803C70-BBB6-4F2B-BF16-6B5CFFFAC409=1=en-us=Low.webp) next to the *Playback Bar* to display or hide the advanced search filter.
+
+For more details about the information displayed in the correlation graph and the actions you can take, see [Analysis using the Correlation Graph](analysis-using-correlation-graph.mdx).
+
+<figure>
+<img src="./images/NetworkAnalyticsTransIoCs=018d2129-a55d-4e05-89db-568536cc0af8.webp" />
+<figcaption>Network analytics transactions and IOCs</figcaption>
+</figure>
+
+The **Transactions and IOCs** section provides details about each transaction represented in the correlation graph and each detected Indicator of Compromise (IOC).
+
+The report lists transactions from oldest to most recent. Listed transactions might have occurred in a single day or span several months, depending on the correlations found by Network Analytics. The report lists IOCs from oldest to most recent.
+
+You can show or hide the transactions and IOCs section using the show/hide icons (![](/images/dddna_trans_iocs_collapse=GUID-90155883-8966-4D26-B6AC-D0918BEC3089=1=en-us=Low.webp) or ![](/images/dddna_trans_iocs_expand=GUID-ACD57F7E-4D64-4EAF-B624-D22B51459C24=1=en-us=Low.webp)).
+
+For more details about the information displayed in the transactions and IOCs section, see [Analysis using Transactions and IOCs](analysis-transaction-ioc-details.mdx).
+
+**Related information**
+
+- [Review the summary](reviewing-summary.md "Get an overview of the detected network events associated with the target node and associated objects.")
+- [Analysis using the Correlation Graph](analysis-using-correlation-graph.md "View a visual representation of relationships between the trigger object and related objects.")
+- [Analysis using Transactions and IOCs](analysis-transaction-ioc-details.md "Investigate security events by reviewing detected transactions and indicators of compromise.")
+::::

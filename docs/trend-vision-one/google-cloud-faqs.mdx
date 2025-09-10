@@ -1,0 +1,47 @@
+---
+slug: trend-vision-one-google-cloud-faqs
+title: Google Cloud troubleshooting and frequently asked questions
+---
+# Google Cloud troubleshooting and frequently asked questions
+
+**Related information**
+
+- Why are there no vulnerability reports available in Trend Vision One after Agentless Vulnerability & Threat Detection deployment in Google Cloud?
+- My Google Cloud resource operating systems and language packages are supported, but no vulnerability or malware risk events appear in Trend Vision One after Agentless Vulnerability & Threat Detection deployment.
+
+## Why are there no vulnerability reports available in Trend Vision One after Agentless Vulnerability & Threat Detection deployment in Google Cloud? {#why-are-there-no-vulnerability-reports-available-in-trend-vision-one-after-agentless-vulnerability-threat-detection-deployment-in-google-cloud}
+
+If you are not receiving vulnerability reports after deploying Agentless Vulnerability & Threat Detection in your Google Cloud project, you might be using an unsupported operating system or language package in your cloud resources.
+
+- Unsupported operating system: Agentless Vulnerability & Threat Detection only supports specific operating systems for vulnerability detection. If your Compute Engine instances or Artifact Registry images use unsupported operating systems, vulnerabilities are not detected. Use a supported operating system to begin receiving information about vulnerabilities in your environment.
+
+  For a list of supported operating systems for Google Cloud, see [Agentless Vulnerability & Threat Detection supported operating systems](avtd-supported-operating-systems.mdx).
+
+- Unsupported language packages: Agentless Vulnerability & Threat Detection only supports specific language packages in Artifact Registry images. If your images use packages not in the supported list, vulnerabilities are not detected. For a list of supported language packages, see [Vulnerability Assessment supported language packages](vulnerability-assess-languages.mdx).
+
+## My Google Cloud resource operating systems and language packages are supported, but no vulnerability or malware risk events appear in Trend Vision One after Agentless Vulnerability & Threat Detection deployment. {#my-google-cloud-resource-operating-systems-and-language-packages-are-supported-but-no-vulnerability-or-malware-risk-events-appear-in-trend-vision-one-after-agentless-vulnerability-threat-detection-deployment.}
+
+If your Compute Engine instances or Artifact Registry images are supported, but no vulnerabilities or malware risk events appear in Trend Vision One, verify the execution status of the Workflows service in your Google Cloud environment.
+
+1.  Find the workflow service corresponding with the Google Cloud project where Agentless Vulnerability & Threat Detection is deployed.
+
+    1.  In the Google Cloud console, go to the project where you have deployed Agentless Vulnerability & Threat Detection.
+
+    2.  Search for the Workflows service.
+
+2.  Filter Workflows for the services related to Agentless Vulnerability & Threat Detection.
+
+    1.  Use the prefix `v1-avtd` to list all Agentless Vulnerability & Threat Detection-related Workflows across all regions.
+
+3.  Locate the following Workflows in each region:
+
+    - `v1-avtd-disk-scan-workflow`, used for disk resources
+
+    - `v1-avtd-container-scan-workflow`, used for container image resources
+
+4.  Select the corresponding Workflow for container image or disk scans.
+
+5.  Filter Workflow executions using the `State: Failed` parameter. Each displayed execution corresponds to a single cloud resource.
+
+6.  Investigate any failed executions to discover issues related to the particular scan.
+:::

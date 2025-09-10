@@ -1,0 +1,149 @@
+---
+slug: trend-vision-one-create-internet-access-rule
+title: Creating an internet access rule
+last_updated: '2025-09-08'
+ai_context:
+  source_file: create-internet-access-rule.md
+  conversion_date: '2025-09-08T23:42:21.423Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure an internet access rule to protect your users' internet access whether they are on or off your corporate network.
+
+:::note
+
+- Trend Vision One automatically creates a default internet access rule to apply when no other internet access rules are triggered. The default rule allows unrestricted access to the internet.
+
+- AI service access rules take priority over internet access rules.
+
+Trend Vision One automatically creates a default internet access rule to apply when no other internet access rules are triggered. The default rule allows unrestricted access to the internet.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Secure Access Rules → Internet Access** and click **Create Rule**.
+
+    The rule configuration screen appears with the *Web access control* rule template selected.
+
+2.  Specify a unique name and optional description for the rule.
+
+3.  Choose whether to enable or disable the rule by clicking the toggle next to **Status**.
+
+    :::tip
+
+    You can also enable or disable rules on the **Internet Access** screen.
+    :::
+
+4.  Configure the rule parameters.
+
+    <table>
+    <colgroup>
+    <col style="width: 13%" />
+    <col style="width: 25%" />
+    <col style="width: 63%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Rule Parameter</p></th>
+    <th><p>Description</p></th>
+    <th><p>Settings</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Source</p></td>
+    <td><p>Users, devices, and locations targeted by or excluded from the rule</p></td>
+    <td><ul>
+    <li><p><strong>Users / Groups/ IP address groups</strong>: Target or exclude users or groups registered with your configured SSO provider. You may alternatively target or exclude both public and private IP address groups.</p>
+    <ul>
+    <li><p>Only users or groups from the IAM system configured as your SSO provider can be used in rules.</p></li>
+    <li><p>Define a new IP address group by clicking <strong>Add</strong>, and select either a Public or Private IP address group. If you have selected Private IP address, the IP addresses or ranges must exist on your internal corporate network.</p></li>
+    </ul>
+    
+
+    :::warning[Important]
+    
+    <p>Rules that aapply to the source may not apply to devices without the Secure Access Module installed that do not send HTTP/HTTPS requests containing the <code>X-Forwarded-For (XFF)</code> header field. The Internet Access Gateway cannot retrieve the private IP addresses of these devices.</p>
+    
+
+    :::
+
+    </li>
+    <li><p><strong>Device posture profile</strong>: Select or <a href="trend-vision-one-adding-device-posture-profile">add a device posture profile</a> to exclude compliant devices that have the Secure Access Module installed.</p></li>
+    <li><strong>Locations</strong>: Target available corporate or public/home network locations as defined on your Internet Access Cloud Gateway or Internet Access On-Premises Gateways. When you add an IP address group, you specify if the group is composed of Private IP addresses or Public IP addresses.
+    <ul>
+    <li><p>Define network locations on particular gateways by going to <strong>Secure Access Configuration → Internet Access Configuration → Gateways</strong>.</p></li>
+    </ul></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>Target</p></td>
+    <td><p>Locations targeted by or excluded from the rule</p></td>
+    <td><ul>
+    <li><p><strong>Users / Groups/ IP address groups</strong>: You may alternatively target or exclude both public IP address groups and locations</p>
+    <ul>
+    <li><p>Define a new IP address group by clicking <strong>Add</strong>, and select a Public IP address group.</p></li>
+    <li><p>Define a new region by clicking <strong>Add</strong>, and select a Region.</p></li>
+    </ul></li>
+    <li><strong>Locations</strong>: The target destination is a region or country. Any traffic that accesses IP addresses within that country/region, including URLs, will be affected by the rule when trying to access them.</li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>Traffic</p></td>
+    <td><p>Web traffic and content targeted by the rule</p></td>
+    <td><ul>
+    <li><p><strong>URLs/Cloud apps</strong>: Specify applicable predefined or <a href="trend-vision-one-custom-url-categories">custom URL categories</a>, predefined or <a href="trend-vision-one-custom-cloud-app-categories">custom cloud app categories</a>, or custom cloud app actions such as file uploads or downloads.</p></li>
+    <li><p><strong>HTTP/HTTPS traffic filters</strong>: Specify applicable HTTP/HTTPS traffic defined by <a href="http-https-traffic-filters">HTTP/HTTPS traffic filters</a>.</p></li>
+    <li><p><strong>File types</strong>: Specify applicable file types defined by <a href="trend-vision-one-file-profiles">file profiles</a>.</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>Schedule</p></td>
+    <td><p>The time period the rule is active</p></td>
+    <td><p>Choose <strong>Custom</strong> to set a weekly schedule. Check <strong>Only apply the rule during the specified period</strong> and choose a date range to set a specific period.</p>
+    
+
+    :::note
+    
+    <p>Schedules use the time zones defined in your corporate network locations. Connections from public or home networks use UTC+0.</p>
+    
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p><a href="trend-vision-one-zero-trust-actions">Actions</a></p></td>
+    <td><p>Actions taken when the rule is triggered</p></td>
+    <td><ul>
+    <li><p><strong>Access control</strong>: Allow, block, monitor or warn before access to the specified internet content.</p>
+    <ul>
+    <li><p>When warn before access is chosen, users must click a <strong>Continue</strong> button to access the content. The content is available with no restrictions for 24 hours, after which the user is warned again.</p></li>
+    </ul></li>
+    <li><p><strong>Advanced security settings</strong>:</p>
+    <ul>
+    <li><p><strong>Enable tenancy restriction</strong>: Restrict access to cloud apps defined by <a href="trend-vision-one-tenancy-restrictions">tenancy restriction rules</a>.</p></li>
+    <li><p><strong>Enable threat protection</strong>: Scan and potentially block internet content defined by <a href="trend-vision-one-threat-protection-rules">threat protection rules</a>.</p></li>
+    <li><p><strong>Enable Data Loss Prevention</strong>: Scan outbound web traffic for content including sensitive data defined by <a href="trend-vision-one-data-loss-prevention-rules">Data Loss Prevention rules</a>.</p></li>
+    </ul>
+    
+
+    :::note
+    
+    Advanced security settings are not available if you choose to block content access.
+    
+
+    :::
+
+    </li>
+    </ul></td>
+    </tr>
+    </tbody>
+    </table>
+
+5.  Click **Save**.
+
+    View all available rules on the **Internet Access** screen.
+::::

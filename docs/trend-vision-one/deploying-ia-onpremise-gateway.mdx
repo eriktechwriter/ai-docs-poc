@@ -1,0 +1,226 @@
+---
+slug: trend-vision-one-deploying-ia-onpremise-gateway
+title: Deploying an Internet Access On-Premises Gateway
+---
+# Deploying an Internet Access On-Premises Gateway
+
+Deploy a Service Gateway virtual appliance and enable the Zero Trust Internet Access On-Premises Gateway service.
+
+The Zero Trust Internet Access On-Premises Gateway service supports the following external connections via proxy server.
+
+- Communication with Trend Vision One to get the latest settings and policies
+
+- Queries to services such as Web Reputation Services and ActiveUpdate
+
+- Forwarding of both HTTP and HTTPS end-user web traffic to final destinations
+
+:::warning[Important]
+
+The Internet Access On-Premises Gateway requires high levels of system resources. To avoid negative impact on system performance, Trend Micro recommends setting up the on-premises gateway on an appliance with no other installed or enabled services.
+:::
+
+### Procedure {#procedure}
+
+1.  On the Trend Vision One console, go to **Zero Trust Secure Access → Secure Access Configuration → Internet Access and AI Service Access Configuration**.
+
+2.  On the **Gateways** tab, click **Deploy New On-Premises Gateway**.
+
+3.  Set up an Internet Access On-Premises Gateway by clicking **Go to Service Gateway Inventory**.
+
+    :::warning[Important]
+
+    Only Service Gateway 2.0 and later supports the Zero Trust Internet Access On-Premises Gateway service.
+    :::
+
+    1.  Select an existing Service Gateway that identifies your corporate location, or [deploy a new Service Gateway virtual appliance](deployment-guides.mdx) for the Zero Trust Internet Access On-Premises Gateway service.
+
+        :::warning[Important]
+
+        Disable **Cloud Service Extension** on the Service Gateway when using the Internet Access On-Premises Gateway service. The cloud service extension might interfere with normal operations of the on-premises gateway. For more information, see [Configure Service Gateway settings](config-service-gateway-settings.mdx).
+        :::
+
+    2.  Install and enable the Zero Trust Internet Access On-Premises Gateway service. For details, see [Manage services in Service Gateway](managing-services-service-gateway.mdx).
+
+4.  After the deployment completes, check the service status and other information about the on-premises gateway under **On-Premises Gateways** in **Internet Access and AI Service Access Configuration**.
+
+5.  Configure the settings for the on-premises gateway by clicking the edit icon (![](/images/edit_icon=GUID-1F1D1164-5310-4D6D-ACD0-6049C86960AF.webp)).
+
+    - Configure basic settings such as the corporate location name and time zone, and add an optional description as needed. The default location name is the hostname of the Service Gateway virtual appliance running the on-premises gateway.
+
+    - Choose a service mode for the on-premises gateway and configure the required settings.
+
+    The following table outlines the available service modes for the on-premises gateway and describes the configuration options.
+
+    <table>
+    <colgroup>
+    <col style="width: 50%" />
+    <col style="width: 50%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Service mode</p></th>
+    <th><p>Configuration options</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Forward proxy</p></td>
+    <td><p>In forward proxy mode, you may configure the following settings:</p>
+    <ul>
+    <li><p><strong>User Authentication</strong>: Require user authentication for endpoints connecting without the Secure Access Module installed</p>
+    <ul>
+    <li><p>If desired, select or create</p>
+    <ul>
+    <li><p>Both private and public IP address groups for connected endpoints without the Secure Access Module that may always bypass user authentication</p></li>
+    <li><p>Both private and public IP address groups for connected endpoints that may never bypass user authentication</p></li>
+    </ul></li>
+    <li>
+
+:::note
+
+    <p>Disabling user authentication for endpoints connecting without the Secure Access Module installed enforces Internet Access rules on the endpoints when connected.</p>
+
+
+    :::
+
+    </li>
+    </ul></li>
+    <li><p><strong>FTP proxy configuration</strong>:Enable an FTP proxy to protect your FTP traffic. For more information, see <a href="trend-vision-one-ftp-proxy-internet-premises-gateway">Enable FTP proxy on an Internet Access On-premises gateway</a>.</p></li>
+    <li><p><strong>Upstream Proxy Rules</strong>: Enable upstream proxy rules to specify the upstream proxy used for data traffic sent to specific IP addresses, domains, or subdomains</p>
+    <ul>
+    <li><p>You may set up to 10 rules using different proxy options.</p></li>
+    <li><p>For details, see <a href="trend-vision-one-configuring-upstream-proxy-rules">Configuring upstream proxy rules</a></p></li>
+    </ul></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>ICAP</p></td>
+    <td><p>Enables the on-premises gateway to act as an internet content adaptation protocol (ICAP) server to handle threat protection or data loss prevention (DLP) on HTTP requests (default port 1344). Use the supplied RECMOD and RESMOD URLs to configure your ICAP clients.</p>
+    <ul>
+    <li><p>Enable ICAP over SSL to connect your ICAP clients to the on-premises gateway over a secure connection (default port 11344). You may use the default SSL certificate or provide a custom certificate with private key and passphrase.</p></li>
+    <li><p>If desired, select specific ICAP response and request headers to use.</p></li>
+    </ul>
+
+
+    :::warning[Important]
+
+    <p>On-premises gateways in ICAP service mode can only integrate with ICAP v1.0-compliant proxy servers and do not support:</p>
+    <ul>
+    <li><p>HTTPS inspection</p></li>
+    <li><p>HTTP/HTTPS traffic filters</p></li>
+    <li><p>Botnet detection</p></li>
+    <li><p>Tenancy restrictions</p></li>
+    <li><p>Device posture-based access control</p></li>
+    <li><p>End-user authentication</p></li>
+    <li><p>Risk control rules</p></li>
+    <li><p>Bandwidth control</p></li>
+    <li><p>Rate limiting</p></li>
+    </ul>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>Reverse proxy</p></td>
+    <td>
+
+:::warning[Important]
+
+    <ul>
+    <li><p>To use reverse proxy mode, ensure you have updated your Service Gateway and corresponding Internet Access On-Premises Gateway service to the latest version.</p></li>
+    <li><p>Rate limiting capabilities enabled by reverse proxy mode only apply to on-premises gateways protecting private generative AI services.</p></li>
+    <li><p>On-premises gateways protecting generative AI services must be deployed in front of the server hosting the service in order to receive and manage requests.</p></li>
+    </ul>
+
+
+    :::
+
+
+    <p>Reverse proxy mode enables the on-premises gateway to apply access control, threat protection, data loss prevention (DLP), or rate limiting on HTTP requests to configured private apps or generative AI services (default port 8088). For more information, see <a href="trend-vision-one-configuring-reverse-proxy-mode">Configuring reverse proxy mode</a>.</p>
+    <ul>
+    <li><p>Enable an HTTPS listening port to handle secure requests (default port 8443). You may use the default SSL certificate or provide a custom certificate with private key and passphrase.</p></li>
+    <li><p>Provide the name of the private app you wish to protect and specify whether it is a general app or a private generative AI service.</p></li>
+    <li><p>If desired, specify the FQDN or IP address and port used for the private app along with the weight of traffic (from 0 to 100 percent) to be routed through the FQDN/IP. You may provide up to 10 FQDNs or IP addresses.</p></li>
+    <li><p>Once reverse proxy mode is configured, you may configure rate limiting rules targeting requests to the on-premises gateway if the protected app is a private generative AI service. For more information, see <a href="trend-vision-one-managing-rate-limiting-rules">Managing rate limiting rules</a>.</p></li>
+    </ul>
+
+
+    :::warning[Important]
+
+    <p>In order to use reverse proxy mode to protect a private generative AI service and apply rate limiting to connecting endpoints, you must configure the server hosting your private generative AI service to add the original endpoint IP addresses to the X-Forwarded-For request header. Otherwise, the on-premises gateway cannot identify the endpoint.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    </tbody>
+    </table>
+
+6.  If desired, configure additional settings for the on-premises gateway.
+
+    The following table describes the additional settings you may choose to enable when configuring the on-premises gateway.
+
+    <table>
+    <colgroup>
+    <col style="width: 50%" />
+    <col style="width: 50%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Settings</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Log Forwarding</p></td>
+    <td><p>Choose whether to upload detection logs or activity data to Trend Vision One or to send activity data to a separate syslog server in Common Event Format (CEF).</p>
+    <ul>
+    <li><p>To send activity data to a syslog server, specify the server address, port, and protocol used for communication with the server.</p></li>
+    <li>For more information about content mapping between Internet Access log output and CEF syslog format, see <a href="trend-vision-one-syslog-content-mapping-cef-ztsa">Syslog content mapping - CEF</a>.</li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>Deep Discovery Analyzer</p></td>
+    <td><p>Integrate and configure existing Deep Discovery Analyzer appliances to collect file samples from the on-premises gateway for analysis</p>
+
+
+    :::tip
+
+    <p>Configuring both a primary and a secondary Deep Discovery Analyzer appliance allows for increased appliance availability.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>Prompt injection detection</p></td>
+    <td><p>Local detection of generative AI prompt attacks.</p>
+
+
+    :::note
+
+    <p>You must enable the ZTSA on-premises gateway with AI service in the Service Gateway in order to see this feature.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    </tbody>
+    </table>
+
+7.  Click **Save**.
+
+8.  Configure and apply PAC files to forward HTTP/HTTPS traffic to the on-premises gateway.
+
+    1.  Add the FQDN or IP address of the on-premises gateway [to one or multiple PAC files](pac-file-configuration.mdx) that you use for proxy settings.
+
+    2.  [Apply the PAC files](pac-file-deployment.mdx) to deployed Secure Access Modules.
+
+9.  [Configure bandwidth control](configuring-bandwidth-control.mdx) to optimize network performance on the on-premises gateway.
+::::

@@ -1,0 +1,205 @@
+---
+slug: trend-vision-one-create-policies
+title: Create policies
+last_updated: '2025-09-08'
+ai_context:
+  source_file: create-policies.md
+  conversion_date: '2025-09-08T23:42:21.383Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::::: {role="main"}
+Policies allow collections of rules and configuration settings to be saved for easier assignment to multiple computers. You can use the Policy editor to create and edit policies that you can then apply to one or more computers. You can also use the Computer editor (which is very similar to the Policy editor) to apply settings to a specific computer, but the recommended method is to create specialized policies rather then edit the settings in the Computer editor.
+
+:::tip
+
+You can automate policy creation and configuration using the Server & Workload Protection API. For examples, see [Create and Configure Policies](create-configure-policy.mdx).
+:::
+
+## Create a new policy {#create-a-new-policy}
+
+### Procedure {#procedure}
+
+1.  Click **Policies → New → New Policy**.
+
+2.  Enter a name for the policy. If you want the new policy to inherit its settings from an existing policy, select a policy from the *Inherit from* list and click *Next*.
+
+    :::tip
+
+    For information on inheritance, see [Policies, inheritance, and overrides](policies-inheritance-overrides.mdx).
+    :::
+
+3.  Select whether you want to base this policy on an existing computer's configuration and then click *Next*.
+
+4.  If you selected *Yes* in step 3:
+
+    1.  Select a computer to use as the basis for the new policy and click *Next*.
+
+    2.  Specify which protection modules will be enabled for the new policy. If this policy is inheriting its settings from an existing policy, those settings will be reflected here. Click *Next*.
+
+    3.  On the next screen, select the properties that you want to carry into the new policy and click *Next*. Review the configuration and click *Finish*.
+
+5.  If you selected *No* in step 3, specify which protection modules will be enabled for the new policy. If this policy is inheriting its settings from an existing policy, those settings will be reflected here. Click *Finish*.
+
+6.  Click *Close*. Next, you can edit the settings for the policy, as described in Edit the settings for a policy or individual computer.
+
+## Other ways to create a policy {#other-ways-to-create-a-policy}
+
+You can create a new policy as described above. Alternatively, you can follow the instructions in the following sections to create a policy.
+
+## Import policies from an XML file {#import-policies-from-an-xml-file}
+
+:::note
+
+You can download a default XML file to use in a policy: [Policy XML for Windows Desktop](http://files.trendmicro.com/products/deepsecurity/WinDesktop/DefaultPolicy/WindowsDesktopDefaultPolicy.xml) [Policy XML for macOS](http://files.trendmicro.com/products/deepsecurity/mac/DefaultPolicy/macOSDefaultPolicy.xml)
+:::
+
+To import a policy from an XML file:
+
+### Procedure {#procedure-1}
+
+1.  Click **New → Import From File**.
+
+    :::note
+
+    When importing policies, ensure that the system where you created the policies and the system that will receive them both have the latest security updates. If the system that is receiving the policies is running an older security update, it may not have some of the rules referenced in the policies from the up-to-date system. The import policy might update some default scan configurations or rules using the suggested default setting. Please check the import wizard for policy update information.
+    :::
+
+2.  Click *Choose File* and select the XML file.
+
+3.  From the *Import under* drop-down, select:
+
+    - *Base Policy* if using macOS.
+    - *Windows* if using Windows desktop.
+
+4.  Click *Next*.
+
+5.  Close the wizard.
+
+### Next steps {#next-steps}
+
+Your new policy will match the settings from the XML file you selected.
+
+## Duplicate an existing policy {#duplicate-an-existing-policy}
+
+To duplicate an existing policy:
+
+From the *Policies* tab, right-click the existing policy that you want to duplicate and select *Duplicate*.
+
+A duplicate of the policy will appear on the list.
+
+## Create a new policy based on the recommendation scan of a computer {#create-a-new-policy-based-on-the-recommendation-scan-of-a-computer}
+
+To create a new policy based on the [recommendation scan](recommendation-scans-intro.mdx) of a computer:
+
+### Procedure {#procedure-2}
+
+1.  From the *Computers* tab, right-click a computer and select **Actions → Scan for Recommendations**.
+
+2.  When the scan is complete, return to the *Policies* tab and click *New* to open the *New Policy* wizard.
+
+3.  When prompted, choose to base the new policy on "an existing computer's current configuration".
+
+4.  Select "Recommended Application Types and Intrusion Prevention Rules", "Recommended Integrity Monitoring Rules", and "Recommended Log Inspection Rules" from among the computer's properties.
+
+### Next steps {#next-steps-1}
+
+:::note
+
+A new policy is created consisting only of recommended elements on the computer, regardless of which rules are currently assigned to that computer.
+:::
+
+## Edit the settings for a policy or individual computer {#edit-the-settings-for-a-policy-or-individual-computer}
+
+The *Policies* page shows your existing policies in their hierarchical tree structure. To edit the settings for a policy, select it and click *Details* to open the policy editor.
+
+These sections are available in the Computer or Policy editor:
+
+- Overview (the [Overview section of the policy editor](overview-section-policy-editor.mdx) and [Overview section of the computer editor](overview-section-computer-editor.mdx) are different)
+
+- [Anti-Malware](configure-malware-scans.mdx)
+
+- [Web Reputation](configure-web-reputation.mdx)
+
+- [Device Control](configure-device-control.mdx)
+
+- [Firewall](firewall-settings.mdx)
+
+- [Intrusion Prevention](config-intrusion-prevention-rules.mdx)
+
+- [Integrity Monitoring](create-integrity-monitoring-rule.mdx)
+
+- [Log Inspection](set-up-log-inspection.mdx)
+
+- [Application Control](set-up-application-control.mdx)
+
+- [Interface Types](detect-configure-interfaces.mdx)
+
+- [Settings](network-engine-settings.mdx)
+
+- [Overrides](policies-inheritance-overrides.mdx)
+
+## Assign a policy to a computer {#assign-a-policy-to-a-computer}
+
+### Procedure {#procedure-3}
+
+1.  Go to *Computers*.
+
+2.  Select your computer from the Computers list, right click and choose **Actions → Assign Policy**.
+
+3.  Select the policy from the hierarchy tree and click *OK*.
+
+### Next steps {#next-steps-2}
+
+The policy is sent when the next agent heartbeat occurs.
+
+For more information on how child policies in a hierarchy tree can inherit or override the settings and rules of parent policies, see [Policies, inheritance, and overrides](policies-inheritance-overrides.mdx).
+
+After assigning a policy to a computer, you should still run periodic recommendation scans on your computer to make sure that all vulnerabilities on the computer are protected. See [Manage and run recommendation scans](classic-reco-scan.mdx) for more information.
+
+## Disable automatic policy updates {#disable-automatic-policy-updates}
+
+By default, any changes to a security policy are automatically sent to the computers that use the policy. You can change this so automatic sending is disabled, and you must manually send the policy.
+
+### Procedure {#procedure-4}
+
+1.  Open the Policy editor for the policy to configure.
+
+2.  Go to **Settings → General → Send Policy Changes Immediately**.
+
+3.  Next to *Automatically send Policy changes to computers*, select *Yes* to allow automatic sending of policy changes. To disable automatic sending, and only allow manually sending, select *No*.
+
+4.  Click *Save* to apply the changes.
+
+### Next steps {#next-steps-3}
+
+## Send policy changes manually {#send-policy-changes-manually}
+
+If you make a policy change and want to send the policy changes manually to a particular computer, follow the instructions below.
+
+### Procedure {#procedure-5}
+
+1.  Go to *Computers*.
+
+2.  Double-click your computer from the Computers list.
+
+3.  In the navigation pane, make sure *Overview* is selected.
+
+4.  In the main pane, click the *Actions* tab.
+
+5.  Under *Policy*, click *Send Policy*.
+
+### Next steps {#next-steps-4}
+
+The policy is sent when the next agent heartbeat occurs.
+
+## Export a policy {#export-a-policy}
+
+To export a policy to an XML file, select a policy from the policies tree and click **Export → Export Selected to XML (For Import)**.
+
+:::note
+
+When you export a selected policy to XML, any child policies that the policy may have are included in the exported package. The export package contains all the actual objects associated with the policy except: intrusion prevention rules, log inspection rules, integrity monitoring rules, and application types.
+:::
+:::::::

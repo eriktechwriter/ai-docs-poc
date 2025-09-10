@@ -1,0 +1,1450 @@
+---
+slug: trend-vision-one-agent-platform-compatibility
+title: Agent platform compatibility
+---
+# Agent platform compatibility
+
+:::warning[Important]
+
+To deploy Server & Workload Protection agent with endpoint sensor that includes full XDR capability, download and deploy the agent package from **Endpoint Inventory**. See [Deploy agents](deploy-agents.mdx).
+
+You can directly connect Deep Security agents to Server & Workload Protection or connect agents downloaded from **Administration → Software**. Computers added using this method do not support the endpoint sensor and do not have XDR capability. Trend Micro recommends only using this method for testing purposes or troubleshooting with your support provider.
+:::
+
+You can install Server & Workload Protection agents on cloud, virtual, or physical computers, wherever the container or [operating system (OS)](swp-agent-sys-requirements.mdx) and [kernel](linux-kernel-compatibility.mdx) is. The following table outlines supported operating systems for each release of the Deep Security agent.
+
+Indicators:
+
+✔ - Supported. If an update added support, then the minimum required version appears in the footnote.
+
+• - Support for these releases is ending soon. Please upgrade as soon as possible.
+
+Deep Security Manager supports some older agent versions, but you should upgrade agents as soon as possible. New agent releases provide more security features and protection, higher quality, performance improvements, and updates to stay in sync with OS releases. Regular software upgrades also ensure that, if an agent fix is required, you can simply update once, rather than install multiple updates along a supported upgrade path. Each agent has an end-of-life date. For details, see [Deep Security Agent LTS lifecycle date](https://help.deepsecurity.trendmicro.com/dates-lts.mdx) and [Deep Security Agent FR lifecycle dates](https://help.deepsecurity.trendmicro.com/dates-fr.mdx).
+
+Note that not all agent features are available on all platforms. See [Supported features by platform](supported-features-linux-platform.mdx).
+
+For details on extended support for legacy versions, see [Deep Security LTS lifecycle date - Support extensions](https://help.deepsecurity.trendmicro.com/20_0/on-premise/dates-lts.mdx).
+
+For details about which Windows 10 update releases we support, see [Deep Security Support for Windows 10](https://success.trendmicro.com/solution/1119919) and [Deep Security Support for Windows Server Core](https://success.trendmicro.com/solution/000246693).
+
+For details about which Windows 11 update releases we support, see [Trend Cloud One - Endpoint & Server & Workload Protection and Deep Security Support for Windows 11](https://success.trendmicro.com/solution/000289036).
+
+Deep Security Agent and kernel support packages for Red Hat Enterprise Linux are also available for AlmaLinux, CentOS, Miracle Linux, and Rocky Linux.
+
+<table style="width:98%;">
+<colgroup>
+<col style="width: 42%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Operating System</p></th>
+<th colspan="7"><p>Agent Version</p></th>
+</tr>
+<tr>
+<th></th>
+<th><p>20.0.2 LTS</p></th>
+<th>20.0.1 LTS</th>
+<th><p>20.0.0 LTS</p></th>
+<th><p>12 LTS</p></th>
+<th><p>11 LTS</p></th>
+<th><p>10 LTS</p></th>
+<th><p>9.6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>AIX 6.1 TL 9 or later 3, 12</p></td>
+<td> </td>
+<td> </td>
+<td><p>✔</p></td>
+<td><p>✔ 24</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>AIX 7.1 TL 3 or laterAIX 7.2 TL 0 or later 3</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 24</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>AIX 7.3 TL 0 or later 3</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 35</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>AlmaLinux 8 (64-bit) 6</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>AlmaLinux 9 (64-bit) 39</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 38</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Amazon Linux (64-bit) 53</p></td>
+<td> </td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Amazon Linux 2 (64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Amazon Linux 2 (AWS ARM-Based Graviton 2)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 27</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Amazon Linux 2 (AWS ARM-Based Graviton 3)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 34</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Amazon Linux 2023 (64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔46</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Amazon Linux 2023 (AWS Arm-based Graviton2)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 46</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><p>CentOS 5 (32- and 64-bit)</p></td>
+<td> </td>
+<td> </td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>CentOS 6 (32- and 64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>CentOS 7 (64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>CentOS 8 (64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔23</p></td>
+<td><p>✔32</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>CloudLinux 5 (32-bit and 64-bit)</p></td>
+<td> </td>
+<td> </td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>✔ 52</td>
+</tr>
+<tr>
+<td><p>CloudLinux 6 (32-bit)</p></td>
+<td> </td>
+<td> </td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>CloudLinux 6 (64-bit)</p></td>
+<td> </td>
+<td> </td>
+<td></td>
+<td></td>
+<td><p>✔ 16</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>CloudLinux 7 (64-bit) 53</p></td>
+<td> </td>
+<td>✔</td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>CloudLinux 8 (64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 26</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Debian Linux 6 (64-bit)</p></td>
+<td> </td>
+<td> </td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✔</p></td>
+</tr>
+<tr>
+<td><p>Debian Linux 7 (64-bit)</p></td>
+<td> </td>
+<td> </td>
+<td></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Debian Linux 8 (64-bit) 12</p></td>
+<td> </td>
+<td> </td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Debian Linux 9 (64-bit) 53</p></td>
+<td> </td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Debian Linux 10 (64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 21</p></td>
+<td><p>✔ 20</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Debian Linux 11 (64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 31</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Debian Linux 12 (64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔50</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><p>macOS BigSur (11.0 or later)</p></td>
+<td> </td>
+<td> </td>
+<td><p>✔36</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>macOS Monterey (12.0 or later)</p></td>
+<td> </td>
+<td> </td>
+<td><p>✔ 36</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>macOS Ventura (13.0.1 or later)</p></td>
+<td> </td>
+<td> </td>
+<td><p>✔ 36</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>macOS Sonoma (14.0 or later)</p></td>
+<td> </td>
+<td> </td>
+<td><p>✔ 40</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><p>macOS Sequoia (15.0 or later)</p></td>
+<td> </td>
+<td> </td>
+<td><p>✔ 45</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Miracle Linux 8 (64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔47</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Miracle Linux 9 (64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔48</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Oracle Linux 5 (32- and 64-bit)</p></td>
+<td> </td>
+<td> </td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Oracle Linux 6 (32- and 64-bit) 53</p></td>
+<td> </td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Oracle Linux 7 (64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Oracle Linux 8 (64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 22</p></td>
+<td><p>✔ 20</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Oracle Linux 9 (64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Red Hat Enterprise Linux 5 (32- and 64-bit)</p></td>
+<td> </td>
+<td> </td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Red Hat Enterprise Linux 6 (32- and 64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Red Hat Enterprise Linux 7 (64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Red Hat Enterprise Linux Workstation 7 (64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 38</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Red Hat Enterprise Linux 8 (64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 18</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Red Hat Enterprise Linux 8 (AWS Arm-based Graviton 2)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 31</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Red Hat Enterprise Linux 8.6 (PowerPC little-endian)</p></td>
+<td><p>✔</p></td>
+<td><p>✔41</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Red Hat Enterprise Linux 9 (64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 34</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Red Hat Enterprise Linux 9 (PowerPC little-endian)</p></td>
+<td> </td>
+<td><p>✔ 44</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Red Hat Enterprise Linux 9 (64-bit Arm (aarch64))</p></td>
+<td><p>✔ 54</p></td>
+<td> </td>
+<td> </td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Red Hat Enterprise Linux 10</p></td>
+<td><p>✔ 56</p></td>
+<td> </td>
+<td> </td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Red Hat OpenShift supported versions</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 34</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Rocky Linux 8 (64-bit) 6</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 29</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Rocky Linux 9 (64-bit) 7</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 37</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Solaris 10 Updates 4-6 (64-bit or SPARC)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 16</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Solaris 10 Updates 7-10 (64-bit or SPARC)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 16</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Solaris 10 Update 11 (64-bit or SPARC)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 16</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Solaris 11.0 (1111)-11.1 (64-bit or SPARC)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 16</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Solaris 11.2-11.3 (64-bit or SPARC)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 16</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Solaris 11.4 (64-bit or SPARC)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 17</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>SUSE Linux Enterprise Server 11 (32- and 64-bit)</p></td>
+<td> </td>
+<td> </td>
+<td></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>SUSE Linux Enterprise Server 12 (64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>SUSE Linux Enterprise Server 12 (PowerPC little-endian)</p></td>
+<td><p>✔</p></td>
+<td><p>✔49</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><p>SUSE Linux Enterprise Server 15 (64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 19</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>SUSE Linux Enterprise Server 15 (PowerPC little-endian)</p></td>
+<td><p>✔</p></td>
+<td><p>✔49</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><p>SUSE Linux Enterprise Server 15 (AWS Arm-based Graviton2)</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 42</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Ubuntu 10.04 (64-bit)</p></td>
+<td> </td>
+<td> </td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>✔ 52</td>
+</tr>
+<tr>
+<td><p>Ubuntu 12.04 (64-bit)</p></td>
+<td> </td>
+<td> </td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✔</p></td>
+</tr>
+<tr>
+<td><p>Ubuntu 14.04 (64-bit)</p></td>
+<td> </td>
+<td> </td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Ubuntu 16.04 (64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Ubuntu 18.04 (64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 14</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Ubuntu 18.04 (AWS ARM-Based Graviton 2)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 28</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Ubuntu 20.04 (64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 25</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Ubuntu 20.04 (AWS ARM-Based Graviton 2)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 29</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Ubuntu 22.04 (64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 33</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Ubuntu 22.04 (AWS ARM-Based Graviton 2)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 35</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Ubuntu 24.04 (64-bit)</td>
+<td><p>✔</p></td>
+<td><p>✔ 43</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Windows 2000, Service Pack 3 or 4 (32-bit) 4</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✔ 13</p></td>
+</tr>
+<tr>
+<td><p>Windows XP (32- and 64-bit) 4, 8</p></td>
+<td> </td>
+<td> </td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Windows Server 2003 SP1 or SP2 (32- and 64-bit) 4, 9</p></td>
+<td> </td>
+<td> </td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Windows Server 2003 R2 SP2 (32- and 64-bit) 9</p></td>
+<td> </td>
+<td> </td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Windows 7 (32- and 64-bit) 12</p></td>
+<td> </td>
+<td> </td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Windows 7 Embedded (32-bit) 1, 5, 12</p></td>
+<td> </td>
+<td> </td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Windows Server 2008 (32- and 64-bit) 2, 10, 12</p></td>
+<td> </td>
+<td> </td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Windows Server 2008 R2 (64-bit) 2, 11, 55</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Windows 8 (32- and 64-bit) 5 , 12</p></td>
+<td> </td>
+<td> </td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Windows 8.1 (32- and 64-bit) , 12</p></td>
+<td> </td>
+<td> </td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Windows 8.1 Embedded (32-bit) 1 , 12</p></td>
+<td> </td>
+<td> </td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td>✔</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Windows 10 (32- and 64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Windows 10 IoT Enterprise 2019 LTSC (32- and 64-bit) 1</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Windows 10 IoT Enterprise 2021 LTSC (64-bit) 1</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Windows 10 Enterprise multi-session (64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Windows 11 (64-bit)</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Windows Server 2012 (64-bit) 55</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Windows Server 2012 R2 (64-bit) 55</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Windows Server 2016 (LTSC, version 1607) (64-bit) 55</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Windows Server Core (SAC, version 1709) (64-bit) 5</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Windows Server 2019 (LTSC, version 1809) (64-bit) 55</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 15</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Windows Server 2022 (LTSC, version 21H2) (64-bit) 55</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td><p>✔ 30</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Windows Server 2025 (LTSC, version 24H2) (64-bit)</td>
+<td><p>✔ 51</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+</tbody>
+</table>
+
+### Minor Linux version compatibility {#minor-linux-version-compatibility}
+
+Trend Micro releases agents for major Linux versions, such as Red Hat Enterprise Linux 9. Minor Linux versions such as Red Hat Enterprise Linux 9.x are also compatible if they use a kernel that the agent supports.
+
+To determine if the computer has a supported kernel or not, see your OS provider's documentation and compare the computer's kernel version with [Linux kernel compatibility](linux-kernel-compatibility.mdx).
+
+### Docker compatibility {#docker-compatibility}
+
+Deep Security Agent 10.0 or later can protect Docker hosts and containers running on Linux distributions. Windows is not supported.
+
+Deep Security Agent releases support recent stable versions of Docker. Long-term support (LTS) DSA releases support only Docker versions that have not reached end-of-life. Deep Security does not support Docker Edge releases. Deep Security does not support Docker Edge releases.
+
+Do not upgrade to the latest stable release of Docker until Trend Micro announces support for it in the latest release of Deep Security. Before deploying the agent, verify that Docker supports both your target environment and platform configuration.
+
+<table>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Agent version</p></th>
+<th colspan="2"><p>Docker</p></th>
+<th colspan="12"><p>Docker CE</p></th>
+<th colspan="6"><p>Docker EE</p></th>
+</tr>
+<tr>
+<th></th>
+<th><p>v1.12</p></th>
+<th><p>v1.13</p></th>
+<th><p>17.03</p></th>
+<th><p>17.09</p></th>
+<th><p>17.12</p></th>
+<th><p>18.03</p></th>
+<th><p>18.06</p></th>
+<th><p>18.09</p></th>
+<th><p>19.03</p></th>
+<th><p>20.10</p></th>
+<th><p>23.0</p></th>
+<th><p>24.0</p></th>
+<th><p>25.0</p></th>
+<th><p>26.0</p></th>
+<th><p>17.06</p></th>
+<th><p>18.03</p></th>
+<th><p>18.06</p></th>
+<th><p>18.09</p></th>
+<th><p>19.03</p></th>
+<th><p>20.10</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="vertical-align: top"><p>10 LTS</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>11 LTS</p></td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>11.1</p></td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>11.2</p></td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>11.3</p></td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>12 LTS</p></td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>12 FR</p></td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>20 LTS</p></td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"> </td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td> </td>
+<td> </td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+<td style="vertical-align: top"><p>✔</p></td>
+</tr>
+</tbody>
+</table>
+
+### Footnotes: {#footnotes}
+
+1.  Because embedded operating systems usually run on custom hardware (for example, on point-of-sale terminals), you should thoroughly test your specific hardware platform prior to deployment in a production environment. Trend Micro tests Windows Embedded platforms in a virtualized environment. If you need to raise a case with Trend Micro Support, try to reproduce the problem in a virtualized environment. If the issue cannot be reproduced in a virtualized environment, and is specific to your custom hardware, Trend Micro Support might require you to provide remote access to it for diagnostics.
+
+    :::note
+
+    Windows 10 IoT was formerly named Windows 10 Embedded, and is therefore considered a Windows Embedded platform.
+    :::
+
+2.  Requires a Full/Desktop Experience installation. Server Core is not supported.
+
+3.  These AIX configurations are supported:
+
+    - AIX LPARs on a PowerVM Hypervisor on a Power Server
+
+    - AIX as the bare metal OS on a Power Server
+
+4.  In August 2019, Microsoft changed code signing requirements to stop using SHA-1 and use only SHA-2. Therefore these legacy OS must have the patch installed to enable verification of SHA-2 signatures on newer update releases of Deep Security Agent. See also:
+
+    - [Updated guidance for use of Trend Micro Deep Security to protect Windows 2003, Windows XP, and Windows 2000 based systems](https://success.trendmicro.com/solution/000247128)
+
+    - [New versions of Trend Micro Deep Security Agents for Windows will only be signed with SHA-2](https://success.trendmicro.com/en-US/solution/KA-0010204) (also available [in Japanese](https://success.trendmicro.com/ja-JP/solution/KA-0006042)).
+
+5.  In February 2023, Microsoft changed code signing requirements, but has not released a patch for this OS. Therefore the last supported update release for Deep Security Agent 20 is in January 2023.
+
+6.  AlmaLinux 8 and Rocky Linux 8 are supported by Deep Security Agent 20.0.0-3288+ for Red Hat Enterprise Linux 8.
+
+7.  Rocky Linux 9 is supported by Deep Security Agent 20.0.0-6313+ for Red Hat Enterprise Linux 9.
+
+8.  Windows XP support requires Deep Security Agent 10.0 Update 25 or earlier.
+
+9.  Windows Server 2003 support requires Deep Security Agent 10.0 Update 25 or earlier, *or* Update 29 and later. It is not supported with Updates 26, 27, and 28. See also [Deep Security Agent version 10 update 26 cannot be used for installation or upgrade on Windows XP/2003](https://success.trendmicro.com/solution/000251218).
+
+10. Windows Server 2008 support requires the SP2 service pack.
+
+11. Windows Server 2008 R2 support requires the SP1 service pack.
+
+12. In the second half of 2023, Deep Security Agent 20 for Windows Server 2008, AIX 6.1, and Debian 8 will reach end of standard support. For more information see [Limited Support for Windows Server 2008, AIX 6.1 and Debian 8 after Deep Security Agent Version Revision in 2nd Half of 2023 Update Release](https://success.trendmicro.com/dcx/s/solution/000292157).
+
+13. Requires Deep Security Agent 9.6.2-8436 U17 (2018-05-03) or later.
+
+14. Requires Deep Security Agent 11.0.0-390 U2 (2018-09-18) or later.
+
+15. Requires Deep Security Agent 11.0.0-514 U4 (2018-12-04) or later.
+
+16. Requires Deep Security Agent 11.0.0-582 U6 (2019-01-23) or later.
+
+17. Requires Deep Security Agent 11.0.0-615 U7 (2019-02-22) or later.
+
+18. Requires Deep Security Agent 11.0.0-796 U12 (2019-06-22) or later.
+
+19. Requires Deep Security Agent 11.0.0-871 U13 (2019-07-26) or later.
+
+20. Requires Deep Security Agent 11.0.0-946 U14 (2019-08-29) or later.
+
+21. Requires Deep Security Agent 12.0.0-481 U1 (2019-08-09) or later.
+
+22. Requires Deep Security Agent 12.0.0-563 U2 (2019-09-13) or later.
+
+23. Requires Deep Security Agent 12.0.0-682 U3 (2019-11-05) or later.
+
+24. Requires Deep Security Agent 12.0.0-767 U5 (2019-12-16) or later.
+
+25. Requires Deep Security Agent 12.0.0-1090 U10 (2020-05-28) or later.
+
+26. Requires Deep Security Agent 12.5.0-936 FR (2020-05-19) or later.
+
+27. Requires Deep Security Agent 20.0.0-1822 (20 LTS Update 2021-01-18) or later.
+
+28. Requires Deep Security Agent 20.0.0-3165 (20 LTS Update 2021-10-08) or later.
+
+29. Requires Deep Security Agent 20.0.0-3288 (20 LTS Update 2021-10-28) or later.
+
+30. Requires Deep Security Agent 20.0.0-3445 (20 LTS Update 2021-11-24) or later.
+
+31. Requires Deep Security Agent 20.0.0-3964 (20 LTS Update 2022-03-01) or later.
+
+32. Requires Deep Security Agent 11.0.0-328 U17 (2022-06-15) or later.
+
+33. Requires Deep Security Agent 20.0.0-4959 (20 LTS Update 2021-07-04) or later for Windows, and 20.0.0-158 (20 LTS Update 2022-07-11) or newer for macOS.
+
+34. Requires Deep Security Agent 20.0.0-5137 (20 LTS Update 2022-07-26) or later.
+
+35. Requires Deep Security Agent 20.0.0-5394 (20 LTS Update 2022-08-29) or later.
+
+36. Requires Deep Security Agent 20.0.0-183 (20 LTS Update 2022-11-22) or later for macOS.
+
+37. Requires Deep Security Agent 20.0.0-6313 (20 LTS Update 2023-01-31) or later.
+
+38. Requires Deep Security Agent 20.0.0-6912 (20 LTS Update 2023-05-02) or later.
+
+39. AlmaLinux 9 is supported by Deep Security Agent 20.0.0-6912+ for Red Hat Enterprise Linux 9.
+
+40. Requires Deep Security Agent for macOS 20.0.0-223 (20 LTS Update 2023-11-21) or later.
+
+41. Requires Deep Security Agent 20.0.1-12510 (20 LTS Update 2024-06-26) or later.
+
+42. Requires Deep Security Agent 20.0.1-14610 (20 LTS Update 2024-07-20) or later.
+
+43. Requires Deep Security Agent 20.0.1-19250 (20 LTS Update 2024-09-18) or later.
+
+44. Requires Deep Security Agent 20.0.1-21510 (20 LTS Update 2024-10-16) or later.
+
+45. Requires Deep Security Agent for macOS 20.0.0-243 (20 LTS Update 2024-11-13) or later.
+
+46. Requires Deep Security Agent 20.0.0-7303 (20 LTS Update 2023-06-28) or later.
+
+47. Requires Deep Security Agent 20.0.0-7719 (20 LTS Update 2023-08-29) or later.
+
+48. Requires Deep Security Agent 20.0.0-8137 (20 LTS Update 2023-10-26) or later.
+
+49. Requires Deep Security Agent 20.0.1-7380 (20 LTS Update 2024-04-24) or later.
+
+50. Requires Deep Security Agent 20.0.0-8438 (20 LTS Update 2023-12-12) or later.
+
+51. Requires Deep Security Agent 20.0.2-1390 (20 LTS Update 2025-01-15) or later.
+
+52. TLS 1.2 is not supported on this platform.
+
+53. Deep Security Agent 20 no longer supports Amazon Linux 1, Cloud Linux 7, Debian Linux 9, Oracle Linux 6. For more information, see [Platform support updates for Deep Security Agent (DSA) in January 2025 Update Release](https://success.trendmicro.com/en-US/solution/KA-0016917).
+
+54. Requires Deep Security Agent 20.0.2-7600 (20 LTS Update 2025-04-16) or later.
+
+55. The Window OS patch update is required due to enforcement of [Azure Code Signing (ACS)](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/azure-code-signing-democratizing-trust-for-developers-and/ba-p/3604669) by Microsoft. For details, see [The agent minimum Windows version requirements for updated binaries](https://success.trendmicro.com/en-us/solution/ka-0013628).
+
+56. Requires Deep Security Agent 20.0.2-14431 (20 LTS Update 2025-07-09) or later.
+
+**Related information**
+
+- [Server & Workload Protection Sizing](sizing-server-workload.mdx)
+- [Supported features by Windows version](supported-features-windows-version.mdx)
+- [Supported features by Windows Server version](support-features-winserver.mdx)
+- [Supported features by Linux platform](supported-features-linux-platform.mdx)
+- [Supported features by macOS platform](supported-features-macos-platform.mdx)
+- [Linux file system compatibility](linux-file-system-compatibility.mdx)
+- [Linux kernel compatibility](linux-kernel-compatibility.mdx)
+- [SELinux support](selinux-support.mdx)
+- [Linux systemd support](linux-systemd-support.mdx)
+::::

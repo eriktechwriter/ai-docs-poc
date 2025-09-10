@@ -1,0 +1,65 @@
+---
+slug: trend-vision-one-virtual-network-sensor-connections
+title: Configuring Virtual Network Sensor connections
+last_updated: '2025-09-08'
+ai_context:
+  source_file: virtual-network-sensor-connections.md
+  conversion_date: '2025-09-08T23:42:11.622Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Manage how the Virtual Network Sensor connects to Trend Vision One.
+
+:::warning[Important]
+
+Network Inventory only supports managing connection settings for Virtual Network Sensor version 1.0.1393 or later.
+
+Connecting using a Service Gateway as a proxy requires a Service Gateway with the Forward Proxy Service configured and enabled. For more information, see [Manage services in Service Gateway](managing-services-service-gateway.mdx).
+:::
+
+You can manage and change the method your Virtual Network Sensors use to connect to Trend Vision One in the Network Inventory app.
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Network Security → Network Inventory → Virtual Network Sensor**.
+
+2.  Select one or more Virtual Network Sensors to configure.
+
+3.  Click **Configure Connection Settings**.
+
+    The **Sensor Connection Settings** screen appears.
+
+4.  Select the **Connection method**.
+
+    - **Direct connection**: the Virtual Network Sensor connects to Trend Vision One directly. Make sure the Virtual Network Sensor is able to connect to the internet when using this configuration.
+
+    - **Connect using a custom proxy**: the Virtual Network Sensor connects to Trend Vision One through a third-party proxy. After choosing this method, configure the following fields:
+
+      - **Proxy address**: Specify the IP address of the proxy.
+
+      - **Proxy port**: Specify the connecting port of the proxy.
+
+      - **Proxy server requires authentication**: (Optional) Select if the proxy requires authentication credentials.
+
+      - **User name**: Specify the user name for the proxy credentials.
+
+      - **Password**: Specify the password for the proxy credentials.
+
+    - **Connect using a Service Gateway as proxy**: the Virtual Network Sensor connects to Trend Vision One through a Service Gateway. Select a Service Gateway to use for this method.
+
+      :::warning[Important]
+
+      The Virtual Network Sensor must be able to connect to a Service Gateway with the Forward Proxy Service configured and enabled. For more information, see [Manage services in Service Gateway](managing-services-service-gateway.mdx).
+      :::
+
+5.  Click **Test Connection**.
+
+    :::warning[Important]
+
+    Test Connection only tests if the Virtual Network Sensor can connect using the current settings. The test does not validate the new connection settings.
+    :::
+
+6.  After the test completes, click **Apply** to update the Virtual Network Sensors with a status of **Successful**.
+::::

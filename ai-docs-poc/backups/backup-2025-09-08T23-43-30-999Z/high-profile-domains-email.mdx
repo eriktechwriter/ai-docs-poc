@@ -1,0 +1,56 @@
+---
+slug: trend-vision-one-high-profile-domains-email
+title: Configuring high profile domains
+last_updated: '2025-09-08'
+ai_context:
+  source_file: high-profile-domains-email.md
+  conversion_date: '2025-09-08T23:42:18.140Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Specify legitimate sender domains that might be frequently forged into cousin domains for spam, phishing, and BEC attacks. Cloud Email Gateway Protection will detect email messages from cousin domains of the specified high profile domains.
+
+### Procedure {#procedure}
+
+1.  Go to **Inbound Protection → Spam Filtering → High Profile Domains**.
+
+2.  In the **High Profile Domain Settings** section, enable high profile domains, select a detection threshold, and click **Save**.
+
+    - **Aggressive**: This option provides the most number of detections based on fuzzy matches. This is the most rigorous level of spam, phishing, and BEC detection.
+
+    - **Normal**: This is the default and recommended setting. This option provides a moderate number of detections.
+
+    - **Conservative**: This option provides the most accurate detections based on near-exact matches.
+
+3.  In the **High Profile Domains** section, maintain a list of legitimate sender domains.
+
+    - Click **Add** to add a high profile domain. Specify the domain name, for example, `domain.com` for the high profile domain.
+
+      Wildcard characters and regular expressions are not supported.
+
+      :::note
+
+      You can add a maximum of 100 high profile domains.
+      :::
+
+    - Click **Delete** to delete a high profile domain.
+
+    - Click **Import** to import high profile domains from a TXT file.
+
+      The following import options are available:
+
+      - **Merge**: append the high profile domains to the existing list.
+
+      - **Overwrite**: replace the existing high profile domain list with the domains in the file.
+
+    - Click **Export** to export the high profile domain list to a TXT file.
+
+4.  In the **Exception List** section, maintain a list of domains that Cloud Email Gateway Protection excludes from scanning for cousin domains.
+
+    :::note
+
+    You can add a maximum of 1,000 domains to the exception list.
+    :::
+:::

@@ -1,0 +1,113 @@
+---
+slug: trend-vision-one-discover-internal-apps-section
+title: Discovering internal applications
+last_updated: '2025-09-08'
+ai_context:
+  source_file: discover-internal-apps-section.md
+  conversion_date: '2025-09-08T23:42:20.460Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Allow Zero Trust Secure Access to discover internal applications used in your organization, by configuring an application with a wider domain name or IP range.
+
+Application discovery helps to ascertain the applications that were not explicitly named that users might have been using over the past 14 days. This feature also identifies users who have accessed the applications and recommends the most likely user groups. You can enforce granular access rules on these applications or even restrict the access.
+
+Zero Trust Secure Access only discovers an application when a user requests access to it, but does not constantly scan the network traffic for new applications.
+
+### Procedure {#procedure}
+
+1.  On the **Internal Applications** tab, click **Discover Internal Applications**.
+
+2.  Click **Add Application for Discovery**.
+
+    The **Add Application** screen appears.
+
+3.  Configure an application for discovery.
+
+    1.  Specify a unique application name and description.
+
+    2.  Select **Use the default icon** or **Upload an image** .
+
+        :::note
+
+        The app name, icon, and description appear in the accessible corporate applications list on the Secure Access Module deployed to endpoints (for client access), and on the Trend Micro provided user portal (for browser access).
+        :::
+
+    3.  Select an existing Private Access Connector group, or [create a new group](private-access-connector-config.mdx).
+
+        Ensure that the connector group is deployed in the same corporate environment as the app, and the app is accessible from any connector under the group.
+
+    4.  On the **Client Access** tab, configure user access through the Secure Access Module.
+
+        1.  Select **Allow users to access via the Secure Access Module**.
+
+        2.  Select the required protocol.
+
+        3.  To automatically direct users to the app's home page, specify a home page URL and then click **Parse**. The app's FQDN or IP address is automatically added in the URL fields below.
+
+        4.  Specify at least one FQDN starting with the wildcard (\*) or IP range of the application, and any required ports to connect to the application.
+
+            For example, type \*.appname.companydomain.com, 10.0.0.1-10.0.0.4, or 10.0.4/28.
+
+            When a user requests an application that ends in that domain name or within the IP range, Zero Trust Secure Access discovers the requested application because of your configuration.
+
+            :::note
+
+            Applications defined with only a wildcard (\*) are not available for application discovery.
+            :::
+
+        5.  Allow users to see the app on the user portal by enabling **Make the app visible for end user access**.
+
+    5.  Click **Save and Continue**.
+
+4.  Create a monitor rule.
+
+    1.  Specify a rule name.
+
+    2.  Specify users and groups from your IAM system.
+
+    3.  Use the default values for other fields.
+
+        By default, the monitor rule is effective for 14 days. You can manually turn on monitoring when the monitor rule expires. Turning on monitoring clears the list of previous discovery and starts the discovery process.
+
+    4.  Click **Save**.
+
+        The application for discovery appears on the left panel of the screen. Zero Trust Secure Access starts to use the monitor rule to monitor your users' access to the application and lists out the subdomains or IP addresses that match the domain names or IP ranges specified in the application.
+
+        :::warning[Important]
+
+        This application is only used for discovering internal applications used in your organization. The application is not listed in your internal application list on the **Internal Applications** tab and cannot be referenced by any private access rule.
+        :::
+
+5.  Perform the following actions on the discovery result.
+
+    <table>
+    <colgroup>
+    <col style="width: 33%" />
+    <col style="width: 67%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Action</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Learn about the users that accessed the discovered application</p></td>
+    <td><p>Click the number under <strong>Access users</strong> to show the list of users accessing the discovered application.</p></td>
+    </tr>
+    <tr>
+    <td><p>Check out the most possible grouping of the users accessing discovered application</p></td>
+    <td><p>Hover over the recommendations under <strong>User group recommendations</strong>.</p>
+    <p>Zero Trust Secure Access calculates and lists the top 5 most possible groups of users accessing the discovered application that we recommend you take control on. You can apply these user groups when configuring private access rules to control access to the discovered application.</p></td>
+    </tr>
+    <tr>
+    <td><p>Add the discovered application as an internal application</p></td>
+    <td><p>Click <strong>Add as internal app</strong> and follow the instructions described in <a href="trend-vision-one-add-internal-application-pac">Adding an internal application to Private Access</a> to add an internal application.</p></td>
+    </tr>
+    </tbody>
+    </table>
+:::

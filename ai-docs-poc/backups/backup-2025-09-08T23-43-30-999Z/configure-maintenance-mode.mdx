@@ -1,0 +1,57 @@
+---
+slug: trend-vision-one-configure-maintenance-mode
+title: Configure maintenance mode during upgrades
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configure-maintenance-mode.md
+  conversion_date: '2025-09-08T23:42:22.759Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Maintenance mode allows new or updated software to run by automatically allowing the incoming software changes in the computer ruleset, while continuing to block any software that has a block rule. Generally, use the following steps to configure maintenance mode:
+
+### Procedure {#procedure}
+
+1.  Create a `Computer` object.
+
+2.  Create and configure an `ApplicationControlComputerExtension` object to turn on maintenance mode. Optionally, set a duration to turn off maintenance mode automatically. Add the `ApplicationControlComputerExtension` object to the `Computer` object.
+
+3.  Use a `ComputerApi` object to turn on maintenance mode on the computer.
+
+4.  Use the `ComputerApi` object to verify maintenance mode is on.
+
+### Next steps {#next-steps}
+
+If you did not set maintenance mode to turn off automatically:
+
+1.  Create a `Computer` object.
+
+2.  Create and configure an `ApplicationControlComputerExtension` object to turn off maintenance mode and add it to the `Computer` object.
+
+3.  Use a `ComputerApi` object to turn off maintenance mode.
+
+For more information about maintenance mode, see the [Turn on maintenance mode when making planned changes](set-up-application-control.mdx).
+
+The following example enables maintenance mode for 10 minutes during a scheduled upgrade.
+
+[source](https://github.com/deep-security/automation-center-sdk-samples/blob/master/python/src/application_control_examples.py)
+
+``` codeblock
+# Create and configure an ApplicationControlComputerExtesnion object
+application_control = api.ApplicationControlComputerExtension()
+application_control.maintenance_mode_status = "on"
+application_control.maintenance_mode_duration = duration
+
+# Add the ApplicationControlComputerExtension to a Computer object
+computer = api.Computer()
+computer.application_control = application_control
+
+# Update the computer
+computers_api = api.ComputersApi(api.ApiClient(configuration))
+return computers_api.modify_computer(computer_id, computer, api_version)
+```
+
+Also see the [Modify a Computer](https://automation.trendmicro.com/cloudone/workload-security/) operation in the API Reference.
+:::

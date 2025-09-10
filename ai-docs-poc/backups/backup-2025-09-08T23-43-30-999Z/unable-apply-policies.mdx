@@ -1,0 +1,46 @@
+---
+slug: trend-vision-one-unable-apply-policies
+title: Unable to apply policies
+last_updated: '2025-09-08'
+ai_context:
+  source_file: unable-apply-policies.md
+  conversion_date: '2025-09-08T23:42:11.876Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+The **Unable to apply policies** status indicates the endpoint is part of an endpoint group enrolled in Endpoint Security Policies (unified assignment) but is unable to use the policy settings. This can occur if the agent is missing components or requires and update. Review the following scenarios and follow the steps to resolve the status.
+
+<figure>
+<img src="./images/SEP-XBC-unableApplyPolicy=32370877-44c8-4f38-a5f8-842b380adccf.webp" />
+<figcaption>Scenario 1 - Reconfigure agent</figcaption>
+</figure>
+
+This scenario might occur for the following issues:
+
+- The agent is missing components, such as the Endpoint Sensor.
+
+- The endpoint has the Trend Vision One Endpoint Security agent installed with the Sensor-only configuration.
+
+- The endpoint is managed by a connected endpoint security product, such as Trend Micro Apex One or Trend Cloud One Workload Security, and has the Trend Vision One Endpoint Security agent installed with the Sensor-only configuration.
+
+To resolve the issue, click **Reconfigure Trend Vision One Endpoint Security agent** to download and install the missing components. Trend Micro recommends updating your connected endpoint security products.
+
+<figure>
+<img src="./images/SWP-unableApplyPolicy=e16eac94-93fa-42cd-a889-09d23e86bb45.webp" />
+<figcaption>Scenario 2 - Update agent</figcaption>
+</figure>
+
+This scenario might occur for the following issues:
+
+- The endpoint is managed by Server & Workload Protection and is missing components, such as the Endpoint Sensor.
+
+To resolve the issue, click **Update Trend Vision One Endpoint Security agent**. If the update fails, check the following:
+
+- Agent version installed on the endpoint. The minimum supported agent version is Deep Security 20.0.1.25770 (20 LTS Update 2024-12-10) or later. If endpoint has an earlier version of the agent, manually update the agent by downloading the Trend Vision One Endpoint Security agent installation package.
+
+- Operating system installed on the endpoint. Check the operating system requirements to verify the endpoint is supported by Trend Vision One Endpoint Security agent.
+
+If you are unable to resolve the issue, click **Create support case** to contact support providers. Create only one ticket, even if you have multiple affected endpoints.
+:::

@@ -1,0 +1,49 @@
+---
+slug: trend-vision-one-certificates
+title: Certificates
+---
+# Certificates
+
+:You can configure Application Control to specifically target applications based on the "trust" level of a certificate and that contain specific certificate attributes.
+
+Select the type of certificate "trust" level and then specify the required certificate "Issuer" or "Subject" information.
+
+:::note
+
+Application Control supports the use of the asterisk (\*) wildcard when specifying Certificate attributes, although you must use the wildcard in conjunction with other characters to limit the scope. For example, you cannot use only the wildcard character in any field.
+:::
+
+The following table describes the different "trust" types.
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Type</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><strong>Trusted (valid)</strong></p></td>
+<td><p>You must have included the certificate in the trusted certificates list and the certificate must not have expired</p></td>
+</tr>
+<tr>
+<td><p><strong>Trusted (expired)</strong></p></td>
+<td><p>You must have added the certificate in the trusted certificates list but the certificate has already expired</p></td>
+</tr>
+<tr>
+<td><p><strong>Untrusted</strong></p></td>
+<td><p>The certificate is unknown or you did not add the certificate to the trusted certificates list</p></td>
+</tr>
+</tbody>
+</table>
+
+:::note
+
+The "trust" level combinations for Allow and Block criteria differ.
+:::
+:::::

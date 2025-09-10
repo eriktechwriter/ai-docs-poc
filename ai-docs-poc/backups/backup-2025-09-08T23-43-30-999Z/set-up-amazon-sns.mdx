@@ -1,0 +1,93 @@
+---
+slug: trend-vision-one-set-up-amazon-sns
+title: Set up Amazon SNS
+last_updated: '2025-09-08'
+ai_context:
+  source_file: set-up-amazon-sns.md
+  conversion_date: '2025-09-08T23:42:12.650Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+If you have an AWS account, you can take advantage of the Amazon Simple Notification Service (SNS) to publish notifications about Server & Workload Protection events and deliver them to subscribers. For details about SNS, see <https://aws.amazon.com/sns/>.
+
+To set up Amazon SNS:
+
+### Procedure {#procedure}
+
+1.  Create an AWS user.
+
+2.  Create an Amazon SNS topic.
+
+3.  Enable SNS.
+
+4.  Create subscriptions.
+
+### Next steps {#next-steps}
+
+See the sections below for details on how to perform these tasks.
+
+**Related information**
+
+- [SNS configuration in JSON format](sns-configuration-json-format.mdx)
+
+## Create an AWS user {#create-an-aws-user}
+
+In order to use Amazon SNS with Server & Workload Protection, you need to create an AWS user with the appropriate permissions for SNS. Note the access key and secret key for the user, because you will need that information for step 3, below.
+
+The AWS user will need the "sns:Publish" permission on all SNS topics that Server & Workload Protection will publish to. This is an example of a policy with this permission:
+
+``` codeblock
+{
+   "Version": "2012-10-17",
+   "Statement": [
+      {
+         "Action": [
+            "sns:Publish"
+         ],
+         "Effect": "Allow",
+         "Resource": "\*"
+      }
+   ]
+}
+```
+
+If you want to limit publishing rights to a single topic, you can replace "Resource":"\*" with "Resource":"TOPIC ARN".
+
+For more information, see [Controlling User Access to Your AWS Account](https://docs.aws.amazon.com/sns/latest/dg/sns-using-identity-based-policies.mdx) and [Special Information for Amazon SNS Policies](https://docs.aws.amazon.com/sns/latest/dg/sns-access-policy-language-api-permissions-reference) in the Amazon AWS documentation.
+
+## Create an Amazon SNS topic {#create-an-amazon-sns-topic}
+
+In AWS, create an SNS topic where the events will be published. For instructions on how to create an Amazon SNS topic, see "Create a Topic" in the [Amazon SNS documentation](https://docs.aws.amazon.com/sns/latest/dg/). Note the SNS Topic ARN because you will need this information in step 3, below.
+
+## Enable SNS {#enable-sns}
+
+### Procedure {#procedure-1}
+
+1.  In the Server & Workload Protection console, go to *Administration* \> *System Settings* \> *Event Forwarding*.
+
+2.  In the Amazon SNS section, select *Publish Events to Amazon Simple Notification Service*.
+
+3.  Enter this information:
+
+    - *Access Key:* The access key of the AWS user you created in section 1.
+
+    - *Secret Key:* The secret key of the AWS user you created in section 1.
+
+    - *SNS Topic ARN:* The SNS Topic ARN that events will be sent to. This is the ARN that you noted in section 2.
+
+4.  Select the types of events that you want to forward to SNS. Selecting the events automatically generates a JSON SNS configuration.
+
+5.  (Optional) You can also click *Edit JSON SNS configuration* to edit the JSON SNS configuration directly if you want to filter the events in greater detail and configure the forwarding instructions for each filter. For details on the configuration language, see [JSON SNS configuration](sns-configuration-json-format.mdx). *Note:* If you edit the JSON, the event check boxes will become unavailable. If you want to select or deselect any of the event check boxes, you can click *Revert to basic SNS configuration*, but any customizations you have made to the JSON SNS configuration will be discarded.
+
+6.  Click *Save*.
+
+### Next steps {#next-steps-1}
+
+## Create subscriptions {#create-subscriptions}
+
+Now that SNS is enabled and events are being published to the topic, go to the Amazon SNS console and subscribe to the topic to access the events. There are several ways that you can subscribe to events, including [email](https://docs.aws.amazon.com/sns/latest/dg/), [SMS](https://docs.aws.amazon.com/sns/latest/dg/), and [Lambda endpoints](https://docs.aws.amazon.com/sns/latest/dg/sns-lambda-as-subscriber.mdx).
+
+*Note:* Lambda is not available in all AWS regions.
+:::

@@ -1,0 +1,131 @@
+---
+slug: trend-vision-one-url-allow-deny-lists
+title: URL allow and deny lists
+last_updated: '2025-09-08'
+ai_context:
+  source_file: url-allow-deny-lists.md
+  conversion_date: '2025-09-08T23:42:11.724Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Configure the URL allow list and URL deny list to add URLs that are always accessible or not accessible to users.
+
+The URL allow list specifies the websites that you consider trustworthy and always allow users to visit. The URL deny list specifies the websites that you do not allow users to visit anytime, anywhere.
+
+The URL allow list takes precedence over the URL deny list.
+
+URLs in the allow list or deny list are not subject to internet access control rules and HTTPS inspection rules.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Add URLs to the allow list or deny list</p></td>
+<td><ol>
+<li><p>Go to <strong>Zero Trust Secure Access → Secure Access Configuration → Internet Access Configuration</strong> and in the <strong>Allow List/Deny List</strong> drop-down menu, click <strong>URL Allow List</strong> or <strong>URL Deny List</strong>, and then click <strong>Add</strong>.</p></li>
+<li><p>Select a match mode.</p></li>
+<li><p>Specify the domains, keywords, or URLs based on the match mode, separating them with spaces.</p>
+
+
+:::tip
+
+<p>Zero Trust Secure Access supports the following wildcard characters:</p>
+<ul>
+<li><p>* : Matches any number of characters</p></li>
+<li><p>? : Matches a single character in a specific position</p></li>
+</ul>
+
+
+:::
+
+</li>
+<li><p>Click <strong>Add</strong>.</p>
+<p>To remove an entry, click <img src="./images/trash_icon=GUID-47cf6867-6315-438e-8670-86ff36f22a28.webp" /> at the end of the column corresponding to the entry.</p></li>
+<li><p>Click <strong>Save</strong>.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Filter entries in the allow list or deny list</p></td>
+<td><p>On the <strong>URL Allow List</strong> or <strong>URL Deny List</strong> screen, use the search field to display related queries.</p></td>
+</tr>
+<tr>
+<td><p>Delete an entry from the allow list or deny list</p></td>
+<td><p>Click <img src="./images/trash_icon=GUID-47cf6867-6315-438e-8670-86ff36f22a28.webp" /> in the <strong>Action</strong> column to delete an entry from the allow list or deny list on Trend Vision One.</p>
+<p>To delete more than one entry, select the entries and click <strong>Delete</strong> in the upper left.</p></td>
+</tr>
+<tr>
+<td><p>Import/export the allow list or deny list</p></td>
+<td><ul>
+<li><p>Import</p>
+<ul>
+<li>Click <strong>Import</strong>, click <strong>Select File...</strong> to locate a CSV file on your local machine to import, and then click <strong>Import</strong>.</li>
+<li>
+
+:::tip
+
+<p>Click <strong>Download sample CSV</strong> to obtain a properly formatted example file. Populate the file with URLs in the required format and import the file.</p>
+
+
+:::
+
+
+
+
+:::note
+
+<p>Importing overwrites duplicated items. The file size cannot exceed 6 MB.</p>
+
+
+:::
+
+</li>
+</ul></li>
+<li><p>Export</p>
+<ul>
+<li><p>Click <strong>Export</strong> to download the configured URLs in the allow or deny list in CSV format to your local machine.</p></li>
+</ul></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+The Internet Access service supports three match modes for adding URLs.
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Match Mode</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Domain match</p></td>
+<td><p>Match URLs from a specified domain: Looks for a specific website and all its directories and files.</p></td>
+</tr>
+<tr>
+<td><p>Keyword match</p></td>
+<td><p>Match URLs containing a specified keyword: Looks for occurrence of the keyword anywhere in a URL.</p></td>
+</tr>
+<tr>
+<td><p>URL match</p></td>
+<td><p>Match a specified URL: Limits the search to the input as a whole.</p></td>
+</tr>
+</tbody>
+</table>
+:::

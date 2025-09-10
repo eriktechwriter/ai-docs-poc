@@ -1,0 +1,48 @@
+---
+slug: trend-vision-one-1-2-24
+title: >-
+  1.2.24 - Ensure that the –tls-cert-file and –tls-private-key-file arguments
+  are set as appropriate (Automated)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: 1-2-24.md
+  conversion_date: '2025-09-08T23:42:26.346Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Profile applicability: Level 1 - Master Node
+
+Setup TLS connection on the API server.
+
+API server communication contains sensitive parameters that should remain encrypted in transit. Configure the API server to serve only HTTPS traffic.
+
+:::note
+
+By default, `--tls-cert-file` and `--tls-private-key-file` are presented and created for use.
+:::
+
+### Impact {#impact}
+
+TLS and client certificate authentication must be configured for your Kubernetes cluster deployment.
+
+### Audit {#audit}
+
+Run the following command on the Control Plane node:
+
+``` codeblock
+ps -ef | grep kube-apiserver
+```
+
+Verify that the `--tls-cert-file` and `--tls-private-key-file` arguments exist and they are set as appropriate.
+
+### Remediation {#remediation}
+
+Follow the Kubernetes documentation and set up the TLS connection on the apiserver. Then, edit the API server pod specification file `/etc/kubernetes/manifests/kube-apiserver.yaml` on the master node and set the TLS certificate and private key file parameters.
+
+``` codeblock
+--tls-cert-file=<path/to/tls-certificate-file>
+--tls-private-key-file=<path/to/tls-key-file>
+```
+::::

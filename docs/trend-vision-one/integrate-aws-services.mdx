@@ -1,0 +1,152 @@
+---
+slug: trend-vision-one-integrate-aws-services
+title: Integrate Server & Workload Protection with AWS Services
+---
+# Integrate Server & Workload Protection with AWS Services
+
+Use the Server & Workload Protection API along with the AWS APIs to integrate Server & Workload Protection with various AWS services. The workflow examples presented here describe how to integrate with the following AWS services:
+
+- Amazon GuardDuty
+- Amazon Macie
+- Amazon Inspector
+- AWS WAF
+- AWS Config
+
+:::tip
+
+These examples replace the code samples that were hosted on GitHub that integrated Server & Workload Protection with each of these security services.
+:::
+
+The AWS Cloud works on a [shared responsibility model](https://aws.amazon.com/compliance/shared-responsibility-model/). For any service you use, you and AWS share responsibilities across a set of operational and security areas. For Amazon EC2 instances and Amazon ECS container hosts, you are responsible for the security of the operating system, any applications, and your data. Server & Workload Protection is designed to help address these responsibilities. AWS offers a number of security services that also help address these responsibilities and can provide additional insights to Server & Workload Protection.
+
+## Workflow pattern {#workflow-pattern}
+
+Most workflows for integrating Server & Workload Protection with AWS services follow the same pattern where Server & Workload Protection reacts to events and information that AWS generates.
+
+![](/images/aws-service-integration-pattern=00a0fa66-2ba9-4045-9098-9284a765eef3.webp)
+
+### Procedure {#procedure}
+
+1.  The AWS service generates a data point such as an alert or finding.
+
+2.  A CloudWatch event is generated.
+
+3.  The event triggers your AWS Lambda function.
+
+4.  The Lambda function uses the Server & Workload Protection API to perform an action on Server & Workload Protection.
+
+### Next steps {#next-steps}
+
+This workflow captures information from the environment to make smarter decisions within Server & Workload Protection. You can easily customize this pattern to your environment, as illustrated in the following examples.
+
+## Amazon GuardDuty {#amazon-guardduty}
+
+The [Amazon GuardDuty](https://aws.amazon.com/guardduty/) service continuously monitors VPC flow logs, Amazon CloudTrail logs, and custom IP lists for issues and threats that may impact your AWS account.
+
+As part of these activities, GuardDuty may also discover indications of issues on EC2 instances that are running in your account. When it discovers an issue, it raises a finding. These findings are an excellent source of information that you can use to trigger an action in Server & Workload Protection.
+
+Use the following workflow to integrate with GuardDuty:
+
+### Procedure {#procedure-1}
+
+1.  Amazon GuardDuty generates a finding that cites an EC2 instance.
+
+2.  Amazon CloudWatch raises an event with the GuardDuty finding.
+
+3.  The Cloudwatch event triggers an AWS Lambda function that is subscribed to the CloudWatch event.
+
+4.  The Lambda function determines whether the EC2 instance is protected by Server & Workload Protection and reacts accordingly:
+
+    - *Protected:* The Lambda function runs a recommendation scan (applying the results) and an integrity scan to verify the protections are in place
+
+    - *Not protected:* The Lambda function highlights the unprotected instance to the relevant team
+
+### Next steps {#next-steps-1}
+
+When GuardDuty discovers an issue with an EC2 instance, such as possible crypto mining or unusual network traffic, Server & Workload Protection ensures that the EC2 instances have the latest rules applied and haven’t been compromised according to the applied integrity ruleset.
+
+## Amazon Macie {#amazon-macie}
+
+[Amazon Macie](https://aws.amazon.com/macie/) (in limited release) examines the contents of Amazon S3 buckets to discover, classify, and protect sensitive data. Macie finds personally identifiable information (PII) or sensitive corporate data and highlights that risk.
+
+When misconfigured, S3 buckets can be a significant source of exposure. When Macie discovers an issue, it raises an alert via a CloudWatch event. This event can trigger an action in Server & Workload Protection.
+
+You can use the bucket and IAM permissions to determine if Server & Workload Protection can help to reduce the risk to the S3 buckets by ensuring that related EC2 instances have the latest rules applied.
+
+Use the following workflow to integrate with Macie:
+
+### Procedure {#procedure-2}
+
+1.  Amazon Macie raises an alert.
+
+2.  Amazon CloudWatch raises an event from the Macie alert.
+
+3.  The CloudWatch event triggers an AWS Lambda function that is subscribed to the CloudWatch event.
+
+4.  The Lambda function performs the following tasks:
+
+    a\. Discovers the IAM roles for which the S3 bucket permissions allow access. b. Determines whether any Server & Workload Protection-protected EC2 instances use the IAM roles and have access to the bucket. c. Runs a recommendation scan (applying the results) and an integrity scan to verify that protections are in place.
+
+### Next steps {#next-steps-2}
+
+## Amazon Inspector {#amazon-inspector}
+
+[Amazon Inspector](https://aws.amazon.com/inspector/) is an automated security assessment service that can help improve the security and compliance of your EC2 instances and ECS hosts. Inspector runs as an agent on the instance and generates a report as a result of an assessment request.
+
+This report lists the vulnerabilities or issues that are discovered on the instance. For security vulnerabilities, the findings usually include a CVE identifier. The CVE identifier can be correlated with the applied Server & Workload Protection Intrusion Prevention rules to ensure that adequate coverage is in place.
+
+Use the following workflow to integrate with Inspector to augment Server & Workload Protection recommendation scans:
+
+### Procedure {#procedure-3}
+
+1.  Amazon Inspector runs an assessment and generates a finding.
+
+2.  Amazon CloudWatch raises an event from the finding.
+
+3.  The event triggers an AWS Lambda function that is subscribed to the CloudWatch event.
+
+4.  The Lambda function performs the following tasks:
+
+    a\. Determines whether the affected EC2 instance is protected by Server & Workload Protection. b. If protected, determines whether there is an Intrusion Prevention rule that corresponds to the CVE cited in the finding. c. Applies the rule to the policy that is assigned to the EC2 instance.
+
+### Next steps {#next-steps-3}
+
+## AWS WAF {#aws-waf}
+
+[AWS WAF](https://aws.amazon.com/waf/) is a web application firewall that runs on the 120+ points of presence that make up the AWS Edge. WAF examines layer 7 web requests to discover common web-based attacks.
+
+While the Server & Workload Protection Intrusion Prevention module can stop these attacks, it is desirable to blocks these types of attacks as far away from organizational data as possible.
+
+Trend Micro offers two sets of managed rules for AWS WAF:
+
+- [Managed rules for web servers](https://aws.amazon.com/marketplace/pp/Trend-Micro-Trend-Micro-Managed-Rules-for-AWS-WAF-/B0779NQYMZ)
+- [Managed rules for content management systems](https://aws.amazon.com/marketplace/pp/B0779N3B6Q)
+
+Using the following simple workflow to highlight which EC2 instances and ECS hosts are protected by the AWS WAF and are a good candidate for leveraging the managed rule set:
+
+### Procedure {#procedure-4}
+
+1.  A scheduled Amazon CloudWatch task triggers an AWS Lambda function.
+
+2.  The Lambda function performs the following tasks:
+
+    a\. Check each CloudFront distribution for an associated WAF WebACL (WACL) ID. b. Check each ELB and ALB for an associated WAF WACL ID. c. For each instance that is associated with a WAF-protected resource, determine which Server & Workload Protection policy is used to protect it. d. Apply the appropriate set of managed rules based on the Intrusion Prevention rules that are assigned to the policy (web server or web application).
+
+### Next steps {#next-steps-4}
+
+## AWS Config {#aws-config}
+
+The [AWS Config](https://aws.amazon.com/config/) service records changes in your environment and creates visualizations of them. This information enables you to audit, evaluate, and asses your environment. As the service continuously monitors your environment, it allows rules (AWS Lambda functions) to execute when specific changes occur, and add information to this essential compliance tool.
+
+As Server & Workload Protection plays a critical role in your compliance story, integrating with AWS Config can be invaluable.
+
+The Rules feature in AWS Config is very straightforward: select a trigger and AWS Config executes your AWS Lambda function when that trigger occurs. The most common trigger to select is “Resource/EC2 instance”. Each time an instance changes, the Lambda function executes.
+
+The Lambda function can retrieve information about the instance when a change occurs, for example:
+
+- Whether the instance protected by a specific policy
+- Whether a specific protection module (such as Anti-Malware) is active on the instance
+- Whether the instance is clear of warnings
+
+Each of these examples provides valuable compliance information that can easily be recorded in AWS Config, creating a single source of data for compliance audits.
+::::

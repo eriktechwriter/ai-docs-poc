@@ -1,0 +1,94 @@
+---
+slug: trend-vision-one-migrate-agents-apex-one-server
+title: Migrating Agents with the Apex One Server Console
+---
+# Migrating Agents with the Apex One Server Console
+
+Use the Apex One server console to move agents to Trend Vision One Standard Endpoint Protection.
+
+Follow the instructions below to migrate agents from your Apex One server to Standard Endpoint Protection.
+
+:::note
+
+- After moving agents to Standard Endpoint Protection, you cannot move them back to their source Apex One server using the Trend Vision One console. If you need to move agents from Trend Vision One, you must use the IPXfer tool.
+
+- Agents inherit the settings of the target server.
+:::
+
+### Procedure {#procedure}
+
+1.  Obtain the Apex One Settings Export Tool on the Apex One server host machine and export Apex One Security Agent policies to Standard Endpoint Protection.
+
+    1.  In the Trend Vision One console, go to **Endpoint Security → Standard Endpoint Protection** and click **Directories → Product Servers**.
+
+    2.  For **Product**, select **Apex One** and click the link to access the Apex One server console.
+
+    3.  In the Apex One server console, go to **Administration → Settings → Server Migration** and click the **Apex One Settings Export Tool** link to download the package.
+
+    4.  Extract the package.
+
+    5.  Open Command Prompt or PowerShell as an administrator from the folder of the extracted package.
+
+    6.  Type the following command to run the tool.
+
+        `run ApexOneSettingsExportTool.exe`
+
+        The tool generates two archive files:
+
+        - `ApexOne_Agent_Policies.zip`
+
+        - `ApexOne_Agent_DLP_Policies.zip`
+
+    7.  In the Trend Vision One console, go to **Endpoint Security → Standard Endpoint Protection**.
+
+        If you have more than one Standard Endpoint Protection instance, select the instance you want to migrate your agents to.
+
+    8.  In the target instance, go to **Policies → Policy Management**
+
+    9.  For **Product**, select **Apex One Security Agent**.
+
+    10. Click **Import Settings** and locate the `ApexOne_Agent_Policies.zip` policy file.
+
+    11. Click **OK** to continue.
+
+    12. Change the **Product** to **Apex One Data Loss Prevention**.
+
+    13. Click **Import Settings** and locate the `ApexOne_Agent_DLP_Policies.zip` policy file.
+
+    14. Click **OK** to continue.
+
+    Policies imported from the policy files are created and displayed on the policy list. The policies by default have no targets. The targets must be set by an administrator.
+
+2.  In the Trend Vision One console, go to **Endpoint Security → Standard Endpoint Protection**.
+
+    If you have more than one Standard Endpoint Protection instance, select the instance you want to migrate your agents to.
+
+3.  In the target instance, go to **Directories → Product Servers**
+
+4.  Copy the FQDN of the server you want to use.
+
+    Only include the address of the FQDN. Do not include the port or path.
+
+    For example, if the target server is `https://exampl.manage.trendmicro.com:443/officescan`, copy `exampl.manage.trendmicro.com`.
+
+5.  On the Trend Micro Apex One server console, go to **Agents → Agent Management**.
+
+6.  Select the agents you want to move.
+
+    You can use SHIFT+Click or CTRL+Click to select multiple agents.
+
+7.  Click **Manage Agent Tree → Move Agent**.
+
+8.  Select **Move selected agent(s) to another Apex One server**.
+
+9.  Paste the target server FQDN for the **Apex One Server name or IP address**.
+
+10. Click **Move**.
+
+    Once the selected agents complete moving, the agents begin reporting to the Trend Vision One Standard Endpoint Protection instance.
+
+    :::warning[Important]
+
+    Policies are not automatically applied to the moved agents. You must apply the policies to the target agents once migration has finished.
+    :::
+::::

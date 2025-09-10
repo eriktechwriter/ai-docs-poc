@@ -1,0 +1,111 @@
+---
+slug: trend-vision-one-importing-user-directories
+title: Importing user directories
+last_updated: '2025-09-08'
+ai_context:
+  source_file: importing-user-directories.md
+  conversion_date: '2025-09-08T23:42:17.369Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+You can import LDAP Data Interchange Format (LDIF) or comma-separated values (CSV) files into Cloud Email Gateway Protection. This helps Cloud Email Gateway Protection to better filter and process messages for valid email addresses. Messages to invalid email addresses will be rejected.
+
+:::warning[Important]
+
+Before you import an LDIF or CSV directory file, note the following:
+
+- Cloud Email Gateway Protection only recognizes ANSI-encoded LDIF (with the extension `.ldf`) and ANSI or UTF-8-encoded CSV (with the extension `.csv`) files. Do not include blank lines or other irrelevant data in the file that you import. Use caution when creating a file.
+
+- When importing user directory files, Cloud Email Gateway Protection replaces all records for a managed domain at once. If any email addresses for a managed domain are imported, all other email addresses for that domain are removed. Newly imported email addresses for that domain, and records for other managed domains, will be kept. If you import an updated user directory file that does not have any information for one of your domains, the entries for those domains remain the same and are not overwritten.
+
+  Every time you import a directory file, it overwrites the old version. If you import an updated directory file that has information for one of your domains, all entries for those domains are overwritten. Use caution when importing a directory.
+
+- You can only see the directories that are associated with your administrator account. If you are sharing your Cloud Email Gateway Protection service with another administrator (for example, a value-added reseller) who logs on with his/her specific account information, Cloud Email Gateway Protection will not show the directories for that account.
+
+- Every time you add more users to your network, you must import your updated user directories; otherwise, Cloud Email Gateway Protection will reject email from newly added users.
+:::
+
+:::danger[Warning]
+
+Trend Micro strongly suggests that you do not import more than 24 directories in a day. Doing so could overwhelm system resources.
+
+Temporarily disable all valid recipients before import a file. When you are confident that all entries are correct, re-enable all valid recipients. To disable or enable valid recipients, go to **Inbound Protection → Connection Filtering → Recipient Filter** and click **Disable All** or **Enable All**.
+:::
+
+### Procedure {#procedure}
+
+1.  Next to **Format**, select the format type:
+
+    - **LDIF**
+
+    - **CSV**
+
+      :::note
+
+      If you create a CSV file, divide the records into fields for `email_address` and `Firstname Lastname` and separate them using a comma and optional quotation marks. Use of spaces or other delimiters is not supported. Use one record per line.
+
+      For example:
+
+      <table>
+      <colgroup>
+      <col style="width: 100%" />
+      </colgroup>
+      <thead>
+      <tr>
+      <th><p>Valid</p></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td><pre class="codeblock"><code>bob@example.com,Bob Smith
+      sally@example.com,Sally Jones</code></pre>
+      <pre class="codeblock"><code>&quot;bob@example.com&quot;,&quot;Bob Smith&quot;
+      &quot;sally@example.com&quot;,&quot;Sally Jones&quot;</code></pre></td>
+      </tr>
+      </tbody>
+      </table>
+
+      <table>
+      <colgroup>
+      <col style="width: 100%" />
+      </colgroup>
+      <thead>
+      <tr>
+      <th><p>Not Valid</p></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td><pre class="codeblock"><code>bob@example.com,Bob Smith,sally@example.com,Sally Jones</code></pre></td>
+      </tr>
+      </tbody>
+      </table>
+
+      Microsoft Excel will save a two column chart as a CSV using valid formatting.
+      :::
+
+2.  Next to **Name**, type a descriptive name for the file.
+
+3.  Next to **File location**, type the file directory path and filename or click **Choose File** and select the `.ldf` or `.csv` file on your computer.
+
+4.  Click **Verify File** to read the file and show a summary of how many email addresses were found.
+
+    After the progress bar completes, a summary screen appears showing the following:
+
+    - **Import Summary**: A summary of the information above
+
+    - **Domains and Number of Users to Replace Current Users**: The domains that you specified when you subscribed to the Cloud Email Gateway Protection service
+
+    - **Unauthorized Domains**: Any domains that are included in your directory file, but are not officially registered with your Cloud Email Gateway Protection service
+
+      :::note
+
+      Cloud Email Gateway Protection does not provide service for these domains and their corresponding email addresses.
+      :::
+
+5.  Click **Import**.
+
+    This will import and then enable the email address list.
+:::::

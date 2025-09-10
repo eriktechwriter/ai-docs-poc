@@ -1,0 +1,97 @@
+---
+slug: trend-vision-one-security-update-policies
+title: Version Control Policies
+---
+# Version Control Policies
+
+Create and configure policies to centrally manage your agent and endpoint sensor updates.
+
+:::warning[Important]
+
+- Version control policies only support endpoints with the Trend Vision One Endpoint Security agent version 202412 or later installed. For detailed information, see [Version control policies agent requirements](version-control-requirements.mdx)
+
+- Scheduling of component updates is managed by the **Server & Workload Protection** and **Standard Endpoint Protection** Managers.
+:::
+
+Use the **Version Control Policies** screen (**Endpoint Security → Endpoint Security Configuration → Version Control Policies**) to create policies which enable you to control version updates for your agents. Version control policies allow you to configure agent program and component updates separately, including the option to pause and resume scheduled updates.
+
+Version control policies manage agent and component updates for the Trend Vision One Endpoint Security agent and enrolled Protection Manager components. For detailed information about what version control policies manage, see [Version control policies feature enrollment](version-control-enrollment.mdx).
+
+The following table lists the options available on the **Version Control Policies** screen.
+
+<table style="width:75%;">
+<colgroup>
+<col style="width: 25%" />
+<col />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Options</p></th>
+<th><p>Screen Location</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Create a new version control policy</p></td>
+<td><img src="./images/CreatePolicy=GUID-5fb04c25-d948-4567-ac2d-6ab3553baa0c.webp" /></td>
+<td><p>Click <strong>Create Version Policy</strong> to <a href="trend-vision-one-configuring-update-policies">create a new policy</a></p></td>
+</tr>
+<tr>
+<td><p>Policy list filters</p></td>
+<td><img src="./images/Filters=GUID-f9ce89a7-2cad-4d04-8d50-64554f8695d5.webp" /></td>
+<td><p>Use filters to find a specific policy or priority rule</p>
+<p>Select items from the drop-downs to find a policy based on update status or version policy.</p></td>
+</tr>
+<tr>
+<td><p>Policy actions</p></td>
+<td><img src="./images/PolicyActions=GUID-bba82fca-af78-4eca-abed-094f1a7fe2a8.webp" /></td>
+<td><p>After selecting a policy or priority from the displayed list, you can take the following actions:</p>
+<ul>
+<li><p><strong>Pause</strong>: Pause a scheduled agent update or component update. Updates do not resume automatically.</p></li>
+<li><p><strong>Resume</strong>: Resume a paused agent update or component update.</p></li>
+<li><p><strong>Delete</strong>: Delete a policy.</p></li>
+</ul>
+
+
+:::warning[Important]
+
+<p>You cannot delete a priority from the policy list. To delete a priority, click on the policy name to edit. For more information, see <a href="trend-vision-one-configuring-update-policies">Configuring version control policies</a>.</p>
+<p>You cannot delete the <strong>Default</strong> policy.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Additional actions</p></td>
+<td><img src="./images/AdditionalPolicyActions=GUID-b1c28c77-f1da-4d77-8012-954fda4bce9b.webp" /></td>
+<td><p>Access the following actions by clicking the icons:</p>
+<ul>
+<li><p><strong>Display Guides</strong> (<img src="./images/displayEIGuideIcon=20230614105556.webp" />): Reopens the exploration guide</p></li>
+<li><p><strong>Show/Hide Columns</strong> (<img src="./images/columnDisplayIcon=20230614105421.webp" />): Customizes the columns that display in the list</p></li>
+<li><p><strong>Additional Settings</strong> (<img src="./images/eiDefaultGlobalIcon=20230614094040.webp" />): Click to perform the following actions:</p>
+<ul>
+<li><p>Click <strong>Security update version details</strong> to view the latest agent versions and the component versions available in each snapshot</p></li>
+<li><p>Click <strong>Protection Manager enrollment</strong> to manage which instances of <strong>Server &amp; Workload Protection</strong> and <strong>Standard Endpoint Protection</strong> updates are managed by version control policies. For more information, see <a href="trend-vision-one-version-control-enrollment">Version control policies feature enrollment</a>.</p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Policy list</p></td>
+<td><img src="./images/PolicyList=GUID-c2057622-b421-47a6-a743-163ab9695f5c.webp" /></td>
+<td><p>View and edit policies by navigating the policy list</p>
+<p>You can expand or collapse each policy to show or hide the configured priority rules within that policy. Click a policy name to <a href="trend-vision-one-configuring-update-policies">edit the policy</a>.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Version control policies feature enrollment](version-control-enrollment.md "Enroll your Standard Endpoint Protection and Server & Workload Protection instances in version control policies to centralize management of agent and component updates.")
+- [Version control policies agent requirements](version-control-requirements.md "The agent version requirements for version control policy enrollment.")
+- [Configuring version control policies](configuring-update-policies.md "Create or edit update policies to manage agent program and component versions in your environment.")
+- [Version control policies troubleshooting and FAQ](version-control-policies-ts-faq.md "View troubleshooting steps and frequently asked questions for the Version control policy feature.")
+::::

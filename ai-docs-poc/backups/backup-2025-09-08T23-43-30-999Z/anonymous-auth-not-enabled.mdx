@@ -1,0 +1,155 @@
+---
+slug: trend-vision-one-anonymous-auth-not-enabled
+title: 3.2.1 - Ensure that anonymous authentication is not enabled (automated)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: anonymous-auth-not-enabled.md
+  conversion_date: '2025-09-08T23:42:25.190Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Profile applicability: Level 1 - Worker Node
+
+Disabling anonymous authentication to the Kubelet server enhances the security of Kubernetes worker nodes by ensuring that all requests require authentication, thus mitigating unauthorized access risks.
+
+### Impact {#impact}
+
+Anonymous requests will be rejected.
+
+### Audit {#audit}
+
+Audit method 1:
+
+:::warning[Important]
+
+Kubelets can be configured using either a configuration file or command line arguments. Command line arguments take precedence over the same parameters set in the configuration file. When auditing Kubelet configurations, ensure you check both command line arguments and configuration file entries.
+:::
+
+1.  SSH into each node and run the following command to view details of the active Kubelet process, including command line arguments:
+
+    ``` codeblock
+    ps -ef | grep kubelet
+    ```
+
+2.  Identify the location of the configuration file from the output, specified by the --config argument. View the file using:
+
+    ``` codeblock
+    sudo less /path/to/kubelet-config.json
+    ```
+
+3.  Verify that anonymous authentication is disabled:
+
+    - Check for the command line argument:
+
+      ``` codeblock
+      --anonymous-auth=false
+      ```
+
+    - In the Kubelet configuration file, ensure the following setting is present:
+
+      ``` codeblock
+              {
+              "authentication": {
+              "anonymous": {
+              "enabled": false
+              }
+              }
+              }
+             
+      ```
+
+Audit method 2:
+
+Review the running configuration of a Kubelet via the "/configz" endpoint of the Kubernetes API using kubectl:
+
+1.  Discover all nodes in your cluster:
+
+    ``` codeblock
+    kubectl get nodes
+    ```
+
+2.  Initiate a proxy with kubectl on a local port (e.g., 8080):
+
+    ``` codeblock
+    kubectl proxy --port=8080
+    ```
+
+3.  In a separate terminal, run the following command for each node:
+
+    ``` codeblock
+    export NODE_NAME=my-node-name
+          curl http://localhost:8080/api/v1/nodes/${NODE_NAME}/proxy/configz
+    ```
+
+4.  Verify that anonymous authentication is disabled by checking for the following in the API response:
+
+    ``` codeblock
+          {
+          "authentication": {
+          "anonymous": {
+          "enabled": false
+          }
+          }
+          }
+         
+    ```
+
+### Remediation {#remediation}
+
+Method 1:
+
+1.  SSH into each node.
+
+2.  If using a Kubelet configuration file, locate the file:
+
+    ``` codeblock
+    ps -ef | grep kubelet
+    ```
+
+3.  View the configuration file using:
+
+    ``` codeblock
+    sudo less /path/to/kubelet-config.json
+    ```
+
+4.  Disable anonymous authentication by setting the following parameter in the configuration file:
+
+    ``` codeblock
+          {
+          "authentication": {
+          "anonymous": {
+          "enabled": false
+          }
+          }
+          }
+         
+    ```
+
+5.  Restart the kubelet service and check its status (example for systems using systemd):
+
+    ``` codeblock
+    systemctl daemon-reload
+          systemctl restart kubelet.service
+          systemctl status kubelet -l
+    ```
+
+Method 2:
+
+1.  If using command line arguments, edit the kubelet service file to include:
+
+    ``` codeblock
+    --anonymous-auth=false
+    ```
+
+2.  For systems using systemd, edit the file located at /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf.
+
+3.  Restart the kubelet service and check its status (example for systems using systemd):
+
+    ``` codeblock
+    systemctl daemon-reload
+          systemctl restart kubelet.service
+          systemctl status kubelet -l
+    ```
+::::

@@ -1,0 +1,167 @@
+---
+slug: trend-vision-one-deploying-pac-ms-hyper-v
+title: Deploy the Private Access Connector on Microsoft Hyper-V
+---
+# Deploy the Private Access Connector on Microsoft Hyper-V
+
+Connect your Microsoft Hyper-V applications with Zero Trust Secure Access Private Access and prevent unauthorized intrusions.
+
+Private Access Connectors connect your internal applications with Zero Trust Secure Access Private Access, which allows you to control access to sensitive corporate resources. To ensure high availability (HA) and facilitate load-balancing on high traffic apps, install and group together at least 2 connectors in each environment. Before attempting to deploy the Private Access Connector, ensure that your environment meets the minimum [system requirements](pa-connector-system-reqs.mdx).
+
+### Procedure {#procedure}
+
+1.  Download the Private Access Connector virtual appliance image.
+
+    1.  In the Trend Vision One console, go to **Zero Trust Secure Access → Secure Access Configuration → Private Access Configuration**.
+
+    2.  To deploy to a new group, create a Private Access Connector group.
+
+        1.  Click **Add Private Access Connector Group**.
+
+        2.  Provide a unique name and description for the group.
+
+        3.  Click **Save and Continue**.
+
+    3.  To deploy to an existing group, find the **Connector group** in the list and click the **New connector** (![](/images/add_connector=683f3c84-a774-40c0-bd9b-4663fcd2b53f.webp)) icon.
+
+    4.  In the **Private Access Connector Virtual Appliance** panel, select **Microsoft Hyper-V** from the **Platform** list.
+
+    5.  Click **Download Disk Image** to download the ZIP file.
+
+    6.  Verify that the file name and extension are: `TrendMicroVisionOne-PrivateAccessConnector.zip`
+
+    7.  Copy the **Registration token**.
+
+2.  Create a virtual machine from the Private Access Connector image.
+
+    1.  On the device you downloaded the image to, extract the Private Access Connector image from the ZIP file.
+
+    2.  Open your Microsoft Hyper-V Manager console.
+
+    3.  In the **Actions** panel, click **Import Virtual Machine...**.
+
+        <figure>
+        <img src="./images/HyperV-001-Import=GUID-880b6161-d638-4ac4-a426-53ee15640931.webp" />
+        </figure>
+
+    4.  In the screen that appears, click **Next**.
+
+        <figure>
+        <img src="./images/HyperV-002-Next=GUID-1636e2c8-088b-439a-8ef7-3a3a832f36a8.webp" />
+        </figure>
+
+    5.  Find and select the location of the extracted image, then click **Next**.
+
+        <figure>
+        <img src="./images/HyperV-003-Locate=GUID-d3aa926e-53e2-4027-86da-9dd081106a90.webp" />
+        </figure>
+
+    6.  Select the Private Access Connector image and click **Next**.
+
+        <figure>
+        <img src="./images/HyperV-004-Select=GUID-20103c98-e5e7-4286-8e6f-6e3564d81896.webp" />
+        </figure>
+
+    7.  Select **Copy the virtual machine (create a new unique ID)** and click **Next**.
+
+        <figure>
+        <img src="./images/HyperV-005-Copy=GUID-4474ebdd-3e9f-4d3b-8ed9-d993c7e1c379.webp" />
+        </figure>
+
+    8.  If you want to choose a destination other than the default, specify the location on the **Choose Folders for Virtual Machine Files** screen.
+
+        <figure>
+        <img src="./images/HyperV-006-Destination=GUID-5862833f-6983-4a2c-9c9d-913115e46d76.webp" />
+        </figure>
+
+    9.  Click **Next**.
+
+    10. Specify the location to store the virtual hard disks and click **Next**.
+
+        <figure>
+        <img src="./images/HyperV-007-Storage=GUID-a7dabe62-2daa-41c3-8b65-ea161c7f5a5e.webp" />
+        </figure>
+
+    11. Review the information and click **Finish**.
+
+        <figure>
+        <img src="./images/HyperV-008-Finish=GUID-3eaa2b13-2e5c-4622-b8ca-a134e518cf19.webp" />
+        </figure>
+
+3.  Power on the Private Access Connector virtual machine and configure settings in the Command Line Interface (CLI).
+
+    1.  In the Microsoft Hyper-V console, find and select the Private Access Connector virtual machine.
+
+    2.  In the **Actions** panel, click **Start** to power on the virtual machine.
+
+    3.  Click **Connect...** to open the virtual machine console.
+
+        <figure>
+        <img src="./images/HyperV-009-Start=GUID-7771db97-2961-4e40-95bf-eb796c06571f.webp" />
+        </figure>
+
+    4.  Sign in to the Private Access Connector virtual appliance with the default credentials.
+
+        - **User name**: admin
+
+        - **Password**: saseztna
+
+    5.  In the Command Line Interface (CLI), type `passwd` and press ENTER to change the password.
+
+        :::note
+
+        - The new password cannot be the same as the default password.
+
+        - The admin user and privileged mode share the same password.
+        :::
+
+    6.  Switch to privileged mode with the `enable` command, and provide the updated password when prompted.
+
+        The command prompt changes from **\>** to **\#**.
+
+    7.  To check the network configuration, type the `ifconfig` command.
+
+        :::note
+
+        The default IP assignment method is DHCP. If your company does not use a DHCP server, use the [Private Access Connector CLI commands](private-access-connector-cli.mdx) to configure your network settings manually.
+
+        You can use the assigned IP address to sign into the virtual appliance via SSH.
+        :::
+
+    8.  To configure the time zone manually, type the `configure timezone <timezone>` command.
+
+        :::note
+
+        The default time zone is **America/Los_Angeles**.
+        :::
+
+    9.  Verify NTP settings.
+
+        1.  To check current NTP server settings, type the `show ntp server` command.
+
+        2.  Type the `show ntp status` command to check that the virtual appliance can connect to the NTP server.
+
+        3.  To change the NTP server, type the `configure ntp server <address>` command.
+
+        :::note
+
+        - The Private Access Connector requires a connection with an NTP server to synchronize the system clock. The default setting is the public NTP server `0.pool.ntp.org`.
+
+        - To allow access to public NTP servers, verify that your firewall is configured to allow outbound UDP traffic on port 123.
+
+        - After configuring the NTP, it may take several minutes for the virtual appliance to connect and synchronize with the NTP server. While the virtual appliance is synchronizing, checking the NTP status may return an incorrect or unsuccessful status.
+        :::
+
+    10. Register the Private Access Connector virtual appliance to Trend Vision One with the `register <registration_token>` command using the registration token you copied from the Trend Vision One console.
+
+        :::note
+
+        - If your environment uses a local NTP server, verify that the NTP server synchronizes with the local time to ensure successful registration.
+
+        - Trend Micro recommends using an SSH client to perform registration, as you can easily copy and paste the registration token.
+        :::
+
+    11. Use the [Private Access Connector CLI commands](private-access-connector-cli.mdx) to configure other settings as required.
+
+        After successful deployment, the Private Access Connector virtual appliance appears under the corresponding connector group on the Private Access Connectors tab on the Trend Vision One console.
+:::

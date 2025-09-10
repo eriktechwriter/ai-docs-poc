@@ -1,0 +1,65 @@
+{
+  "name": "ai-docs-reviewer",
+  "displayName": "AI Docs Reviewer",
+  "description": "Review and iterate on AI-generated documentation",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [
+    "onLanguage:markdown",
+    "onLanguage:mdx"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "aiDocs.reviewContent",
+        "title": "Review AI Content",
+        "category": "AI Docs"
+      },
+      {
+        "command": "aiDocs.showQualityScore",
+        "title": "Show Quality Score",
+        "category": "AI Docs"
+      },
+      {
+        "command": "aiDocs.provideFeedback",
+        "title": "Provide Feedback",
+        "category": "AI Docs"
+      },
+      {
+        "command": "aiDocs.approveContent",
+        "title": "Approve Content",
+        "category": "AI Docs"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "resourceExtname == .mdx || resourceExtname == .md",
+          "command": "aiDocs.reviewContent",
+          "group": "ai-docs"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "AI Docs Reviewer",
+      "properties": {
+        "aiDocs.autoShowQuality": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically show quality scores for AI-generated content"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "vsce": "^2.15.0"
+  }
+}

@@ -1,0 +1,226 @@
+---
+slug: trend-vision-one-remote-access-session-task
+title: Start remote access session task (Windows only)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: remote-access-session-task.md
+  conversion_date: '2025-09-08T23:42:13.880Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Directly access an endpoint during an investigation to execute commands in the command-line interface (CLI), manage the registry, files, services, or startup apps, or run a custom script.
+
+- Only users with the Master Administrator or Security Analyst role can access the remote access response.
+
+- You must upgrade the endpoint to agent version 1.2.0.6734 or later to use remote access.
+
+- The target endpoint must be online to connect.
+
+- Trend Vision One only permits 10 concurrent remote shell sessions per company and does not allow multiple to access the same endpoint concurrently.
+
+- Trend Vision One limits you to one custom script file per session.
+
+- Changes made in one window may not appear in another. Each window displays its own static view of the file system. To display the latest data, click ![](/images/resendCommand=GUID-47F93E03-99D1-49B4-95D0-C6D07F10B592=1=en-us=Low.webp).
+
+The following services support this task:
+
+- Trend Vision One
+
+  - Windows agent
+
+### Procedure {#procedure}
+
+1.  In **Workbench**, **XDR Data Explorer**, or **Observed Attack Techniques**, right-click on an endpoint and select **Start remote access session** then click **Create**.
+
+    If Trend Vision One cannot establish a session within five minutes, the connection times out. A session automatically ends after two hours and automatically times out after 10 minutes of inactivity.
+
+2.  Use the remote access navigation bar to perform the corresponding tasks:
+
+    ![](/images/remote-access-nav-bar=19435bad-22e5-473b-9389-a5caf284f2e7.webp)
+
+    - ![Terminal icon](/images/remote-access-terminal-icon=4a99843b-97cd-4089-9863-ac7c330cb798.webp)Execute remote shell commands
+
+    - ![Registry editor icon](/images/remote-access-registry-edit-icon=10c07385-e0a2-4c50-817d-ba9eb272eb97.webp)Edit the registry
+
+    - ![File explorer icon](/images/remote-access-file-explorer-icon=31ef4ff9-c829-4466-ba42-b215a0bb7743.webp)Explore files, folders, and hard disks
+
+    - ![Task manager icon](/images/remote-access-task-manager-icon=f385c50d-d689-4f45-a64c-2bd21a5a7533.webp)Manage tasks:
+
+      - ![Processes icon](/images/remote-access_task-manager_processes=71b92da3-0856-4d0d-a554-ea1274457a8e.webp)Manage processes
+
+      - ![Services icon](/images/remote-access_task-manager_services=39b28c0b-9fe9-47f8-8162-04bbe687a256.webp)Manage services
+
+      - ![Users icon](/images/remote-access_task-manager_users=85cd2ca7-f53f-4d1b-8d8b-299d8593fc61.webp)View a list of users
+
+      - ![Startup icon](/images/remote-access_task-manager_startup-apps=ddd2840f-d94f-4c5b-a55f-86eb3c3ce4e2.webp)Manage startup apps
+
+    - ![Custom scripts icon](/images/remote-access-custom-scripts-icon=80260a3e-4e42-48c6-8282-6b07050d1887.webp)Run a custom script
+
+    - ![Notifications icon](/images/remote-access-notifications-icon=bdc4b0be-d178-4ef6-8939-4ccef7d437ee.webp)Monitor the status of a task
+
+    Some windows may load slowly when displaying a large amount of data.
+
+3.  If you need to move, resize, or close the window, adjust the window.
+
+4.  When your session is complete, click **End session**. Terminating the connection may take a few minutes.
+
+## Execute remote shell commands {#execute-remote-shell-commands}
+
+For a list of commands, see [Remote Shell Commands for Windows Endpoints](remote-shell-windows-endpoints.mdx).
+
+### Procedure {#procedure-1}
+
+1.  Click ![Terminal](/images/remote-access-terminal-icon=4a99843b-97cd-4089-9863-ac7c330cb798.webp) on the navigation bar.
+
+2.  Begin typing. Auto-complete provides command suggestions.
+
+    - Press Tab to use the auto-complete-suggested command.
+
+    - Press Alt+![Up arrow key](/images/Atlassian-up-arrow=b4836fd7-f83c-48d1-b770-d7f98a401488.webp) to display the previous suggestion.
+
+    - Press Alt+![Down arrow key](/images/Atlassian-down-arrow=46ad682e-8603-4f01-a51e-1f7a0b4e1f6b.webp) to display the next suggestion.
+
+## Edit the registry {#edit-the-registry}
+
+### Procedure {#procedure-2}
+
+1.  Click ![Registry editor](/images/remote-access-registry-edit-icon=10c07385-e0a2-4c50-817d-ba9eb272eb97.webp) on the navigation bar.
+
+2.  Expand the folders to see a list of registry keys and name-values.
+
+3.  Right-click on the registry key or name-value and select one of the following actions:
+
+    - **Delete**
+
+    - **Copy**
+
+## Explore files, folders, and hard disks {#explore-files-folders-and-hard-disks}
+
+### Procedure {#procedure-3}
+
+1.  Click ![File explorer icon](/images/remote-access-file-explorer-icon=31ef4ff9-c829-4466-ba42-b215a0bb7743.webp) on the navigation bar.
+
+2.  Expand the folders to see a list of files and folders. You can also directly type in the path.
+
+    - Click to go to the previous file path.
+
+    - Click to go to the next file path.
+
+3.  Right-click on a file or folder and select one of the following actions:
+
+    - **Delete**
+
+    - **Compress**
+
+    - **Collect file**
+
+## Manage processes {#manage-processes}
+
+### Procedure {#procedure-4}
+
+1.  Click ![Task manager icon](/images/remote-access-task-manager-icon=f385c50d-d689-4f45-a64c-2bd21a5a7533.webp) on the navigation bar.
+
+2.  Click ![Processes icon](/images/remote-access_task-manager_processes=71b92da3-0856-4d0d-a554-ea1274457a8e.webp) on the Task Manager menu.
+
+3.  If you want to filter the list, type in the filter box.
+
+4.  Right-click on a process and select one of the following actions:
+
+    - **Terminate**
+
+    - **Copy image path**
+
+    - **Create dump**
+
+      - **Full**
+
+      - **Mini**
+
+    - **Collect file**
+
+## Manage services {#manage-services}
+
+### Procedure {#procedure-5}
+
+1.  Click ![Task manager icon](/images/remote-access-task-manager-icon=f385c50d-d689-4f45-a64c-2bd21a5a7533.webp) on the navigation bar.
+
+2.  Click ![Services icon](/images/remote-access_task-manager_services=39b28c0b-9fe9-47f8-8162-04bbe687a256.webp) on the Task Manager menu.
+
+3.  If you want to filter the list, type in the filter box.
+
+4.  Right-click on a service and select one of the following actions:
+
+    - **Start**
+
+    - **Stop**
+
+    - **Delete**
+
+## View a list of users {#view-a-list-of-users}
+
+### Procedure {#procedure-6}
+
+1.  Click ![Task manager icon](/images/remote-access-task-manager-icon=f385c50d-d689-4f45-a64c-2bd21a5a7533.webp) on the navigation bar.
+
+2.  Click ![Users icon](/images/remote-access_task-manager_users=85cd2ca7-f53f-4d1b-8d8b-299d8593fc61.webp) on the Task Manager menu.
+
+3.  If you want to filter the list, type in the filter box.
+
+## Manage startup apps {#manage-startup-apps}
+
+### Procedure {#procedure-7}
+
+1.  Click ![Task manager icon](/images/remote-access-task-manager-icon=f385c50d-d689-4f45-a64c-2bd21a5a7533.webp) on the navigation bar.
+
+2.  Click ![Startup apps icon](/images/remote-access_task-manager_startup-apps=ddd2840f-d94f-4c5b-a55f-86eb3c3ce4e2.webp) on the Task Manager menu.
+
+3.  Right-click on a startup app and select one of the following actions:
+
+    - **Disable**, if enabled
+
+    - **Enable**, if disabled
+
+    - **Delete**
+
+## Run a custom script {#run-a-custom-script}
+
+### Procedure {#procedure-8}
+
+1.  Click ![Custom scripts icon](/images/remote-access-custom-scripts-icon=80260a3e-4e42-48c6-8282-6b07050d1887.webp) on the navigation bar.
+
+2.  Click **Run** for the script you want to run.
+
+    Trend Vision One limits you to one custom script file per session.
+
+## Monitor the status of a task {#monitor-the-status-of-a-task}
+
+When you have a new notification, a red dot appears on the notifications icon.
+
+### Procedure {#procedure-9}
+
+1.  Click ![Notifications icon](/images/remote-access-notifications-icon=bdc4b0be-d178-4ef6-8939-4ccef7d437ee.webp) on the navigation bar.
+
+2.  Review information about a task including ID, status, action, target, and updated date.
+
+## Adjust the window {#adjust-the-window}
+
+If you close the window before ending the session, the connection to the endpoint times out after 10 minutes.
+
+### Procedure {#procedure-10}
+
+- Click and hold the title bar to move the window.
+
+- Click and hold a corner to resize the window
+
+- Click ![Minimize icon](/images/minimize-window=9643943a-9427-45fb-b9aa-a21b2f2585f3.webp) to minimize the window.
+
+- Click ![Maximize icon](/images/maximize-window=8abdc342-eca6-4a6e-b814-9f6d5b9ea502.webp) to maximize the window.
+
+- Click ![Close window icon](/images/close_window=a244008d-03a3-4fb2-84aa-65866fd7e898.webp) to close the window
+
+- Right-click the icon in the navigation bar to redisplay a minimized window.
+
+- Right-click the navigation bar and select **Close all windows** to close remote access windows. This does not end the session.
+:::

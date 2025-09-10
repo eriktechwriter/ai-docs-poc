@@ -1,0 +1,119 @@
+---
+slug: trend-vision-one-intrusion-prevention
+title: About Intrusion Prevention
+last_updated: '2025-09-08'
+ai_context:
+  source_file: intrusion-prevention.md
+  conversion_date: '2025-09-08T23:42:16.734Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::::::::: {role="main"}
+The Intrusion Prevention module protects your computers from known and zero-day vulnerability attacks as well as against SQL injections attacks, cross-site scripting attacks, and other web application vulnerabilities.
+
+When patches are not available for known vulnerabilities in applications or operating systems, Intrusion Prevention rules can intercept traffic that is trying to exploit the vulnerability. It identifies malicious software that is accessing the network and it increases visibility into, or control over, applications that are accessing the network. Therefore your computers are protected until patches that fix the vulnerability are released, tested, and deployed.
+
+Protection is available for file sharing and messaging software such as Skype, but also web applications with vulnerabilities such as SQL injection and cross-site scripting (XSS). In this way, Intrusion Prevention can also be used as a lightweight web application firewall (WAF).
+
+To enable and configure Intrusion Prevention, see [Set up Intrusion Prevention](set-up-intrusion-prevention.mdx).
+
+:::note
+
+For a list of operating systems where Intrusion Prevention is supported, see [Supported features by platform](supported-features-linux-platform.mdx).
+:::
+
+### Intrusion Prevention rules {#intrusion-prevention-rules}
+
+Intrusion Prevention rules define a set of conditions that are compared to the payload session and application layers of network packets (such as DNS, HTTP, SSL, and SMTP), as well as the sequence of those packets according to those higher-layer protocols.
+
+:::tip
+
+Firewall rules examine the network and transport layers of a packet (IP, TCP, and UDP, for example).
+:::
+
+When agents scan network traffic and the traffic meets a rule's match conditions, the agent handles it as a possible or confirmed attack and performs one of the following actions, depending on the rule:
+
+- Completely drop packets
+- Reset the connection
+
+Intrusion Prevention rules are assigned to policies and computers. Therefore you can enforce sets of rules on groups of computers based on the policy that they use, and override policies as required. (See [Policies, inheritance, and overrides](policies-inheritance-overrides.mdx).)
+
+For information about how you can affect the functionality of rules, see [Configure Intrusion Prevention rules](config-intrusion-prevention-rules.mdx).
+
+### Application types {#application-types}
+
+Application types organize rules by the application that they are associated with. Application types can also store property values that rules can reference as required, such as protocols used for communications, and port numbers. Some application types have configurable properties. For example, the Database Microsoft SQL application type contains rules that are associated with Microsoft SQL Server. You can configure this application type to specify the ports used to connect to the database.
+
+For more information, see [Application Types](application-types.mdx).
+
+### Rule updates {#rule-updates}
+
+Trend Micro creates Intrusion Prevention rules for application vulnerabilities as they are discovered. Component updates can include new or updated rules and application types. When a rule is already assigned to a policy, and an update includes rules upon which the assigned rule depends, you can choose to automatically assign the updated rules.
+
+:::tip
+
+Intrusion Prevention rules from Trend Micro include information about the vulnerability against which it protects.
+:::
+
+Intrusion Prevention rules from Trend Micro are not directly editable through the Server & Workload Protection console. However some rules are configurable, and some rules require configuration. (See [Setting configuration options (Trend Micro rules only)](config-intrusion-prevention-rules.mdx).)
+
+### Recommendation scans {#recommendation-scans}
+
+You can use [recommendation scans](recommendation-scans-intro.mdx) to discover the Intrusion Prevention rules that you should assign to your policies and computers.
+
+:::note
+
+You need a Workload license to run recommendation scans.
+:::
+
+### Use behavior modes to test rules {#use-behavior-modes-to-test-rules}
+
+Intrusion Prevention works in either Detect or Prevent mode:
+
+- *Detect*: Intrusion Prevention uses rules to detect matching traffic and generate events, but does not block traffic. Detect mode is useful to test that Intrusion Prevention rules do not interfere with legitimate traffic.
+- *Prevent*: Intrusion Prevention uses rules to detect matching traffic, generate events, and block traffic to prevent attacks.
+
+When you first apply new Intrusion Prevention rules, use Detect mode to verify that they don't accidentally block normal traffic (false positives). When you are satisfied that no false positives occur, you can use Prevent mode to enforce the rules and block attacks. (See [Enable Intrusion Prevention in Detect mode](set-up-intrusion-prevention.mdx) and [Switch to Prevent mode](set-up-intrusion-prevention.mdx).)
+
+:::tip
+
+Similar to using Intrusion Prevention in Detect mode, the Server & Workload Protection network engine can run in tap mode for testing purposes. In tap mode, Intrusion Prevention detects rule-matching traffic and generates events, but doesn't block traffic. Also, tap mode affects the Firewall and Web Reputation modules. You can use Detect mode to test Intrusion Prevention rules separately. You use tap mode with Intrusion Prevention in the same way that tap mode is used for testing Firewall rules. See [Test Firewall rules before deploying them](set-up-firewall.mdx).
+:::
+
+### Override the behavior mode for rules {#override-the-behavior-mode-for-rules}
+
+By selecting Detect mode for individual rules, you can selectively override Prevent mode behavior set at the computer or policy level. This is useful for testing new Intrusion Prevention rules that are applied to a policy or computer. For example, when a policy is configured such that Intrusion Prevention works in Prevent mode, you can bypass the Prevent mode behavior for an individual rule by setting that rule to Detect mode. For that rule only, Intrusion Prevention merely logs the traffic, and enforces other rules that do not override the policy's behavior mode. (See [Override the behavior mode for a rule](config-intrusion-prevention-rules.mdx).)
+
+:::note
+
+While Prevent mode at the computer or policy level can be overridden by contradictory rule settings, Detect mode cannot. Selecting Detect mode at the computer or policy level enforces Detect mode behavior regardless of rule settings.
+:::
+
+Some rules issued by Trend Micro use Detect mode by default. For example, mail client rules generally use Detect mode because in Prevent mode they block the downloading of all mail. Some rules trigger an alert only when a condition occurs a large number times, or a certain number of times within a certain period of time. These types of rules apply to traffic that constitutes suspicious behavior only when a condition recurs, and a single occurrence of the condition is considered normal.
+
+:::danger[Warning]
+
+To prevent blocking legitimate traffic and interrupting network services, when a rule requires configuration, keep it in Detect mode until you've configured the rule. Switch a rule to Prevent mode only after configuration and testing.
+:::
+
+### Intrusion Prevention events {#intrusion-prevention-events}
+
+By default, Server & Workload Protection collects Firewall and Intrusion Prevention event logs from the agents at every heartbeat. Once collected by Server & Workload Protection, event logs are kept for a period of time which can be configured. The default setting is one week. You can configure event logging for individual rules as required. (See [Configure event logging for rules](config-intrusion-prevention-rules.mdx).)
+
+Event tagging can help you to sort events. You can manually apply tags to events or automatically tag them. You can also use the auto-tagging feature to group and label multiple events. For more information on event tagging, see [Apply tags to identify and group events](apply-tags-identify-group-events.mdx).
+
+### Support for secure connections {#support-for-secure-connections}
+
+The Intrusion Prevention module supports inspecting packets over secure connections. See [Inspect TLS traffic](inspect-tls-traffic.mdx).
+
+### Contexts {#contexts}
+
+Contexts are a powerful way of implementing different security policies depending on the computer's network environment. You typically use contexts to create policies that apply different Firewall and Intrusion Prevention rules to computers (usually mobile laptops) depending on whether that computer is in the office or away.
+
+To determine a computer's location, contexts examine the nature of the computer's connection to its domain controller. For more information, see [Define contexts for policies](define-contexts-for-use-policies.mdx).
+
+### Interface tagging {#interface-tagging}
+
+You can use interface types when you need to assign Firewall or Intrusion Prevention rules to a specific interface when a machine has multiple network interfaces. By default, Firewall and Intrusion Prevention rules are assigned to all interfaces on a computer. For example, to apply special rules only to the wireless network interface, use interface types to accomplish this. For more information, see [Configure a policy for multiple interfaces](detect-configure-interfaces.mdx).
+::::::::::

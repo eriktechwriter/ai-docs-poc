@@ -1,0 +1,89 @@
+---
+slug: trend-vision-one-google-cloud-projects
+title: Google Cloud projects
+last_updated: '2025-09-08'
+ai_context:
+  source_file: google-cloud-projects.md
+  conversion_date: '2025-09-08T23:42:18.749Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Manage connections with your Google Cloud projects to allow Trend Vision One visibility into your cloud environment.
+
+:::note
+
+Google Cloud is used in this document to refer to services formerly known as Google Cloud Platform (GCP).
+:::
+
+The Google Cloud screen allows you to view connected Google Cloud projects and manage connections within the Cloud Accounts app. You can access the Google Cloud screen on the Trend Vision One console by navigating to **Cloud Security → Cloud Accounts → Google Cloud** and clicking on the **Google Cloud** tab.
+
+You can take the following actions from the Google Cloud screen.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Add a Google Cloud project</p></td>
+<td><p>Add and connect a Google Cloud project to Cloud Accounts</p>
+<p>Click <strong>Add Project</strong> to <a href="trend-vision-one-connecting-google-cloud-projects">connect a Google Cloud project</a>.</p></td>
+</tr>
+<tr>
+<td><p>Remove projects</p></td>
+<td><p>Remove and disconnect Google Cloud projects from Cloud Accounts</p>
+<p>Select one or more projects and click <strong>Remove</strong>.</p>
+
+
+:::note
+
+<p>Removing a project from Cloud Accounts does not delete the Trend Vision One resource from your Google Cloud project. Access the project in Google Cloud Shell, then copy and run the <strong>Delete resource command</strong> within the resource directory to delete the resource from your project.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Manage project settings</p></td>
+<td><p>Manage project settings</p>
+<p>Click on a project name to view and edit the settings or update the terraform resource. For more information, see <a href="trend-vision-one-project-settings">Project settings</a>.</p>
+
+
+:::note
+
+<p>Updates to the resource template are not applied automatically when released. You must update terraform resources to apply the latest security settings and resource template.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Fix project status issues</p></td>
+<td><p>Use the available actions to address different project statuses</p>
+<p>Clicking the action opens the project settings screen.</p>
+<ul>
+<li><p><strong>Update resource creation script</strong>: The project settings in Trend Vision One are not in sync with the deployed resource. This may occur if there was a recent update, or if the resource script was not run on your project. <a href="trend-vision-one-resource-update-gcp">Update terraform resources</a> to fix the issue.</p></li>
+<li><p><strong>Reconnect</strong>: An issue is preventing Trend Vision One from connecting or deploying to your project. Verify the project information is correct and <a href="trend-vision-one-resource-update-gcp">update terraform resources</a> to reconnect your project.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Connecting Google Cloud projects](connecting-google-cloud-projects.md "Add your Google Cloud (GCP) projects to provide visibility into your cloud environment.")
+- [Project settings](project-settings.md "Manage connected Google Cloud project settings and update deployed resources.")
+- [Google Cloud features and permissions](google-cloud-features-permissions.md "Connect your project to enable cloud security features and give Trend Vision One greater visibility and protection over your cloud assets.")
+- [Google Cloud supported regions and limitations](google-supported-regions.md "Supported regions and deployment limitations for connecting your Google Cloud projects.")
+::::

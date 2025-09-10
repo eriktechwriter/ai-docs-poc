@@ -1,0 +1,31 @@
+---
+slug: trend-vision-one-overrides-parameter
+title: About the overrides parameter
+last_updated: '2025-09-08'
+ai_context:
+  source_file: overrides-parameter.md
+  conversion_date: '2025-09-08T23:42:14.688Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Many API operations define an `overrides` parameter that controls whether the response includes only overrides that are configured on the targeted resource (overrides = true), or includes all effective properties -- both overrides and property values that the resource inherits (overrides = false).
+
+For example, the [Describe a Policy](https://automation.trendmicro.com/cloudone/workload-security/) operation of the policies endpoint returns a policy object for a specific policy on Server & Workload Protection. This endpoint defines an `overrides` parameter that determines which property values are returned for the targeted policy:
+
+- *overrides = false:* The returned policy object includes the property values that are inherited from the parent policy, as well as the property values that the policy overrides.
+- *overrides = true:* The returned policy object includes only the properties that the policy overrides.
+
+For operations that create or modify a resource, the `overrides` parameter applies to the created or modified object that the response contains. For example, you use the [Create a Policy](https://automation.trendmicro.com/cloudone/workload-security/) operation to create a policy that has the Base Policy as the parent, and turns on the Application Control module:
+
+- *overrides = false:* The response includes a policy object that has all of the property values of the Base Policy policy, as well as the Application Control status value of on.
+- *overrides = true:* The response includes a policy object that includes only the Application Control status value of on.
+
+For operations that search or list resources, the `overrides` parameter determines which resources are returned, as well as which property values are included. For example, the [List Intrusion Prevention Rule IDs](https://automation.trendmicro.com/cloudone/workload-security/) operation of the policies endpoint defines an `overrides` parameter:
+
+- *overrides = false:* The returned list includes all Intrusion Prevention rules that are assigned to the targeted policy and the parent policy. All rule properties are included.
+- *overrides = true:* The returned list includes only the rules that have properties that are overridden in the targeted policy. Furthermore, the rules only include the properties that are overridden.
+
+For an example of seeing overrides, see [Example: Get the overrides for a computer](override-policies-computer.mdx).
+:::

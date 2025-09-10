@@ -1,0 +1,87 @@
+---
+slug: trend-vision-one-upgrading-iws-ztsa
+title: >-
+  Upgrading from InterScan Web Security to Zero Trust Secure Access Internet
+  Access and AI Service Access
+---
+# Upgrading from InterScan Web Security to Zero Trust Secure Access Internet Access and AI Service Access
+
+:Set up Internet Access and migrate your settings and access rules from InterScan Web Security, including InterScan Web Security Virtual Appliance and InterScan Web Security Suite.
+
+Upgrade from InterScan Web Security, including InterScan Web Security Virtual Appliance and InterScan Web Security Suite, to Zero Trust Secure Access Internet Access to fully integrate your secure web gateway solution with Trend Vision One. Internet Access helps you better enforce access controls and more effectively reduce risk.
+
+The upgrade process migrates your applicable policies, cloud gateways, and other settings from InterScan Web Security to Internet Access. Migrated rules have a higher priority than any existing rules in Internet Access.
+
+:::note
+
+- The migration is supported for InterScan Web Security products including InterScan Web Security Virtual Appliance and InterScan Web Security Suite.
+
+- The migration does not modify your current InterScan Web Security deployment.
+
+- Not all InterScan Web Security settings are directly migratable to Internet Access. For more information, see [InterScan Web Security Features and Settings Migration](iws-features-migration.mdx).
+:::
+
+:::warning[Important]
+
+The following instructions only apply to customers with an active InterScan Web Security license. For the regular Internet Access setup process, see [Setting up Zero Trust Secure Access Internet Access and AI Service Access](setup-ztsa-internet-access.mdx)
+:::
+
+### Procedure {#procedure}
+
+1.  Export your current InterScan Web Security settings.
+
+    1.  On the InterScan Web Security console, go to **Administration → Config Backup/Restore**.
+
+    2.  In the **Backup Configuration File Now** section, click **Export**.
+
+        The console exports your system settings as a TAR-format archive.
+
+2.  [Integrate your IAM (Identity and Access Management) system with Zero Trust Secure Access](iamanagement-integration.mdx)
+
+3.  Configure a secure internet gateway.
+
+    - If you want to use a cloud gateway with Internet Access, [add your corporate locations to the Internet Access Cloud Gateway](corporate-locations-gateway-add.mdx).
+    - If you want to use an on-premises gateway with Internet Access, [deploy an Internet Access On-Premises Gateway](deploying-ia-onpremise-gateway.mdx).
+
+4.  Migrate your settings from InterScan Web Security to Internet Access.
+
+    1.  On the Trend Vision One console, go to **Zero Trust Secure Access → Secure Access Configuration → Internet Access and AI Service Access Configuration**.
+
+    2.  Verify that the **Internet Access Control** toggle is off.
+
+    3.  Click **Upgrade Web Gateway**.
+
+        The **Migrate Settings from Existing Products** panel opens.
+
+    4.  Click **Migrate Settings**.
+
+    5.  Select **InterScan Web Security**.
+
+    6.  Click **Select File** and select the TAR-format archive containing your InterScan Web Security settings.
+
+        :::note
+
+        Uploading your settings to Trend Vision One might some time, depending on the size of the archive.
+        :::
+
+    7.  Read the Trend Micro Agreement, Global Privacy Notice, and Data Collection Notice.
+
+    8.  Acknowledge that you have read the applicable legal notices by selecting the check box.
+
+    9.  Click **Migrate** to start the settings migration process..
+
+    The settings migration process begins. The process might take several minutes, depending on the amount of settings that need to be migrated.
+
+5.  [Verify that your Internet Access settings are correct](post-migration-checklist.mdx).
+
+6.  On the **Internet Access and AI Service Access Configuration** screen, enable the **Internet Access Control** toggle.
+
+    Internet Access begins analyzing web activity in your organization and enforces secure access rules on your users.
+
+**Related information**
+
+- [InterScan Web Security Features and Settings Migration](iws-features-migration.md "Gain a better understanding of which features and settings migrate when you upgrade from InterScan Web Security products, including InterScan Web Security Virtual Appliance and InterScan Web Security Suite, to Zero Trust Secure Access Internet Access.")
+- [Identity and Access Management Integration](iamanagement-integration.md "Integrate a supported IAM system with Zero Trust Secure Access and grant the required permissions.")
+- [Corporate Network Locations](corporate-network-intro.md "Define your corporate networks on the Internet Access Cloud Gateway or through Internet Access On-Premises Gateways to identify your internal users and apply more granular Secure Access Rules.")
+- [Post-Migration Checklist](post-migration-checklist.md "Verify that your InterScan Web Security Virtual Appliance settings correctly migrated to Trend Vision One and direct end user internet traffic to the Internet Access Gateway.")
+:::::

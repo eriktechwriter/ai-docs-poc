@@ -1,0 +1,67 @@
+---
+slug: trend-vision-one-linux-kernel-compatibility
+title: Linux kernel compatibility
+last_updated: '2025-09-08'
+ai_context:
+  source_file: linux-kernel-compatibility.md
+  conversion_date: '2025-09-08T23:42:16.495Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Deep Security supports the following Linux kernel scopes:
+
+- General kernel, which includes general-purpose Linux kernels available to all customers. These kernels are provided by supported operating system partners listed in [Deep Security Agent platform compatibility](https://help.deepsecurity.trendmicro.com/20_0/on-premise/agent-compatibility.mdx). A kernel is not considered within the general scope if it is related to experimental (for example, CentOS Stream), appliances (for example, Exadata), community (for example, ELRepo), customized, and so on.
+- Specific extended support kernel, which includes the following:
+  - Red Hat Enterprise Linux (RHEL). For information, see [Extended Update Support (EUS)](https://access.redhat.com/solutions/22763).
+  - SuSE Enterprise Server (SLES). For information, see [Long-Term Service Pack Support (LTSS)](https://www.suse.com/products/long-term-service-pack-support/).li
+
+If a kernel is not within the preceding support scope, Deep Security cannot provide a kernel support package.
+
+Supported Linux kernels vary by the agent version:
+
+- [Deep Security Agent 20.0 Linux kernel support](http://files.trendmicro.com/documentation/guides/deep_security/Kernel%20Support/20.0/Deep_Security_20_0_kernels_EN.mdx)
+- [Deep Security Agent Feature Releases (12.5) Linux kernel support](http://files.trendmicro.com/documentation/guides/deep_security/Kernel%20Support/12.5/Deep_Security_12_5_kernels_EN.mdx)
+- [Deep Security Agent 12.0 Linux kernel support](http://files.trendmicro.com/documentation/guides/deep_security/Kernel%20Support/12.0/Deep_Security_12_0_kernels_EN.mdx)
+- [Deep Security Agent 11.3 Linux kernel support](http://files.trendmicro.com/documentation/guides/deep_security/Kernel%20Support/11.3/Deep_Security_11_3_kernels_EN.mdx)
+- [Deep Security Agent 11.2 Linux kernel support](http://files.trendmicro.com/documentation/guides/deep_security/Kernel%20Support/11.2/Deep_Security_11_2_kernels_EN.mdx)
+- [Deep Security Agent 11.1 Linux kernel support](http://files.trendmicro.com/documentation/guides/deep_security/Kernel%20Support/11.1/Deep_Security_11_1_kernels_EN.mdx)
+- [Deep Security Agent 11.0 Linux kernel support](http://files.trendmicro.com/documentation/guides/deep_security/Kernel%20Support/11.0/Deep_Security_11_kernels_EN.mdx)
+- [Deep Security Agent 10.3 Linux kernel support](http://files.trendmicro.com/documentation/guides/deep_security/Kernel%20Support/10.3/Deep_Security_10_3_kernels_EN.mdx)
+- [Deep Security Agent 10.2 Linux kernel support](http://files.trendmicro.com/documentation/guides/deep_security/Kernel%20Support/10.2/Deep_Security_10_2_kernels_EN.mdx)
+- [Deep Security Agent 10.1 Linux kernel support](http://files.trendmicro.com/documentation/guides/deep_security/Kernel%20Support/10.1/Deep_Security_10_1_kernels_EN.mdx)
+- [Deep Security Agent 10.0 Linux kernel support](http://files.trendmicro.com/documentation/guides/deep_security/Kernel%20Support/10.0/Deep_Security_10_kernels_EN.mdx)
+- [Deep Security Agent 9.6 SP1 Linux kernel support](http://files.trendmicro.com/documentation/guides/deep_security/Kernel%20Support/9.6/Deep_Security_96_SP1_kernels_EN.mdx)
+- [Deep Security Agent 9.5 SP1 Linux kernel support](http://files.trendmicro.com/documentation/guides/deep_security/Kernel%20Support/9.5/Deep_Security_95_SP1_kernels_EN.mdx)
+
+You can also use a [JSON version](http://files.trendmicro.com/products/deepsecurity/en/kernel_support_list.json) of the complete list of the supported Linux kernels each agent version with scripts and automated workflows.
+
+## Disable optional Linux kernel support package updates {#disable-optional-linux-kernel-support-package-updates}
+
+In previous agent versions, the kernel driver update process always downloaded the latest kernel support package from the relay when an agent was restarted or the computer rebooted. However, unless you have upgraded the kernel, the agent often does not need to update its kernel support package. Therefore for agent 20.0.0-3067+, you can disable optional kernel support package updates to improve performance.
+
+## Disable kernel support package updates on one computer {#disable-kernel-support-package-updates-on-one-computer}
+
+### Procedure {#procedure}
+
+1.  In the Server & Workload Protection console, go to *Computers*.
+
+2.  Double-click the computer where you want to disable kernel support package updates (or select the computer and then *Details*).
+
+3.  Select *Settings*. From *Automatically update kernel package when agent restarts*, select *No*.
+
+4.  Save your changes.
+
+## Disable kernel support package updates on multiple computers {#disable-kernel-support-package-updates-on-multiple-computers}
+
+### Procedure {#procedure-1}
+
+1.  In the Server & Workload Protection console, go to *Policies*.
+
+2.  Double-click the policy that protects multiple computers where you want to disable kernel support package updates (or select the policy and then *Details*).
+
+3.  Select *Settings*. From *Automatically update kernel package when agent restarts*, select *No*.
+
+4.  Save your changes.
+:::

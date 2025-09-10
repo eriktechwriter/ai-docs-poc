@@ -1,0 +1,29 @@
+---
+slug: trend-vision-one-domainkeys-identified-mail-dkim
+title: Domainkeys identified mail (DKIM)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: domainkeys-identified-mail-dkim.md
+  conversion_date: '2025-09-08T23:42:20.358Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+DomainKeys Identified Mail (DKIM) is an email validation system that detects email spoofing by validating a domain name identity associated with a message through cryptographic authentication. In addition, DKIM is used to ensure the integrity of incoming messages or ensure that a message has not been tampered with in transit.
+
+To ensure the validity and integrity of email messages, DKIM uses a public and private key pair system. A public and private key pair is created for the sending domain. The private key is stored securely on the mail server and used to sign outgoing messages. The public key is stored and published in DNS as a TXT record of the domain. When an email message is sent, the mail server uses the private key to digitally sign it, which is a part of the message header. When the email message is received, the DKIM signature can be verified against the public key on the domain's DNS.
+
+Cloud Email Gateway Protection implements DKIM authentication only in the following scenarios:
+
+- Verifies DKIM signatures in incoming messages only when the domain specified in the "d=" tag of the DKIM signature header field belongs to the same organizational domain as the domain part of the "From" field in the message header.
+
+- Adds DKIM signatures to outgoing message headers to prevent spoofing only when the domain part of the "From" field in the message header belongs to the same organizational domain as the MAIL FROM address (envelope sender).
+
+**Related information**
+
+- [Adding DKIM verification settings](adding-dkim-verification-settings.mdx)
+- [Editing DKIM verification settings](editing-dkim-verification-settings.mdx)
+- [Adding DKIM signing settings](adding-dkim-signing-settings.mdx)
+- [Editing DKIM signing settings](editing-dkim-signing-settings.mdx)
+:::

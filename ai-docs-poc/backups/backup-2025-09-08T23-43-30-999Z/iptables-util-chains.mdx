@@ -1,0 +1,104 @@
+---
+slug: trend-vision-one-iptables-util-chains
+title: >-
+  3.2.6 - Ensure that the –make-iptables-util-chains argument is set to true
+  (automated)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: iptables-util-chains.md
+  conversion_date: '2025-09-08T23:42:16.676Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Profile applicability: Level 1 - Worker Node
+
+Allow Kubelet to manage iptables.
+
+Kubelets can automatically manage the required changes to iptables based on how you choose your networking options for the pods. It is recommended to let kubelets manage the changes to iptables. This ensures that the iptables configuration remains in sync with pods networking configuration. Manually configuring iptables with dynamic pod network configuration changes might hamper the communication between pods/containers and to the outside world. You might have iptables rules too restrictive or too open.
+
+### Impact {#impact}
+
+Kubelet would manage the iptables on the system and keep it in sync. If you are using any other iptables management solution, then there might be some conflicts.
+
+### Audit {#audit}
+
+Audit method 1:
+
+:::note
+
+First, SSH to each node: Run the following command on each node to find the Kubelet process:
+
+``` codeblock
+ps -ef | grep kubelet
+```
+
+If the output of the above command includes the argument `--make-iptables-util-chains` then verify it is set to true. If the `--make-iptables-util-chains` argument does not exist, and there is a Kubelet config file specified by `--config`, verify that the file does not set `makeIPTablesUtilChains` to false.
+:::
+
+Audit method 2:
+
+If using the API configz endpoint consider searching for the status of `authentication... "makeIPTablesUtilChains": true` by extracting the live configuration from the nodes running Kubelet. Set the local proxy port and the following variables and provide proxy port number and node name:
+
+``` codeblock
+    HOSTNAME_PORT="localhost-and-port-number"
+    NODE_NAME="The-Name-Of-Node-To-Extract-Configuration" from the output of "kubectl get nodes"
+   
+```
+
+``` codeblock
+    kubectl proxy --port=8001 &
+    export HOSTNAME_PORT=localhost:8001 (example host and port number)
+    export NODE_NAME=ip-192.168.31.226.ec2.internal (example node name from "kubectl get nodes")
+    curl --SSL "http://${HOSTNAME_PORT}/api/v1/nodes/${NODE_NAME}/proxy/configz"
+   
+```
+
+### Remediation {#remediation}
+
+Remediation Method 1:
+
+1.  If modifying the Kubelet config file, edit the `/etc/kubernetes/kubelet/kubelet-config.json` file and set the below parameter to true
+
+    ``` codeblock
+          "makeIPTablesUtilChains": true
+         
+    ```
+
+2.  Ensure that `/etc/systemd/system/kubelet.service.d/10-kubelet-args.conf` does not set the `--make-iptables-util-chains` argument because that would override your Kubelet config file.
+
+Remediation Method 2:
+
+1.  If using executable arguments, edit the kubelet service file `/etc/systemd/system/kubelet.service.d/10-kubelet-args.conf` on each worker node and add the below parameter at the end of the KUBELET_ARGS variable string.
+
+    ``` codeblock
+          --make-iptables-util-chains=true
+         
+    ```
+
+Remediation Method 3:
+
+1.  If using the API configz endpoint consider searching for the status of `"makeIPTablesUtilChains": true` by extracting the live configuration from the nodes running kubelet.
+
+    ``` codeblock
+          kubectl proxy --port=8001 &
+          export HOSTNAME_PORT=localhost:8001 (example host and port number)
+          export NODE_NAME=ip-192.168.31.226.ec2.internal (example node name from "kubectl get nodes")
+          curl --SSL "http://${HOSTNAME_PORT}/api/v1/nodes/${NODE_NAME}/proxy/configz"
+         
+    ```
+
+For all three remediations: Based on your system, restart the kubelet service and check status using:
+
+``` codeblock
+    systemctl daemon-reload
+    systemctl restart kubelet.service
+    systemctl status kubelet -l
+   
+```
+
+### Default Value {#default-value}
+
+See the Amazon EKS documentation for the default value.
+::::

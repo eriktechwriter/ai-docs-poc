@@ -1,0 +1,168 @@
+---
+slug: trend-vision-one-connectors-transport-inline
+title: 'Connectors, transport rules, groups, and allow lists for inline protection'
+last_updated: '2025-09-08'
+ai_context:
+  source_file: connectors-transport-inline.md
+  conversion_date: '2025-09-08T23:42:21.880Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+The following table lists the connectors, transport rules, and Microsoft 365 groups created in your Exchange Online service to implement mail flow for Inline Protection of Exchange Online:
+
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 28%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Protection</p></th>
+<th><p>Category</p></th>
+<th><p>Item</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="7"><p>Inbound protection</p></td>
+<td rowspan="4"><p>Transport rule</p></td>
+<td><p>TMCAS Inline Incoming Domain Transport Rule</p></td>
+<td><p>Routes inbound email messages intended for users in specified domains to Cloud Email and Collaboration Protection for security scanning.</p></td>
+</tr>
+<tr>
+<td><p>TMCAS Inline Incoming User Transport Rule</p></td>
+<td><p>Routes inbound email messages intended for specified users to Cloud Email and Collaboration Protection for security scanning.</p>
+<p>All the specified users are added to the Microsoft 365 group <strong>TMCAS Inline Incoming O365 Virtual Group</strong>.</p></td>
+</tr>
+<tr>
+<td><p>TMCAS Inline Incoming Skip Spam Filter Transport Rule</p></td>
+<td><p>Skips the spam filter of Exchange Online. This prevents the Exchange Online mail server from mistakenly filter the inbound email messages returned by Cloud Email and Collaboration Protection as spam.</p>
+
+
+:::note
+
+<p>This transport rule prevents a double anti-spam check but may generate security alerts for the emails.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>TMCAS Inline Incoming Move to Junk Folder Transport Rule</p></td>
+<td><p>Moves an inbound email message to Junk Folder when the message is applied the "Move to Junk Folder" action by Cloud Email and Collaboration Protection.</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p>Connector</p></td>
+<td><p>TMCAS Inline Outbound Connector for Incoming Message</p></td>
+<td><p>Routes inbound email messages to Cloud Email and Collaboration Protection.</p></td>
+</tr>
+<tr>
+<td><p>TMCAS Inline Inbound Connector for Incoming Message</p></td>
+<td><p>Receives inbound email messages from Cloud Email and Collaboration Protection.</p></td>
+</tr>
+<tr>
+<td><p>Microsoft 365 group</p></td>
+<td><p>TMCAS Inline Incoming O365 Virtual Group</p></td>
+<td><p>User group created to implement the transport rule for user-based inbound protection.</p></td>
+</tr>
+<tr>
+<td rowspan="5"><p>Outbound protection</p></td>
+<td rowspan="2"><p>Transport rule</p></td>
+<td><p>TMCAS Inline Outgoing Domain Transport Rule</p></td>
+<td><p>Routes outbound email messages sent from users in specified domains to Cloud Email and Collaboration Protection for security scanning.</p></td>
+</tr>
+<tr>
+<td><p>TMCAS Inline Outgoing User Transport Rule</p></td>
+<td><p>Routes outbound email messages sent from specified users to Cloud Email and Collaboration Protection for security scanning.</p>
+<p>All the specified users are added to the Microsoft 365 group <strong>TMCAS Inline Outgoing O365 Virtual Group</strong>.</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p>Connector</p></td>
+<td><p>TMCAS Inline Outbound Connector for Outgoing Message</p></td>
+<td><p>Routes outbound email messages to Cloud Email and Collaboration Protection.</p></td>
+</tr>
+<tr>
+<td><p>TMCAS Inline Inbound Connector for Outgoing Message</p></td>
+<td><p>Receives outbound email messages from Cloud Email and Collaboration Protection.</p></td>
+</tr>
+<tr>
+<td><p>Microsoft 365 group</p></td>
+<td><p>TMCAS Inline Outgoing O365 Virtual Group</p></td>
+<td><p>User group created to implement the transport rule for user-based outbound protection.</p></td>
+</tr>
+</tbody>
+</table>
+
+The IP address range in the transport rules is the address of the Cloud Email and Collaboration Protection server at your serving site. For details, see the following table "Changes to Allow Lists".
+
+:::note
+
+To ensure that Inline Protection works properly and your email delivery functions as expected, do not modify the transport rules, connectors, and Microsoft 365 groups.
+:::
+
+The following table lists the changes made by Cloud Email and Collaboration Protection to the allow lists in your Exchange Online service in order for emails to get delivered as expected after they are scanned by Inline Protection.
+
+**Changes to Allow Lists**
+
+<table>
+<thead>
+<tr>
+<th><p>Allow List</p></th>
+<th><p>Change by Cloud Email and Collaboration Protection</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Allow entries for spoofed senders in the Tenant Allow/Block List</p>
+<p>For more information, see <a href="https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/tenant-allow-block-list-email-spoof-configure?view=o365-worldwide">Microsoft documentation</a>.</p></td>
+<td><p>Adds a domain pair based on your serving site:</p>
+<ul>
+<li><p>US site: *, inpost.tmcas.trendmicro.com</p></li>
+<li><p>EU site: *, inpost-eu.tmcas.trendmicro.com</p></li>
+<li><p>Japan site: *, inpost.tmcas.trendmicro.co.jp</p></li>
+<li><p>Australia and New Zealand site: *, inpost-au.tmcas.trendmicro.com</p></li>
+<li><p>Canada site: *, inpost-ca.tmcas.trendmicro.com</p></li>
+<li><p>Singapore site: *, inpost.tmcas.trendmicro.com.sg</p></li>
+<li><p>UK site: *, inpost.tmcas.trendmicro.co.uk</p></li>
+<li><p>India site: *, inpost-in.tmcas.trendmicro.com</p></li>
+<li><p>Middle East (UAE) site: *, inpost-mea.tmcas.trendmicro.com</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>IP Allow List in connection filtering</p>
+<p>For more information, see <a href="https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/connection-filter-policies-configure?view=o365-worldwide">Microsoft documentation</a>.</p></td>
+<td><p>Adds the IP addresses of Cloud Email and Collaboration Protection MTAs for Inline Protection based on your serving site.</p>
+<p>The IP addresses of Cloud Email and Collaboration Protection for inbound protection are as follows:</p>
+<ul>
+<li><p>US site: 20.245.215.64/28, 104.42.189.70, 104.210.58.247, 20.72.147.113, 20.72.140.32</p></li>
+<li><p>EU site: 20.4.48.48/28, 20.107.69.176, 20.126.6.52, 20.54.65.186, 20.54.68.116</p></li>
+<li><p>Japan site: 13.78.70.144/28, 20.222.63.30, 20.222.57.14, 104.46.234.4, 138.91.24.196</p></li>
+<li><p>Australia and New Zealand site: 20.70.30.192/28, 20.213.240.47, 20.227.136.26, 20.39.98.128, 20.39.97.72</p></li>
+<li><p>Canada site: 52.228.5.240/28, 52.228.125.192, 52.139.13.199, 52.229.100.53, 20.104.170.121</p></li>
+<li><p>Singapore site: 52.163.102.112/28, 20.43.148.81, 20.195.17.218</p></li>
+<li><p>UK site: 20.254.97.192/28, 20.68.25.194, 20.68.210.42, 52.142.171.1, 52.142.170.52</p></li>
+<li><p>India site: 20.204.179.112/28, 20.204.44.59, 20.204.113.71, 20.219.110.223, 13.71.71.12</p></li>
+<li><p>Middle East (UAE) site: 20.233.170.224/28, 20.216.24.7, 20.216.9.36, 20.21.106.199, 20.21.252.69</p></li>
+</ul>
+<p>The IP addresses of Cloud Email and Collaboration Protection for outbound protection are as follows:</p>
+<ul>
+<li><p>US site: 20.66.85.0/28, 104.210.59.109, 104.42.190.154, 20.72.147.115, 20.72.140.41</p></li>
+<li><p>EU site: 20.160.56.80/28, 20.126.64.109, 20.126.70.251, 20.54.65.179, 20.54.68.120</p></li>
+<li><p>Japan site: 20.78.49.240/28, 20.222.60.8, 52.140.200.104, 104.46.227.238, 104.46.237.93</p></li>
+<li><p>Australia and New Zealand site: 20.227.209.48/28, 20.227.165.104, 20.213.244.63, 20.39.98.131, 20.39.97.73</p></li>
+<li><p>Canada site: 20.220.229.208/28, 52.228.125.196, 52.139.13.202, 20.104.170.106, 20.104.172.35</p></li>
+<li><p>Singapore site: 52.163.216.240/28, 20.43.148.85, 20.195.17.222</p></li>
+<li><p>UK site: 20.0.233.224/28, 20.68.214.138, 20.68.212.120, 52.142.171.6, 52.142.170.53</p></li>
+<li><p>India site: 20.235.86.144/28, 4.213.51.121, 4.213.51.126, 104.211.202.104, 52.172.7.14</p></li>
+<li><p>Middle East (UAE) site: 20.233.170.240/28, 20.74.137.84, 20.74.179.106, 20.21.106.164, 20.21.108.130</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+::::

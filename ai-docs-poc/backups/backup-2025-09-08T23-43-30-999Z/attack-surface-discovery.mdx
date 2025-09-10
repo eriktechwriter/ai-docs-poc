@@ -1,0 +1,212 @@
+---
+slug: trend-vision-one-attack-surface-discovery
+title: Attack Surface Discovery
+last_updated: '2025-09-08'
+ai_context:
+  source_file: attack-surface-discovery.md
+  conversion_date: '2025-09-08T23:42:24.703Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Discover your organizational assets that might be exposed to attack, including devices, internet-facing assets, accounts, applications, and cloud assets.
+
+**Attack Surface Discovery** allows you to locate corporate assets that threat actors might be able to use to attack your organization. Each section of the **Attack Surface Discovery** app provides insights into an asset type within your organization.
+
+:::warning[Important]
+
+You must allocate credits to Cyber Risk Exposure Management to fully access **Attack Surface Discovery**. Customers with XDR sensor entitlements that have not allocated credits to Cyber Risk Exposure Management have limited access to the [asset profile screens](asset-profile-screens.mdx) related to their XDR sensors. For more information, see [Credit requirements for Trend Vision One solutions, capabilities, and features](credit-req-for-apps-services.mdx).
+:::
+
+:::note
+
+The data available for a user to view and drill down depends on the asset visibility scope of the current user. For more information about the asset visibility scope, see [Asset Visibility Management](asset-visibility-management.mdx).
+:::
+
+The following table describes the sections of **Attack Surface Discovery**.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Section</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Devices</p></td>
+<td><p>Displays all devices visible within your organization</p>
+<ul>
+<li><p>Search for devices by name.</p></li>
+<li><p>Click <strong>Filter</strong> to add a filter.</p></li>
+<li><p>Click <strong>Export</strong> to generate a report for the devices currently displayed on the device list.</p></li>
+<li><p>Click <strong>Exception List</strong> to see and remove devices on the exception list.</p></li>
+<li><p>Click the customize columns icon (<img src="./images/columnDisplayIcon=20230614105421.webp" />) to customize the table columns and the order in which they are displayed.</p>
+
+
+:::note
+
+<p>Data for mobile devices that are discovered by Trend Vision One - Mobile Security is only available for users with the <strong>Mobile devices</strong> asset visibility scope.</p>
+
+
+:::
+
+</li>
+<li><p>Click any device name to view details on the <a href="trend-vision-one-device-profile">device profile screen</a>.</p></li>
+<li><p>Select devices and click <strong>Add to Exception List</strong> to add the devices to the exception list.</p></li>
+<li><p>Select devices and click <strong>Manage Tags</strong> to assign or remove custom tags from the devices. For more information, see <a href="trend-vision-one-custom-asset-tags">custom asset tags</a>.</p></li>
+<li><p>To manually modify the criticality of a highly critical asset, hover over the critical icon (<img src="./images/highly_critical_icon=GUID-79631f5e-f9ec-4366-a8d6-e82e1ddfe206.webp" />) and click <strong>Modify Criticality</strong>.</p></li>
+<li><p>Quickly identify devices with high-severity vulnerabilities that are directly exposed to the internet, which are highlighted with the direct internet exposure icon (<img src="./images/direct_internet_exposure=GUID-f652f5d3-00a9-4b3b-aab0-1dd3da68b18c.webp" />).</p></li>
+</ul>
+
+
+:::note
+
+<ul>
+<li><p>The <strong>Devices</strong> section only shows data for devices within the asset visibility scope of the current user, and drilling down from the <strong>Last user</strong> column is only available for users with the <strong>Accounts</strong> asset visibility scope.</p></li>
+<li><p><strong>Attack Surface Discovery</strong> cannot assess all discovered devices. Devices visible through third-party data sources might not provide enough data for thorough analysis.</p></li>
+</ul>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-internet-facing-assets">Internet-Facing Assets</a></p></td>
+<td><p>Displays all discovered IP and domain assets that are visible from external internet locations and allows you to view detailed IP profile risk assessments</p>
+<ul>
+<li><p>Search for internet-facing assets by name.</p></li>
+<li><p>Click <strong>Filter</strong> to add a search filter.</p></li>
+<li><p>Add your organization's domains by clicking <strong>+ Add</strong> and adding your domain. Trend Micro uses the provided domain to perform external asset searches for related exposed host names.</p></li>
+<li><p>Click <strong>Export</strong> to generate a report for the internet-facing assets currently displayed on the list.</p></li>
+<li><p>Click the customize columns icon (<img src="./images/columnDisplayIcon=20230614105421.webp" />) to customize the table columns and the order in which they are displayed.</p></li>
+<li><p>Select assets and click <strong>Manage Tags</strong> to assign or remove custom tags from the devices. For more information, see <a href="trend-vision-one-custom-asset-tags">custom asset tags</a>.</p></li>
+<li><p>Click any root domain or public IP to view details on the internet-facing asset profile screen.</p></li>
+<li><p>To manually modify the criticality of a highly critical asset, hover over the highly critical icon (<img src="./images/highly_critical_icon=GUID-79631f5e-f9ec-4366-a8d6-e82e1ddfe206.webp" />) and click <strong>Modify Criticality</strong>.</p></li>
+</ul>
+
+
+:::note
+
+<ul>
+<li><p>For customers that have updated to the <a href="trend-vision-one-update-foundation-services-release">Foundation Services release</a>, the <strong>Internet-Facing Assets</strong> section is only available for users with the <strong>Internet-Facing Assets</strong> asset visibility scope.</p></li>
+<li><p>Processing new corporate domain information takes a maximum of 10 days to complete.</p></li>
+</ul>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Accounts</p></td>
+<td><p>Displays all visible domain and service accounts, identifies highly-privileged accounts, and allows you to view detailed risk profiles</p>
+<ul>
+<li><p>Search for accounts by name.</p></li>
+<li><p>Click <strong>Filter</strong> to add a filter.</p></li>
+<li><p>Click <strong>Export</strong> to generate a report for the accounts currently displayed on the list.</p></li>
+<li><p>Click the customize columns icon (<img src="./images/columnDisplayIcon=20230614105421.webp" />) to customize the table columns and the order in which they are displayed.</p></li>
+<li><p>Click any user name to view details on the <a href="trend-vision-one-account-profile">account profile screen</a>.</p></li>
+<li><p>To manually modify the criticality of a highly critical asset, hover over the highly critical icon (<img src="./images/highly_critical_icon=GUID-79631f5e-f9ec-4366-a8d6-e82e1ddfe206.webp" />) and click <strong>Modify Criticality</strong>.</p></li>
+<li><p>Select accounts and click <strong>Manage Tags</strong> to assign or remove custom tags from the devices. For more information, see <a href="trend-vision-one-custom-asset-tags">custom asset tags</a>.</p></li>
+<li><p>To create a <strong>Security Awareness</strong> training campaign for a specific user, click the associated actions icon (<img src="./images/options=ddb0b67f-0654-4aa5-8bc7-48ec554c5448.webp" />) and then click <strong>Create Training Campaign</strong>.</p></li>
+<li><p>To perform a Zero Trust Secure Access action on the account, click the associated actions icon (<img src="./images/options=ddb0b67f-0654-4aa5-8bc7-48ec554c5448.webp" />) and choose the desired action.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-applications">Applications</a></p></td>
+<td><p>Displays all apps accessed by your organization's users and devices</p>
+<ul>
+<li><p>Search for apps by name.</p></li>
+<li><p>Click <strong>Filter</strong> to add a filter.</p></li>
+<li><p>Click <strong>Export</strong> to generate a report for the apps currently displayed on the list.</p></li>
+<li><p>Click the customize columns icon (<img src="./images/columnDisplayIcon=20230614105421.webp" />) to customize the table columns and the order in which they are displayed.</p></li>
+<li><p>Click any app name to view additional details on the app profile screen.</p></li>
+<li><p>Change the sanctioned status of cloud apps.</p></li>
+<li><p>Assign secure access rules to control users' access to cloud apps.</p></li>
+</ul>
+
+
+:::note
+
+<p>For customers that have updated to the <a href="trend-vision-one-update-foundation-services-release">Foundation Services release</a>, the <strong>Applications</strong> section is only available for users with the <strong>Applications</strong> asset visibility scope.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-cloud-assets">Cloud Assets</a></p></td>
+<td><p>Displays detected cloud workloads within your organization, enabling you to rapidly identify compliance and security best practice violations on your public cloud infrastructure and across your cloud service platforms</p>
+<ul>
+<li><p>Search for cloud assets by name.</p></li>
+<li><p>Click <strong>Filter</strong> to add a filter.</p></li>
+<li><p>Depending on your region, you can click <strong>Graph View</strong> for a graphical representation of your organization's cloud assets.</p></li>
+<li><p>Click <strong>Export</strong> to generate a report for the cloud assets currently displayed on the list.</p></li>
+<li><p>Click the customize columns icon (<img src="./images/columnDisplayIcon=20230614105421.webp" />) to customize the table columns and the order in which they are displayed.</p></li>
+<li><p>Select assets and click <strong>Manage Tags</strong> to assign or remove custom tags from the devices. For more information, see <a href="trend-vision-one-custom-asset-tags">custom asset tags</a>.</p></li>
+<li><p>Click any category to display only assets of the selected category in the cloud asset list.</p></li>
+<li><p>Click any cloud asset name to view additional details on the cloud asset profile screen.</p></li>
+</ul>
+
+
+:::note
+
+<p>For customers that have updated to the <a href="trend-vision-one-update-foundation-services-release">Foundation Services release</a>:</p>
+<ul>
+<li><p>The <strong>Cloud Assets</strong> section only shows individual data for assets within the asset visibility scope of the current user.</p></li>
+<li><p>Users that have containers but no cloud accounts within asset visibility scope cannot view <strong>Graph View</strong>.</p></li>
+<li><p>Users with no containers or cloud accounts within asset visibility scope cannot view the <strong>Cloud Assets</strong> section.</p></li>
+</ul>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>APIs</p></td>
+<td><p>Displays REST and HTTP-based API collections detected in your API gateways and assesses the vulnerability of individual API endpoints.</p>
+<ul>
+<li><p>Search for API collections by name.</p></li>
+<li><p>Click <strong>Filter</strong> to add a filter.</p></li>
+<li><p>Click <strong>Export</strong> to generate a report for the cloud assets currently displayed on the list.</p></li>
+<li><p>Click the customize columns icon (<img src="./images/columnDisplayIcon=20230614105421.webp" />) to customize the table columns and the order in which they are displayed.</p></li>
+<li><p>Click any API collection name to view additional details on the API collection profile screen.</p></li>
+<li><p>Expand any API collection for an overview of the individual API endpoints contained in the collection.</p></li>
+</ul>
+
+
+:::note
+
+<p>For customers that have updated to the <a href="trend-vision-one-update-foundation-services-release">Foundation Services release</a>, the <strong>API Security</strong> section only shows data for assets within the asset visibility scope of the current user.</p>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Devices](attack-surface-devices.md "Identify managed and unmanaged devices that may contribute to your organization's attack surface and add discovered devices that should not be assessed to the exception list.")
+- [Internet-Facing Assets](internet-facing-assets.md "Attack Surface Discovery identifies internet-facing domains and IP addresses within your organization and reports potential risks such as misconfigurations, vulnerabilities, and insecure connection issues.")
+- [Accounts](accounts.md "Identify service and domain accounts that may contribute to your organization's attack surface.")
+- [Applications](applications.md "Identify applications with potential security vulnerabilities that are in use within your organization.")
+- [Cloud assets](cloud-assets.md "Gain comprehensive visibility over your organization's cloud environment and identify cloud assets with potential security vulnerabilities.")
+- [APIs](apis.md "Gain comprehensive visibility over your organization's APIs to identify potential security vulnerabilities.")
+- [Asset criticality](asset-criticality.md "Asset criticality indicates the importance of an asset to your organization's operations.")
+- [Risk assessment](risk-assessment.md "Threat and Exposure Management identifies at-risk assets, and provides remediation and suggested preventative options to manage the risk to your environment.")
+- [Asset profile screens](asset-profile-screens.md "View detailed information about a selected device, internet-facing asset, user account, cloud app or cloud asset.")
+- [Asset profile platform tags](asset-profile-tags.md "Find more information about asset profile platform tags defined by Trend Micro and used in Cyber Risk Exposure Management.")
+- [Cyber Risk Exposure Management response actions](response-actions-cloudposture.md "Response actions allow you to directly respond to risks without leaving the Trend Vision One console.")
+:::::

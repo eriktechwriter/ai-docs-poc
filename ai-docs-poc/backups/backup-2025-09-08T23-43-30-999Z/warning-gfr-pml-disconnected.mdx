@@ -1,0 +1,67 @@
+---
+slug: trend-vision-one-warning-gfr-pml-disconnected
+title: >-
+  Warning: Census, Good File Reputation, and Predictive Machine Learning Service
+  Disconnected
+last_updated: '2025-09-08'
+ai_context:
+  source_file: warning-gfr-pml-disconnected.md
+  conversion_date: '2025-09-08T23:42:11.564Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+The Census, Good File Reputation, and Predictive Machine Learning Services are security services hosted by the Trend Micro Smart Protection Network. They are necessary for the full and successful operation of the Server & Workload Protection behavior monitoring, predictive machine learning, and process memory scan features.
+
+The following table maps the services to features.
+
+<table>
+<thead>
+<tr>
+<th><p>Service name</p></th>
+<th><p>Required for these features</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Global Census Service</p></td>
+<td><p><a href="trend-vision-one-ransomware-behavior-monitoring">behavior monitoring</a>, <a href="trend-vision-one-anti-malware">predictive machine learning</a></p></td>
+</tr>
+<tr>
+<td><p>Good File Reputation Service</p></td>
+<td><p><a href="trend-vision-one-ransomware-behavior-monitoring">behavior monitoring</a>, <a href="trend-vision-one-anti-malware">predictive machine learning</a>, <a href="trend-vision-one-scan-process-memory">process memory scans</a></p></td>
+</tr>
+<tr>
+<td><p>Predictive Machine Learning Service</p></td>
+<td><p><a href="trend-vision-one-anti-malware">predictive machine learning</a></p></td>
+</tr>
+</tbody>
+</table>
+
+If you see the alert *Census, Good File Reputation, and Predictive Machine Learning Service Disconnected*, there are a few causes:
+
+- Cause 1: The agent or relay-enabled agent doesn't have Internet access
+- Cause 2: A proxy was enabled but not configured properly
+
+### Cause 1: The agent or relay-enabled agent doesn't have Internet access {#cause-1-the-agent-or-relay-enabled-agent-doesnt-have-internet-access}
+
+If your agent or relay-enabled agent doesn't have access to the Internet, then it can't reach these services.
+
+Solutions:
+
+- Check your firewall policies and ensure that the outbound HTTP and HTTPS ports (by default, 80 or 443) are open.
+- If you are unable to open those ports, see [Configure agents that have no Internet access](config-agents-no-internet.mdx) for other solutions.
+
+### Cause 2: A proxy was enabled but not configured properly {#cause-2-a-proxy-was-enabled-but-not-configured-properly}
+
+The Census, Good File Reputation and Predictive Machine Learning Services can be accessed using a proxy.
+
+To check whether a proxy was enabled and make sure it was configured properly:
+
+1.  Open the Computer or Policy editor.
+2.  On the left, click Settings.
+3.  In the main pane, click the General tab.
+4.  Find the heading titled, *Network Setting for Census, Good File Reputation Service, and Predictive Machine Learning*.
+5.  If a proxy was specified, click *Edit* and make sure its *Proxy Protocol, Address, Port* and optional *User Name and Password* are accurate.
+:::

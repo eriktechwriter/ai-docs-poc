@@ -1,0 +1,42 @@
+---
+slug: trend-vision-one-event-max-tcp-connections
+title: 'Event: Max TCP connections'
+last_updated: '2025-09-08'
+ai_context:
+  source_file: event-max-tcp-connections.md
+  conversion_date: '2025-09-08T23:42:19.662Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Server & Workload Protection is configured to allow a maximum number of TCP connections to protected computers. When the number of connections exceeds the maximum, network traffic is dropped and Max TCP Connections firewall events occur. To prevent dropped connections, increase the maximum allowed TCP connections on the computer where the Max TCP Connection event occurs.
+
+:::note
+
+The intrusion protection module enables the network engine which enforces the allowed number of TCP connections.
+:::
+
+### Procedure {#procedure}
+
+1.  In the Server & Workload Protection console, click *Policies*.
+
+2.  Determine which policy to configure to affect the computer in question. See [Policies, inheritance, and overrides](policies-inheritance-overrides.mdx).
+
+3.  To open the policy that you want to configure, double-click the policy.
+
+4.  In the left-hand pane, click *Settings* and then click the *Advanced* tab.
+
+5.  In the *Advanced Network Engine Settings* area, if Inherit is selected clear the checkbox to enable changes.
+
+6.  Increase the value of the *Maximum TCP Connections* property to 1000000.
+
+    :::note
+
+    Starting February 9, 2021, the default value for new tenants is 1000000. For tenants created before this date, the value needs to be updated manually.
+    :::
+
+7.  Click *Save*.
+
+### Next steps {#next-steps}
+::::

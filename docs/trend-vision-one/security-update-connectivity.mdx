@@ -1,0 +1,28 @@
+---
+slug: trend-vision-one-security-update-connectivity
+title: Component update connectivity
+---
+# Component update connectivity
+
+Verify the connectivity between the relay server and its Active Update source or proxy server.
+
+### Procedure {#procedure}
+
+1.  To verify that both a route exists and that the [relay port number](swp-port-numbers.mdx) is open, enter the command:
+
+    `telnet [relay IP] [port number]`
+
+    If the telnet fails, verify that a route exists and that firewall policies (if any) allow the traffic by pinging or using traceroute. Also verify that the port number is open, and doesn't have a port conflict.
+
+2.  To verify that the DNS server can resolve the domain name of the relay, enter the command:
+
+    `nslookup [relay domain name]`
+
+    If the test fails, verify that the agent is using the correct DNS proxy or server (internal domain names can't be resolved by a public DNS server such as Google or your ISP).
+
+    If you are using Server & Workload Protection, you might not be using your own relays; instead, you will be using the relays that are built into the service: relay.deepsecurity.trendmicro.com.
+
+3.  If you use a proxy server, in Server & Workload Protection, confirm that the [proxy settings](configure-proxies-server-workload.mdx) are correct.
+
+4.  To determine if your Server & Workload Protection settings are blocking connectivity, unassign the current policy.
+:::

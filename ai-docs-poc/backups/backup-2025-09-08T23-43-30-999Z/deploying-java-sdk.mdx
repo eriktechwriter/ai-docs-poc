@@ -1,0 +1,145 @@
+---
+slug: trend-vision-one-deploying-java-sdk
+title: Deploy with Java SDK
+last_updated: '2025-09-08'
+ai_context:
+  source_file: deploying-java-sdk.md
+  conversion_date: '2025-09-08T23:42:20.603Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Use the Trend Vision One™ File Security Java SDK to scan files for malware.
+
+The Java SDK for Trend Vision One™ File Security empowers you to craft applications seamlessly integrating File Security. With this SDK you can perform a thorough scan of data and artifacts within your applications to identify potential malicious elements.
+
+Follow the steps below to set up your development environment and configure your project, laying the foundation to effectively use File Security.
+
+**Related information**
+
+- [Java API reference](java-api-reference.md "An API reference for the Java SDK for Trend Vision One File Security")
+
+## Check prerequisites {#check-prerequisites}
+
+Before installing the SDK, ensure you have the following:
+
+- [Java 8 or later](https://www.java.com/en/download/)
+
+- Trend Vision One account associated with your region
+
+- [Configuring custom user roles](custom-user-roles-trend-vision-one.mdx) with File Security permissions
+
+## Create an API key {#create-an-api-key}
+
+The File Security SDK requires a valid API key provided as a parameter to the SDK client object. Trend Vision One API keys are associated with different regions. Refer to [the region flag below](deploying-python-sdk.mdx) to obtain a better understanding of the valid regions associated with the API key.
+
+### Procedure {#procedure}
+
+1.  Go to **Administrations → API Keys**.
+
+2.  Click **Add API Key**.
+
+3.  Configure the API key to use the role with the **Run file scan via SDK** permission.
+
+4.  Verify that the API key is associated with the region you plan to use.
+
+5.  Set an expiry time for the API key and make a record of it for future reference.
+
+## Install the SDK {#install-the-sdk}
+
+### Procedure {#procedure-1}
+
+- Download the jar from [Maven Central Repository](https://mvnrepository.com/repos/central).
+
+- For Maven, add the below dependency to `pom.xml`.
+
+  ``` codeblock
+  <dependency>
+    <groupId>com.trend</groupId>
+    <artifactId>file-security-java-sdk</artifactId>
+    <version>1.0.0</version>
+  </dependency>
+  ```
+
+## Use the File Security Java SDK {#use-the-file-security-java-sdk}
+
+### Procedure {#procedure-2}
+
+1.  Create a client object by specifying your Trend Vision One region and a valid API key.
+
+2.  Invoke the file scan or buffer scan to scan the target data.
+
+    Below is a Java code example illustrating how to use the SDK.
+
+    ``` codeblock
+    import com.trend.cloudone.amaas.AMaasClient;
+
+    public static void main(String[] args) {
+        try {
+            // 1. Create an AMaaS Client object and configure it to carry out the scans in Vision One "us-east-1" region.
+            AMaasClient client = new AMaasClient("us-east-1", "your-api-key");
+
+            // 2. Call ScanFile() to scan the content of a file.
+            String scanResult = client.scanFile(""path-of-file-to-scan"");
+
+            if (scanResult != null) {
+                // 3. Print out the JSON response from ScanFile()
+                System.out.println("scan result " + scanResult);
+            }
+        } catch (AMaasException err) {
+            info("Exception {0}", err.getMessage());
+        }
+    }
+    ```
+
+3.  Parse the JavaScript object notation (JSON) response that the scan API returned to determine whether the scanned data contains malware. When malicious content is detected in the scanned object, `scanResult` shows a value and `foundMalwares` contains the file name and name of the malware.
+
+    Below is an example JSON response.
+
+    ``` codeblock
+    {
+      "version": "1.0",
+      "scanId": "25072030425f4f4d68953177d0628d0b",
+      "scanResult": 1,
+      "scanTimestamp": "2022-11-02T00:55:31Z",
+      "fileName": "EICAR_TEST_FILE-1.exe",
+      "filePath": "AmspBvtTestSamples/BVT_RightClickScan_DS/unclean/EICAR_TEST_FILE-1.exe",
+      "foundMalwares": [
+        {     
+          "fileName": "Eicar.exe",
+          "malwareName": "Eicar_test_file"
+        }
+      ]
+    }
+    ```
+
+    **JSON Response**
+
+    <table style="width:99%;">
+    <colgroup>
+    <col style="width: 33%" />
+    <col style="width: 33%" />
+    <col style="width: 33%" />
+    </colgroup>
+    <thead style="text-align: left;">
+    <tr>
+    <th style="text-align: left;">Response code</th>
+    <th style="text-align: left;">Malware detected</th>
+    <th style="text-align: left;">None detected</th>
+    </tr>
+    </thead>
+    <tbody style="text-align: left;">
+    <tr>
+    <td style="text-align: left;"><code>scanResult</code></td>
+    <td style="text-align: left;"><p>Non-zero</p></td>
+    <td style="text-align: left;"><code>null</code></td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><code>foundMalwares</code></td>
+    <td style="text-align: left;"><code>fileName</code> <code>malwareName</code></td>
+    <td style="text-align: left;"><code>null</code></td>
+    </tr>
+    </tbody>
+    </table>
+:::

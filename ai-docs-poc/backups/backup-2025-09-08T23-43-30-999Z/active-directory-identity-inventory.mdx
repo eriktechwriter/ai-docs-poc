@@ -1,0 +1,36 @@
+---
+slug: trend-vision-one-active-directory-identity-inventory
+title: >-
+  Set up Active Directory (on-premises) requirements and permissions for use in
+  Identity Inventory
+last_updated: '2025-09-08'
+ai_context:
+  source_file: active-directory-identity-inventory.md
+  conversion_date: '2025-09-08T23:42:26.111Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Configure your deployed Service Gateway and Active Directory (On-premises) server and grant the required permissions to sync and analyze your identity data.
+
+For Trend Vision One to sync data with your Active Directory (on-premises) server, you must have a deployed Service Gateway with the On-premises Directory Connector installed. To learn more, see [Getting started with Service Gateway](getting-started-service-gateway.mdx).
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Workflow and Automation → Third-Party Integration** and select **Active Directory (On-premises)** from the list of available integrations.
+
+2.  [Enable Active Directory (on-premises) integration](ad-premises-integration.mdx).
+
+3.  On your Active Directory server, grant read and write permissions to a new Active Directory user to be used to grant Trend Vision One access to your identity data.
+
+4.  In the Trend Vision One console, go to **Workflow and Automation → Third-Party Integration** and select **Active Directory (On-premises)** from the list of available integrations.
+
+5.  [Configure data synchronization and user access control](adfs-user-access-control.mdx) settings in Third-Party Integration to begin syncing identity data through your Service Gateway.
+
+6.  To grant Trend Vision One permission to receive and analyze identity-related security information, go to the **Security Event Forwarding** tab and download the Active Directory connector.
+
+7.  [Install the Active Directory connector](security-event-forwarding.mdx) on your Active Directory server.
+
+8.  In Third-Party Integration, verify the connection status on the Active Directory (On-premises) screen.
+:::

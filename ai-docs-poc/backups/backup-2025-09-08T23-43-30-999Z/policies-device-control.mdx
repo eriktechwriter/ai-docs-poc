@@ -1,0 +1,90 @@
+---
+slug: trend-vision-one-policies-device-control
+title: Device Control
+last_updated: '2025-09-08'
+ai_context:
+  source_file: policies-device-control.md
+  conversion_date: '2025-09-08T23:42:14.537Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure and manage the Device Control module settings.
+
+:::warning[Important]
+
+- Policies, Access Control, and the Device Control module are "Pre-release" features and are not considered an official release. Please review the [Pre-Release Disclaimer](pre-release-disclaimer.mdx) before using the feature.
+
+- These features are not available in all regions.
+
+- Device Control supports Windows and macOS. Device Control only supports controlling access to USB storage devices for macOS.
+
+- Navigating between the security modules or leaving the **Policy Settings** screen discards any unsaved changes. To avoid losing your work, always click **Save** before leaving the current screen.
+
+- The Agent Interface provides additional settings including access violation notifications. For more information, see [Agent Interface](policies-agent-interface.mdx).
+:::
+
+Device Control regulates access to external storage devices connected to computers. Device Control helps prevent data leaks and, combined with file scanning, helps guard against security risks.
+
+### Procedure {#procedure}
+
+1.  To protect your endpoints with Device Control, select **Enable**.
+
+2.  To manage what actions to take for connected devices, configure the **Permission by device type**.
+
+    1.  To control access to USB storage devices, select permissions for **USB storage devices**.
+
+        - **Allow full access**: Allow endpoint users full access to any connected USB storage device.
+
+        - **Read only access**: Allow endpoint users to only view the contents of connected USB storage devices.
+
+        - **Block access**: Deny endpoint users access to connected USB storage devices.
+
+    2.  To control the AutoRun function, select permissions for **USB AutoRun function**.
+
+        :::note
+
+        If **USB storage devices** is set to **Block access**, then **USB AutoRun function** is automatically set to **Block AutoRun** and disabled.
+        :::
+
+        - **Allow AutoRun**: Allows any AutoRun function on the USB storage device to execute.
+
+        - **Block AutoRun**: Blocks AutoRun funcitons from executing.
+
+    3.  To control access to connected mobile devices, select permissions for **Mobile devices**
+
+        - **Allow full access**: Allow endpoint users full access to any connected mobile device.
+
+        - **Read only access**: Allow endpoint users to only view the contents of connected mobile devices.
+
+        - **Block access**: Deny endpoint users access to connected mobile devices.
+
+3.  To specify trusted devices, manage the **Allowed devices**.
+
+    :::note
+
+    To extract the device information for use with the Allowed devices list, use the [Trend Micro Device Info tool](https://success.trendmicro.com/en-US/solution/KA-0011756).
+
+    To create a sample device list, add one device manually, then export the list.
+    :::
+
+    1.  To add a device manually, click **Add device**.
+
+    2.  In the **Allowed device** window, specify a unique **Name**.
+
+    3.  Copy and paste the **Vendor**, **Model**, and **Serial number** extracted using the [Trend Micro Device Info tool](https://success.trendmicro.com/en-US/solution/KA-0011756).
+
+    4.  Click **Add device**.
+
+    5.  To export the current device list as an XML file, click **Export**.
+
+    6.  To import a device list from an XML file, click **Import from file** and select the file you want to use.
+
+        :::warning[Important]
+
+        The file must not exceed 500 devices.
+
+        Importing a device list from a file overwrites the current device list.
+        :::
+::::

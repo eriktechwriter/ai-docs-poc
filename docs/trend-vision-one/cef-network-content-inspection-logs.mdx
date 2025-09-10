@@ -1,0 +1,244 @@
+---
+slug: trend-vision-one-cef-network-content-inspection-logs
+title: CEF Network Content Inspection Logs
+---
+# CEF Network Content Inspection Logs
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 38%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>CEF Key</p></th>
+<th><p>Description</p></th>
+<th><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Header (logVer)</p></td>
+<td><p>CEF format version</p></td>
+<td><p>CEF:0</p></td>
+</tr>
+<tr>
+<td><p>Header (vendor)</p></td>
+<td><p>Appliance vendor</p></td>
+<td><p>Trend Micro</p></td>
+</tr>
+<tr>
+<td><p>Header (pname)</p></td>
+<td><p>Appliance product</p></td>
+<td><p>Apex Central</p></td>
+</tr>
+<tr>
+<td><p>Header (pver)</p></td>
+<td><p>Appliance version</p></td>
+<td><p>2019</p></td>
+</tr>
+<tr>
+<td><p>Header (eventid)</p></td>
+<td><p>NCIE:Action</p></td>
+<td><p>NCIE:Pass</p></td>
+</tr>
+<tr>
+<td><p>Header (eventName)</p></td>
+<td><p>Name</p></td>
+<td><p>Suspicious Connection</p></td>
+</tr>
+<tr>
+<td><p>Header (severity)</p></td>
+<td><p>Severity</p></td>
+<td><p>3</p></td>
+</tr>
+<tr>
+<td><p>deviceExternalId</p></td>
+<td><p>ID</p></td>
+<td><p>Example: "1"</p></td>
+</tr>
+<tr>
+<td><p>cat</p></td>
+<td><p>Log type</p></td>
+<td><p>Example: "1756"</p></td>
+</tr>
+<tr>
+<td><p>deviceFacility</p></td>
+<td><p>Product</p></td>
+<td><p>Example: "Apex One"</p></td>
+</tr>
+<tr>
+<td><p>rt</p></td>
+<td><p>Event trigger time in UTC</p></td>
+<td><p>Example: "Mar 22 2018 08:23:23 GMT+00:00"</p></td>
+</tr>
+<tr>
+<td><p>deviceProcessName</p></td>
+<td><p>Process</p></td>
+<td><p>Example: "C:\\Windows\\system32\\svchost-1.exe"</p></td>
+</tr>
+<tr>
+<td><p>src</p></td>
+<td><p>Local IPv4 address</p></td>
+<td><p>Example: "10.201.86.152"</p></td>
+</tr>
+<tr>
+<td><p>c6a2Label</p></td>
+<td><p>Corresponding label for the "c6a2" field</p></td>
+<td><p>Example: "SLF_SourceIP"</p></td>
+</tr>
+<tr>
+<td><p>c6a2</p></td>
+<td><p>Local IPv6 address</p></td>
+<td><p>Example: "2620:101:4003:7a0:fd4b:52ed:53bd:ae3d"</p></td>
+</tr>
+<tr>
+<td><p>spt</p></td>
+<td><p>Local IP address port</p></td>
+<td><p>Example: "54594"</p></td>
+</tr>
+<tr>
+<td><p>dst</p></td>
+<td><p>Remote IPv4 address</p></td>
+<td><p>Example: "10.69.81.64"</p></td>
+</tr>
+<tr>
+<td><p>c6a3Label</p></td>
+<td><p>Corresponding label for the "c6a3" field</p></td>
+<td><p>Example: "SLF_DestinationIP"</p></td>
+</tr>
+<tr>
+<td><p>c6a3</p></td>
+<td><p>Remote IPv6 address</p></td>
+<td><p>Example: "fe80::38ca:cd15:443c:40bb%11"</p></td>
+</tr>
+<tr>
+<td><p>dpt</p></td>
+<td><p>Remote IP address port</p></td>
+<td><p>Example: "80"</p></td>
+</tr>
+<tr>
+<td><p>act</p></td>
+<td><p>Action</p></td>
+<td><p>Example: "Pass"</p>
+<ul>
+<li><p>0: Unknown</p></li>
+<li><p>1: Pass</p></li>
+<li><p>2: Block</p></li>
+<li><p>3: Monitor</p></li>
+<li><p>4: Delete</p></li>
+<li><p>5: Quarantine</p></li>
+<li><p>6: Warn</p></li>
+<li><p>7: Warn and continue</p></li>
+<li><p>8: Override</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>deviceDirection</p></td>
+<td><p>Traffic direction</p></td>
+<td><p>Example: "Inbound"</p>
+<ul>
+<li><p>0: None</p></li>
+<li><p>1: Inbound</p></li>
+<li><p>2: Outbound</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cn1Label</p></td>
+<td><p>Corresponding label for the "cn1" field</p></td>
+<td><p>Example: "SLF_PatternType"</p></td>
+</tr>
+<tr>
+<td><p>cn1</p></td>
+<td><p>Pattern type</p></td>
+<td><p>Example: "2"</p>
+<ul>
+<li><p>0: Global C&amp;C pattern</p></li>
+<li><p>1: Relevance rules</p></li>
+<li><p>2: User-defined block list</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cs2Label</p></td>
+<td><p>Corresponding label for the "cs2" field</p></td>
+<td><p>Example: "NCIE_ThreatName"</p></td>
+</tr>
+<tr>
+<td><p>cs2</p></td>
+<td><p>Threat name</p></td>
+<td><p>Example: "Malicious_identified_CnC_querying_on_UDP_detected"</p></td>
+</tr>
+<tr>
+<td><p>reason</p></td>
+<td><p>Critical threat type</p></td>
+<td><p>Example: "E"</p>
+<ul>
+<li><p>A: Known Advanced Persistent Threat (APT)</p></li>
+<li><p>B: Social engineering attack</p></li>
+<li><p>C: Vulnerability attack</p></li>
+<li><p>D: Lateral movement</p></li>
+<li><p>E: Unknown threats</p></li>
+<li><p>F: C&amp;C callback</p></li>
+<li><p>G: Ransomware</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>dvchost</p></td>
+<td><p>Host name</p></td>
+<td><p>Example: "localhost"</p></td>
+</tr>
+<tr>
+<td><p>deviceNtDomain</p></td>
+<td><p>Active Directory domain</p></td>
+<td><p>Example: APEXTMCM</p></td>
+</tr>
+<tr>
+<td><p>dntdom</p></td>
+<td><p>Apex One domain hierarchy</p></td>
+<td><p>Example: OSCEDomain1</p></td>
+</tr>
+<tr>
+<td><p>TMCMLogDetectedHost</p></td>
+<td><p>Endpoint name where the log event occurred</p></td>
+<td><p>Example: MachineHostName</p></td>
+</tr>
+<tr>
+<td><p>TMCMLogDetectedIP</p></td>
+<td><p>IP address where the log event occurred</p></td>
+<td><p>Example: 10.1.2.3</p></td>
+</tr>
+<tr>
+<td><p>ApexCentralHost</p></td>
+<td><p>Apex Central host name</p></td>
+<td><p>Example: TW-CHRIS-W2019</p></td>
+</tr>
+<tr>
+<td><p>devicePayloadId</p></td>
+<td><p>Unique message GUID</p></td>
+<td><p>Example: 1C00290C0360-9CDE11EB-D4B8-F51F-C697</p></td>
+</tr>
+<tr>
+<td><p>TMCMdevicePlatform</p></td>
+<td><p>Endpoint operating system</p></td>
+<td><p>Example: Windows 7 6.1 (Build 7601) Service Pack 1</p></td>
+</tr>
+</tbody>
+</table>
+
+Log sample:
+
+```bash
+CEF:0|Trend Micro|Apex Central|2019|NCIE:Pass|Suspicious
+Connection|3|deviceExternalId=1 rt=Oct 11 2017 06:34:06 GMT+0
+0:00 cat=1756 deviceFacility=Apex One deviceProcessName=C:\\W
+indows\\system32\\svchost-1.exe act=Pass src=10.201.86.152 ds
+t=10.69.81.64 spt=54594 dpt=80 deviceDirection=None cn1Label=
+SLF_PatternType cn1=2 cs2Label=NCIE_ThreatName cs2=Malicious_
+identified_CnC_querying_on_UDP_detected reason=F deviceNtDoma
+in=APEXTMCM dntdom=OSCEDomain1 dvchost=shost1 TMCMLogDetected
+Host=shost1 TMCMLogDetectedIP=10.1.2.3ApexCentralHost=TW-CHRI
+S-W2019 devicePayloadId=1C00290C0360-9CDE11EB-D4B8-F51F-C697
+TMCMdevicePlatform=Windows 7 6.1 (Build 7601) Service Pack 1
+```
+:::

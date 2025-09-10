@@ -1,0 +1,447 @@
+---
+slug: trend-vision-one-predefined-rules
+title: Predefined rules
+last_updated: '2025-09-08'
+ai_context:
+  source_file: predefined-rules.md
+  conversion_date: '2025-09-08T23:42:14.229Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+The following table lists the rules you can add to a ruleset, including descriptions of the attack techniques the rules are designed to prevent, and a link to the [MITRE ATT&CK](https://attack.mitre.org/) site for more details.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>ID</p></th>
+<th><p>Name</p></th>
+<th><p>Details</p></th>
+<th><p>Mitre link</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>01</p></td>
+<td><p>Modify shell configuration file</p></td>
+<td><p>Detects attempts to modify shell configuration files.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1546/004/">https://attack.mitre.org/techniques/T1546/004/</a></p></td>
+</tr>
+<tr>
+<td><p>02</p></td>
+<td><p>Update package repository</p></td>
+<td><p>Detects when package repositories are updated.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1505/">https://attack.mitre.org/techniques/T1505/</a></p></td>
+</tr>
+<tr>
+<td><p>03</p></td>
+<td><p>Read SSH information</p></td>
+<td><p>Detects any attempt to read files in SSH directories by non-SSH programs.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1555/">https://attack.mitre.org/techniques/T1555/</a></p></td>
+</tr>
+<tr>
+<td><p>04</p></td>
+<td><p>Read sensitive file trusted after startup</p></td>
+<td><p>Detects attempts to read any sensitive file by a trusted program after startup. Trusted programs might read these files at startup, but not afterwards.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1555/">https://attack.mitre.org/techniques/T1555/</a></p></td>
+</tr>
+<tr>
+<td><p>05</p></td>
+<td><p>System user interactive</p></td>
+<td><p>Detects attempts to run interactive commands by a system (non-login) user.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1021/004/">https://attack.mitre.org/techniques/T1021/004/</a></p></td>
+</tr>
+<tr>
+<td><p>06</p></td>
+<td><p>Terminal shell in container</p></td>
+<td><p>Detects when a shell command or script was used as the entrypoint or execution point into a container with an attached terminal.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1059/004/">https://attack.mitre.org/techniques/T1059/004/</a></p></td>
+</tr>
+<tr>
+<td><p>07</p></td>
+<td><p>System procs network activity</p></td>
+<td><p>Detects network activity performed by system binaries that are not expected to send or receive any network traffic.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1020/">https://attack.mitre.org/techniques/T1020/</a></p></td>
+</tr>
+<tr>
+<td><p>08</p></td>
+<td><p>Contact EC2 Instance Metadata Service From Container</p></td>
+<td><p>Detects attempts to contact the EC2 Instance Metadata Service from a container.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1552/005/">https://attack.mitre.org/techniques/T1552/005/</a></p></td>
+</tr>
+<tr>
+<td><p>10</p></td>
+<td><p>Launch Package Management Process in Container</p></td>
+<td><p>Detects when a package management process is run inside container.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1543/">https://attack.mitre.org/techniques/T1543/</a></p></td>
+</tr>
+<tr>
+<td><p>11</p></td>
+<td><p>Netcat Remote Code Execution in Container</p></td>
+<td><p>Detects when Netcat commands are run inside a container, which allows remote code execution.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1059/004/">https://attack.mitre.org/techniques/T1059/004/</a></p></td>
+</tr>
+<tr>
+<td><p>12</p></td>
+<td><p>Clear Log Activities</p></td>
+<td><p>Detects the modification or removal of critical log files.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1070/002/">https://attack.mitre.org/techniques/T1070/002/</a></p></td>
+</tr>
+<tr>
+<td><p>13</p></td>
+<td><p>Create Symlink Over Sensitive Files</p></td>
+<td><p>Detects when a symlink is created for a sensitive file.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1059/004/">https://attack.mitre.org/techniques/T1059/004/</a></p></td>
+</tr>
+<tr>
+<td><p>14</p></td>
+<td><p>Packet socket created in container</p></td>
+<td><p>Detects new packet sockets at the device driver (OSI L2) in a container. Packet sockets can be used for ARP spoofing and privilege escalation (CVE-2020-14386) by an attacker.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1205/002/">https://attack.mitre.org/techniques/T1205/002/</a></p></td>
+</tr>
+<tr>
+<td><p>15</p></td>
+<td><p>Redirect STDOUT/STDIN to Network Connection in Container</p></td>
+<td><p>Detects when STDOUT/STDIN is redirected to the network connection in a container, which is a potential reverse shell.</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr>
+<td><p>16</p></td>
+<td><p>Linux Kernel Module Injection Detected</p></td>
+<td><p>Detects when a kernel module was injected from a container.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1547/006/">https://attack.mitre.org/techniques/T1547/006/</a></p></td>
+</tr>
+<tr>
+<td><p>17</p></td>
+<td><p>Sudo Potential Privilege Escalation</p></td>
+<td><p>Detects privilege escalation vulnerabilities affecting sudo (&lt;= 1.9.5p2). Unprivileged users can elevate the user privileges to root by executing sudo using the <code>sudoedit -s</code> or <code>sudoedit -i</code> command with a command-line argument that ends with a single backslash character.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1548/003/">https://attack.mitre.org/techniques/T1548/003/</a></p></td>
+</tr>
+<tr>
+<td><p>18</p></td>
+<td><p>Launch Remote File Copy Tools in Container</p></td>
+<td><p>Detects when remote file copy tools are launched in a container.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1105/">https://attack.mitre.org/techniques/T1105/</a></p></td>
+</tr>
+<tr>
+<td><p>19</p></td>
+<td><p>Specific discover tool executed in container</p></td>
+<td><p>Detects the execution of discovery and hacking tools inside a container.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1613/">https://attack.mitre.org/techniques/T1613/</a></p></td>
+</tr>
+<tr>
+<td><p>20</p></td>
+<td><p>Amicontained download detected in container</p></td>
+<td><p>Detects when an amicontained tool is downloaded.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1613/">https://attack.mitre.org/techniques/T1613/</a></p></td>
+</tr>
+<tr>
+<td><p>21</p></td>
+<td><p>Disable Security Tools</p></td>
+<td><p>Detects attempts to disable specific security tools.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1562/001/">https://attack.mitre.org/techniques/T1562/001/</a></p></td>
+</tr>
+<tr>
+<td><p>22</p></td>
+<td><p>Docker or kubertes client executed in container</p></td>
+<td><p>Detects when a docker or kubernetes client tool is executed inside a container.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1609/">https://attack.mitre.org/techniques/T1609/</a></p></td>
+</tr>
+<tr>
+<td><p>23</p></td>
+<td><p>Escape attempt detected in privileged container</p></td>
+<td><p>Detects the usage of debugs and mounts in a container.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1611/">https://attack.mitre.org/techniques/T1611/</a></p></td>
+</tr>
+<tr>
+<td><p>24</p></td>
+<td><p>HugePages changed in container</p></td>
+<td><p>Detects HugePages modification as part of mining changes done during XMRig usage.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1496/">https://attack.mitre.org/techniques/T1496/</a></p></td>
+</tr>
+<tr>
+<td><p>25</p></td>
+<td><p>Detect crypto miners using the Stratum protocol</p></td>
+<td><p>Miners typically specify the mining pool to connect to with a URI that begins with</p>
+<pre class="codeblock"><code>stratum+tcp</code></pre>
+and variants.</td>
+<td><p><a href="https://attack.mitre.org/techniques/T1496/">https://attack.mitre.org/techniques/T1496/</a></p></td>
+</tr>
+<tr>
+<td><p>26</p></td>
+<td><p>Schedule Cron Jobs</p></td>
+<td><p>Detects when cron jobs are scheduled.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1053/003/">https://attack.mitre.org/techniques/T1053/003/</a></p></td>
+</tr>
+<tr>
+<td><p>27</p></td>
+<td><p>Dynamic linker changed</p></td>
+<td><p>Detects changes to a</p>
+<pre class="codeblock"><code>/etc/ld.so.preload</code></pre>
+file.</td>
+<td><p><a href="https://attack.mitre.org/techniques/T1574/006/">https://attack.mitre.org/techniques/T1574/006/</a></p></td>
+</tr>
+<tr>
+<td><p>28</p></td>
+<td><p>DB program spawned process</p></td>
+<td><p>Detects when a DB-related program spawns a new process other than itself. Can indicate a successful SQL injection.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1059/">https://attack.mitre.org/techniques/T1059/</a></p></td>
+</tr>
+<tr>
+<td><p>29</p></td>
+<td><p>Lateral Movement using SSH</p></td>
+<td><p>Detects SSH execution with</p>
+<pre class="codeblock"><code>StrictHostKeyChecking</code></pre>
+and batch mode. Can indicated a scripted lateral movement attempt.</td>
+<td><p><a href="https://attack.mitre.org/techniques/T1021/004/">https://attack.mitre.org/techniques/T1021/004/</a></p></td>
+</tr>
+<tr>
+<td><p>30</p></td>
+<td><p>Detect miner termination in container</p></td>
+<td><p>Detects miner termination in a container, which can indicate a miner terminating a competing miner.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1496/">https://attack.mitre.org/techniques/T1496/</a></p></td>
+</tr>
+<tr>
+<td><p>31</p></td>
+<td><p>Launch Privileged Container</p></td>
+<td><p>Detects the initial process started in a privileged container.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1610/">https://attack.mitre.org/techniques/T1610/</a></p></td>
+</tr>
+<tr>
+<td><p>32</p></td>
+<td><p>Delete or rename shell history</p></td>
+<td><p>Detects when a shell history is deleted.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1070/">https://attack.mitre.org/techniques/T1070/</a></p></td>
+</tr>
+<tr>
+<td><p>33</p></td>
+<td><p>File attributes changed in container</p></td>
+<td><p>Detects attempts to change attributes on a file in a container.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1222/002/">https://attack.mitre.org/techniques/T1222/002/</a></p></td>
+</tr>
+<tr>
+<td><p>34</p></td>
+<td><p>Set Setuid or Setgid bit</p></td>
+<td><p>Detects when the setuid or setgid bits are set for an application, which will run with the privileges of the owning user or group.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1548/001/">https://attack.mitre.org/techniques/T1548/001/</a></p></td>
+</tr>
+<tr>
+<td><p>35</p></td>
+<td><p>Dangerous deletion detected in container</p></td>
+<td><p>Detects when a file is deleted during indicator removal.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1070/004/">https://attack.mitre.org/techniques/T1070/004/</a></p></td>
+</tr>
+<tr>
+<td><p>36</p></td>
+<td><p>Possible IRC communication in container</p></td>
+<td><p>Detects communication based on a known IRC port, such as TCP/6667, or TCP/6697 for TLS.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1071/">https://attack.mitre.org/techniques/T1071/</a></p></td>
+</tr>
+<tr>
+<td><p>37</p></td>
+<td><p>BOtB download detected in container</p></td>
+<td><p>Detects downloads of complex analysis and exploitation tools for containers.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1613/">https://attack.mitre.org/techniques/T1613/</a></p></td>
+</tr>
+<tr>
+<td><p>38</p></td>
+<td><p>Peirates tool detected in container</p></td>
+<td><p>Detects downloads of complex analysis and exploitation tools for containers.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1613/">https://attack.mitre.org/techniques/T1613/</a></p></td>
+</tr>
+<tr>
+<td><p>39</p></td>
+<td><p>Interpreted procs inbound network activity</p></td>
+<td><p>Detects any inbound network activity performed by any interpreted program, such as Perl, Python, and Ruby.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1041/">https://attack.mitre.org/techniques/T1041/</a></p></td>
+</tr>
+<tr>
+<td><p>40</p></td>
+<td><p>Interpreted procs outbound network activity</p></td>
+<td><p>Detects any outbound network activity performed by any interpreted program, such as Perl, Python, and Ruby.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1041/">https://attack.mitre.org/techniques/T1041/</a></p></td>
+</tr>
+<tr>
+<td><p>41</p></td>
+<td><p>Search Private Keys or Passwords</p></td>
+<td><p>Detects grep searches for private keys or passwords, including the find command.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1552/">https://attack.mitre.org/techniques/T1552/</a></p></td>
+</tr>
+<tr>
+<td><p>42</p></td>
+<td><p>Unexpected process termination in container</p></td>
+<td><p>Detects attempts to get specific processes and terminate them, which can indicate miner's deployment and rival's termination.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1070/004/">https://attack.mitre.org/techniques/T1070/004/</a></p></td>
+</tr>
+<tr>
+<td><p>47</p></td>
+<td><p>Suspicious log manipulation</p></td>
+<td><p>Detects targeted modification of critical log files.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1070/002/">https://attack.mitre.org/techniques/T1070/002/</a></p></td>
+</tr>
+<tr>
+<td><p>48</p></td>
+<td><p>Switch Linux namespace</p></td>
+<td><p>Detects the unauthorized usage of setns syscals, which could lead to container escape.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1611/">https://attack.mitre.org/techniques/T1611/</a></p></td>
+</tr>
+<tr>
+<td><p>49</p></td>
+<td><p>Launch Ingress Remote File Copy Tools in Container</p></td>
+<td><p>Detects when ingress remote file copy tools are launched in a container.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1105/">https://attack.mitre.org/techniques/T1105/</a></p></td>
+</tr>
+<tr>
+<td><p>50</p></td>
+<td><p>Execution from /dev/shm</p></td>
+<td><p>Detects file execution from the</p>
+<pre class="codeblock"><code>/dev/shm</code></pre>
+directory, which is a common tactic for threat actors to stash their files.</td>
+<td><p><a href="https://attack.mitre.org/techniques/T1059/004/">https://attack.mitre.org/techniques/T1059/004/</a></p></td>
+</tr>
+<tr>
+<td><p>51</p></td>
+<td><p>Find AWS Credentials</p></td>
+<td><p>Detects find or grep commands trying to access AWS credentials.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1552/001/">https://attack.mitre.org/techniques/T1552/001/</a></p></td>
+</tr>
+<tr>
+<td><p>52</p></td>
+<td><p>PTRACE attached to process</p></td>
+<td><p>Detects attempts to inject code into a process using PTRACE.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1055/008/">https://attack.mitre.org/techniques/T1055/008/</a></p></td>
+</tr>
+<tr>
+<td><p>53</p></td>
+<td><p>Create Hidden Files or Directories</p></td>
+<td><p>Detects the creation of hidden files and directories.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1564/001/">https://attack.mitre.org/techniques/T1564/001/</a></p></td>
+</tr>
+<tr>
+<td><p>54</p></td>
+<td><p>Mkdir binary dirs</p></td>
+<td><p>Detects attempts to create a directory below a set of binary directories.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1222/002/">https://attack.mitre.org/techniques/T1222/002/</a></p></td>
+</tr>
+<tr>
+<td><p>55</p></td>
+<td><p>Modify binary dirs</p></td>
+<td><p>Detects attempts to modify any file below a set of binary directories.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1222/002/">https://attack.mitre.org/techniques/T1222/002/</a></p></td>
+</tr>
+<tr>
+<td><p>56</p></td>
+<td><p>Polkit Local Privilege Escalation</p></td>
+<td><p>Detects attempts to exploit a privilege escalation vulnerability in Polkit's pkexec.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1068/">https://attack.mitre.org/techniques/T1068/</a></p></td>
+</tr>
+<tr>
+<td><p>57</p></td>
+<td><p>Write below rpm database</p></td>
+<td><p>Detects attempts to write to the rpm database by any non-rpm related program.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1505/">https://attack.mitre.org/techniques/T1505/</a></p></td>
+</tr>
+<tr>
+<td><p>58</p></td>
+<td><p>Increase Resource Limits via Prlimit Command in Container</p></td>
+<td><p>Detects when the prlimit command sets or reports the limits of system-wide resources.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1496/">https://attack.mitre.org/techniques/T1496/</a></p></td>
+</tr>
+<tr>
+<td><p>59</p></td>
+<td><p>A Local User Added in Container</p></td>
+<td><p>Detects the creation of a user account in a container.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1136/001/">https://attack.mitre.org/techniques/T1136/001/</a></p></td>
+</tr>
+<tr>
+<td><p>60</p></td>
+<td><p>A Local User Deleted in Container</p></td>
+<td><p>Detects the deletion of a user account in a container.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1098/">https://attack.mitre.org/techniques/T1098/</a></p></td>
+</tr>
+<tr>
+<td><p>61</p></td>
+<td><p>Write to Selinux Config</p></td>
+<td><p>Detects attempts to write content to the</p>
+<pre class="codeblock"><code>/etc/selinux/config</code></pre>
+file.</td>
+<td><p><a href="https://attack.mitre.org/techniques/T1562/">https://attack.mitre.org/techniques/T1562/</a></p></td>
+</tr>
+<tr>
+<td><p>62</p></td>
+<td><p>Create Scheduled Task Using At</p></td>
+<td>Detects when an
+<pre class="codeblock"><code>at</code></pre>
+utility is used to perform task scheduling for initial or recurring execution of code.</td>
+<td><p><a href="https://attack.mitre.org/techniques/T1053/002/">https://attack.mitre.org/techniques/T1053/002/</a></p></td>
+</tr>
+<tr>
+<td><p>63</p></td>
+<td><p>Create Scheduled Task Using Systemd Timers</p></td>
+<td><p>Detects when Systemd timers are used to perform task scheduling for initial or recurring execution of code.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1053/006/">https://attack.mitre.org/techniques/T1053/006/</a></p></td>
+</tr>
+<tr>
+<td><p>64</p></td>
+<td><p>Write to System Control</p></td>
+<td><p>Detects attempts to write content to the</p>
+<pre class="codeblock"><code>/etc/syscl.conf </code></pre>
+file.</td>
+<td><p><a href="https://attack.mitre.org/techniques/T1562/">https://attack.mitre.org/techniques/T1562/</a></p></td>
+</tr>
+<tr>
+<td><p>68</p></td>
+<td><p>Python urllib Import Command Execution</p></td>
+<td><p>Detects when the</p>
+<pre class="codeblock"><code>import urllib</code></pre>
+or
+<pre class="codeblock"><code>import urllib2</code></pre>
+command is run in Python or Python 3.</td>
+<td><p>N/A</p></td>
+</tr>
+<tr>
+<td><p>83</p></td>
+<td><p>File Executed from Memory</p></td>
+<td><p>Detects when reflective code is loaded into a process to conceal the execution of malicious payloads. Reflective loading involves allocating and executing payloads directly within the memory of the process.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1620/">https://attack.mitre.org/techniques/T1620/</a></p></td>
+</tr>
+<tr>
+<td><p>84</p></td>
+<td><p>Inject File to Process Memory Virtual Space</p></td>
+<td><p>Detects when adversaries inject malicious code into processes using the /proc filesystem to evade process-based defenses and potentially elevate privileges. Proc memory injection is a method of executing arbitrary code in the address space of a separate live process.</p></td>
+<td><p><a href="https://attack.mitre.org/techniques/T1055/009/">https://attack.mitre.org/techniques/T1055/009/</a></p></td>
+</tr>
+<tr>
+<td><p>89</p></td>
+<td><p>Suspicious Directory Change via ProcFD</p></td>
+<td><p>Detects process attempts to change the working directory using a proc-based file descriptor, which is a possible CVE-2024-21626 indicator.</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr>
+<td><p>93</p></td>
+<td><p>Grep Search on Shell Configuration File</p></td>
+<td><p>Detects attempts to search a shell configuration file.</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr>
+<td><p>96</p></td>
+<td><p>Vulnerable liblzma loaded into sshd</p></td>
+<td><p>Detects when a vulnerable liblzma, liblzma.so.5.6.0, or liblzma.so.5.6.1 library is loaded into</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr>
+<td><p>97</p></td>
+<td><p>Iptables Modification</p></td>
+<td><p>Detects when the iptables service is modified using a command execution.</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+:::

@@ -1,0 +1,232 @@
+---
+slug: trend-vision-one-using-apis-connect-aws-account
+title: Using APIs to connect an AWS account
+last_updated: '2025-09-08'
+ai_context:
+  source_file: using-apis-connect-aws-account.md
+  conversion_date: '2025-09-08T23:42:11.679Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Use the APIs on the Trend Vision One Automation Center to connect your AWS account.
+
+You can use the APIs available on the [Trend Vision One Automation Center](https://automation.trendmicro.com/xdr/api-beta) to connect your AWS account, and retrieve the CloudFormation stack template from Cloud Accounts.
+
+The stack template created by the Cloud Accounts app contains a token used to activate certain features after deployment. The token is designed to expire, requiring you to periodically regenerate the CloudFormation stack template to get an updated token. The features which require a token are:
+
+- Cloud Detections for AWS CloudTrail
+
+- Agentless Vulnerability & Threat Detection
+
+For organizations that require a static template that does not expire, use the token API to generate a token which can be added into the CloudFormation template. You can access the token API from the automation center.
+
+:::warning[Important]
+
+- Currently only the **XDR for Cloud - AWS CloudTrail** feature supports the token. You cannot use the static template for Agentless Vulnerability & Threat Detection.
+
+- The Token API is only required if Cloud Detections for AWS CloudTrail is enabled..
+
+- The user role assigned to the Token API must have full permissions to add, delete, and edit Cloud Accounts. For more information about user roles, see [User Roles](user-roles-foundation-services.mdx).
+
+- The steps are valid for the AWS console as of January 2024.
+:::
+
+The following steps cover using the AWS console to upload the stack template. If you use an API to upload templates to your AWS account, follow your normal procedures and use the suggested configurations contained in these steps.
+
+### Procedure {#procedure}
+
+1.  Generate and download the stack template from Cloud Accounts.
+
+    - Access the Trend Vision One console and create the template.
+
+      1.  In the Trend Vision One console, go to **Cloud Security → Cloud Accounts → AWS**
+
+      2.  Click **Add Account**.
+
+      3.  On the **Deployment Type** screen, select **CloudFormation** and **Single AWS Account**.
+
+      4.  Click **Next**.
+
+      5.  Specify the **Account name**, **Description**, and select the AWS region for deployment.
+
+      6.  If you have more than one Server & Workload Protection Manager instance, select the instance to associate with the connected account and click **Next**.
+
+      7.  On the **Features and Permissions** screen, enable **Cloud Detections for AWS CloudTrail** and click **Next**.
+
+      8.  Click **Download and Review Template**.
+
+      :::note
+
+      The **Account Name** and **Description** fields are not exported to the review template. These parameters are provided in a later step.
+      :::
+
+    - Call an API to retrieve the template.
+
+      1.  Locate the **Get AWS CloudFormation template** API on the automation center.
+
+      2.  Locate the `query_params` strings.
+
+      3.  For `awsRegion`, provide the AWS region where you want to deploy the stack template and Core Features. The default region is based on your Trend Vision One region.
+
+      4.  For `features`, list the features you want to enable.
+
+      5.  For `featureAwsRegions`, specify the regions to deploy resources for certain features.
+
+          This field is required for features such as Agentless Vulneratibility & Threat Detection and Containter Protection for Amazon ECS. Some features have limited region support. For more information, see [AWS supported regions and limitations](aws-supported-regions-limitations.mdx).
+
+      6.  Save your changes and call the API.
+
+          The API returns the following:
+
+          - `templateUrl`: The URL to download the template.
+
+          - `visionOneOidcProviderUrl`: A required parameter for deploying the template.
+
+          - `createStackUrl`: URL of the AWS CloudFormation console pointing to the CloudFormation template of Trend Vision One.
+
+      7.  Download the template.
+
+2.  If you need to deploy a static template, call the Token API.
+
+    The API returns the values `bootstrapToken` and `visionOneApiKey`.
+
+3.  Locate the template file and open it in a text editor.
+
+4.  Locate the `Parameters` resource immediately following the `Outputs` resource and provide values for the required parameters.
+
+    Replace the explanation strings within the brackets {} with the required values.
+
+    <table>
+    <colgroup>
+    <col style="width: 33%" />
+    <col style="width: 67%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Parameter</p></th>
+    <th><p>Value</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><code>CloudAccountDescription</code></p></td>
+    <td><p>Specify a description which displays in the Cloud Accounts app</p></td>
+    </tr>
+    <tr>
+    <td><p><code>CloudAccountName</code></p></td>
+    <td><p>Specify the account name which displays in the Cloud Accounts app</p></td>
+    </tr>
+    <tr>
+    <td><p><code>CloudAuditLogMonitoringCloudTrailSNSTopicArn</code></p></td>
+    <td><p>The ARN of the CloudTrail SNS topic to monitor</p>
+    <p>This is required only if you enabled the <strong>Cloud Detections for AWS CloudTrail</strong> feature. Otherwise, leave empty.</p></td>
+    </tr>
+    <tr>
+    <td><p><code>CloudAuditLogMonitoringCloudTrailArn</code></p></td>
+    <td><p>The ARN of the CloudTrail to monitor</p>
+    <p>This is required only if you enabled the <strong>Cloud Detections for AWS CloudTrail</strong> feature. Otherwise, leave empty.</p></td>
+    </tr>
+    <tr>
+    <td><p><code>OrganizationID</code></p></td>
+    <td><p>Leave empty for connecting a single account.</p></td>
+    </tr>
+    <tr>
+    <td><p><code>ServerWorkloadProtectionManager</code></p></td>
+    <td><p>The ID of the Server &amp; Workload Protection instance to associate with the AWS account</p>
+    <p>If you have provisioned at least one Server &amp; Workload Protection, you must provide this value. The value is the following JSON string encoded in base64:</p>
+    <ul>
+    <li><p><code>[{"name":"workload", "instanceIds":["&lt;instance id&gt;"]}]</code></p></li>
+    </ul>
+    <p>The <code>instance id</code> can be found in the Product Instance app.</p>
+    <p>For example, if the <code>instance id</code> is <code>123</code>:</p>
+    <ul>
+    <li><p>The JSON string is <code>[{"name":"workload", "instanceIds":["123"]}]</code></p></li>
+    <li><p>The base64 string to provide for this parameter is: <code>W3sibmFtZSI6Indvcmtsb2FkIiwgImluc3RhbmNlSWRzIjpbIjEyMyJdfV0=</code></p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p><code>VisionOneAPIKey</code></p></td>
+    <td><p>Specify the API Key to invoke Cloud Accounts</p>
+    <p>If you are using the Token API, paste the <code>visionOneApiKey</code> returned by the API.</p>
+    <p>Otherwise, use your account API Key. Make sure the user account associated with the API Key has full permissions for Cloud Accounts.</p></td>
+    </tr>
+    <tr>
+    <td><p><code>VisionOneAccountID</code></p></td>
+    <td><p>Your Trend Vision One business ID</p></td>
+    </tr>
+    <tr>
+    <td><p><code>VisionOneOIDCProviderURL</code></p></td>
+    <td><p><code>cloudaccounts-{region}.visionone.trendmicro.com</code></p>
+    <p>Replace <code>{region}</code> with one of the region values: <code>us, eu, au, sg, in, jp</code></p>
+    
+
+    :::note
+    
+    <p>If you used an API to retrieve the template, the API returns the value as <code>visionOneOidcProviderUrl</code>.</p>
+    
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p><code>VisionOneRegion</code></p></td>
+    <td><p>The region of your Trend Vision One deployment</p>
+    <p>Use one of the values: <code>us, eu, au, sg, in, jp</code></p></td>
+    </tr>
+    </tbody>
+    </table>
+
+5.  If you are using a static template, provide the parameters returned by the Token API
+
+    1.  Locate the resource `customExchangeToken` and go to the `properties` section.
+
+    2.  Locate the property `VisionOneBootstrapToken` and replace the value with the `bootstrapToken` value generated by the Token API.
+
+    3.  Locate the property `VisionOneAPIKey` and replace the value with the `visionOneApiKey` value generated by the Token API.
+
+6.  Save your changes to the template file.
+
+7.  Access the Amazon CloudFormation console and go to **Stacks**.
+
+8.  Click **Create Stack**.
+
+    If prompted, select **With new resources (standard)**.
+
+9.  In the **Create stack** screen, select **Template is ready**.
+
+10. For **Template source**, select **Upload a tempate file** then click **Choose file** to upload the template.
+
+11. Click **Next**.
+
+12. Configure the **Specify stack details** screen.
+
+    1.  If you want to use a name other than the default, specify a new **Stack name**.
+
+    2.  In the **Parameters** section, verify the following parameters are correct.
+
+        - **CloudAuditLogMonitoringCloudTrailArn**
+
+        - **CloudAuditLogMonitoringCloudTrailSNSTopicArn**
+
+        :::warning[Important]
+
+        Do not change any other settings in the **Parameters** section. CloudFormation automatically provides the settings for the parameters. Changing parameters might cause stack creation to fail.
+        :::
+
+13. Click **Next**.
+
+14. Configure the **Configure stack options** as needed for your organization needs, then click **Next**.
+
+15. In the **Review** screen, select the options under **Capabilities**.
+
+    - **I acknowledge that AWS CloudFormation might create IAM resources with custom names.**
+
+    - **I acknowledge that AWS CloudFormation might require the following capability: CAPABILITY_AUTO_EXPAND**.
+
+16. Click **Submit**.
+
+    The **Stack details** screen for the new stack appears with the **Events** tab displayed. Creation might take a few minutes. Click **Refresh** to check the progress.
+::::

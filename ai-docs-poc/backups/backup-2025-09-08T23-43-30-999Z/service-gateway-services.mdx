@@ -1,0 +1,172 @@
+---
+slug: trend-vision-one-service-gateway-services
+title: Service Gateway services
+last_updated: '2025-09-08'
+ai_context:
+  source_file: service-gateway-services.md
+  conversion_date: '2025-09-08T23:42:12.791Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Install services on your Service Gateway appliance to connect or manage your on-premises or third-party products.
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Service</p></th>
+<th><p>Description</p></th>
+<th><p>Additional Requirements</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>ActiveUpdate Service</p></td>
+<td><p>Serves on-premises Trend Micro products as a local ActiveUpdate server to reduce outgoing internet traffic.</p></td>
+<td><ul>
+<li><p>Requires <a href="trend-vision-one-activeupdate-configuration">additional configuration steps</a> after installation.</p></li>
+<li><p>Update to the ActiveUpdate Service 3.0.0 or later requires <a href="trend-vision-one-upgrading-service-gateway-2-3">Service Gateway 3.0</a>.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>File Security Virtual Appliance</p></td>
+<td><p>Enables on-premises scanning of files for malware using the NFS v3 protocol and File Security SDK.</p></td>
+<td><p>Requires installation of this service exclusively on the Service Gateway appliance to enhance performance.</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-forward-proxy-service">Forward Proxy Service</a></p></td>
+<td><p>Allows on-premises Trend Micro products with no direct access to the internet to use the service gateway as a proxy to reach Trend Micro services.</p></td>
+<td><p>Requires the Service Gateway API key.</p></td>
+</tr>
+<tr>
+<td><p>Generic Caching Service</p></td>
+<td>
+
+:::warning[Important]
+
+<p>The Generic Caching Service is not available in all regions. For more information on accessing this service, contact your service provider.</p>
+
+
+:::
+
+
+<p>Saves previously requested internet content for on-premises Trend Micro products to speed up access to data and reduce demand on bandwidth of your business.</p></td>
+<td><p>Service requires updating to <a href="trend-vision-one-upgrading-service-gateway-2-3">Service Gateway 3.0</a>.</p>
+<p>Trend Micro recommends deploying the virtual appliance with the <a href="trend-vision-one-sizing-guide-sg-endpoints">standard image</a> specification, because at least 100 GB of storage must be free for this service.</p></td>
+</tr>
+<tr>
+<td><p>Greenbone Connector</p></td>
+<td><p>Sends vulnerability data on scanned devices and internet-facing assets from the Greenbone server to Trend Vision One.</p></td>
+<td><p>Requires the following information:</p>
+<ul>
+<li><p>Greenbone server IP address</p></li>
+<li><p>Greenbone account username</p></li>
+<li><p>Greenbone account password</p></li>
+</ul>
+<p>The provided username and password must be for a Greenbone account with at least an Observer role.</p></td>
+</tr>
+<tr>
+<td><p>MISP Threat Intelligence Connector</p></td>
+<td><p>Enables Trend Vision One to share threat intelligence data with MISP integration or retrieve threat intelligence data from MISP integration.</p></td>
+<td><p>Service requires configuring MISP in <a href="trend-vision-one-third-party-integration">Third-Party Integration</a>.</p></td>
+</tr>
+<tr>
+<td><p>Nessus Pro Connector</p></td>
+<td><p>Sends device information and vulnerability data from the Nessus Pro server to Trend Vision One.</p></td>
+<td><p>Requires the following Nessus Pro server settings:</p>
+<ul>
+<li><p>Server URL</p></li>
+<li><p>Nessus Pro secret key</p></li>
+<li><p>Nessus Pro access key</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>On-premises Directory Connector</p></td>
+<td><p>Supports sharing objects and activity data from Active Directory and OpenLDAP servers with Trend Vision One.</p></td>
+<td><p>Service requires configuring third-party apps in <a href="trend-vision-one-third-party-integration">Third-Party Integration</a>.</p></td>
+</tr>
+<tr>
+<td><p>Rapid7 - Nexpose Connector</p></td>
+<td><p>Sends device and vulnerability data from your Nexpose server to Trend Vision One.</p></td>
+<td><p>Requires the following information:</p>
+<ul>
+<li><p>Rapid7 server URL</p></li>
+<li><p>Rapid7 Security Console username</p></li>
+<li><p>Rapid7 Security Console password</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-smart-protection-services">Smart Protection Services</a></p></td>
+<td><p>Leverages file reputation and web reputation technology to detect security risks. On-premises Trend Micro products can perform queries against the Service Gateway virtual appliance, which provides Smart Protection either through the local Smart Protection Server on the virtual appliance or as a reverse proxy.</p></td>
+<td><ul>
+<li><p>Use the address information listed in the settings panel to configure connected products.</p></li>
+<li><p>Update to Smart Protection Services 2.0.0 or later requires <a href="trend-vision-one-upgrading-service-gateway-2-3">Service Gateway 3.0</a>.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Suspicious Object Exchange Service</p></td>
+<td><p>Enables sharing suspicious object data from Trend Vision One with third-party apps.</p></td>
+<td><p>Service requires configuring third-party apps in <a href="trend-vision-one-third-party-integration">Third-Party Integration</a>.</p></td>
+</tr>
+<tr>
+<td><p>Suspicious Object List Synchronization Service</p></td>
+<td><p>Supports the sharing of Suspicious Object lists between Trend Vision One and on-premises Trend Micro products.</p></td>
+<td><p>Requires the Service Gateway API key.</p></td>
+</tr>
+<tr>
+<td><p>Syslog Connector</p></td>
+<td><p>Enables sharing data from Trend Vision One with your local syslog server.</p></td>
+<td><p>Service requires configuring third-party apps in <a href="trend-vision-one-third-party-integration">Third-Party Integration</a>.</p></td>
+</tr>
+<tr>
+<td><p>Third-party intelligence synchronization (deprecated)</p></td>
+<td>
+
+:::note
+
+The service has been updated to MISP Threat Intelligence Connector and Suspicious Object Exchange Service.
+
+
+:::
+
+
+<p>Shares threat intelligence from Trend Vision One with third-party applications or retrieves threat intelligence from third-party applications.</p></td>
+<td><p>Service requires configuring third-party apps in <a href="trend-vision-one-third-party-integration">Third-Party Integration</a>.</p></td>
+</tr>
+<tr>
+<td><p>Third-Party Log Collection Service</p></td>
+<td><p>Supports sending logs in Common Event Format (CEF) syslog format from third-party sources to Trend Vision One for analysis and correlation.</p></td>
+<td><p>Service requires configuring third-party apps in <a href="trend-vision-one-third-party-integration">Third-Party Integration</a>.</p></td>
+</tr>
+<tr>
+<td><p>TippingPoint Log Forwarding Service</p></td>
+<td><p>Supports forwarding logs to Trend Vision One for correlation and analysis.</p></td>
+<td><p>Requires the Service Gateway API key.</p></td>
+</tr>
+<tr>
+<td><p>TippingPoint Policy Management Service</p></td>
+<td><p>Allows the Intrusion Prevention Configuration app to modify TippingPoint policy configurations to mitigate CVEs.</p></td>
+<td><p>Service requires a connected TippingPoint SMS console.</p></td>
+</tr>
+<tr>
+<td><p>Zero Trust Secure Access On-Premises Gateway</p></td>
+<td><p>Zero Trust Secure Access Internet Access is a forward proxy or ICAP service that protects end users from malicious activity on the internet through the use of secure gateways. Through integration with your Active Directory server, the on-premises gateway can also serve as an authentication proxy.</p></td>
+<td><p>Service requires setting up <a href="trend-vision-one-internet-access-configuration">Internet Access and AI Service Access configuration</a> in the Zero Trust Secure Access app.</p>
+<p>Once the Internet Access On-Premises Gateway service is enabled, you may configure custom ports for the following related services:</p>
+<ul>
+<li><p>HTTP proxy</p></li>
+<li><p>Authentication proxy</p></li>
+<li><p>ICAP</p></li>
+<li><p>ICAPS</p></li>
+</ul>
+<p>After configuring custom ports for services, the services will be restarted. Selected ports must be available. To view the default ports for the above services, see <a href="trend-vision-one-sg-ports-used">Service Gateway virtual appliance communication ports</a>.</p></td>
+</tr>
+</tbody>
+</table>
+:::

@@ -1,0 +1,82 @@
+---
+slug: trend-vision-one-data-security-posture-azure-2
+title: Enable Data Security Posture on an Azure subscription
+---
+# Enable Data Security Posture on an Azure subscription
+
+Enable Data Security Posture to discover and classify sensitive data in your Azure subscriptions, and predict potential attack paths for data leakage due to misconfiguration and vulnerability. .
+
+You can enable Data Security Posture on both new and existing Azure subscriptions in **Cloud Accounts**. For more information on Data Security Posture, see [Data Security Posture](data-posture.mdx).
+
+:::note
+
+Data Security Posture scanning is limited to files in blob containers within the following storage account types:
+
+- Standard general-purpose v2
+
+- Premium block blobs
+
+- Legacy blob storage
+:::
+
+For more information on storage account types, see the [Azure Blob Storage documentation](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+### Procedure {#procedure}
+
+1.  Enable Data Security Posture on a new or existing Azure subscription:
+
+    1.  Go to **Cloud Security → Cloud Accounts**.
+
+    2.  Click the Azure tab.
+
+    3.  Click **Add Subscription** or select an Azure subscription from the list.
+
+    4.  On the Features and Permissions page (if you are adding a new subscription), or the Resource Update tab (if you are configuring an existing subscription), enable **Data Security Posture**.
+
+    5.  By default Data Security Posture deploys to all regions. To remove regions, click the **Deployment** list and clear the checkbox beside each region you want to remove.
+
+2.  In Azure Cloud Shell, access the command line interface.
+
+    :::note
+
+    The **Add Azure Subscription** screen in the Trend Vision One console provides a set of commands to help complete the following steps. To complete the connection process, you must copy each command provided in the screen to enable the **Done** button. While you can alter some parameters, Trend Micro recommends using the commands as provided to prevent the deployment failing.
+    :::
+
+3.  Create a new directory for the deployment folder and then access the folder.
+
+    Copy the command or type `mkdir[Subscription ID] && cd [Subscription ID]`.
+
+    :::note
+
+    The commands provided by Trend Vision One use your subscription ID as the directory name. While you can specify any directory name you want, you must ensure the folder has a unique name and that there are no other Terraform files in the deployment folder.
+    :::
+
+4.  Upload the resource creation script to your Azure Cloud Shell.
+
+    - To use a command to upload the template directly to Cloud Shell, select **Curl Command**.
+
+      Copy and paste the **Curl Command** into Cloud Shell to retrieve the template package. The command is dynamically generated based on your account and region.
+
+    - To download the template first and upload from your local machine, select **Manual**.
+
+      Click **Download the Terraform Template** to save the template to your local machine. Make sure your Cloud Shell environment is set to the same region you selected for the Terraform deployment before uploading the package.
+
+5.  Extract the template using the command in the **Subscription Settings** screen.
+
+    The zip file name contains a randomly-generated number. Copy the command to extract the file: `unzip -o cloud-account-management-terraform-package-[randomly generated number].zip -d cloud-account-management-terraform-package`.
+
+6.  Access the deployment folder.
+
+    Copy the command or type `cd cloud-account-management-terraform-package`.
+
+7.  Run the deployment script.
+
+    Copy the command or type `./deploy.sh`. Azure Cloud Shell begins the Terraform process to deploy Trend Vision One security resources.
+
+8.  In the Trend Vision One console, in the **Connect Azure Subscription** screen, click **Done**.
+
+    :::note
+
+    If the **Done** button is not enabled, make sure you have copied the command line for each step on the screen.
+    :::
+::::

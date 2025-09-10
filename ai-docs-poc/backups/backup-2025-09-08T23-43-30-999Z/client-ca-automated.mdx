@@ -1,0 +1,155 @@
+---
+slug: trend-vision-one-client-ca-automated
+title: 3.2.3 - Ensure that a Client CA file is configured (automated)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: client-ca-automated.md
+  conversion_date: '2025-09-08T23:42:23.558Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Profile applicability: Level 1 - Worker Node
+
+Ensure that a Client CA file is configured for Kubelet authentication using certificates to enhance security. This configuration is critical because the connections from the apiserver to the kubelet, which are used for activities such as fetching logs for pods, attaching to running pods via kubectl, and enabling the kubelet’s port-forwarding functionality, terminate at the kubelet’s HTTPS endpoint. By default, the apiserver does not verify the kubelet’s serving certificate, making these connections vulnerable to man-in-the-middle attacks and unsafe over untrusted or public networks. Configuring Kubelet certificate authentication allows the apiserver to authenticate the Kubelet before it processes any requests, thereby safeguarding these interactions. This setup requires TLS to be configured both on the apiserver and the kubelets to ensure secure communication.
+
+### Impact {#impact}
+
+You require TLS to be configured on apiserver as well as kubelets.
+
+### Audit {#audit}
+
+Audit method 1:
+
+:::note
+
+Kubelets can be configured via a configuration file or command line arguments. Command line arguments take precedence. Check both command line arguments and configuration file entries when auditing Kubelet configurations.
+:::
+
+1.  SSH into each node and run the following command to view details of the active Kubelet process:
+
+    ``` codeblock
+    ps -ef | grep kubelet
+    ```
+
+2.  Identify the location of the configuration file from the --config argument in the output. View the file using:
+
+    ``` codeblock
+    sudo less /path/to/kubelet-config.json
+    ```
+
+3.  Verify that a client certificate authority file is configured:
+
+    - Command line argument to the Kubelet service:
+
+      ``` codeblock
+      --client-ca-file=/path/to/client-ca-file
+      ```
+
+    - In the Kubelet configuration file:
+
+      ``` codeblock
+              {
+              "authentication": {
+              "x509": {
+              "clientCAFile": "/path/to/client-ca-file"
+              }
+              }
+              }
+             
+      ```
+
+Audit method 2:
+
+Review the running configuration of a Kubelet via the "/configz" endpoint of the Kubernetes API using kubectl:
+
+1.  Discover all nodes in your cluster:
+
+    ``` codeblock
+    kubectl get nodes
+    ```
+
+2.  Initiate a proxy with kubectl on a local port (e.g., 8080):
+
+    ``` codeblock
+    kubectl proxy --port=8080
+    ```
+
+3.  In a separate terminal, run the following command for each node:
+
+    ``` codeblock
+    export NODE_NAME=my-node-name
+          curl http://localhost:8080/api/v1/nodes/${NODE_NAME}/proxy/configz
+    ```
+
+4.  Verify that a client certificate authority file is configured by checking the API response:
+
+    ``` codeblock
+          {
+          "authentication": {
+          "x509": {
+          "clientCAFile": "/path/to/client-ca-file"
+          }
+          }
+          }
+         
+    ```
+
+### Remediation {#remediation}
+
+Method 1:
+
+1.  SSH into each node.
+
+2.  Locate the Kubelet configuration file:
+
+    ``` codeblock
+    ps -ef | grep kubelet
+    ```
+
+3.  View the configuration file using:
+
+    ``` codeblock
+    sudo less /path/to/kubelet-config.json
+    ```
+
+4.  Configure the client certificate authority file by setting the following parameter:
+
+    ``` codeblock
+          {
+          "authentication": {
+          "x509": {
+          "clientCAFile": "/path/to/client-ca-file"
+          }
+          }
+          }
+         
+    ```
+
+5.  Restart the kubelet service and check its status (example for systems using systemd):
+
+    ``` codeblock
+    systemctl daemon-reload
+          systemctl restart kubelet.service
+          systemctl status kubelet -l
+    ```
+
+Method 2:
+
+1.  If using command line arguments, edit the kubelet service file to include the following parameter:
+
+    ``` codeblock
+    --client-ca-file=/path/to/client-ca-file
+    ```
+
+2.  For systems using systemd, edit the file located at /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf.
+
+3.  Restart the kubelet service and check its status (example for systems using systemd):
+
+    ``` codeblock
+          systemctl daemon-reload
+          systemctl restart kubelet.service
+          systemctl status kubelet -l
+    ```
+::::

@@ -1,0 +1,96 @@
+---
+slug: trend-vision-one-grant-exchange-inline-auth
+title: Granting access to Exchange Online (inline mode) with an authorized account
+last_updated: '2025-09-08'
+ai_context:
+  source_file: grant-exchange-inline-auth.md
+  conversion_date: '2025-09-08T23:42:18.717Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+The steps outlined below detail how to grant Cloud Email and Collaboration Protection access to Exchange Online (Inline Mode) with an Authorized Account from **Dashboard** for Inline Protection over both inbound and outbound messages.
+
+Before the access grant, verify related security configuration in Microsoft to ensure that Inline Protection for Exchange Online works properly for your organization and emails get delivered as expected. For details, see [Verifying related security settings in Microsoft](verifying-security-settings-ms.mdx).
+
+:::note
+
+If you have already granted access to Exchange Online (Inline Mode) for inbound protection with a service account, upgrade the service account to have Inline Protection in the outbound direction as well:
+
+Go to **Administration → Service Account**, locate your Exchange Online (Inline Mode) service account, click **Upgrade for Outbound Protection**, and follow the onscreen instructions to complete the procedure.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Dashboard → Service Status**.
+
+2.  Click **Grant Access** in the **Action** column for Exchange Online (Inline Mode).
+
+    The **Grant Access to Exchange Online (Inline Mode)** screen appears.
+
+3.  Select the policy to enable automatically when the access grant is complete.
+
+4.  Grant Cloud Email and Collaboration Protection the permission to configure the Exchange mail flow.
+
+    1.  Click **Grant Permission**.
+
+    2.  On the Microsoft logon screen that appears, specify your Microsoft 365 Global Administrator credentials and click **Sign in**.
+
+    3.  On the Exchange Online authorization screen that appears, click **Accept** to grant Cloud Email and Collaboration Protection the permission.
+
+        During this process, Cloud Email and Collaboration Protection creates the **Trend Micro Cloud App Security** app on Exchange Online.
+
+5.  Assign the Microsoft Entra ID roles to the **Trend Micro Cloud App Security** app created in Microsoft Entra ID.
+
+    1.  Go back to the Cloud Email and Collaboration Protection management console and copy the app ID shown in **Step 2**.
+
+    2.  Log on to the [Microsoft Entra ID portal](https://portal.azure.com/) as an Exchange Online administrator.
+
+    3.  In the left-side area, click **Microsoft Entra ID**, and select **Roles and administrators** under **Manage**.
+
+    4.  In the list on the **Roles and administrators** screen, click **Exchange administrator**.
+
+    5.  On the **Exchange administrator | Assignments** screen, click **+Add assignments**.
+
+    6.  Assign the Exchange administrator role to the **Trend Micro Cloud App Security** app.
+
+        - If you have not enabled Privileged Identity Management:
+
+          1.  In the search box on the **Add assignments** screen, paste the app ID copied earlier and press **Enter**.
+
+          2.  Locate and select the app **Trend Micro Cloud App Security**, and then click **Add**.
+
+              The app appears on the **Exchange administrator | Assignments** screen.
+
+        - If you have enabled Privileged Identity Management:
+
+          1.  On the **Add assignments** screen, click **No member selected**.
+
+          2.  On the **Select a member** screen, paste the app ID copied earlier, and press **Enter**.
+
+          3.  Locate and select the app **Trend Micro Cloud App Security**, and then click **Select**.
+
+          4.  On the **Setting** tab, retain the default settings, provide a justification for assigning the role under **Enter justification**, and click **Assign**.
+
+              The app appears on the **Active assignments** tab of the **Exchange administrator | Assignments** screen.
+
+6.  Grant Cloud Email and Collaboration Protection the permission to sync user and domain data from Microsoft Entra ID and access all mailboxes.
+
+    1.  Go back to the Cloud Email and Collaboration Protection management console and click **Click here** after **Step 3**.
+
+    2.  On the Microsoft logon screen that appears, specify your Microsoft 365 Global Administrator credentials and click **Sign in**.
+
+    3.  On the Exchange Online authorization screen that appears, click **Accept** to grant Cloud Email and Collaboration Protection the permission to sync user and domain data from Microsoft Entra ID.
+
+7.  Wait until the process is completed.
+
+    If the message "Successfully created a service account and synced data." appears on the screen, the access grant is successful.
+
+8.  To allow Cloud Email and Collaboration Protection to enhance protection for your Exchange Online service based on user behavior, click **Grant Permission** in the banner on the **Dashboard** screen, and follow the instructions to grant Cloud Email and Collaboration Protection the permission to read activity data for your organization.
+
+**Related information**
+
+- [Verifying related security settings in Microsoft](verifying-security-settings-ms.mdx)
+- [Connectors, transport rules, groups, and allow lists for inline protection](connectors-transport-inline.mdx)
+::::

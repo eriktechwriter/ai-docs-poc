@@ -1,0 +1,144 @@
+---
+slug: trend-vision-one-userset
+title: UserSet
+---
+# UserSet
+
+:::note
+
+The Integrity Monitoring module scans for unexpected changes to [directories](directoryset.mdx), [registry values](registryvalueset.mdx), [registry keys](registrykeyset.mdx), [services](serviceset.mdx), [processes](processset.mdx), [installed software](installedsoftwareset.mdx), [ports](portset.mdx), [groups](groupset.mdx), users, [files](fileset.mdx), and the [WQL](wqlset.mdx) query statement on agents. To enable and configure Integrity Monitoring, see [Set up integrity monitoring](set-up-integrity-monitoring.mdx).
+:::
+
+The UserSet element represents a set of users. On a Windows system it operates on users local to the system - the same users displayed by the "Local Users and Groups" MMC snap-in. Note that these are local users only if the agent is running on something other than a domain controller. On a domain controller, a UserSet element will enumerate all of the domain users, which may not be advisable for extremely large domains.
+
+On Unix systems, the users monitored are whatever the "getpwent_r()" and "getspnam_r()" APIs have been configured to return. On AIX systems specifically, the users monitored are those listed in the `/etc/passwd` file.
+
+### Tag Attributes {#tag-attributes}
+
+These are XML attributes of the tag itself, as opposed to the attributes of the Entity monitored by Integrity Monitoring Rules.
+
+<table>
+<thead>
+<tr>
+<th><p>Attribute</p></th>
+<th><p>Description</p></th>
+<th><p>Required</p></th>
+<th><p>Default Value</p></th>
+<th><p>Allowed Values</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>onChange</p></td>
+<td><p>Will be monitored in real time</p></td>
+<td><p>No</p></td>
+<td><p>false</p></td>
+<td><p>true, false</p></td>
+</tr>
+</tbody>
+</table>
+
+### Entity Set Attributes {#entity-set-attributes}
+
+These are the attributes of the entity that can be monitored:
+
+### Common Attributes {#common-attributes}
+
+- *cannotChangePassword*: True or false indicating if the user is permitted to change their password.
+- *disabled*: True or false indicating if the account has been disabled. On Windows systems this reflects the "disabled" check box for the user. On Unix systems this will be true if the user's account has expired or if their password has expired and they've exceeded the inactivity grace period for changing it.
+- *fullName*: The display name of the user.
+- *groups*: A comma-separated list of the groups to which the user belongs.
+- *homeFolder*: The path to the home folder or directory.
+- *lockedOut*: True or false indicating if the user has been locked out, either explicitly or due to excessive failed password attempts.
+- *passwordHasExpired*: True or false indicating if the user's password has expired. Note that on Windows this attribute is only available on Windows XP and newer operating systems.
+- *passwordLastChanged*: The timestamp of the last time the user's password was changed. This is recorded by the agent as the number of milliseconds since Jan 1 1970 UTC. Server & Workload Protection renders the timestamp in local time based on this value. Note that on Unix platforms, the resolution of this attribute is one day, so the time component of the rendered timestamp is meaningless. (Not supported by AIX.)
+- *passwordNeverExpires*: True or false indicating if the password does not expire.
+- *user*: The name of the user as known to the operating system. For example, "Administrator" or "root".
+
+### Windows-only Attributes {#windows-only-attributes}
+
+- *description*: The primary group the user belongs to.
+- *homeDriveLetter*: The drive letter to which a network share is mapped as the user's home folder.
+- *logonScript*: The path to a script that executes every time the user logs in.
+- *profilePath*: A network path if roaming or mandatory Windows user profiles are being used.
+
+### Linux, AIX, and Solaris Attributes {#linux-aix-and-solaris-attributes}
+
+- *group*: The primary group the user belongs to.
+- *logonShell*: The path to the shell process for the user.
+- *passwordExpiredDaysBeforeDisabled*: The number of days after the user's password expires that the account is disabled. On Solaris, this attribute refers to the number of inactive days before the user is disabled. (Not supported by AIX.)
+- *passwordExpiry*: The date on which the user's account expires and is disabled.
+- *passwordExpiryInDays*: The number of days after which the user's password must be changed.
+- *passwordMinDaysBetweenChanges*: The minimum number of days permitted between password changes.
+- *passwordWarningDays*: The number of days before the user's password is to expire that user is warned.
+
+### Short Hand Attributes {#short-hand-attributes}
+
+- *Standard*:
+  - cannotChangePassword
+  - disabled
+  - groups
+  - homeFolder
+  - passwordHasExpired
+  - passwordLastChanged
+  - passwordNeverExpires
+  - user
+  - logonScript (Windows-only)
+  - profilePath (Windows-only)
+  - group (Linux-only)
+  - logonShell (Linux-only)
+  - passwordExpiryInDays (Linux-only)
+  - passwordMinDaysBetweenChanges (Linux-only)
+
+### Meaning of "Key" {#meaning-of-key}
+
+The key is the username. This is not a hierarchical EntitySet. Patterns are applied only to the user name. As a result the "\*\*" pattern is not applicable.
+
+The following example monitors for any user creations or deletions. (Note that attributes are explicitly excluded so group membership would not be tracked):
+
+```bash
+<UserSet>
+<Attributes/>
+<include key="*" />
+</UserSet>
+```
+
+The following example would track the creation and deletion of the "jsmith" account, along with any changes to the STANDARD attributes of the account (since the STANDARD set for this EntitySet is automatically included if no specific attribute list is included):
+
+```bash
+<UserSet>
+<include key="jsmith" />
+</UserSet>
+```
+
+### Sub Elements {#sub-elements}
+
+### Include and Exclude {#include-and-exclude}
+
+See [Integrity monitoring rules language](integrity-monitoring-language-swp.mdx) for a general description of include for their allowed attributes and sub elements.
+
+### Special attributes of Include and Exclude for UserSets {#special-attributes-of-include-and-exclude-for-usersets}
+
+Various other attributes of the user may be used in include and exclude feature tests. These tests compare a value against the value of an attribute of the user; take note of the platform support for various attributes - not all attributes are available across platforms or even platform revisions, hence the use of these tests in include and exclude elements is of limited use. The feature tests support Unix glob-style wildcarding with \* and ?, and there is no normalization of path separators or other characters - it is a simple match against the value of the attribute.
+
+- *Disabled*: Does true or false match the disabled attribute of the user. The following example monitors users with a primary group of either "users" or "daemon":
+
+```bash
+<UserSet>
+<include disabled="true"/>
+</UserSet>
+```
+
+- *Group*: Does a wildcard match against the primary group of the user. This test is only applicable on Unix systems. The following example would monitor users with a primary group of either "users" or "daemon".
+
+```bash
+<UserSet>
+<include group="users"/>
+<include group="daemon"/>
+</UserSet>
+```
+
+- *LockedOut*: Does a true or false match against the lockedOut attribute of the user.
+- *PasswordHasExpired*: Does a true or false match against the passwordHasExpired attribute of the user.
+- *PasswordNeverExpires*: Does a true or false match against the passwordNeverExpires attribute of the user.
+::::

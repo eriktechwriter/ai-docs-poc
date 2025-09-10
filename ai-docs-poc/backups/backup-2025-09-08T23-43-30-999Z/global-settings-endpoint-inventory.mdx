@@ -1,0 +1,66 @@
+---
+slug: trend-vision-one-global-settings-endpoint-inventory
+title: Global Settings
+last_updated: '2025-09-08'
+ai_context:
+  source_file: global-settings-endpoint-inventory.md
+  conversion_date: '2025-09-08T23:42:18.770Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Configure inactive agent removal, bandwidth throttling, and proxy settings that apply to all your deployed agents.
+
+The Global Settings screen features three tabs used to configure various endpoint settings. You can access the Global Settings screen from Endpoint Inventory by clicking the **General and Global Settings** icon (![](/images/Global_Settings=GUID-1E10BFBD-3AFF-46DD-B853-0438EC2FD3F9.webp)) and then clicking **Global Settings**.
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Screen</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><strong>Sensor Settings</strong></p></td>
+<td><p>Configure inactive endpoint removal and sensor download bandwidth settings</p>
+<p>For more information, see <a href="trend-vision-one-sensor-settings">Sensor Settings</a>.</p></td>
+</tr>
+<tr>
+<td><p><strong>Agent Installer Proxy Settings</strong></p></td>
+<td><p>Configure proxy settings for newly deployed agents to connect and register to Trend Vision One</p>
+<p>The proxy settings on this tab are used when deploying the endpoint agent, allowing it to connect and register to Trend Vision One. Once deployment and registration are complete, the endpoint uses the <strong>Runtime Proxy Settings</strong> for normal operation.</p>
+<p>For more information, see <a href="trend-vision-one-agent-installer-proxy-settings">Agent Installer Proxy Settings</a>.</p>
+
+
+:::warning[Important]
+
+<p>Endpoints prioritize connections via Service Gateway appliances over other proxy settings.</p>
+<p>Configuring a proxy for a Protection Manager in <strong>Global Settings</strong> overrides any settings configured in the targeted Protection Manager.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><strong>Runtime Proxy Settings</strong></p></td>
+<td><p>Configure proxy policies to ensure agents are able to connect and communicate with Trend Vision One</p>
+<p>You can assign proxy settings to endpoints based on criteria such as endpoint name and operating system.</p>
+<p>The proxy settings on this tab are used during normal operation after the endpoint has successfully deployed and registered to Trend Vision One.</p>
+<p>For more information, see <a href="trend-vision-one-runtime-proxy-settings">Runtime Proxy Settings</a>.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Endpoint Settings](sensor-settings.md "Configure inactive endpoint removal and agent download bandwidth settings.")
+- [Agent Installer Proxy Settings](agent-installer-proxy-settings.md "Configure custom proxy settings to ensure newly deployed agents can connect and register.")
+- [Runtime Proxy Settings](runtime-proxy-settings.md "Configure custom proxy policies for more granular control over how endpoints connect to Trend Vision One.")
+:::

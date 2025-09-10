@@ -1,0 +1,127 @@
+{
+  "models": [
+    {
+      "title": "Claude 3.5 Sonnet (Company API)",
+      "provider": "openai",
+      "model": "claude-3-5-sonnet-20241022",
+      "apiBase": "https://your-company-api.com/v1",
+      "apiKey": "YOUR_COMPANY_API_KEY",
+      "contextLength": 200000,
+      "description": "Claude 3.5 Sonnet via company API - best for complex documentation tasks"
+    },
+    {
+      "title": "GPT-4 (Company API)",
+      "provider": "openai", 
+      "model": "gpt-4-turbo-preview",
+      "apiBase": "https://your-company-api.com/v1",
+      "apiKey": "YOUR_COMPANY_API_KEY",
+      "contextLength": 128000,
+      "description": "GPT-4 via company API - good for general documentation tasks"
+    },
+    {
+      "title": "Local Ollama (Free)",
+      "provider": "ollama",
+      "model": "codellama:13b",
+      "apiBase": "http://localhost:11434",
+      "contextLength": 16384,
+      "description": "Local Ollama model - free but requires local setup"
+    }
+  ],
+  "tabAutocompleteModel": {
+    "title": "Codeium (Free)",
+    "provider": "free-trial",
+    "model": "codeium"
+  },
+  "customCommands": [
+    {
+      "name": "docRewrite",
+      "prompt": "You are a technical documentation expert for Trend Vision One cybersecurity products. Rewrite the following content to be clearer, more concise, and follow our style guide:\n\n- Use active voice\n- Write in second person (you/your)\n- Use clear headings and bullet points\n- Include code examples where relevant\n- Ensure accuracy for cybersecurity terminology\n\nContent to rewrite:\n{{{ input }}}",
+      "description": "Rewrite documentation content following Trend Vision One style guidelines"
+    },
+    {
+      "name": "generateOutline",
+      "prompt": "You are a technical documentation expert. Create a comprehensive outline for documentation about: {{{ input }}}\n\nThe outline should include:\n- Clear hierarchical structure\n- Introduction and overview sections\n- Step-by-step procedures\n- Troubleshooting section\n- Related topics/see also\n\nFormat as markdown with proper heading levels.",
+      "description": "Generate a documentation outline for a given topic"
+    },
+    {
+      "name": "improveMetadata",
+      "prompt": "You are a documentation metadata expert. Analyze this MDX frontmatter and content, then suggest improvements to make it more discoverable and AI-friendly:\n\n{{{ input }}}\n\nProvide:\n1. Enhanced frontmatter with better tags, description, and SEO\n2. Suggested related topics\n3. Audience and difficulty level\n4. Estimated reading time\n\nReturn only the improved frontmatter in YAML format.",
+      "description": "Improve MDX frontmatter for better discoverability"
+    },
+    {
+      "name": "createTable",
+      "prompt": "Convert the following information into a well-formatted markdown table that follows our documentation standards:\n\n{{{ input }}}\n\nEnsure the table:\n- Has clear, descriptive headers\n- Is properly aligned\n- Includes all relevant information\n- Uses consistent formatting\n- Is accessible (proper header structure)",
+      "description": "Create properly formatted tables from unstructured data"
+    },
+    {
+      "name": "explainCode",
+      "prompt": "You are a cybersecurity documentation expert. Explain this code snippet in the context of Trend Vision One products:\n\n```\n{{{ input }}}\n```\n\nProvide:\n1. What the code does\n2. When to use it\n3. Any security considerations\n4. Example use cases\n5. Related configuration options\n\nWrite for a technical audience but keep explanations clear.",
+      "description": "Explain code snippets in cybersecurity context"
+    },
+    {
+      "name": "troubleshootingSteps",
+      "prompt": "Create a troubleshooting guide for this issue: {{{ input }}}\n\nStructure it as:\n1. **Problem Description**: Clear statement of the issue\n2. **Symptoms**: What users might see\n3. **Possible Causes**: Common reasons for this issue\n4. **Resolution Steps**: Step-by-step solutions (numbered list)\n5. **Verification**: How to confirm the fix worked\n6. **Related Issues**: Links to similar problems\n\nUse clear, actionable language suitable for technical users.",
+      "description": "Generate structured troubleshooting guides"
+    }
+  ],
+  "contextProviders": [
+    {
+      "name": "diff",
+      "params": {}
+    },
+    {
+      "name": "folder",
+      "params": {
+        "folders": ["docs", "data", "src"]
+      }
+    },
+    {
+      "name": "codebase",
+      "params": {}
+    }
+  ],
+  "slashCommands": [
+    {
+      "name": "edit",
+      "description": "Edit selected code with AI assistance"
+    },
+    {
+      "name": "comment",
+      "description": "Add comments to selected code"
+    },
+    {
+      "name": "share",
+      "description": "Share code snippet with context"
+    },
+    {
+      "name": "cmd",
+      "description": "Generate terminal commands"
+    }
+  ],
+  "docs": [
+    {
+      "title": "Trend Vision One Documentation",
+      "startUrl": "https://docs.trendmicro.com/en-us/enterprise/trend-vision-one.aspx",
+      "rootUrl": "https://docs.trendmicro.com/",
+      "faviconUrl": "https://docs.trendmicro.com/favicon.ico"
+    },
+    {
+      "title": "Docusaurus Documentation", 
+      "startUrl": "https://docusaurus.io/docs",
+      "rootUrl": "https://docusaurus.io/",
+      "faviconUrl": "https://docusaurus.io/img/favicon.ico"
+    },
+    {
+      "title": "MDX Documentation",
+      "startUrl": "https://mdxjs.com/docs/",
+      "rootUrl": "https://mdxjs.com/",
+      "faviconUrl": "https://mdxjs.com/favicon.ico"
+    }
+  ],
+  "experimental": {
+    "modelRoles": {
+      "inlineEdit": "Claude 3.5 Sonnet (Company API)",
+      "applyCodeBlock": "GPT-4 (Company API)"
+    }
+  }
+}

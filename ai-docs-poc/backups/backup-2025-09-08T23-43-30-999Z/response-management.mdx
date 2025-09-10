@@ -1,0 +1,117 @@
+---
+slug: trend-vision-one-response-management
+title: Response Management
+last_updated: '2025-09-08'
+ai_context:
+  source_file: response-management.md
+  conversion_date: '2025-09-08T23:42:13.721Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+The **Response Management** app allows you to take actions and track the actions you have taken on your environment using the Trend Vision One console.
+
+The following table outlines the actions available on the **Task List** tab in **Response Management** (**Workflow and Automation → Response Management**).
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Filter response data</p></td>
+<td><p>Use <strong>Search</strong> to locate specific task data.</p>
+<ul>
+<li><p><strong>Task status</strong>: The current status of the command sent to the managing server</p>
+<p>The <strong>Task status</strong> indicates whether the managing server was able to successfully receive and execute the command. If the command target is a Security Agent, the <strong>Task status</strong> does not necessarily indicate whether the target Security Agent or object successfully executed the command.</p></li>
+<li><p><strong>Action</strong>: The command sent to the target</p>
+<p>For more information, see <a href="trend-vision-one-response-actions-section">Response actions</a>.</p></li>
+<li><p><strong>Target type</strong>: The type of target object</p></li>
+<li><p><strong>Created/Updated by</strong>: The user that created or last updated the task</p></li>
+<li><p><strong>Search</strong>: Provides partial matching for the <em>Task ID</em> and <em>Target</em> objects</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>View task details</p></td>
+<td><p>View the table for the status of commands sent to targets.</p>
+<p>For more information, see <a href="trend-vision-one-response-data">Response data</a>.</p></td>
+</tr>
+<tr>
+<td><p>Approve or reject tasks</p></td>
+<td><p>Select and approve or reject tasks.</p>
+<p>For more information, see <a href="trend-vision-one-approval-specified-actions">Require approval for specified response actions</a>.</p></td>
+</tr>
+<tr>
+<td><p>Take additional action on a task</p></td>
+<td><p>Depending on the command sent to a target, you may be able to perform secondary or follow-up actions. Select the task to view any additional actions.</p>
+<p>For more information, see <a href="trend-vision-one-response-actions-section">Response actions</a>.</p></td>
+</tr>
+</tbody>
+</table>
+
+The following table outlines the actions available on the **Response Scripts** tab in **Response Management** (**Workflow and Automation → Response Management**).
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Add custom scripts</p></td>
+<td><p>Under <strong>Custom Scripts</strong>, click <strong>Add script</strong> to upload custom Bash or PowerShell script files.</p>
+<p>For more information, see <a href="trend-vision-one-run-remote-custom-script-task">Run Remote Custom Script task</a>.</p></td>
+</tr>
+<tr>
+<td><p>Add osquery queries</p></td>
+<td>
+
+:::note
+
+<p>This action requires multi-factor authentication.</p>
+
+
+:::
+
+
+<p>Under <strong>osquery</strong>, click <strong>Add query</strong> to type a custom osquery. Clicking <strong>Validate query</strong> toidentify any syntax errors.</p>
+<p>For more information, see <a href="trend-vision-one-run-osquery-task">Run osquery task</a>.</p></td>
+</tr>
+<tr>
+<td><p>Add YARA rules</p></td>
+<td>
+
+:::note
+
+<p>This action requires multi-factor authentication.</p>
+
+
+:::
+
+
+<p>Under <strong>YARA Rules</strong>, click <strong>Add YARA rules</strong> to upload a TXT file of custom YARA rules. Click <strong>Validate YARA rules</strong> to identify any syntax errors.</p>
+<p>For more information, see <a href="trend-vision-one-run-yara-rules-task">Run YARA rules task</a>.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Response actions](response-actions-section.md "Object-specific actions allow you to directly respond to threats without leaving the Trend Vision One console.")
+- [Response data](response-data.md "Trend Vision One tracks and provides feedback on the actions taken on endpoints, email messages, and network events.")
+- [Response Management settings](response-management-settings.md "Enable, disable, and configure settings for Response Management actions.")
+:::

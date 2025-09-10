@@ -1,0 +1,295 @@
+---
+slug: trend-vision-one-cef-intrusion-prevention-logs
+title: CEF Intrusion Prevention Logs
+last_updated: '2025-09-08'
+ai_context:
+  source_file: cef-intrusion-prevention-logs.md
+  conversion_date: '2025-09-08T23:42:24.113Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 38%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>CEF Key</p></th>
+<th><p>Description</p></th>
+<th><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Header (logVer)</p></td>
+<td><p>CEF format version</p></td>
+<td><p>CEF:0</p></td>
+</tr>
+<tr>
+<td><p>Header (vendor)</p></td>
+<td><p>Product vendor</p></td>
+<td><p>Trend Micro</p></td>
+</tr>
+<tr>
+<td><p>Header (pname)</p></td>
+<td><p>Product name</p></td>
+<td><p>Apex Central</p></td>
+</tr>
+<tr>
+<td><p>Header (pver)</p></td>
+<td><p>Product version</p></td>
+<td><p>2019</p></td>
+</tr>
+<tr>
+<td><p>Header (eventid)</p></td>
+<td><p>Event ID</p></td>
+<td><p>Log</p></td>
+</tr>
+<tr>
+<td><p>Header (eventName)</p></td>
+<td><p>Log name</p></td>
+<td><p>Intrusion Prevention</p></td>
+</tr>
+<tr>
+<td><p>Header (severity)</p></td>
+<td><p>Severity</p></td>
+<td><p>3</p></td>
+</tr>
+<tr>
+<td><p>dvchost</p></td>
+<td><p>Display name of the managed endpoint</p></td>
+<td><p>Example: "localhost"</p></td>
+</tr>
+<tr>
+<td><p>rt</p></td>
+<td><p>Event trigger time in UTC</p></td>
+<td><p>Example: "Mar 22 2018 08:23:23 GMT+00:00"</p></td>
+</tr>
+<tr>
+<td><p>src</p></td>
+<td><p>Source IPv4 address</p></td>
+<td><p>Example: "10.1.152.12"</p></td>
+</tr>
+<tr>
+<td><p>c6a2Label</p></td>
+<td><p>Corresponding label for the "c6a2" field</p></td>
+<td><p>SLF_SourceIPv6</p></td>
+</tr>
+<tr>
+<td><p>c6a2</p></td>
+<td><p>Source IPv6 address</p></td>
+<td><p>"2001:b011:1004:325b:8db7:6ca9:8fc5:321a"</p></td>
+</tr>
+<tr>
+<td><p>smac</p></td>
+<td><p>Source MAC address</p></td>
+<td><p>Example: "18:31:BF:4F:30:DD"</p></td>
+</tr>
+<tr>
+<td><p>spt</p></td>
+<td><p>Source port</p></td>
+<td><p>Example: "60886"</p></td>
+</tr>
+<tr>
+<td><p>dst</p></td>
+<td><p>Destination IPv4 address</p></td>
+<td><p>Example: "10.1.153.151"</p></td>
+</tr>
+<tr>
+<td><p>c6a3Label</p></td>
+<td><p>Corresponding label for the "c6a3" field</p></td>
+<td><p>SLF_DestinationIPv6</p></td>
+</tr>
+<tr>
+<td><p>c6a3</p></td>
+<td><p>Destination IPv6 address</p></td>
+<td><p>Example: "2001:b011:1004:325b:8db7:6ca9:8fc5:654a"</p></td>
+</tr>
+<tr>
+<td><p>dmac</p></td>
+<td><p>Destination host MAC address</p></td>
+<td><p>Example: "D0:17:C2:95:ED:71"</p></td>
+</tr>
+<tr>
+<td><p>dpt</p></td>
+<td><p>Destination port</p></td>
+<td><p>Example: "139"</p></td>
+</tr>
+<tr>
+<td><p>cn2Label</p></td>
+<td><p>Corresponding label for the "cn2" field</p></td>
+<td><p>Mode</p></td>
+</tr>
+<tr>
+<td><p>cn2</p></td>
+<td><p>Indicates whether the system is in "detection only" mode</p></td>
+<td><p>Example: "0"</p>
+<ul>
+<li><p>0 or NULL = No</p></li>
+<li><p>1 = Yes</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>act</p></td>
+<td><p>Action</p></td>
+<td><p>Example: "LOG"</p>
+<p>SLF_ACTION maps:</p>
+<ul>
+<li><p>0 = UNKNOWN</p></li>
+<li><p>3 = DELETE</p></li>
+<li><p>6 = LOG</p></li>
+<li><p>10 = INSERT/REPLACE</p></li>
+<li><p>13 = BLOCK</p></li>
+<li><p>257 = RESET</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>deviceDirection</p></td>
+<td><p>Incoming or outgoing direction</p></td>
+<td><p>Example: "Apex One"</p></td>
+</tr>
+<tr>
+<td><p>cn3Label</p></td>
+<td><p>Corresponding label for the "cn3" field</p></td>
+<td><p>Priority</p></td>
+</tr>
+<tr>
+<td><p>cn3</p></td>
+<td><p>Weighted priority of the incident</p></td>
+<td><p>Example: "3"</p>
+<p>Calculated from Severity x Asset Value</p></td>
+</tr>
+<tr>
+<td><p>cn4Label</p></td>
+<td><p>Corresponding label for the "cn4" field</p></td>
+<td><p>Severity</p></td>
+</tr>
+<tr>
+<td><p>cn4</p></td>
+<td><p>The system defined incident severity value</p></td>
+<td><p>Example: "1"</p>
+<ul>
+<li><p>1 = LOW</p></li>
+<li><p>2 = MEDIUM</p></li>
+<li><p>3 = HIGH</p></li>
+<li><p>4 = CRITICAL</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>proto</p></td>
+<td><p>The network protocol being exploited</p></td>
+<td><p>Example: "10009"</p>
+<ul>
+<li><p>28 = ICMP</p></li>
+<li><p>46 = ICMPv6</p></li>
+<li><p>10003 = TCP</p></li>
+<li><p>10004 = UDP</p></li>
+<li><p>10005 = IGMP</p></li>
+<li><p>10006 = GGP</p></li>
+<li><p>10007 = PUP</p></li>
+<li><p>10008 = IDP</p></li>
+<li><p>10009 = ND</p></li>
+<li><p>10010 = RAW</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cs2Label</p></td>
+<td><p>Corresponding label for the "cs2" field</p></td>
+<td><p>Application_Type</p></td>
+</tr>
+<tr>
+<td><p>cs2</p></td>
+<td><p>The network application name</p></td>
+<td><p>Example: "DCERPC Services"</p></td>
+</tr>
+<tr>
+<td><p>cn1Label</p></td>
+<td><p>Corresponding label for the "cn1" field</p></td>
+<td><p>Rule</p></td>
+</tr>
+<tr>
+<td><p>cn1</p></td>
+<td><p>The ID of the inspection rule</p></td>
+<td><p>Example: "1005448"</p></td>
+</tr>
+<tr>
+<td><p>cs1Label</p></td>
+<td><p>Corresponding label for the "cs1" field</p></td>
+<td><p>Reason/Rule</p></td>
+</tr>
+<tr>
+<td><p>cs1</p></td>
+<td><p>The string literal of the rule ID and description</p></td>
+<td><p>Example: "1005448 - SMB Null Session Detected - 1"</p></td>
+</tr>
+<tr>
+<td><p>cnt</p></td>
+<td><p>Aggregated count</p></td>
+<td><p>Example: "1"</p></td>
+</tr>
+<tr>
+<td><p>deviceFacility</p></td>
+<td><p>Product</p></td>
+<td><p>Example: "Apex One"</p></td>
+</tr>
+<tr>
+<td><p>deviceNtDomain</p></td>
+<td><p>Active Directory domain</p></td>
+<td><p>Example: APEXTMCM</p></td>
+</tr>
+<tr>
+<td><p>dntdom</p></td>
+<td><p>Apex One domain hierarchy</p></td>
+<td><p>Example: OSCEDomain1</p></td>
+</tr>
+<tr>
+<td><p>TMCMLogDetectedHost</p></td>
+<td><p>Endpoint name where the log event occurred</p></td>
+<td><p>Example: MachineHostName</p></td>
+</tr>
+<tr>
+<td><p>TMCMLogDetectedIP</p></td>
+<td><p>IP address where the log event occurred</p></td>
+<td><p>Example: 10.1.2.3</p></td>
+</tr>
+<tr>
+<td><p>ApexCentralHost</p></td>
+<td><p>Apex Central host name</p></td>
+<td><p>Example: TW-CHRIS-W2019</p></td>
+</tr>
+<tr>
+<td><p>devicePayloadId</p></td>
+<td><p>Unique message GUID</p></td>
+<td><p>Example: 1C00290C0360-9CDE11EB-D4B8-F51F-C697</p></td>
+</tr>
+<tr>
+<td><p>TMCMdevicePlatform</p></td>
+<td><p>Endpoint operating system</p></td>
+<td><p>Example: Windows 7 6.1 (Build 7601) Service Pack 1</p></td>
+</tr>
+</tbody>
+</table>
+
+Log sample:
+
+``` codeblock
+CEF:0|Trend Micro|Apex Central|2019|Log|Intrusion Prevention|3|
+rt=Apr 20 2020 03:33:20 GMT+00:00 dvchost=OSCEClient23 device
+Facility=Apex One act=Log,src=10.1.1.9 dst=80.1.1.9 smac=54-B
+F-64-84-7F-09 spt=89 dmac=54-BF-64-84-7F-19 dpt=449 cn2Label=
+Mode cn2=0 deviceDirection=Inbound cn3Label=Priority cn3=1 cn
+4Label=Severity cn4=1 proto=10009 cs2Label=Application_Type c
+s2=N/A cn1Label=Rule cn1=1009549 cs1Label=Reason/Rule cs1=100
+9549 - Detected Terminal Services (RDP) Server Traffic - 1 (A
+TT&CK T1015,T1043,T1076,T1048,T1032,T1071) cnt=1 deviceNtDoma
+in=APEXTMCM dntdom=OSCEDomain1 deviceFacility=Apex One TMCMLo
+gDetectedHost=shost1 TMCMLogDetectedIP=10.1.1.9 devicePayload
+Id=1C00290C0360-9CDE11EB-D4B8-F51F-C697 TMCMdevicePlatform=W
+indows 7 6.1 (Build 7601) Service Pack 1
+```
+:::

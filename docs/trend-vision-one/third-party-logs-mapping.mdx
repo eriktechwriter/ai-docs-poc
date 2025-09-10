@@ -1,0 +1,3705 @@
+---
+slug: trend-vision-one-third-party-logs-mapping
+title: Third-Party Logs data sources
+---
+# Third-Party Logs data sources
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Field Name</p></th>
+<th><p>Type</p></th>
+<th><p>General Field</p></th>
+<th><p>Description</p></th>
+<th><p>Example</p></th>
+<th><p>Products</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>act</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The action</p></td>
+<td><ul>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>actResult</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The result of an action</p></td>
+<td><ul>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>action</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The traffic processing action</p></td>
+<td><ul>
+<li><p><code>ACCEPT</code></p></li>
+<li><p><code>REJECT</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>actionName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The user or service action</p></td>
+<td><ul>
+<li><p><code>ConnectionSuccess</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>additionalEventData</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The additional event information that was not part of the request or response</p></td>
+<td><ul>
+<li><p><code>{"SignatureVersion":"SigV4","CipherSuite":"ECDHE-RSA-AES128-GCM-SHA256"}</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>alertCategories</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The list of alert categories</p></td>
+<td><ul>
+<li><p><code> - </code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>alertTitle</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The alert title</p></td>
+<td><ul>
+<li><p><code>FIREWALL_ACTIVITY_LOG</code></p></li>
+<li><p><code>TRAFFIC</code></p></li>
+<li><p><code>Suspicious PowerShell command line</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>apiVersion</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The API version associated with the AwsApiCall eventType value</p></td>
+<td><ul>
+<li><p><code>2012-08-10</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>app</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The network protocol</p></td>
+<td><ul>
+<li><p><code>DNS Response</code></p></li>
+<li><p><code>TCP</code></p></li>
+<li><p><code>HTTP</code></p></li>
+<li><p><code>tcp</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>appPkgName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The app package name (if the subject is an app)</p></td>
+<td><ul>
+<li><p><code>com.ConsolesXX.CollectionNesGames</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>application</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The name of the requested application</p></td>
+<td><ul>
+<li><p><code>Microsoft Account</code></p></li>
+<li><p><code>Microsoft Services</code></p></li>
+<li><p><code>Office Online</code></p></li>
+<li><p><code>update.googleapis.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>applicationId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The application ID</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>attachmentFileHashSha256s</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileSHA2</p></li>
+</ul></td>
+<td><p>The SHA-256 hash of the email attachment</p></td>
+<td><ul>
+<li><p><code>0570dfd156ee00cb7bc2a94998157cb3a29292b9e9feed82d4b6c7d2c6bdd9d4</code></p></li>
+<li><p><code>2d96ebbbc5a5687b0f18fd5620e4e5489d49a877430146bbca447fabe9c47a6e</code></p></li>
+<li><p><code>20d27422610967122439735cbcb48e4382a16e94a8b29c068e6b7d0e40466427</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>attachmentFileHashes</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileSHA1</p></li>
+</ul></td>
+<td><p>The SHA-1 of the email attachment</p></td>
+<td><ul>
+<li><p><code>acedb7898338a46f38d148d1d0456e644576d41b</code></p></li>
+<li><p><code>ea6fcc4c0c1f10d71742b29e98a977d995473dd1</code></p></li>
+<li><p><code>03d8fb85556edf397d8afcafc0b13f11ecbde50c</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>attachmentFileName</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileName</p></li>
+</ul></td>
+<td><p>The file name of an attachment</p></td>
+<td><ul>
+<li><p><code>image001.png</code></p></li>
+<li><p><code>image002.png</code></p></li>
+<li><p><code>image003.png</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>attachmentMd5</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileMD5</p></li>
+</ul></td>
+<td><p>The MD5 hash of the email attachment</p></td>
+<td><ul>
+<li><p><code>003fa299ab119219596f952c68029810</code></p></li>
+<li><p><code>03aeabf6a745cb627ee29c05a22e58cb</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>attachmentUrls</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The URLs and URL sources extracted from the email attachment</p></td>
+<td><p>-</p></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>awsRegion</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The AWS region the request was made to</p></td>
+<td><ul>
+<li><p><code>us-east-1</code></p></li>
+<li><p><code>us-east-2</code></p></li>
+<li><p><code>us-west-1</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>azId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The Availability Zone ID</p></td>
+<td><ul>
+<li><p><code>apse2-az3</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>bytes</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The number of transmitted data bytes</p></td>
+<td><ul>
+<li><p><code>15044</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>category</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The event category</p></td>
+<td><ul>
+<li><p><code>Exploits</code></p></li>
+<li><p><code>Reconnaissance</code></p></li>
+<li><p><code>Vulnerabilities</code></p></li>
+<li><p><code>Security Policy</code></p></li>
+<li><p><code>utm:ips</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cloudAccountId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The owner AWS account ID of the source network interface (account-id)</p></td>
+<td><ul>
+<li><p><code>123456789012</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cloudTrailEventId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The GUID generated by AWS CloudTrail to identify events</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>clusterId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The cluster ID of the container</p></td>
+<td><ul>
+<li><p><code>TestCluster-2HJdImvH6eO1fgTnCBK3xYA7Sph</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>clusterName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The cluster name of the container</p></td>
+<td><ul>
+<li><p><code>TestCluster</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cnt</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The total number of logs</p></td>
+<td><ul>
+<li><p><code>1</code></p></li>
+<li><p><code>2</code></p></li>
+<li><p><code>3</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>containerId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The Kubernetes container ID</p></td>
+<td><ul>
+<li><p><code>7d1e00176d78</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>containerImage</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The Kubernetes container image</p></td>
+<td><ul>
+<li><p><code>debian:latest</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>containerImageDigest</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The Kubernetes container image digest</p></td>
+<td><ul>
+<li><p><code>sha256:bfe6615d017d1eebe19f349669de58cda36c668ef916e618be78071513c690e5</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>containerName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The Kubernetes container name</p></td>
+<td><ul>
+<li><p><code>k8s_democon_longrunl_default_11111111-1111-1111-1111-111111111111_0</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cves</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The CVEs associated with this filter</p></td>
+<td><ul>
+<li><p><code>CVE-2014-3567</code></p></li>
+<li><p><code>CVE-2016-6304</code></p></li>
+<li><p><code>CVE-2011-1385</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>dOSName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The destination OS</p></td>
+<td><ul>
+<li><p><code>Windows</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>dUser1</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>UserAccount</p></li>
+</ul></td>
+<td><p>The latest sign-in user of the destination</p></td>
+<td><ul>
+<li><p><code>N/A</code></p></li>
+<li><p><code>empty</code></p></li>
+<li><p><code>bob</code></p></li>
+<li><p><code>sample_email@trendmicro.com</code></p></li>
+<li><p><code>sip:service@10.10.10.10:5060</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>dhost</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>DomainName</p></li>
+</ul></td>
+<td><p>The destination hostname</p></td>
+<td><ul>
+<li><p><code>sw_us-east-1c_10-124-21-139</code></p></li>
+<li><p><code>10.10.10.10</code></p></li>
+<li><p><code>www.sample.org</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>direction</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The direction</p></td>
+<td><ul>
+<li><p><code>Inbound</code></p></li>
+<li><p><code>Incoming</code></p></li>
+<li><p><code>Outgoing</code></p></li>
+<li><p><code>Unknown</code></p></li>
+<li><p><code>client-to-server</code></p></li>
+<li><p><code>server-to-client</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>dmac</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The destination MAC address</p></td>
+<td><ul>
+<li><p><code>00:00:00:ff:ff:ff</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>dnsQueryType</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The record type requested by the DNS protocol</p></td>
+<td><ul>
+<li><p><code>A</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>dpt</p></td>
+<td><ul>
+<li><p><code>int</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Port</p></li>
+</ul></td>
+<td><p>The destination port</p></td>
+<td><ul>
+<li><p><code>0</code></p></li>
+<li><p><code>445</code></p></li>
+<li><p><code>80</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>dst</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>IPv4</p></li>
+<li><p>IPv6</p></li>
+</ul></td>
+<td><p>The destination IP</p></td>
+<td><ul>
+<li><p><code> - </code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>dstEndpointGuid</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The destination host GUID on which the event was detected</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>dstEndpointHostName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>EndpointName</p></li>
+</ul></td>
+<td><p>The hostname of the destination device on which the event was detected</p></td>
+<td><ul>
+<li><p><code>PHILIPSIBE09</code></p></li>
+<li><p><code>WHAM6WK8XG2</code></p></li>
+<li><p><code>MacBook-Pro-del-Meno</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>dstIpType</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The destination IP type</p></td>
+<td><ul>
+<li><p><code>Public</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>dstLocation</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The destination country</p></td>
+<td><ul>
+<li><p><code>Japan</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>dstZone</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The destination zone of the session</p></td>
+<td><ul>
+<li><p><code>wan</code></p></li>
+<li><p><code>dmz</code></p></li>
+<li><p><code>undefined</code></p></li>
+<li><p><code>Internal</code></p></li>
+<li><p><code>nat-trust</code></p></li>
+<li><p><code>nat-untrust</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>duser</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>EmailRecipient</p></li>
+</ul></td>
+<td><p>The email recipient</p></td>
+<td><ul>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>dvc</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The device IP</p></td>
+<td><p>-</p></td>
+<td><ul>
+<li><p>undefined</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>dvchost</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The network device hostname</p></td>
+<td><ul>
+<li><p><code>my-company-xns</code></p></li>
+<li><p><code>my-ddi</code></p></li>
+<li><p><code>VLAB-PA440</code></p></li>
+<li><p><code>FG-50E</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>ecsTaskArn</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The list of ECS task ARNs</p></td>
+<td><ul>
+<li><p><code>arn:aws:ecs:us-east-1:111111111111:task/mc_us-east1_ecs_cluster/675cf91a1d3e41439a9ac6e32ca49728</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>ecsTaskId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The ECS task ID</p></td>
+<td><ul>
+<li><p><code>675cf91a1d3e41439a9ac6e32ca49728</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>endpointGuid</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The host endpoint GUID on which the event was detected</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+<li><p><code>DSP84573ULLJHM5GK2R7</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>endpointHostName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>EndpointName</p></li>
+</ul></td>
+<td><p>The host name of the device on which the event was detected</p></td>
+<td><ul>
+<li><p><code>usportal</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>endpointIp</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>IPv4</p></li>
+<li><p>IPv6</p></li>
+</ul></td>
+<td><p>The IP address of the endpoint on which the event was detected</p></td>
+<td><ul>
+<li><p><code>10.10.10.10</code></p></li>
+<li><p><code>::1</code></p></li>
+<li><p><code>fe80::1</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>errorCode</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The AWS service error code</p></td>
+<td><ul>
+<li><p><code>ThrottlingException</code></p></li>
+<li><p><code>InvalidParameterValueException</code></p></li>
+<li><p><code>NoSuchLifecycleConfiguration</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>errorMessage</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The error description</p></td>
+<td><ul>
+<li><p><code>The specified bucket does not have a website configuration</code></p></li>
+<li><p><code>An unknown error occurred</code></p></li>
+<li><p><code>The lifecycle configuration does not exist</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>eventCase</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The AWS service that the request was made to</p></td>
+<td><ul>
+<li><p><code>workspaces.amazonaws.com</code></p></li>
+<li><p><code>sts.amazonaws.com</code></p></li>
+<li><p><code>kms.amazonaws.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>eventCategory</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The event category used in LookupEvents calls</p></td>
+<td><ul>
+<li><p><code>Management</code></p></li>
+<li><p><code>Data</code></p></li>
+<li><p><code>Insight</code></p></li>
+<li><p><code>AlertEvidence</code></p></li>
+<li><p><code>DeviceProcessEvents</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>eventDataLogonType</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The sign-in type of Windows Event 4624 (successful sign-in attempt)</p></td>
+<td><ul>
+<li><p><code>Network</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>eventId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The event ID</p></td>
+<td><ul>
+<li><p><code>200138</code></p></li>
+<li><p><code>100119</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>eventName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The log type</p></td>
+<td><ul>
+<li><p><code>FIREWALL_ACTIVITY_LOG</code></p></li>
+<li><p><code>TRAFFIC</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>eventSource</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The AWS service the request was made to</p></td>
+<td><ul>
+<li><p><code>s3.amazonaws.com</code></p></li>
+<li><p><code>dynamodb.amazonaws.com</code></p></li>
+<li><p><code>xray.amazonaws.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>eventSubName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The event type sub-name</p></td>
+<td><ul>
+<li><p><code>start</code></p></li>
+<li><p><code>end</code></p></li>
+<li><p><code>drop</code></p></li>
+<li><p><code>deny</code></p></li>
+<li><p><code>url</code></p></li>
+<li><p><code>ml-virus</code></p></li>
+<li><p><code>file</code></p></li>
+<li><p><code>vulnerability</code></p></li>
+<li><p><code>wildfire</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>eventTime</p></td>
+<td><ul>
+<li><p><code>real</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The time the agent or product detected the event</p></td>
+<td><ul>
+<li><p><code>1656324260000</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>eventType</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The type of event that generated the event record</p></td>
+<td><ul>
+<li><p><code>AwsApiCall</code></p></li>
+<li><p><code>AwsServiceEvent</code></p></li>
+<li><p><code>AwsConsoleAction</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>eventVersion</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The log event format version</p></td>
+<td><ul>
+<li><p><code>1.08</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>fileHash</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileSHA1</p></li>
+</ul></td>
+<td><p>The SHA-1 of the file</p></td>
+<td><ul>
+<li><p><code>DA39A3EE5E6B4B0D3255BFEF95601890AFD80709</code></p></li>
+<li><p><code>89CE26EAD139D52B8A6B61BFFC6AF89AF246580F</code></p></li>
+<li><p><code>3AD1F4E7CAA11E5199EE80B8983677ADDD065450</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>fileHashMd5</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileMD5</p></li>
+</ul></td>
+<td><p>The MD5 of the file</p></td>
+<td><ul>
+<li><p><code>d5120786925038601a77c2e1eB9a3a0a</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>fileHashSha256</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileSHA2</p></li>
+</ul></td>
+<td><p>The SHA-256 of the file</p></td>
+<td><ul>
+<li><p><code>6A6EB2D717CEA041B4444193B45EDFB6CA1287518203B7230B3C4B8FFB031EAB</code></p></li>
+<li><p><code>BFF703FF836196644586014DA13A097C2EE9A08E4D596DFB7C8E0F685FE01294</code></p></li>
+<li><p><code>12327F460AC9CBBC34D39EB3CF89C7FECCA37F08773A04566840F73F6ECC4104</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>fileName</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileName</p></li>
+</ul></td>
+<td><p>The file name</p></td>
+<td><ul>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>fileOriginIP</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The IP address from where the file was downloaded</p></td>
+<td><ul>
+<li><p><code>10.10.10.10</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>fileOriginUrl</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The URL from where the file was downloaded</p></td>
+<td><ul>
+<li><p><code>http://www.example.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>filePath</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileFullPath</p></li>
+</ul></td>
+<td><p>The file path</p></td>
+<td><ul>
+<li><p><code>security</code></p></li>
+<li><p><code>/var/log/audit/audit.log</code></p></li>
+<li><p><code>application</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>fileSize</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The file size</p></td>
+<td><ul>
+<li><p><code>1209</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>fileType</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The file type</p></td>
+<td><ul>
+<li><p><code>EXE</code></p></li>
+<li><p><code>LNK</code></p></li>
+<li><p><code>MIME</code></p></li>
+<li><p><code>linux</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>filterRiskLevel</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The top level filter risk of the event</p></td>
+<td><ul>
+<li><p><code>info</code></p></li>
+<li><p><code>low</code></p></li>
+<li><p><code>medium</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>flowDirection</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The network interface traffic direction</p></td>
+<td><ul>
+<li><p><code>ingress</code></p></li>
+<li><p><code>egress</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>flowId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The connection ID</p></td>
+<td><ul>
+<li><p><code>101766</code></p></li>
+<li><p><code>440</code></p></li>
+<li><p><code>20518968</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>flowType</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The type of traffic (type)</p></td>
+<td><ul>
+<li><p><code>IPv4</code></p></li>
+<li><p><code>IPv6</code></p></li>
+<li><p><code>EFA</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>fullPath</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileFullPath</p></li>
+</ul></td>
+<td><p>The full file path</p></td>
+<td><ul>
+<li><p><code>\\etc\\hosts</code></p></li>
+<li><p><code>c:\\windows\\system32\\tasks\\microsoft\\windows\\softwareprotectionplatform\\svcrestarttask</code></p></li>
+<li><p><code>\\var\\log\\auth.log</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>groupId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The group ID for the management scope filter</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>hostName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>DomainName</p></li>
+<li><p>HostDomain</p></li>
+</ul></td>
+<td><p>The hostname</p></td>
+<td><ul>
+<li><p><code>NJ-EFFY-ZHAO1</code></p></li>
+<li><p><code>trendmicro.com</code></p></li>
+<li><p><code>SMC User</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>httpReferer</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>URL</p></li>
+</ul></td>
+<td><p>The HTTP referer</p></td>
+<td><ul>
+<li><p><code>http://10.10.10.10/</code></p></li>
+<li><p><code>http://fake/home/</code></p></li>
+<li><p><code>http://fake.com/page/Test.jsp</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>httpRespContentType</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The HTTP response data content type</p></td>
+<td><ul>
+<li><p><code>Application/json</code></p></li>
+<li><p><code>application/octet-stream</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>httpXForwardedFor</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The HTTP X-Forwarded-For header</p></td>
+<td><ul>
+<li><p><code>10.10.10.10, 10.10.10.11, 10.10.10.12</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>idpName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The identity provider</p></td>
+<td><ul>
+<li><p><code>Microsoft Entra ID</code></p></li>
+<li><p><code>Microsoft Active Directory</code></p></li>
+<li><p><code>google</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>initiatedByUserIpAddress</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>IPv4</p></li>
+<li><p>IPv6</p></li>
+</ul></td>
+<td><p>The client IP of the user</p></td>
+<td><ul>
+<li><p><code>10.10.10.10</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>initiatedByUserPrincipalName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>UserAccount</p></li>
+</ul></td>
+<td><p>The User Principal Name of the user</p></td>
+<td><ul>
+<li><p><code>sample_email@trendmicro.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>instanceId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The instance ID</p></td>
+<td><ul>
+<li><p><code>i-01234567890abcdef</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>ipProto</p></td>
+<td><ul>
+<li><p><code>int</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The protocol number (protocol)</p></td>
+<td><ul>
+<li><p><code>6</code></p></li>
+<li><p><code>17</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>isLocalAdmin</p></td>
+<td><ul>
+<li><p><code>bool</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>Whether the user is a local administrator on the device</p></td>
+<td><ul>
+<li><p><code>true</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>k8sNamespace</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The Kubernetes namespace of the container</p></td>
+<td><ul>
+<li><p><code>default</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>k8sPodId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The Kubernetes pod ID of the container</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>k8sPodName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The Kubernetes pod name of the container</p></td>
+<td><ul>
+<li><p><code>longrunl</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>logReceivedTime</p></td>
+<td><ul>
+<li><p><code>long</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The time when the XDR log was received</p></td>
+<td><ul>
+<li><p><code>1656324260000</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>logStatus</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The VPC Flow Log status</p></td>
+<td><ul>
+<li><p><code>OK</code></p></li>
+<li><p><code>NODATA</code></p></li>
+<li><p><code>SKIPDATA</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>logonUser</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>UserAccount</p></li>
+</ul></td>
+<td><p>The sign-in user name</p></td>
+<td><ul>
+<li><p><code> - </code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailBccAddresses</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>EmailRecipient</p></li>
+</ul></td>
+<td><p>The BCC address in the email header</p></td>
+<td><ul>
+<li><p><code>sample_email@trendmicro.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailCcAddresses</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>EmailRecipient</p></li>
+</ul></td>
+<td><p>The CC address in the email header</p></td>
+<td><ul>
+<li><p><code>&lt;sample_email@trendmicro.com&gt;</code></p></li>
+<li><p><code>sample_email@trendmicro.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailDirection</p></td>
+<td><ul>
+<li><p><code>int</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The email traffic direction</p></td>
+<td><ul>
+<li><p><code>1</code></p></li>
+<li><p><code>3</code></p></li>
+<li><p><code>25</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailFromAddresses</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>EmailSender</p></li>
+</ul></td>
+<td><p>The Mail From address in the email header</p></td>
+<td><ul>
+<li><p><code>sample_email@trendmicro.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailMsgId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>EmailMessageID</p></li>
+</ul></td>
+<td><p>The internet message ID of the email</p></td>
+<td><ul>
+<li><p><code>&lt;sample-id@trendmicro.com&gt;</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailMsgSubject</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>EmailSubject</p></li>
+</ul></td>
+<td><p>The email subject</p></td>
+<td><ul>
+<li><p><code>Administrator Login</code></p></li>
+<li><p><code>Administrator Logout</code></p></li>
+<li><p><code>hello_world2</code></p></li>
+<li><p><code>Suspicious Email Detected</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailToAddresses</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>EmailRecipient</p></li>
+</ul></td>
+<td><p>The Mail To address in the email header</p></td>
+<td><ul>
+<li><p><code>sample_email@trendmicro.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailUrlsRealLink</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>URL</p></li>
+</ul></td>
+<td><p>The URL extracted from the email content</p></td>
+<td><ul>
+<li><p><code>https://aka.ms/JoinTeamsMeeting</code></p></li>
+<li><p><code>http://go.microsoft.com/fwlink/p/?LinkID=12345</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailUrlsVisibleLink</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>URL</p></li>
+</ul></td>
+<td><p>The URL extracted from the email content</p></td>
+<td><ul>
+<li><p><code>Unsubscribe</code></p></li>
+<li><p><code>Android</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailbox</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The target or primary email address</p></td>
+<td><ul>
+<li><p><code>sample_email@trendmicro.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>malFamily</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The threat family</p></td>
+<td><ul>
+<li><p><code>Emotet</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>malName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The name of the detected malware</p></td>
+<td><ul>
+<li><p><code>EICAR_TEST_FILE</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>managementEvent</p></td>
+<td><ul>
+<li><p><code>bool</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The management event</p></td>
+<td><ul>
+<li><p><code>true</code></p></li>
+<li><p><code>false</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>monitoringLevel</p></td>
+<td><ul>
+<li><p><code>int</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The cloud activity monitoring level</p></td>
+<td><ul>
+<li><p><code>0</code></p></li>
+<li><p><code>1</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>networkInterfaceId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The network interface ID (interface-id)</p></td>
+<td><ul>
+<li><p><code>eni-01234567890abcdef</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectAppLabel</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The app name</p></td>
+<td><ul>
+<li><p><code>Collection Nes Games</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectAppPackageName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The app package name</p></td>
+<td><ul>
+<li><p><code>com.ConsolesXX.CollectionNesGames</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectCmd</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>CLICommand</p></li>
+</ul></td>
+<td><p>The command line entry of the target process</p></td>
+<td><ul>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectFileHashMd5</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileMD5</p></li>
+</ul></td>
+<td><p>The MD5 of the target file</p></td>
+<td><ul>
+<li><p><code>7ac47235c7bb452a03d3afd872f44c9e</code></p></li>
+<li><p><code>c9873d83a969645a97f21adc1b164cc5</code></p></li>
+<li><p><code>3b32b378c8b288de6f15e1607a8c2145</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectFileHashSha1</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileSHA1</p></li>
+</ul></td>
+<td><p>The SHA-1 hash of the target process image or target file</p></td>
+<td><ul>
+<li><p><code>DA39A3EE5E6B4B0D3255BFEF95601890AFD80709</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectFileHashSha256</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileSHA2</p></li>
+</ul></td>
+<td><p>The SHA-256 hash of the target process image or target file</p></td>
+<td><ul>
+<li><p><code>6A6EB2D717CEA041B4444193B45EDFB6CA1287518203B7230B3C4B8FFB031EAB</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectFileName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileName</p></li>
+</ul></td>
+<td><p>The object file name</p></td>
+<td><ul>
+<li><p><code>powershell.exe</code></p></li>
+<li><p><code>wmiprvse.exe</code></p></li>
+<li><p><code>dismhost.exe</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectFilePath</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileFullPath</p></li>
+<li><p>FileName</p></li>
+</ul></td>
+<td><p>The file path of the target process image or target file</p></td>
+<td><ul>
+<li><p><code>c:\windows\system32\windowspowershell\v1.0\powershell.exe</code></p></li>
+<li><p><code>zwwritevirtualmemory</code></p></li>
+<li><p><code>c:\windows\system32\wbem\wmiprvse.exe</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectIps</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>IPv4</p></li>
+<li><p>IPv6</p></li>
+</ul></td>
+<td><p>The IP address resolved by the DNS protocol</p></td>
+<td><ul>
+<li><p><code> - </code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectPid</p></td>
+<td><ul>
+<li><p><code>int</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The object process PID</p></td>
+<td><ul>
+<li><p><code>11360</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectRegistryData</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>RegistryValueData</p></li>
+</ul></td>
+<td><p>The registry data contents</p></td>
+<td><ul>
+<li><p><code>3</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectRegistryKeyHandle</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>RegistryKey</p></li>
+</ul></td>
+<td><p>The registry key path</p></td>
+<td><ul>
+<li><p><code>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectRegistryOriginalData</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The original registry value data before modification</p></td>
+<td><ul>
+<li><p><code>2</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectRegistryOriginalKeyHandle</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The original registry key before modification</p></td>
+<td><ul>
+<li><p><code>HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters</code></p></li>
+<li><p><code>HKLM\system\currentcontrolset\services\w32time\config</code></p></li>
+<li><p><code>HKLM\system\currentcontrolset\services\tcpip\parameters</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectRegistryOriginalValue</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The original registry value name before modification</p></td>
+<td><ul>
+<li><p><code>Start</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectRegistryValue</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>RegistryValue</p></li>
+</ul></td>
+<td><p>The registry value name</p></td>
+<td><ul>
+<li><p><code>AdobeUpdater</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectRegistryValueType</p></td>
+<td><ul>
+<li><p><code>int</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The Windows Registry Type ID</p></td>
+<td><ul>
+<li><p><code>4</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectSessionIp</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>IPv4</p></li>
+<li><p>IPv6</p></li>
+</ul></td>
+<td><p>The remote device IP address</p></td>
+<td><ul>
+<li><p><code>10.10.10.10</code></p></li>
+<li><p><code>fe80::ffff:ffff:0000:0000</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectSigner</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The list of object process signers</p></td>
+<td><ul>
+<li><p><code> - </code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectSignerValid</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>Whether each signer of the object process is valid</p></td>
+<td><ul>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectType</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The object type</p></td>
+<td><ul>
+<li><p><code>Device</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectUser</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>UserAccount</p></li>
+</ul></td>
+<td><p>The user name of the target process which is launched by current running process</p></td>
+<td><ul>
+<li><p><code>root</code></p></li>
+<li><p><code>SYSTEM</code></p></li>
+<li><p><code>oracle</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectUserDomain</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The owner domain of the target process which is launched by current running process</p></td>
+<td><ul>
+<li><p><code>NT AUTHORITY</code></p></li>
+<li><p><code>AUTORIDADE NT</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectVersionInfoOriginalFileName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileName</p></li>
+</ul></td>
+<td><p>The original file name from the version information of the object image</p></td>
+<td><ul>
+<li><p><code>msedgeupdate.dll</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>oldFileHash</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileSHA1</p></li>
+</ul></td>
+<td><p>The old file hash</p></td>
+<td><ul>
+<li><p><code>DA39A3EE5E6B4B0D3255BFEF95601890AFD80709</code></p></li>
+<li><p><code>89CE26EAD139D52B8A6B61BFFC6AF89AF246580F</code></p></li>
+<li><p><code>57247B810B0EE61DD86CE24AC14097B9B5405EEC</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>pComp</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The component that made the detection</p></td>
+<td><ul>
+<li><p><code>Microsoft Defender for Office 365</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>packets</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The number of transmitted data packets</p></td>
+<td><ul>
+<li><p><code>14</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>parentCmd</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>CLICommand</p></li>
+</ul></td>
+<td><p>The command line entry of the parent process</p></td>
+<td><ul>
+<li><p><code>C:\WINDOWS\system32\services.exe</code></p></li>
+<li><p><code>C:\Windows\system32\services.exe</code></p></li>
+<li><p><code>/sbin/launchd</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>parentFileName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The parent process name</p></td>
+<td><ul>
+<li><p><code>explorer.exe</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>parentPid</p></td>
+<td><ul>
+<li><p><code>int</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The PID of the parent process</p></td>
+<td><ul>
+<li><p><code>10035</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>pktDstAddr</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>IPv4</p></li>
+<li><p>IPv6</p></li>
+</ul></td>
+<td><p>The packet level destination IP</p></td>
+<td><ul>
+<li><p><code>10.10.10.10</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>pktDstCloudServiceName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The subset IP address range name for the cloud service destination IP (pkt-dst-aws-service)</p></td>
+<td><ul>
+<li><p><code>AMAZON</code></p></li>
+<li><p><code>EC2</code></p></li>
+<li><p><code>ROUTE53</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>pktSrcAddr</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>IPv4</p></li>
+<li><p>IPv6</p></li>
+</ul></td>
+<td><p>The packet level source IP</p></td>
+<td><ul>
+<li><p><code>10.10.10.10</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>pktSrcCloudServiceName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The subset IP address range name for the cloud service source IP (pkt-src-aws-service)</p></td>
+<td><ul>
+<li><p><code>AMAZON</code></p></li>
+<li><p><code>EC2</code></p></li>
+<li><p><code>ROUTE53</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>pname</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The product name</p></td>
+<td><ul>
+<li><p><code>PAN-OS</code></p></li>
+<li><p><code>Fortigate</code></p></li>
+<li><p><code>Microsoft Defender for Endpoint</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>policyName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The name of the triggered policy</p></td>
+<td><ul>
+<li><p><code>TLC-to-nat-untrust</code></p></li>
+<li><p><code>TLC-to-nat-trust</code></p></li>
+<li><p><code>default</code></p></li>
+<li><p><code>g-default</code></p></li>
+<li><p><code>Unified-Policy</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>policyTreePath</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The policy tree path</p></td>
+<td><ul>
+<li><p><code>policyname1/policyname2/policyname3</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>policyUuid</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The policy UUID</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>previousObjectFileName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileName</p></li>
+</ul></td>
+<td><p>The previous object file name</p></td>
+<td><ul>
+<li><p><code>powershell.exe</code></p></li>
+<li><p><code>wmiprvse.exe</code></p></li>
+<li><p><code>dismhost.exe</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>previousObjectFilePath</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileFullPath</p></li>
+<li><p>FileName</p></li>
+</ul></td>
+<td><p>The previous file path of the target process image or target file</p></td>
+<td><ul>
+<li><p><code>/usr/tmp/powershell.exe</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>principalName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The user principal name used to sign in to the proxy</p></td>
+<td><ul>
+<li><p><code>sample_email@trendmicro.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>processCmd</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>CLICommand</p></li>
+</ul></td>
+<td><p>The subject process command line</p></td>
+<td><ul>
+<li><p><code>\"cmd.exe-\" /c powershell.exe -Command</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>processFileHashMd5</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileMD5</p></li>
+</ul></td>
+<td><p>The MD5 hash of the subject process image</p></td>
+<td><ul>
+<li><p><code>cd10cb894be2128fca0bf0e2b0c27c16</code></p></li>
+<li><p><code>7ac47235c7bb452a03d3afd872f44c9e</code></p></li>
+<li><p><code>cfd65bed18a1fae631091c3a4c4dd533</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>processFileHashSha1</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileSHA1</p></li>
+</ul></td>
+<td><p>The SHA-1 of the subject process</p></td>
+<td><ul>
+<li><p><code>DA39A3EE5E6B4B0D3255BFEF95601890AFD80709</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>processFileHashSha256</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileSHA2</p></li>
+</ul></td>
+<td><p>The SHA-256 of the subject process image file</p></td>
+<td><ul>
+<li><p><code>6A6EB2D717CEA041B4444193B45EDFB6CA1287518203B7230B3C4B8FFB031EAB</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>processFileName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The file name of the subject process</p></td>
+<td><ul>
+<li><p><code>ai_exec_server.exe</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>processFilePath</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>ProcessFullPath</p></li>
+<li><p>ProcessName</p></li>
+<li><p>FileFullPath</p></li>
+<li><p>FileName</p></li>
+</ul></td>
+<td><p>The file path of the subject process</p></td>
+<td><ul>
+<li><p><code>c:\\windows\\system32\\cmd.exe</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>processFileRemoteAccess</p></td>
+<td><ul>
+<li><p><code>bool</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>Whether there was remote access to the process file</p></td>
+<td><ul>
+<li><p><code>true</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>processName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>ProcessName</p></li>
+</ul></td>
+<td><p>The image name of the process that triggered the event</p></td>
+<td><ul>
+<li><p><code>cmd.exe</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>processPid</p></td>
+<td><ul>
+<li><p><code>int</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The PID of the subject process</p></td>
+<td><ul>
+<li><p><code>10035</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>processRemoteSessionDeviceName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The remote device name of the process</p></td>
+<td><ul>
+<li><p><code>user2</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>processRemoteSessionIp</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>IPv4</p></li>
+<li><p>IPv6</p></li>
+</ul></td>
+<td><p>The remote device IP address of the process</p></td>
+<td><ul>
+<li><p><code>10.10.10.10</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>processSigner</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The list of process signers in an endpoint or container</p></td>
+<td><ul>
+<li><p><code>Microsoft Windows</code></p></li>
+<li><p><code>Microsoft Windows Publisher</code></p></li>
+<li><p><code>Microsoft Corporation</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>processUser</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>UserAccount</p></li>
+</ul></td>
+<td><p>The user name of the process or the file creator</p></td>
+<td><ul>
+<li><p><code>user2</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>processUserDomain</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The owner domain of the subject process image</p></td>
+<td><ul>
+<li><p><code>nt authority</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>processVersionInfoOriginalFileName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileName</p></li>
+</ul></td>
+<td><p>The original file name from the version information of the process image</p></td>
+<td><ul>
+<li><p><code>cmd.exe</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>productCode</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The internal product code</p></td>
+<td><ul>
+<li><p><code>tlc</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>profile</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The name of the triggered Threat Protection template or Data Loss Prevention profile</p></td>
+<td><ul>
+<li><p><code>default</code></p></li>
+<li><p><code>g-default</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>proto</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The transport network protocol</p></td>
+<td><ul>
+<li><p><code>6</code></p></li>
+<li><p><code>TCP</code></p></li>
+<li><p><code>17</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>pver</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The product version</p></td>
+<td><ul>
+<li><p><code>v6.0.3</code></p></li>
+<li><p><code>10.1.12</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>quarantineFilePath</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileFullPath</p></li>
+</ul></td>
+<td><p>The file path of the quarantined object</p></td>
+<td><ul>
+<li><p><code>C:\ProgramData\Trend Micro\AMSP\quarantine\ASLUMVS0.4FC</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>quarantineFileSha256</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileSHA2</p></li>
+</ul></td>
+<td><p>The SHA-256 of the quarantined object</p></td>
+<td><ul>
+<li><p><code>84B2FA19B05EA88D6E785B4ADB528120485AA3F72F3E5E114DE6D3696B0D151F</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>rating</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The credibility level</p></td>
+<td><ul>
+<li><p><code>any</code></p></li>
+<li><p><code>Unknown</code></p></li>
+<li><p><code>Dangerous</code></p></li>
+<li><p><code>computer-and-internet-info</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>readOnly</p></td>
+<td><ul>
+<li><p><code>bool</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>Whether the operation is read-only</p></td>
+<td><ul>
+<li><p><code>true</code></p></li>
+<li><p><code>false</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>recipientAccountId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The Account ID that received the event</p></td>
+<td><ul>
+<li><p><code>123456789012</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>regionCode</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The network interface AWS Region</p></td>
+<td><ul>
+<li><p><code>ap-southeast-2</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>reqDataSize</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The data volume transmitted over the transport layer by the client (in bytes)</p></td>
+<td><ul>
+<li><p><code>15688</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>requestClientApplication</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The HTTP user agent</p></td>
+<td><ul>
+<li><p><code>Firefox/126.0</code></p></li>
+<li><p><code>Other: Wget/1.19.1 (mingw32)</code></p></li>
+<li><p><code>MICROSOFT_DEVICE_METADATA_RETRIEVAL_CLIENT</code></p></li>
+<li><p><code>LIBCURL</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>requestID</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The request ID generated by the service this value)</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>requestMethod</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The network protocol request method</p></td>
+<td><ul>
+<li><p><code>POST</code></p></li>
+<li><p><code>get</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>requestParameters</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The parameters sent with the request</p></td>
+<td><ul>
+<li><p><code>{"durationSeconds": 3600, "roleSessionName":"BackplaneAssumeRoleSession"}</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>requests</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>URL</p></li>
+</ul></td>
+<td><p>The URLs of the request</p></td>
+<td><ul>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>resources</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The resources accessed in the event</p></td>
+<td><ul>
+<li><p><code>[{"type":"AWS::S3::Object","ARN":"arn:aws:s3:::your-bucket/file.txt"}]</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>respDataSize</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The data volume transmitted over the transport layer by the server (in bytes)</p></td>
+<td><ul>
+<li><p><code>7856</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>responseElements</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The response elements for create, update, and delete actions</p></td>
+<td><ul>
+<li><p><code>{"user":{"createDate":"Mar 24, 2014 9:11:59 PM","userName":"Bob","arn":"arn:aws:iam::123456789012:user/Bob","path":"/","userId":"EXAMPLEUSERID"}}</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>ruleId</p></td>
+<td><ul>
+<li><p><code>int</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The rule ID</p></td>
+<td><ul>
+<li><p><code>1002795</code></p></li>
+<li><p><code>1003802</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>ruleName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The name of the rule that triggered the event</p></td>
+<td><ul>
+<li><p><code>ETL_Access Rules_Web_Host</code></p></li>
+<li><p><code>block_wiki_for_guest</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>sOSName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The source OS</p></td>
+<td><ul>
+<li><p><code>Windows 10</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>sUser1</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>UserAccount</p></li>
+</ul></td>
+<td><p>The latest sign-in user of the source</p></td>
+<td><ul>
+<li><p><code>sample_email@trendmicro.com</code></p></li>
+<li><p><code>sip:sipp@10.10.10.10:5060</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>samUser</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The user name of the SAM account</p></td>
+<td><ul>
+<li><p><code>MFigini</code></p></li>
+<li><p><code>ECM5903I</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>service</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The Microsoft 365 service where the activity occurred</p></td>
+<td><ul>
+<li><p><code>Microsoft Defender for Office 365</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>serviceEventDetails</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The service event details</p></td>
+<td><ul>
+<li><p><code>{"lifecycleEventPolicy":{"policyVersion":1,"policyId":"11111111-1111-1111-1111-111111111111"}}</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>sessionEnd</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The session end time (in seconds)</p></td>
+<td><ul>
+<li><p><code>1575462989</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>sessionEndReason</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The reason why a session was terminated</p></td>
+<td><ul>
+<li><p><code>tcp-fin</code></p></li>
+<li><p><code>tcp-rst-from-server</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>sessionStart</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The session start name (in seconds)</p></td>
+<td><ul>
+<li><p><code>1575462989</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>severity</p></td>
+<td><ul>
+<li><p><code>int</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The severity of the event</p></td>
+<td><ul>
+<li><p><code>3</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>sharedEventID</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The AWS CloudTrail GUID (from the same AWS action sent to different AWS accounts)</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>shost</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>DomainName</p></li>
+</ul></td>
+<td><p>The source hostname</p></td>
+<td><ul>
+<li><p><code>sw_us-east-1a_10-124-17-69</code></p></li>
+<li><p><code>sw_us-east-1c_10-124-21-139</code></p></li>
+<li><p><code>WIN-FBUB1O9TU4U</code></p></li>
+<li><p><code>TW-STEVENLIN</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>smac</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The source MAC address</p></td>
+<td><ul>
+<li><p><code>00:00:00:ff:ff:ff</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>sourceIPAddress</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>IPv4</p></li>
+<li><p>IPv6</p></li>
+</ul></td>
+<td><p>The request IP address (for service console actions: the customer resource, for AWS services: the DNS name)</p></td>
+<td><ul>
+<li><p><code>10.10.10.10</code></p></li>
+<li><p><code>apigateway.amazonaws.com</code></p></li>
+<li><p><code>config.amazonaws.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>spt</p></td>
+<td><ul>
+<li><p><code>int</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Port</p></li>
+</ul></td>
+<td><p>The source port</p></td>
+<td><ul>
+<li><p><code>53</code></p></li>
+<li><p><code>0</code></p></li>
+<li><p><code>7680</code></p></li>
+<li><p><code>50006</code></p></li>
+<li><p><code>52068</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>src</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>IPv4</p></li>
+<li><p>IPv6</p></li>
+</ul></td>
+<td><p>The source IP</p></td>
+<td><ul>
+<li><p><code> - </code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>srcEndpointGuid</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The source endpoint GUID on which the event was detected</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>srcEndpointHostName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>EndpointName</p></li>
+</ul></td>
+<td><p>The hostname of the source device on which the event was detected</p></td>
+<td><ul>
+<li><p><code>PHILIPSIBE09</code></p></li>
+<li><p><code>WHAM6WK8XG2</code></p></li>
+<li><p><code>MacBook-Pro-del-Meno</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>srcFilePath</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileFullPath</p></li>
+<li><p>FileName</p></li>
+</ul></td>
+<td><p>The file path which is moved or copied to another path</p></td>
+<td><ul>
+<li><p><code>\\\\cnva-apps\\megaclockprod\\traveler\\travelerprint.accdb</code></p></li>
+<li><p><code>c:\\program files\\common files\\microsoft shared\\clicktorun\\officesvcmgrschedule.xml</code></p></li>
+<li><p><code>q:\\a7_dbs\\a4_pkg\\a4_packaging.accde</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>srcIpType</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The source IP type</p></td>
+<td><ul>
+<li><p><code>Private</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>srcLocation</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The source country</p></td>
+<td><ul>
+<li><p><code>Japan</code></p></li>
+<li><p><code>Reserved</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>srcZone</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The source zone of the session</p></td>
+<td><ul>
+<li><p><code>wan</code></p></li>
+<li><p><code>dmz</code></p></li>
+<li><p><code>undefined</code></p></li>
+<li><p><code>TLC</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>sslCertIssuerCommonName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The issuer common name</p></td>
+<td><ul>
+<li><p><code>Microsoft Code Signing PCA 2011</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>subLocationId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The sub-location ID</p></td>
+<td><ul>
+<li><p><code>lz-0abcd123efg4567h</code></p></li>
+<li><p><code>op-0abcd123efg4567h</code></p></li>
+<li><p><code>wz-0abcd123efg4567h</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>subLocationType</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The sub-location type</p></td>
+<td><ul>
+<li><p><code>wavelength</code></p></li>
+<li><p><code>outpost</code></p></li>
+<li><p><code>localzone</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>subnetId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The subnet ID</p></td>
+<td><ul>
+<li><p><code>subnet-01234567890abcdef</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>suid</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>UserAccount</p></li>
+</ul></td>
+<td><p>The username or mailbox</p></td>
+<td><ul>
+<li><p><code>root</code></p></li>
+<li><p><code>NT AUTHORITY\SYSTEM</code></p></li>
+<li><p><code>sample_email@trendmicro.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>suser</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>EmailSender</p></li>
+</ul></td>
+<td><p>The email sender</p></td>
+<td><ul>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>tacticId</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Tactic</p></li>
+</ul></td>
+<td><p>The list of MITRE tactic IDs</p></td>
+<td><ul>
+<li><p><code> - </code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>tags</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Technique</p></li>
+<li><p>Tactic</p></li>
+</ul></td>
+<td><p>The detected technique ID based on the alert filter</p></td>
+<td><ul>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>tcpFlags</p></td>
+<td><ul>
+<li><p><code>int</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The bitmask value of the FIN/SYN/RST/SYN-ACK TCP flags</p></td>
+<td><ul>
+<li><p><code>1</code></p></li>
+<li><p><code>2</code></p></li>
+<li><p><code>4</code></p></li>
+<li><p><code>18</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>techniqueId</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Technique</p></li>
+</ul></td>
+<td><p>The technique ID detected by the product agent based on a detection rule</p></td>
+<td><ul>
+<li><p><code> - </code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>tlsDetails</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The TLS details</p></td>
+<td><ul>
+<li><p><code>{"tlsVersion":"TLSv1.2","cipherSuite":"ECDHE-RSA-AES128-GCM-SHA256"}</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>trafficPath</p></td>
+<td><ul>
+<li><p><code>int</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The egress traffic path number</p></td>
+<td><ul>
+<li><p><code>1</code></p></li>
+<li><p><code>2</code></p></li>
+<li><p><code>8</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>urlCat</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The requested URL category</p></td>
+<td><ul>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+<li><p><code> - </code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>userAgent</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>CLICommand</p></li>
+</ul></td>
+<td><p>The user agent or the agent through which the request was made</p></td>
+<td><ul>
+<li><p><code>signin.amazonaws.com</code></p></li>
+<li><p><code>console.amazonaws.com</code></p></li>
+<li><p><code>aws-cli/1.3.23 Python/2.7.6 Linux/2.6.18-164.el5</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>userDomain</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>EndpointName</p></li>
+<li><p>DomainName</p></li>
+<li><p>AccountDomain</p></li>
+</ul></td>
+<td><p>The user domain</p></td>
+<td><ul>
+<li><p><code> - </code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>userIdentity</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The information about a user who made a request</p></td>
+<td><ul>
+<li><p><code>{"type":"AWSService","invokedBy":"apigateway.amazonaws.com"}</code></p></li>
+<li><p><code>{"type":"AWSService","invokedBy":"lambda.amazonaws.com"}</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>uuid</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The unique key of the log entry</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>vendor</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The device vendor</p></td>
+<td><ul>
+<li><p><code>Fortinet</code></p></li>
+<li><p><code>Check Point</code></p></li>
+<li><p><code>Palo Alto Networks</code></p></li>
+<li><p><code>Microsoft</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>vendorDeviceId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The device ID</p></td>
+<td><ul>
+<li><p><code>f334c467a471269d55564aa08421b751ae1d3bde</code></p></li>
+<li><p><code>00000000-0000-0000-0000-000000000000</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>vendorLogId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The vendor event log ID</p></td>
+<td><ul>
+<li><p><code>11</code></p></li>
+<li><p><code>211008192</code></p></li>
+<li><p><code>98</code></p></li>
+<li><p><code>1234567890-abcd-abcd-abcd-abcdef123456_1</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>vendorParsed</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The normalized event log (JSON format)</p></td>
+<td><pre class="codeblock"><code>{&quot;cefHeader&quot;: { &quot;cefVersion&quot;: &quot;0&quot;, &quot;deviceVendor&quot;: &quot;Palo Alto Networks&quot;,&quot;deviceProduct&quot;: &quot;PAN-OS&quot;,&quot;deviceEventClassId&quot;: &quot;Machine Learning found virus(599805)&quot;},&quot;cefExtension&quot;: &quot;rt&quot;:&quot;..&quot;}</code></pre></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>vendorRaw</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The original event log string</p></td>
+<td><pre class="codeblock"><code>CEF:0|Palo Alto Networks|PAN-OS|10.2.9-h1|end|TRAFFIC|1|rt=Aug 12 2024 15:31:19 GMT deviceExternalId=021201072197 src=10.10.10.10 dst=10.10.10.11 sourceTranslatedAddress=0.0.0.0 destinationTranslatedAddress=0.0.0.0 cs1Label=Rule cs1=TLC-to-nat-trust suser= duser= app=ping cs3Label=Virtual System cs3=vsys1 cs4Label=Source Zone cs4=TLC cs5Label=Destination Zone cs5=nat-trust deviceInboundInterface=ethernet1/6 deviceOutboundInterface=ethernet1/8 cs6Label=LogProfile cs6=PA440_to_Panorama cn1Label=SessionID cn1=19120 cnt=1 spt=0 dpt=0 sourceTranslatedPort=0 destinationTranslatedPort=0 flexString1Label=Flags flexString1=0x100019 proto=icmp act=allow flexNumber1Label=Total bytes flexNumber1=98 in=98 out=0 cn2Label=Packets cn2=1</code></pre></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>vpcEndpointId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The VPC endpoint in which requests where made from a VPC to another AWS service</p></td>
+<td><ul>
+<li><p><code>vpce-01234567890abcdef</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>vpcId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The VPC ID</p></td>
+<td><ul>
+<li><p><code>vpc-01234567890abcdef</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>vsysName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The virtual system of the session</p></td>
+<td><ul>
+<li><p><code>vsys1</code></p></li>
+<li><p><code>root</code></p></li>
+<li><p><code>vdom1</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>winEventId</p></td>
+<td><ul>
+<li><p><code>int</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The Windows Event ID</p></td>
+<td><ul>
+<li><p><code>11</code></p></li>
+<li><p><code>4624</code></p></li>
+<li><p><code>4670</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Third Party Log Collector</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+:::

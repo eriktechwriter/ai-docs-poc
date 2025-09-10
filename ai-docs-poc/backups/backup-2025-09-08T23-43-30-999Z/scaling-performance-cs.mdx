@@ -1,0 +1,89 @@
+---
+slug: trend-vision-one-scaling-performance-cs
+title: Scaling and performance with Containerized Scanner
+last_updated: '2025-09-08'
+ai_context:
+  source_file: scaling-performance-cs.md
+  conversion_date: '2025-09-08T23:42:13.229Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+The below information details scaling and performance of File Security Containerized Scanner
+
+### Performance metrics {#performance-metrics}
+
+- Scanner:
+
+  - CPU: 800m
+
+  - Memory: 2Gi
+
+- Backend communicator:
+
+  - CPU: 250m
+
+  - Memory: 128Mi
+
+- Scan cache:
+
+  - CPU: 250m
+
+  - Memory: 128Mi
+
+- Sample set:
+
+  - File type used: 30 popular file types mixed
+
+### Performance test {#performance-test}
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead style="text-align: left;">
+<tr>
+<th><p>Sample file category</p></th>
+<th><p>Sample size range</p></th>
+<th><p>Median sample size</p></th>
+<th><p>Per 100MB scan time - median (seconds)</p></th>
+<th><p>Scans per minute - median (actual)</p></th>
+</tr>
+</thead>
+<tbody style="text-align: left;">
+<tr>
+<td><p>10s of KB</p></td>
+<td><p>700B - 66KB</p></td>
+<td><p>25.6KB</p></td>
+<td><p>137.7</p></td>
+<td><p>1928</p></td>
+</tr>
+<tr>
+<td><p>100s of KB</p></td>
+<td><p>163KB - 925KB</p></td>
+<td><p>344KB</p></td>
+<td><p>28.1</p></td>
+<td><p>858</p></td>
+</tr>
+<tr>
+<td><p>1s of MB</p></td>
+<td><p>1.1MB - 7.7 MB</p></td>
+<td><p>3.1MB</p></td>
+<td><p>9.3</p></td>
+<td><p>364</p></td>
+</tr>
+<tr>
+<td><p>10s of MB</p></td>
+<td><p>10MB - 130MB</p></td>
+<td><p>26MB</p></td>
+<td><p>3.1</p></td>
+<td><p>59</p></td>
+</tr>
+</tbody>
+</table>
+:::

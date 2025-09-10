@@ -1,0 +1,51 @@
+---
+slug: trend-vision-one-asrm-splunk-integration
+title: Cyber Risk Exposure Management for Splunk integration
+last_updated: '2025-09-08'
+ai_context:
+  source_file: asrm-splunk-integration.md
+  conversion_date: '2025-09-08T23:42:24.829Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Set up the Cyber Risk Exposure Management for Splunk integration to allow Splunk to share website access logs and provide insights to Trend Vision One.
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, obtain the authentication token.
+
+    1.  In Trend Vision One, go to **Workflow and Automation → Third-Party Integration**.
+
+    2.  Click **Cyber Risk Exposure Management for Splunk**.
+
+    3.  Click ![](/images/ServiceGatewayCopyIcon=GUID-EE08C798-0F99-467B-996A-93D14044BF0E.webp) to copy the **Authentication token**.
+
+2.  Download and install the *Trend Micro Cyber Risk Exposure Management for Splunk* app from Splunkbase.
+
+    1.  Go to [Splunk](https://www.splunk.com) and select **Splunkbase** from the **Resources** drop-down.
+
+    2.  Search for and download the *Trend Micro Cyber Risk Exposure Management for Splunk* app from Splunkbase.
+
+    3.  Install the *Trend Micro Cyber Risk Exposure Management for Splunk* app.
+
+3.  Use the authentication token to configure the integration in the Splunk console.
+
+    :::note
+
+    For more information, see [Splunkbase - Trend Micro Cyber Risk Exposure Management for Splunk](https://splunkbase.splunk.com/app/5350).
+    :::
+
+    1.  In the Splunk console, go to **Apps → Trend Micro Cyber Risk Exposure Management for Splunk**.
+
+    2.  Go to **Configuration**.
+
+    3.  In the **User Account** section, specify your account name and contact email address.
+
+    4.  In the **Trend Vision One Integration** section, enable Trend Vision One integration and paste in the **Authentication token** copied from the Trend Vision One console.
+
+    5.  Click **Save**.
+
+        Splunk begins collecting and analyze XDR data from Trend Vision One. Splunk can only collect XDR data generated after connecting to Trend Vision One. You might need to allow some time before new XDR data starts to appear.
+:::

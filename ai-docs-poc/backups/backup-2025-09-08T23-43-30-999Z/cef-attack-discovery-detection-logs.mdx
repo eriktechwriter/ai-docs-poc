@@ -1,0 +1,353 @@
+---
+slug: trend-vision-one-cef-attack-discovery-detection-logs
+title: CEF Attack Discovery Detection Logs
+last_updated: '2025-09-08'
+ai_context:
+  source_file: cef-attack-discovery-detection-logs.md
+  conversion_date: '2025-09-08T23:42:24.129Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+:::note
+
+If one Attack Discovery detection log relates to more than 4 objects, Apex Central only forwards the first 4 objects.
+:::
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 33%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>CEF Key</p></th>
+<th><p>Description</p></th>
+<th><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Header (logVer)</p></td>
+<td><p>CEF format version</p></td>
+<td><p>CEF:0</p></td>
+</tr>
+<tr>
+<td><p>Header (vendor)</p></td>
+<td><p>Appliance vendor</p></td>
+<td><p>Trend Micro</p></td>
+</tr>
+<tr>
+<td><p>Header (pname)</p></td>
+<td><p>Appliance product</p></td>
+<td><p>Apex Central</p></td>
+</tr>
+<tr>
+<td><p>Header (pver)</p></td>
+<td><p>Appliance version</p></td>
+<td><p>2019</p></td>
+</tr>
+<tr>
+<td><p>Header (eventid)</p></td>
+<td><p>Event ID</p></td>
+<td><p>700220</p></td>
+</tr>
+<tr>
+<td><p>Header (eventName)</p></td>
+<td><p>Log name</p></td>
+<td><p>Attack Discovery Detections</p></td>
+</tr>
+<tr>
+<td><p>Header (severity)</p></td>
+<td><p>Severity</p></td>
+<td><p>3</p></td>
+</tr>
+<tr>
+<td><p>deviceExternalId</p></td>
+<td><p>ID</p></td>
+<td><p>Example: "38"</p></td>
+</tr>
+<tr>
+<td><p>rt</p></td>
+<td><p>Event trigger time in UTC</p></td>
+<td><p>Example: "Mar 22 2018 08:23:23 GMT+00:00"</p></td>
+</tr>
+<tr>
+<td><p>dhost</p></td>
+<td><p>Endpoint host name</p></td>
+<td><p>Example: "ApexOneClient01"</p></td>
+</tr>
+<tr>
+<td><p>dst</p></td>
+<td><p>Client IPv4 address</p></td>
+<td><p>Example: "10.0.8.20"</p></td>
+</tr>
+<tr>
+<td><p>C6a3</p></td>
+<td><p>Client IPv6 address</p></td>
+<td><p>Example: "fd96:7521:9502:6:b5b0:b2b5:4173:3f5d"</p></td>
+</tr>
+<tr>
+<td><p>duser</p></td>
+<td><p>User name</p></td>
+<td><p>Example: "Admin004"</p></td>
+</tr>
+<tr>
+<td><p>customerExternalID</p></td>
+<td><p>Instance ID</p></td>
+<td><p>Example: "8c1e2d8f-a03b-47ea-aef8-5aeab99ea697"</p></td>
+</tr>
+<tr>
+<td><p>cn1Label</p></td>
+<td><p>Corresponding label for the "cn1" field</p></td>
+<td><p>"SLF_RiskLevel"</p></td>
+</tr>
+<tr>
+<td><p>cn1</p></td>
+<td><p>Risk Level</p></td>
+<td><p>Example: "0"</p>
+<ul>
+<li><p>0: Unknown</p></li>
+<li><p>100: Low risk</p></li>
+<li><p>500: Medium risk</p></li>
+<li><p>1000: High risk</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cn2Label</p></td>
+<td><p>Corresponding label for the "cn2" field</p></td>
+<td><p>"SLF_PatternNumber"</p></td>
+</tr>
+<tr>
+<td><p>cn2</p></td>
+<td><p>Pattern Number</p></td>
+<td><p>Example: "30.1012.00"</p></td>
+</tr>
+<tr>
+<td><p>cs1Label</p></td>
+<td><p>Corresponding label for the "cs1" field</p></td>
+<td><p>"SLF_RuleID"</p></td>
+</tr>
+<tr>
+<td><p>cs1</p></td>
+<td><p>Rule ID</p></td>
+<td><p>Example: "powershell invoke expression"</p></td>
+</tr>
+<tr>
+<td><p>cat</p></td>
+<td><p>Category ID</p></td>
+<td><p>Example: "point of entry"</p></td>
+</tr>
+<tr>
+<td><p>cs2Label</p></td>
+<td><p>Corresponding label for the "cs2" field</p></td>
+<td><p>"SLF_ADEObjectGroup_Info_1"</p></td>
+</tr>
+<tr>
+<td><p>cs2</p></td>
+<td><p>Attack Discovery object information</p></td>
+<td><p>Example:</p>
+<pre class="codeblock"><code>process - powershell.exe - {
+ &quot;META_FILE_MD5&quot; : 
+   &quot;9393f60b1739074eb17c5f4ddd
+    efe239&quot;,
+ &quot;META_FILE_NAME&quot; : 
+   &quot;powershell.exe&quot;,
+ &quot;META_FILE_SHA1&quot; : 
+   &quot;887ce4a295c163791b60fc23d2
+    85e6d84f28ee4c&quot;,
+ &quot;META_FILE_SHA2&quot; : 
+   &quot;de96a6e50044335375dc1ac238
+    336066889d9ffc7d73628ef4fe
+    1b1b160ab32c&quot;,
+ &quot;META_PATH&quot; : 
+    &quot;c:\\windows\\system32\\wi
+     ndowspowershell\\v1.0\\&quot;,
+ &quot;META_PROCESS_CMD&quot; : 
+  [ &quot;powershell  cmd &quot; ],
+ &quot;META_PROCESS_PID&quot; : 7132,
+ &quot;META_SIGNER&quot; : 
+    &quot;microsoft windows&quot;,
+ &quot;META_SIGNER_VALIDATION&quot; : 
+    true,
+ &quot;META_USER_USER_NAME&quot; : 
+    &quot;Administrator&quot;,
+ &quot;META_USER_USER_SERVERNAME&quot; : 
+    &quot;Host&quot;,
+ &quot;OID&quot; : 1
+}</code></pre></td>
+</tr>
+<tr>
+<td><p>cs3Label</p></td>
+<td><p>Corresponding label for the "cs3" field</p></td>
+<td><p>"SLF_ADEObjectGroup_Info_2"</p></td>
+</tr>
+<tr>
+<td><p>cs3</p></td>
+<td><p>Attack Discovery object information</p></td>
+<td><p>Example:</p>
+<pre class="codeblock"><code>process - powershell.exe - {
+ &quot;META_FILE_MD5&quot; : 
+   &quot;9393f60b1739074eb17c5f4ddd
+    efe239&quot;,
+ &quot;META_FILE_NAME&quot; : 
+   &quot;powershell.exe&quot;,
+ &quot;META_FILE_SHA1&quot; : 
+   &quot;887ce4a295c163791b60fc23d2
+    85e6d84f28ee4c&quot;,
+ &quot;META_FILE_SHA2&quot; : 
+   &quot;de96a6e50044335375dc1ac238
+    336066889d9ffc7d73628ef4fe
+    1b1b160ab32c&quot;,
+ &quot;META_PATH&quot; : 
+    &quot;c:\\windows\\system32\\wi
+     ndowspowershell\\v1.0\\&quot;,
+ &quot;META_PROCESS_CMD&quot; : 
+  [ &quot;powershell  cmd &quot; ],
+ &quot;META_PROCESS_PID&quot; : 7132,
+ &quot;META_SIGNER&quot; : 
+    &quot;microsoft windows&quot;,
+ &quot;META_SIGNER_VALIDATION&quot; : 
+    true,
+ &quot;META_USER_USER_NAME&quot; : 
+    &quot;Administrator&quot;,
+ &quot;META_USER_USER_SERVERNAME&quot; : 
+    &quot;Host&quot;,
+ &quot;OID&quot; : 1
+}</code></pre></td>
+</tr>
+<tr>
+<td><p>cs4Label</p></td>
+<td><p>Corresponding label for the "cs4" field</p></td>
+<td><p>"SLF_ADEObjectGroup_Info_3"</p></td>
+</tr>
+<tr>
+<td><p>cs4</p></td>
+<td><p>Attack Discovery object information</p></td>
+<td><p>Example:</p>
+<pre class="codeblock"><code>process - powershell.exe - {
+ &quot;META_FILE_MD5&quot; : 
+   &quot;9393f60b1739074eb17c5f4ddd
+    efe239&quot;,
+ &quot;META_FILE_NAME&quot; : 
+   &quot;powershell.exe&quot;,
+ &quot;META_FILE_SHA1&quot; : 
+   &quot;887ce4a295c163791b60fc23d2
+    85e6d84f28ee4c&quot;,
+ &quot;META_FILE_SHA2&quot; : 
+   &quot;de96a6e50044335375dc1ac238
+    336066889d9ffc7d73628ef4fe
+    1b1b160ab32c&quot;,
+ &quot;META_PATH&quot; : 
+    &quot;c:\\windows\\system32\\wi
+     ndowspowershell\\v1.0\\&quot;,
+ &quot;META_PROCESS_CMD&quot; : 
+  [ &quot;powershell  cmd &quot; ],
+ &quot;META_PROCESS_PID&quot; : 7132,
+ &quot;META_SIGNER&quot; : 
+    &quot;microsoft windows&quot;,
+ &quot;META_SIGNER_VALIDATION&quot; : 
+    true,
+ &quot;META_USER_USER_NAME&quot; : 
+    &quot;Administrator&quot;,
+ &quot;META_USER_USER_SERVERNAME&quot; : 
+    &quot;Host&quot;,
+ &quot;OID&quot; : 1
+}</code></pre></td>
+</tr>
+<tr>
+<td><p>cs5Label</p></td>
+<td><p>Corresponding label for the "cs5" field</p></td>
+<td><p>"SLF_ADEObjectGroup_Info_4"</p></td>
+</tr>
+<tr>
+<td><p>cs5</p></td>
+<td><p>Attack Discovery object information</p></td>
+<td><p>Example:</p>
+<pre class="codeblock"><code>process - powershell.exe - {
+ &quot;META_FILE_MD5&quot; : 
+   &quot;9393f60b1739074eb17c5f4ddd
+    efe239&quot;,
+ &quot;META_FILE_NAME&quot; : 
+   &quot;powershell.exe&quot;,
+ &quot;META_FILE_SHA1&quot; : 
+   &quot;887ce4a295c163791b60fc23d2
+    85e6d84f28ee4c&quot;,
+ &quot;META_FILE_SHA2&quot; : 
+   &quot;de96a6e50044335375dc1ac238
+    336066889d9ffc7d73628ef4fe
+    1b1b160ab32c&quot;,
+ &quot;META_PATH&quot; : 
+    &quot;c:\\windows\\system32\\wi
+     ndowspowershell\\v1.0\\&quot;,
+ &quot;META_PROCESS_CMD&quot; : 
+  [ &quot;powershell  cmd &quot; ],
+ &quot;META_PROCESS_PID&quot; : 7132,
+ &quot;META_SIGNER&quot; : 
+    &quot;microsoft windows&quot;,
+ &quot;META_SIGNER_VALIDATION&quot; : 
+    true,
+ &quot;META_USER_USER_NAME&quot; : 
+    &quot;Administrator&quot;,
+ &quot;META_USER_USER_SERVERNAME&quot; : 
+    &quot;Host&quot;,
+ &quot;OID&quot; : 1
+}</code></pre></td>
+</tr>
+<tr>
+<td><p>deviceNtDomain</p></td>
+<td><p>Active Directory domain</p></td>
+<td><p>Example: APEXTMCM</p></td>
+</tr>
+<tr>
+<td><p>dntdom</p></td>
+<td><p>Apex One domain hierarchy</p></td>
+<td><p>Example: OSCEDomain1</p></td>
+</tr>
+<tr>
+<td><p>TMCMLogDetectedHost</p></td>
+<td><p>Endpoint name where the log event occurred</p></td>
+<td><p>Example: MachineHostName</p></td>
+</tr>
+<tr>
+<td><p>TMCMLogDetectedIP</p></td>
+<td><p>IP address where the log event occurred</p></td>
+<td><p>Example: 10.1.2.3</p></td>
+</tr>
+<tr>
+<td><p>ApexCentralHost</p></td>
+<td><p>Apex Central host name</p></td>
+<td><p>Example: TW-CHRIS-W2019</p></td>
+</tr>
+<tr>
+<td><p>devicePayloadId</p></td>
+<td><p>Unique message GUID</p></td>
+<td><p>Example: 1C00290C0360-9CDE11EB-D4B8-F51F-C697</p></td>
+</tr>
+<tr>
+<td><p>TMCMdevicePlatform</p></td>
+<td><p>Endpoint operating system</p></td>
+<td><p>Example: Windows 7 6.1 (Build 7601) Service Pack 1</p></td>
+</tr>
+</tbody>
+</table>
+
+Log sample:
+
+``` codeblock
+CEF:0|Trend Micro|Apex Central|2019|700211|Attack Discovery 
+Detections|3|deviceExternalId=5 rt=Jan 17 2019 03:38:06 GMT+
+00:00 dhost=VCAC-Window-331 dst=10.201.86.150 customerExtern
+alID=8c1e2d8f-a03b-47ea-aef8-5aeab99ea697 cn1Label=SLF_RiskL
+evel cn1=0 cn2Label=SLF_PatternNumber cn2=30.1012.00 cs1Labe
+l=SLF_RuleID cs1=powershell invoke expression cat=point of e
+ntry cs2Label=SLF_ADEObjectGroup_Info_1 cs2=process - code9.
+exe - {USER: administrator09} deviceNtDomain=APEXTMCM dntdom
+=OSCEDomain1 TMCMLogDetectedHost=VCAC-Window-331 TMCMLogDete
+ctedIP=10.201.86.150 ApexCentralHost=TW-CHRIS-W2019devicePay
+loadId=1C00290C0360-9CDE11EB-D4B8-F51F-C697 TMCMdevicePlatfo
+rm=Windows 7 6.1 (Build 7601) Service Pack 1
+```
+::::

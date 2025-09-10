@@ -1,0 +1,76 @@
+---
+slug: trend-vision-one-device-posture-profiles
+title: Device posture profiles
+---
+# Device posture profiles
+
+:Manage device posture profiles that you can use in secure access rules to allow or deny connections to your corporate resources and access to the internet using certain devices.
+
+A device posture profile specifies a set of security-related criteria, such as the operating system, firewall policy, antivirus software, and disk encryption. A device must meet the criteria to be considered as compliant with your organization's security policies.
+
+:::note
+
+Device posture profiles can be applied to the following:
+
+- Private access rules
+
+- Internet access rules
+:::
+
+Trend Vision One provides four default device posture profiles. Each default profile checks only the operating system, regardless of any other device posture criteria. The default profiles cannot be edited or deleted.
+
+:::warning[Important]
+
+To use this feature for device posture validation, make sure you have deployed the Secure Access Module to your users' devices and instructed them to grant required permissions. For more information about the required permissions, see [Secure Access Module system requirements](secure-access-module-sys-reqs.mdx).
+:::
+
+The following table outlines the actions available on the **Device Posture Profiles** tab (**Zero Trust Secure Access → Secure Access Resources → Device Posture Profiles**).
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Add a device posture profile</p></td>
+<td><ol>
+<li><p>On the <strong>Device Posture Profiles</strong> tab, click <strong>Add</strong>.</p></li>
+<li><p>Follow the instructions to add a device posture profile.</p>
+<p>For more information, see <a href="trend-vision-one-adding-device-posture-profile">Adding a device posture profile</a>.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Check device posture profile details</p></td>
+<td><p>View the basic information about a device posture profile, including the operating systems that the profile applies to and the number of rules that are using the profile.</p>
+<p>Click the number under <strong>Associated Rules</strong> to view or edit the details of each associated rule.</p></td>
+</tr>
+<tr>
+<td><p>Configure a device posture profile</p></td>
+<td><p>Click <img src="./images/edit_icon=GUID-1F1D1164-5310-4D6D-ACD0-6049C86960AF.webp" /> in the <strong>Action</strong> column to change the basic information about a device posture profile.</p>
+<p>Click <img src="./images/trash_icon=GUID-47cf6867-6315-438e-8670-86ff36f22a28.webp" /> in the <strong>Action</strong> column to delete a device posture profile from Trend Vision One.</p>
+<p>To delete more than one device posture profile, select the profiles and click <strong>Delete</strong> in the upper left.</p>
+
+
+:::note
+
+<p>Only the device posture profile that is not in use by any secure access rule can be deleted.</p>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Adding a device posture profile](adding-device-posture-profile.md "Specify security-related criteria to check the security posture of devices.")
+:::::

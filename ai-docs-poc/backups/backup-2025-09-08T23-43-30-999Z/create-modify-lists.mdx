@@ -1,0 +1,59 @@
+---
+slug: trend-vision-one-create-modify-lists
+title: Create and modify lists
+last_updated: '2025-09-08'
+ai_context:
+  source_file: create-modify-lists.md
+  conversion_date: '2025-09-08T23:42:21.388Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+You can create several types of lists that are used to configure protection modules: directory lists, file extension lists, file lists, IP lists, MAC lists, and port lists. The way that you create each list is very similar:
+
+### Procedure {#procedure}
+
+1.  Create the list object.
+
+2.  Set general properties such as the name and description.
+
+3.  Add items to the list. The type of list determines the nature of the item that you add.
+
+4.  Use the API object that is associated with the list object to add the list to Server & Workload Protection. For example, you use a `DirectoryListsApi` object to add a directory list.
+
+### Next steps {#next-steps}
+
+To modify a list, you obtain the list, modify it, then update the list. Like any other object, to obtain the list you can search, get the list by ID, or get all lists and cycle through them to find a particular list.
+
+The following example adds a directory to a directory list.
+
+[View source](https://github.com/deep-security/automation-center-sdk-samples/blob/master/python/src/common_objects_examples.py)
+
+``` codeblock
+dir_list = api.DirectoryList()
+dir_lists_api = api.DirectoryListsApi(api.ApiClient(configuration))
+
+try:
+    dir_lists = dir_lists_api.list_directory_lists(api_version)
+
+    for dir in dir_lists.directory_lists:
+        if dir.name == dir_list_name:
+            dir_list.dir_list = dir
+
+    # Create the directory list if dir_list_name was not found
+    if dir_list.name == None:
+        dir_list.name = dir_list_name
+        dir_list = dir_lists_api.create_directory_list(dir_list, api_version)
+
+    dir_list_with_directory = api.DirectoryList()
+    dir_list_with_directory.items = dir_path
+
+    return dir_lists_api.modify_directory_list(dir_list.id, dir_list_with_directory, api_version)
+
+except api_exception as e:
+    return "Exception: " + str(e)
+```
+
+Also see the [Modify a Directory List](https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Directory-Lists) operation in the API Reference. For information about authenticating API calls, see [Authenticate with Server & Workload Protection\<](send-your-first-request-using-api.mdx).
+:::

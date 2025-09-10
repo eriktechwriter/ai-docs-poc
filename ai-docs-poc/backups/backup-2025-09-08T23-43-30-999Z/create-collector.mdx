@@ -1,0 +1,111 @@
+---
+slug: trend-vision-one-create-collector
+title: Add a collector
+last_updated: '2025-09-08'
+ai_context:
+  source_file: create-collector.md
+  conversion_date: '2025-09-08T23:42:21.479Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Add collectors to your log repository to ingest log data from your third-party data sources.
+
+### Before you begin {#before-you-begin}
+
+To add a collector to a log repository, you must have at least one deployed Service Gateway with the Third-Party Log Collection service installed. To learn how to deploy a Service Gateway, see the [Service Gateway deployment guides](deployment-guides.mdx).
+
+### Procedure {#procedure}
+
+1.  In **Workflow and Automation → Third-Party Integration → Third-Party Log Collection** or **Service Management → Data Source and Log Management → Third-party log repositories**, [create a new log repository](create-log-repository.mdx) or select an existing log repository.
+
+2.  Go to the **Collectors** tab and click **Add Collector**.
+
+    The **Add Collector** screen appears.
+
+3.  Begin typing the name of the third-party data source vendor you wish to use (example: Fortinet). If the vendor is not on the list, click **Create** to use the specified vendor name.
+
+4.  Begin typing the name of the third-party data source product you wish to use (example: FortiGate). If the product is not on the list, click**Create** to use the specified product.
+
+    :::warning[Important]
+
+    - Ingestion of log data from products with available Trend Vision One integrations may require additional configuration steps. For a list of products with available Trend Vision One integrations, see [Third-Party Integration](third-party-integration.mdx).
+
+    - Ingestion of log data from Microsoft Defender for Endpoint requires you to enable Microsoft Defender for Endpoint Log Collection in the Features and Permissions for your Azure subscriptions in Cloud Accounts. After deploying the terraform script to your Azure subscription, the collector is automatically created. For more information, see [Enable Microsoft Defender for Endpoint Log Collection](ms-defender-endpoint-log-collection.mdx)
+
+      .
+    :::
+
+5.  Choose the format for the received logs. The recommended log format is automatically displayed based on the selected vendor and product.
+
+    - CEF uses a standardized parser that can support all logs from any product that uses the CEF log format and does not require additional mapping.
+
+    - Syslog uses a vendor-specific parser and is only recommended if CEF is not available due to the possibility of additional mapping requirements.
+
+    :::note
+
+    For better parsing and more complete XDR detection, choose the recommended log format.
+    :::
+
+6.  For products that do not have available Trend Vision One integrations, configure the collection settings and data sources.
+
+    1.  Choose a Service Gateway for the collector to receive the log data. Only Service Gateways with the Third-Party Log Collection service installed appear on the list.
+
+    2.  Select a protocol to use for data traffic. TLS and TCP are supported.
+
+        :::warning[Important]
+
+        If you wish to receive log data in Third-Party Log Collection using the TLS protocol, you must upload a valid certificate from your organization to the selected Service Gateway. For instructions, see [How do I upload a certificate to a Service Gateway?](dslm-faqs.mdx)
+        :::
+
+    3.  Select an available port for receiving data traffic. Once chosen, port numbers should be configured in your third-party data source.
+
+    4.  Specify the sending IP addresses of the third-party data source, separated by commas. Only IPv4 addresses are supported. Ensure you are using trusted IP addresses copied from your third-party data source.
+
+7.  Specify the timezone of the log source to align event timestamps correctly.
+
+8.  Click **Add**.
+
+    The collector is added to the log repository.
+
+9.  If desired, configure log filters to enhance performance and data quality by preventing logs containing specified keywords from being collected.
+
+    1.  After adding a collector, click **Manage log filters** in the collector details.
+
+    2.  Click **Configure log filters** to begin adding filters.
+
+    3.  Specify a name for the filter.
+
+    4.  Add up to 10 keywords or phrases with a maximum of 100 characters separated by AND or OR operators.
+
+    5.  Click **Add filter** and specify the details to continue adding up to 100 filters.
+
+    6.  Click **Save**.
+
+        The collector no longer collects logs containing keywords that match any configured filter.
+
+    7.  Edit or remove filters by selecting and clicking **Remove filters** or clicking the corresponding icon.
+
+        :::warning[Important]
+
+        After editing or removing a filter, changes may take up to five minutes to apply.
+        :::
+
+10. Monitor the collector connection status.
+
+    1.  Click the name of the log repository associated with the collector.
+
+        The **Log Repository Details** screen appears.
+
+    2.  Go to the **Collectors** tab.
+
+    3.  View the collector connection status in the **Status** column. Check the associated Service Gateway connection if the collector status displays as Unhealthy.
+
+        :::tip
+
+        You can also receive notifications on unusual collector connection statuses by clicking **Configure alert notifications** in the main section of **Third-Party Log Collection**.
+        :::
+
+    4.  Ensure the collected log data is available by [executing a related query](search-app.mdx) in XDR Data Explorer.
+:::

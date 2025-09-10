@@ -1,0 +1,142 @@
+---
+slug: trend-vision-one-get-started-phishing
+title: Get started with phishing simulations
+---
+# Get started with phishing simulations
+
+Create a phishing simulation for your employees to assess cybersercurity awareness levels and educate on common threats.
+
+Phishing simulations are tests your organization can carry out to determine your employees' cybersecurity awareness level. A phishing simulation campaign allows you to control the duration of the simulation, monitor results, and determine next steps for employees who failed the simulation.
+
+:::warning[Important]
+
+Phishing simulations are limited to 12 per year with a maximum of 200 recipients per simulation unless you [upgrade your pricing package](credit-req-for-apps-services.mdx) to Cyber Risk Exposure Management - Essentials. After upgrading, there is no limit to the number of simulations you can run, and the maximum number of recipients per simulation is 180,000.
+:::
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Cyber Risk Exposure Management → Security Awareness → Phishing Simulations**.
+
+2.  Under **Simulations**, click **Create Simulation**.
+
+3.  Configure the campaign **Content** settings.
+
+    1.  Add a short, descriptive name for your campaign that helps you identify the campaign's purpose.
+
+    2.  Choose whether to mark the campaign as a test campaign. The results of test campaigns do not affect user risk scores.
+
+    3.  Choose the language for the campaign content.
+
+    4.  Select the template for the phishing email you wish to send.
+
+        - Standard templates: Choose from the Trend Vision One library of phishing email templates. There are currently over 800 email templates available in the following languages:
+
+          <table>
+          <colgroup>
+          <col style="width: 25%" />
+          <col style="width: 25%" />
+          <col style="width: 25%" />
+          <col style="width: 25%" />
+          </colgroup>
+          <tbody>
+          <tr>
+          <td><p>English</p></td>
+          <td><p>French</p></td>
+          <td><p>Japanese</p></td>
+          <td><p>Spanish</p></td>
+          </tr>
+          <tr>
+          <td><p>Traditional Chinese</p></td>
+          <td><p>German</p></td>
+          <td><p>Malay</p></td>
+          <td><p>Swedish</p></td>
+          </tr>
+          <tr>
+          <td><p>Arabic</p></td>
+          <td><p>Hindi</p></td>
+          <td><p>Norwegian</p></td>
+          <td><p>Polish</p></td>
+          </tr>
+          <tr>
+          <td><p>Dutch</p></td>
+          <td><p>Italian</p></td>
+          <td><p>Portuguese</p></td>
+          <td><p>Hebrew</p></td>
+          </tr>
+          </tbody>
+          </table>
+
+        - Custom templates: Choose from your saved custom templates.
+
+          :::note
+
+          Click **Preview** to see what the template looks like. You may also view and [edit custom phishing email templates](custom-phishing-email-templates.mdx) from the **Email Templates** tab in **Phishing Simulations**.
+          :::
+
+    5.  Select the landing page you wish your users to see when clicking on links in the phishing simulation email. Click **Preview** to see what the template looks like.
+
+        - Standard templates: Choose from the Trend Vision One library of phishing landing pages.
+
+        - Custom templates: Choose from your saved custom landing pages.
+
+          :::note
+
+          Click **Preview** to see what the template looks like. You may also view and edit custom phishing landing pages from the **Landing Page Templates** tab in **Phishing Simulations**.
+          :::
+
+4.  Configure the campaign **Recipients** settings.
+
+    :::warning[Important]
+
+    - To select recipients, you must have sufficient asset visibility scope to view user data.
+
+    - Ensure you have configured a data source in [Data Sources](configuring-data-sources.mdx) to view recipients. Newly connected data sources may take up to 30 minutes to display user data.
+
+    - You must sign in to Trend Vision One with an email address at a domain verified in [Domain Verification](domain-verification.mdx) to prove you have adequate permission within your organization to send phishing simulation emails. Recipient email address domains must also match one of your verified domains.
+    :::
+
+5.  Configure the **Delivery** settings.
+
+    1.  Choose whether to start the simulation immediately or at a future scheduled time.
+
+    2.  Select an end date for the simulation.
+
+    3.  Choose how often to deliver simulation emails. If selecting Monthly or Quarterly, click **View** to view the start and end dates for each round of the simulation.
+
+    4.  Choose the time zone for email delivery.
+
+    5.  Choose whether to stagger email delivery among recipients.
+
+        :::warning[Important]
+
+        Staggered delivery is only available when the simulation duration is longer than eight days.
+        :::
+
+    6.  [Configure the allow list](setup-allow-lists-sec-aware.mdx) for your email provider to ensure emails are successfully delivered.
+
+    7.  Specify an email address to receive a test email to ensure your settings are configured correctly.
+
+6.  Set up follow-up notifications for participants, including when to send notifications and which email template to use.
+
+7.  Click **Create Simulation**.You may view the progress of the phishing simulation by clicking on the simulation name from the **Simulations** list.
+
+    :::tip
+
+    If false positives during phishing simulations frequently come from specific IP addresses due to system settings or policies, you can add up to 20 IP addresses to the IP exceptions list in the phishing simulation settings. Any simulation failures from IP addresses on the IP exceptions list are not recorded in the simulation results. Supported formats include:
+
+    - IPv4 and IPv6 addresses or ranges
+
+    - IP addresses using CIDR notation
+
+    - Addresses with wildcards (\*)
+
+    Specify an address or range an address and click the ad button (+) to add the address or range to the exception list. If you no longer want to exempt the IP addresses from phishing simulation results, you may delete the entry for the address or range.
+    :::
+
+**Related information**
+
+- [Phishing simulation settings](phishing-simulation-settings.md "Configure global settings for phishing simulations to ensure your simulation emails can be successfully sent to recipients.")
+- [Monitor phishing simulations](monitoring-phishing-simulations.md "View the progress or results of your phishing simulations to gain insight into your users' behavior.")
+- [Send follow-up notifications to phishing simulation participants](send-notifications-phishing.md "Set up follow-up notifications to inform participants about their response to your phishing simulation campaign.")
+- [Create custom phishing simulation email templates](custom-phishing-email-templates.md "Create custom templates for phishing simulation emails to tailor the simulation emails to your organization's needs.")
+::::

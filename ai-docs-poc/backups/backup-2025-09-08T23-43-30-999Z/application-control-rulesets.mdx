@@ -1,0 +1,93 @@
+---
+slug: trend-vision-one-application-control-rulesets
+title: View and change Application Control software rulesets
+last_updated: '2025-09-08'
+ai_context:
+  source_file: application-control-rulesets.md
+  conversion_date: '2025-09-08T23:42:24.891Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Each computer has its own Application Control software ruleset. You can:
+
+- View Application Control software rulesets and find out which rules they include.
+
+  :::tip
+
+  When you first enable Application Control for a computer, the software installed on the computer is added to the computer's inventory and allowed to run. However, you cannot see the rules associated with the inventory from Server & Workload Protection unless you use the Deep Security legacy REST API to do so (see [Use the API to access advanced Application Control features](api-shared-global-rulesets.mdx)). In the Server & Workload Protection console, a computer's ruleset appears empty until you create some allow/block rules for the computer.
+  :::
+
+- Change the action of one Application Control software ruleset rule if a software file should no longer be allowed/blocked.
+
+- Delete an individual Application Control software ruleset rule if the software has been removed and isn't likely to return.
+
+- Delete an Application Control software ruleset if the computer associated with the ruleset has been removed.
+
+:::tip
+
+If a user reports that Application Control is blocking software that they need to run on a particular computer, you can undo the block rule on that computer. Go to **Events & Reports → Application Control Events → Security Events**, find the computer, locate the block event, and then click *View Rules*. In the pop-up that appears, you can change the block rule to an allow rule.
+:::
+
+## View Application Control software rulesets {#view-application-control-software-rulesets}
+
+To view the list of Application Control software rulesets, go to **Policies → Common Objects → Rules → Application Control Rules → Software Rulesets**.
+
+![](/images/application-control-policies-rulesets=f9326ae5-92fb-421d-ad29-8fad8fec4135.webp)
+
+To see which rules are part of a ruleset, double-click the ruleset and go to the *Rules* tab. The Rules tab displays the software files that have rules associated with them and enables you to change allow rules to block, and vice versa. (See Change the action of one Application Control rule.)
+
+## Security Events {#security-events}
+
+![](/images/ac-security-events=08fb79dd-418b-483c-8bea-460961c3fa8d.webp)
+
+**Events & Reports → Events → Application Control Events → Security Events** displays all unrecognized software that either was run on a computer or was actively blocked from running. You can filter this list by time period and other criteria. For more information, see [Application Control events](application-control-events.mdx).
+
+For each event (except aggregated events), you can click *View rules* to change the rule from Allow to Block or vice versa.
+
+Version 10.2+ of the agent includes event aggregation logic to reduce the volume of logs when the same event occurs repeatedly. (See [Interpret aggregated security events](monitor-application-control-events.mdx).)
+
+## Change the action for an Application Control rule {#change-the-action-for-an-application-control-rule}
+
+If you want to allow a software that you previously blocked (or the opposite), you can edit the action in the rule. If you need to undo the rule so that the software is not recognized by Application Control (in other words, delete the rule, not only change its action), see Delete an individual Application Control rule instead.
+
+### Procedure {#procedure}
+
+1.  Go to **Policies → Common Objects → Rules → Application Control Rules → Software Rulesets**.
+
+2.  Double-click to select the ruleset that contains the rule that you want to change.
+
+3.  On the pop-up window that appears, go to the *Rules* tab.
+
+4.  If you want to focus on software that was blocked (or allowed), then in the menu next to *Application Control Rules*, select *By Action* to group similar rules. Alternatively, you can use the search to filter the list.
+
+    ![](/images/application_control_rules=ef31135f-88d5-45e7-82c7-52b79c51bcd6.webp)
+
+    If you want to change the action for a software file, but it has multiple different file names , select *By File Name* to group related rules.
+
+5.  Find the row for the specific software that you want to allow or block.
+
+6.  In the *Action* column, change the setting to allow or block, then click *OK*.
+
+    The next time that the agent connects with Server & Workload Protection, the rule will be updated, and the version number will increase.
+
+### Next steps {#next-steps}
+
+## Delete an individual Application Control rule {#delete-an-individual-application-control-rule}
+
+If you want to undo a rule that you created, go to **Policies → Common Objects → Rules → Application Control Rules → Software Rulesets**, double-click the ruleset that contains the rule, go to the *Rules* tab, select the rule and then click *Delete*.
+
+Some things to keep in mind:
+
+- When the rules are not needed anymore, you can delete them to reduce the size of the ruleset. This improves performance by reducing RAM and CPU usage.
+- If you delete a rule, Application Control will not recognize the software anymore. If the software is installed again, it will appear again on the *Actions* tab.
+- If a software update is unstable and you might need to downgrade, keep rules that allow rollback to the previous software version until you have completed testing.
+- To find the oldest rules, go to **Policies → Rules → Application Control Rules → Software Rulesets**, then click *Columns*. Select *Date/Time (Last Change)*, click *OK*, and then click that column's header to sort by date.
+
+## Delete an Application Control ruleset {#delete-an-application-control-ruleset}
+
+If an Application Control ruleset is not being used anymore (for example, if the computer associated with the ruleset no longer exists), you can delete it.
+
+To delete a ruleset, go to **Policies → Rules → Application Control Rules → Software Rulesets**, click a ruleset to select it, and click *Delete*.
+::::

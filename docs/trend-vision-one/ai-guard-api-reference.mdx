@@ -1,0 +1,213 @@
+---
+slug: trend-vision-one-ai-guard-api-reference
+title: AI Guard API reference
+---
+# AI Guard API reference
+
+### Headers {#headers}
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Name</p></th>
+<th><p>Required</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>Authorization</code></p></td>
+<td><p>Yes</p></td>
+<td><p>The bearer token for authentication.</p></td>
+</tr>
+</tbody>
+</table>
+
+### Query parameters {#query-parameters}
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Name</p></th>
+<th><p>Required</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>detailedResponse</code></p></td>
+<td><p>No</p></td>
+<td><p>The level of detail of the API response.</p>
+<p>Possible values include:</p>
+<ul>
+<li><p><code>false</code>: A short evaluation of your prompts based on the AI Guard settings (default).</p></li>
+<li><p><code>true</code>: A detailed evaluation of your prompts based on the AI Guard settings.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+### Request {#request}
+
+OpenAI chat completion request format:
+
+```bash
+{
+  "model": "us.meta.llama3-1-70b-instruct-v1:0",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Your prompt text here"
+    }
+  ]
+}
+```
+
+OpenAI chat completion response format:
+
+```bash
+{
+  "id": "chatcmpl-8f88f71a-7d42-c548-d587-8fc8a17091b6",
+  "object": "chat.completion",
+  "created": 1748535080,
+  "model": "us.meta.llama3-1-70b-instruct-v1:0",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "Response content here",
+        "refusal": null
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 139,
+    "completion_tokens": 97,
+    "total_tokens": 236
+  }
+}
+```
+
+Simple string format:
+
+```bash
+{
+  "guard": "Your prompt text here"
+}
+```
+
+### Response {#response}
+
+Sample response (when `detailedResponse: false`):
+
+```bash
+{
+    "id": "1234567890abcdef",
+    "action": "Block",
+    "reason": "[Violation] Policy Name: harmful_content"
+  }
+```
+
+Sample response (when `detailedResponse: true`):
+
+```bash
+{
+    "id": "1234567890abcdef",
+    "action": "Allow",
+    "reason": "No policy violations detected",
+    "harmful_content": [
+      {
+        "name": "harmful_content",
+        "content_violation": false,
+        "confidence_score": 0.05
+      }
+    ],
+    "sensitive_information": {
+      "content_violation": false,
+      "rule": ""
+    },
+    "prompt_attack": [
+      {
+        "name": "prompt_injection",
+        "content_violation": false,
+        "confidence_score": 0.02
+      }
+    ]
+  }
+```
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Parameter</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>id</code></p></td>
+<td><p>The unique identifier of the AI Guard evaluation.</p></td>
+</tr>
+<tr>
+<td><p><code>action</code></p></td>
+<td><p>The recommend action.</p>
+<p>Possible values include:</p>
+<ul>
+<li><p><code>Allow</code></p></li>
+<li><p><code>Block</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>reason</code></p></td>
+<td><p>The explanation of the action, including settings violation details.</p></td>
+</tr>
+<tr>
+<td><p><code>harmful_content</code></p></td>
+<td><p>Any harmful content detected in the inputs or outputs, with confidence scores.</p></td>
+</tr>
+<tr>
+<td><p><code>sensitive_information</code></p></td>
+<td><p>Any detected violations related to personally identifiable information (PII) or sensitive information.</p></td>
+</tr>
+<tr>
+<td><p><code>prompt_attack</code></p></td>
+<td><p>An array of any prompt attacks detected, with confidence scores.</p></td>
+</tr>
+</tbody>
+</table>
+
+### Common errors {#common-errors}
+
+The API returns standard HTTP status codes:
+
+- `400` Bad Request: Check the error message for details
+
+- `403` Forbidden: Insufficient user permissions or an authentication issue
+
+- `429` Too Many Requests: Rate limit exceeded
+
+- `500` Internal Server Error: A temporary issue occurred on the server side
+
+**Related information**
+
+- [Python code example](ai-guard-python-code-example.md "An example of Python code for the Trend Vision One AI Guard integration.")
+- [Javascript code example](ai-guard-javascript-code-example.md "An example of Javascript code for the Trend Vision One AI Guard integration.")
+- [curl code example](ai-guard-curl-code-example.md "An example of curl code for the Trend Vision One AI Guard integration.")
+- [Go code example](ai-guard-go-code-example.md "An example of Go code for the Trend Vision One AI Guard integration.")
+:::

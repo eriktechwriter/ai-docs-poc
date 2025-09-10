@@ -1,0 +1,90 @@
+---
+slug: trend-vision-one-ioc-indicators-for-live
+title: Supported IOC Indicators for Live Investigations
+---
+# Supported IOC Indicators for Live Investigations
+
+:An OpenIOC file is an XML file which contains one or more Indicators of Compromise (IOCs). Verify that the OpenIOC file uses indicator terms supported by the type of investigation selected.
+
+The table below lists the IOC indicators supported in investigations.
+
+:::warning[Important]
+
+When choosing an IOC file, you must ensure that the IOC indicators include the location of the file to match (either "FileItem/FullPath" or "FileItem/FilePath").
+:::
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Category</p></th>
+<th><p>Item</p></th>
+<th><p>Required Condition</p></th>
+<th><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="10"><p>FILEITEM</p></td>
+<td><p>FULLPATH</p></td>
+<td><p>IS</p></td>
+<td><p>Refers to a complete directory path, file name, and extension</p></td>
+</tr>
+<tr>
+<td><p>FILEPATH</p></td>
+<td><p>IS, CONTAINS, STARTS-WITH, ENDS-WITH</p></td>
+<td><p>Partial matching supported</p></td>
+</tr>
+<tr>
+<td><p>FILENAME</p></td>
+<td><p>IS, CONTAINS, STARTS-WITH, ENDS-WITH</p></td>
+<td><p>Partial matching supported</p></td>
+</tr>
+<tr>
+<td><p>MD5SUM</p></td>
+<td><p>IS</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>SHA1SUM</p></td>
+<td><p>IS</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>SHA256SUM</p></td>
+<td><p>IS</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>SIZEINBYTES</p></td>
+<td><p>IS</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>CREATED</p></td>
+<td><p>GREATER-THAN, LESS-THAN</p></td>
+<td><p>Required format (in UTC): yyyy-mm-ddThh:mm:ss</p></td>
+</tr>
+<tr>
+<td><p>MODIFIED</p></td>
+<td><p>GREATER-THAN, LESS-THAN</p></td>
+<td><p>Required format (in UTC): yyyy-mm-ddThh:mm:ss</p></td>
+</tr>
+<tr>
+<td><p>ACCESSED</p></td>
+<td><p>GREATER-THAN, LESS-THAN</p></td>
+<td><p>Required format (in UTC): yyyy-mm-ddThh:mm:ss</p></td>
+</tr>
+</tbody>
+</table>
+
+:::note
+
+After selection, Endpoint Sensor displays a preview of the OpenIOC file. Review the preview to verify if the OpenIOC file contains supported indicators and conditions. Unsupported combinations are formatted with a strike-through and are ignored during the investigation.
+:::
+:::::

@@ -1,0 +1,108 @@
+---
+slug: trend-vision-one-network-behind-load-balancer
+title: Deploying a Virtual Network Sensor behind a network load balancer
+last_updated: '2025-09-08'
+ai_context:
+  source_file: network-behind-load-balancer.md
+  conversion_date: '2025-09-08T23:42:15.630Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure your Virtual Network Sensor instance for use with a network load balancer (NLB).
+
+:::note
+
+The steps contained in these instructions are valid as of January 2024.
+:::
+
+### Procedure {#procedure}
+
+1.  Sign in to the AWS Management Console.
+
+2.  Access the EC2 dashboard.
+
+3.  Go to **Load Balancing → Target Groups**.
+
+4.  Click **Create target group**.
+
+5.  Configure the **Basic configuration** settings.
+
+    1.  For **Choose a target type**, select **Instances**.
+
+    2.  Specify a **Target group name**.
+
+        Use a name that is descriptive and easy to find, such as `Virtual Network Sensor Target Group`.
+
+    3.  Configure **Protocol : Port** settings.
+
+        - Select **UDP**.
+
+        - Type `4789` for the port.
+
+    4.  Select the VPC which hosts the Virtual Network Sensor instance.
+
+6.  Configure the **Health checks** settings.
+
+    1.  Select **TCP** for the **Health check protocol**.
+
+    2.  Expand the **Advanced health check settings**.
+
+    3.  For **Health check port**, select **Override** and specify port `14789`.
+
+    4.  Keep all other settings as default.
+
+7.  Click **Next**.
+
+8.  In **Available instances**, select the Virtual Network Sensor instance.
+
+9.  Click **Include as pending below**.
+
+10. Click **Create target group**.
+
+11. After the target group finishes creation, go to **Load Balancing → Load Balancers**.
+
+12. Click **Create load balancer**.
+
+13. Under **Network Load Balancer**, click **Create**.
+
+14. Configure the **Basic configuration** settings.
+
+    - Specify a unique **Load balancer name**.
+
+      Use a name that is descriptive and easy to find, such as `Virtual Network Sensor Load Balancer`.
+
+    - For **Scheme**, select **Internal**.
+
+    - Select the **IP address type** your subnets use.
+
+15. Configure the **Network mapping** settings.
+
+    1.  Select the VPC which hosts the Virtual Network Sensor instance.
+
+    2.  Select the availability zone where your Virtual Network Sensor instance is located.
+
+    3.  Select the subnet assigned to the Virtual Network Sensor data port (eth0).
+
+    4.  For **Private IPv4 address**, select **Assigned from CIDR** to have AWS automatically assign an IP address, or select **Enter IP from CIDR** if you want to manually specify the IP address.
+
+    :::warning[Important]
+
+    If you want to select more than one availability zone, you must have at least one target in each availability zone defined in your target group. Otherwise, the load balancer cannot route traffic to the Virtual Network Sensor.
+    :::
+
+16. Select the **Security group** you configured for your Virtual Network Sensor data port.
+
+17. Configure the **Listeners and routing** settings.
+
+    1.  For **Protocol**, select **UDP**.
+
+    2.  Specify `4789` for the **Port**.
+
+    3.  Select the target group you created.
+
+18. Select **Create load balancer**.
+
+    The load balancer might take a few moments to finish creation. Once complete, [configure your traffic mirror settings](network-sensor-traffic-mirror.mdx).
+::::

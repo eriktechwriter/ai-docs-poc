@@ -1,0 +1,107 @@
+---
+slug: trend-vision-one-manual-evidence-collection-linux
+title: Manual evidence collection for Linux endpoints
+last_updated: '2025-09-08'
+ai_context:
+  source_file: manual-evidence-collection-linux.md
+  conversion_date: '2025-09-08T23:42:16.117Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Collect evidence from Linux endpoints manually using the Trend Micro Incident Response Toolkit.
+
+:::warning[Important]
+
+Evidence archives use the same folder structures as the SANS Institute and the CyLR tool.
+:::
+
+### Procedure {#procedure}
+
+1.  Select **Agentic SIEM & XDR → Forensics → Packages**.
+
+2.  Click **Collect Evidence**.
+
+3.  Configure the following settings for manual collection.
+
+    <table>
+    <colgroup>
+    <col style="width: 20%" />
+    <col style="width: 80%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Setting</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Evidence types</p></td>
+    <td><p>The <a href="trend-vision-one-supported-evidence-types-overview">types of evidence</a> to collect.</p>
+    <p>For Linux endpoints, you need the following information:</p>
+    <ul>
+    <li><p><a href="trend-vision-one-basic-information-linux">Basic information</a></p></li>
+    <li><p><a href="trend-vision-one-process-information-linux">Process information</a></p></li>
+    <li><p><a href="trend-vision-one-service-information-linux">Service information</a></p></li>
+    <li><p><a href="trend-vision-one-network-information-linux">Network information</a></p></li>
+    <li><p><a href="trend-vision-one-account-information-linux">Account information</a></p></li>
+    <li><p><a href="trend-vision-one-user-activity-linux">User activity</a></p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>Archive location on endpoint</p></td>
+    <td><p>Location of the evidence package on the local endpoint.</p>
+    
+
+    :::warning[Important]
+    
+    <ul>
+    <li><p>The local archive does not have encryption and remains on the endpoint until deleted. This might allow anyone with access to the file system to access sensitive information or reveal the presence of an ongoing investigation.</p></li>
+    <li><p>Evidence archives take up hard drive space which may impact endpoint performance.</p></li>
+    </ul>
+    
+
+    :::
+
+    </td>
+    </tr>
+    </tbody>
+    </table>
+
+4.  Click ![](/images/download_icon=5c7476c2-cf15-4572-b7cd-5fc67a57d22f.webp) to download the Trend Micro Incident Response Toolkit.
+
+5.  Deploy the toolkit to the endpoints on which you want to collect evidence.
+
+6.  Execute the toolkit.
+
+    1.  Extract the contents of the .zip archive.
+
+    2.  Execute `TMIRT.sh` as the root user.
+
+7.  If you do not have privileges for executing scripts, execute the following commands.
+
+    1.  Identify the endpoint operating system (OS) architecture by executing the `uname -m` command.
+
+        - For AArch64 or ARM64 architecture, use the TMIRT-arm64.tgz toolkit.
+
+        - For i386 or i686 architecture, use the TMIRT-x86.tgz toolkit.
+
+        - For AMD64 or x86_64 architecture, use the TMIRT-x64.tgz toolkit.
+
+    2.  To extract the toolkit from the .tgz file, execute the `./tar -xf` command with the correct version of the Trend Micro Incident Response Toolkit based on your OS architecture.
+
+    3.  To begin collecting evidence, execute `./TMIRT evidence --config_file ./config.json`.
+
+8.  Upload the evidence packages that the toolkit generates to **Forensics**. You can upload multiple files at once. Each file must not exceed 4 GB.
+
+**Forensics** begins processing the uploaded evidence packages.
+
+:::warning[Important]
+
+- Processing an evidence package can take several minutes.
+
+- Do not close the browser tab or refresh the screen until the process finishes.
+:::
+:::::

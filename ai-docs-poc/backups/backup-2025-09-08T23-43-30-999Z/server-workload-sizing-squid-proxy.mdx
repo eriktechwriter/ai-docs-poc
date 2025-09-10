@@ -1,0 +1,60 @@
+---
+slug: trend-vision-one-server-workload-sizing-squid-proxy
+title: Server & Workload Protection sizing for Squid Proxy
+last_updated: '2025-09-08'
+ai_context:
+  source_file: server-workload-sizing-squid-proxy.md
+  conversion_date: '2025-09-08T23:42:12.862Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Review bandwidth and connection details to determine the appropriate requirements for using Squid Proxy.
+
+The information in this guide provides an estimation of how many Server & Workload Protection agent connections a Squid Proxy server can support with a given set of specifications. This number is based on testing performed by Trend Micro and the information detailed in [Server & Workload Protection bandwidth sizing](swp-bandwidth-sizing.mdx).
+
+:::warning[Important]
+
+The information below contains estimations calculated based on testing done by Trend Micro. While the information can be used to guide your deployment decisions, you should always perform your own testing to ensure your Squid Proxy server can support your agent connection needs.
+:::
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Squid Server Specifications</p></th>
+<th><p>Tested Agent Count / Connections</p></th>
+<th><p>Resource Usage</p></th>
+<th><p>Recommended Maximum Agent Support</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><ul>
+<li><p>OS: Ubuntu 20.0.04</p></li>
+<li><p>SKU: Azure Standard_DS1_v2</p></li>
+<li><p>vCPU: 1 (Intel™ Xeon® CPU E5-2673 v3 @ 2.40 GHz)</p></li>
+<li><p>RAM: 3.5 GB</p></li>
+<li><p>Storage disk: 64 GB - IOPS 240, max throughput 50 Mbps</p></li>
+</ul></td>
+<td><p>204 agents / 500-850 connections</p></td>
+<td><ul>
+<li><p>CPU: 1.1%</p></li>
+<li><p>RAM: 2.4%</p></li>
+</ul></td>
+<td><p>8500 to 15000 agents based on the following estimations:</p>
+<ul>
+<li><p>Est max CPU support: 18,545</p></li>
+<li><p>Est max RAM support: 8,500</p></li>
+<li><p>Est network connection support: 15,728</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+::::

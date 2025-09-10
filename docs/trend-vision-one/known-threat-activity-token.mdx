@@ -1,0 +1,109 @@
+---
+slug: trend-vision-one-known-threat-activity-token
+title: Known Threat Activity Token Variables
+---
+# Known Threat Activity Token Variables
+
+The following table describes token variables for customizing Known Threat Activity or Outbreak Prevention Service event notification messages.
+
+:::note
+
+For the list of standard token variables supported by all event notifications, see [Standard Token Variables](standard-token-variables.mdx).
+:::
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Variable</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%device_ip%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>IP address of an infected endpoint</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%egnver%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li><p>Scan engine version</p></li>
+<li><p>Used by the alert event category as well as the "Active Outbreak Prevention Policy received" and "Outbreak Prevention Mode started" notifications. For the notification types of the alert event category, this variable refers to the scan engine version currently installed on the managed product server.</p></li>
+<li><p>For the "Active Outbreak Prevention Policy received" and "Outbreak Prevention Mode started" notifications, this variable refers to the Outbreak Prevention Policy required.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><code>%hierarchy%</code></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li><p>The location of the endpoint within the Apex One domain hierarchy</p></li>
+<li><p>Used by the alert event category</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%ptnver%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li><p>Virus pattern version</p></li>
+<li><p>Used by the alert event category and the "Active Outbreak Prevention Policy received" and "Outbreak Prevention Services started" notifications. For the notification types of the alert event category, this variable refers to the virus pattern version currently installed on the managed product server.</p></li>
+<li><p>For the "Active Outbreak Prevention Policy received" and "Outbreak Prevention Services started" notifications, this variable refers to the Outbreak Prevention Policy required.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%scanmethod%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>The scan method for specific virus actions. This token is only available for the following alerts:</p>
+<ul>
+<li><p>Virus found-first action unsuccessful and second action unavailable</p></li>
+<li><p>Virus found-first and second actions unsuccessful</p></li>
+<li><p>Virus found-first action successful</p></li>
+<li><p>Virus found-second action successful</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%threat_info%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li><p>Virus/malware threat information provided by outbreak prevention policies</p></li>
+<li><p>Used by "Active Outbreak Prevention Policy received" and "Outbreak Prevention Services started"</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%vcnt%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li><p>Virus count.</p></li>
+<li><p>Used by virus outbreak alert.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%vdest%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li><p>Virus/malware destination.</p></li>
+<li><p>Examples:</p>
+<p>Email detection: <code>%vdest%</code> is the intended recipient</p>
+<p>Host-based/Endpoint detection: <code>%vdest%</code> is the endpoint IP address or host name</p></li>
+<li><p>Used by the alert event category</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%vfile%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Infected file name. Used by the alert event category.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%vfilepath%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Infected file directory. Used by the alert event category.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%vname%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Virus or malware name. Used by the alert event category.</p></td>
+</tr>
+<tr>
+<td style="border-right-width: 1px; border-right-style: solid"><p><code>%vsrc%</code></p></td>
+<td><ul>
+<li><p>Virus/malware origin or infection source.</p></li>
+<li><p>For example, the message sender takes the value of %vsrc% if an antivirus managed product detected a virus/malware in an email message.</p></li>
+<li><p>Used by the alert event category as well as the network virus alert notification type.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+::::

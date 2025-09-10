@@ -1,0 +1,79 @@
+---
+slug: trend-vision-one-traffic-forwarding-internet-access
+title: Traffic forwarding options for Internet Access and AI Service Access
+last_updated: '2025-09-08'
+ai_context:
+  source_file: traffic-forwarding-internet-access.md
+  conversion_date: '2025-09-08T23:42:11.973Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Learn about alternative methods that ensure internet traffic is directed to the Internet Access Gateway without installing the Secure Access Module.
+
+:::note
+
+You can use PAC files and proxy chaining concurrently.
+:::
+
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Option</p></th>
+<th><p>When to Use</p></th>
+<th><p>Pros</p></th>
+<th><p>Cons</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Proxy auto-configuration (PAC) files</p></td>
+<td><p>When your organization already has a proxy configured and you support users that often work outside the network</p>
+<p>You can <a href="trend-vision-one-pac-file-configuration">configure</a> and <a href="trend-vision-one-pac-file-deployment">deploy</a> PAC files to the Secure Access Module or the system proxy settings for traffic forwarding.</p></td>
+<td><ul>
+<li><p>Easily deployed through Active Directory</p></li>
+<li><p>Supported by major browsers</p></li>
+<li><p>Works on internal and external networks</p></li>
+</ul></td>
+<td><ul>
+<li><p>Users with admin rights can bypass using non-standard browsers</p></li>
+<li><p>Users can bypass by manually changing to "no proxy"</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Proxy chaining</p></td>
+<td><p>When your organization already has a proxy configured and you do not need to support users that often work outside the network</p></td>
+<td><ul>
+<li><p>Easy to set up</p></li>
+<li><p>Multiple rules offer full redundancy</p></li>
+<li><p>Supported by most web proxies</p></li>
+<li><p>Users cannot bypass</p></li>
+</ul></td>
+<td><ul>
+<li><p>Only internal network users are protected</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Port forwarding</p></td>
+<td><p>Not recommended due to the manual configuration involved</p></td>
+<td><ul>
+<li><p>Easy to set up</p></li>
+<li><p>Supported by major browsers</p></li>
+<li><p>Users cannot bypass</p></li>
+<li><p>Supports HTTP and HTTPS traffic</p></li>
+</ul></td>
+<td><ul>
+<li><p>Requires manual changes if primary gateway is unavailable</p></li>
+<li><p>Only internal network users are protected</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+::::

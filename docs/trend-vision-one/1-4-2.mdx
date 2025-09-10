@@ -1,0 +1,31 @@
+---
+slug: trend-vision-one-1-4-2
+title: 1.4.2 - Ensure that the –bind-address argument is set to 127.0.0.1 (Automated)
+---
+# 1.4.2 - Ensure that the –bind-address argument is set to 127.0.0.1 (Automated)
+
+Profile applicability: Level 1 - Master Node
+
+Do not bind the scheduler service to non-loopback insecure addresses.
+
+The Scheduler API service which runs on port 10251/TCP by default is used for health and metrics information and is available without authentication or encryption. As such it should only be bound to a localhost interface, to minimize the cluster's attack surface.
+
+:::note
+
+By default, the `--bind-address` parameter is set to 0.0.0.0.
+:::
+
+### Audit {#audit}
+
+Run the following command on the Control Plane node:
+
+```bash
+ps -ef | grep kube-scheduler
+```
+
+Verify that the `--bind-address` argument is set to 127.0.0.1.
+
+### Remediation {#remediation}
+
+Edit the Scheduler pod specification file `/etc/kubernetes/manifests/kube-scheduler.yaml` on the Control Plane node and ensure the correct value for the `--bind-address` parameter.
+::::

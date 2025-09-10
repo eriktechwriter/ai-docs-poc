@@ -1,0 +1,33 @@
+---
+slug: trend-vision-one-email-collab-query-format
+title: Query format for SharePoint and OneDrive file upload events
+---
+# Query format for SharePoint and OneDrive file upload events
+
+Learn how to format your queries for Microsoft SharePoint and OneDrive file upload events.
+
+### Suggested search method and field/value pairs {#suggested-search-method-and-fieldvalue-pairs}
+
+- Search method: **Email and Collaboration Activity Data**
+
+- `eventName: COLLABORATION_ACTIVITY`
+
+- `productCode: xca`
+
+- `service: SharePoint OR service: OneDrive`
+
+- `actionName: fileUploaded`
+
+  :::note
+
+  For more information about Microsoft actions (operations), see [Audit log activities](https://learn.microsoft.com/en-us/purview/audit-log-activities).
+  :::
+
+### Important fields in search results {#important-fields-in-search-results}
+
+- **target**: The full path name of the file accessed by the user.
+
+- **principalName**: The user principal name of the user who performed the action.
+
+- **eventTime**: The time of the file upload event.
+:::

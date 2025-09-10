@@ -1,0 +1,115 @@
+---
+slug: trend-vision-one-private-access-connector-config
+title: Private Access Connector configuration
+last_updated: '2025-09-08'
+ai_context:
+  source_file: private-access-connector-config.md
+  conversion_date: '2025-09-08T23:42:14.169Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Deploy groups of Private Access Connector virtual appliances and manage them on the Trend Vision One console.
+
+A Private Access Connector group consists of one or multiple Private Access Connectors deployed to an entry point in your on-premises data center or cloud IaaS environment. The corporate applications enforcing access control are reachable by the group of Private Access Connectors deployed within the same environment. Deployment of multiple Private Access Connectors allows for load balancing and scalability.
+
+The **Private Access Connectors** tab provides an overview of available connector groups and their associated Private Access Connectors.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Add a Private Access Connector group</p></td>
+<td><ol>
+<li><p>Click <strong>Add Private Access Connector Group</strong>.</p></li>
+<li><p>Specify a name and description for the group.</p></li>
+<li><p>Configure automatic update settings.</p></li>
+<li><p>Click <strong>Save and Continue</strong>.</p></li>
+<li><p>Select the platform where you will deploy the connector group. For information on deployment requirements for each supported platform, see <a href="trend-vision-one-private-access-connector-deployment">Private Access Connector deployment</a>.</p></li>
+<li><p>Click <strong>Close</strong>.</p></li>
+</ol>
+
+
+:::note
+
+<p>You can deploy individual Private Access Connectors on multiple platforms under a single connector group.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Deploy a Private Access Connector</p></td>
+<td><ol>
+<li><p>Locate the connector group to which you want add the Private Access Connector.</p></li>
+<li><p>Click <img src="./images/add_connector=683f3c84-a774-40c0-bd9b-4663fcd2b53f.webp" /> and follow the instructions to deploy the Private Access Connector virtual appliance to your preferred platform.</p>
+<p>For more information, see <a href="trend-vision-one-private-access-connector-deployment">Private Access Connector deployment</a>.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Check Private Access Connector group details</p></td>
+<td><ul>
+<li><p>Click the name of a connector group to view information about the connection status, environment, resource usage, and version of each associated Private Access Connector.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Configure a Private Access Connector group</p></td>
+<td><ul>
+<li><p>Click <img src="./images/add_connector=683f3c84-a774-40c0-bd9b-4663fcd2b53f.webp" /> to deploy a Private Access Connector to the group.</p></li>
+<li><p>Click <img src="./images/edit_icon=GUID-1F1D1164-5310-4D6D-ACD0-6049C86960AF.webp" /> to change the name and description of a group and schedule automatic updates for all associated Private Access Connectors.</p></li>
+<li><p>Click <img src="./images/trash_icon=GUID-47cf6867-6315-438e-8670-86ff36f22a28.webp" /> to delete a connector group.</p>
+
+
+:::note
+
+<p>Only connector groups with no associated Private Access Connectors and no associated internal apps or apps for discovery can be deleted.</p>
+
+
+:::
+
+</li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Configure a Private Access Connector</p></td>
+<td><ul>
+<li><p>Under the applicable connector group, click the name of a Private Access Connector to view information about the connector and access diagnostic and management tools. For more information, see <a href="trend-vision-one-private-access-connector-management">Private Access Connector management</a>.</p></li>
+<li><p>Click <img src="./images/trash_icon=GUID-47cf6867-6315-438e-8670-86ff36f22a28.webp" /> to delete a single Private Access Connector. To delete more than one Private Access Connector under the same group, select the Private Access Connectors and click <strong>Delete</strong>.Deleting a Private Access Connector purges the connector setting and usage data stored on Trend Vision One.</p>
+
+
+:::note
+
+<p>Private Access Connectors active on Microsoft Entra ID cannot be deleted. For more information about removing Private Access Connectors, see <a href="trend-vision-one-deploy-pac-azure">Deploy the Private Access Connector on Microsoft Azure</a>.</p>
+
+
+:::
+
+</li>
+<li><p>Click <img src="./images/update_connector=6c9cb124-7dac-4ead-a870-4567f33a257a.webp" /> to update a single Private Access Connector.</p></li>
+<li><p>Click <img src="./images/run_speed_test=9813fa3f-bdd8-4830-8da0-ea775c57c0ee.webp" /> to test the connection speed between a Private Access Connector and Private Access.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Configure unusual status notifications</p></td>
+<td><ul>
+<li><p>To send alerts when the status of a Private Access Connector changes to "Disconnected" or "Unhealthy", click <strong>Configure Unusual Status Notifications</strong> and then configure alert settings for <strong>Unusual product status</strong> notifications in the <a href="trend-vision-one-notifications">Notifications</a> app.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Private Access Connector management](private-access-connector-management.md "Manage details and collect diagnostic information for an individual Private Access Connector.")
+:::

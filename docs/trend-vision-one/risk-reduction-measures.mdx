@@ -1,0 +1,129 @@
+---
+slug: trend-vision-one-risk-reduction-measures
+title: Risk Reduction Measures
+---
+# Risk Reduction Measures
+
+View information about high-impact risk events and remediation steps that you must complete to achieve specific risk reduction goals.
+
+**Risk Reduction Measures** provides a structured and targeted approach to reducing your Cyber Risk Index. After you select a risk reduction goal, the widget displays risk events with the highest impact on the Cyber Risk Index, assets most affected, and recommended remediation steps. To access the widget, go to **Threat and Exposure Management → Risk Factors → Risk Reduction Measures**.
+
+:::note
+
+Updating the Cyber Risk Index after remediation might take up to 24 hours to complete, depending on the connected data sources.
+
+The Cyber Risk Index automatically updates every four hours. Changes to the status of risk events are reflected in the Risk Index after up to one hour. You may also manually recalculate the Cyber Risk Index by clicking the **Recalculate** button. Manual recalculations take up to one hour to display.
+
+Updating the Risk Index after remediation might take up to 24 hours to complete, depending on the connected data sources used.
+:::
+
+The following table outlines the actions available on the widget.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><a href="trend-vision-one-selecting-risk-reduction-goal">Select a risk reduction goal</a></p></td>
+<td><p>Click <strong>Select a Goal</strong> to choose an available risk reduction goal or specify your own goal.</p></td>
+</tr>
+<tr>
+<td><p>View a summary of the risk events you must remediate to achieve the selected goal</p></td>
+<td><p>The widget shows information about risk events with the highest impact on your Cyber Risk Index, including:</p>
+<ul>
+<li><p>Type and quantity of assets most impacted by the risk event</p></li>
+<li><p>Real-time impact of remediation on the Cyber Risk Index</p></li>
+<li><p>Recommended remediation steps</p>
+
+
+:::note
+
+<p>Following these recommendations might automatically adjust the Cyber Risk Index, depending on the risk event remediated.</p>
+
+
+:::
+
+</li>
+</ul>
+<p>Data in the summary table is updated every 4 hours while changes to asset details take effect immediately. Any inconsistencies might be resolved whenever the summary table is updated.</p></td>
+</tr>
+<tr>
+<td><p>View information about the assets that were most impacted by each risk event</p></td>
+<td><p>Click any risk event to view the list of most impacted assets with available remediation actions. Cyber Risk Exposure Management recommends prioritizing these assets so you can achieve the selected risk reduction goal.</p>
+<p>The list only includes assets with risk events that are marked "New" and "In progress."</p>
+
+
+:::warning[Important]
+
+<p>Additional details are only available for devices within the asset visibility scope of the current user.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Change the status of risk events.</p></td>
+<td><p>To track your remediation progress, you can change the status of risk events. Changing the status of risk events affects individual asset risk scores and ultimately your organization's Cyber Risk Index.</p>
+<p>Risk events for all <a href="trend-vision-one-risk-factors">risk factors</a> except for <a href="trend-vision-one-xdr-detection">XDR detection</a> can be marked as one of the five following statuses:</p>
+<ul>
+<li><p><strong>New</strong>: Newly reported events requiring processing. New events affect individual risk scores and the Cyber Risk Index.</p></li>
+<li><p><strong>In progress</strong>: Events that are undergoing processing. In progress events affect individual risk scores and the Cyber Risk Index.</p></li>
+<li><p><strong>Remediated</strong>: Events that have been properly handled. Remediated events do not affect the Cyber Risk Index until a new instance of the event is reported.</p></li>
+<li><p><strong>Dismissed</strong>: Events that have been manually marked as posing no risk to your organization. Dismissed events do not affect the Cyber Risk Index until a new instance of the event is reported or an event rule for the risk event is created.</p></li>
+<li><p><strong>Accepted</strong>: Events that have been marked as too difficult or expensive to address. Accepted events continue to affect the Cyber Risk Index until the events are remediated or dismissed.</p></li>
+</ul>
+
+
+:::note
+
+<p>The Cyber Risk Index might take up to 30 minutes to update after changing the status of a risk event.</p>
+
+
+:::
+
+
+<p>The status of <a href="trend-vision-one-xdr-detection">XDR detection-related risk events</a> that have an assigned workbench alert can only be changed in <a href="trend-vision-one-workbench">Workbench</a>.</p></td>
+</tr>
+<tr>
+<td><p>Create event rules for risk event instances</p></td>
+<td><p>When marking a risk event as Dismissed, you may create an event rule so that future instances of the event are not reported and do not contribute to your Cyber Risk Index.</p>
+<p>When marking a risk event as Accepted, you may create an event rule that automatically marks all current and future instances of the risk event as Accepted within a specified time period. Accepted rules still contribute to your Cyber Risk Index.</p>
+<ol>
+<li><p>Change the status of a risk event to Accepted or Dismissed.</p></li>
+<li><p>In the <strong>Mark as Dismissed</strong> or <strong>Mark as Accepted</strong> dialog, select <strong>Create event rule for the selected risk event</strong>.</p></li>
+<li><p>Click <strong>Event rule settings</strong>.</p></li>
+<li><p>Select the scope for the new event rule under <strong>Apply to</strong>.</p></li>
+<li><p>If supported for the risk event type, you may also set <a href="trend-vision-one-event-rule-management">additional parameters</a> for the event rule.</p>
+<ul>
+<li>Event rules with set parameters only apply when the parameters are met. Risk event instances that do not meet rule parameters are still reported, which impacts your Cyber Risk Index.</li>
+</ul></li>
+</ol>
+<p>To view, remove, reactivate, or edit event rules, go to <a href="trend-vision-one-event-rule-management">Event Rule Management</a>.</p></td>
+</tr>
+<tr>
+<td><p>Create or view a case for a risk event</p></td>
+<td><p>Click the number in the case column to view current cases involving the specified risk event. Click the options icon (<img src="./images/options=ddb0b67f-0654-4aa5-8bc7-48ec554c5448.webp" />) to open a new case for the risk event or add the case to an existing risk event. This option is not available for XDR detection or Vulnerabilities risk events.</p></td>
+</tr>
+<tr>
+<td><p>View information about all actionable risk events.</p></td>
+<td><p>Click <strong>All risk events</strong> to view the list of all risk events identified in the last 30 days with available remediation actions. You can also view information about all assets impacted by each risk event.</p></td>
+</tr>
+</tbody>
+</table>
+
+The Risk Reduction Measures widget lists risk events and related assets with the highest impact on your Cyber Risk Index and suggests effective remediation steps based on your selected risk reduction goal. Click **Select a Goal** to [change the risk reduction goal](selecting-risk-reduction-goal.mdx).
+
+**Related information**
+
+- [Selecting a risk reduction goal](selecting-risk-reduction-goal.md "Select a risk reduction goal or set your own goal and remediate risk events with the highest impact on the Cyber Risk Index.")
+- [Cyber Risk Index reduction](risk-index-reduction.md "View the types of actions you can take to reduce the Cyber Risk Index.")
+::::

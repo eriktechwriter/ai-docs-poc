@@ -1,0 +1,58 @@
+---
+slug: trend-vision-one-troubleshooting-case-management
+title: Troubleshooting Case Management
+---
+# Troubleshooting Case Management
+
+**Related information**
+
+- Cannot sync update from ServiceNow to Case Management
+
+## Cannot sync update from ServiceNow to Case Management {#cannot-sync-update-from-servicenow-to-case-management}
+
+Problem: Communication between ServiceNow and Case Management appears to only work in one direction. For example, an update made to a ServiceNow ticket does not appear in Case Management.
+
+Perform the following:
+
+### Procedure {#procedure}
+
+1.  In ServiceNow, go to **Trend Vision One Connector → Properties** and verify that the **Trend Vision One API endpoint URL** and **Trend Vision One API authentication token** are filled.
+
+    - If empty, provide the corresponding information.
+
+    - If filled, continue to the next step.
+
+2.  Update the case in ServiceNow then look for the update in the Trend Vision One case.
+
+    - If the update appears in both ServiceNow and Trend Vision One, you can stop here.
+
+    - If the update does not appear in both ServiceNow and Trend Vision One, continue to the next step.
+
+3.  Check the system log at **Trend Vision One Connector → System Logs**.
+
+4.  If you see the below message in the log, select **Enable Case Management Integration** to sync ServiceNow to Trend Vision One.
+
+    ```bash
+    Case notes updated successfully. Note: Changes are not synced back to Trend Vision One when sync is disabled or when you use the API to do changes.
+    ```
+
+5.  If you see the below message in the log, the token is not valid.
+
+    ```bash
+    Unable to sync case to Trend Vision One. (HTTP status code:401; Trace ID: d8edd0ce-578b-432e-b927-6ad68092d16a, Response: {"error":{"innererror":{"code":"InvalidToken","service":"svp"},"code":"InvalidCredentials","message":"Invalid token, Authentication fail:Verification failed"}})
+    ```
+
+    1.  Generate the token from Trend Vision One.
+
+        1.  In Trend Vision One, go to **Workflow and Automation → Third-Party Integration**.
+        2.  Select **Trend Vision One for ServiceNow Ticketing System**.
+        3.  Click **Manage API Key**.
+        4.  Click **Generate Token**.
+        5.  Copy the generated authentication token.
+
+    2.  Update the new token in ServiceNow.
+
+        1.  In ServiceNow, go to **Trend Vision One Connector → Properties**.
+        2.  Under **Case Management Integration**, paste the authentication token.
+        3.  Click **Save**.
+:::

@@ -1,0 +1,96 @@
+---
+slug: trend-vision-one-discover-scan
+title: Create and run a discovery scan in Network Vulnerability Scanner
+last_updated: '2025-09-08'
+ai_context:
+  source_file: discover-scan.md
+  conversion_date: '2025-09-08T23:42:20.456Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure and run a discovery scan in Network Vulnerability Scanner to identify live hosts, open ports, and basic system information within your network.
+
+:::warning[Important]
+
+This is a "Pre-release" feature and is not considered an official release. Please review the [Pre-release disclaimer](pre-release-disclaimer.mdx) before using the feature.
+:::
+
+Scans created from the discovery scan template identify live hosts, open ports, and basic system information within a network. Discovery scans help security teams map out an organization's attack surface and understand what assets are connected. Discovery scans typically have a low impact on system resources.
+
+To configure a basic network discovery scan, you need:
+
+- A deployed Service Gateway virtual appliance with Network Vulnerability Scanner service version 1.1.0 or later installed
+
+- IP addresses or FQDNs for the target network segment
+
+  :::note
+
+  If an FQDN resolves to multiple IP addresses due to load balancing, firewall settings, or other configurations, only one of the IP addresses is used for the scan.
+  :::
+
+Ensure you have deployed a Service Gateway virtual appliance to the network environment you wish to scan. For more information, see the [Service Gateway deployment guides](deployment-guides.mdx).
+
+### Procedure {#procedure}
+
+1.  Install the Network Vulnerability Scanner service on your deployed Service Gateway.
+
+    1.  In **Workflow and Automation → Service Gateway Management**, click the name of the desired Service Gateway to view details.
+
+    2.  Click **Manage services** to view the list of available services.
+
+    3.  Find and install the latest version of the Network Vulnerability Scanner service.
+
+        :::note
+
+        The Network Vulnerability Scanner service requires at least 2 CPUs and 4 GB of virtual memory.
+        :::
+
+    The Network Vulnerability Scanner service appears in the list of installed services for the Service Gateway.
+
+2.  Create a new network discovery scan.
+
+    1.  In **Cyber Risk Exposure Management → Vulnerability Management → Network Vulnerability Scanner**, click **Create scan** from either **Network scans** or under discovery scan in **Scan templates**.
+
+    2.  Specify a name and description for the scan.
+
+    3.  Select the Service Gateway to use for the scan. Only Service Gateways with the Network Vulnerability Scanner service installed are available.
+
+    4.  Specify up to 10,000 IPv4 addresses, ranges, or FQDNs separated by commas to scan. CIDR notation is supported.
+
+        :::note
+
+        - Discovery scans use TCP SYN scanning by default for less intrusive and more reliable scanning.
+
+        - The default scan targets are the top 1,000 most common TCP ports. For a list of all top 1,000 TCP ports, [click here](https://ohc.blob.core.windows.net/o-help/manual/7d34d63c-e9ae-4328-81be-0e6081012335/top_1000_TCP_ports.csv).
+        :::
+
+    5.  Choose whether to trigger the scan at a specified scheduled interval or to only allow manual scanning.
+
+    6.  Click **Save only** to save the scan and wait for the scan to run according to your configured schedule or **Save and run scan** to save and trigger the scan immediately.
+
+    The newly configured scan appears on the list in **Network scans**.
+
+3.  After the scan completes, you can download a report containing the scan results from **Scan reports**.
+
+    :::warning[Important]
+
+    - Scan duration varies based on the number of IP addresses you have specified for the scan and the number of assets discovered.
+
+    - Only the most recent scan report for each scan is available. To keep a record of an earlier scan, download the report before the next scheduled scan.
+    :::
+
+4.  View discovered assets and manage risk.
+
+    1.  Go to **Attack Surface Discovery** to view discovered assets along with detailed asset profile information discovered during the scan.
+
+    2.  Click **View latest vulnerability risk events** or **View latest system configuration risk events** in **Scan reports** to manage any risk events detected during the scan in **Threat and Exposure Management**.
+
+    :::note
+
+    - Discovery scans conduct banner grabbing to get operating system and service information from discovered assets. Certificate information is also collected if the asset is running the SSL/TLS service. Information collected on open ports, services, and certificates is added to the asset profiles of the corresponding assets in Attack Surface Discovery and is used to detect system configuration risk events.
+
+    - 
+    :::
+::::

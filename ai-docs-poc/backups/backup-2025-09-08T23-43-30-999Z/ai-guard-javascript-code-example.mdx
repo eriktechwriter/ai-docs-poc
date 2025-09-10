@@ -1,0 +1,103 @@
+---
+slug: trend-vision-one-ai-guard-javascript-code-example
+title: Javascript code example
+last_updated: '2025-09-08'
+ai_context:
+  source_file: ai-guard-javascript-code-example.md
+  conversion_date: '2025-09-08T23:42:25.372Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+An example of Javascript code for the Trend Vision One AI Guard integration.
+
+The following is an example of how to integrate AI Guard with your application.
+
+``` codeblock
+const fetch = require('node-fetch');
+
+// Get your Trend Vision One API key from environment variable
+const apiKey = process.env.V1_API_KEY;
+if (!apiKey) {
+    throw new Error('Missing V1_API_KEY environment variable');
+}
+
+// User prompt stored in a variable
+const userPrompt = 'Explain the concept of machine learning in simple terms.';
+
+// Prepare the request payload
+const payload = {
+    guard: userPrompt,
+};
+
+const headers = {
+    'Authorization': `Bearer ${apiKey}`,
+    'Content-Type': 'application/json',
+    'detailedResponse': 'false', // Optional: Set to true for more detailed responses
+};
+
+const url = 'https://api.<region>.xdr.trendmicro.com/beta/aiSecurity/guard';
+
+fetch(url, {
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify(payload),
+})
+    .then(async response => {
+        let unsafe = false;
+        const action = response.headers.get('action');
+        if (action && action.toLowerCase() === 'block') {
+            unsafe = true;
+        }
+        console.log('Unsafe:', unsafe);
+
+        if (!unsafe) {
+            // Call OpenAI API (replace with your actual API key)
+            const openaiApiKey = process.env.OPENAI_API_KEY;
+            if (!openaiApiKey) {
+                throw new Error('Missing OPENAI_API_KEY environment variable');
+            }
+            const openaiPayload = {
+                model: 'gpt-4',
+                messages: [
+                    { role: 'user', content: userPrompt }
+                ],
+                max_tokens: 150,
+                temperature: 0.7
+            };
+            const openaiResp = await fetch('https://api.openai.com/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${openaiApiKey}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(openaiPayload)
+            });
+            const openaiResult = await openaiResp.json();
+
+            // Send OpenAI response to TrendMicro endpoint
+            const guardResp = await fetch(url, {
+                method: 'POST',
+                headers: headers,
+                body: JSON.stringify(openaiResult)
+            });
+            const guardAction = guardResp.headers.get('action');
+            if (guardAction && guardAction.toLowerCase() === 'block') {
+                console.log('LLM response is considered unsafe. No response will be shown.');
+                process.exit(0);
+            }
+            // Print the LLM response (extracting the text)
+            if (openaiResult.choices && openaiResult.choices.length > 0) {
+                console.log(openaiResult.choices[0].message.content);
+            }
+        } else {
+            console.log('User prompt is considered unsafe. No response will be generated.');
+            process.exit(0);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+```
+:::

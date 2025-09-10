@@ -1,0 +1,16 @@
+---
+slug: trend-vision-one-error-module-install-linux
+title: 'Error: Module installation failed (Linux)'
+---
+# Error: Module installation failed (Linux)
+
+The error message "Module Installation Failed" indicates that your operating system's kernel version is not supported by the agent network driver, or file system hook. These circumstances can cause *engine offline* alerts. Lack of a compatible network driver is the most common cause of this message.
+
+When you apply Intrusion Prevention, Web Reputation, or Firewall, the agent installs a network driver so it can examine traffic. Anti-Malware and Integrity Monitoring install a file system hook module. This is required to monitor file system changes in real time. (Scheduled scans do not require the same file system hook.)
+
+An update may be in progress. Trend Micro monitors many vendors for new kernel releases. After completing quality assurance tests, we release an update with support for these kernels. To ask when support for your kernel version will be supported, contact technical support.
+
+Your system will install the module support update automatically when it becomes available.
+
+To view supported operating system kernel versions, see [Agent Linux kernel support](linux-kernel-compatibility.mdx).
+:::

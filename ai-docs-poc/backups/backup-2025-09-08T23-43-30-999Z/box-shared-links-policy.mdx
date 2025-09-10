@@ -1,0 +1,178 @@
+---
+slug: trend-vision-one-box-shared-links-policy
+title: Configuring the Box shared links control policy
+last_updated: '2025-09-08'
+ai_context:
+  source_file: box-shared-links-policy.md
+  conversion_date: '2025-09-08T23:42:24.195Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Cloud Email and Collaboration Protection pre-defines a separate Data Loss Prevention policy that enables the Box administrator to manage shared links to content stored in your organization's Box environment. This helps reduce the risk of undesirable access to your organization's sensitive data through accidental creation of shared links by users.
+
+:::note
+
+In this release, Cloud Email and Collaboration Protection supports control over open shared links only. Open shared links are those set to publicly accessible and no Box account sign-in required.
+:::
+
+This policy is independent of the other Data Loss Prevention policies for Box and cannot be prioritized.
+
+New customers can use this policy right after granting Cloud Email and Collaboration Protection access to Box; existing users need to go to **Administrations → Service Account** to recreate an access token for Box before you can enable this policy.
+
+To allow creation of open shared links to any file or folder across your organization's Box environment, disable this policy. By default, this policy is disabled. When enabled, Cloud Email and Collaboration Protection monitors the creation of shared links to files and folders in your organization's Box user accounts, and upon detection, allows the creation or removes the link based on the action configured by the administrator in the policy.
+
+This policy is designed to apply to all Box user accounts in your organization. Configure the policy to exclude certain user accounts and items (files and folders) from this policy, that is, to allow creating open shared links to specified files and folders under specified user accounts.
+
+Before using this policy, be aware of the following limitations:
+
+- Cloud Email and Collaboration Protection does not monitor the creation of open shared links to files that reside right under the root path **/All Files** of a Box user account.
+
+- For the folders that reside right under the root path **/All Files** of a Box user account, Cloud Email and Collaboration Protection monitors the creation of open shared links to a maximum of 1,000 of them.
+
+- Cloud Email and Collaboration Protection does not handle the open shared links already created before this policy is configured and enabled.
+
+- Cloud Email and Collaboration Protection does not support manual scan for this policy.
+
+- This policy cannot be duplicated or deleted.
+
+### Procedure {#procedure}
+
+1.  Under **Box Policies**, click **Shared Links Control Policy**.
+
+    The Shared Links Control policy configuration screen appears.
+
+2.  On the **General** tab, select **Enable Shared Links Control**.
+
+3.  Specify or modify the policy name and description.
+
+4.  Click the **Shared Links Control** tab.
+
+5.  Configure **Action** settings.
+
+    ::: {.simpletable-container}
+    <table class="choicetable" data-border="1">
+    <thead>
+    <tr class="chhead table-header-style">
+    <th class="choptionhd">Option</th>
+    <th class="chdeschd">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="chrow">
+    <td class="choption"><p>Remove link</p></td>
+    <td class="chdesc"><p>Cloud Email and Collaboration Protection removes the open shared link, the corresponding file or folder cannot be opened through this link.</p></td>
+    </tr>
+    <tr class="chrow">
+    <td class="choption"><p>Pass</p></td>
+    <td class="chdesc"><p>Cloud Email and Collaboration Protection records the detection in a log and allows the open shared link to the file or folder.</p></td>
+    </tr>
+    </tbody>
+    </table>
+    :::
+
+    ::: {.simpletable-container}
+    <table class="choicetable" data-border="1">
+    <thead>
+    <tr class="chhead table-header-style">
+    <th class="choptionhd">Option</th>
+    <th class="chdeschd">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="chrow">
+    <td class="choption"><p>Notify</p></td>
+    <td class="chdesc"><p>Cloud Email and Collaboration Protection sends a notification email message to the administrator or user according to the <strong>Notification</strong> settings.</p></td>
+    </tr>
+    <tr class="chrow">
+    <td class="choption"><p>Do not notify</p></td>
+    <td class="chdesc"><p>Cloud Email and Collaboration Protection only takes the configured action on the shared link and does not send out any notification email message.</p></td>
+    </tr>
+    </tbody>
+    </table>
+    :::
+
+6.  Configure **Exceptions** settings.
+
+    Define user accounts and items (files or folders) to exclude from this policy.
+
+    ::: {.simpletable-container}
+    <table id="GUID-1342B097-62F8-4183-8614-EF326513B742__choicetable_vvq_vxd_bmb" class="choicetable" data-border="1">
+    <colgroup>
+    <col style="width: 50%" />
+    <col style="width: 50%" />
+    </colgroup>
+    <thead>
+    <tr class="chhead table-header-style">
+    <th class="choptionhd">Option</th>
+    <th class="chdeschd">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="chrow">
+    <td class="choption"><p>Add an exception</p></td>
+    <td class="chdesc"><p>A maximum of 100 entries is supported.</p>
+    <ol>
+    <li><p>Click <strong>Add</strong>.</p>
+    <p>The <strong>Add Exception</strong> screen appears.</p></li>
+    <li><p>Select users or groups to allow creating open shared links to items under these accounts.</p></li>
+    <li><p>Specify the path to a file or folder under the selected user accounts to allow creating an open shared link to.</p>
+    <p>Below are some instructions on how to specify a valid file or folder path:</p>
+    <ul>
+    <li><p>Start with a slash <code>/</code>. Cloud Email and Collaboration Protection will automatically add the root path part <code>/All Files</code>. For example, to add a folder path, type <code>/example1/example2</code>; to add a file path, enter <code>/example1/example2.txt</code>.</p></li>
+    <li><p>Wildcard characters are not supported.</p></li>
+    <li><p>To specify all items, type <code>/</code>.</p></li>
+    <li><p>To specify all items under a folder, end with a slash, for example, <code>/example1/</code>. Cloud Email and Collaboration Protection will monitor every file or subfolder under folder <strong>example1</strong>.</p></li>
+    <li><p>To specify any item under a folder whose name starts with specified characters, type the characters, for example, <code>/example1/exam</code>. Cloud Email and Collaboration Protection will monitor every file and subfolder under folder <strong>example1</strong> whose name starts with <strong>exam</strong>.</p></li>
+    </ul></li>
+    <li><p>Click the green add icon.</p></li>
+    <li><p>Repeat steps <strong>c</strong> and <strong>d</strong> to add more file or folder paths.</p>
+    <p>A maximum of 10 paths is supported.</p></li>
+    <li><p>Click <strong>Save</strong>.</p></li>
+    </ol>
+    <p>To delete a path, click the red delete icon.</p>
+    <p>To modify a path, click the red delete icon and specify a path again.</p></td>
+    </tr>
+    <tr class="chrow">
+    <td class="choption"><p>Edit an exception</p></td>
+    <td class="chdesc"><p>Select an entry and click <strong>Edit</strong>.</p></td>
+    </tr>
+    <tr class="chrow">
+    <td class="choption"><p>Delete exceptions</p></td>
+    <td class="chdesc"><p>Select one or multiple entries and click <strong>Delete</strong>.</p></td>
+    </tr>
+    </tbody>
+    </table>
+    :::
+
+7.  Configure **Notification** settings.
+
+    ::: {.simpletable-container}
+    <table class="choicetable" data-border="1">
+    <colgroup>
+    <col style="width: 50%" />
+    <col style="width: 50%" />
+    </colgroup>
+    <thead>
+    <tr class="chhead table-header-style">
+    <th class="choptionhd">Option</th>
+    <th class="chdeschd">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="chrow">
+    <td class="choption"><p>Notify administrator</p></td>
+    <td class="chdesc"><ol>
+    <li><p>Specify the administrators to notify by selecting a recipient group or specifying individual recipients. You can click <strong>Manage recipient groups</strong> to edit the members in a group or add more groups. For details, see Configuring recipient groups.</p></li>
+    <li><p>Specify message details to notify administrators that Cloud Email and Collaboration Protection detected an open shared link creation and took action on the link.</p></li>
+    </ol></td>
+    </tr>
+    <tr class="chrow">
+    <td class="choption"><p>Notify User</p></td>
+    <td class="chdesc"><p>Specify message details that notify the user under whose account an open shared link was created that Cloud Email and Collaboration Protection detected the creation and took action on the shared link.</p></td>
+    </tr>
+    </tbody>
+    </table>
+    :::
+::::

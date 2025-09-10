@@ -1,0 +1,83 @@
+---
+slug: trend-vision-one-adding-or-editing-digest-rule
+title: Adding or editing a digest rule
+---
+# Adding or editing a digest rule
+
+You can customize digest rules for different recipients. If there are multiple digest rules, you can set or adjust the priority to apply each rule.
+
+### Procedure {#procedure}
+
+1.  Go to **Quarantine → Digest Settings**.
+
+2.  Click the **Digest Rules** tab.
+
+3.  Click **Add** or click the name of an existing digest rule.
+
+4.  In the **General Information** section, do the following:
+
+    1.  Click the **Status** toggle button to enable the current digest rule.
+
+    2.  Type the rule name and description.
+
+5.  In the **Recipients** section, select the recipients for digest notifications:
+
+    - **All recipients**: This option only applies to the default digest rule. All users of your managed domains will receive digest notifications.
+
+    - **Specified recipients**: This option enables you to choose users from both your LDAP groups and managed domains and add all of them as intended recipients.
+
+6.  In the **Schedule** section, select the frequency to send digest notifications:
+
+    - **Daily**: Specify the exact time to send the digest notifications.
+
+      Use the add ![](/images/plus=GUID-9F240057-0A41-40D6-B218-B1B0237D0E2C=2=en-us=Low.webp) and the remove ![](/images/minus=GUID-642E20ED-C80F-4A0E-AC7E-726EF3DC0A8D=2=en-us=Low.webp) buttons to manage additional entries.
+
+    - **Weekly**: Specify the days of the week and time of the day to send the digest notifications.
+
+    :::note
+
+    The time zone of Trend Vision One is used.
+    :::
+
+7.  In the **Template** section, select the digest template that you want to use for the current digest rule.
+
+8.  Click **Save**.
+
+    The newly added or edited digest rule displays on the **Digest Rules** screen. You can further change the rule status, set the rule priority, copy and delete the rule.
+
+    :::note
+
+    If the recipient scope for different digest rules conflicts with each other, a red exclamation mark icon will be shown next to the recipients of each digest rule. Hover over the icon to view the current recipients, conflict rules and conflict recipients. Digest notifications are sent to the conflict recipients according to the rule with the higher priority. The smaller the priority number, the higher the priority.
+
+    The following table is an example for your reference.
+
+    <table style="width:99%;">
+    <colgroup>
+    <col style="width: 33%" />
+    <col style="width: 33%" />
+    <col style="width: 33%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Digest Rule</p></th>
+    <th><p>Priority</p></th>
+    <th><p>Recipients</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Rule1</p></td>
+    <td><p>1</p></td>
+    <td><p>domain1.com</p></td>
+    </tr>
+    <tr>
+    <td><p>Rule2</p></td>
+    <td><p>2</p></td>
+    <td><p>domain2.com; usergroup1</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+    If `Rule1` and `Rule2` are both enabled and `usergroup1` contains some recipients in `domain1.com`, this means the two rules have a recipient conflict. In this case, Cloud Email Gateway Protection applies `Rule1` that has the higher priority to send digest notifications to the conflict recipients.
+    :::
+:::

@@ -1,0 +1,59 @@
+---
+slug: trend-vision-one-wildcard-exceptions
+title: Wildcard Exceptions
+---
+# Wildcard Exceptions
+
+Scan exclusion lists for files and directories support the use of wildcard characters. Use the "?" character to replace one character and "\*" to replace several characters.
+
+Use wildcard characters cautiously. Using the wrong character might exclude incorrect files or directories. For example, adding `C:\*` to the Scan Exclusion List (Files) would exclude the entire `C:\` drive.
+
+**Scan Exclusions Using Wildcard Characters**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 35%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Value</p></th>
+<th><p>Excluded</p></th>
+<th><p>Not Excluded</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>c:\director*\fil\*.txt</code></p></td>
+<td><p><code>c:\directory\fil\doc.txt</code></p>
+<p><code>c:\directories\fil\files\document.txt</code></p></td>
+<td><p><code>c:\directory\file\</code></p>
+<p><code>c:\directories\files\</code></p>
+<p><code>c:\directory\file\doc.txt</code></p>
+<p><code>c:\directories\files\document.txt</code></p></td>
+</tr>
+<tr>
+<td><p><code>c:\director?\file\*.txt</code></p></td>
+<td><p><code>c:\directory\file\doc.txt</code></p></td>
+<td><p><code>c:\directories\file\document.txt</code></p></td>
+</tr>
+<tr>
+<td><p><code>c:\director?\file\?.txt</code></p></td>
+<td><p><code>c:\directory\file\1.txt</code></p></td>
+<td><p><code>c:\directory\file\doc.txt</code></p>
+<p><code>c:\directories\file\document.txt</code></p></td>
+</tr>
+<tr>
+<td><p><code>c:\*.txt</code></p></td>
+<td><p>All <code>.txt</code> files in the <code>C:\</code> directory</p></td>
+<td><p>All other file types in the <code>C:\</code> directory</p></td>
+</tr>
+<tr>
+<td><p><code>[]</code></p></td>
+<td><p>Not supported</p></td>
+<td><p>Not supported</p></td>
+</tr>
+</tbody>
+</table>
+:::

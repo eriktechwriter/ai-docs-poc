@@ -1,0 +1,569 @@
+---
+slug: trend-vision-one-monitoring-dashboard
+title: Monitoring Dashboard
+last_updated: '2025-09-08'
+ai_context:
+  source_file: monitoring-dashboard.md
+  conversion_date: '2025-09-08T23:42:15.806Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+- About Monitoring Dashboard
+
+- Troubleshooting
+
+  - False positives
+  - Missing AWS Events
+
+### About Monitoring Dashboard {#about-monitoring-dashboard}
+
+The Monitoring Dashboard provides an in-depth record of all events in an AWS account. Each event is categorized by time of the event, event details, identity of the user who performed the event, and the account on which the event occurred. You can also *filter events* on the basis of Trend Vision One™ – Cloud Risk Management events, AWS events, regions, and services. Use this dashboard to monitor any unusual activity such as changes to security groups, increased permission levels for users, access to your AWS account from an unfamiliar country etc., and take remedial actions if necessary.
+
+![](/images/filter-monitoring-utktfw=feaeea19-fc44-4942-af23-90578f7857a4.webp){.zoom}
+
+When reviewing RTPM events, you may want to reconfigure a rule, resolve the failed check, or review details to identify or reduce security vulnerabilities. On expanding an event, you will be provided with the following options:
+
+1.  Event / Check details - Information on events, checks, and their associated resource types and services
+2.  [Configure rule](rules-configuration.mdx) - adjust the behavior of rules to meet your organisation's needs
+3.  [Resolve](failed-check-resolution.mdx) - take remediation steps to reduce security vulnerabilities
+
+![](/images/monitoring-dashboard-xmu7d3=27d8e4e6-7795-43fc-9c0c-a496e68f5005.webp)
+
+### Troubleshooting {#troubleshooting}
+
+### False positives {#false-positives}
+
+*Problem*: The Rule *RTPM-005 - Users signed in to AWS from an approved country* returns a false positive.
+
+*Solution*: One of the reasons you may encounter this issue is that Cloud Risk Management Scan identifies the user's sign-in location based on their IP address rather than their actual physical location.
+
+For example, you have added Germany to the list of approved countries but the Cloud Risk Management Scan detects the user's sign-in location as Switzerland returning a failure (False positive).
+
+The discrepancy comes from the way Internet IP addresses are allocated.
+
+Follow these steps to diagnose and resolve this problem
+
+1.  Check the user’s location based on their IP address by using any of the following sites:
+    1.  <https://tools.keycdn.com/geo>
+    2.  <https://www.ip2location.com/demo>
+    3.  <https://dnschecker.org/ip-location.php>
+2.  If the IP location matches what the Cloud Risk Management Scan detected then the rule is working as expected. This can also occur when connecting using a corporate VPN which hides the user's actual sign-in IP address and location.
+3.  If the IP location comes back as different from the one detected by Cloud Risk Management Scan, please contact Customer Success who can investigate the issue further.
+
+### Missing AWS Events {#missing-aws-events}
+
+*Problem:* I have activated RTPM for my organization, but some AWS events are not being picked by the activity bot.
+
+*Solution:*
+
+1.  Ensure that you have installed the eventBus so that RTPM can pickup events from every region.
+2.  Check the list RTPM supported events below.
+
+Any AWS event missing from the list below is not supported by RTPM, it's monitored with your scheduled Cloud Risk Management Scan run and will be sent for [Auto-Remediation](auto-remediation.mdx) after being picked up in the scan.
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Event Type</p></th>
+<th colspan="2"><p>Events</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>S3</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><ul>
+<li>CreateBucket</li>
+<li>DeleteBucket</li>
+<li>DeleteBucketCORS</li>
+<li>DeleteBucketLifecycle</li>
+<li>DeleteBucketPolicy</li>
+<li>DeleteBucketReplication</li>
+<li>DeleteBucketTagging</li>
+<li>DeleteBucketWebsite</li>
+<li>PutAccelerateConfiguration</li>
+<li>PutAccountPublicAccessBlock</li>
+<li>PutAnalyticsConfiguration</li>
+<li>PutBucketAccelerateConfiguration</li>
+<li>PutBucketAclPutBucketCORS</li>
+<li>PutBucketEncryption</li>
+<li>PutBucketLifecycle</li>
+<li>PutBucketLifecycleConfiguration</li>
+</ul></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>PutBucketLogging</li>
+<li>PutBucketNotification</li>
+<li>PutBucketNotificationConfiguration</li>
+<li>PutBucketPolicy</li>
+<li>PutBucketPublicAccessBlock</li>
+<li>PutBucketReplication</li>
+<li>PutBucketRequestPayment</li>
+<li>PutBucketTagging</li>
+<li>PutBucketVersioning</li>
+<li>PutBucketWebsite</li>
+<li>PutEncryptionConfiguration</li>
+<li>PutInventoryConfiguration</li>
+<li>PutLifecycleConfiguration</li>
+<li>PutMetricsConfiguration</li>
+<li>PutReplicationConfiguration</li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>EC2</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>AcceptVpcEndpointConnections</li>
+<li>AcceptVpcPeeringConnection</li>
+<li>AllocateAddress</li>
+<li>ApplySecurityGroupsToClientVpnTargetNetwork</li>
+<li>AssociateAddress</li>
+<li>AssociateRouteTable</li>
+<li>AssociateSubnetCidrBlock</li>
+<li>AssociateTransitGatewayRouteTable</li>
+<li>AssociateVpcCidrBlock</li>
+<li>AttachInternetGateway</li>
+<li>AttachNetworkInterface</li>
+<li>AuthorizeSecurityGroupEgress</li>
+<li>AuthorizeSecurityGroupIngress</li>
+<li>CreateCustomerGateway</li>
+<li>CreateEgressOnlyInternetGateway</li>
+<li>CreateInternetGateway</li>
+<li>CreateLocalGatewayRouteTableVpcAssociation</li>
+<li>CreateNatGateway</li>
+<li>CreateNetworkAcl</li>
+<li>CreateNetworkAclEntry</li>
+<li>CreateNetworkInterface</li>
+<li>CreateNetworkInterfacePermission</li>
+<li>CreateRoute</li>
+<li>CreateRouteTable</li>
+<li>CreateSecurityGroup</li>
+<li>CreateTransitGatewayRouteTable</li>
+<li>CreateVolume</li>
+<li>CreateVpc</li>
+<li>CreateVpcEndpoint</li>
+<li>CreateVpcEndpointConnectionNotification</li>
+<li>CreateVpcEndpointServiceConfiguration</li>
+<li>CreateVpcPeeringConnection</li>
+<li>DeleteCustomerGateway</li>
+<li>DeleteEgressOnlyInternetGateway</li>
+<li>DeleteInternetGateway</li>
+<li>DeleteLocalGatewayRouteTableVpcAssociation</li>
+<li>DeleteNatGateway</li>
+<li>DeleteNetworkAcl</li>
+<li>DeleteNetworkAclEntry</li>
+<li>DeleteNetworkInterface</li>
+<li>DeleteNetworkInterfacePermission</li>
+<li>DeleteRoute</li>
+</ul></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>DeleteRouteTable</li>
+<li>DeleteSecurityGroup</li>
+<li>DeleteTransitGatewayRoute</li>
+<li>DeleteTransitGatewayRouteTable</li>
+<li>DeleteVolume</li>
+<li>DeleteVpcEndpointConnectionNotification</li>
+<li>DeleteVpcEndpointServiceConfiguration</li>
+<li>DeleteVpcEndpoints</li>
+<li>DeleteVpcPeeringConnection</li>
+<li>DetachInternetGateway</li>
+<li>DetachNetworkInterface</li>
+<li>DisableTransitGatewayRouteTablePropagation</li>
+<li>DisassociateAddress</li>
+<li>DisassociateRouteTable</li>
+<li>DisassociateSubnetCidrBlock</li>
+<li>DisassociateTransitGatewayRouteTable</li>
+<li>DisassociateVpcCidrBlock</li>
+<li>EnableTransitGatewayRouteTablePropagation</li>
+<li>EnableVgwRoutePropagation</li>
+<li>ModifyInstanceAttribute</li>
+<li>ModifyNetworkInterfaceAttribute</li>
+<li>ModifyVpcAttribute</li>
+<li>ModifyVpcEndpoint</li>
+<li>ModifyVpcEndpointConnectionNotification</li>
+<li>ModifyVpcEndpointServiceConfiguration</li>
+<li>ModifyVpcEndpointServicePermission</li>
+<li>ModifyVpcPeeringConnectionOptions</li>
+<li>RebootInstances</li>
+<li>RejectVpcEndpointConnections</li>
+<li>RejectVpcPeeringConnection</li>
+<li>ReleaseAddress</li>
+<li>ReplaceNetworkAclAssociation</li>
+<li>ReplaceNetworkAclEntry</li>
+<li>ReplaceRouteTableAssociation</li>
+<li>ReplaceTransitGatewayRoute</li>
+<li>ResetNetworkInterfaceAttribute</li>
+<li>RevokeSecurityGroupEgress</li>
+<li>RevokeSecurityGroupIngress</li>
+<li>RunInstances</li>
+<li>StartInstances</li>
+<li>StopInstances</li>
+<li>TerminateInstances</li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Elasticloadbalancing</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>ConfigureHealthCheck</li>
+<li>CreateLoadBalancer</li>
+<li>DeleteLoadBalancer</li>
+<li>EnableAvailabilityZonesForLoadBalancer</li>
+</ul></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>ModifyLoadBalancerAttributes</li>
+<li>SetLoadBalancerListenerSSLCertificate</li>
+<li>SetLoadBalancerPoliciesForBackendServer</li>
+<li>SetLoadBalancerPoliciesOfListener</li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>AutoScaling</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>CreateAutoScalingGroup</li>
+<li>CreateLaunchConfiguration</li>
+<li>DeleteAutoScalingGroup</li>
+<li>DeleteLaunchConfiguration</li>
+</ul></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>PutNotificationConfiguration</li>
+<li>ResumeProcesses</li>
+<li>SuspendProcesses</li>
+<li>UpdateAutoScalingGroup</li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>CloudFormation</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>CreateStack</li>
+<li>DeleteStack</li>
+</ul></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>UpdateStack</li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>IAM</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>AddUserToGroup</li>
+<li>AttachGroupPolicy</li>
+<li>AttachRolePolicy</li>
+<li>AttachUserPolicy</li>
+<li>ChangePassword</li>
+<li>CreateAccessKey</li>
+<li>CreateAccountAlias</li>
+<li>CreateGroup</li>
+<li>CreateLoginProfile</li>
+<li>CreateOpenID</li>
+<li>ConnectProvider</li>
+<li>CreatePolicy</li>
+<li>CreatePolicyVersion</li>
+<li>CreateRole</li>
+<li>CreateSAMLProvider</li>
+<li>CreateServiceLinkedRole</li>
+<li>CreateServiceSpecificCredential</li>
+<li>CreateUser</li>
+<li>CreateVirtualMFADevice</li>
+<li>DeactivateMFADevice</li>
+<li>DeleteAccessKey</li>
+<li>DeleteAccountAlias</li>
+<li>DeleteAccountPasswordPolicy</li>
+<li>DeleteGroup</li>
+<li>DeleteGroupPolicy</li>
+<li>DeleteLoginProfile</li>
+<li>DeleteOpenIDConnectProvider</li>
+<li>DeletePolicy</li>
+<li>DeletePolicyVersion</li>
+<li>DeleteRole</li>
+<li>DeleteRolePermissionsBoundary</li>
+<li>DeleteRolePolicy</li>
+<li>DeleteSAMLProvider</li>
+<li>DeleteSSHPublicKey</li>
+<li>DeleteServerCertificate</li>
+<li>DeleteServiceLinkedRole</li>
+</ul></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>DeleteServiceSpecificCredential</li>
+<li>DeleteSigningCertificate</li>
+<li>DeleteUser</li>
+<li>DeleteUserPermissionsBoundary</li>
+<li>DeleteUserPolicy</li>
+<li>DeleteVirtualMFADevice</li>
+<li>DetachGroupPolicy</li>
+<li>DetachRolePolicy</li>
+<li>DetachUserPolicy</li>
+<li>EnableMFADevice</li>
+<li>PutGroupPolicy</li>
+<li>PutRolePermissionsBoundary</li>
+<li>PutRolePolicy</li>
+<li>PutUserPermissionsBoundary</li>
+<li>PutUserPolicy</li>
+<li>RemoveClientIDFromOpenIDConnectProvider</li>
+<li>RemoveUserFromGroup</li>
+<li>ResetServiceSpecificCredential</li>
+<li>SetDefaultPolicyVersion</li>
+<li>UpdateAccessKey</li>
+<li>UpdateAccountPasswordPolicy</li>
+<li>UpdateAssumeRolePolicy</li>
+<li>UpdateGroup</li>
+<li>UpdateLoginProfile</li>
+<li>UpdateOpenIDConnectProviderThumbprint</li>
+<li>UpdateRole</li>
+<li>UpdateRoleDescription</li>
+<li>UpdateSAMLProvider</li>
+<li>UpdateSSHPublicKey</li>
+<li>UpdateServerCertificate</li>
+<li>UpdateServiceSpecificCredential</li>
+<li>UpdateSigningCertificate</li>
+<li>UpdateUser</li>
+<li>UploadSSHPublicKey</li>
+<li>UploadServerCertificate</li>
+<li>UploadSigningCertificate</li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Dynamodb</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>CreateTable</li>
+<li>DeleteTable</li>
+<li>TagResource</li>
+</ul></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>UntagResource</li>
+<li>UpdateTable</li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>RDS</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>CopyDBClusterSnapshot</li>
+<li>CopyDBSnapshot</li>
+<li>CreateDBCluster</li>
+<li>CreateDBClusterSnapshot</li>
+<li>CreateDBInstance</li>
+<li>CreateDBSecurityGroup</li>
+<li>CreateDBSnapshot</li>
+<li>DeleteDBCluster</li>
+<li>DeleteDBClusterSnapshot</li>
+<li>DeleteDBInstance</li>
+</ul></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>DeleteDBSecurityGroup</li>
+<li>DeleteDBSnapshot</li>
+<li>ModifyDBCluster</li>
+<li>ModifyDBInstance</li>
+<li>RemoveTagsFromResource</li>
+<li>RestoreDBClusterFromSnapshot</li>
+<li>RestoreDBClusterToPointInTime</li>
+<li>RestoreDBInstanceFromDBSnapshot</li>
+<li>RestoreDBInstanceToPointInTime</li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Lambda</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>CreateFunction20150331</li>
+<li>DeleteFunction20150331</li>
+</ul></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>EnableReplication20170630</li>
+<li>PublishVersion20150331</li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Cloudfront</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>CreateInvalidation</li>
+</ul></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"> </td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Organizations</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>AcceptHandshake</li>
+<li>AttachPolicy</li>
+<li>CancelHandshake</li>
+<li>CreateAccount</li>
+<li>CreateOrganization</li>
+<li>CreateOrganizationalUnit</li>
+<li>CreatePolicy</li>
+<li>DeclineHandshake</li>
+<li>DeleteOrganization</li>
+<li>DeleteOrganizationalUnit</li>
+<li>DeletePolicy</li>
+<li>DetachPolicy</li>
+</ul></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>DisableAWSServiceAccess</li>
+<li>DisablePolicyType</li>
+<li>EnableAWSServiceAccess</li>
+<li>EnableAllFeatures</li>
+<li>EnablePolicyType</li>
+<li>InviteAccountToOrganization</li>
+<li>LeaveOrganization</li>
+<li>MoveAccount</li>
+<li>RemoveAccountFromOrganization</li>
+<li>UpdateOrganizationalUnit</li>
+<li>UpdatePolicy</li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Config</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>DeleteAggregationAuthorization</li>
+<li>DeleteConfigRule</li>
+<li>DeleteConfigurationAggregator</li>
+<li>DeleteConfigurationRecorder</li>
+<li>DeleteDeliveryChannel</li>
+<li>DeleteEvaluationResults</li>
+<li>DeletePendingAggregationRequest</li>
+<li>PutAggregationAuthorization</li>
+</ul></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>PutConfigRule</li>
+<li>PutConfigurationAggregator</li>
+<li>PutConfigurationRecorder</li>
+<li>PutDeliveryChannel</li>
+<li>StartConfigRulesEvaluation</li>
+<li>StartConfigurationRecorder</li>
+<li>StopConfigurationRecorder</li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>GuardDuty</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>AcceptInvitation</li>
+<li>ArchiveFindings</li>
+<li>CreateDetector</li>
+<li>CreateIPSet</li>
+<li>CreateMembers</li>
+<li>CreateSampleFindings</li>
+<li>CreateThreatIntelSet</li>
+<li>DeclineInvitations</li>
+<li>DeleteDetector</li>
+<li>DeleteIPSet</li>
+<li>DeleteInvitations</li>
+<li>DeleteMembers</li>
+</ul></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>DeleteThreatIntelSet</li>
+<li>DisassociateFromMasterAccount</li>
+<li>DisassociateMembers</li>
+<li>InviteMembers</li>
+<li>StaRTPMonitoringMembers</li>
+<li>StopMonitoringMembers</li>
+<li>UnarchiveFindings</li>
+<li>UpdateDetector</li>
+<li>UpdateFindingsFeedback</li>
+<li>UpdateIPSet</li>
+<li>UpdateThreatIntelSet</li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>CloudTrail</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>AddTags</li>
+<li>CreateTrail</li>
+<li>DeleteTrail</li>
+<li>PutEventSelectors</li>
+</ul></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>RemoveTags</li>
+<li>StartLogging</li>
+<li>StopLogging</li>
+<li>UpdateTrail</li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Route53domains</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>DeleteTagsForDomain</li>
+<li>DisableDomainAutoRenew</li>
+<li>DisableDomainTransferLock</li>
+<li>EnableDomainAutoRenew</li>
+<li>EnableDomainTransferLock</li>
+<li>RegisterDomain</li>
+<li>RenewDomain</li>
+</ul></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>ResendContactReachabilityEmail</li>
+<li>TransferDomain</li>
+<li>UpdateDomainContact</li>
+<li>UpdateDomainContactPrivacy</li>
+<li>UpdateDomainNameservers</li>
+<li>UpdateTagsForDomain</li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>KMS</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>CancelKeyDeletion</li>
+<li>CreateAlias</li>
+<li>CreateGrant</li>
+<li>CreateKey</li>
+<li>DeleteAlias</li>
+<li>DeleteImportedKeyMaterial</li>
+<li>DisableKey</li>
+<li>DisableKeyRotation</li>
+<li>EnableKey</li>
+<li>EnableKeyRotation</li>
+<li>GenerateRandom</li>
+</ul></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>ImportKeyMaterial</li>
+<li>PutKeyPolicy</li>
+<li>RetireGrant</li>
+<li>RevokeGrant</li>
+<li>ScheduleKeyDeletion</li>
+<li>TagResource</li>
+<li>UntagResource</li>
+<li>UpdateAlias</li>
+<li>UpdateKeyDescription</li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Route53</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>AssociateVPCWithHostedZone</li>
+<li>ChangeResourceRecordSets</li>
+<li>ChangeTagsForResource</li>
+<li>CreateHealthCheck</li>
+<li>CreateHostedZone</li>
+<li>CreateQueryLoggingConfig</li>
+<li>CreateReusableDelegationSet</li>
+<li>CreateTrafficPolicy</li>
+<li>CreateTrafficPolicyInstance</li>
+<li>CreateTrafficPolicyVersion</li>
+<li>CreateVPCAssociationAuthorization</li>
+<li>DeleteHealthCheck</li>
+</ul></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+<li>DeleteHostedZone</li>
+<li>DeleteQueryLoggingConfig</li>
+<li>DeleteReusableDelegationSet</li>
+<li>DeleteTrafficPolicy</li>
+<li>DeleteTrafficPolicyInstance</li>
+<li>DeleteVPCAssociationAuthorization</li>
+<li>DisassociateVPCFromHostedZone</li>
+<li>UpdateHealthCheck</li>
+<li>UpdateHostedZoneComment</li>
+<li>UpdateTrafficPolicyComment</li>
+<li>UpdateTrafficPolicyInstance</li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-right-width: 1px; border-right-style: solid"><p>STS</p></td>
+<td><ul>
+<li>AssumeRole</li>
+<li>AssumeRoleWithSAML</li>
+</ul></td>
+<td><ul>
+<li>AssumeRoleWithWebIdentity</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+:::

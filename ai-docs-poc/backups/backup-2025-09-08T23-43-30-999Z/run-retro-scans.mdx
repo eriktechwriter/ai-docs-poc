@@ -1,0 +1,35 @@
+---
+slug: trend-vision-one-run-retro-scans
+title: Run retro scans on custom model data
+last_updated: '2025-09-08'
+ai_context:
+  source_file: run-retro-scans.md
+  conversion_date: '2025-09-08T23:42:13.379Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Run retro scans on the historical data captured by existing custom detection models to identify past events that match your defined detection criteria.
+
+:::warning[Important]
+
+- Retro scans analyze historical data up to 7 days in the past.
+
+- The number of concurrent retro scan jobs is limited per company. If your company has reached the limit, you must wait for an ongoing job to complete before starting a new one.
+
+- Retro scan might generate multiple Workbench alerts if matched events are found across different time intervals.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Agentic SIEM & XDR → Detection Model Management → Custom Models**.
+
+2.  Locate the custom model you want to scan historical data for and click the retro scan icon (![](/images/DMMretroScanIcon=6cdd066e-f1c2-4c91-a006-1319a57e5e4f.webp)).
+
+3.  Select the time range from the drop-down menu.
+
+4.  Click **Run retro scan**.
+
+    Once the retro scan is complete, any matched events generate Workbench alerts according to the configurations of your selected models.
+::::

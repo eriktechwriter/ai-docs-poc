@@ -1,0 +1,67 @@
+---
+slug: trend-vision-one-bypass-junk-folder-microsoft-365
+title: Create rules for bypassing the junk folder in Microsoft 365
+last_updated: '2025-09-08'
+ai_context:
+  source_file: bypass-junk-folder-microsoft-365.md
+  conversion_date: '2025-09-08T23:42:24.175Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Create rules in Microsoft 365 to allow phishing simulation emails to bypass user junk folders.
+
+To ensure Microsoft 365 users can receive phishing simulation emails, you can configure rules to allow emails to bypass the junk folder in user mailboxes.
+
+:::note
+
+These instructions were valid for Microsoft 365 Exchange as of January 25, 2025.
+:::
+
+### Procedure {#procedure}
+
+1.  Get the required header key and value from the Trend Vision One console.
+
+    1.  In the Trend Vision One console, go to **Cyber Risk Exposure Management → Security Awareness → Phishing Simulations**.
+
+    2.  Click the settings icon (![](/images/gear_icon=fc9a51ad-35af-4fe3-92c6-5e41b2dfc5d9.webp)).
+
+    3.  In **Allow List Settings**, copy the header key and value.
+
+2.  Create a new transport rule for Microsoft 365.
+
+    1.  In the Microsoft 365 Exchange admin center, go to **Mail flow → Rules**.
+
+    2.  Click **Add a rule**, and then select **Create a new rule**.
+
+        The **New transport rule** window appears.
+
+    3.  Give the rule a descriptive name.
+
+    4.  Under **Apply this rule if**, select **The message headers...** and **includes any of these words**.
+
+    5.  Click **Enter text**, paste the header key previously copied from the Trend Vision One console, and click **Save**.
+
+    6.  Click **Enter words**, paste the header value previously copied from the Trend Vision One console, then click **Add** and **Save**.
+
+        :::note
+
+        You may need to update the header value from time to time.
+        :::
+
+    7.  Under **Do the following**, select **Modify the message properties** and **set a message header**.
+
+    8.  Click the first **Enter text** link, type `X-Forefront-Antispam-Report`, and click **Save**.
+
+    9.  Click the second **Enter text** link, type `SFV:SKI;CAT:NONE;`, and click **Save**.
+
+        :::warning[Important]
+
+        All header text and values are case sensitive.
+        :::
+
+    10. Review the rule settings and click **Save**. The new rule may take some time to propagate.
+
+3.  If you have already created a rule to bypass clutter and spam filtering for phishing simulation emails, change the priority of the newly created rule to just below the clutter and spam filtering bypass rule. For more information, see [Microsoft's documentation on setting the priority of a mail flow rule](https://learn.microsoft.com/en-us/exchange/security-and-compliance/mail-flow-rules/manage-mail-flow-rules).
+::::

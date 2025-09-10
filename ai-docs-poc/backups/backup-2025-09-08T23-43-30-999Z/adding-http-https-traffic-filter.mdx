@@ -1,0 +1,140 @@
+---
+slug: trend-vision-one-adding-http-https-traffic-filter
+title: Adding an HTTP/HTTPS traffic filter
+last_updated: '2025-09-08'
+ai_context:
+  source_file: adding-http-https-traffic-filter.md
+  conversion_date: '2025-09-08T23:42:25.742Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure HTTP/HTTPS filter parameters used to filter certain types of inbound or outbound web traffic.
+
+### Procedure {#procedure}
+
+1.  On the **Secure Access Resources** screen, click the **HTTP/HTTPS Traffic Filters** tab and then click **Add**.
+
+    The **HTTP/HTTPS Traffic Filter Settings** screen appears.
+
+2.  Specify a name for the filter and add an optional description.
+
+3.  Optionally, select one or more request methods to match the filter.
+
+    **Supported request methods**
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Method</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>GET</p></td>
+    <td><p>Requests a representation of the specified resource including the request or response body</p></td>
+    </tr>
+    <tr>
+    <td><p>POST</p></td>
+    <td><p>Submits data from the request body to the specified resource. This may result in the creation of a new resource or the update of existing resources.</p></td>
+    </tr>
+    <tr>
+    <td><p>PUT</p></td>
+    <td><p>Uploads a representation of the specified resource</p></td>
+    </tr>
+    <tr>
+    <td><p>HEAD</p></td>
+    <td><p>Requests a representation of the specified resource without the request or response body, useful for retrieving only meta-information from headers</p></td>
+    </tr>
+    <tr>
+    <td><p>DELETE</p></td>
+    <td><p>Deletes the specified resource</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+4.  Optionally, specify applicable URLs for the filter.
+
+    - Select **Any specified URL host name or IP address** to include host names or IP addresses (including port numbers, if any).
+
+    - Select **Any specified URL path** to include specific URL paths. Do not start paths with slashes (/) or include query-related question marks (?).
+
+    Applicable URLs support both ? and \* wildcards. `?` matches any single character while `*` matches any number of any characters.
+
+    <table>
+    <colgroup>
+    <col style="width: 50%" />
+    <col style="width: 50%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>URL Host Name or IP Address</p></th>
+    <th><p>URL Path</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><code>www.example.com</code> matches www.example.com only.</p></td>
+    <td><p><code>example.com/news.htm</code> matches example.com/news.htm only.</p></td>
+    </tr>
+    <tr>
+    <td><p><code>www.example.c?</code> matches www.example.co but not www.example.com.</p></td>
+    <td><p><code>example.com/news?.htm</code> matches example.com/news1.htm but not example.com/news11.htm.</p></td>
+    </tr>
+    <tr>
+    <td><p><code>*.example.com</code> matches jp.example.com and us.example.com.</p></td>
+    <td><p>To match all URLs with paths including <strong>news</strong>, type <code>*news*</code>.</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+5.  Specify the filter parameters.
+
+    1.  Select **Request** for outbound request traffic or **Response** for inbound response traffic.
+
+    2.  Specify the header field.
+
+        :::warning[Important]
+
+        Only header fields that follow HTTP/HTTPS naming standards are supported. Common header fields include:
+
+        - `User-Agent`: Specifies the details of the user agent
+
+        - `Content-Type`: Specifies the type of content
+
+        - `Content-Length`: Specifies the size of the content in 8-bit bytes
+
+        - `Content-Disposition`: Identifies specific content types along with associated file names
+        :::
+
+    3.  Select the desired operator from the drop-down list.
+
+        Available operators include both string value (keyword) matching operators and integer value comparison operators.
+
+        - **CONTAINS**: The header field contains the specified keyword. Multiple keywords have an OR relationship.
+
+        - **NOT CONTAINS**: The header field does not contain the specified keyword. Multiple keywords have an AND relationship.
+
+        - **=, ≠, ≥, ≤**: The header field contains an integer that equals, does not equal, is greater than or equal to, or less than or equal to the specified integer value.
+
+        - **EXISTS**: The header includes the specified header field.
+
+        - **NOT EXISTS**: The header does not include the specified header field.
+
+    4.  Enter the desired value as a string or integer if necessary.
+
+    5.  Add additional filter parameters by clicking **Add**.
+
+6.  Click **Save**.
+
+:::note
+
+Traffic filters are triggered from internet access control rules only when all specified parameters, including request methods and URLs, are matched.
+:::
+::::

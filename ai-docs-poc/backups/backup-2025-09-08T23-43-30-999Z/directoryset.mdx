@@ -1,0 +1,97 @@
+---
+slug: trend-vision-one-directoryset
+title: DirectorySet
+last_updated: '2025-09-08'
+ai_context:
+  source_file: directoryset.md
+  conversion_date: '2025-09-08T23:42:20.479Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+:::note
+
+The Integrity Monitoring module scans for unexpected changes to directories, [registry values](registryvalueset.mdx), [registry keys](registrykeyset.mdx), [services](serviceset.mdx), [processes](processset.mdx), [installed software](installedsoftwareset.mdx), [ports](portset.mdx), [groups](groupset.mdx), [users](userset.mdx), [files](fileset.mdx), and the [WQL](wqlset.mdx) query statement on agents. To enable and configure Integrity Monitoring, see [Set up integrity monitoring](set-up-integrity-monitoring.mdx).
+:::
+
+The DirectorySet tag describes a set of Directories.
+
+### Tag Attributes {#tag-attributes}
+
+These are XML attributes of the tag itself, as opposed to the attributes of the Entity monitored by Integrity Monitoring Rules.
+
+<table>
+<thead>
+<tr>
+<th><p>Attribute</p></th>
+<th><p>Description</p></th>
+<th><p>Required</p></th>
+<th><p>Default Value</p></th>
+<th><p>Allowed Values</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>base</p></td>
+<td><p>Sets the base directory of the DirectorySet. Everything else in the tag is relative to this directory</p></td>
+<td><p>Yes</p></td>
+<td><p>N/A</p></td>
+<td><p>String values resolving to syntactically valid path (Path is not required to exist) <em>Note</em>: UNC paths are allowed by Windows Agents, but require that the remote system allow access by the "LocalSystem" account of the Agent computer. The Agent is a Windows service and runs as LocalSystem, aka NT AUTHORITY\SYSTEM. When accessing a network resource, the LocalSystem uses the computer's credentials, which is an account named DOMAIN\MACHINE$. The access token presented to the remote computer also contains the "Administrators" group for the computer, so remote shares must grant read privileges to either the Agent computer's account, the Agent computer's Administrators group, or "Everyone". If the base value is not syntactically valid, the FileSet will not be processed. The rest of the config will be evaluated.</p></td>
+</tr>
+<tr>
+<td><p>onChange</p></td>
+<td><p>Whether the directories returned should be monitored in real time.</p></td>
+<td><p>No</p></td>
+<td><p>false</p></td>
+<td><p>true, false</p></td>
+</tr>
+<tr>
+<td><p>followLinks</p></td>
+<td><p>Will this DirectorySet follow symbolic links.</p></td>
+<td><p>No</p></td>
+<td><p>false</p></td>
+<td><p>true, false</p></td>
+</tr>
+</tbody>
+</table>
+
+### Entity Set Attributes {#entity-set-attributes}
+
+These are the attributes of the Entity that may be monitored by Integrity Monitoring Rules.
+
+- *Created:* Timestamp when the directory was created
+- *LastModified:* Timestamp when the directory was last modified
+- *LastAccessed:* Timestamp when the directory was last accessed. On Windows this value does not get updated immediately, and recording of the last accessed timestamp can be disabled as a performance enhancement. See [File Times](https://docs.microsoft.com/en-us/windows/win32/sysinfo/file-times?redirectedfrom=MSDN) for details. The other problem with this attribute is that the act of scanning a directory requires that the Agent open the directory, which will change its last accessed timestamp.
+- *Permissions:* The directory's security descriptor (in [SDDL](https://docs.microsoft.com/en-us/windows/win32/secauthz/security-descriptor-string-format?redirectedfrom=MSDN) format) on Windows or Posix-style ACLs on Unix systems that support ACLs, otherwise the Unix style rwxrwxrwx file permissions in numeric (octal) format.
+- *Owner:* User ID of the directory owner (commonly referred to as the "UID" on Unix)
+- *Group:* Group ID of the directory owner (commonly referred to as the "GID" on Unix)
+- *Flags:* Windows-only. Flags returned by the [GetFileAttributes()](https://docs.microsoft.com/en-ca/windows/win32/api/fileapi/nf-fileapi-getfileattributesa) Win32 API. Windows Explorer calls these the "Attributes" of the file: Read-only, Archived, Compressed, etc.
+- *SymLinkPath:* If the directory is a symbolic link, the path of the link is stored here. On Windows, use the SysInternals "junction" utility to create the Windows equivalent of symbolic links.
+- *InodeNumber* (Unix and Linux only): Inode number of the disk on which the inode associated with the file is stored
+- *DeviceNumber* (Unix and Linux only): Device number of the disk on which the inode associated with the directory is stored
+
+### Short Hand Attributes {#short-hand-attributes}
+
+The following are the Short Hand Attributes, and the attributes to which they map.
+
+- *STANDARD:*
+- Created
+  - LastModified
+  - Permissions
+  - Owner
+  - Group
+  - Flags (Windows only)
+  - SymLinkPath
+
+### Meaning of "Key" {#meaning-of-key}
+
+Key is a pattern to match against the path of the directory relative to the directory specified by "dir". This is a hierarchical pattern, with sections of the pattern separated by "/" matched against sections of the path separated by the file separator of the given OS.
+
+### Sub Elements {#sub-elements}
+
+- *Include*
+- *Exclude*
+
+See [Integrity monitoring rules language](integrity-monitoring-language-swp.mdx) for a general description of Include and Exclude for their allowed attributes and sub elements. Only information specific to includes and excludes relating to this EntitySet class are included here.
+::::

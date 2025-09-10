@@ -1,0 +1,311 @@
+---
+slug: trend-vision-one-log-facets
+title: Log facets
+last_updated: '2025-09-08'
+ai_context:
+  source_file: log-facets.md
+  conversion_date: '2025-09-08T23:42:16.455Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Cloud Email and Collaboration Protection stores data as searchable indexes in cloud databases. Use these log facets to narrow a search to a specific data set. The following tables describe the available log facets for each log type. Some log facets may not show if there is no corresponding data.
+
+**Detection Log Facets**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Log Facet</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Organization</p></td>
+<td><p>Name of the protected organization.</p>
+<p>This facet is available only when you have granted access to services for multiple organizations.</p></td>
+</tr>
+<tr>
+<td><p>Scan Source</p></td>
+<td><p>Name of the protected application or service.</p></td>
+</tr>
+<tr>
+<td><p>Security Filter</p></td>
+<td><p>Security filter that detected the threat. The security filter includes Advanced Spam Protection, File Blocking, Malware Scanning, Web Reputation, Data Loss Prevention, Keyword Extraction, and Box Shared Links Control.</p></td>
+</tr>
+<tr>
+<td><p>Threat Type</p></td>
+<td><p>Type of threat detected.</p></td>
+</tr>
+<tr>
+<td><p>Detected by</p></td>
+<td><p>Technology or method through which email messages and files were detected as containing a security threat.</p></td>
+</tr>
+<tr>
+<td><p>Spam Category</p></td>
+<td><p>Category of the spam email message detected.</p></td>
+</tr>
+<tr>
+<td><p>URL Category</p></td>
+<td><p>Category of the suspicious URL detected.</p></td>
+</tr>
+<tr>
+<td><p>Affected User</p></td>
+<td><p>The affected user refers to:</p>
+<ul>
+<li><p>For Exchange Online and Gmail, the mailbox of the protected user that received or sent an email message violating a policy</p></li>
+<li><p>For SharePoint Online, OneDrive, Microsoft Teams (Teams), Box, Dropbox, and Google Drive, the user account that uploaded or modified a file violating a policy.</p></li>
+<li><p>For Teams Chat, the user that sent a private chat message violating a policy.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Triggered Policy</p></td>
+<td><p>Name of the Security Risk Scan policy that was violated.</p></td>
+</tr>
+<tr>
+<td><p>Action</p></td>
+<td><p>Action taken for a file or message that violates a policy.</p></td>
+</tr>
+<tr>
+<td><p>Mail Direction</p></td>
+<td><p>Inbound or outbound message. This facet only applies to Exchange Online (Inline Mode).</p></td>
+</tr>
+<tr>
+<td><p>Virus Name</p></td>
+<td><p>Name of the virus detected.</p></td>
+</tr>
+<tr>
+<td><p>Suspicious URL</p></td>
+<td><p>URL that might contain threats.</p></td>
+</tr>
+<tr>
+<td><p>Domain</p></td>
+<td><p>Domain detected with ransomware.</p></td>
+</tr>
+<tr>
+<td><p>Sender</p></td>
+<td><p>Mailbox that sends the message.</p></td>
+</tr>
+<tr>
+<td><p>Detection Type</p></td>
+<td><p>Type of objects submitted to Virtual Analyzer. The objects can be files or URLs.</p></td>
+</tr>
+<tr>
+<td><p>Risk Level</p></td>
+<td><p>Risk level of a file or URL classified by Trend Micro Web Reputation Services or Virtual Analyzer.</p></td>
+</tr>
+<tr>
+<td><p>Triggered Template</p></td>
+<td><p>Name of the compliance template that was violated to trigger the Data Loss Prevention policy.</p></td>
+</tr>
+<tr>
+<td><p>Triggered Label</p></td>
+<td><p>Name of the sensitivity label that was violated to trigger the Data Loss Prevention policy.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Quarantine Log Facets**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Log Facet</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Organization</p></td>
+<td><p>Name of the protected organization.</p>
+<p>This facet is available only when you have granted access to services for multiple organizations.</p></td>
+</tr>
+<tr>
+<td><p>Scan Source</p></td>
+<td><p>Name of the protected application or service.</p></td>
+</tr>
+<tr>
+<td><p>Security Filter</p></td>
+<td><p>The security filter includes Virtual Analyzer, File Blocking, Web Reputation, Data Loss Prevention, Malware Scanning, and Threat Mitigation API.</p></td>
+</tr>
+<tr>
+<td><p>Affected User</p></td>
+<td><p>For Exchange Online, the mailbox of a protected user that received or sent a message violating a policy. For SharePoint Online, OneDrive, Microsoft Teams (Teams), Box, Dropbox, and Google Drive, the user account that uploaded or modified a file violating a policy.</p></td>
+</tr>
+<tr>
+<td><p>Quarantine Type</p></td>
+<td><p>Whether an email message or a file is already quarantined.</p></td>
+</tr>
+<tr>
+<td><p>Performed by</p></td>
+<td><p>Administrator or end user who restored or deleted a quarantined item.</p></td>
+</tr>
+<tr>
+<td><p>Mail Direction</p></td>
+<td><p>Inbound or outbound email message. This facet only applies to messages protected under Inline Protection.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Audit Logs Log Facets**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Log Facet</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Organization</p></td>
+<td><p>Name of the protected organization.</p>
+<p>This facet is available only when you have granted access to services for multiple organizations.</p></td>
+</tr>
+<tr>
+<td><p>User</p></td>
+<td><p>Name of the user who performs management operations.</p></td>
+</tr>
+<tr>
+<td><p>Action</p></td>
+<td><p>Operation that a user performs, including logon events, scheduled user data synchronizations, and policy changes.</p></td>
+</tr>
+</tbody>
+</table>
+
+**API Integration Log Facets**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Log Facet</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Organization</p></td>
+<td><p>Name of the protected organization.</p>
+<p>This facet is available only when you have granted access to services for multiple organizations.</p></td>
+</tr>
+<tr>
+<td><p>Scan Source</p></td>
+<td><p>Name of the protected application or service.</p></td>
+</tr>
+<tr>
+<td><p>Security Filter</p></td>
+<td><p>The security filter includes the Threat Remediation API.</p></td>
+</tr>
+<tr>
+<td><p>Affected User</p></td>
+<td><p>Exchange Online mailbox that contains an email message matching any item in the Blocked Lists for Exchange Online configured through the Threat Remediation API.</p></td>
+</tr>
+<tr>
+<td><p>Action</p></td>
+<td><p>Action taken for an email message matching any item in the Blocked Lists for Exchange Online configured through the Threat Remediation API.</p></td>
+</tr>
+</tbody>
+</table>
+
+**URL Click Tracking Log Facets**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Log Facet</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Organization</p></td>
+<td><p>Name of the protected organization.</p>
+<p>This facet is available only when you have granted access to services for multiple organizations.</p></td>
+</tr>
+<tr>
+<td><p>Time of Click</p></td>
+<td><p>Time when the user clicks the URL.</p></td>
+</tr>
+<tr>
+<td><p>Action</p></td>
+<td><p>Action taken when the user clicks the URL.</p></td>
+</tr>
+<tr>
+<td><p>Sender</p></td>
+<td><p>Sender of the email message that contains the clicked URL.</p></td>
+</tr>
+<tr>
+<td><p>Recipient</p></td>
+<td><p>Recipient of the email message that contains the clicked URL.</p></td>
+</tr>
+<tr>
+<td><p>URL</p></td>
+<td><p>URL that the user clicks.</p></td>
+</tr>
+<tr>
+<td><p>Message ID</p></td>
+<td><p>Unique ID that identifies the email message containing the clicked URL.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Email Tracking Log Facets**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Log Facet</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Organization</p></td>
+<td><p>Name of the protected organization.</p>
+<p>This facet is available only when you have granted access to services for multiple organizations.</p></td>
+</tr>
+<tr>
+<td><p>Scan source</p></td>
+<td><p>Name of the protected application or service.</p></td>
+</tr>
+<tr>
+<td><p>Delivery Status</p></td>
+<td><p>Delivery status of the inbound email message routed to Cloud Email and Collaboration Protection for inline protection.</p></td>
+</tr>
+<tr>
+<td><p>Recipient</p></td>
+<td><p>Recipient of the inbound email message routed to Cloud Email and Collaboration Protection for inline protection.</p></td>
+</tr>
+<tr>
+<td><p>Mail Direction</p></td>
+<td><p>Inbound or outbound email message. This facet only applies to messages protected under Inline Protection.</p></td>
+</tr>
+</tbody>
+</table>
+:::

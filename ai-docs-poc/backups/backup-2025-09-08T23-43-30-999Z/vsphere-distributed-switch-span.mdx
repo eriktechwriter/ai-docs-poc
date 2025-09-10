@@ -1,0 +1,115 @@
+---
+slug: trend-vision-one-vsphere-distributed-switch-span
+title: >-
+  Configuring internal network traffic with the VMware vSphere Distributed
+  Switch (SPAN)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: vsphere-distributed-switch-span.md
+  conversion_date: '2025-09-08T23:42:11.580Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure internal network traffic with the VMware vSphere Distributed Switch using SPAN to allow Virtual Network Sensor to monitor data.
+
+:::warning[Important]
+
+The following instructions are valid as of July 2023.
+:::
+
+### Procedure {#procedure}
+
+1.  Turn off your Virtual Network Sensor.
+
+2.  On the VMware vCenter console, click the ![](/images/circle_icon=GUID-20230729150101.webp) tab.
+
+3.  Right-click the name of your switch, and then select **Distributed Port Group** and **New Distributed Port Group**.
+
+    <figure>
+    <img src="./images/Internal_VDS_SPAN1=GUID-20230729143631.webp" />
+    </figure>
+
+4.  On the **Name and location** screen, specify the port group name and location and click **NEXT**.
+
+    <figure>
+    <img src="./images/Internal_VDS_SPAN2=GUID-20230729143632.webp" />
+    </figure>
+
+5.  On the **Configure settings** screen, view the default settings and click **NEXT**.
+
+    <figure>
+    <img src="./images/Internal_VDS_SPAN3=GUID-20230729143633.webp" />
+    </figure>
+
+6.  On the **Ready to complete** screen, review the settings and click **FINISH**.
+
+    <figure>
+    <img src="./images/Internal_VDS_SPAN4=GUID-20230729143634.webp" />
+    </figure>
+
+7.  Click the ![](/images/VMware_vCenter_server_icon=GUID-20230329175050.webp) tab and then click the name of your virtual machine.
+
+    <figure>
+    <img src="./images/Internal_VDS_SPAN5=GUID-20230729143635.webp" />
+    </figure>
+
+8.  Click ![](/images/edit_settings_icon=GUID-20230729150707.webp).
+
+9.  On the **Edit Settings** screen, click **Network adapter 2** and select **Browse...**.
+
+    <figure>
+    <img src="./images/Internal_VDS_SPAN6=GUID-20230729143636.webp" />
+    </figure>
+
+10. Click the name of your port group and click **OK**.
+
+    <figure>
+    <img src="./images/Internal_VDS_SPAN7=GUID-20230729143637.webp" />
+    </figure>
+
+11. Click **OK**.
+
+12. Click the ![](/images/circle_icon=GUID-20230729150101.webp) tab and then click the name of your switch.
+
+    <figure>
+    <img src="./images/Internal_VDS_SPAN8=GUID-20230729143638.webp" />
+    </figure>
+
+13. Click **Configure**, click **Port Mirroring**, and then click **NEW...**
+
+14. On the **Select session type** screen, select **Distributed Port Mirroring** and click **NEXT**.
+
+    <figure>
+    <img src="./images/Internal_VDS_SPAN9=GUID-20230729143639.webp" />
+    </figure>
+
+15. On the **Edit properties** screen, select **Enabled** for the status, and click **NEXT**.
+
+    <figure>
+    <img src="./images/Internal_VDS_SPAN10=GUID-20230729143610.webp" />
+    </figure>
+
+16. On the **Select sources** screen, select the port you want to be monitored.
+
+    <figure>
+    <img src="./images/Internal_VDS_SPAN11=GUID-20230729143611.webp" />
+    </figure>
+
+17. On the **Select destinations** screen, select the network traffic destination port that you just created and click **NEXT**.
+
+    <figure>
+    <img src="./images/Internal_VDS_SPAN12=GUID-20230729143612.webp" />
+    </figure>
+
+18. On the **Ready to complete** screen, review the settings and click **FINISH**.
+
+    <figure>
+    <img src="./images/Internal_VDS_SPAN13=GUID-20230729143613.webp" />
+    </figure>
+
+19. Turn on your Virtual Network Sensor.
+
+    After configuring your network settings, access the Virtual Network Sensor console and use the command `show traffic` to verify the Virtual Network Sensor is receiving traffic. For more information about troubleshooting, see [Virtual Network Sensor FAQ](virtual-network-sensor-faqs.mdx) and [Virtual Network Sensor CLI commands](virtual-network-sensor-cli-commands.mdx).
+::::

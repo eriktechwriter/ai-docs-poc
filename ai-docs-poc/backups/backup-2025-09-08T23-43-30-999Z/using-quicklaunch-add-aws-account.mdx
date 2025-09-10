@@ -1,0 +1,101 @@
+---
+slug: trend-vision-one-using-quicklaunch-add-aws-account
+title: Using QuickLaunch to add an AWS account
+last_updated: '2025-09-08'
+ai_context:
+  source_file: using-quicklaunch-add-aws-account.md
+  conversion_date: '2025-09-08T23:42:11.662Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Use QuickLaunch to connect your AWS account to the Cloud Accounts app.
+
+:::warning[Important]
+
+Connecting an AWS account using QuickLaunch is a pre-release feature and is not part of the existing features of an official commercial or general release. Please review the [Pre-release disclaimer](pre-release-disclaimer.mdx) before using the feature.
+
+This feature is not available in all regions.
+
+This feature can only be used with an AWS account which you have used to purchase Trend Vision One credits from the AWS Marketplace. For all other accounts, see [Adding an AWS account using CloudFormation](adding-aws-account.mdx).
+
+The steps for AWS QuickLaunch and the AWS CloudFlare console are valid as of November 2023.
+:::
+
+If you have purchased a Trend Vision One credits subscription through the AWS Marketplace, you can connect your AWS account to Cloud Accounts using the QuickLaunch feature in AWS. Connecting an account using this method automatically enables the Cloud Accounts Core Features. After you successfully connect your AWS account, you can perform a [stack update](stack-update.mdx) to enable additional features and settings.
+
+### Procedure {#procedure}
+
+1.  On the AWS Marketplace, search for **Trend Micro**.
+
+2.  Locate **Trend Vision One** and click the name.
+
+    You can also access the product directly at <https://aws.amazon.com/marketplace/pp/prodview-u2in6sa3igl7c>.
+
+3.  Click **View purchase options**.
+
+4.  Click **Click here to set up your account.**
+
+    The **Configure and launch** screen appears.
+
+5.  Perform the following steps under **Step 1: Make sure you have required AWS permissions**.
+
+    1.  If the **Enable AWS Marketplace deployment parameters integration** message appears, click **Enable integration**.
+
+    2.  Click the **certain IAM permissions** link to view the required permissions and verify that your IAM settings are configured.
+
+6.  Under **Step 2: Log into an existing or new vendor account**, click **Log in or create an account**.
+
+    :::note
+
+    Starting the QuickLaunch process generates parameters to enable the connection with the Cloud Accounts app. The parameters expire if you do not launch the template under Step 3 within 24 hours. If the parameters have expired, you can refresh.
+    :::
+
+    The Trend Vision One console sign in appears in a new tab.
+
+7.  Sign in to the Trend Vision One console.
+
+    If you have not already activated your credits license, the **Activate your Trend Micro Solutions** screen appears after signing in. Review the license details and click **Activate**.
+
+8.  Once you have signed in and have access to the Trend Vision One console, go back to the AWS QuickLaunch screen.
+
+9.  Under **Step 3: Configure your software and AWS integration**, click **Launch template** on the **AWS CloudFormation** tab.
+
+10. Select the region to deploy the template.
+
+11. If the deployment parameters do not exist in the selected region, click **Replicate parameters**.
+
+12. Click **Launch template**.
+
+    The AWS management console opens in a new tab and displays the **Quick Create Stack** screen.
+
+13. In the AWS management console, complete the steps in the **Quick Create Stack** screen.
+
+    1.  If you want to use a name other than the default, specify a new **Stack name**.
+
+    2.  Leave all other settings as the provided default.
+
+        :::warning[Important]
+
+        Do not change any settings in the **Parameters** section. CloudFormation automatically provides the settings for the parameters. Changing parameters might cause stack creation to fail.
+        :::
+
+    3.  In the **Capabilities** section, select the following acknowledgments:
+
+        - **I acknowledge that AWS CloudFormation might create IAM resources with custom names.**
+
+    4.  Click **Create Stack**.
+
+        The **Stack details** screen for the new stack appears with the **Events** tab displayed. Creation might take a few minutes. Click **Refresh** to check the progress.
+
+14. After stack creation completes, go back to the AWS QuickLaunch screen.
+
+15. Under **Step 4: Launch your software**, click **Launch software**.
+
+    The Trend Vision One console opens.
+
+16. In the Trend Vision One console, go to **Cloud Security → Cloud Accounts → AWS**.
+
+    Your AWS account is automatically added to Cloud Accounts. Allow some time to synchronize if the account does not appear immediately.
+::::

@@ -1,0 +1,124 @@
+---
+slug: trend-vision-one-identity-inventory-overview
+title: Overview
+last_updated: '2025-09-08'
+ai_context:
+  source_file: identity-inventory-overview.md
+  conversion_date: '2025-09-08T23:42:17.842Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+View identity provider status, key metrics, and critical alerts related to Microsoft Entra ID.
+
+The **Overview** tab displays a summary of your connected identity provider status along with at-a-glance metrics on your human, non-human, and entitlement data.
+
+The following table describes the information categories available in the **IDENTITY PROVIDER SUMMARY** section.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Category</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Microsoft Entra ID license</p></td>
+<td><p>Displays the current license type you hold for your identity provider, along with any limitations resulting from the license</p>
+
+
+:::warning[Important]
+
+<p>Sign in data is not available for users with free Microsoft Entra ID licenses. Some data fields may be incomplete after syncing.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Data sync</p></td>
+<td><p>Displays the status of the permissions required to sync identity data</p></td>
+</tr>
+<tr>
+<td><p>Policy enforcement</p></td>
+<td><p>Displays the status of the permissions required to perform policy enforcement actions</p></td>
+</tr>
+</tbody>
+</table>
+
+The following table describes the information categories available in the **IDENTITY SUMMARY** section.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Category</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Human identities</p></td>
+<td><p>Displays the number of human identities in your organization along with a chart breaking the identities down into regular or privileged users, internal or external users, and members or guests.</p>
+
+
+:::note
+
+<p>Some older Microsoft Entra ID user accounts, specifically user accounts created before 2014, may not have a configured user type. You may configure a user type for the account in your Microsoft Entra ID tenant if you have sufficient permissions. For more information, see <a href="https://learn.microsoft.com/en-us/entra/identity/users/users-search-enhanced">Microsoft's documentation</a>.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Non-human identities</p></td>
+<td><p>Displays the number of the following types of non-human identities:</p>
+<ul>
+<li><p>Privileged groups</p></li>
+<li><p>Devices synced and not synced with Active Directory</p>
+
+
+:::note
+
+<p>Devices synced with Active Directory are part of an on-premises identity provider as well as a cloud-based identity provider.</p>
+
+
+:::
+
+</li>
+<li><p>Verified, non-verified, privileged, and regular enterprise applications</p>
+
+
+:::note
+
+<p>Privileged applications are permitted to read and write directory data. Verified applications have a verified publisher.</p>
+
+
+:::
+
+</li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Entitlements</p></td>
+<td><p>Displays the number of the following entitlements:</p>
+<ul>
+<li><p>Assigned privileged roles, including administrators or applications with write permissions</p></li>
+<li><p>Enabled conditional access (CA) policies</p></li>
+<li><p>Granted privileged permissions</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+:::

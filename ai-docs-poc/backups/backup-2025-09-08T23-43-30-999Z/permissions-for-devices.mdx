@@ -1,0 +1,116 @@
+---
+slug: trend-vision-one-permissions-for-devices
+title: Permissions for Devices
+last_updated: '2025-09-08'
+ai_context:
+  source_file: permissions-for-devices.md
+  conversion_date: '2025-09-08T23:42:14.623Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Device Control permissions for storage devices are used when you:
+
+- Allow access to USB storage devices, CD/DVD, floppy disks, and network drives. You can grant full access to these devices or limit the level of access.
+
+- Configure the list of approved USB storage devices. Device Control allows you to block access to all USB storage devices, except those that have been added to the list of approved devices. You can grant full access to the approved devices or limit the level of access.
+
+The following table lists the permissions for storage devices.
+
+**Device Control Permissions for Storage Devices**
+
+<table>
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 38%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Permissions</p></th>
+<th><p>Files on the Device</p></th>
+<th><p>Incoming Files</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Full access</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Permitted operations: Copy, Move, Open, Save, Delete, Execute</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Permitted operations: Save, Move, Copy</p>
+<p>This means that a file can be saved, moved, and copied to the device.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Modify</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Permitted operations: Copy, Move, Open, Save, Delete</p>
+<p>Prohibited operations: Execute</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Permitted operations: Save, Move, Copy</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Read and execute</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Permitted operations: Copy, Open, Execute</p>
+<p>Prohibited operations: Save, Move, Delete</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Prohibited operations: Save, Move, Copy</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Read</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Permitted operations: Copy, Open</p>
+<p>Prohibited operations: Save, Move, Delete, Execute</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Prohibited operations: Save, Move, Copy</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>List device content only</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Prohibited operations: All operations</p>
+<p>The device and the files it contains are visible to the user (for example, from Windows Explorer).</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Prohibited operations: Save, Move, Copy</p></td>
+</tr>
+<tr>
+<td style="border-right-width: 1px; border-right-style: solid"><p>Block</p>
+<p>(available after installing Data Protection)</p></td>
+<td style="border-right-width: 1px; border-right-style: solid"><p>Prohibited operations: All operations</p>
+<p>The device and the files it contains are not visible to the user (for example, from Windows Explorer).</p></td>
+<td><p>Prohibited operations: Save, Move, Copy</p></td>
+</tr>
+</tbody>
+</table>
+
+File-based scanning complements, and may override, the device permissions. For example, if the permission allows a file to be opened but the Trend Vision One Endpoint Security agent detects that the file is infected with malware, a specific scan action is performed on the file to eliminate the malware. If the scan action is Clean, the file opens after it is cleaned. However, if the scan action is Delete, the file is deleted.
+
+The following table lists the permissions for mobile and non-storage devices managed by Data Protection.
+
+**Device Control Permissions for Mobile and Non-storage Devices**
+
+<table>
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 38%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Permissions</p></th>
+<th><p>Files on the Device</p></th>
+<th><p>Incoming Files</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Allow</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Permitted operations: Copy, Move, Open, Save, Delete, Execute</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Permitted operations: Save, Move, Copy</p>
+<p>This means that a file can be saved, moved, and copied to the device.</p></td>
+</tr>
+<tr>
+<td style="border-right-width: 1px; border-right-style: solid"><p>Block</p></td>
+<td style="border-right-width: 1px; border-right-style: solid"><p>Prohibited operations: All operations</p>
+<p>The device and the files it contains are not visible to the user (for example, from Windows Explorer).</p></td>
+<td><p>Prohibited operations: Save, Move, Copy</p></td>
+</tr>
+</tbody>
+</table>
+
+:::tip
+
+Device Control for Data Protection supports all 64-bit platforms. For Unauthorized Change Prevention monitoring on systems that the Trend Vision One Endpoint Security agent does not support, set the device permission to *Block* to limit access to these devices.
+:::
+::::

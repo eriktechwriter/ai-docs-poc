@@ -1,0 +1,478 @@
+---
+slug: trend-vision-one-inspect-tls-traffic
+title: Inspect TLS traffic
+last_updated: '2025-09-08'
+ai_context:
+  source_file: inspect-tls-traffic.md
+  conversion_date: '2025-09-08T23:42:17.210Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::::: {role="main"}
+You can enable *Advanced TLS traffic inspection* for the intrusion prevention module.
+
+:::note
+
+Advanced TLS traffic inspection and SSL inspection do not support compressed traffic.
+:::
+
+For an overview of the intrusion prevention module, see [Block exploit attempts using intrusion prevention](intrusion-prevention.mdx).
+
+### Enable Advanced TLS traffic inspection {#enable-advanced-tls-traffic-inspection}
+
+Advanced TLS traffic inspection offers a few benefits over the legacy SSL inspection implementation:
+
+- Removes the need to configure TLS credentials manually
+- Supports more ciphers than SSL inspection, including Perfect Forward Secrecy (PFS) ciphers
+
+See Supported cipher suites for a full list of the supported ciphers.
+
+Advanced TLS traffic inspection is enabled by default when the intrusion prevention module is turned on. You can verify the status of the feature by viewing the policy properties: **Policy → Intrusion Prevention → General → Advanced TLS Traffic Inspection**.
+
+### Use Advanced TLS traffic inspection to inspect traffic {#use-advanced-tls-traffic-inspection-to-inspect-traffic}
+
+Advanced TLS traffic inspection does not require configuration to function. Only inbound traffic on Windows and Linux platforms is currently supported. See the [Supported features by platform](supported-features-linux-platform.mdx) topic for more details.
+
+On Windows, Advanced TLS traffic inspection only supports traffic using Windows-native TLS communication channels ([Secure Channel](https://docs.microsoft.com/en-us/windows/win32/secauthn/secure-channel)). For example, traffic produced by the following applications:
+
+- IIS
+- Microsoft Exchange
+- Remote Desktop Protocol (RDP)
+
+On Linux, Advanced TLS traffic inspection only supports traffic by popular web applications: NGINX, Apache HTTP Server, and HAProxy.
+
+:::note
+
+If you need to inspect TLS traffic that is not supported by Advanced TLS traffic inspection, or TLS traffic on other operating systems, you can configure the legacy SSL inspection instead.
+:::
+
+### Configure SSL inspection (legacy) {#configure-ssl-inspection-legacy}
+
+You can configure SSL inspection for a given credential-port pair on one or more interfaces of your protected computer.
+
+Credentials can be imported in PKCS#12 or PEM format. The credential file must include the private key. Windows computers can use CryptoAPI directly.
+
+1.  In the Server & Workload Protection console, select the computer to configure and click *Details* to open the computer editor.
+
+2.  In the left pane of the computer editor, click **Intrusion Prevention → Advanced → View SSL Configurations,** and click *View SSL Configurations* to open the SSL computer Configurations window.
+
+3.  Click *New* to open the SSL Configuration wizard.
+
+4.  Specify the interface to which to apply the configuration on this computer:
+
+    - To apply to all interfaces on this computer, select *All Interface(s)*.
+    - To apply to specific interfaces, select *Specific Interface(s)*.
+
+5.  Select *Port(s)* or *Ports List* and select a list, then click *Next*.
+
+6.  On the IP Selection screen, select *All IPs* or provide a *Specific IP* on which to perform SSL inspection, then click *Next*.
+
+7.  On the Credentials screen, select how to provide the credentials:
+
+    - *I will upload credentials now*
+
+    - *The credentials are on the computer*
+
+      :::note
+
+      The credential file must include the private key.
+      :::
+
+8.  If you chose the option to upload credentials now, enter their type, location, and pass phrase (if required). If the credentials are on the computer, provide Credential Details.
+
+    - If you are using PEM or PKCS#12 credential formats stored on the computer, identify the location of the credential file and the file's pass phrase (if required).
+    - If you are using Windows CryptoAPI credentials, choose the credentials from the list of credentials found on the computer.
+
+9.  Provide a name and description for this configuration.
+
+10. Review the summary and close the SSL Configuration Wizard. Read the summary of the configuration operation and click *Finish* to close the wizard.
+
+### Change port settings {#change-port-settings}
+
+Change the port settings for the computer to ensure that the agent is performing the appropriate Intrusion Prevention filtering on the SSL-enabled ports. The changes you make are applied to a specific application type, such as Web Server Common, on the agent computer. The changes do not affect the application type on other computers.
+
+1.  Go to *Intrusion Prevention Rules* in the computer's Details window to see the list of Intrusion Prevention rules being applied on this computer.
+2.  Sort the rules by *Application Type* and locate the "Web Server Common" application type. (You can perform these changes to similar application types as well.)
+3.  Right-click a rule in the application type and click *Application Type Properties*.
+4.  Override the inherited "HTTP" Port List so that you include the port you defined during the SSL Configuration setup as well as port 80. Enter the ports as comma-separated values. For example, if you use port 9090 in the SSL configuration, enter 9090, 80.
+5.  To improve performance, on the *Configuration* tab, deselect *Inherited and Monitor responses from Web Server*.
+6.  Click *OK* to close the dialog.
+
+### Use Intrusion Prevention when traffic is encrypted with Perfect Forward Secrecy (PFS) {#use-intrusion-prevention-when-traffic-is-encrypted-with-perfect-forward-secrecy-pfs}
+
+[Perfect Forward Secrecy (PFS)](https://en.wikipedia.org/wiki/Forward_secrecy) can be used to create a communication channel that cannot be decrypted if, at a later time, the server's private key is compromised. Since the intent of Perfect Forward Secrecy is to prevent decryption after the session is over, it also prevents the Intrusion Prevention module from seeing the traffic through SSL inspection.
+
+:::note
+
+Using the Advanced TLS traffic inspection feature, the Intrusion Prevention module will be able to analyze traffic encrypted with PFS ciphers without additional configuration.
+:::
+
+To use PFS ciphers with SSL inspection instead, you can do the following:
+
+1.  Use Perfect Forward Secrecy for TLS traffic between the Internet and your load balancer (or reverse proxy).
+2.  Terminate the Perfect Forward Secrecy session at your load balancer (or reverse proxy).
+3.  Use a non-PFS cipher suite (see SSL inspection supports the following cipher suites below) for traffic between the load balancer (or reverse proxy) and the web server or application server, so that the Intrusion Prevention module on the server can decrypt the TLS sessions and inspect them.
+4.  Restrict traffic to the web server for application server ports that do not use Perfect Forward Secrecy.
+
+### Special considerations for Diffie-Hellman ciphers {#special-considerations-for-diffie-hellman-ciphers}
+
+:::note
+
+This section only applies when using SSL inspection instead of Advanced TLS traffic inspection.
+:::
+
+Perfect Forward Secrecy relies on the Diffie-Hellman key exchange algorithm. On some web servers, Diffie-Hellman might be the default, which means that SSL inspection won't work properly. It is therefore important to check the server's configuration file and disable Diffie-Hellman ciphers for TLS traffic between the web server and load balancer (or reverse proxy). For example, to disable Diffie-Hellman on an Apache server:
+
+1.  Open the server's configuration file. The file name and location of web server configuration files vary by operating system (OS) and distribution. For example, the path could be:
+    - *Default installation on RHEL4*: `/etc/httpd/conf.d/ssl.conf`
+    - *Apache 2.2.2 on Red Hat Linux*: `/apache2/conf/extra/httpd-ssl.conf`
+2.  In the configuration file, find the "`SSLCipherSuite`" variable.
+3.  Add `!DH:!EDH:!ADH:` to these fields, if this string does not already appear. (The "`!`" tells Apache to "not" use this cipher.)
+4.  For example, you might edit the Apache configuration file's cipher suite to look like this:
+
+``` codeblock
+SSLCipherSuite !DH:!EDH:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP:+eNULL
+```
+
+For more information, see the Apache Documentation for [SSLCipherSuite Directive](https://httpd.apache.org/docs/2.4/mod/mod_ssl.mdx).
+
+### Supported cipher suites {#supported-cipher-suites}
+
+<table>
+<thead>
+<tr>
+<th><p>Hex Value</p></th>
+<th><p>OpenSSL Name</p></th>
+<th><p>IANA Name</p></th>
+<th><p>NSS Name</p></th>
+<th><p>Advanced TLS Inspection</p></th>
+<th><p>SSL inspection (legacy)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>0x00,0x04</p></td>
+<td><p>RC4-MD5</p></td>
+<td><p>TLS_RSA_WITH_RC4_128_MD5</p></td>
+<td><p>SSL_RSA_WITH_RC4_128_MD5</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+</tr>
+<tr>
+<td><p>0x00,0x05</p></td>
+<td><p>RC4-SHA</p></td>
+<td><p>TLS_RSA_WITH_RC4_128_SHA</p></td>
+<td><p>SSL_RSA_WITH_RC4_128_SHA</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+</tr>
+<tr>
+<td><p>0x00,0x09</p></td>
+<td><p>DES-CBC-SHA</p></td>
+<td><p>TLS_RSA_WITH_DES_CBC_SHA</p></td>
+<td><p>SSL_RSA_WITH_DES_CBC_SHA</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+</tr>
+<tr>
+<td><p>0x00,0x0A</p></td>
+<td><p>DES-CBC3-SHA</p></td>
+<td><p>TLS_RSA_WITH_3DES_EDE_CBC_SHA</p></td>
+<td><p>SSL_RSA_WITH_3DES_EDE_CBC_SHA</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+</tr>
+<tr>
+<td><p>0x00,0x2F</p></td>
+<td><p>AES128-SHA</p></td>
+<td><p>TLS_RSA_WITH_AES_128_CBC_SHA</p></td>
+<td><p>TLS_RSA_WITH_AES_128_CBC_SHA</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+</tr>
+<tr>
+<td><p>0x00,0x33</p></td>
+<td><p>DHE-RSA-AES128-SHA</p></td>
+<td><p>TLS_DHE_RSA_WITH_AES_128_CBC_SHA</p></td>
+<td><p>TLS_DHE_RSA_WITH_AES_128_CBC_SHA</p></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>0x00,0x35</p></td>
+<td><p>AES256-SHA</p></td>
+<td><p>TLS_RSA_WITH_AES_256_CBC_SHA</p></td>
+<td><p>TLS_RSA_WITH_AES_256_CBC_SHA</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+</tr>
+<tr>
+<td><p>0x00,0x39</p></td>
+<td><p>DHE-RSA-AES256-SHA</p></td>
+<td><p>TLS_DHE_RSA_WITH_AES_256_CBC_SHA</p></td>
+<td><p>TLS_DHE_RSA_WITH_AES_256_CBC_SHA</p></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>0x00,0x3C</p></td>
+<td><p>AES128-SHA256</p></td>
+<td><p>TLS_RSA_WITH_AES_128_CBC_SHA256</p></td>
+<td><p>TLS_RSA_WITH_AES_128_CBC_SHA256</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+</tr>
+<tr>
+<td><p>0x00,0x3D</p></td>
+<td><p>AES256-SHA256</p></td>
+<td><p>TLS_RSA_WITH_AES_256_CBC_SHA256</p></td>
+<td><p>TLS_RSA_WITH_AES_256_CBC_SHA256</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+</tr>
+<tr>
+<td><p>0x00,0x41</p></td>
+<td><p>CAMELLIA128-SHA</p></td>
+<td><p>TLS_RSA_WITH_CAMELLIA_128_CBC_SHA</p></td>
+<td><p>TLS_RSA_WITH_CAMELLIA_128_CBC_SHA</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+</tr>
+<tr>
+<td><p>0x00,0x67</p></td>
+<td><p>DHE-RSA-AES128-SHA256</p></td>
+<td><p>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256</p></td>
+<td><p>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256</p></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>0x00,0x6b</p></td>
+<td><p>DHE-RSA-AES256-SHA256</p></td>
+<td><p>TLS_DHE_RSA_WITH_AES_256_CBC_SHA256</p></td>
+<td><p>TLS_DHE_RSA_WITH_AES_256_CBC_SHA256</p></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>0x00,0x84</p></td>
+<td><p>CAMELLIA256-SHA</p></td>
+<td><p>TLS_RSA_WITH_CAMELLIA_256_CBC_SHA</p></td>
+<td><p>TLS_RSA_WITH_CAMELLIA_256_CBC_SHA</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+</tr>
+<tr>
+<td><p>0x00,0x9c</p></td>
+<td><p>AES128-GCM-SHA256</p></td>
+<td><p>TLS_RSA_WITH_AES_128_GCM_SHA256</p></td>
+<td><p>TLS_RSA_WITH_AES_128_GCM_SHA256</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+</tr>
+<tr>
+<td><p>0x00,0x9d</p></td>
+<td><p>AES256-GCM-SHA384</p></td>
+<td><p>TLS_RSA_WITH_AES_256_GCM_SHA384</p></td>
+<td><p>TLS_RSA_WITH_AES_256_GCM_SHA384</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+</tr>
+<tr>
+<td><p>0x00,0x9e</p></td>
+<td><p>DHE-RSA-AES128-GCM-SHA256</p></td>
+<td><p>TLS_DHE_RSA_WITH_AES_128_GCM_SHA256</p></td>
+<td><p>TLS_DHE_RSA_WITH_AES_128_GCM_SHA256</p></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>0x00,0x9f</p></td>
+<td><p>DHE-RSA-AES256-GCM-SHA384</p></td>
+<td><p>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384</p></td>
+<td><p>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384</p></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>0x00,0xBA</p></td>
+<td><p>CAMELLIA128-SHA256</p></td>
+<td><p>TLS_RSA_WITH_CAMELLIA_128_CBC_SHA256</p></td>
+<td><p>TLS_RSA_WITH_CAMELLIA_128_CBC_SHA256</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+</tr>
+<tr>
+<td><p>0x00,0xC0</p></td>
+<td><p>CAMELLIA256-SHA256</p></td>
+<td><p>TLS_RSA_WITH_CAMELLIA_256_CBC_SHA256</p></td>
+<td><p>TLS_RSA_WITH_CAMELLIA_256_CBC_SHA256</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+</tr>
+<tr>
+<td><p>0xc0,0x09</p></td>
+<td><p>ECDHE-ECDSA-AES128-SHA</p></td>
+<td><p>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA</p></td>
+<td><p>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA</p></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>0xC0,0x0A</p></td>
+<td><p>ECDHE-ECDSA-AES256-SHA</p></td>
+<td><p>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA</p></td>
+<td><p>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA</p></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>0xc0,0x13</p></td>
+<td><p>ECDHE-RSA-AES128-SHA</p></td>
+<td><p>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA</p></td>
+<td><p>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA</p></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>0xc0,0x14</p></td>
+<td><p>ECDHE-RSA-AES256-SHA</p></td>
+<td><p>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA</p></td>
+<td><p>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA</p></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>0xc0,0x23</p></td>
+<td><p>ECDHE-ECDSA-AES128-SHA256</p></td>
+<td><p>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256</p></td>
+<td><p>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256</p></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>0xc0,0x24</p></td>
+<td><p>ECDHE-ECDSA-AES256-SHA384</p></td>
+<td><p>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384</p></td>
+<td><p>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384</p></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>0xc0,0x27</p></td>
+<td><p>ECDHE-RSA-AES128-SHA256</p></td>
+<td><p>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256</p></td>
+<td><p>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256</p></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>0xc0,0x28</p></td>
+<td><p>ECDHE-RSA-AES256-SHA384</p></td>
+<td><p>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384</p></td>
+<td><p>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384</p></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>0xc0,0x2b</p></td>
+<td><p>ECDHE-ECDSA-AES128-GCM-SHA256</p></td>
+<td><p>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256</p></td>
+<td><p>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256</p></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>0xc0,0x2c</p></td>
+<td><p>ECDHE-ECDSA-AES256-GCM-SHA384</p></td>
+<td><p>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384</p></td>
+<td><p>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384</p></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>0xc0,0x2f</p></td>
+<td><p>ECDHE-RSA-AES128-GCM-SHA256</p></td>
+<td><p>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256</p></td>
+<td><p>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256</p></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>0xc0,0x30</p></td>
+<td><p>ECDHE-RSA-AES256-GCM-SHA384</p></td>
+<td><p>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384</p></td>
+<td><p>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384</p></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>0xC0,0x9C</p></td>
+<td><p>AES128-CCM</p></td>
+<td><p>TLS_RSA_WITH_AES_128_CCM</p></td>
+<td><p>TLS_RSA_WITH_AES_128_CCM</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+</tr>
+<tr>
+<td><p>0xC0,0x9D</p></td>
+<td><p>AES256-CCM</p></td>
+<td><p>TLS_RSA_WITH_AES_256_CCM</p></td>
+<td><p>TLS_RSA_WITH_AES_256_CCM</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+</tr>
+<tr>
+<td><p>0xC0,0xA0</p></td>
+<td><p>AES128-CCM8</p></td>
+<td><p>TLS_RSA_WITH_AES_128_CCM_8</p></td>
+<td><p>TLS_RSA_WITH_AES_128_CCM_8</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+</tr>
+<tr>
+<td><p>0xC0,0xA1</p></td>
+<td><p>AES256-CCM8</p></td>
+<td><p>TLS_RSA_WITH_AES_256_CCM_8</p></td>
+<td><p>TLS_RSA_WITH_AES_256_CCM_8</p></td>
+<td><p>✔</p></td>
+<td><p>✔</p></td>
+</tr>
+<tr>
+<td><p>0xcc,0xa8</p></td>
+<td><p>ECDHE-RSA-CHACHA20-POLY1305</p></td>
+<td><p>TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256</p></td>
+<td><p>TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256</p></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>0xcc,0xa9</p></td>
+<td><p>ECDHE-ECDSA-CHACHA20-POLY1305</p></td>
+<td><p>TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256</p></td>
+<td><p>TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256</p></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>0xcc,0xaa</p></td>
+<td><p>DHE-RSA-CHACHA20-POLY1305</p></td>
+<td><p>TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256</p></td>
+<td><p>TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256</p></td>
+<td><p>✔</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+### Supported protocols {#supported-protocols}
+
+The following protocols are supported:
+
+- TLS 1.0
+- TLS 1.1
+- TLS 1.2
+
+SSL 3.0 inspection is *not* supported and will be blocked by default.
+:::::::

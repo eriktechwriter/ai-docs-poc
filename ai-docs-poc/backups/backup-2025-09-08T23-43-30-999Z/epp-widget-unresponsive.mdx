@@ -1,0 +1,73 @@
+---
+slug: trend-vision-one-epp-widget-unresponsive
+title: >-
+  Troubleshoot unresponsive endpoints listed in the Endpoint Protection Status
+  widget
+last_updated: '2025-09-08'
+ai_context:
+  source_file: epp-widget-unresponsive.md
+  conversion_date: '2025-09-08T23:42:19.815Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Learn about troubleshooting options for unresponsive endpoints displayed in the Endpoint Protection Status widget in Dashboards.
+
+The Endpoint Protection Status widget in Dashboards provides a count of your endpoints broken down into categories of healthy, unmanaged, or issues found. Endpoints with issues found may have disabled or outdated endpoint protection, or the endpoint may be unresponsive.
+
+![The Endpoint Protection Status widget available in Dashboards](/images/endpointProtectionStatus=845db7e0-1be9-4820-bf04-3bc1f2c4a31a.webp)
+
+Unresponsive endpoints are endpoints that might be offline and not submitting a heartbeat to the endpoint protection agent or not polled for an extended period. Often, an unresponsive status is the result of network connectivity issues.
+
+The following table details troubleshooting actions you can take in order to find the cause of endpoint network connectivity issues.
+
+**Network connectivity troubleshooting actions**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Procedure</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Ensure the endpoint and agent are active</p></td>
+<td><p>Verify that the endpoint is able to power on successfully and that the agent is running.</p></td>
+</tr>
+<tr>
+<td><p>Check your network connection</p></td>
+<td><p>Verify that the endpoint has an active connection to the network. If multiple devices on the same network do not have active connections, a broader network issue may be the cause.</p></td>
+</tr>
+<tr>
+<td><p>Check your firewall and proxy settings</p></td>
+<td><p>Ensure you have added the <a href="trend-vision-one-firewall-exception-requirements-for">required firewall exceptions</a> to allow Trend Vision One to connect to the endpoint and that your <a href="trend-vision-one-runtime-proxy-settings">proxy settings</a> are correctly configured.</p></td>
+</tr>
+<tr>
+<td><p>Test your network connectivity</p></td>
+<td><p>Use the <code>ping</code> or <code>telnet</code> commands to test whether the endpoint can reach Trend Vision One and whether the necessary ports are open.</p></td>
+</tr>
+<tr>
+<td><p>Review agent logs</p></td>
+<td><p>Inspect the agent logs for any errors that might provide insight into the issue, such as SSL handshake failures, DNS issues, timeouts, or failed server connections.</p></td>
+</tr>
+<tr>
+<td><p>Restart the agent or endpoint</p></td>
+<td><p>Restart the agent. If restarting the agent fails, try restarting the endpoint to see if any temporary network issues are resolved on start up.</p></td>
+</tr>
+<tr>
+<td><p>Update or reinstall the agent</p></td>
+<td><p>Check your agent version and update to the latest version if necessary. You can also uninstall and reinstall the agent to address potential file corruption or misconfiguration issues.</p></td>
+</tr>
+<tr>
+<td><p>Contact your support provider</p></td>
+<td><p>If the endpoint remains unresponsive after troubleshooting, contact your support provider and provide logs and any diagnostic data you have collected.</p></td>
+</tr>
+</tbody>
+</table>
+:::

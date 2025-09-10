@@ -1,0 +1,85 @@
+---
+slug: trend-vision-one-attack-surface-devices
+title: Devices
+last_updated: '2025-09-08'
+ai_context:
+  source_file: attack-surface-devices.md
+  conversion_date: '2025-09-08T23:42:24.704Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Identify managed and unmanaged devices that may contribute to your organization's attack surface and add discovered devices that should not be assessed to the exception list.
+
+Attack Surface Discovery detects physical devices and servers connected to your organization's network, including devices managed by a Trend Vision One or other Trend Micro agent plus unmanaged devices. After assessment, the devices are categorized and assigned an asset risk score if risks or vulnerabilities are found on the device. Unmanged devices are only displayed for 30 days after discovery.
+
+Assessed devices found to contain risks or vulnerabilities require credits and contribute to your organization's Cyber Risk Index.
+
+The following table describes the fearures available in the **Devices** section of Attack Surface Discovery.
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Feature</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Device overview</p></td>
+<td><p>View the total of discovered managed and unmanaged devices in your organization, both current and over time. For unmanaged devices, only devices detected in the last 30 days are displayed.</p></td>
+</tr>
+<tr>
+<td><p>Contributing data sources</p></td>
+<td><p>View the data sources that contribute to device discovery along with the connection status of each data source</p></td>
+</tr>
+<tr>
+<td><p>Device list</p></td>
+<td><p>Displays all devices visible within your organization</p>
+<ul>
+<li><p>Search for devices by name.</p></li>
+<li><p>Click <strong>Filter</strong> to add a filter.</p></li>
+<li><p>Click <strong>Export</strong> to generate a report for the devices currently displayed on the device list.</p></li>
+<li><p>Click the customize columns icon (<img src="./images/columnDisplayIcon=20230614105421.webp" />) to customize the table columns and the order in which they are displayed.</p>
+
+
+:::note
+
+<p>Data for mobile devices that are discovered by Trend Vision One - Mobile Security is only available for users with the <strong>Mobile devices</strong> asset visibility scope.</p>
+
+
+:::
+
+</li>
+<li><p>Click any device name to view details on the <a href="trend-vision-one-device-profile">device profile screen</a>.</p></li>
+<li><p>Select devices and click <strong>Add to Exception List</strong> to add the devices to the exception list. Devices on the exception list are not assessed for risk and do not contribute to your Cyber Risk Index or credit requirements.</p></li>
+<li><p>Select devices and click <strong>Manage Tags</strong> to assign or remove custom tags from the devices. For more information, see <a href="trend-vision-one-custom-asset-tags">custom asset tags</a>.</p></li>
+<li><p>To manually modify the criticality of a highly critical asset, hover over the critical icon (<img src="./images/highly_critical_icon=GUID-79631f5e-f9ec-4366-a8d6-e82e1ddfe206.webp" />) and click <strong>Modify Criticality</strong>.</p></li>
+<li><p>Quickly identify devices with high-severity vulnerabilities that are directly exposed to the internet, which are highlighted with the direct internet exposure icon (<img src="./images/direct_internet_exposure=GUID-f652f5d3-00a9-4b3b-aab0-1dd3da68b18c.webp" />).</p></li>
+</ul>
+
+
+:::note
+
+<ul>
+<li><p>The <strong>Devices</strong> section only shows data for devices within the asset visibility scope of the current user, and drilling down from the <strong>Last user</strong> column is only available for users with the <strong>Accounts</strong> asset visibility scope.</p></li>
+<li><p><strong>Attack Surface Discovery</strong> cannot assess all discovered devices. Devices visible through third-party data sources might not provide enough data for thorough analysis.</p></li>
+</ul>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Exception list</p></td>
+<td><p>Click <strong>Exception List</strong> to view and remove devices on the exception list.</p></td>
+</tr>
+</tbody>
+</table>
+:::

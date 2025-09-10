@@ -1,0 +1,61 @@
+---
+slug: trend-vision-one-adding-exceptions
+title: Adding exceptions
+last_updated: '2025-09-08'
+ai_context:
+  source_file: adding-exceptions.md
+  conversion_date: '2025-09-08T23:42:25.755Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+You can add the domain, file SHA-1, file SHA-256, IP address, sender address, or URL object to the Exception List.
+
+### Procedure {#procedure}
+
+1.  Go to **Threat Intelligence → Suspicious Object Management**.
+
+2.  Click the **Exception List** tab.
+
+3.  Click **Add**.
+
+    The **Add Exception** screen appears.
+
+4.  Select the **Method**.
+
+    - **Domain**: type a domain name.
+
+      :::note
+
+      One wildcard "\*" connected with a "." is supported in the domain prefix, for example, `*.example.com`.
+      :::
+
+    - **File SHA-1**: type the SHA-1 hash value of a file.
+
+    - **File SHA-256**: type the SHA-256 hash value of a file.
+
+    - **IP address**: type an IP address or a hyphenated range.
+
+      :::note
+
+      IPv4 or IPv6 addresses, address ranges, and subnet masks are supported.
+      :::
+
+    - **Sender address**: type an email address.
+
+    - **URL**: type a URL.
+
+      :::note
+
+      The wildcard "\*" is supported at the beginning of the domain part, end of the path part, or in both places, for example, `abc.example.com/path1/path2`, `*.example.com`, `abc.example.com/*`, and `*.example.com/path/*`.
+      :::
+
+5.  Type a description.
+
+6.  Click **Submit**.
+
+    The object appears in the exception list.
+
+    Trend Vision One excludes the object from the suspicious object list during the next synchronization and will not add it as a suspicious object in the future.
+:::

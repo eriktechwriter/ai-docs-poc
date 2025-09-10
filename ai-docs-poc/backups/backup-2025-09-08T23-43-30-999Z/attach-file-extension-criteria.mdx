@@ -1,0 +1,75 @@
+---
+slug: trend-vision-one-attach-file-extension-criteria
+title: Using attachment file name or extension criteria
+last_updated: '2025-09-08'
+ai_context:
+  source_file: attach-file-extension-criteria.md
+  conversion_date: '2025-09-08T23:42:24.755Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+The **Attachment is** "**file name or extension**" criteria allows you to create policy rules that take actions on messages based on the name or the extension of attachments a message contains. If a message contains a compressed attachment, the criteria can further match the name or extension of the files included in the compressed attachment.
+
+### Procedure {#procedure}
+
+1.  On the **Scanning Criteria** tab, click **Advanced**.
+
+2.  Select the **Attachment is** "**file name or extension**" criteria.
+
+3.  Click the "**file name or extension**" link.
+
+    The **Attachment File Name or Extension** screen appears.
+
+4.  From the drop-down list, select either **Selected file names or extensions** or **Not selected file names or extensions**.
+
+5.  If you want to block attachment names by file extension:
+
+    1.  Select **File extensions potentially dangerous** and/or **File extensions commonly exchanged at work**.
+
+        :::note
+
+        The **File extensions potentially dangerous** category contains those whose file types commonly act as containers for malware and are not types that are normally exchanged via email in an organization. This list includes extensions such as COM, DLL, and EXE. The commonly exchanged category includes file types that are commonly sent between members of an organization.
+
+        The **File extensions commonly exchanged at work** category includes the DOC extension used by Microsoft Word documents. These files are often used to propagate VB macro viruses, but they are also often commonly exchanged within organizations.
+        :::
+
+    2.  Click the open arrow buttons to drop-down the lists of standard file extensions.
+
+    3.  Select the file extensions for Cloud Email Gateway Protection to trigger on for this policy rule.
+
+    4.  Click the close arrow button to collapse the list.
+
+6.  If you want to block attachments with your own specified names:
+
+    1.  Select **File names**.
+
+    2.  Type a file name to block.
+
+        :::tip
+
+        Make sure the file name matches the full name of your target file, including the extension. For example, to match a file named "abc.doc", specify "abc.doc" or use an asterisk, such as "\*.doc"; specifying only "abc" does not work.
+
+        You can use an asterisk (\*) as a substitute for any part of a file name.
+
+        The following examples are valid file names:
+
+        - `*.docx`
+
+        - `*.doc*`
+
+        - `LOVE-LETTER*.vbs`
+
+        - `LOVE-LETTER-FOR-YOU.TXT.vbs`
+        :::
+
+    3.  Click **Add**.
+
+        The file name is added to the list just below.
+
+    :::tip
+
+    If there are any names in the list that you want to delete, select them and click **Delete**.
+    :::
+:::

@@ -1,0 +1,80 @@
+---
+slug: trend-vision-one-exttraffic-vsphere-st-promiscuous
+title: >-
+  Configuring External Network Traffic with the VMware vSphere Standard Switch
+  (Promiscuous Mode)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: exttraffic-vsphere-st-promiscuous.md
+  conversion_date: '2025-09-08T23:42:19.395Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure network settings in VMware ESXi to allow Virtual Network Sensor to monitor data.
+
+:::warning[Important]
+
+The following instructions are valid as of June 2023.
+:::
+
+### Procedure {#procedure}
+
+1.  On the VMware ESXi console, go to **Networking → Virtual switches**.
+
+    <figure>
+    <img src="./images/ESXi_Network_1=69db95ce-e6b5-432f-8d81-5b145d648b26.webp" />
+    </figure>
+
+2.  Click **Add standard virtual switch**, and specify the following settings:
+
+    - Type `Data Network` in the **vSwitch name** field.
+
+    - Type `1600` in the **MTU** field.
+
+    - Select the NIC for the data network from the **Uplink 1** dropdown.
+
+    - Click **Security** to expand the settings, and select **Reject** for **Promiscuous mode**, **MAC address changes**, and **Forged transmits**.
+
+    <figure>
+    <img src="./images/ESXi_Network_2=ad2f5fd0-93e2-465a-941c-a89791db6494.webp" />
+    </figure>
+
+    :::note
+
+    Send the network traffic you want to scan to the data port. The following instructions use promiscuous mode to enable Virtual Network Sensor to scan your network traffic.
+    :::
+
+3.  Click **Add**.
+
+4.  Go to the **Port groups** tab.
+
+    <figure>
+    <img src="./images/ESXi_Network_4=aa180743-fd68-4121-843d-7271dfbadbc1.webp" />
+    </figure>
+
+5.  Click **Add port group**, and specify the following settings:
+
+    - Type `Data Port Group` in the **Name** field.
+
+    - Type `4095` in the **VLAN ID** field.
+
+    - Select **Data Network** from the **Virtual switch** dropdown.
+
+    - Click **Security** to expand the settings, and select **Accept** for promiscuous mode.
+
+    - Select **Inherit from vSwitch** for both MAC address changes and forged transmits.
+
+    <figure>
+    <img src="./images/ESXi_Network_5=f3352e1e-7342-49ee-b40f-054bd65ccbc8.webp" />
+    </figure>
+
+6.  Click **Add**.
+
+7.  On the **Port groups** tab, click **Data port group** and verify the connection to Data Network.
+
+    <figure>
+    <img src="./images/ESXi_Network_7=51c2bd91-1376-4aff-9f8a-e5dd9586e674.webp" />
+    </figure>
+::::

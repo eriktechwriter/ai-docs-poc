@@ -1,0 +1,150 @@
+---
+slug: trend-vision-one-adding-device-posture-profile
+title: Adding a device posture profile
+---
+# Adding a device posture profile
+
+Specify security-related criteria to check the security posture of devices.
+
+### Procedure {#procedure}
+
+1.  On the **Secure Access Resources** screen, click the **Device Posture Profiles** tab and then click **Add**.
+
+    The **Add Device Posture Profile** screen appears.
+
+2.  Specify a unique name and a description for the profile.
+
+3.  Go to the tab for the operating system you want the profile to check. Then select the corresponding setting.
+
+    - For Windows, select **Check Windows devices**.
+    - For macOS, select **Check macOS devices**.
+    - For Android, select **Check Android devices**.
+    - For iOS, select **Check iOS devices**.
+
+4.  For devices with Windows or macOS, specify the following criteria.
+
+    <table>
+    <colgroup>
+    <col style="width: 33%" />
+    <col style="width: 67%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Criterion</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>The device is running one of the specified OS versions</p></td>
+    <td><p>Check whether the device is running on a required operating system version.</p>
+    <p>If the option is enabled, select or specify a minimum version number of the corresponding operating systems. For example, <code>Redstone 5</code> or <code>11.0.22000.376</code> for <strong>Windows</strong>, <code>10.15</code> or <code>10.15.1</code> for <strong>macOS</strong>.</p>
+
+
+    :::note
+
+    <p>For macOS, only <strong>10.15</strong> and above are supported.</p>
+
+
+    :::
+
+
+    <p>A device installed with the specified version or later passes the check.</p></td>
+    </tr>
+    <tr>
+    <td><p>The company CA certificate is present in the Trust Store</p></td>
+    <td><p>Check that your organization's CA certificate is present in the Trust Store.</p>
+    <p>Specify the <strong>Certificate common name</strong> and <strong>Certificate thumbprint</strong>.</p>
+    <p>For Windows OS, specify the <strong>Certificate location</strong> on the endpoint. For more information, see <a href="trend-vision-one-certificate-location-powershell">Getting the certificate location using PowerShell</a>.</p></td>
+    </tr>
+    <tr>
+    <td><p>The client certificate is signed by company's CA</p></td>
+    <td><p>Check that the client certificate on the device is signed by your organization's CA certificate.</p>
+    <p>Specify the <strong>Issuer common name</strong> and <strong>Issuer certificate thumbprint</strong>.</p>
+    <p>For Windows OS, specify the <strong>Certificate location</strong> on the endpoint. For more information, see <a href="trend-vision-one-certificate-location-powershell">Getting the certificate location using PowerShell</a>.</p></td>
+    </tr>
+    <tr>
+    <td><p>The specified file is present on the device</p></td>
+    <td><p>Check that the specified file is present on the device at the specified file path.</p>
+    <p>For Windows, specify the full file name with file extension, including the drive location, in the file path. For example, <code>C:\Program Files(x86)\Example\example.txt</code></p>
+    <p>For macOS, specify the full file path and file name with file extension. For example, <code>/Users/ExampleUser/Desktop/Example/example.txt</code></p></td>
+    </tr>
+    <tr>
+    <td><p>Firewall is turned on for the connected network</p></td>
+    <td><p>Check whether the firewall state is on for the network that the device is connecting to, that is, public networks, private networks, or domain networks.</p></td>
+    </tr>
+    <tr>
+    <td><p>Advanced risk telemetry is enabled</p></td>
+    <td><p>Check whether <strong>Advanced risk telemetry</strong> is enabled on the device.</p>
+    <p>Enable <strong>Advanced risk telemetry</strong> on target endpoints in <strong>Endpoint Security Policies</strong>. For more information, see <a href="trend-vision-one-configuring-endpoint-policies">Configure endpoint security policies</a>.</p>
+
+
+    :::warning[Important]
+
+    <ul>
+    <li><p>This option is supported on Windows only.</p></li>
+    <li><p>This feature is undergoing temporarily testing, therefore Advanced risk telemetry being enabled or disabled will not affect the device posture profile. In other words, devices with Advanced risk telemetry disabled may still be matched to this profile.</p></li>
+    </ul>
+
+
+    :::
+
+
+    <p>If this option is enabled, optionally configure the following settings:</p>
+    <ul>
+    <li><p><strong>Global exploit activity of detected vulnerabilities</strong>: Select to check whether the global exploit activity level of vulnerabilities detected on the device meets the specified threshold.</p></li>
+    <li><p><strong>Specified vulnerabilities not detected</strong>: Select to check whether the device does not have the specified vulnerabilities.</p>
+    <p>Type one or several vulnerability IDs in the text box. Example of an vulnerability ID: <code>CVE-2020-1472</code></p></li>
+    </ul>
+    <p>For more information about at-risk vulnerabilities, see <a href="trend-vision-one-vulnerabilities">Vulnerabilities</a> in the <strong>Threat and Exposure Management</strong> app.</p></td>
+    </tr>
+    <tr>
+    <td><p>Antivirus software from one of the specified vendors is installed/running</p></td>
+    <td><p>Check whether any of the antivirus software from the specified vendors is installed or running on the device.</p>
+    <p>If the option is enabled, type the vendor names in the text box and press <strong>Enter</strong>.</p>
+    <p>For the list of supported vendors, see <a href="trend-vision-one-list-supported-vendors">List of supported vendors</a>.</p>
+
+
+    :::note
+
+    <p>For Windows, <strong>Zero Trust Secure Access</strong> checks antivirus software installation status on Windows Server, and checks antivirus software running status on Windows Desktop.</p>
+    <p>For macOS, <strong>Zero Trust Secure Access</strong> checks the running status of antivirus software from Trend Micro, and checks the installation status of antivirus software from other vendors.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>An EDR solution from one of the specified vendors is running</p></td>
+    <td><p>Check whether any of the EDR solutions from the specified vendors is running on the device.</p>
+    <p>If the option is enabled, type the vendor names in the text box and press <strong>Enter</strong>.</p>
+    <p>For the list of supported vendors, see <a href="trend-vision-one-list-supported-vendors">List of supported vendors</a>.</p></td>
+    </tr>
+    <tr>
+    <td><p>The device has joined your domain</p></td>
+    <td><p>Check whether the device has joined the domain of your organization.</p>
+    <p>If the option is enabled, specify one or multiple domains owned by your organization for posture validation check.</p></td>
+    </tr>
+    <tr>
+    <td><p>Screen lock is enabled</p></td>
+    <td><p>Check whether the screen lock is enabled on the device.</p></td>
+    </tr>
+    <tr>
+    <td><p>(For Windows) Full disk encryption with BitLocker is turned on</p>
+    <p>(For macOS) FileVault is turned on</p></td>
+    <td><p>Check whether the disk encryption is enabled on the device.</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+5.  Click **Save**.
+
+**Related information**
+
+- [Check Android devices](check-android-devices.mdx)
+- [Check iOS/iPadOS devices](check-iosipados-devices.mdx)
+- [Device posture certificate requirements](device-posture-certificatets.mdx)
+- [List of supported vendors](list-supported-vendors.md "View antivirus software vendors and EDR solution vendors supported in device posture profiles.")
+- [Getting the certificate location using PowerShell](certificate-location-powershell.md "Obtain the location information of your company CA certificate and client certificate by running PowerShell commands.")
+:::

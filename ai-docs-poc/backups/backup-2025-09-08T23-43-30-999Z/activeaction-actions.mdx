@@ -1,0 +1,108 @@
+---
+slug: trend-vision-one-activeaction-actions
+title: ActiveAction actions
+last_updated: '2025-09-08'
+ai_context:
+  source_file: activeaction-actions.md
+  conversion_date: '2025-09-08T23:42:26.103Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+The following table lists the actions that ActiveAction takes:
+
+<table>
+<thead>
+<tr>
+<th><p>Malware Type</p></th>
+<th><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><a href="trend-vision-one-anti-malware">Virus</a></p></td>
+<td><p>Clean. If a virus cannot be cleaned, it is deleted (Windows) or quarantined (Linux or Solaris). There is an exception to this behavior: On a Linux or Solaris agent, if a virus of type 'Test Virus' is found, access is denied to the infected file.</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-anti-malware">Trojans</a></p></td>
+<td><p>Quarantine</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-anti-malware">Packer</a></p></td>
+<td><p>Quarantine</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-anti-malware">Spyware</a></p></td>
+<td><p>Quarantine</p></td>
+</tr>
+<tr>
+<td><p>CVE Exploit</p></td>
+<td><p>Quarantine</p></td>
+</tr>
+<tr>
+<td><p>Aggressive Detection Rule</p></td>
+<td><p>Pass (This setting detects more issues but may also result in more false positives, so the default action is to raise an event.)</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-anti-malware">Cookie</a></p></td>
+<td><p>Delete (Does not apply to real-time scans)</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-anti-malware">Other threats</a></p></td>
+<td><p>Clean</p>
+<p>If a threat cannot be cleaned, it is handled as follows:</p>
+<ul>
+<li>on Windows, the infected file is deleted but can be <a href="trend-vision-one-view-restore-identified-malware">viewed and restored</a>, if needed</li>
+<li>on Linux or Solaris, access is denied to the infected file</li>
+</ul>
+<p>Also, on a Linux or Solaris agent, if a virus of type 'Joke' is found, it is quarantined immediately. No attempt is made to clean it.</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-anti-malware">Possible malware</a></p></td>
+<td><p>Pass</p></td>
+</tr>
+</tbody>
+</table>
+
+For more information about CVE Exploit and Aggressive Detection Rule, see [Configure Anti-Malware Monitoring Level](config-antimalware-monitoring-level.mdx).
+
+:::note
+
+When the agent downloads virus pattern updates from an ActiveUpdate server or relay, it may change its ActiveAction scan actions.
+:::
+
+The following is a list of anti-malware remedial actions and their descriptions.
+
+- **Pass**: Allows full access to the infected file without doing anything to the file. (An Anti-Malware Event is still recorded.)
+
+  :::danger[Warning]
+
+  The remedial action **Pass** should never be used for a possible virus.
+  :::
+
+- **Clean**: Cleans an infected file before allowing full access to it. If the file can't be cleaned, it is quarantined.
+
+- **Delete**: On Linux, the infected file is deleted without a backup.
+
+  On Windows, the infected file is backed up and then deleted. Windows backup files can be [viewed and restored](view-restore-identified-malware.mdx) in **Events & Reports → Events → Anti-Malware Events → Identified Files**.
+
+- **Deny Access**: This scan action can only be performed during Real-time scans. When Server & Workload Protection detects an attempt to open or execute an infected file, it immediately blocks the operation. The infected file is left unchanged. When the Access Denied action is triggered, the infected files stay in their original location.
+
+  :::warning[Important]
+
+  Do not use the remedial action **Deny Access** when Real-Time Scan is set to **During Write**. When **During Write** is selected, files are scanned when they are written and the action **Deny Access** has no effect.
+  :::
+
+- **Quarantine**: Moves the infected file to the quarantine directory on the computer or Virtual Appliance. The quarantined file can be [viewed and restored](view-restore-identified-malware.mdx) in **Events & Reports → Events → Anti-Malware Events → Identified Files**.
+
+  :::note
+
+  Malware marked as **Quarantined** on Linux might be marked as **Deleted** on Windows, despite the malware being identical on both operating systems. In either case, the file can be [viewed and restored](view-restore-identified-malware.mdx) in **Events & Reports → Events → Anti-Malware Events → Identified Files**.
+  :::
+
+  :::note
+
+  On Windows, infected non-compressed files (for example, .txt files) are quarantined, while infected compressed files (for example, .zip files) are deleted. On Windows, both quarantined or deleted files have a backup that can be [viewed and restored](view-restore-identified-malware.mdx) in **Events & Reports → Events → Anti-Malware Events → Identified Files**. On Linux, all infected files (compressed or non-compressed) are quarantined, and can be [viewed and restored](view-restore-identified-malware.mdx) in **Events & Reports → Events → Anti-Malware Events → Identified Files**.
+  :::
+::::

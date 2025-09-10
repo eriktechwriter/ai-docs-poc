@@ -1,0 +1,53 @@
+---
+slug: trend-vision-one-use-tls-1-2
+title: Use TLS 1.2 with Server & Workload Protection
+---
+# Use TLS 1.2 with Server & Workload Protection
+
+Topics on this page:
+
+- TLS architecture
+- Enable the TLS 1.2 architecture
+- Next steps (deploy new agents and relays)
+
+## TLS architecture {#tls-architecture}
+
+Figure 1 shows the TLS communication in a Server & Workload Protection environment. You can see that 10.0 or higher agents communicate with Server & Workload Protection over TLS 1.2, while 9.6 versions communicate over early TLS. Similarly, newer third-party applications use TLS 1.2, while older ones use early TLS.
+
+Figure 1: TLS communication in a Server & Workload Protection environment:
+
+<figure>
+<img src="./images/TLS-1.2-architecture-dsaas=e9c52d95-f306-4fc4-8790-b37582c00120.webp" />
+</figure>
+
+## Enable the TLS 1.2 architecture {#enable-the-tls-1.2-architecture}
+
+To enable TLS 1.2 in your Server & Workload Protection environment, you may need to upgrade your agents and relays. Follow these guidelines:
+
+- If you have 9.6 agents in your environment, you must upgrade them to 10.0 or later. Only 10.0 or later agents support TLS 1.2.
+- If you have 9.6 relays in your environment, you must upgrade them to 10.0 or later. Only 10.0 or later relays support TLS 1.2.
+
+First, upgrade your agents:
+
+- See [Upgrade the agent](upgrade-agent.mdx).
+
+Next, upgrade your relays:
+
+- See [Upgrade a relay](upgrade-relay.mdx).
+
+## Next steps (deploy new agents and relays) {#next-steps-deploy-new-agents-and-relays}
+
+After setting up your TLS 1.2 environment, if you decide to [Use a deployment script](deployment-scripts-add-computers.mdx) (among other methods) to deploy new agents and relays, adhere to the guidelines below.
+
+## Guidelines for using deployment scripts {#guidelines-for-using-deployment-scripts}
+
+### Procedure {#procedure}
+
+1.  If you are deploying an agent or relay onto Windows computers, use PowerShell 4.0 or higher, which uses TLS 1.2 to communicate with the manager or relay to obtain agent software and install it.
+
+2.  If you are deploying an agent or relay onto Linux, use curl 7.34.0 or higher. This version uses TLS 1.2 to communicate with the manager or relay to obtain agent software and install it.
+
+3.  If you are deploying onto Red Hat Enterprise Linux 6 which uses curl 7.19 by default, upgrade to curl 7.34.0 or later. If you can't upgrade curl, see the next step for a workaround.
+
+4.  If you are deploying onto Windows XP, 2003, or 2008, where PowerShell 4.0 is not supported, remove these lines: `#requires -version 4.0` `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12;`
+:::

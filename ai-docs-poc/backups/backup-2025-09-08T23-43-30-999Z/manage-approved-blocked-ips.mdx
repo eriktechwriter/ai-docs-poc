@@ -1,0 +1,142 @@
+---
+slug: trend-vision-one-manage-approved-blocked-ips
+title: Managing approved and blocked IP addresses
+last_updated: '2025-09-08'
+ai_context:
+  source_file: manage-approved-blocked-ips.md
+  conversion_date: '2025-09-08T23:42:16.274Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+You can configure approved and blocked lists at the IP address or country/region level.
+
+The following table lists the tasks available to manage approved and blocked IP addresses.
+
+:::note
+
+Tasks that apply to IP addresses also apply to IPv4 address / CIDR blocks.
+:::
+
+<table>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 32%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Tasks</p></th>
+<th><p>Location</p></th>
+<th><p>Steps</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Bypassing Spam Detection</p></td>
+<td><p>Only the <strong>Approved IP Address</strong> tab</p></td>
+<td><p>Select <strong>Bypass spam detection for approved IP addresses</strong>.</p></td>
+</tr>
+<tr>
+<td><p>Searching IP Addresses</p></td>
+<td rowspan="6"><ul>
+<li><p>The <strong>Approved IP Address</strong> tab</p></li>
+<li><p>The <strong>Blocked IP Address</strong> tab</p></li>
+</ul></td>
+<td><ol>
+<li><p>Type an IP address in the search box.</p></li>
+<li><p>Click <strong>Search</strong>.</p>
+
+
+:::note
+
+<p>The search box has an auto-complete feature that you can use to manually type a CIDR block. In detail, Cloud Email Gateway Protection autocompletes your input based on the CIDR addressing format if you accidentally type only the first several octets of an IP address before clicking <strong>Search</strong>.</p>
+<p>For example, if you type <code>16</code> and click <strong>Search</strong>, Cloud Email Gateway Protection automatically changes your input into <strong>16.0.0.0/8</strong> and lists all IP addresses whose first octet is <strong>16</strong>.</p>
+
+
+:::
+
+</li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Adding an IP Address</p></td>
+<td><ol>
+<li><p>Click <strong>Add</strong>.</p></li>
+<li><p>Specify the IP address and type a description.</p></li>
+<li><p>Click <strong>Save</strong>.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Editing an IP Address</p></td>
+<td><ol>
+<li><p>Click an IP address.</p></li>
+<li><p>Change the IP address or modify its description.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Deleting IP Addresses</p></td>
+<td><ol>
+<li><p>Select one or more IP addresses.</p></li>
+<li><p>Click <strong>Delete</strong>, and click <strong>OK</strong> to confirm.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Importing IP Addresses</p></td>
+<td><ol>
+<li><p>Click <strong>Import</strong>.</p></li>
+<li><p>Next to <strong>File location</strong>, browse and select a CSV file to import.</p>
+<p>Cloud Email Gateway Protection verifies the file size and total number of lines in the file, and checks all the entries in the selected file to identify any invalid or conflicting IP addresses.</p></li>
+<li><p>After you confirm all the entries to be imported, click <strong>Import</strong>.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Exporting IP Addresses</p></td>
+<td><p>Click <strong>Export</strong> to export the approved or blocked IP addresses to a CSV file.</p></td>
+</tr>
+</tbody>
+</table>
+
+The following table lists the tasks available to manage approved and blocked countries/regions.
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Tasks</p></th>
+<th><p>Location</p></th>
+<th><p>Steps</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Adding an Approved Country/Region</p></td>
+<td><p>The <strong>Approved Country/Region</strong> tab</p></td>
+<td><ol>
+<li><p>Add one or more countries/regions to the list on the right.</p></li>
+<li><p>Click <strong>Save</strong>.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Adding a Blocked Country/Region</p></td>
+<td rowspan="2"><p>The <strong>Blocked Country/Region</strong> tab</p></td>
+<td><ol>
+<li><p>Select <strong>Select Country/Region to Block</strong>, and add one or more countries/regions to the list on the right.</p></li>
+<li><p>Click <strong>Save</strong>.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Adding Exceptions to Blocked Countries/Regions</p></td>
+<td><ol>
+<li><p>Select <strong>Block All Countries/Regions Except</strong>, and add one or more countries/regions to the list on the right.</p></li>
+<li><p>Click <strong>Save</strong>.</p></li>
+</ol></td>
+</tr>
+</tbody>
+</table>
+::::

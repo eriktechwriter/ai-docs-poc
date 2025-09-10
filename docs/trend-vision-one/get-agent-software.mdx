@@ -1,0 +1,103 @@
+---
+slug: trend-vision-one-get-agent-software
+title: Get agent software
+---
+# Get agent software
+
+::::::warning[Important]
+
+To deploy the Server & Workload Protection agent with endpoint sensor and full XDR functionality, download and deploy the agent package from Endpoint Inventory. For more information, see [Deploy agents](deploy-agents.mdx).
+
+Computers added using this method do not support the endpoint sensor and do not have XDR functionality. Trend Micro recommends only using this method for testing purposes or troubleshooting with your support provider.
+:::
+
+### View a list of available agent software {#view-a-list-of-available-agent-software}
+
+To view a list of all available software:
+
+1.  In the Server & Workload Protection console, go to **Administration → Updates → Software → Local**. All available software appears.
+2.  (Optional) Organize the list of software by version or platform (OS) by selecting *Version* or *Platform* from the drop-down list at the top.
+
+### Export the agent installer {#export-the-agent-installer}
+
+You can download the agent installer from the Server & Workload Protection console.
+
+1.  In the Server & Workload Protection console, go to **Administration → Updates → Software → Local**.
+
+2.  Select your agent from the list.
+
+    :::note
+
+    If you're looking for a Solaris agent, see Solaris-version-to-agent-package mapping table for information on which agent to choose.
+    :::
+
+3.  Click **Export → Export Installer**. Server & Workload Protection then checks the digital signature on the software package. If the signature is good, the export proceeds.
+
+4.  Save the agent installer. If you will install the agent manually, save it on the computer where you want to install the agent.
+
+:::tip
+
+To install the agent, only use the exported agent installer (the .msi, .rpm, .pkg, .p5p, or .bff file depending on the platform) not the full agent ZIP package. If you run the agent installer from the same folder that holds the other zipped agent components, all protection modules will be installed, even if you haven't enabled them on the computer. This consumes extra disk space. (For comparison, if you use the .msi, .rpm, .pkg, .p5p, or .bff file, the agent will download and install protection modules only if your configuration requires them.)
+:::
+
+:::tip
+
+Installing an agent, activating it, and applying protection with a security policy can be done using a command line script. For more information, see [Use a deployment script](deployment-scripts-add-computers.mdx).
+:::
+
+:::tip
+
+You can generate deployment scripts to automate the agent installation using the Server & Workload Protection API. For more information, see [Generate an agent deployment script.](api-generate-agent-deploy.mdx)
+:::
+
+### Solaris-version-to-agent-package mapping table {#solaris-version-to-agent-package-mapping-table}
+
+If you're not sure which agent package to pick when exporting the agent, review the mapping table below.
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>If you're installing the agent on...</p></th>
+<th><p>Choose this agent package...</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Solaris 10 Updates 4-6 (64-bit, SPARC or x86)</p></td>
+<td><p>Agent-Solaris_5.10_U5-xx.x.x-xxx.&lt;sparc|.x86_64&gt;.zip</p></td>
+</tr>
+<tr>
+<td><p>Solaris 10 Updates 7-11 (64-bit, SPARC or x86)</p></td>
+<td><p>Agent-Solaris_5.10_U7-xx.x.x-xxx.&lt;sparc|.x86_64&gt;.zip</p></td>
+</tr>
+<tr>
+<td><p>Solaris 11.0 (1111)-11.3 (64-bit, SPARC or x86)</p></td>
+<td><p>Agent-Solaris_5.11-xx.x.x-xxx.&lt;sparc|.x86_64&gt;.zip</p></td>
+</tr>
+<tr>
+<td><p>Solaris 11.4 (64-bit, SPARC or x86)</p></td>
+<td><p>Agent-Solaris_5.11_U4-xx.x.x-xxx.&lt;sparc|.x86_64&gt;.zip</p></td>
+</tr>
+</tbody>
+</table>
+
+- `xx.x.x.xxx` is the build number of the agent. For example: `12.0.0-682`
+- `<sparc|.x86_64>` is one of `sparc` or `.x86_64`, depending on the Solaris processor.
+
+### AIX agent package naming format {#aix-agent-package-naming-format}
+
+The naming format is different depending on the agent version:
+
+- Agent version 12 for AIX: `Agent-AIX-<agent_release>-<agent_build>.powerpc.zip`. Example: `Agent-AIX-12.0.0-1234.powerpc.zip`.
+- Agent version 9.0 for AIX: `Agent-AIX_<AIX_version>-<agent_release>-<build>.powerpc.bff.gz.zip.` Example: `Agent-AIX_5.3-9.0.0-5625.powerpc.bff.gz.zip`.
+
+For details on which agent you'll need for the version of AIX you're using, see [Agent platforms](agent-platform-compatibility.mdx).
+
+**Related information**
+
+- [Check digital signatures of software packages](check-digital-signatures.mdx)
+:::::::

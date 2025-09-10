@@ -1,0 +1,73 @@
+---
+slug: trend-vision-one-custom-scan-actions
+title: Custom Scan Actions
+last_updated: '2025-09-08'
+ai_context:
+  source_file: custom-scan-actions.md
+  conversion_date: '2025-09-08T23:42:21.072Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 83%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Delete</p></td>
+<td><p>Deletes the infected file.</p></td>
+</tr>
+<tr>
+<td><p>Quarantine</p></td>
+<td><p>Renames and then moves the infected file to a temporary quarantine directory on the endpoint.</p>
+<p>The Trend Vision One Endpoint Security agent then sends quarantined files to the designated quarantine directory, which is on the managing server by default.</p>
+<p>The Trend Vision One Endpoint Security agent encrypts quarantined files sent to this directory.</p>
+<p>For more information, see <a href="trend-vision-one-quarantine-directory">Quarantine Directory</a>.</p></td>
+</tr>
+<tr>
+<td><p>Clean</p></td>
+<td><p>Cleans the infected file before allowing full access to the file.</p>
+<p>If the file is uncleanable, the Trend Vision One Endpoint Security agent performs a second action, which can be one of the following actions: "Quarantine", "Delete", "Rename", and "Pass".</p>
+<p>This action can be performed on all types of security threats except probable virus/malware.</p>
+
+
+:::note
+
+<p>Some files are uncleanable. For details, see <a href="trend-vision-one-uncleanable-files">Uncleanable Files</a>.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Rename</p></td>
+<td><p>Changes the infected file's extension to <code>vir</code>. Users cannot open the renamed file initially, but can do so if they associate the file with a certain application.</p>
+<p>The virus/malware may execute when opening the renamed infected file.</p></td>
+</tr>
+<tr>
+<td><p>Pass</p></td>
+<td><p>Performs no action on detected threats but records the detection in the logs.</p></td>
+</tr>
+<tr>
+<td><p>Deny Access</p></td>
+<td><p>When the Trend Vision One Endpoint Security agent detects an attempt to open or execute an infected file, it immediately blocks the operation.</p>
+<p>Users can manually delete the infected file.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Quarantine Directory](quarantine-directory.mdx)
+:::

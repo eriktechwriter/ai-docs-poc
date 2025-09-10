@@ -1,0 +1,347 @@
+---
+slug: trend-vision-one-australia-ztsa-fqdns
+title: Australia - Zero Trust Secure Access FQDNs/IP addresses
+---
+# Australia - Zero Trust Secure Access FQDNs/IP addresses
+
+**Zero Trust Secure Access FQDNs/IP Addresses**
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr>
+<th rowspan="2"><p>Description</p></th>
+<th rowspan="2"><p>FQDN/IP Address</p></th>
+<th rowspan="2"><p>Port</p></th>
+<th colspan="5"><p>Used By</p></th>
+</tr>
+<tr>
+<th><p>Internet Access - Client Access</p></th>
+<th><p>Internet Access - PAC Mode</p></th>
+<th><p>Private Access - Client Access</p></th>
+<th><p>Private Access - Browser Access</p></th>
+<th><p>Private Access Connector</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Secure Access Module download and upgrade</p></td>
+<td><p><code>prod.ztsaagent.trendmicro.com</code></p></td>
+<td><p>TCP: 443</p></td>
+<td><p>√</p></td>
+<td> </td>
+<td><p>√</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Secure Access Module User Behavior Tracking data feedback</p></td>
+<td><p><code>event-au.ztsaagent.trendmicro.com</code></p></td>
+<td><p>TCP: 443</p></td>
+<td><p>√</p></td>
+<td> </td>
+<td><p>√</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Secure Access Module debug log upload</p></td>
+<td><p><code>upload.au.xdr.trendmicro.com</code></p></td>
+<td><p>TCP: 443</p></td>
+<td><p>√</p></td>
+<td> </td>
+<td><p>√</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Internet Access Gateway Proxy Address</p></td>
+<td><p><code>proxy.ztsa-iag.trendmicro.com</code></p>
+<p><code>proxy.au.ztsa-iag.trendmicro.com</code></p></td>
+<td><p>TCP: 80/8080</p></td>
+<td><p>√</p></td>
+<td><p>√</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Internet Access On-Premises Gateway (via Service Gateway) Proxy Address</p></td>
+<td><p>FQDN or IP address of the on-premise gateway</p></td>
+<td><p>TCP: 8088</p></td>
+<td><p>√</p></td>
+<td><p>√</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Internet Access On-Premises Gateway (via Service Gateway) NTLM Auth Proxy Address</p></td>
+<td><p>FQDN or IP address of the on-premise gateway</p></td>
+<td><p>TCP: 8089</p></td>
+<td><p>√</p></td>
+<td><p>√</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Internet Access On-Premises Gateway (via Service Gateway) ICAP Service Address</p></td>
+<td><p>FQDN or IP address of the on-premise gateway</p></td>
+<td><p>TCP: 1344/11344</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><p>General authentication services</p></td>
+<td><ul>
+<li><p><code>signin.Trend Vision One.trendmicro.com</code> (Foundation Services update)</p></li>
+<li><p><code>tm.login.trendmicro.com</code></p></li>
+<li><p><code>iamservice.trendmicro.com</code></p></li>
+<li><p>Other custom IDP services</p></li>
+</ul>
+<p>Google reCAPTCHA:</p>
+<ul>
+<li><p>www.gstatic.com</p></li>
+<li><p>fonts.gstatic.com</p></li>
+<li><p>Plus one of the following:</p>
+<ul>
+<li><p>www.google.com (recommended)</p></li>
+<li><p>www.recaptcha.net</p></li>
+</ul></li>
+</ul></td>
+<td><p>TCP: 443</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Internet Access Gateway authentication service used for:</p>
+<ul>
+<li><p>Browser-based or agent-less authentication</p></li>
+<li><p>Diagnostic services</p></li>
+<li><p>Integration with Secure Access modules for retrieving PAC files and other necessary information</p></li>
+</ul></td>
+<td><p><code>auth.ztsa-iag.trendmicro.com</code></p>
+<p><code>auth.au.ztsa-iag.trendmicro.com</code></p></td>
+<td><p>TCP: 80/443</p></td>
+<td> </td>
+<td><p>√</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Private Access service accessed by Secure Access Module and Private Access Connector</p></td>
+<td><p><code>agent-anz-rel.ztna.trendmicro.com</code></p></td>
+<td><p>TCP: 443</p></td>
+<td><p>√</p></td>
+<td> </td>
+<td><p>√</p></td>
+<td><p>√</p></td>
+<td><p>√</p></td>
+</tr>
+<tr>
+<td><p>Private Access Connector download by users</p></td>
+<td><p><code>download-anz-rel.ztna.trendmicro.com</code></p></td>
+<td><p>TCP: 443</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Private Access Connector CDT collect</p></td>
+<td><p><code>saseztnaprodanzsagen2.blob.core.windows.net</code></p></td>
+<td><p>TCP: 443</p>
+<p>UDP: 443</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td><p>√</p></td>
+</tr>
+<tr>
+<td><p>Private Access Connector firmware upgrade</p></td>
+<td><p><code>saseztnaprodanzsa.blob.core.windows.net</code></p>
+<p><code>ztnaextacr.azurecr.io</code></p></td>
+<td><p>TCP: 443</p>
+<p>UDP: 443</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td><p>√</p></td>
+</tr>
+<tr>
+<td><p>Microsoft Azure IoT Hub</p></td>
+<td><p><code>sase-ztna-prod-anz-iothub-cntevt.azure-devices.net</code></p></td>
+<td><p>TCP: 443</p>
+<p>UDP: 443</p></td>
+<td> </td>
+<td> </td>
+<td><p>√</p></td>
+<td> </td>
+<td><p>√</p></td>
+</tr>
+<tr>
+<td><p>Speed test for Secure Access Module, Private Access Connector, and Private Access User Portal</p></td>
+<td><p>Private Access Connector automatically selects the site that has the lowest network latency. If you have configured firewalls, Trend Micro recommends adding all of the following FQDNs:</p>
+<ul>
+<li><p><code>speedtest.anz.ztna.trendmicro.com</code></p></li>
+<li><p><code>speedtest.eu.ztna.trendmicro.com</code></p></li>
+<li><p><code>speedtest.es.ztna.trendmicro.com</code></p></li>
+<li><p><code>speedtest.de.ztna.trendmicro.com</code></p></li>
+<li><p><code>speedtest.in.ztna.trendmicro.com</code></p></li>
+<li><p><code>speedtest.jp.ztna.trendmicro.com</code></p></li>
+<li><p><code>speedtest.sg.ztna.trendmicro.com</code></p></li>
+<li><p><code>speedtest.us.ztna.trendmicro.com</code></p></li>
+<li><p><code>speedtest.us2.ztna.trendmicro.com</code></p></li>
+<li><p><code>speedtest.br.ztna.trendmicro.com</code></p></li>
+<li><p><code>speedtest.ca.ztna.trendmicro.com</code></p></li>
+<li><p><code>speedtest.mea.ztna.trendmicro.com</code></p></li>
+<li><p><code>speedtest.qa.ztna.trendmicro.com</code></p></li>
+<li><p><code>speedtest.is.ztna.trendmicro.com</code></p></li>
+<li><p><code>speedtest.sa.ztna.trendmicro.com</code></p></li>
+<li><p><code>speedtest.uk.ztna.trendmicro.com</code></p></li>
+<li><p><code>speedtest.mx.ztna.trendmicro.com</code></p></li>
+<li><p><code>speedtest.th.ztna.trendmicro.com</code></p></li>
+<li><p><code>speedtest.co.ztna.trendmicro.com</code></p></li>
+</ul></td>
+<td><p>TCP: 443</p></td>
+<td> </td>
+<td> </td>
+<td><p>√</p></td>
+<td><p>√</p></td>
+<td><p>√</p></td>
+</tr>
+<tr>
+<td><p>Private Access Static IP Pool of Cloud Relay Service</p></td>
+<td><p>Private Access Connector automatically selects the site that has the lowest network latency. If you have configured firewalls, Trend Micro recommends adding all of the following IP pools:</p>
+<ul>
+<li><p><code>20.5.69.128/28 (for Australia)</code></p></li>
+<li><p><code>20.4.51.32/28 (for Europe)</code></p></li>
+<li><p><code>68.221.67.176/28 (for Spain)</code></p></li>
+<li><p><code>20.79.20.80/28 (for Germany)</code></p></li>
+<li><p><code>20.219.254.160/28 (for India)</code></p></li>
+<li><p><code>52.140.246.128/28 (for Japan)</code></p></li>
+<li><p><code>52.187.118.64/28 (for Singapore)</code></p></li>
+<li><p><code>20.7.52.240/28 (for United States)</code></p></li>
+<li><p><code>40.65.58.32/28 (for Western United States)</code></p></li>
+<li><p><code>4.228.193.144/28 (for Brazil)</code></p></li>
+<li><p><code>20.74.229.224/28 (for MEA)</code></p></li>
+<li><p><code>20.21.245.64/28 (for Qatar - Private Preview)</code></p></li>
+<li><p><code>20.217.194.0/28 (for Israel)</code></p></li>
+<li><p><code>4.168.219.16/28 (for South Africa)</code></p></li>
+<li><p><code>20.58.44.64/28 (for United Kingdom)</code></p></li>
+<li><p><code>58.247.125.93 (for Colombia)</code></p></li>
+<li><p><code>149.130.184.138 (for Colombia)</code></p></li>
+<li><p><code>149.130.162.160 (for Colombia)</code></p></li>
+<li><p><code>149.130.183.98 (for Colombia)</code></p></li>
+<li><p><code>149.130.160.88 (for Colombia)</code></p></li>
+<li><p><code>149.130.190.146 (for Colombia)</code></p></li>
+<li><p><code>149.130.175.84 (for Colombia)</code></p></li>
+<li><p><code>149.130.166.108 (for Colombia)</code></p></li>
+<li><p><code>15.220.187.200 (for Mexico)</code></p></li>
+<li><p><code>15.220.190.4 (for Mexico)</code></p></li>
+<li><p><code>15.220.190.122 (for Mexico)</code></p></li>
+<li><p><code>15.220.190.204 (for Mexico)</code></p></li>
+<li><p><code>15.220.184.81 (for Mexico)</code></p></li>
+<li><p><code>15.220.190.169 (for Mexico)</code></p>
+<p><code>15.220.190.244 (for Mexico)</code></p></li>
+<li><p><code>15.220.190.68 (for Mexico)</code></p></li>
+<li><p><code>43.208.120.32 (for Thailand)</code></p></li>
+<li><p><code>43.208.208.14 (for Thailand)</code></p></li>
+<li><p><code>43.208.90.87 (for Thailand)</code></p></li>
+<li><p><code>43.209.32.217 (for Thailand)</code></p></li>
+<li><p><code>43.209.62.65 (for Thailand)</code></p></li>
+<li><p><code>43.209.72.106 (for Thailand)</code></p></li>
+<li><p><code>43.209.73.106 (for Thailand)</code></p>
+<p><code>43.209.82.71 (for Thailand)</code></p></li>
+<li><p><code>4.205.111.208/28 (for Canada)</code></p></li>
+</ul></td>
+<td><p>TCP: 443</p>
+<p>UDP: 443</p></td>
+<td> </td>
+<td> </td>
+<td><p>√</p></td>
+<td><p>√</p></td>
+<td><p>√</p></td>
+</tr>
+<tr>
+<td><p>Private Access Browser Access End User Portal</p></td>
+<td><p><code>{Customer_Specified}.myapplications.anz.ztna.trendmicro.com</code></p></td>
+<td><p>TCP: 443</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td><p>√</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Private Access Browser Access Proxy</p></td>
+<td><p><code>{Customer_Specified}.edge.anz.ztna.trendmicro.com</code></p></td>
+<td><p>TCP: 443</p>
+<p>TCP: 8443</p>
+<p>TCP: 80</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td><p>√</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Private Access Browser Access Proxy for Remote Desktop (RDP)</p></td>
+<td><p><code>{Customer_Specified}.rdgw.anz.ztna.trendmicro.com</code></p></td>
+<td><p>TCP: 443</p>
+<p>TCP: 80</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td><p>√</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Private Access Connector NTP server</p></td>
+<td><p>Default NTP servers are listed as follows. You can configure your own NTP servers.</p>
+<ul>
+<li><p>0.pool.ntp.org</p></li>
+<li><p>1.pool.ntp.org</p></li>
+<li><p>2.pool.ntp.org</p></li>
+<li><p>3.pool.ntp.org</p></li>
+</ul></td>
+<td><p>UDP: 123</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td><p>√</p></td>
+</tr>
+<tr>
+<td><p>P2P communication between Private Access Connector and Secure Access Module</p></td>
+<td><p>Peer's internet IP address</p></td>
+<td><p>UDP: random port number, greater than 10000</p></td>
+<td> </td>
+<td> </td>
+<td><p>√</p></td>
+<td> </td>
+<td><p>√</p></td>
+</tr>
+</tbody>
+</table>
+:::

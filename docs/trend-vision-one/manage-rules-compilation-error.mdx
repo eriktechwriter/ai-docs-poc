@@ -1,0 +1,45 @@
+---
+slug: trend-vision-one-manage-rules-compilation-error
+title: Manage rules
+---
+# Manage rules
+
+The Intrusion Prevention Rule Compilation Failed error can occur when the number of assigned Intrusion Prevention rules exceeds the recommended count. You should not have more than 400 Intrusion Prevention rules on an endpoint. Trend Micro recommends only applying the Intrusion Prevention rules that a [recommendation scan](recommendation-scans-intro.mdx) suggests to avoid applying unnecessary rules. If you are applying Intrusion Prevention rules manually, apply them to the computer rather than the policy to avoid adding too many application types to a single port.
+
+To resolve the issue, reduce the number of assigned rules.
+
+### Procedure {#procedure}
+
+1.  Access the Intrusion Prevention rules.
+
+    - At the computer level, go to **Computers**, then right-click the affected computer and select **Details**.
+
+    - At the policy level, go to **Policies**, then right-click the affected policy and select **Details**.
+
+2.  Go to **Intrusion Prevention** and click **Scan for Recommendations**.
+
+3.  Once the scan is complete, click **Assign/Unassign**.
+
+4.  Filter the rules by **Recommended for Unassignment**.
+
+5.  Select one or more rules to unassign.
+
+    - To select a group of rules next to each other, press and hold the Shift key.
+
+    - To select separated rules, press and hold the Control key.
+
+6.  Right-click the selection and go to **Unassign Rule(s) → From All Interfaces**.
+
+7.  Click **OK**, then close the window.
+
+8.  Go to **Computers** and right-click the affected computer.
+
+9.  Go to **Actions → Clear Warnings/Errors**.
+
+    The Intrusion Prevention engine automatically attempts a rule compilation. The duration of the process depends on the heartbeat interval and communication settings between Server & Workload Protection and the agent.
+
+    :::tip
+
+    If you applied Intrusion Prevention rules through a policy and are unsure which computers are affected, open the Policy editor and go to **Overview → Computer(s) Using This Policy**.
+    :::
+:::

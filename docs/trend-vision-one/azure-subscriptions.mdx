@@ -1,0 +1,79 @@
+---
+slug: trend-vision-one-azure-subscriptions
+title: Azure subscriptions
+---
+# Azure subscriptions
+
+Manage connections with your Azure subscriptions to allow Trend Vision One visibility into your cloud environment.
+
+The Azure subscriptions screen allows you to view connected Azure subscriptions and manage connections within the Cloud Accounts app. You can access the Azure subscriptions screen on the Trend Vision One console by navigating to **Cloud Security → Cloud Accounts → Azure** and clicking on the **Azure** tab.
+
+You can take the following actions from the Azure subscriptions screen.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Add an Azure subscription</p></td>
+<td><p>Add and connect an Azure subscription to Cloud Accounts</p>
+<p>Click <strong>Add</strong> to <a href="trend-vision-one-connecting-azure-subscriptions">connect an Azure subscription</a>.</p></td>
+</tr>
+<tr>
+<td><p>Remove subscriptions</p></td>
+<td><p>Remove and disconnect Azure subscriptions from Cloud Accounts</p>
+<p>Select one or more subscriptions and click <strong>Remove</strong>.</p>
+
+
+:::note
+
+<p>Removing a subscription from Cloud Accounts does not delete the Trend Vision One resource from your Azure subscription. Copy the subscription command to locate the resource and run the <code>terraform destroy</code> command within the resource directory to delete the resource from your Azure subscription.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Manage subscription settings</p></td>
+<td><p>Manage subscription settings</p>
+<p>Click on a subscription name to view and edit the settings or update the terraform resource. For more information, see <a href="trend-vision-one-subscription-settings">Subscription settings</a>.</p>
+
+
+:::note
+
+<p>Updates to the resource template are not applied automatically when released. You must update the terraform resources to apply the latest security settings and resource template.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Fix subscription status issues</p></td>
+<td><p>Use the available actions to address different subscription statuses</p>
+<p>Clicking the action opens the subscription settings screen.</p>
+<ul>
+<li><p><strong>Update legacy connection</strong>: This subscription was added after updating a Trend Micro product to Server &amp; Workload Protection. To update the account, see <a href="trend-vision-one-updating-legacy-azure-connection">Updating a legacy Azure connection</a>.</p></li>
+<li><p><strong>Update resource creation script</strong>: The subscription settings in Trend Vision One are not in sync with the deployed resource. This may occur if there was a recent update, or if the resource script was not run on your subscription. <a href="trend-vision-one-resource-update-azure-subscriptions">Update terraform resources</a> to fix the issue.</p></li>
+<li><p><strong>Reconnect</strong>: An issue is preventing Trend Vision One from connecting or deploying to your subscription. Verify the subscription information is correct and <a href="trend-vision-one-resource-update-azure-subscriptions">update terraform resources</a> to reconnect your subscription.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Connecting and updating Azure subscriptions](connecting-azure-subscriptions.md "Add your Azure subscriptions or update legacy connections to provide visibility into your cloud environment.")
+- [Subscription settings](subscription-settings.md "Manage connected Azure subscription settings and update terraform resources.")
+- [Azure features and permissions](azure-features-permissions.md "Connect your subscription to enable cloud security features and give Trend Vision One greater visibility and protection over your cloud assets.")
+- [Azure supported regions and limitations](azure-supported-regions-limitations.md "Supported regions and deployment limitations for connecting your Azure subscriptions.")
+:::

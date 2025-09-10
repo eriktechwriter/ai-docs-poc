@@ -1,0 +1,65 @@
+---
+slug: trend-vision-one-create-smart-folder
+title: Create a smart folder
+---
+# Create a smart folder
+
+Create a smart folder to define a dynamic group of computers with a saved search query.
+
+### Procedure {#procedure}
+
+1.  Go to **Computers → Smart Folders**.
+
+2.  Click **Create a Smart Folder**.
+
+    A default, empty search criteria group (rule group) appears. You must configure this first. If you need to define more or alternative possible matches, you can add more rule groups later.
+
+3.  Specify a name for your smart folder.
+
+4.  In the first list, select a property that all matching computers have, such as **Operating System**. For more information, see [Searchable properties](smart-folder-searchable-properties.mdx).
+
+    If you select AWS **Tag**, Azure **Tag**, or GCP **Label**, you must also specify the tag name or label key.
+
+5.  Select the operator: whether to match identical, similar, or opposite computers, such as **CONTAINS**.
+
+    Some operators are not available for all properties. For more information, see [Operators](smart-folder-operators.mdx).
+
+6.  Type all or part of the search term.
+
+    - Wild card characters are not supported.
+
+    - If you type multiple words, it compares the entire phrase, not each word separately. No match occurs if the property's value has words in a different order, or only some of the words. To match any of the words, instead click **Add Rule** and **OR**, and then add another value: one word per rule.
+
+7.  If computers must match multiple properties, click **Add Rule** and **AND**. Repeat steps 4-6.
+
+    For more complex smart folders, you can chain multiple search criteria. Click **Add Group**, then click **AND** or **OR**. Repeat steps 4-7.
+
+    For example, you might have Linux computers deployed both on-premises and in clouds such as AWS, Azure, Google Cloud, or vCloud. You could create a smart folder that contains all of them by using 3 rule groups based on:
+
+    - local physical computers' operating system
+
+    - AWS tag
+
+    - vCenter or vCloud name
+
+    To test the results of your query before saving your smart folder, click **Preview**.
+
+    ![](/images/smart-folders-hybrid=11426baa-50d7-4e4d-80fc-792478c97c16.webp)
+
+8.  Click **Save**.
+
+9.  To verify, click your new smart folder. Verify that it contains all expected computers.
+
+    For faster smart folders, remove unnecessary AND operations, and reduce sub-folder depths. They increase query complexity, which reduces performance.
+
+    Also verify that it omits computers that shouldn't match the query. If you need to edit your smart folder's query, double-click the smart folder.
+
+    If your account's role doesn't have the permissions, some computers won't appear, or you won't be able to edit their properties. For more information, see [Roles](user-roles-foundation-services.mdx).
+
+    :::note
+
+    To focus your search using sub-folders, see [Focus your search using sub-folders](smart-folder-subfolders.mdx).
+
+    To automatically create sub-folders for AWS, Azure, or Google Cloud, see [Automatically create sub-folders](automatically-create-subfolders.mdx).
+    :::
+:::

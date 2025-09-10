@@ -1,0 +1,398 @@
+---
+slug: trend-vision-one-ia-gateway-system-sizing-2
+title: Internet Access On-Premises Gateway system sizing recommendations
+last_updated: '2025-09-08'
+ai_context:
+  source_file: ia-gateway-system-sizing-2.md
+  conversion_date: '2025-09-08T23:42:17.953Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::::: {role="main"}
+View recommended system sizing information for use when deploying the Internet Access On-Premises Gateway.
+
+When deploying the Internet Access On-Premises Gateway, Trend Micro recommends allocating at least 200 GB of disk space for the on-premises gateway to store application and log files. Detection and activity logs are automatically uploaded to Trend Vision One unless uploading is manually disabled. Detection and activity log files are automatically purged from the on-premises gateway when the files are older than seven days or take up a total of 50 GB of disk space. Trend Vision One retains uploaded log files for up to 180 days.
+
+The following tables provide information for use when considering system sizing based on on-premises gateway performance test results.
+
+:::note
+
+- No services other than the Internet Access On-Premises Gateway were enabled on the Service Gateway virtual appliance during testing.
+
+- The number of vCPUs and amount of RAM required to run the Service Gateway firmware are included in the vCPU and RAM totals for each sizing test.
+
+- 10 Data Loss Prevention templates were enabled and used when the Data Loss Prevention feature was enabled.
+:::
+
+- System sizing recommendations for on-premises gateways running in proxy server mode under the following conditions:
+
+  - Deployment method: VMWare ESXi through a Service Gateway virtual appliance
+
+  - Use: Web server traffic protection
+
+  - Traffic protocol: HTTPS with HTTPS inspection enabled
+
+  - Average traffic size: 17 KB
+
+<table>
+<thead>
+<tr>
+<th><p>Number of vCPU cores</p></th>
+<th><p>RAM</p></th>
+<th><p>Enabled feature set</p></th>
+<th><p>Recommended maximum network throughput</p></th>
+<th><strong>Transactions per second</strong></th>
+<th><p>Recommended maximum total user count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>8</p></td>
+<td><p>16 GB</p></td>
+<td><p>Internet access rules only</p></td>
+<td><p>200 Mbps</p></td>
+<td><p>1650</p></td>
+<td><p>2900</p></td>
+</tr>
+<tr>
+<td><p>8</p></td>
+<td><p>16 GB</p></td>
+<td><p>Internet Access rules with Threat Protection</p></td>
+<td><p>170 Mbps</p></td>
+<td><p>1500</p></td>
+<td><p>2600</p></td>
+</tr>
+<tr>
+<td><p>8</p></td>
+<td><p>16 GB</p></td>
+<td><p>Internet access rules with Threat Protection and Data Loss Prevention</p></td>
+<td><p>150 Mbps</p></td>
+<td><p>1300</p></td>
+<td><p>2200</p></td>
+</tr>
+<tr>
+<td><p>12</p></td>
+<td><p>16 GB</p></td>
+<td><p>Internet access rules only</p></td>
+<td><p>290 Mbps</p></td>
+<td><p>2500</p></td>
+<td><p>4400</p></td>
+</tr>
+<tr>
+<td><p>12</p></td>
+<td><p>16 GB</p></td>
+<td><p>Internet access rules with Threat Protection</p></td>
+<td><p>260 Mbps</p></td>
+<td><p>2250</p></td>
+<td><p>3900</p></td>
+</tr>
+<tr>
+<td><p>12</p></td>
+<td><p>16 GB</p></td>
+<td><p>Internet access rules with Threat Protection and Data Loss Prevention</p></td>
+<td><p>230 Mbps</p></td>
+<td><p>1950</p></td>
+<td><p>3400</p></td>
+</tr>
+<tr>
+<td><p>24</p></td>
+<td><p>32 GB</p></td>
+<td><p>Internet access rules only</p></td>
+<td><p>570 Mbps</p></td>
+<td><p>4800</p></td>
+<td><p>8500</p></td>
+</tr>
+<tr>
+<td><p>24</p></td>
+<td><p>32 GB</p></td>
+<td><p>Internet access rules with Threat Protection</p></td>
+<td><p>510 Mbps</p></td>
+<td><p>4400</p></td>
+<td><p>7800</p></td>
+</tr>
+<tr>
+<td><p>24</p></td>
+<td><p>32 GB</p></td>
+<td><p>Internet access rules with Threat Protection and Data Loss Prevention</p></td>
+<td><p>400 Mbps</p></td>
+<td><p>3300</p></td>
+<td><p>5900</p></td>
+</tr>
+<tr>
+<td><p>48</p></td>
+<td><p>64 GB</p></td>
+<td><p>Internet access rules only</p></td>
+<td><p>850 Mbps</p></td>
+<td><p>7200</p></td>
+<td><p>12,500</p></td>
+</tr>
+<tr>
+<td><p>48</p></td>
+<td><p>64 GB</p></td>
+<td><p>Internet access rules with Threat Protection</p></td>
+<td><p>810 Mbps</p></td>
+<td><p>6700</p></td>
+<td><p>12,000</p></td>
+</tr>
+<tr>
+<td><p>48</p></td>
+<td><p>64 GB</p></td>
+<td><p>Internet access rules with Threat Protection and Data Loss Prevention</p></td>
+<td><p>510 Mbps</p></td>
+<td><p>4400</p></td>
+<td><p>7800</p></td>
+</tr>
+</tbody>
+</table>
+
+- System sizing recommendations for on-premises gateways running in ICAP server mode under the following conditions:
+
+  - Deployment method: VMWare ESXi through a Service Gateway virtual appliance
+
+  - Use: Web server traffic protection
+
+  - Average traffic size: 17 KB
+
+<table>
+<thead>
+<tr>
+<th><p>Number of vCPU cores</p></th>
+<th><p>RAM</p></th>
+<th><p>Enabled feature set</p></th>
+<th><p>Recommended maximum network throughput</p></th>
+<th><p>Transactions per second</p></th>
+<th><p>Recommended maximum total user count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>8</p></td>
+<td><p>16 GB</p></td>
+<td><p>Internet access rules only</p></td>
+<td><p>150 Mbps</p></td>
+<td><p>1250</p></td>
+<td><p>2000</p></td>
+</tr>
+<tr>
+<td><p>8</p></td>
+<td><p>16 GB</p></td>
+<td><p>Internet access rules with Threat Protection</p></td>
+<td><p>135 Mbps</p></td>
+<td><p>1200</p></td>
+<td><p>1900</p></td>
+</tr>
+<tr>
+<td><p>8</p></td>
+<td><p>16 GB</p></td>
+<td><p>Internet access rules with Threat Protection and Data Loss Prevention</p></td>
+<td><p>100 Mbps</p></td>
+<td><p>900</p></td>
+<td><p>1500</p></td>
+</tr>
+<tr>
+<td><p>12</p></td>
+<td><p>16 GB</p></td>
+<td><p>Internet access rules only</p></td>
+<td><p>200 Mbps</p></td>
+<td><p>1700</p></td>
+<td><p>3000</p></td>
+</tr>
+<tr>
+<td><p>12</p></td>
+<td><p>16 GB</p></td>
+<td><p>Internet access rules with Threat Protection</p></td>
+<td><p>190 Mbps</p></td>
+<td><p>1600</p></td>
+<td><p>2900</p></td>
+</tr>
+<tr>
+<td><p>12</p></td>
+<td><p>16 GB</p></td>
+<td><p>Internet access rules with Threat Protection and Data Loss Prevention</p></td>
+<td><p>150 Mbps</p></td>
+<td><p>1300</p></td>
+<td><p>2300</p></td>
+</tr>
+<tr>
+<td><p>24</p></td>
+<td><p>32 GB</p></td>
+<td><p>Internet access rules only</p></td>
+<td><p>400 Mbps</p></td>
+<td><p>3200</p></td>
+<td><p>5600</p></td>
+</tr>
+<tr>
+<td><p>24</p></td>
+<td><p>32 GB</p></td>
+<td><p>Internet access rules with Threat Protection</p></td>
+<td><p>380 Mbps</p></td>
+<td><p>3000</p></td>
+<td><p>5400</p></td>
+</tr>
+<tr>
+<td><p>24</p></td>
+<td><p>32 GB</p></td>
+<td><p>Internet access rules with Threat Protection and Data Loss Prevention</p></td>
+<td><p>250 Mbps</p></td>
+<td><p>2000</p></td>
+<td><p>3500</p></td>
+</tr>
+<tr>
+<td><p>48</p></td>
+<td><p>64 GB</p></td>
+<td><p>Internet access rules only</p></td>
+<td><p>700 Mbps</p></td>
+<td><p>5400</p></td>
+<td><p>10,000</p></td>
+</tr>
+<tr>
+<td><p>48</p></td>
+<td><p>64 GB</p></td>
+<td><p>Internet access rules with Threat Protection</p></td>
+<td><p>650 Mbps</p></td>
+<td><p>5100</p></td>
+<td><p>9000</p></td>
+</tr>
+<tr>
+<td><p>48</p></td>
+<td><p>64 GB</p></td>
+<td><p>Internet access rules with Threat Protection and Data Loss Prevention</p></td>
+<td><p>300 Mbps</p></td>
+<td><p>2400</p></td>
+<td><p>4500</p></td>
+</tr>
+</tbody>
+</table>
+
+- System sizing recommendations for on-premises gateways running in ICAP server mode under the following conditions:
+
+  - Deployment method: VMWare ESXi through a Service Gateway virtual appliance
+
+  - Use: File server traffic protection
+
+  - Average traffic size: 100 KB
+
+<table>
+<thead>
+<tr>
+<th><p>Number of vCPU cores</p></th>
+<th><p>RAM</p></th>
+<th><p>Enabled feature set</p></th>
+<th><p>Recommended maximum network throughput</p></th>
+<th><p>Transactions per second</p></th>
+<th><p>Recommended maximum total user count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>8</p></td>
+<td><p>16 GB</p></td>
+<td><p>Internet access rules only</p></td>
+<td><p>550 Mbps</p></td>
+<td><p>650</p></td>
+<td><p>1200</p></td>
+</tr>
+<tr>
+<td><p>8</p></td>
+<td><p>16 GB</p></td>
+<td><p>Internet access rules with Threat Protection</p></td>
+<td><p>550 Mbps</p></td>
+<td><p>650</p></td>
+<td><p>1200</p></td>
+</tr>
+<tr>
+<td><p>8</p></td>
+<td><p>16 GB</p></td>
+<td><p>Internet access rules with Threat Protection and Data Loss Prevention</p></td>
+<td><p>500 Mbps</p></td>
+<td><p>600</p></td>
+<td><p>1000</p></td>
+</tr>
+<tr>
+<td><p>12</p></td>
+<td><p>16 GB</p></td>
+<td><p>Internet access rules only</p></td>
+<td><p>550 Mbps</p></td>
+<td><p>650</p></td>
+<td><p>1200</p></td>
+</tr>
+<tr>
+<td><p>12</p></td>
+<td><p>16 GB</p></td>
+<td><p>Internet access rules with Threat Protection</p></td>
+<td><p>550 Mbps</p></td>
+<td><p>650</p></td>
+<td><p>1200</p></td>
+</tr>
+<tr>
+<td><p>12</p></td>
+<td><p>16 GB</p></td>
+<td><p>Internet access rules with Threat Protection and Data Loss Prevention</p></td>
+<td><p>500 Mbps</p></td>
+<td><p>600</p></td>
+<td><p>1000</p></td>
+</tr>
+<tr>
+<td><p>24</p></td>
+<td><p>32 GB</p></td>
+<td><p>Internet access rules only</p></td>
+<td><p>890 Mbps</p></td>
+<td><p>1050</p></td>
+<td><p>2000</p></td>
+</tr>
+<tr>
+<td><p>24</p></td>
+<td><p>32 GB</p></td>
+<td><p>Internet access rules with Threat Protection</p></td>
+<td><p>890 Mbps</p></td>
+<td><p>1050</p></td>
+<td><p>2000</p></td>
+</tr>
+<tr>
+<td><p>24</p></td>
+<td><p>32 GB</p></td>
+<td><p>Internet access rules with Threat Protection and Data Loss Prevention</p></td>
+<td><p>850 Mbps</p></td>
+<td><p>1000</p></td>
+<td><p>1800</p></td>
+</tr>
+<tr>
+<td><p>48</p></td>
+<td><p>64 GB</p></td>
+<td><p>Internet access rules only</p></td>
+<td><p>900 Mbps</p></td>
+<td><p>1100</p></td>
+<td><p>2000</p></td>
+</tr>
+<tr>
+<td><p>48</p></td>
+<td><p>64 GB</p></td>
+<td><p>Internet access rules with Threat Protection</p></td>
+<td><p>900 Mbps</p></td>
+<td><p>1100</p></td>
+<td><p>2000</p></td>
+</tr>
+<tr>
+<td><p>48</p></td>
+<td><p>64 GB</p></td>
+<td><p>Internet access rules with Threat Protection and Data Loss Prevention</p></td>
+<td><p>900 Mbps</p></td>
+<td><p>1080</p></td>
+<td><p>1900</p></td>
+</tr>
+</tbody>
+</table>
+
+:::warning[Important]
+
+- All performance indexes dropped by approximately five percent when syslog forwarding was enabled.
+
+- The recommendations for maximum network throughput and maximum total users are strongly influenced by the average traffic size during testing.
+:::
+
+:::warning[Important]
+
+Enabling local prompt injection service requires an additional 4 vCPU and 12GB memory for on-premises gateway to support about 6~8 concurrent tasks for prompt injection scanning. It cannot be improved by adding more CPU or memory, if you require to support more concurrent tasks, you must setup additiona on-premises gateways with the local prompt injection service
+:::
+::::::

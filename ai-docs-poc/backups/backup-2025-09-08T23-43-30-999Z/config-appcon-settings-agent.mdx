@@ -1,0 +1,98 @@
+---
+slug: trend-vision-one-config-appcon-settings-agent
+title: Configuring Application Control Settings (Agent)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: config-appcon-settings-agent.md
+  conversion_date: '2025-09-08T23:42:23.010Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Before configuring an Application Control policy, ensure that you define all required Application Control criteria. Application Control policies require the use of preconfigured criteria that define which applications you want to "Allow" or "Block" on an endpoint or for a particular user.
+
+For more information, see [Application Control Criteria](application-control-criteria.mdx).
+
+### Procedure {#procedure}
+
+1.  Select **Enable Application Control**.
+
+2.  In the **User-defined Rules** section, assign rules to the endpoint based on the logged on user account.
+
+    :::warning[Important]
+
+    - User-based Application Control is only available if you have integrated Active Directory. If you do not have Active Directory integration, you can only assign criteria to the default *All user accounts* rule.
+
+    - You cannot delete the default *All user accounts* rule.
+    :::
+
+    1.  Add a new rule or modify an existing rule.
+
+        - To add a new rule, click **Assign Rule**.
+
+        - To modify an existing rule, click the value in the *User Accounts* column of the table.
+
+        The **Assign Rule** screen appears.
+
+    2.  Specify the **User Accounts** to which you want to apply specific Application Control criteria.
+
+        :::warning[Important]
+
+        - User-based Application Control is only available if you have integrated Active Directory. If you do not have Active Directory integration, you can only assign rules to the default *All user accounts* rule.
+
+        - You can only assign 30 users or groups per rule. Create additional rules if you need to assign a greater number of users to a policy.
+        :::
+
+    3.  Move the necessary criteria to the **Selected criteria** table by clicking the criteria **Name**.
+
+    4.  Click **Save**.
+
+    :::note
+
+    To change the *Priority* order of rules, select and drag rules to different locations in the list. Application Control applies a first match rule to users included in multiple rules.
+    :::
+
+3.  In the **Additional Actions** section, specify the action Application Control takes when a user attempts to execute an application that does not match any of the **User-defined Rule** criteria.
+
+    - **Allow: All other applications can execute**: Application Control takes no action on applications that do not match any of the **User-defined Rule** criteria. Choose when using Application Control to block or monitor application usage.
+
+    - **Lockdown: Block all applications not identified during the last inventory scan**: After endpoints receive this command, Application Control takes the following actions:
+
+      1.  Application Control scans the endpoint and creates a complete application inventory.
+
+      2.  Application Control "locks down" the endpoint and does not permit access to:
+
+          - Any application that does not specifically match *Allow* criteria defined in the **User-defined Rule** table
+
+          - Any application that does not specifically match assessment criteria defined in the **User-defined Rule** table
+
+          - Any application not found in the inventory scan results for that particular endpoint
+
+      - **Exclude applications by Trend Micro trusted vendors**: Select to automatically allow all applications that Trend Micro threat experts have determined come from trusted vendors
+
+      - **Enable assessment mode**: Select to log access to applications not specifically allowed to execute during Lockdown but do not block the applications
+
+        :::tip
+
+        Use assessment mode to determine which applications users may require before you completely block access to all applications you did not add to Allow Rules.
+        :::
+
+4.  In the **Agent Notifications** section, select **Display a notification when an application is blocked** to display a notification on the endpoint when Application Control blocks an application.
+
+5.  In the **Log Maintenance** section:
+
+    - **Maximum log age (in days)**: Specify the maximum number of days that the endpoint should keep log data
+
+    - **Maximum number of logs a Security Agent can send each hour per criteria**: Specify the maximum number of logs each Security Agent can send to the Apex One server every hour for each criteria rule
+
+      :::note
+
+      Depending on the number of Security Agents and your network settings, the amount of network traffic that the server receives may cause performance issues.
+      :::
+
+    :::warning[Important]
+
+    You must remember to **Deploy** or **Save** your Apex One Security Agent policy before leaving the screen. If you do not save the entire policy, you lose all changes.
+    :::
+:::

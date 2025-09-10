@@ -1,0 +1,45 @@
+---
+slug: trend-vision-one-1-2-21
+title: >-
+  1.2.21 - Ensure that the –service-account-lookup argument is set to true
+  (Automated)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: 1-2-21.md
+  conversion_date: '2025-09-08T23:42:26.350Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Profile applicability: Level 1 - Master Node
+
+Validate service account before validating token.
+
+If `--service-account-lookup` is not enabled, the apiserver only verifies that the authentication token is valid, and does not validate that the service account token mentioned in the request is actually present in etcd. This allows using a service account token even after the corresponding service account is deleted. This is an example of time of check to time of use security issue.
+
+:::note
+
+By default, `--service-account-lookup` argument is set to `true`.
+:::
+
+### Audit {#audit}
+
+Run the following command on the Control Plane node:
+
+``` codeblock
+ps -ef | grep kube-apiserver
+```
+
+Verify that if the `--service-account-lookup` argument exists it is set to `true`.
+
+### Remediation {#remediation}
+
+Edit the API server pod specification file /etc/kubernetes/manifests/kube-apiserver.yaml on the Control Plane node and set the below parameter.
+
+``` codeblock
+--service-account-lookup=true
+```
+
+Alternatively, you can delete the `--service-account-lookup` parameter from this file so that the default takes effect.
+::::

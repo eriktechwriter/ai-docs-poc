@@ -1,0 +1,924 @@
+---
+slug: trend-vision-one-search-syntax
+title: Query syntax
+---
+# Query syntax
+
+XDR Data Explorer allows you to query telemetry data and detections.
+
+- Select data sources to search a specific set of data.
+
+- Ensure that the characters you type exactly match the results that you want.
+
+- Some fields display substituted text for ID values and you cannot search for the text value. For example, *eventID* stores the numerical value *1* in the database but displays *TELEMETRY_PROCESS* in results. You cannot query *TELEMETRY_PROCESS*.
+
+The following tables describe query syntax and provide example strings:
+
+- Field-based syntax
+
+- Free query syntax
+
+- Logical operators and special characters
+
+- Token-based query syntax (partial match)
+
+- Wildcard queries
+
+- Query filters
+
+- Logical operator precedence
+
+- Escape operators and characters
+
+**Field-based syntax**
+
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 22%" />
+<col style="width: 18%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Target</p></th>
+<th><p>Description</p></th>
+<th><p>Supported Field Type</p></th>
+<th><p>Syntax</p></th>
+<th><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Partial match</p></td>
+<td><p>Provides all results for the specified field that contain the string</p></td>
+<td><ul>
+<li><p>String</p></li>
+<li><p>Dynamic</p></li>
+<li><p>Int</p></li>
+<li><p>Long</p></li>
+</ul>
+
+
+:::note
+
+<p>The int and long field types always use full match.</p>
+
+
+:::
+
+</td>
+<td><ul>
+<li><p><code>&lt;field_name&gt;: &lt;search_string&gt;</code></p></li>
+<li><p><code>&lt;field_name&gt;: "*&lt;search_string&gt;*"</code></p></li>
+</ul>
+
+
+:::note
+
+<p>To search or escape a special character, type <code> "*&lt;search_string&gt;*"</code>.</p>
+
+
+:::
+
+</td>
+<td><p><code>endpointName: windows</code></p>
+<p>Returns all results that contain "windows" in the endpoint name</p>
+<p><code>endpointName: *windows\/app*</code></p>
+<p>Returns all results that contain "windows/app" in the endpoint name</p></td>
+</tr>
+<tr>
+<td><p>Full match</p></td>
+<td><p>Provides all results for the specified field that contain the exact string specified</p></td>
+<td><ul>
+<li><p>String</p></li>
+<li><p>Dynamic</p></li>
+<li><p>Int</p></li>
+<li><p>Long</p></li>
+<li><p>Bool</p></li>
+</ul>
+
+
+:::note
+
+<p>The dynamic field type partially matches to every element.</p>
+
+
+:::
+
+</td>
+<td><p><code>&lt;field_name&gt;: "&lt;search_string&gt;"</code></p></td>
+<td><p><code>endpointName: "john_doe"</code></p>
+<p>Only returns results in which the endpoint name is "john_doe"</p></td>
+</tr>
+<tr>
+<td><p>Wildcards</p></td>
+<td><p>Provides results that match the field values substituting for the following wildcard characters:</p>
+<ul>
+<li><p>*: Used as a substitute for one or more characters in the specified location</p></li>
+</ul>
+
+
+:::warning[Important]
+
+<p>Wildcards are not supported for Network Activity Data IP addresses.</p>
+
+
+:::
+
+</td>
+<td><ul>
+<li><p>String</p></li>
+<li><p>Dynamic</p></li>
+</ul>
+
+
+:::note
+
+<p>The dynamic field type transforms the whole object to string before doing wildcard search. Using wildcards in dynamic type yields fewer results and decreases the query performance.</p>
+
+
+:::
+
+</td>
+<td><p><code>&lt;field_name&gt;: &lt;search_string&gt;*</code></p></td>
+<td><p><code>endpointName: "john*"</code></p>
+<p>Returns all results that contain "john" as the first 4 characters in the endpoint name</p>
+<p>Example results: "john", "john_doe", "johndoe", "johnd"</p></td>
+</tr>
+<tr>
+<td><p>Range operator</p></td>
+<td><p>Provides all results that match the requirements specified for multiple fields using the following operators:</p>
+<ul>
+<li><p>&gt;</p></li>
+<li><p>&lt;</p></li>
+<li><p>&gt;=</p></li>
+<li><p>&lt;=</p></li>
+</ul></td>
+<td><ul>
+<li><p>Int</p></li>
+<li><p>Long</p></li>
+</ul></td>
+<td><p><code>&lt;field_name&gt; &lt;range_operator&gt; &lt;number&gt;</code></p></td>
+<td><p><code>"dpt &gt;= 80" AND "dpt &lt;= 443"</code></p>
+<p>Only returns results in which the log data contains integers in a range from greater than or equal to 80 to less than or equal to 443</p></td>
+</tr>
+<tr>
+<td><p>Regex</p></td>
+<td><p>Returns all entries where the regular expression matches any part (beginning, middle, or end) of the field's content.</p>
+<p>For more information, go to <a href="trend-vision-one-using-regex-search-queries">Use regex in queries</a>.</p></td>
+<td><ul>
+<li><p>String</p></li>
+</ul></td>
+<td><p><code>&lt;field_name&gt;: /&lt;search_string&gt;/</code></p></td>
+<td><p><code>endpointHostName: /\\w*(trend|trendmicro)\.com/</code></p></td>
+</tr>
+</tbody>
+</table>
+
+**Free query syntax**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Target</p></th>
+<th><p>Description</p></th>
+<th><p>Syntax</p></th>
+<th><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Partial match</p></td>
+<td><p>Provides all results that contain the string in any data field.</p>
+
+
+:::note
+
+<p>Free queries are not supported for Network Activity Data.</p>
+
+
+:::
+
+</td>
+<td><ul>
+<li><p><code>"search_string"</code></p></li>
+<li><p><code>search_string</code></p></li>
+</ul>
+
+
+:::note
+
+<p>Use field-based syntax to query numbers and bool field type.</p>
+
+
+:::
+
+</td>
+<td><p><code>"john"</code></p>
+<p>Returns all results that contain the string "john" in any data field</p></td>
+</tr>
+<tr>
+<td><p>Full match</p></td>
+<td><p>Not available</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+</tr>
+</tbody>
+</table>
+
+**Logical operators and special characters**
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 23%" />
+<col style="width: 19%" />
+<col style="width: 22%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Operator Type</p></th>
+<th><p>Description</p></th>
+<th>Supported Types</th>
+<th><p>Syntax</p></th>
+<th><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Multiple fields</p></td>
+<td><p>Provides all results that match the requirements specified for multiple fields using the following operators:</p>
+<ul>
+<li><p>AND</p></li>
+<li><p>OR</p></li>
+<li><p>NOT</p></li>
+</ul>
+
+
+:::note
+
+<p>Query performance decreases when using multiple logical operators.</p>
+
+
+:::
+
+</td>
+<td><ul>
+<li><p>Field-based</p></li>
+<li><p>Free query</p></li>
+</ul></td>
+<td><p><code>&lt;field_name&gt;: &lt;search_string1&gt; OPERATOR &lt;field_name&gt;:&lt;search_string2&gt;</code></p>
+
+
+:::note
+
+<p>Escape special characters using a backslash (\) for partial match, full match, and wildcard search:</p>
+<ul>
+<li><p>Without double quotation marks: \():&lt;&gt;"{}</p></li>
+<li><p>Within double quotation marks: "\", "\\"</p></li>
+<li><p>"*" is not supported and is escaped</p></li>
+</ul>
+
+
+:::
+
+</td>
+<td><p><code>endpointName: "john_doe" AND fileName: "credit"</code></p>
+<p>Only returns results in which the log data contains both "john_doe" and "credit" in any field (example: objectUser=john_doe2; fileName=creditcard.txt)</p>
+<p><code>"john_doe" AND NOT "home"</code></p>
+<p>Only returns results in which the log data contains "john_doe" but does not contain "home" in any field</p></td>
+</tr>
+<tr>
+<td><p>Multiple values</p></td>
+<td><p>Provides all results that match the requirements specified for multiple values using the following operators:</p>
+<ul>
+<li><p>AND</p></li>
+<li><p>OR</p></li>
+<li><p>NOT</p></li>
+</ul></td>
+<td><ul>
+<li><p>Field-based</p></li>
+<li><p>Free query</p></li>
+</ul></td>
+<td><p><code>&lt;field_name&gt;: &lt;search_string1&gt; OPERATOR &lt;search_string2&gt;</code></p></td>
+<td><p><code>endpointName:"john_doe" OR "jane_doe"</code></p>
+<p>Returns results in which the endpoint name is "john_doe" or "jane_doe"</p></td>
+</tr>
+<tr>
+<td><p>IN</p></td>
+<td><p>Provides all results that contain certain values included in the query.</p></td>
+<td><ul>
+<li><p>String</p></li>
+<li><p>Number fields</p></li>
+</ul></td>
+<td><p><code>&lt;search_field&gt; IN (&lt;number1&gt;, &lt;number2&gt;)</code></p>
+<p><code>&lt;search_field&gt; IN ("&lt;string1&gt;", "&lt;string2&gt;")</code></p></td>
+<td><p><code>port IN (80, 443, 5376)</code></p>
+<p><code>endpointHostName IN (“endpoint-name-1“, “endpoint-name-2“, “endpoint-name-3“)</code></p></td>
+</tr>
+<tr>
+<td><p>Nested value match</p></td>
+<td><p>Provides all results that match a JSON object containing another JSON object as a nested structure.</p>
+
+
+:::warning[Important]
+
+<p>Nested values must be a string, number, or object to return results.</p>
+
+
+:::
+
+</td>
+<td><p>Dynamic fields</p></td>
+<td><p><code>&lt;outer_field&gt;.&lt;nested_field_1&gt;.&lt;nested_field_2&gt;....&lt;nested_field_n&gt;: &lt;search_value&gt;</code></p></td>
+<td><p><code>vendorParsed.act: *</code></p>
+<p><code>vendorParsed.foo: "bar"</code></p>
+<p>Returns results in which third-party logs are flattened to one layer in the <code>vendorParsed</code> field</p></td>
+</tr>
+</tbody>
+</table>
+
+**Token-based query syntax (partial match)**
+
+<table>
+<colgroup>
+<col style="width: 70%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Criteria</p>
+<p>(Example: "Trend_Micro-Vision-One: fa73ad07-ef36-48e6-8bb3-e91fedaf4a04 john_doe@trendmicro.com john\trend\project\abc.txt")</p></th>
+<th><p>Returns Results</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>&lt;field_name&gt;: Trend</code></p>
+
+
+:::note
+
+<p>Token-based queries use partial match. By default, XDR Data Explorer breaks each string value into sequences of alphanumeric characters called tokens. Tokens comprise three or more alphanumeric characters. You can use partial matches in both field-based and free queries.</p>
+
+
+:::
+
+</td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: TREND</code></p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: "*Trend*"</code></p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: Tre</code></p>
+
+
+:::note
+
+<p>The result only compares the complete token. A token in query criteria with less than three characters reduces performance.</p>
+
+
+:::
+
+</td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: Trend_Mic</code></p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: Micro</code></p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: Trend_Micro</code></p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: TREND_MICRO</code></p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: Trend_</code></p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: e91fe</code></p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: fa73ad07</code></p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: fa73ad07-ef36-48e6-8bb3-e91fedaf4a04</code></p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: john_doe@trendmicro.com</code></p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: Trend_Micro-Vision-One\: fa73ad07-ef36-48e6-8bb3-e91fedaf4a04 john_doe@trendmicro.com john\\trend\\project\\abc.txt</code></p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: Trend_Micro-Vision-One: fa73ad07-ef36-48e6-8bb3-e91fedaf4a04 john_doe@trendmicro.com john\trend\project\abc.txt</code></p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: "*Trend_Micro-Vision-One\: fa73ad07-ef36-48e6-8bb3-e91fedaf4a04 john_doe@trendmicro.com john\\trend\\project\\abc.txt*"</code></p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: "*Trend_Micro-Vision-One: fa73ad07-ef36-48e6-8bb3-e91fedaf4a04 john_doe@trendmicro.com john\\trend\\project\\abc.txt*"</code></p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: "*john\\trend\\project\\abc.txt*"</code></p></td>
+<td><p>Yes</p></td>
+</tr>
+</tbody>
+</table>
+
+**Wildcard queries**
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Category</p></th>
+<th><p>Description</p></th>
+<th><p>Example</p></th>
+<th><p>Token-based query</p></th>
+<th><p>Case-sensitive</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Start with</p>
+
+
+:::note
+
+<p>Wildcard queries for the categories <em>Start with</em>, <em>End with</em> and <em>MISC</em> in dynamic fields decreases query performance.</p>
+
+
+:::
+
+</td>
+<td><p>An asterisk (*) is at the end of the string.</p></td>
+<td><p><code>Trend*</code></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>End with</p></td>
+<td><p>An asterisk (*) is at the beginning of the string.</p></td>
+<td><p><code>*Micro</code></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>Contain</p></td>
+<td><p>An asterisk (*) is at the beginning and the end of the string.</p>
+
+
+:::note
+
+<p><em>Contain</em> category wildcard queries usepartial match.</p>
+
+
+:::
+
+</td>
+<td><code>*Vision*</code></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>MISC.</p></td>
+<td><p>There are one or several asterisks (*) in the middle of the string.</p>
+
+
+:::note
+
+<ul>
+<li><p>The match pattern can be in the middle of the string value: "Tre*d" matches the value "HelloTrendMicro".</p></li>
+</ul>
+
+
+:::
+
+</td>
+<td><ul>
+<li><p><code>Tr*nd</code></p></li>
+<li><p><code>**Micro</code></p></li>
+<li><p><code>*Vis*ion*</code></p></li>
+<li><p><code>One**</code></p></li>
+</ul></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 14%" />
+<col style="width: 37%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Query Criteria</p>
+<p>(Example: "Trend_Micro-Vision-One: fa73ad07-ef36-48e6-8bb3-e91fedaf4a04 john_doe@trendmicro.com")</p></th>
+<th><p>Category</p></th>
+<th><p>Description</p></th>
+<th><p>Returns Results</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>&lt;field_name&gt;: "Trend*"</code></p></td>
+<td><p><code>Start with</code></p></td>
+<td><p>Finds the values that start with "Trend".</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: "trend*"</code></p></td>
+<td><p><code>Start with</code></p></td>
+<td><p>Finds the values that start with "trend".</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: "*trendmicro.com"</code></p></td>
+<td><p><code>End with</code></p></td>
+<td><p>Finds the values that end with "trendmicro.com".</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: "*TRENDMICRO.COM"</code></p></td>
+<td><p><code>End with</code></p></td>
+<td><p>Finds the values that end with "TRENDMICRO.COM".</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: "*Trend_Micro*"</code></p></td>
+<td><p><code>Contain</code></p></td>
+<td><p>Finds the values that contain "Trend_Micro".</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: "*trend_micro*"</code></p></td>
+<td><p><code>Contain</code></p></td>
+<td><p>Finds the values that contain "trend_micro".</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: "Trend*com"</code></p></td>
+<td><p><code>MISC.</code></p></td>
+<td><p>Finds the values that have "Trend" as the beginning and "com" as the end of the string.</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: "Tre*"</code></p></td>
+<td><p><code>Start with</code></p></td>
+<td><p>Finds the values that start with "Tre".</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: "*micro.com"</code></p></td>
+<td><p><code>End with</code></p></td>
+<td><p>Finds the values that end with "micro.com".</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: "*fa73ad07*e91fedaf4a04*"</code></p></td>
+<td><p><code>MISC.</code></p></td>
+<td><p>Finds the values that match "*fa73ad07*e91fedaf4a04*".</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: "fa73ad07*e91fedaf4a04"</code></p></td>
+<td><p><code>MISC.</code></p></td>
+<td><p>Finds the values that match "fa73ad07*e91fedaf4a04".</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: "fa73ad07*"</code></p></td>
+<td><p><code>Start with</code></p></td>
+<td><p>Finds the values that start with "fa73ad07".</p>
+<p>"fa73ad07" is the start of a token but not the start of the whole string, so the result does not match.</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: "fa73ad07**"</code></p></td>
+<td><p><code>MISC.</code></p></td>
+<td><p>Finds the values that match "fa73ad07**".</p>
+<p>Since there is a "*" in the middle of the string, this is a MISC. wildcard search.</p>
+<p>The MISC. wildcard searches for results even in the middle of the string.</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: "*Vision-One"</code></p></td>
+<td><p><code>End with</code></p></td>
+<td><p>Finds the values that end with "Vision-One".</p>
+<p>"Vision-One" is the end of a token but not the end of the whole string, so the result does not match.</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: "**Vision-One"</code></p></td>
+<td><p><code>MISC.</code></p></td>
+<td><p>Finds the values that match "**Vision-One".</p>
+<p>Since there is a "*" in the middle of the string, this is a MISC. wildcard search.</p>
+<p>The MISC. wildcard searches for results even in the middle of the string.</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: "**vision-one"</code></p></td>
+<td><p><code>MISC.</code></p></td>
+<td><p>Finds the values that match "**vision-one".</p>
+<p>MISC. wildcard search is case-sensitive, so "vision-one" does not match "Vision-One".</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: "*Visio*"</code></p></td>
+<td><p><code>Contain</code></p></td>
+<td><p>Finds the values that contain "Visio".</p>
+<p>"Visio" is not a token in the string, so the result does not match.</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p><code>&lt;field_name&gt;: "VISION*COM"</code></p></td>
+<td><p><code>MISC.</code></p></td>
+<td><p>Finds the values that have "VISION" in the beginning and "COM" in the end of the string.</p>
+<p>MISC. wildcard search is case-sensitive, so "vision" does not match "Vision".</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+
+**Query filters**
+
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 38%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+<th><p>Supported Field Types</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Add Filter: field IS value</p></td>
+<td><p>Adds the selected value as criteria to the existing query.</p></td>
+<td><ul>
+<li><p>String</p></li>
+<li><p>Dynamic</p></li>
+<li><p>Int</p></li>
+<li><p>Long</p></li>
+</ul>
+
+
+:::note
+
+<p>The dynamic type partially matches to every element.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Add Filter: field IS NOT value</p></td>
+<td><p>Adds the selected value as an exception to the existing query.</p></td>
+<td><ul>
+<li><p>String</p></li>
+<li><p>Dynamic</p></li>
+<li><p>Int</p></li>
+<li><p>Long</p></li>
+</ul>
+
+
+:::note
+
+<p>The dynamic type removes all results that only have partial match results.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Add Filter: field IS EMPTY</p></td>
+<td><p>Adds the selected field with no value as criteria to the existing query.</p></td>
+<td><ul>
+<li><p>String</p></li>
+<li><p>Dynamic</p></li>
+<li><p>Int</p></li>
+<li><p>Long</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Add Filter: field EXISTS</p></td>
+<td><p>Adds the selected field with any value as criteria to the existing query.</p></td>
+<td><ul>
+<li><p>String</p></li>
+<li><p>Dynamic</p></li>
+<li><p>Int</p></li>
+<li><p>Long</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Add Filter: field DOES NOT EXIST</p></td>
+<td><p>Adds the selected field with no value as criteria to the existing query.</p></td>
+<td><ul>
+<li><p>String</p></li>
+<li><p>Dynamic</p></li>
+<li><p>Int</p></li>
+<li><p>Long</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Logical operator precedence**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Precedence</p></th>
+<th><p>Operator</p></th>
+<th><p>Description</p></th>
+<th><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>1</p></td>
+<td><p>( )</p></td>
+<td><p>Group logical expressions</p></td>
+<td><p>Return events that include port 80, 81, or 82</p>
+<p><code>port: (80 OR 81 OR 82)</code></p></td>
+</tr>
+<tr>
+<td><p>2</p></td>
+<td><p>NOT</p></td>
+<td><p>Logical NOT</p></td>
+<td><p>Return events that do not include port 80</p>
+<p><code>NOT port: 80</code></p></td>
+</tr>
+<tr>
+<td><p>3</p></td>
+<td><p>AND</p></td>
+<td><p>Logical AND</p></td>
+<td rowspan="2">
+
+:::note
+
+<p>The AND operator has a higher precedence than OR, but the precedence can be overridden by grouping the operators in parentheses. The following two queries are equal:</p>
+<ul>
+<li><p><code>port: 80 OR port: 81 AND endpointHostname: "john"</code></p></li>
+<li><p><code>port: 80 OR (port: 81 AND endpointHostname: "john")</code></p></li>
+</ul>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>4</p></td>
+<td><p>OR</p></td>
+<td><p>Logical OR</p></td>
+</tr>
+</tbody>
+</table>
+
+**Escape operators and characters**
+
+<table>
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 25%" />
+<col style="width: 52%" />
+</colgroup>
+<thead>
+<tr>
+<th>Category</th>
+<th>Operator or Character</th>
+<th>Match Type and Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Keyword</p></td>
+<td><ul>
+<li><p>AND</p></li>
+<li><p>OR</p></li>
+<li><p>NOT</p></li>
+</ul></td>
+<td><p>Partial match</p>
+<ul>
+<li><p><code>ruleName: Engine \AND analyzed</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Special character</p></td>
+<td><ul>
+<li><p>\</p></li>
+<li><p>(</p></li>
+<li><p>)</p></li>
+<li><p>:</p></li>
+<li><p>&lt;</p></li>
+<li><p>&gt;</p></li>
+<li><p>"</p></li>
+<li><p>*</p></li>
+<li><p>{</p></li>
+<li><p>}</p></li>
+</ul></td>
+<td><p>Partial match</p>
+<ul>
+<li><p><code>processCmd: C\:</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Full match keyword</p></td>
+<td><ul>
+<li><p>"</p></li>
+<li><p>\</p></li>
+</ul></td>
+<td><p>Full match</p>
+<ul>
+<li><p><code>objectCmd: "*hang\""</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Regex keyword</p></td>
+<td><ul>
+<li><p>\</p></li>
+<li><p>/</p></li>
+</ul></td>
+<td><p>Regex match</p>
+<ul>
+<li><p><code>filePath: /\/etc\/pwd\/config\/aaa/</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>White space</p></td>
+<td><ul>
+<li><p>\t</p></li>
+<li><p>\r</p></li>
+<li><p>\n</p></li>
+</ul></td>
+<td><p>Partial match</p>
+<ul>
+<li><p><code>objectRegistryData: *\\t**</code></p></li>
+</ul>
+<p>Regex match</p>
+<ul>
+<li><p><code>filePath: /\windows\system\\temp/</code></p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Use regex in queries](using-regex-search-queries.md "Create queries that match specified patterns with regular expressions (regex).")
+:::

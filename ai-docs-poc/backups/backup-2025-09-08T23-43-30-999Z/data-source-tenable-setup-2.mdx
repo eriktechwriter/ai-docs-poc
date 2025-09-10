@@ -1,0 +1,75 @@
+---
+slug: trend-vision-one-data-source-tenable-setup-2
+title: Tenable Vulnerability Management integration
+last_updated: '2025-09-08'
+ai_context:
+  source_file: data-source-tenable-setup-2.md
+  conversion_date: '2025-09-08T23:42:20.819Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Gain vulnerability insights by connecting your Tenable Vulnerability Management data source with Trend Vision One.
+
+Connect your Tenable Vulnerability Management environment to Trend Vision One to gain access to the following reports:
+
+- Operating systems with detected vulnerabilities
+
+- Applications with detected vulnerabilities
+
+:::note
+
+The specified Tenable Vulnerability Management account requires the following permission:
+
+- Access Control - Can View (for the asset objects to be exported)
+:::
+
+### Procedure {#procedure}
+
+1.  Generate the Tenable Vulnerability Management Secret Key and Access Key required to allow connection from the Trend Vision One console.
+
+    :::warning[Important]
+
+    The following Tenable Vulnerability Management instructions were valid as of August 30, 2024. For further help, check your Tenable Vulnerability Management documentation.
+    :::
+
+    1.  Sign in to your Tenable Vulnerability Management portal using an account with one of the following roles:
+
+        - Basic
+
+        - Scan Operator
+
+        - Standard
+
+        - Scan Manager
+
+        - Administrator
+
+    2.  Access the **My Account** page.
+
+    3.  Click **API Keys**.
+
+    4.  Click **Generate**.
+
+        Tenable Vulnerability Management generates new access and secret keys and displays the keys in the Custom API Keys section.
+
+    5.  Copy the access key and secret key for later use on the Trend Vision One console.
+
+        :::warning[Important]
+
+        You can only view and retrieve the API Keys immediately after generating. If you lose the keys, you must regenerate new keys.
+        :::
+
+2.  Connect your Tenable Vulnerability Management data source to Trend Vision One.
+
+    1.  In the Trend Vision One console, go to **Cyber Risk Exposure Management → Cyber Risk Overview** and click **Data sources**.
+
+    2.  In the **Third-Party Data Sources** section, click **Tenable Vulnerability Management**.
+
+    3.  Paste the Tenable Vulnerability Management secret key in the **Tenable Vulnerability Management secret key** field.
+
+    4.  Paste the Tenable Vulnerability Management access key in the **Tenable Vulnerability Management access key** field.
+
+    5.  Click **Save**.
+::::

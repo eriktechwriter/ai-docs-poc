@@ -1,0 +1,37 @@
+---
+slug: trend-vision-one-1-1-15
+title: >-
+  1.1.15 - Ensure that the scheduler.conf file permissions are set to 600 or
+  more restrictive (Automated)
+---
+# 1.1.15 - Ensure that the scheduler.conf file permissions are set to 600 or more restrictive (Automated)
+
+Profile applicability: Level 1 - Master Node
+
+Ensure that the `scheduler.conf` file has permissions of 600 or more restrictive.
+
+The `scheduler.conf` file is the kubeconfig file for the Scheduler. You should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system.
+
+:::note
+
+By default, `scheduler.conf` has permissions of 640.
+:::
+
+### Audit {#audit}
+
+Run the following command (based on the file location on your system) on the Control Plane node.
+
+```bash
+stat -c %a /etc/kubernetes/scheduler.conf
+```
+
+Verify that the permissions are 600 or more restrictive.
+
+### Remediation {#remediation}
+
+Run the below command (based on the file location on your system) on the Control Plane node.
+
+```bash
+chmod 600 /etc/kubernetes/scheduler.conf
+```
+::::

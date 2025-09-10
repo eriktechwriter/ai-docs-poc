@@ -1,0 +1,48 @@
+---
+slug: trend-vision-one-cloud-service-extension
+title: Cloud service extension
+last_updated: '2025-09-08'
+ai_context:
+  source_file: cloud-service-extension.md
+  conversion_date: '2025-09-08T23:42:23.400Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Reduce your firewall requirements and filter Trend Vision One traffic with the cloud service extension for Service Gateway.
+
+The Service Gateway appliance helps facilitate traffic from Trend Micro products and managed endpoint agents to Trend Vision One hosted services. To help reduce setup requirements, the **cloud service extension** acts as an HTTPS proxy to direct certain traffic from your on-premises products to Trend Vision One hosted services. The cloud service extension requires no additional credit allocation to use.
+
+Together with the Smart Protection Network Proxy, the cloud service extension can greatly reduce the number of exceptions and FQDNs necessary to configure your firewall. You can easily turn on the cloud service extension in the [Service Gateway settings](config-service-gateway-settings.mdx) menu.
+
+![](/images/SG_cloudserviceextension=GUID-4e490636-a7f2-4fff-9680-645ea4ea84ea.webp)
+
+For more information about firewall settings, see [Firewall exception requirements for Trend Vision One](firewall-exception-requirements-for.mdx).
+
+For specific firewall requirements for your region, view the following:
+
+- [Firewall exceptions: Americas - cloud service extension](firewall-americas-cloud-service.mdx)
+
+- [Firewall exceptions: Australia - cloud service extension](firewall-australia-cloud-service.mdx)
+
+- [Firewall exceptions: Europe - cloud service extension](firewall-europe-cloud-service.mdx)
+
+- [Firewall exceptions: India - cloud service extension](firewall-india-cloud-service.mdx)
+
+- [Firewall exceptions: Japan - cloud service extension](firewall-japan-cloud-service.mdx)
+
+- [Firewall exceptions: Singapore - cloud service extension](firewall-singapore-cloud-service.mdx)
+
+:::warning[Important]
+
+If Smart Protection Services is installed on the Service Gateway, you must enable **Smart Protection Network Proxy** from the Service Gateway settings to further reduce firewall exception and port requirements.
+
+For more information, see [Smart Protection Services](smart-protection-services.mdx).
+:::
+
+:::note
+
+The cloud service extension cannot be enabled on Service Gateway appliances with the Zero Trust Secure Access - Internet Access On-premises Gateway service enabled. The cloud service extension might interfere with the normal operations of the on-premises gateway.
+:::
+:::::

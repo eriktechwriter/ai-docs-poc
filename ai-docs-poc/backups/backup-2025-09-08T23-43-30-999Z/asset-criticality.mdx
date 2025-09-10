@@ -1,0 +1,100 @@
+---
+slug: trend-vision-one-asset-criticality
+title: Asset criticality
+last_updated: '2025-09-08'
+ai_context:
+  source_file: asset-criticality.md
+  conversion_date: '2025-09-08T23:42:24.811Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Asset criticality indicates the importance of an asset to your organization's operations.
+
+An asset is considered critical if compromise of the asset causes severe consequences such as business interruption.
+
+Cyber Risk Exposure Management uses criticality information to calculate asset risk scores. Two assets with the same risk events and different criticality levels are not assigned the same risk scores and should therefore be managed differently.
+
+When assigning criticality levels, Cyber Risk Exposure Management considers significant profile tags derived from data collected by connected sources. Asset criticality levels are evaluated daily.
+
+You can manually assign a custom criticality for assets if you think that the system-defined value is inaccurate. When viewing the criticality of an asset, click **Modify Criticality** to select a custom criticality. You may also select one or more assets from the asset list to modify the criticality of multiple assets. You can revert to using the system-defined criticality at any time.
+
+:::warning[Important]
+
+Connect to as many data sources as possible so that Cyber Risk Exposure Management can obtain the profile tags required to determine asset criticality. For more information, see [Configure Cyber Risk Exposure Management data sources](configuring-data-sources.mdx).
+:::
+
+The following table outlines the main asset criticality concepts.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Information</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Criticality level</p></td>
+<td><p>Determined by significant profile tags and used to calculate asset risk scores</p>
+<ul>
+<li><p>High-criticality assets are essential to your organization's operations and are likely to be targeted by threat actors. Compromise of such assets can cause business interruption and other severe consequences so prioritize these assets when implementing risk control measures.</p></li>
+<li><p>Medium-criticality assets are important to your organization's operations and may attract the attention of threat actors. Compromise of such assets can cause some business impact, but not to the same degree of severity as compromise of high-criticality assets.</p></li>
+<li><p>Low-criticality assets have minimal operational value and do not require close monitoring. Compromise of such assets usually has minor effects on infrastructure and business operations.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Profile tags</p></td>
+<td><p>Extracted from data collected by connected data sources</p>
+<p>Profile tags that are considered significant are used to evaluate criticality levels.</p>
+<p>For more information, see <a href="trend-vision-one-asset-profile-tags">Asset profile platform tags</a>.</p></td>
+</tr>
+</tbody>
+</table>
+
+You can view and manually modify the criticality of assets in the following locations:
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Location</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Asset lists</p></td>
+<td><p>Example: <strong>Attack Surface Discovery → Accounts → Domain accounts → Domain Account List</strong></p>
+<p>Accounts marked with star icon are highly critical to your organization. Clicking the icon opens a window that contains asset criticality information.</p></td>
+</tr>
+<tr>
+<td><p>Asset details</p></td>
+<td><p>Clicking the name of any asset opens a details screen that includes the <strong>Asset Profile</strong> tab, which displays the following information:</p>
+<ul>
+<li><p>Criticality level</p></li>
+<li><p>Significant profile tags</p></li>
+<li><p>Full list of profile tags</p>
+
+
+:::tip
+
+<p>Click a profile tag to view information available for that tag.</p>
+
+
+:::
+
+</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+::::

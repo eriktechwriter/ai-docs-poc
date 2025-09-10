@@ -1,0 +1,81 @@
+---
+slug: trend-vision-one-add-urls-microsoft-edge
+title: Allow phishing simulation URLs in Microsoft Edge via group policy
+---
+# Allow phishing simulation URLs in Microsoft Edge via group policy
+
+Add phishing simulation URLs to the Microsoft Edge Allowed Domains list in Microsoft Entra ID to keep simulation links from triggering Microsoft Defender SmartScreen warnings.
+
+### Before you begin {#before-you-begin}
+
+Before you start, make sure you have:
+
+- Administrative access to Microsoft Entra ID
+
+- Permission to configure group policy objects (GPOs)
+
+- Permission to download and install policy files for Microsoft Edge
+
+Adding phishing simulation URLs to the Microsoft Edge Allowed Domains list involves downloading policy files, modifying group policy settings, and applying the changes to make sure simulation links function correctly.
+
+### Procedure {#procedure}
+
+1.  Download the Microsoft Edge policy files.
+
+    1.  Go to the [Microsoft Edge Business Download](https://www.microsoft.com/en-us/edge/business/download) page.
+
+    2.  Scroll to the section labeled "Looking for an older version of Edge?"
+
+    3.  Select the latest options for **Select channel version**, **Select build**, and **Platform**.
+
+    4.  Click **Get Policy Files** to download `MicrosoftEdgePolicyTemplates.cab`.
+
+2.  Prepare the policy files.
+
+    1.  Double-click the downloaded CAB file and extract `MicrosoftEdgePolicyTemplates.zip` to a temporary folder.
+
+    2.  Go to the extracted folder and open `\windows\admx`.
+
+    3.  Copy `msedgeupdate.admx` and `msedge.admx` to `C:\Windows\PolicyDefinitions`.
+
+3.  Install language-specific templates.
+
+    1.  Return to the extracted folder and go to `\windows\admx\<Appropriate Language>` (for example, en-US).
+
+    2.  Copy `msedge.adml` and `msedgeupdate.adml` to `C:\Windows\PolicyDefinitions\<Appropriate Language>`.
+
+4.  Record the **Security Awareness** sending IP addresses.
+
+    1.  On the Trend Vision One console, go to **Cyber Risk Exposure Management → Security Awareness → Phishing Simulations**.
+
+    2.  Click **Settings**.
+
+    3.  Click **Settings** and copy the sending IP addresses and simulation URLs.
+
+        :::warning[Important]
+
+        The sending IP addresses change over time. Check the list before launching a training campaign or phishing simulation.
+        :::
+
+5.  Configure the group policy.
+
+    1.  Open the Group Policy Management Editor.
+
+    2.  Go to **Computer Configuration → Microsoft Edge → SmartScreen Settings**.
+
+    3.  Enable **Configure the list of domains for which Microsoft Defender SmartScreen won’t trigger warnings** and click **Show**.
+
+    4.  In the window that appears, add the URLs and IP addresses you copied from Security Awareness Training.
+
+    5.  Click **OK**, then **Apply**, and **OK** again to save and close the settings.
+
+6.  Apply and verify the GPO.
+
+    1.  Link the newly configured GPO to the appropriate Organizational Unit (for example, Domain Controllers).
+
+    2.  On a target device, open a CLI as Administrator and run `gpupdate /force` to apply the GPO to the device.
+
+    3.  Open regedit and go to `HKLM\SOFTWARE\Policies\Microsoft\Edge\SmartScreenAllowListDomains` to verify the URLs are listed.
+
+    4.  Try to access a phishing simulation URL to make sure the page is accessible and displays correctly.
+:::

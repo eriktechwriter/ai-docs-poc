@@ -1,0 +1,60 @@
+---
+slug: trend-vision-one-create-default-endpoint-policies
+title: Configure endpoint proxies and policies
+---
+# Configure endpoint proxies and policies
+
+Configure your endpoint policies to ensure your deployed agents automatically apply the correct protection and detection features to provide security for your network and connect to Trend Vision One successfully. Trend Micro recommends configuring your proxy and default policies before deploying new agents.
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Policy type</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Agent installer proxy</p></td>
+<td><p>Configure the connection settings for the agent package to use during initial download and installation</p>
+<p>Go to <strong>Endpoint Security → Endpoint Inventory</strong>, click the <strong>Global Settings</strong> icon (<img src="./images/eiDefaultGlobalIcon=20230614094040.webp" />). Go to <strong>Agent Installer Proxy</strong> and configure your proxy settings.</p>
+<p>For more information, see <a href="trend-vision-one-agent-installer-proxy-settings">Agent Installer Proxy Settings</a>.</p></td>
+</tr>
+<tr>
+<td><p>Runtime proxy policies</p></td>
+<td><p>Configure the connection settings for the Trend Vision One Endpoint Security agent to use to communicate with Trend Vision One after deployment</p>
+<p>Go to <strong>Endpoint Security → Endpoint Inventory</strong>, click the <strong>Global Settings</strong> icon (<img src="./images/eiDefaultGlobalIcon=20230614094040.webp" />). Go to <strong>Runtime Proxy Settings</strong> and configure your proxy settings.</p>
+<p>For more information, see <a href="trend-vision-one-runtime-proxy-settings">Runtime Proxy Settings</a>.</p></td>
+</tr>
+<tr>
+<td><p>Endpoint security policies</p></td>
+<td><p>Use policies to manage agent configurations, such as enabling the endpoint detection and response feature</p>
+<p>Go to <strong>Endpoint Security → Endpoint Security Configuration → Endpoint Security Policies</strong> to create and manage your policies.</p>
+<p>For more information, see <a href="trend-vision-one-sensor-settings-policies">Endpoint Security Policies</a>.</p></td>
+</tr>
+<tr>
+<td><p>Version control policies</p></td>
+<td><p>Use policies to manage agent update settings</p>
+<p>Go to <strong>Endpoint Security → Endpoint Security Configuration → Version Control Policies</strong> to create and manage your version control policies.</p>
+<p>For more information, see <a href="trend-vision-one-security-update-policies">Version Control Policies</a>.</p></td>
+</tr>
+<tr>
+<td><p>Endpoint Protection Manager policies</p></td>
+<td><p>Configure policies for Standard Endpoint Protection and Server &amp; Workload Protection features</p>
+<p>If you deploy your Trend Vision One Endpoint Security agent with an endpoint protection module enabled, use the Protection Managers to configure additional policy settings.</p>
+<ul>
+<li><p>For Standard Endpoint Protection, access the <a href="trend-vision-one-policy-management-apex-overview">Policy Management</a> screen. Go to <strong>Endpoint Security → Standard Endpoint Protection → Policies → Policy Management</strong> and click the <strong>Create</strong> button. Configure a default policy using <a href="trend-vision-one-filtering-by-criteria">target filters</a> and configure the <a href="trend-vision-one-apex-one-security-agent-policies">policy settings</a>.</p></li>
+<li><p>For Server &amp; Workload Protection, configure by <a href="trend-vision-one-create-policies">creating a new policy</a> and using the <a href="trend-vision-one-agent-initiated-activation">agent-initiated activation</a> feature available in Server &amp; Workload Protection.</p>
+<ol>
+<li><p>Set up your default policy by going to <strong>Endpoint Security → Server &amp; Workload Protection → Policies → New → New policy</strong>.</p></li>
+<li><p>Set up agent-initiated activation by going to <strong>Endpoint Security → Server &amp; Workload Protection → Administration → System Settings → Agents</strong>.</p></li>
+</ol></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+:::

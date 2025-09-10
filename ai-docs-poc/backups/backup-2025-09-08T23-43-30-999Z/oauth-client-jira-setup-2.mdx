@@ -1,0 +1,58 @@
+---
+slug: trend-vision-one-oauth-client-jira-setup-2
+title: Oauth client Jira setup
+last_updated: '2025-09-08'
+ai_context:
+  source_file: oauth-client-jira-setup-2.md
+  conversion_date: '2025-09-08T23:42:14.876Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+You can configure your Jira instances for Cloud Risk Management to communicate via OAuth.
+
+:::note
+
+Users should be able to create/update application links on their Jira instance.
+:::
+
+### Procedure {#procedure}
+
+1.  Log in to your Jira Instance.
+
+2.  From the *Applications* tab, select *Application links* settings.
+
+    1.  For *Jira on Premise -* navigate to *Jira settings* (cog icon) \> *Applications* \> *Application links*.
+    2.  For *Jira Cloud* - navigate to *Jira settings* (cog icon) \> *Products* \> *Application links*.
+
+3.  In the *Enter the URL of the application you want to link* field, Enter `{your Jira instance URL}:{port}/cloudconformity` then Click *Create new link*. For example, the URL would become <https://yourdomain.atlassian.net/cloudconformity> if your Jira instance is <https://yourdomain.atlassian.net>
+
+4.  Click *Continue*
+
+5.  Add the following information and click *Continue.*
+
+    - *Application Name:* CloudConformity
+    - *Application Type:* Generic Application
+    - *Service Provider Name:* Cloud Risk Management
+    - *Consumer key:* CloudConformity
+    - *Shared secret:* CloudConformity
+    - *Request Token URL:* <https://yourdomain.atlassian.net>[/cloudconformity](http://eu1.desync.ir:8080/cloudconformity)
+    - *Access token URL:* <https://yourdomain.atlassian.net>[/cloudconformity](http://eu1.desync.ir:8080/cloudconformity)
+    - *Authorize URL:* <https://yourdomain.atlassian.net>[/cloudconformity](http://eu1.desync.ir:8080/cloudconformity)
+    - *Create incoming link:* {Check}
+
+6.  Add the following information and click *Continue.*
+
+    - *Consumer Key:* CloudConformity
+    - *Consumer Name:* CloudConformity
+    - *Public Key:*
+
+    ``` codeblock
+    ---BEGIN PUBLIC KEY----  
+    MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCRMU74RaKHDKfENpuRB/wdfIAapgAuwJLCF1fEf/d58qvSF06zu0toqtvHgsetTTAxLxcCt829UbjMwTEgE7E09t+9UMEUL7WUueUsV5sWtJ86SlHFjK5dRmI6HRfXfpe9Y5tml5D9mhavmO2xp+X8z3TUR6AiKGM0SSLUGkzKDQIDAQAB 
+    ----END PUBLIC KEY----
+    ```
+
+7.  Upon successfully completing these steps you should see *CloudConformity* under *Applications*
+::::

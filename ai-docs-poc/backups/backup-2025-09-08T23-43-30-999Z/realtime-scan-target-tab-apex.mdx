@@ -1,0 +1,125 @@
+---
+slug: trend-vision-one-realtime-scan-target-tab-apex
+title: 'Real-time Scan: Target Tab'
+last_updated: '2025-09-08'
+ai_context:
+  source_file: realtime-scan-target-tab-apex.md
+  conversion_date: '2025-09-08T23:42:13.919Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+### Procedure {#procedure}
+
+1.  In the **User Activity on Files** section, select which file operations trigger scanning from the **Scan files being** drop-down.
+
+    - **created/modified and retrieved**: Scans all files created, modified, or opened on the endpoint
+
+    - **created/modified**: Scans all files created or modified on the endpoint
+
+    - **retrieved**: Scans all files opened on the endpoint
+
+2.  In the **Files to Scan** section, select from the following:
+
+    - **All scannable files**: Includes all scannable files. Unscannable files are password protected files, encrypted files, or files that exceed the user-defined scanning restrictions.
+
+      :::note
+
+      This option provides the maximum security possible. However, scanning every file requires a lot of time and resources and might be redundant in some situations. Therefore, you might want to limit the amount of files the agent includes in the scan.
+      :::
+
+    - **File types scanned by IntelliScan**: Scans files based on true-file type.
+
+    - **Files with the following extensions (use commas to separate entries)**: Manually specify the files to scan based on their extensions. Separate multiple entries with commas.
+
+      :::note
+
+      When configuring a parent policy, specify how other users can configure child policies.
+
+      - **Inherit from parent**: Child policies must use the settings configured in the parent policy
+
+      - **Extend from parent**: Child policies can append additional settings to the settings inherited from the parent policy
+      :::
+
+3.  In the **Scan Settings** section, configure the required settings.
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Setting</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><strong>Scan floppy disks during shutdown</strong></p></td>
+    <td><p>Scans floppy disks during shutdown</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Scan the boot sector of the USB storage device after plugging in</strong></p></td>
+    <td><p>Automatically scans only the boot sector of a USB storage device every time the user plugs it in</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Scan all files in removable storage devices after plugging in</strong></p></td>
+    <td><p>Automatically scans all files on a USB storage device every time the user plugs it in</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Quarantine malware variants detected in memory</strong></p></td>
+    <td><p>Behavior Monitoring scans the system memory for suspicious processes and Real-time Scan maps the process and scans it for malware threats. If a malware threat exists, Real-time scan quarantines the process and/or file.</p>
+    
+
+    :::note
+    
+    <p>Memory scanning works in conjunction with Anti-exploit Protection in Behavior Monitoring to provide enhanced protection against Fileless Attacks.</p>
+    <p>For more information, see <a href="trend-vision-one-configuring-bm-rules-exceptions">Configuring Behavior Monitoring Rules and Exceptions</a>.</p>
+    
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p><strong>Scan compressed files</strong></p></td>
+    <td><p>Scans the specified number of compression layers within an archived file</p>
+    
+
+    :::note
+    
+    <p>Scanning through more layers may detect malware intentionally buried within a compressed archive, however, the scan may affect system performance.</p>
+    
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p><strong>Scan OLE objects</strong></p></td>
+    <td><p>Scans the specified number of Object Linking and Embedding (OLE) layers in a file</p>
+    <p><strong>Detect exploit code in OLE files</strong>: OLE Exploit Detection heuristically identifies malware by checking Microsoft Office files for exploit code.</p>
+    
+
+    :::note
+    
+    <p>The specified number of layers is applicable to both the <strong>Scan OLE objects</strong> and <strong>Detect exploit code in OLE files</strong> options.</p>
+    
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p><strong>Enable IntelliTrap</strong></p></td>
+    <td><p>Detects malicious code, such as bots, in compressed files</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Enable CVE exploit scanning for files downloaded through web and email channels</strong></p></td>
+    <td><p>Blocks processes that attempt to exploit known vulnerabilities in commercially available products based on the Common Vulnerabilities and Exposures (CVE) system</p></td>
+    </tr>
+    </tbody>
+    </table>
+:::

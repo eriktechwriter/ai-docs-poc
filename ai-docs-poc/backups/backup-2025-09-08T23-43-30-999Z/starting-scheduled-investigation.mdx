@@ -1,0 +1,73 @@
+---
+slug: trend-vision-one-starting-scheduled-investigation
+title: Starting a Scheduled Investigation
+last_updated: '2025-09-08'
+ai_context:
+  source_file: starting-scheduled-investigation.md
+  conversion_date: '2025-09-08T23:42:12.283Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+### Procedure {#procedure}
+
+1.  Go to **Response → Live Investigation**.
+
+2.  Click the **Scheduled Investigation** tab.
+
+3.  Click **New Investigation**.
+
+4.  Specify a **Name** for this investigation.
+
+5.  Select a **Method** based on what objects need to be matched:
+
+    - **Scan disk files using OpenIOC**: objects on the disk that match the rules provided in an OpenIOC file
+
+      :::note
+
+      After selection, Endpoint Sensor displays a preview of the OpenIOC file. Review the preview to verify if the OpenIOC file contains supported indicators and conditions. Unsupported combinations are formatted with a strike-through and are ignored during the investigation.
+
+      For more information, see [Supported IOC Indicators for Live Investigations](ioc-indicators-for-live.mdx).
+      :::
+
+    - **Scan in-memory processes using YARA**: objects currently in memory that match the rules provided in a YARA file
+
+    - **Search registry**: registry keys, names and data that match criteria defined by the user
+
+6.  Click **Select Endpoints** and specify which endpoints to include in the investigation.
+
+    :::note
+
+    The **Target Endpoints** screen may not show all endpoints selected for the investigation.
+
+    - A user can only view endpoints where he has been granted sufficient access rights.
+
+    - Only available for Trend Vision One Endpoint Security agents installed on Windows platforms.
+    :::
+
+7.  Specify a schedule for this investigation.
+
+    - **Period**: Specify a starting and ending date for the investigation. The investigation only runs within the dates provided. The default period is set to one month.
+
+    - **Frequency**: Specify how often the investigation repeats during the duration of the schedule. The default frequency is set to **Daily** at **08:00**.
+
+8.  Click **Start Investigation**.
+
+9.  To view the results and monitor the progress of scheduled investigations:
+
+    1.  Go to **Response → Live Investigation**.
+
+    2.  Click the **Scheduled Investigation** tab.
+
+        For details, see [Scheduled Investigation](scheduled-investigation.mdx).
+
+    3.  To view details for each schedule run, click the investigation name to open the **Scheduled Investigation History** screen.
+
+        For details, see [Reviewing the Scheduled Investigation History](review-schedule-investigations.mdx).
+
+**Related information**
+
+- [Scheduled Investigation](scheduled-investigation.mdx)
+- [Reviewing the Scheduled Investigation History](review-schedule-investigations.mdx)
+:::

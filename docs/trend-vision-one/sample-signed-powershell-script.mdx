@@ -1,0 +1,66 @@
+---
+slug: trend-vision-one-sample-signed-powershell-script
+title: Sample signed PowerShell script
+---
+Refer to the following sample signed PowerShell script for the Run Remote Custom Script response action.
+
+Follow the format in the sample script to avoid issues with output encoding and retrieving script parameters.
+
+```bash
+# Directory structure is as follows:
+# C:\example\
+#     |----your_signed_script.ps1
+#     |----tm_script_parameter.txt
+
+# Command line example for launching PowerShell:
+# PowerShell.exe -ExecutionPolicy RemoteSigned -File "C:\example\your_signed_script.ps1" "C:\example\tm_script_parameter.txt"
+
+# Follow a simple format for your signed script to handle script parameters:
+
+# Use utf8 encoding:
+$OutputEncoding = [console]::InputEncoding = [console]::OutputEncoding = [Text.UTF8Encoding]::UTF8
+
+# Read raw parameter string from $args[0]:
+$ArgString = Get-Content -Path $args[0] -Encoding UTF8
+
+# Split raw string:
+$InputArgs = $ArgString -split '\s+(?=(?:[^"]*"[^"]*")*[^"]*$)' | Where-Object { $_ -ne '' } | ForEach-Object { $_.Trim('"') }
+
+function EntryPoint {
+    #####################################################
+    # Your script content goes in the EntryPoint function.
+
+    # Specify function parameters:
+    [CmdletBinding()]
+    param (
+        [Parameter()][string]$Id,
+        [Parameter()][string]$Name
+    )
+
+    Write-Host "ID: $Id, Name: $Name"
+    #####################################################
+}
+
+# Change the parameter string array to Params variables:
+$NamedParams = @{}
+$PositionalParams = @()
+
+for ($i = 0; $i -lt $InputArgs.Length; $i++) {
+    $Arg = $InputArgs[$i]
+
+    if ($Arg.StartsWith("-")) {
+        # Find named parameter:
+        $ParamName = $Arg
+        $ParamValue = $InputArgs[$i + 1]
+        $NamedParams[$ParamName] = $ParamValue
+        $i++
+    } else {
+        # Find positional parameter:
+        $PositionalParams += $Arg
+    }
+}
+
+# Call EntryPoint function with the Params variables:
+EntryPoint @NamedParams @PositionalParams
+```
+:::

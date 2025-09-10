@@ -1,0 +1,50 @@
+---
+slug: trend-vision-one-scheduled-scan-target-tab
+title: 'Scheduled Scan: Target Tab'
+last_updated: '2025-09-08'
+ai_context:
+  source_file: scheduled-scan-target-tab.md
+  conversion_date: '2025-09-08T23:42:13.117Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+### Procedure {#procedure}
+
+1.  Under **Schedule**, configure how often (daily, weekly, or monthly) and what time Scheduled Scan will run.
+
+    For monthly Scheduled Scans, if you selected the 29th, 30th, or 31st day and a month does not have this day, Apex One (Mac) runs Scheduled Scan on the last day of the month.
+
+2.  In the **Files to Scan** section, select from the following:
+
+    - **All scannable files**: Includes all scannable files. Unscannable files are password protected files, encrypted files, or files that exceed the user-defined scanning restrictions.
+
+      :::note
+
+      Scanning every file requires a lot of time and resources and might be redundant in some situations. Therefore, you might want to limit the amount of files the Trend Vision One Endpoint Security agent includes in the scan.
+      :::
+
+    - **File types scanned by IntelliScan**: Only scan files known to potentially harbor malicious code, including files disguised by a harmless extension name.
+
+    - **Specify path or full path** : Manually specify the files or directories to scan. For example, `/Shared/Files/mytext.txt` or `/Shared/Files`.
+
+3.  Under **Scan Settings**, select one or more from the following options:
+
+    - **Scan compressed files**: Scan individual files within an archive file
+
+      For more information, see [Supported Compressed File Types](supported-compressed-file-types.mdx).
+
+    - **Scan Time Machine**: Only scan files on Time Machine drives
+
+      :::note
+
+      After enabling the **Scan Time Machine** option for Manual and Scheduled Scan, Apex One (Mac) can only detect malware threats but not take any action (clean, quarantine, or delete) due to a permission limitation in Mac OS. Configured scan actions display as unsuccessful in the product logs.
+      :::
+
+4.  In the **CPU Usage** section, configure the required settings.
+
+    - **High**: No pausing between scans
+
+    - **Low**: Pause between file scans if CPU consumption is higher than 20%, and do not pause if 20% or lower
+:::

@@ -1,0 +1,111 @@
+---
+slug: trend-vision-one-configuring-custom-report
+title: Configure a custom report
+---
+# Configure a custom report
+
+Create or edit one-time or recurring custom reports based on security data within your environment.
+
+Custom reports allow you to include data from various Trend Vision One apps into a single report. To quickly create a report that includes data from a single app, you can [create a report using a template.](configuring-report-template.mdx)
+
+:::note
+
+The availability of certain report templates and data sources depends on your license entitlement for the associated app or service. For more information, see [Reports license requirements](reports-license-requirements.mdx).
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Dashboards and Reports → Reports**.
+
+    - To configure a new report, go to the **Report Templates** tab and click **Create custom report**.
+
+    - To edit a scheduled report, go to the **Scheduled Report Settings** tab and click the name of the custom report you want to edit. (Proceed to step three.)
+
+2.  Configure the report data.
+
+    1.  Select the report content you want to display in the report.
+
+    2.  Click **Next**.
+
+3.  Configure the report content.
+
+    1.  Configure the PDF cover page customization settings.
+
+        <table>
+        <colgroup>
+        <col style="width: 25%" />
+        <col style="width: 75%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Setting</p></th>
+        <th><p>Description</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Description on cover</p></td>
+        <td><p>A description of the report on the cover page</p></td>
+        </tr>
+        <tr>
+        <td><p>Company name</p></td>
+        <td><p>Your company name</p></td>
+        </tr>
+        <tr>
+        <td><p>Company logo</p></td>
+        <td><p>Your company logo</p>
+        <p>Image must be a JPEG or PNG file that does not exceed 200 KB in size. Image dimensions must be within 180 x 60 pixels.</p></td>
+        </tr>
+        <tr>
+        <td><p>Trend Micro logo</p></td>
+        <td><p>The Trend Micro t-ball logo and Trend Vision One product name</p></td>
+        </tr>
+        </tbody>
+        </table>
+
+    2.  To reuse the PDF settings when creating new reports, click **Save settings for future reports**.
+
+        :::note
+
+        Saving PDF settings or changing saved PDF settings does not affect the settings of previously created reports.
+        :::
+
+4.  Click **Next**.
+
+5.  Configure the report settings.
+
+    1.  Specify a **Name** to identify the report.
+
+        :::note
+
+        - Generated report ZIP files use a report name with a timestamp as the file name.
+
+        - PDF format reports use the report name as the title of the report which appears on the cover page.
+        :::
+
+    2.  Type a **Description** to identify the report on the **Generated Reports** and **Scheduled Report Settings** tabs.
+
+    3.  Select the report **Type**.
+
+        - **One-time report**: Immediately generates the report once
+
+        - **Scheduled report**: Generate recurring reports based on schedule settings
+
+        :::note
+
+        Reports configured to start on the 29th, 30th, or 31st automatically start on the last day of the current month if the specified day does not exist.
+        :::
+
+    4.  Specify the email addresses or Trend Vision One accounts to notify when the report is ready.
+
+6.  Click **Create** or **Save**.
+
+    - One-time reports generate the report immediately after clicking create.
+
+    - Scheduled reports which are enabled generate a report on the next scheduled time based on the schedule settings.
+
+    :::note
+
+    You can track report generation process and download the completed report on the **Generated Reports** tab.
+    :::
+::::

@@ -1,0 +1,152 @@
+---
+slug: trend-vision-one-connecting-microsoft-aks-clusters
+title: Connect Microsoft AKS clusters
+last_updated: '2025-09-08'
+ai_context:
+  source_file: connecting-microsoft-aks-clusters.md
+  conversion_date: '2025-09-08T23:42:21.893Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Container Security supports protection on connected Microsoft Azure AKS containers.
+
+:::warning[Important]
+
+- Ensure that your [Kubernetes environments meet the necessary requirements](kubernetes-system-req.mdx) for Container Security.
+
+- For users that want to use the [Isolate Container task](isolate-container-task.mdx), you must ensure that your cluster implements the **Calico** network policy.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Cloud Security → Container Security → Container Inventory**.
+
+2.  Select the **Kubernetes** node in the tree.
+
+3.  Click **Add Cluster**.
+
+    The **Protect Cluster** screen appears.
+
+4.  Specify a unique name for the cluster to appear in the Container Inventory table in the **Cluster** field.
+
+    :::note
+
+    - Cluster names must not contain spaces and only support alphanumeric characters, underscores (\_), and periods (.).
+
+    - You cannot modify the cluster name after creating the cluster.
+    :::
+
+5.  If you want to provide more details about the purpose of the cluster, use the **Description** field.
+
+6.  If you want Container Security to send data to Cloud Risk Management and receive [CREM Risk Insights](executive-dashboard.mdx), select **Map to cloud account**.
+
+    1.  In the dropdown menu, select **Azure**.
+
+    2.  In another browser tab, sign in to the Azure account that hosts the cluster.
+
+    3.  Go to the **Kubernetes services**.
+
+    4.  Click the cluster name you want to protect with Container Security.
+
+    5.  Click **Properties** and copy the **Resource ID** value for the cluster.
+
+    6.  Back in the Container Security Protect Cluster screen, paste the value in the **Resource ID** field.
+
+7.  If you have already created a policy that you want to use to protect the Kubernetes cluster, select the policy name from the **Policy** dropdown menu.
+
+    You can [create a Kubernetes policy](kubernetes-protection-policies.mdx) and assign the policy after connecting the cluster.
+
+8.  To ensure that Container Security does not impact any of the following Kubernetes management systems, select the systems in the **Namespace Exclusions** dropdown menu.
+
+    - **Calico System**
+
+    - **Istio System**
+
+    - **Kube System**
+
+    - **OpenShift\***
+
+    - **GKE System\***
+
+    :::note
+
+    Options with an asterisk (\*) represent sets of related namespaces. For details, see [Grouped namespaces](grouped-namespaces.mdx).
+    :::
+
+9.  If your cluster requires a proxy server, turn on **Use Proxy** and configure the following settings:
+
+    - **Protocol**: Select **HTTP**, **HTTPS**, or **SOCKS5**.
+
+    - **Proxy address**: Specify the IP address of the proxy server.
+
+    - **Port**: Specify the port number of the proxy server.
+
+    - **Require authentication credentials**: Select and specify the **Account** and **Password** of the proxy server.
+
+    - **Use self-signed certificate**: Select and choose from **Host file**, **Secret**, or **ConfigMap**, and then enter the certificate information.
+
+10. If you already know the type of security features you want to enable on the cluster, turn on the desired features.
+
+    - **Runtime Security**: Provides visibility into any activity of your running containers that violates a customizable set of rules.
+
+    - **Runtime Vulnerability Scanning**: Provides visibility of operating system and open source code vulnerabilities that are part of containers running in clusters.
+
+    - **Runtime Malware Scanning**: Provides detection of malware in your running containers, enabling you to identify and respond to malware threats introduced after deployment.
+
+11. Click **Next**.
+
+    The Helm deployment script information appears on the screen.
+
+12. For users deploying Container Security protection the cluster for the first time:
+
+    1.  To define the configuration properties of Container Security in your Kubernetes cluster, create a YAML file (for example: `overrides.yaml`) and copy the contents of the first input field to the file.
+
+        :::danger[Warning]
+
+        The YAML file contains a unique API key required to connect the specified cluster to Container Security. The API key only appears one time and you should create a copy for future upgrades. Trend Micro cannot retrieve the API key again once you close the screen.
+        :::
+
+    2.  To enable automated cluster registration, [create an API key](obtain-apikey-auto-cluster-reg.mdx) and enter `true` for `clusterRegistrationKey`, as shown in the example below.
+
+        :::note
+
+        You can configure the protection of the cluster by specifying `clusterName`, `clusterNamePrefix`, `policyId`, `groupId` under the `policyOperator` section.
+        :::
+
+        Sample override file:
+
+        ``` codeblock
+        visionOne:
+            clusterRegistrationKey: true
+            endpoint: https://api.xdr.trendmicro.com/external/v2/direct/vcs/external/vcs
+            exclusion: 
+                namespaces: [kube-system]
+            inventoryCollection:
+                enabled: true
+            complianceScan:
+                enabled: false
+            policyOperator:
+                clusterName: xxxx (optional. A random name will be used if not specified)
+                clusterNamePrefix: xxxx (optional)
+                policyId: xxxx (optional)
+                groupId: xxxx (required)
+        ```
+
+    3.  Copy the entire `helm install` script in the second input field and execute the Helm script on your cluster.
+
+        :::note
+
+        Modify the `--values overrides.yaml \` parameter to use the relative path to the `overrides.yaml` you saved in the previous step.
+        :::
+
+13. For users that are updating an existing deployment, copy the entire `helm get values --namespace trendmicro-system trendmicro | helm upgrade \` script in the last input field and execute the Helm script on your cluster.
+
+    :::note
+
+    In the future, you can upgrade the helm deployment without overriding changes by using the Helm argument:
+
+    `--reuse-values`.
+    :::
+::::

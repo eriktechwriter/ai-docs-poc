@@ -1,0 +1,52 @@
+---
+slug: trend-vision-one-audit-logs-inactive-agent-removal
+title: Audit logs for computers removed by inactive agent removal
+---
+# Audit logs for computers removed by inactive agent removal
+
+Check the audit trail for computers removed by an inactive cleanup job.
+
+When Trend Vision One removes inactive agents, Server & Workload Protection generates system events for those computers managed by the Protection Manager. You can use the **Advanced Search** in **Events and Reports** to track removed computers by searching for the event ID.
+
+The following table details the relevant events. For more information, see [System events](system-events.mdx).
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>ID</p></th>
+<th><p>Event</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>251</p></td>
+<td><p>Computer Deleted</p></td>
+<td><p>Server &amp; Workload Protection generates a separate event for each computer removed by inactive agent removal</p></td>
+</tr>
+<tr>
+<td><p>716</p></td>
+<td><p>Reactivation Attempted by Unknown Agent</p></td>
+<td><p>Server &amp; Workload Protection generates the event when a removed computer attempts to reconnect</p>
+<p>Each reactivated computer also generates one or more of the following system events:</p>
+<ul>
+<li><p>130 - Credentials Generated</p></li>
+<li><p>250 - Computer Created</p></li>
+<li><p>252 - Computer Updated</p></li>
+<li><p>350 - Policy Created (if you enabled an event-based task that assigns a policy)</p></li>
+<li><p>790 - Agent-Initiated Activation Requested</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>2953</p></td>
+<td><p>Inactive Agent Cleanup Completed Successfully</p></td>
+<td><p>Server &amp; Workload Protection generates the event after each successful completion of the cleanup task</p></td>
+</tr>
+</tbody>
+</table>
+:::

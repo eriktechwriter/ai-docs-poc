@@ -1,0 +1,219 @@
+---
+slug: trend-vision-one-deployment-costs
+title: Agentless Vulnerability & Threat Detection estimated deployment costs for AWS
+last_updated: '2025-09-08'
+ai_context:
+  source_file: deployment-costs.md
+  conversion_date: '2025-09-08T23:42:20.579Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Estimate and track the costs of deploying and operating Agentless Vulnerability & Threat Detection in your AWS accounts.
+
+:::warning[Important]
+
+The following data are estimates provided with no guarantees. Changes to AWS pricing or differences between environments might incur costs inconsistent with the estimate data.
+:::
+
+**Estimated AWS CloudFormation costs for Agentless Vulnerability & Threat Detection vulnerability scanning**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Resource type</p></th>
+<th>Stack (monthly)</th>
+<th><p>EBS operation (monthly)</p></th>
+<th><p>Total (monthly)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="2"><p>EBS</p>
+<ul>
+<li><p>Operating system: Red Hat Linux</p></li>
+<li><p>File system: XFS</p></li>
+<li><p>Files: 27,485</p></li>
+</ul></td>
+<td><p>1,000 EC2 = USD 59.00</p></td>
+<td><p>1,000 EC2 = USD 28.00</p></td>
+<td><p>1,000 EC2 = USD 87.00</p></td>
+</tr>
+<tr>
+<td><p>3,000 EC2 = USD 177.00</p></td>
+<td><p>3,000 EC2 = USD 84.00</p></td>
+<td><p>3,000 EC2 = USD 261.00</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p>ECR</p>
+<ul>
+<li><p>Image size: 741.33 MB</p></li>
+</ul></td>
+<td><p>1,000 ECR = USD 3.10</p></td>
+<td><p>N/A</p></td>
+<td><p>1,000 ECR = USD 3.10</p></td>
+</tr>
+<tr>
+<td><p>3,000 ECR = USD 9.30</p></td>
+<td><p>N/A</p></td>
+<td><p>3,000 ECR = USD 9.30</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p>Lambda</p>
+<ul>
+<li><p>Lambda size: 68.3 MB</p></li>
+</ul></td>
+<td><p>1,000 Lambda = USD 1.00</p></td>
+<td><p>N/A</p></td>
+<td><p>1,000 Lambda = USD 1.00</p></td>
+</tr>
+<tr>
+<td><p>3,000 Lambda = USD 3.00</p></td>
+<td><p>N/A</p></td>
+<td><p>3,000 Lambda = USD 3.00</p></td>
+</tr>
+</tbody>
+</table>
+
+**Estimated AWS CloudFormation costs for Agentless Vulnerability & Threat Detection anti-malware scanning**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Resource type</p></th>
+<th>Stack (monthly)</th>
+<th><p>EBS operation (monthly)</p></th>
+<th><p>Total (monthly)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="2"><p>EBS</p>
+<ul>
+<li><p>Operating system: Red Hat Linux</p></li>
+<li><p>File system: XFS</p></li>
+<li><p>Files: 27,485</p></li>
+</ul></td>
+<td><p>1,000 EC2 = USD 11.88</p></td>
+<td><p>1,000 EC2 = USD 227.06</p></td>
+<td><p>1,000 EC2 = USD 238.94</p></td>
+</tr>
+<tr>
+<td><p>3,000 EC2 = USD 35.63</p></td>
+<td><p>3,000 EC2 = USD 681.19</p></td>
+<td><p>3,000 EC2 = USD 716.81</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p>ECR</p>
+<ul>
+<li><p>Image size = 741.33 MB</p></li>
+</ul></td>
+<td><p>1,000 ECR = USD 13.00</p></td>
+<td><p>N/A</p></td>
+<td><p>1,000 ECR = USD 13.00</p></td>
+</tr>
+<tr>
+<td><p>3,000 ECR = USD 39.00</p></td>
+<td><p>N/A</p></td>
+<td><p>3,000 ECR = USD 39.00</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p>Lambda</p>
+<ul>
+<li><p>Lambda size: 68.3 MB</p></li>
+</ul></td>
+<td><p>1,000 Lambda = USD 1.50</p></td>
+<td><p>N/A</p></td>
+<td><p>1,000 Lambda = USD 1.50</p></td>
+</tr>
+<tr>
+<td><p>3,000 Lambda = USD 4.50</p></td>
+<td><p>N/A</p></td>
+<td><p>3,000 Lambda = USD 4.50</p></td>
+</tr>
+</tbody>
+</table>
+
+To track the costs of your Agentless Vulnerability & Threat Detection scanner stack:
+
+1.  Go to the AWS Cost Management console and sign in.
+
+2.  [Enable the AWS Cost Explorer feature](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-enable.mdx).
+
+3.  [Activate the AppManagerCFNStackKey cost allocation tag.](https://docs.aws.amazon.com/solutions/latest/network-orchestration-aws-transit-gateway/activate-cost-allocation-tags-associated-with-the-solution.mdx)
+
+After you have enabled AWS Cost Explorer, you can also track the costs of Agentless Vulnerability & Threat Detection EBS operations.
+
+1.  Go to the AWS Cost Explorer dashboard and sign in.
+
+2.  Set the **Group by** dimension to **API operation**.
+
+3.  Configure the following filters:
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Filter</p></th>
+    <th><p>Value</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><strong>Service</strong></p></td>
+    <td><p><strong>EC2 - Other</strong></p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Region</strong></p></td>
+    <td><p>Regions in which Agentless Vulnerability &amp; Threat Detection is installed</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>API operation</strong></p></td>
+    <td><p><strong>Includes</strong> the following API operations:</p>
+    <ul>
+    <li><p>CreateSnapshot</p></li>
+    <li><p>GetSnapshotBlock</p></li>
+    <li><p>ListSnapshotBlocks</p></li>
+    </ul>
+    
+
+    :::note
+    
+    <p>Other cloud services and users in your environment might also use the three EBS API operations.</p>
+    
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p><strong>Tag</strong></p></td>
+    <td><p><strong>Select</strong> the following tag:</p>
+    <ul>
+    <li><p>Tag: AppManagerCFNStackKey</p></li>
+    <li><p>Tag: V1 Common Stack</p></li>
+    </ul>
+    <p><strong>Exclude</strong> the following tag value:</p>
+    <ul>
+    <li><p>Tag value: V1 Agentless Vulnerability and Threat Detection</p></li>
+    </ul></td>
+    </tr>
+    </tbody>
+    </table>
+::::

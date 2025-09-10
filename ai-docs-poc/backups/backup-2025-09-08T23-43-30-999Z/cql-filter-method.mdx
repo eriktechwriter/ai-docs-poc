@@ -1,0 +1,246 @@
+---
+slug: trend-vision-one-cql-filter-method
+title: CQL filter method
+last_updated: '2025-09-08'
+ai_context:
+  source_file: cql-filter-method.md
+  conversion_date: '2025-09-08T23:42:21.513Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Cloud Risk Management Query Language is a free text syntax that provides advanced features for filtering checks, allowing complex queries more powerful than what can be done with Simple Filters.
+
+CQL allows you to search by field/value pairs. The syntax allows you to specify the relationship and order in which the criteria are considered using logical operators, parentheses, and quotation marks.
+
+## Contents {#contents}
+
+Logical operators
+
+Wildcards
+
+Regular expressions
+
+Fields list
+
+Using CQL to filter your checks
+
+Query examples
+
+## Logical operators {#logical-operators}
+
+The base syntax for a field/value search criteria is \[field\]:\[value\], where the colon character (:) specifies that the given field must be equal to the specified value in order for a check to be returned in the search results.
+
+Logical operators allow you to specify more than one criteria and to indicate the relationship between them. CQL will support the following explicit logical operators:
+
+<table>
+<thead>
+<tr>
+<th><p><em>Operator name</em></p></th>
+<th><p><em>Operator</em></p></th>
+<th><p><em>Description</em></p></th>
+<th><p><em>Example</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>EQUALS</p></td>
+<td><p><code>:</code></p></td>
+<td><p>Matches if the right side equals the left side, i.e. field equals value</p></td>
+<td><p><code>service : EC2</code></p></td>
+</tr>
+<tr>
+<td><p>NOT EQUALS</p></td>
+<td><p><code>:-</code></p></td>
+<td><p>Matches if the right side does not equal the left side, i.e. field does not equal value</p></td>
+<td><p><code>service :- IAM</code></p></td>
+</tr>
+<tr>
+<td><p>AND</p></td>
+<td><p><code>AND</code></p></td>
+<td><p>Matches if the check contains both criteria</p></td>
+<td><p><code>status : SUCCESS AND riskLevel : HIGH</code></p></td>
+</tr>
+<tr>
+<td><p>OR</p></td>
+<td><p><code>OR</code></p></td>
+<td><p>Matches if the check contains either criteria</p></td>
+<td><p><code>compliance : MAS OR compliance : HITRUST</code></p></td>
+</tr>
+<tr>
+<td><p>Parentheses</p></td>
+<td><p><code>()</code></p></td>
+<td><p>Parentheses are used to denote modifications to normal order of operations (precedence rules). In an expression like <code>(compliance : MAS OR compliance : HITRUST) AND status: SUCCESS</code>, the part of the expression within the parentheses is evaluated first, and then the result is used in the rest of the expression.</p></td>
+<td><p><code>(compliance : MAS OR compliance : HITRUST) AND status : SUCCESS</code></p></td>
+</tr>
+<tr>
+<td><p>Quotation marks</p></td>
+<td><p><code>"</code></p></td>
+<td><p>Used to enclose strings when they contain special characters and/or spaces.</p></td>
+<td><p><code>message : "Continuous Backups are not enabled for [ddb-users-dev]"</code></p></td>
+</tr>
+</tbody>
+</table>
+
+:::tip
+
+Use parentheses liberally to clearly group terms in the search query. \* When strings contain characters other than letters and numbers and spaces and are not to be interpreted as regex they should be enclosed in `"`. This is the case for example, for free text fields like "resource" and "message". \* When using regular expressions, reserved characters . `. ? + * [ ] ( ) " \` must be escaped with a `\` \* Unlike the other fields which search for an exact match, 'message' and 'ruleTitle' fields use a full-text search, where the search returns all relevant results rather than just exact matches. If you search for Quick fox jumps, you probably want the document that contains A quick brown fox jumps over the lazy dog, and you might also want documents that contain related words like fast fox or foxes leap.
+:::
+
+## Resource Wildcards {#resource-wildcards}
+
+The `resource` field supports wildcard searches. This syntax supports two operators:
+
+- `?`, which matches any single character
+- \_`*`, which can match zero or more characters, including an empty one \_Example:
+  - Find all resources starting with “sg-” and ending with any number of characters: `resource : sg-*`
+  - Find all resources starting with “sg-” and ending with any one character + the letter “s” `resource : sg-?s`
+
+Be mindful that wildcard queries can use an enormous amount of memory and perform very badly — just think how many terms need to be queried to match the query string `a* b* c*`
+
+## Resource regular expressions {#resource-regular-expressions}
+
+The `resource` field supports regular expression patterns. They can be embedded in the query string by wrapping them in forward-slashes (`"/"`):
+
+`resource : /arn:aws:iam::[0-9]{12}:policy\/.*Part1/`
+
+The supported regular expression syntax is explained in [Filters and Search.](filter-search.mdx)
+
+## Fields list {#fields-list}
+
+<table>
+<thead>
+<tr>
+<th><p><em>Field Name</em></p></th>
+<th><p><em>Data type</em></p></th>
+<th><p><em>Description</em></p></th>
+<th><p><em>Example</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>ruleTitle</p></td>
+<td><p>string</p></td>
+<td><p>Will match if the title of the rule contains relevant results matching the value. Please refer to the full-text search explanation above.</p></td>
+<td><p><code>ruleTitle : "Unrestricted SSH Access"</code></p></td>
+</tr>
+<tr>
+<td><p>ruleId</p></td>
+<td><p>string</p></td>
+<td><p>Will match if the rule id is an exact match. Select from the autocomplete dropdown.</p></td>
+<td><p><code>ruleId : EC2-081 OR ruleId : EC2-088</code></p></td>
+</tr>
+<tr>
+<td><p>message</p></td>
+<td><p>string</p></td>
+<td><p>Will match if the message contains relevant results matching the value. Please refer to the full-text search explanation above.</p></td>
+<td><p><code>message : "access keys"</code></p></td>
+</tr>
+<tr>
+<td><p>resource</p></td>
+<td><p>string regex</p></td>
+<td><p>Will match if the resource id matches the value. Can also match by wildcard or regex, see above description.</p></td>
+<td><p><code>resource : "aws-glue-an-data"</code> <code>resource : /arn:aws:iam::[0-9]{12}:policy\/.*Part1/</code> <code>resource : "aws-*-an-??-data"</code></p></td>
+</tr>
+<tr>
+<td><p>newerThanDays</p></td>
+<td><p>number</p></td>
+<td><p>olderThanDays' and 'newerThanDays' range refers to days to go back from today. It converts the number of days entered to the date when the check was created and assigned a status, or where the status changed from "Success" to "Failure" or from "Failure" to "Success". You can use this filter by entering values for the number of days you wish to view before 'olderThanDays' and after 'newerThanDays'. You must pass at least 2 days up to 1 day to see any checks for a specific time duration. To display checks from a particular day up to today, pass the number of days in 'newerThanDays' and don't set 'olderThanDays'.</p></td>
+<td><p><code>newerThanDays : 20</code></p></td>
+</tr>
+<tr>
+<td><p>olderThanDays</p></td>
+<td><p>number</p></td>
+<td><p>To display all checks for up to a particular day, pass a number of days to go back from today in 'olderThanDays' and don't set 'newerThanDays'.</p></td>
+<td><p><code>olderThanDays : 20</code></p></td>
+</tr>
+<tr>
+<td><p>filterTag</p></td>
+<td><p>string</p></td>
+<td><p>Will match if the assigned metadata tags to your resources have at least one tag with this value as the key or value of the tag. To match both key and value, specify them in key::value pairs</p></td>
+<td><p><code>filterTag : "env::dev"</code> <code>filterTag : "env"</code> <code>filterTag : "dev"</code></p></td>
+</tr>
+<tr>
+<td><p>service</p></td>
+<td><p>string</p></td>
+<td><p>Will match if the provider service is an exact match. For more information about services, please refer to <a href="https://us-west-2.cloudconformity.com/v1/services">Cloud Risk Management Services Endpoint</a>.</p></td>
+<td><p><code>service : IAM</code></p></td>
+</tr>
+<tr>
+<td><p>category</p></td>
+<td><p>string</p></td>
+<td><p>Will match if the category is an exact match. Possible values are: security or cost-optimisation or operational-excellence or reliability or performance-efficiency</p></td>
+<td><p><code>category : security</code></p></td>
+</tr>
+<tr>
+<td><p>region</p></td>
+<td><p>string</p></td>
+<td><p>Will match if the region is an exact match. For more information about regions, please refer to <a href="https://us-west-2.cloudconformity.com/v1/regions">Cloud Risk Management Region Endpoint</a>.</p></td>
+<td><p><code>region : eu-west-2</code></p></td>
+</tr>
+<tr>
+<td><p>riskLevel</p></td>
+<td><p>string</p></td>
+<td><p>Will match if the risk level is an exact match. Possible values are: LOW or MEDIUM or HIGH or VERY_HIGH or EXTREME</p></td>
+<td><p><code>riskLevel : HIGH</code></p></td>
+</tr>
+<tr>
+<td><p>resourceType</p></td>
+<td><p>string</p></td>
+<td><p>Will match if the resource type is an exact match. For more information about services, please refer to <a href="https://us-west-2.cloudconformity.com/v1/resource-types">Cloud Risk Management ResourceTypes Endpoint</a>.</p></td>
+<td><p><code>resourceType : ec2-securitygroup OR resourceType : ec2-instance</code></p></td>
+</tr>
+<tr>
+<td><p>provider</p></td>
+<td><p>string</p></td>
+<td><p>Will match if the cloud provider is an exact match.</p></td>
+<td><p><code>provider : aws</code></p></td>
+</tr>
+<tr>
+<td><p>compliance</p></td>
+<td><p>string</p></td>
+<td><p>Will match if the compliance standard is an exact match. For more information about compliance standards, please refer to our <a href="https://automation.trendmicro.com/cloudone/conformity/">API documentation on field 'compliances</a>'.</p></td>
+<td><p><code>compliance : AWAF</code></p></td>
+</tr>
+<tr>
+<td><p>status</p></td>
+<td><p>string</p></td>
+<td><p>Will match if the status of the check is an exact match. Possible values are SUCCESS or FAILURE</p></td>
+<td><p><code>status : SUCCESS</code></p></td>
+</tr>
+<tr>
+<td><p>suppressed</p></td>
+<td><p>string</p></td>
+<td><p>Whether or not include all suppressed checks. The default value is true for "v1" and omitted for "v2".Possible values are true or false</p></td>
+<td><p><code>suppressed : true</code></p></td>
+</tr>
+</tbody>
+</table>
+
+## Using CQL to filter your checks {#using-cql-to-filter-your-checks}
+
+### Procedure {#procedure}
+
+1.  Click on *Browse all checks* and select the *CQL* filter method.
+
+2.  Start typing to select a field to search. Select the *equal :* or *not equal :-* operator and select a value from the list of available values.
+
+3.  You can stop here or continue adding conditions with *OR* or *AND*. Use parentheses to ensure the precedence of conditions.
+
+4.  If your field doesn't have a dropdown, enter a search text enclosed by "" and click on the *Apply filter* button once you are done.
+
+### Next steps {#next-steps}
+
+![](/images/step-4-cql=fe97e6d0-718f-4fab-81a9-62e13cf0e308.webp)
+
+## Query examples {#query-examples}
+
+- `service : EC2 OR category : security OR riskLevel : HIGH OR status : SUCCESS`
+- `service : EC2 AND category :- security`
+- `(service : ELB OR category : security) AND riskLevel :- MEDIUM`
+- `service : EC2 AND ( category : security OR riskLevel : HIGH) AND status : SUCCESS`
+- `((service : ELB OR service : CloudFront) AND status : FAILURE) OR (message : SSL OR ruleTitle : SSL)`
+- `(service : VPC AND status : FAILURE) OR region : ca-central-1`
+- `service : EC2 AND (( category : security OR riskLevel : HIGH) OR status :- SUCCESS)`
+::::

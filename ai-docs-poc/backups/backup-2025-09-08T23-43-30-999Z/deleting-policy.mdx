@@ -1,0 +1,36 @@
+---
+slug: trend-vision-one-deleting-policy
+title: Deleting a Policy
+last_updated: '2025-09-08'
+ai_context:
+  source_file: deleting-policy.md
+  conversion_date: '2025-09-08T23:42:20.716Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Administrators can remove a policy from the list. Trend Micro Apex Central then re-allocates the targets associated with the deleted policy if the targets match the filtering criteria of another policy. Those without a match become endpoints without policies, and they keep the settings defined by the deleted policy unless a managed product administrator modifies the settings.
+
+Trend Micro Apex Central only allows policy creators to delete their own policies. However, the root account can delete every policy in the list.
+
+It is not possible to delete an Apex One Agent parent policy with settings [inherited](inheriting-policy-settings.mdx) by an existing child policy.
+
+### Procedure {#procedure}
+
+1.  Go to **Policies → Policy Management**.
+
+    The **Policy Management** screen appears.
+
+2.  Select the type of product settings from the **Product** list.
+
+    The screen refreshes to display policies created for the selected managed product.
+
+3.  Select the policy to delete.
+
+4.  Click **Delete**.
+
+    A confirmation screen appears.
+
+5.  Click **OK**.
+:::

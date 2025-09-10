@@ -1,0 +1,89 @@
+---
+slug: trend-vision-one-aws-systems-manager-distributor-2
+title: Integrate with AWS Systems Manager Distributor
+---
+# Integrate with AWS Systems Manager Distributor
+
+::::warning[Important]
+
+AWS Accounts in Trend Vision One are now managed by the Cloud Accounts app. To add new AWS accounts, see [Adding an AWS account using CloudFormation](adding-aws-account.mdx).
+
+You can still use APIs to add new accounts to Server & Workload Protection. However, Trend Micro recommends using the Cloud Accounts app, which provides access to more advanced cloud security and XDR capabilities. This topic is for reference only.
+:::
+
+[AWS Systems Manager Distributor](https://docs.aws.amazon.com/systems-manager/latest/userguide/distributor.mdx) is a feature integrated with AWS Systems Manager that you can use to securely store and distribute software packages in your accounts. By integrating Server & Workload Protection with AWS Systems Manager Distributor, you can distribute agents across multiple platforms, control access to managed instances, and automate your deployments.
+
+## Create an IAM policy {#create-an-iam-policy}
+
+Follow the instructions in [Importing existing managed policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.mdx).
+
+In the *Import managed policies* window, add the "AmazonSSMManagedInstanceCore" policy.
+
+## Create a role and assign the policy {#create-a-role-and-assign-the-policy}
+
+Follow the instructions in [Creating a role for an AWS service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-service.mdx).
+
+In the *Attach permissions policies* window, add the “AmazonSSMManagedInstanceCore” permission.
+
+## Create parameters {#create-parameters}
+
+### Procedure {#procedure}
+
+1.  In your AWS console, navigate to **AWS Systems Manager → Application Management → Parameter Store**.
+
+2.  There are 4 parameters that need to be created. Click *Create parameter* and enter the *Name* and *Value* as listed in the table below. The other fields can be left on their default values.
+
+    <table>
+    <thead>
+    <tr>
+    <th><p>Name</p></th>
+    <th><p>Value</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>dsActivationUrl</p></td>
+    <td><p>On the Server &amp; Workload Protection console, go to <strong>Support → Deployment Scripts</strong>. Go to the top of the generated script and copy the dsActivationUrl.</p></td>
+    </tr>
+    <tr>
+    <td><p>dsManagerUrl</p></td>
+    <td><p>On the Server &amp; Workload Protection console, go to <strong>Support → Deployment Scripts</strong>. Go to the top of the generated script and copy the dsManagerUrl.</p></td>
+    </tr>
+    <tr>
+    <td><p>dsTenantId</p></td>
+    <td><p>On the Server &amp; Workload Protection console, go to <strong>Support → Deployment Scripts</strong>. Scroll to the bottom of the generated script and copy the tenantID.</p></td>
+    </tr>
+    <tr>
+    <td><p>dsToken</p></td>
+    <td><p>On the Server &amp; Workload Protection console, go to <strong>Support → Deployment Scripts</strong>. Scroll to the bottom of the generated script and copy the token.</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+### Next steps {#next-steps}
+
+:::note
+
+Make sure the values for dsActivationUrl and dsManagerUrl are entered exactly as they appear, taking care to include the trailing slash where applicable.
+:::
+
+## Create association {#create-association}
+
+### Procedure {#procedure-1}
+
+1.  In the AWS console, go to **AWS Systems Manager → Node Management → Distributor**.
+
+2.  Select the *TrendMicro-CloudOne-WorkloadSecurity* package, then *Install on a Schedule*.
+
+3.  The *Create Association* page opens. Fill in the required fields. For *Installation Type*, we recommend you use the In-place update option.
+
+4.  Create a schedule. Leveraging a scheduled State Manager Association will ensure agents are always installed and up to date.
+
+5.  Click *Create Association*.
+
+### Next steps {#next-steps-1}
+
+## Protect your computers {#protect-your-computers}
+
+Trend Micro recommends configuring a cloud connector for each AWS account which will contain managed agents. It might also be necessary to [create a policy](create-policies.mdx) specific to the systems which will be managed by Distributor.
+:::::

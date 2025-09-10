@@ -1,0 +1,54 @@
+---
+slug: trend-vision-one-configure-smart-protection-server-
+title: Configure the Smart Protection Server
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configure-smart-protection-server-.md
+  conversion_date: '2025-09-08T23:42:22.665Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Smart Protection Service for Web Reputation supplies web information required by the Web Reputation module. For more information, see [Smart Protection Network - Global Threat Intelligence](https://www.trendmicro.com/en_us/business/technologies/smart-protection-network).
+
+To configure Smart Protection Server:
+
+### Procedure {#procedure}
+
+1.  Go to *Policies*.
+
+2.  Double-click the policy you'd like to edit.
+
+3.  Click **Web Reputation → Smart Protection**.
+
+4.  Select whether to connect directly to Trend Micro's Smart Protection service:
+
+    1.  Select *Connect directly to Global Smart Protection Service*.
+    2.  Optionally select *When accessing Global Smart Protection Service, use proxy*. Select *New* from the drop down menu and enter your desired proxy.
+
+    Or to connect to one or more locally installed Smart Protection Servers:
+
+    1.  Select *Use locally installed Smart Protection Server (ex: "http://\[server\]:5274")*.
+
+    2.  Enter the Smart Protection Server URL into the field and click *Add*. To find the Smart Protection Server URL, do one of the following:
+
+        - Log in to the Smart Protection Server, and in the main pane, look under *Real Time Status*. The Smart Protection Server's HTTP and HTTPS URLs are listed in the *Web Reputation* row. The HTTPS URL is only supported with agent versions 11.0 and newer. If you have 10.3 or earlier agents, use the HTTP URL.
+
+        Or
+
+        - If you [deployed the Smart Protection Server in AWS](integrate-smart-protection-server.mdx), go to the AWS CloudFormation service, select the check box next to the Smart Protection Server stack, and in the bottom pane, click the *Outputs* tab. The Smart Protection Server's HTTP and HTTPS URLs appear in the *WRSurl* and *WRSHTTPSurl* fields. The WRSHTTPSurl is only supported with agent versions 11.0 and newer. If you have 10.3 or earlier agents, use the WRSurl URL.
+
+    3.  Optionally select *When off domain, connect to global Smart Protection Service. (Windows only)*.
+
+5.  Configure the **Smart Protection Server Connection Warning**.
+
+    This option determines whether error events are generated and alerts are raised if a computer loses its connection to the Smart Protection Server. Select either *Yes* or *No* and click *Save*.
+
+    :::note
+
+    If you have a locally installed Smart Protection Server, this option should be set to Yes on at least one computer so that you are notified if there is a problem with the Smart Protection Server itself.
+    :::
+
+6.  Click **Save**.
+:::

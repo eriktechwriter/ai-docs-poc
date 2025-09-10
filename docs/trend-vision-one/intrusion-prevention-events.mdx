@@ -1,0 +1,369 @@
+---
+slug: trend-vision-one-intrusion-prevention-events
+title: Intrusion prevention events
+---
+# Intrusion prevention events
+
+For general best practices related to events, see [Events in Server & Workload Protection](event-logging.mdx).
+
+To see the Intrusion Prevention events captured by Server & Workload Protection, go to **Events & Reports → Events → Intrusion Prevention Events**.
+
+### What information is displayed for Intrusion Prevention events? {#what-information-is-displayed-for-intrusion-prevention-events}
+
+These columns can be displayed on the Intrusion Prevention Events page. You can click *Columns* to select which columns are displayed in the table.
+
+- *Time*: Time the event took place on the computer.
+- *Computer*: The computer on which this event was logged. (If the computer has been removed, this entry will read "Unknown Computer".)
+- *Reason*: The Intrusion Prevention rule associated with this event.
+- *Tag(s)*: Any tags attached with the event.
+- *Application Type*: The application type associated with the Intrusion Prevention rule which caused this event.
+- *Action*: What action the Intrusion Prevention rule took (Block or Reset). If the rule is in *Detect Only* mode, the action is prefaced with "Detect Only:").- *Rank*: The ranking system provides a way to quantify the importance of Intrusion Prevention and firewall events. By assigning "asset values" to computers, and assigning "severity values" to Intrusion Prevention rules and firewall rules, the importance ("rank") of an event is calculated by multiplying the two values together. This allows you to sort events by rank when viewing Intrusion Prevention or firewall events.
+- *Severity*: The Intrusion Prevention rule's severity value.
+- *Direction*: The direction of the packet (incoming or outgoing).
+- *Flow*: whether the packets(s) that triggered this event was travelling with ("Connection Flow") or against ("Reverse Flow") the direction of traffic being monitored by the Intrusion Prevention rule.
+- *Interface*: The MAC address of the interface through which the packet was passing.
+- *Frame Type*: The frame type of the packet in question. Possible values are "IPV4", "IPV6", "ARP", "REVARP", and "Other: XXXX" where XXXX represents the four digit hex code of the frame type.
+- *Protocol*: Possible values are "ICMP", "ICMPV6", "IGMP", "GGP", "TCP", "PUP", "UDP", "IDP", "ND", "RAW", "TCP+UDP", AND "Other: nnn" where nnn represents a three digit decimal value.
+- *Flags*: Flags set in the packet.
+- *Source IP*: The packet's source IP.
+- *Source MAC*: The packet's source MAC address.
+- *Source Port*: The packet's source port.
+- *Destination IP*: The packet's destination IP address.
+- *Destination MAC*: The packet's destination MAC address.
+- *Destination Port*: The packet's destination port.
+- *Packet Size*: The size of the packet in bytes.
+- *Repeat Count*: The number of times the event was sequentially repeated.
+- *Time (microseconds)*: Microsecond resolution for the time the event took place on the computer.
+- *Event Origin*: The Server & Workload Protection component from which the event originated.
+
+The following columns are also available. They display information for events that are triggered from containers on computers that are protected by agent version 12 FR or newer:
+
+- *Interface Type*: Container interface type.
+- *Container Name*: Name of the container where the event occurred.
+- *Container ID*: Container ID of the container where the event occurred.
+- *Image Name*: Image name that was used to create the container where the event occurred.
+- *RepoDigest*: A unique digest that identifies the container image.
+- *Process Name*: Name of the process (from the container) that caused the event.
+
+### View additional Intrusion Prevention event information {#view-additional-intrusion-prevention-event-information}
+
+When [exporting](https://docs.trendmicro.com/en-us/documentation/article/trend-micro-cloud-one-workload-security-events) Intrusion Prevention events, the exported data includes the fields listed above, as well as additional fields, which are not visible from the Server & Workload Protection console. The single exception is the *Severity* field, which is not available in the CSV file.
+
+- *Note*: Meaningful string for the event, such as CVE code.
+- *End Time*: Time the packet was most recently seen.
+- *Position In Buffer*: Position in packet.
+- *Position In Stream*: Position of packet in TCP/IP stream.
+- *Data Flags*: Refer to the table below for details on Data Flags values:
+
+<table>
+<thead>
+<tr>
+<th><p>Code</p></th>
+<th><p>Flag</p></th>
+<th><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>0x01</p></td>
+<td><p>dataTruncated</p></td>
+<td><p>Indicates data could not be logged.</p></td>
+</tr>
+<tr>
+<td><p>0x02</p></td>
+<td><p>logOverflow</p></td>
+<td><p>Logs overflowed after this entry.</p></td>
+</tr>
+<tr>
+<td><p>0x04</p></td>
+<td><p>suppressed</p></td>
+<td><p>Logs threshold suppression occurred after this entry.</p></td>
+</tr>
+<tr>
+<td><p>0x08</p></td>
+<td><p>haveData</p></td>
+<td><p>Packet Data is logged.</p></td>
+</tr>
+<tr>
+<td><p>0x10</p></td>
+<td><p>refData</p></td>
+<td><p>DataId is logged. Packet payload is not logged in this event. The payload is only logged in the event with the 0x08 flag and the same Data Index.</p></td>
+</tr>
+<tr>
+<td><p>0x20</p></td>
+<td><p>haveRawPkt</p></td>
+<td><p>Data is the complete, raw packet.</p></td>
+</tr>
+</tbody>
+</table>
+
+- *Data Index*: A unique ID for packet data (dataId). All records with the same dataId are from the same packet.
+- *Data*: Payload of the packet.
+- *Original IP (XFF)*: Displays original IP address of the client. To obtain data for this field, enable the rule *1006450 - Enable X-Forwarded-For HTTP Header Logging*.
+
+The following fields are also available. They display information for events that are triggered from containers on computers that are protected by agent version 12 FR or newer:
+
+- *Process ID*: Process ID reported by the container.
+- *Thread ID*: Thread ID reported by the container.
+- *Image ID*: The local ID of the container image.
+- *Pod ID*: The Pod ID (if applicable).
+
+### List of all Intrusion Prevention events {#list-of-all-intrusion-prevention-events}
+
+<table>
+<thead>
+<tr>
+<th><p>ID</p></th>
+<th><p>Event</p></th>
+<th><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>200</p></td>
+<td><p>Region Too Big</p></td>
+<td><p>A region (edit region, uri etc) exceeded the maximum allowed buffering size (7570 bytes) without being closed. This is usually because the data does not conform to the protocol.</p></td>
+</tr>
+<tr>
+<td><p>201</p></td>
+<td><p>Insufficient Memory</p></td>
+<td><p>The packet could not be processed properly because resources were exhausted. This can be because there are too many concurrent connections at the same time or simply because the system is out of memory.</p></td>
+</tr>
+<tr>
+<td><p>202</p></td>
+<td><p>Maximum Edits Exceeded</p></td>
+<td><p>The maximum number of edits (32) in a single region of a packet was exceeded.</p></td>
+</tr>
+<tr>
+<td><p>203</p></td>
+<td><p>Edit Too Large</p></td>
+<td><p>Editing attempted to increase the size of the region above the maximum allowed size (8188 bytes).</p></td>
+</tr>
+<tr>
+<td><p>204</p></td>
+<td><p>Max Matches in Packet Exceeded</p></td>
+<td><p>There are more than 2048 positions in the packet with pattern match occurrences. An error is returned at this limit and the connection is dropped because this usually indicates a garbage or evasive packet.</p></td>
+</tr>
+<tr>
+<td><p>205</p></td>
+<td><p>Engine Call Stack Too Deep</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>206</p></td>
+<td><p>Runtime Error</p></td>
+<td><p>Runtime error.</p></td>
+</tr>
+<tr>
+<td><p>207</p></td>
+<td><p>Packet Read Error</p></td>
+<td><p>Low level problem reading packet data.</p></td>
+</tr>
+<tr>
+<td><p>258</p></td>
+<td><p>Fail Open: Reset</p></td>
+<td><p>Log the connection that should be reset but not when Fail-Open feature is on and in Inline mode</p></td>
+</tr>
+<tr>
+<td><p>300</p></td>
+<td><p>Unsupported Cipher</p></td>
+<td><p>An unknown or unsupported Cipher Suite has been requested.</p></td>
+</tr>
+<tr>
+<td><p>301</p></td>
+<td><p>Error Generating Master Key(s)</p></td>
+<td><p>Unable to derive the cryptographic keys, Mac secrets, and initialization vectors from the master secret.</p></td>
+</tr>
+<tr>
+<td><p>302</p></td>
+<td><p>Record Layer Message (not ready)</p></td>
+<td><p>The SSL state engine has encountered an SSL record before initialization of the session.</p></td>
+</tr>
+<tr>
+<td><p>303</p></td>
+<td><p>Handshake Message (not ready)</p></td>
+<td><p>The SSL state engine has encountered a handshake message after the handshake has been negotiated.</p></td>
+</tr>
+<tr>
+<td><p>304</p></td>
+<td><p>Out Of Order Handshake Message</p></td>
+<td><p>A well formatted handshake message has been encountered out of sequence.</p></td>
+</tr>
+<tr>
+<td><p>305</p></td>
+<td><p>Memory Allocation Error</p></td>
+<td><p>The packet could not be processed properly because resources were exhausted. This can be because there are too many concurrent connections at the same time or simply because the system is out of memory.</p></td>
+</tr>
+<tr>
+<td><p>306</p></td>
+<td><p>Unsupported SSL Version</p></td>
+<td><p>A client attempted to negotiate an SSL V2 session.</p></td>
+</tr>
+<tr>
+<td><p>307</p></td>
+<td><p>Error Decrypting Pre-master Key</p></td>
+<td><p>Unable to un-wrap the pre-master secret from the ClientKeyExchange message.</p></td>
+</tr>
+<tr>
+<td><p>308</p></td>
+<td><p>Client Attempted to Rollback</p></td>
+<td><p>A client attempted to rollback to an earlier version of the SSL protocol than that which was specified in the ClientHello message.</p></td>
+</tr>
+<tr>
+<td><p>309</p></td>
+<td><p>Renewal Error</p></td>
+<td><p>An SSL session was being requested with a cached session key that could not be located.</p></td>
+</tr>
+<tr>
+<td><p>310</p></td>
+<td><p>Key Exchange Error</p></td>
+<td><p>The server is attempting to establish an SSL session with temporarily generated key.</p></td>
+</tr>
+<tr>
+<td><p>311</p></td>
+<td><p>Maximum SSL Key Exchanges Exceeded</p></td>
+<td><p>The maximum number of concurrent key exchange requests was exceeded.</p></td>
+</tr>
+<tr>
+<td><p>312</p></td>
+<td><p>Key Too Large</p></td>
+<td><p>The master secret keys are larger than specified by the protocol identifier.</p></td>
+</tr>
+<tr>
+<td><p>313</p></td>
+<td><p>Invalid Parameters In Handshake</p></td>
+<td><p>An invalid or unreasonable value was encountered while trying to decode the handshake protocol.</p></td>
+</tr>
+<tr>
+<td><p>314</p></td>
+<td><p>No Sessions Available</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>315</p></td>
+<td><p>Compression Method Unsupported</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>316</p></td>
+<td><p>Unsupported Application-Layer Protocol</p></td>
+<td><p>An unknown or unsupported SSL Application-Layer Protocol has been requested.</p></td>
+</tr>
+<tr>
+<td><p>386</p></td>
+<td><p>Fail Open: Reset</p></td>
+<td><p>Log the connection that should be reset but not when Fail-Open feature is on and in Tap mode.</p></td>
+</tr>
+<tr>
+<td><p>500</p></td>
+<td><p>URI Path Depth Exceeded</p></td>
+<td><p>Too many "/" separators. Max 100 path depth.</p></td>
+</tr>
+<tr>
+<td><p>501</p></td>
+<td><p>Invalid Traversal</p></td>
+<td><p>Tried to use "../" above root.</p></td>
+</tr>
+<tr>
+<td><p>502</p></td>
+<td><p>Illegal Character in URI</p></td>
+<td><p>Illegal character used in uri.</p></td>
+</tr>
+<tr>
+<td><p>503</p></td>
+<td><p>Incomplete UTF8 Sequence</p></td>
+<td><p>URI ended in middle of utf8 sequence.</p></td>
+</tr>
+<tr>
+<td><p>504</p></td>
+<td><p>Invalid UTF8 encoding</p></td>
+<td><p>Invalid or non-canonical encoding attempt.</p></td>
+</tr>
+<tr>
+<td><p>505</p></td>
+<td><p>Invalid Hex Encoding</p></td>
+<td><p>%nn where nn are not hex digits.</p></td>
+</tr>
+<tr>
+<td><p>506</p></td>
+<td><p>URI Path Length Too Long</p></td>
+<td><p>Path length is greater than 512 characters.</p></td>
+</tr>
+<tr>
+<td><p>507</p></td>
+<td><p>Invalid Use of Character</p></td>
+<td><p>Use of disabled characters</p></td>
+</tr>
+<tr>
+<td><p>508</p></td>
+<td><p>Double Decoding Exploit</p></td>
+<td><p>Double decoding exploit attempt (%25xx, %25%xxd, etc).</p></td>
+</tr>
+<tr>
+<td><p>700</p></td>
+<td><p>Invalid Base64 Content</p></td>
+<td><p>Packet content that was expected to be encoded in Base64 format was not encoded correctly.</p></td>
+</tr>
+<tr>
+<td><p>710</p></td>
+<td><p>Corrupted Deflate/GZIP Content</p></td>
+<td><p>Packet content that was expected to be encoded in Base64 format was not encoded correctly.</p></td>
+</tr>
+<tr>
+<td><p>711</p></td>
+<td><p>Incomplete Deflate/GZIP Content</p></td>
+<td><p>Incomplete Deflate/GZIP content</p></td>
+</tr>
+<tr>
+<td><p>712</p></td>
+<td><p>Deflate/GZIP Checksum Error</p></td>
+<td><p>Deflate/GZIP checksum error.</p></td>
+</tr>
+<tr>
+<td><p>713</p></td>
+<td><p>Unsupported Deflate/GZIP Dictionary</p></td>
+<td><p>Unsupported Deflate/GZIP dictionary.</p></td>
+</tr>
+<tr>
+<td><p>714</p></td>
+<td><p>Unsupported GZIP Header Format/Method</p></td>
+<td><p>Unsupported GZIP header format or method.</p></td>
+</tr>
+<tr>
+<td><p>801</p></td>
+<td><p>Protocol Decoding Search Limit Exceeded</p></td>
+<td><p>A protocol decoding rule defined a limit for a search or pdu object but the object was not found before the limit was reached.</p></td>
+</tr>
+<tr>
+<td><p>802</p></td>
+<td><p>Protocol Decoding Constraint Error</p></td>
+<td><p>A protocol decoding rule decoded data that did not meet the protocol content constraints.</p></td>
+</tr>
+<tr>
+<td><p>803</p></td>
+<td><p>Protocol Decoding Engine Internal Error</p></td>
+<td></td>
+</tr>
+<tr>
+<td><p>804</p></td>
+<td><p>Protocol Decoding Structure Too Deep</p></td>
+<td><p>A protocol decoding rule encountered a type definition and packet content that caused the maximum type nesting depth (16) to be exceeded.</p></td>
+</tr>
+<tr>
+<td><p>805</p></td>
+<td><p>Protocol Decoding Stack Error</p></td>
+<td><p>A rule programming error attempted to cause recursion or use to many nested procedure calls.</p></td>
+</tr>
+<tr>
+<td><p>806</p></td>
+<td><p>Infinite Data Loop Error</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Error: Intrusion Prevention Rule Compilation Failed](error-ip-rule-compilation.mdx)
+- [Warning: Reconnaissance Detected](warning-reconnaissance-detected.mdx)
+:::

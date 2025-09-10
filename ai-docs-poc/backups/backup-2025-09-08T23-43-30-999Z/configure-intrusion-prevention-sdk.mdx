@@ -1,0 +1,154 @@
+---
+slug: trend-vision-one-configure-intrusion-prevention-sdk
+title: Configure Intrusion Prevention
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configure-intrusion-prevention-sdk.md
+  conversion_date: '2025-09-08T23:42:22.769Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::::: {role="main"}
+Configure the Intrusion Prevention module (IDS/IPS) to define its behavior for a policy.
+
+When designing the module’s behavior and implementing it using the API, use the background information and guidance that is provided in [About Intrusion Prevention](intrusion-prevention.mdx).
+
+Policy objects contain two objects that you use to configure the Intrusion Prevention module:
+
+- IntrusionPreventionPolicyExtension: Controls the module state (prevent, detect, or off), identifies the applied Intrusion Prevention rules, and identifies application types that are assigned to the module.
+- PolicySettings: Policy settings include many Intrusion Prevention-related settings that control the runtime behavior of the module, such as the application of [recommendation scans](recommendation-scans-intro.mdx), network engine settings, and the use of NSX security tags.
+
+After you create these objects and add them to a `Policy` object, you use the `PoliciesApi` class to modify an existing policy based on the `Policy` object.
+
+The following JSON represents the data structure of `an IntrusionPreventionPolicyExtension object`:
+
+``` codeblock
+{
+    "state": "prevent",
+    "moduleStatus": {...},
+    "ruleIDs": [...],
+    "applicationTypeIDs": [...]
+}
+```
+
+The `moduleStatus` property is read-only. It provides the runtime status of the Intrusion Prevention module. (See [Report on Computer Status](report-computer-status.mdx).)
+
+## General steps {#general-steps}
+
+Use the following steps to configure the Intrusion Prevention module:
+
+### Procedure {#procedure}
+
+1.  Create an `IntrusionPreventionPolicyExtension` object and configure the properties.
+
+2.  Create a `PolicySettings` object to configure runtime settings of the module.
+
+3.  Create a Policy object and add the `IntrusionPreventionPolicyExtension` and PolicySettings objects.
+
+4.  Use a `PoliciesApi` object to add or update the policy on Server & Workload Protection.
+
+### Next steps {#next-steps}
+
+:::tip
+
+If you only need to set a single Intrusion Prevention-related policy setting, see [Configure a single policy or default policy setting](create-configure-policy.mdx).
+:::
+
+Create an `IntrusionPreventionPolicyExtension` object to set the module state and assign rules:
+
+``` codeblock
+ip_policy_extension = api.IntrusionPreventionPolicyExtension()
+ip_policy_extension.state = "prevent"
+ip_policy_extension.rule_ids = rule_ids
+```
+
+Create a `PolicySettings` object to configure Intrusion Prevention-related settings. (For detailed information about policy settings, see [Configure a single policy or default policy setting](create-configure-policy.mdx).) For example, you can automatically apply Intrusion Prevention rules that are found via recommendation scans:
+
+``` codeblock
+policy_settings = api.PolicySettings()
+setting_value = api.SettingValue()
+setting_value.value = "yes"
+policy_settings.intrusion_prevention_setting_auto_apply_recommendations_enabled = setting_value
+```
+
+At this point, the Intrusion Prevention policy extension and the policy settings are configured. Next, they are added to a `Policy` object. Then,use a `PoliciesApi` object to modify a policy on Server & Workload Protection.
+
+``` codeblock
+policy = api.Policy()
+policy.IntrusionPrevention = ip_policy_extension
+policy.policy_settings = policy_settings
+
+policies_api = api.PoliciesApi(api.ApiClient(configuration))
+modified_policy = policies_api.modify_policy(policy_id, policy, api_version)
+```
+
+:::tip
+
+The `policy_id` (or `policyID`) parameter of `modifyPolicy` identifies the actual policy on Server & Workload Protection that is to be modified. This policy is modified according to the policy object that is used as the `policy` parameter. Any properties of the `policy` parameter that are not set remain unchanged on the actual policy.
+:::
+
+## Example {#example}
+
+The following example code creates a `PolicySettings` object and sets the module state, assigns rules, and sets the value of the `intrusionPreventionSettingAutoApplyRecommendationsEnables` property to cause intrusion prevention to automatically apply rules found via recommendation scans. The object is added to a `Policy` object that is used to modify a policy.
+
+[source](https://github.com/deep-security/automation-center-sdk-samples/blob/master/python/src/intrusion_prevention_examples.py)
+
+``` codeblock
+# Run in prevent mode
+ip_policy_extension = api.IntrusionPreventionPolicyExtension()
+ip_policy_extension.state = "prevent"
+
+# Assign rules
+ip_policy_extension.rule_ids = rule_ids
+
+# Add to a policy
+policy = api.Policy()
+policy.IntrusionPrevention = ip_policy_extension
+
+# Configure the setting
+policy_settings = api.PolicySettings()
+setting_value = api.SettingValue()
+setting_value.value = "yes"
+policy_settings.intrusion_prevention_setting_auto_apply_recommendations_enabled = setting_value
+
+# Add the setting to a policy
+policy.policy_settings = policy_settings
+
+# Modify the policy on Server & Workload Protection
+policies_api = api.PoliciesApi(api.ApiClient(configuration))
+modified_policy = policies_api.modify_policy(policy_id, policy, api_version)
+
+return modified_policy.id
+```
+
+Also see the [Modify a Policy](https://automation.trendmicro.com/cloudone/workload-security/) operation in the API Reference.
+
+If you only need to add, remove, or list Intrusion Prevention rules for a policy, use the `PolicyIntrusionPreventionRuleAssignmentsApi` class. The previous example uses the `IntrusionPreventionPolicyExtension`, `Policy`, and `PoliciesApi` classes to add Intrusion Prevention rules, but this can also be done using only the `PolicyIntrusionPreventionRuleAssignmentsApi` class. For more information, see [Policy Intrusion Prevention Rule Assignments and Recommendations](https://automation.trendmicro.com/cloudone/workload-security/) in the API Reference.
+
+For information about authenticating API calls, see [Authenticate with Server & Workload Protection](send-your-first-request-using-api.mdx).
+
+## Create an Intrusion Prevention rule {#create-an-intrusion-prevention-rule}
+
+Generally, to create a rule for the Intrusion Prevention module you perform the following steps:
+
+### Procedure {#procedure-1}
+
+1.  Create an `IntrusionPreventionRule` object.
+
+2.  Set the rule properties. The properties are described in [Configure intrusion prevention rules](config-intrusion-prevention-rules.mdx).
+
+3.  Use an `IntrusionPreventionRulesApi` object to add the rule to Server & Workload Protection.
+
+### Next steps {#next-steps-1}
+
+:::note
+
+Although Log Inspection rules have different properties than Intrusion Prevention rules, the way you create the rules are similar. You might find the [Create a basic Log Inspection rule](config-log-inspection-swp.mdx) example helpful.
+:::
+
+:::tip
+
+Configuration options of Intrusion Prevention rules are not accessible using the API. To change these options, in the Server & Workload Protection console open the rule properties and click the Configuration tab.
+:::
+:::::::

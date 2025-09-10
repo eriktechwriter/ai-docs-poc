@@ -1,0 +1,57 @@
+---
+slug: trend-vision-one-revoking-access-office-365-services
+title: Revoking access to Microsoft 365 services
+last_updated: '2025-09-08'
+ai_context:
+  source_file: revoking-access-office-365-services.md
+  conversion_date: '2025-09-08T23:42:13.624Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+This section describes how to revoke the access of Cloud Email and Collaboration Protection to Microsoft 365 services, including Exchange Online, Exchange Online (Inline Mode), SharePoint Online, OneDrive, Microsoft Teams (Teams and Chat).
+
+The steps outlined below detail how to revoke access to a Microsoft 365 service.
+
+### Procedure {#procedure}
+
+1.  Choose **Administration → Service Account**.
+
+2.  Select a Microsoft 365 service account, for example, an Exchange Online account, and click **Remove**.
+
+    Be cautious when revoking access to Exchange Online. The following supported Cloud Email and Collaboration Protection automation APIs will not work after the Exchange Online service account is removed: **Threat Investigation**, **Threat Mitigation**, **Threat Remediation**.
+
+3.  On the **Remove \<Microsoft 365 Service Name\> Service Account** screen that appears, click **OK**.
+
+    If the service account is a Delegate Account, Cloud Email and Collaboration Protection requests Microsoft 365 to verify the selected service account.
+
+    - If the service account is valid, proceed to the next step.
+
+    - If the service account is invalid, choose to cancel the operation or forcibly remove your data generated in Cloud Email and Collaboration Protection as instructed.
+
+    :::note
+
+    Global Administrator privileges are required for removing service accounts.
+
+    If your account does not have required privileges, specify the Global Administrator credentials as instructed and click **OK**.
+    :::
+
+    Cloud Email and Collaboration Protection starts to remove the selected service account.
+
+4.  Click the **Details** link in the **Status** column to check the progress.
+
+    The **Remove \<Microsoft 365 Service Name\> Service Account** screen appears, showing all the steps involved, the status of each step, and the estimated time left.
+
+5.  After checking the detailed information, click **Close** to close the screen.
+
+6.  Wait for some time and manually refresh your console.
+
+    - If the selected service account is successfully removed, it disappears from the **Service Account** screen.
+
+    - If Cloud Email and Collaboration Protection fails to remove the selected service account, you still have the option to forcibly remove your data generated in Cloud Email and Collaboration Protection as instructed.
+
+7.  Manually clean up the remaining data.
+
+    For details, see [Changes made under inline protection](changes-inline-protection.mdx) for Exchange Online (Inline Mode) or [Changes made under API-based protection](changes-api-based-protection.mdx) for other services.
+:::

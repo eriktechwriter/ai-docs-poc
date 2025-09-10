@@ -1,0 +1,216 @@
+---
+slug: trend-vision-one-get-start-agentless-vulnerbaility
+title: Get started with Agentless Vulnerability & Threat Detection in AWS
+last_updated: '2025-09-08'
+ai_context:
+  source_file: get-start-agentless-vulnerbaility.md
+  conversion_date: '2025-09-08T23:42:18.883Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Learn how to enable Agentless Vulnerability & Threat Detection in your AWS account and understand provider-specific feature requirements and limitations.
+
+To start scanning for vulnerabilities and malware in your cloud resources, add your AWS account to Trend Vision One in [Cloud Accounts](cloud-accounts.mdx) using the CloudFormation template. Enable Agentless Vulnerability & Threat Detection, and then click **Scanner Settings** to choose the resource types to scan and whether to scan for vulnerabilities, malware, or both. Vulnerability scanning is enabled for all supported resources by default. Anti-malware scanning is disabled by default. You can change the scanning configuration at any time. For detailed instructions, see [Adding an AWS account using CloudFormation](adding-aws-account.mdx).
+
+Agentless Vulnerability & Threat Detection scans the following AWS resource types:
+
+- EBS volumes attached to EC2 instances
+
+- ECR images that have the "latest" tag
+
+- Lambda functions and attached Lambda layers
+
+Agentless Vulnerability & Threat Detection works in AWS by taking a snapshot of EBS volumes and collecting ECR images, Lambda function zip archives, and Lambda layers. The collected resources are then scanned for vulnerabilities or malware. Lambda functions deployed with container images are covered by ECR image scanning.
+
+:::warning[Important]
+
+Agentless Vulnerability & Threat Detection takes snapshots of your EBS volumes prior to scanning and tags the snapshots with the tag `trend-micro-product:avtd`. Use the tag to identify snapshots waiting to be scanned and to exclude the snapshots from any automated deletion processes you have configured. Snapshots are automatically deleted from your AWS account after the scan completes.
+:::
+
+<figure>
+<img src="./images/LambdaavtdDiangamCorrect=GUID-86f214f4-785b-4b61-9c0d-9ae36164cdcf.webp" alt="Agentless Vulnerability &amp; Threat Detection AWS network diagram" />
+</figure>
+
+Scan results are sent to Trend Vision One and can be seen in **Cloud Risk Management**, **Cyber Risk Overview**, **Threat and Exposure Management**, and asset profile screens in **Attack Surface Discovery**. After you patch vulnerabilities or remediate malware in EBS volumes, Lambda functions, or Lambda layers, the detections no longer appear after the next daily scan. Vulnerability detections in ECR images remain visible in **Threat and Exposure Management → Vulnerabilities** for seven days after patching. Malware detections in ECR images remain visible in **Threat and Exposure Management → All Risk Events** for seven days after remediation.
+
+The following table lists scanning limitations that apply to each supported AWS resource type.
+
+**AWS resource scanning limitations**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>AWS resource</p></th>
+<th><p>Limitations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>EBS volumes</p></td>
+<td><ul>
+<li><p>If the total files of any type across your EBS volumes exceeds 250,000, scans might fail.</p></li>
+<li><p>Only EBS volumes attached to supported Linux and Windows instances are supported. Any scans of EBS volumes attached to unsupported platform instances use resources but do not provide detection information.</p></li>
+<li><p>Reaching the limit for pending EBS snapshots in your AWS account might cause one or more "PendingSnapshotLimitExceeded" errors, resulting in a longer scanning process.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>ECR images</p></td>
+<td><ul>
+<li><p>Scans of ECR images that exceed 3 GB in size might fail due to storage size limitations.</p></li>
+<li><p>Vulnerability scanning only supports the latest pushed ECR image or ECR images with the "latest" tag.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Lambda functions and layers</p></td>
+<td><ul>
+<li><p>Lambda layers not attached to any Lambda functions are not scanned for vulnerabilities.</p></li>
+<li><p>Anti-malware scanning does not currently support scanning Lambda layers.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+For estimated costs of deploying Agentless Vulnerability & Threat Detection in your AWS accounts, see [Agentless Vulnerability & Threat Detection estimated deployment costs for AWS](deployment-costs.mdx).
+
+For a list of operating systems supported by Agentless Vulnerability & Threat Detection see [Agentless Vulnerability & Threat Detection supported operating systems](avtd-supported-operating-systems.mdx).
+
+Agentless Vulnerability & Threat Detection supports the following AWS regions.
+
+**Supported AWS regions**
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Region code</p></th>
+<th><p>Region name (Location)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>us-east-1</p></td>
+<td><p>US East (N. Virginia)</p></td>
+</tr>
+<tr>
+<td><p>us-east-2</p></td>
+<td><p>US East (Ohio)</p></td>
+</tr>
+<tr>
+<td><p>us-west-1</p></td>
+<td><p>US West (N. California)</p></td>
+</tr>
+<tr>
+<td><p>us-west-2</p></td>
+<td><p>US West (Oregon)</p></td>
+</tr>
+<tr>
+<td><p>af-south-1</p></td>
+<td><p>Africa (Cape Town)</p></td>
+</tr>
+<tr>
+<td><p>ap-east-1</p></td>
+<td><p>Asia Pacific (Hong Kong)</p></td>
+</tr>
+<tr>
+<td><p>ap-northeast-1</p></td>
+<td><p>Asia Pacific (Tokyo)</p></td>
+</tr>
+<tr>
+<td><p>ap-northeast-2</p></td>
+<td><p>Asia Pacific (Seoul)</p></td>
+</tr>
+<tr>
+<td><p>ap-northeast-3</p></td>
+<td><p>Asia Pacific (Osaka)</p></td>
+</tr>
+<tr>
+<td><p>ap-south-1</p></td>
+<td><p>Asia Pacific (Mumbai)</p></td>
+</tr>
+<tr>
+<td><p>ap-southeast-1</p></td>
+<td><p>Asia Pacific (Singapore)</p></td>
+</tr>
+<tr>
+<td><p>ap-southeast-2</p></td>
+<td><p>Asia Pacific (Sydney)</p></td>
+</tr>
+<tr>
+<td><p>ca-central-1</p></td>
+<td><p>Canada (Central)</p></td>
+</tr>
+<tr>
+<td><p>eu-central-1</p></td>
+<td><p>Europe (Frankfurt)</p></td>
+</tr>
+<tr>
+<td><p>eu-north-1</p></td>
+<td><p>Europe (Stockholm)</p></td>
+</tr>
+<tr>
+<td><p>eu-west-1</p></td>
+<td><p>Europe (Ireland)</p></td>
+</tr>
+<tr>
+<td><p>eu-west-2</p></td>
+<td><p>Europe (London)</p></td>
+</tr>
+<tr>
+<td><p>eu-west-3</p></td>
+<td><p>Europe (Paris)</p></td>
+</tr>
+<tr>
+<td><p>sa-east-1</p></td>
+<td><p>South America (São Paulo)</p></td>
+</tr>
+<tr>
+<td><p>me-central-1</p></td>
+<td><p>Middle East (UAE)</p></td>
+</tr>
+<tr>
+<td><p>me-south-1</p></td>
+<td><p>Middle East (Bahrain)</p></td>
+</tr>
+</tbody>
+</table>
+
+**Unsupported AWS Regions**
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Region code</p></th>
+<th><p>Region name (Location)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>ap-southeast-3</p></td>
+<td><p>Asia Pacific (Jakarta)</p></td>
+</tr>
+<tr>
+<td><p>eu-south-1</p></td>
+<td><p>Europe (Milan)</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Enable vulnerability scanning for AWS](vulnerability-scanning.md "Scan your AWS cloud resources for vulnerabilities to help prioritize and remediate issues and proactively identify zero-day exploits.")
+- [Enable anti-malware scanning for AWS](anti-malware-scanning.md "Scan your AWS EBS, ECR, and Lambda resources for malware to help identify threats, prioritize remediation efforts, and secure cloud workloads.")
+- [Agentless Vulnerability & Threat Detection estimated deployment costs for AWS](deployment-costs.md "Estimate and track the costs of deploying and operating Agentless Vulnerability & Threat Detection in your AWS accounts.")
+::::

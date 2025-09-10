@@ -1,0 +1,345 @@
+---
+slug: trend-vision-one-changes-api-based-protection
+title: Changes made under API-based protection
+last_updated: '2025-09-08'
+ai_context:
+  source_file: changes-api-based-protection.md
+  conversion_date: '2025-09-08T23:42:23.970Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+The following table lists all the actions that Cloud Email and Collaboration Protection performs in the Microsoft 365 environment and other changes made by Cloud Email and Collaboration Protection.
+
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 26%" />
+<col style="width: 30%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th rowspan="2"><p>Stage</p></th>
+<th colspan="2"><p>Cloud Email and Collaboration Protection Changes to Microsoft 365</p></th>
+<th rowspan="2"><p>Other Changes</p></th>
+</tr>
+<tr>
+<th><p>Microsoft 365 Admin Center</p></th>
+<th><p>Exchange/SharePoint/OneDrive/Microsoft Teams</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Granting access</p></td>
+<td><p>Creates Cloud Email and Collaboration Protection service accounts for Microsoft 365 users.</p></td>
+<td><ul>
+<li><p>Exchange: None.</p></li>
+<li><p>SharePoint/OneDrive:</p>
+<ul>
+<li><p>Adds a remote event receiver to each site collection.</p></li>
+<li><p>Adds service accounts to each site collection's administrator group. (for granting access with a Delegate Account only)</p></li>
+<li><p>Uses OAuth 2.0 to obtain SharePoint Online's or OneDrive' access token. (for granting access with an Authorized Account only)</p></li>
+</ul></li>
+<li><p>Microsoft Teams:</p>
+<ul>
+<li><p>Uses OAuth 2.0 to obtain Microsoft Teams' access token.</p></li>
+<li><p>Adds a remote event receiver to each team site.</p></li>
+</ul></li>
+<li><p>Teams Chat: Uses OAuth 2.0 to obtain Teams Chat's access token.</p></li>
+</ul></td>
+<td><ul>
+<li><p>The SharePoint/OneDrive user list and user profiles are updated upon service account creation.</p></li>
+<li><p>Exchange user information is updated upon service account creation.</p></li>
+<li><p>The teams data is updated to the Cloud Email and Collaboration Protection database.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Service running</p></td>
+<td><p>Synchronizes with Microsoft 365 daily to obtain information about new users, groups, SharePoint sites, and teams.</p>
+
+
+:::note
+
+<p>Cloud Email and Collaboration Protection synchronizes with Microsoft 365 at 00:15 a.m. UTC for both the EU and UK sites, 05:15 a.m. UTC for the Canada site, 08:15 a.m. UTC for the US site, 04:15 p.m. UTC for both the Japan and the Australia and New Zealand sites, 05:15 p.m. UTC for the Singapore site, and 00:15 p.m. UTC for the India site.</p>
+
+
+:::
+
+</td>
+<td><ul>
+<li><p>Exchange:</p>
+<ul>
+<li><p>Creates hidden folders for mailboxes if there are quarantined files.</p></li>
+<li><p>Moves files between the quarantine and user folders.</p></li>
+</ul></li>
+<li><p>SharePoint/OneDrive:</p>
+<ul>
+<li><p>Adds service accounts or the remote event receiver for new site collections.</p></li>
+<li><p>Creates the hidden document library for each site if there are quarantined files.</p></li>
+<li><p>Moves files between the quarantine and site folders.</p></li>
+</ul></li>
+<li><p>Microsoft Teams:</p>
+<ul>
+<li><p>Adds the remote event receiver for new team sites.</p></li>
+<li><p>Creates the hidden document library for each site if there are quarantined files.</p></li>
+<li><p>Moves files between the quarantine and site folders.</p></li>
+</ul></li>
+<li><p>Teams Chat:</p>
+<ul>
+<li><p>Subscribes to changes (create, update) to chat messages in the tenant.</p></li>
+<li><p>Blocks chat message if needed.</p></li>
+</ul></li>
+</ul></td>
+<td><ul>
+<li><p>The access or operation logs are updated for service accounts during scanning.</p></li>
+<li><p>The <em>LastLogonTime</em> property is updated for each mailbox.</p></li>
+<li><p>SharePoint/OneDrive notification files are created if Cloud Email and Collaboration Protection takes actions against certain files.</p></li>
+<li><p>The access token for Microsoft Teams is refreshed every hour.</p></li>
+<li><p>The access token for Teams Chat is refreshed every hour.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Revoking access</p></td>
+<td><ul>
+<li><p>Stops daily synchronization with Microsoft 365.</p></li>
+<li>Stops generating scheduled reports.</li>
+</ul></td>
+<td><ul>
+<li><p>Exchange: Removes the quarantine folder.</p></li>
+<li><p>SharePoint/OneDrive:</p>
+<ul>
+<li><p>Removes the remote event receiver from each site collection. (for granting access with a Delegate Account only)</p></li>
+<li><p>Removes service accounts from each site collection's administrator group. (for granting access with a Delegate Account only)</p>
+
+
+:::note
+
+<p>To remove service accounts from the administrator group, make sure that the service accounts have been promoted Global Administrator privileges during the access grant.</p>
+
+
+:::
+
+</li>
+<li><p>Removes the access token obtained. (for granting access with an Authorized Account only)</p></li>
+<li><p>Removes the quarantine document library.</p></li>
+</ul></li>
+<li><p>Microsoft Teams:</p>
+<ul>
+<li><p>Removes teams data.</p></li>
+<li><p>Removes the access token obtained.</p></li>
+</ul></li>
+<li><p>Teams Chat: Removes the access token obtained.</p></li>
+</ul>
+
+
+:::note
+
+<p>Cloud Email and Collaboration Protection recommends that you delete quarantine logs before revoking access.</p>
+
+
+:::
+
+</td>
+<td><p>None.</p></td>
+</tr>
+<tr>
+<td><p>Manual cleanup</p></td>
+<td><ul>
+<li><p>Removes service accounts from the Microsoft 365 user list.</p></li>
+<li><p>Removes the Cloud Email and Collaboration Protection Add-in.</p></li>
+</ul></td>
+<td><p>None.</p></td>
+<td><ul>
+<li><p>Microsoft removes the SharePoint user profiles 30 days after service account removal.</p></li>
+<li><p>Customers need to manually remove service account users from the SharePoint/OneDrive user list.</p></li>
+<li><p>Microsoft Teams: none.</p></li>
+<li><p>Teams Chat: none.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+The following table lists all the actions that Cloud Email and Collaboration Protection performs in the Box, Dropbox and Google Drive environment and other changes made by Cloud Email and Collaboration Protection.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 35%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Stage</p></th>
+<th><p>Cloud Email and Collaboration Protection Changes to Box/Dropbox/Google Drive</p></th>
+<th><p>Other Changes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Granting access</p></td>
+<td><ul>
+<li><p>Uses OAuth 2.0 to obtain Box's, Dropbox's or Google Drive's access token.</p></li>
+<li><p>Uses the access token to create the following folders:</p>
+<ul>
+<li><p>Quarantine folder: <code>trendmicro_cas_quarantine__dont_change_or_delete</code></p></li>
+<li><p>Temporary folder: <code>trendmicro_cas_temp__dont_change_or_delete</code></p></li>
+</ul></li>
+<li><p>Shares the temporary folder with all users in the current organization.</p></li>
+</ul></td>
+<td><p>Saves user and group information to the Cloud Email and Collaboration Protection database.</p></td>
+</tr>
+<tr>
+<td><p>Service running</p></td>
+<td><ul>
+<li><p>Synchronizes with Box, Dropbox and Google Drive daily to obtain information about new users and groups.</p>
+
+
+:::note
+
+<p>Cloud Email and Collaboration Protection synchronizes with Box, Dropbox and Google Drive at 03:32 a.m. UTC for both the EU and UK sites, 07:32 a.m. UTC for the Canada site, 10:32 a.m. UTC for the US site, 06:32 p.m. UTC for both the Japan and the Australia and New Zealand sites, 07:32 p.m. UTC for the Singapore site, and 02:32 p.m. UTC for the India site.</p>
+
+
+:::
+
+</li>
+<li><p>If a file violates a policy that specifies the "Quarantine" action:</p>
+<ol>
+<li><p>Renames the file and moves it to the temporary folder.</p></li>
+<li><p>Moves the file to the quarantine folder.</p></li>
+<li><p>Replaces the file with a text file in the original path.</p></li>
+</ol></li>
+</ul></td>
+<td><ul>
+<li><p>Updates the access or operation logs for service accounts during scanning.</p></li>
+<li><p>Refreshes the access token every hour.</p></li>
+</ul>
+
+
+:::note
+
+<p>In addition, for Google Drive, Cloud Email and Collaboration Protection keeps subscribing to Google's event notifications every 5 hours.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Revoking access</p></td>
+<td><ul>
+<li><p>Stops daily synchronization with Box, Dropbox or Google Drive.</p></li>
+<li><p>Stops generating scheduled reports.</p></li>
+<li><p>Stops running manual scans.</p></li>
+</ul></td>
+<td><ul>
+<li><p>Removes administrator-set policies.</p></li>
+<li><p>Removes user and group information.</p></li>
+<li><p>Removes the access tokens obtained.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Manual cleanup</p></td>
+<td><ul>
+<li><p>Removes the Cloud Email and Collaboration Protection application from the Box or Dropbox admin console.</p></li>
+<li><p>Removes the Cloud Email and Collaboration Protection application from the Google Workspace admin console and from the admin's Google Account.</p>
+
+
+:::note
+
+<p>You can ignore this if you need to use the Gmail or Gmail (Inline Mode) service account for protection.</p>
+
+
+:::
+
+</li>
+<li><p>Removes the quarantine folder and temporary folder.</p></li>
+<li><p>Removes the replacement text files if necessary.</p></li>
+</ul></td>
+<td><p>None.</p></td>
+</tr>
+</tbody>
+</table>
+
+The following table lists all the actions that Cloud Email and Collaboration Protection performs in the Gmail environment and other changes made by Cloud Email and Collaboration Protection.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 35%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Stage</p></th>
+<th><p>Cloud Email and Collaboration Protection Changes to Gmail</p></th>
+<th><p>Other Changes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Granting access</p></td>
+<td><p>Uses OAuth 2.0 to obtain Gmail's access token.</p></td>
+<td><p>Saves user and group information to the Cloud Email and Collaboration Protection database.</p></td>
+</tr>
+<tr>
+<td><p>Service running</p></td>
+<td><ul>
+<li><p>Synchronizes with Gmail daily to obtain information about new users and groups.</p>
+
+
+:::note
+
+<p>Cloud Email and Collaboration Protection synchronizes with Gmail at 00:15 a.m. UTC for both the EU and UK sites, 05:15 a.m. UTC for the Canada site, 08:15 a.m. UTC for the US site, 04:15 p.m. UTC for both the Japan and the Australia and New Zealand sites, 05:15 p.m. UTC for the Singapore site, and 00:15 p.m. UTC for the India site.</p>
+
+
+:::
+
+</li>
+<li><p>If an email message violates a policy that specifies the "Label email" action: Creates a label called "Risky (by Trend Micro)" and labels the message.</p></li>
+</ul></td>
+<td><ul>
+<li><p>Updates the access or operation logs for the service account during scanning.</p></li>
+<li><p>Refreshes the access token every hour.</p></li>
+<li><p>Cloud Email and Collaboration Protection refreshes the subscription to all mailboxes' event notifications during scheduled synchronization every day.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Revoking access</p></td>
+<td><ul>
+<li><p>Stops daily synchronization with Gmail.</p></li>
+<li><p>Stops generating scheduled reports.</p></li>
+</ul></td>
+<td><ul>
+<li><p>Removes administrator-set policies.</p></li>
+<li><p>Removes user and group information.</p></li>
+<li><p>Removes the access token obtained.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Manual cleanup</p></td>
+<td><p>Removes the Cloud Email and Collaboration Protection application from the Google Workspace admin console and from the admin's Google Account.</p>
+
+
+:::note
+
+<p>You can ignore this if you need to use the Google Drive or Gmail (Inline Mode) service account for protection.</p>
+
+
+:::
+
+</td>
+<td><p>None.</p></td>
+</tr>
+</tbody>
+</table>
+
+If your license has reached the end of the grace period, note the following:
+
+- Cloud Email and Collaboration Protection management console is no longer accessible.
+
+- Cloud Email and Collaboration Protection performs access revoking and does not protect your applications or services any more.
+
+- Quarantined items cannot be restored or downloaded.
+:::

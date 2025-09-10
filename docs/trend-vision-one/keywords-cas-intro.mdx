@@ -1,0 +1,113 @@
+---
+slug: trend-vision-one-keywords-cas-intro
+title: Keywords
+---
+# Keywords
+
+Keywords are special words or phrases. Add related keywords to a keyword list to identify specific types of data. For example, "prognosis", "blood type", "vaccination", and "physician" are keywords that may appear in a medical certificate. To prevent the transmission of medical certificate files, use these keywords in a Data Loss Prevention policy and then configure the policy action to block files containing these keywords.
+
+Combine commonly used words to form meaningful keywords. For example, combine "end", "read", "if", and "at" to form keywords found in source code, such as "END-IF", "END-READ", and "AT END".
+
+## Predefined keyword lists {#predefined-keyword-lists}
+
+Trend Micro provides predefined keyword lists with built-in conditions that trigger Data Loss Prevention policy violations. You cannot modify or delete predefined keyword lists.
+
+[Learn about Data Loss Prevention predefined keyword lists](http://docs.trendmicro.com/all/ent/dp-ref/v3.0/en-us/dp_lists_3.0.pdf).
+
+## Custom keyword lists {#custom-keyword-lists}
+
+Create customized keyword lists if none of the predefined keyword lists meet your requirements. A keyword list must satisfy your chosen criteria before Data Loss Prevention triggers the policy. The following table explains the available criteria when configuring a keyword list.
+
+**Criteria for a Keyword List**
+
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 81%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Criteria</p></th>
+<th><p>Rule</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Any keyword</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>A file must contain at least one keyword in the keyword list.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>All keywords</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid">A file must contain all the keywords in the keyword list.</td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>All keywords within &lt;x&gt; characters</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>A file must contain all the keywords in the keyword list. In addition, each keyword pair must be within &lt;x&gt; characters of each other.</p>
+<p>For example, your 3 keywords are WEB, DISK, and USB and the number of characters you specified is 20.</p>
+<p>If Data Loss Prevention detects all keywords in the order DISK, WEB, and USB, the number of characters from the "D" (in DISK) to the "W" (in WEB) and from the "W" to the "U" (in USB) must be 20 characters or less.</p>
+<ul>
+<li>The following data matches the criteria: DISK####WEB############USB</li>
+<li>The following data does not match the criteria: DISK*******************WEB****USB(23 characters between "D" and "W")</li>
+</ul>
+<p>When deciding on the number of characters, remember that a small number, such as 10, will usually result in faster scanning time but will only cover a relatively small area. This may reduce the likelihood of detecting sensitive data, especially in large files. As the number increases, the area covered also increases but scanning time might be slower.</p></td>
+</tr>
+<tr>
+<td style="border-right-width: 1px; border-right-style: solid"><p>Combined score for keywords exceeds threshold</p></td>
+<td><p>A file must contain one or more keywords in the keyword list. If only one keyword was detected, its score must be higher than the threshold. If there are several keywords, their combined score must be higher than the threshold.</p>
+<p>Assign each keyword a score of 1 to 10. A highly confidential word or phrase, such as "salary increase" for the Human Resources department, should have a relatively high score. Words or phrases that, by themselves, do not carry much weight can have lower scores.</p>
+<p>Consider the scores that you assigned to the keywords when configuring the threshold. For example, if you have five keywords and three of those keywords are high priority, the threshold can be equal to or lower than the combined score of the three high priority keywords. This means that the detection of these three keywords is enough to treat the file as sensitive.</p></td>
+</tr>
+</tbody>
+</table>
+
+## Adding custom keyword lists {#adding-custom-keyword-lists}
+
+### Procedure {#procedure}
+
+1.  Go to **Data Loss Prevention → Data Identifiers → Keyword Lists**.
+
+2.  Click **Add**.
+
+3.  Specify custom keyword list settings.
+
+    ::: {.simpletable-container}
+    <table id="GUID-E70DBDE2-BE52-4907-BE87-8A4BBB3EC2CE__CHOICETABLE_LKS_H1S_BQ" class="choicetable" data-border="1">
+    <thead>
+    <tr class="chhead table-header-style">
+    <th class="choptionhd">Option</th>
+    <th class="chdeschd">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="chrow">
+    <td class="choption"><p>Basic Properties</p></td>
+    <td class="chdesc"><p>Specify basic settings and select the criteria.</p></td>
+    </tr>
+    <tr class="chrow">
+    <td class="choption"><p>Defining Keyword</p></td>
+    <td class="chdesc"><p>Specify the keyword parameters. Optionally make the keyword case sensitive.</p></td>
+    </tr>
+    </tbody>
+    </table>
+    :::
+
+4.  Click **Add**.
+
+    The new custom keyword list appears under **Keyword List**.
+
+5.  Click **Save**.
+
+## Importing custom keyword lists {#importing-custom-keyword-lists}
+
+Importing custom keyword lists requires a properly-formatted .xml file containing the keywords.
+
+### Procedure {#procedure-1}
+
+1.  Go to **Data Loss Prevention → Data Identifiers → Keyword Lists**.
+
+2.  Click **Import**, and then click **Choose File** to locate the .xml file to import.
+
+3.  Click **Open**.
+
+4.  Click **Import**.
+:::

@@ -1,0 +1,197 @@
+---
+slug: trend-vision-one-deploy-pac-google-cloud-platform
+title: Deploy the Private Access Connector on Google Cloud Platform
+last_updated: '2025-09-08'
+ai_context:
+  source_file: deploy-pac-google-cloud-platform.md
+  conversion_date: '2025-09-08T23:42:20.649Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Connect your Google Cloud Platform (GCP) applications with Zero Trust Secure Access Private Access and prevent unauthorized intrusions.
+
+Private Access Connectors connect your internal applications with Zero Trust Secure Access Private Access, which allows you to control access to sensitive corporate resources. To ensure high availability (HA) and facilitate load-balancing on high traffic apps, install and group together at least 2 connectors in each environment. Before attempting to deploy the Private Access Connector, ensure that your environment meets the minimum [system requirements](pa-connector-system-reqs.mdx).
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Zero Trust Secure Access → Secure Access Configuration → Private Access Configuration**.
+
+2.  For customers that need to create a new connector group, click **Add Private Access Connector Group**.
+
+    1.  Provide a unique name and description for the group.
+
+    2.  Click **Save**.
+
+3.  Locate your **Connector group** name in the list and click the **New connector** (![](/images/add_connector=683f3c84-a774-40c0-bd9b-4663fcd2b53f.webp)) icon.
+
+    The **Private Access Connector Virtual Appliance** panel appears.
+
+4.  Select **Google Cloud Platform** from the **Platform** list.
+
+5.  Click **Download Disk Image** to download the OVA file.
+
+    Verify that the file name and extension are: `TrendMicroVisionOne-PrivateAccessConnector.ova`
+
+6.  Copy the **Registration token** for later use.
+
+    :::warning[Important]
+
+    The **Registration token** is only valid for 7 days. If the token expires, you must start again.
+    :::
+
+7.  Install and [set up the Google Cloud SDK](https://cloud.google.com/sdk/docs/quickstart).
+
+    Skip this step if you have already set up the Cloud SDK.
+
+    :::warning[Important]
+
+    The steps contained in these instructions were valid as of July 2022.
+    :::
+
+8.  Sign in to the [Google Cloud Platform](https://console.cloud.google.com/getting-started) as a super administrator.
+
+9.  At the top of the GCP screen, select a project where the Private Access Connector virtual appliance is to be deployed from the project drop-down menu.
+
+10. Under the project, create a bucket for uploading the downloaded OVA file.
+
+    :::note
+
+    Skip this step if you have a bucket that meets the following requirements under the project.
+
+    - The region of the bucket is the same as that to be used for deploying the Private Access Connector.
+
+    - The available space of the bucket is greater than the size of the OVA file to be uploaded.
+    :::
+
+    1.  Search for **Cloud Storage** in the search box and then click **Cloud Storage**.
+
+        The bucket management screen appears.
+
+    2.  Click **CREATE BUCKET**.
+
+    3.  On the **Create a bucket** screen that appears, specify a uniquely identifiable name for the bucket and click **Continue**.
+
+    4.  Configure the settings for the bucket, and then click **Create**.
+
+        :::note
+
+        Make sure that the region of the bucket is the same as that to be used for deploying the Private Access Connector.
+        :::
+
+        The new bucket appears on the bucket management screen.
+
+11. Upload the OVA file to a bucket.
+
+    1.  In the bucket list on the bucket management screen, click the bucket created or selected in step 4.
+
+        The **Bucket details** screen appears.
+
+    2.  On the **Objects** tab, click **UPLOAD FILES**, select the OVA file in the dialog that appears, and then click **Open**.
+
+        The uploaded OVA file appears in the bucket file list.
+
+12. Import the OVA file from GCP Cloud Storage to Cloud Compute.
+
+    1.  Open the gcloud CLI on your local machine and sign in as a super administrator.
+
+    2.  Run the following command to confirm that the current project and region are where the bucket is located.
+
+        `gcloud config list`
+
+        (Optional) Run the following commands to change the project and region if necessary.
+
+        - `gcloud config set project <project_of_the_bucket>`
+
+        - `gcloud config set compute/region <region_of_the_bucket>`
+
+    3.  Run the following command to import the OVA file from Cloud Storage to Cloud Compute:
+
+        `gcloud compute images import <imageName> --source-file "gs://<bucketName>/<ovaFileName>" --network <networkName>`
+
+        - `<imageName>`: Name of the image in Cloud Compute after the OVA file is imported
+
+        - `<bucketName>`: Name of the bucket that stores the OVA file
+
+        - `<ovaFileName>`: Name of the OVA file to be imported
+
+        - `<networkName>`: Name of the network in the current project to use for the image import
+
+          :::note
+
+          If there is no network available under the current project, you need to create one. For more information, see the Google Virtual Private Cloud (VPC) documentation.
+          :::
+
+    4.  Wait until the process is completed.
+
+        :::note
+
+        The import may take about two hours. Do not close the gcloud CLI during the import.
+
+        When the import is completed, a "Finished making disk bootable" message appears. You can also search for **Images** on the GCP and find the image in the image list.
+        :::
+
+13. On the gcloud CLI, run the following command to create a Private Access Connector VM from the imported image.
+
+    `gcloud compute instances create <instanceName> --image-project <projectName> --image <imageName> --network <networkName>`
+
+    - `<instanceName>`: Name of the VM to be created
+
+    - `<projectName>`: Name of the project under which the VM is to be created
+
+    - `<imageName>`: Name of the image used to create the VM
+
+    - `<networkName>`: Name of the network where the VM runs after it is created
+
+14. Wait until the process is completed.
+
+    The creation takes about one minute. After the VM is created, you can search for **VM instances** on the GCP and find the new VM.
+
+15. Register the Private Access Connector virtual appliance to Trend Vision One.
+
+    1.  Open the gcloud CLI, and run the following `ssh` command to log on to the Private Access Connector virtual appliance with the default credentials.
+
+        `gcloud compute ssh admin@<instance_name_of_the_Connector_VM>`
+
+        This command automatically creates a key pair, uploads the public key file to the VM, saves the private key file to your local machine, and uses the private key file for authentication. You do not need to specify the private key file in the command.
+
+    2.  Run the following command and then press the **Enter** key to set your password for the `enable` command:
+
+        `passwd`
+
+        The **admin** user and privileged mode share the same password.
+
+    3.  Type `enable` and then press the **Enter** key to enter privileged mode. Provide the updated password when asked.
+
+        The command prompt changes from **\>** to **\#**.
+
+    4.  (Optional) Run the following command to change the time zone of the Private Access Connector:
+
+        `configure timezone <timezone>`
+
+        The default time zone is **America/Los_Angeles**.
+
+    5.  Check whether the Private Access Connector can connect to the NTP server `0.pool.ntp.org`.
+
+        The Private Access Connector requires connectivity to an NTP server to synchronize its clock. By default, Trend Vision One uses the public NTP server `0.pool.ntp.org`. You can also configure the Private Access Connector to connect to another public NTP server or a local NTP server within your organization.
+
+        Run the following command to configure the NTP server: `configure ntp server <address>`
+
+        :::note
+
+        To use public NTP servers, make sure that your firewall configuration allows outbound UDP traffic on port 123.
+        :::
+
+    6.  Run the following command to register the Private Access Connector virtual appliance to Trend Vision One:
+
+        `register <registration_token>`
+
+        You can obtain the token from the same screen you downloaded the virtual appliance on Trend Vision One.
+
+16. Use the CLI to configure other settings, if required.
+
+    For more information on available commands, see [Private Access Connector CLI commands](private-access-connector-cli.mdx).
+
+    After successful deployment, the Private Access Connector virtual appliance appears under the corresponding connector group on the **Private Access Connectors** tab.
+:::

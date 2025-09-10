@@ -1,0 +1,531 @@
+---
+slug: trend-vision-one-virtual-network-sensor-cli-commands
+title: Virtual Network Sensor CLI commands
+---
+# Virtual Network Sensor CLI commands
+
+A list of available CLI commands for managing the Virtual Network Sensor.
+
+Connect to [VMware ESXi](network-sensor-vmware-esxi.mdx) (either directly or through SSH) or [VMware vCenter](network-sensor-vmware-vcenter.mdx), and open the Virtual Network Sensor. To sign on with the default admin account, type `admin` for the user name and password.
+
+To view a list of tasks you can perform and enable administrative commands, run the `enable` command. Enabling administrative commands changes the command prompt from \> to \#.
+
+To view basic information of the Virtual Network Sensor, such as network settings and service status, run the `show` command. For a list of available commands, type `show ?`.
+
+The following tables list out the basic and administrative commands you can use to manage the Virtual Network Sensor.
+
+:::warning[Important]
+
+- Make sure you disable the Scroll Lock key on your keyboard when using HyperTerminal.
+
+- Arguments with angle brackets (\< \>) are required. Arguments with square brackets (\[ \]) are optional.
+:::
+
+**Basic Commands**
+
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 35%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th>Command</th>
+<th>Syntax</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>enable</code></p></td>
+<td><p><code>enable</code></p></td>
+<td><p>Enable administrative commands</p>
+<p>For details, see Administrative Commands.</p></td>
+</tr>
+<tr>
+<td><p><code>exit</code></p></td>
+<td><p><code>exit</code></p></td>
+<td><p>Exit the CLI</p></td>
+</tr>
+<tr>
+<td><p><code>help</code></p></td>
+<td><p><code>help</code></p></td>
+<td><p>Display the CLI syntax</p></td>
+</tr>
+<tr>
+<td rowspan="13"><p><code>show</code></p></td>
+<td><p><code>show ?</code></p></td>
+<td><p>Show a list of available commands</p></td>
+</tr>
+<tr>
+<td><p><code>show hostname</code></p></td>
+<td>Show host name information</td>
+</tr>
+<tr>
+<td><p><code>show interface &lt;interface&gt;</code></p></td>
+<td><p>Show network interface information</p>
+<p><code>&lt;interface&gt;</code>: Name of NIC interface (for example, eth0)</p></td>
+</tr>
+<tr>
+<td><p><code>show network management</code></p></td>
+<td><p>Show network configuration</p>
+
+
+:::note
+
+<p>If the network is configured incorrectly, you can use the configure network primary ipv4.static command to reconfigure the settings.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><code>show ntp</code></p></td>
+<td><p>Show NTP information</p></td>
+</tr>
+<tr>
+<td><p><code>show proxy</code></p></td>
+<td><p>Show proxy information</p></td>
+</tr>
+<tr>
+<td><p><code>show sshd</code></p></td>
+<td><p>Show SSH status (enabled or disabled)</p></td>
+</tr>
+<tr>
+<td><p><code>show system</code></p></td>
+<td><p>Show the Company ID and disk information</p>
+
+
+:::note
+
+<ul>
+<li><p>If the head of the command line is #, execute the <code>exit</code> command first.</p></li>
+<li>If no Company ID is shown, contact your support provider to obtain a registration token.</li>
+</ul>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><code>show thirdpartylicense</code></p></td>
+<td><p>Show 3rd-party license information</p></td>
+</tr>
+<tr>
+<td><p><code>show time</code></p></td>
+<td><p>Show time and date information</p></td>
+</tr>
+<tr>
+<td><p><code>show traffic</code></p></td>
+<td><p>Show real time data traffic</p></td>
+</tr>
+<tr>
+<td><p><code>show vision-one</code></p></td>
+<td><p>Show the Trend Vision One server address and last time data was sent</p></td>
+</tr>
+<tr>
+<td><p><code>show endpoint-info-enricher</code></p></td>
+<td><p>Show the configuration of the endpoint information enricher, which looks up hostnames and tracks sessions to supplement endpoint information</p></td>
+</tr>
+</tbody>
+</table>
+
+Run the `enable` command to enable and perform administrative commands.
+
+**Administrative Commands**
+
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 35%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th>Command</th>
+<th>Syntax</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="20"><p><code>configure</code></p></td>
+<td><p><code>configure hostname &lt;hostname&gt;</code></p></td>
+<td><p>Configure the host name</p>
+<p><code>&lt;hostname&gt;</code>: Host name or FQDN</p></td>
+</tr>
+<tr>
+<td><p><code>configure network primary ipv4.static &lt;ip&gt; &lt;submask&gt; &lt;gateway&gt; &lt;dns1&gt; [dns2]</code></p></td>
+<td><p>Configure static IPv4 network settings for the primary network interface</p>
+<p><code>&lt;ip&gt;</code>: IPv4 address of the network interface</p>
+<p><code>&lt;submask&gt;</code>: Submask of IPv4</p>
+<p><code>&lt;gateway&gt;</code>: Gateway router address</p>
+<p><code>&lt;dns1&gt;</code>: Primary DNS server address</p>
+<p><code>[dns2]</code>: Secondary DNS server address (optional)</p></td>
+</tr>
+<tr>
+<td><p><code>configure network primary ipv4.dhcp</code></p></td>
+<td><p>Configure IPv4 network settings to DHCP</p></td>
+</tr>
+<tr>
+<td><p><code>configure ntp &lt;ntp_addr&gt;</code></p></td>
+<td><p>Configure the NTP server</p>
+<p><code>&lt;ntp_addr&gt;</code>: FQDN or IPv4 address of the NTP server</p></td>
+</tr>
+<tr>
+<td><p><code>configure password</code></p></td>
+<td><p>Configure the administrator account password</p></td>
+</tr>
+<tr>
+<td><p><code>configure proxy delete</code></p></td>
+<td><p>Delete proxy settings</p>
+
+
+:::warning[Important]
+
+<p>Proxy settings are now configured in Network Inventory. For more information, see <a href="trend-vision-one-virtual-network-sensor-connections">Configuring Virtual Network Sensor connections</a>.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><code>configure proxy set http &lt;addr&gt;</code></p></td>
+<td><p>Configure the proxy server for the Virtual Network Sensor</p>
+<p><code>&lt;addr&gt;</code>: Proxy server address</p>
+<p><code>&lt;ADDRESS&gt;:&lt;PORT&gt;</code>: Proxy server IP address and port</p>
+<p><code>&lt;USER&gt;:&lt;PASSWORD&gt;@&lt;ADDRESS&gt;:&lt;PORT&gt;</code>: Account credentials with the proxy server IP address and port</p>
+
+
+:::warning[Important]
+
+<p>Proxy settings are now configured in Network Inventory. For more information, see <a href="trend-vision-one-virtual-network-sensor-connections">Configuring Virtual Network Sensor connections</a>.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><code>configure ssh enable</code></p></td>
+<td><p>Enable the SSH server</p></td>
+</tr>
+<tr>
+<td><p><code>configure ssh disable</code></p></td>
+<td><p>Disable the SSH server</p></td>
+</tr>
+<tr>
+<td><p><code>configure time &lt;HH:MI:SS&gt; [YYYY-MM-DD]</code></p></td>
+<td><p>Configure the time and date for the Virtual Network Sensor</p>
+<p><code>&lt;HH:MI:SS&gt;</code>: Time in hour, minute, and second format</p>
+<p><code>[YYYY-MM-DD]</code>: (Optional) Date in year, month, and day format</p></td>
+</tr>
+<tr>
+<td><p><code>configure verify dns</code></p></td>
+<td><p>Verify DNS server configuration</p>
+<p><code>[domain]</code>: Domain used to verify DNS server (default: www.trendmicro.com)</p></td>
+</tr>
+<tr>
+<td><p><code>configure interface &lt;interface_name&gt;</code></p></td>
+<td><p>Enter the interface configuration mode to set up a network interface of the Virtual Network Sensor</p>
+<p><code>&lt;interface_name&gt;</code>: Name of the network interface (for example, <code>eth0</code>)</p>
+<p>For details about the available commands in the interface configuration mode, see Interface Configuration Mode Commands.</p></td>
+</tr>
+<tr>
+<td><p><code>configure endpoint-info-enricher hostname-lookup &lt;1/0&gt;</code></p></td>
+<td><p>Enable or disable hostname lookup, which adds the endpoint hostname that is missing from traffic data. Use 1 to enable or 0 to disable.</p></td>
+</tr>
+<tr>
+<td><p><code>configure endpoint-info-enricher hostname-lookup dns &lt;1/0&gt;</code></p></td>
+<td><p>Enable or disable hostname lookup via DNS. Use 1 to enable or 0 to disable.</p></td>
+</tr>
+<tr>
+<td><p><code>configure endpoint-info-enricher hostname-lookup netbios &lt;1/0&gt;</code></p></td>
+<td><p>Enable or disable hostname lookup via NetBIOS. Use 1 to enable or 0 to disable.</p></td>
+</tr>
+<tr>
+<td><p><code>configure endpoint-info-enricher session-tracking &lt;1/0&gt;</code></p></td>
+<td><p>Enable or disable session tracking, which tracks all packets in a session over certain protocols to reconstruct the full session for analysis. Use 1 to enable or 0 to disable.</p></td>
+</tr>
+<tr>
+<td><p><code>configure endpoint-info-enricher session-tracking dhcp &lt;1/0&gt;</code></p></td>
+<td><p>Enable or disable DHCP session tracking. Use 1 to enable or 0 to disable.</p></td>
+</tr>
+<tr>
+<td><p><code>configure endpoint-info-enricher session-tracking dhcpv6 &lt;1/0&gt;</code></p></td>
+<td><p>Enable or disable DHCPv6 session tracking. Use 1 to enable or 0 to disable.</p></td>
+</tr>
+<tr>
+<td><p><code>configure endpoint-info-enricher session-tracking kerberos &lt;1/0&gt;</code></p></td>
+<td><p>Enable or disable Kerberos session tracking. Use 1 to enable or 0 to disable.</p></td>
+</tr>
+<tr>
+<td><p><code>configure endpoint-info-enricher session-tracking radius &lt;1/0&gt;</code></p></td>
+<td><p>Enable or disable RADIUS session tracking. Use 1 to enable or 0 to disable.</p></td>
+</tr>
+<tr>
+<td><p><code>connect</code></p></td>
+<td><p><code>connect</code></p></td>
+<td><p>Test connection to Trend Vision One</p></td>
+</tr>
+<tr>
+<td><p><code>exit</code></p></td>
+<td><p><code>exit</code></p></td>
+<td><p>Exit administrative commands</p></td>
+</tr>
+<tr>
+<td><p><code>help</code></p></td>
+<td><p><code>help</code></p></td>
+<td><p>Display the CLI syntax</p></td>
+</tr>
+<tr>
+<td rowspan="5"><p><code>log</code></p></td>
+<td><p><code>log coredump export</code></p></td>
+<td><p>Generate a URL to download kernel core dump logs</p></td>
+</tr>
+<tr>
+<td><p><code>log export [date_list]</code></p></td>
+<td><p>Collect Virtual Network Sensor debugging data for troubleshooting</p>
+<p><code>[date_list]</code>: The log for a specific date list</p></td>
+</tr>
+<tr>
+<td><p><code>log list-level</code></p></td>
+<td><p>Display the log level of each component</p></td>
+</tr>
+<tr>
+<td><p><code>log reset-level</code></p></td>
+<td><p>Reset all log levels</p></td>
+</tr>
+<tr>
+<td><p><code>log set-level &lt;level&gt; &lt;indexes&gt;</code></p></td>
+<td><p>Set specific components to specific log levels</p>
+<p><code>&lt;level&gt;</code>: Target level (debug, info, warn, error, fatal, disable)</p>
+<p><code>&lt;indexes&gt;</code>: Target indexes (found in list-level)</p></td>
+</tr>
+<tr>
+<td><p><code>ping</code></p></td>
+<td><p><code>ping &lt;address&gt;</code></p></td>
+<td><p>Check the connection to a specific address</p>
+
+
+:::note
+
+<p>Execute <code>ping trendmicro.com</code> to check the external network connection. If the ping fails, check the IP settings and <a href="trend-vision-one-ports-urls-used-network-sensor">firewall settings</a>.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><code>reboot</code></p></td>
+<td><p><code>reboot</code></p></td>
+<td><p>Restart Virtual Network Sensor immediately</p></td>
+</tr>
+<tr>
+<td><p><code>register</code></p></td>
+<td><p><code>register [registration_token]</code></p></td>
+<td><p>Register Virtual Network Sensor to Trend Vision One</p>
+
+
+:::note
+
+You can execute the <code>register &lt;registration_token&gt;</code> command if your Company ID is empty initially, or the <code>register</code> command if your Company ID is displayed.
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><code>shutdown</code></p></td>
+<td><p><code>shutdown</code></p></td>
+<td><p>Shut down Virtual Network Sensor immediately</p></td>
+</tr>
+<tr>
+<td><p><code>switch-connection-method</code></p></td>
+<td><p><code>switch-connection-method [connection_token]</code></p></td>
+<td><p>Restore Virtual Network Sensor connection with Trend Vision One</p>
+<p><code>[connection_token]</code>: The connection token generated in the Trend Vision One console. For more details, see <a href="trend-vision-one-restore-network-sensor-connection">Restoring an unhealthy Virtual Network Sensor connection</a>.</p>
+
+
+:::warning[Important]
+
+<p>Only use the command to restore a disconnected or unhealthy status. The command fails to execute if the Virtual Network Sensor is able to connect to Trend Vision One.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><code>troubleshoot</code></p></td>
+<td><p><code>troubleshoot</code></p></td>
+<td><p>Enable troubleshooting mode</p>
+<p>See the Troubleshooting Mode Commands table for a list of available commands.</p></td>
+</tr>
+</tbody>
+</table>
+
+Run the `enable` command and then the `configure interface` command to enter and perform network interface configuration commands.
+
+**Network Interface Configuration Mode Commands**
+
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 35%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Command</p></th>
+<th><p>Syntax</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="2"><p><code>ip-encap</code></p></td>
+<td><p><code>ip-encap enable &lt;IPv4_address&gt;</code></p></td>
+<td><p>Enable Encapsulated Remote Mirroring on a network interface and assign an IPv4 address to the network interface</p>
+<p><code>&lt;IPv4_address&gt;</code>: IPv4 address to be assigned to the network interface</p>
+<p>Encapsulated Remote Mirroring allows Virtual Network Sensor to receive network traffic through a supported network interface.</p>
+
+
+:::note
+
+<p>Encapsulated Remote Mirroring is supported on data ports only.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><code>ip-encap disable</code></p></td>
+<td><p>Disable Encapsulated Remote Mirroring on the network interface</p></td>
+</tr>
+<tr>
+<td><p><code>mtu</code></p></td>
+<td><p><code>mtu &lt;int&gt;</code></p></td>
+<td><p>Configure the Maximum Transmission Unit (MTU) for a network interface</p>
+<p><code>&lt;int&gt;</code>: A positive integer greater than 0</p></td>
+</tr>
+</tbody>
+</table>
+
+Run the `enable` command and then the `troubleshoot` command to enter and perform troubleshooting commands.
+
+**Troubleshooting Mode Commands**
+
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 35%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Command</p></th>
+<th><p>Syntax</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>network-services</code></p></td>
+<td><p><code>network-services</code></p></td>
+<td><p>Access the diagnostics page for network services</p>
+<p>See the Network Services Commands table for a list of available commands.</p></td>
+</tr>
+<tr>
+<td><p><code>network-traffic</code></p></td>
+<td><p><code>network-traffic</code></p></td>
+<td><p>Enable network traffic dump feature</p>
+<p>See the Network Traffic Dump Commands table for a list of available commands.</p></td>
+</tr>
+<tr>
+<td><p><code>iptuples</code></p></td>
+<td><p><code>iptuples</code></p></td>
+<td><p>Lists truncated IP tuple information on the AWS environment</p>
+<p>An IP tuple or <em>5-tuple</em> consists of five fields in the packet; information such as the source IP address, source port, destination IP address, destination port, and transport protocol.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Network Services Commands**
+
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 35%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Command</p></th>
+<th><p>Syntax</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>list</code></p></td>
+<td><p><code>list</code></p></td>
+<td><p>Display a list of services with related information</p></td>
+</tr>
+<tr>
+<td><p><code>test</code></p></td>
+<td><p><code>test &lt;service&gt;</code></p></td>
+<td><p>Perform a test for the specified network service</p>
+<p><code>&lt;service&gt;</code>: The index number of the service you wish to test. Use the <code>list</code> command to retrieve the index number. For example type <code>test 1</code> to test the service indexed as 1 on the list.</p>
+<p>To test all listed services, type <code>test all</code>.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Network Traffic Dump Commands**
+
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 35%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Command</p></th>
+<th><p>Syntax</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>capture</code></p></td>
+<td><p><code>capture &lt;interface_name&gt;</code></p></td>
+<td><p>Start capturing network traffic from the specified interface</p>
+<p><code>&lt;interface_name&gt;</code>: The name of the network interface you want to capture traffic from. Can use the following inputs:</p>
+<ul>
+<li><p><code>eth0</code>: Interface Port 0</p></li>
+<li><p><code>eth1</code>: Interface Port 1</p></li>
+<li><p><code>any</code>: Capture from all data ports</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>export</code></p></td>
+<td><p><code>export</code></p></td>
+<td><p>Regenerate a URL to export packet capture archive</p></td>
+</tr>
+<tr>
+<td><p><code>clean</code></p></td>
+<td><p><code>clean</code></p></td>
+<td><p>Delete all recorded packet capture files</p></td>
+</tr>
+</tbody>
+</table>
+::::

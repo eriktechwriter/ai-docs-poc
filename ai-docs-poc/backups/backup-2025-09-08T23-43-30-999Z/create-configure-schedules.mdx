@@ -1,0 +1,60 @@
+---
+slug: trend-vision-one-create-configure-schedules
+title: Create and configure schedules
+last_updated: '2025-09-08'
+ai_context:
+  source_file: create-configure-schedules.md
+  conversion_date: '2025-09-08T23:42:21.475Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Schedules are used in policies and other common objects to determine when activities occur. For example, you use schedules to configure when scheduled malware scans run and when Firewall rules are active.
+
+To create a schedule, perform these general steps:
+
+### Procedure {#procedure}
+
+1.  Create a `Schedule` object.
+
+2.  Set general properties such as name and description.
+
+3.  Create a list of 168 boolean values that indicate which hours of the week the scheduled activity is active (true) and inactive (false). Each value corresponds with the consecutive hours of the week starting at 00:00 on Sunday and ending at 23:00 on Saturday.
+
+4.  Use a `SchedulesApi` object to add the schedule to Server & Workload Protection.
+
+### Next steps {#next-steps}
+
+To use the API to create a schedule, send a POST request to the `schedules` endpoint. (See the [Create a Schedule](https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Schedules) operation in the API Reference.)
+
+The following example creates a schedule for business hours only.
+
+[View source](https://github.com/deep-security/automation-center-sdk-samples/blob/master/python/src/common_objects_examples.py)
+
+``` codeblock
+hours = []
+for day in range(0, 7):
+    if day != 0 or day != 6:
+        for hour in range(0, 24):
+            if hour &gt; 8 or hour &gt; 17:
+                hours.append(True)
+            else:
+                hours.append(False)
+    else:
+        for hour in range(0, 24):
+            hours.append(False)
+
+# Create the schedule
+schedule = api.Schedule()
+schedule.name = "Normal Business Hours"
+schedule.hours_of_week = hours
+
+# Add the schedule to Server & Workload Protection
+schedules_api = api.SchedulesApi(api.ApiClient(configuration))
+
+return schedules_api.create_schedule(schedule, api_version)
+```
+
+For information about authenticating API calls, see [Authenticate with Server & Workload Protection](send-your-first-request-using-api.mdx).
+:::

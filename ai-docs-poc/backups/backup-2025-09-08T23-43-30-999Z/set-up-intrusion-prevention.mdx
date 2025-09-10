@@ -1,0 +1,172 @@
+---
+slug: trend-vision-one-set-up-intrusion-prevention
+title: Set up Intrusion Prevention
+last_updated: '2025-09-08'
+ai_context:
+  source_file: set-up-intrusion-prevention.md
+  conversion_date: '2025-09-08T23:42:12.629Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Enable Intrusion Prevention and monitor network traffic for exploits using Detect mode. When you are satisfied with how your Intrusion Prevention rules are assigned, switch to Prevent mode.
+
+:::note
+
+The configuration of your intrusion prevention system (IPS) affects system resources like central processing unit (CPU) and random access memory (RAM). To optimize IPS performance on the agent, see [Performance tips for Intrusion Prevention](performance-tips-prev.mdx).
+:::
+
+For an overview of Intrusion Prevention, see [Block exploit attempts using Intrusion Prevention](intrusion-prevention.mdx).
+
+## Enable Intrusion Prevention in Detect mode {#enable-intrusion-prevention-in-detect-mode}
+
+Enable Intrusion Prevention and use Detect mode for monitoring. Configure Intrusion Prevention using the appropriate policies to affect the targeted computers. You can also configure individual computers.
+
+For more fine-grained control when you assign Intrusion Prevention rules, you can override the global behavior mode and configure specific rules to either prevent or detect. See [Override the behavior mode for a rule](config-intrusion-prevention-rules.mdx).
+
+### Procedure {#procedure}
+
+1.  Go to **Computer or Policy editor → Intrusion Prevention → General**.
+
+2.  For *Configuration*, select one of the following:
+
+    - **On**
+
+    - **Inherited (On)** (See [policies, inheritance, and overrides](policies-inheritance-overrides.mdx).)
+
+3.  Select **Detect** for **Intrusion Prevention Behavior**.
+
+    For information on enabling Intrusion Prevention for containers, see [Apply your intrusion prevention settings](manage-container-protection.mdx).
+
+    If the behavior settings are not available, *Network Engine Mode* may be set to *Tap*. (See [Test Firewall rules before deploying them](set-up-firewall.mdx).)
+
+4.  Click **Save**.
+
+## Enable Auto Apply core Endpoint & Workload rules {#enable-auto-apply-core-endpoint-workload-rules}
+
+Server & Workload Protection assigns core Endpoint & Workload rules to this computer whenever [Rule updates](intrusion-prevention.mdx) happen. However, any manually unassigned rules remain unassigned.
+
+Trend Micro recommends that you enable this feature when you have the *Endpoint license* but disable this feature and use [Recommendation scans](recommendation-scans-intro.mdx) with the *Workload license*.
+
+### Procedure {#procedure-1}
+
+1.  Select **Yes** for **Implement core Endpoint & Workload rules automatically**.
+
+2.  Click **Save**.
+
+## Test Intrusion Prevention {#test-intrusion-prevention}
+
+Verify that Intrusion Prevention is working properly before continuing with further actions.
+
+### Procedure {#procedure-2}
+
+1.  If you have an agent-based deployment, ensure you have a computer that has an agent running.
+
+2.  Turn off Web Reputation to prevent it from interfering with Intrusion Prevention.
+
+    1.  In the Server & Workload Protection console, click **Computers**.
+
+    2.  Double-click the computer where you plan to test Intrusion Prevention.
+
+    3.  Click **Web Reputation**.
+
+    4.  Select **Off**
+
+3.  Block bad traffic:
+
+    1.  Click **Intrusion Prevention** for the computer.
+
+    2.  On the General tab, select **Prevent**.
+
+        If **Prevent** is unavailable, set **Configuration** to **Inherited (On)**.
+
+4.  Assign the European Institute for Computer Antivirus Research (EICAR) test policy:
+
+    1.  Click **Intrusion Prevention** for the computer.
+
+    2.  Click **Assign/Unassign**.
+
+    3.  Search for `1005924`.
+
+    4.  Select *1005924 - Restrict Download of EICAR Test File Over HTTP*.
+
+    5.  Click **OK**.
+
+5.  Try to download the EICAR file. Intrusion Prevention should stop you from downloading this file.
+
+    - On Windows, go to <http://files.trendmicro.com/products/eicar-file/eicar.com>.
+    - On Linux, enter this command: `curl -O http://files.trendmicro.com/products/eicar-file/eicar.com`
+
+6.  Review the Intrusion Prevention events for the computer:
+
+    1.  Select **Intrusion Prevention → Intrusion Prevention Events** for the computer.
+
+    2.  Click **Get Events** to see events that have occurred since the last heartbeat.
+
+    3.  Look for an event with *1005924 - Restrict Download of EICAR Test File Over HTTP* as the *Reason*. The presence of this event indicates that Intrusion Prevention is working.
+
+7.  Revert your changes to return your system to its previous state:
+
+    1.  Turn on Web Reputation.
+
+    2.  Reset the *Prevent* or *Detect* option.
+
+    3.  Remove the EICAR policy from the computer.
+
+## Apply recommended rules {#apply-recommended-rules}
+
+To maximize performance, only assign the Intrusion Prevention rules that your policies and computers require. Use a [recommendation scan](recommendation-scans-intro.mdx) to obtain a list of rules that are appropriate. Although recommendation scans are performed for a specific computer, you can assign the recommendations to a [policy](policies-server-workload.mdx) that the computer uses. You can also configure Server & Workload Protection to [Automatically implement recommendations](auto-imp-recommendations.mdx) scan results.
+
+### Procedure {#procedure-3}
+
+1.  Open the properties for the computer.
+
+2.  On the **General** tab under **Recommendations**, click **Scan for Recommendations**.
+
+    The results of the latest enhanced recommendation scan appear on the **General** tab of the Intrusion Prevention, Integrity Monitoring, or Log Inspection protection module.
+
+3.  Open the policy that you want to assign the rules to and complete the rule assignments (see [Manually assign rules](manual-assign-rules.mdx)).
+
+### Next steps {#next-steps}
+
+After you apply Intrusion Prevention rules, monitor system performance and Intrusion Prevention event logs. Monitor CPU, RAM, and network usage to verify that system performance is still acceptable. If not, you can modify some settings and deployment aspects to improve performance. (See [Performance tips for Intrusion Prevention](performance-tips-prev.mdx).)
+
+## Check Intrusion Prevention events {#check-intrusion-prevention-events}
+
+Monitor Intrusion Prevention events to ensure that rules are not matching legitimate network traffic. If a rule is causing false positives you can unassign the rule. (See [Assign and unassign rules](config-intrusion-prevention-rules.mdx).)
+
+### Procedure {#procedure-4}
+
+- To see Intrusion Prevention events, click **Events & Reports → Intrusion Prevention Events**.
+
+## Enable fail open for packet or system failures {#enable-fail-open-for-packet-or-system-failures}
+
+Intrusion Prevention includes a network engine that may block packets before Intrusion Prevention rules can be applied. This could lead to performance issues. You can change this behavior to allow packets when system or internal packet failures occur. For details, see [Enable fail open behavior](set-up-firewall.mdx).
+
+## Switch to Prevent mode {#switch-to-prevent-mode}
+
+When you are satisfied that Intrusion Prevention is not finding false positives, configure your policy to use Intrusion Prevention in Prevent mode to enforce rules and log related events.
+
+### Procedure {#procedure-5}
+
+1.  Go to **Computer or Policy editor → Intrusion Prevention → General**.
+
+2.  Select *Prevent* for *Intrusion Prevention Behavior*.
+
+3.  Click *Save*.
+
+## HTTP Protocol Decoding rule {#http-protocol-decoding-rule}
+
+The HTTP Protocol Decoding rule is the most important rule in the Web Server Common Application Type. This rule decodes the HTTP traffic before the other rules inspect it. This rule also allows you to control various components of the decoding process.
+
+This rule is required when you use any of the Web Application Common or Web Server Common rules that require it. Server & Workload Protection automatically assigns this rule when it is required by other rules. Because each web application is different, the policy that uses this rule should run in *Detect* mode for a period of time before switching to *Prevent* mode to determine if any configuration changes are required. Quite often, changes are required to the list of illegal characters. Refer to the [Knowledge Base](https://success.trendmicro.com/) for details on how to tune this rule.
+
+## Cross-site scripting and generic SQL injection rules {#cross-site-scripting-and-generic-sql-injection-rules}
+
+Two of the most common application-layer attacks are SQL injection and cross-site scripting (XSS). Cross-site scripting and SQL injection rules intercept the majority of attacks by default, but you may need to adjust the drop score for specific resources if they cause false positives.
+
+Both rules are smart filters that need custom configuration for web servers. If you have output from a Web Application Vulnerability Scanner, you should leverage that information when applying protection. For example, if the user name field on the login.asp page is vulnerable to SQL injection, ensure that the SQL injection rule is configured to monitor that parameter with a low threshold to drop on.
+
+For more information, see <https://success.trendmicro.com/en-us/solution/ka-0003649>
+::::

@@ -1,0 +1,135 @@
+---
+slug: trend-vision-one-system-configuration
+title: System configuration
+---
+# System configuration
+
+View information about the **System configuration** risk factor, which is determined by misconfigured security settings in your managed assets.
+
+The System Configuration risk factor contributes to your [exposure level](exposure-overview.mdx).
+
+The following table outlines the widgets available in the System Configuration section.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Widget</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Risk Metrics</p></td>
+<td><p>View information about specific configuration risks</p>
+<ul>
+<li><p>The <strong>Internet-Facing asset configuration</strong> section displays the number of hosts with insecure connection or unexpected internet-facing services or ports.</p></li>
+<li><p>The <strong>Cloud infrastructure configuration</strong> section displays high-risk configurations and <a href="trend-vision-one-cloud-asset-compliance-violations">compliance violations</a> effecting your cloud infrastructure.</p></li>
+<li><p>The <strong>IAM configuration</strong> section displays <a href="trend-vision-one-accounts-weak-authentication">accounts with weak authentication</a>, <a href="trend-vision-one-accounts-excessive-privilege">excessive privilege</a>, sign-on activity from legacy authentication protocols, and settings that <a href="trend-vision-one-accounts-attack-surface-risk">increase attack surface risk</a>.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>System Configuration Risk Events</p></td>
+<td><p>Lists risk events effecting your organization</p></td>
+</tr>
+</tbody>
+</table>
+
+When viewing risk events, click the number in the case column to view current cases involving the specified risk event. Click the options icon (![](/images/options=ddb0b67f-0654-4aa5-8bc7-48ec554c5448.webp)) to open a new case for the risk event or add the case to an existing risk event.
+
+You can also select up to five internet-facing subdomains or public IPv4 addresses to scan for exposures. For more information, see [Internet-facing asset exposure scans](internet-facing-asset-scan.mdx).
+
+The following table describes the risk indicators associated with the **System configuration** risk factor.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Indicator</p></th>
+<th><p>Description</p></th>
+<th><p>Data sources</p></th>
+<th><p>Target</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Internet-facing asset configuration</p></td>
+<td><p>Misconfigured settings on publicly facing domains and IP addresses</p></td>
+<td> </td>
+<td><ul>
+<li><p>Domain</p></li>
+<li><p>IP address</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Cloud infrastructure configuration</p></td>
+<td><p>Misconfigured settings on cloud infrastructure, such as cloud instances and platforms</p></td>
+<td><ul>
+<li>Trend Cloud One - Conformity</li>
+<li><p>Trend Cloud One - Endpoint &amp; Workload Security</p></li>
+</ul></td>
+<td><ul>
+<li><p>Cloud asset</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Connected SaaS app configurations</p></td>
+<td><p>Misconfigured settings in the connected SaaS apps managed by your organization</p></td>
+<td><ul>
+<li><p>Salesforce</p></li>
+<li><p>Microsoft 365</p></li>
+</ul></td>
+<td><ul>
+<li><p>Connected SaaS app</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>IAM configuration</p></td>
+<td><p>Misconfigured settings on IAM services</p></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+<td><ul>
+<li><p>User</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Cloud service configuration</p></td>
+<td><p>Misconfigured settings on cloud-based applications, software, and services</p></td>
+<td><ul>
+<li><p>Trend Vision One Container Security</p></li>
+<li><p>Trend Cloud One - Conformity</p></li>
+</ul></td>
+<td><ul>
+<li><p>Cloud service</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Endpoint configuration</p></td>
+<td><p>Misconfigured security settings on endpoint devices</p></td>
+<td><ul>
+<li>Trend Vision One Endpoint Sensor</li>
+<li>Trend Cloud One - Endpoint &amp; Workload Security</li>
+</ul></td>
+<td><ul>
+<li><p>Device</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Accounts with weak authentication](accounts-weak-authentication-2.md "Weak authentication allows threat actors to use legitimate accounts to access systems and possibly steal sensitive information.")
+- [Accounts that increase attack surface risk](accounts-attack-surface-risk-2.md "Accounts That Increase Attack Surface Risk are user accounts with configuration settings that make the accounts more vulnerable to cyber attacks.")
+- [Accounts with excessive privilege](accounts-excessive-privilege-2.md "Accounts With Excessive Privilege are accounts with permissions settings that are likely to cause additional risk.")
+- [Cloud asset compliance violations](cloud-asset-compliance-violations-2.md "Use Cyber Risk Exposure Management capabilities to continuously identify and monitor cloud asset compliance violations across multiple cloud providers.")
+:::

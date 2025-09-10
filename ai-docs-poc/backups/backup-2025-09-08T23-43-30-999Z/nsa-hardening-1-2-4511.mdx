@@ -1,0 +1,30 @@
+---
+slug: trend-vision-one-nsa-hardening-1-2-4511
+title: >-
+  4.5.11 - Ensure SecurityContext is applied to the Pods and Containers
+  (Automated)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: nsa-hardening-1-2-4511.md
+  conversion_date: '2025-09-08T23:42:14.919Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Profile applicability: Level 1
+
+SecurityContexts allow configuration of Kubernetes resource security settings.
+
+### Audit {#audit}
+
+Run the following command and verify the each pod and container has an applied SecurityContext:
+
+``` codeblock
+kubectl get pods --all-namespaces
+```
+
+### Remediation {#remediation}
+
+Follow the Kubernetes documentation and apply SecurityContexts to your Pods. For a suggested list of SecurityContexts, refer to the CIS Security Benchmark for Docker Containers.
+:::

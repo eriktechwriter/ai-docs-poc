@@ -1,0 +1,39 @@
+---
+slug: trend-vision-one-domain-based-authentication
+title: Domain-based authentication
+last_updated: '2025-09-08'
+ai_context:
+  source_file: domain-based-authentication.md
+  conversion_date: '2025-09-08T23:42:20.426Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Cloud Email Gateway Protection provides authentication methods such as Sender IP Match, Sender Policy Framework (SPF), DomainKeys Identified Mail (DKIM) verification, and Domain-based Message Authentication, Reporting & Conformance (DMARC) to protect against email spoofing.
+
+If all these methods are enabled, Cloud Email Gateway Protection evaluates email messages in the following order:
+
+1.  Sender IP Match
+
+2.  SPF check
+
+3.  DKIM verification
+
+4.  DMARC authentication
+
+Cloud Email Gateway Protection keeps evaluating and scanning an email message in the preceding order until encountering an "Intercept" action. If an email message passes the Sender IP Match check, Cloud Email Gateway Protection skips its own SPF check as well as the SPF check of DMARC authentication for this message.
+
+:::note
+
+For details about intercept actions, see [intercept actions](actions.mdx).
+:::
+
+**Related information**
+
+- [Sender IP match](sender-ip-match.mdx)
+- [Sender policy framework (SPF)](sender-policy-framework-spf.mdx)
+- [Domainkeys identified mail (DKIM)](domainkeys-identified-mail-dkim.mdx)
+- [Domain-based message authentication, reporting & conformance (DMARC)](dmarc.mdx)
+- [How DMARC works with SPF and DKIM](how-dmarc-works-spf-dkim.mdx)
+::::

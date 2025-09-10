@@ -1,0 +1,460 @@
+---
+slug: trend-vision-one-security-configuration
+title: Security Configuration Overview
+last_updated: '2025-09-08'
+ai_context:
+  source_file: security-configuration.md
+  conversion_date: '2025-09-08T23:42:12.999Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::::::: {role="main"}
+Learn about the information available in Security Configuration Overview within Cyber Risk Overview.
+
+**Security Configuration Overview** displays your risk level and risk score within the security configuration risk category. The risk level is a comprehensive rating of your organization's protection product status and is based on the deployment and status of protection products within your endpoint, email, and network security layers plus adoption rates for key product features or risk events based on product configurations. An overall high security configuration risk level or a high risk level within a specific security layer indicates that you may need to review the status of deployed products and optimize product security features and configurations.
+
+:::warning[Important]
+
+The security configuration risk level is determined using all data received from your business without applying asset visibility scope limits.
+:::
+
+The following tables detail the widgets available for each security layer within **Security Configuration Overview**.
+
+:::note
+
+The **Security Configuration Overview** widgets only show data for devices within the asset visibility scope of the current user.
+:::
+
+For the endpoint security layer, you can switch data sources using the dropdown menu. Trend Vision One Endpoint Security is the default data source. If you have the Microsoft Defender for Endpoint integration enabled, you can change the data source view for your endpoint security configuration to show your [Microsoft Defender for Endpoint security configuration status](mde-security-config-view.mdx). To access Microsoft Defender for Endpoint data, you must enable the product integration via a connected Azure subscription in Cloud Accounts. To learn how to enable the Microsoft Defender for Endpoint integration, see [Enable Microsoft Defender for Endpoint Log Collection](ms-defender-endpoint-log-collection.mdx).
+
+**Endpoint Security Widgets - Trend Vision One Endpoint Security**
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 50%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Widget</p></th>
+<th><p>Description</p></th>
+<th><p>Product data sources</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Endpoint Protection</p></td>
+<td><p>The number of endpoint protection agents deployed on different operating systems throughout your network</p></td>
+<td><ul>
+<li><p>Trend Micro Apex One as a Service</p></li>
+<li><p>Trend Micro Apex One On-premises</p></li>
+<li><p>Trend Cloud One - Endpoint &amp; Workload Security</p></li>
+<li><p>Deep Security</p></li>
+</ul>
+<p>For customers that have updated to the <a href="trend-vision-one-update-foundation-services-release">Foundation Services release</a>, the following products are also supported:</p>
+<ul>
+<li><p>Standard Endpoint Protection</p></li>
+<li><p>Server &amp; Workload Protection</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Endpoint Sensor</p></td>
+<td><p>The number of supported endpoint sensor products deployed throughout your network</p></td>
+<td><ul>
+<li><p>Trend Vision One Endpoint Sensor</p></li>
+<li><p>Trend Micro Apex One Endpoint Sensor</p></li>
+<li><p>Trend Cloud One Endpoint Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Endpoint Protection Agent Version Status</p></td>
+<td><p>The number of endpoint protection agents running unsupported, older supported, and up-to-date versions of the agent software</p>
+<ul>
+<li><p>Unsupported version:</p>
+<ul>
+<li><p>Devices running operating systems no longer supported by the agent version</p></li>
+<li><p>Devices running operating systems that are supported but incompatible with the agent version</p></li>
+<li><p>Devices with at least one end-of-life agent version</p></li>
+</ul></li>
+<li>Older supported version: Devices with agents that are still supported but should be updated for the best protection</li>
+<li><p>Up-to-date version:</p>
+<ul>
+<li><p>Devices with the latest agent version</p></li>
+<li><p>Devices with the latest agent version as specified in the endpoint update policy</p></li>
+</ul></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Apex One as a Service</p></li>
+<li><p>Trend Micro Apex One On-premises</p></li>
+<li><p>Trend Cloud One - Endpoint &amp; Workload Security</p></li>
+<li><p>Deep Security</p></li>
+</ul>
+<p>For customers that have updated to the <a href="trend-vision-one-update-foundation-services-release">Foundation Services release</a>, the following products are also supported:</p>
+<ul>
+<li><p>Standard Endpoint Protection</p></li>
+<li><p>Server &amp; Workload Protection</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Endpoint Sensor Version Status</p></td>
+<td><p>The number of unsupported, older supported, up-to-date, and legacy endpoint sensor product versions deployed throughout your network</p>
+<ul>
+<li><p>Unsupported version:</p>
+<ul>
+<li><p>Devices running operating systems no longer supported by the endpoint sensor version</p></li>
+<li><p>Devices running operating systems that are supported but incompatible with the endpoint sensor version</p></li>
+<li><p>Devices with at least one end-of-life endpoint sensor version</p></li>
+</ul></li>
+<li>Older supported version: Devices with endpoint sensor versions that are still supported but should be updated for the best protection</li>
+<li><p>Up-to-date version:</p>
+<ul>
+<li><p>Devices with the latest endpoint sensor version</p></li>
+<li><p>Devices with the latest endpoint sensor version as specified in the endpoint update policy</p></li>
+</ul></li>
+<li><p>Supported legacy version: Devices with legacy-version endpoint sensors that are still available and supported. Specific version information is unavailable for legacy endpoint sensors.</p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Vision One Endpoint Sensor</p></li>
+<li><p>Trend Micro Apex One Endpoint Sensor</p></li>
+<li><p>Trend Cloud One Endpoint Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Endpoint Protection Component Version Status</p></td>
+<td><p>The number of endpoints running up-to-date or outdated endpoint protection component versions</p>
+<ul>
+<li><p>Outdated version: Devices with at least one outdated endpoint protection component version</p></li>
+<li>Up-to-date version:
+<ul>
+<li><p>Devices with the latest endpoint protection component versions</p></li>
+<li><p>Devices with the latest version of all endpoint protection components as specified in the endpoint update policy</p></li>
+</ul></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Apex One as a Service</p></li>
+<li><p>Trend Micro Apex One On-premises</p></li>
+<li><p>Trend Cloud One - Endpoint &amp; Workload Security</p></li>
+<li><p>Deep Security</p></li>
+<li><p>Standard Endpoint Protection</p></li>
+<li><p>Server &amp; Workload Protection</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Endpoint Sensor Component Version Status</p></td>
+<td><p>The number of endpoints running up-to-date, outdated, or legacy endpoint sensor component versions</p>
+<ul>
+<li><p>Outdated version: Devices with at least one outdated endpoint sensor component version</p></li>
+<li>Up-to-date version:
+<ul>
+<li><p>Devices with the latest endpoint sensor component versions</p></li>
+<li><p>Devices with the latest version of all endpoint sensor components as specified in the endpoint update policy</p></li>
+</ul></li>
+<li><p>Supported legacy version: Devices with legacy-version endpoint sensor components that are still available and supported. Specific component version information is unavailable for legacy endpoint sensors.</p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Vision One Endpoint Sensor</p></li>
+<li><p>Trend Micro Apex One Endpoint Sensor</p></li>
+<li><p>Trend Cloud One Endpoint Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Key Feature Adoption Rates</p></td>
+<td><p>A list of the major protection features offered by agent and sensor products and the total number of endpoints to which each feature is applied</p>
+<p>Expand each listed key feature to see detailed adoption rate and compliance information.</p></td>
+<td><ul>
+<li><p>Trend Micro Apex One as a Service</p></li>
+<li><p>Trend Micro Apex One On-premises</p></li>
+<li><p>Trend Cloud One - Endpoint &amp; Workload Security</p></li>
+<li><p>Deep Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Key Feature Adoption and Pattern Update Status</p></td>
+<td><p>A list of the major protection features offered by agents, the number of endpoints with the features enabled, and the number of endpoints with outdated patterns or non-optimized configurations for each key feature</p>
+<p>Expand each listed key feature to see detailed adoption rate and status information.</p></td>
+<td><ul>
+<li><p>Trend Micro Apex One as a Service</p></li>
+<li><p>Trend Micro Apex One On-premises</p></li>
+<li><p>Trend Cloud One - Endpoint &amp; Workload Security</p></li>
+<li><p>Deep Security</p></li>
+<li><p>Standard Endpoint Protection</p></li>
+<li><p>Server &amp; Workload Protection</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+:::warning[Important]
+
+1.  To enable visibility over endpoints running Trend Micro Apex One On-premises agents, register the agents in Trend Micro Apex Central Patch 7 or later and update to the following versions or later:
+
+    - Trend Micro Apex One On-premises Service Pack 1 Patch 1
+
+    - Trend Micro Apex One (Mac) Patch 10
+
+2.  To enable visibility over endpoints running Deep Security agents, update to Deep Security Manager 20.0.789 (20 LTS Update 2023-06-28) or later.
+:::
+
+:::warning[Important]
+
+This is a "Pre-release" feature and is not considered an official release. Please review the [Pre-release disclaimer](pre-release-disclaimer.mdx) before using the feature.
+:::
+
+**Endpoint Security Widgets - Microsoft Defender for Endpoint**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Widget</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Endpoint operating system distribution</p></td>
+<td><p>The distribution of operating systems on your Microsoft Defender for Endpoint-managed endpoints. Supported operating systems include:</p>
+<ul>
+<li><p>Windows</p></li>
+<li><p>macOS</p></li>
+<li><p>Linux</p></li>
+</ul>
+<p>Click the discovered endpoint total to view your discovered Microsoft Defender for Endpoint endpoints on the device list in Attack Surface Discovery. Click the total for each operating system to view discovered endpoints filtered by operating system.</p></td>
+</tr>
+<tr>
+<td><p>Risk events by category</p></td>
+<td><p>Total security configuration risk events detected by security category. Click a total to view corresponding risk events in Risk Reduction Measures within Threat and Exposure Management. Available categories and corresponding risk events include:</p>
+<ul>
+<li><p>Account misconfigurations: Microsoft Defender for Endpoint - Non-Compliant or Insecure Account Configuration</p></li>
+<li><p>Application misconfigurations: Microsoft Defender for Endpoint - Non-Compliant or Insecure Application Configuration</p></li>
+<li><p>Network misconfigurations: Microsoft Defender for Endpoint - Non-Compliant or Insecure Network Configuration</p></li>
+<li><p>Network exposures: Microsoft Defender for Endpoint - Exposed or Misconfigured Network Resource or Service</p></li>
+<li><p>Operating system misconfigurations: Microsoft Defender for Endpoint - Non-Compliant Operating System Configuration</p></li>
+<li><p>Security controls: Microsoft Defender for Endpoint - Missing or Disabled Security Controls</p></li>
+</ul>
+
+
+:::note
+
+<ul>
+<li><p>Microsoft Defender for Endpoint risk events correspond with security recommendations in the Microsoft Defender for Endpoint Console.</p></li>
+<li><p>You must have credits allocated to Cyber Risk Exposure Management in order to view Microsoft Defender for Endpoint risk events in Threat and Exposure Management. For more information, see <a href="trend-vision-one-credit-req-for-apps-services">Credit requirements for Trend Vision One solutions, capabilities, and features</a>.</p></li>
+</ul>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Endpoint protection version status</p></td>
+<td><p>Total endpoints running outdated, up-to-date, and unknown Microsoft Defender for Endpoint update components, including engine, platform, and security intelligence components. You should apply the latest Microsoft security intelligence update for any endpoints with outdated versions to strengthen your security posture. For information on the latest Microsoft security intelligence updates, see the <a href="https://www.microsoft.com/en-us/wdsi/defenderupdates">Microsoft documentation</a>.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Email Security Widgets**
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 50%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Widget</p></th>
+<th><p>Description</p></th>
+<th><p>Supported products</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Email Protection</p></td>
+<td><p>A list of your configured Trend Micro email protection solutions and the number of assets protected</p></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Cloud Email and Collaboration Protection</p></li>
+<li><p>Cloud Email Gateway Protection</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Email Sensor</p></td>
+<td><p>A list of your email account assets that have Email Sensor detection enabled</p></td>
+<td><ul>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Trend Micro Cloud App Security or Cloud Email and Collaboration Protection</p></td>
+<td><p>Displays the number of email accounts with and without a policy assigned</p>
+
+
+:::tip
+
+<p>Clicking the number of email accounts that do not have a policy assigned takes you to <a href="trend-vision-one-email-asset-inventory">Email Asset Inventory</a>, where you can assign a policy.</p>
+
+
+:::
+
+</td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Cloud Email and Collaboration Protection</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Trend Micro Email Security or Cloud Email Gateway Protection</p></td>
+<td><p>Displays the number of email domains that are and are not properly configured</p>
+
+
+:::tip
+
+<p>Clicking the number of email domains that are not properly configured or that do not require configuration takes you to <a href="trend-vision-one-email-asset-inventory">Email Asset Inventory</a>, where you can configure the domains.</p>
+
+
+:::
+
+</td>
+<td><ul>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Cloud Email Gateway Protection</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Key Feature Adoption Rates</p></td>
+<td><p>A list of the major security features offered by Trend Micro email protection solutions that includes the number of email accounts and email domains for which each feature is enabled.</p>
+<p>For more information, see <a href="trend-vision-one-enable-features-email-cas">Enabling Key Features for Email Accounts with Cloud App Security</a> and <a href="trend-vision-one-inbound-outbound-protection">Inbound and Outbound Protection</a>.</p>
+<p>Expand each listed key feature to see detailed adoption rate and compliance information.</p>
+
+
+:::tip
+
+<p>Clicking the number of non-optimized email accounts or email domains for an individual feature takes you to <a href="trend-vision-one-email-asset-inventory">Email Asset Inventory</a>, where you can see a list of the individual assets.</p>
+
+
+:::
+
+</td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Cloud Email and Collaboration Protection</p></li>
+<li><p>Cloud Email Gateway Protection</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Network Security Widgets**
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 50%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Widget</p></th>
+<th><p>Description</p></th>
+<th><p>Supported products</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Network Security Appliances</p></td>
+<td><p>The number of Deep Discovery Inspector appliances deployed in your environment</p></td>
+<td><ul>
+<li><p>Deep Discovery Inspector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Network Sensor</p></td>
+<td><p>The number of network sensors enabled in your environment</p></td>
+<td><ul>
+<li><p>Virtual Network Sensor</p></li>
+<li><p>Deep Discovery Inspector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Appliance Health</p></td>
+<td><p>Displays the number of Virtual Network Sensor and Deep Discovery Inspector appliances that are properly connected and the number of appliances that are not receiving traffic</p></td>
+<td><ul>
+<li><p>Virtual Network Sensor</p></li>
+<li><p>Deep Discovery Inspector</p>
+
+
+:::warning[Important]
+
+<p>Appliance connection status is only available for Deep Discovery Inspector 6.7 or later.</p>
+
+
+:::
+
+</li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Software Version</p></td>
+<td><p>Displays the software version status of your connected Virtual Network Sensor and Deep Discovery Inspector appliances</p></td>
+<td><ul>
+<li><p>Virtual Network Sensor</p></li>
+<li><p>Deep Discovery Inspector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Component Version Status</p></td>
+<td><p>Displays the number of appliances using the latest version or outdated versions of components.</p></td>
+<td><ul>
+<li><p>Virtual Network Sensor</p></li>
+<li>Deep Discovery Inspector</li>
+<li>
+
+:::warning[Important]
+
+<p>Component version status is only available for Deep Discovery Inspector 6.7 or later.</p>
+
+
+:::
+
+</li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Key Feature Adoption and Configuration</p></td>
+<td><p>A list of the major protection features offered by Virtual Network Sensor and Deep Discovery Inspector, and the number of appliances that have each feature enabled or configured</p>
+<p>Expand each listed key feature to see detailed adoption rate and status information.</p></td>
+<td><ul>
+<li><p>Virtual Network Sensor</p></li>
+<li><p>Deep Discovery Inspector</p>
+
+
+:::warning[Important]
+
+<p>Key feature adoption and configuration status is only available for Deep Discovery Inspector 6.7 or later.</p>
+
+
+:::
+
+</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+:::warning[Important]
+
+To enable visibility over your Deep Discovery Inspector appliances, update to Deep Discovery Inspector 6.7 or later.
+:::
+
+**Related information**
+
+- [Microsoft Defender for Endpoint security configuration](mde-security-config-view.md "View your Microsoft Defender for Endpoint security configuration status in Security Configuration Overview.")
+::::::::

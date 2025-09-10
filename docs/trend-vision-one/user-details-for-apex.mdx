@@ -1,0 +1,150 @@
+---
+slug: trend-vision-one-user-details-for-apex
+title: User Details
+---
+# User Details
+
+The **User/Endpoint Directory** screen displays User information for a specified time range.
+
+- Use the drop-down controls below the **Endpoints** or **Users** tab to specify the time period for the data that displays or to switch between **Tabular view** and **Timeline view**.
+
+- Click **Export** to export the data as a `*.csv` file or `*.png` image.
+
+  :::note
+
+  **Tabular view** only supports exporting data as a `*.csv` file. **Timeline view** can export data as a `*.csv` file or a `*.png` image. The exported `*.png` timeline image only displays information for a maximum of 30 users or endpoints.
+  :::
+
+The following table describes the User information that displays on the **User/Endpoint Directory** screen in **Tabular view**.
+
+**User Details in Tabular View**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Column</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><img src="./images/importance_icon=GUID-942E1AFF-79D6-48CC-920D-93301F1D6C03=1=en-us=Low.webp" /></p></td>
+<td><p>If the endpoint or user is assigned an important tag, Trend Micro Apex Central displays a yellow star icon (<img src="./images/importance_icon=GUID-942E1AFF-79D6-48CC-920D-93301F1D6C03=1=en-us=Low.webp" />) to indicate importance.</p>
+<p>For more information, see <a href="trend-vision-one-user-or-endpoint-importance">User or Endpoint Importance</a>.</p></td>
+</tr>
+<tr>
+<td><p>User</p></td>
+<td><p>Trend Micro Apex Central identifies and associates users with endpoints based on the type of endpoint or through integration with Active Directory.</p>
+<ul>
+<li><p>Server and desktop platforms: Trend Micro Apex Central associates the last logged on user with the endpoint</p></li>
+</ul>
+<p>Click a user name to view contact details.</p>
+<p>For more information, see <a href="trend-vision-one-contact-information">Contact Information</a>.</p>
+
+
+:::note
+
+<p>The <strong>Users → All</strong> node lists all local users from various endpoints regardless of their duplicate status. Duplicate users having the same names can occur. Trend Micro Apex Central consolidates all endpoints from managed products that have multiple local users.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Domain</p></td>
+<td><ul>
+<li><p>If Active Directory synchronization is available, this Trend Micro Apex Central displays the domain name that the user is a member of.</p></li>
+<li><p>If Active Directory synchronization is not available, this Trend Micro Apex Central displays the endpoint/host name that the user was the last person to log on to.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Manager</p></td>
+<td><p>If Active Directory synchronization is available, Trend Micro Apex Central displays the manager of the user</p>
+<p>Click a name in the manager column to view the manager's contact details.</p>
+<p>For more information, see <a href="trend-vision-one-contact-information">Contact Information</a>.</p></td>
+</tr>
+<tr>
+<td><p>Endpoints</p></td>
+<td><p>The number of endpoints currently associated with the user, based on the last log on information from the endpoints</p>
+<p>Click the count to view the related endpoint information in the table.</p>
+<p>For more information, see <a href="trend-vision-one-endpoint-details">Endpoint Details</a>.</p></td>
+</tr>
+<tr>
+<td><p>Policies</p></td>
+<td><p>The number of policies currently associated with the user, based on the last log on information from the endpoints</p>
+<p>Click the <em>Policies</em> count to view the related policy information for the user.</p>
+<p>For more information, see <a href="trend-vision-one-policy-status-assigned">Policy Status</a>.</p></td>
+</tr>
+<tr>
+<td><p>Threats</p></td>
+<td><p>The total number of security threats that occurred on endpoints associated with the user</p>
+<p>Click the <em>Threats</em> count to view the related threat information for the user.</p>
+<p>For more information, see <a href="trend-vision-one-security-threats-on-users">Security Threats for Users</a>.</p>
+<p>For example, if Henry was the last user logged on to endpoint "us-mkt-dev1", and that endpoint reported 10 virus/malware detections and 2 web violations, Henry's <em>Threats</em> count displays as <strong>12</strong>.</p></td>
+</tr>
+</tbody>
+</table>
+
+The following table describes the User information that displays on the **User/Endpoint Directory** screen in **Timeline view**.
+
+**User Details in Timeline View**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Column</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>User</p></td>
+<td><p>Trend Micro Apex Central identifies and associates users with endpoints based on the type of endpoint or through integration with Active Directory.</p>
+
+
+:::note
+
+<p>If the user is assigned an important tag, Trend Micro Apex Central displays a yellow star icon (<img src="./images/importance_icon=GUID-942E1AFF-79D6-48CC-920D-93301F1D6C03=1=en-us=Low.webp" />) in front of the user name.</p>
+<p>For more information, see <a href="trend-vision-one-user-or-endpoint-importance">User or Endpoint Importance</a>.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Domain</p></td>
+<td><p>The Active Directory domain that the user belongs to</p></td>
+</tr>
+<tr>
+<td><p>Threats</p></td>
+<td><p>The total number of security threats that occurred on endpoints associated with the user</p>
+<p>Click the <em>Threats</em> count to view the related threat information for the user.</p>
+<p>For more information, see <a href="trend-vision-one-security-threats-on-users">Security Threats for Users</a>.</p></td>
+</tr>
+<tr>
+<td><p>&lt;Timeline&gt;</p></td>
+<td><p>The timeline indicates when the security threats occurred for each user.</p>
+<ul>
+<li><p>Hover over a red warning dot (<img src="./images/user_endpoint_timeline_warning=GUID-CEDDA081-E2E0-4D48-8883-04E44C50A659=1=en-us=Low.webp" />) to view the number of critical threats and the total number of all security threat detections for a user on a specific date.</p></li>
+<li><p>Hover over a solid red dot (<img src="./images/user_endpoint_timeline_solid=GUID-9B3E30AF-1B6A-49D9-9716-E8ABB9D0A62C=1=en-us=Low.webp" />) to view the number of non-critical threat detections for a user on a specific date.</p></li>
+<li><p>Click a red dot to view the related threat information for a specific date.</p>
+<p>For more information, see <a href="trend-vision-one-security-threats-on-users">Security Threats for Users</a>.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Security Threats for Users](security-threats-on-users.mdx)
+:::

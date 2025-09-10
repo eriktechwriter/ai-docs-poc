@@ -1,0 +1,413 @@
+---
+slug: trend-vision-one-syslog-content-mapping-cef-ztsa
+title: Syslog content mapping - CEF
+---
+# Syslog content mapping - CEF
+
+Understand the content mapping between Internet Access log output and CEF syslog format.
+
+### CEF Internet Access On-Premises Gateway logs {#cef-internet-access-on-premises-gateway-logs}
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 33%" />
+<col style="width: 17%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>CEF key</p></th>
+<th><p>Description</p></th>
+<th><p>Type</p></th>
+<th><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Header (logVer)</p></td>
+<td><p>CEF format version</p></td>
+<td><p>String</p></td>
+<td><p>CEF:0</p></td>
+</tr>
+<tr>
+<td><p>Header (vendor)</p></td>
+<td><p>Appliance product vendor</p></td>
+<td><p>String</p></td>
+<td><p>Trend Micro</p></td>
+</tr>
+<tr>
+<td><p>Header (pname)</p></td>
+<td><p>Product name</p></td>
+<td><p>String</p></td>
+<td><p>Zero Trust Secure Access - Internet Access</p></td>
+</tr>
+<tr>
+<td><p>Header (pver)</p></td>
+<td><p>Appliance version</p></td>
+<td><p>String</p></td>
+<td><p>Example: 1.0.0.2000</p></td>
+</tr>
+<tr>
+<td><p>Header (eventid)</p></td>
+<td><p>Unique identifier per event type</p></td>
+<td><p>String</p></td>
+<td><p>Example: 100000</p></td>
+</tr>
+<tr>
+<td><p>Header (eventName)</p></td>
+<td><p>Category of the event</p></td>
+<td><p>String</p></td>
+<td><p>Activity Log</p></td>
+</tr>
+<tr>
+<td><p>Header (severity)</p></td>
+<td><p>Risk level</p></td>
+<td><p>Integer</p></td>
+<td><ul>
+<li><p>0: act=allow/analyze</p></li>
+<li><p>1: act=monitor/warn/override</p></li>
+<li><p>2: act=block</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>rt</p></td>
+<td><p>UTC timestamp of log generation</p></td>
+<td><p>Timestamp</p></td>
+<td><p>Example: Jul 05 2018 07:54:15 +0000</p></td>
+</tr>
+<tr>
+<td><p>act</p></td>
+<td><p>Action taken for the violation</p></td>
+<td><p>String</p></td>
+<td><ul>
+<li><p>allow</p></li>
+<li><p>monitor</p></li>
+<li><p>block</p></li>
+<li><p>warn</p></li>
+<li><p>override</p></li>
+<li><p>analyze</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>app</p></td>
+<td><p>Application protocol</p></td>
+<td><p>String</p></td>
+<td><p>Example: HTTP</p></td>
+</tr>
+<tr>
+<td><p>cat</p></td>
+<td><p>URL category</p></td>
+<td><p>String</p></td>
+<td><p>Example: Search Engines/Portals</p></td>
+</tr>
+<tr>
+<td><p>customerExternalId</p></td>
+<td><p>Company ID</p></td>
+<td><p>String</p></td>
+<td><p>Example: 7800fcab-7611-416c-9ab4-721b7bd6b076</p></td>
+</tr>
+<tr>
+<td><p>suser</p></td>
+<td><p>User Principal Name</p></td>
+<td><p>String</p></td>
+<td><p>Example: user_name@example.com</p></td>
+</tr>
+<tr>
+<td><p>devicePayloadId</p></td>
+<td><p>GUID of this event log</p></td>
+<td><p>String</p></td>
+<td><p>Example: aabb2233-a1b1-41dc-9abc-3f45ab290b0a</p></td>
+</tr>
+<tr>
+<td><p>deviceExternalId</p></td>
+<td><p>GUID of the endpoint with the Secure Access Module installed</p></td>
+<td><p>String</p></td>
+<td><p>Example: 66f0cb71-4150-4437-ba8b-91151bb12345</p></td>
+</tr>
+<tr>
+<td><p>shost</p></td>
+<td><p>Hostname of the endpoint with the Secure Access Module installed</p></td>
+<td><p>String</p></td>
+<td><p>Example: my laptop</p></td>
+</tr>
+<tr>
+<td><p>dvchost</p></td>
+<td><p>Name of the serving on-premises gateway location</p></td>
+<td><p>String</p></td>
+<td><p>Example: US_Office_on_premise_GW</p></td>
+</tr>
+<tr>
+<td><p>dst</p></td>
+<td><p>Destination IP address of a request</p></td>
+<td><p>String</p></td>
+<td><p>Example: 54.231.184.240</p></td>
+</tr>
+<tr>
+<td><p>src</p></td>
+<td><p>Source IP address of a request</p></td>
+<td><p>String</p></td>
+<td><p>Example: 10.204.214.188</p></td>
+</tr>
+<tr>
+<td><p>out</p></td>
+<td><p>Size of a request</p></td>
+<td><p>Integer</p></td>
+<td><p>Unit: bytes</p>
+<p>Example: 501</p></td>
+</tr>
+<tr>
+<td><p>in</p></td>
+<td><p>Size of a response</p></td>
+<td><p>Integer</p></td>
+<td><p>Unit: bytes</p>
+<p>Example: 220529</p></td>
+</tr>
+<tr>
+<td><p>dproc</p></td>
+<td><p>Application name</p></td>
+<td><p>String</p></td>
+<td><p>Example: Google</p></td>
+</tr>
+<tr>
+<td><p>destinationServiceName</p></td>
+<td><p>App &amp; action name of granular access control</p></td>
+<td><p>String</p></td>
+<td><p>Example: OneDrive download file</p></td>
+</tr>
+<tr>
+<td><p>cn1</p></td>
+<td><p>Malware type</p></td>
+<td><p>Integer</p></td>
+<td><ul>
+<li><p>1: Virus</p></li>
+<li><p>2: Spyware</p></li>
+<li><p>3: Joke</p></li>
+<li><p>4: Trojan</p></li>
+<li><p>5: Test_Virus</p></li>
+<li><p>6: Packer</p></li>
+<li><p>7: Generic</p></li>
+<li><p>8: Other</p></li>
+<li><p>9: Botnet</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cn1Label</p></td>
+<td><p>Corresponding label for the "cn1" field</p></td>
+<td><p>String</p></td>
+<td><p>malwareType</p></td>
+</tr>
+<tr>
+<td><p>cn2</p></td>
+<td><p>Web Reputation Services score</p></td>
+<td><p>Integer</p></td>
+<td><p>Example: 81</p></td>
+</tr>
+<tr>
+<td><p>cn2Label</p></td>
+<td><p>Corresponding label for the "cn2" field</p></td>
+<td><p>String</p></td>
+<td><p>wrsScore</p></td>
+</tr>
+<tr>
+<td><p>cn3</p></td>
+<td><p>Detection type</p></td>
+<td><p>Integer</p></td>
+<td><ul>
+<li><p>0: No matched Zero Trust Secure Access rule</p></li>
+<li><p>1: Missing or invalid client certificate</p></li>
+<li><p>2: Untrusted server certificate</p></li>
+<li><p>3: Zero Trust Secure Access</p></li>
+<li><p>4: HTTPS inspection exception</p></li>
+<li><p>5: HTTPS inspection failure</p></li>
+<li><p>6: HTTPS bypass at inspection failure</p></li>
+<li><p>9: Approved URLs</p></li>
+<li><p>10: Blocked URLs</p></li>
+<li><p>15: Private IP address access</p></li>
+<li><p>20: Web Reputation</p></li>
+<li><p>21: URL Filtering</p></li>
+<li><p>30: Restricted file type</p></li>
+<li><p>33: Restricted MIME type</p></li>
+<li><p>34: Restricted file extension type</p></li>
+<li><p>40: Anti-malware scan</p></li>
+<li><p>41: File scan exception</p></li>
+<li><p>45: Predictive Machine Learning</p></li>
+<li><p>50: Botnet</p></li>
+<li><p>60: Application Control</p></li>
+<li><p>70: Virtual Analyzer submission</p></li>
+<li><p>90: Suspicious Object Blocked List</p></li>
+<li><p>100: Data Loss Prevention</p></li>
+<li><p>110: Ransomware</p></li>
+<li><p>120: Risk Control</p></li>
+<li><p>130: Non-compliant device</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cn3label</p></td>
+<td><p>Corresponding label for the "cn3" field</p></td>
+<td><p>String</p></td>
+<td><p>detectionType</p></td>
+</tr>
+<tr>
+<td><p>cs1</p></td>
+<td><p>Malware name</p></td>
+<td><p>String</p></td>
+<td><p>Example: HEUR_OLEXP.B</p></td>
+</tr>
+<tr>
+<td><p>cs1Label</p></td>
+<td><p>Corresponding label for the "cs1" field</p></td>
+<td><p>String</p></td>
+<td><p>malwareName</p></td>
+</tr>
+<tr>
+<td><p>cs2</p></td>
+<td><p>Policy name</p></td>
+<td><p>String</p></td>
+<td><p>Example: default</p></td>
+</tr>
+<tr>
+<td><p>cs2Label</p></td>
+<td><p>Corresponding label for the "cs2" field</p></td>
+<td><p>String</p></td>
+<td><p>policyName</p></td>
+</tr>
+<tr>
+<td><p>cs3</p></td>
+<td><p>Profile name</p></td>
+<td><p>String</p></td>
+<td><p>Example: default</p></td>
+</tr>
+<tr>
+<td><p>cs3Label</p></td>
+<td><p>Corresponding label for the "cs3" field</p></td>
+<td><p>String</p></td>
+<td><p>profileName</p></td>
+</tr>
+<tr>
+<td><p>cs4</p></td>
+<td><p>Data Loss Prevention template name</p></td>
+<td><p>String</p></td>
+<td><p>Example: HIPAA, PII</p></td>
+</tr>
+<tr>
+<td><p>cs4Label</p></td>
+<td><p>Corresponding label for the "cs4" field</p></td>
+<td><p>String</p></td>
+<td><p>dlpDetails</p></td>
+</tr>
+<tr>
+<td><p>cs5</p></td>
+<td><p>File SHA-256</p></td>
+<td><p>String</p></td>
+<td><p>Example: ba9edecdd09de1307714564c24409bd25508e22fe11c768053a08f173f263e93</p></td>
+</tr>
+<tr>
+<td><p>cs5Label</p></td>
+<td><p>Corresponding label for the "cs5" field</p></td>
+<td><p>String</p></td>
+<td><p>fileHashSha256</p></td>
+</tr>
+<tr>
+<td><p>cs6</p></td>
+<td><p>User group name</p></td>
+<td><p>String</p></td>
+<td><p>Example: R&amp;D</p></td>
+</tr>
+<tr>
+<td><p>cs6Label</p></td>
+<td><p>Corresponding label for the "cs6" field</p></td>
+<td><p>String</p></td>
+<td><p>userGroupName</p></td>
+</tr>
+<tr>
+<td><p>fname</p></td>
+<td><p>File name</p></td>
+<td><p>String</p></td>
+<td><p>Example: example.doc</p></td>
+</tr>
+<tr>
+<td><p>fileType</p></td>
+<td><p>File type</p></td>
+<td><p>String</p></td>
+<td><p>Example: Microsoft Words</p></td>
+</tr>
+<tr>
+<td><p>fsize</p></td>
+<td><p>File size</p></td>
+<td><p>Integer</p></td>
+<td><p>Unit: bytes</p>
+<p>Example: 12,345</p></td>
+</tr>
+<tr>
+<td><p>fileHash</p></td>
+<td><p>File SHA-1</p></td>
+<td><p>String</p></td>
+<td><p>Example: 3f21be4521b5278fb14b8f47afcabe08a17dc504</p></td>
+</tr>
+<tr>
+<td><p>dhost</p></td>
+<td><p>Domain name of a request</p></td>
+<td><p>String</p></td>
+<td><p>Example: www.example.com</p></td>
+</tr>
+<tr>
+<td><p>type</p></td>
+<td><p>Indicate whether HTTPS inspection failed (Applicable to HTTPS requests only)</p></td>
+<td><p>Integer</p></td>
+<td><ul>
+<li><p>0: Successful</p></li>
+<li><p>1: Unsuccessful</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>requestClientApplication</p></td>
+<td><p>User agent of a request</p></td>
+<td><p>String</p></td>
+<td><p>Example: Mozilla/5.0</p></td>
+</tr>
+<tr>
+<td><p>requestMethod</p></td>
+<td><p>HTTP/HTTPS request method</p></td>
+<td><p>String</p></td>
+<td><p>Example: GET</p></td>
+</tr>
+<tr>
+<td><p>requestContext</p></td>
+<td><p>MIME Type of a request payload</p></td>
+<td><p>String</p></td>
+<td><p>Example: text/html</p></td>
+</tr>
+<tr>
+<td><p>reason</p></td>
+<td><p>MIME Type of a response payload</p></td>
+<td><p>String</p></td>
+<td><p>Example: text/html</p></td>
+</tr>
+<tr>
+<td><p>outcome</p></td>
+<td><p>Status or response code of a request</p></td>
+<td><p>String</p></td>
+<td><p>Example: 200</p></td>
+</tr>
+<tr>
+<td><p>proto</p></td>
+<td><p>Network protocol for data transmission</p></td>
+<td><p>String</p></td>
+<td><p>Example: TCP</p></td>
+</tr>
+<tr>
+<td><p>request</p></td>
+<td><p>Full URL of a request</p></td>
+<td><p>String</p></td>
+<td><p>Example: https://www.example.com/page.html</p></td>
+</tr>
+<tr>
+<td><p>suid</p></td>
+<td><p>Authenticated user ID</p></td>
+<td><p>String</p></td>
+<td><p>Example: user@example.com</p></td>
+</tr>
+</tbody>
+</table>
+:::

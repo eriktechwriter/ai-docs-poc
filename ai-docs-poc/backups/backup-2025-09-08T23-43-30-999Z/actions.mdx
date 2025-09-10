@@ -1,0 +1,42 @@
+---
+slug: trend-vision-one-actions
+title: '"intercept" actions'
+last_updated: '2025-09-08'
+ai_context:
+  source_file: actions.md
+  conversion_date: '2025-09-08T23:42:26.143Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+"Intercept" actions prevent a message from being delivered to the mailbox of the original recipient. Instead, the message is deleted, quarantined, or sent to a different recipient.
+
+"Intercept" actions are "terminal" actions. Once a terminal action executes, processing of that policy rule stops and no further action takes place for that policy rule.
+
+Terminal actions execute following a strict priority order:
+
+1.  Delete the entire message.
+
+2.  Deliver the message now.
+
+    :::danger[Warning]
+
+    The **Deliver now** action is not recommended for use as the only action. If you choose **Deliver now** as the only action for Spam mail, for example, all of that mail will simply be delivered to your recipients, as if there were no spam filter in place.
+
+    If you use **Deliver now** with a virus policy rule, ensure that you also have a **Delete** action for the virus policy rule. Only the **Delete** action takes higher priority than **Deliver now** and so would be processed before it (and then terminate the processing of that policy rule).
+
+    If you chose **Deliver now** as the only action for a virus policy rule, mail containing viruses would leak through unblocked.
+    :::
+
+3.  Quarantine the message.
+
+4.  Change recipient.
+
+**Related information**
+
+- [Using the delete action](using-delete-action.mdx)
+- [Using the deliver now action](using-deliver-now-action.mdx)
+- [Using the quarantine action](using-quarantine-action.mdx)
+- [Using the change recipient action](using-change-recipient-action.mdx)
+:::

@@ -1,0 +1,62 @@
+---
+slug: trend-vision-one-trusted-domains
+title: Trust Relationships
+---
+# Trust Relationships
+
+View information about trust relationships of a domain in Active Directory (on-premises).
+
+The **Trust Relationships** tab allows you to view domains that have established trust relationships with the current domain you selected in the **DOMAIN** section on the left panel. Users authorized to authenticate into one domain can also authenticate into trusted domains with a relationship to the user's primary domain. The more trusted domains you have, the more resources users can access across the system. Limit or restrict trust relationships for domains to ensure users only have access to necessary resources.
+
+The following table details the columns on the **Trust Relationships** tab.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Column name</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Domain name</p></td>
+<td><p>Name of a domain that has a trust relationship with the current selected domain.</p></td>
+</tr>
+<tr>
+<td><p>Trust direction</p></td>
+<td><p>Defines whether the trust relationship is one-way or two-way from the perspective of the current selected domain.</p>
+<ul>
+<li><p>Two-way: Both the current domain and the listed domain trust each other.</p></li>
+<li><p>Outgoing: The current domain trusts the listed domain, allowing users from the listed domain to access resources in the current domain.</p></li>
+<li><p>Incoming: The current domain is trusted by the listed domain, allowing users from the current domain to access resources in the listed domain.</p></li>
+<li><p>Disabled: The trust relationship between the current domain and the listed domain is disabled.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Trust attributes</p></td>
+<td><p>Flags that define properties, behaviors, and restrictions for a trust relationship.</p>
+<p>To learn more about trust attributes, see <a href="trend-vision-one-ad-trust-attributes">Active Directory trust attributes</a>.</p></td>
+</tr>
+<tr>
+<td><p>Last modified</p></td>
+<td><p>Time when a trust relationship was last modified.</p></td>
+</tr>
+<tr>
+<td><p>Created</p></td>
+<td><p>Time when a trust relationship was created.</p></td>
+</tr>
+<tr>
+<td><p>Distinguished name</p></td>
+<td><p>A fully qualified unique name that identifies the listed domain in a directory.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Active Directory trust attributes](ad-trust-attributes.md "View and understand the meaning of trust attributes applied to trust relationships in Active Directory (on-premises).")
+:::

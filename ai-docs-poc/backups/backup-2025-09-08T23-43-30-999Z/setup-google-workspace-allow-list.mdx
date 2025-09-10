@@ -1,0 +1,103 @@
+---
+slug: trend-vision-one-setup-google-workspace-allow-list
+title: Set up a Google Workspace allow list
+last_updated: '2025-09-08'
+ai_context:
+  source_file: setup-google-workspace-allow-list.md
+  conversion_date: '2025-09-08T23:42:12.594Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Configure the allow list settings for Google Workspace to ensure the delivery of Security Awareness Training training campaign invitations and reminders, and simulated phishing emails to employees in your organization..
+
+### Procedure {#procedure}
+
+1.  Record the **Security Awareness** sending IP addresses.
+
+    1.  On the Trend Vision One console, go to **Cyber Risk Exposure Management → Security Awareness → Phishing Simulations**.
+
+    2.  Click **Settings**.
+
+    3.  Click **Settings** and copy the sending IP addresses.
+
+        :::warning[Important]
+
+        The sending IP addresses change over time. Check the list before launching a training campaign or phishing simulation.
+        :::
+
+2.  Configure your Google Workspace to allow training campaign invitations and reminders, and phishing simulation emails from **Security Awareness**..
+
+    :::warning[Important]
+
+    The following instructions were valid as of November 1, 2023. For further help, refer to the Google Workspace documentation.
+    :::
+
+    1.  Sign in to your Google Admin console using an administrator account.
+
+    2.  Go to **Apps → Google Workspace → Gmail → Spam, Phishing and Malware**.
+
+    3.  Select the top-level organization, which is usually your domain.
+
+    4.  Hover over the **Email whitelist** section and click **Edit**.
+
+    5.  Enter the sending IP addresses separated by commas.
+
+    6.  Click **Save**.
+
+    7.  To ensure that the connection does not time out, disable enhanced pre-delivery message scanning.
+
+        1.  Hover over the **Enhanced pre-delivery message scanning** section and click **Edit**.
+
+        2.  Disable **Enables improved detection of suspicious content prior to delivery**.
+
+        3.  Click **Save**.
+
+        :::note
+
+        Trend Micro recommends re-enabling **Enhanced pre-delivery message scanning** after your campaign delivery rate reaches 100%.
+        :::
+
+    8.  In the **Spam** section, click **Configure**.
+
+    9.  On the **Add setting** screen, enter a description for the setting.
+
+    10. Select **Bypass spam filters for messages received from addresses or domains within these approved senders lists**.
+
+    11. Click **Create or edit list**.
+
+        The **Manage address list** screen opens in a new browser tab.
+
+    12. Click **Add address list**.
+
+    13. In the **Name** field, enter `Trend Vision One Sender`.
+
+    14. Click **Add address**.
+
+    15. Enter the Trend Vision One sender domain name.
+
+    16. Disable **Authentication required**.
+
+    17. Click **Save**.
+
+    18. On the **Spam, Phishing and Malware** tab, click **Save**.
+
+    You have configured Google Workspace to allow employees in your organization to receive training campaign invitations and reminders, and phishing simulation emails from **Security Awareness**.
+
+3.  To prevent warning banners from appearing in the Gmail inboxes of your organization's employees who receive training campaign invitations and reminders, and phishing simulation emails, add the **Security Awareness Training** sending IP addresses to your inbound gateway.
+
+    1.  In the **Spam, Phishing and Malware** screen, hover over the **Inbound gateway** section and click **Edit**.
+
+    2.  In the **Gateway IPs** field, click **Add**.
+
+    3.  Enter the **Security Awareness** sending IP addresses and then click **Save**.
+
+    4.  Enable **Message is considered spam if the following header regexp matches**.
+
+    5.  Specify text for the spam header tag that is unlikely to be found in your phishing simulation emails.
+
+    6.  Enable **Disable Gmail spam evaluation on mail from this gateway; only use header value** for email messages from this gateway using the **header value** option.
+
+    7.  Click **Save**.
+:::

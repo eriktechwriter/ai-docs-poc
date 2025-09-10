@@ -1,0 +1,84 @@
+---
+slug: trend-vision-one-bypass-url-list-for-windows-agent
+title: Bypass URL list for the Windows agent
+last_updated: '2025-09-08'
+ai_context:
+  source_file: bypass-url-list-for-windows-agent.md
+  conversion_date: '2025-09-08T23:42:24.172Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+The Zero Trust Secure Access agent for Windows automatically configures a URL bypass list. The list varies depending on whether your authentication method is module- or browser-based. The table below lists the URLs that are allowed to bypass the firewall for each method.
+
+:::note
+
+If no proxy or service gateway is set in the Trend Vision One console, traffic goes directly to the internet. If configured, traffic follows PAC file rules to the specified proxy.
+:::
+
+::: {.simpletable-container}
+<table id="GUID-F8FAF1DF-7A1E-4C0A-ADA3-6F6FC6CAD49D-2w03v7__simpletable_p2f_q4t_zbc" class="simpletable" data-border="1">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="sthead table-header-style">
+<th class="stentry"><p>Authorization type</p></th>
+<th class="stentry"><p>URLs automatically bypassed</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="strow">
+<td class="stentry"><p>Module-based</p></td>
+<td class="stentry"><ul>
+<li>*.trendmicro.com</li>
+<li>*.trendnet.org</li>
+<li>*.trendmicro.co.jp</li>
+</ul></td>
+</tr>
+<tr class="strow">
+<td class="stentry"><p>Browser-based</p></td>
+<td class="stentry"><ul>
+<li>*.trendmicro.com</li>
+<li>*.trendnet.org</li>
+<li>*.trendmicro.co.jp</li>
+<li>login.microsoftonline.com</li>
+<li>*.okta.com</li>
+<li>*.mtls.okta.com</li>
+<li>*.oktapreview.com</li>
+<li>.mtls.oktapreview.com</li>
+<li>*.oktacdn.com</li>
+<li>*.okta-emea.com</li>
+<li>*.mtls.okta-emea.com</li>
+<li>*.duosecurity.com</li>
+<li>aadcdn.msftauth.net</li>
+<li>aadcdn.msauth.net</li>
+<li>aadcdn.msftauthimages.net</li>
+<li>secure.aadcdn.microsoftonline-p.com</li>
+<li>aadcdn.msauthimages.net</li>
+<li>autologon.microsoftazuread-sso.com</li>
+<li>*.telemetry.microsoft.com</li>
+<li>*.events.data.microsoft.com</li>
+<li>ceuswatcab*.blob.core.windows.net</li>
+<li>eaus2watcab*.blob.core.windows.net</li>
+<li>weus2watcab*.blob.core.windows.net</li>
+<li>*.gstatic.com</li>
+<li>accounts.google.com/ServiceLogin*</li>
+<li>accounts.google.com/InteractiveLogin*</li>
+<li>accounts.google.com/_/bscframe*</li>
+<li>accounts.google.co.*</li>
+<li>accounts.google.com/o/saml2/idp*</li>
+<li>accounts.google.com/favicon.ico</li>
+<li>www.googleapis.com/*</li>
+<li>lh*.googleusercontent.com/*</li>
+<li>www.google.com/recaptcha/</li>
+<li>www.recaptcha.net</li>
+<li>accounts.youtube.com</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+:::
+:::::

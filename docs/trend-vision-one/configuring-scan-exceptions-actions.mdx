@@ -1,0 +1,132 @@
+---
+slug: trend-vision-one-configuring-scan-exceptions-actions
+title: Configuring "scan exceptions" actions
+---
+# Configuring "scan exceptions" actions
+
+To configure centralized scan exception settings, go to the following paths:
+
+- **Inbound Protection → Virus Scan → Scan Exceptions**
+
+- **Outbound Protection → Virus Scan → Scan Exceptions**
+
+Scan exceptions under **Inbound Protection** apply to incoming messages, while scan exceptions under **Outbound Protection** apply to outgoing messages. The scan actions configured for each exception apply to all senders and recipients.
+
+Specify actions for Cloud Email Gateway Protection to take on email messages that meet the scan exception criteria.
+
+### Procedure {#procedure}
+
+1.  On the **Scan Exceptions** screen, click the action name for an exception in the **Actions** column.
+
+    The **Select Scan Exception Actions** screen appears.
+
+2.  Configure **Intercept** settings.
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Action</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><strong>Do not intercept messages</strong></p></td>
+    <td><p>Cloud Email Gateway Protection does not take action on the message and processes the message using other policy rules if other policy rules apply.</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Delete entire message</strong></p></td>
+    <td><p>Cloud Email Gateway Protection deletes the message, including its attachments.</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Quarantine</strong></p></td>
+    <td><p>Cloud Email Gateway Protection moves the message into quarantine.</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+3.  Configure **Modify** settings.
+
+    <table>
+    <colgroup>
+    <col style="width: 50%" />
+    <col style="width: 50%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Action</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Tag subject</p></td>
+    <td><ol>
+    <li><p>Select the <strong>Tag subject</strong> action to insert configurable text into the message subject line.</p></li>
+    <li><p>Type a tag in the <strong>Tag</strong> field, for example, <code>Spam</code>.</p></li>
+    <li><p>Optionally select <strong>Do not tag digitally signed messages.</strong> to prevent tags from breaking digital signatures.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Insert X-Header</p></td>
+    <td><ol>
+    <li><p>Select <strong>Insert X-Header</strong> to add an X-Header to the header of a message.</p></li>
+    <li><p>Type the X-Header name and value.</p>
+
+
+    :::note
+
+    <p>Do not use or start your X-Header name (case-insensitive) with the following since they are reserved for Cloud Email Gateway Protection:</p>
+    <ul>
+    <li><p>X-TM</p></li>
+    <li><p>X-MT</p></li>
+    </ul>
+    <p>The reserved X-Headers might be adjusted dynamically if necessary.</p>
+
+
+    :::
+
+    </li>
+    </ol></td>
+    </tr>
+    </tbody>
+    </table>
+
+4.  Configure **Monitor** settings.
+
+    1.  Select the **Send notification** action.
+
+    2.  Click the **message to people** link.
+
+        The **Notifications** screen appears.
+
+    3.  Select a notification message from the **Available** pane on the left side and click **Add\>**.
+
+        The **Add**, **Edit**, **Copy** and **Delete** buttons under **Available** are provided for managing notification messages. For details about managing notifications, see [Managing notifications](managing-notifications.mdx).
+
+    4.  Click **Save** to save the notification setting.
+
+    :::note
+
+    The **Modify** and **Monitor** settings are not mandatory.
+    :::
+
+5.  Click **Save**.
+
+    :::note
+
+    If multiple scan exceptions are triggered for one email message, Cloud Email Gateway Protection chooses the action with the highest priority from the configured "Intercept" actions, combines the action with the "Modify" and "Monitor" actions, and performs those actions together on the message.
+
+    "Intercept" actions are listed as follows in descending order of priority:
+
+    - **Delete entire message**
+
+    - **Quarantine**
+
+    - **Do not intercept messages**
+    :::
+:::

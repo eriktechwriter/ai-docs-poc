@@ -1,0 +1,150 @@
+---
+slug: trend-vision-one-supported-log-types-formats
+title: Supported Log Types and Formats
+last_updated: '2025-09-08'
+ai_context:
+  source_file: supported-log-types-formats.md
+  conversion_date: '2025-09-08T23:42:12.219Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Trend Micro Apex Central can forward logs to a syslog server in the following log formats:
+
+- **CEF**: Uses the standard Common Event Format (CEF) for log messages
+
+- **Apex Central format**: Sets the syslog **Facility** code to "Local0" and the **Severity** code to "Notice"
+
+The following tables outline the formats supported by each log type.
+
+**Security Logs**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Log Type</p></th>
+<th><p>CEF</p></th>
+<th><p>Apex Central Format</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Application Control</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>Attack Discovery</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>Behavior Monitoring</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>C&amp;C Callbacks</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>Content Violations</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>Data Loss Prevention</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>Device Control</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>Intrusion Prevention</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>Network Content Inspection</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>Predictive Machine Learning</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>Spyware/Grayware</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>Suspicious Files</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>Virtual Analyzer</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>Virus/Malware</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>Web Violations</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+
+**Product Information**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Log Type</p></th>
+<th><p>CEF</p></th>
+<th><p>Apex Central Format</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Engine Update Status</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>Product Auditing Events</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>Pattern Update Status</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+</tbody>
+</table>
+
+For information about mapping syslog content between CEF and Apex Central formats, see [Syslog Content Mapping - CEF](syslog-content-mapping-cef-central.mdx).
+:::

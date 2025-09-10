@@ -1,0 +1,158 @@
+---
+slug: trend-vision-one-c-c-callback-token-variables
+title: C&C Callback Token Variables
+last_updated: '2025-09-08'
+ai_context:
+  source_file: c-c-callback-token-variables.md
+  conversion_date: '2025-09-08T23:42:24.157Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+The following table describes token variables for customizing C&C Callback event notification messages.
+
+:::note
+
+For the list of standard token variables supported by all event notifications, see [Standard Token Variables](standard-token-variables.mdx).
+:::
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Variable</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CnC_LIST_SRC%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Name of the list that contains the callback address</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CNC_PD_NAME%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Product ID of the managed product server that sent the log</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CNC_PD_VERSION%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Version of the managed product server that sent the log</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CNC_PD_NODE%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Endpoint name of the managed product server that sent the log</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CNC_PD_IP%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>IP address of the managed product server that sent the log</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CNC_EVTTIME%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Time the log was generated</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CNC_AGENTNAME%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Name of the Security Agent endpoint that detected the callback</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CNC_AGENTIP%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>IP address of the Security Agent endpoint that detected the callback</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CNC_AGENTDOMAIN%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Apex One domain of the Security Agent endpoint that detected the callback</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CNC_POLICY_RULE%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Name or rule ID of the policy that detected the callback</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CNC_ACTION%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Action result from the security log, personal firewall, NCIE log, or web security log</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CNC_EMAIL_SENDER%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Email sender associated with the callback</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CNC_EMAIL_SUBJECT%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Email subject associated with the callback</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CNC_RISKLEVEL%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Risk level of the malware groups associated with the C&amp;C server</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CNC_DETECT_SOURCE%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>The C&amp;C list that defined the detection rule</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CNC_CHANNEL%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>The type ID that indicates the destination format</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CNC_URL%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>The remote URL that the endpoint attempted to contact</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CNC_URL_CATEGORY%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>The URL category of the site that the endpoint attempted to contact</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CNC_IP_PORT%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>The C&amp;C server IP address and port</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CNC_EMAIL_REPT%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Email recipient associated with the callback</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CNC_FIRST_SEEN%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>The first known detection of the C&amp;C server</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CNC_LAST_SEEN%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>The last known detection of the C&amp;C server</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CNC_LOCATION%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>The country code of the C&amp;C server</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CNC_MALEWARE_FAMILY%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>The malware family associated with the C&amp;C detection</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CNC_ATTACK_GROUP%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>The C&amp;C group lists</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CNC_PROCESS_NAME%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>The process name associated with the C&amp;C detection</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CALLBACK_ADDR%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>URL, IP address, or email address to which a compromised host attempts a callback</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%COMPR_HOST%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Affected host or email address</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%CALLBACK_NUM%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Number of contacts made between callback addresses and compromised hosts</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><code>%COMPR_HOST_NUM%</code></p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Number of compromised hosts involved in the outbreak</p></td>
+</tr>
+<tr>
+<td style="border-right-width: 1px; border-right-style: solid"><p><code>%CALLBACK_ADDR_NUM%</code></p></td>
+<td><p>Number of callback addresses involved in the outbreak</p></td>
+</tr>
+</tbody>
+</table>
+::::

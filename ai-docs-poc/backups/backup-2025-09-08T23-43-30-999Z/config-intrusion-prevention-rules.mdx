@@ -1,0 +1,368 @@
+---
+slug: trend-vision-one-config-intrusion-prevention-rules
+title: Configure intrusion prevention rules
+last_updated: '2025-09-08'
+ai_context:
+  source_file: config-intrusion-prevention-rules.md
+  conversion_date: '2025-09-08T23:42:22.972Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::::: {role="main"}
+Perform the tasks in the sections below to configure and work with intrusion prevention rules.
+
+For an overview of the intrusion prevention module, see [Block exploit attempts using intrusion prevention](intrusion-prevention.mdx).
+
+## The intrusion prevention rules list {#the-intrusion-prevention-rules-list}
+
+The Policies page provides a list of intrusion prevention rules. You can search for intrusion prevention rules, and open and edit rule properties. In the list, rules are grouped by application type, and some rule properties appear in different columns.
+
+:::tip
+
+The TippingPoint column contains the equivalent Trend Micro TippingPoint rule ID. In the Advanced Search for intrusion prevention, you can search on the TippingPoint rule ID. You can also see the TippingPoint rule ID in the list of assigned intrusion prevention rules in the policy and computer editor.
+:::
+
+To see the list, click *Policies*, and then below *Common Objects/Rules* click *Intrusion Prevention Rules*.
+
+## Intrusion prevention license types {#intrusion-prevention-license-types}
+
+The Rule Availability column provides information about the available license types for the rule. *Endpoint & Workload* indicates this rule can be assigned under both Endpoint and Workload licenses. *Workload* rule availability means the rule can only be assigned when the license type is Workload.
+
+The license type is *Endpoint* if all of the assigned rules have *Endpoint & Workload* rule availability, and it is *Workload* if at least one of the assigned rules has Workload rule availability.
+
+## See information about an intrusion prevention rule {#see-information-about-an-intrusion-prevention-rule}
+
+The properties of intrusion prevention rules include information about the rule and the exploit against which it protects.
+
+### Procedure {#procedure}
+
+1.  Click **Policies → Intrusion Prevention Rules**.
+
+2.  Select a rule and click *Properties*.
+
+## General Information {#general-information}
+
+- *Name*: The name of the intrusion prevention rule.
+- *Description*: The description of the intrusion prevention rule.
+- *Minimum Agent/Appliance Version*: The minimum version of the agent required to support this intrusion prevention rule.
+
+## Details {#details}
+
+Clicking *New* (![](/images/new=113a0212-fff8-4d58-8639-eee7dc505d85.webp)) or *Properties* (![](/images/details=6adf47dd-913c-4586-8dcf-b57640800e39.webp)) displays the *Intrusion Prevention Rule Properties* window.
+
+:::note
+
+Intrusion Prevention Rules from Trend Micro are not directly editable through Server & Workload Protection. Instead, if the Intrusion Prevention Rule requires (or allows) configuration, those configuration options will be available on the *Configuration* tab. Custom Intrusion Prevention Rules that you write yourself will be editable, in which case the *Rules* tab will be visible.
+:::
+
+- *Application Type*: The application type under which this intrusion prevention rule is grouped.
+
+  :::tip
+
+  You can edit application types from this panel. When you edit an application type from here, the changes are applied to all security elements that use it.
+  :::
+
+- *Priority*: The priority level of the rule. Higher priority rules are applied before lower priority rules.
+
+- *Severity*: Setting the severity of a rule has no effect on how the rule is implemented or applied. Severity levels can be useful as sorting criteria when viewing a list of intrusion prevention rules. More importantly, each severity level is associated with a severity value; this value is multiplied by a computer's Asset Value to determine the Ranking of an Event. (See **Administration → System Settings → Ranking**.)
+
+- *CVSS Score*: A measure of the severity of the vulnerability according the [National Vulnerability Database](https://nvd.nist.gov/vuln-metrics/cvss).
+
+## Identification (Trend Micro rules only) {#identification-trend-micro-rules-only}
+
+- *Type*: Can be either Smart (one or more known and unknown (zero day) vulnerabilities), Exploit (a specific exploit, usually signature based), or Vulnerability (a specific vulnerability for which one or more exploits may exist).
+- *Issued*: The date the rule was released. This does not indicate when the rule was downloaded.
+- *Last Updated*: The last time the rule was modified either locally or during Component Update download.
+- *Identifier*: The rule's unique identification tag.
+
+## See information about the associated vulnerability (Trend Micro rules only) {#see-information-about-the-associated-vulnerability-trend-micro-rules-only}
+
+Rules that Trend Micro provides can include information about the vulnerability against which the rule protects. When applicable, the Common Vulnerability Scoring System (CVSS) is displayed. (For information on this scoring system, see the CVSS page at the [National Vulnerability Database](https://nvd.nist.gov/vuln-metrics/cvss).)
+
+### Procedure {#procedure-1}
+
+1.  Click **Policies → Intrusion Prevention Rules**.
+
+2.  Select a rule and click *Properties*.
+
+3.  Click the *Vulnerabilities* tab.
+
+## Assign and unassign rules {#assign-and-unassign-rules}
+
+To apply intrusion prevention rules during agent scans, assign them to the appropriate policies and computers. When the rule is no longer necessary because the vulnerability has been patched, unassign the rule.
+
+If you cannot unassign intrusion prevention rules from a Computer editor, it is likely because the rules are currently assigned in a policy. Rules assigned at the policy level must be removed using the [Policy editor](overview-section-policy-editor.mdx) and cannot be removed at the computer level.
+
+When you make a change to a policy, it affects all computers using the policy. For example, when you unassign a rule from a policy you remove the rule from all computers that are protected by that policy. To continue to apply the rule to other computers, create a new policy for that group of computers. (See [Policies, inheritance, and overrides](policies-inheritance-overrides.mdx).)
+
+:::tip
+
+To see the policies and computers to which a rule is assigned, see the Assigned To tab of the rule properties.
+:::
+
+### Procedure {#procedure-2}
+
+1.  On the *Policies* page, right-click the policy and select **Details**.
+
+2.  Click **Intrusion Prevention → General**. The rules assigned to the policy appear in the *Assigned Intrusion Prevention Rules* list.
+
+3.  Click **Assign/Unassign**.
+
+4.  To assign a rule, select the box next to the rule.
+
+    A subset of Intrusion Prevention Rules, called core Endpoint and Workload rules, protects against known vulnerability issues. These rules are available for all license types, and you can easily assign them as a group:
+
+    1.  Select **Rule Selection**.
+
+    2.  Click **Select all Core Endpoint & Workload Rules**.
+
+5.  To unassign a rule, clear the box next to the rule.
+
+    To unassign Endpoint and Workload rules:
+
+    - Select **Rule Selection**.
+    - Click **Deselect all Core Endpoint & Workload Rules**.
+
+6.  Click **OK**.
+
+## Automatically assign core Endpoint & Workload rules {#automatically-assign-core-endpoint-workload-rules}
+
+Server & Workload Protection assigns core Endpoint & Workload rules to this policy when [rule updates](intrusion-prevention.mdx) occur. However, manually unassigned core Endpoint & Workload rules remain unassigned.
+
+Enable this feature when you have the *Endpoint license* but, for the *Workload license*, disable this feature and use [recommendation scans](recommendation-scans-intro.mdx) instead.
+
+### Procedure {#procedure-3}
+
+1.  On the *Policies* page, right-click the policy and select **Details**.
+
+2.  Select **Intrusion Prevention → General**. The rules assigned to the policy appear in the *Assigned Intrusion Prevention Rules* list.
+
+3.  Select **Yes** for *Implement core Endpoint & Workload rules automatically*.
+
+4.  Click **Save**.
+
+## Automatically assign updated required rules {#automatically-assign-updated-required-rules}
+
+Security updates can include new or updated application types and intrusion prevention rules which require the assignment of secondary intrusion prevention rules. Server & Workload Protection can automatically assign these required rules. Enable these automatic assignments in properties for the policy or computer.
+
+### Procedure {#procedure-4}
+
+1.  On the Policies page, right-click the policy and select **Details**.
+
+2.  Select **Intrusion Prevention → Advanced**.
+
+3.  In the *Rule Updates* area, select **Yes**.
+
+4.  Click **OK**.
+
+## Configure event logging for rules {#configure-event-logging-for-rules}
+
+Configure logging events for a rule and specify whether to include packet data in the log.
+
+Server & Workload Protection can display X-Forwarded-For headers in intrusion prevention events when they are available in the packet data. This information can be useful when the agent is behind a load balancer or proxy. The X-Forwarded-For header data appears in the event's Properties window. To include the header data, include packet data in the log and assign rule 1006540, Enable X-Forwarded-For HTTP Header Logging.
+
+Because it would be impractical to record all packet data every time a rule triggers an event, Server & Workload Protection records the data only the first time the event occurs within a specified time. The default time is five minutes, but you can change this using the **Period for Log only one packet within period** in [Advanced Network Engine settings](network-engine-settings.mdx) for the policy.
+
+The configuration in the following procedure affects all policies. To configure a rule for one policy, see Override rule and application type configurations.
+
+### Procedure {#procedure-5}
+
+1.  Click **Policies → Intrusion Prevention Rules**.
+
+2.  Select a rule and click **Properties**.
+
+3.  On the *General* tab under *Events*, select from these options:
+
+    - To disable logging for the rule, select **Disable Event Logging**.
+
+    - To log an event when a packet is dropped or blocked, select **Generate Event on Packet Drop**.
+
+    - To include the packet data in the log entry, select **Always Include Packet Data**.
+
+    - To log several packets before and after the detected packet, select **Enable Debug Mode**. Use debug mode only when your support provider instructs you to do so.
+
+4.  To include packet data in the log, allow rules to capture packet data:
+
+    1.  On the Policies page, open the policy.
+
+    2.  Select **Intrusion Prevention → Advanced**.
+
+    3.  Under *Event Data*, select **Yes**.
+
+## Generate alerts {#generate-alerts}
+
+Generate an alert when an intrusion prevention rule triggers an event.
+
+The configuration in the following procedure affects all policies. To configure a rule for one policy, see Override rule and application type configurations.
+
+### Procedure {#procedure-6}
+
+1.  Select **Policies → Intrusion Prevention Rules**.
+
+2.  Select a rule.
+
+3.  Click **Properties**.
+
+4.  Click the **Options** tab.
+
+5.  For *Alert*, select **On**
+
+6.  Click **OK**.
+
+## Setting configuration options (Trend Micro rules only) {#setting-configuration-options-trend-micro-rules-only}
+
+Some intrusion prevention rules that Trend Micro provides have configuration options like header length, allowed extensions for HTTP, or cookie length. Some options require you to configure them. If you assign a rule without setting a required option, an alert informs you about the required option. This also applies to any rules from Security Updates.
+
+The Intrusion Prevention rules list indicates rules that have configuration options by displaying a small gear over the icon (![](/images/dpi_rules_option=84381749-8bce-4bd3-82d6-ae9e9804e843.webp)).
+
+Custom intrusion prevention rules include a *Rules* tab for editing the rules.
+
+The configuration in the following procedure affects all policies. To configure a rule for one policy, see Override rule and application type configurations.
+
+### Procedure {#procedure-7}
+
+1.  Select **Policies → Intrusion Prevention Rules**.
+
+2.  Select a rule and click **Properties**.
+
+3.  Click the **Configuration** tab.
+
+4.  Configure the properties.
+
+5.  Click **OK**.
+
+## Schedule active times {#schedule-active-times}
+
+Schedule the time during which an intrusion prevention rule is active. Intrusion prevention rules that are active only at scheduled times appear in the Intrusion Prevention Rules page with a small clock on the icon (![](/images/dpi_rules_schedule=5cff676b-4b6c-4114-8806-ef553e28b667.webp)).
+
+With agent-based protection, schedules use the same time zone as the endpoint operating system.
+
+The configuration performed in the following procedure affects all policies. To configure a rule for one policy, see Override rule and application type configurations.
+
+### Procedure {#procedure-8}
+
+1.  Select **Policies → Intrusion Prevention Rules**.
+
+2.  Select a rule and click **Properties**.
+
+3.  Click the **Options** tab.
+
+4.  Under *Schedule*, select one of the following:
+
+    - **New**
+    - The frequency
+
+5.  Edit the schedule.
+
+6.  Click **OK**.
+
+## Exclude from recommendations {#exclude-from-recommendations}
+
+Exclude intrusion prevention rules from rule recommendations of [recommendation scans](recommendation-scans-intro.mdx).
+
+The following procedure affects all policies. To configure a rule for one policy, see Override rule and application type configurations.
+
+### Procedure {#procedure-9}
+
+1.  Select **Policies → Intrusion Prevention Rules**.
+
+2.  Select a rule and click **Properties**.
+
+3.  Click the **Options** tab.
+
+4.  Under *Recommendations Options*, select **Exclude from Recommendations**.
+
+5.  Click **OK**.
+
+## Set the context for a rule {#set-the-context-for-a-rule}
+
+Set the context in which the rule is applied.
+
+The following procedure affects all policies. To configure a rule for one policy, see Override rule and application type configurations.
+
+### Procedure {#procedure-10}
+
+1.  Click **Policies → Intrusion Prevention Rules**.
+
+2.  Select a rule and click *Properties*.
+
+3.  Click the *Options* tab.
+
+4.  In the *Context* area, select *New* or select a context.
+
+5.  Edit the context as required.
+
+6.  Click *OK*.
+
+## Override the behavior mode for a rule {#override-the-behavior-mode-for-a-rule}
+
+Set the behavior mode of an intrusion prevention rule to Detect when testing new rules. In Detect mode, the rule creates a log entry prefaced with detect only: and does not interfere with traffic. Some intrusion prevention rules only operate in Detect mode. You cannot change the behavior mode for these rules. If you disable logging for the rule, the system does not log rule activity regardless of the behavior mode. For more information about behavior modes, see [Use behavior modes to test rules](intrusion-prevention.mdx).
+
+The following procedure affects all policies. To configure a rule for one policy, see Override rule and application type configurations.
+
+### Procedure {#procedure-11}
+
+1.  Select **Policies → Intrusion Prevention Rules**.
+
+2.  Select a rule and click **Properties**.
+
+3.  Select **Detect Only**.
+
+## Override rule and application type configurations {#override-rule-and-application-type-configurations}
+
+From a Computer or Policy editor, you can edit an intrusion prevention rule so that changes apply only for that policy or computer. You can also edit the rule to apply changes globally so they affect other policies and computers assigned that rule. Similarly, you can configure application types to apply globally or for a single policy or computer.
+
+### Procedure {#procedure-12}
+
+1.  On the *Policies* page, right-click the policy and select **Details**.
+
+2.  Click **Intrusion Prevention**.
+
+3.  To edit a rule, right-click the rule and select one of the following options:
+
+    - **Properties** to edit the rule only for the policy
+
+    - **Properties (Global)** to edit the rule for all policies and computers
+
+    :::tip
+
+    When you select the rule and click Properties, you are editing the rule only for that policy.
+    :::
+
+4.  To edit the application type of a rule, right-click the rule and select one of the following options:
+
+    - **Application Type Properties** to edit the application type only for the policy
+
+    - **Application Type Properties (Global)** to edit the application type for all policies and computers
+
+    :::note
+
+    You can assign one port to a maximum of eight application types. More than eight and the rules will not work on that port.
+    :::
+
+5.  Click **OK**.
+
+## Export rules {#export-rules}
+
+You can export intrusion prevention rules to an XML or CSV file.
+
+### Procedure {#procedure-13}
+
+1.  Select **Policies → Intrusion Prevention Rules**.
+
+2.  To export specific rules, select the rules. If you select none, the export includes all rules.
+
+3.  Do one of the following:
+
+    - For a CSV file, select **Export → Export Selected to CSV**.
+    - For an XML file, select **Export → Export Selected to XML**.
+
+## Import rules {#import-rules}
+
+You can import intrusion prevention rules from an XML file.
+
+### Procedure {#procedure-14}
+
+- Select **New → Import From File** and follow the instructions in the wizard.
+::::::

@@ -1,0 +1,124 @@
+---
+slug: trend-vision-one-general
+title: General
+last_updated: '2025-09-08'
+ai_context:
+  source_file: general.md
+  conversion_date: '2025-09-08T23:42:18.934Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Configure general settings for the following:
+
+- Enable or disable real-time scanning
+
+- Enable or disable RMS-protected file scanning
+
+- Specify the policy name
+
+- Specify the policy description
+
+- Specify the policy priority value
+
+- Select targets that the policy affects
+
+**Related information**
+
+- Configuring general settings
+
+## Configuring general settings {#configuring-general-settings}
+
+### Procedure {#procedure}
+
+1.  Select **General**.
+
+2.  Enable the policy.
+
+3.  (Microsoft 365 services only) Optionally enable scanning for encrypted files and email messages.
+
+    - For SharePoint Online, OneDrive, Microsoft Teams (Teams), or Microsoft Teams (Chat), turn on **Enable RMS Protected File Scanning** or **Enable MIP-related Functions**.
+
+      This option only appears when you have added an RMS account or a MIP account.
+
+    - For Exchange Online email messages, turn on **Enable MIP-related Functions**.
+
+      This option only appears when you have granted Cloud Email and Collaboration Protection access to Exchange Online or Exchange Online (Inline Mode) with an Authorized Account, and have added a MIP account without skipping Step 5 in [Adding an MIP Account](adding-mip-account.mdx).
+
+      :::note
+
+      This feature only applies to messages sent by users in your organization.
+      :::
+
+4.  (Exchange Online and Gmail only) Optionally select not to scan email messages in users' Junk Email folder for Exchange Online or users' Spam folder for Gmail during real-time and manual scanning.
+
+5.  Specify a policy name and description.
+
+6.  Specify the policy's priority value.
+
+    :::note
+
+    Priority is assigned numerically, with "1" being the highest priority. The lower the priority value, the higher the priority. Its value ranges from 1 to 99999.
+    :::
+
+7.  (Exchange Online Inline Mode only) Select **Target Domains** or **Target Users / Groups**.
+
+8.  In the **Available Targets** area, select one or multiple targets, and then click the arrow button to add them to the **Selected Targets** area.
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <tbody>
+    <tr>
+    <td><p>Exchange Online</p></td>
+    <td><p>Users and groups in your company's Active Directory infrastructure</p></td>
+    </tr>
+    <tr>
+    <td><p>Exchange Online (Inline Mode)</p></td>
+    <td><p>Domains or users/groups in your company's Active Directory infrastructure</p></td>
+    </tr>
+    <tr>
+    <td><p>SharePoint Online</p></td>
+    <td><p>SharePoint sites in your company</p></td>
+    </tr>
+    <tr>
+    <td><p>OneDrive</p></td>
+    <td><p>Users and groups in your company that have OneDrive sites</p></td>
+    </tr>
+    <tr>
+    <td><p>Microsoft Teams</p></td>
+    <td><p>Teams in your company</p></td>
+    </tr>
+    <tr>
+    <td><p>Teams Chat</p></td>
+    <td><p>Users and groups in your company's Active Directory infrastructure</p></td>
+    </tr>
+    <tr>
+    <td><p>Box, Dropbox</p></td>
+    <td><p>Users and groups in your company</p></td>
+    </tr>
+    <tr>
+    <td><p>Google Drive</p></td>
+    <td><p>Users and organization units in your company</p></td>
+    </tr>
+    <tr>
+    <td><p>Gmail</p></td>
+    <td><p>Users and groups in your company</p></td>
+    </tr>
+    <tr>
+    <td><p>Gmail (Inline Mode)</p></td>
+    <td><p>Domains or users/groups in your company</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+    Click **Click here** to resynchronize the list if the target to add is not found.
+
+    :::note
+
+    You can select a policy configuration on the left navigation to continue with additional rules as necessary.
+    :::
+:::

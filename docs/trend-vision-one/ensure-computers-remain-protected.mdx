@@ -1,0 +1,27 @@
+---
+slug: trend-vision-one-ensure-computers-remain-protected
+title: >-
+  Ensure computers that are offline for extended periods of time remain
+  protected with Server & Workload Protection
+---
+# Ensure computers that are offline for extended periods of time remain protected with Server & Workload Protection
+
+Inactive agent cleanup might remove protected computers that communicate irregularly with Server & Workload Protection if they do not communicate within the specified period of inactivity. Follow the steps below to allow your protected computers to reconnect to Server & Workload Protection.
+
+:::warning[Important]
+
+When reconnecting, a removed computer does not have an assigned policy and is added as a new computer. Server & Workload Protection removes any direct links to the computer from event data.
+
+You can automatically assign a policy assigned to a computer upon agent-initiated activation with an [event-based task](autotasks-computer-changed-event.mdx).
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Endpoint Security → Server & Workload Protection**.
+
+2.  In Server & Workload Protection, go to **Administration → System Settings → Agents**.
+
+3.  Select **Allow Agent-Initiated Activation**.
+
+4.  Select **Reactivate unknown Agents**
+::::

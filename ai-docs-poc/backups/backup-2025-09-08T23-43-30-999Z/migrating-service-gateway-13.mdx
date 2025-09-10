@@ -1,0 +1,72 @@
+---
+slug: trend-vision-one-migrating-service-gateway-13
+title: Migrating from Service Gateway 1.0 to 3.0
+last_updated: '2025-09-08'
+ai_context:
+  source_file: migrating-service-gateway-13.md
+  conversion_date: '2025-09-08T23:42:15.997Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Migrate directly from Service Gateway 1.0 to Service Gateway 3.0 if your current Service Gateway 1.0 appliance status is unhealthy.
+
+The status of a Service Gateway Virtual Appliance must be healthy in order for an upgrade to the latest version to proceed. If your Service Gateway 1.0 status is unhealthy, you may migrate directly to Service Gateway 3.0.
+
+:::note
+
+- To minimize disruption of services during migration, do not change the Service Gateway Management API key before migrating the Service Gateway virtual appliance.
+
+- The source (1.0) and target (3.0) appliances may be temporarily unavailable during migration.
+:::
+
+### Procedure {#procedure}
+
+1.  Deploy a new Service Gateway 3.0 appliance to replace your existing 1.0 appliance.
+
+    1.  Go to **Workflow and Automation → Service Gateway Management**.
+
+    2.  Click **Download Virtual Appliance**.
+
+        :::note
+
+        The original Service Gateway 1.0 appliance package is no longer available for download.
+        :::
+
+    3.  Deploy the appliance.
+
+        - [Deploying a Service Gateway virtual appliance with VMware ESXi](sg-virtual-app-vmware-esxi.mdx)
+
+        - [Deploying a Service Gateway virtual appliance with Microsoft Hyper-V](deploy-virtual-appliance-ms-hyper-v.mdx)
+
+        - [Deploying a Service Gateway virtual appliance with Microsoft Azure](service-gateway-azure.mdx)
+
+        - [Deploying a Service Gateway virtual appliance with AWS](deploy-service-gateway-aws.mdx)
+
+    :::note
+
+    The IP address of the new Service Gateway 3.0 appliance should not match the IP address of the Service Gateway 1.0 appliance. Take note of the current Service Gateway 1.0 IP address.
+    :::
+
+2.  Configure the new Service Gateway 3.0 appliance.
+
+    1.  Enable the Service Gateway 1.0 settings on your Service Gateway 3.0 appliance, and leave newly added settings as default.
+
+    2.  Install and enable the same services as those enabled on your Service Gateway 1.0 appliance.
+
+        :::note
+
+        The third-party intelligence synchronization service has been replaced by the MISP Threat Intelligence Connector and the Suspicious Object Exchange Service in Service Gateway 3.0.
+        :::
+
+3.  Unregister and delete the Service Gateway 1.0 appliance on the Trend Vision One console.
+
+4.  Shut down the virtual machine that had been running the Service Gateway 1.0 appliance according to your deployment environment.
+
+5.  Using the following CLI command, update the new Service Gateway 3.0 appliance IP address with the IP address of the previous 1.0 appliance.
+
+    `configure network primary ipv4.static <interface> <ip_cidr> <gateway IP> <dns>`
+
+    ![](/images/SG1.0to3.0IPaddCLIexample=GUID-6192f67a-af59-40a2-8c78-45911950d44f.webp)
+::::

@@ -1,0 +1,36 @@
+---
+slug: trend-vision-one-container-image-scanning
+title: Container Image Scanning
+last_updated: '2025-09-08'
+ai_context:
+  source_file: container-image-scanning.md
+  conversion_date: '2025-09-08T23:42:21.843Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+The Trend Micro Artifact Scanner (TMAS) performs pre-runtime scans on artifacts, enabling you to identify and fix issues before they reach the production environment. After TMAS is integrated into your continuous integration (CI) or continuous delivery (CD) pipeline, you can view the scan results of registry image artifacts for vulnerabilities, malware, and secrets in **Container Protection → Container Image Scanning**. [Learn more about TMAS](artifact-scanner-tmas.mdx).
+
+Only the following artifacts are displayed in Container Image Scanning:
+
+- `registry`
+- `docker`
+- `podman`
+- `docker-archive`
+- `oci-archive`
+- `oci-dir`
+- `singularity`
+
+The Container Protection app does not display `dir` and `file` artifacts.
+
+:::note
+
+TMAS scan results are deleted after 35 days.
+:::
+
+**Related information**
+
+- [Trend Micro Artifact Scanner (TMAS)](artifact-scanner-tmas.mdx)
+- [Trend Micro Artifact Scanner and with AI Scanner](tmas-ai-scanner-2.mdx)
+::::

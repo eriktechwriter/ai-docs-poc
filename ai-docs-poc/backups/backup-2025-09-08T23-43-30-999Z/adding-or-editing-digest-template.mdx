@@ -1,0 +1,197 @@
+---
+slug: trend-vision-one-adding-or-editing-digest-template
+title: Adding or editing a digest template
+last_updated: '2025-09-08'
+ai_context:
+  source_file: adding-or-editing-digest-template.md
+  conversion_date: '2025-09-08T23:42:25.711Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+You can create digest templates to define the format and content of notification email messages that end users receive.
+
+### Procedure {#procedure}
+
+1.  Go to **Quarantine → Digest Settings**.
+
+2.  Click the **Digest Templates** tab.
+
+3.  Click **Add** or click the name of an existing template.
+
+4.  In the **General Information** section, specify the template name and description.
+
+5.  In the **Digest Notification Template** section, configure the following:
+
+    :::note
+
+    The digest notification template is available either in HTML or plain text versions. Each version of the template can incorporate tokens to customize output for digest recipients. You can right-click any of the following fields to display a list of available and selectable tokens for the field.
+    :::
+
+    - **From**: Specify the email address that displays as the sender of the digest notification.
+
+      ****From** field digest tokens**
+
+      <table>
+      <colgroup>
+      <col style="width: 36%" />
+      <col style="width: 64%" />
+      </colgroup>
+      <thead>
+      <tr>
+      <th><p>Token</p></th>
+      <th><p>Content in Sent Digest Notifications</p></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td><p>%DIGEST_RCPT%</p></td>
+      <td><p>Digest recipient's email address appears in the <strong>From</strong> field of the received digest notification</p></td>
+      </tr>
+      </tbody>
+      </table>
+
+    - **Subject**: Specify the subject line for the digest notification.
+
+      ****Subject** field digest tokens**
+
+      <table>
+      <colgroup>
+      <col style="width: 36%" />
+      <col style="width: 64%" />
+      </colgroup>
+      <thead>
+      <tr>
+      <th><p>Token</p></th>
+      <th><p>Content in Sent Digest Notifications</p></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td><p>%DIGEST_RCPT%</p></td>
+      <td><p>Digest recipient's email address appears in the subject line</p></td>
+      </tr>
+      <tr>
+      <td><p>%DIGEST_DATE%</p></td>
+      <td><p>Digest date appears in the subject line</p></td>
+      </tr>
+      </tbody>
+      </table>
+
+    - **HTML**:
+
+      - Specify if **Inline actions** should be **Enabled** or **Disabled** using the toggle button to the right of **Inline actions**.
+
+      - Select the language you want to use for inline actions from the **Language** drop-down list.
+
+      - Customize the inline actions that digest recipients can take in the digest notifications.
+
+        The following inline actions are available for your customization and the first three ones are selected by default:
+
+        - **Deliver**
+
+        - **Deliver & Approve Sender**
+
+        - **Block Sender**
+
+        - **Approve Sender Domain**
+
+        - **Block Sender Domain**
+
+        - **Preview**
+
+      - Specify the HTML content of the digest notification if the email client accepts HTML messages.
+
+      ****HTML** field digest tokens**
+
+      <table>
+      <colgroup>
+      <col style="width: 36%" />
+      <col style="width: 64%" />
+      </colgroup>
+      <thead>
+      <tr>
+      <th><p>Token</p></th>
+      <th><p>Content in Sent Digest Notifications</p></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td><p>%DIGEST_RCPT%</p></td>
+      <td><p>Digest recipient's email address appears in the HTML body</p></td>
+      </tr>
+      <tr>
+      <td><p>%DIGEST_DATE%</p></td>
+      <td><p>Digest date appears in the HTML body</p></td>
+      </tr>
+      <tr>
+      <td><p>%DIGEST_BODY_HTML%</p></td>
+      <td><p>Digest summary in HTML table format appears in the HTML body</p></td>
+      </tr>
+      <tr>
+      <td><p>%DIGEST_PAGE_COUNT%</p></td>
+      <td><p>Total number of quarantined messages listed in the digest summary (up to 100) appears in the HTML body</p></td>
+      </tr>
+      <tr>
+      <td><p>%DIGEST_TOTAL_COUNT%</p></td>
+      <td><p>Total number of new found messages in quarantine appears in the HTML body</p></td>
+      </tr>
+      <tr>
+      <td><p>%EUC_HOST_SERVER%</p></td>
+      <td><p>Web address of Cloud Email Gateway Protection End User Console appears in the HTML body</p></td>
+      </tr>
+      </tbody>
+      </table>
+
+    - **Plain text**: Specify the plain text content of the digest notification if the email client only accepts plain text messages.
+
+      ****Plain text** field digest tokens**
+
+      <table>
+      <colgroup>
+      <col style="width: 36%" />
+      <col style="width: 64%" />
+      </colgroup>
+      <thead>
+      <tr>
+      <th><p>Token</p></th>
+      <th><p>Content in Sent Digest Notifications</p></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td><p>%DIGEST_RCPT%</p></td>
+      <td><p>Digest recipient's email address appears in the text body</p></td>
+      </tr>
+      <tr>
+      <td><p>%DIGEST_DATE%</p></td>
+      <td><p>Digest date appears in the text body</p></td>
+      </tr>
+      <tr>
+      <td><p>%DIGEST_BODY_TEXT%</p></td>
+      <td><p>Digest summary in plain text format appears in the text body</p></td>
+      </tr>
+      <tr>
+      <td><p>%DIGEST_PAGE_COUNT%</p></td>
+      <td><p>Total number of quarantined messages listed in the digest summary (up to 100) appears in the plain text body</p></td>
+      </tr>
+      <tr>
+      <td><p>%DIGEST_TOTAL_COUNT%</p></td>
+      <td><p>Total number of new found messages in quarantine appears in the plain text body</p></td>
+      </tr>
+      <tr>
+      <td><p>%EUC_HOST_SERVER%</p></td>
+      <td><p>Web address of Cloud Email Gateway Protection End User Console appears in the plain text body</p></td>
+      </tr>
+      </tbody>
+      </table>
+
+6.  In the **Test Digest Mail** section, specify the intended digest recipient and click **Test** to test digest notification delivery.
+
+    The digest recipient receives a notification message. The sender, subject and content of the notification and the available inline actions match the configured settings.
+
+7.  Click **Save**.
+
+    The newly added or edited template displays on the **Digest Templates** screen. You can further copy and delete the template if necessary.
+:::

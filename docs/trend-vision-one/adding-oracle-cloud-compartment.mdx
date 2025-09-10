@@ -1,0 +1,66 @@
+---
+slug: trend-vision-one-adding-oracle-cloud-compartment
+title: Add an Oracle Cloud compartment
+---
+# Add an Oracle Cloud compartment
+
+Add and connect an Oracle compartment to the Cloud Accounts app to allow Trend Vision One to provide security for your cloud assets.
+
+Adding an Oracle compartment to the Cloud Accounts app allows Trend Vision One to access your cloud service to provide security and visibility into your cloud assets. Before you begin, review the [permission requirements](oracle-required-granted-permissions.mdx) and [region limitations](oracle-supported-regions.mdx) for connecting an Oracle compartment to Cloud Accounts.
+
+### Procedure {#procedure}
+
+1.  Sign in to the Trend Vision One console.
+
+2.  In a new tab in the same browser session, log in to the Oracle Cloud Console.
+
+3.  In the Trend Vision One console, go to **Cloud Security → Cloud Accounts → Oracle**.
+
+4.  In the **Cloud Accounts** screen, click **Add Account**.
+
+    The **Add Oracle Compartment** screen opens.
+
+5.  Specify the general information for the compartment.
+
+    1.  Specify the **Compartment OCID** (Oracle Cloud Identifier) for the compartment you want to connect.
+
+        You can find the OCID in the Oracle Console in **Compartment Details**.
+
+    2.  Specify the **Identity Domain OCID**, which is the identity domain where the Identity Access Management (IAM) resources created by the Terraform template will be deployed.
+
+    3.  Specify a **Name** for the account, which is how the account will be identified in the Cloud Accounts list.
+
+    4.  Optionally, provide a **Description** of the Oracle compartment.
+
+    5.  Click **Next**.
+
+6.  Configure the **Features and Permissions** you want to grant access to your cloud environment.
+
+    - **Core Features and Cyber Risk Exposure Management**: Connect your Oracle Cloud compartment to Trend Vision One to discover your cloud assets and rapidly identify risks such as compliance and security best practice violations on your cloud infrastructure.
+
+7.  Click **Next**.
+
+8.  Click **Download the Terraform Template** to save the template to your local machine.
+
+9.  Create a stack in Oracle Cloud Console and upload the Terraform template.
+
+    1.  In the Oracle Cloud Console, open the navigation menu and select **Developer Services**. In the **Resource Manager** area click **Stacks**.
+
+    2.  In the **List Scope** area, select the compartment you want to connect to Trend Vision One.
+
+    3.  Click **Create stack**.
+
+        The **Create stack** page opens.
+
+    4.  Select **My configuration**.
+
+    5.  In the **Stack configuration** area, select **.Zip file** and upload the template you downloaded from Trend Vision One.
+
+    6.  Click **Next**.
+
+    7.  Review the **Configure variables** page and click **Next**.
+
+    8.  Select the **Run apply** checkbox and click **Create**.
+
+    The connection process might take a few moments to complete. You can refresh the Cloud Accounts screen to check the status of your added compartment.
+:::

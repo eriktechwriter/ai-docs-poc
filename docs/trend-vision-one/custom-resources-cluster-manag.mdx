@@ -1,0 +1,287 @@
+---
+slug: trend-vision-one-custom-resources-cluster-manag
+title: Custom resources for cluster-managed policies
+---
+# Custom resources for cluster-managed policies
+
+Cluster-managed policies should include deployment and continuous `rules`, exceptions for admission evaluation with `exceptions`, and the toggle for XDR features, including telemetry, with `xdrEnabled`. Use the following information to create your policy for cluster-managed policies.
+
+### rules {#rules}
+
+Rules include an array of deployment and continuous rules. For each rule, you can specify the following:
+
+- **type**: Type of policy rule. See the table of policy rule types below.
+
+- **action**: Deployment action to take when a rule fails during admission control. Use either `log` or `block`.
+
+- **mitigation**: Mitigation action to take when a rule fails during continuous oversight. Use one of the following: `log`, `terminate`, or `isolate`
+
+  :::note
+
+  If the action is `block`, the mitigation can only be `terminate` or `isolate`.
+  :::
+
+- **properties**: The rule properties object that specifies additional properties for the rule type. See the table of policy rule types below for more details on the required properties.
+
+- **namespaces**: A list of namespaces where the rule is applied. Exceptions are applied to all namespaces by default.
+
+### exceptions {#exceptions}
+
+For each policy exception rule, you can specify the following:
+
+- **type**: Type of exception. Supported types include:
+  - `imageRegistry`
+  - `imageName`
+  - `imageTag`
+  - `imagePath`
+- **properties**: Properties for each exception that must specify the `operator` and `values`.
+  - **operator**: Conditional operator to apply to the exception values, including `equals`, `notEquals`, `contains` and `notContains`.
+  - **values**: A list of string values to match the exception type.
+- **namespaces**: A list of namespaces where the rule is applied. Exceptions are applied to all namespaces by default.
+
+### xdrEnabled {#xdrenabled}
+
+Include `xdrEnabled` to access XDR telemetry and resources.
+
+### Policy rule types {#policy-rule-types}
+
+<table style="width:66%;">
+<colgroup>
+<col />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Rule type</th>
+<th>Description</th>
+<th>Rule properties (required)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>hostIPC</code></p></td>
+<td><p>Pods that do not generally permit containers to run with the hostIPC flag set to true</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr>
+<td><p><code>hostNetwork</code></p></td>
+<td><p>Pods that do not generally permit containers to run with the hostNetwork flag set to true</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr>
+<td><p><code>hostPID</code></p></td>
+<td><p>Pods that do not generally permit containers to run with the hostPID flag set to true</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr>
+<td><p><code>runAsNonRoot</code></p></td>
+<td><p>Pods with containers that can run as root due to runAsNonRoot setting not being used</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr>
+<td><p><code>privileged</code></p></td>
+<td><p>Containers that run with the securityContext.privileged flag set to true</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr>
+<td><p><code>allowPrivilegeEscalation</code></p></td>
+<td><p>Containers that run with the allowPrivilegeEscalation flag set to true</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr>
+<td><p><code>readOnlyRootFilesystem</code></p></td>
+<td><p>Containers that allow writing to the root filesystem where the readOnlyRootFilesystem flag set to false</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr>
+<td><p><code>podPortForward</code></p></td>
+<td><p>Attempts to create a port-forward on a running kubernetes pod</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr>
+<td><p><code>podExec</code></p></td>
+<td><p>Attempts to execute in/attach to a running kubernetes pod</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr>
+<td><p><code>containerCapabilities</code></p></td>
+<td><p>Containers with capabilities that do not conform with the capability restriction</p></td>
+<td><p><code>capabilityRestriction</code>: Type of container capability restriction to enforce</p>
+<p>Supported values:</p>
+<ul>
+<li><code>restrict-nondefaults</code></li>
+<li><code>restrict-all</code></li>
+<li><code>baseline</code></li>
+<li><code>restricted</code></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>imageRegistry</code></p></td>
+<td><p>Containers running images that match registries</p></td>
+<td><ul>
+<li><p><code>operator</code>: Conditional operator to apply to values</p>
+<p>Supported values:</p>
+<ul>
+<li><code>equals</code></li>
+<li><code>notEquals</code></li>
+<li><code>contains</code></li>
+<li><code>notContains</code></li>
+<li><code>startsWith</code></li>
+</ul></li>
+<li><code>values</code>: An array of string values to match for the rule type</li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>imageName</code></p></td>
+<td><p>Containers running images that match the path after the registry and before the tag</p>
+<p>Example: http://example.com/<strong>org/image</strong>:latest</p></td>
+<td><ul>
+<li><p><code>operator</code>: Conditional operator to apply to values</p>
+<p>Supported values:</p>
+<ul>
+<li><code>equals</code></li>
+<li><code>notEquals</code></li>
+<li><code>contains</code></li>
+<li><code>notContains</code></li>
+<li><code>startsWith</code></li>
+</ul></li>
+<li><code>values</code>: An array of string values to match for the rule type</li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>imageTag</code></p></td>
+<td><p>Containers running images that match tags</p></td>
+<td><ul>
+<li><p><code>operator</code>: Conditional operator to apply to values</p>
+<p>Supported values:</p>
+<ul>
+<li><code>equals</code></li>
+<li><code>notEquals</code></li>
+<li><code>contains</code></li>
+<li><code>notContains</code></li>
+<li><code>startsWith</code></li>
+</ul></li>
+<li><code>values</code>: An array of string values to match for the rule type</li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>imagePath</code></p></td>
+<td><p>Containers running images that match the path from the registry to the tag</p>
+<p>Example: example.com/org/image:latest</p></td>
+<td><ul>
+<li><p><code>operator</code>: Conditional operator to apply to values</p>
+<p>Supported values:</p>
+<ul>
+<li><code>equals</code></li>
+<li><code>notEquals</code></li>
+<li><code>contains</code></li>
+<li><code>notContains</code></li>
+<li><code>startsWith</code></li>
+</ul></li>
+<li><code>values</code>: An array of string values to match for the rule type</li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>imagesNotScanned</code></p></td>
+<td><p>Images that have not been scanned for vulnerabilities, malware, or secrets in the last number of days selected</p></td>
+<td><ul>
+<li><p><code>scanType</code>: Type of artifact scan</p>
+<p>Supported values:</p>
+<ul>
+<li><code>vulnerability</code></li>
+<li><code>malware</code></li>
+<li><code>secret</code></li>
+</ul></li>
+<li><code>maxScanAge</code>: Maximum age of the scan result in days (integer value between 0 and 35 days)</li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>imagesWithMalware</code></p></td>
+<td><p>Images that contain malware</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr>
+<td><p><code>imagesWithSecrets</code></p></td>
+<td><p>Images that contain secrets</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr>
+<td><p><code>imagesWithVulnerabilities</code></p></td>
+<td><p>Images with vulnerabilities that include a minimum severity</p></td>
+<td><p><code>severity</code>: Severity of the vulnerability</p>
+<p>Supported values:</p>
+<ul>
+<li><code>critical</code></li>
+<li><code>high</code></li>
+<li><code>medium</code></li>
+<li><code>low</code></li>
+<li><code>any</code></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>imagesWithCVSSAttackVector</code></p></td>
+<td><p>Images with vulnerabilities that meet the defined CVSS attack vector and minimum severity</p></td>
+<td><ul>
+<li><p><code>severity</code>: Severity of the vulnerability</p>
+<p>Supported values:</p>
+<ul>
+<li><code>critical</code></li>
+<li><code>high</code></li>
+<li><code>medium</code></li>
+<li><code>low</code></li>
+<li><code>any</code></li>
+</ul></li>
+<li><code>attackVector</code>: CVSS attack vector
+<ul>
+<li><code>network</code></li>
+<li><code>physical</code></li>
+<li><code>adjacent</code></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>imagesWithCVSSAttackComplexity</code></p></td>
+<td><p>Images with vulnerabilities that meet the defined CVSS attack complexity and minimum severity</p></td>
+<td><ul>
+<li><p><code>severity</code>: Severity of the vulnerability</p>
+<p>Supported values:</p>
+<ul>
+<li><code>critical</code></li>
+<li><code>high</code></li>
+<li><code>medium</code></li>
+<li><code>low</code></li>
+<li><code>any</code></li>
+</ul></li>
+<li><p><code>attackComplexity</code>: CVSS attack complexity</p>
+<p>Supported values:</p>
+<ul>
+<li><code>low</code></li>
+<li><code>high</code></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><code>imagesWithCVSSAvailabilityImpact</code></p></td>
+<td><p>Images with vulnerabilities that meet the defined CVSS availability impact and minimum severity</p></td>
+<td><ul>
+<li><p><code>severity</code>: Severity of the vulnerability</p>
+<p>Supported values:</p>
+<ul>
+<li><code>critical</code></li>
+<li><code>high</code></li>
+<li><code>medium</code></li>
+<li><code>low</code></li>
+<li><code>any</code></li>
+</ul></li>
+<li><p><code>availabilityImpact</code>: CVSS availability impact</p>
+<p>Supported values:</p>
+<ul>
+<li><code>low</code></li>
+<li><code>high</code></li>
+</ul></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+:::

@@ -1,0 +1,148 @@
+---
+slug: trend-vision-one-troubleshooting-file-security
+title: Troubleshoot File Security
+last_updated: '2025-09-08'
+ai_context:
+  source_file: troubleshooting-file-security.md
+  conversion_date: '2025-09-08T23:42:11.932Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Find solutions to common issues you might encounter with File Security.
+
+- Error messages
+- Storage preview
+
+### Scan error messages {#scan-error-messages}
+
+Most error messages appear in the logs for File Security, but scan errors appear in a table on the Scan Activity tab. The table below shows what action to take for each scan error message.
+
+**Scan Error Resolution**
+
+<table>
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead style="text-align: left;">
+<tr>
+<th style="text-align: left;">Scan error message</th>
+<th style="text-align: left;">Action and details</th>
+</tr>
+</thead>
+<tbody style="text-align: left;">
+<tr>
+<td style="text-align: left;"><p>Authorization token or key required. Set up the authorization key in the SDK.</p></td>
+<td style="text-align: left; vertical-align: top;"><p>Include the API key in <a href="trend-vision-one-sdk-or-cli-scanning">the deployment</a>.</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Invalid token or key. Set up the authorization key in the SDK.</p></td>
+<td style="text-align: left; vertical-align: top;"><p>Include the API key in <a href="trend-vision-one-sdk-or-cli-scanning">the deployment</a>.</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>User account does not have file scan permissions. Contact your administrator to grant you file scan permissions, or switch to an account with file scan permissions and generate the API key</p></td>
+<td style="text-align: left; vertical-align: top;"><p>Check that the user account has file scan permissions. If not, contact your administrator to grant the permission, or switch to another account which has the permission and generate the API key.</p></td>
+</tr>
+<tr>
+<td style="text-align: left;">This account has performed five scans in the last hour. Purchase and allocate credits to File Security or wait an hour to make five more scans.</td>
+<td style="text-align: left; vertical-align: top;">You are using an <a href="trend-vision-one-essential-access">Essential Access</a> account. <a href="trend-vision-one-credit-req-for-apps-services">Purchase then allocate credits</a> to File Security. This will allow you to scan thousands of files successively.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Too many tags. Decrease to eight tags or less.</p></td>
+<td style="text-align: left; vertical-align: top;"><p>The file has too many tags associated with it. To scan the file, remove tags until the file has eight or less tags.</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Tag is too long. Decrease length to 63 characters or less.</p></td>
+<td style="text-align: left; vertical-align: top;"><p>The tag has more than 63 characters. To scan the file, remove characters until the tag has 63 or less characters.</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Tag is empty. Remove the tag or add at least one character.</p></td>
+<td style="text-align: left; vertical-align: top;"><p>This tag has no characters. To scan the file, either remove the tag or add at least one character to the tag.</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Cannot scan file. Verify the file type then try again. If the issue persists, contact Support.</p></td>
+<td style="text-align: left; vertical-align: top;"><p>Make sure that the type of file is a supported compression method. If the compression type is not supported, File Security cannot scan that file.</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Cannot scan password protected files. Remove password to scan this file.</p></td>
+<td style="text-align: left; vertical-align: top;"><p>Remove the password protection then scan the file. If you cannot remove the password protection, File Security cannot scan that file.</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Cannot scan file. Compression method not supported. Contact Support.</p></td>
+<td style="text-align: left;"><p>Make sure that the type of file is a supported compression type. If the compression type is not supported, File Security cannot scan that file.</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Too many compressed layers. Decompress some layers and try again.</p></td>
+<td style="text-align: left;"><p>This file has too many layers of compression. To scan the file, decompress some layers.</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>File is too large to extract. Reduce the file size and try again.</p></td>
+<td style="text-align: left;"><p>This file is too big for File Security to scan. To scan the file, reduce the size.</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Cannot scan password protected files. Remove password to scan this file.</p></td>
+<td style="text-align: left;"><p>File Security cannot scan files that are password protected. To scan the file, remove the protection.</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Too many files in the zip. Remove some files to scan the zip.</p></td>
+<td style="text-align: left;"><p>This compressed file contains too many files. To scan the compressed file you must remove some of the files in the compressed file.</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>ZIP64 decompression is not supported. Change the decompression method to scan the file.</p></td>
+<td style="text-align: left;"><p>File Security does not support the zip64 compression method. To scan this file, you must change the compression method.</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Compound file size is too large. Reduce the size of the compound file.</p></td>
+<td style="text-align: left;"><p>The compound file is too large to scan. To scan the file, you must decrease the size of the compound file.</p></td>
+</tr>
+</tbody>
+</table>
+
+### Server error messages {#server-error-messages}
+
+Most server error messages appear in the logs for File Security, but some appear on the screen until dismissed. The following table shows what action to take for each server error message.
+
+**Server Error Resolution**
+
+<table>
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead style="text-align: left;">
+<tr>
+<th style="text-align: left;">Server error message</th>
+<th style="text-align: left;">Action and details</th>
+</tr>
+</thead>
+<tbody style="text-align: left;">
+<tr>
+<td style="text-align: left;"><p>Access denied. Your account does not have permission to view this data. Contact your system administrator.</p></td>
+<td style="text-align: left;"><p>Ask your system administrator to provide your user account permission to view this data.</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Access denied. Your account does not have permission to edit this data. Contact your system administrator.</p></td>
+<td style="text-align: left;"><p>Ask your system administrator to provide your user account permission to edit this data.</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Internal error. Please try again. If the issue persists, contact your support provider.</p></td>
+<td style="text-align: left;"><p>Try the action again.</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Cannot change EventBridge status. Please try again. If the problem persists, contact your support provider.</p></td>
+<td style="text-align: left;"><p>Try again to turn on or off EventBridge.</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Cannot change EventBridge status for some selected buckets. Please try again. If the problem persists, contact your support provider.</p></td>
+<td style="text-align: left;"><p>To turn on EventBridge, select only buckets with the status EventBridge off.</p>
+<p>To turn off EventBridge, select only buckets with the status EventBridge on.</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Status unavailable</p></td>
+<td style="text-align: left;"><p>Ensure your connection to cloud storage is working correct. Try again later to view the status.</p></td>
+</tr>
+</tbody>
+</table>
+:::

@@ -1,0 +1,326 @@
+---
+slug: trend-vision-one-configure-proxies-server-workload
+title: Configure proxies
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configure-proxies-server-workload.md
+  conversion_date: '2025-09-08T23:42:22.692Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::::::: {role="main"}
+You can configure proxies between various Trend Micro servers and services.
+
+:::warning[Important]
+
+If you deployed your Server & Workload Protection agents using the agent installer package in Endpoint Inventory, you must use the [Agent Installer Proxy](agent-installer-proxy-settings.mdx) and [Runtime Proxy Settings](runtime-proxy-settings.mdx) in Global Settings to configure your proxy connections.
+
+Agents migrated from updating your Trend Cloud One Workload Security to Server & Workload Protection automatically adopt the [Agent Installer Proxy](agent-installer-proxy-settings.mdx) and [Runtime Proxy Settings](runtime-proxy-settings.mdx) in Global Settings.
+
+Trend Micro recommends using the centralized proxy configurations. The following information is for reference and troubleshooting purposes.
+:::
+
+### Register a proxy in Server & Workload Protection {#register-a-proxy-in-server-workload-protection}
+
+1.  In the Server & Workload Protection console, go to *Administration* \> *System Settings* \> *Proxies*.
+
+2.  In the *Proxy Servers* area, click **New → New Proxy Server**.
+
+3.  In the *Name* and *Description* fields, enter a friendly name and description for your proxy.
+
+4.  For the *Proxy Protocol*, select either *HTTP*, *SOCKS4*, *SOCKS5*, or *Proxy Auto-Configuration (PAC)*. Not all protocols are supported by all components. See Supported proxy protocols for details.
+
+:::note
+
+The proxy in the PAC file only supports HTTP and direct connection PACs.
+:::
+
+1.  In the *Address* and *Port* fields, enter the IP address or URL of the proxy as well its port (by default 8080 or 80 for HTTP; 3128 for the Squid HTTP proxy; 443 for HTTPS; and 1080 for SOCKS 4 and 5).
+
+2.  Enable *Proxy requires authentication credentials* if you previously set up your HTTP or SOCKS 5 proxy to require authentication from connecting components. Enter those credentials in the *User Name* and *Password* fields.
+
+### Supported proxy protocols {#supported-proxy-protocols}
+
+The table lists the proxy protocols supported by the Trend Micro services and clients. You'll need this information when registering a proxy, and when configuring a proxy through dsa_control.
+
+<table>
+<thead>
+<tr>
+<th><p>Service</p></th>
+<th><p>Origin (client)</p></th>
+<th><p>HTTP Support</p></th>
+<th><p>SOCKS4 Support</p></th>
+<th><p>SOCKS5 Support</p></th>
+<th><p>Proxy Auto-Configuration (PAC) Support</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Server &amp; Workload Protection</p></td>
+<td><p>Agents/Relays</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>Relays</p></td>
+<td><p>Agents/Relays</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>Smart Protection Network - Census, Good File Reputation, and Predictive Machine Learning</p></td>
+<td><p>Agents</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>Smart Protection Network - Global Smart Protection Service</p></td>
+<td><p>Agents</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+</tr>
+</tbody>
+</table>
+
+### Connect to the 'primary component update source' via proxy {#connect-to-the-primary-component-update-source-via-proxy}
+
+:::note
+
+The primary component update source for the new [improved relay](how-relays-work.mdx) is the Server & Workload Protection relay. Deep Security Agent 20.0.0-3964+ can connect to Server & Workload Protection relays via this proxy setting.
+:::
+
+You can connect your agents to your 'primary component update source' via a proxy. By default, the [primary component update source](deploy-more-relays.mdx) is the Trend Micro Update Server (also called ActiveUpdate).
+
+:::note
+
+The agents and appliances will only use the proxy if their assigned relay is not available, and they've been [granted explicit permission to access the primary update source](deploy-more-relays.mdx).
+:::
+
+1.  Make sure you're using agent version 10.0 or later. Only 10.0 and later supports connections through a proxy
+
+2.  Register a proxy in Server & Workload Protection.
+
+3.  In the Server & Workload Protection console, click the **Administration → System Settings → Proxies** tab.
+
+4.  In the *Proxy Server Use* area, change the *Primary Component Update Proxy used by Agents, Appliances, and Relays* setting to point to the new proxy.
+
+5.  Click *Save*.
+
+6.  Restart the agents.
+
+### Connect to Server & Workload Protection via proxy {#connect-to-server-workload-protection-via-proxy}
+
+Agents connect to Server & Workload Protection during agent activation and heartbeats. There are two methods to connect an agent to Server & Workload Protection via a proxy.
+
+### Connect an agent to Server & Workload Protection via a proxy using a deployment script {#connect-an-agent-to-server-workload-protection-via-a-proxy-using-a-deployment-script}
+
+1.  Make sure you're using agent version 10.0 or later. Only 10.0 and later supports connections through a proxy.
+2.  Register a proxy in Server & Workload Protection.
+3.  In the top right-hand corner of the Server & Workload Protection console, click **Administration → Updates → Software → Local → Generate Deployment Scripts**.
+4.  From Proxy to contact Server & Workload Protection, select a proxy.
+5.  Copy the script or save it.
+6.  Run the script on the computer. The script installs the agent and configures it to connect to Server & Workload Protection through the specified proxy.
+
+### Connect an agent to Server & Workload Protection via a proxy using dsa_control {#connect-an-agent-to-server-workload-protection-via-a-proxy-using-dsa_control}
+
+*On a Windows agent:*
+
+Open a command prompt (cmd.exe) as Administrator and enter:
+
+``` codeblock
+cd C:\Program Files\Trend Micro\Deep Security Agent\
+dsa_control -u myUserName:MTPassw0rd
+dsa_control -x dsm_proxy://squid.example.com:443
+```
+
+*On a Linux agent:*
+
+Enter:
+
+``` codeblock
+/opt/ds_agent/dsa_control -u myUserName:MTPassw0rd
+/opt/ds_agent/dsa_control -x dsm_proxy://squid.example.com:443
+```
+
+*Notes:*
+
+- Make sure the proxy uses a supported protocol. See Supported proxy protocols.
+- For details on `dsa_control` and its `-u` and `-x` options, see [dsa_control](command-line-basics.mdx).
+- Repeat these commands on each agent that needs to connect through a proxy to Server & Workload Protection.
+- Run the following commands to update the agent's local configuration.
+
+### Connect to relays via proxy {#connect-to-relays-via-proxy}
+
+Agents connect to their relay to obtain software and component updates. There are two methods to connect an agent to a relay via a proxy.
+
+### Connect an agent to relays via a proxy using a deployment script {#connect-an-agent-to-relays-via-a-proxy-using-a-deployment-script}
+
+1.  Make sure you're using agent version 10.0 or later. Only 10.0 and later supports connections through a proxy.
+2.  Register a proxy in Server & Workload Protection.
+3.  In the top right-hand corner of the Server & Workload Protection console, click **Administration → Updates → Software → Local → Generate Deployment Scripts**.
+4.  From *Proxy to contact Relay(s)*, select a proxy.
+5.  Copy the script or save it.
+6.  Run the script on the computer. The script installs the agent and configures it to connect to the relay through the specified proxy.
+
+### Connect an agent to relays via a proxy using dsa_control {#connect-an-agent-to-relays-via-a-proxy-using-dsa_control}
+
+*On a Windows agent:*
+
+Open a command prompt (cmd.exe) as Administrator and enter:
+
+``` codeblock
+cd C:\Program Files\Trend Micro\Deep Security Agent\
+dsa_control -w myUserName:MTPassw0rd
+dsa_control -y relay_proxy://squid.example.com:443
+```
+
+*On a Linux agent:*
+
+Enter:
+
+``` codeblock
+/opt/ds_agent/dsa_control -w myUserName:MTPassw0rd
+/opt/ds_agent/dsa_control -y relay_proxy://squid.example.com:443
+```
+
+*Notes:*
+
+- Make sure the proxy uses a supported protocol. See Supported proxy protocols.
+- For details on `dsa_control` and its `-u` and `-x` options, see [dsa_control](command-line-basics.mdx).
+- Repeat these commands on each agent that needs to connect through a proxy to Server & Workload Protection.
+- Run the following commands to update the agent's local configuration.
+
+### Connect to Server & Workload Protection/Relays via Proxy Auto_Configuration (PAC) proxy {#connect-to-server-workload-protectionrelays-via-proxy-auto_configuration-pac-proxy}
+
+Connect an agent to Server & Workload Protection via a proxy using a deployment script
+
+1.  Ensure you're using agent version 20.0.0-6680 or newer. Only 20.0.0-6680 and newer supports connections through a PAC-resolved proxy.
+2.  Register the proxy in Server & Workload Protection.
+3.  In the top right-hand corner of the Server & Workload Protection console, click **Administration → Updates → Software → Local → Generate Deployment Scripts**.
+4.  From Proxy to contact Server & Workload Protection/Relay, select a proxy.
+5.  Copy the script or save it.
+6.  Run the script on the computer. The script installs the agent and configures it to connect to Server & Workload Protection/Relay through the PAC-resolved proxy.
+
+Connect an agent to Server & Workload Protection via a proxy using dsa_control
+
+*On a Windows agent:*
+
+Open a command prompt (cmd.exe) as Administrator and enter:
+
+``` codeblock
+cd C:\Program Files\Trend Micro\Deep Security Agent\
+dsa_control --pacproxyunpw myUserName:MTPassw0rd
+dsa_control --pacproxy http://pac.example.com:80/proxy.pac
+```
+
+*On a Linux agent:*
+
+Enter:
+
+``` codeblock
+/opt/ds_agent/dsa_control --pacproxyunpw myUserName:MTPassw0rd
+/opt/ds_agent/dsa_control --pacproxy http://pac.example.com:80/proxy.pac
+```
+
+:::note
+
+- Make sure the proxy uses an HTTP protocol. Currently, the PAC-resolved proxy supports the HTTP method only.
+- For details on dsa_control and its --pacproxy and --pacproxyunpw options, see [dsa_control](command-line-basics.mdx).
+- Repeat these commands on each agent that needs to connect through a proxy to Server & Workload Protection/Relay.
+- Run the commands to update the agent's local configuration.
+- The PAC proxy function is supported using a deployment script on Windows only.
+:::
+
+### Connect to the Smart Protection Network via proxy {#connect-to-the-smart-protection-network-via-proxy}
+
+Use the following procedure to configure a proxy between agents and the following services in the Smart Protection Network: Global Census, Good File Reputation, Predictive Machine Learning, and the Smart Protection Network itself.
+
+1.  Register a proxy in Server & Workload Protection.
+
+2.  In the Server & Workload Protection console, click *Policies* at the top.
+
+3.  In the main pane, double-click the policy that you use to protect computers that are behind the proxy.
+
+4.  Set up a proxy to the Global Census, Good File Reputation, and Predictive Machine Learning Services as follows:
+
+    1.  Click *Settings* on the left.
+
+    2.  In the main pane, click the *General* tab.
+
+    3.  In the main pane, look for the *Network Setting for Census and Good File Reputation Service, and Predictive Machine Learning* section.
+
+    4.  If the *Inherited* check box is selected, the proxy settings are inherited from the parent policy. To change the settings for this policy or computer, clear the check box.
+
+    5.  Select *When accessing Global Server, use proxy* and in the list, select your proxy, or select *New* to specify another proxy.
+
+    6.  Save your settings.
+
+5.  Set up a proxy to the Smart Protection Network for use with Anti-Malware:
+
+    1.  Click *Anti-Malware* on the left.
+
+    2.  In the main pane, click the *Smart Protection* tab.
+
+    3.  Under *Smart Protection Server for File Reputation Service*, if the *Inherited* check box is selected, the proxy settings are inherited from the parent policy. To change the settings for this policy or computer, clear the check box.
+
+    4.  Select *Connect directly to Global Smart Protection Service*.
+
+    5.  Select *When accessing Global Smart Protection Service, use proxy* and in the list, select your proxy or select *New* to specify another proxy.
+
+    6.  Specify your proxy settings and click *OK*.
+
+    7.  Save your settings.
+
+6.  Set up a proxy to the Smart Protection Network for use with Web Reputation:
+
+    1.  Click *Web Reputation* on the left.
+
+    2.  In the main pane, click the *Smart Protection* tab.
+
+    3.  Under *Smart Protection Server for Web Reputation Service*, set up your proxy, the same way you did under *Anti-Malware* in a previous step.
+
+    4.  With *Web Reputation* still selected on the left, click the *Advanced* tab.
+
+    5.  In the *Ports* section, select a group of port numbers that includes your proxy's listening port number, and then click *Save*.
+
+        For example, if you’re using a Squid proxy server, you would select the *Port List Squid Web Server*. If you don’t see an appropriate group of port numbers, go to **Policies → Common Objects → Lists → Port Lists** and then click *New* to set up your ports.
+
+    6.  Save your settings.
+
+7.  Send the new policy to your agents. See [Send policy changes manually](create-policies.mdx).
+
+Your agents will now connect to the Smart Protection Network through a proxy.
+
+### Remove a proxy {#remove-a-proxy}
+
+### To remove a proxy between agent and Server & Workload Protection, or agent and relay {#to-remove-a-proxy-between-agent-and-server-workload-protection-or-agent-and-relay}
+
+Redeploy agents using new deployment scripts that no longer contain proxy settings. For details, see [Use deployment scripts to add and protect computers](deployment-scripts-add-computers.mdx).
+
+OR
+
+Run the following `dsa_control` commands on the agents:
+
+`dsa_control -x ""`
+
+`dsa_control -y ""`
+
+`dsa_control --pacproxy "" manager relay`
+
+Those commands remove the proxy settings from the agent's local configuration.
+
+For details on `dsa_control` and its `-x`, `-y`, and `--pacproxy` options, see [dsa_control](command-line-basics.mdx).
+
+### To remove a proxy between any other components {#to-remove-a-proxy-between-any-other-components}
+
+Run through the instructions on connecting through a proxy, but complete them in reverse, so that you remove the proxy.
+::::::::

@@ -1,0 +1,24 @@
+---
+slug: trend-vision-one-event-id-771
+title: Troubleshoot event ID 771 "Contact by Unrecognized Client"
+---
+# Troubleshoot event ID 771 "Contact by Unrecognized Client"
+
+Event ID 771 *Contact by Unrecognized Client* appears in Server & Workload Protection if an agent tries to connect to Server & Workload Protection but the computer's name doesn't exist in the list of protected computers on *Computers*.
+
+Common causes include:
+
+- Cloned VMs or cloud instances if you haven't enabled *Reactivate cloned Agents*.
+- Computers deleted from *Computers* before deactivating the agent, if you haven't enabled *Reactivate unknown Agents*. The agent software continues to try to periodically connect to Server & Workload Protection, causing the event each time until either it is uninstalled, or you reactivate the computer.
+- Interrupted sync of a connector such as AWS or Azure.
+
+Solutions vary by the cause.
+
+### Uninstall the agent {#uninstall-the-agent}
+
+If you don't want to protect the unrecognized computer, you can prevent these events by deactivating or uninstalling the agent software. See [Uninstall the Server & Workload Protection Agent](uninstall-swp-agent.mdx).
+
+### Reactivate the computer or clone {#reactivate-the-computer-or-clone}
+
+If you want to protect the computer, activate it with Server & Workload Protection. Re-activation re-establishes the agent's certificate so that Server & Workload Protection can authenticate it with the list on *Computers*, and recognize the computer. See [Agent-Initiated Activation](agent-settings.mdx).
+:::

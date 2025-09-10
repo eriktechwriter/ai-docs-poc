@@ -1,0 +1,105 @@
+---
+slug: trend-vision-one-start-remote-shell-session-task
+title: Start remote access (formerly shell) session task
+last_updated: '2025-09-08'
+ai_context:
+  source_file: start-remote-shell-session-task.md
+  conversion_date: '2025-09-08T23:42:12.289Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Directly access an endpoint and execute CLI commands or a custom script file during an investigation.
+
+This task is supported by the following services:
+
+- Trend Vision One
+
+  - macOS agent
+
+  - Linux agent
+
+  :::note
+
+  For Windows, use [the new remote access feature](remote-access-session-task.mdx).
+  :::
+
+- Trend Cloud One - Endpoint & Workload Security
+
+  - Windows agent
+
+  - macOS agent
+
+  - Linux agent
+
+Only users with the Master Administrator or Security Analyst roles can access the remote access session response.
+
+### Procedure {#procedure}
+
+1.  After identifying the endpoint to investigate, access the context or response menu and click **Start Remote Access Session**.
+
+    The **Remote Access** screen appears and Trend Vision One attempts to connect to the endpoint.
+
+    :::note
+
+    Trend Vision One only permits 10 concurrent remote access sessions per company and does not allow multiple to access the same endpoint concurrently. The target endpoint must be online in order to connect successfully.
+
+    If Trend Vision One cannot establish a session within five minutes, the connection times out.
+    :::
+
+2.  Use the CLI to manually type commands or run an existing custom script file.
+
+    - Use the Remote Acccess console to execute the necessary commands for your investigation.
+
+      Type `help` at any time to view all the commands available.
+
+      - [Remote Shell Commands for Windows Endpoints](remote-shell-windows-endpoints.mdx).
+
+      - [Remote Shell Commands for Linux Endpoints](remote-shell-linux-endpoints.mdx)
+
+      - [Remote Shell Commands for Mac Endpoints](remote-shell-mac-endpoints.mdx)
+
+      :::note
+
+      A session automatically ends after two hours and automatically times out after 10 minutes of inactivity.
+      :::
+
+    - Click **Use Custom Script** to open the details panel and click **Run** next to the script file that you want to execute.
+
+      :::note
+
+      Trend Vision One only permits you to one custom script file per session. The target endpoint must be online to connect successfully.
+      :::
+
+3.  After you have completed your investigation, click **End Session** to terminate the connection to the endpoint.
+
+4.  Provide a description for the remote access session then click **End Session**.
+
+    :::note
+
+    Terminating the connection may take a minute to complete. If you close the browser window before clicking **End Session**, the connection to the endpoint times out after 10 minutes.
+    :::
+
+5.  Monitor the task status.
+
+    1.  Go to **Workflow and Automation → Response Management** .
+
+    2.  Locate the task using the **Search** field or by selecting **Remote Access** from the context menu.
+
+    3.  View the task status.
+
+        - **In progress** (![](/images/in_progress=GUID-A55897DB-3DEA-4F5C-B7F9-70B3D7FB9EDE=1=en-us=Low.webp)): Trend Vision One sent the command and is waiting for a response.
+
+        - **Successful** (![](/images/successful=GUID-1E31AD86-DE2E-48B5-85F7-7C78A3E8BB11=1=en-us=Low.webp)): The command was successfully executed.
+
+        - *Unsuccessful* (![](/images/not_successful=GUID-FFE62183-8DA1-422C-AF65-CE41E3A46984=1=en-us=Low.webp)): An error or time-out occurred when attempting to send the command to the managing server, the Security Agent is offline, or the command execution timed out
+
+    4.  Click the *Task ID* to open the Details panel and **Download** the session history as a TXT file.
+
+**Related information**
+
+- [Remote Shell Commands for Windows Endpoints](remote-shell-windows-endpoints.md "Use the available remote shell commands to investigate Windows endpoints.")
+- [Remote Shell Commands for Linux Endpoints](remote-shell-linux-endpoints.md "Use the available remote shell commands to investigate Linux endpoints.")
+- [Remote Shell Commands for Mac Endpoints](remote-shell-mac-endpoints.md "Use the available remote shell commands to investigate Mac endpoints.")
+:::

@@ -1,0 +1,81 @@
+---
+slug: trend-vision-one-managing-notifications
+title: Managing notifications
+last_updated: '2025-09-08'
+ai_context:
+  source_file: managing-notifications.md
+  conversion_date: '2025-09-08T23:42:16.167Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+You can use **Notifications** screen to manage notifications in Cloud Email Gateway Protection.
+
+For information on using and configuring notifications, see [About the send notification action](send-notification-action.mdx).
+
+**Notifications Screen**
+
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 72%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Tasks</p></th>
+<th><p>Steps</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Adding a Notification</p>
+
+
+:::tip
+
+<p>Often a new notification will be very similar to one you already have. In that case, it is usually easier to copy the notification and edit it rather than create a new notification from scratch.</p>
+
+
+:::
+
+</td>
+<td><p>Click <strong>Add</strong>.</p>
+<ol>
+<li><p>Provide the following information:</p>
+<ul>
+<li><p><strong>Name</strong>: A name for the notification email message.</p></li>
+<li><p><strong>From</strong>: The email addresses that you want to use to send notifications message from.</p></li>
+<li><p><strong>To</strong>: The recipient email address.</p></li>
+<li><p><strong>Subject</strong>: The notification email message subject.</p>
+<p>You can use tokens to include variables in the subject. For details, see <a href="trend-vision-one-tokens">Tokens</a>.</p></li>
+<li><p><strong>Body</strong> (optional): The email notification message body.</p>
+<p>You can use tokens to include variables. For details, see <a href="trend-vision-one-tokens">Tokens</a>.</p>
+<ol>
+<li><p>When using the token %DATE&amp;TIME%, customize the time zone by selecting <strong>Customize time zone for %DATE&amp;TIME%</strong> and selecting a time zone. By default, the time zone UTC+0 is used.</p>
+<p>Optionally select <strong>Display UTC offset</strong> if you want to include the UTC offset (such as UTC+0800) to the end of the date and time.</p></li>
+<li><p>Define the email body content in the HTML format by selecting a predefined style or custom style and specifying the body content.</p>
+<p>Three types of predefined style are available for use, <strong>Informational</strong>, <strong>Suspicious</strong>, or <strong>Dangerous</strong>.</p></li>
+<li><p>Define the email body content in plain text.</p>
+<p>If there is any hypertext in plain text, type the target URL next to the hypertext for recipients to know the destination address to access.</p></li>
+</ol></li>
+<li><strong>Attachment</strong> (optional): Select the <strong>Attach the original message</strong> check box and specify when to attach the original message in the notification. If the message content was altered due to the policy actions you configured, Cloud Email Gateway Protection attaches the message that has been processed rather than the original message.</li>
+</ul></li>
+<li><p>Click <strong>Save</strong>.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Copying Notifications</p></td>
+<td><p>In the <strong>Notifications</strong> list, select the notification to copy. Click <strong>Copy</strong>.</p></td>
+</tr>
+<tr>
+<td><p>Editing Notifications</p></td>
+<td><p>In the <strong>Notifications</strong> list, click the name of the notification you want to edit and follow the instructions in <em>Adding a Notification</em> procedure in this table.</p></td>
+</tr>
+<tr>
+<td><p>Deleting Notifications</p></td>
+<td><p>In the <strong>Notifications</strong> list, select the notifications to delete. Click <strong>Delete</strong>, and click <strong>OK</strong> to confirm.</p></td>
+</tr>
+</tbody>
+</table>
+:::

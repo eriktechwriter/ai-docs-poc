@@ -1,0 +1,99 @@
+---
+slug: trend-vision-one-root-intermediate-ca-certificates
+title: Root and intermediate CA certificates
+last_updated: '2025-09-08'
+ai_context:
+  source_file: root-intermediate-ca-certificates.md
+  conversion_date: '2025-09-08T23:42:13.491Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Manage the root and intermediate CA certificates of HTTPS web servers.
+
+### Procedure {#procedure}
+
+1.  Go to **Zero Trust Secure Access → Secure Access Configuration → Internet Access Configuration**.
+
+    The **Internet Access Configuration** screen appears.
+
+2.  Select **TLS/SSL Certificates** from the **HTTPS Inspection** drop-down list.
+
+3.  Select **Root/Intermediate certificate** from the **Certificate type** drop-down list in the upper left to view and manage the root/intermediate CA certificates added automatically by the system or manually by administrators.
+
+4.  You can complete the actions outlined in the following table.
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Action</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Check a root/intermediate CA certificate</p></td>
+    <td><p>View the CA certificate information:</p>
+    <ul>
+    <li><p>Common name: The CommonName (CN) field in the CA certificate</p></li>
+    <li><p>Type: The type of the CA certificate, which is <strong>Root</strong> or <strong>Intermediate</strong></p></li>
+    <li><p>Expires at: The date and time when the CA certificate becomes invalid</p></li>
+    <li><p>Status: Whether the certificate is trusted or untrusted or it is unknown to the system</p>
+    <ul>
+    <li><p>Trusted: TLS/SSL certificates that use this CA certificate in their certificate chain are trusted.</p></li>
+    <li><p>Untrusted: TLS/SSL certificates that use this CA certificate in their certificate chain are untrusted.</p></li>
+    <li><p>Unknown: The CA certificate is unknown to the system.</p></li>
+    </ul></li>
+    </ul>
+    <p>Click the common name of a certificate to view the certificate details.</p></td>
+    </tr>
+    <tr>
+    <td><p>Add a root/intermediate CA certificate</p></td>
+    <td><ol>
+    <li><p>Click <strong>Add</strong>.</p></li>
+    <li><p>Click <strong>Select File...</strong>, and then select a Base64 encoded (.pem) or ASCII (.p7b) X.509 certificate file from your local machine.</p>
+    
+
+    :::note
+    
+    <p>If you add a certificate that is already in the list, the latest settings override the existing settings.</p>
+    
+
+    :::
+
+    </li>
+    <li><p>Set the certificate to <strong>Trusted</strong> or <strong>Untrusted</strong>.</p></li>
+    <li><p>Click <strong>Save</strong>.</p></li>
+    </ol>
+    
+
+    :::note
+    
+    <p>If the system encounters an unknown CA certificate, it automatically adds the certificate to the system certificate store and sets it to <strong>Unknown</strong>.</p>
+    
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>Configure a root/intermediate CA certificate</p></td>
+    <td><p>Select a certificate and click <strong>Set to Trusted</strong> or <strong>Set to Untrusted</strong> in the upper left to change the status of the certificate.</p>
+    <p>Select one or multiple certificates and click <strong>Delete</strong> in the upper left to delete the certificates from Trend Vision One.</p></td>
+    </tr>
+    <tr>
+    <td><p>Filter root/intermediate CA certificates</p></td>
+    <td><p>Use the search text box and the following drop-down lists to filter certificates:</p>
+    <ul>
+    <li><p>Type: Whether the certificate is a root or intermediate CA certificate</p></li>
+    <li><p>Status: Whether the certificate is trusted or untrusted or it is unknown to the system</p></li>
+    </ul></td>
+    </tr>
+    </tbody>
+    </table>
+:::

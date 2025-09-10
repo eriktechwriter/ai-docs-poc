@@ -1,0 +1,70 @@
+---
+slug: trend-vision-one-create-list-ports-for-use-policies
+title: Create a list of ports for use in policies
+last_updated: '2025-09-08'
+ai_context:
+  source_file: create-list-ports-for-use-policies.md
+  conversion_date: '2025-09-08T23:42:21.401Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Create lists of port numbers so that you can use them in multiple rules. A single list is easier to manage than several identical lists that are each created in a different rule.
+
+:::tip
+
+To create a port list that is similar to an existing one, duplicate the list and then edit it.
+:::
+
+Individual ports and port ranges can be included on the list, for example 80, and 20-21. You can insert comments into your port list by preceding the text with a pound sign ("#").
+
+:::note
+
+For a listing commonly accepted port number assignments, see the [Internet Assigned Numbers Authority (IANA)](http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xml). For a list of port numbers used by Server & Workload Protection, relay, or agents, see [Server & Workload Protection Port numbers](swp-port-numbers.mdx).
+:::
+
+### Procedure {#procedure}
+
+1.  Click **Policies → Common Objects → Lists → Port Lists**.
+
+2.  Click **New → New Port List**.
+
+3.  Type a name and, optionally, a description.
+
+4.  In the *Port(s)* list, add the port numbers, one per line.
+
+5.  Click *OK*.
+
+### Next steps {#next-steps}
+
+## Import and export port lists {#import-and-export-port-lists}
+
+You can export one or more port lists to an XML or CSV file, and import lists from an XML file.
+
+### Procedure {#procedure-1}
+
+1.  Click **Policies → Common Objects → Lists → Port Lists**.
+
+2.  To export one or more lists, select them and click **Export → Export Selected to CSV** or **Export → Export Selected to XML**.
+
+3.  To export all lists, click **Export → Export to CSV** or **Export → Export to XML**.
+
+4.  To import lists, click **New → Import From File** and follow the instructions on the wizard.
+
+### Next steps {#next-steps-1}
+
+## See which rules use a port list {#see-which-rules-use-a-port-list}
+
+It is useful to see which rules use a port list to be aware of which rules are affected by any changes you make. For example, you can ensure no rules use a port list before deleting it.
+
+### Procedure {#procedure-2}
+
+1.  Click **Policies → Common Objects → Lists → Port Lists**.
+
+2.  Select the port list and click *Properties*.
+
+3.  Click the *Assigned To* tab.
+
+### Next steps {#next-steps-2}
+:::::

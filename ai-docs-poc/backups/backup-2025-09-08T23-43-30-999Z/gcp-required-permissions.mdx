@@ -1,0 +1,544 @@
+---
+slug: trend-vision-one-gcp-required-permissions
+title: Google Cloud required and granted permissions
+last_updated: '2025-09-08'
+ai_context:
+  source_file: gcp-required-permissions.md
+  conversion_date: '2025-09-08T23:42:18.993Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Review the permissions required to deploy resources and the permissions granted during the terraform process.
+
+Trend Micro recommends accessing the project using a sign in that has the **Owner** role. If you are adding a Google Cloud organization, the sign in must also have the **Organization Administrator** role. Ensure your account and role meet the following requirements to be able to successfully deploy Trend Vision One cloud security resources to your project.
+
+- The associated Google account must be a valid billing account.
+
+- The user role must have access to the following Google Cloud services and features:
+
+  - Cloud Shell
+
+  - Cloud Storage
+
+  - Service Account
+
+  - Workload Identity Pool
+
+  - Workload Identity Pool Provider
+
+  - IAM
+
+  - Tag Key
+
+  - Tag Value
+
+  - Enable GCP API
+
+The terraform process assigns certain permissions to itself to establish the connection with Cloud Accounts and Trend Vision One cloud security services. These permissions include enabling the Cloud Accounts app and security services to obtain temporary credentials and complete tasks within your Google Cloud environment. The required permissions and APIs are listed in the following tables:
+
+**Required APIs and Permissions**
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Feature</p></th>
+<th><p>Service</p></th>
+<th><p>Required APIs</p></th>
+<th><p>Required Permissions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="28"><p>Core Features (Conformity)</p></td>
+<td><p>AlloyDB</p></td>
+<td><ul>
+<li><p>AlloyDB API</p></li>
+</ul></td>
+<td><ul>
+<li><p>alloydb.clusters.list</p></li>
+<li><p>alloydb.instances.list</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>ApiGateway</p></td>
+<td><ul>
+<li><p>API Gateway</p></li>
+<li><p>Service Management API</p></li>
+</ul></td>
+<td><ul>
+<li><p>apigateway.gateways.list</p></li>
+<li><p>apigateway.gateways.getIamPolicy</p></li>
+<li><p>apigateway.locations.get</p></li>
+<li><p>apigateway.apis.list</p></li>
+<li><p>apigateway.apis.getIamPolicy</p></li>
+<li><p>apigateway.apis.get</p></li>
+<li><p>apigateway.apiconfigs.list</p></li>
+<li><p>apigateway.apiconfigs.getIamPolicy</p></li>
+<li><p>servicemanagement.services.get</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Apigee</p></td>
+<td><ul>
+<li><p>Apigee API</p></li>
+</ul></td>
+<td><ul>
+<li><p>apigee.apiproducts.list</p></li>
+<li><p>apigee.deployments.list</p></li>
+<li><p>apigee.envgroupattachments.list</p></li>
+<li><p>apigee.envgroups.list</p></li>
+<li><p>apigee.environments.getStats</p></li>
+<li><p>apigee.instanceattachments.list</p></li>
+<li><p>apigee.instances.list</p></li>
+<li><p>apigee.proxies.list</p></li>
+<li><p>apigee.proxyrevisions.get</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>ArtifactRegistry</p></td>
+<td><ul>
+<li><p>Artifact Registry API</p></li>
+</ul></td>
+<td><ul>
+<li><p>artifactregistry.dockerimages.list</p></li>
+<li><p>artifactregistry.repositories.getIamPolicy</p></li>
+<li><p>artifactregistry.repositories.list</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>BigQuery</p></td>
+<td><ul>
+<li><p>BigQuery API</p></li>
+</ul></td>
+<td><ul>
+<li><p>bigquery.datasets.get</p></li>
+<li><p>bigquery.tables.get</p></li>
+<li><p>bigquery.tables.list</p></li>
+<li><p>bigquery.tables.getIamPolicy</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Bigtable</p></td>
+<td><p>-</p></td>
+<td><ul>
+<li><p>bigtable.instances.list</p></li>
+<li><p>bigtable.clusters.list</p></li>
+<li><p>bigtable.instances.getIamPolicy</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>CertificateManager</p></td>
+<td><ul>
+<li><p>Certificate Manager API</p></li>
+</ul></td>
+<td><ul>
+<li><p>certificatemanager.certs.list</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>CloudAPI</p></td>
+<td><ul>
+<li><p>API Keys API</p></li>
+</ul></td>
+<td><ul>
+<li><p>apikeys.keys.list</p></li>
+<li><p>serviceusage.services.list</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>CloudDNS</p></td>
+<td><ul>
+<li><p>Cloud DNS API</p></li>
+</ul></td>
+<td><ul>
+<li><p>dns.managedZones.list</p></li>
+<li><p>dns.policies.list</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>CloudFunctions</p></td>
+<td><ul>
+<li><p>Cloud Functions API</p></li>
+</ul></td>
+<td><ul>
+<li><p>cloudfunctions.functions.getIamPolicy</p></li>
+<li><p>cloudfunctions.functions.list</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>CloudIAM</p></td>
+<td><ul>
+<li><p>Access Approval API</p></li>
+<li><p>Cloud Resource Manager API</p></li>
+<li><p>Identity and Access Management (IAM) API</p></li>
+</ul></td>
+<td><ul>
+<li><p>accessapproval.settings.get</p></li>
+<li><p>iam.roles.list</p></li>
+<li><p>iam.serviceAccountKeys.list</p></li>
+<li><p>iam.serviceAccounts.get</p></li>
+<li><p>iam.serviceAccounts.getIamPolicy</p></li>
+<li><p>iam.serviceAccounts.list</p></li>
+<li><p>resourcemanager.projects.get</p></li>
+<li><p>resourcemanager.projects.getIamPolicy</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>CloudKMS</p></td>
+<td><ul>
+<li><p>Cloud Key Management Service (KMS) API</p></li>
+</ul></td>
+<td><ul>
+<li><p>cloudkms.cryptoKeys.getIamPolicy</p></li>
+<li><p>cloudkms.cryptoKeys.list</p></li>
+<li><p>cloudkms.keyRings.list</p></li>
+<li><p>cloudkms.locations.list</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>CloudLoadBalancing</p></td>
+<td><ul>
+<li><p>Compute Engine API</p></li>
+</ul></td>
+<td><ul>
+<li><p>compute.backendServices.getIamPolicy</p></li>
+<li><p>compute.backendServices.list</p></li>
+<li><p>compute.globalForwardingRules.list</p></li>
+<li><p>compute.regionBackendServices.getIamPolicy</p></li>
+<li><p>compute.regionBackendServices.list</p></li>
+<li><p>compute.sslPolicies.list</p></li>
+<li><p>compute.targetHttpsProxies.list</p></li>
+<li><p>compute.targetSslProxies.list</p></li>
+<li><p>compute.urlMaps.list</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>CloudLogging</p></td>
+<td><ul>
+<li><p>Cloud Logging API</p></li>
+</ul></td>
+<td><ul>
+<li><p>logging.logEntries.list</p></li>
+<li><p>logging.logMetrics.list</p></li>
+<li><p>logging.sinks.list</p></li>
+<li><p>monitoring.alertPolicies.list</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>CloudSQL</p></td>
+<td><ul>
+<li><p>Cloud SQL Admin API</p></li>
+</ul></td>
+<td><ul>
+<li><p>cloudSql.instances.list</p></li>
+<li><p>cloudsql.instances.listServerCas</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>CloudStorage</p></td>
+<td><ul>
+<li><p>Cloud Storage API</p></li>
+</ul></td>
+<td><ul>
+<li><p>storage.buckets.getIamPolicy</p></li>
+<li><p>storage.buckets.list</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>CloudVPC</p></td>
+<td><ul>
+<li><p>Compute Engine API</p></li>
+</ul></td>
+<td><ul>
+<li><p>compute.firewalls.list</p></li>
+<li><p>compute.networks.list</p></li>
+<li><p>compute.subnetworks.getIamPolicy</p></li>
+<li><p>compute.subnetworks.list</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>ComputeEngine</p></td>
+<td><ul>
+<li><p>Compute Engine API</p></li>
+</ul></td>
+<td><ul>
+<li><p>compute.disks.getIamPolicy</p></li>
+<li><p>compute.disks.list</p></li>
+<li><p>compute.instanceGroups.list</p></li>
+<li><p>compute.instances.getIamPolicy</p></li>
+<li><p>compute.instances.list</p></li>
+<li><p>compute.images.getIamPolicy</p></li>
+<li><p>compute.images.list</p></li>
+<li><p>compute.machineImages.getIamPolicy</p></li>
+<li><p>compute.machineImages.list</p></li>
+<li><p>compute.projects.get</p></li>
+<li><p>compute.zones.list</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Dataproc</p></td>
+<td><ul>
+<li><p>Cloud Dataproc API</p></li>
+</ul></td>
+<td><ul>
+<li><p>dataproc.clusters.getIamPolicy</p></li>
+<li><p>dataproc.clusters.list</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Filestore</p></td>
+<td><ul>
+<li><p>Cloud Filestore API</p></li>
+</ul></td>
+<td><ul>
+<li><p>file.instances.list</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Firestore</p></td>
+<td><ul>
+<li><p>Cloud Firestore API</p></li>
+</ul></td>
+<td><ul>
+<li><p>datastore.databases.list</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>GKE</p></td>
+<td><ul>
+<li><p>Kubernetes Engine API</p></li>
+</ul></td>
+<td><ul>
+<li><p>container.clusters.list</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Memorystore</p></td>
+<td><ul>
+<li><p>Cloud Memorystore for Memcached API</p></li>
+<li><p>Google Cloud Memorystore for Redis API</p></li>
+</ul></td>
+<td><ul>
+<li><p>memcache.instances.list</p></li>
+<li><p>redis.clusters.list</p></li>
+<li><p>redis.instances.list</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>NetworkConnectivity</p></td>
+<td><ul>
+<li><p>Compute Engine API</p></li>
+<li><p>Network Connectivity API</p></li>
+</ul></td>
+<td><ul>
+<li><p>compute.routers.list</p></li>
+<li><p>compute.targetVpnGateways.list</p></li>
+<li><p>compute.vpnGateways.list</p></li>
+<li><p>networkconnectivity.hubs.list</p></li>
+<li><p>networkconnectivity.hubs.listSpokes</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>PubSub</p></td>
+<td><ul>
+<li><p>Cloud Pub/Sub API</p></li>
+</ul></td>
+<td><ul>
+<li><p>pubsub.topics.get</p></li>
+<li><p>pubsub.topics.getIamPolicy</p></li>
+<li><p>pubsub.topics.list</p></li>
+<li><p>pubsublite.topics.list</p></li>
+<li><p>pubsublite.topics.listSubscriptions</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>ResourceManager</p></td>
+<td><ul>
+<li><p>Cloud Resource Manager API</p></li>
+</ul></td>
+<td><ul>
+<li><p>orgpolicy.policy.get</p></li>
+<li><p>resourcemanager.projects.get</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Spanner</p></td>
+<td><ul>
+<li><p>Cloud Spanner API</p></li>
+</ul></td>
+<td><ul>
+<li><p>spanner.instances.getIamPolicy</p></li>
+<li><p>spanner.instances.list</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>VertexAI</p></td>
+<td><ul>
+<li><p>Notebooks API</p></li>
+</ul></td>
+<td><ul>
+<li><p>notebooks.instances.getIamPolicy</p></li>
+<li><p>notebooks.instances.list</p></li>
+</ul></td>
+</tr>
+<tr>
+<td rowspan="12"><p>Agentless Vulnerability &amp; Threat Detection</p></td>
+<td><p>Cloud Billing</p></td>
+<td><ul>
+<li><p>Cloud Billinng API</p></li>
+</ul></td>
+<td><ul>
+<li><p>billing.accounts.get</p></li>
+<li><p>billing.accounts.getIamPolicy</p></li>
+<li><p>billing.accounts.list</p></li>
+<li><p>billing.accounts.redeemPromotion</p></li>
+<li><p>billing.credits.list</p></li>
+<li><p>billing.resourceAssociations.create</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>CloudIAM</p></td>
+<td><p>-</p></td>
+<td><ul>
+<li><p>iam.roles.create</p></li>
+<li><p>iam.roles.delete</p></li>
+<li><p>iam.roles.get</p></li>
+<li><p>iam.serviceAccounts.create</p></li>
+<li><p>iam.serviceAccounts.delete</p></li>
+<li><p>iam.serviceAccounts.get</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>CloudLogging</p></td>
+<td><p>-</p></td>
+<td><ul>
+<li><p>logging.sinks.create</p></li>
+<li><p>logging.sinks.delete</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Cloud Run</p></td>
+<td><ul>
+<li><p>Cloud Run Admin API</p></li>
+</ul></td>
+<td><ul>
+<li><p>run.jobs.create</p></li>
+<li><p>run.jobs.delete</p></li>
+<li><p>run.jobs.get</p></li>
+<li><p>run.jobs.list</p></li>
+<li><p>run.jobs.setIamPolicy</p></li>
+<li><p>run.operations.delete</p></li>
+<li><p>run.operations.list</p></li>
+<li><p>run.services.create</p></li>
+<li><p>run.services.delete</p></li>
+<li><p>run.services.get</p></li>
+<li><p>run.services.getIamPolicy</p></li>
+<li><p>run.services.setIamPolicy</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Cloud Scheduler</p></td>
+<td><p>-</p></td>
+<td><ul>
+<li><p>cloudscheduler.jobs.create</p></li>
+<li><p>cloudscheduler.jobs.delete</p></li>
+<li><p>cloudscheduler.jobs.enable</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>CloudStorage</p></td>
+<td><p>-</p></td>
+<td><ul>
+<li><p>storage.buckets.create</p></li>
+<li><p>storage.buckets.delete</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Compute Engine</p></td>
+<td><p>-</p></td>
+<td><ul>
+<li><p>compute.firewalls.create</p></li>
+<li><p>compute.firewalls.delete</p></li>
+<li><p>compute.firewalls.get</p></li>
+<li><p>compute.networks.create</p></li>
+<li><p>compute.networks.delete</p></li>
+<li><p>compute.networks.get</p></li>
+<li><p>compute.subnetworks.create</p></li>
+<li><p>compute.subnetworks.delete</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Eventarc</p></td>
+<td><ul>
+<li><p>Eventarc API</p></li>
+</ul></td>
+<td><ul>
+<li><p>eventarc.operations.delete</p></li>
+<li><p>eventarc.operations.get</p></li>
+<li><p>eventarc.operations.list</p></li>
+<li><p>eventarc.triggers.create</p></li>
+<li><p>eventarc.triggers.delete</p></li>
+<li><p>eventarc.triggers.get</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>PubSub</p></td>
+<td><p>-</p></td>
+<td><ul>
+<li><p>pubsub.subscriptions.create</p></li>
+<li><p>pubsub.subscriptions.delete</p></li>
+<li><p>pubsub.subscriptions.get</p></li>
+<li><p>pubsub.subscriptions.getIamPolicy</p></li>
+<li><p>pubsub.subscriptions.setIamPolicy</p></li>
+<li><p>pubsub.subscriptions.update</p></li>
+<li><p>pubsub.topics.create</p></li>
+<li><p>pubsub.topics.delete</p></li>
+<li><p>pubsub.topics.get</p></li>
+<li><p>pubsub.topics.getIamPolicy</p></li>
+<li><p>pubsub.topics.setIamPolicy</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>ResourceManager</p></td>
+<td><p>-</p></td>
+<td><ul>
+<li><p>resourcemanager.projects.delete</p></li>
+<li><p>resourcemanager.projects.get</p></li>
+<li><p>resourcemanager.projects.getIamPolicy</p></li>
+<li><p>resourcemanager.projects.setIamPolicy</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Secret Manager</p></td>
+<td><p>-</p></td>
+<td><ul>
+<li><p>secretmanager.secrets.create</p></li>
+<li><p>secretmanager.secrets.delete</p></li>
+<li><p>secretmanager.secrets.get</p></li>
+<li><p>secretmanager.secrets.getIamPolicy</p></li>
+<li><p>secretmanager.secrets.setIamPolicy</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Workflows</p></td>
+<td><ul>
+<li><p>Workflow Executions API</p></li>
+</ul></td>
+<td><ul>
+<li><p>workflows.workflows.create</p></li>
+<li><p>workflows.workflows.delete</p></li>
+<li><p>workflows.workflows.get</p></li>
+<li><p>workflows.workflows.list</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+:::

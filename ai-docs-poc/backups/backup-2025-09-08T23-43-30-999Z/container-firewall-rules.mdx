@@ -1,0 +1,288 @@
+---
+slug: trend-vision-one-container-firewall-rules
+title: Container Firewall rules
+last_updated: '2025-09-08'
+ai_context:
+  source_file: container-firewall-rules.md
+  conversion_date: '2025-09-08T23:42:21.845Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+If you are using version 11.2+ agents to protect containers that use an overlay network, you may need to add some Firewall rules to allow network traffic for the Swarm or Kubernetes services because the default Firewall rules block that traffic.
+
+### Kubernetes Firewall rules {#kubernetes-firewall-rules}
+
+If you are using Kubernetes, add the following rules to bypass the k8s communication traffic and export service traffic:
+
+<table style="width:97%;">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Name</p></th>
+<th><p>Action Type</p></th>
+<th><p>Priority</p></th>
+<th><p>Direction</p></th>
+<th><p>Frame Type</p></th>
+<th><p>Protocol</p></th>
+<th><p>Source IP</p></th>
+<th><p>Source Port</p></th>
+<th><p>Destination IP</p></th>
+<th><p>Destination Port</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>HTTP incoming TCP 80 destination port</p></td>
+<td><p>Force Allow</p></td>
+<td><p>0 - Lowest</p></td>
+<td><p>Incoming</p></td>
+<td><p>IP</p></td>
+<td><p>TCP</p></td>
+<td><p>Any</p></td>
+<td><p>N/A</p></td>
+<td><p>Any</p></td>
+<td><p>80</p></td>
+</tr>
+<tr>
+<td><p>HTTP outgoing TCP 80 source port</p></td>
+<td><p>Force Allow</p></td>
+<td><p>0 - Lowest</p></td>
+<td><p>Outgoing</p></td>
+<td><p>IP</p></td>
+<td><p>TCP</p></td>
+<td><p>Any</p></td>
+<td><p>80</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+</tr>
+<tr>
+<td><p>K8s incoming TCP 10054 port</p></td>
+<td><p>Force Allow</p></td>
+<td><p>0 - Lowest</p></td>
+<td><p>Incoming</p></td>
+<td><p>IP</p></td>
+<td><p>TCP</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+<td><p>10054</p></td>
+</tr>
+<tr>
+<td><p>K8s outgoing TCP 10054 port</p></td>
+<td><p>Force Allow</p></td>
+<td><p>0 - Lowest</p></td>
+<td><p>Outgoing</p></td>
+<td><p>IP</p></td>
+<td><p>TCP</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+<td><p>10054</p></td>
+</tr>
+<tr>
+<td><p>K8s outgoing TCP 443 port</p></td>
+<td><p>Force Allow</p></td>
+<td><p>0 - Lowest</p></td>
+<td><p>Outgoing</p></td>
+<td><p>IP</p></td>
+<td><p>TCP</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+<td><p>443</p></td>
+</tr>
+<tr>
+<td><p>K8s outgoing TCP 6443 port</p></td>
+<td><p>Force Allow</p></td>
+<td><p>0 - Lowest</p></td>
+<td><p>Incoming</p></td>
+<td><p>IP</p></td>
+<td><p>TCP</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+<td><p>6443</p></td>
+</tr>
+<tr>
+<td><p>K8s outgoing TCP 6443 port</p></td>
+<td><p>Force Allow</p></td>
+<td><p>0 - Lowest</p></td>
+<td><p>Outgoing</p></td>
+<td><p>IP</p></td>
+<td><p>TCP</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+<td><p>6443</p></td>
+</tr>
+<tr>
+<td><p>K8s outgoing TCP 8081 port</p></td>
+<td><p>Force Allow</p></td>
+<td><p>0 - Lowest</p></td>
+<td><p>Incoming</p></td>
+<td><p>IP</p></td>
+<td><p>TCP</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+<td><p>8081</p></td>
+</tr>
+<tr>
+<td><p>K8s outgoing TCP 8081 port</p></td>
+<td><p>Force Allow</p></td>
+<td><p>0 - Lowest</p></td>
+<td><p>Outgoing</p></td>
+<td><p>IP</p></td>
+<td><p>TCP</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+<td><p>8081</p></td>
+</tr>
+<tr>
+<td><p>K8s outgoing UDP 8472 port</p></td>
+<td><p>Force Allow</p></td>
+<td><p>0 - Lowest</p></td>
+<td><p>Outgoing</p></td>
+<td><p>IP</p></td>
+<td><p>UDP</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+<td><p>8472</p></td>
+</tr>
+<tr>
+<td><p>K8s outgoing UDP 8285 port</p></td>
+<td><p>Force Allow</p></td>
+<td><p>0 - Lowest</p></td>
+<td><p>Outgoing</p></td>
+<td><p>IP</p></td>
+<td><p>UDP</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+<td><p>8285</p></td>
+</tr>
+<tr>
+<td><p>K8s outgoing UDP 8285 port</p></td>
+<td><p>Force Allow</p></td>
+<td><p>0 - Lowest</p></td>
+<td><p>Incoming</p></td>
+<td><p>IP</p></td>
+<td><p>UDP</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+<td><p>8285</p></td>
+</tr>
+</tbody>
+</table>
+
+### Swarm Firewall rules {#swarm-firewall-rules}
+
+If you are using Swarm, add the following rules to bypass the k8s communication traffic and export service traffic:
+
+<table style="width:97%;">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Name</p></th>
+<th><p>Action Type</p></th>
+<th><p>Priority</p></th>
+<th><p>Direction</p></th>
+<th><p>Frame Type</p></th>
+<th><p>Protocol</p></th>
+<th><p>Source IP</p></th>
+<th><p>Source Port</p></th>
+<th><p>Destination IP</p></th>
+<th><p>Destination Port</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>HTTP incoming TCP 80 destination port</p></td>
+<td><p>Force Allow</p></td>
+<td><p>0 - Lowest</p></td>
+<td><p>Incoming</p></td>
+<td><p>IP</p></td>
+<td><p>TCP</p></td>
+<td><p>Any</p></td>
+<td><p>N/A</p></td>
+<td><p>Any</p></td>
+<td><p>80</p></td>
+</tr>
+<tr>
+<td><p>HTTP outgoing TCP 80 source port</p></td>
+<td><p>Force Allow</p></td>
+<td><p>0 - Lowest</p></td>
+<td><p>Outgoing</p></td>
+<td><p>IP</p></td>
+<td><p>TCP</p></td>
+<td><p>Any</p></td>
+<td><p>80</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+</tr>
+<tr>
+<td><p>Swarm outgoing TCP 443 port</p></td>
+<td><p>Force Allow</p></td>
+<td><p>0 - Lowest</p></td>
+<td><p>Outgoing</p></td>
+<td><p>IP</p></td>
+<td><p>TCP</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+<td><p>443</p></td>
+</tr>
+<tr>
+<td><p>Swarm incoming TCP 2377, 4789, 7946, 60012 port</p></td>
+<td><p>Force Allow</p></td>
+<td><p>0 - Lowest</p></td>
+<td><p>Incoming</p></td>
+<td><p>IP</p></td>
+<td><p>TCP+UDP</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+<td><p>2377, 4789, 7946, 60012</p></td>
+</tr>
+<tr>
+<td><p>Swarm outgoing TCP 2377, 4789, 7946, 60012 port</p></td>
+<td><p>Force Allow</p></td>
+<td><p>0 - Lowest</p></td>
+<td><p>Outgoing</p></td>
+<td><p>IP</p></td>
+<td><p>TCP+UDP</p></td>
+<td><p>Any</p></td>
+<td><p>2377, 4789, 7946, 60012</p></td>
+<td><p>Any</p></td>
+<td><p>Any</p></td>
+</tr>
+</tbody>
+</table>
+:::

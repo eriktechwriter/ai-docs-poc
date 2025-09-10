@@ -1,0 +1,93 @@
+---
+slug: trend-vision-one-add-amazon-workspaces
+title: Add Amazon WorkSpaces
+last_updated: '2025-09-08'
+ai_context:
+  source_file: add-amazon-workspaces.md
+  conversion_date: '2025-09-08T23:42:25.950Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+:::warning[Important]
+
+AWS Accounts in Trend Vision One are now managed by the Cloud Accounts app. To add new AWS accounts, see [Adding an AWS account using CloudFormation](adding-aws-account.mdx).
+
+You can still use APIs to add new accounts to Server & Workload Protection. However, Trend Micro recommends using the Cloud Accounts app, which provides access to more advanced cloud security and XDR capabilities. This topic is for reference only.
+:::
+
+Amazon WorkSpaces are virtual cloud desktops that run in Amazon Web Services (AWS). You can protect them with Server & Workload Protection following the instructions below.
+
+:::note
+
+The agent only supports Amazon WorkSpaces Windows desktops — it does not support Linux desktops.
+:::
+
+After completing the steps in one of the above-mentioned sections:
+
+- your Amazon WorkSpaces are displayed in the Server & Workload Protection console on the left under *Computers* \> your_AWS_account \> your_region \> *WorkSpaces*.
+- your Amazon WorkSpaces are protected by the agent.
+
+## Protect Amazon WorkSpaces if you already added your AWS account {#protect-amazon-workspaces-if-you-already-added-your-aws-account}
+
+If you already added your AWS account to Server & Workload Protection (to protect your Amazon EC2 instances), complete the steps in this section to configure Server & Workload Protection to work with Amazon WorkSpaces.
+
+### Procedure {#procedure}
+
+1.  Launch an Amazon WorkSpace, and then install and activate agent version 10.2+ on it. See [Install the agent on Amazon EC2 and WorkSpaces](install-agent-amazon-ec2-workspaces.mdx) for details. Optionally, create a custom WorkSpace bundle so that you can deploy it to many people. See [Bake the agent into your AMI or WorkSpace bundle](install-agent-ami-workspace.mdx) for details on installation, activation, and bundle creation.
+
+2.  Modify your IAM policy to include Amazon WorkSpaces permissions:
+
+    1.  Log in to AWS with the account that was added to Server & Workload Protection.
+    2.  Go to the *IAM* service.
+    3.  Find the Server & Workload Protection IAM policy. You can find it under Policies on the left, or you can look for the Server & Workload Protection IAM role or IAM user that references the policy and then click the policy within it.
+    4.  Modify the Server & Workload Protection IAM policy as shown below. The policy includes Amazon WorkSpaces permissions. If you added more than one AWS account to Server & Workload Protection, the IAM policy must be updated under all the AWS accounts.
+
+    ``` codeblock
+            {
+            "Version": "2012-10-17",
+            "Statement": [
+            {
+            "Sid": "cloudconnector",
+            "Action": [
+            "ec2:DescribeImages",
+            "ec2:DescribeInstances",
+            "ec2:DescribeRegions",
+            "ec2:DescribeSubnets",
+            "ec2:DescribeTags",
+            "ec2:DescribeVpcs",
+            "ec2:DescribeAvailabilityZones",
+            "ec2:DescribeSecurityGroups",
+            "workspaces:DescribeWorkspaces",
+            "workspaces:DescribeWorkspaceDirectories",
+            "workspaces:DescribeWorkspaceBundles",
+            "workspaces:DescribeTags",
+            "iam:ListAccountAliases",
+            "iam:GetRole",
+            "iam:GetRolePolicy"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+            }
+            ]
+            }
+    ```
+
+3.  In the Server & Workload Protection console, edit your AWS account:
+
+    1.  On the left, right-click your AWS account and select *Properties*.
+    2.  Enable *Include Amazon WorkSpaces*.
+    3.  Click *Save*.
+
+### Next steps {#next-steps}
+
+You have now added Amazon WorkSpaces to Server & Workload Protection.
+
+## Protect Amazon WorkSpaces if you have not yet added your AWS account {#protect-amazon-workspaces-if-you-have-not-yet-added-your-aws-account}
+
+If you have not yet added your AWS account to Server & Workload Protection, complete the steps in one of the following sections:
+
+- If you want to protect existing Amazon WorkSpaces, read [Install the agent on Amazon EC2 and WorkSpaces.](install-agent-amazon-ec2-workspaces.mdx)
+- If you want to be able to launch new Amazon WorkSpaces with the agent 'baked in', read [Bake the agent into your AMI or WorkSpace bundle](install-agent-ami-workspace.mdx).
+:::::

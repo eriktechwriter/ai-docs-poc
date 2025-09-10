@@ -1,0 +1,44 @@
+---
+slug: trend-vision-one-access-sharepoint-account
+title: Granting access to SharePoint Online with an authorized account
+last_updated: '2025-09-08'
+ai_context:
+  source_file: access-sharepoint-account.md
+  conversion_date: '2025-09-08T23:42:26.259Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Cloud Email and Collaboration Protection supports using OAuth 2.0 to access SharePoint Online with a service account (Authorized Account). With the OAuth 2.0 framework, Cloud Email and Collaboration Protection uses an access token to obtain limited access on the Global Administrator's behalf to run advanced threat protection and data loss prevention scanning on files in the protected SharePoint sites of your organization.
+
+If you have also granted Cloud Email and Collaboration Protection access to Microsoft Teams (Teams), when the SharePoint site and the team corresponding to a file are selected as a policy target respectively, Cloud Email and Collaboration Protection applies policies for Microsoft Teams (Teams) to this site unless the site does not hit any policy for Microsoft Teams.
+
+The steps outlined below detail how to grant access to SharePoint Online with an Authorized Account from **Dashboard**.
+
+### Procedure {#procedure}
+
+1.  Go to **Dashboard → Service Status**.
+
+2.  Click **Grant Access** in the **Action** column for SharePoint Online.
+
+    The **Grant Access to SharePoint Online** screen appears.
+
+3.  Select the policy to enable automatically when the access grant is complete.
+
+4.  Click **Grant Permission**.
+
+5.  Specify your Microsoft 365 Global Administrator credentials and click **Sign in**.
+
+    The Microsoft authorization screen appears.
+
+6.  Click **Accept** to grant Cloud Email and Collaboration Protection necessary permissions to protect SharePoint sites.
+
+7.  Wait until the process is completed.
+
+    If the message "Successfully created a service account and synced data." appears on the screen, the access grant is successful.
+
+### Next steps {#next-steps}
+
+If for some reason the access token becomes invalid, go to **Administration → Service Account** to create a new access token for the service account. For more information, see [Service account](service-account-cloud-apps.mdx).
+:::

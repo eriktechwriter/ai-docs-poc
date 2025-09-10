@@ -1,0 +1,88 @@
+---
+slug: trend-vision-one-cis-gke17-511b
+title: 5.1.1 - Ensure Image Vulnerability Scanning is enabled (Automated)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: cis-gke17-511b.md
+  conversion_date: '2025-09-08T23:42:23.608Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Profile applicability: Level 2
+
+:::note
+
+GCR is now deprecated, being superseded by Artifact Registry starting 15th May 2024. Runtime Vulnerability scanning is available via GKE Security Posture.
+:::
+
+Scan images stored in Google Container Registry (GCR) or Artifact Registry (AR) for vulnerabilities.
+
+Vulnerabilities in software packages can be exploited by malicious users to obtain unauthorized access to local cloud resources. GCR Container Analysis API or Artifact Registry Container Scanning API allow images stored in GCR or AR respectively to be scanned for known vulnerabilities.
+
+:::note
+
+By default, GCR Container Analysis and AR Container Scanning are disabled.
+:::
+
+### Audit {#audit}
+
+### For Images Hosted in GCR: {#for-images-hosted-in-gcr}
+
+Using Google Cloud Console:
+
+1.  Go to the [GCR website](https://console.cloud.google.com/gcr).
+2.  Select Settings and check if `Vulnerability scanning` is Enabled.
+
+Using Command Line:
+
+``` codeblock
+gcloud services list --enabled
+```
+
+Ensure that the `Container Registry API` and `Container Analysis API` are listed in the output.
+
+### For Images Hosted in AR: {#for-images-hosted-in-ar}
+
+Using Google Cloud Console:
+
+1.  Go to the [AR website](https://console.cloud.google.com/artifacts).
+2.  Select Settings and check if `Vulnerability scanning` is Enabled.
+
+Using Command Line:
+
+``` codeblock
+gcloud services list --enabled
+```
+
+Ensure that the `Container Scanning API` and `Artifact Registry API` are listed in the output.
+
+### Remediation {#remediation}
+
+### For Images Hosted in GCR: {#for-images-hosted-in-gcr-1}
+
+Using Google Cloud Console:
+
+1.  Go to the [GCR website](https://console.cloud.google.com/gcr).
+2.  Select Settings under the Vulnerability Scanning heading, click the TURN ON button.
+
+Using Command Line:
+
+``` codeblock
+gcloud services enable containeranalysis.googleapis.com
+```
+
+### For Images Hosted in AR: {#for-images-hosted-in-ar-1}
+
+Using Google Cloud Console:
+
+1.  Go to the [AR website](https://console.cloud.google.com/artifacts).
+2.  Select Settings and, under the Vulnerability Scanning heading, click the ENABLE button.
+
+Using Command Line:
+
+``` codeblock
+gcloud services enable containerscanning.googleapis.com
+```
+:::::

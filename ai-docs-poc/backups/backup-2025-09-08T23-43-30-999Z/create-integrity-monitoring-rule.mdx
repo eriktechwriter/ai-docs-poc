@@ -1,0 +1,163 @@
+---
+slug: trend-vision-one-create-integrity-monitoring-rule
+title: Create an Integrity Monitoring rule
+last_updated: '2025-09-08'
+ai_context:
+  source_file: create-integrity-monitoring-rule.md
+  conversion_date: '2025-09-08T23:42:21.428Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::::: {role="main"}
+Integrity Monitoring rules describe how agents should scan for and detect changes to a computer's files, directories, and registry keys and values, as well as changes in installed software, processes, listening ports, and running services. Integrity Monitoring rules can be assigned directly to computers or can be made part of a policy.
+
+:::note
+
+This topic specifically covers how to create an Integrity Monitoring rule. For information on how to configure the Integrity Monitoring module, see [Set up integrity monitoring](set-up-integrity-monitoring.mdx).
+:::
+
+There are two types of Integrity Monitoring rules: those that you have created, and those that are issued by Trend Micro. For more information on how to configure rules issued by Trend Micro, see the Configure Trend Micro integrity monitoring rules section.
+
+To create a new Integrity Monitoring rule, you need to:
+
+### Procedure {#procedure}
+
+1.  Add a new rule.
+
+2.  Enter Integrity Monitoring rule information.
+
+3.  Select a rule template and define rule attributes.
+
+### Next steps {#next-steps}
+
+When you're done with your rule, you can also learn how to:
+
+- Configure rule events and alerts
+- See policies and computers a rule is assigned to
+- Export a rule
+- Delete a rule
+
+## Add a new rule {#add-a-new-rule}
+
+There are three ways to add an Integrity Monitoring rule on the **Policies → Common Objects → Rules → Integrity Monitoring Rules** page. You can:
+
+- Create a new rule. Click New \> New Integrity Monitoring Rule.
+- Import a rule from an XML file. Click New \> Import From File.
+- Copy and then modify an existing rule. Right-click the rule in the Integrity Monitoring Rules list and then click Duplicate. To edit the new rule, select it and then click Properties.
+
+## Enter Integrity Monitoring rule information {#enter-integrity-monitoring-rule-information}
+
+### Procedure {#procedure-1}
+
+1.  Enter a *Name* and *Description* for the rule.
+
+    :::note
+
+    It is good practice to document all Integrity Monitoring rule changes in the Description field of the rule. Make a note of when and why rules were created or deleted for easier maintenance.
+    :::
+
+2.  Set the *Severity* of the rule.
+
+    :::note
+
+    Setting the severity of a rule has no effect on how the rule is implemented or applied. Severity levels can be useful as sorting criteria when viewing a list of Integrity Monitoring rules. More importantly, each severity level is associated with a severity value; this value is multiplied by a computer's Asset Value to determine the ranking of an event. (See **Administration → System Settings → Ranking**.)
+    :::
+
+### Next steps {#next-steps-1}
+
+## Select a rule template and define rule attributes {#select-a-rule-template-and-define-rule-attributes}
+
+Go to the *Content* tab and select from one of the following three templates:
+
+## Registry Value template {#registry-value-template}
+
+Create an Integrity Monitoring rule to specifically monitor changes to registry values.
+
+:::note
+
+The Registry Value template is only for Windows-based computers.
+:::
+
+### Procedure {#procedure-2}
+
+1.  Select the *Base Key* to monitor and whether or not to monitor contents of sub keys.
+
+2.  List *Value Names* to be included or excluded. You can use "?" and "\*" as wildcard characters.
+
+3.  Enter *Attributes* to monitor. Entering "STANDARD" will monitor changes in registry size, content and type. For more information on Registry Value template attributes see the [RegistryValueSet](registryvalueset.mdx) documentation.
+
+### Next steps {#next-steps-2}
+
+## File template {#file-template}
+
+Create an Integrity Monitoring rule to specifically monitor changes to files.
+
+### Procedure {#procedure-3}
+
+1.  Enter a Base Directory for the rule (for example, C:\Program Files\MySQL .) Select Include Sub Directories to include the contents of all subdirectories relative to the base directory. Wildcards are not supported for base directories.
+
+2.  Use the *File Names* fields to include or exclude specific files. You can use wildcards (" ? " for a single character and " \* " for zero or more characters.
+
+    :::note
+
+    Leaving the *File Names* fields blank will cause the rule to monitor all files in the base directory. This can use significant system resources if the base directory contains numerous or large files.
+    :::
+
+3.  Enter *Attributes* to monitor. Entering "STANDARD" will monitor changes in file creation date, last modified date, permissions, owner, group, size, content, flags (Windows), and SymLinkPath (Linux). For more information on File template attributes see the [FileSet](fileset.mdx) documentation.
+
+### Next steps {#next-steps-3}
+
+## Custom (XML) template {#custom-xml-template}
+
+Create a custom Integrity Monitoring rule template to monitor [directories](directoryset.mdx), [registry values](registryvalueset.mdx), [registry keys](registrykeyset.mdx), [services](serviceset.mdx), [processes](processset.mdx), [installed software](installedsoftwareset.mdx), [ports,](portset.mdx) [groups](groupset.mdx), [users](userset.mdx), [files](fileset.mdx), and the [WQL](wqlset.mdx) using the Server & Workload Protection XML-based [Integrity monitoring rules language](integrity-monitoring-language-swp.mdx).
+
+:::tip
+
+You can create your rule in your preferred text editor and paste it to the Content field when you are done.
+:::
+
+## Configure Trend Micro Integrity Monitoring rules {#configure-trend-micro-integrity-monitoring-rules}
+
+Integrity Monitoring rules issued by Trend Micro cannot be edited in the same way as the custom rules you create. Some Trend Micro rules cannot be modified at all, while other rules may offer limited configuration options. Both of these rule types will show as "Defined" under the "Type" column, but rules that can be configured will display a gear in the Integrity Monitoring icon (
+
+![](/images/integrity_monitoring_rules_option=0bbc640a-d419-4c86-b90a-ef0026d1002a.webp)). ![](/images/im-rule-types=45938605-d613-4089-909b-ebeaed019ebc.webp)
+
+You can access the configuration options for a rule by opening the properties for the rule and clicking on the *Configuration* tab.
+
+Rules issued by Trend Micro also show the following additional information under the *General* tab:
+
+- When the rule was first issued and last updated, as well as a unique identifier for the rule.
+- The minimum version of the agent that are required for the rule to function.
+
+Although you cannot edit rules issued by Trend Micro directly, you can duplicate them and then edit the copy.
+
+## Configure rule events and alerts {#configure-rule-events-and-alerts}
+
+Any changes detected by an Integrity Monitoring rule is logged as an event in Server & Workload Protection.
+
+## Real-time event monitoring {#real-time-event-monitoring}
+
+By default, events are logged at the time they occur. If you only want events to be logged when you manually perform a scan for changes, deselect *Allow Real Time Monitoring*.
+
+## Alerts {#alerts}
+
+You can also configure the rules to trigger an alert when they log an event. To do so, open the properties for a rule, click on *Options*, and then select *Alert when this rule logs an event*.
+
+## See policies and computers a rule is assigned to {#see-policies-and-computers-a-rule-is-assigned-to}
+
+You can see which policies and computers are assigned to an Integrity Monitoring rule on the *Assigned To* tab. Click on a policy or computer in the list to see their properties.
+
+## Export a rule {#export-a-rule}
+
+You can export all Integrity Monitoring rules to a .csv or .xml file by clicking *Export* and selecting the corresponding export action from the list. You can also export specific rules by first selecting them, clicking *Export* and then selecting the corresponding export action from the list.
+
+## Delete a rule {#delete-a-rule}
+
+To delete a rule, right-click the rule in the Integrity Monitoring Rules list, click *Delete* and then click *OK*.
+
+:::note
+
+Integrity Monitoring rules that are assigned to one or more computers or that are part of a policy cannot be deleted.
+:::
+:::::::

@@ -1,0 +1,195 @@
+---
+slug: trend-vision-one-file-security-faqs
+title: File Security FAQs
+---
+# File Security FAQs
+
+### General {#general}
+
+General questions about File Security:
+
+- What is File Security?
+
+- How does Trend Vision One – File Security differ from Trend Cloud One – File Storage Security?
+
+- How do I deploy File Security?
+
+- When would an organization choose File Security SDK as opposed to File Security Storage?
+
+- What storage services does File Security work with?
+
+- How long do scans take?
+
+- How does File Security scale?
+
+- Why am I unable to use File Security?
+
+### Architecture {#architecture}
+
+Questions about File Security architecture:
+
+- How does File Security SDK scan files?
+
+- How does File Security Storage scan files?
+
+### Scanner {#scanner}
+
+Questions about the File Security scanner:
+
+- What scanner does File Security SDK use to scan files? Are the patterns updated?
+
+- Can File Security detect ransomware?
+
+- Are file contents sent to the Trend Micro server?
+
+- What anti-malware patterns does File Security Storage use to scan file? Are the patterns updated?
+
+- Does File Security send file contents to the Trend Micro Smart Protection Server?
+
+- We use a presigned URL to upload files to our AWS S3 buckets. Can we see if the uploaded file is malicious in the result of the file upload request?
+
+### Pricing {#pricing}
+
+Questions about File Security pricing:
+
+- Can I purchase just Storage or just SDK without the other feature?
+
+### What is File Security? {#what-is-file-security}
+
+Trend Vision One™ – File Security is an innovative solution engineered to bolster the security posture of files and cloud storage against the relentless tide of malware threats. Based on different needs, there are two features in File Security:
+
+- File Security SDK is an scanner app that can assess files for malware and display real-time results so you can immediately identify and address likely security issues in your files. File Security SDK can leverage the power of [predictive machine learning (PML)](pml-email-security.mdx) to match novel variants against known hazards.
+
+- File Storage Security is an advanced version of Trend Cloud One™ – File Storage Security. It leverages the account scanner stack features in Trend Cloud One – File Storage Security, but is much easier to deploy using cloud account management (CAM). File Security Storage provides complete visibility of your cloud storage inventory within the Trend Vision One console so you can protect multiple buckets at once.
+
+For more information, see [What is File Security](what-is-file-security.mdx).
+
+### How does Trend Vision One – File Security differ from Trend Micro Cloud One – File Storage Security? {#how-does-trend-vision-one-file-security-differ-from-trend-micro-cloud-one-file-storage-security}
+
+Aside from being part of Trend Vision One, the biggest difference is that we have expanded functionality.
+
+- In Trend Cloud One, File Storage Security can only scan files in cloud storage. However, Trend Vision One – File Security can scan files in any application, whether the files are in the cloud or on-premises.
+
+- Though SDK deployment is different, deployment for traditional S3 coverage (storage) remains the same as it always has for Trend Cloud One – File Storage Security.
+
+- The SDK scanner is equipped with the option to use predictive machine learning (PML), a capability which is unavailable in Trend Cloud One.
+
+### How do I deploy File Security? {#how-do-i-deploy-file-security}
+
+While Trend Micro broadly considers File Security to be one solution, it deploys differently depending on the feature:
+
+- [Storage](cloud-storage-scanning.mdx) – Deploy through the Cloud Accounts app to selected regions. Then, on the Inventory tab, choose which buckets you want to protect and turn on EventBridge for those buckets.
+
+- [SDK](sdk-or-cli-scanning.mdx) – Deploy using either a software development kit (SDK) or the command line interface (CLI) to scan files.
+
+### What would be the best File Security feature for my company? {#what-would-be-the-best-file-security-feature-for-my-company}
+
+Choose the feature or combination that best suits your organizational needs:
+
+**File Security features**
+
+<table>
+<thead style="text-align: left;">
+<tr>
+<th><p>File Security Storage</p></th>
+<th><p>File Security SDK</p></th>
+<th><p>File Security Virtual Appliance</p></th>
+<th><p>File Security Containerized Scanner</p></th>
+</tr>
+</thead>
+<tbody style="text-align: left;">
+<tr>
+<td><p>Limited solely to cloud storage applications.</p></td>
+<td><p>Allows for file-scanning anywhere; not just storage applications.</p></td>
+<td><p>Allows for file scanning anywhere, not just in storage applications.</p>
+<p>The scanner component is deployed as a virtual appliance in the user’s environment.</p></td>
+<td><p>Allows for file scanning anywhere, not just in storage applications.</p>
+<p>The scanner component is deployed as a virtual appliance in a Kubernetes cluster in the user’s environment.</p></td>
+</tr>
+<tr>
+<td><p>Valuable for organizations without a robust development team.</p></td>
+<td><p>Intended for teams with experience programming using an SDK.</p></td>
+<td><p>Valuable for organizations without a robust development team by using the connector component, but requires experience programming using an SDK.</p></td>
+<td><p>Intended for teams with experience programming using a Kubernetes cluster and an SDK.</p></td>
+</tr>
+<tr>
+<td><p>The storage stack is easy to deploy, requiring just a few clicks and no more than about ten minutes.</p></td>
+<td><p>Requires more coding to deploy in addition to stronger cloud architect and developer teams to implement automation.</p></td>
+<td><p>For users who prefer to manage and host the scanner as a virtual appliance in their private environment.</p></td>
+<td><p>For users who prefer to manage and host the scanner as a virtual appliance in their private environment.</p>
+<p>Requires more coding to deploy in addition to stronger cloud architect and developer teams to implement.</p></td>
+</tr>
+</tbody>
+</table>
+
+### What storage services does File Security work with? {#what-storage-services-does-file-security-work-with}
+
+At this time, File Security Storage works with Amazon Web Service (AWS) storage. See [Deploying for AWS storage](deploy-fss-new-account.mdx).
+
+### How long do scans take? {#how-long-do-scans-take}
+
+Scan time depends on the file size and type, but can range from under a second to a few minutes.
+
+### How does File Security scale? {#how-does-file-security-scale}
+
+Because File Security uses a serverless scanner, it can handle multiple scans concurrently. This means File Security automatically scales up in response to load increases--or or down in response to load decreases..
+
+### Why am I unable to use File Security? {#why-am-i-unable-to-use-file-security}
+
+Your user account may need additional permissions to deploy, view inventory and scan results, initiate scans, or allocate credits.
+
+### How does File Security SDK scan files? {#how-does-file-security-sdk-scan-files}
+
+Once you have deployed the File Security SDK scanner, the scanner stack scans all incoming files for known malware. File Security SDK can send notifications and quarantine malware.
+
+![](/images/fs-sdk-architecture=b9e440e3-3157-4d28-ac4c-91f3208b4e1b.webp)
+
+### How does File Security Storage scan files? {#how-does-file-security-storage-scan-files}
+
+After deploying the File Security Storage scanner stack to the selected region and turning on EventBridge for selected buckets in that region, the scanner stack scans all incoming files. The Scanner stack is located in each region, with one server in each region and bucket. With event notification turned on, scanner Lambda scans any incoming file in the scanner stack. The scanner Lambda then sends malicious files to quarantine.
+
+![](/images/fs-storage-architecture=c9458395-9a5d-4d67-bf57-b6f09d3e0f57.webp)
+
+### How does File Security Virtual Appliance scan files {#how-does-file-security-virtual-appliance-scan-files}
+
+After deploying the File Security Virtual Appliance into a corporate data center or private cloud environment, users can add mount points to NFS servers using the File Security UI console and have target files on storage servers scanned automatically. Alternatively, users can adopt the File Security SDK to send files to the File Security Virtual Appliance for scanning. In both scenarios, no files will leave the users’ corporate boundary.
+
+![](/images/fs-va-architecture=9abfc414-9a37-440e-8971-16e5fd1ba052.webp)
+
+### What scanner does File Security use to scan files? Are the patterns updated? {#what-scanner-does-file-security-use-to-scan-files-are-the-patterns-updated}
+
+The scanner is located at Trend Micro. Trend Micro scans the file for you--always with the latest pattern.
+
+### Can File Security detect ransomware? {#can-file-security-detect-ransomware}
+
+Yes. The File Security scanner for both SDK and storage can detect all types of malware including ransomware, trojans, and spyware.
+
+### Are file contents sent to the Trend Micro server? {#are-file-contents-sent-to-the-trend-micro-server}
+
+No. File Security only sends the following to the Trend Micro Smart Protection Server:
+
+- File Security SDK sends only the critical part of the file.
+- File Security Storage sends only the identification information (hash value).
+
+### What anti-malware patterns does File Security Storage use to scan file? Are the patterns updated? {#what-anti-malware-patterns-does-file-security-storage-use-to-scan-file-are-the-patterns-updated}
+
+File Storage Security uses the following patterns:
+
+- Smart Scan Agent Pattern: This pattern (icrc$oth.XXX) can detect known ransomware like [RANSOM_HPLOCKY.SM4](https://www.trendmicro.com/vinfo/us/threat-encyclopedia/malware/RANSOM_HPLOCKY.SM4/) and is used for heuristic or generic detection.
+
+- IntelliTrap Pattern: This pattern Pattern detects compression files packed as executable files.
+
+- IntelliTrap Exception Pattern: This pattern contains a list of approved compression files.
+
+### Does File Security send file contents to the Trend Micro Smart Protection Server? {#does-file-security-send-file-contents-to-the-trend-micro-smart-protection-server}
+
+No. File Security only send identification information to the Smart Protection Server.
+
+### We use a presigned URL to upload files to our AWS S3 buckets. Can we see if the uploaded file is malicious in the result of the file upload request? {#we-use-a-presigned-url-to-upload-files-to-our-aws-s3-buckets.-can-we-see-if-the-uploaded-file-is-malicious-in-the-result-of-the-file-upload-request}
+
+No. The design of AWS S3 does not allow you to determine whether an uploaded file is malicious from the result of an upload request.
+
+### Can I purchase just Storage or just SDK without the other feature? {#can-i-purchase-just-storage-or-just-sdk-without-the-other-feature}
+
+No, pricing for File Security applies to both Storage and SDK features.
+:::

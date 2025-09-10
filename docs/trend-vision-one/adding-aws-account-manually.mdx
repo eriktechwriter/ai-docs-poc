@@ -1,0 +1,450 @@
+---
+slug: trend-vision-one-adding-aws-account-manually
+title: Adding an AWS Account Manually
+---
+# Adding an AWS Account Manually
+
+How to connect your AWS account to Cloud Accounts if you cannot use the stack template.
+
+Some AWS accounts do not allow the use of stack templates to deploy resources within the cloud environment. This is usually due to security policies which prevent the automatic creation of IAM policies and roles required by the deployment script within the stack template.
+
+To connect an AWS account manually, leverage the API resources on the [Automation Center](https://automation.trendmicro.com/xdr/api-beta).
+
+:::warning[Important]
+
+- The user role assigned to use Trend Vision One APIs must have full permissions to add, delete, and edit Cloud Accounts. For more information about user roles, see [User Roles](user-roles-foundation-services.mdx).
+
+- Deployment using this method only supports Core Features. You cannot enable additional cloud security features.
+
+- The steps are valid for the AWS console as of February 2024.
+:::
+
+### Procedure {#procedure}
+
+1.  Generate and download the stack template from Cloud Accounts either from the Trend Vision One console or by calling an API.
+
+    - Access the Trend Vision One console and create the template.
+
+      1.  In the Trend Vision One console, go to **Cloud Security → Cloud Accounts → AWS**
+
+      2.  Click **Add Account**.
+
+      3.  On the **Deployment Type** screen, select **CloudFormation** and **Single AWS Account**.
+
+      4.  Click **Next**.
+
+      5.  Specify the **Account name**, **Description**, and select the AWS region for deployment.
+
+      6.  If you have more than one Server & Workload Protection Manager instance, select the instance to associate with the connected account and click **Next**.
+
+      7.  Click **Next** without configuring the **Features and Permissions** screen.
+
+      8.  Click **Download and Review Template**.
+
+      :::note
+
+      The **Account Name** and **Description** fields are not exported to the review template. You can provide these parameters when calling the connect account API.
+      :::
+
+    - Call an API to retrieve the template.
+
+      1.  Locate the **Get AWS CloudFormation template** API on the automation center.
+
+      2.  Locate the `query_params` strings.
+
+      3.  For `awsRegion`, provide the AWS region where you want to deploy the stack template and Core Features. The default region is based on your Trend Vision One region.
+
+      4.  For `features` and `featureAwsREgions`, leave the parameters blank.
+
+      5.  Save your changes and call the API.
+
+          The API returns the following:
+
+          - `templateUrl`: The URL to download the template.
+
+          - `visionOneOidcProviderUrl`: A required parameter for deploying the template.
+
+          - `createStackUrl`: URL of the AWS CloudFormation console pointing to the CloudFormation template of Trend Vision One.
+
+      6.  Download the template.
+
+2.  Access the AWS console.
+
+3.  Add Trend Vision One as an identity provider.
+
+    1.  In the AWS console, open the **Identity and Access Management (IAM)** service.
+
+    2.  Go to **Access management → Identity providers**.
+
+    3.  Click **Add provider**.
+
+        The **Add an Identity provider screen** opens.
+
+    4.  In the **Configure provider** section, select **OpenID Connect**.
+
+    5.  For provider URL, type or paste the **Provider URL**.
+
+        - If you used the API to call the template, copy and paste the `visionOneOidcProviderUrl` parameter the API returned.
+
+        - If you downloaded the template, type `cloudaccounts-{region}.xdr.trendmicro.com` where `{region}` is your Trend Vision One region (`us, eu, au, sg, in,` or `jp`)
+
+          For example, if your Trend Vision One region is the United States, your `visionOneOidcProviderUrl` is `cloudaccounts-us.xdr.trendmicro.com`
+
+    6.  For **Audience** input `arn:aws:iam::${AWSAccountId}:root`.
+
+        Replace `${AWSAccountId}` with your AWS account ID.
+
+        ![](/images/CAM-AWSManual_Provider=GUID-06b9b214-6b7f-44b0-be1f-886d95805770.webp)
+
+    7.  Click **Get thumbprint**.
+
+    8.  Click **Add provider**.
+
+        The provider is added to the **Identity providers** list.
+
+    9.  Click the name for the provider you created.
+
+        The provider details screen opens.
+
+    10. Copy the provider ARN for use when creating the Role in a later step.
+
+    11. Locate the **Thumbprints** section and click **Manage**.
+
+    12. Delete the thumbprint generated when creating the provider and paste the following thumbprints.
+
+        Click **Add thumbprint** to add each new line.
+
+        - `9e99a48a9960b14926bb7f3b02e22da2b0ab7280`
+
+        - `9565AD13689C2C4B4F018BE31767084D197F2692`
+
+        - `8CF427FD790C3AD166068DE81E57EFBB932272D4`
+
+        - `F21C12F46CDB6B2E16F09F9419CDFF328437B2D7`
+
+        ![](/images/CAM-AWSManual_Thumbprint=GUID-f74acdc4-fa0c-4439-aadd-267a117fbb20.webp)
+
+    13. Click **Save changes**.
+
+4.  Add the Trend Vision One policies.
+
+    1.  In the **Identity and Access Management** service, go to **Access management → Policies**.
+
+    2.  Click **Create policy**.
+
+    3.  For **Policy editor**, select **JSON**.
+
+    4.  Copy and replace the `Statement` parameter using the same parameter from `VisionOnePolicyPart1` in your downloaded template file.
+
+        You can also [click this link](cloud-accounts-aws-policies-json.mdx) to view and copy the JSON code directly.
+
+        :::warning[Important]
+
+        Make sure to keep the second line of the code `"Version": "2012-10-17"`. Deleting the line might cause the policy to not work correctly.
+        :::
+
+    5.  Click **Next**.
+
+    6.  For **Policy name**, type `VisionOnePolicyPart1`.
+
+    7.  Click **Create policy**.
+
+        The policy is created and the **Policies** screen appears.
+
+    8.  After the policy is created, click **Create policy** from the **Policies** screen.
+
+    9.  For **Policy editor**, select **JSON**.
+
+    10. Copy and replace the `Statement` parameter using the same parameter from `VisionOnePolicyPart2` in your downloaded template file.
+
+        You can also [click this link](cloud-accounts-aws-policies-json.mdx) to view and copy the JSON code directly.
+
+        :::warning[Important]
+
+        Make sure to keep the second line of the code `"Version": "2012-10-17"`. Deleting the line might cause the policy to not work correctly.
+        :::
+
+    11. Click **Next**.
+
+    12. For **Policy name**, type `VisionOnePolicyPart2`.
+
+    13. Click **Create policy**.
+
+        The policy is created and the **Policies** screen appears.
+
+    14. After the policy is created, click **Create policy** from the **Policies** screen.
+
+    15. For **Policy editor**, select **JSON**.
+
+    16. Copy and replace the `Statement` parameter using the same parameter from `VisionOnePolicyPart3` in your downloaded template file.
+
+        You can also [click this link](cloud-accounts-aws-policies-json.mdx) to view and copy the JSON code directly.
+
+        :::warning[Important]
+
+        Make sure to keep the second line of the code `"Version": "2012-10-17"`. Deleting the line might cause the policy to not work correctly.
+        :::
+
+    17. Click **Next**.
+
+    18. For **Policy name**, type `VisionOnePolicyPart3`.
+
+    19. Click **Create policy**.
+
+        The policy is created and the **Policies** screen appears.
+
+5.  Add the Trend Vision One role.
+
+    1.  In the **Identity and Access Management** service, go to **Access management → Roles**.
+
+    2.  Click **Create role**.
+
+    3.  For **Trusted entity type**, select **Custom trust policy**.
+
+        The **Custom trust policy** JSON editor appears.
+
+    4.  Replace the placeholder code with the following JSON code:
+
+        ```bash
+        {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Federated": "${visionOneOIDCProvider}"
+              },
+              "Action": [
+                "sts:AssumeRoleWithWebIdentity",
+                "sts:SetSourceIdentity"
+              ],
+              "Condition": {
+                "StringEquals": {
+                  "${visionOneOIDCProviderURL}:aud": "arn:aws:iam::${AWSAccountId}:root",
+                  "${visionOneOIDCProviderURL}:sub": [
+                    "urn:visionone:identity:${visionOneRegion}:${visionOneAccountID}:account/${visionOneAccountID}"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+        ```
+
+    5.  Replace the strings for the following parameters:
+
+        <table>
+        <colgroup>
+        <col style="width: 25%" />
+        <col style="width: 50%" />
+        <col style="width: 25%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Parameter</p></th>
+        <th><p>Description</p></th>
+        <th><p>Example</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p><code>"Federated"</code></p></td>
+        <td><p>Replace <code>"${visionOneOIDCProvider}"</code> with the provider ARN for the provider you created.</p></td>
+        <td><p>For example, if your Trend Vision One region is the United States, the ARN follows the format <code>"arn:aws:iam::1xxxxxxxxxx1:oidc-provider/cloudaccounts-us.xdr.trendmicro.com"</code></p></td>
+        </tr>
+        <tr>
+        <td rowspan="3"><p><code>"StringEquals"</code></p></td>
+        <td><p>Replace both instances of <code>"${visionOneOIDCProviderURL}"</code> with the value used when you created the provider.</p></td>
+        <td><p>For example, if your Trend Vision One region is the United States, use <code>cloudaccounts-us.xdr.trendmicro.com</code></p></td>
+        </tr>
+        <tr>
+        <td><p>For the string <code>"arn:aws:iam::${AWSAccountID}:root"</code>, replace <code>${AWS::AccountID}</code> with your AWS account ID.</p></td>
+        <td><p>The string should follow the format <code>"arn:aws:iam::1xxxxxxxxxx1:root"</code></p></td>
+        </tr>
+        <tr>
+        <td><p>In the string starting with <code>"urn:visionone:identity:..."</code> , replace the following parameters:</p>
+        <ul>
+        <li><p><code>${visionOneRegion}</code>: Your Trend Vision One region (<code>us, eu, au, sg, in,</code> or <code>jp</code>)</p></li>
+        <li><p><code>${visionOneAccountID}</code> Your Trend Vision One business ID. Make sure to replace both instances.</p></li>
+        </ul></td>
+        <td><p>If your Trend Vision One region is the United States, the string looks like <code>"urn:visionone:identity:us:1#####1:account/1#####1"</code></p></td>
+        </tr>
+        </tbody>
+        </table>
+
+    6.  Click **Next**.
+
+    7.  On the **Add permissions** screen, search for the policies you created and select both.
+
+        ![](/images/CAM-AWSManual_Policies=GUID-54c2c4b9-3745-48cb-8e71-9f93ff3f502f.webp)
+
+    8.  Click **Next**.
+
+    9.  On the **Name, review, and create** screen, type `VisionOneRole` for the **Role name**.
+
+    10. Under **Step 3: Add tags**, add the following tags.
+
+        <table>
+        <colgroup>
+        <col style="width: 50%" />
+        <col style="width: 50%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Key</p></th>
+        <th><p>Value</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p><code>VisionOneCloudFormationStackName</code></p></td>
+        <td><p><code>Vision-One-Cloud-Account-Management</code></p></td>
+        </tr>
+        <tr>
+        <td><p><code>VisionOneCloudFormationStackRegion</code></p></td>
+        <td><p>Input the AWS region where you want to deploy the resources. For example, <code>us-east-1</code>.</p></td>
+        </tr>
+        <tr>
+        <td><p><code>VisionOneFeatures</code></p></td>
+        <td><p><code>Base</code></p></td>
+        </tr>
+        </tbody>
+        </table>
+
+        ![](/images/CAM-AWSManual_Tags02=0a0f3e2f-94cf-4c5f-85eb-157feb978fe5.webp)
+
+    11. Click **Create role**.
+
+    12. Once creation completes, click on the role name for the role you created.
+
+    13. In the role details screen, copy the ARN to use with the add account API in a later step.
+
+6.  Connect your AWS account to the Cloud Accounts app using the Add Account API.
+
+    1.  Access the API from the [Automation Center](https://automation.trendmicro.com/xdr/api-beta), or copy the following code to customize.
+
+        ```bash
+        import requests
+        import json
+
+        url_base = 'https://api.xdr.trendmicro.com'
+        url_path = '/beta/xdr/cam/awsAccounts'
+        token = 'API Keys'
+
+        query_params = {}
+        headers = {
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json;charset=utf-8'
+        }
+        body = {
+            'roleArn': 'YOUR_ROLEARN (string)',
+            'name': 'YOUR_NAME (string)',
+            'description': 'YOUR_DESCRIPTION (string)',
+            'features': 'YOUR_FEATURES (array)',
+            'connectedSecurityServices': [
+                {
+                    'name': 'YOUR_NAME2 (string)',
+                    'instanceIds': 'YOUR_INSTANCEIDS (array)'
+                }
+            ]
+        }
+
+        r = requests.post(url_base + url_path, params=query_params, headers=headers, json=body)
+
+        print(r.status_code)
+        for k, v in r.headers.items():
+            print(f'{k}: {v}')
+        print('')
+        if 'application/json' in r.headers.get('Content-Type', '') and len(r.content):
+            print(json.dumps(r.json(), indent=4))
+        else:
+            print(r.text)
+        ```
+
+    2.  Provide the values for the following parameters in the API code.
+
+        <table>
+        <colgroup>
+        <col style="width: 50%" />
+        <col style="width: 50%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Parameter</p></th>
+        <th><p>Value</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p><code>roleArn</code></p></td>
+        <td><p>The ARN for the role you created</p></td>
+        </tr>
+        <tr>
+        <td><p><code>name</code></p></td>
+        <td><p>The name of the account as it appears in the Cloud Accounts app.</p>
+        <p>The name must be unique within the Cloud Accounts app.</p></td>
+        </tr>
+        <tr>
+        <td><p><code>description</code></p></td>
+        <td><p>The description of the account as it appears in the Cloud Accounts app.</p></td>
+        </tr>
+        <tr>
+        <td><p><code>features</code></p></td>
+        <td><p>Leave this value blank.</p></td>
+        </tr>
+        <tr>
+        <td><p><code>token</code></p></td>
+        <td><p>The value displayed when you create an API key in Server &amp; Workload Protection. For more information, see <a href="trend-vision-one-create-api-key-using-console">Create an API Key using the Server &amp; Workload Protection console</a>.</p>
+
+
+        :::note
+
+        The token is shown only once when creating an API key. If you can't confirm it, create a new key for verification.
+
+
+        :::
+
+        </td>
+        </tr>
+        </tbody>
+        </table>
+
+        If you have provisioned at least one Server & Workload Protection instance, you must provide the parameters for `connectedSecurityServices`.
+
+        <table>
+        <colgroup>
+        <col style="width: 50%" />
+        <col style="width: 50%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Parameter</p></th>
+        <th><p>Value</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p><code>name</code></p></td>
+        <td><p><code>workload</code></p></td>
+        </tr>
+        <tr>
+        <td><p><code>instanceIds</code></p></td>
+        <td><p>The <strong>Instance ID</strong> for the Server &amp; Workload Protection instance you want to associate with your connected AWS account</p>
+        <p>You can find the Instance ID in the Trend Vision One console by going to <strong>Service Management → Product Instance</strong>.</p></td>
+        </tr>
+        </tbody>
+        </table>
+
+        :::warning[Important]
+
+        You can only associate one Server & Workload Protection instance with an AWS account connection.
+        :::
+
+    3.  Call the Add Account API.
+
+    The Cloud Accounts app connects to your AWS account. You can verify the connection in the Cloud Accounts app, or by calling the Get Connected Accounts API.
+
+**Related information**
+
+- [Cloud Accounts AWS Policies in JSON Format](cloud-accounts-aws-policies-json.md "The AWS IAM policies required to allow Cloud Accounts to connect to your AWS account provided in JSON code blocks.")
+::::

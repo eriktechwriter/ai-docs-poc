@@ -1,0 +1,61 @@
+---
+slug: trend-vision-one-add-google-cloud-platform-connector
+title: Add a Google Cloud Platform Connector
+---
+# Add a Google Cloud Platform Connector
+
+You can use the *SDK* to add a Google Cloud Platform (GCP) connector and sync virtual machines (VMs) from GCP to Server & Workload Protection. For an overview, see [Create a Google Cloud Platform service account](gcp-service-account.mdx).
+
+*Prerequisite:* You must [prepare a GCP service account](add-google-cloud-platform-account.mdx) for use with Server & Workload Protection.
+
+Use the following procedure to add a GCP connector:
+
+### Procedure {#procedure}
+
+1.  Create a `GcpConnector` object and set the name and service account. The name and service account are required properties. The length of the name cannot exceed 255 characters.
+
+2.  Create a `GcpConnectorsApi` object and use it to create the `GcpConnector` on Server & Workload Protection.
+
+### Next steps {#next-steps}
+
+To see the properties that you can configure, see the Create a Computer operation in the [API Reference](https://automation.trendmicro.com/cloudone/workload-security/).
+
+[View source](https://github.com/deep-security/automation-center-sdk-samples/blob/master/python/src/gcpconnector_examples.py)
+
+```bash
+def create_gcp_connector(api, configuration, api_version, api_exception, name, service_account):
+   api_instance = api.GCPConnectorsApi(api.ApiClient(configuration))
+   gcp_connector = api.GCPConnector()
+   gcp_connector.name = name
+   gcp_connector.service_account = service_account
+
+  api_response = api_instance.create_gcp_connector(gcp_connector, api_version)
+  return api_response
+```
+
+## Submit a Sync Action for a GCP Connector {#submit-a-sync-action-for-a-gcp-connector}
+
+After you create a GCP connector successfully, you can indicate to the GCP connector to trigger a sync.
+
+Use the following high-level procedure to submit a sync action:
+
+### Procedure {#procedure-1}
+
+1.  Create an`Action` object and set the type to "synchronize". The type is a required property.
+
+2.  Create a`GcpConnectorActionsApi` object and use it to submit an action by a specific GCP connector ID to Server & Workload Protection.
+
+### Next steps {#next-steps-1}
+
+[View source](https://github.com/deep-security/automation-center-sdk-samples/blob/master/python/src/gcpconnector_examples.py)
+
+```bash
+def create_gcp_connector_action(api, configuration, api_version, api_exception, gcp_connector_id):
+   api_instance = api.GCPConnectorActionsApi(api.ApiClient(configuration))
+   gcp_connector_action = api.Action()
+   gcp_connector_action.type = "synchronize"
+
+  api_response = api_instance.create_gcp_connector_action(gcp_connector_id, gcp_connector_action, api_version)
+  return api_response
+```
+:::

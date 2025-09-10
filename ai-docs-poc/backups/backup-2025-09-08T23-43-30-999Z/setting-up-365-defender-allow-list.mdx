@@ -1,0 +1,65 @@
+---
+slug: trend-vision-one-setting-up-365-defender-allow-list
+title: Setting up a Microsoft 365 Defender allow list
+last_updated: '2025-09-08'
+ai_context:
+  source_file: setting-up-365-defender-allow-list.md
+  conversion_date: '2025-09-08T23:42:12.621Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Configure the Microsoft Defender for Office 365 allow list settings to allow Phishing Simulation Assessment to send phishing emails to the employees in your organization.
+
+### Procedure {#procedure}
+
+1.  Record the Phishing Simulation Assessment sending domains and IP addresses.
+
+    1.  On the Trend Vision One console, go to **Assessment → Cyber Risk Assessment**.
+
+    2.  Under **Phishing Simulation Assessment**, click **Start Assessment** and proceed to **Step 3 Delivery**.
+
+    3.  Under **Allow List Settings**, click **Settings** to view and copy the Phishing Simulation Assessment sending domains and IP addresses.
+
+    :::warning[Important]
+
+    The sending IP addresses change over time. Check the list before launching a training campaign or phishing simulation.
+    :::
+
+2.  Configure your Microsoft Defender for Office 365 phishing simulation settings.
+
+    :::warning[Important]
+
+    The following instructions were valid as of November 1, 2023. For further help, refer to the Microsoft 365 Defender documentation.
+    :::
+
+    1.  Sign in to the Microsoft 365 Defender portal using an administrator account.
+
+    2.  In the **Rules** section of the Microsoft 365 Defender portal, go to **Email & Collaboration → Policies & Rules → Threat policies → Advanced delivery**.
+
+    3.  Click the **Phishing simulation** tab.
+
+    4.  Configure your phishing simulations.
+
+        - If you have not previously configured a phishing simulation, click **Add**.
+
+        - If you have already configured a phishing simulation, click **Edit**.
+
+    5.  In the **Add third party phishing simulations** screen, enter your sending domains and sending IP addresses in the respective fields.
+
+    6.  Click **Add**.
+
+    7.  Click **Close**.
+
+    :::warning[Important]
+
+    If your organization is still unable to receive emails from Phishing Simulation Assessment, learn how to [troubleshoot the Microsoft Defender for Office 365 allow list](ts-defender-office-365-allow-list.mdx).
+    :::
+
+    You have configured Microsoft 365 Defender to allow employees in your organization to receive phishing simulation emails from Phishing Simulation Assessment.
+
+**Related information**
+
+- [Troubleshooting the Microsoft Defender for Office 365 Allow List](ts-defender-office-365-allow-list.md "Troubleshoot the allow list settings for Microsoft Defender for Office 365 to allow Phishing Simulation Assessment to successfully send phishing simulation emails to the employees in your organization.")
+:::

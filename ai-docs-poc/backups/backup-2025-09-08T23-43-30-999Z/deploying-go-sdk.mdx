@@ -1,0 +1,120 @@
+---
+slug: trend-vision-one-deploying-go-sdk
+title: Deploy with Go SDK
+last_updated: '2025-09-08'
+ai_context:
+  source_file: deploying-go-sdk.md
+  conversion_date: '2025-09-08T23:42:20.608Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Use the Trend Vision One™ File Security Go SDK to scan files for malware.
+
+The Go SDK empowers you to craft applications that seamlessly integrate with Trend Vision One™ File Security. With this SDK you can perform a thorough scan of data and artifacts within your applications to identify potential malicious elements.
+
+Follow the steps below to set up your development environment and configure your project, laying the foundation to effectively use File Security.
+
+**Related information**
+
+- [Use the SDK](using-sdk.md "How to use the Go SDK for Trend Vision One File Security")
+- [Golang API reference](pml-file-sec-sdk.md "An API reference for the Go SDK for Trend Vision One File Security")
+
+## Prerequisites {#prerequisites}
+
+Before installing the SDK, ensure you have the following:
+
+- [Go version 1.19 or later](https://go.dev/doc/install)
+
+- Trend Vision One account associated with your region
+
+- [Configuring custom user roles](custom-user-roles-trend-vision-one.mdx) with File Security permissions
+
+## Creating an API key {#creating-an-api-key}
+
+The File Security SDK requires a valid API key provided as a parameter to the SDK client object. Trend Vision One API keys are associated with different regions. Refer to [the region flag below](deploying-python-sdk.mdx) to obtain a better understanding of the valid regions associated with the API key.
+
+### Procedure {#procedure}
+
+1.  Go to **Administrations → API Keys**.
+
+2.  Click **Add API Key**.
+
+3.  Configure the API key to use the role with the **Run file scan via SDK** permission.
+
+4.  Verify that the API key is associated with the region you plan to use.
+
+5.  Set an expiry time for the API key and make a record of it for future reference.
+
+## Installing the SDK {#installing-the-sdk}
+
+### Procedure {#procedure-1}
+
+1.  Open your Go project or create a new one.
+
+2.  Add the below import statement to import the SDK into your project.
+
+    ``` codeblock
+    import (
+        "dsgithub.trendmicro.com/cloud-one-amaas/tm-v1-fs-golang-sdk/tree/main/public/examples/client"
+        // Other imports...
+    )
+    ```
+
+## Initializing the SDK {#initializing-the-sdk}
+
+Before using the SDK to interact with File Security, you need to initialize it with your API key or token and specify the region you want to connect to. Replace `YOUR_API_KEY_OR_TOKEN` and `YOUR_REGION` with your actual API key or token and the corresponding region.
+
+**Parameters**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead style="text-align: left;">
+<tr>
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody style="text-align: left;">
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>region</p></td>
+<td style="text-align: left; vertical-align: top;"><p>The region for the API key you obtained. Value provided must be one of the Trend Vision One regions:</p>
+<ul>
+<li><code>ap-northeast-1</code></li>
+<li><code>ap-south-1</code></li>
+<li><code>ap-southeast-1</code></li>
+<li><code>ap-southeast-2</code></li>
+<li><code>eu-central-1</code></li>
+<li><code>us-east-1</code></li>
+</ul></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>apikey</p></td>
+<td style="text-align: left; vertical-align: top;"><p>Your Trend Vision One API key</p></td>
+</tr>
+</tbody>
+</table>
+
+### Procedure {#procedure-2}
+
+- Use the example below to initialize the SDK.
+
+  ``` codeblock
+  apiKey := "YOUR_API_KEY_OR_TOKEN"
+  region := "YOUR_REGION"
+
+  client, err := client.NewClient(apiKey, region)
+  if err != nil {
+      // Handle initialization error
+      panic(err)
+  }
+  ```
+
+### Next steps {#next-steps}
+
+Find out [how to use the SDK](using-sdk.mdx).
+:::

@@ -1,0 +1,143 @@
+---
+slug: trend-vision-one-adding-tenancy-restriction
+title: Adding a tenancy restriction
+last_updated: '2025-09-08'
+ai_context:
+  source_file: adding-tenancy-restriction.md
+  conversion_date: '2025-09-08T23:42:25.662Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Configure values for the HTTP/HTTPS header fields that you use to control access to a supported cloud app.
+
+### Procedure {#procedure}
+
+1.  On the **Secure Access Resources** screen, click the **Tenancy Restrictions** tab and then click **Add**.
+
+    The **Tenancy Restriction Rule** screen appears.
+
+2.  Select a cloud app from the dropdown list.
+
+3.  Specify a unique name and a description for the rule.
+
+4.  Confirm or modify the applicable domains for the selected cloud app.
+
+5.  Specify values for each header field to allow the cloud app to implement the tenancy restriction.
+
+    <table>
+    <colgroup>
+    <col style="width: 20%" />
+    <col style="width: 20%" />
+    <col style="width: 60%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Cloud app</p></th>
+    <th><p>Header Field</p></th>
+    <th><p>Value description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td rowspan="2"><p>Microsoft Office 365</p></td>
+    <td><p><code>Restrict-Access-To-Tenants</code></p></td>
+    <td><p>Name or ID of at least one tenant that you want to allow users to access</p>
+    <p>Example: <code>mytenant1.com,mytenant2.com,&lt;my_tenant_id&gt;</code></p></td>
+    </tr>
+    <tr>
+    <td><p><code>Restrict-Access-Context</code></p></td>
+    <td><p>Single directory ID of the tenant that sets tenant restrictions</p>
+    <p>Example: <code>&lt;my_tenant_id&gt;</code></p></td>
+    </tr>
+    <tr>
+    <td><p>Google Workspace</p></td>
+    <td><p><code>X-GoogApps-Allowed-Domains</code></p></td>
+    <td><p>Name of at least one domain that you registered with Google Workspace and want to allow users to access</p>
+    <p>Example: <code>mydomain1.com,mydomain2.com</code></p></td>
+    </tr>
+    <tr>
+    <td><p>Dropbox</p></td>
+    <td><p><code>X-Dropbox-allowed-Team-Ids</code></p></td>
+    <td><p>ID of at least one Dropbox team that you want to allow users to access</p>
+    <p>Example: <code>&lt;dropbox_team_id&gt;,&lt;dropbox_team_id&gt;</code></p></td>
+    </tr>
+    <tr>
+    <td><p>YouTube</p></td>
+    <td><p><code>x-Channel-Ids</code></p></td>
+    <td><p>Id of at least one channel to which you want to allow users to access.</p>
+    <p>Example: <code>&lt;Youtube_Channel_Id&gt;,&lt;Youtube_Channel_Id&gt;</code></p>
+    
+
+    :::note
+    
+    Users can access only those channels that are listed in the Header Field.
+    
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>Microsoft consumer apps</p></td>
+    <td><p><code>sec-Restrict-Tenant-Access-Policy</code></p></td>
+    <td><p>Fixed value controlling access to Microsoft consumer apps such as Hotmail and OneDrive</p>
+    <p>Required value: <code>restrict-msa</code></p>
+    
+
+    :::note
+    
+    Tenancy restrictions for Microsoft consumer apps require the applicable domain <code>login.live.com</code>.
+    
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>Other cloud app</p></td>
+    <td><p><code>&lt;header_field_name_of_the_cloud_app&gt;</code></p></td>
+    <td><ul>
+    <li><p>Specify a header field and configure an operation on the field.</p>
+    <ul>
+    <li><p><strong>Add</strong>: Specify a value in the string type.</p>
+    <p>If the specified field exists, the Internet Access Gateway replaces the field value with the specified value. If it does not exist, the Internet Access Gateway adds the field to the header.</p></li>
+    <li><p><strong>Delete</strong>: If the specified field exists, the Internet Access Gateway deletes the field from the header. If it does not exist, the Internet Access Gateway ignores the action.</p></li>
+    </ul>
+    
+
+    :::note
+    
+    <p>Some HTTP/HTTPS header fields are reserved and cannot be modified, such as <code>Host</code>, <code>Path</code>, and <code>Cookie</code>.</p>
+    
+
+    :::
+
+    </li>
+    <li><p>To add more header fields and set an action for each header field, click <strong>+Add</strong>.</p>
+    
+
+    :::note
+    
+    <p>You can specify a maximum of 10 header fields.</p>
+    
+
+    :::
+
+    </li>
+    <li><p>To delete an existing header setting, click <img src="./images/trash_icon=GUID-47cf6867-6315-438e-8670-86ff36f22a28.webp" />.</p></li>
+    </ul></td>
+    </tr>
+    </tbody>
+    </table>
+
+    :::note
+
+    - For more information about header field settings for tenancy restriction, see the documentation of each cloud app provider.
+
+    - For each header field with multiple values, you can specify a maximum of 1024 characters.
+    :::
+
+6.  Click **Save**.
+:::

@@ -1,0 +1,121 @@
+---
+slug: trend-vision-one-integration-splunk-addon
+title: Splunk XDR integration
+last_updated: '2025-09-08'
+ai_context:
+  source_file: integration-splunk-addon.md
+  conversion_date: '2025-09-08T23:42:17.088Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+View all your XDR data directly on the Splunk dashboard.
+
+:::note
+
+- The following instructions are based on the Splunk Server Enterprise 9.0.0, 9.1.0, and 9.2.0 releases. The Splunk settings might be different if you are using a different version of Splunk. Refer to the Splunk documentation for specific information related to your version.
+
+- If you are installing the Splunk app as an upgrade, the app automatically applies any valid settings from the old version and disables the Splunk *Data inputs* settings.
+:::
+
+### Procedure {#procedure}
+
+1.  On the Trend Vision One console, obtain the **Endpoint URL** and the **Authentication token**.
+
+    1.  Go to **Workflow and Automation → Third-Party Integration**.
+
+    2.  Select **Splunk XDR**.
+
+    3.  Use the copy icons (![](/images/copyicon=GUID-BD854E6D-5EB9-4181-BE68-D5F743237995=1=en-us=Low.webp)) to obtain the following information:
+
+        - **Endpoint URL**
+
+        - **Authentication token**
+
+    4.  (Optional) If the authentication token is expired or does not exist, click **Generate** and enter the required information in the **API Key Settings** window to add a new token.
+
+2.  Search for and install the `Trend Vision One for Splunk (XDR)` app from [Splunkbase](https://splunkbase.splunk.com).
+
+3.  Once the app is installed, go to **Apps → Trend Vision One for Splunk (XDR)** on the Spunk console.
+
+    <figure>
+    <img src="./images/SplunkConsoleAppsTrendMicroVisionOneEntry=GUID-C781FCFF-0A9B-42BA-AAFE-5FA84786EDA7=1=en-us=Low.webp" />
+    </figure>
+
+4.  Configure the account settings.
+
+    1.  Go to **Configuration → Accounts**.
+
+    2.  Use the edit icon (![](/images/SplunkConsoleEdit=1515285c-3d50-4b30-9e72-7a6be45e399d.webp)) next to each account to modify its settings.
+
+    3.  Paste the **Endpoint URL** and **Authentication token** obtained from the Trend Vision One console. If you have multiple authentication tokens, separate them with semicolons.
+
+    4.  Click **Update**.
+
+    5.  (Optional) Go to **Configuration → Proxy** and enter the following information as necessary:
+
+        - **HTTPS Proxy Address**
+
+        - **Retry Interval**
+
+    6.  Click **Save**.
+
+5.  (Optional) Add a new account.
+
+    1.  Click **Add**.
+
+    2.  Enter the **Account name** and paste the **Endpoint URL** and **Authentication token** from the Trend Vision One console.
+
+    3.  Click **Add**.
+
+6.  Configure the data inputs used by Splunk.
+
+    1.  Go to **Inputs** in the menu bar.
+
+    2.  Under **Status**, use the toggle to enable or disable each data input.
+
+    3.  Use the edit icon (![](/images/SplunkConsoleEdit=1515285c-3d50-4b30-9e72-7a6be45e399d.webp)) to configure settings for the data input.
+
+    4.  Enter the following information for the data input:
+
+        - **Name**
+
+        - **Interval**
+
+        - **Index**
+
+        - **Global account**
+
+    5.  Click **Update**.
+
+7.  (Optional) Add a new data input.
+
+    1.  Click **Create New Input**.
+
+    2.  Select a data input from the following:
+
+        - Trend Vision One Workbench Alerts
+
+        - Trend Vision One Observed Attack Techniques
+
+        - Trend Vision One Audit Logs
+
+        - Trend Vision One Detection
+
+    3.  Enter the **Name**, **Interval**, and **Index**, and select the **Global account** for the data input.
+
+        :::note
+
+        The Observed Attack Techniques data input type additionally requires you to select a **Risk level**, and synchronizes all events with a risk level equal to or higher than the level specified. Selecting **undefined**, **info**, or **low** might cause a high volume of data transfer.
+        :::
+
+    4.  Click **Add**.
+
+    After successfully installing the Splunk app, Splunk begins collecting XDR data from Trend Vision One. Splunk can only collect XDR data generated after connecting to Trend Vision One. You might need to allow some time before new XDR data starts to appear.
+
+    :::note
+
+    The **Detection** screen in the Splunk console provides only a limited set of detection data fields from XDR data. To access more detailed detection information, go to the **Search** screen and run a query using supported Splunk syntax, such as `source="trendmicro_v1_detection"|table _time,_raw`. This allows you to view the full detections data available from Trend Vision One.
+    :::
+::::

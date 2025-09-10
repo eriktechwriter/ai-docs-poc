@@ -1,0 +1,73 @@
+---
+slug: trend-vision-one-allow-traffic-isolated-endpoints
+title: Allow network traffic on isolated endpoints
+last_updated: '2025-09-08'
+ai_context:
+  source_file: allow-traffic-isolated-endpoints.md
+  conversion_date: '2025-09-08T23:42:25.262Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure exceptions that allow network traffic to and from isolated endpoints.
+
+Isolating endpoints is a proven tool for mitigating security incidents. However, network isolation sometimes hinders incident response, as trusted channels in your environment are also blocked. The Response Management app allows you to specify inbound and outbound network traffic exceptions for specific IPv4 addresses.
+
+:::warning[Important]
+
+You can only allow network traffic for isolated Windows or macOS endpoints running Endpoint Sensor or the Apex One Security Agent.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Workflow and Automation → Response Management** and click the **Settings** tab.
+
+2.  Enable **Allow network traffic on isolated endpoints** and click **Edit settings**.
+
+    :::note
+
+    If you see **View settings**, you lack the necessary permissions to edit the settings.
+    :::
+
+3.  Add a network traffic exception.
+
+    1.  If you need to add a new inbound or outbound exception, click **Add Exception** under the **Inbound Network Traffic** or **Outbound Network Traffic** sections, respectively.
+
+        :::note
+
+        You can specify up to 50 inbound and 50 outbound exceptions.
+        :::
+
+    2.  In the **Protocol** drop-down list, select which protocol the exception allows.
+
+    3.  In the **IP address** field, enter the IPv4 address of the endpoint.
+
+        :::note
+
+        Only standard IPv4 addresses other than 0.0.0.0 are allowed.
+        :::
+
+    4.  In the **Port** field, specify on which ports to allow network traffic.
+
+        - Select **Any** to allow network traffic on any port.
+
+        - Select **Specific** and enter the ports on which to allow network traffic.
+
+          Use commas (,) to separate multiple entries.
+
+4.  In the **Status** field, choose whether to activate the exceptions after saving.
+
+5.  Click **Save**.
+
+    :::note
+
+    - You must specify at least one inbound or outbound exception to save your settings.
+
+    - The timing of your settings propagating to endpoints depends on the agent.
+
+      - Endpoint Sensor: Exceptions are updated immediately after saving your settings.
+
+      - Apex One Security Agent: Exceptions are updated when the endpoint is isolated.
+    :::
+::::

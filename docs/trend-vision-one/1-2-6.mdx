@@ -1,0 +1,41 @@
+---
+slug: trend-vision-one-1-2-6
+title: >-
+  1.2.6 - Ensure that the –authorization-mode argument is not set to AlwaysAllow
+  (Automated)
+---
+# 1.2.6 - Ensure that the –authorization-mode argument is not set to AlwaysAllow (Automated)
+
+Profile applicability: Level 1 - Master Node
+
+Do not always authorize all requests.
+
+The API Server, can be configured to allow all requests. This mode should not be used on any production cluster.
+
+:::note
+
+By default, `AlwaysAllow` is not enabled.
+:::
+
+### Impact {#impact}
+
+Only authorized requests will be served.
+
+### Audit {#audit}
+
+Run the following command on the Control Plane node:
+
+```bash
+ps -ef | grep kube-apiserver
+```
+
+Verify that the `--authorization-mode` argument exists and is not set to `AlwaysAllow`.
+
+### Remediation {#remediation}
+
+Edit the API server pod specification file `/etc/kubernetes/manifests/kube-apiserver.yaml` on the Control Plane node and set the `--authorization-mode` parameter to values other than `AlwaysAllow`. Example below:
+
+```bash
+--authorization-mode=RBAC
+```
+::::

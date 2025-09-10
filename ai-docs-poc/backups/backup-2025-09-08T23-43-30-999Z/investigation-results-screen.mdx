@@ -1,0 +1,137 @@
+---
+slug: trend-vision-one-investigation-results-screen
+title: Investigation Results
+last_updated: '2025-09-08'
+ai_context:
+  source_file: investigation-results-screen.md
+  conversion_date: '2025-09-08T23:42:16.719Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Use the **Investigation Results** screen to get a quick overview of the investigation results. This screen is accessible from the following locations:
+
+- On the **One Time Investigation** tab, click the investigation **Name**.
+
+- On the **Scheduled Investigation** tab, click the investigation **Name**, and then click a value in the **Matched Endpoints** column.
+
+This screen displays the following information:
+
+- A doughnut chart that shows the number of total endpoints already classified as **Matched, No Match, Queued** or **Cancelled**
+
+  A summary of the totals is given on the left of the chart. This summary updates in real time as the investigation progresses.
+
+  <table>
+  <colgroup>
+  <col style="width: 12%" />
+  <col style="width: 16%" />
+  <col style="width: 72%" />
+  </colgroup>
+  <thead>
+  <tr>
+  <th style="text-align: center;"><p>Icon</p></th>
+  <th><p>Label</p></th>
+  <th><p>Description</p></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td style="text-align: center;"><p><img src="./images/circle-red=GUID-17CE6D87-9463-4085-A09D-C0BF47120193=1=en-us=Low.webp" /></p></td>
+  <td><p>Matched</p></td>
+  <td><p>Number of investigated endpoints containing a matching object</p></td>
+  </tr>
+  <tr>
+  <td style="text-align: center;"><p><img src="./images/circle-green=GUID-17A7A4AC-2C6E-4F36-99F9-DDBE1F95A843=1=en-us=Low.webp" /></p></td>
+  <td><p>No match</p></td>
+  <td><p>Number of investigated endpoints that did not have a matching object</p></td>
+  </tr>
+  <tr>
+  <td style="text-align: center;"><p><img src="./images/circle-blue-120=GUID-571BBFC6-8DAE-47E5-A070-333B17FBCDBC=1=en-us=Low.webp" /></p></td>
+  <td><p>Queued</p></td>
+  <td><p>Number of endpoints still to be investigated.</p>
+  <p>An investigation is complete once there are no more queued endpoints to investigate.</p></td>
+  </tr>
+  <tr>
+  <td style="text-align: center;"><p><img src="./images/circle-grey=GUID-F2F8864C-5529-4A9C-B095-1C17A2CC281C=1=en-us=Low.webp" /></p></td>
+  <td><p>Cancelled</p></td>
+  <td><p>Number of endpoints not investigated.</p>
+  <p>This may be due to user cancellation, system error, or endpoint timeout.</p></td>
+  </tr>
+  </tbody>
+  </table>
+
+- Parameters used when the investigation was created.
+
+  Click **Criteria** to review the search conditions used by the investigation.
+
+- A table of results which provides more details about each endpoint included in the investigation.
+
+  This table groups the endpoints into tabs based on the investigation status. This table displays the following details:
+
+  <table>
+  <colgroup>
+  <col style="width: 22%" />
+  <col style="width: 78%" />
+  </colgroup>
+  <thead>
+  <tr>
+  <th><p>Column Name</p></th>
+  <th><p>Description</p></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td><p>Asterisk (*)</p></td>
+  <td><p>Indicates an endpoint tagged as "Important"</p></td>
+  </tr>
+  <tr>
+  <td><p>Endpoint</p></td>
+  <td><p>Name of the endpoint containing the matching object</p>
+  <p>Click the <strong>Endpoint</strong> name to view more details about the endpoint.</p></td>
+  </tr>
+  <tr>
+  <td><p>IP Address</p></td>
+  <td><p>IP address of the endpoint containing the matching object</p>
+  <p>The IP address is assigned by the network.</p></td>
+  </tr>
+  <tr>
+  <td><p>Operating System</p></td>
+  <td><p>Operating system used by the endpoint</p></td>
+  </tr>
+  <tr>
+  <td><p>User</p></td>
+  <td><p>User name of the user logged in when the Endpoint Sensor agent first logged the matched object</p>
+  <p>Click the user name to view more details about the user.</p></td>
+  </tr>
+  <tr>
+  <td><p>Match Details</p></td>
+  <td><p>Click to view details of the match.</p></td>
+  </tr>
+  <tr>
+  <td><p>Root Cause Analysis</p></td>
+  <td><p>Click to view the <strong>Root Cause Analysis</strong> screen.</p>
+  
+
+  :::note
+  
+  <p>Root Cause Analysis results are only available for YARA rules.</p>
+  <p>Because Live Investigations run on the current system state, some files and registry entries may be locked or in use during this period. Root Cause Analysis results are not available for investigations using OpenIOC rules or registry search.</p>
+  
+
+  :::
+
+  </td>
+  </tr>
+  <tr>
+  <td><p>Elapsed</p></td>
+  <td><p>Time elapsed since the investigation started.</p></td>
+  </tr>
+  </tbody>
+  </table>
+
+**Related information**
+
+- [Analysis Chains](analysis-chains.mdx)
+- [Object Details](object-details.mdx)
+:::

@@ -1,0 +1,122 @@
+---
+slug: trend-vision-one-notifications-workbench-alerts
+title: Configuring notifications for new Workbench alert
+last_updated: '2025-09-08'
+ai_context:
+  source_file: notifications-workbench-alerts.md
+  conversion_date: '2025-09-08T23:42:14.996Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Send Trend Vision One notifications about new workbench alerts by configuring email, webhook, and mobile app account lists.
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Administration → Notifications**.
+
+2.  Click **New Workbench alert** to open its settings panel.
+
+    The toggle defaults to be opened on the panel.
+
+3.  To send notifications to users by email, on the **Email** tab configure the **Recipients** list.
+
+    1.  Specify email addresses or select from the list of Trend Vision One accounts.
+
+        :::note
+
+        Recently created Trend Vision One accounts may not immediately appear on the list.
+        :::
+
+    2.  Click **Send Test Message** to send a test notification. To send the test message only to emails you are adding to the recipient list, select **Send only to newly added recipients**. To send the test message to all recipients, select **Send to all recipients**.
+
+        :::note
+
+        You must wait a few minutes between sending test messages.
+        :::
+
+    3.  To send notifications to recipient groups based on Critical, High, Medium, or Low alert severity, enable **Notify recipients based on alert severity**. Click **Create Group**, configure the **Recipient Group Settings**, and then click **Save**.
+
+        :::note
+
+        The **Recipient** list must contain at least one recipient before you create a group.
+
+        Recipients not assigned to groups automatically receive all notifications.
+        :::
+
+    4.  To send notifications that include detailed scope information, enable **Expanded impact scope details**.
+
+    5.  To send notifications that include highlighted objects associated with the alert, enable **Include highlighted objects**. The notification only displays the first 10 highlighted objects, ordered by alert severity.
+
+    6.  To prevent a large volume of low severity alert notifications, enable **Aggregate low severity alert notifications hourly**.
+
+        For low severity alerts, notifications are aggregated hourly due to their high volume. For alerts of higher severity, an individual notification is sent for each alert as it is triggered.
+
+    :::warning[Important]
+
+    Expanded details and highlighted objects may contain sensitive information about your environment. Add only emails and accounts with appropriate permissions to the recipient list.
+    :::
+
+4.  To send notifications to webhook channels, on the **Webhook** tab configure the **Webhooks** list.
+
+    1.  To send notifications to all selected webhook channels, select **Send all webhook notifications**. Then select webhooks from the managed **Webhook List**.
+
+        :::note
+
+        If your webhook is not listed, create a new webhook connection by [managing webhooks](managing-webhooks.mdx) in the **Webhook List**.
+        :::
+
+    2.  To send notifications to webhook groups based on Critical, High, Medium, or Low alert severity, select **Send webhook notifications based on alert severity**. Click **Create Group**, configure the **Webhook Connection** settings, and then click **Save**.
+
+        :::note
+
+        The **Webhooks** list must contain at least one webhook before you create a group.
+
+        Webhooks not assigned to groups automatically receive all notifications.
+        :::
+
+    3.  To send notifications that include detailed scope information, enable **Expanded impact scope details**.
+
+    4.  To send notifications that include highlighted objects associated with the alert, enable **Include highlighted objects**. The notification only displays the first 10 highlighted objects, ordered by alert severity.
+
+    :::warning[Important]
+
+    Expanded details and highlighted objects may contain sensitive information about your environment. Add only webhook channels with appropriate permissions to the **Webhooks** list.
+    :::
+
+5.  To send notifications to users by the Trend Vision One mobile app, on the **Mobile** tab configure the **Accounts** list.
+
+    1.  Specify the Trend Vision One accounts you want to send notifications to using the mobile app.
+
+        :::note
+
+        Recently created Trend Vision One accounts may not immediately appear on the list.
+        :::
+
+    2.  Click **Send Mobile App Installation Link** to send users an installation link for the mobile app. To send the installation link only to the accounts you are adding to the **Accounts** list, select **Send only to newly added accounts**. To send the installation link to all accounts, select **Send to all accounts**.
+
+    3.  To send notifications to account groups based on Critical, High, Medium, or Low alert severity, enable **Notify accounts based on alert severity**. Click **Create Group**, configure the **Account Group Settings**, and then click **Save**.
+
+        :::note
+
+        The **Accounts** list must contain at least one account before you create a group.
+
+        Accounts not assigned to groups automatically receive all notifications.
+        :::
+
+    4.  To send notifications that include detailed scope information, enable **Expanded impact scope details**.
+
+    5.  To send notifications that include highlighted objects associated with the alert, enable **Include highlighted objects**. The notification only displays the first 10 highlighted objects, ordered by alert severity.
+
+    6.  To prevent a large volume of low severity alert notifications, enable **Aggregate low severity alert notifications hourly**.
+
+        For low severity alerts, notifications are aggregated hourly due to their high volume. For alerts of higher severity, an individual notification is sent for each alert as it is triggered.
+
+    :::warning[Important]
+
+    Expanded details and highlighted objects may contain sensitive information about your environment. Add only accounts with appropriate permissions to the **Accounts** list.
+    :::
+
+6.  Click **Save**.
+:::

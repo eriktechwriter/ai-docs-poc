@@ -1,0 +1,46 @@
+---
+slug: trend-vision-one-configuring-bec-criteria
+title: Configuring Business Email Compromise criteria
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configuring-bec-criteria.md
+  conversion_date: '2025-09-08T23:42:22.561Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+The BEC criteria are configured to detect and take actions on BEC email messages.
+
+### Procedure {#procedure}
+
+1.  Select **Business Email Compromise (BEC)**.
+
+2.  Click **High Profile Users** to add high profile users for detection and classification.
+
+    :::note
+
+    Add high profile users as the global BEC settings so that Cloud Email Gateway Protection will check incoming email messages claimed to be sent from those users and apply fraud checking criteria to identify forged messages.
+
+    For details about high profile users, see [Configuring high profile users](configure-high-profile-users-email.mdx).
+    :::
+
+3.  Choose the type of email messages to apply this policy rule to:
+
+    - **Detected as BEC attacks by Antispam Engine**: apply this policy rule to email messages that are verified to be BEC attacks by the Antispam Engine.
+
+    - **Detected as BEC attacks by writing style analysis**: apply this policy rule to email messages that are verified to be BEC attacks by writing style analysis.
+
+      Trend Micro's Writing Style DNA technology scans email messages of a desired individual to learn the particular writing style and generate a writing style model. The writing style model is a set of properties or features explored with automated methods that uniquely identify the way an individual composes email messages. By leveraging the writing style model trained in Cloud App Security for high profile users, Cloud Email Gateway Protection compares the incoming email messages claimed to be sent from the individual with the model to identify BEC attacks.
+
+      To ensure that the writing style model of a high profile user is available for analysis, Cloud Email Gateway Protection runs a scheduled task every five minutes to synchronize the status of writing style models trained in Cloud App Security.
+
+      :::note
+
+      In this release, writing style analysis applies to email messages written in English, Japanese, German, French, Spanish, Swedish, Danish, Norwegian, Finnish, and Brazilian Portuguese.
+
+      To enable writing style analysis, the license for Cloud App Security is required.
+      :::
+
+    - **BEC attacks suspected by Antispam Engine**: apply this policy rule to email messages that are suspected to be BEC attacks by the Antispam Engine.
+:::

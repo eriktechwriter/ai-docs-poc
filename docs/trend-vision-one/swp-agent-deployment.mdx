@@ -1,0 +1,46 @@
+---
+slug: trend-vision-one-swp-agent-deployment
+title: Server & Workload Protection agent deployment
+---
+# Server & Workload Protection agent deployment
+
+Configure your Server & Workload Protection agent installation packages to ensure that your newly-deployed agents:
+
+- Report to the correct Server & Workload Protection Manager
+
+- Automatically apply the correct default settings
+
+:::note
+
+Trend Micro recommends that you configure a [default policy](create-policies.mdx) and use the [agent-initiated activation](agent-initiated-activation.mdx) feature before deploying agent packages to simplify the connection process.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Endpoint Security → Endpoint Inventory**.
+
+2.  Click **Agent Installer**.
+
+3.  Select your **Operating system**.
+
+    - **Windows**
+
+    - **Linux**
+
+    :::note
+
+    Server & Workload Protection only supports 64-bit architectures.
+    :::
+
+4.  Specify the package type.
+
+    - **Auto detect**: The installation package is light-weight, and downloads and installs additional components after detecting the operating system type (requires more network bandwidth)
+
+    - **Full package**: The installation package contains all necessary components and automatically installs the correct components after detecting the operating system version
+
+5.  Select the **Server & Workload Protection Manager** that the newly-deployed agents report to.
+
+6.  Click the **Download installer** icon (![](/images/downloadInstaller=20230617123737.webp)).
+
+7.  Run the installation package on your target endpoints.
+::::

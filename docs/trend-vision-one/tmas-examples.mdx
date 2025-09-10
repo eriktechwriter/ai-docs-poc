@@ -1,0 +1,146 @@
+---
+slug: trend-vision-one-tmas-examples
+title: Trend Micro Artifact Scanner (TMAS) Examples
+---
+# Trend Micro Artifact Scanner (TMAS) Examples
+
+:::::- Scanning an artifact for vulnerabilities, malware, and secrets
+- Using the region flag to switch to a different region
+- Scanning an image in a remote registry
+- Enabling info logs
+- Saving the SBOM used for vulnerability analysis to disk
+- Using the distro flag to specify Operating System (OS) distribution details for open-source RPM file artifacts
+- Using the platform flag to specify platform or architecture of container images
+- Overriding vulnerability and secret findings
+- Using the evaluatePolicy flag to evaluate scan results against Code Security policies
+
+### Scanning an artifact for vulnerabilities, malware, and secrets {#scanning-an-artifact-for-vulnerabilities-malware-and-secrets}
+
+```bash
+tmas scan <artifact to scan> -V -M -S
+```
+
+or
+
+```bash
+tmas scan <artifact to scan> -VMS
+```
+
+or
+
+```bash
+tmas scan <artifact to scan> --vulnerabilities --malware --secrets
+```
+
+:::note
+
+When you use the `scan` command, enable at least one scanner.
+:::
+
+### Using the region flag to switch to a different region {#using-the-region-flag-to-switch-to-a-different-region}
+
+```bash
+tmas scan docker:yourrepo/yourimage:tag -VMS --region=ap-southeast-2
+```
+
+:::note
+
+A mismatch between the TMAS API key and the region used to scan causes the scan command to fail with a 403 forbidden error or APIKeyPlatformMismatchError.
+:::
+
+### Scanning an image in a remote registry {#scanning-an-image-in-a-remote-registry}
+
+```bash
+tmas scan registry:yourrepo/yourimage:tag -VMS
+```
+
+Using a registry as an artifact source does not require a container runtime. In addition, scan results from registry artifact sources can be used for policy evaluations in [Container Security](http://admin3.trendmicro.com/en-us/enterprise/trend-vision-one/cloudsecurityoperati/about-container-secu/containerprotection/configure-the-trend-/tmas-integrate.aspx) and Code Security.
+
+Scanning images from private registries requires that you log in to the registry using tools such as `docker login` before attempting the scan. TMAS follows Docker's authentication behavior in order to use Docker's preconfigured credentials.
+
+:::note
+
+When running malware scans on images from private registries and using Docker credsStore (`.docker/config.json`), add the `credential-helpers=<your credsStore>` configuration in the `.config/containers/registries.conf` file. For example, if Docker credsStore is `desktop`, add `credential-helpers = ["desktop"]`. When running malware scans on images from private registries on Docker Hub, ensure you log in with the server name `https://docker.io` or` docker.io`. For example, `docker login docker.io`.
+:::
+
+### Enabling info logs {#enabling-info-logs}
+
+```bash
+tmas scan docker:yourrepo/yourimage:tag -VMS -v
+```
+
+### Saving the SBOM used for vulnerability analysis to disk {#saving-the-sbom-used-for-vulnerability-analysis-to-disk}
+
+```bash
+tmas scan docker:yourrepo/yourimage:tag -VMS --saveSBOM
+```
+
+When the `--saveSBOM` flag is enabled, the generated SBOM is saved in the local directory before it is sent to Trend Vision One for scanning.
+
+### Using the distro flag to specify Operating System (OS) distribution details for open-source RPM file artifacts {#using-the-distro-flag-to-specify-operating-system-os-distribution-details-for-open-source-rpm-file-artifacts}
+
+The `--distro` vulnerabilities scanner flag lets you specify OS distribution details for file and directory artifacts that do not inherently contain OS information, such as open-source RPM files.
+
+Specify the exact OS distribution where you plan to install the package to ensure accurate open-source vulnerability matching.
+
+```bash
+tmas scan file:sample-file.rpm -V --distro ol:8.4
+```
+
+The `--distro` flag is intended for scanning unmodified, open-source RPM files prior to their installation. This flag can only be used when scanning directory and file artifacts for vulnerabilities.
+
+When scanning the root directory of a file-system (e.g., `tmas scan dir:/ -V`), TMAS automatically detects the OS distribution information based on the contents of the `/etc/os-release` file. Any value specified using the `--distro` flag is ignored, and a warning message appears.
+
+### Using the platform flag to specify platform or architecture of container images {#using-the-platform-flag-to-specify-platform-or-architecture-of-container-images}
+
+This flag allows you to specify which platform or architecture to use when scanning multiple-architecture container images:
+
+```bash
+tmas scan registry:yourrepo/yourimage:tag@sha256:<multiple-architecture-digest> -VMS --platform=arm64
+```
+
+Attempting to specify an architecture for multi-arch registry images without support for that architecture will result in an error. When scanning architecture-specific registry images, the platform flag is ignored.
+
+```bash
+tmas scan docker:yourrepo/yourimage:tag@sha256:<arm64-specific-digest> -VMS --platform=arm64
+```
+
+:::note
+
+This flag is necessary when attempting to scan images from the Docker or Podman daemon with different architectures than the host that is running TMAS.
+:::
+
+### Overriding vulnerability and secret findings {#overriding-vulnerability-and-secret-findings}
+
+```bash
+tmas scan <artifact_to_scan> -VMS --override path/to/tmas_overrides.yml
+```
+
+Use the above command to override false positives or other vulnerability or secret findings that you want to ignore. The override file uses a YAML structure with rules defined under each scan type, like `vulnerabilities` or `secrets`, for example. When providing overrides for both secrets and vulnerabilities, specify all the overrides in the same YAML file. For more information, see [Override vulnerability and secret findings](override-vulnerability-findings.mdx).
+
+:::note
+
+Overriding malware findings is not supported at this time.
+:::
+
+### Using the evaluatePolicy flag to evaluate scan results against Code Security policies {#using-the-evaluatepolicy-flag-to-evaluate-scan-results-against-code-security-policies}
+
+:::warning[Important]
+
+This is a "Pre-release" feature and is not considered an official release. Please review the [Pre-release disclaimer](pre-release-disclaimer.mdx) before using the feature.
+:::
+
+```bash
+tmas scan <artifact_to_scan> -VMS --evaluatePolicy
+```
+
+Use the above command to evaluate the scan results against your Code Security policy to preview the policy evaluation functionality.
+
+Policy evaluation is available for vulnerabilities, secrets, and malware scanners. For example:
+
+```bash
+tmas scan vulnerabilities <artifact_to_scan> --evaluatePolicy
+```
+
+A default policy is provided for all accounts, or you can customize it in the Trend Vision One console. TMAS returns the results and exits with status code `2` if the policy is violated. Learn more about Code Security policies.
+:::::::::

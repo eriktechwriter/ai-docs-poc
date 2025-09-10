@@ -1,0 +1,98 @@
+---
+slug: trend-vision-one-additional-rules-vulnerabilities
+title: Additional rules for common vulnerabilities
+---
+# Additional rules for common vulnerabilities
+
+[Recommendation scans](recommendation-scans-intro.mdx) provide a good starting point for establishing a list of rules that you should implement, but some additional rules for common vulnerabilities are not identified by recommendation scans because must be carefully configured and tested before being implemented in *prevent* (block) mode. Trend Micro recommends that you configure and test these rules, then manually enable them in your policies or individual computers.
+
+The table below includes the most common additional rules you should configure. You can find others in Server & Workload Protection by searching for rules whose type is *Smart* or *Policy*.
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"><p>Rule name</p></th>
+<th style="text-align: left;"><p>Application type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><p>1007598 - Identified Possible Ransomware File Rename Activity Over Network Share</p></td>
+<td style="text-align: left;"><p>DCERPC Services</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>1007596 - Identified Possible Ransomware File Extension Rename Activity Over Network Share</p></td>
+<td style="text-align: left;"><p>DCERPC Services</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>1006906 - Identified Usage Of PsExec Command Line Tool</p></td>
+<td style="text-align: left;"><p>DCERPC Services</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>1007064 - Executable File Uploaded On System32 Folder Through SMB Share</p></td>
+<td style="text-align: left;"><p>DCERPC Services</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>1003222 - Block Administrative Share</p></td>
+<td style="text-align: left;"><p>DCERPC Services</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>1001126 - DNS Domain Blocker</p></td>
+<td style="text-align: left;"><p>DNS Client</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>1000608 - Generic SQL Injection Prevention</p>
+<p>See <a href="trend-vision-one-sql-injection-rule">Configure an SQL injection prevention rule</a> for details.</p></td>
+<td style="text-align: left;"><p>Web Application Common</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>1005613 - Generic SQL Injection Prevention - 2</p></td>
+<td style="text-align: left;"><p>Web Application Common</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>1000552 - Generic Cross Site Scripting (XSS) Prevention</p></td>
+<td style="text-align: left;"><p>Web Application Common</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>1006022 - Identified Suspicious Image With Embedded PHP Code</p></td>
+<td style="text-align: left;"><p>Web Application Common</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>1005402 - Identified Suspicious User Agent In HTTP Request</p></td>
+<td style="text-align: left;"><p>Web Application Common</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>1005934 - Identified Suspicious Command Injection Attack</p></td>
+<td style="text-align: left;"><p>Web Application Common</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>1006823 - Identified Suspicious Command Injection Attack - 1</p></td>
+<td style="text-align: left;"><p>Web Application Common</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>1005933 - Identified Directory Traversal Sequence In Uri Query Parameter</p></td>
+<td style="text-align: left;"><p>Web Application Common</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>1006067 - Identified Too Many HTTP Requests With Specific HTTP Method</p></td>
+<td style="text-align: left;"><p>Web Server Common</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>1005434 - Disallow Upload Of A PHP File</p></td>
+<td style="text-align: left;"><p>Web Server Common</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>1003025 - Web Server Restrict Executable File Uploads</p></td>
+<td style="text-align: left;"><p>Web Server Common</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>1007212 - Disallow Upload Of An Archive File</p></td>
+<td style="text-align: left;"><p>Web Server Common</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>1007213 - Disallow Upload Of A Class File</p></td>
+<td style="text-align: left;"><p>Web Server Common</p></td>
+</tr>
+</tbody>
+</table>
+:::

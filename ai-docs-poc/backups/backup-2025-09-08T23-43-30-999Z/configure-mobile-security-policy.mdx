@@ -1,0 +1,177 @@
+---
+slug: trend-vision-one-configure-mobile-security-policy
+title: Configuring mobile security policies
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configure-mobile-security-policy.md
+  conversion_date: '2025-09-08T23:42:22.732Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Use security policies to monitor the security status of your managed devices.
+
+### Procedure {#procedure}
+
+1.  Go to **Mobile Security → Mobile Security Policies**.
+
+2.  On the **Android** or **iOS/PadOS** tab, click **Create**.
+
+3.  Under **General**, specify the policy name and description, set the priority of the policy, and click **Next**.
+
+    The **Priority** has two options:
+
+    - **Highest**: Select this to make the policy a top priority. It will be evaluated before all other policies.
+
+    - **Lowest**: Select this if the policy should be a lower priority. It will be evaluated after all other policies, with the exception of the default policy. The default policy is always the last to be evaluated regardless of other settings. If you set a policy to **Lowest**, the policy will be evaluated just before the default policy.
+
+    :::tip
+
+    After the policy is created, you can change the priority by dragging the policy up or down the policy list.
+    :::
+
+4.  Under **Security Settings**, configure Malware Detection, Wi-Fi Protection, and Web Reputation settings, and click **Next**.
+
+    The security settings for Android devices differ slightly from those for iOS and iPadOS devices.
+
+    <table>
+    <colgroup>
+    <col style="width: 36%" />
+    <col style="width: 64%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Section</p></th>
+    <th><p>Setting</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Malware Detection</p></td>
+    <td><ol>
+    <li><p>Choose if you want <strong>Mobile Security</strong> to scan just the mobile apps on your devices, or if you want it to scan both mobile apps and Android Application Package (APK) files.</p>
+    
+
+    :::note
+    
+    <p>Scanning APK files requires your users to turn on the Storage permission on their devices.</p>
+    
+
+    :::
+
+    </li>
+    <li><p>Configure malware scan criteria.</p>
+    <ul>
+    <li><p>Malware</p></li>
+    <li><p>Unofficially modified app content or data (For Android only)</p></li>
+    <li><p>Transmission of personal data without consent (For Android only)</p></li>
+    <li><p>System or app vulnerabilities (For Android only)</p></li>
+    </ul>
+    <p>Each type of threat is assigned a risk level as defined by the risk level profile. The overall risk level of the targeted device is then calculated by considering the risk levels of all selected threat types.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Wi-Fi Protection</p></td>
+    <td><ol>
+    <li><p>Turn on the toggle for Wi-Fi Protection.</p></li>
+    <li><p>Configure Wi-Fi scan criteria.</p>
+    <ul>
+    <li><p>Automatic decryption of HTTPS traffic</p>
+    <p>The Wi-Fi network traffic is decrypted, which may result in data leakage.</p></li>
+    <li><p>Unsafe access point</p>
+    <p>The device is connected to an insecure Wi-Fi network.</p></li>
+    </ul>
+    <p>Each type of threat is assigned a risk level as defined by the risk level profile. The overall risk level of the targeted device is then calculated by considering the risk levels of all selected threat types.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Web Reputation</p></td>
+    <td><p>Trend Micro Web Reputation technology assigns websites a "reputation" based on an assessment of the trustworthiness of a URL, derived from an analysis of the domain.</p>
+    <ol>
+    <li><p>Turn on the toggle for Web Reputation.</p></li>
+    <li><p>Select <strong>Enforce on all devices that the policy applies to</strong>.</p>
+    <p>This setting enforces Web Reputation on all targeted devices by automatically setting up local VPN on the devices.</p>
+    
+
+    :::warning[Important]
+    
+    <p>Make sure that the local VPN remains enabled on the devices for Web Reputation to work properly. The local VPN setting is on the <strong>Web Reputation</strong> or <strong>Secure Access</strong> tab in the Mobile Agent.</p>
+    
+
+    :::
+
+    </li>
+    <li><p>Select <strong>Enable and log access to all websites</strong>.</p>
+    <p>This setting permits your users to access potentially blocked websites and records each access in <a href="trend-vision-one-mobile-detection-logs">Mobile Detection Logs</a>.</p></li>
+    <li><p>Select a security level.</p></li>
+    <li><p>To automatically approve or block certain websites, specify the websites in the following formats and add them to the allow list or to the block list:</p>
+    <ul>
+    <li><p>URL</p></li>
+    <li><p>FQDN</p></li>
+    </ul>
+    <p>Both URLs and FQDNs support the following wildcard character: *</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Non-required Permissions</p></td>
+    <td>
+
+:::warning[Important]
+
+    <p>Device permission options are available for Android devices only.</p>
+    
+
+    :::
+
+    
+    <p>Select the permissions that you do not want to prompt users to grant upon installation of the Mobile Security for Business app.</p>
+    <ul>
+    <li><p><strong>Do not require phone number access permission</strong></p></li>
+    <li><p><strong>Do not require phone battery access permission</strong></p></li>
+    </ul>
+    <p>Users will later be prompted to grant these permissions on their devices when they need to use the related functions.</p></td>
+    </tr>
+    <tr>
+    <td><p>Deepfake Detector</p></td>
+    <td>
+
+:::warning[Important]
+
+    <p>Deepfake Detector is currently only available for iOS 14 and later.</p>
+    
+
+    :::
+
+    
+    <p>Select whether to enable detection of synthesized images in video calls using advanced AI. For more information, see <a href="trend-vision-one-deepfake-detector">Deepfake Detector</a>.</p></td>
+    </tr>
+    <tr>
+    <td><p>Proxy settings</p></td>
+    <td><p>To use Service Gateway as a proxy to connect managed devices to Trend Vision One services and other internet resources, select <strong>Send Mobile Agent traffic through the Service Gateway proxy service</strong>. This feature helps you control mobile device access within your company.</p>
+    <p>For this feature to work, make sure that you have deployed Service Gateway in your network with the Forward Proxy Service enabled and properly configured to allow connection to destination services. If you have deployed multiple Service Gateways in the network, the Mobile Agent will connect to any Service Gateway based on availability.</p>
+    
+
+    :::warning[Important]
+    
+    <ul>
+    <li><p>The Mobile Agent uses a local VPN to connect to the Service Gateway. Make sure that your end users have enabled the local VPN in their Mobile Agents for the traffic to be forwarded to Service Gateway.</p></li>
+    <li><p>Compared with Service Gateway, Zero Trust Secure Access (ZTSA) provides more powerful Internet access control functionality. If your network is using ZTSA with Internet Access and AI Service Access enabled, Mobile Agents in the network will send traffic to ZTSA instead of the Service Gateway proxy service.</p></li>
+    </ul>
+    
+
+    :::
+
+    </td>
+    </tr>
+    </tbody>
+    </table>
+
+5.  Under **Assignment** tab, assign the policy to your assignment groups by selecting one or more groups and clicking **Save**.
+
+    The users or devices targeted by your policy are evaluated for security when they check in with **Mobile Security**.
+
+**Related information**
+
+- [Deepfake Detector for mobile devices](deepfake-detector.md "Learn about advanced AI deepfake detection available in Mobile Security policies to detect synthesized images during video calls on end user devices.")
+:::

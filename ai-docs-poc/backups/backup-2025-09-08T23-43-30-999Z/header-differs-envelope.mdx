@@ -1,0 +1,25 @@
+---
+slug: trend-vision-one-header-differs-envelope
+title: Using message header sender differs from envelope sender criteria
+last_updated: '2025-09-08'
+ai_context:
+  source_file: header-differs-envelope.md
+  conversion_date: '2025-09-08T23:42:18.213Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Spoofed messages often have mismatched message header senders (specified by the header "From") and envelope senders (specified by the envelope field "MAIL FROM"). Cloud Email Gateway Protection provides an anti-spoofing check to detect messages with a message header sender different from the envelope sender.
+
+### Procedure {#procedure}
+
+1.  On the **Scanning Criteria** tab, click **Advanced**.
+
+2.  Select **Message header sender differs from envelope sender**.
+
+    :::note
+
+    A message with a blank envelope sender does not match this criteria.
+    :::
+:::

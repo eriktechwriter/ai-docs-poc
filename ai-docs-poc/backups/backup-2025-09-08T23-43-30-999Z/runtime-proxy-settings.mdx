@@ -1,0 +1,112 @@
+---
+slug: trend-vision-one-runtime-proxy-settings
+title: Runtime Proxy Settings
+last_updated: '2025-09-08'
+ai_context:
+  source_file: runtime-proxy-settings.md
+  conversion_date: '2025-09-08T23:42:13.321Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure custom proxy policies for more granular control over how endpoints connect to Trend Vision One.
+
+:::warning[Important]
+
+Runtime Proxy Settings only supports sensor-only, Standard Endpoint Protection, and Server & Workload Protection agents deployed using the agent installer downloaded from Endpoint Inventory.
+
+You must update the agent to use this feature. Runtime Proxy Settings supports the following versions:
+
+- Standard Endpoint Protection (Windows) version 14.0.13139 or later
+
+- Server and Workload Protection (Windows/Linux ) version 20.0.1.9400 or later
+
+- Trend Vision One Endpoint agent June 2024 release or later
+:::
+
+The Runtime Proxy Settings tab allows you to view and configure custom proxy policies for your managed agents. Click the **Add Policy** button to create a new policy, or click a policy name to edit an existing policy. For more information, see [Configuring Runtime Proxy policies](configuring-runtime-proxy-policies.mdx)
+
+Runtime Proxy Settings allows you to create and manage your proxy settings with greater control and specificity. An individual policy can be applied across multiple groups, as well as having different policies apply to sub-groups within a parent group.
+
+The following table describes the information presented on the Runtime Proxy Settings list.
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Column</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Policy name</p></td>
+<td><p>Your proxy policies listed in order of creation</p>
+<p>The policy list displays the newest policy first. Click a name to edit the policy.</p>
+
+
+:::warning[Important]
+
+<p>Endpoint groups not assigned to a policy apply the Base Policy</p>
+<p>Currently, sensor-only and connected endpoint protection agents can only apply the Sensor Policy.</p>
+<p>Trend Micro recommends configuring the Base Policy and Sensor Policy before adding any new proxy policies.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Endpoint group</p></td>
+<td><p>Lists the security deployments, Protection Managers, and endpoint groups the policy applies to</p>
+<p>Endpoint groups can only be the target of one policy at a time, but sub-groups can be a target of a different policy than the parent group they belong to.</p></td>
+</tr>
+<tr>
+<td><p>Priority</p></td>
+<td><p>Lists the priority rules set in each policy</p>
+<p>A policy can have up to fifteen priority rules plus the base priority. The base priority is always the lowest priority within a policy.</p></td>
+</tr>
+<tr>
+<td><p>Criteria</p></td>
+<td><p>Lists the criteria of each priority within a policy</p>
+<p>Hover over the number next to the criteria to see a list of the criteria values. For example, if the criteria is "endpoint name" hovering over the number shows a list of the specified values the policy uses to match endpoints to apply that priority.</p></td>
+</tr>
+<tr>
+<td><p>Proxy settings</p></td>
+<td><p>Lists the proxy settings in order of priority</p>
+<p>Proxy policies always follows the priority of:</p>
+<ul>
+<li><p>Service Gateways with Forward Proxy Service enabled, if configured</p>
+<p>The list displays the specified Service Gateways configured by the policy, or "All Service Gateways" if configured to use any available Service Gateway</p>
+
+
+:::note
+
+<p>Endpoint agents can utilize the following services when enabled on the Service Gateway:</p>
+<ul>
+<li><p>General Cache Service: When enabled, the endpoint agent uses the Service Gateway to download agent update packages.</p></li>
+<li><p>ActiveUpdate Service: When enabled, the endpoint agent uses the Service Gateway to download pattern updates.</p></li>
+</ul>
+
+
+:::
+
+</li>
+<li><p>Primary Custom Proxy, if configured</p>
+<p>The list displays the proxy and port in the format of IP address:Port or FQDN:Port</p></li>
+<li><p>System proxy</p>
+<p>Agents always default to the system proxy if unable to connect to a Service Gateway or the Primary Custom Proxy.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Configuring Runtime Proxy policies](configuring-runtime-proxy-policies.md "Edit and create proxy policies for your endpoint agents.")
+- [Runtime Proxy priority behavior](runtime-proxy-priority-behavior.md "Review how the Runtime Proxy policies and endpoint agents utilize priority to determine how to connect to Trend Vision One.")
+::::

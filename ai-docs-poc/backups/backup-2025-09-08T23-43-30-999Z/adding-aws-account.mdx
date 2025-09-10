@@ -1,0 +1,179 @@
+---
+slug: trend-vision-one-adding-aws-account
+title: Adding an AWS account using CloudFormation
+last_updated: '2025-09-08'
+ai_context:
+  source_file: adding-aws-account.md
+  conversion_date: '2025-09-08T23:42:25.818Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Add and connect an AWS account to Trend Vision One using a generated stack template to provide security for your cloud assets.
+
+Adding an AWS account to Cloud Accounts allows Trend Vision One to access your cloud services to provide security and visibility into your cloud assets. Some Cloud Accounts features have limited support for AWS regions. For more information, see [AWS supported regions and limitations](aws-supported-regions-limitations.mdx).
+
+:::warning[Important]
+
+The steps are valid for the AWS console as of November 2023.
+:::
+
+### Procedure {#procedure}
+
+1.  Sign in to the Trend Vision One console.
+
+2.  In a new tab in the same browser session, sign in to the AWS account you want to connect using a role that has administrator privileges.
+
+3.  In the Trend Vision One console, go to **Cloud Security → Cloud Accounts → AWS**.
+
+4.  Click **Add Account**.
+
+    The **Add AWS Account** window appears.
+
+5.  Specify the Deployment Type.
+
+    1.  For **Deployment Method**, select **CloudFormation**.
+
+    2.  For account type, select **Single AWS Account**.
+
+    3.  Click **Next**.
+
+6.  Specify the general information for the account.
+
+    1.  Specify the **Account name** to display in the Cloud Accounts app.
+
+    2.  Add a **Description** to display in Cloud Accounts.
+
+    3.  Select the AWS region for CloudFormation template deployment.
+
+        :::note
+
+        The default region is your Trend Vision One region.
+
+        Some features and permissions have limited support for some AWS regions. For more information, see [AWS supported regions and limitations](aws-supported-regions-limitations.mdx).
+        :::
+
+    4.  If you have more than one Server & Workload Protection Manager instance, select the instance to associate with the connected account.
+
+        :::note
+
+        - If you have one Server & Workload Protection Manager instance, the account is automatically associated with that instance.
+        :::
+
+    5.  To add custom tags to the resources deployed by Trend Vision One, select **Resource tagging** and specify the key-value pairs.
+
+        Click **Create a new tag** to add up to three tags.
+
+        :::note
+
+        - Keys can be up to 128 characters long, and cannot start with `aws`.
+
+        - Values can be up to 256 characters long.
+        :::
+
+    6.  Click **Next**.
+
+7.  Configure the **Features and Permissions** you want to grant access to your cloud environment.
+
+    :::warning[Important]
+
+    Agentless Vulnerability & Threat Detection is a pre-release feature and is not part of the existing features of an official commercial or general release. Please review the [Pre-release disclaimer](pre-release-disclaimer.mdx) before using the feature.
+
+    **Cloud Response for AWS** requires that you enable **Cloud Detections for AWS CloudTrail** monitoring for your AWS account, which you can do by:
+
+    - Individual AWS account: Enable **Cloud Detections for AWS CloudTrail** in for the AWS account.
+
+    - AWS Organization: Enable **Cloud Detections for AWS CloudTrail** and select the **AWS Control Tower deployment** checkox, or enable **Cloud Detections for Amazon Security Lake** with CloudTrail log monitoring enabled.
+    :::
+
+    - **Core Features**: Connect your AWS account to Trend Vision One to discover your cloud assets and rapidly identify risks such as compliance and security best practice violations in your cloud infrastructure.
+
+    - **Agentless Vulnerability & Threat Detection**: Deploy Agentless Vulnerability & Threat Detection in your cloud account to scan for vulnerabilities and malware in supported cloud resources with zero impact to your applications.
+
+      Click **Scanner Configuration** to choose the resource types to scan and whether to scan for vulnerabilities, malware, or both.
+
+      Select the AWS regions you want to deploy the feature to.
+
+    - **Cloud Detections for AWS CloudTrail**: Deploy to get actionable insight into user, service, and resource activity with detection models identifying activity such as privilege escalation, password modification, attempted data exfiltration, and potentially unsanctioned MFA changes. This feature requires allocating credits to XDR for Cloud.
+
+      :::note
+
+      This feature requires configuration of your CloudTrail settings. For more information, see [CloudTrail configuration](cloudtrail-configuration.mdx).
+      :::
+
+    - **Cloud Detections for Amazon Security Lake**: Deploy to forward your Amazon Security Lake data to Trend Vision One, including CloudTrail Logs, VPC Flow Logs, WAF Logs, EKS Audit Logs, Route53 Resolver Query Logs, and SecurityHub Findings. Get actionable insights into your environment with XDR detection models to alert when malicious and suspicious activity is detected in your cloud resources, services, and network.
+
+      Select the AWS regions you want to deploy the feature to and the logs you want to scan. You must have Security Lake configured on your AWS account in the regions you select.
+
+      For more information on supported logs and event types, see [AWS features and permissions](aws-features-permissions.mdx).
+
+    - **File Security Storage**: Deploy Trend Vision One - File Security Storage in your cloud account to protect your cloud environment. File Security Storage uncovers malware so you can proactively protect your cloud storage. Select the regions where you want to deploy the File Security scanner.
+
+      Select the AWS regions you want to deploy the feature to.
+
+    - **Cloud Detections for AWS VPC Flow Logs**: Deploy to collect your Virtual Private Cloud (VPC) flow logs, enabling Trend Vision One to gather insight into your VPC traffic, with detection models to identify and provide alerts on malicious IP traffic, SSH brute force attacks, data exfiltration, and more. Review [VPC Flow Logs recommendations and requirements](vpc-flow-logs-requirements.mdx) before enabling the feature.
+
+      Select the AWS regions you want to deploy the feature to.
+
+      :::warning[Important]
+
+      XDR for Cloud only supports monitoring VPC Flow Logs version 5 or later. For more information, see [VPC Flow Logs recommendations and requirements](vpc-flow-logs-requirements.mdx).
+      :::
+
+    - **Container Protection for Amazon ECS**: Deploy Trend Vision One Container Security in your AWS account to protect your containers and container images in Elastic Container Service (ECS) environments. Trend Vision One Container Security uncovers threats and vulnerabilities, protects your runtime environment, and enforces deployment policies.
+
+      Select the AWS regions you want to deploy the feature to.
+
+      :::warning[Important]
+
+      As of November 2023, AWS private and freemium accounts allow up to 10 Lambda executions. Container Protection deployment requires at least 20 concurrent Lambda executions. Please verify your AWS account status before enabling this feature.
+      :::
+
+    - **Cloud Response for AWS**: Allow Trend Vision One permission to take response actions to contain incidents within your cloud account, such as revoking access for suspicious IAM users. Additional response actions leverage integration with third party ticketing systems.
+
+    - **Real-Time Posture Monitoring**: Deploy Real-Time Posture Monitoring in your AWS account to provide live monitoring with instant alerts for activities and events within your cloud environment.
+
+      Select the AWS regions you want to deploy the feature to.
+
+8.  Click **Next**.
+
+9.  Launch the CloudFormation template in the AWS console.
+
+    1.  If you want to review the stack template before launching, click **Download and Review Template**.
+
+    2.  Click **Launch Stack**.
+
+        The AWS management console opens in a new tab and displays the **Quick Create Stack** screen.
+
+10. In the AWS management console, complete the steps in the **Quick Create Stack** screen.
+
+    1.  If you want to use a name other than the default, specify a new **Stack name**.
+
+    2.  In the **Parameters** section, configure the following parameters only if you have enabled XDR for Cloud - AWS CloudTrail.
+
+        - For **CloudAuditLogMonitoringCloudTrailArn**, provide the ARN for the CloudTrail you want to monitor.
+
+        - For **CloudAuditLogMonitoringCloudTrailSNSTopicArn**, provide the ARN of the CloudTrail SNS topic.
+
+          :::warning[Important]
+
+          - The monitored CloudTrail and CloudTrail SNS must be on the same account and located in the same region you selected for the template deployment.
+
+          - Do not change any other settings in the **Parameters** section. CloudFormation automatically provides the settings for the parameters. Changing parameters might cause stack creation to fail.
+          :::
+
+    3.  In the **Capabilities** section, select the following acknowledgments:
+
+        - **I acknowledge that AWS CloudFormation might create IAM resources with custom names.**
+
+        - **I acknowledge that AWS CloudFormation might require the following capability: CAPABILITY_AUTO_EXPAND**.
+
+    4.  Click **Create Stack**.
+
+        The **Stack details** screen for the new stack appears with the **Events** tab displayed. Creation might take a few minutes. Click **Refresh** to check the progress.
+
+11. In the Trend Vision One console, click **Done**.
+
+    The account appears in Cloud Accounts once the CloudFormation template deployment successfully completes. Refresh the screen to update the table.
+::::

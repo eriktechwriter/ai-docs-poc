@@ -1,0 +1,144 @@
+---
+slug: trend-vision-one-tippingpoint-sms-connection-guides
+title: TippingPoint SMS connection guides
+---
+# TippingPoint SMS connection guides
+
+Integrate your TippingPoint devices with Network Security to enhance your threat awareness and ability to automatically respond to incidents.
+
+Connect your TippingPoint Security Management System (SMS) deployments to **Network Security** to utilize the **Intrusion Prevention Configuration** features and start receiving vulnerability assessments and policy recommendations. The following table outlines the functionality available to you when integrating a TippingPoint SMS with **Network Security**.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Function</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Suspicious Object Sync</p></td>
+<td><p>Synchronizes the centralized Trend Vision One Suspicious Objects List with the TippingPoint SMS, enabling you to block suspicious objects at the network layer within minutes of detection</p>
+
+
+:::warning[Important]
+
+<p>The Suspicious Object Sync function is only available on TippingPoint SMS 5.5.4 or later.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Event and Filter Status Sharing</p></td>
+<td><p>Forwards detection events and intrusion prevention filter protection status information to Trend Vision One, enabling correlated detection and other advanced analytics</p>
+
+
+:::warning[Important]
+
+<ul>
+<li><p>The Event and Filter Status Sharing function is only available on TippingPoint SMS 5.5.4 or later.</p></li>
+<li><p>A Service Gateway is not required to enable the Event and Filter Status Sharing function on TippingPoint SMS 6.0.0 or later.</p></li>
+</ul>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Security Policy and Inventory</p></td>
+<td><p>Allows you to select filters and deploy policies directly to your TippingPoint SMS profiles from Trend Vision One</p></td>
+</tr>
+<tr>
+<td><p>Cloud Sandbox URL Analysis</p></td>
+<td><p>Automatically sends URLs detected by your TippingPoint SMS for analysis in a cloud sandbox</p>
+
+
+:::warning[Important]
+
+<p>The Cloud Sandbox URL Analysis function is only available on TippingPoint SMS 6.1.0 or later.</p>
+
+
+:::
+
+
+:::tip
+
+<p>You can view analysis results in the Sandbox Analysis App.</p>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+
+The following table outlines the options for connecting the various versions of TippingPoint SMS to Trend Vision One.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>TippingPoint SMS Version</p></th>
+<th><p>Connection Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>6.1.0 or later</p></td>
+<td><ul>
+<li><p><a href="trend-vision-one-connect-sms-61-network-security">Directly over the internet or through an HTTP proxy</a></p></li>
+<li><p><a href="trend-vision-one-sms-610-network-gateway">Through a Service Gateway appliance</a></p></li>
+</ul>
+
+
+:::warning[Important]
+
+<p>To enable the Suspicious Object Sync function on TippingPoint SMS 6.1.0, you must connect the TippingPoint SMS to Trend Vision One through a Service Gateway.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>5.5.4 or 6.1.0</p></td>
+<td><ul>
+<li><p><a href="trend-vision-one-tp-sms-554-6-service-gateway">Through a Service Gateway appliance</a></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>5.5.3 or earlier</p></td>
+<td><ul>
+<li><p><a href="trend-vision-one-migrate-sms-553-network-security">Migrate to a newer version of TippingPoint SMS and connect to Network Security</a></p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+:::warning[Important]
+
+- **Intrusion Prevention Configuration** currently only supports policy enforcement on the first TippingPoint SMS connected to Trend Vision One. Support for policy enforcement on multiple TippingPoint SMS deployments is coming soon.
+
+- Devices managed by additional TippingPoint SMS deployments connected to Trend Vision One are still listed in **Network Inventory**.
+:::
+
+**Related information**
+
+- [Connecting TippingPoint SMS 6.1.0 or later to Network Security](connect-sms-61-network-security.md "Connect a TippingPoint Security Management System (SMS) 6.1.0 or later to Network Security directly over the internet or through an HTTP proxy.")
+- [Connecting TippingPoint SMS 6.1.0 or later to Network Security through a Service Gateway](sms-610-network-gateway.md "Connect a TippingPoint Security Management System (SMS) 6.1.0 or later to Network Security through a Service Gateway.")
+- [Connecting TippingPoint SMS 5.5.4 or 6.0.0 through a Service Gateway](tp-sms-554-6-service-gateway.md "Connect a TippingPoint Security Management System (SMS) 5.5.4 or 6.0.0 to Network Security through a Service Gateway.")
+- [Migrating a connected TippingPoint SMS to the latest version](migrating-sms-latest-version.md "Migrate an existing TippingPoint Security Management System (SMS) that is already connected to Network Security to the latest version.")
+- [Migrating an existing TippingPoint SMS 5.5.3 or earlier and connecting to Network Security](migrate-sms-553-network-security.md "Migrate an existing TippingPoint Security Management System (SMS) that is connected to Trend Vision One and connect to Network Security.")
+- [Service Gateway deployment for TippingPoint SMS](sg-deploy-tippingpoint-sms.md "Review the required services for connecting TippingPoint SMS and how to deploy a Service Gateway.")
+::::

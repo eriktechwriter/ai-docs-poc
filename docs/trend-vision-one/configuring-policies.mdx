@@ -1,0 +1,89 @@
+---
+slug: trend-vision-one-configuring-policies
+title: Configuring policies
+---
+# Configuring policies
+
+The virus policy, spam policy, Correlated Intelligence policy, content filtering policy and Data Loss Prevention (DLP) policy screens all show a list of the currently defined policy rules and their status. From each screen, you can add a new policy rule and query, reorder, edit, copy, or delete existing policy rules.
+
+:::note
+
+If a policy rule applies to multiple domains and your account only has permission to manage a part of these domains, the policy rule is only visible. You cannot reorder, edit, copy, or delete the policy rule.
+:::
+
+The policy screens under **Inbound Protection** and **Outbound Protection** are technically separate and can be managed independently.
+
+To go to the **Inbound Protection** screen, choose **Email and Collaboration Security Operations → Cloud Email Gateway Protection → Inbound Protection**.
+
+To go to the **Outbound Protection** screen, choose **Email and Collaboration Security Operations → Cloud Email Gateway Protection → Outbound Protection**.
+
+The policy rules are displayed in a table, sorted by the order in which the policy rules were created by default.
+
+**Policy Terminology**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Column</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Order</p></td>
+<td><p>Order in which the policy rules are executed.</p></td>
+</tr>
+<tr>
+<td><p>Status</p></td>
+<td><p><img src="./images/rule_on=GUID-2A099C30-120A-496A-960B-878EF80A6A34=2=en-us=Low.webp" />: A policy rule is enabled.</p>
+<p><img src="./images/rule_off=GUID-A7F62B19-ED04-4D71-B014-E5F7B733C3AE=2=en-us=Low.webp" />: A policy rule is disabled.</p>
+<p><img src="./images/rule_locked=GUID-24180FE6-2FBF-4CFC-B47A-AEA0CC40092B=1=en-us=Low.webp" />: A policy rule is locked.</p></td>
+</tr>
+<tr>
+<td><p>Rules</p></td>
+<td><p>Name of the policy rule.</p></td>
+</tr>
+<tr>
+<td><p>Migration Status</p></td>
+<td><p>Status of the policy rule migrated from external systems.</p></td>
+</tr>
+<tr>
+<td><p>Action</p></td>
+<td><p>Action taken if the policy rule's criteria are met.</p></td>
+</tr>
+<tr>
+<td><p>Organization Level</p></td>
+<td><p>Whether the policy rule applies to all email messages sent to or from your organization.</p>
+<ul>
+<li><strong>Yes</strong>: The policy rule applies to all email messages sent to or from your organization.</li>
+<li><strong>No</strong>: The policy rule applies to email messages sent to or from specific users or groups in your organization.</li>
+</ul>
+<p>For details about the policy rule levels, see <a href="trend-vision-one-policy-rule-overview">Policy rule overview</a>.</p></td>
+</tr>
+<tr>
+<td><p>Modified</p></td>
+<td><p>Timestamp when the policy rule was last modified.</p></td>
+</tr>
+<tr>
+<td><p>Last Used</p></td>
+<td><p>Timestamp of when the policy rule was last used. If the policy rule has not yet been triggered, the value in this column will be "Never".</p></td>
+</tr>
+</tbody>
+</table>
+
+Each column's heading can be clicked to sort the list. For example, to re-sort the list alphabetically by **Action**, click the **Action** column heading.
+
+**Related information**
+
+- [Policy rule overview](policy-rule-overview.mdx)
+- [Managing policy rules](managing-policy-rules.mdx)
+- [Reordering policy rules](reordering-policy-rules.mdx)
+- [Naming and enabling a policy rule](naming-enabling-rule.mdx)
+- [Specifying recipients and senders](specifying-recipients-senders.mdx)
+- [About policy rule scanning criteria](rule-scanning-criteria.mdx)
+- [About policy rule actions](rule-actions.mdx)
+::::

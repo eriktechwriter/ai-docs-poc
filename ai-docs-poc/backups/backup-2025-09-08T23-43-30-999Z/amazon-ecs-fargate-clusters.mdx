@@ -1,0 +1,247 @@
+---
+slug: trend-vision-one-amazon-ecs-fargate-clusters
+title: Set up connected Amazon ECS Fargate clusters
+last_updated: '2025-09-08'
+ai_context:
+  source_file: amazon-ecs-fargate-clusters.md
+  conversion_date: '2025-09-08T23:42:25.242Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Container Security supports protection on connected Amazon ECS Fargate containers.
+
+:::warning[Important]
+
+Before proceeding, you must:
+
+- Upgrade `ecs-taskdef-patcher` patcher versions older than 2.6.5 to the latest version.
+- Connect your Amazon ECS cluster that hosts the Fargate container:
+  - [Connect Amazon ECS clusters using a new AWS account](ecs-clusters-new-aws-account.mdx)
+  - [Connect Amazon ECS clusters using an existing AWS account](ecs-clusters-existing-account.mdx)
+:::
+
+You can manually deploy Container Security along with AWS Fargate to your Amazon ECS container. When deploying Container Security, you should be aware of the following:
+
+- The container must have internet access.
+- Container Security uses `ptrace` to inspect the containers. If you are also using `ptrace`, the monitoring may not function correctly.
+- Container Security enables `pidMode` in the task definition. Enabling `pidMode` results in only one ECS Exec session per task. For more information, see [Using Amazon ECS Exec for debugging](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-exec.mdx).
+- Container Security on Fargate requires a minimum of 1 vCPU (1024 CPU units) and 512MiB memory. Follow the AWS [task size table](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.mdx) to determine the appropriate task size for running Container Security and workloads on Fargate.
+- Trend recommends that you input the task definition using the AWS CLI instead of using the CloudFormation template.
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Cloud Security → Container Security → Container Inventory**.
+
+2.  In the tree, click **Amazon ECS**, locate and click the Fargate cluster in the list.
+
+3.  Turn on **Runtime Security**.
+
+4.  In another browser tab, sign in to the AWS account that hosts the cluster..
+
+    :::warning[Important]
+
+    The following AWS instructions and screen captures were valid as of March 25, 2024. For further help, check your AWS documentation.
+    :::
+
+5.  Configure an Identity and Access Management (IAM) policy that permits Container Security access to your Fargate container.
+
+    1.  Search for and go to the IAM settings in AWS.
+
+    2.  Click **Policies** and **Create policy**.
+
+        <figure>
+        <img src="./images/csAwsCreatePolicy=20240325113535.webp" />
+        </figure>
+
+    3.  Click **JSON**, provide the following code, and click **Next**.
+
+        ``` codeblock
+        {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "ssm:GetParameter"
+                    ],
+                    "Resource": "arn:aws:ssm:${Region}:${Account}:parameter/V1CS/*"
+                }
+            ]
+        }
+        ```
+
+        Where:
+
+        - ${Region} - The region where the Fargate container is hosted (for example, us-east-1)
+
+        - ${Account} - The AWS account that manages the Fargate container
+
+        <figure>
+        <img src="./images/csAwsCreatePolicyJSON=20240325114040.webp" />
+        </figure>
+
+    4.  Specify a unique **Policy name** (for example: `ContainerSecurityIAMPolicy`) and click **Create policy**.
+
+        <figure>
+        <img src="./images/csAwsCreatePolicyFinish=20240325114242.webp" />
+        </figure>
+
+6.  Configure an Identity and Access Management (IAM) role using the newly-created policy (in the example: `ContainerSecurityIAMPolicy`).
+
+    1.  In AWS Identity and Access Management (IAM), click **Roles** and click **Create role**.
+
+        <figure>
+        <img src="./images/csAwsCreateRole=20240325114949.webp" />
+        </figure>
+
+    2.  In the **Select trusted entity** screen, set the following and click **Next**.
+
+        - Trusted entity type: **AWS service**
+
+        - Service or use case: **Elastic Container Service**
+
+        - Use case: **Elastic Container Service Task**
+
+        <figure>
+        <img src="./images/csAwsCreateRoleService=20240325115357.webp" />
+        </figure>
+
+    3.  In the **Add permissions** screen, locate and select the Container Security policy you created (`ContainerSecurityIAMPolicy`) , and click **Next**.
+
+        <figure>
+        <img src="./images/csAwsCreateRoleServicePolicy=20240325115757.webp" />
+        </figure>
+
+    4.  In the **Name, review, and create** screen, provide a unique name for the role (for example, `ContainerSecurityRole`) and click **Create role**.
+
+7.  Configure an Amazon Elastic Container Service task definition using the newly-created role (in the example: `ContainerSecurityRole`).
+
+    1.  Search for and go to the Amazon Elastic Container Service settings in AWS.
+
+    2.  Click **Task definitions** and **Create new task definition → Create new task definition**.
+
+        <figure>
+        <img src="./images/csAwsCreateTaskDefinition=20240326100505.webp" />
+        </figure>
+
+    3.  In the **Create new task definition** screen, configure the following settings:
+
+        - Task definition family name: A unique name for the new task definition (for example, `ContainerSecurityTaskDefinition`
+
+        - Task role: The Container Security role you created (`ContainerSecurityRole`)
+
+        - Container settings: Specify a container name and the **Image URI** for the Fargate container that you want Container Security to protect
+
+        <figure>
+        <img src="./images/csAwsCreateTaskDefinitionSettings=20240326102929.webp" />
+        </figure>
+
+    4.  Click **Create**.
+
+    5.  Back on the **Task definitions** table, click the task definition you just created (`ContainerSecurityTaskDefinition`) and click the latest revision.
+
+    6.  Click the **JSON** tab and click **Download JSON**.
+
+        <figure>
+        <img src="./images/csAwsTaskDefinitionDownload=20240326104545.webp" />
+        </figure>
+
+8.  Download the latest Trend Micro Fargate tools container image from:
+
+    <https://gallery.ecr.aws/trendmicro/container-security/ecs-taskdef-patcher>
+
+9.  Run the patching tool locally or as part of your CICD process to patch your ECS Task Definition before uploading to ECS and running.
+
+    This adds the runtime security application to your ECS task definition. When you run your ECS task, it executes the runtime security application along with your task.
+
+    Example 1: Input from file and output to file.
+
+    ``` codeblock
+    docker run -ti \
+      -v <inputfile_path>:/mnt/input \
+      -v <outputfile_path>:/mnt/output \
+      trendmicrocloudone/ecs-taskdef-patcher:x.y.z \
+      -i /mnt/input/<inputfile_name> \
+      -o /mnt/output/<outputfile_name>
+    ```
+
+    Example 2: Input from STDIN and output to STDOUT, and set proxy to `http://10.10.10.10:8080`
+
+    ``` codeblock
+    cat input_file.json | docker run -ti --rm \
+      trendmicrocloudone/ecs-taskdef-patcher:x.y.z -p http://10.10.10.10:8080
+    ```
+
+    Explanation of execution flags
+
+    <table>
+    <colgroup>
+    <col style="width: 20%" />
+    <col style="width: 20%" />
+    <col style="width: 20%" />
+    <col style="width: 40%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Flag</p></th>
+    <th><p>Value</p></th>
+    <th><p>Default</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>-i</p></td>
+    <td><p>path/inputfile.name</p></td>
+    <td><p>STDIN</p></td>
+    <td><p>Input file name and path, default is STDIN</p></td>
+    </tr>
+    <tr>
+    <td><p>-o</p></td>
+    <td><p>path/outputfile.name</p></td>
+    <td><p>STDOUT</p></td>
+    <td><p>Output file name and path, default is STDOUT</p></td>
+    </tr>
+    <tr>
+    <td><p>-t</p></td>
+    <td><p>json, cloudformation</p></td>
+    <td><p>JSON</p></td>
+    <td><p>Input and output format, default is json.</p>
+    <p>TheCloudFormation template supports JSON and YAML, but only accepts input from file whose default output format is YAML.</p></td>
+    </tr>
+    <tr>
+    <td><p>-p</p></td>
+    <td><p>http(s)://proxy.fqdn.or.ip:port</p></td>
+    <td><p>No proxy</p></td>
+    <td><p>Proxy settings for Scout to connect to Container Security</p></td>
+    </tr>
+    <tr>
+    <td><p>-scout-image</p></td>
+    <td><p>registry/scout@sha254:xxx</p></td>
+    <td><p>trendmicrocloudone/scout@sha256:xxx</p></td>
+    <td><p>Scout image location</p></td>
+    </tr>
+    <tr>
+    <td><p>-falco-image</p></td>
+    <td><p>registry/falco@sha254:xxx</p></td>
+    <td><p>trendmicrocloudone/falco@sha256:xxx</p></td>
+    <td><p>Falco image location</p></td>
+    </tr>
+    <tr>
+    <td><p>-pdig-image</p></td>
+    <td><p>registry/pdig@sha254:xxx</p></td>
+    <td><p>trendmicrocloudone/pdig@sha256:xxx</p></td>
+    <td><p>pdig image location</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+10. Upload and launch your modified ECS Task Definition.
+
+    :::warning[Important]
+
+    Once you have launched the modified ECS Task Definition file, Runtime Security becomes active. Because Runtime Security is controlled by the task definition file, Container Security cannot verify the status of the feature. The Container Security console may not accurately reflect the status of Runtime Security if you change the task definitions in the future.
+    :::
+::::

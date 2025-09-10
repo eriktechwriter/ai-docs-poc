@@ -1,0 +1,95 @@
+---
+slug: trend-vision-one-file-paths
+title: File Paths
+last_updated: '2025-09-08'
+ai_context:
+  source_file: file-paths.md
+  conversion_date: '2025-09-08T23:42:19.253Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+You can configure Application Control to specifically target certain directory locations based on absolute path, storage type, and Perl Compatible Regular Expressions (PCRE).
+
+Select whether to match by a specific path or a storage type, and specify the match string type (**String** or **Regular Expression (PCRE)**). Type the file paths that apply to the criteria.
+
+:::note
+
+- Application Control supports the use of the asterisk (\*) wildcard when specifying a **String** type match. The asterisk character can represent one or more characters in a subdirectory of the specified string location.
+
+- Application Control does not support the use of environment variables when specifying file paths for **String** or **Regular Expression (PCRE)** type matches.
+
+- You cannot use wildcard characters to indicate the entire contents of the selected storage location.
+
+- You can specify up to 100 file paths.
+:::
+
+**Supported Storage Locations**
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Storage Location</p></th>
+<th><p>Environment Variable</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Specific path</p></td>
+<td><p>Not applicable</p></td>
+<td><p>Only applies to applications in the exact path specified</p>
+
+
+:::note
+
+<p>Application Control does not check device type when using this location type.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Any built-in storage</p></td>
+<td><p>$FixedDrives</p></td>
+<td><p>Only applies to applications in the path specified and stored on an internal storage device (internal hard disk drive)</p></td>
+</tr>
+<tr>
+<td><p>Any local storage</p></td>
+<td><p>$LocalDrives</p></td>
+<td><p>Only applies to applications in the path specified and stored on a non-removable local storage device (internal or external hard disk drive)</p></td>
+</tr>
+<tr>
+<td><p>Any removable storage</p></td>
+<td><p>$RemovableDrives</p></td>
+<td><p>Only applies to applications in the path specified and stored on a removable storage device (USB drive, CD/DVD)</p></td>
+</tr>
+<tr>
+<td><p>Network path</p></td>
+<td><p>$RemoteDrives</p></td>
+<td><p>Only applies to applications in the path specified and stored on a shared network resource</p></td>
+</tr>
+<tr>
+<td><p>Program Files folder</p></td>
+<td><p>$ProgramFiles</p></td>
+<td><p>Only applies to applications in the path specified and stored in the Program Files folders (default folders <code>C:\Program Files</code> and <code>C:\Program Files (x86)</code>)</p></td>
+</tr>
+<tr>
+<td><p>System volume</p></td>
+<td><p>$SystemDrive</p></td>
+<td><p>Only applies to applications in the path specified and stored in the default Windows system drive</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [File Path Example Usage](filepath-example-usage.mdx)
+::::

@@ -1,0 +1,110 @@
+---
+slug: trend-vision-one-sdk-or-cli-scanning
+title: File Security SDK
+last_updated: '2025-09-08'
+ai_context:
+  source_file: sdk-or-cli-scanning.md
+  conversion_date: '2025-09-08T23:42:13.108Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Trend Vision One™ - File Security SDK lets you to scan files using free software development kits (SDKs) or a command line interface (CLI). The SDK and CLI scanner stack scans all incoming files for known malware and active content. File Security SDK can send notifications and quarantine malware.
+
+The following architecture diagram illustrates the main File Security SDK information flow.
+
+![](/images/fs-sdk-architecture=b9e440e3-3157-4d28-ac4c-91f3208b4e1b.webp)
+
+The following SDKs are available in GitHub:
+
+- [SDK for Go](deploying-go-sdk.mdx)
+- [SDK for Java](deploying-java-sdk.mdx)
+- [SDK for Node](deploying-node-js-sdk.mdx)
+- [SDK for Python](deploying-python-sdk.mdx)
+
+The [command-line interface (CLI)](deploying-cli.mdx) is also available in GitHub.
+
+When deciding which method is best for your organization, consider the following table.
+
+**SDK versus CLI**
+
+<table>
+<colgroup>
+<col style="width: 77%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+</colgroup>
+<thead style="text-align: left;">
+<tr>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">SDK</th>
+<th style="text-align: left;">CLI</th>
+</tr>
+</thead>
+<tbody style="text-align: left;">
+<tr>
+<td style="text-align: left;"><p>Scan any file type</p></td>
+<td style="text-align: left;"><p>✔</p></td>
+<td style="text-align: left;"><p>✔</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Detect malware anywhere</p></td>
+<td style="text-align: left;"><p>✔</p></td>
+<td style="text-align: left;"><p>✔</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Detect active content</p></td>
+<td style="text-align: left;"><p>✔</p></td>
+<td style="text-align: left;"><p>✔</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Analyze any size file</p></td>
+<td style="text-align: left;"><p>✔</p></td>
+<td style="text-align: left;"><p>✔</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Display real-time scan results</p></td>
+<td style="text-align: left;"><p>✔</p></td>
+<td style="text-align: left;"><p>✔</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Examine on-premises applications, containers, clusters, and storage</p></td>
+<td style="text-align: left;">✔</td>
+<td style="text-align: left;"><p>✔</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Inspect cloud-based applications, containers, clusters, and storage</p></td>
+<td style="text-align: left;"><p>✔</p></td>
+<td style="text-align: left;"><p>✔</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><p>Program with one of four languages</p></td>
+<td style="text-align: left;"><p>✔</p></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Run without a program</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">✔</td>
+</tr>
+</tbody>
+</table>
+
+### Ensuring secure communication with TLS {#ensuring-secure-communication-with-tls}
+
+The communication channel between the client program or SDK and the Trend Vision One™ File Security service is fortified with robust server-side TLS encryption. This ensures that all data transmitted between the client and the Trend service remains thoroughly encrypted and safeguarded. The certificate employed by server-side TLS is a publicly-signed certificate from Trend Micro Inc, issued by a trusted Certificate Authority (CA), further bolstering security measures.
+
+The File Security SDK consistently adopts TLS as the default communication channel, prioritizing security at all times. Trend Micro strongly advises you not to disable TLS in a production environment while utilizing the File Security SDK, as doing so could compromise the integrity and confidentiality of transmitted data.
+
+**Related information**
+
+- [Scaling and performance with SDK](scaling-performance-sdk.mdx)
+- [Deploy with Go SDK](deploying-go-sdk.md "Use the Trend Vision One File Security Go SDK to scan files for malware.")
+- [Deploy with Java SDK](deploying-java-sdk.md "Use the Trend Vision One File Security Java SDK to scan files for malware.")
+- [Deploy with Node.js SDK](deploying-node-js-sdk.md "Use the Trend Vision One™ File Security Node.js SDK to scan files for malware.")
+- [Deploy with Python SDK](deploying-python-sdk.md "Use the Trend Vision One File Security Python SDK to scan files for malware.")
+- [Enable Predictive Machine Learning in File Security SDK](enable-predictive-machine-learning.mdx)
+- [Deploy with CLI](deploying-cli.md "Deploy Trend Vision One File Security with the CLI")
+- [Taking action after SDK scans](taking-action-after-sdk-scans.md "Actions to perform after scanning files with Trend Vision One File Security SDK")
+:::

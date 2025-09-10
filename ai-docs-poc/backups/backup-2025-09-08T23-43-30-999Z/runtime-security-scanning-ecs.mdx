@@ -1,0 +1,73 @@
+---
+slug: trend-vision-one-runtime-security-scanning-ecs
+title: Enable Runtime Security and Runtime Scanning on Amazon ECS clusters
+last_updated: '2025-09-08'
+ai_context:
+  source_file: runtime-security-scanning-ecs.md
+  conversion_date: '2025-09-08T23:42:13.314Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Feature</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><strong>Runtime Security</strong></p></td>
+<td><p>Provides visibility into any activity of your running containers that violates a customizable set of rules.</p>
+
+
+:::warning[Important]
+
+<p>Trend Micro recommends allocating at least an additional 0.5 vCPU and 1 GB memory to your ECS cluster node size on top of your existing requirements before enabling the Runtime Security feature. This is a general-purpose recommendation and can be adjusted based on cluster node size and observed CPU and memory usage. See <a href="trend-vision-one-adjust-cpu-memory-ecs">Adjust the CPU and memory allocations for ECS clusters</a> for more information.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><strong>Runtime Scanning</strong></p></td>
+<td><p>Provides visibility of operating system and open source code vulnerabilities that are part of containers running in clusters.</p>
+
+
+:::warning[Important]
+
+<ul>
+<li><p>Vulnerability Runtime Scanning supports clusters with pure ARM64 CPU nodes or pure x86_64 CPU nodes. Mixed CPU modes are not supported.</p></li>
+<li>A vulnerability scan occurs for each newly-deployed image, and then is rescanned every 24 hours.</li>
+<li><p>Vulnerability Runtime Scanning occurs on all active images inside the ECS cluster, including both ECR and non-ECR images.</p></li>
+<li><p>Container Security scans containers in an ECS cluster on a schedule (every 5 minutes). After finding a new uncached image, Container Security posts a scan request to the scan queue, which triggers a SBOM generation in the scan Lambda. This SBOM is uploaded to AsaaS for a vulnerability scan.</p></li>
+</ul>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+
+### Procedure {#procedure}
+
+1.  Go to **Cloud Security → Container Security → Container Inventory**.
+
+2.  In the tree, click **Amazon ECS**, locate and click the cluster in the list.
+
+3.  Turn on **Runtime Security**.
+
+4.  Turn on **Runtime Scanning**.
+
+5.  Click **Save**.
+:::

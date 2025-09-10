@@ -1,0 +1,53 @@
+---
+slug: trend-vision-one-amazon-sns-communication
+title: Amazon SNS communication
+last_updated: '2025-09-08'
+ai_context:
+  source_file: amazon-sns-communication.md
+  conversion_date: '2025-09-08T23:42:25.232Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+### Set up an Amazon SNS channel {#set-up-an-amazon-sns-channel}
+
+1.  Click on *Create an Amazon SNS channel*
+
+2.  [Set automatic notifications](toggle-automatic-notifications.mdx)
+
+3.  [Set manual notifications](toggle-manual-notifications.mdx)
+
+4.  Enter the *Channel Name*
+
+    :::note
+
+    The field is limited to 20 characters
+    :::
+
+5.  [Configure Triggers](communication-triggers.mdx)
+
+6.  *Configure now* requires a two-step process
+
+    1.  Input *SNS Topic ARN*
+    2.  Follow the instructions of *Setup access*
+
+7.  [Copy communication settings](copy-communication-settings.mdx)
+
+### SNS Notification Attributes {#sns-notification-attributes}
+
+- *failureDiscoveryDate :* the date of failure discovery. A failure can be discovered either when the check was originally created or when a check status was updated from SUCCESS to FAILURE. Example: if a check is created today, "Failure discovery date" is set to today. If a check exists and was successful, but changed to a failure today, "Failure discovery date" is set to today.
+- *lastUpdatedDate :* the timestamp of the last time Cloud Risk Management Scan or RTPM updated any attribute of the check.
+- *lastStatusUpdateDate :* the timestamp of the last time Cloud Risk Management Scan or RTPM updated status attribute of the check. For new checks, this field is set to the creation date.
+- *lastModifiedBy :* AWS Identity of the user that caused an event that RTPM picked up and either created a new check in FAILURE status or updated an existing check with SUCCESS to FAILURE.
+- *lastModifiedDate:* the timestamp of when *lastModifiedBy* is set.
+
+### FAQs {#faqs}
+
+\*\*We currently have a python Slackbot that can alert each user directly. Does Cloud Risk Management have a way to send alerts as SQS message so that it can be picked up by our Slackbot?\*\*Yes, follow the steps below:
+
+1.  Set up an Amazon SNS channel
+2.  Subscribe to SNS and add SQS endpoint
+
+\*\*Can integration be built into Atlassian OpsGenie?\*\*OpsGenie has a [native SNS integration](https://docs.opsgenie.com/docs/amazon-sns-incoming-integration). Therefore, notifications created in SNS will automatically be created in OpsGenie through the integration.
+:::

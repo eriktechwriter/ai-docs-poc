@@ -1,0 +1,221 @@
+---
+slug: trend-vision-one-tmws-features-migration
+title: Trend Micro Web Security Features and Settings Migration
+---
+# Trend Micro Web Security Features and Settings Migration
+
+Gain a better understanding of which settings migrate when you upgrade from Trend Micro Web Security to Zero Trust Secure Access Internet Access.
+
+The following tables detail how Trend Micro Web Security features and settings migrate when you upgrade to Internet Access.
+
+**Features**
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 17%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Feature</p></th>
+<th><p>Migratable</p></th>
+<th><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Dashboard</p></td>
+<td><p>No</p></td>
+<td><p>All relevant information and settings are found in the Zero Trust Secure Access app in Trend Vision One.</p>
+<p>Go to <strong>Zero Trust Secure Access → Secure Access Overview</strong> and click the <strong>Internet Access</strong> tab for an overview of the Internet Access service.</p>
+<p>Go to <strong>Zero Trust Secure Access → Secure Access Configuration → Internet Access Configuration</strong> to configure your Internet Access settings.</p></td>
+</tr>
+<tr>
+<td><p>Virtual gateway</p></td>
+<td><p>Yes (Partial)</p></td>
+<td><p>Internet Access Cloud Gateway does not support access rules with additional actions after blocking.</p></td>
+</tr>
+<tr>
+<td><p>On-premises gateway</p></td>
+<td><p>No</p></td>
+<td><p><a href="trend-vision-one-deploy-internet-access-prem-gateway">You must deploy an Internet Access On-Premises Gateway</a>.</p></td>
+</tr>
+<tr>
+<td><p>Logs</p></td>
+<td><p>No</p></td>
+<td><p>Activity logs are available via <strong>XDR Data Explorer</strong> in Trend Vision One.</p>
+<p>Go to <strong>Agentic SIEM &amp; XDR → XDR Data Explorer</strong> and select <strong>Secure Access Activity Data</strong> in the <strong>Search Method</strong> dropdown menu.</p>
+
+
+:::warning[Important]
+
+<p>Your existing logs in Trend Micro Web Security are not migrated to Trend Vision One.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Reports</p></td>
+<td><p>No</p></td>
+<td><p>Reports are available via the Reports app in Trend Vision One.</p>
+<p>Go to <strong>Dashboards and Reports → Reports</strong>.</p>
+
+
+:::warning[Important]
+
+<p>Your existing reports in Trend Micro Web Security are not migrated to Trend Vision One.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Enforceable Agent</p></td>
+<td><p>No</p></td>
+<td><p>You must <a href="https://docs.trendmicro.com/en-us/documentation/article/trend-vision-one-secure-access-module-deployment">Deploy the Secure Access Module on endpoints</a> to replace the Enforcement Agent. The Secure Access Module will auto disable the original Enforcement Agent, import the new HTTPS inspection certificate into endpoints. and apply the new PAC file.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Settings**
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 17%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Trend Micro Web Security Setting</p></th>
+<th><p>Migratable</p></th>
+<th><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><strong>Policies → Cloud Access Rules</strong></p></td>
+<td><p>Yes (Partial)</p></td>
+<td><p>Rules that include a domain group, some unsupported applications, or Trend Micro Web Security on-premises gateways are not migrated.</p>
+<p>Go to <strong>Zero Trust Secure Access → Secure Access Rules</strong> and click the <strong>Internet Access Control</strong> tab to manage access rules.</p>
+<p>Go to <strong>Zero Trust Secure Access → Secure Access Resources</strong> and click the <strong>File Profiles</strong> tab to manage access to certain types of content on the internet.</p></td>
+</tr>
+<tr>
+<td><p><strong>Policies → Approved/Blocked URLs</strong></p></td>
+<td><p>Yes</p></td>
+<td><p>Go to <strong>Zero Trust Secure Access → Internet Access Configuration</strong>, click the <strong>Allow List/Deny List</strong> tab, and select <strong>URL Allow List</strong> or <strong>URL Deny List</strong> to manage the websites your users can access.</p></td>
+</tr>
+<tr>
+<td><p><strong>Policies → Suspicious Objects</strong></p></td>
+<td><p>No</p></td>
+<td><p>Internet Access leverages information from Suspicious Object Management.</p></td>
+</tr>
+<tr>
+<td><p><strong>Policies → Security Templates → Threat Protection</strong></p></td>
+<td><p>Yes</p></td>
+<td><p>Go to <strong>Zero Trust Secure Access → Secure Access Resources</strong> and click the <strong>File Profiles</strong> tab to manage access to certain types of content on the internet.</p></td>
+</tr>
+<tr>
+<td><p><strong>Policies → Security Templates → Data Loss Prevention</strong></p></td>
+<td><p>Yes</p></td>
+<td><p>Data loss prevention rules are automatically migrated when upgrading to Internet Access.</p></td>
+</tr>
+<tr>
+<td><strong>Policies → HTTPS Inspection → Decryption Rules</strong></td>
+<td><p>Yes (Partial)</p></td>
+<td><p>Rules that only apply to Trend Micro Web Security on-premises gateways are not migrated.</p>
+<p>Go to <strong>Zero Trust Secure Access → Secure Access Configuration → Internet Access Configuration</strong> and click the <strong>HTTPS Inspection</strong> tab to manage HTTPS inspection rules.</p></td>
+</tr>
+<tr>
+<td><p><strong>Policies → HTTPS Inspection → Digital Certificates</strong></p></td>
+<td><p>Yes</p></td>
+<td><p>Certificates are automatically migrated when upgrading to Internet Access.</p></td>
+</tr>
+<tr>
+<td><p><strong>Policies → HTTPS Inspection → HTTPS Tunnels</strong></p></td>
+<td><p>Yes (Partial)</p></td>
+<td><p>Internet Access does not currently support querying and moving domains that fail HTTPS inspection onto the tunnel list through the Trend Vision One console.</p></td>
+</tr>
+<tr>
+<td><p><strong>Policies → Objects → Customized URL Categories</strong></p></td>
+<td><p>Yes</p></td>
+<td><p>Customized URL categories are automatically migrated when upgrading to Internet Access.</p></td>
+</tr>
+<tr>
+<td><p><strong>Policies → Objects → Cloud Service Filters</strong></p></td>
+<td><p>Yes</p></td>
+<td><p>Cloud service filters are automatically migrated when upgrading to Internet Access.</p></td>
+</tr>
+<tr>
+<td><p><strong>Policies → Objects → Cloud App Access Sets</strong></p></td>
+<td><p>Yes</p></td>
+<td><p>Cloud app access sets are automatically migrated when upgrading to Internet Access.</p></td>
+</tr>
+<tr>
+<td><p><strong>Policies → Objects → Target Domain Groups</strong></p></td>
+<td><p>No</p></td>
+<td><p>Internet Access does not currently support configuring target domains.</p></td>
+</tr>
+<tr>
+<td><p><strong>Policies → User Notifications</strong></p></td>
+<td><p>No</p></td>
+<td><p>Go to <strong>Zero Trust Secure Access → Secure Access Configuration → Customization Settings</strong> and click one page to check the default or customize some settings.</p></td>
+</tr>
+<tr>
+<td><p><strong>Policies → Global Settings → Global Settings</strong></p></td>
+<td><p>No</p></td>
+<td><p>The default Internet Access settings are used.</p></td>
+</tr>
+<tr>
+<td><p><strong>Policies → Global Settings → HTTPS Inspection</strong></p></td>
+<td><p>Yes (Partial)</p></td>
+<td><p>Internet Access does not have a global setting for enabling HTTPS inspection, certificate management, and HTTPS tunneling.</p>
+<p>If <strong>HTTPS Inspection</strong> is disabled in Trend Micro Web Security, all HTTPS inspection rules are automatically disabled when upgrading to Internet Access.</p>
+<p>Go to <strong>Zero Trust Secure Access → Secure Access Configuration → Internet Access Configuration →</strong> , click the <strong>HTTPS Inspection</strong> tab, and click the settings icon (<img src="./images/gear_icon=fc9a51ad-35af-4fe3-92c6-5e41b2dfc5d9.webp" />) to manage certificates and enable bypass mode.</p></td>
+</tr>
+<tr>
+<td><p><strong>Policies → Global Settings → Safe Search Engine Settings</strong></p></td>
+<td><p>Yes</p></td>
+<td><p>Safe search settings are automatically migrated when upgrading to Internet Access.</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Service Deployment → Policy Backup &amp; Restoration</strong></p></td>
+<td><p>No</p></td>
+<td><p>Go to <strong>Zero Trust Secure Access → Secure Access Configuration → Internet Access and AI Service Access Configuration</strong> and click <strong>Global Settings</strong>, then select Configuration Backup and Restoration to add some backup rules.</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Service Deployment → Enforcement Agent</strong></p></td>
+<td><p>No</p></td>
+<td><p>You must install the Secure Access Module on endpoints.</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Users &amp; Authentication → Directory Services</strong></p></td>
+<td><p>No</p></td>
+<td><p>Manage connected IAM systems in the Zero Trust Secure Access app.</p>
+<p>Go to <strong>Zero Trust Secure Access → Secure Access Configuration → Identity and Access Management</strong>.</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Users &amp; Authentication → Hosted Users</strong></p></td>
+<td><p>No</p></td>
+<td><p>Manage Trend Vision One accounts via the User Accounts app.</p>
+<p>Go to <strong>Administration → User Accounts</strong> to add the admin roles for the Trend Vision One sign-in.</p>
+<p>Go to <strong>Zero Trust Secure Access → Secure Access Configuration → Identity and Access Management</strong> and select <strong>Local User Account Management</strong> to add end users for the traffic access.</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Administrator Alerts → Account Setup Message</strong></p></td>
+<td><p>No</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Administrator Alerts → Administrator Alerts</strong></p></td>
+<td><p>No</p></td>
+<td><p>Manage Trend Vision One notifications via the Notifications app.</p>
+<p>Go to <strong>Administration → Notifications</strong>.</p></td>
+</tr>
+</tbody>
+</table>
+:::

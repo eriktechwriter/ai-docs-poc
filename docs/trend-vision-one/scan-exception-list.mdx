@@ -1,0 +1,57 @@
+---
+slug: trend-vision-one-scan-exception-list
+title: Scan exception list
+---
+# Scan exception list
+
+Cloud Email Gateway Protection allows you to configure different types of exceptions. If an email message meets any of the following conditions, Cloud Email Gateway Protection will trigger an exception and take the specified actions:
+
+- The number of files in a compressed file exceeds 353.
+
+- The decompression ratio of a compressed file exceeds 100.
+
+  :::note
+
+  The decompression ratio refers to the ratio between a decompressed file's size and its original compressed size. For example, for a 1 MB compressed file, if the decompressed file size is 100 MB, the ratio would be 100 to 1, which is equivalent to 100.
+  :::
+
+- The number of decompression layers in a compressed file exceeds 20.
+
+  Cloud Email Gateway Protection checks for malware "smuggled" within nested compressions and supports scanning up to 20 recursive compression layers.
+
+- The size of a single decompressed file exceeds 60 MB.
+
+- An Office file of version 2007 or later contains more than 353 subfiles.
+
+  :::note
+
+  An Office file of version 2007 or later is actually a zip archive of XML files. Therefore, Cloud Email Gateway Protection treats such an Office file as a compressed file and triggers an exception when the Office file consists of more than 353 files.
+  :::
+
+- An Office file of version 2007 or later contains a subfile whose decompression ratio exceeds 100.
+
+- Malformed messages.
+
+- Virtual Analyzer scan exception.
+
+  Possible scenarios include:
+
+  - Cloud sandbox analysis timed out.
+
+  - Unable to connect to the cloud sandbox.
+
+  - The available sandbox images do not support the file format.
+
+  - The extracted or downloaded file exceeds the file size limit.
+
+  - Unable to access the URL.
+
+  - The URL is invalid.
+
+- Virtual Analyzer submission quota exception.
+
+:::note
+
+The Virtual Analyzer scan exception and submission quota exception are available only in inbound protection.
+:::
+::::

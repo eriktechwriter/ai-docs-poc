@@ -1,0 +1,47 @@
+---
+slug: trend-vision-one-agent-console-notifications
+title: Agent console notifications
+---
+# Agent console notifications
+
+Review, manage, and customize the notifications users see on your managed endpoints.
+
+The Trend Vision One Endpoint Security agent console can alert endpoint users in your environment to different conditions or detections. You can customize, enable, or disable the alerts when [configuring an Endpoint Security Policy](configuring-endpoint-policies.mdx).
+
+**Agent Console Notifications**
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Alert</p></th>
+<th><p>Description</p></th>
+<th><p>Default message</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Your device is isolated from the network</p></td>
+<td><p>Sends an alert when taking the <strong>Isolate Endpoint</strong> response action on the endpoint</p>
+<p>The <strong>Isolate Endpoint notification</strong> is configurable in the policy settings. For more information about response actions, see <a href="trend-vision-one-response-actions-section">Response actions</a>.</p></td>
+<td><p>Access to your network is limited. Contact your administrator for assistance.</p></td>
+</tr>
+<tr>
+<td><p>Your device is no longer isolated from the network</p></td>
+<td><p>Sends an alert when the <strong>Isolate Endpoint</strong> response action is removed from the endpoint</p>
+<p>Disabling the Isolate Endpoint notification also disables this alert. The alert message is not customizable.</p></td>
+<td><p>If you require additional help to restore functions on your device, contact your administrator for assistance.</p></td>
+</tr>
+<tr>
+<td><p>Deepfake detection</p></td>
+<td><p>Sends an alert when deepfake content is detected on the endpoint</p>
+<p>The <strong>Deepfake notification</strong> is configurable in the policy settings. You must enable <strong>Deepfake detector</strong> for the agent to detect deepfake content.</p></td>
+<td><p>Trend Vision One Endpoint Security has detected deepfake content on your device.</p></td>
+</tr>
+</tbody>
+</table>
+:::

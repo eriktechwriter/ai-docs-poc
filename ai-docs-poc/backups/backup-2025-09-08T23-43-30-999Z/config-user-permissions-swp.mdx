@@ -1,0 +1,89 @@
+---
+slug: trend-vision-one-config-user-permissions-swp
+title: How do I configure user permissions for Server & Workload Protection
+last_updated: '2025-09-08'
+ai_context:
+  source_file: config-user-permissions-swp.md
+  conversion_date: '2025-09-08T23:42:22.909Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Although Server & Workload Protection features an Administration screen, many of the functions and features have been integrated with Trend Vision One, including managing the permissions for user roles accessing Server & Workload Protection.
+
+To configure a custom user role for Server & Workload Protection, follow the steps below. For more general information, see [User Roles](user-roles-foundation-services.mdx).
+
+### Procedure {#procedure}
+
+1.  In your Trend Vision One console, go to **Administration → User Roles**.
+
+2.  Add or edit a custom user role:
+
+    - To add a new custom user role, click **+ Add Role**.
+
+    - To edit a custom user role, select the custom user role and click the **Edit** icon.
+
+      :::note
+
+      To view only custom user roles, select **Role Type: → Custom**. You cannot add or edit a *predefined role*.
+      :::
+
+    The **Custom Role Setting** panel opens.
+
+3.  On the **General information** tab, specify the role name and description.
+
+4.  On the **Permissions** tab, select permissions to grant to the role.
+
+    The follow steps are specifically for Server & Workload Protection. You can add additional permissions as needed for your users.
+
+    1.  Under **Security Functions**, locate **Endpoint Security → Server & Workload Protection**.
+
+    2.  Select an access level, or select individual items to customize access.
+
+        Reference the table below for common scenarios and frequently asked configurations.
+
+        <table>
+        <colgroup>
+        <col style="width: 25%" />
+        <col style="width: 25%" />
+        <col style="width: 50%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Scenario</p></th>
+        <th><p>Description</p></th>
+        <th><p>Permissions</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>View only</p></td>
+        <td><p>Allow users to only view Server &amp; Workload Protection settings, but not edit</p></td>
+        <td><p>Select <strong>Read-Only</strong> for Server &amp; Workload Protection</p></td>
+        </tr>
+        <tr>
+        <td><p>Full access</p></td>
+        <td><p>Allow users complete control to view and edit settings</p></td>
+        <td><p>Select <strong>Full Access</strong> for Server &amp; Workload Protection</p></td>
+        </tr>
+        <tr>
+        <td><p>Manage spyware/grayware exclusion list</p></td>
+        <td><p>Allow users to manage the spyware/grayware exclusion list, including setting identified spyware to "allow" from the event logs screen</p></td>
+        <td><p>Must include the following permissions:</p>
+        <ul>
+        <li><p><strong>Other Rights → System Settings (Global)</strong> select all permissions</p></li>
+        </ul></td>
+        </tr>
+        </tbody>
+        </table>
+
+5.  On the **Data and App Assets** tab, select an [asset visibility scope](asset-visibility-management.mdx) or create a new scope for each Trend Vision One app.
+
+    :::warning[Important]
+
+    Make sure the user role you are creating is assigned to an asset visibility scope that includes the Server & Workload Protection Manager instance you want the role to have access to manage. Users cannot manage assets if they do not have visibility.
+    :::
+
+6.  Click **Save**.
+:::

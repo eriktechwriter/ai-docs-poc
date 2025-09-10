@@ -1,0 +1,81 @@
+---
+slug: trend-vision-one-configuring-apex-one-onprem
+title: Configure Trend Micro Apex One On-Premises
+---
+# Configure Trend Micro Apex One On-Premises
+
+Connect your Trend Micro Apex One servers to Trend Vision One.
+
+Trend Vision One does not support a direct connection to an on-premises Trend Micro Apex One server. You can connect your Trend Micro Apex One servers to Trend Vision One by first connecting to a Trend Micro Apex Central management server, then integrating your Apex Central server with Trend Vision One.
+
+### Procedure {#procedure}
+
+1.  Register your on-premises Apex Central server to Trend Micro Apex One.
+
+    For more details, see [Trend Micro Apex One documentation](https://docs.trendmicro.com/en-us/documentation/article/apex-one-service-pack-1-patch-3-server-online-help-osce-registering-pro).
+
+    1.  On the Trend Micro Apex One web-based management console, go to **Administration → Settings → Apex Central**.
+
+    2.  Specify a display name for the Apex Central server in the Trend Micro Apex One console.
+
+        If you do not specify a display name, the name defaults to the host name of the server computer and the product name.
+
+    3.  Specify the Apex Central server FQDN or IP address and the port number to use to connect to this server.
+
+        - For a dual-stack Trend Micro Apex One server, type the Apex Central FQDN or IP address (IPv4 or IPv6, if available).
+        - For a pure IPv4 Trend Micro Apex One server, type the Apex Central FQDN or IPv4 address.
+        - For a pure IPv6 Trend Micro Apex One server, type the Apex Central FQDN or IPv6 address.
+
+    4.  In the **Apex Central certificate** section, click **Browse...** and upload the certificate file downloaded from the Apex Central server.
+
+        :::note
+
+        To obtain the Apex Central certificate file, go to the Apex Central server and copy the certificate file to theTrend Micro Apex One server from the following location: `<Apex Central installation folder>\Certificate\CA\TMCM_CA_Cert.pem`
+        :::
+
+    5.  To authenticate the Apex Central IIS web server, type the user name and password.
+
+    6.  To use a proxy server to connect to the Apex Central server, specify the following proxy settings:
+
+        - Proxy protocol
+        - Server FQDN or IPv4/IPv6 address and port
+        - Proxy server authentication user ID and password
+
+    7.  Depending on whether you want to use one-way communication or two-way communication port forwarding, specify the IPv4/IPv6 address and port.
+
+    8.  To test whether the Apex Central server can connect to Trend Micro Apex One, click **Test Connection**.
+
+    9.  Click **Register**.
+
+2.  Generate an enrollment token in Trend Vision One.
+
+    1.  Sign in to the Trend Vision One console.
+
+    2.  Go to **Service Management → Product Instance**.
+
+    3.  Click **Add Existing Product**.
+
+    4.  In the **Instance type** field, select **Trend Micro Apex Central On-Premises**.
+
+    5.  Click the link to generate an enrollment token, and copy the new token.
+
+    6.  Click **Save**.
+
+3.  Integrate Apex Central with Trend Vision One.
+
+    For more details, see [Apex Central documentation](https://docs.trendmicro.com/en-us/documentation/article/apex-central-patch-8-online-help-v1integration).
+
+    1.  On the Apex Central console, go to **Trend Vision One → Integration Settings**.
+
+    2.  Paste in the enrollment token obtained from the Trend Vision One console.
+
+    3.  Under **Settings**, enable the following settings:
+
+        - Forward detection logs and endpoint information to Trend Vision One
+
+        - Synchronize suspicious object lists from Trend Vision One
+
+    4.  Click **Register**.
+
+        Your Apex Central management server connects to Trend Vision One.
+:::

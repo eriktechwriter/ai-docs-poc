@@ -1,0 +1,614 @@
+---
+slug: trend-vision-one-deploying-cli
+title: Deploy with CLI
+last_updated: '2025-09-08'
+ai_context:
+  source_file: deploying-cli.md
+  conversion_date: '2025-09-08T23:42:20.613Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::::: {role="main"}
+Deploy Trend Vision One™ File Security with the CLI
+
+## Integrate into a CI/CD pipeline {#integrate-into-a-cicd-pipeline}
+
+Include File Security in your CI/CD pipeline to detect malware before files are distributed to production pipeline or storage. Easily integrate File Security CLI into your continuous integration (CI) or continuous delivery (CD) pipeline. For example, Jenkins® projects can automatically build, test, and push files and applications to production environment. If any malware exist in those files, then they are a risk when the file is run or distributed to other parts of the production pipeline.
+
+File Security CLI is versatile and can be employed in production environments where files are uploaded or distributed by third-party vendors or supply chain partners. It scans any received files to ensure there is no malicious lateral movement within the corporate boundary before allowing them to proceed to other parts of the corporate environment.
+
+Examples of files that can be scanned using File Security CLI include:
+
+- Binary Files
+
+- Directories with various file types
+
+- Large media files
+
+- Files received from third party or supply chain partners
+
+## Install File Security CLI {#install-file-security-cli}
+
+To ensure optimal performance and access to the latest features, we recommend that you install the most recent version of File Security CLI. To check for the latest version, go to [metadata.json](https://tmfs-cli.fs-sdk-ue1.xdr.trendmicro.com/tmfs-cli/metadata.json).
+
+:::note
+
+If you are updating to a new version of File Security CLI, you need to adjust your system's binary path settings by doing one of the following:
+
+- replacing the existing File Security CLI binary with the updated file binary
+
+- modifying your PATH to point to the new File Security CLI binary location
+:::
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"><p>Architecture</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p><a href="https://tmfs-cli.fs-sdk-ue1.xdr.trendmicro.com/tmfs-cli/latest/tmfs-cli_Darwin_arm64.zip">Darwin_arm64</a> (MacOS - Apple Silicon chipset)</p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p><a href="https://tmfs-cli.fs-sdk-ue1.xdr.trendmicro.com/tmfs-cli/latest/tmfs-cli_Darwin_x86_64.zip">Darwin_x86_64</a> (MacOS - Intel chipset)</p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p><a href="https://tmfs-cli.fs-sdk-ue1.xdr.trendmicro.com/tmfs-cli/latest/tmfs-cli_Linux_arm64.tar.gz">Linux_arm64</a></p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p><a href="https://tmfs-cli.fs-sdk-ue1.xdr.trendmicro.com/tmfs-cli/latest/tmfs-cli_Linux_i386.tar.gz">Linux_i386</a></p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p><a href="https://tmfs-cli.fs-sdk-ue1.xdr.trendmicro.com/tmfs-cli/latest/tmfs-cli_Linux_x86_64.tar.gz">Linux_x86_64</a></p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p><a href="https://tmfs-cli.fs-sdk-ue1.xdr.trendmicro.com/tmfs-cli/latest/tmfs-cli_Windows_arm64.zip">Windows_arm64</a></p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p><a href="https://tmfs-cli.fs-sdk-ue1.xdr.trendmicro.com/tmfs-cli/latest/tmfs-cli_Windows_i386.zip">Windows_i386</a></p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p><a href="https://tmfs-cli.fs-sdk-ue1.xdr.trendmicro.com/tmfs-cli/latest/tmfs-cli_Windows_x86_64.zip">Windows_x86_64</a></p></td>
+</tr>
+</tbody>
+</table>
+
+## Obtain an API Key {#obtain-an-api-key}
+
+File Security CLI requires a valid API Key stored in the environment variable. It can accept Trend Vision One API keys. Please add the API Key associated with the Trend Vision One region that you wish to call as an environment variable.
+
+**macOS and Linux**
+
+`export TMFS_API_KEY=<your_vision_one_api_key>`
+
+**Windows Command Prompt (cmd)**
+
+`set TMFS_API_KEY=<your_vision_one_api_key>`
+
+**Windows PowerShell**
+
+`$env:TMFS_API_KEY="<your_vision_one_api_key>"`
+
+:::note
+
+When obtaining the API Key, associate it with your Trend Vision One region. Use the `-- region` flag when running File Security CLI to specify the region of that API key and to ensure you have proper authorization. The list of supported Trend Vision One regions can be found under the region flag.
+:::
+
+### Procedure {#procedure}
+
+1.  Create a new Trend Vision One API key:
+
+    1.  Navigate to the [Trend Vision One User Roles page](https://portal-xdr.visionone.trendmicro.com/).
+
+    2.  Verify that there is a role with the "Run file scan via SDK" permission enabled. If not, create a role by clicking **Add Role** and then click **Save** once finished.
+
+    3.  Directly configure a new key on the Trend Vision One API Keys page, using the role with the "Run file scan via SDK" permission. We recommend that you set an expiry time for the API key and make a record of it for future reference. You can manage these keys from the [Trend Vision One API Keys Page](https://portal-xdr.visionone.trendmicro.com/).
+
+2.  Add the File Security CLI to your PATH:
+
+    - **macOS and Linux:**`export`` ``PATH="/path/to/tmfs/binary/directory:$PATH"`
+
+    - **Windows Command Prompt (cmd):**`setx PATH "%PATH%;C:\path\to\tmfs\binary\directory"`
+
+      :::note
+
+      Close and reopen the command prompt for the changes to take effect.
+      :::
+
+    - **Windows PowerShell:**
+
+      ``` codeblock
+      $pathToAdd = "C:\path\to\tmfs\binary\directory"
+      [System.Environment]::SetEnvironmentVariable("Path", "$($env:Path);$pathToAdd", [System.EnvironmentVariableTarget]::User)
+      ```
+
+      :::note
+
+      Close and reopen PowerShell for the changes to take effect.
+      :::
+
+## General usage {#general-usage}
+
+For examples of commands using File Security CLI, see the Examples section.
+
+``` codeblock
+tmfs scan [target] [flags]
+```
+
+## Available commands {#available-commands}
+
+<table>
+<thead>
+<tr>
+<th><p>Command</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>scan</code></p></td>
+<td><p>scan a target (file or directory)</p></td>
+</tr>
+<tr>
+<td><p><code>version</code></p></td>
+<td><p>get current CLI version (long)</p></td>
+</tr>
+<tr>
+<td><p><code>help</code></p></td>
+<td><p>help</p></td>
+</tr>
+</tbody>
+</table>
+
+## Command examples {#command-examples}
+
+::: {#task_yjk_11z_mzb__example_f1c_d1z_mzb .example}
+``` codeblock
+// use region flag and file target
+tmfs scan --region us-east-1 file:/Users/XXX/Downloads/eicar.tar.gz --tag "owner=johndoe" --tag "stack=prod"
+ 
+// use endpoint flag and directory target
+tmfs scan --endpoint antimalware.us-1.cloudone.trendmicro.com:443 dir:/Users/XXX/Uploads --tag "owner=janedoe" --tag "stack=dev"
+```
+:::
+
+## Use Command flags {#use-command-flags}
+
+**Command Flags**
+
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 28%" />
+<col style="width: 43%" />
+</colgroup>
+<thead style="text-align: left;">
+<tr>
+<th style="text-align: left;"><p>Scope</p></th>
+<th style="text-align: left;"><p>Flag</p></th>
+<th style="text-align: left;"><p>Description</p></th>
+<th style="text-align: left;"><p>Examples</p></th>
+</tr>
+</thead>
+<tbody style="text-align: left;">
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>scan command</p></td>
+<td style="text-align: left; vertical-align: top;"><p><code>-r, -- region</code></p></td>
+<td style="text-align: left; vertical-align: top;"><p>(string) vision one region options=[us-east-1, eu-central-1, ap-northeast-1, ap-southeast-2, ap-southeast-1]</p></td>
+<td style="text-align: left; vertical-align: top;"><ul>
+<li><p>V1 regions</p>
+<ul>
+<li><p>ap-northeast-1</p></li>
+<li><p>ap-south-1</p></li>
+<li><p>ap-southeast-1</p></li>
+<li><p>ap-southeast-2</p></li>
+<li><p>eu-central-1</p></li>
+<li><p>us-east-1</p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>scan command</p></td>
+<td style="text-align: left; vertical-align: top;"><p><code>-- timeoutInSecs</code></p></td>
+<td style="text-align: left; vertical-align: top;"><p>Timeout in seconds for a single file scan</p></td>
+<td style="text-align: left; vertical-align: top;"><p>180</p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>scan command</p></td>
+<td style="text-align: left; vertical-align: top;"><p><code>-t, -- tag</code></p></td>
+<td style="text-align: left; vertical-align: top;"><p>Tag to be used for the scan</p>
+<ul>
+<li><p>The maximum number of tags is 8</p></li>
+<li><p>The length of each tag can't exceed 63</p></li>
+</ul></td>
+<td style="text-align: left; vertical-align: top;"><p>--tag "stack=production"</p>
+<p>--tag "owner=johndoe"</p>
+<p>--tag "type=OCR"</p>
+<p>--tag "purpose=customer_upload"</p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>scan command</p></td>
+<td style="text-align: left; vertical-align: top;"><p><code>--pml</code></p></td>
+<td style="text-align: left; vertical-align: top;"><p>Specify to enable Predictive Machine Learning (PML).</p></td>
+<td style="text-align: left; vertical-align: top;"><p><code>--pml true</code></p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>scan command</p></td>
+<td style="text-align: left; vertical-align: top;"><p><code>--activeContent</code></p></td>
+<td style="text-align: left; vertical-align: top;">Specify to enable scan for active content.
+<p>Active content is a dynamic element in a file that can execute code or perform actions automatically and can be exploited to deliver malware or phishing attacks.</p></td>
+<td style="text-align: left; vertical-align: top;"><p><code>==activeContent true</code></p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;">scan command</td>
+<td style="text-align: left; vertical-align: top;"><p><code>--feedback</code></p></td>
+<td style="text-align: left; vertical-align: top;"><p>Specify to enable Trend Smart Protection Network (SPN) feedback.</p></td>
+<td style="text-align: left; vertical-align: top;"><p><code>--feedback true</code></p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>scan command</p></td>
+<td style="text-align: left; vertical-align: top;"><p><code>--allResults</code></p></td>
+<td style="text-align: left; vertical-align: top;"><ul>
+<li><p>only for dir scanning</p></li>
+<li><p>shows all scan results including no malware scanning</p></li>
+</ul></td>
+<td style="text-align: left; vertical-align: top;"><p><code>--allResults</code></p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>global</p></td>
+<td style="text-align: left; vertical-align: top;"><p><code>--verbose</code></p></td>
+<td style="text-align: left; vertical-align: top;"><p>Increase verbosity (-v = info, -vv = debug</p></td>
+<td style="text-align: left; vertical-align: top;"> </td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>global</p></td>
+<td style="text-align: left; vertical-align: top;"><p><code>-h, --help</code></p></td>
+<td style="text-align: left; vertical-align: top;"><p>Help</p></td>
+<td style="text-align: left; vertical-align: top;"> </td>
+</tr>
+</tbody>
+</table>
+
+## Supported targets {#supported-targets}
+
+File Security CLI supports both directory and file targets. **Supported Targets**
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 33%" />
+<col style="width: 50%" />
+</colgroup>
+<thead style="text-align: left;">
+<tr>
+<th style="text-align: left;"><p>Targets</p></th>
+<th style="text-align: left;"><p>Description</p></th>
+<th style="text-align: left;"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody style="text-align: left;">
+<tr>
+<td style="text-align: left; vertical-align: top;"><p><code>dir:path/to/yourproject</code></p></td>
+<td style="text-align: left; vertical-align: top;"><p>Reads directly from a path on disk (any directory)</p></td>
+<td style="text-align: left; vertical-align: top;"><ul>
+<li><p>File Security CLI will scan the files in this directory in parallel. The default number of concurrency is 10.</p></li>
+<li><p>Only scans the first level of directories.</p></li>
+<li><p>Only scans regular files, excluding symbolic links, device files, sub directories.</p></li>
+<li><p>The default timeout for the whole process is 15mins.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p><code>file:path/to/yourproject/file</code></p></td>
+<td style="text-align: left; vertical-align: top;"><p>Reads directly from a path on a disk (any file)</p></td>
+<td style="text-align: left; vertical-align: top;"> </td>
+</tr>
+</tbody>
+</table>
+
+## File Security CLI response payload {#file-security-cli-response-payload}
+
+The File Security CLI response payload includes parameters for both files and directories. **File**
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 60%" />
+</colgroup>
+<thead style="text-align: left;">
+<tr>
+<th style="text-align: left;"><p>Parameter</p></th>
+<th style="text-align: left;"><p>Type</p></th>
+<th style="text-align: left;"><p>Description</p></th>
+</tr>
+</thead>
+<tbody style="text-align: left;">
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>scannerVersion</p></td>
+<td style="text-align: left; vertical-align: top;"><p>string</p></td>
+<td style="text-align: left; vertical-align: top;"><p>The scanner version</p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>schemaVersion</p></td>
+<td style="text-align: left; vertical-align: top;"><p>string</p></td>
+<td style="text-align: left; vertical-align: top;"><p>The schema version</p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>scanResult</p></td>
+<td style="text-align: left; vertical-align: top;"><p>int</p></td>
+<td style="text-align: left; vertical-align: top;"><p>Number of malware files found</p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>scanID</p></td>
+<td style="text-align: left; vertical-align: top;"><p>string</p></td>
+<td style="text-align: left; vertical-align: top;"><p>A unique identifier for the scan</p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>scanTimestamp</p></td>
+<td style="text-align: left; vertical-align: top;"><p>string</p></td>
+<td style="text-align: left; vertical-align: top;">The timestamp indicating when the scan occurred</td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>fileName</p></td>
+<td style="text-align: left; vertical-align: top;"><p>string</p></td>
+<td style="text-align: left; vertical-align: top;"><p>The name of the scanned file</p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>foundMalwares</p></td>
+<td style="text-align: left; vertical-align: top;"><p>object</p></td>
+<td style="text-align: left; vertical-align: top;"><p>An array containing details about the identified malware (if any)</p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>fileSHA1</p></td>
+<td style="text-align: left; vertical-align: top;"><p>string</p></td>
+<td style="text-align: left; vertical-align: top;"><p>The SHA-1 hash of the scanned file</p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>fileSHA256</p></td>
+<td style="text-align: left; vertical-align: top;"><p>string</p></td>
+<td style="text-align: left; vertical-align: top;"><p>The SHA-256 hash of the scanned file</p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>foundMalware[].fileName</p></td>
+<td style="text-align: left; vertical-align: top;"><p>string</p></td>
+<td style="text-align: left; vertical-align: top;"><p>The name of the file in which malware was detected</p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>foundMalware[]malwareName</p></td>
+<td style="text-align: left; vertical-align: top;"><p>string</p></td>
+<td style="text-align: left; vertical-align: top;"><p>The name or identifier of the detected malware</p></td>
+</tr>
+</tbody>
+</table>
+
+Example
+
+``` codeblock
+{
+    "scannerVersion": "1.0.0-9271111",
+    "schemaVersion": "1.0.0",
+    "scanResult": 1,
+    "scanId": "6a018277-f969-403d-aa63-eba1223337e1",
+    "scanTimestamp": "2023-11-20T18:50:43.663Z",
+    "fileName": "./test/eicar-alpine.tar",
+    "foundMalwares": [
+        {
+            "fileName": "malware/eicar.com",
+            "malwareName": "Eicar_test_file"
+        }
+    ],
+    "fileSHA1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+    "fileSHA256": "e5f24b4ac134a7d923ae0f9689b86f015f86edbc3cc95e4c9f9406412914de05"
+}
+```
+
+**Directory**
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead style="text-align: left;">
+<tr>
+<th style="text-align: left;"><p>Parameter</p></th>
+<th style="text-align: left;"><p>Type</p></th>
+<th style="text-align: left;"><p>Description</p></th>
+<th style="text-align: left;"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody style="text-align: left;">
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>startTime</p></td>
+<td style="text-align: left; vertical-align: top;"><p>string</p></td>
+<td style="text-align: left; vertical-align: top;"><p>The timestamp indicating when the scan operation started</p></td>
+<td style="text-align: left; vertical-align: top;"></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>endTime</p></td>
+<td style="text-align: left; vertical-align: top;"><p>string</p></td>
+<td style="text-align: left; vertical-align: top;"><p>The timestamp indicating when the scan operation concluded</p></td>
+<td style="text-align: left; vertical-align: top;"></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>totalMalwareCount</p></td>
+<td style="text-align: left; vertical-align: top;"><p>int</p></td>
+<td style="text-align: left; vertical-align: top;"><p>Total malware count of all scan results</p></td>
+<td style="text-align: left; vertical-align: top;"></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>scanResults</p></td>
+<td style="text-align: left; vertical-align: top;"><p>object</p></td>
+<td style="text-align: left; vertical-align: top;"><p>An array containing all scan results</p></td>
+<td style="text-align: left; vertical-align: top;"><p>Collects only files containing malware</p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>scanResults[].scannerVersion</p></td>
+<td style="text-align: left; vertical-align: top;"><p>string</p></td>
+<td style="text-align: left; vertical-align: top;"><p>The scanner version</p></td>
+<td style="text-align: left; vertical-align: top;"></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>scanResults[].schemaVersion</p></td>
+<td style="text-align: left; vertical-align: top;"><p>string</p></td>
+<td style="text-align: left; vertical-align: top;"><p>The schema version</p></td>
+<td style="text-align: left; vertical-align: top;"></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>scanResults[].scanResults</p></td>
+<td style="text-align: left; vertical-align: top;"><p>int</p></td>
+<td style="text-align: left; vertical-align: top;"><p>Number of malware found</p></td>
+<td style="text-align: left; vertical-align: top;"></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>scanResults[].scanId</p></td>
+<td style="text-align: left; vertical-align: top;"><p>string</p></td>
+<td style="text-align: left; vertical-align: top;"><p>A unique identifier for the scan</p></td>
+<td style="text-align: left; vertical-align: top;"></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>scanResults[].scanTimestamp</p></td>
+<td style="text-align: left; vertical-align: top;"><p>string</p></td>
+<td style="text-align: left; vertical-align: top;"><p>The timestamp indicating when the scan was performed</p></td>
+<td style="text-align: left; vertical-align: top;"></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>scanResults[].fileName</p></td>
+<td style="text-align: left; vertical-align: top;"><p>string</p></td>
+<td style="text-align: left; vertical-align: top;"><p>The name of the scanned file</p></td>
+<td style="text-align: left; vertical-align: top;"></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>scanResults[].foundMalwares</p></td>
+<td style="text-align: left; vertical-align: top;"><p>object</p></td>
+<td style="text-align: left; vertical-align: top;"><p>An array containing the details about the identified malware (if any)</p></td>
+<td style="text-align: left; vertical-align: top;"></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>scanResults[].SHA1</p></td>
+<td style="text-align: left; vertical-align: top;"><p>string</p></td>
+<td style="text-align: left; vertical-align: top;"><p>The SHA-1 hash of the scanned file</p></td>
+<td style="text-align: left; vertical-align: top;"></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>scanResults[].SHA256</p></td>
+<td style="text-align: left; vertical-align: top;"><p>string</p></td>
+<td style="text-align: left; vertical-align: top;"><p>The SHA-256 hash of the scanned file</p></td>
+<td style="text-align: left; vertical-align: top;"></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>scanResults[].foundMalwares[].fileName</p></td>
+<td style="text-align: left; vertical-align: top;"><p>string</p></td>
+<td style="text-align: left; vertical-align: top;"><p>The name of the file where malware was detected</p></td>
+<td style="text-align: left; vertical-align: top;"></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>scanResults[].foundMalwares[].malwareName</p></td>
+<td style="text-align: left; vertical-align: top;"><p>string</p></td>
+<td style="text-align: left; vertical-align: top;"><p>The name or identifier of the detected malware</p></td>
+<td style="text-align: left; vertical-align: top;"></td>
+</tr>
+</tbody>
+</table>
+
+Example
+
+``` codeblock
+{
+    "startTime": "2023-11-20T18:36:05.926Z",
+    "endTime": "2023-11-20T18:36:06.316Z",
+    "totalMalwareCount": 1,
+    "scanResults": [
+        {
+            "scannerVersion": "1.0.0-9271111",
+            "schemaVersion": "1.0.0",
+            "scanResult": 1,
+            "scanId": "c104229a-247c-4d0d-8fca-c27c33824ef5",
+            "scanTimestamp": "2023-11-20T18:36:06.373Z",
+            "fileName": "./test/eicar-alpine.tar",
+            "foundMalwares": [
+                {
+                    "fileName": "malware/eicar.com",
+                    "malwareName": "Eicar_test_file"
+                }
+            ],
+            "fileSHA1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "fileSHA256": "e5f24b4ac134a7d923ae0f9689b86f015f86edbc3cc95e4c9f9406412914de05"
+        }
+    ]
+}
+```
+
+## Proxy configuration {#proxy-configuration}
+
+File Security CLI loads the proxy configuration from a set of optional environment variables.
+
+**Environment Variables**
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 60%" />
+</colgroup>
+<thead style="text-align: left;">
+<tr>
+<th style="text-align: left;"><p>Environment Variable</p></th>
+<th style="text-align: left;"><p>Required/Optional</p></th>
+<th style="text-align: left;"><p>Description</p></th>
+</tr>
+</thead>
+<tbody style="text-align: left;">
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>NO_PROXY</p></td>
+<td style="text-align: left; vertical-align: top;"><p>Optional</p></td>
+<td style="text-align: left; vertical-align: top;"><p>Adds the File Security Malware Scanning as a Service endpoints to the comma-separated list of host names. Use if you want to skip proxy settings for File Security CLI.</p>
+
+
+:::note
+
+Use an asterisk * to match all hosts.
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>HTTP_PROXY</p></td>
+<td style="text-align: left; vertical-align: top;"><p>Optional</p></td>
+<td style="text-align: left; vertical-align: top;"><p>http://proxy.example.com</p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>HTTPS_PROXY</p></td>
+<td style="text-align: left; vertical-align: top;"><p>Optional</p></td>
+<td style="text-align: left; vertical-align: top;"><p>https://proxy.example.com</p>
+
+
+:::note
+
+If the proxy server is a SOCKS5 proxy, you must specify the SOCKS5 protocol in the URL. For example, socks5://socks.proxy.com
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>PROXY_USER</p></td>
+<td style="text-align: left; vertical-align: top;"><p>Optional</p></td>
+<td style="text-align: left; vertical-align: top;"><p>Username for authentication header used in <code>Proxy-Authorization</code></p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>PROXY_PASS</p></td>
+<td style="text-align: left; vertical-align: top;"><p>Optional</p></td>
+<td style="text-align: left; vertical-align: top;"><p>Password for authentication header used in <code>Proxy-Authorization</code>. Used only when PROXY_USER is configured.</p></td>
+</tr>
+</tbody>
+</table>
+::::::

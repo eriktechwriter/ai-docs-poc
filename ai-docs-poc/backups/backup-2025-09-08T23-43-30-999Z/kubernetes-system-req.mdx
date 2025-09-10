@@ -1,0 +1,129 @@
+---
+slug: trend-vision-one-kubernetes-system-req
+title: Kubernetes system requirements for Container Security
+last_updated: '2025-09-08'
+ai_context:
+  source_file: kubernetes-system-req.md
+  conversion_date: '2025-09-08T23:42:16.533Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::::: {role="main"}
+Before deploying Container Security, ensure that your Kubernetes clusters meet the minimum system requirements and specific Helm and network policy requirements.
+
+:::note
+
+- Container Security supports each Kubernetes version until its official end-of-life (EOL).
+
+- Container Security supports each Helm version for up to 6 months. The latest three versions are always supported.
+:::
+
+**System requirements**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Features Enabled</p></th>
+<th><p>Min. vCPU Request</p></th>
+<th><p>Max vCPU Limit</p></th>
+<th><p>Min. Memory Request</p></th>
+<th><p>Max Memory Limit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Default features</p></td>
+<td><p>0.6 vCPU</p></td>
+<td><p>3.4 vCPU</p></td>
+<td><p>572 MB</p></td>
+<td><p>4 GB</p></td>
+</tr>
+<tr>
+<td><p>Runtime security enabled</p></td>
+<td><p>06 vCPU + 0.2 vCPU per node</p></td>
+<td><p>3.4 vCPU + 2 vCPU per node</p></td>
+<td><p>572 MB + 768 MB per node</p></td>
+<td><p>4GB + 2GB per node</p></td>
+</tr>
+<tr>
+<td><p>Runtime scanning enabled</p></td>
+<td><p>0.7 vCPU</p></td>
+<td><p>4.4 vCPU</p></td>
+<td><p>592 MB</p></td>
+<td><p>5GB</p></td>
+</tr>
+<tr>
+<td><p>Both features enabled</p></td>
+<td><p>0.7 vCPU + 0.2 vCPU per node</p></td>
+<td><p>4.4vCPU + 2 vCPU per node</p></td>
+<td><p>592 MB + 768 MB per node</p></td>
+<td><p>5 GB + 2 GB per node</p></td>
+</tr>
+</tbody>
+</table>
+
+**Help and network policy requirements**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Requirement</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Helm 3 (or later)</p></td>
+<td><p>Container Security components use the <code>helm</code> package manager for Kubernetes.</p></td>
+</tr>
+<tr>
+<td><p>Network policy support</p></td>
+<td><p>Container Security continuous compliance enforces policies by leveraging <a href="https://kubernetes.io/docs/concepts/services-networking/network-policies/">Kubernetes network policies</a> to perform isolation mitigation. Network policies are implemented by a <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/">network plugin</a>.</p>
+<ul>
+<li><p>Amazon Elastic Kubernetes Service (Amazon EKS) : <a href="https://docs.aws.amazon.com/eks/latest/userguide/calico">Calico network plugin</a></p></li>
+<li><p>OpenShift versions 4.12 and later: <a href="https://docs.openshift.com/container-platform/4.12/networking/network_policy/about-network-policy">OpenShift SDN</a></p>
+
+
+:::note
+
+<p>Ensure that your environment <a href="trend-vision-one-openshift-requirements">supports Container Security before deploying alongside OpenShift</a>.</p>
+
+
+:::
+
+</li>
+<li><p>Azure Kubernetes Service (AKS): <a href="https://learn.microsoft.com/en-us/azure/aks/use-network-policies">Azure Network Policies or Calico</a>.</p></li>
+<li><p>Google Kubernetes Engine (GKE): <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/network-policy">Network policy enforcement</a></p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+:::note
+
+Before connecting an Amazon EKS Fargate pod, ensure that the container meets the additional [system requirements for EKS Fargate](amazon-eks-fargate-sys-reqs.mdx) deployments.
+:::
+
+If you are running Container Security in a Red Hat OpenShift environment, network isolation mitigation is only supported for pods whose security context is acceptable by the oversight controller's SecurityContextConstraint. If you want to let Container Security isolate pods that are not allowed by default, you can use the `overrides.yaml` file to override the default settings.
+
+:::warning[Important]
+
+The network policy with matchLabels `trendmicro-cloud-one: isolate` must exist in each application namespaces in order to perform proper isolation mitigation.
+:::
+
+**Related information**
+
+- [Runtime Security performance impact](runtime-perform-sec.mdx)
+::::::

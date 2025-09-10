@@ -1,0 +1,55 @@
+---
+slug: trend-vision-one-nsa-hardening-1-2-322
+title: 3.2.2 - Ensure ResouceQuota policy is used to limit resource usage (Automated)
+---
+# 3.2.2 - Ensure ResouceQuota policy is used to limit resource usage (Automated)
+
+Profile applicability: Level 1
+
+ResourceQuotas are restrictions placed on the aggregate resource usage for an entire namespace, such as limits placed on total CPU and memory usage. If a user tries to create a Pod that violates a LimitRange or ResourceQuota policy, the Pod creation fails.
+
+### Audit {#audit}
+
+Run the following command and review ResourceQuota policies:
+
+```bash
+kubectl get resourcequotas --all-namespaces
+```
+
+Add ResourceQuota policies to limit resource usage.
+
+### Remediation {#remediation}
+
+Create a ResourceQuota policy with memory and CPU quota per each namespace.
+
+ResourceQuota objects to limit aggregate resource usage within a namespace are created by applying a YAML file to a namespace or specifying requirements in the configuration file of Pods. For more information, see the [Kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/manage%02resources/quota-memory-cpu-namespace/%3E).
+
+Configuration file for a namespace:
+
+```bash
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: example-cpu-mem-resourcequota
+spec:
+  hard:
+  requests.cpu: “1”
+  requests.memory: 1Gi
+  limits.cpu: “2”
+  limits.memory: 2Gi
+```
+
+This ResourceQuota can be applied with:
+
+```bash
+kubectl apply -f example-cpu-mem-resourcequota.yaml --namespace=<insert-namespace-here>
+```
+
+This ResourceQuota places the following constraints on the chosen namespace. Every container must have the following:
+
+- A memory request, memory limit, CPU request, and CPU limit
+- Aggregate memory request for all containers should not exceed 1 GB
+- Total memory limit for all containers should not exceed 2 GB
+- Aggregate CPU request for all containers should not exceed 1 CPU
+- Total CPU limit for all containers should not exceed 2 CPUs
+:::

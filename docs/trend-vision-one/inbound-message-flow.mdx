@@ -1,0 +1,33 @@
+---
+slug: trend-vision-one-inbound-message-flow
+title: Inbound message flow
+---
+# Inbound message flow
+
+Cloud Email Gateway Protection will first scan incoming email messages before final delivery to the "example.com" Inbound Server.
+
+<figure>
+<p>The flow of messaging traffic from the Internet, through the Cloud Email Gateway Protection, and then to the "example.com" Inbound Server, or local MTA.</p>
+<img src="./images/Inbound_Message_Flow=GUID-D1ECBD61-9A0E-485F-8272-24F63DC47671=1=en-us=Low.webp" />
+</figure>
+
+Evaluation is done in the following order:
+
+1.  The originating MTA performs a Domain Name Service (DNS) lookup of the MX record for "example.com" to determine the location of the "example.com" domain.
+
+    The MX record for "example.com" points to the IP address of the Cloud Email Gateway Protection instead of the original "example.com" Inbound Server.
+
+2.  The originating MTA routes messages to Cloud Email Gateway Protection.
+
+3.  The Cloud Email Gateway Protection accepts the connection from the originating mail server.
+
+4.  Cloud Email Gateway Protection performs connection-based filtering at the MTA connection level to decide on an action to take. Actions include the following:
+
+    - Cloud Email Gateway Protection terminates the connection, rejecting the messages.
+
+    - Cloud Email Gateway Protection accepts the messages and filters them using content-based policy filtering.
+
+5.  Cloud Email Gateway Protection examines the message contents to determine whether the message contains malware or any other threats.
+
+6.  Assuming that a message is slated for delivery according to the policies, the Cloud Email Gateway Protection routes the message to the original "example.com" Inbound Server.
+:::

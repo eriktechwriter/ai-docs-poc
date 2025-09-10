@@ -1,0 +1,33 @@
+---
+slug: trend-vision-one-compliance-score
+title: Compliance score
+---
+# Compliance score
+
+Compliance score is a single quick metric for assessing your organisation's *all accounts*, *individual accounts*, or *groups* compliance with a selected filter of rules.
+
+Compliance Score is calculated using a simple unweighted formula: (Total number of successful [Checks](model-check.mdx) / Total number of Checks) \* 100
+
+Low compliance scores suggest a pressing need to take remediation actions to resolve failures.
+
+*Does disabling rules / suppressing checks impact the Compliance Score?*
+
+[Disabled rules](rules-configuration.mdx) or [Suppressed checks](rules-suppress-check.mdx) are not included in the calculation. Therefore, when you disable rules or suppress failed checks, you might see tiny improvements in the Compliance Score. The best way to improve your score is to improve your infrastructure so that it passes more tests. Our formula supports and encourages this behaviour.
+
+*Does correcting an extreme risk failure have a larger positive impact than correcting a low risk failure?*
+
+Compliance Score is calculated using an unweighted formula. It is not a measure of risk. Therefore, correcting failures of any severity level will have an equal impact.
+
+### Improve Compliance Score {#improve-compliance-score}
+
+Click on *Improve* to view the entire list of failed [checks](model-check.mdx). [Resolving failures](failed-check-resolution.mdx) will improve your Compliance Score.
+
+You also have the options to:
+
+1.  [Generate report](generate-download-report.mdx)
+2.  On clicking the expand button
+    1.  [Send rule to](send-rule.mdx)
+    2.  [Configure rule](rules-configuration.mdx)
+    3.  [Suppress](rules-suppress-check.mdx)
+    4.  Create tickets depending on [communication channels](communication-integrations.mdx) configured
+:::

@@ -1,0 +1,22 @@
+---
+slug: trend-vision-one-win-network-lose-connection
+title: >-
+  Why does my Windows machine lose network connectivity when I turn on
+  protection?
+last_updated: '2025-09-08'
+ai_context:
+  source_file: win-network-lose-connection.md
+  conversion_date: '2025-09-08T23:42:11.500Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+A Windows machine will lose connectivity for a brief period of time during the network driver installation while the agent installs a network driver to examine traffic. This only happens the first time a policy is applied that includes one of the following:
+
+- Web Reputation
+- Firewall
+- Intrusion Prevention
+
+A Windows machine uses the same driver is used for all three protection modules listed above. Turning on web reputation, firewall or intrusion prevention after one of those features already turned on will not cause another network blip. You may see a similar interruption in network connectivity when the agent is upgraded (as the driver may also need to be upgraded).
+:::

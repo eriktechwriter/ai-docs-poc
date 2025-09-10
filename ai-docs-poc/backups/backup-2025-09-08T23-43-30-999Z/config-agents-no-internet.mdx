@@ -1,0 +1,140 @@
+---
+slug: trend-vision-one-config-agents-no-internet
+title: Configure agents that have no Internet access
+last_updated: '2025-09-08'
+ai_context:
+  source_file: config-agents-no-internet.md
+  conversion_date: '2025-09-08T23:42:23.017Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+If your agents or relays don't have access to the internet (also called "air-gapped agents"), then they won't be able to access several of the security services provided by the Trend Micro Smart Protection Network. These security services are necessary for the full and successful operation of the Server & Workload Protection Anti-Malware and Web Reputation features.
+
+The Trend Micro Smart Protection Network security services are:
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Service name</p></th>
+<th><p>Required for these features</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Smart Scan Service</p></td>
+<td><p><a href="trend-vision-one-smart-protection">Smart Scan</a></p></td>
+</tr>
+<tr>
+<td><p>Web Reputation Service</p></td>
+<td><p><a href="trend-vision-one-configure-web-reputation">Web Reputation</a></p></td>
+</tr>
+<tr>
+<td><p>Global Census Service</p></td>
+<td><p><a href="trend-vision-one-ransomware-behavior-monitoring">Behavior monitoring</a>, <a href="trend-vision-one-anti-malware">predictive machine learning</a></p></td>
+</tr>
+<tr>
+<td><p>Good File Reputation Service</p></td>
+<td><p><a href="trend-vision-one-ransomware-behavior-monitoring">Behavior monitoring</a>, <a href="trend-vision-one-anti-malware">predictive machine learning</a>, <a href="trend-vision-one-configure-malware-scans">process memory scans</a></p></td>
+</tr>
+<tr>
+<td><p>Predictive Machine Learning Service</p></td>
+<td><p><a href="trend-vision-one-anti-malware">Predictive machine learning</a></p></td>
+</tr>
+</tbody>
+</table>
+
+In addition to the above services, the agent and relay-enabled agent also need access to the Trend Micro Update Server (also called Active Update), which is not part of the Smart Protection Network, but is a component that is hosted by Trend Micro and accessed over the internet.
+
+If any of your agents or relay-enabled agents can't reach the services above, you have several solutions, described below.
+
+### Solutions {#solutions}
+
+- Use a proxy
+- Install a Smart Protection Server locally
+- Disable the features that use Trend Micro security services
+
+### Use a proxy {#use-a-proxy}
+
+If your agents or relay-enabled agents can't connect to the internet, you can install a proxy that can. Your agents and relays connect to the proxy, and the proxy then connects outbound to the Trend Micro security services in the Smart Protection Network.
+
+:::note
+
+With a proxy, each Smart Scan or Web Reputation request goes out over the internet to the Smart Protection Network. Consider instead using a Smart Protection Server inside your LAN to keep these requests within your network and reduce extranet bandwidth usage.
+:::
+
+To use a proxy, see [Connect agents behind a proxy.](configure-proxies-server-workload.mdx)
+
+### Install a Smart Protection Server locally {#install-a-smart-protection-server-locally}
+
+If your agents and relay-enabled agents can't connect to the internet, you can install a Smart Protection Server in your local area network (LAN) to which they can connect. The local Smart Protection Server periodically connects outbound over the internet to the Smart Protection Network to retrieve the latest Smart Scan Anti-Malware patterns and Web Reputation information. This information is cached on the Smart Protection Server and queried by your agents and relay-enabled agents. The Smart Protection Server does not push updates to the air-gapped agents or relay-enabled agents.
+
+If you decide to use this solution, remember that:
+
+- Functionality is limited. Only the [Smart Scan](smart-protection.mdx) and [Web Reputation](configure-web-reputation.mdx) features are supported with a local Smart Protection Server.
+- Use the proxy solution if you need the [behavior monitoring](ransomware-behavior-monitoring.mdx), [predictive machine learning](anti-malware.mdx), and [process memory scanning](configure-malware-scans.mdx) features. See Use a proxy above for details. If you decide not to use these features, you must disable them to prevent a query failure and to improve performance. For instructions on disabling these features, see Disable the features that use Trend Micro security services.
+
+To deploy a Smart Protection Server:
+
+- install it manually. See the [Smart Protection Server documentation](http://docs.trendmicro.com/en-us/enterprise/smart-protection-server.aspx) for details. OR
+
+- if your agents or relay-enabled agents are inside AWS, install it using an AWS CloudFormation template created by Trend Micro. See [Deploy a Smart Protection Server in AWS](integrate-smart-protection-server.mdx) for details.
+
+### Disable the features that use Trend Micro security services {#disable-the-features-that-use-trend-micro-security-services}
+
+You can disable the features that use Trend Micro security services. Doing so improves performance because the air-gapped agent no longer tries (and fails) to query the services.
+
+:::note
+
+Without Trend Micro security services, your malware detection is downgraded significantly, ransomware is not detected at all, and process memory scans are also affected. It is therefore strongly recommended that you use one of the other solutions to allow access to Trend Micro security services. If this is impossible, only then should you disable features to realize performance gains.
+:::
+
+### Disable Smart Scans {#disable-smart-scans}
+
+1.  Open the Computer or Policy editor .
+2.  On the left, click *Anti-Malware*.
+3.  In the main pane, click *Smart Protection*.
+4.  Under Smart Scan, deselect *Inherited* (if it is selected) and then select *Off*.
+5.  Click *Save*.
+
+### Disable Web Reputation {#disable-web-reputation}
+
+1.  Open the Computer or Policy editor.
+2.  On the left, click *Web Reputation*.
+3.  In the main pane, make sure the *General* tab is selected.
+4.  From the *Configuration* drop-down list, select *Off*.
+5.  Click *Save*.
+
+### Disable Smart Feedback {#disable-smart-feedback}
+
+1.  In the Server & Workload Protection console, click *Administration* at the top.
+2.  Click *System Settings* on the left.
+3.  In the main pane, click the *Smart Feedback* tab.
+4.  Deselect *Enable Trend Micro Smart Feedback (recommended)*.
+5.  Click *Save*.
+
+### Disable process memory scans {#disable-process-memory-scans}
+
+1.  In the Server & Workload Protection console, click *Policies* at the top.
+2.  On the left, expand **Common Objects → Other** and then click *Malware Scan Configurations*.
+3.  Double-click a malware scan configuration with a *SCAN TYPE* of *Real-Time*.
+4.  On the *General* tab, under *Process Memory Scan*, deselect *Scan process memory for malware*.
+5.  Click *OK*.
+
+### Disable predictive machine learning {#disable-predictive-machine-learning}
+
+1.  Make sure you still have a real-time malware scan configuration open.
+2.  On the *General* tab, under *Predictive Machine Learning*, deselect *Enable Predictive Machine Learning*.
+3.  Click *OK*.
+
+### Disable behavior monitoring {#disable-behavior-monitoring}
+
+1.  Make sure you still have a real-time malware scan configuration open.
+2.  On the *General* tab, under *Behavior Monitoring*, deselect both options, namely, *Detect suspicious activity and unauthorized changes (incl. ransomware)* and *Back up and restore ransomware-encrypted files*.
+3.  Click *OK*.
+:::::

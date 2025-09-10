@@ -1,0 +1,49 @@
+---
+slug: trend-vision-one-load-balancing-for-icap-scanners
+title: Load balancing for containerized ICAP scanners
+last_updated: '2025-09-08'
+ai_context:
+  source_file: load-balancing-for-icap-scanners.md
+  conversion_date: '2025-09-08T23:42:16.480Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Implementing a load balancer for your Trend Vision One File Security Containerized Scanner provides several benefits:
+
+- High Availability: Load balancers distribute traffic across multiple scanner instances, ensuring service continuity even if individual pods fail.
+- Scalability: You can scale your scanner deployments while maintaining a single endpoint for clients.
+- External Access: Load balancers provide a consistent external endpoint for ICAP clients outside your Kubernetes cluster.
+- Traffic Management: You control how requests are distributed (for example round-robin, least connections) to optimize resource utilization.
+
+### Deployment Options {#deployment-options}
+
+Trend has tested two deployment options:
+
+- [AWS Network Load Balancer (NLB)](expose-icap-service-aws-nlb.mdx):
+  - Ideal for EKS deployments
+
+  - Layer 4 (TCP) load balancing
+
+  - Handles millions of requests per second
+
+  - Preserves client source IP addresses
+
+  - Optional TLS termination for enhanced security
+- [MetalLB](expose-icap-service-metallb.mdx):
+  - Ideal for on-premises or self-managed Kubernetes clusters
+
+  - Works where cloud load balancers aren't available
+
+  - Provides true LoadBalancer services in bare-metal environments
+
+  - Simple configuration with IP address pool allocation
+
+  - Compatible with existing network infrastructure
+
+**Related information**
+
+- [Expose the ICAP service with AWS NLB](expose-icap-service-aws-nlb.mdx)
+- [Expose ICAP Service with MetalLB](expose-icap-service-metallb.mdx)
+:::

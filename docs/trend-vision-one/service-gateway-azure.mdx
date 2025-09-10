@@ -1,0 +1,340 @@
+---
+slug: trend-vision-one-service-gateway-azure
+title: Deploying a Service Gateway virtual appliance with Microsoft Azure
+---
+# Deploying a Service Gateway virtual appliance with Microsoft Azure
+
+Launch a Service Gateway virtual appliance from Microsoft Azure using an Azure Virtual Machine image.
+
+If you do not have VMware, Microsoft Hyper-V, or Nutanix AHV in your environment, you can deploy the Service Gateway virtual appliance from Microsoft Azure using Azure Virtual Machine (VM) images. Before you begin, review the [Service Gateway appliance system requirements](sg-sys-requirements.mdx) to ensure your virtual appliance has the settings needed to deploy the services you want to use.
+
+:::note
+
+The steps contained in these instructions are valid as of April 2023.
+:::
+
+### Procedure {#procedure}
+
+1.  Obtain the Service Gateway registration token.
+
+    1.  On the Trend Vision One console, go to **Workflow and Automation → Service Gateway Management**.
+
+    2.  Click **Download Virtual Appliance**.
+
+    3.  Copy the **Registration Token**.
+
+        :::note
+
+        The registration token is used to register the Service Gateway virtual appliance to Service Gateway Inventory after installation and setup are complete. The registration token expires after 24 hours if not used.
+        :::
+
+2.  To initiate the instance launch, sign in to the Microsoft Azure portal.
+
+3.  In the Azure portal, click **Virtual machines** in the **Azure services** widget.
+
+    :::tip
+
+    If you don't see the virtual machines service, click **More services** and use the filter to search for the service.
+    :::
+
+4.  In the **Virtual machines** screen, click **Create** and choose **Azure Virtual Machine**.
+
+5.  Specify the **Project details**.
+
+    - Select the **Subscription** to assign the instance to.
+
+    - Select an existing **Resource group** or click **Create new** to assign the instance to a new group.
+
+6.  Specify the **Instance details**.
+
+    1.  Specify the **Virtual machine name**.
+
+    2.  Select the **Region** for your network needs.
+
+    3.  (Optional) Select the **Availability options**.
+
+    4.  Select the **Availability zone**.
+
+        :::note
+
+        The region can be set to any region you require the Service Gateway to be deployed. If you are unsure which region to select, use the default region for your Azure subscription.
+
+        For more information on **Availability options** and **Availability zone**, and what settings are best for your organization, refer to the Microsoft Azure help documentation.
+        :::
+
+    5.  For **Security type**, select **Standard**.
+
+        :::warning[Important]
+
+        Selecting a higher level of security may interfere with the ability of Service Gateway virtual appliance to connect with Trend Vision One.
+        :::
+
+    6.  Under the **Image** drop-down, click the **See all images** link.
+
+        <figure>
+        <img src="./images/AzureDep01_Image=GUID-d52bc037-f0b9-4960-878b-2a0f56471f8f.webp" />
+        </figure>
+
+    7.  Search for **Trend Micro Service Gateway**.
+
+    8.  Find **Trend Vision One Service Gateway**, and click **Select**.
+
+    9.  Select **Trend Vision One Service Gateway - x64 Gen 1**.
+
+        :::note
+
+        Service Gateway does not support Arm64 **VM architecture**.
+
+        For reliable connectivity, do not enable **Run with Azure Spot discount**.
+        :::
+
+    10. Click the **Size** drop-down and select **Standard_F8s_v2**.
+
+        <figure>
+        <img src="./images/AzureDep02_Size=GUID-0dc9182a-eea3-4e5d-a7a5-ca8bdf27b11e.webp" />
+        </figure>
+
+        :::tip
+
+        The instance size should appear in the **Size** drop-down under **Recommended by image publisher**. If you do not see the size, click **See all sizes** and search for `F8s`. Select F8s_v2 and click **Select**.
+        :::
+
+7.  Configure the settings under the **Administrator account** section.
+
+    Trend Micro recommends accessing the Service Gateway virtual machine using an SSH client. Follow these steps to configure a key pair for SSH access.
+
+    1.  For **Authentication type**, select **SSH public key**.
+
+    2.  For **Username**, type `azureuser`.
+
+    3.  For **SSH public key source**, generate a new key pair or select an existing key pair.
+
+        :::note
+
+        If you choose to use an existing key pair, make sure that the key is at least 2,048 bits in length.
+        :::
+
+    4.  If you choose to generate a new key pair, specify the **Key pair name**.
+
+8.  Under the **Inbound port rules** section, select **None** for **Public inbound ports**.
+
+9.  Click **Next: Disks**.
+
+10. Select **Premium SSD (locally-redundant storage)** for the **OS disk type**.
+
+    :::note
+
+    Trend Micro recommends using the default configuration for all other settings.
+    :::
+
+11. Click **Next: Networking**.
+
+12. Configure the settings under the **Network interface** section.
+
+    1.  Select the **Virtual network** for the instance to connect to.
+
+    2.  Select the **Subnet**.
+
+        :::note
+
+        Refer to the Microsoft Azure documentation on how to set up a virtual network and subnet.
+        :::
+
+    3.  For **Public IP**, select **None**.
+
+    4.  For **NIC network security group**, select **None**.
+
+13. Under the **Load balancing** section, select **None** for **Load balancing options**.
+
+14. Click **Next: Management**.
+
+    Use default settings for the screens listed below. Click **Next** to navigate to the next screen.
+
+    - **Management**
+
+    - **Monitoring**
+
+    - **Advanced**
+
+15. On the **Tags** screen, set your desired tags, then click **Next: Review + Create**.
+
+    :::tip
+
+    Assigning tags helps locate and categorize resources for easier management. For more information, see the Microsoft Azure documentation.
+    :::
+
+16. Review the virtual machine settings, then click **Create**.
+
+    :::note
+
+    If you chose to create a new key pair, the **Generate new key pair** prompt appears. Click **Download private key and create resource** to download the key pair and start the instance creation.
+    :::
+
+    Once you create the instance, the Service Gateway virtual appliance begins installation. Installation may take a few minutes to complete. You can view the status of the instance in the **Virtual machines** screen.
+
+    The Service Gateway virtual appliance is ready to connect and configure when the **Status** is **Running**.
+
+17. After installation is completed, go to the **Virtual machines** screen and click on the name of the Service Gateway virtual appliance instance.
+
+18. In the virtual machine panel, go to **Settings → Networking**.
+
+19. Click **Add inbound port rule**.
+
+20. Configure the inbound port rules.
+
+    1.  Specify the **Source**.
+
+        :::note
+
+        Trend Micro recommends setting **Source** to **IP Addresses** and specifying **Source IP addresses/CIDR ranges** that are within your network.
+        :::
+
+    2.  For **Source port ranges**, type **\*** to allow any source port.
+
+    3.  For **Destination**, select **Any**.
+
+    4.  Specify **Service**, **Destination port ranges**, **Protocol**, and **Action** according to the following table.
+
+        <table>
+        <colgroup>
+        <col style="width: 17%" />
+        <col style="width: 17%" />
+        <col style="width: 17%" />
+        <col style="width: 17%" />
+        <col style="width: 33%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Service</p></th>
+        <th><p>Destination port ranges</p></th>
+        <th><p>Protocol</p></th>
+        <th><p>Action</p></th>
+        <th><p>Description</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>SSH</p></td>
+        <td><p>22</p></td>
+        <td><p>TCP</p></td>
+        <td><p>Allow</p></td>
+        <td><p>For accessing Service Gateway virtual appliance CLISH command</p></td>
+        </tr>
+        <tr>
+        <td><p>HTTP</p></td>
+        <td><p>80</p></td>
+        <td><p>TCP</p></td>
+        <td><p>Allow</p></td>
+        <td><p>Service enabled queries for on-premises Active Directory servers, connected Trend Micro products (such as endpoint agents), Predictive Machine Learning, File Reputation Services, or Third-Party Integration</p></td>
+        </tr>
+        <tr>
+        <td><p>HTTPS</p></td>
+        <td><p>443</p></td>
+        <td><p>TCP</p></td>
+        <td><p>Allow</p></td>
+        <td><p>Service enabled queries for on-premises Active Directory servers, connected Trend Micro products (such as endpoint agents), Predictive Machine Learning, File Reputation Services, or Third-Party Integration</p></td>
+        </tr>
+        <tr>
+        <td><p>Custom TCP</p></td>
+        <td><p>5274</p></td>
+        <td><p>TCP</p></td>
+        <td><p>Allow</p></td>
+        <td><p>Web Reputation Services or Web Inspection Service queries</p></td>
+        </tr>
+        <tr>
+        <td><p>Custom TCP</p></td>
+        <td><p>5275</p></td>
+        <td><p>TCP</p></td>
+        <td><p>Allow</p></td>
+        <td><p>Web Reputation Services or Web Inspection Service queries</p></td>
+        </tr>
+        <tr>
+        <td><p>Custom TCP</p></td>
+        <td><p>8080</p></td>
+        <td><p>TCP</p></td>
+        <td><p>Allow</p></td>
+        <td><p>Forward Proxy Service listening port for connection</p></td>
+        </tr>
+        <tr>
+        <td><p>Custom TCP</p></td>
+        <td><p>8088</p></td>
+        <td><p>TCP</p></td>
+        <td><p>Allow</p></td>
+        <td><p>Zero Trust Secure Access On-Premises Gateway listening port for connection</p></td>
+        </tr>
+        </tbody>
+        </table>
+
+    5.  Specify the **Priority** of the rule.
+
+        :::note
+
+        For more information on priority, refer to Microsoft Azure documentation.
+        :::
+
+    6.  Specify the rule **Name**.
+
+    :::note
+
+    Trend Micro recommends using default settings for outbound port rules. Setting additional outbound rules may affect the ability of Service Gateway to connect to Service Gateway Inventory.
+    :::
+
+21. Connect to the instance.
+
+    :::note
+
+    Trend Micro recommends using an SSH client to connect to the Service Gateway virtual appliance to make copying the registration token easier. The following steps outline how to connect with an SSH client.
+    :::
+
+    1.  In the **Virtual machines** screen, click the name of the Service Gateway virtual appliance instance.
+
+    2.  In the **Virtual machine** panel, click **Connect** and select **SSH**.
+
+    3.  Review the steps and copy the IP address in the example command.
+
+    4.  Open an SSH client.
+
+    5.  Type the following command to connect to the Service Gateway virtual appliance:
+
+        `ssh -i "keypair.pem" admin@<IPaddress>`
+
+        :::note
+
+        Use the full file name of your key pair including the file extension.
+
+        The user name is `admin`.
+
+        For example, if your key pair file is named `my_key_pair.pem` and the Service Gateway virtual appliance IP address is 127.0.0.1, type the command:
+
+        `ssh -i "my_key_pair.pem" admin@127.0.0.1`
+        :::
+
+        :::warning[Important]
+
+        If you are unable to immediately connect to the appliance, follow these steps to resolve the issue:
+
+        - The trusted hosts file cannot be automatically updated from EC2. In your SSH client, type the command `~/.ssh/known_hosts` to remove the known hosts in the trusted file, then try connecting again.
+
+        - You cannot configure a Network Time Protocol server on the Service Gateway virtual appliance. Because the appliance is deployed to the cloud, time settings are automatically synchronized.
+        :::
+
+22. Configure and register the Service Gateway.
+
+    1.  After connecting to the instance and signing on, the Command Line Interface (CLI) appears.
+
+    2.  Type `enable` and press the **ENTER** key to enable administrative commands.
+
+        The command prompt changes from \> to \#.
+
+    3.  Use the `configure` command to configure the required network settings, such as the IP address and DNS settings.
+
+    4.  Type the following command to register the Service Gateway virtual appliance to Trend Vision One.
+
+        `register <registration_token>`
+
+        Use the registration token you obtained from Service Gateway Inventory.
+
+23. Use the CLI to configure other settings, if required.
+
+    For more information on available commands, see [Service Gateway CLI commands](service-gateway-cli-commands.mdx).
+::::

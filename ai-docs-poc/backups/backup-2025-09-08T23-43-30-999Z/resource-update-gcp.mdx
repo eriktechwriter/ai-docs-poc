@@ -1,0 +1,69 @@
+---
+slug: trend-vision-one-resource-update-gcp
+title: Google Cloud Resource Update
+last_updated: '2025-09-08'
+ai_context:
+  source_file: resource-update-gcp.md
+  conversion_date: '2025-09-08T23:42:13.774Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Update deployed resources in your Google Cloud project to the latest version.
+
+The Resource Update tab in the Project Settings screen allows you to update the Trend Vision One resources deployed to your project. This may be required as support for new features or functions are added to Cloud Accounts. Make sure you have the [required permissions](gcp-required-permissions.mdx) to update the project.
+
+:::warning[Important]
+
+The steps are valid March 2024.
+:::
+
+### Procedure {#procedure}
+
+1.  Sign in to the Trend Vision One console.
+
+2.  In a new tab in the same browser session, sign in to the Google Cloud project you want to connect and access the Cloud Shell.
+
+3.  In the Trend Vision One console, go to **Cloud Security → Cloud Accounts → Google Cloud**.
+
+4.  Click the name of the project you want to update.
+
+5.  In the **Project Settings** screen, navigate to the **Resource Update** tab.
+
+6.  Click **Download Resource Creation Script**.
+
+7.  In Google Cloud Shell, access the command line interface.
+
+    :::note
+
+    The Resource Update screen in the Trend Vision One console provides a set of commands to help complete the following steps. The parameters in each step are based on using the default parameters provided when the project was first connected. Verify the location of the deployed resource before continuing.
+    :::
+
+8.  Access the folder where the resource is located.
+
+    Copy the command or type `cd [directoryName]`.
+
+9.  Upload the resource creation script to your Google Cloud Shell.
+
+    Google Cloud Shell uploads the resource creation script to the root directory.
+
+10. Move the resource creation script to the deployment folder.
+
+    Copy the command or type `mv ~/cloud-account-management-terraform-gcp.tf ./cloud-account-management-terraform-gcp.tf`.
+
+    :::warning[Important]
+
+    The resource creation script must be the only terraform file in the directory. Having more than one terraform file in the folder interferes with deployment process and might cause the update to fail.
+    :::
+
+11. Initiate Terraform and apply the resource creation script.
+
+    Copy the command or type `terraform init && terraform apply`.
+
+    Google Cloud Shell begins the terraform process to deploy Trend Vision One security resources.
+
+12. In the Trend Vision One console, in the Project Settings screen, click **Save Changes**.
+
+    The update process might take a few moments to complete. You can refresh the Cloud Accounts screen to check the status of your update.
+::::

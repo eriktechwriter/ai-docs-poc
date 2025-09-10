@@ -1,0 +1,94 @@
+---
+slug: trend-vision-one--pci-passthrough-kvm-host
+title: Configuring external network traffic with PCI passthrough (KVM host)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: '-pci-passthrough-kvm-host.md'
+  conversion_date: '2025-09-08T23:42:26.415Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Configure external network traffic with a PCI passthrough to allow Virtual Network Sensor to monitor data.
+
+:::note
+
+The following instructions are valid as of October 2023.
+
+These instructions are only for Virtual Network Sensors deployed on a KVM host machine.
+:::
+
+Before you begin, make sure you have [prepared a vSwitch](preparing-vswitch.mdx).
+
+### Procedure {#procedure}
+
+1.  Access Terminal on the host machine.
+
+2.  Verify if IOMMU is turned on.
+
+    You can use one of two methods to check if IOMMU is turned on or off.
+
+    - `cat /proc/cmdline`
+
+      Example output if IOMMU is on: `intel_iommu=on`
+
+    - `dmesg | grep -i mmu`
+
+      Example output if IOMMU is on: `iommu: Default domain type: Passthrough`
+
+3.  If IOMMU is turned off, configure grub and reboot.
+
+    1.  Configure grub.
+
+        `sudo grubby --update-kernel ALL --args 'intel_iommu=on iommu=pt'`
+
+    2.  Reboot the machine.
+
+        `sudo reboot`
+
+    3.  After reboot completes, verify that IOMMU is turned on.
+
+        `cat /proc/cmdline` or `dmesg | grep -i mmu`
+
+4.  Check `bus-info` of the network interface you want to use for PCI passthrough.
+
+    `ethtool -i eth1`
+
+    An example output is: `bus-info: 0000:1b:00.0`
+
+    :::note
+
+    The example code uses `eth1` as the target network interface. You can choose the network interface that best suits the needs of your deployment.
+    :::
+
+5.  Find the iommu group of the PCI passthrough network interface.
+
+    `dmesg | grep '0000:1b:00.0'`
+
+6.  Get the PCI info of other iommu group members.
+
+    For example, if the network interface is in group 8, use the command:
+
+    `dmesg | grep 'iommu group 8'`
+
+7.  Detach all iommu group members.
+
+    `sudo virsh nodedev-detach <pci-info>`
+
+    For example, to detach the eth1 port example used in these steps, use the command `sudo virsh nodedev-detach pci_0000_1b_00_0`
+
+8.  On the host machine, open the **Virtual Machine Manager**.
+
+9.  Double-click your Virtual Network Sensor.
+
+10. Click **Add Hardware**.
+
+11. Go to **PCI Host Device** and select the position of the PCI passthrough.
+
+    If you were using the example in the previous steps, you would need to locate and click on **0000:1b:00.0**.
+
+12. Click **Finish**.
+
+    After configuring your network settings, access the Virtual Network Sensor console and use the command `show traffic` to verify the Virtual Network Sensor is receiving traffic. For more information about troubleshooting, see [Virtual Network Sensor FAQ](virtual-network-sensor-faqs.mdx) and [Virtual Network Sensor CLI commands](virtual-network-sensor-cli-commands.mdx).
+::::

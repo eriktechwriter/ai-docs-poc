@@ -1,0 +1,81 @@
+---
+slug: trend-vision-one-monitor-application-control-events-2
+title: Monitor Application Control events
+last_updated: '2025-09-08'
+ai_context:
+  source_file: monitor-application-control-events-2.md
+  conversion_date: '2025-09-08T23:42:15.893Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+For an overview of Application Control, see [Lock down software with Application Control](application-control.mdx). For initial configuration instructions, see [Set up Application Control](set-up-application-control.mdx).
+
+By default, when you enable Application Control it logs events, such as when there are software changes or when it blocks software from executing. Application Control events appear on the *Actions* and *Events & Reports* pages. If configured, an alert appears on the *Alerts* page.
+
+You can configure some of which Application Control event logs are recorded, and which are [forwarded to external SIEM systems or syslog servers](forward-syslog-siem-server.mdx).
+
+To monitor for software changes on computers:
+
+### Procedure {#procedure}
+
+1.  Choose which Application Control events to log
+
+2.  View Application Control event logs
+
+3.  Interpret aggregated security events
+
+4.  Monitor Application Control alerts
+
+## Choose which Application Control events to log {#choose-which-application-control-events-to-log}
+
+### Procedure {#procedure-1}
+
+1.  Go to **Administration → System Settings → System Events**.
+
+2.  Scroll down to the Application Control events such as Event ID 7000 "Application Control Events Exported".
+
+3.  If you want to record event logs for that type of event, select *Record*.
+
+    When those events occur, they appear on **Events → Reports → Events → System Events**. Logs are kept until they meet maximum log age criteria. For details, see [Event collection in Server & Workload Protection](event-logging.mdx).
+
+    :::note
+
+    Events that appear on **Computers → Details → Application Control → Events** are not configured here. They are always logged.
+    :::
+
+4.  If you want to forward event logs to a SIEM or syslog server, select *Forward*.
+
+5.  If you use an external SIEM, you may need to load the list of possible Application Control event logs, and indicate what action to take. For a list of Application Control events, see [Application Control events](application-control-events.mdx).
+
+## View Application Control event logs {#view-application-control-event-logs}
+
+Application Control generates system events and security events:
+
+- *System event:* An audit event that provides a history of configuration changes or software updates. To see system events click **Events & Reports → Events → System Events**. For a list, see [System events](system-events.mdx).
+- *Security event:* An event that occurs on the agent when Application Control blocks or allows unrecognized software, or blocks software due to a block rule. To see security events, click **Events & Reports → Events → Application Control Events → Security Events**. For a list, see \[Application Control events\](../application-control-events.
+
+## Interpret aggregated security events {#interpret-aggregated-security-events}
+
+When an agent heartbeat includes several instances of the same security event, Server & Workload Protection aggregates the events in the Security Events log. Event aggregation reduces the number of items in the log, making it easier to find important events:
+
+- When the event occurs for the same file, which is usually the case, the log includes the file name with the aggregated event. For example, a heartbeat includes 3 instances of the "Execution of Unrecognized Software Allowed" event for the Test_6_file.sh file, and no other instances of that event. Server & Workload Protection aggregates these 3 events for the file Test_6_file.sh.
+- When the event occurs for many files, the log omits the rules link, path, file name, and user name. For example, a heartbeat includes 21 instances of the "Execution of Unrecognized Software Allowed" event that occurred for several different files. Server & Workload Protection aggregates the 21 events in a single event, but does not include a rules link, path, file name, or user name.
+
+When aggregated events apply to multiple files, other occurrences of these events have likely been reported in other heartbeats. After you respond to other events where the file name is known, it is likely that no more aggregated events occur.
+
+In the log, aggregated events use special icons, and the *Repeat Count* column indicates the number of events that are aggregated.
+
+![](/images/ac_events=ee156cdd-6ef0-42dc-99dd-28cb2834ae9b.webp)
+
+## Monitor Application Control alerts {#monitor-application-control-alerts}
+
+To configure which Application Control events or severity levels cause an alert, go to the *Alerts* tab, click the *Configure Alerts* button, and then select an event and double-click *Properties*. For details, see [Configure alerts](configure-alerts.mdx).
+
+When alerts are enabled for Application Control events, any software change that the Application Control engine detects and any software that it blocks from executing appear in the *Alerts* tab. If you have enabled the *Alert Status* widget, Application Control alerts also appear on the Dashboard.
+
+![](/images/dashboard-alert-status-app-control=c9fdda02-efde-4402-b67f-bdea853ff4d7.webp)
+
+To monitor which computers are in maintenance mode, you can also click *Add/Remove Widgets* and enable the *Application Control Maintenance Mode* widget, which displays a list of the computers and their scheduled maintenance windows.
+:::

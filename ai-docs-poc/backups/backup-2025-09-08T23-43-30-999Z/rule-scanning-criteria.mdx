@@ -1,0 +1,118 @@
+---
+slug: trend-vision-one-rule-scanning-criteria
+title: About policy rule scanning criteria
+last_updated: '2025-09-08'
+ai_context:
+  source_file: rule-scanning-criteria.md
+  conversion_date: '2025-09-08T23:42:13.473Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Policy rule scanning criteria allow you to specify the conditions that the policy rule applies to messages scanned by Cloud Email Gateway Protection.
+
+The available criteria are shown in a list in the center of the screen. Some of these criteria have links to screens where you specify the associated details.
+
+**Basic Criteria**
+
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 35%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr>
+<th colspan="2"><p>Criteria</p></th>
+<th><p>Filter Based on</p></th>
+<th>Available in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="3"><p><strong>Virus Scan → Virus Policy</strong></p></td>
+<td><p>"<strong>Specify at least one detection type</strong>"</p></td>
+<td><p>Detected malware, worms, and other threats by pattern-based scanning.</p></td>
+<td><p>Inbound and outbound protection</p></td>
+</tr>
+<tr>
+<td><p>"<strong>Specify Predictive Machine Learning settings</strong>"</p></td>
+<td><p>Detected unknown threats by Predictive Machine Learning.</p></td>
+<td><p>Inbound and outbound protection</p></td>
+</tr>
+<tr>
+<td><p>"<strong>Specify advanced settings</strong>"</p></td>
+<td><p>Detected threats by the Advanced Threat Scan Engine.</p></td>
+<td><p>Inbound protection</p></td>
+</tr>
+<tr>
+<td rowspan="6"><p><strong>Spam Filtering → Spam Policy</strong></p></td>
+<td><p>" <strong>Spam</strong> "</p></td>
+<td><p>Detected spam.</p></td>
+<td><p>Inbound and outbound protection</p></td>
+</tr>
+<tr>
+<td><p>"<strong>Business Email Compromise (BEC)</strong>"</p></td>
+<td><p>Detected BEC attacks.</p></td>
+<td><p>Inbound protection</p></td>
+</tr>
+<tr>
+<td><p>" <strong>Phishing and other suspicious content</strong> "</p></td>
+<td><p>Detected phishing and other suspicious content.</p></td>
+<td><p>Inbound and outbound protection</p></td>
+</tr>
+<tr>
+<td><p>" <strong>Graymail</strong> "</p></td>
+<td><p>Detected graymail messages.</p></td>
+<td><p>Inbound protection</p></td>
+</tr>
+<tr>
+<td><p>"<strong>Web reputation</strong>"</p></td>
+<td><p>Detected URLs on the web or embedded in email messages that pose security risks.</p></td>
+<td><p>Inbound and outbound protection</p></td>
+</tr>
+<tr>
+<td><p>" <strong>Social engineering attack</strong> "</p></td>
+<td><p>Detected social engineering attacks.</p></td>
+<td><p>Inbound protection</p></td>
+</tr>
+<tr>
+<td><p><strong>Correlated Intelligence → Correlated Intelligence Policy</strong></p></td>
+<td><p>"<strong>Security risks</strong>"</p>
+<p>"<strong>Anomalies</strong>"</p></td>
+<td><p>Correlation rules that consist of detection signals from various sources such as Virus Scan and Spam Filtering.</p></td>
+<td><p>Inbound protection</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p><strong>Content Filtering → Content Policy</strong></p></td>
+<td><p><strong>No criteria</strong></p></td>
+<td><p>All messages.</p></td>
+<td><p>Inbound and outbound protection</p></td>
+</tr>
+<tr>
+<td><p>" <strong>All Match</strong> "</p>
+<p>" <strong>Any Match</strong> "</p></td>
+<td><p>Specific attribute and content targets.</p>
+<p>See <a href="trend-vision-one-content-filtering-criteria">Configuring Advanced Criteria</a>.</p></td>
+<td><p>Inbound and outbound protection</p></td>
+</tr>
+<tr>
+<td><p><strong>Data Loss Prevention → Data Loss Prevention (DLP) Policy</strong></p></td>
+<td><p>" <strong>Select fields to scan</strong> "</p>
+<p>" <strong>Selected Templates</strong> "</p></td>
+<td><p>Detected DLP incidents.</p></td>
+<td><p>Inbound and outbound protection</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Configuring virus scan criteria](configuring-virus-scan-criteria.mdx)
+- [Configuring spam filtering criteria](configuring-spam-filtering-criteria.mdx)
+- [Configuring Correlated Intelligence criteria](configuring-CI-criteria.md "Detect security risks and identify anomalies by correlating signals across different sources.")
+- [Configuring Data Loss Prevention criteria](configuring-dlp-criteria.mdx)
+- [Configuring content filtering criteria](content-filtering-criteria.mdx)
+:::

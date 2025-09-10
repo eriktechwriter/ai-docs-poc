@@ -1,0 +1,76 @@
+---
+slug: trend-vision-one-migrate-endpoint-security-policies
+title: Updating to Endpoint Security Policies
+---
+# Updating to Endpoint Security Policies
+
+Review what happens and what you should do when starting to use Endpoint Security Policies as an existing Trend Vision One customer.
+
+Endpoint Security Policies is designed to replace the General Sensor Settings in Endpoint Inventory with a policy-based method for configuring your Trend Vision One Endpoint Security agent. Upon provisioning Endpoint Security Policies, whether you opt-in to the pre-release preview or when the feature officially releases, the General Sensor Settings menu is removed from Endpoint Inventory. This replacement affects your settings and configurations, including Trend Vision One user role permissions.
+
+Before starting to use Endpoint Security Policies, review the following features and configurations to ensure a smooth transition from using General Sensor Settings.
+
+- **Review user role permissions**. The permission settings for configuring default sensor settings and sensor policy have been moved and consolidated. Review your user roles to ensure your Trend Vision One users responsible for endpoint management still have access to view, create, and edit Endpoint Security Policies. The following table details the changes.
+
+  <table>
+  <colgroup>
+  <col style="width: 50%" />
+  <col style="width: 50%" />
+  </colgroup>
+  <thead>
+  <tr>
+  <th><p>Old permissions</p></th>
+  <th><p>New permissions</p></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td><p><strong>Endpoint Security → Endpoint Inventory → Configure Default Sensor Settings</strong></p>
+  <ul>
+  <li><p>View Endpoint sensor detection and response default setting</p></li>
+  <li><p>View Advanced risk telemetry default setting</p></li>
+  <li><p>Configure Endpoint sensor detection and response default setting</p></li>
+  <li><p>Configure Advanced risk telemetry default setting</p></li>
+  </ul></td>
+  <td rowspan="2"><p><strong>Endpoint Security → Endpoint Security Configuration → Endpoint Security Policies</strong></p>
+  <ul>
+  <li><p>View</p></li>
+  <li><p>Configure Endpoint Security Policies</p></li>
+  <li><p>Override Endpoint Security Policies</p></li>
+  </ul></td>
+  </tr>
+  <tr>
+  <td><p><strong>Endpoint Security → Endpoint Inventory → Configure sensor policy</strong></p>
+  <ul>
+  <li><p>Configure Endpoint sensor detection and response</p></li>
+  <li><p>Configure Advanced risk telemetry</p></li>
+  </ul></td>
+  </tr>
+  </tbody>
+  </table>
+
+- **Review your current policies**. When you provision **Endpoint Security Policies**, several general policies are created based on your configured Endpoint Inventory General Sensor Settings, along with the Default Endpoint Policy. Your endpoints are automatically assigned to the general policies. You can edit, delete, or rename the general policies.
+
+  :::warning[Important]
+
+  If you configured any endpoints to use settings different than the general sensor settings configuration, those endpoints automatically enable policy override and keep the applied settings.
+  :::
+
+  - For customers using the Trend Vision One Foundation Services release, the system creates the following policies.:
+
+    - Standard Endpoint Protection General Policy
+
+    - Server & Workload Protection General Policy
+
+    - Sensor Only General Policy
+
+    - Default Endpoint Policy
+
+  - For customers using Trend Vision One Legacy, the system creates the following policies:
+
+    - Endpoint Sensor General Policy
+
+    - Default Endpoint Policy
+
+- **Review the Network Content Inspection Engine feature**. The first time you enable endpoint sensor detection and response, your currently deployed Trend Endpoint Agents install the new Network Content Inspection Engine. For more information, see [Network Content Inspection Engine for Endpoint Sensor](network-content-inspection-engine.mdx).
+:::

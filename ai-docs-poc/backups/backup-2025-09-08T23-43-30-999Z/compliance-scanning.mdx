@@ -1,0 +1,120 @@
+---
+slug: trend-vision-one-compliance-scanning
+title: Compliance
+last_updated: '2025-09-08'
+ai_context:
+  source_file: compliance-scanning.md
+  conversion_date: '2025-09-08T23:42:23.101Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Scan your Amazon EKS, Kubernetes, Red Hat OpenShift, Google GKE, and Microsoft AKS clusters for security compliance issues and generate reports with actionable insights.
+
+To see the compliance recommendations in detail, click on each supported benchmark in [Compliance scanning report recommendations](compliance-scanning-report.mdx).
+
+:::warning[Important]
+
+Compliance scanning is currently only supported on clusters mapped within Trend Vision One to a connected AWS account, GCP project, or Azure subscription. Real-Time Posture Monitoring must be enabled in that account, and the latest Container Security software must be installed.
+:::
+
+The following table details the actions you can take on the **Compliance** tab.
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Enable compliance scanning</p></td>
+<td><p>Switch on the toggle to enable compliance scanning.</p>
+<p>Before enabling compliance scanning, ensure that the following conditions are met.</p>
+<ul>
+<li><p>Trend Vision One is connected to your AWS account and Real-Time Posture Monitoring is enabled.</p></li>
+<li><p>You are running EKS clusters and they are mapped to your AWS account.</p></li>
+<li><p>The latest Container Security software is running on the EKS clusters.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>View the last scan time</p></td>
+<td><p>View the last time your clusters were scanned.</p>
+<ul>
+<li><p>To initiate a scan immediately, click <strong>Scan Now</strong>.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Scannable EKS clusters</p></td>
+<td><p>View the list of requirements for EKS cluster compliance scanning as well as the number of compatible clusters that can be scanned. Compatible clusters include the number of clusters with Container Security installed (scannable clusters) vs the total number of connected clusters.</p>
+
+
+:::note
+
+<p>The numbers displayed are independent of <a href="trend-vision-one-what-is-asset-visibility-management">Asset Visibility Management</a>.</p>
+
+
+:::
+
+
+<p>Click <strong>Reports</strong> to view the last scan report in the Reports app.</p>
+<p>To learn more about the Reports app, see Reports.</p></td>
+</tr>
+<tr>
+<td><p>Scannable Kubernetes clusters</p></td>
+<td><p>View the list of requirements for self-managed Kubernetes cluster compliance scanning as well as the number of compatible clusters that can be scanned. Compatible clusters include the number of clusters with Container Security installed (scannable clusters) vs the total number of connected clusters.</p>
+<p>Click <strong>Reports</strong> to view the last scan report in the Reports app.</p>
+<p>To learn more about the Reports app, see Reports.</p>
+<p>Click <strong>Compliance Scan Configuration Settings</strong> to view and modify your Kubernetes cluster rules and policies.</p>
+<p>To learn more about Kubernetes compliance settings and benchmarks, see <a href="trend-vision-one-kubernetes-compliance-scanning">Kubernetes compliance scanning</a> and <a href="trend-vision-one-cis-kubernetes-benchmark-recs">Kubernetes 1.9.0 recommendations</a>.</p></td>
+</tr>
+<tr>
+<td><p>Scannable Red Hat OpenShift clusters</p></td>
+<td><p>View the list of requirements for Red Hat OpenShift cluster compliance scanning as well as the number of compatible clusters that can be scanned. Compatible clusters include the number of clusters with Container Security installed (scannable clusters) vs the total number of connected clusters.</p>
+
+
+:::note
+
+Red Hat OpenShift Container Platform versions 4.0 or newer are supported for compliance scanning.
+
+
+:::
+
+
+<p>Click <strong>Reports</strong> to view the last scan report in the Reports app.</p>
+<p>To learn more about the Reports app, see Reports.</p></td>
+</tr>
+<tr>
+<td><p>Scannable Google Kubernetes Engine (GKE) clusters</p></td>
+<td><p>View the list of requirements for GKE cluster compliance scanning as well as the number of compatible clusters that can be scanned. Compatible clusters include the number of clusters with Container Security installed (scannable clusters) vs the total number of connected clusters.</p>
+<p>Click <strong>Reports</strong> to view the last scan report in the Reports app.</p>
+<p>To learn more about the Reports app, see Reports.</p>
+<p>To learn more about GKE benchmarks, see <a href="trend-vision-one-cis-gke17-recs">Google Kubernetes Engine (GKE) 1.7.0 recommendations</a>.</p></td>
+</tr>
+<tr>
+<td><p>Scannable Azure Kubernetes Service (AKS) clusters</p></td>
+<td><p>View the list of requirements for AKS cluster compliance scanning as well as the number of compatible clusters that can be scanned. Compatible clusters include the number of clusters with Container Security installed (scannable clusters) vs the total number of connected clusters.</p>
+<p>Click <strong>Reports</strong> to view the last scan report in the Reports app.</p>
+<p>To learn more about the Reports app, see Reports.</p>
+<p>To learn more about AKS benchmarks, see <a href="trend-vision-one-cis-aks17-recs">Azure Kubernetes Service (AKS) 1.7.0 recommendations</a>.</p></td>
+</tr>
+<tr>
+<td><p>Scannable NSA/CISA Kubernetes Hardening Guidance</p></td>
+<td><p>View the list of recommendations for NSA/CISA Kubernetes Hardening Guidance compliance scanning as well as the number of compatible clusters that can be scanned. Compatible clusters include the number of clusters with Container Security installed (scannable clusters) vs the total number of connected clusters.</p>
+<p>Click <strong>Reports</strong> to view the last scan report in the Reports app.</p>
+<p>To learn more about the Reports app, see Reports.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Kubernetes compliance scanning](kubernetes-compliance-scanning.mdx)
+- [Compliance scanning report recommendations](compliance-scanning-report.mdx)
+::::

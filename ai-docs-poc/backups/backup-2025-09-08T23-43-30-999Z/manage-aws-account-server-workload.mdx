@@ -1,0 +1,34 @@
+---
+slug: trend-vision-one-manage-aws-account-server-workload
+title: Manage an AWS Account
+last_updated: '2025-09-08'
+ai_context:
+  source_file: manage-aws-account-server-workload.md
+  conversion_date: '2025-09-08T23:42:16.265Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+As of September 28, 2023, AWS accounts are now managed by the Cloud Accounts app. AWS accounts that were previously added to Server & Workload Protection are automatically added to the Cloud Accounts app as legacy connections.
+
+[Update your legacy connections](updating-legacy-aws-connection.mdx) in Cloud Accounts to enable advanced Trend Vision One Cloud Security features and capabilities.
+
+Modifying and removing AWS accounts are now handled by the Cloud Accounts app.
+
+- To modify your AWS account, update the account in the Cloud Accounts app first. Afterwards, open [Cloud Account Settings](cloud-account-settings.mdx) to make changes as needed..
+
+- To remove an AWS account, go to **Service Management → Cloud Accounts → AWS**. Select the accounts to remove, and click **Remove**. For more information, see [AWS accounts](aws-accounts.mdx).
+
+You can manually synchronize your AWS accounts in Server & Workload Protection. When you synchronize (sync) an AWS account, Server & Workload Protection connects to the AWS API to obtain and display the latest set of AWS EC2 and WorkSpace instances.
+
+To force a sync immediately:
+
+1.  In the Server & Workload Protection console, click *Computers*.
+
+2.  On the left, right-click your AWS account and select *Synchronize Now*.
+
+There is also a background sync that occurs every 10 minutes, and this interval is not configurable. If you force a sync, the background sync is unaffected and continues to occur according to its original schedule.
+
+You can still modify or remove AWS accounts in Server & Workload Protection API functions. However, Trend Micro recommends updating to the Cloud Accounts app to take full advantage of security benefits Trend Vision One has to offer for your containers and other cloud assets.
+:::

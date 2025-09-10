@@ -1,0 +1,248 @@
+---
+slug: trend-vision-one-cef-suspicious-file-logs
+title: CEF Suspicious File Logs
+last_updated: '2025-09-08'
+ai_context:
+  source_file: cef-suspicious-file-logs.md
+  conversion_date: '2025-09-08T23:42:24.089Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 38%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>CEF Key</p></th>
+<th><p>Description</p></th>
+<th><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Header (logVer)</p></td>
+<td><p>CEF format version</p></td>
+<td><p>CEF:0</p></td>
+</tr>
+<tr>
+<td><p>Header (vendor)</p></td>
+<td><p>Appliance vendor</p></td>
+<td><p>Trend Micro</p></td>
+</tr>
+<tr>
+<td><p>Header (pname)</p></td>
+<td><p>Appliance product</p></td>
+<td><p>Apex Central</p></td>
+</tr>
+<tr>
+<td><p>Header (pver)</p></td>
+<td><p>Appliance version</p></td>
+<td><p>2019</p></td>
+</tr>
+<tr>
+<td><p>Header (eventid)</p></td>
+<td><p>FH:Action</p></td>
+<td><p>FH:Log</p></td>
+</tr>
+<tr>
+<td><p>Header (eventName)</p></td>
+<td><p>Name</p></td>
+<td><p>Suspicious Files</p></td>
+</tr>
+<tr>
+<td><p>Header (severity)</p></td>
+<td><p>Severity</p></td>
+<td><p>3</p></td>
+</tr>
+<tr>
+<td><p>deviceExternalId</p></td>
+<td><p>ID</p></td>
+<td><p>Example: "1"</p></td>
+</tr>
+<tr>
+<td><p>cat</p></td>
+<td><p>Log type</p></td>
+<td><p>Example: "1766"</p></td>
+</tr>
+<tr>
+<td><p>deviceFacility</p></td>
+<td><p>Product</p></td>
+<td><p>Example: "Apex One"</p></td>
+</tr>
+<tr>
+<td><p>cn1Label</p></td>
+<td><p>Corresponding label for the "cn1" field</p></td>
+<td><p>Example: "SLF_ProductVersion"</p></td>
+</tr>
+<tr>
+<td><p>cn1</p></td>
+<td><p>Product version</p></td>
+<td><p>Example: "11"</p></td>
+</tr>
+<tr>
+<td><p>rt</p></td>
+<td><p>Event trigger time in UTC</p></td>
+<td><p>Example: "Mar 22 2018 08:23:23 GMT+00:00"</p></td>
+</tr>
+<tr>
+<td><p>dst</p></td>
+<td><p>Endpoint IPv4 address</p></td>
+<td><p>Example: "10.201.86.151"</p></td>
+</tr>
+<tr>
+<td><p>c6a3Label</p></td>
+<td><p>Corresponding label for the "c6a3" field</p></td>
+<td><p>Example: "Endpoint IPv6 Address"</p></td>
+</tr>
+<tr>
+<td><p>c6a3</p></td>
+<td><p>Endpoint IPv6 address</p></td>
+<td><p>Example: "2620:101:4003:7a0:fd4b:52ed:53bd:ae3d"</p></td>
+</tr>
+<tr>
+<td><p>dhost</p></td>
+<td><p>Endpoint host name</p></td>
+<td><p>Example: "APEX-ONE-CLIENT-1"</p></td>
+</tr>
+<tr>
+<td><p>cs2Label</p></td>
+<td><p>Corresponding label for the "cs2" field</p></td>
+<td><p>Example: "SLF_TrueFileType"</p></td>
+</tr>
+<tr>
+<td><p>cs2</p></td>
+<td><p>File type</p></td>
+<td><p>Example: "TEXT"</p></td>
+</tr>
+<tr>
+<td><p>fileHash</p></td>
+<td><p>File SHA-1</p></td>
+<td><p>Example: "D6712CAE5EC821F910E14945153AE7871AA536CA"</p></td>
+</tr>
+<tr>
+<td><p>cs3Label</p></td>
+<td><p>Corresponding label for the "cs3" field</p></td>
+<td><p>Example: "SLF_FileSource"</p></td>
+</tr>
+<tr>
+<td><p>cs3</p></td>
+<td><p>File path</p></td>
+<td><p>Example: "C:\\Users\\Administrator\\Desktop\\BT-SHA1-SAMPLE\\BT-SHA1-SAMPLE\\017545113A434757C5F0F13095DBBF138BD76A40;0x36D572AE"</p></td>
+</tr>
+<tr>
+<td><p>cn2Label</p></td>
+<td><p>Corresponding label for the "cn2" field</p></td>
+<td><p>Example: "SLF_SourceType"</p></td>
+</tr>
+<tr>
+<td><p>cn2</p></td>
+<td><p>C&amp;C list source</p></td>
+<td><p>Example: "0"</p>
+<ul>
+<li><p>0: Sandbox</p></li>
+<li><p>1: User-defined</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>act</p></td>
+<td><p>Action</p></td>
+<td><p>Example: "Log"</p>
+<ul>
+<li><p>1: Log</p></li>
+<li><p>2: Block</p></li>
+<li><p>3: Quarantine</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cn3Label</p></td>
+<td><p>Corresponding label for the "cn3" field</p></td>
+<td><p>Example: "SLF_ScanType"</p></td>
+</tr>
+<tr>
+<td><p>cn3</p></td>
+<td><p>Scan type</p></td>
+<td><p>Example: "1"</p>
+<ul>
+<li><p>1: Scheduled scan</p></li>
+<li><p>2: Manual scan</p></li>
+<li><p>3: Scan now</p></li>
+<li><p>4: Real-time scan</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>reason</p></td>
+<td><p>Critical threat type</p></td>
+<td><p>Example: "E"</p>
+<ul>
+<li><p>A: Known Advanced Persistent Threat (APT)</p></li>
+<li><p>B: Social engineering attack</p></li>
+<li><p>C: Vulnerability attack</p></li>
+<li><p>D: Lateral movement</p></li>
+<li><p>E: Unknown threats</p></li>
+<li><p>F: C&amp;C callback</p></li>
+<li><p>G: Ransomware</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>deviceNtDomain</p></td>
+<td><p>Active Directory domain</p></td>
+<td><p>Example: APEXTMCM</p></td>
+</tr>
+<tr>
+<td><p>dntdom</p></td>
+<td><p>Apex One domain hierarchy</p></td>
+<td><p>Example: OSCEDomain1</p></td>
+</tr>
+<tr>
+<td><p>TMCMLogDetectedHost</p></td>
+<td><p>Endpoint name where the log event occurred</p></td>
+<td><p>Example: MachineHostName</p></td>
+</tr>
+<tr>
+<td><p>TMCMLogDetectedIP</p></td>
+<td><p>IP address where the log event occurred</p></td>
+<td><p>Example: 10.1.2.3</p></td>
+</tr>
+<tr>
+<td><p>ApexCentralHost</p></td>
+<td><p>Apex Central host name</p></td>
+<td><p>Example: TW-CHRIS-W2019</p></td>
+</tr>
+<tr>
+<td><p>devicePayloadId</p></td>
+<td><p>Unique message GUID</p></td>
+<td><p>Example: 1C00290C0360-9CDE11EB-D4B8-F51F-C697</p></td>
+</tr>
+<tr>
+<td><p>TMCMdevicePlatform</p></td>
+<td><p>Endpoint operating system</p></td>
+<td><p>Example: Windows 7 6.1 (Build 7601) Service Pack 1</p></td>
+</tr>
+</tbody>
+</table>
+
+Log sample:
+
+``` codeblock
+CEF:0|Trend Micro|Apex Central|2019|FH:Log|Suspicious File
+s|3|deviceExternalId=1 rt=Nov 15 2016 02:47:21 GMT+00:00 cat
+=1766 deviceFacility=Apex One cn1Label=SLF_ProductVersion cn
+1=11 dst=10.201.86.151 dhost=APEX-ONE-CLIENT-1 cs2Label=SLF_
+TrueFileType cs2=SLF_TrueFileType fileHash=D6712CAE5EC821F91
+0E14945153AE7871AA536CA cs3Label=SLF_FileSource cs3=C:\\User
+s\\Administrator\\Desktop\\BT-SHA1-SAMPLE\\BT-SHA1-SAMPLE\\0
+17545113A434757C5F0F13095DBBF138BD76A40;0x36D572AE cn2Label=
+SLF_SourceType cn2=0 act=Log cn3Label=SLF_ScanType cn3=1 rea
+son=E deviceNtDomain=APEXTMCM dntdom=OSCEDomain1 TMCMLogDete
+ctedHost=APEX-ONE-CLIENT-1 TMCMLogDetectedIP=10.201.86.151
+ApexCentralHost=TW-CHRIS-W2019 devicePayloadId=1C00290C0360-
+9CDE11EB-D4B8-F51F-C697 TMCMdevicePlatform=Windows 7 6.1 (Bu
+ild 7601) Service Pack 1
+```
+:::

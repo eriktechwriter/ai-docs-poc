@@ -1,0 +1,26 @@
+---
+slug: trend-vision-one-diagnose-agent-windows-deploy
+title: Diagnose problems with agent deployment (Windows)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: diagnose-agent-windows-deploy.md
+  conversion_date: '2025-09-08T23:42:20.488Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+If an agent on Windows fails to install or activate, look in the deployment logs to find the cause and troubleshoot it.
+
+### Procedure {#procedure}
+
+1.  Log in to the computer where you were trying to install the agent.
+
+2.  Go to `%appdata%\Trend Micro\Deep Security Agent\installer`.
+
+3.  Examine:
+
+    - *dsa_deploy.txt* - Log from the PowerShell script. Contains agent activation issues.
+
+    - *dsa_install.txt* - Log from the MSI installer. Contains agent installation issues.
+:::

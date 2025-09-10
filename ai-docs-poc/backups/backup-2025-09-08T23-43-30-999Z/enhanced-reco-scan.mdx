@@ -1,0 +1,91 @@
+---
+slug: trend-vision-one-enhanced-reco-scan
+title: Enhanced recommendation scan
+last_updated: '2025-09-08'
+ai_context:
+  source_file: enhanced-reco-scan.md
+  conversion_date: '2025-09-08T23:42:19.853Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+:::danger[Warning]
+
+Do not enable [Auto apply core Endpoint & Workload rules](set-up-intrusion-prevention.mdx) when using enhanced recommendation scan.
+:::
+
+The enhanced [recommendation scan](recommendation-scans-intro.mdx) improves upon the classic recommendation scan in the following ways:
+
+- The enhanced recommendation scan automatically runs within an hour after activation and at least once every 24 hours. This scan is short and efficient to avoid disrupting operations.
+
+- Improved efficiency allows more frequent scans for improved protection. Expect significantly lower use of system resources.
+
+- Reliable scans. Fewer failed scans means you can rely on the enhanced recommendation scan to provide regular recommendations.
+
+- More accurate with fewer incorrect or unnecessary recommendations.
+
+- Optimized performance with recommendations based on security rules that you require.
+
+- Fewer limitations than the classic recommendation scan:
+
+  - Able to recommend new web application rules, if applicable.
+
+  - Applications like Red Hat JBoss, Apache Struts, Oracle Weblogic, CMS applications, and other applications no longer have unnecessary recommendations.
+
+  - On Linux systems, better detection for software that is not installed through the operating system's default package manager.
+
+The enhanced recommendation scan has the following requirements:
+
+- Agent version 20.0.1-21510 or later (See supported features by version for [Linux](supported-features-linux-platform.mdx), [Windows](supported-features-windows-version.mdx), or [Windows Server](support-features-winserver.mdx).)
+
+- For agents earlier than version 20.0.2-4960, Activity Monitoring enabled
+
+- Internet of Things (IoT) traffic to Amazon Web Services (AWS) permitted through firewalls
+
+  If the agent does not receive any recommendations for 36 hours and either IoT traffic to AWS is not permitted through the firewalls or the enhanced recommendation scan fails, the agent automatically falls back to the [classic recommendation scan](classic-reco-scan.mdx). Upon receiving recommendations from the enhanced recommendation scan, the agent immediately resumes using the enhanced recommendation scan.
+
+Agents that do not meet the requirements for the enhanced recommendation scan automatically use the [classic recommendation scan](classic-reco-scan.mdx) instead.
+
+**Related information**
+
+- Implement enhanced recommendations
+- Manually run an enhanced recommendation scan
+
+## Implement enhanced recommendations {#implement-enhanced-recommendations}
+
+The enhanced recommendation scan automatically scans at least once every 24 hours to provide regular recommendations. You can control when to implement by creating a scheduled task or configuring an ongoing scan policy. Scheduled tasks and ongoing scans implement enhanced recommendation scans independently using their own settings.
+
+### Procedure {#procedure}
+
+1.  Enable and configure [automatic rule implementation](auto-imp-recommendations.mdx).
+
+2.  Choose one of the following:
+
+    - [Schedule a recommendation scan](schedule-reco-scan.mdx).
+
+    - [Configure an ongoing recommendation scan](config-ongoing-reco-scan.mdx).
+
+    :::warning[Important]
+
+    Use either scheduled tasks or ongoing scans, but not both.
+    :::
+
+## Manually run an enhanced recommendation scan {#manually-run-an-enhanced-recommendation-scan}
+
+This scan for recommendations is similar to the [classic recommendation scan](classic-reco-scan.mdx) but with a timeout for receiving results within 10 minutes. Clicking **Scan for Recommendations** disables the button during this timeout. If the recommendation scan results take longer than 10 minutes, the button becomes available so you can try again.
+
+Enable **Automatically implement rule recommendations** to automatically implement recommendations based on the results of the manual scan.
+
+### Procedure {#procedure-1}
+
+1.  Click the module where you want to run the scan:
+
+    - **Integrity Monitoring**
+    - **Intrusion Prevention**
+    - **Log Inspection**
+
+2.  On the **General** tab under **Recommendations**, click **Scan for Recommendations**.
+
+    The results of the latest enhanced recommendation scan appear on the **General** tab of the Intrusion Prevention, Integrity Monitoring, or Log Inspection protection module.
+::::

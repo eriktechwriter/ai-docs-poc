@@ -1,0 +1,155 @@
+---
+slug: trend-vision-one-default-policy-rules
+title: Default policy rules
+last_updated: '2025-09-08'
+ai_context:
+  source_file: default-policy-rules.md
+  conversion_date: '2025-09-08T23:42:20.751Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Cloud Email Gateway Protection comes with a set of default policy rules at the organization level and domain level, as listed in the following tables.
+
+**Default Organization-Level Policy Rules**
+
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 38%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Policy Type</p></th>
+<th><p>Inbound Policy Rules</p></th>
+<th><p>Outbound Policy Rules</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Virus scan</p></td>
+<td><p>Organization: Virus</p></td>
+<td><ul>
+<li><p>Organization: Global Outbound Policy (Virus)</p>
+
+
+:::note
+
+<p>This policy rule is not editable.</p>
+
+
+:::
+
+</li>
+<li><p>Organization: Outbound - Virus</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Spam filtering</p></td>
+<td><ul>
+<li><p>Organization: Spam or Phish</p></li>
+<li><p>Organization: Newsletter or spam-like</p></li>
+<li><p>Organization: Probable BEC threat</p></li>
+<li><p>Organization: Writing style BEC threat</p></li>
+</ul></td>
+<td><ul>
+<li><p>Organization: Global Outbound Policy (Spam or Phish)</p>
+
+
+:::note
+
+<p>This policy rule is not editable.</p>
+
+
+:::
+
+</li>
+<li><p>Organization: Outbound - Spam or Phish</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Correlated Intelligence</p></td>
+<td><ul>
+<li><p>Organization: Correlated Intelligence Security Risks</p></li>
+<li><p>Organization: Correlated Intelligence Anomalies</p></li>
+</ul></td>
+<td><p>Not applicable</p></td>
+</tr>
+<tr>
+<td><p>Content filtering</p></td>
+<td><ul>
+<li><p>Organization: High-risk attachment</p></li>
+<li><p>Organization: Exceeding msg size or # of recipients</p></li>
+<li><p>Organization: Password protected</p></li>
+</ul></td>
+<td><ul>
+<li><p>Organization: Outbound - High-risk attachment</p></li>
+<li><p>Organization: Outbound - Exceeding msg size or # of recipients</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Default Domain-Level Policy Rules**
+
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 38%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Policy Type</p></th>
+<th><p>Inbound Policy Rules</p></th>
+<th><p>Outbound Policy Rules</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Virus scan</p></td>
+<td><p>{{Domain name}}: Virus</p></td>
+<td><p>{{Domain name}}: Outbound - Virus</p></td>
+</tr>
+<tr>
+<td><p>Spam filtering</p></td>
+<td><ul>
+<li><p>{{Domain name}}: Spam or Phish</p></li>
+<li><p>{{Domain name}}: Newsletter or spam-like</p></li>
+<li><p>{{Domain name}}: Probable BEC threat</p></li>
+<li><p>{{Domain name}}: Writing style BEC threat</p></li>
+</ul></td>
+<td><p>{{Domain name}}: Outbound - Spam or Phish</p></td>
+</tr>
+<tr>
+<td><p>Correlated Intelligence</p></td>
+<td><ul>
+<li><p>{{Domain name}}: Correlated Intelligence Security Risks</p></li>
+<li><p>{{Domain name}}: Correlated Intelligence Anomalies</p></li>
+</ul></td>
+<td><p>Not applicable</p></td>
+</tr>
+<tr>
+<td><p>Content filtering</p></td>
+<td><ul>
+<li><p>{{Domain name}}: High-risk attachment</p></li>
+<li><p>{{Domain name}}: Exceeding msg size or # of recipients</p></li>
+<li><p>{{Domain name}}: Password protected</p></li>
+</ul></td>
+<td><ul>
+<li><p>{{Domain name}}: Outbound - High-risk attachment</p></li>
+<li><p>{{Domain name}}: Outbound - Exceeding msg size or # of recipients</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+Besides the preceding default policy rules, Cloud Email Gateway Protection also presets a built-in policy rule "Global Anti-Virus Rule (Enforced on Unverified Domains)", which is forcibly applied to inbound messages sent to unverified domains.
+
+:::note
+
+This policy rule does not appear on the policy screen, and is visible only in mail tracking logs, policy event logs, and quarantine query details.
+:::
+::::

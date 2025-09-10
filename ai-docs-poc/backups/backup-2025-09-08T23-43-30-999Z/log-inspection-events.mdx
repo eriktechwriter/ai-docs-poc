@@ -1,0 +1,88 @@
+---
+slug: trend-vision-one-log-inspection-events
+title: Log inspection events
+last_updated: '2025-09-08'
+ai_context:
+  source_file: log-inspection-events.md
+  conversion_date: '2025-09-08T23:42:16.452Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+For general best practices related to events, see [Events in Server & Workload Protection](event-logging.mdx).
+
+To see the log inspection events captured by Server & Workload Protection, go to **Events & Reports → Events → Log Inspection Events**.
+
+### What information is displayed for log inspection events? {#what-information-is-displayed-for-log-inspection-events}
+
+These columns can be displayed on the log inspection events page. You can click *Columns* to select which columns are displayed in the table.
+
+- *Time*: Time the event took place on the computer.
+- *Computer*: The computer on which this event was logged. (If the computer has been removed, this entry will read "Unknown Computer".)
+- *Reason*: The log inspection rule associated with this event.
+- *Tag(s)*: Any tags attached with the event.
+- *Description*: Description of the rule.
+- *Rank*: The ranking system provides a way to quantify the importance of events. By assigning "asset values" to computers, and assigning "severity values" to log inspection rules, the importance ("rank") of an event is calculated by multiplying the two values together. This allows you to sort events by rank.
+- *Severity*: The log inspection rule's severity value.
+- *Groups*: Group that the rule belongs to.
+- *Program Name*: Program name. This is obtained from the syslog header of the event.
+- *Event*: The name of the event.
+- *Location*: Where the log came from.
+- *Source IP*: The packet's source IP.
+- *Source Port*: The packet's source port.
+- *Destination IP*: The packet's destination IP address.
+- *Destination Port*: The packet's destination port.
+- *Protocol*: Possible values are "ICMP", "ICMPV6", "IGMP", "GGP", "TCP", "PUP", "UDP", "IDP", "ND", "RAW", "TCP+UDP", AND "Other: nnn" where nnn represents a three digit decimal value.
+- *Action*: The action taken within the event
+- *Source User*: Originating user within the event.
+- *Destination User*: Destination user within the event.
+- *Event HostName*: Hostname of the event source.
+- *ID*: Any ID decoded as the ID from the event.
+- *Status*: The decoded status within the event.
+- *Command*: The command being called within the event.
+- *URL*: The URL within the event.
+- *Data*: Any additional data extracted from the event.
+- *System Name*: The system name within the event.
+- *Rule Matched*: Rule number that was matched.
+- *Event Origin*: The Server & Workload Protection component from which the event originated.
+
+### List of log inspection security events {#list-of-log-inspection-security-events}
+
+:::note
+
+For system events related to log inspection, see [System events](system-events.mdx).
+:::
+
+<table>
+<thead>
+<tr>
+<th><p>ID</p></th>
+<th><p>Severity</p></th>
+<th><p>Event</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>8100</p></td>
+<td><p>Error</p></td>
+<td><p>Log Inspection Engine Error</p></td>
+</tr>
+<tr>
+<td><p>8101</p></td>
+<td><p>Warning</p></td>
+<td><p>Log Inspection Engine Warning</p></td>
+</tr>
+<tr>
+<td><p>8102</p></td>
+<td><p>Info</p></td>
+<td><p>Log Inspection Engine Initialized</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Syslog message formats](syslog-message-formats-2.mdx)
+- [Error: Log Inspection Rules Require Log Files](error-log-inspection-rules-files.mdx)
+::::

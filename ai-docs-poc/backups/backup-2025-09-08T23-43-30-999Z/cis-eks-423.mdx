@@ -1,0 +1,64 @@
+---
+slug: trend-vision-one-cis-eks-423
+title: >-
+  4.2.3 - Minimize the admission of containers wishing to share the host IPC
+  namespace (Automated)
+last_updated: '2025-09-08'
+ai_context:
+  source_file: cis-eks-423.md
+  conversion_date: '2025-09-08T23:42:23.714Z'
+conversion_status: converted
+translation_ready: true
+---
+
+:::: {role="main"}
+Profile applicability: Level 1
+
+Do not generally permit containers to be run with the `hostIPC` flag set to true.
+
+A container running in the host's IPC namespace can use IPC to interact with processes outside the container.
+
+There should be at least one admission control policy defined which does not permit containers to share the host IPC namespace.
+
+If you need to run containers which require `hostIPC`, this should be defined in a separate policy and you should carefully check to ensure that only limited service accounts and users are given permission to use that policy.
+
+:::note
+
+By default, there are no restrictions on the creation of `hostIPC` containers.
+:::
+
+### Impact {#impact}
+
+Pods defined with `spec.hostIPC: true` will not be permitted unless they are run under a specific policy.
+
+### Audit {#audit}
+
+List the policies in use for each namespace in the cluster, ensure that each policy disallows the admission of `hostIPC` containers.
+
+In the YAML output, look for the `hostIPC` setting under the spec section to check if it is set to `true`.
+
+Option 1
+
+``` codeblock
+kubectl get pods --all-namespaces -o json | jq -r '.items[] |
+select(.spec.hostIPC == true) |
+"\(.metadata.namespace)/\(.metadata.name)"'
+```
+
+Option 2
+
+``` codeblock
+kubectl get pods --all-namespaces -o json | jq '.items[] |
+select(.metadata.namespace != "kube-system" and .spec.hostIPC == true)
+| {pod: .metadata.name, namespace: .metadata.namespace, container:
+.spec.containers[].name}'
+```
+
+When creating a Pod Security Policy, `["kube-system"]` namespaces are excluded by default.
+
+This command retrieves all pods across all namespaces in JSON format, then uses jq to filter out those with the `hostIPC` flag set to `true`, and finally it formats the output to show the namespace and name of each matching pod.
+
+### Remediation {#remediation}
+
+Add policies to each namespace in the cluster which has user workloads to restrict the admission of `hostIPC` containers.
+::::

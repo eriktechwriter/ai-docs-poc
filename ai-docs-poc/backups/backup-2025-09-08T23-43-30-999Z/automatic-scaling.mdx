@@ -1,0 +1,245 @@
+---
+slug: trend-vision-one-automatic-scaling
+title: Automatic Scaling
+last_updated: '2025-09-08'
+ai_context:
+  source_file: automatic-scaling.md
+  conversion_date: '2025-09-08T23:42:24.640Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Scale your Private Access Connector VM instances based on metric thresholds by creating dynamic scaling policies.
+
+### Procedure {#procedure}
+
+1.  Verify that EC2 detailed monitoring is enabled for your Auto Scaling group.
+
+    :::warning[Important]
+
+    Automatic scaling requires EC2 detailed monitoring which incurs charges. For more information, see Amazon CloudWatch documentation.
+    :::
+
+    1.  On the stack screen you just created, click the **Resources** tab, and then click the Physical ID in the LaunchConfig row.
+
+    2.  On the **Launch configurations** screen that appears, view the **Monitoring** status in the **Details** section.
+
+        - True: EC2 detailed monitoring is enabled. Go to step 3.
+
+        - False: EC2 detailed monitoring is not enabled. Go to step 2.
+
+2.  Change the monitoring interval in the CloudFormation template.
+
+    1.  Select your stack from CloudFormation.
+
+    2.  Click **Update**, and click **Next**.
+
+    3.  Select `1min` from the **MonitoringGranularity** drop-down list and click **Next**.
+
+    4.  Click **Next** and **Submit**.
+
+3.  Enable EC2 detailed monitoring for all existing VM instances.
+
+    1.  On the overview screen of the Auto Scaling group, click the **Instance Management** tab.
+
+    2.  Click the instance ID of the instance you want to update.
+
+    3.  On the instance summary page, click the **Monitoring** tab, and then click **Manage detailed monitoring** in the upper right.
+
+    4.  On the **Detailed monitoring** screen that appears, select **Enable** detailed monitoring, and click **Confirm**.
+
+    5.  Repeat steps 3b to 3d to enable detailed monitoring for other existing instances.
+
+4.  Go to the CloudWatch service and create two CloudWatch alarms for scaling out and scaling in.
+
+    The CloudWatch alarms are used to create dynamic scaling policies in the later step.
+
+    1.  On the **Alarms** screen, click **Create alarm** in the upper right.
+
+    2.  On the **Specify metric and conditions** screen, click **Select metric**, and then click **EC2** in the **Metrics** section on the **Browse** tab.
+
+    3.  Click **By Auto Scaling Group**, locate and select **CPUUtilization** for the desired Auto Scaling group from the drop-down list, and then click **Select metric**.
+
+    4.  Specify the following field.
+
+        <table>
+        <colgroup>
+        <col style="width: 20%" />
+        <col style="width: 40%" />
+        <col style="width: 40%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th colspan="2"><p>Field</p></th>
+        <th><p>Setting</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td rowspan="2"><p>Metric</p></td>
+        <td><p>Statistic</p></td>
+        <td><p><code>Average</code></p></td>
+        </tr>
+        <tr>
+        <td><p>Period</p></td>
+        <td><p><code>1 minute</code></p></td>
+        </tr>
+        <tr>
+        <td rowspan="4"><p>Conditions</p></td>
+        <td><p>Threshold type</p></td>
+        <td><p><code>Static</code></p></td>
+        </tr>
+        <tr>
+        <td><p>When CPUUtilization is</p></td>
+        <td><p><code>Greater</code></p></td>
+        </tr>
+        <tr>
+        <td><p>than...</p></td>
+        <td><ul>
+        <li><p><code>80</code> (suggested) for 2 virtual CPUs</p></li>
+        <li><p><code>70</code> (suggested) for 4 virtual CPUs</p></li>
+        </ul></td>
+        </tr>
+        <tr>
+        <td><p>Datapoints to alarm</p></td>
+        <td><p><code>5 out of 5</code></p></td>
+        </tr>
+        </tbody>
+        </table>
+
+    5.  Click **Next**.
+
+    6.  On the **Configure actions** screen, click **Remove** in the **Notification** section, and then click **Next**.
+
+    7.  On the **Add name and description** screen, specify a name and a description for the alarm, and then click **Next**.
+
+    8.  Confirm the settings and click **Create alarm**.
+
+    9.  Repeat steps a to h to create another alarm for scaling in with the following metric and condition field settings.
+
+        <table>
+        <colgroup>
+        <col style="width: 20%" />
+        <col style="width: 40%" />
+        <col style="width: 40%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th colspan="2"><p>Field</p></th>
+        <th><p>Setting</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td rowspan="2"><p>Metric</p></td>
+        <td><p>Statistic</p></td>
+        <td><p><code>Average</code></p></td>
+        </tr>
+        <tr>
+        <td><p>Period</p></td>
+        <td><p><code>1 minute</code></p></td>
+        </tr>
+        <tr>
+        <td rowspan="4"><p>Conditions</p></td>
+        <td><p>Threshold type</p></td>
+        <td><p><code>Static</code></p></td>
+        </tr>
+        <tr>
+        <td><p>When CPUUtilization is</p></td>
+        <td><p><code>Lower</code></p></td>
+        </tr>
+        <tr>
+        <td><p>than...</p></td>
+        <td><ul>
+        <li><p><code>15</code> (suggested) for 2 virtual CPUs</p></li>
+        <li><p><code>10</code> (suggested) for 4 virtual CPUs</p></li>
+        </ul></td>
+        </tr>
+        <tr>
+        <td><p>Datapoints to alarm</p></td>
+        <td><p><code>10 out of 10</code></p></td>
+        </tr>
+        </tbody>
+        </table>
+
+5.  Create dynamic scaling policies.
+
+    1.  Go back to the overview screen of the desired Auto Scaling group, and then click the **Automatic scaling** tab.
+
+    2.  Click **Create dynamic scaling policy**.
+
+    3.  Create a policy for scaling out by specifying the following fields and clicking **Create**.
+
+        <table>
+        <colgroup>
+        <col style="width: 50%" />
+        <col style="width: 50%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Field</p></th>
+        <th><p>Setting</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Policy type</p></td>
+        <td><p><code>Simple scaling</code></p></td>
+        </tr>
+        <tr>
+        <td><p>Scaling policy name</p></td>
+        <td><p>A unique name to identify the policy</p></td>
+        </tr>
+        <tr>
+        <td><p>CloudWatch alarm</p></td>
+        <td><p>The CloudWatch alarm created for scaling out</p></td>
+        </tr>
+        <tr>
+        <td><p>Take the action</p></td>
+        <td><p><code>Add 1 capacity units</code></p></td>
+        </tr>
+        <tr>
+        <td><p>And then wait</p></td>
+        <td><p><code>600</code></p></td>
+        </tr>
+        </tbody>
+        </table>
+
+    4.  Repeat steps b and c to create another policy for scaling in with the following field settings.
+
+        <table>
+        <colgroup>
+        <col style="width: 50%" />
+        <col style="width: 50%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Field</p></th>
+        <th><p>Setting</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Policy type</p></td>
+        <td><p><code>Simple scaling</code></p></td>
+        </tr>
+        <tr>
+        <td><p>Scaling policy name</p></td>
+        <td><p>A unique name to identify the policy</p></td>
+        </tr>
+        <tr>
+        <td><p>CloudWatch alarm</p></td>
+        <td><p>The CloudWatch alarm created for scaling in</p></td>
+        </tr>
+        <tr>
+        <td><p>Take the action</p></td>
+        <td><p><code>Remove 1 capacity units</code></p></td>
+        </tr>
+        <tr>
+        <td><p>And then wait</p></td>
+        <td><p><code>1200</code></p></td>
+        </tr>
+        </tbody>
+        </table>
+:::

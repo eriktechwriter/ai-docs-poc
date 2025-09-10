@@ -1,0 +1,130 @@
+---
+slug: trend-vision-one-configure-device-control-settings
+title: Configuring Device Control Settings
+last_updated: '2025-09-08'
+ai_context:
+  source_file: configure-device-control-settings.md
+  conversion_date: '2025-09-08T23:42:22.789Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+### Procedure {#procedure}
+
+1.  Select **Enable Device Control**.
+
+    - If you are on the **External Agents** tab, you can apply settings to internal agents by selecting **Apply all settings to internal agents**.
+
+    - If you are on the **Internal Agents** tab, you can apply settings to external agents by selecting **Apply all settings to external agents**.
+
+2.  Add or edit a Device Control rule:
+
+    - For user-based rules:
+
+      - To create a rule based on Active Directory user or group accounts, click **Add**.
+
+      - To edit a rule based on Active Directory user or group accounts, click the link in the *User Accounts* column.
+
+      :::warning[Important]
+
+      User-based Device Control rules are only available after integrating Active Directory with Trend Micro Apex Central.
+      :::
+
+    - To edit the default endpoint-based rule:
+
+      - Click the **All users (default)** link in the *User Accounts* column.
+
+        :::note
+
+        You cannot delete the default endpoint-based rule.
+        :::
+
+    The **Device Control Rule** screen appears.
+
+3.  In the **User Accounts** section, type and select the display name(s) of the Active Directory user(s) or group account(s) to which the rule applies.
+
+    :::note
+
+    You cannot specify user or group accounts when editing the default **All users (default)** endpoint-based rule.
+    :::
+
+4.  In the **Storage Devices** section:
+
+    1.  Select a permission for each storage device.
+
+        :::warning[Important]
+
+        - Only Trend Vision One Endpoint Security agents with Data Protection enabled can take the "Block" action. If you deploy a policy to Trend Vision One Endpoint Security agents that do not have Data Protection enabled, Apex One applies the action configured in the drop-down box.
+
+        - Apex One automatically applies the access permission configured for any USB device in the **Allowed USB List** even if you do not enable Data Protection.
+        :::
+
+        For details about permissions, see [Permissions for Devices](permissions-for-devices.mdx).
+
+        If you selected to restrict access to any storage device, the **Allowed Programs** button appears. For **USB storage devices**, if you selected **Block (Data Protection)**, the **Allowed USB Devices** button appears.
+
+    2.  (Optional) Click **Allowed Programs** to configure a list of programs that Device Control does not restrict access on any device type.
+
+        The **Allowed Programs** screen appears.
+
+        1.  Type the full path or the trusted Digital Signature Provider information of programs that Device Control allows users to access.
+
+            :::note
+
+            - When specifying a Digital Signature Provider, Device Control only allows programs signed by the publisher to **Execute**.
+
+              For more information, see [Specifying a Digital Signature Provider](digital-signature-provider.mdx).
+
+            - When specifying the full path of a program, the Device Control Allowed Programs list supports the use of wildcard characters.
+
+              For more information, see [Wildcard Support for the Device Control Allowed Programs List](wildcard-support-dc.mdx).
+            :::
+
+        2.  Click **Add**.
+
+            The the full path of the program or the trusted Digital Signature Provider information appears in the list.
+
+        3.  Select whether to allow the program to **Execute** or **Read/Write**.
+
+        4.  Click **OK**.
+
+    3.  (Optional) Click **Allowed USB Devices** to configure a list of USB devices that Device Control does not block.
+
+        The **Allowed USB Devices** screen appears.
+
+        1.  Type the device vendor, model, and serial ID in the list.
+
+        2.  To add more devices, click the plus (+) icon.
+
+        3.  In the **Permissions** drop-down, specify the access level Device Control permits to users accessing the specified USB devices.
+
+        4.  Click **OK**.
+
+    4.  Select **Block the AutoRun function on USB storage devices** to prevent programs saved on USB devices from executing automatically.
+
+    5.  Select **Display a notification message on the endpoint when Apex One detects unauthorized device access** to inform end users that Device Control restricted access to a device.
+
+5.  For Trend Vision One Endpoint Security agents with the Data Protection feature installed, select to **Allow** or **Block** access to the devices listed under **Mobile Devices** and **Non-Storage Devices**.
+
+6.  Click **OK**.
+
+    :::note
+
+    Device Control automatically assigns all user-based rules a higher priority than the default endpoint-based rule (**All users (default)**).
+    :::
+
+7.  (Optional) Manage the Device Control rule list.
+
+    - **Priority**: Click the arrows to change the priority of user-based rules.
+
+    - **Copy**: Select a rule, click **Copy**, and modify the rule contents.
+
+    - **Delete**: Select a rule and click **Delete** to permanently remove the rule from the list.
+
+**Related information**
+
+- [Permissions for Devices](permissions-for-devices.mdx)
+- [Wildcard Support for the Device Control Allowed Programs List](wildcard-support-dc.mdx)
+- [Specifying a Digital Signature Provider](digital-signature-provider.mdx)
+:::

@@ -1,0 +1,162 @@
+---
+slug: trend-vision-one-private-access-aws-marketplace
+title: Deploying the Private Access Connector on AWS Marketplace
+last_updated: '2025-09-08'
+ai_context:
+  source_file: private-access-aws-marketplace.md
+  conversion_date: '2025-09-08T23:42:14.175Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Connect your AWS applications with Zero Trust Secure Access Private Access and prevent unauthorized intrusions.
+
+Private Access Connectors connect your internal applications with Zero Trust Secure Access Private Access, which allows you to control access to sensitive corporate resources. To ensure high availability (HA) and facilitate load-balancing on high traffic apps, install and group together at least 2 connectors in each environment. Before attempting to deploy the Private Access Connector, ensure that your environment meets the minimum [system requirements](pa-connector-system-reqs.mdx).
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Zero Trust Secure Access → Secure Access Configuration → Private Access Configuration**.
+
+2.  For customers that need to create a new connector group, click **Add Private Access Connector Group**.
+
+    1.  Provide a unique name and description for the group.
+
+    2.  Click **Save**.
+
+3.  Locate your **Connector group** name in the list and click the **New connector** (![](/images/add_connector=683f3c84-a774-40c0-bd9b-4663fcd2b53f.webp)) icon.
+
+    The **Private Access Connector Virtual Appliance** panel appears.
+
+4.  Select **Amazon AWS** from the **Platform** list.
+
+5.  Copy the **Registration token** for later use.
+
+6.  Sign in to the AWS Marketplace and locate the **Trend Micro Vision One - Zero Trust Secure Access** app.
+
+    :::warning[Important]
+
+    The steps and screens contained in these instructions were valid as of October 2022.
+    :::
+
+7.  Click **Continue to Subscribe**.
+
+    <figure>
+    <img src="./images/awsMarketplaceSubscribe=20220701111112.webp" />
+    </figure>
+
+8.  Click **Continue to Configuration**.
+
+    <figure>
+    <img src="./images/awsMarketplaceContinueConfig=20220701111622.webp" />
+    </figure>
+
+9.  Select your fulfillment options and software version, and click **Continue to Launch**.
+
+    <figure>
+    <img src="./images/awsMarketplaceContinueLaunch=20220701112015.webp" />
+    </figure>
+
+    :::note
+
+    Make sure that you always select the latest software version.
+    :::
+
+10. In the **Choose Action** field, select `Launch CloudFormation` and click **Launch**.
+
+    <figure>
+    <img src="./images/awsMarketplaceLaunch=20220701112254.webp" />
+    </figure>
+
+    The **Create stack** screen opens.
+
+11. Keep the default settings and click **Next**.
+
+12. In the **Stack name** section, specify a **Stack name** for the CloudFormation stack of your Private Access Connector.
+
+    <figure>
+    <img src="./images/awsMarketplaceNamesTags=20220701112431.webp" />
+    </figure>
+
+13. In the **Parameters** section, specify each field, and then click **Next**.
+
+    <figure>
+    <img src="./images/awsMarketplaceParameters=20220825171010.webp" />
+    </figure>
+
+    :::warning[Important]
+
+    To use automatic scaling of the VM instances via dynamic scaling policies, you must set **MonitoringGranularity** to `1 min` for EC2 detailed monitoring. Detailed monitoring incurs charges. For more information, see Amazon CloudWatch documentation.
+    :::
+
+14. Keep the default settings and click **Next**.
+
+15. Click **Create stack**.
+
+    <figure>
+    <img src="./images/awsMarketplaceCreateStack=20220825171615.webp" />
+    </figure>
+
+    :::note
+
+    The system launches two instances when creating the stack. Allow some time for the process to complete.
+    :::
+
+16. (Optional) Scale the VM instances either by [manually specifying a fixed Auto Scaling group size](manual-scaling.mdx) or via [dynamic scaling policies](automatic-scaling.mdx).
+
+17. (Optional) Launch and configure a Private Access Connector VM.
+
+    1.  On the auto scaling group screen, click the **Instance Management** tab.
+
+    2.  Click the instance ID of an instance you just launched and copy the public IPv4 address of the instance.
+
+    3.  Open a command prompt and run the following `ssh` command to log on to the Connector virtual appliance with the default credentials.
+
+        `ssh -i <path_of_the_private_key_file> admin@<public_IP_address_of_the_instance>`
+
+        :::warning[Important]
+
+        AWS automatically creates a user for the VM. Make sure you use **admin** rather than the created user to log on.
+        :::
+
+    4.  Set your password for the `enable` command by running the following command and pressing the <span class="uicontrol keyboard">ENTER</span> key:
+
+        `passwd`
+
+        The **admin** user and privileged mode share the same password.
+
+    5.  Switch to privileged mode by typing the `enable` command, pressing the <span class="uicontrol keyboard">ENTER</span> key, and provide the updated password.
+
+        The command prompt changes from **\>** to **\#**.
+
+    6.  Run the following command to change the time zone of the connector:
+
+        `configure timezone <timezone>`
+
+        The default time zone is **America/Los_Angeles**.
+
+    7.  Check whether the Connector can connect to the NTP server `0.pool.ntp.org`.
+
+        The Connector requires connectivity to an NTP server to synchronize its clock. By default, Trend Vision One uses the public NTP server `0.pool.ntp.org`. You can also configure the Connector to connect to another public NTP server or a local NTP server within your organization.
+
+        Run the following command to configure the NTP server: `configure ntp server <address>`
+
+        :::note
+
+        To use public NTP servers, make sure that your firewall configuration allows outbound UDP traffic on port 123.
+        :::
+
+18. Use the CLI to configure other settings, if required.
+
+    For more information on available commands, see [Private Access Connector CLI commands](private-access-connector-cli.mdx).
+
+    IMDSv2 Required option is supported in AWS connectors. For deployment details, see[Configure IMDSv2 in AWS deployments](config-imdsv2-aws-deployment.mdx) .
+
+    After successful deployment, the connector virtual appliance appears under the corresponding connector group on the **Private Access Connectors** tab.
+
+**Related information**
+
+- [Manual Scaling](manual-scaling.md "Manually scale your Private Access Connector VM instances to a fixed Auto Scaling group size.")
+- [Automatic Scaling](automatic-scaling.md "Scale your Private Access Connector VM instances based on metric thresholds by creating dynamic scaling policies.")
+- [Configure IMDSv2 in AWS deployments](config-imdsv2-aws-deployment.mdx)
+:::

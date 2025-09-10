@@ -1,0 +1,32 @@
+---
+slug: trend-vision-one-outbound-message-protection
+title: Outbound message protection
+last_updated: '2025-09-08'
+ai_context:
+  source_file: outbound-message-protection.md
+  conversion_date: '2025-09-08T23:42:14.700Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+Cloud Email Gateway Protection scans outgoing email messages before delivery if outbound filtering is enabled. Cloud Email Gateway Protection applies the following policies for filtering:
+
+- Malware (viruses, spyware, and so on)
+
+- Spam and phishing
+
+- Web reputation
+
+- Data Loss Prevention (DLP)
+
+- Transport Layer Security (TLS) check
+
+- DomainKeys Identified Mail (DKIM) signing
+
+In addition, outbound encryption is seamlessly integrated with the content-filtering capabilities of Cloud Email Gateway Protection, using policy-based encryption to secure email messages. The service does not automatically encrypt email messages. When outbound filtering is enabled, outbound encryption appears as a policy option within the Cloud Email Gateway Protection administrator console. You will need to configure policy rules that apply encryption as a rule action.
+
+To learn about the policy rule used to encrypt outbound messages, see [Encrypting outbound messages](encrypting-outbound-messages.mdx). To learn more about how to enable outbound protection for a managed domain, see step 5 in [Adding a domain](adding-domain.mdx).
+
+Cloud Email Gateway Protection evaluates outgoing messages against regulatory compliance templates defined in DLP policies to prevent data leakage. For details about DLP, see [Data Loss Prevention](data-loss-prevention-email-security.mdx).
+:::

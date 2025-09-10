@@ -1,0 +1,140 @@
+---
+slug: trend-vision-one-external-vsphere-dist-switch-span
+title: >-
+  Configuring external network traffic with the VMware vSphere Distributed
+  Switch (SPAN)
+---
+# Configuring external network traffic with the VMware vSphere Distributed Switch (SPAN)
+
+:Configure external network traffic with the VMware vSphere Distributed Switch using SPAN to allow Virtual Network Sensor to monitor data.
+
+:::warning[Important]
+
+The following instructions are valid as of July 2023.
+:::
+
+:::note
+
+You must use a vCenter administrator account.
+:::
+
+### Procedure {#procedure}
+
+1.  Turn off your Virtual Network Sensor.
+
+2.  On the VMware vCenter console, click the ![](/images/circle_icon=GUID-20230729150101.webp) tab.
+
+3.  Right-click the name of your data center, and go to **Distributed Switch → New Distributed Switch...**.
+
+    <figure>
+    <img src="./images/External_VDS_SPAN1=GUID-20230729143431.webp" />
+    </figure>
+
+4.  On the **Name and location** screen, specify the distributed switch name and location and click **NEXT**.
+
+    <figure>
+    <img src="./images/External_VDS_SPAN2=GUID-20230729143432.webp" />
+    </figure>
+
+5.  On the **Select version** screen, select your distributed switch version and click **NEXT**.
+
+    <figure>
+    <img src="./images/External_VDS_SPAN3=GUID-20230729143433.webp" />
+    </figure>
+
+6.  On the **Configure settings** screen, specify the number of uplinks and click **NEXT**.
+
+    <figure>
+    <img src="./images/External_VDS_SPAN4=GUID-20230729143434.webp" />
+    </figure>
+
+7.  On the **Ready to complete** screen, review the settings and click **FINISH**.
+
+    <figure>
+    <img src="./images/External_VDS_SPAN5=GUID-20230729143435.webp" />
+    </figure>
+
+8.  Right-click the name of your switch and select **Add and Manage Hosts...**.
+
+    <figure>
+    <img src="./images/External_VDS_SPAN6=GUID-20230729143436.webp" />
+    </figure>
+
+9.  On the **Select task** screen, select **Add hosts** and click **NEXT**.
+
+    <figure>
+    <img src="./images/External_VDS_SPAN7=GUID-20230729143437.webp" />
+    </figure>
+
+10. On the **Select hosts** screen, select your virtual machine and click **NEXT**.
+
+    <figure>
+    <img src="./images/External_VDS_SPAN8=GUID-20230729143438.webp" />
+    </figure>
+
+11. On the **Manage physical adapters** screen, right-click the name of your NIC and select **Uplink 1**.
+
+    <figure>
+    <img src="./images/External_VDS_SPAN9=GUID-20230729143439.webp" />
+    </figure>
+
+12. Click **NEXT**.
+
+13. On the **Manage VMkernel adapters** screen, click **NEXT**.
+
+    <figure>
+    <img src="./images/External_VDS_SPAN10=GUID-20230729143410.webp" />
+    </figure>
+
+14. On the **Migrate VM networking** screen, click **NEXT**.
+
+    <figure>
+    <img src="./images/External_VDS_SPAN11=GUID-20230729143411.webp" />
+    </figure>
+
+15. On the **Ready to complete** screen, click **FINISH**.
+
+    <figure>
+    <img src="./images/External_VDS_SPAN12=GUID-20230729143412.webp" />
+    </figure>
+
+16. Click the name of your switch and then click the **Networks** tab.
+
+    <figure>
+    <img src="./images/External_VDS_SPAN13=GUID-20230729143413.webp" />
+    </figure>
+
+17. Right-click the name of your port group and select **Edit Settings...**.
+
+18. Click **Security**, select **Accept** for promiscuous mode, and click **OK**.
+
+    <figure>
+    <img src="./images/External_VDS_SPAN14=GUID-20230729143414.webp" />
+    </figure>
+
+19. Click the ![](/images/VMware_vCenter_server_icon=GUID-20230329175050.webp) tab and then click the name of your virtual appliance.
+
+    <figure>
+    <img src="./images/External_VDS_SPAN15=GUID-20230729143415.webp" />
+    </figure>
+
+20. Click ![](/images/edit_settings_icon=GUID-20230729150707.webp).
+
+21. On the **Edit Settings** screen, click **Network adapter 2** and select **Browse...**.
+
+    <figure>
+    <img src="./images/External_VDS_SPAN16=GUID-20230729143416.webp" />
+    </figure>
+
+22. Click the name of your port group and click **OK**.
+
+    <figure>
+    <img src="./images/External_VDS_SPAN17=GUID-20230729143417.webp" />
+    </figure>
+
+23. Click **OK**.
+
+24. Turn on your Virtual Network Sensor.
+
+    After configuring your network settings, access the Virtual Network Sensor console and use the command `show traffic` to verify the Virtual Network Sensor is receiving traffic. For more information about troubleshooting, see [Virtual Network Sensor FAQ](virtual-network-sensor-faqs.mdx) and [Virtual Network Sensor CLI commands](virtual-network-sensor-cli-commands.mdx).
+:::::

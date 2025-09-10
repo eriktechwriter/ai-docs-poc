@@ -1,0 +1,124 @@
+---
+slug: trend-vision-one-fs-va-scaling
+title: Scaling and performance with Virtual Appliance
+last_updated: '2025-09-08'
+ai_context:
+  source_file: fs-va-scaling.md
+  conversion_date: '2025-09-08T23:42:19.024Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+The below information details scaling and performance of File Security Virtual Appliance.
+
+### Performance metrics {#performance-metrics}
+
+Below are some results of how long a scan takes for various file types. The server used for testing had the following specifications:
+
+- Compute instance:
+  - 16 vCPU, 32 GiB memory, up to 10 Gbps network
+- File storage server: NFS v3 server
+- File type - 30 popular file types mixed
+- Typical throughput:
+
+::: {.simpletable-container}
+<table id="GUID-F8FAF1DF-7A1E-4C0A-ADA3-6F6FC6CAD49D-z6rgl3__simpletable_tyw_xyk_kcc" class="simpletable" data-border="1">
+<thead>
+<tr class="sthead table-header-style">
+<th class="stentry"><p>File scanned per unit</p></th>
+<th class="stentry"><p>100k median size</p></th>
+<th class="stentry"><p>1MB median size</p></th>
+<th class="stentry"><p>10MB median size</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="strow">
+<td class="stentry"><p>Scanned per minute</p></td>
+<td class="stentry"><p>50,000</p></td>
+<td class="stentry"><p>16,000</p></td>
+<td class="stentry"><p>2,500</p></td>
+</tr>
+<tr class="strow">
+<td class="stentry"><p>Scanned per hour</p></td>
+<td class="stentry"><p>3,000,000</p></td>
+<td class="stentry"><p>960,000</p></td>
+<td class="stentry"><p>150,000</p></td>
+</tr>
+<tr class="strow">
+<td class="stentry"><p>Scanned per day</p></td>
+<td class="stentry"><p>72,000,000</p></td>
+<td class="stentry"><p>23,040,000</p></td>
+<td class="stentry"><p>3,6000,000</p></td>
+</tr>
+</tbody>
+</table>
+:::
+
+### Performance test {#performance-test}
+
+::: {.simpletable-container}
+<table id="GUID-F8FAF1DF-7A1E-4C0A-ADA3-6F6FC6CAD49D-z6rgl3__simpletable_kcr_xhg_xcc" class="simpletable" style="width:100%;" data-border="1">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr class="sthead table-header-style">
+<th class="stentry"><p>Sample file category</p></th>
+<th class="stentry"><p>Sample size range</p></th>
+<th class="stentry"><p>Median sample size</p></th>
+<th class="stentry"><p>Per 100MB scan time - median (seconds)</p></th>
+<th class="stentry"><p>Scans per minute (estimate)</p></th>
+<th class="stentry"><p>Scans per minute (actual)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="strow">
+<td class="stentry"><p>10s of KB</p></td>
+<td class="stentry"><p>700B - 66KB</p></td>
+<td class="stentry"><p>25.6KB</p></td>
+<td class="stentry"><p>4.28</p></td>
+<td class="stentry"><p>140,000 scans per minute</p>
+<p>(@10KB}</p></td>
+<td class="stentry"><p>60,000 scans per minute</p>
+<p>(@25KB)</p></td>
+</tr>
+<tr class="strow">
+<td class="stentry"><p>100s of KB</p></td>
+<td class="stentry"><p>163KB - 925KB</p></td>
+<td class="stentry"><p>344KB</p></td>
+<td class="stentry"><p>1.15</p></td>
+<td class="stentry"><p>50,000 scans per minute</p>
+<p>(@100KB)</p></td>
+<td class="stentry"><p>15,000 scans per minute</p>
+<p>(@350KB)</p></td>
+</tr>
+<tr class="strow">
+<td class="stentry"><p>1s of MB</p></td>
+<td class="stentry"><p>1.1MB - 7.7 MB</p></td>
+<td class="stentry"><p>3.1MB</p></td>
+<td class="stentry"><p>.38</p></td>
+<td class="stentry"><p>16,000 scans per minute</p>
+<p>(@1MB)</p></td>
+<td class="stentry"><p>7,000 scans per minute</p>
+<p>(@3MB)</p></td>
+</tr>
+<tr class="strow">
+<td class="stentry"><p>10s of MB</p></td>
+<td class="stentry"><p>10MB - 130MB</p></td>
+<td class="stentry"><p>26MB</p></td>
+<td class="stentry"><p>.24</p></td>
+<td class="stentry"><p>2,500 scans per minute</p>
+<p>(@10MB)</p></td>
+<td class="stentry"><p>1,000 scans per minute</p>
+<p>(@26MB)</p></td>
+</tr>
+</tbody>
+</table>
+:::
+:::::

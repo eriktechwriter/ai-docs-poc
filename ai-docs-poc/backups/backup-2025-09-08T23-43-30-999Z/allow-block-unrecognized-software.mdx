@@ -1,0 +1,51 @@
+---
+slug: trend-vision-one-allow-block-unrecognized-software
+title: Allow or block unrecognized software
+last_updated: '2025-09-08'
+ai_context:
+  source_file: allow-block-unrecognized-software.md
+  conversion_date: '2025-09-08T23:42:25.279Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::: {role="main"}
+When you allow or block unrecognized software, an allow or block rule is automatically created and assigned to the ruleset used by the computer. Generally, use the following steps to allow or block software with Application Control:
+
+### Procedure {#procedure}
+
+1.  Use a `SoftwareChangeApi` object to obtain a list of `SoftwareChange` objects.
+
+2.  Decide which software changes you want to allow or block.
+
+3.  Create a `SoftwareChangeReview` object and configure it with the list of software changes and the action to take on them. When you create a `SoftwareChangeReview` object, use it to define the IDs of the `SoftwareChange` objects you wish to allow or block and the action to take on the software changes.
+
+4.  Use the `SoftwareChangeApi` object to perform the software change review.
+
+### Next steps {#next-steps}
+
+For more information about allow or block rules, see [Set up Application Control](set-up-application-control.mdx).
+
+The following example searches for a list of unrecognized software on a computer and blocks the unrecognized software. (The creation of the search criteria and search filter is not shown.) See also the [Review software changes](https://automation.trendmicro.com/cloudone/workload-security/) operation in the API Reference.
+
+[source](https://github.com/deep-security/automation-center-sdk-samples/blob/master/python/src/application_control_examples.py)
+
+``` codeblock
+# Perform the search
+software_changes_api = api.SoftwareChangesApi(api.ApiClient(configuration))
+computer_software_changes = software_changes_api.search_software_changes(api_version, search_filter=search_filter)
+
+# Block the unrecognized software
+# Create the software change review object and set action to block
+software_change_review = api.SoftwareChangeReview()
+software_change_review.action = "block"
+software_change_review.software_change_ids = []
+
+# Add the IDs of the software changes to block
+for software_change in computer_software_changes.software_changes:
+    software_change_review.software_change_ids.append(software_change.id)
+
+# Perform the software change review
+return software_changes_api.review_software_changes(software_change_review, api_version)
+```
+:::

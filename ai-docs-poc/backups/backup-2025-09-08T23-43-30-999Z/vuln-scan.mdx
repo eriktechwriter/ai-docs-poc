@@ -1,0 +1,102 @@
+---
+slug: trend-vision-one-vuln-scan
+title: Create and run a vulnerability scan in Network Vulnerability Scanner
+last_updated: '2025-09-08'
+ai_context:
+  source_file: vuln-scan.md
+  conversion_date: '2025-09-08T23:42:11.575Z'
+conversion_status: converted
+translation_ready: true
+---
+
+::::: {role="main"}
+Configure and run a vulnerability scan to assess and identify security vulnerabilities in your internal network devices using the Network Vulnerability Scanner.
+
+:::warning[Important]
+
+This is a "Pre-release" feature and is not considered an official release. Please review the [Pre-release disclaimer](pre-release-disclaimer.mdx) before using the feature.
+:::
+
+Scans created from the vulnerability scan template conduct a deep security assessment by logging into network devices using valid credentials. The scan identifies vulnerabilities such as missing patches, user permission issues, misconfigurations, and outdated applications in devices that require authenticated access.
+
+To configure a basic network vulnerability scan, you need:
+
+- A deployed Service Gateway virtual appliance with the Network Vulnerability Scanner service installed
+
+- IP addresses or FQDNs for the target network segment
+
+- Authentication credentials for the target network assets
+
+:::note
+
+When running a vulnerability scan, a discovery scan is first conducted using the supplied IP addresses and FQDNs. The discovery scan allows for the detection of system configuration risk events based on open port, service, and certificate information.
+:::
+
+Ensure you have deployed a Service Gateway virtual appliance to the network environment you wish to scan. For more information, see the [Service Gateway deployment guides](deployment-guides.mdx).
+
+### Procedure {#procedure}
+
+1.  Install the Network Vulnerability Scanner service on your deployed Service Gateway.
+
+    1.  In **Workflow and Automation → Service Gateway Management**, click the name of the desired Service Gateway to view details.
+
+    2.  Click **Manage services** to view the list of available services.
+
+    3.  Find and install the latest version of the Network Vulnerability Scanner service.
+
+        :::note
+
+        The Network Vulnerability Scanner service requires at least 2 CPUs and 4 GB of virtual memory.
+        :::
+
+    The Network Vulnerability Scanner service appears in the list of installed services for the Service Gateway.
+
+2.  Create a new network vulnerability scan.
+
+    1.  In **Cyber Risk Exposure Management → Vulnerability Management → Network Vulnerability Scanner**, click **Create scan** from either **Network scans** or under vulnerability scan in **Scan templates**.
+
+    2.  Specify a name and description for the scan.
+
+    3.  Select the Service Gateway to use for the scan. Only Service Gateways with the Network Vulnerability Scanner service installed are available.
+
+    4.  Specify up to 10,000 IPv4 addresses, ranges, or FQDNs separated by commas to scan for target network assets. CIDR notation is supported.
+
+        :::warning[Important]
+
+        Only supported devices running a supported operating system are available for scanning. No device details or vulnerability results are supplied for other network devices at the target IPs. For a list of supported products, see [Network Vulnerability Scanner supported products](nvs-supported-products.mdx).
+        :::
+
+    5.  Specify your authentication credentials for the target network devices. You can choose to authenticate to the network device using SSH with a password or a private key. The default login port used is 22.
+
+        :::note
+
+        - Only one set of credentials is currently supported per scan. To scan targets requiring a different set of credentials for authentication, create a separate scan.
+
+        - Passphrase-protected SSH private keys cannot be used to authenticate.
+        :::
+
+    6.  Provide your user name and either the password or private key used to authenticate.
+
+    7.  Choose whether to trigger the scan at a specified scheduled interval or to only allow manual scanning.
+
+    8.  Click **Save only** to save the scan and wait for the scan to run according to your configured schedule or **Save and run scan** to save and trigger the scan immediately.
+
+    The newly configured scan appears on the list in **Network scans**.
+
+3.  After the scan completes, you can download a report containing the scan results from **Scan reports**. Up to 15 scans can run at the same time.
+
+    :::warning[Important]
+
+    Only the most recent scan report for each scan is available. To keep a record of an earlier scan, download the report before the next scheduled scan.
+    :::
+
+4.  Manage detected vulnerabilities in **Threat and Exposure Management**.
+
+    1.  After the scan completes, click **View latest vulnerability risk events** or **View latest system configuration risk events**.
+
+    2.  View and manage risk events and vulnerable devices detected during the scan.
+
+**Related information**
+
+- [Vulnerability scan hardware sizing requirements](vuln-scan-hardware-sizing.md "View the minimum hardware requirements for running vulnerability scans in Network Vulnerability Scanner to ensure the best performance.")
+:::::
