@@ -15,14 +15,14 @@ const config: Config = {
   favicon: "brand/favicon.ico", // Do not edit this value
 
   // Set the production url of your site here
-  url: mainUrl,
-  // Do not edit this value
-  baseUrl: "/en-us/documentation/article/",
+  url: "https://eriktechwriter.github.io",
+  // Set for GitHub Pages deployment
+  baseUrl: "/ai-docs-poc/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "Trend Micro", // Usually your GitHub org/user name.
-  projectName: "docusaurus", // The repository name
+  organizationName: "eriktechwriter", // Usually your GitHub org/user name.
+  projectName: "ai-docs-poc", // The repository name
 
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
