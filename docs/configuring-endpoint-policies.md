@@ -1,0 +1,208 @@
+---
+slug: trend-vision-one-configuring-endpoint-policies
+title: Configuring endpoint security policies
+---
+
+Create or edit endpoint security policies to manage agent and sensor settings.
+
+:::warning[Important]
+- Endpoint security policies only support endpoints with the Trend Vision One Endpoint Security agent version October 2024 release or later installed.
+
+- Certain settings require credits to enable.
+
+- Sensor-only deployments use the **Sensor Only General Policy**.
+
+- Endpoint groups not assigned to a policy automatically adopt the **Default Endpoint Policy**.
+
+- Endpoint groups can only be assigned to one policy at a time.
+:::
+
+Configure endpoint security policies to manage settings for endpoints with the Trend Vision One Endpoint Security agent installed which report to Trend Vision One Endpoint Inventory.
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Endpoint Security → Endpoint Security Configuration → Endpoint Security Policies**.
+
+2.  Create or edit a policy.
+
+    - To create a new policy, click **Add Policy**.
+
+    - To edit a policy, find the policy you want to edit and click the **policy name**.
+
+    The policy configuration screen appears
+
+3.  Specify a unique **Policy Name**.
+
+    :::note
+    You cannot edit the policy name for the Default Endpoint Policy.
+    :::
+
+4.  Select one or more endpoint groups to assign to the policy.
+
+    1.  In the **Endpoint group** field, click the edit icon (![](/images/proxyConfigIcon=20230614160101.webp)).
+
+        The **Select Endpoint Group** window appears.
+
+    2.  Locate and select the endpoint group you want to add.
+
+        :::warning[Important]
+        - Endpoint groups can only be assigned to one policy at a time. Selecting a group that is already assigned to a policy moves that endpoint group to the new policy.
+
+        - Selecting an endpoint group automatically selects any child groups including those already assigned to a policy. You can clear the selection for any child group you do not want to include in the new policy.
+
+          Child groups can be assigned to a different policy than the parent group.
+        :::
+
+    3.  After selecting one or more endpoint groups, click **Select**.
+
+5.  Configure your priority rules.
+
+    1.  To add a new priority rule, click **Add Priority** and specify a name for the rule.
+
+        New rules are automatically added to the top of the priority list as **Priority 1**.
+
+    2.  To change the order of your priority rules, click and drag the priority rule you want to change.
+
+        The priority rule number changes automatically.
+
+        For example, moving Priority 1 under Priority 3 automatically changes the original Priority 1 to Priority 3, and the old Priority 2 and Priority 3 become Priority 1 and Priority 2, respectively.
+
+    3.  To change the name of a priority rule, click the options icon next to the name (![](/images/options=ddb0b67f-0654-4aa5-8bc7-48ec554c5448.webp)) and select **Rename**.
+
+    4.  To delete a priority rule, click the options icon next to the name (![](/images/options=ddb0b67f-0654-4aa5-8bc7-48ec554c5448.webp)) and select **Delete**.
+
+        :::warning[Important]
+        You cannot delete the **Default** priority rule.
+        :::
+
+6.  Click the priority rule you want to configure.
+
+7.  Configure the **General Information** settings for the selected priority rule.
+
+    :::warning[Important]
+    If an endpoint matches multiple priority rule criteria, the endpoint uses the highest priority rule matched.
+
+    If an endpoint does not match any priority rule criteria, the endpoint uses the **Default** priority rule.
+
+    The **Default** priority rule criteria is **All endpoints** and cannot be changed.
+    :::
+
+    1.  Select the **Criteria** type.
+
+    2.  Specify the criteria values.
+
+        The criteria is used to determine which endpoints within the assigned endpoint groups the priority rule applies to. The criteria value input method changes depending on which criteria type you select.
+
+        <table>
+        <colgroup>
+        <col style="width: 20%" />
+        <col style="width: 40%" />
+        <col style="width: 40%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Criteria type</p></th>
+        <th><p>Description</p></th>
+        <th><p>Input method</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p><strong>Endpoint name</strong></p></td>
+        <td><p>The priority rule applies to any endpoint containing at least one specified value in the endpoint name</p>
+        <p>For example, if you specify <code>Test</code>, the priority rule applies to the endpoint <code>Test01</code>.</p></td>
+        <td><p>Specify a value and either type a comma (,) or press ENTER to separate values.</p></td>
+        </tr>
+        <tr>
+        <td><p><strong>Operating system</strong></p></td>
+        <td><p>The priority rule applies to any endpoint with the specified operating system</p></td>
+        <td><p>Click the edit icon (<img src="./images/proxyConfigIcon=20230614160101.webp" />) to select the OS family or a specific OS version.</p></td>
+        </tr>
+        <tr>
+        <td><p><strong>IP range</strong></p></td>
+        <td><p>The priority rule applies to any endpoint with an IP address within one of the specified ranges</p></td>
+        <td><p>Specify an IP range in either IPv4 or IPv6 format. Click the add icon (<img src="./images/add_icon=cf892c2f-1a1f-4d22-848f-023067e4a507.webp" />) to add up to 3 IP ranges.</p></td>
+        </tr>
+        </tbody>
+        </table>
+
+    3.  To add more criteria to the selected priority rule, click **Add Criteria** and select the criteria type.
+
+        Priority rules use AND logic when matching multiple criteria. Endpoints must match all defined criteria to apply the priority rule.
+
+        For example, if Criteria 1 is Windows, and Criteria 2 is a defined IP range, then Linux endpoints within the defined IP range do not apply the priority rule.
+
+        :::warning[Important]
+        Make sure that you do not create a priority rule that is impossible for endpoints to match. Trend Micro suggests not using the same criteria type more than once in a priority rule.
+        :::
+
+8.  Configure the **Sensor Settings** for the selected priority rule.
+
+    Enable the following settings to turn on the features for your endpoint agents.
+
+    :::warning[Important]
+    Certain settings require credits to enable.
+
+    The first time you enable endpoint sensor detection and response, your currently deployed Trend Vision One Endpoint Security Agents install the new Network Content Inspection Engine. For more information, see [Network Content Inspection Engine](network-content-inspection-engine.md).
+
+    Enabling Endpoint sensor detection and response automatically disables Activity Monitoring on agents managed by Server & Workload Protection. For more information, see [Automatic disabling of Activity Monitoring after updating to Server & Workload Protection](auto-disable-activity-monitoring.md).
+    :::
+
+    <table>
+    <colgroup>
+    <col style="width: 33%" />
+    <col style="width: 67%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Setting</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><strong>Endpoint sensor detection and response</strong></p></td>
+    <td><p>Sends activity data for state-of-the-art threat detection and alerts (required for advanced XDR detections and Workbench alerts)</p>
+    <p>The detection and response feature collects endpoint activity data that helps provide alerts and enhanced investigation data whenever a suspected attack occurs. The collected data is also used by Cyber Risk Exposure Management applications to help identify risky endpoint and user behavior, and to identify endpoint vulnerabilities.</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Monitoring level</strong></p></td>
+    <td><p>Controls the sensitivity of endpoint sensor detections</p>
+    <p>Requires enabling <strong>Endpoint sensor detection and response</strong>.</p>
+    <p>Raising the monitoring level increases the sensitivity of the endpoint sensor, which increases the number of detections and alerts. Higher levels allow for more strict monitoring, but might generate a large number of nonessential logs and impact endpoint performance.</p>
+    <p>The default setting is <strong>2 - Moderate</strong>. Trend Micro recommends using the default setting to balance more relevant data with minimal impact on your endpoints. For more information, see <a href="trend-vision-one-sensor-monitoring-level">About Monitoring Level</a>.</p>
+    <p>If hypersensitive mode is enabled in support settings, you can select <strong>Enable hypersensitive mode</strong> to enable on endpoints targeted by the priority. Hypersensitive mode automatically disables after seven days. After disabling hypersensitive mode, the priority returns to your previously configured monitoring level..</p>
+    
+
+    :::warning[Important]
+    
+    <p>Monitoring level only supports Windows endpoints.</p>
+    
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p><strong>Deepfake detector</strong></p></td>
+    <td><p>Analyzes ongoing video calls to determine if they contain synthesized images</p>
+    <p>Requires enabling <strong>Endpoint sensor detection and response</strong>.</p>
+    
+
+    :::warning[Important]
+    
+    <p>Deepfake detector only supports Windows endpoints.</p>
+    
+
+    :::
+
+    </td>
+    </tr>
+    </tbody>
+    </table>
+
+9.  After you have configured all your priority rules, click **Save**.
+
+    :::tip
+    If you are creating a new policy, make sure you configure the **Default** priority rule.
+    :::

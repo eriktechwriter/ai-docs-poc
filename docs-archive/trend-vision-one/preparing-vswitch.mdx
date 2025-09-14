@@ -1,0 +1,64 @@
+---
+slug: trend-vision-one-preparing-vswitch
+title: Preparing a vSwitch
+---
+# Preparing a vSwitch
+
+Set up a vSwitch to prepare to apply recommended network settings.
+
+:::note
+
+The following instructions are valid as of October 2023.
+:::
+
+Access Terminal in host machine and use the following commands to set up the vSwitch before applying the [recommended network settings](kvm-network-settings.mdx). The steps below use eth1 as an example. You can apply the settings to any network interface you require.
+
+### Procedure {#procedure}
+
+1.  Open Terminal.
+
+2.  Check the current Open vSwitch status.
+
+    `ovs-vsctl show`
+
+3.  Add a vSwitch.
+
+    `ovs-vsctl add-br ovsbr`
+
+4.  Verify the current Open vSwitch status.
+
+    `ovs-vsctl show`
+
+5.  Assign a network inteface to the vSwitch.
+
+    `ovs-vsctl add-port ovsbr eth1`
+
+6.  Verify the current Open vSwitch status.
+
+    `ovs-vsctl show`
+
+7.  Link virtual machines with the vSwitch.
+
+    1.  List virtual machines.
+
+        `virsh list --all`
+
+    2.  Edit the network interface config file.
+
+        `virsh edit VM-1`
+
+        The virtual machine config file opens.
+
+    3.  Locate the `<interface>` property and edit the parameters.
+
+        ```bash
+        <interface type='bridge'>
+         <source bridge='ovsbr'/>
+         <virtualport type='openvswitch'/>
+        </interface>
+        ```
+
+    4.  Save and close the config file.
+
+8.  Repeat **Step 7** for additional virtual machines, such as VM-2, VM-3, etc.
+::::

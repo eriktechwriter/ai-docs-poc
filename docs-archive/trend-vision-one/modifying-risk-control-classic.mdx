@@ -1,0 +1,201 @@
+---
+slug: trend-vision-one-modifying-risk-control-classic
+title: Modifying a risk control rule in classic view
+---
+# Modifying a risk control rule in classic view
+
+Modify a risk control rule in classic view.
+
+When a user or device matches the criteria in a risk control rule, based on the actions configured, Trend Vision One monitors the user or device's subsequent activity and takes action when the monitored activity occurs. For example, when a user with a persistent high risk score attempts to sign in to a new browser session or access an internal app of your organization the action could be blocked.
+
+:::note
+
+Some risk control rules types can be modified in classic view. New risk control rules must be created in [playbook view](risk-control-rule-playbook.mdx).
+:::
+
+### Procedure {#procedure}
+
+1.  On the **Secure Access Rules** screen, click the **Risk Control** tab and then click a rule name.
+
+2.  If the modify rule screen appears in playbook view, click **Switch to Classic View**.
+
+    :::note
+
+    Classic view is not available for all risk control rule types.
+    :::
+
+3.  Select **Risk Control** from the **Template type** drop-down list.
+
+    The available templates appear in the list. For more information about the templates, see [Secure access rule templates](secure-access-rule-templates.mdx).
+
+4.  Click a template name.
+
+    The rule configuration screen appears.
+
+    You can choose another rule template from the **Rule template** drop-down list. The configuration items vary with the template.
+
+5.  Specify a unique name and a description for the rule.
+
+6.  (Optional) To enable or disable the rule, click the toggle next to **Status**.
+
+    :::tip
+
+    You can also enable or disable rules on the **Secure Access Rules** tab.
+    :::
+
+7.  Configure the following rule factors.
+
+    **Actions**
+
+    <table>
+    <colgroup>
+    <col style="width: 13%" />
+    <col style="width: 25%" />
+    <col style="width: 63%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Rule Factor</p></th>
+    <th><p>Description</p></th>
+    <th><p>Options</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Risk Events</p></td>
+    <td><p>The risky behavior or action that triggers the rule</p></td>
+    <td><p>Select from the list of risky events predefined by Trend Micro.</p>
+
+
+    :::note
+
+    <p>This rule factor may or may not appear depending on the rule template.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>Risk Score</p></td>
+    <td><p>The user risk score that triggers the rule</p></td>
+    <td><p>Select a minimum risk score or a range, and then select the time period.</p>
+
+
+    :::note
+
+    <p>This rule factor may or may not appear depending on the rule template.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>Source (for user-targeted rules)</p></td>
+    <td><p>The user/groups that the rule applies to</p></td>
+    <td><p><strong>User/user groups</strong></p>
+    <p>Specify users and groups from your IAM system.</p>
+
+
+    :::note
+
+    <p>If you have configured more than one IAM system, the IAM system with SSO enabled applies.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>Source (for device-targeted rules)</p></td>
+    <td><p>The devices that the rule applies to</p></td>
+    <td><p>Select all or specific targets, that is, device platforms that the rule applies to.</p>
+
+
+    :::note
+
+    <p>Currently, only <strong>All devices</strong> is supported.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>Schedule</p></td>
+    <td><p>The weekly period that the rule is applied</p></td>
+    <td><p>To configure the recurrence of the schedule, select <strong>Only apply the rule during the specified period</strong>, and then select a start date and end date.</p>
+
+
+    :::note
+
+    <p>The schedule uses the defined time zone of the console.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td rowspan="2"><p>Action (for user-targeted rules)</p></td>
+    <td rowspan="2"><p>The action taken on user account when the rule is triggered</p></td>
+    <td><p><strong>Access control</strong></p>
+    <p>When a user or device matches the rule criteria, Trend Vision One takes configured actions to control the user or device's subsequent sign-in or app access activity.</p>
+    <p>For more information about actions, see <a href="trend-vision-one-zero-trust-actions">Zero Trust actions</a>.</p>
+    <ul>
+    <li><p><strong>Sign-in attempt</strong>: Control user access by monitoring sign-in attempts, disabling user accounts, or forcing sign out and password reset</p></li>
+    <li><p><strong>Private access</strong>: Block or monitor user access to your organization's internal apps configured on the Trend Vision One console</p></li>
+    <li><p><strong>Internet access</strong>: Block or monitor user access to cloud apps and external URLs on the internet</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p><strong>Revoke actions</strong></p>
+    <p>Click the toggle next to <strong>Revoke actions</strong> to revoke the following actions when certain criteria are matched.</p>
+    <ul>
+    <li>Disable User Account</li>
+    <li>Block Internal App Access</li>
+    <li>Block Cloud App/URL Access</li>
+    </ul>
+    <p>By default, this option is enabled.</p></td>
+    </tr>
+    <tr>
+    <td rowspan="2"><p>Action (for device-targeted rules)</p></td>
+    <td rowspan="2"><p>The action taken on device when the rule is triggered</p></td>
+    <td><strong>Access control</strong>
+    <ul>
+    <li><p><strong>Isolate Endpoint</strong>: Disconnects the target endpoint from the network, except for communication with the managing Trend Micro server product</p>
+
+
+    :::warning[Important]
+
+    <p>The <strong>Zero Trust Secure Access</strong> app sends the command to the <strong>Response Management</strong> app to take the action. Make sure that at least one of the following supported agents is installed on your devices: Trend Vision One, Apex One as a Service, Trend Cloud One - Endpoint &amp; Workload Security. For more information, see <a href="trend-vision-one-response-actions-section">Response actions</a>.</p>
+
+
+    :::
+
+    </li>
+    <li><p><strong>Private access</strong>: Block or monitor device access to your organization's internal apps configured on the Trend Vision One console</p></li>
+    <li><p><strong>Internet access</strong>: Block or monitor device access to cloud apps and external URLs on the internet</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p><strong>Revoke actions</strong></p>
+    <p>Click the toggle next to <strong>Revoke actions</strong> to revoke the following actions when certain criteria are matched.</p>
+    <ul>
+    <li>Isolate Endpoint</li>
+    <li>Block Internal App Access</li>
+    <li>Block Cloud App/URL Access</li>
+    </ul></td>
+    </tr>
+    </tbody>
+    </table>
+
+8.  Click **Save**.
+
+    The rule is successfully created and listed on the **Secure Access Rules** screen.
+
+**Related information**
+
+- [Secure access rule templates](secure-access-rule-templates.md "Use templates to define your organization's secure access rules for users and devices.")
+::::

@@ -1,0 +1,34 @@
+---
+slug: trend-vision-one-virustotal-integration
+title: VirusTotal integration
+---
+
+Enrich your Trend Vision One detections with VirusTotal threat intelligence.
+
+### Procedure {#procedure}
+
+1.  Sign in to your [VirusTotal Community account](https://www.virustotal.com/gui/sign-in).
+
+    :::note
+    To sign up for a VirusTotal Community account, click **New? Join the community**.
+    :::
+
+2.  Click your account profile picture in the top right corner and select **API key** from the drop-down list.
+
+3.  Copy the VirusTotal Public API key and save a copy for your records.
+
+4.  On the Trend Vision One console, go to **Third-Party Intelligence → VirusTotal Public API**.
+
+5.  Enable **VirusTotal Public API**.
+
+6.  Specify the **VirusTotal API key**.
+
+7.  Click **Test Connection** to confirm that the integration has connected successfully.
+
+8.  Specify the number of hours for results caching (TTL).
+
+9.  Select **Set maximum lookups triggered by Trend Vision One** and specify the number and frequency of maximum lookups.
+
+10. Click **Save**.
+
+    Your Trend Vision One detections are now enriched with VirusTotal threat intelligence.

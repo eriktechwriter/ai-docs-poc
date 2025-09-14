@@ -1,0 +1,167 @@
+---
+slug: trend-vision-one-file-blocking
+title: File Blocking
+---
+# File Blocking
+
+Many malware closely associate with certain file type extensions (examples: .doc, .exe, .dll). The file's extension identifies the file type. Similarly, specific attacks often associate with a specific file name. Cloud Email and Collaboration Protection can block files according to the file type, file name, file extension, or file contents that contain suspicious URLs.
+
+- For email services, file blocking prevents email messages containing suspicious attachments from delivering to recipients. Policy actions include replacing the file with a benign text file, quarantining or deleting all email messages with attachments that violate specified policies, or labeling the violating email messages as risky in recipient's mailbox (Gmail only).
+
+- For the other cloud applications, file blocking prevents suspicious files from entering these applications. Policy actions include quarantining or deleting files that violate specified policies.
+
+:::note
+
+Trend Micro recommends temporarily quarantining all high-risk file types and known malware file names. This way, you can examine the quarantine folder and take action on detected files when you have more time.
+:::
+
+**Related information**
+
+- Configuring File Blocking
+
+## Configuring File Blocking {#configuring-file-blocking}
+
+### Procedure {#procedure}
+
+1.  Select **File Blocking**.
+
+2.  Enable File Blocking.
+
+3.  Configure rule settings.
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Setting</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Apply to</p></td>
+    <td><p>(Exchange Online and Gmail only) Select the scope of email messages that File Blocking applies to.</p>
+    <ul>
+    <li><p><strong>All messages</strong>: means that this policy applies to incoming, outgoing, and internal email messages. Incoming/outgoing email messages are sent from/to non-internal domains.</p></li>
+    <li><p><strong>Incoming messages</strong>: means that this policy applies only to incoming email messages sent from non-internal domains.</p></li>
+    </ul>
+
+
+    :::note
+
+    <p>For details about internal domains, see <a href="trend-vision-one-configuring-internal-domain-list">Configuring the internal domain list</a></p>
+    <p>For Exchange Online (Inline Mode), the scope is fixed to <strong>Inbound messages</strong> for inbound protection and <strong>Outbound messages</strong> for outbound protection. Inbound messages are sent from outside your organization to an address inside the organization, while outbound messages are sent from your organization to external addresses.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p>Type of File Blocking</p></td>
+    <td><p>Select whether to block all files or specific files.</p></td>
+    </tr>
+    <tr>
+    <td><p>Blocking list</p></td>
+    <td><p>If <strong>Type of File Blocking</strong> is set to "Block All Files":</p>
+    <ul>
+    <li><p>Select <strong>File types not blocked</strong> to select or specify true file types that Cloud Email and Collaboration Protection never blocks.</p></li>
+    <li><p>Select <strong>File extensions not blocked</strong> to select or specify file extensions that Cloud Email and Collaboration Protection never blocks.</p></li>
+    <li><p>Select <strong>File names not blocked</strong> to type the file name that Cloud Email and Collaboration Protection never blocks.</p></li>
+    </ul>
+    <p>If <strong>Type of File Blocking</strong> is set to "Block Specific Files":</p>
+    <ul>
+    <li><p>Select <strong>File types to blocked</strong> to select or specify true file types that Cloud Email and Collaboration Protection always blocks.</p></li>
+    <li><p>Select <strong>File extensions to blocked</strong> to select or specify file extensions that Cloud Email and Collaboration Protection always blocks.</p>
+    <p>Optionally click <strong>Export</strong> to export the specified file extensions as a <code>.txt</code> file.</p>
+    <p>Optionally click <strong>Import</strong> to import file extensions in batches. The extension cannot exceed 255 characters, begin or end with a period ("."), or contain unsupported characters (/ \ : * ? &lt; &gt; " |) . The total number of users, including those already added, cannot exceed 1,000.</p></li>
+    <li><p>Select <strong>File names to blocked</strong> to type the file name that Cloud Email and Collaboration Protection always blocks.</p></li>
+    <li><p>Select <strong>Additional files to block for incoming messages</strong> and specify other files to block specifically for incoming messages in addition to the files blocked for all messages.</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>Contained Files</p></td>
+    <td><p>Select the check box to scan for file extensions and file names inside archive files or embedded in files.</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+4.  Click **Approved/Blocked List**.
+
+5.  Configure the approved sender list.
+
+    This feature is available to Gmail, Exchange Online, and Exchange Online (Inline Mode).
+
+    1.  Enable the approved sender list.
+
+    2.  Specify a sending email address or domain to bypass File Blocking scanning and click and click **Add \>**.
+
+        :::note
+
+        You can use the wildcard character (\*) to represent any characters in the email address or domain name. Examples: `*@example.com`, `name@*.com`, `*@*.example.com`
+
+        The following formats are invalid: `*@*`, `*`
+
+        A maximum of 1,024 email addresses or domains can be added to the Approved Sender list.
+        :::
+
+    3.  Optionally click **Import** to import sender email addresses in batches from a .txt file.
+
+        Make sure that each email address occupies a separate line in the .txt file.
+
+6.  Click **Action & Notifications**.
+
+7.  Configure **Action** settings.
+
+    Cloud Email and Collaboration Protection protects cloud applications and services by executing specified actions after detecting a file that matches scanning conditions. The action depends on the performed scan, the affected application or service, and the configured actions for that scan.
+
+    For details about the actions, see [Actions available for different services](actions-different-services.mdx).
+
+8.  Configure **Notification** settings.
+
+    ::: {.simpletable-container}
+    <table id="GUID-386F387E-BA04-4910-BF72-938635354E52__CHOICETABLE_GDD_W41_1Q" class="choicetable" data-border="1">
+    <colgroup>
+    <col style="width: 50%" />
+    <col style="width: 50%" />
+    </colgroup>
+    <thead>
+    <tr class="chhead table-header-style">
+    <th class="choptionhd">Option</th>
+    <th class="chdeschd">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="chrow">
+    <td class="choption"><p>Notify administrator</p></td>
+    <td class="chdesc"><ol>
+    <li><p>Specify the administrators to notify by selecting a recipient group or specifying individual recipients. You can click Manage recipient groups to edit the members in a group or add more groups.</p></li>
+    <li><p>Specify message details to notify administrators that Cloud Email and Collaboration Protection detected a security risk and took action on an email message, attachment, or file.</p></li>
+    <li><p>Set the notification threshold which limits the number of notification messages to send. Threshold settings include:</p>
+    <ul>
+    <li><p><strong>Send consolidated notifications periodically</strong>: Cloud Email and Collaboration Protection sends an email message that consolidates all the notifications for a period of time. Specify the period of time by typing a number in the box and selecting hour(s) or day(s).</p></li>
+    <li><p><strong>Send consolidated notifications by occurrences</strong>: Cloud Email and Collaboration Protection sends an email message that consolidates notifications for a set number of filtering actions. Specify the number of virus/malware occurrences by typing a number in the box.</p></li>
+    <li><p><strong>Send individual notifications</strong>: Cloud Email and Collaboration Protection sends an email message notification every time Cloud Email and Collaboration Protection performs a filtering action.</p></li>
+    </ul></li>
+    </ol></td>
+    </tr>
+    <tr class="chrow">
+    <td class="choption"><p>Notify User</p></td>
+    <td class="chdesc"><p><strong>Exchange Online and Gmail</strong>: Specify message details that notify recipients that Cloud Email and Collaboration Protection detected a security risk and took action on their email message or attachment.</p>
+    <p><strong>SharePoint Online, OneDrive, Microsoft Teams (Teams), Box, Dropbox, and Google Drive</strong>: Specify message details that notify the user who updated a file that Cloud Email and Collaboration Protection detected a security risk and took action on their file.</p>
+    <p><strong>Teams Chat</strong>: Cloud Email and Collaboration Protection does not provide this option. When a chat message was blocked, a notification "This message was blocked." provided by Microsoft appears in the sender's private chat window. Message senders can click <strong>What can I do?</strong> to view more information about the blocked messages.</p></td>
+    </tr>
+    </tbody>
+    </table>
+    :::
+
+    :::note
+
+    When specifying a notification message, include relevant tokens and edit the message content as desired. For details about tokens, see [Token list](token-list.mdx).
+    :::
+
+9.  Click **Save** or select another policy configuration on the left navigation to continue with additional rules.
+::::

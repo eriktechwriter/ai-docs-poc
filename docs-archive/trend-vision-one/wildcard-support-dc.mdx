@@ -1,0 +1,88 @@
+---
+slug: trend-vision-one-wildcard-support-dc
+title: Wildcard Support for the Device Control Allowed Programs List
+---
+# Wildcard Support for the Device Control Allowed Programs List
+
+A program path and name should have a maximum of 259 characters and must only contain alphanumeric characters (A-Z, a-z, 0-9). It is not possible to specify only the program name.
+
+You can use wildcards in place of drive letters and program names. Use a question mark (?) to represent single-character data, such as a drive letter. Use an asterisk (\*) to represent multi-character data, such as a program name.
+
+:::note
+
+Wildcards cannot be used to represent folder names. The exact name of a folder must be specified.
+:::
+
+Wildcards are used correctly in the following examples:
+
+**Correct Usage of Wildcards**
+
+<table>
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Example</p></th>
+<th><p>Matched Data</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p><strong>?</strong>:\Password.exe</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>The "Password.exe" file located directly under any drive</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>C:\Program Files\Microsoft\*.exe</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Any file in C:\Program Files that has a file extension</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>C:\Program Files\*.*</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Any file in C:\Program Files that has a file extension</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>C:\Program Files\a?c.exe</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Any .exe file in C:\Program Files that has 3 characters starting with the letter "a" and ending with the letter "c"</p></td>
+</tr>
+<tr>
+<td style="border-right-width: 1px; border-right-style: solid"><p>C:\*</p></td>
+<td><p>Any file located directly under the C:\ drive, with or without file extensions</p></td>
+</tr>
+</tbody>
+</table>
+
+Wildcards are used incorrectly in the following examples:
+
+**Incorrect Usage of Wildcards**
+
+<table>
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Example</p></th>
+<th><p>Reason</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>??:\Buffalo\Password.exe</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>?? represents two characters and drive letters only have a single alphabetic character.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>*:\Buffalo\Password.exe</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>* represents multi-character data and drive letters only have a single alphabetic character.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>C:\*\Password.exe</p></td>
+<td rowspan="2"><p>Wildcards cannot be used to represent folder names. The exact name of a folder must be specified.</p></td>
+</tr>
+<tr>
+<td style="border-right-width: 1px; border-right-style: solid"><p>C:\?\Password.exe</p></td>
+</tr>
+</tbody>
+</table>
+::::

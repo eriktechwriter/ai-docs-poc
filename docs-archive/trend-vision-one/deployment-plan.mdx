@@ -1,0 +1,29 @@
+---
+slug: trend-vision-one-deployment-plan
+title: Deployment Plan
+---
+# Deployment Plan
+
+A deployment plan allows you to specify the scope and schedule in which the Trend Micro Apex Central server deploys updated components to managed products.
+
+After the Trend Micro Apex Central server downloads a new component version from an update source, you can configure Trend Micro Apex Central to deploy updated components to managed products immediately, at a specified time, or after a delay period.
+
+You can configure Trend Micro Apex Central to deploy updated components to selected managed products based on different deployment schedules.
+
+When creating a deployment schedule, consider the following:
+
+- You can only select one folder or managed product for each deployment schedule. However, you can specify more than one schedule for the deployment plan.
+
+- Trend Micro Apex Central bases the deployment plan delays on the completion time of the download, and these delays are independent of each other.
+
+  For example, if you have three folders to update at 5-minute intervals, you can assign the first folder a delay of 5 minutes, and then set delays of 10 and 15 minutes for the two remaining folders, respectively.
+
+:::note
+
+If you do not specify a deployment schedule in the deployment plan, Trend Micro Apex Central downloads the updates but does not deploy updated components to managed products.
+:::
+
+**Related information**
+
+- [Adding a Deployment Schedule](adding-deployment-schedule.mdx)
+::::

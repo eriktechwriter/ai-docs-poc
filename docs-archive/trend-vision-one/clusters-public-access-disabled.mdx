@@ -1,0 +1,49 @@
+---
+slug: trend-vision-one-clusters-public-access-disabled
+title: >-
+  5.4.2 Ensure clusters are created with Private Endpoint Enabled and Public
+  Access Disabled (Automated)
+---
+# 5.4.2 Ensure clusters are created with Private Endpoint Enabled and Public Access Disabled (Automated)
+
+Profile applicability: Level 1 - Cluster / Control Plane
+
+Ensure that clusters are created with the Private Endpoint enabled and Public Access disabled to enhance the security of the Kubernetes API. In private clusters, the master node features both a private and a public endpoint. The private endpoint, an internal IP address behind a VPC network's internal load balancer, facilitates node-to-master communications, whereas the public endpoint allows external access to the Kubernetes API from outside the master's VPC network. While the Kubernetes API requires an authorized token for sensitive operations, vulnerabilities might still expose it publicly, allowing attackers to potentially identify the cluster and its API version to exploit known vulnerabilities. By disabling the public endpoint, you limit such risks, necessitating attackers to be within the master’s VPC network to launch attacks. If public access is necessary, it should be configured to allow only specified whitelisted CIDR blocks, providing controlled access while maintaining all internal traffic between kubelets and the Kubernetes API through securely provisioned cross-account ENIs in the cluster’s VPC.
+
+### Impact {#impact}
+
+Configure the EKS cluster endpoint to be private.
+
+1\. Leave the cluster endpoint public and specify which CIDR blocks can communicate with the cluster endpoint. The blocks are effectively a whitelisted set of public IP addresses allowed to access the cluster endpoint.
+
+2\. Configure public access with a set of whitelisted CIDR blocks and set private endpoint access to enabled. This allows public access from a specific range of public IPs while forcing all network traffic between the kubelets (workers) and the Kubernetes API through the cross-account ENIs that get provisioned into the cluster VPC when the control plane is provisioned.
+
+### Audit {#audit}
+
+Check for private endpoint access to the Kubernetes API server. Check for the following to be 'enabled: false'
+
+```bash
+    export CLUSTER_NAME=<your cluster name>
+    aws eks describe-cluster --name ${CLUSTER_NAME} --query "cluster.resourcesVpcConfig.endpointPublicAccess"
+
+```
+
+Check for the following to be 'enabled: true'
+
+```bash
+    export CLUSTER_NAME=<your cluster name>
+    aws eks describe-cluster --name ${CLUSTER_NAME} --query "cluster.resourcesVpcConfig.endpointPrivateAccess"
+
+```
+
+### Remediation {#remediation}
+
+By enabling private endpoint access to the Kubernetes API server, all communication between your nodes and the API server stays within your VPC. With this in mind, you can update your cluster accordingly using the AWS CLI to ensure that Private Endpoint Access is enabled.
+
+For example, the following command would enable private access to the Kubernetes API and ensure that no public access is permitted:
+
+```bash
+    aws eks update-cluster-config --region $AWS_REGION --name $CLUSTER_NAME --resources-vpc-config endpointPrivateAccess=true,endpointPublicAccess=false
+
+```
+:::

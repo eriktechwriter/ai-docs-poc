@@ -1,0 +1,264 @@
+---
+slug: trend-vision-one-create-account-config-risk-playbook
+title: Create Account Response playbooks
+---
+# Create Account Response playbooks
+
+Manually or periodically mitigate accounts with account configuration risks.
+
+Create Account Response playbooks to mitigate risks such as accounts with weak authentication, accounts that increase your attack surface, and accounts with excessive privileges.
+
+:::warning[Important]
+
+To create Account Response playbooks, you must have the Attack Surface Risk Management entitlement enabled and configure one of the following required data sources:
+
+- Microsoft Entra ID
+
+- Active Directory (on-premises)
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Workflow and Automation → Security Playbooks**.
+
+2.  On the **Playbooks** tab, choose **Add → Create playbook**.
+
+3.  On the **Playbook Settings** panel, select the **Account risks** type, specify a unique name for the playbook, and click **Apply**.
+
+4.  On the **Trigger Settings** panel, select the trigger type and click **Apply**.
+
+    - **Manual**: Allows you to start the playbook execution by clicking the **Run** icon (![](/images/run=fddd0df8-993a-4aa5-b09c-51ad84aec2a4.webp))
+
+    - **Scheduled**: Allows you to schedule the playbook to run daily, weekly, or monthly
+
+5.  On the **Target Settings** panel, select and configure the **Target** for the playbook and click **Apply**.
+
+    If you need to mitigate more than one risk type, you can add more than one target by using the add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) on the right of the **Trigger** node. The risk type for each target must be unique.
+
+    :::warning[Important]
+
+    To enable **Security Playbooks** to response to at-risk accounts, grant permission to access your Microsoft Entra ID data and Active Directory data in **Cyber Risk Overview → Data sources**.
+    :::
+
+6.  If you need to take actions when specific conditions are met, configure the **Condition** node.
+
+    1.  Click the add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) on the right of the **Target** node and click **Condition**.
+
+    2.  Create a condition setting by specifying the **Parameter**, **Operator**, and **Value**.
+
+        - **IS**: The condition is triggered if any of the values is matched
+
+        - **IS NOT**: The condition is triggered if none of the values is matched
+
+    3.  If you need to configure multiple sets of condition settings, click **Add**.
+
+        The condition operator is evaluated using a logical AND.
+
+    4.  Click **Apply**.
+
+    5.  If you need to add more than one parallel **Condition** node, click the add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) on the right of the **Target** node.
+
+    6.  If you need to configure action settings for the **Condition** node, add an **Action** node by clicking the add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) on the right.
+
+        For details, see Step 7.
+
+    7.  If you need to configure else-if conditions or else actions, add an **Else-If Condition** or **Else Action** node by clicking the add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) under the **Condition** node.
+
+        For details, see Step 9.
+
+7.  Configure actions by adding an **Action** node.
+
+    1.  Click the add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) on the right of the **Condition** node and click **Action**.
+
+    2.  On the **Action Settings** panel, select **Generate CSV file** or a "RESPONSE" action from the **Action** drop-down list.
+
+        To configure "RESPONSE" actions, you must grant Trend Micro permission to enforce the following user access policies on supported Identity and Access Management (IAM) systems:
+
+        - Disable User Account
+
+        - Enable User Account
+
+        - Force Sign Out
+
+        - Force Password Reset
+
+        :::danger[Warning]
+
+        If the Disable User Account action disables the account configured in Active Directory (on-premises) Connection Settings in Third-Party Integration, you will not be able to restore the disabled accounts. Trend Micro recommends requiring manual approval for this action.
+        :::
+
+    3.  Select whether to send a notification to request manual approval to create general actions, and then configure the notification settings if you require manual approval.
+
+        :::note
+
+        Actions pending manual approval for over 24 hours expire and cannot be performed.
+        :::
+
+        <table>
+        <colgroup>
+        <col style="width: 20%" />
+        <col style="width: 80%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Setting</p></th>
+        <th><p>Description</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Notification method</p></td>
+        <td><ul>
+        <li><p><strong>Email</strong>: Sends an email notification to specified recipients</p></li>
+        <li><p><strong>Webhook</strong>: Sends a notification to specified webhook channels</p></li>
+        </ul></td>
+        </tr>
+        <tr>
+        <td><p>Subject prefix</p></td>
+        <td><p>The prefix that appears at the start of the notification subject line</p></td>
+        </tr>
+        <tr>
+        <td><p>Recipients</p></td>
+        <td><p>The email addresses of recipients</p>
+        <p>The field only appears if you select <strong>Email</strong> for <strong>Notification method</strong>.</p></td>
+        </tr>
+        <tr>
+        <td><p>Webhook</p></td>
+        <td><p>The webhook channels to receive notifications</p>
+        <p>The field only appears if you select <strong>Webhook</strong> for <strong>Notification method</strong>.</p>
+
+
+        :::tip
+
+        <p>To <a href="trend-vision-one-managing-webhooks">add a webhook connection</a>, click <strong>Create channel</strong> in the drop-down list.</p>
+
+
+        :::
+
+        </td>
+        </tr>
+        </tbody>
+        </table>
+
+    4.  Click **Apply**.
+
+    5.  If you need to add more than one parallel action, use the add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) on the right of the **Target** or **Condition** node.
+
+8.  Configure notification settings by adding the second **Action** node.
+
+    1.  Click the add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) on the right of the first **Action** node and click **Action**.
+
+    2.  On the **Action Settings** panel, specify how to notify recipients of the playbook results.
+
+    3.  For email and webhook notifications, configure the following settings.
+
+        <table>
+        <colgroup>
+        <col style="width: 20%" />
+        <col style="width: 80%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Setting</p></th>
+        <th><p>Description</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Subject prefix</p></td>
+        <td><p>The prefix that appears at the start of the notification subject line</p></td>
+        </tr>
+        <tr>
+        <td><p>Recipients</p></td>
+        <td><p>The email addresses of recipients</p>
+        <p>The field only appears if you select <strong>Email</strong> for <strong>Notification method</strong>.</p></td>
+        </tr>
+        <tr>
+        <td><p>Webhook</p></td>
+        <td><p>The webhook channels to receive notifications</p>
+        <p>The field only appears if you select <strong>Webhook</strong> for <strong>Notification method</strong>.</p>
+
+
+        :::tip
+
+        <p>To <a href="trend-vision-one-managing-webhooks">add a webhook connection</a>, click <strong>Create channel</strong> in the drop-down list.</p>
+
+
+        :::
+
+        </td>
+        </tr>
+        </tbody>
+        </table>
+
+    4.  For ServiceNow ticket notifications, configure the following settings.
+
+        <table>
+        <colgroup>
+        <col style="width: 20%" />
+        <col style="width: 80%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Setting</p></th>
+        <th><p>Description</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Ticket profile</p></td>
+        <td><p>The ServiceNow ticket profile to use</p>
+
+
+        :::tip
+
+        <p>If you need to <a href="trend-vision-one-creating-ticket-profile">add a ticket profile</a>, click <strong>Create ticket profile</strong> in the drop-down list.</p>
+
+
+        :::
+
+        </td>
+        </tr>
+        <tr>
+        <td><p>Ticket profile settings</p></td>
+        <td><p>The ticket profile settings for the playbook</p>
+        <p>Selecting a ticket profile automatically loads the settings. Changing the settings overrides the ticket profile for the playbook.</p>
+        <ul>
+        <li><p><strong>Assignment group:</strong> The ServiceNow assignment group you want to assign the ticket to</p></li>
+        <li><p><strong>Assigned to:</strong> The ServiceNow user you want to assign the ticket to</p></li>
+        <li><p><strong>Short description:</strong> A short description of the ticket which displays in ServiceNow</p></li>
+        </ul></td>
+        </tr>
+        </tbody>
+        </table>
+
+    5.  If you require manual approval for sending playbook results, follow Step 7.c to configure the notification settings.
+
+        :::note
+
+        This setting is available only to ticket notification action.
+        :::
+
+    6.  Click **Apply**.
+
+9.  Configure **Else-If Conditions** or **Else Actions** if necessary.
+
+    1.  Click the add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) below the **Condition** node and click **Else-If Condition** or **Else Action**.
+
+    2.  Configure a **Condition** node by following Step 6 or an **Action** node by following Step 7 or Step 8.
+
+    :::note
+
+    - The nodes that can be added by using an add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) vary depending on the preceding node. For example, an **Action** node can only be possibly followed by another **Action** node; a **Condition** node can be followed by an **Action** node or have an **Else-If Condition** or **Else Action** attached to it.
+
+    - When a condition is false, the playbook performs the **Else Action** or checks if its **Else-If Condition** is met. If the **Else-If Condition** is met, the playbook continues to perform the corresponding **Else Action**.
+
+    - Multiple **Action** nodes configured in a serial mode are taken sequentially.
+    :::
+
+10. Enable the playbook by toggling the **Enable** control on.
+
+11. Click **Save**.
+
+    The playbook appears on the **Playbooks** tab in the **Security Playbooks** app.
+::::

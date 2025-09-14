@@ -1,0 +1,56 @@
+---
+slug: trend-vision-one-vpn-profile-devices-managed-config
+title: Deploying a VPN profile to devices using managed configuration
+---
+# Deploying a VPN profile to devices using managed configuration
+
+Allow your users to take advantage of the security features of Zero Trust Secure Access by deploying a VPN profile to your managed mobile devices.
+
+Devices enrolled in Mobile Security using a solution other than Intune integration or Mobile Device Director may still use Zero Trust Secure Access Internet Access and Private Access features, including web reputation, internal app access, and protected internet access. Zero Trust Secure Access requires other managed mobile devices to have the [Mobile Agent](enabling-ztsa-mobile-devices.mdx) installed, VPN enforcement enabled, and [the necessary certificates deployed](deploying-ztsa-certificates.mdx). VPN profiles are configured within your MDM solution.
+
+### Procedure {#procedure}
+
+1.  In your MDM solution, find the settings that allow you to create new configuration profiles, and choose **VPN** as the profile type.
+
+2.  In the profile configuration settings, make sure to configure the VPN as "always on" or "on-demand."
+
+3.  Configure the following settings if required.
+
+    <table>
+    <colgroup>
+    <col style="width: 50%" />
+    <col style="width: 50%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Setting</p></th>
+    <th><p>Value</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Connection type</p></td>
+    <td><p><code>Custom VPN</code></p></td>
+    </tr>
+    <tr>
+    <td><p>VPN server address</p></td>
+    <td><p><code>127.0.0.1</code></p></td>
+    </tr>
+    <tr>
+    <td><p>Authentication method</p></td>
+    <td><p><code>Username and password</code></p></td>
+    </tr>
+    <tr>
+    <td><p>Split tunneling</p></td>
+    <td><p><code>Disabled</code></p></td>
+    </tr>
+    </tbody>
+    </table>
+
+4.  Push the newly created VPN profile to your managed mobile devices according to your MDM solution.
+
+    :::note
+
+    Depending on the MDM solution you use, you may need to remind end users to approve the VPN profile before the profile can be enabled on user devices.
+    :::
+:::

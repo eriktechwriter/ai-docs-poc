@@ -1,0 +1,110 @@
+---
+slug: trend-vision-one-sg-1-0-system-requirements
+title: Service Gateway 1.0 appliance system requirements
+---
+# Service Gateway 1.0 appliance system requirements
+
+Service Gateway requires the following minimum specifications.
+
+The Service Gateway virtual appliance supports deployment on VMware ESXi 6.5, 6.7, or 7.0, and on Windows Server 2019 and 2022 with Hyper-V enabled. Nested virtual machines are not supported.
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Service</p></th>
+<th><p>Virtual CPUs (Minimum / Recommended)</p></th>
+<th><p>Virtual Memory (Minimum / Recommended)</p></th>
+<th><p>Virtual NICs</p></th>
+<th><p>Supported Products</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>ActiveUpdate</p></td>
+<td><p>2 / 4</p></td>
+<td><p>4 GB / 8GB</p></td>
+<td><p>1</p></td>
+<td><ul>
+<li><p>Apex One / OfficeScan 11-14</p></li>
+<li><p>Deep Discovery Inspector 5.6-6.0, 6.5</p></li>
+<li><p>Deep Security 10-20</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Active Directory connection</p></td>
+<td><p>2 / 4</p></td>
+<td><p>4 GB / 8 GB</p></td>
+<td><p>1</p></td>
+<td><p>Active Directory services (on-premises) supported on the following Windows operating systems:</p>
+<ul>
+<li><p>Windows Server 2022</p></li>
+<li><p>Windows Server 2019</p></li>
+<li><p>Windows Server 2016</p></li>
+<li><p>Windows Server 2012</p></li>
+</ul>
+<p>For more information, see <a href="trend-vision-one-third-party-integration">Third-Party Integration</a>.</p></td>
+</tr>
+<tr>
+<td><p>Forward proxy</p></td>
+<td><p>4 / 8</p></td>
+<td><p>6 GB/ 12 GB</p></td>
+<td><p>1</p></td>
+<td><p>Trend Vision One endpoints with the following operating systems:</p>
+<ul>
+<li>Windows</li>
+<li>macOS</li>
+</ul></td>
+</tr>
+<tr>
+<td><p>TippingPoint log forwarding</p></td>
+<td><p>1 / 2</p></td>
+<td><p>2 GB / 4 GB</p></td>
+<td><p>1</p></td>
+<td><p>TippingPoint Security Management System 5.5 Patch 1 and above</p>
+<p>Requires an API key. To obtain the key, go to <strong>Workflow and Automation → Service Gateway Management</strong> and click <strong>Manage API Key</strong>.</p></td>
+</tr>
+<tr>
+<td><p>Smart Protection Services</p></td>
+<td><p>3 / 6</p></td>
+<td><p>4 GB / 8 GB</p></td>
+<td><p>1</p></td>
+<td><p>For more information on Smart Protection Services support, see <a href="trend-vision-one-sps-product-support">Smart Protection Services product support</a>.</p></td>
+</tr>
+<tr>
+<td><p>Suspicious Object List synchronization</p></td>
+<td><p>2 / 4</p></td>
+<td><p>4 GB / 8 GB</p></td>
+<td><p>1</p></td>
+<td><ul>
+<li><p>Deep Discovery Inspector 5.8 SP1 and above</p></li>
+<li><p>Deep Discovery Analyzer 7.1 and above</p></li>
+<li><p>TippingPoint Security Management System 5.5 and above</p></li>
+</ul>
+<p>Requires an API key. To obtain the key, go to <strong>Workflow and Automation → Service Gateway Management</strong> and click <strong>Manage API Key</strong>.</p></td>
+</tr>
+<tr>
+<td><p>Third-party intelligence synchronization</p></td>
+<td><p>2 / 4</p></td>
+<td><p>4 GB / 8 GB</p></td>
+<td><p>1</p></td>
+<td><p>For more information on integrating third-party applications, see <a href="trend-vision-one-third-party-integration">Third-Party Integration</a>.</p></td>
+</tr>
+</tbody>
+</table>
+
+:::note
+
+- The virtual CPUs require a minimum speed of 2.3 GHz with hyper-threading support, Virtualization Technology (VT), and 64-bit architecture.
+
+- The virtual disk requires a minimum size of 500 GB.
+
+- For VMware ESXi deployments, Service Gateway only supports the VMXNET3 network adapter with a minimum speed of 1000 Mb/s.
+:::
+::::

@@ -1,0 +1,39 @@
+---
+slug: trend-vision-one-syslog-forwarding
+title: Syslog forwarding
+---
+# Syslog forwarding
+
+Configure the syslog server where Cloud Email Gateway Protection forwards different types of logs.
+
+### Procedure {#procedure}
+
+1.  Go to **Logs → Syslog Settings**.
+
+    The **Syslog Forwarding** tab appears by default.
+
+2.  From the **Detection logs** drop-down list, select a syslog server for Cloud Email Gateway Protection to forward syslog messages on threat detections.
+
+    1.  Select from any of the following options:
+
+        - **None**: Select this option to disable syslog forwarding for this type of logs.
+
+        - **New**: Select this option to add a new syslog server.
+
+          For details on syslog server profiles, see [Syslog server profiles](syslog-server-profiles.mdx).
+
+        - Any syslog server profile: select any profile you configured for forwarding this type of logs.
+
+    2.  Select the **Include spam detections** check box if you want to include spam detection logs in syslog forwarding.
+
+3.  From the **Audit logs** drop-down list, select a syslog server for Cloud Email Gateway Protection to forward syslog messages for audit logs.
+
+4.  From the **Mail tracking logs** drop-down list, select a syslog server for Cloud Email Gateway Protection to forward syslog messages for mail tracking logs, which are related to the accepted traffic that passed through Cloud Email Gateway Protection.
+
+    :::note
+
+    For details about the accepted traffic defined in mail tracking logs, see [Understanding mail tracking](understanding-mail-tracking.mdx).
+    :::
+
+5.  From the **URL click tracking logs** drop-down list, select a syslog server for Cloud Email Gateway Protection to forward syslog messages for URL click tracking logs.
+:::

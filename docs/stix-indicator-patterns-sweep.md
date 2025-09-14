@@ -1,0 +1,189 @@
+---
+slug: trend-vision-one-stix-indicator-patterns-sweep
+title: STIX indicator patterns for sweeping
+---
+
+Before sweeping different data sources, Trend Vision One identifies and captures STIX indicator patterns used for sweeping.
+
+The following table provides information about the common STIX indicator patterns applied under different scenarios.
+
+:::note
+STIX-Shifter allows Trend Vision One to connect to third-party data sources by using STIX Patterning and return sweeping results as STIX Observations. The following table does not cover all the STIX patterns supported by STIX-Shifter, and Trend Micro can only guarantee support on tested STIX patterns.
+:::
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Object Type</p></th>
+<th><p>STIX Pattern</p></th>
+<th><p>For Endpoint Activity Data</p></th>
+<th><p>For Email Activity Data</p></th>
+<th><p>For Network Activity Data</p></th>
+<th><p>For STIX-Shifter Data Source (QRadar on Cloud)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="4"><p>File</p></td>
+<td><p>[file:hashes.'SHA-256' = '&lt;SHA256 value&gt;']</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>[file:hashes.'SHA-1' = '&lt;SHA1 value&gt;']</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>[file:hashes.MD5 = '&lt;md5 value&gt;']</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>[file:name = '&lt;file name string&gt;']</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>Domain</p></td>
+<td><p>[domain-name:value = '&lt;domain name string&gt;']</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>URL</p></td>
+<td><p>[url:value = '&lt;url string&gt;']</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td rowspan="3"><p>IP address</p></td>
+<td><p>[ipv4-addr:value = '&lt;ip address&gt;']</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>[ipv4-addr:value = '&lt;ip cidr&gt;']</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>[ipv6-addr:value = '&lt;ip address&gt;']</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td rowspan="5"><p>Network traffic</p></td>
+<td><p>[network-traffic:src_ref.type = 'ipv4-addr' AND network-traffic:src_ref.value = '&lt;ip address&gt;']</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>[network-traffic:dst_ref.type = 'ipv4-addr' AND network-traffic:dst_ref.value = '&lt;ip address&gt;']</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>[network-traffic:src_ref.type = 'ipv6-addr' AND network-traffic:src_ref.value = '&lt;ip address&gt;']</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>[network-traffic:dst_ref.type = 'ipv6-addr' AND network-traffic:dst_ref.value = '&lt;ip address&gt;']</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>[network-traffic:dst_ref.type = 'domain-name' AND network-traffic:dst_ref.value = '&lt;domain name string&gt;']</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p>Process</p></td>
+<td><p>[process:command_line='&lt;command line string&gt;']</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>[process:parent_ref.command_line='&lt;command line string&gt;']</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>User account</p></td>
+<td><p>[user-account:account_login = '&lt;account name&gt;']</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td rowspan="3"><p>Registry</p></td>
+<td><p>[windows-registry-key:key = '&lt;registry key path&gt;']</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>[windows-registry-value-type:name = 'registry key name']</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>[windows-registry-value-type:data = 'registry key data']</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+
+:::note
+- STIX 2.0 and 2.1 are supported.
+
+- Only simple indicators whose pattern contains a single object are supported.
+:::

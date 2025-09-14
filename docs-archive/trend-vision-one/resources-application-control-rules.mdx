@@ -1,0 +1,78 @@
+---
+slug: trend-vision-one-resources-application-control-rules
+title: Application Control Rules
+---
+# Application Control Rules
+
+Create and manage rules to use with Application Control in Endpoint Security Policies.
+
+:::warning[Important]
+
+If you are working on a policy, make sure to save your settings before leaving the screen. Leaving the screen without saving discards any changes.
+:::
+
+Application Control rules are a policy resource you can configure to define which applications [Application Control](policies-application-control.mdx) allows or blocks on your endpoints. Each Application Control rule defines either trusted software allowed to run on your endpoints, or software you want to restrict from running. You can add up to 350 Application Control rules.
+
+### Procedure {#procedure}
+
+1.  Go to **Endpoint Security → Endpoint Security Configuration → Policy Resources → Application Control Rules**.
+
+2.  Create or edit a rule.
+
+    - To create a new rule, click **Add Application Control rule**.
+
+    - To edit an existing rule, click the rule name and go to **General**
+
+3.  Specify a name and description for the rule.
+
+4.  Select the action for the rule to take.
+
+    - **Allow**: Allows the specified application to run.
+
+    - **Block**: Blocks the specified application from running.
+
+5.  Select the **Type**.
+
+    The **Type** determines the rule criteria, or what the rule looks for to match objects.
+
+    - **Certificate**: The rule checks the application certificate for specified values.
+
+    - **File path**: The rule checks the location of the application.
+
+    - **SHA-256**: The rule checks the file hash value.
+
+6.  If you select **Certificate**, specify the **Property** and **Value**.
+
+    Click **Add** to specify more than one property and value. Additional criteria uses AND logic, requiring applications to match all specified property and value sets. You can add up to seven properties.
+
+    Each property value has a maximum length:
+
+    - Issuer country max 2 characters
+
+    - Issuer locality max 128 characters
+
+    - Issuer name max 128 characters
+
+    - Issuer organization max 64 characters
+
+    - Issuer organizational unit max 64 characters
+
+    - Issuer state or province max 128 characters
+
+    - Subject name max 128 characters
+
+    :::warning[Important]
+
+    Server & Workload Protection does not support wildcards in certificate values.
+    :::
+
+7.  If you select **File path**, specify one or more file paths separated by line.
+
+    Specify one file path per line. The rule supports up to 2000 characters total. File path cannot contain a semi-colon `;` in the entry.
+
+8.  If you select **SHA-256**, specify the hash **Value**.
+
+    Hash values must be exactly 64 hexadecimal characters.
+
+9.  Click **Save**.
+::::

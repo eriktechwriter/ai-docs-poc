@@ -1,0 +1,53 @@
+---
+slug: trend-vision-one-remove-container-aws-account
+title: Removing Container Security from your AWS account
+---
+# Removing Container Security from your AWS account
+
+You can completely remove Container Security from Amazon AWS accounts if you no longer require protection.
+
+If you no longer want to your Amazon AWS to appear in Container Inventory, you need to update or delete your `Vision-One-Cloud-Account-Management` stack. If you only want to remove Container Security but continue to use your AWS account with other Trend Vision One services, follow the procedure below to properly update your stack.
+
+:::note
+
+Disabling Container Security on a cluster does not delete existing data received by Trend Vision One.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Cloud Security → Cloud Accounts → AWS**.
+
+2.  Click the name of your existing AWS account in the list.
+
+    The **Cloud Account Settings** panel opens.
+
+3.  Click the **Stack Update** tab.
+
+4.  Turn off **Container Security for Amazon ECS**.
+
+5.  Obtain the necessary S3 URL which contains all the configured template changes needed to update the stack in your AWS account by clicking **Copy S3 URL**.
+
+6.  In another browser tab, sign in to the AWS account that you are updating.
+
+    :::warning[Important]
+
+    The following AWS instructions were valid as of February 21, 2024. For further help, check your Amazon documentation.
+    :::
+
+7.  Go to **CloudFormation** and click your stack name.
+
+    :::tip
+
+    You can locate the stack name by viewing the **Cloud Account Settings** **Stack Update** tab in the Trend Vision One console.
+    :::
+
+8.  Click **Update**.
+
+9.  Select **Replace current template** and paste the copied S3 URL.
+
+10. Deploy the template to complete the update.
+
+11. In the Trend Vision One console, complete the update in the **Cloud Account Settings** **Stack Update** tab by clicking **Save Changes**.
+
+    Allow some time for the stack update progress to complete before proceeding. Once the stack update process is complete, you can begin assigning policies to your clusters.
+::::

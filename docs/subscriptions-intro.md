@@ -1,0 +1,38 @@
+---
+slug: trend-vision-one-subscriptions-intro
+title: Subscriptions
+---
+
+View subscriptions which provide regularly scheduled notifications and reports about your security environment.
+
+Trend Vision One generates certain notifications and reports on a regular schedule. You can configure recipient lists individually. Click the name of the subscription to access the settings panel.
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Type</p></th>
+<th><p>Related app</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>API change log</p></td>
+<td><p>API Automation Center</p></td>
+<td><p>Sends an email notification that lists the Trend Vision One API changes</p>
+<p>For a full list of API changes, check the <a href="https://automation.trendmicro.com/xdr/changelog">Automation Center Change Log</a>.</p></td>
+</tr>
+<tr>
+<td><p>License health</p></td>
+<td><p>License Information</p></td>
+<td><p>Sends periodic notifications about expired or soon-to-expire licenses</p>
+<p>Toggle the subscription on or off. This subscription has no additional options.</p>
+<p>For more information, see <a href="trend-vision-one-license-information">License Information</a>.</p></td>
+</tr>
+</tbody>
+</table>

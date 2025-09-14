@@ -1,0 +1,47 @@
+---
+slug: trend-vision-one-2-4
+title: >-
+  2.4 - Ensure that the –peer-cert-file and –peer-key-file arguments are set as
+  appropriate (Automated)
+---
+# 2.4 - Ensure that the –peer-cert-file and –peer-key-file arguments are set as appropriate (Automated)
+
+:Profile applicability: Level 1 - Master Node
+
+etcd should be configured to make use of TLS encryption for peer connections.
+
+etcd is a highly-available key value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be encrypted in transit and also amongst peers in the etcd clusters.
+
+:::note
+
+This recommendation is applicable only for etcd clusters. If you are using only one etcd server in your environment then this recommendation is not applicable.
+:::
+
+:::note
+
+By default, peer communication over TLS is not configured.
+:::
+
+### Impact {#impact}
+
+etcd cluster peers would need to set up TLS for their communication.
+
+### Audit {#audit}
+
+Run the following command on the etcd server node:
+
+```bash
+ps -ef | grep etcd
+```
+
+Verify that the `--peer-cert-file` and `--peer-key-file` arguments are set as appropriate.
+
+### Remediation {#remediation}
+
+Follow the etcd service documentation and configure peer TLS encryption as appropriate for your etcd cluster. Then, edit the etcd pod specification file` /etc/kubernetes/manifests/etcd.yaml` on the master node and set the below parameters.
+
+```bash
+--peer-client-file=</path/to/peer-cert-file>
+--peer-key-file=</path/to/peer-key-file>
+```
+:::::

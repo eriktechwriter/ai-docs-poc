@@ -1,0 +1,126 @@
+---
+slug: trend-vision-one-saml-assertion-encryption-okta
+title: Configuring SAML Assertion Encryption in Okta
+---
+# Configuring SAML Assertion Encryption in Okta
+
+:Configure assertion encryption to secure data transferred between Okta and Trend Vision One.
+
+Configuring SAML assertion encryption allow you to further secure the connection between Okta and Trend Vision One by specifying the data encryption algorithm and the key transport algorithm.
+
+:::note
+
+The following instructions are valid as of March 2024.
+:::
+
+:::warning[Important]
+
+To complete the following configuration, ensure that you already have [OpenSSL installed](https://www.openssl.org/source/) on your computer.
+:::
+
+### Procedure {#procedure}
+
+1.  Download the CSR (certificate signing request) file.
+
+    1.  On the Trend Vision One console, go to **Administration → Single Sign-On**.
+
+    2.  In step 3, click **Download CSR file**.
+
+    The CSR file downloads to your computer. The file name is `saml_encryption.csr`.
+
+2.  Open the CSR file using your computer's command line interface.
+
+3.  Generate the private key file.
+
+    1.  Enter the following command:
+
+        ```bash
+        openssl genpkey -algorithm RSA -out ca_private_key.pem -pkeyopt rsa_keygen_bits:2048
+        ```
+
+    The private key file is generated in the same file location as the CSR file. The file name is` ca_private_key.pem`.
+
+4.  Generate the certificate file.
+
+    1.  Enter the following command:
+
+        ```bash
+        openssl req -x509 -new -nodes -key ca_private_key.pem -sha256 -days 1024 -out ca_certificate.pem
+        ```
+
+        :::tip
+
+        Change the `-days` value to adjust the certificate validity duration.
+        :::
+
+    2.  Provide the following information when prompted.
+
+        - Country Name (2 Letter code) \[AU\]: `US`
+
+        - State or Province Name (full name) \[Some-State\]: (leave blank)
+
+        - Locality Name (eg, city) \[ \]: (leave blank)
+
+        - Organization Name (eg, company) \[Internet Widggits Pty Ltd\]: `Trend Micro`
+
+        - Organizational Unit Name (eg, section) \[ \]: (leave blank)
+
+        - Common Name (e.g. server FODN or YOUR name) \[ \]: (leave blank)
+
+        - Email Address \[ \]: (leave blank)
+
+        <figure>
+        <img src="./images/certificate_file_metadata=20240312101322.webp" />
+        </figure>
+
+        The certificate file is generated in the same file location as the CSR file. The file name is `ca_certificate.pem`.
+
+5.  Generate the encryption certificate file.
+
+    1.  Enter the following command:
+
+        ```bash
+        openssl x509 -req -in saml_encryption.csr -CA ca_certificate.pem -CAkey ca_private_key.pem -CAcreateserial -out certificate.crt -days 1024 -sha256
+        ```
+
+        :::tip
+
+        Change the `-days` value to adjust the certificate validity duration.
+        :::
+
+    The encryption certificate file is generated in the same file location as the CSR file. The file name is `certificate.crt`.
+
+6.  Configure assertion encryption in Okta.
+
+    1.  Log in to your Okta organization as a user with administrative privileges.
+
+    2.  Go to **Applications → Applications** and in the **ACTIVE** section, select **sso-beta**.
+
+        <figure>
+        <img src="./images/click_sso-beta=20240312102722.webp" />
+        </figure>
+
+    3.  In the **SAML Settings** section of the **sso-beta** screen, click **Edit**.
+
+    4.  On the **General** tab of the **Configure SAML** screen, click **Show Advanced Settings**.
+
+        <figure>
+        <img src="./images/show_advanced_settings=20240312102822.webp" />
+        </figure>
+
+    5.  Next to **Assertion Encryption**, select `Encrypted`.
+
+    6.  Next to **Encryption Algorithm**, select `AES256-CBC`.
+
+    7.  Next to **Key Transport Algorithm**, select `RSA-OAEP`.
+
+    8.  Next to **Encryption Certificate**, click **Browse files...** and select the `certificate.crt` file you previously generated.
+
+        <figure>
+        <img src="./images/upload_cert=20240312102922.webp" />
+        </figure>
+
+    9.  Click **Next**.
+
+    10. Click **Finish**.
+:::::

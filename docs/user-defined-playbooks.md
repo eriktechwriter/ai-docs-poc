@@ -1,0 +1,120 @@
+---
+slug: trend-vision-one-user-defined-playbooks
+title: User-defined playbooks
+---
+
+Learn about creating user-defined playbooks to improve your company's response to possible security risks.
+
+Create user-defined playbooks from scratch to meet the specific security needs of your company, such as assessing and mitigating account configuration risks and automatically responding to Workbench alerts. Depending on the type of playbook, user-defined playbooks can be executed manually or periodically, or provide automated responses when enabled.
+
+User-defined playbooks consist of [various node types](playbook-nodes.md) that allow you to trigger execution, define the target of the playbook, handle conditions, and carry out actions. The following table describes the user-defined playbooks on the **Playbooks** tab.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Column</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Trigger</p></td>
+<td><p>The way the playbook is triggered</p>
+<ul>
+<li><p><em>Manual</em> (<img src="./images/Manual=97712da2-0388-4ba8-8d18-01a01df565cd.webp" />): manually executed by clicking the icon</p></li>
+<li><p><em>Scheduled or manual</em> (<img src="./images/Scheduled_Manual=09ec64f6-042d-47f2-8927-ed822821aff1.webp" />): scheduled to execute at a set time each day, week, or month, or manually executed by clicking the <img src="./images/Manual=97712da2-0388-4ba8-8d18-01a01df565cd.webp" /> icon</p></li>
+<li><p><em>Automatic or manual (executed from Workbench)</em> (<img src="./images/Automatic_or_manual_Workbench=6de68c56-9936-42cf-bd7d-327e2f511492.webp" />): automatically or manually triggered from Workbench when an alert is triggered on "highly suspicious" or "suspicious" objects</p>
+
+
+:::note
+
+<p>This trigger setting is only applicable to Automated Response Playbooks.</p>
+
+
+:::
+
+</li>
+<li><p><em>Manual (executed from Workbench)</em> (<img src="./images/Manual_Workbench=e68667cb-d982-48f2-8b09-3b605a15b149.webp" />): manually triggered from Workbench when an alert is triggered on "highly suspicious" or "suspicious" objects</p>
+
+
+:::note
+
+<p>This trigger setting is only applicable to Automated Response Playbooks.</p>
+
+
+:::
+
+</li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Playbook</p></td>
+<td><p>The name of the playbook</p></td>
+</tr>
+<tr>
+<td><p>Type</p></td>
+<td><p>The type of the playbook</p>
+<p>Options are as follows:</p>
+<ul>
+<li><p>General</p></li>
+<li><p>XDR detection</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Last modified</p></td>
+<td><p>The date and time the playbook was last modified</p></td>
+</tr>
+<tr>
+<td><p>Created by</p></td>
+<td><p>The user that created the playbook</p></td>
+</tr>
+<tr>
+<td><p>Scope</p></td>
+<td><p>Asset visibility of the user who created the playbook</p>
+<p>The playbook only applies to targets within the asset visibility of the creator's role. If the creator's user role is deleted, the playbook becomes deactivated until another user reactivates it by editing or enabling the playbook. Upon reactivation, the playbook applies to targets within the asset visibility scope of the user who reactivated it.</p>
+<p>For more information on asset visibility scope, see <a href="trend-vision-one-what-is-asset-visibility-management">What is Asset Visibility Management?</a></p></td>
+</tr>
+<tr>
+<td><p>Execution count</p></td>
+<td><p>The number of times the playbook was executed</p>
+<p>Clicking the number takes you to the <strong>Execution Results</strong> of the playbook.</p></td>
+</tr>
+<tr>
+<td><p>Duration</p></td>
+<td><p>The average of the playbook execution duration</p></td>
+</tr>
+<tr>
+<td><p>Status</p></td>
+<td><p>The status of the playbook</p>
+<p>Options are as follows:</p>
+<ul>
+<li><p>Enabled</p></li>
+<li><p>Disabled</p></li>
+<li><p>Deactivated</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Action</p></td>
+<td><p>The action that could be taken on the playbook</p></td>
+</tr>
+</tbody>
+</table>
+
+You can create the following types of user-defined playbooks:
+
+- [Automated Response Playbooks](create-automated-response-playbooks.md)
+
+- [Endpoint Response Playbooks](create-endpoint-response-playbooks.md)
+
+:::warning[Important]
+The availability of certain user-defined playbook types depends on your license entitlement for the associated Trend Vision One features and the required data sources. For more information, see [Security playbooks requirements](security-playbooks-requirements.md).
+:::
+
+**Related information**
+
+- [Creating Automated Response Playbooks](create-automated-response-playbooks.md "Automatically respond to important Workbench alerts, speeding up response and minimizing the impact scope, by creating Automated Response Playbooks.")
+- [Creating Endpoint Response playbooks](create-endpoint-response-playbooks.md "Manually or periodically run custom scripts on a target endpoint or isolate endpoints that may pose a security risk to your network.")

@@ -1,0 +1,99 @@
+---
+slug: trend-vision-one-pml-configuring-settings
+title: Configuring Predictive Machine Learning Settings
+---
+# Configuring Predictive Machine Learning Settings
+
+:::note
+
+Predictive Machine Learning requires that you enable the following services:
+
+- Unauthorized Change Prevention
+
+- Advanced Protection Service
+:::
+
+### Procedure {#procedure}
+
+1.  Select **Enable Predictive Machine Learning**.
+
+2.  Configure the **Monitoring Level** settings for **Detection** and **Prevention**.
+
+    :::warning[Important]
+
+    - Higher monitoring levels provide greater sensitivity but might generate a large number of nonessential logs and impact endpoint performance. Trend Micro recommends selecting **2 - Moderate** for more relevant data with minimal impact on your endpoints.
+
+    - The **Prevention** level must be the same or lower than **Detection**.
+    :::
+
+3.  Under **Detection Settings**, select the type of detections and related action that Predictive Machine Learning takes.
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Detection Type</p></th>
+    <th><p>Actions</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><strong>File</strong></p></td>
+    <td><ul>
+    <li><p><strong>Quarantine</strong>: Select to automatically quarantine files that exhibit malware-related features based on the Predictive Machine Learning analysis</p></li>
+    <li><p><strong>Log only</strong>: Select to scan unknown files and log the Predictive Machine Learning analysis for further in-house investigation of the threat</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p><strong>Process</strong></p></td>
+    <td><ul>
+    <li><p><strong>Terminate</strong>: Select to automatically terminate processes or scripts that exhibit malware-related behaviors based on the Predictive Machine Learning analysis</p>
+
+
+    :::warning[Important]
+
+    <p>Predictive Machine Learning attempts to clean the files that executed the malicious processes or scripts. If the clean action is unsuccessful, Predictive Machine Learning quarantines the affected files.</p>
+
+
+    :::
+
+    </li>
+    <li><p><strong>Log only</strong>: Select to scan unknown processes or scripts and log the Predictive Machine Learning analysis for further in-house investigation of the threat</p></li>
+    </ul></td>
+    </tr>
+    </tbody>
+    </table>
+
+4.  Under **Exceptions**, configure the global Predictive Machine Learning file exceptions to prevent all agents from detecting a file as malicious.
+
+    1.  When configuring a parent policy, specify how other users can configure child policies.
+
+        - **Inherit from parent**: Child policies must use the settings configured in the parent policy
+
+        - **Extend from parent**: Child policies can append additional settings to the settings inherited from the parent policy
+
+          :::note
+
+          If your child policies **Extend from parent**, you can configure **Child Policy Restrictions** to prevent child policies from adding specified rules to the Rule Exceptions list.
+          :::
+
+    2.  Click **Add File Hash**.
+
+        The **Add File to Exception List** screen appears.
+
+        :::note
+
+        Use the **Import** and **Export** buttons to share the list with different policies.
+        :::
+
+    3.  Specify the file SHA-1 hash value to exclude from scanning.
+
+    4.  Optionally provide a note regarding the reason for the exception or to describe the file name(s) associated with the hash value.
+
+    5.  Click **Add**.
+
+        Predictive Machine Learning adds the file hash to the Exceptions list.
+::::

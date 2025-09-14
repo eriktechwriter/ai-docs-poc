@@ -1,0 +1,149 @@
+---
+slug: trend-vision-one-configuring-txone-stellarone
+title: Configuring TXOne StellarOne
+---
+
+Find out how to connect and configure your TXOne StellarOne services to start sharing data with Trend Vision One.
+
+This feature requires Trend Vision One credits for continued usage.
+
+### Procedure {#procedure}
+
+1.  If you do not have an existing Service Gateway deployed, deploy a Service Gateway virtual appliance and register the Service Gateway to Trend Vision One.
+
+    1.  Install or launch a Service Gateway virtual appliance on a supported platform.
+
+        :::note
+        Connecting TXOne StellarOne requires the forward proxy service on the Service Gateway. For detailed Service Gateway system requirements based on service deployment, see [Service Gateway appliance system requirements](sg-sys-requirements.md).
+        :::
+
+    2.  Use the CLI to configure the IPv4 address, endpoint name, NTP server, and DNS settings for the Service Gateway.
+
+        For more information about available commands, see [Service Gateway CLI commands](service-gateway-cli-commands.md).
+
+    3.  Register the Service Gateway to Trend Vision One.
+
+    4.  Confirm the connection status on the **Service Gateway Management** screen of Service Gateway Management in the Trend Vision One console.
+
+        **Healthy** appears in the **Connection status** column if connection to Trend Vision One succeeds.
+
+    For detailed deployment instructions, see [Deployment guides](deployment-guides.md).
+
+    :::note
+    You can also use an existing Service Gateway virtual appliance if it meets the system requirements and is configured with required settings for connection with TXOne StellarOne.
+    :::
+
+2.  Configure the **Forward proxy** service on the Service Gateway virtual appliance.
+
+    1.  In the Trend Vision One console, go to **Workflow and Automation → Service Gateway Management**.
+
+    2.  On the **Service Gateway Management** screen, click the Service Gateway name.
+
+    3.  Click **Manage Services**.
+
+    4.  In the **Manage Services** panel, click the install icon (![](/images/SG2_install_icon=GUID-feef28dd-2ddb-4093-b4e4-5455a0b110bb.webp)) to install the **Forward proxy** service.
+
+    5.  Configure your firewall exceptions for connection with Trend Vision One.
+
+        <table>
+        <colgroup>
+        <col style="width: 25%" />
+        <col style="width: 75%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Region</p></th>
+        <th><p>Required exceptions</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Australia</p></td>
+        <td><p>xlogr-ase2.xdr.trendmicro.com</p>
+        <p>sgi-iot.au.xdr.trendmicro.com</p>
+        <p>api.au.xdr.trendmicro.com</p>
+        <p>au.services.trendmicro.com</p></td>
+        </tr>
+        <tr>
+        <td><p>Europe</p></td>
+        <td><p>xlogr-ec1.xdr.trendmicro.com</p>
+        <p>sgi-iot.eu.xdr.trendmicro.com</p>
+        <p>api.eu.xdr.trendmicro.com</p>
+        <p>eu.services.trendmicro.com</p></td>
+        </tr>
+        <tr>
+        <td><p>India</p></td>
+        <td><p>xlogr-as1.xdr.trendmicro.com</p>
+        <p>sgi-iot.in.xdr.trendmicro.com</p>
+        <p>api.in.xdr.trendmicro.com</p>
+        <p>in.services.trendmicro.com</p></td>
+        </tr>
+        <tr>
+        <td><p>Japan</p></td>
+        <td><p>xlogr-ane1.xdr.trendmicro.com</p>
+        <p>sgi-iot.xdr.trendmicro.co.jp</p>
+        <p>api.xdr.trendmicro.co.jp</p>
+        <p>jp.services.trendmicro.com</p></td>
+        </tr>
+        <tr>
+        <td><p>Singapore</p></td>
+        <td><p>xlogr-ase1.xdr.trendmicro.com</p>
+        <p>sgi-iot.sg.xdr.trendmicro.com</p>
+        <p>api.sg.xdr.trendmicro.com</p>
+        <p>sg.services.trendmicro.com</p></td>
+        </tr>
+        <tr>
+        <td><p>United Sates</p></td>
+        <td><p>xlogr-ue1.xdr.trendmicro.com</p>
+        <p>sgi-iot.xdr.trendmicro.com</p>
+        <p>api.xdr.trendmicro.com</p>
+        <p>us.services.trendmicro.com</p></td>
+        </tr>
+        </tbody>
+        </table>
+
+3.  Obtain the API key that you need to use to authenticate connections with TXOne StellarOne through the forward proxy service.
+
+    1.  In the Trend Vision One console, go to **Workflow and Automation → Service Gateway Management**.
+
+    2.  On the **Service Gateway Management** screen, click **Manage API Key**, and record the API key in the **API Key** panel that appears.
+
+4.  Obtain the enrollment token that you need to use in the StellarOne console to identify your Trend Vision One console.
+
+    1.  In the Trend Vision One console, go to **Point Product Connection → Product Connector**.
+
+    2.  Click **Connect**.
+
+    3.  On the **Connection Settings** panel, select **TXOne StellarOne** from the **Product** drop-down list.
+
+    4.  Click the **Click to generate the enrollment token** link.
+
+    5.  Record the enrollment token.
+
+    6.  Click **Save**.
+
+        **Pending** appears in the **Connection status** column, which means that Trend Vision One is ready for connection with TXOne StellarOne.
+
+        The enrollment token expires if not used within 24 hours of generation. To regenerate a valid enrollment token, click **Regenerate** in the **Connection status** column.
+
+5.  Configure service integration settings to integrate your TXOne StellarOne environment with Trend Vision One and send data to Trend Vision One.
+
+    1.  Sign in to your TXOne StellarOne console.
+
+    2.  Go to **Administration → Service Integration**.
+
+    3.  Specify the **Service Gateway Address**, **Service Gateway API Key**, and **Product Connector Enrollment Token** based on the information obtained in the previous steps.
+
+    4.  Click **Test Connection**.
+
+        A message "Test Connection successful" appears if connection to Trend Vision One succeeds.
+
+    5.  Turn on the **Send StellarOne malware detection logs to Vision One** toggle and select the interval at which TXOne StellarOne sends logs to Trend Vision One.
+
+    6.  Click **Save**.
+
+6.  Go to the Trend Vision One console and confirm the connection status in the **Product Connector** screen.
+
+    **Connected** appears in the **Connection status** column if your TXOne StellarOne environment connects properly with Trend Vision One.
+
+    To disconnect from Trend Vision One, click **Disconnect** in the Trend Vision One console or click **Reset Product Connector Enrollment Token** in the StellarOne console, and then follow the on-screen instructions.

@@ -1,0 +1,246 @@
+---
+slug: trend-vision-one-protection-feature-support-platform
+title: Protection feature support by platform
+---
+# Protection feature support by platform
+
+:Review the endpoint protection features based on operating system platform and Trend Vision One Endpoint Security solution.
+
+:::warning[Important]
+
+- Endpoint security policies (unified assignment) only support endpoints with the Trend Vision One Endpoint Security agent version 202507 release or later installed.
+
+- Endpoint Security Policies (unified assignment) is a "Pre-release" feature and is not considered an official release. Please review the [Pre-Release Disclaimer](pre-release-disclaimer.mdx) before using the feature.
+
+- Endpoint Security Policies (unified assignment) is not available in all regions.
+:::
+
+The Trend Vision One Endpoint Security agent provides many endpoint protection features to secure your environment. The features supported depend on your deployment configuration and if you enroll your endpoint groups in Endpoint Security Policies. Updating your agents to the latest version ensures you have access to the greatest support for Trend Vision One Endpoint Security features.
+
+Feature support differs depending on how you manage your agent policies:
+
+- Manage agent policies using the Protection Managers
+
+- Manage agent policies using the Endpoint Security policies (unified assignment)
+
+If you manage your agent policies using the Protection Managers, refer to the following table for a list of supported features by platform.
+
+:::warning[Important]
+
+- The Server & Workload Protection support tables include platforms not supported by the Trend Vision One Endpoint Security agent due to end-of-life or end-of-support status. Limited protection might be available for directly connected Deep Security agents. Trend Micro recommends keeping your platforms and endpoint agents updated to maximize security protection and reduce vulnerabilities.
+
+  For information on which platforms the Trend Vision One Endpoint Security agent with Server & Workload Protection supports, see [Server & Workload Protection system requirements](swp-agent-sys-requirements.mdx).
+
+- For information on which platforms the Trend Vision One Endpoint Security agent with Standard Endpoint Protection supports, see [Standard Endpoint Protection system requirements](sep-agent-sys-requirements.mdx).
+
+- For information on which platforms the Trend Vision One Endpoint Security agent supports for Sensor-only deployments, see [Endpoint Sensor-only system requirements](es-agent-sys-reqs.mdx).
+:::
+
+**Feature support for policies managed by Protection Managers**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Platform</p></th>
+<th><p>Sensor-only</p></th>
+<th><p>Standard Endpoint Protection</p></th>
+<th><p>Server &amp; Workload Protection</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Windows</p></td>
+<td><ul>
+<li><p>Endpoint Sensor</p></li>
+<li><p>Monitoring level</p></li>
+<li><p>Deepfake detector</p></li>
+<li><p>Data Detection and Response</p></li>
+<li><p>Browser extension</p></li>
+<li><p>Advanced risk telemetry</p></li>
+<li><p>Agent console</p></li>
+</ul></td>
+<td><p>The Trend Vision One Endpoint Security agent supports all features managed by policy settings in Standard Endpoint Protection.</p>
+<p>See <a href="trend-vision-one-apex-one-security-agent-policies">Apex One Security Agent Policies</a>.</p></td>
+<td><p>The Trend Vision One Endpoint Security agent supports all features managed by policy settings in Server &amp; Workload Protection.</p>
+<p>See <a href="trend-vision-one-supported-features-windows-version">Supported features by Windows version</a>.</p></td>
+</tr>
+<tr>
+<td><p>Linux</p></td>
+<td><ul>
+<li><p>Endpoint Sensor</p></li>
+<li><p>Data Detection and Response</p></li>
+<li><p>Advanced risk telemetry</p></li>
+</ul></td>
+<td><p>The Trend Vision One Endpoint Security agent does not support deploying Standard Endpoint Protection features to Linux.</p></td>
+<td><p>The Trend Vision One Endpoint Security agent supports all features managed by policy settings in Server &amp; Workload Protection.</p>
+<p>See <a href="trend-vision-one-supported-features-linux-platform">Supported features by Linux platform</a>.</p></td>
+</tr>
+<tr>
+<td><p>macOS</p></td>
+<td><ul>
+<li><p>Endpoint Sensor</p></li>
+<li><p>Data Detection and Response</p></li>
+</ul></td>
+<td><p>The Trend Vision One Endpoint Security agent supports all features managed by policy settings in Standard Endpoint Protection.</p>
+<p>See <a href="trend-vision-one-apex-mac-policy-settings">Apex One (Mac) Policy Settings</a>.</p></td>
+<td><p>The Trend Vision One Endpoint Security agent does not support deploying Server &amp; Workload Protection features to macOS.</p></td>
+</tr>
+</tbody>
+</table>
+
+The following table maps which Protection Manager features are controlled and supported by features in Endpoint Security Policies (unified assignment). For a comparison of platform support based on agent configuration, see [Endpoint Security Policy feature support requirements](policy-feature-support-requirements.mdx).
+
+**Feature support mapping for Endpoint Security Policies (unified assignment)**
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Feature name in policies</p></th>
+<th><p>Standard Endpoint Protection for Windows feature name</p></th>
+<th><p>Standard Endpoint Protection for macOS feature name</p></th>
+<th><p>Server &amp; Workload Protection feature name</p></th>
+<th><p>Endpoint Sensor feature</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Anti-Malware</p></td>
+<td><ul>
+<li><p>Anti-Malware scans</p>
+<ul>
+<li><p>Real-time Scan</p></li>
+<li><p>Scheduled Scan</p></li>
+<li><p>Manual Scan</p></li>
+<li><p>Scan Now</p></li>
+</ul></li>
+<li><p>Behavior Monitoring</p></li>
+<li><p>Predictive Machine Learning</p></li>
+<li><p>Suspicious Connection</p></li>
+</ul></td>
+<td><ul>
+<li><p>Anti-Malware scans</p>
+<ul>
+<li><p>Real-time Scan</p></li>
+<li><p>Scheduled Scan</p></li>
+<li><p>Manual Scan</p></li>
+</ul></li>
+<li><p>Predictive Machine Learning</p></li>
+<li><p>Scan Exclusions</p></li>
+</ul></td>
+<td><ul>
+<li><p>Anti-Malware scans</p>
+<ul>
+<li><p>Real-time Scan</p></li>
+<li><p>Scheduled Scan</p></li>
+<li><p>Manual Scan</p></li>
+</ul></li>
+<li><p>Behavior Monitoring</p></li>
+<li><p>Predictive Machine Learning</p></li>
+<li><p>Spyware/Grayware</p></li>
+<li><p>Process Memory Scan</p></li>
+</ul></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Web Reputation</p></td>
+<td><p>Web Reputation</p></td>
+<td><p>Web Reputation</p></td>
+<td><p>Web Reputation</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Intrusion Prevention</p></td>
+<td><p>Vulnerability Protection</p></td>
+<td><p>-</p></td>
+<td><p>Intrusion Prevention</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Application Control</p></td>
+<td><p>Application Control</p></td>
+<td><p>-</p></td>
+<td><p>Application Control</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Device Control</p></td>
+<td><p>Device Control</p></td>
+<td><p>Device Control</p></td>
+<td><p>Device Control</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Firewall</p></td>
+<td><p>Firewall</p></td>
+<td><p>-</p></td>
+<td><p>Firewall</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Advanced Risk Telemetry</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>Advanced Risk Telemetry</p></td>
+</tr>
+<tr>
+<td><p>Endpoint Sensor</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>Formerly Endpoint detection &amp; response</p></td>
+</tr>
+<tr>
+<td><p>Data Security Sensor</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>Formerly Data detection &amp; response</p></td>
+</tr>
+<tr>
+<td><p>Sandbox Submission</p></td>
+<td><p>Sandbox Submission</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Exclusions</p></td>
+<td><p>Exception Lists</p></td>
+<td><p>Trusted Program List</p></td>
+<td><ul>
+<li><p>Rule Exceptions</p></li>
+<li><p>Process image list</p></li>
+</ul></td>
+<td><p>Exclusions</p></td>
+</tr>
+<tr>
+<td><p>Browser Extension</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>Browser extension</p></td>
+</tr>
+<tr>
+<td><p>Agent Interface</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>Formerly Agent Console</p></td>
+</tr>
+</tbody>
+</table>
+:::::

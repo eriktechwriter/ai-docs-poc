@@ -1,0 +1,372 @@
+---
+slug: trend-vision-one-set-up-data-center-gateway-2
+title: Set up a data center gateway
+---
+:To enable Server & Workload Protection to get an inventory of your computers from your VMware vCenter or Active Directory servers, you must put a data center gateway between them, as shown in the following diagram.
+
+![](/images/gateway=f2061afb-2ea8-4845-9949-c800d0fb186a.webp)
+
+The data center gateway proxies the connections.
+
+For high availability (HA) in case of network interruptions or component failures, you can also deploy multiple data center gateways, as shown in the following diagram.
+
+![](/images/gateway_deployment=61dd27b2-1278-41d4-9b0a-f75803b35b0e.webp)
+
+Basic steps include:
+
+1.  Verify system requirements
+2.  Grant permissions
+3.  Download the data center gateway software
+4.  Download the credential files
+5.  Configure the vCenter and Active Directory servers and proxies
+6.  Install the data center gateway
+
+### Verify system requirements {#verify-system-requirements}
+
+Data center gateways are supported on the following platforms:
+
+- Red Hat Enterprise Linux 7
+- Red Hat Enterprise Linux 8
+- Ubuntu Linux 18.04
+- Ubuntu Linux 20.04
+- Ubuntu Linux 22.04
+
+Minimum hardware requirements:
+
+- 1 CPU or virtual CPU (vCPU)
+- 2 GB memory (RAM)
+- 1 GB free disk space
+
+Firewalls and proxies must also allow network connections with [required port numbers, host names, and IP addresses](swp-port-numbers.mdx)
+
+### Grant permissions {#grant-permissions}
+
+During installation, you are required to configure the data center gateway using a unique authentication credential file, which is not associated with your Trend Vision One user account. You must have the necessary permissions to create a new data center gateway and access the credential file. If you are unable to create a new gateway or access the credential file, contact your administrator.
+
+If you have Master Administrator access, you can [create or edit a custom user role](custom-user-roles-trend-vision-one.mdx) in the Trend Vision One console to grant user access to create new data center gateways and access the authentication credential files.
+
+1.  Go to **Administration → User Roles**.
+
+2.  Add or edit a custom user role:
+
+    - To add a new custom user role, click **+ Add Role**.
+
+    - To edit a custom user role, select the custom user role and click the **Edit** icon.
+
+3.  On the **General information** tab, specify the role name and description.
+
+4.  On the **Permissions** tab, select permissions to grant to the role.
+
+    In addition to any other permissions you wish to grant the user role, you must include the following settings to allow assigned users permission to manage data center gateways and access the authentication credential files.
+
+    - Go to **Security Functions → Server & Workload Protection → Other Rights → Data Center Gateways**
+
+      - **View**: Enabled
+
+      - **Create**: Enabled
+
+      - **Edit**: Enabled
+
+      - **Delete**: Enabled
+
+### Download the data center gateway software {#download-the-data-center-gateway-software}
+
+For Red Hat Enterprise Linux, download an RPM file.
+
+For Ubuntu, download a DEB file.
+
+The FIPS package is intended for the government deployments of the data center gateway. This package is compatible with Ubuntu Pro FIPS 20.04 on AWS. To use this package, ensure that you have the [Ubuntu FIPS for AWS | Ubuntu](https://ubuntu.com/aws/fips) image with the FIPS package in your environment.
+
+<table>
+<thead>
+<tr>
+<th><p>Date</p></th>
+<th><p>Version</p></th>
+<th><p>RPM download</p></th>
+<th><p>DEB download</p></th>
+<th><p>FIPS download</p></th>
+<th><p>Release notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>June 02, 2025</p></td>
+<td><p>1.0.56</p></td>
+<td><a href="https://ohc.blob.core.windows.net/o-help/manual/04e8cc17-1b2c-46c5-9c8d-8b428e1601b9/c1ws-dcgw-1.0.56-1.x86_64.rpm">Download</a></td>
+<td><p><a href="https://ohc.blob.core.windows.net/o-help/manual/04e8cc17-1b2c-46c5-9c8d-8b428e1601b9/c1ws-dcgw_1.0.56-1_amd64.deb">Download</a></p></td>
+<td><p><a href="https://ohc.blob.core.windows.net/o-help/manual/04e8cc17-1b2c-46c5-9c8d-8b428e1601b9/c1ws-dcgw_1.0.56-fips-1_amd64.deb">Download</a></p></td>
+<td><p>The OpenSSL was updated to version 3.0.16 to address multiple vulnerabilities (including CVE-2024-0727 and CVE-2024-25261).</p>
+<p>Security updates for Ubuntu Pro FIPS 20.04 were applied, ensuring compliance with FIPS requirements and resolving known package vulnerabilities (2025-01-30).</p></td>
+</tr>
+<tr>
+<td><p>October 15, 2024</p></td>
+<td><p>1.0.51</p></td>
+<td><p><a href="https://ohc.blob.core.windows.net/o-help/manual/04e8cc17-1b2c-46c5-9c8d-8b428e1601b9/c1ws-dcgw-1.0.51-1.x86_64.rpm">Download</a></p></td>
+<td><p><a href="https://ohc.blob.core.windows.net/o-help/manual/04e8cc17-1b2c-46c5-9c8d-8b428e1601b9/c1ws-dcgw_1.0.51-1_amd64.deb">Download</a></p></td>
+<td><p><a href="https://ohc.blob.core.windows.net/o-help/manual/04e8cc17-1b2c-46c5-9c8d-8b428e1601b9/c1ws-dcgw_1.0.51-fips-1_amd64.deb">Download</a></p></td>
+<td><p>This version and later versions support Red Hat Enterprise Linux 9 and Ubuntu 22.04.</p>
+<p>Earlier versions only support Red Hat Enterprise Linux 8 and Ubuntu 20.04, and do not support Red Hat Enterprise Linux 9 and Ubuntu 22.04.</p></td>
+</tr>
+<tr>
+<td><p>June 12, 2024</p></td>
+<td><p>1.0.45</p></td>
+<td><p><a href="https://ohc.blob.core.windows.net/o-help/manual/04e8cc17-1b2c-46c5-9c8d-8b428e1601b9/c1ws-dcgw-1.0.45-1.x86_64.rpm">Download</a></p></td>
+<td><p><a href="https://ohc.blob.core.windows.net/o-help/manual/04e8cc17-1b2c-46c5-9c8d-8b428e1601b9/c1ws-dcgw_1.0.45-1_amd64.deb">Download</a></p></td>
+<td><p>N/A</p></td>
+<td><p>Updated third party libraries.</p>
+<p>This version and earlier support Red Hat Enterprise Linux 8 and Ubuntu 20.04. Starting from version 1.0.51, the Data Center Gateway supports Red Hat Enterprise Linux 9 and Ubuntu 22.04.</p>
+<p>Versions 1.0.45 and earlier do not support Red Hat Enterprise Linux 9 and Ubuntu 22.04.</p></td>
+</tr>
+<tr>
+<td><p>February 07, 2022</p></td>
+<td><p>1.0.20</p></td>
+<td><p><a href="https://ohc.blob.core.windows.net/o-help/manual/04e8cc17-1b2c-46c5-9c8d-8b428e1601b9/c1ws-dcgw-1.0.20-1.x86_64.rpm">Download</a></p></td>
+<td><p><a href="https://ohc.blob.core.windows.net/o-help/manual/04e8cc17-1b2c-46c5-9c8d-8b428e1601b9/c1ws-dcgw_1.0.20-1_amd64.deb">Download</a></p></td>
+<td><p>N/A</p></td>
+<td><p>Updated third party libraries.</p></td>
+</tr>
+<tr>
+<td><p>December 15, 2021</p></td>
+<td><p>1.0.18</p></td>
+<td><p><a href="https://ohc.blob.core.windows.net/o-help/manual/04e8cc17-1b2c-46c5-9c8d-8b428e1601b9/c1ws-dcgw-1.0.18-1.x86_64.rpm">Download</a></p></td>
+<td><p><a href="https://ohc.blob.core.windows.net/o-help/manual/04e8cc17-1b2c-46c5-9c8d-8b428e1601b9/c1ws-dcgw_1.0.18-1_amd64.deb">Download</a></p></td>
+<td><p>N/A</p></td>
+<td><p>Updated third party libraries.</p></td>
+</tr>
+<tr>
+<td><p>August 30, 2021</p></td>
+<td><p>1.0.17</p></td>
+<td><p><a href="https://ohc.blob.core.windows.net/o-help/manual/04e8cc17-1b2c-46c5-9c8d-8b428e1601b9/c1ws-dcgw-1.0.17-1.x86_64.rpm">Download</a></p></td>
+<td><p><a href="https://ohc.blob.core.windows.net/o-help/manual/04e8cc17-1b2c-46c5-9c8d-8b428e1601b9/c1ws-dcgw_1.0.17-1_amd64.deb">Download</a></p></td>
+<td><p>N/A</p></td>
+<td><p>Enhance tunnel logging and dcgw-control helper supports proxy configuration</p></td>
+</tr>
+<tr>
+<td><p>July 26, 2021</p></td>
+<td><p>1.0.15</p></td>
+<td><p><a href="https://ohc.blob.core.windows.net/o-help/manual/04e8cc17-1b2c-46c5-9c8d-8b428e1601b9/c1ws-dcgw-1.0.15-1.x86_64.rpm">Download</a></p></td>
+<td><p><a href="https://ohc.blob.core.windows.net/o-help/manual/04e8cc17-1b2c-46c5-9c8d-8b428e1601b9/c1ws-dcgw_1.0.15-1_amd64.deb">Download</a></p></td>
+<td><p>N/A</p></td>
+<td><p>Data center gateway supports proxy to connect to Trend Micro required internet facing services and internal vCenter or Active Directory server destinations.</p></td>
+</tr>
+<tr>
+<td><p>May 28, 2021</p></td>
+<td><p>1.0.14</p></td>
+<td><p><a href="https://ohc.blob.core.windows.net/o-help/manual/04e8cc17-1b2c-46c5-9c8d-8b428e1601b9/c1ws-dcgw-1.0.14-1.x86_64.rpm">Download</a></p></td>
+<td><p><a href="https://ohc.blob.core.windows.net/o-help/manual/04e8cc17-1b2c-46c5-9c8d-8b428e1601b9/c1ws-dcgw_1.0.14-1_amd64.deb">Download</a></p></td>
+<td><p>N/A</p></td>
+<td><p>Fixed the issue that the service does not start up automatically at boot time.</p></td>
+</tr>
+<tr>
+<td><p>March 28, 2021</p></td>
+<td><p>1.0.12</p></td>
+<td><p><a href="https://ohc.blob.core.windows.net/o-help/manual/04e8cc17-1b2c-46c5-9c8d-8b428e1601b9/c1ws-dcgw-1.0.12-1.x86_64.rpm">Download</a></p></td>
+<td><p><a href="https://ohc.blob.core.windows.net/o-help/manual/04e8cc17-1b2c-46c5-9c8d-8b428e1601b9/c1ws-dcgw_1.0.12-1_amd64.deb">Download</a></p></td>
+<td><p>N/A</p></td>
+<td><p>Updated Python library dependencies.</p></td>
+</tr>
+<tr>
+<td><p>January 25, 2021</p></td>
+<td><p>1.0.7</p></td>
+<td><p><a href="https://ohc.blob.core.windows.net/o-help/manual/04e8cc17-1b2c-46c5-9c8d-8b428e1601b9/c1ws-dcgw-1.0.7-1.x86_64.rpm">Download</a></p></td>
+<td><p><a href="https://ohc.blob.core.windows.net/o-help/manual/04e8cc17-1b2c-46c5-9c8d-8b428e1601b9/c1ws-dcgw_1.0.7-1_amd64.deb">Download</a></p></td>
+<td><p>N/A</p></td>
+<td><p>Improved instructions on what to do if destination_allow_list.yaml fails to load.</p>
+<p>Fixed service startup issue in RedHat.</p></td>
+</tr>
+<tr>
+<td><p>December 08, 2020</p></td>
+<td><p>1.0.2</p></td>
+<td><p><a href="https://ohc.blob.core.windows.net/o-help/manual/04e8cc17-1b2c-46c5-9c8d-8b428e1601b9/c1ws-dcgw-1.0.2-1.x86_64.rpm">Download</a></p></td>
+<td><p><a href="https://ohc.blob.core.windows.net/o-help/manual/04e8cc17-1b2c-46c5-9c8d-8b428e1601b9/c1ws-dcgw_1.0.2-1_amd64.deb">Download</a></p></td>
+<td><p>N/A</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+### Download the credential files {#download-the-credential-files}
+
+Each credential file contains keys and identifiers that its data center gateway will use to authenticate and communicate with Server & Workload Protection.
+
+1.  On Server & Workload Protection, go to **Administration → System Settings → Data Center Gateway**.
+2.  Click **New**.
+3.  Enter a **Display Name**. Click **Next**.
+4.  Click **Download Credential File**. Don't change the name of the file. It is required by the installer.
+5.  Repeat the previous steps to download one credential file for each data center gateway that you will install.
+
+Only use a credential file with its own data center gateway. Even data center gateways that are deployed as high availability (HA) pairs have unique credential files. Copying the same file to multiple installations could lead to unexpected behavior.
+
+:::danger[Warning]
+
+Keep the credential files in a secure place and use permissions to restrict access. Keys are secrets, similar to passwords. Unauthorized access can result in security compromise.
+:::
+
+### Configure vCenter and Active Directory servers and proxies {#configure-vcenter-and-active-directory-servers-and-proxies}
+
+During installation, you will need to provide a list of VMware vCenter and/or Microsoft Active Directory servers that the data center gateway connects to. Use a plaintext editor to write the list. The list must be in YAML format and named `destination_allow_list.yaml`.
+
+You can use a linter to verify that the list is in valid YAML format. Invalid files cannot be used by the installer.
+
+Verify that the data center gateway can reach all network addresses in the list. If data center gateways must connect through a proxy to the Internet, or to the internal network's vCenter or Active Directory servers, then also configure the data center gateway to use the proxies.
+
+For example, `destination_allow_list.yaml` could contain the following:
+
+```bash
+gateway_proxy:
+  - HostName: "internet.proxy.example.com"
+    Port: 3128
+    Username: "intenet_proxy_user"
+    Password: "internet_proxy_password"
+destinations:
+  - HostName: "vcenter1.datacenter.internal"
+    Port: 443
+  - HostName: "192.168.123.45"
+    Port: 443
+  - HostName: "adserver1.datacenter.internal"
+    Port: 389
+  - HostName: "192.168.123.46"
+    Port: 389
+    Proxy:
+      HostName: "proxy.vCenter.internal"
+      Port: 3128
+      Username: "vcenter_proxy_user"
+      Password: "vcenter_proxy_password"
+```
+
+where:
+
+- The `gateway_proxy` section defines the proxy that the data center gateway will use to connect to Server & Workload Protection.
+
+- The `destinations` section defines the vCenter and/or Active Directory servers and the proxies used to connect to them (if any).
+
+- `HostName` is the identifier that is used to add vCenter or Active Directory servers in the Server & Workload Protection console or API.
+
+  Each `HostName` must be unique. If the domain name or IP address point to the same vCenter or Active Directory server as another `HostName`, it can cause unexpected behaviors on managed agents.
+
+- `Username` and `Password` are the login that the data center gateway uses to connect to a proxy. Omit them if no authentication is required.
+
+:::danger[Warning]
+
+Keep `destination_allow_list.yaml` in a secure place and use permissions to restrict access. It contains passwords. Unauthorized access can result in security compromise.
+:::
+
+To avoid duplication if multiple `HostName` entries resolve to the same IP address, only the first domain name will take effect. Domain names take precedence over IP addresses. For example, given the configuration below, the data center gateway will communicate with a vCenter server at the hostname `vc1.dc.internal`:
+
+```bash
+# Both "vc1.dc.internal" and "vc1.dc.example.com" resolve to 192.168.100.1
+
+destinations:
+  - HostName: "192.168.100.1"       # Does not take effect because hostnames take precedence over IP addresses
+    Port: 443
+  - HostName: "vc1.dc.internal"     # Takes effect
+    Port: 443
+  - HostName: "vc1.dc.example.com"  # Does not take effect because it resolves to the same IP address as previous hostname
+    Port: 443
+```
+
+### Install the data center gateway {#install-the-data-center-gateway}
+
+On the server where you want to install the data center gateway, upload the installer, authentication credentials, and configuration file, and then enter the installer command:
+
+- Red Hat Enterprise Linux: `sudo DCGW_CRED_PATH="</absolute/path/to/credentials.json>" DCGW_ALLOW_LIST_PATH="</absolute/path/to/destination_allow_list.yaml>" rpm -ivh /path/to/rpm/file`
+- Ubuntu: `sudo DCGW_CRED_PATH="</absolute/path/to/credentials.json>" DCGW_ALLOW_LIST_PATH="</absolute/path/to/destination_allow_list.yaml>" apt install /path/to/deb/file`
+
+If any of the following error messages appear, then correct the problem and try again:
+
+<table>
+<thead>
+<tr>
+<th><p>Error Message</p></th>
+<th><p>Possible Cause</p></th>
+<th><p>Solution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>File path for <code>credentials.json</code> is required, please set the variable <code>DCGW_CRED_PATH</code> to proceed</p></td>
+<td><p>The parameter <code>DCGW_CRED_PATH</code> was not assigned during installation.</p></td>
+<td><p>Set the variable <code>DCGW_CRED_PATH</code> with the complete path of the <code>credentials.json</code> file.</p></td>
+</tr>
+<tr>
+<td><p>File name should contains credentials or destination_allow_list file extension</p></td>
+<td><p><code>DCGW_CRED_PATH</code> or <code>DCGW_ALLOW_LIST_PATH</code> does not contain the required file name.</p></td>
+<td><p>Verify that the value of <code>DCGW_CRED_PATH</code> ends with the file name <code>credentials.json</code>, and the value of <code>DCGW_ALLOW_LIST_PATH</code> ends with the file name <code>destination_allow_list.yaml</code>.Do not modify these file names.</p></td>
+</tr>
+<tr>
+<td><p>No such file, please use <code>readlink -f</code> to get absolute path for <code>credentials.json</code> or <code>destination_allow_list.yaml</code></p></td>
+<td><p>The given path for <code>DCGW_CRED_PATH</code> or <code>DCGW_ALLOW_LIST_PATH</code> did not contain the appropriate file.</p></td>
+<td><p>Use the command <code>readlink -f</code> to verify the correct, complete path of <code>credentials.json</code> or <code>destination_allow_list.yaml</code>.</p></td>
+</tr>
+</tbody>
+</table>
+
+When the installation has succeeded, either delete `credentials.json` and `destination_allow_list.yaml` or back them up to a secure location. (The installer copies them to `/var/opt/c1ws-dcgateway/conf/credentials.json` and `/var/opt/c1ws-dcgateway/conf/destiantion_allow_list.yaml` with correct permissions. You don't need to keep the original files.)
+
+Once the data center gateway is successfully running, you can continue with [Add a VMware vCenter to Server & Workload Protection](add-vmware-vcenter.mdx) or [Add Active Directory computers](add-active-directory-computers.mdx).
+
+### Troubleshooting {#troubleshooting}
+
+### Verify the status of the data center gateway {#verify-the-status-of-the-data-center-gateway}
+
+To determine if the data center gateway is active (its process is running), use SSH or Remote Desktop to connect to its server and then enter the command:
+
+`journalctl -u c1ws-dcgw.service -f`
+
+or the command:
+
+`systemctl status c1ws-dcgw`
+
+It should display the status, and which vCenter or Active Directory servers have been added:
+
+![](/images/data-center-gateway=06211061-9cdc-47ba-ba1a-865fe5c10e86.webp)
+
+Status only shows which servers have been added to the list of destinations. It does not test the network connections with vCenter or Active Directory, which must be done separately.
+
+Also enter this command to verify that the error log is empty:
+
+`less +G c1ws-dcgw-error.log`
+
+### Verify the network connections for a data center gateway {#verify-the-network-connections-for-a-data-center-gateway}
+
+To verify that vCenter or Active Directory server's port is open and that it is reachable from the data center gateway, log into the data center gateway server and enter the command:
+
+`nc -v SERVER_HOST_IP SERVER_HOST_PORT`
+
+Where:
+
+- `SERVER_HOST_IP` is the hostname or IP address of the vCenter or Active Directory server.
+- `SERVER_HOST_PORT` is the listening port number. By default, it's 443 for vCenter, and 389(StarTLS)/636(LDAPS) for Active Directory.
+
+The connection test should succeed.
+
+<figure>
+<img src="./images/vcenter-connection=b98bad2a-763f-49f0-951d-0a7abac757f6.webp" />
+</figure>
+
+If it does not succeed, then verify that the port number is open. Also verify DNS settings and any routers, firewalls, and proxies between them. If there is a proxy, the connection must succeed to the proxy, not directly to the vCenter or Active Directory server.
+
+If the connection test shows that the servers are reachable, but Server & Workload Protection is still not receiving data, then examine the data center gateway error log and logs that show connection attempts:
+
+`less +G c1ws-dcgw.log`
+
+It should show connection attempts to both vCenter or Active Directory servers (`destination`) and [Firewall exception requirements for Trend Vision One](firewall-exception-requirements-for.mdx). Verify the configured host names and port numbers.
+
+<figure>
+<img src="./images/dc-log=a095c7b9-1423-42c5-8e60-1a2a88bb0007.webp" />
+</figure>
+
+### Upgrade the data center gateway {#upgrade-the-data-center-gateway}
+
+On the server where you want to upgrade the data center gateway, upload the RPM or DEB file and then enter the upgrade command:
+
+- Red Hat Enterprise Linux: `sudo rpm -U <new data center gateway installer rpm>`
+- Ubuntu Linux: `sudo apt --only-upgrade install ./<new data center gateway installer deb>`
+
+To verify that the upgrade is complete:
+
+1.  Check the data center gateway status and data center gateway network connections.
+2.  Verify the version number of the installed software:
+    - Red Hat Enterprise Linux: `rpm -q --info <data center gateway package name>`
+    - Ubuntu Linux: `apt show <data center gateway package name>`
+:::::

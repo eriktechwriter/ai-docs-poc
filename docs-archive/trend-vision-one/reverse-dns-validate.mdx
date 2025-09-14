@@ -1,0 +1,44 @@
+---
+slug: trend-vision-one-reverse-dns-validate
+title: Adding reverse DNS validation settings
+---
+# Adding reverse DNS validation settings
+
+Cloud Email Gateway Protection allows you to add reverse DNS validation for sender domains.
+
+### Procedure {#procedure}
+
+1.  Go to **Inbound Protection → Connection Filtering → Reverse DNS Validation**.
+
+2.  Click the **Settings** tab, and click **Add** to configure reverse DNS validation rules for sender domains.
+
+    Two rules are pre-configured:
+
+    - Default (for unspecified domains): applies to all sender domains, except those for which you have configured a new reverse DNS validation rule.
+
+    - Empty sender: applies to email messages with no envelope address specified.
+
+3.  On the **Add Reverse DNS Validation Settings** screen, specify a sender domain in one of the following formats:
+
+    - example.com
+
+    - subdomain.example.com
+
+    - \*.example.com
+
+      This format matches all the subdomains under the example.com domain, for example, a.example.com, a.b.example.com.
+
+4.  Select **Reject for missing PTR** and/or **Reject for invalid PTR**.
+
+    - **Reject for missing PTR**: Reject a message when its sending IP address has no PTR record.
+
+    - **Reject for invalid PTR**: Reject a message when its sending IP address has a PTR record, but for the PTR record, there is no mapping A record, or the IP address in the A record does not match the sending IP address.
+
+5.  Click **Save**.
+
+    The reverse DNS validation rule appears in the list on the **Settings** tab.
+
+### Next steps {#next-steps}
+
+To remove a rule, select a rule and click **Delete**. You can also select the checkbox in the table heading row to select all rules except the default rule and **Empty sender** rule, which you cannot delete.
+:::

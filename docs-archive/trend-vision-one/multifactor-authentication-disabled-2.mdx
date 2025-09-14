@@ -1,0 +1,58 @@
+---
+slug: trend-vision-one-multifactor-authentication-disabled-2
+title: Multi-factor authentication disabled
+---
+# Multi-factor authentication disabled
+
+Multi-factor authentication (MFA) prevents unauthorized access to assets by requiring more than one form of authentication during sign-on.
+
+Systems that use MFA grant access to data and applications only after users present two or more credentials. Commonly used credentials include passwords, PINs, tokens, and fingerprints. MFA is effective because threat actors that are able to compromise system passwords are unlikely to meet the second authentication requirement.
+
+:::note
+
+Cyber Risk Exposure Management only detects this issue for Microsoft Entra ID. Active Directory does not have built-in MFA capability.
+:::
+
+You can remediate the issue through the following methods:
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>System</p></th>
+<th><p>Steps</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Active Directory</p></td>
+<td><p>Integrate third-party tools such as Cisco Duo and Google Authenticator that can confirm user identities and provide secure access to data and applications.</p></td>
+</tr>
+<tr>
+<td><p>Microsoft Entra ID</p></td>
+<td><p>Enable MFA using any of the following methods:</p>
+<ul>
+<li><p>Set up conditional access policies.</p>
+<p>For more information, see <a href="https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/plan-conditional-access">https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/plan-conditional-access</a>.</p></li>
+<li><p>Enable security defaults.</p>
+<p>For more information, see <a href="https://learn.microsoft.com/en-us/azure/active-directory/fundamentals/concept-fundamentals-security-defaults">https://learn.microsoft.com/en-us/azure/active-directory/fundamentals/concept-fundamentals-security-defaults</a>.</p></li>
+<li><p>Enable per-user Microsoft Entra ID Multi-Factor Authentication.</p>
+<p>For more information, see <a href="https://learn.microsoft.com/en-us/azure/active-directory/authentication/howto-mfa-userstates">https://learn.microsoft.com/en-us/azure/active-directory/authentication/howto-mfa-userstates</a>.</p></li>
+</ul>
+
+
+:::note
+
+<p>When you enable security defaults and per-user Microsoft Entra ID Multi-Factor Authentication, Cyber Risk Exposure Management infers the MFA configuration from collected sign-in activity data. This can sometimes result in false positives, particularly for accounts with few sign-in activities.</p>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+::::

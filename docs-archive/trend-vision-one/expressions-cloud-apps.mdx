@@ -1,0 +1,177 @@
+---
+slug: trend-vision-one-expressions-cloud-apps
+title: Expressions
+---
+# Expressions
+
+Expressions are data with certain structures. For example, credit card numbers typically have 16 digits and appear in the format "nnnn-nnnn-nnnn-nnnn", making them suitable for expression-based detections.
+
+## Predefined expressions {#predefined-expressions}
+
+Trend Micro provides a set of predefined expressions. Data Loss Prevention verifies these expressions using pattern matching and mathematical equations. After Data Loss Prevention matches potentially sensitive data with an expression, the data may also undergo additional verification checks. You cannot modify or delete predefined expressions.
+
+[Learn about Data Loss Prevention predefined expressions](https://docs.trendmicro.com/all/ent/dp-ref/v7.0/en-us/dp_7.0_lists.pdf).
+
+## Custom expressions {#custom-expressions}
+
+Create custom expressions if none of the predefined expressions meet your requirements. Expressions are a powerful string-matching tool. Ensure that you are comfortable with expression syntax before creating expressions. Poorly written expressions can dramatically impact performance.
+
+When creating expressions:
+
+- Refer to the predefined expressions for guidance on how to define valid expressions. For example, if you are creating an expression that includes a date, you can refer to the expressions prefixed with "Date".
+
+- Note that Data Loss Prevention follows the expression formats defined in Perl Compatible Regular Expressions (PCRE). For more information on PCRE, visit the following website: <http://www.pcre.org/>.
+
+- Start with simple expressions. Modify the expressions if they are causing false alarms or fine tune them to improve detections.
+
+- Use parentheses to group a series of pattern elements into a subexpression to match the string you want to capture in an expression, for example, (\d+) or (\[A-Z\]+).
+
+  :::note
+
+  If there is more than one grouped subexpression with parentheses, for example, (\d+)(\[a-z\]+)(\d+), only the first subexpression takes effect.
+  :::
+
+## Custom expression criteria {#custom-expression-criteria}
+
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 33%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Criteria</p></th>
+<th><p>Rule</p></th>
+<th><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>None</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>None</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>All - Names from US Census Bureau</p>
+<ul>
+<li>Expression: [^\w]([A-Z][a-z]{1,12}(\s?,\s?|[\s]|\s([A-Z])\.\s)[A-Z][a-z]{1,12})[^\w]</li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Specific characters</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>An expression must include the characters you have specified.</p>
+<p>In addition, the number of characters in the expression must be within the minimum and maximum limits.</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>US - ABA Routing Number</p>
+<ul>
+<li>Expression: [^\d]([0123678]\d{8})[^\d]</li>
+<li>Characters: 0123456789</li>
+<li>Minimum characters: 9</li>
+<li>Maximum characters: 9</li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Suffix</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Suffix refers to the last segment of an expression. A suffix must include the characters you have specified and contain a certain number of characters.</p>
+<p>In addition, the number of characters in the expression must be within the minimum and maximum limits.</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>All - Home Address</p>
+<ul>
+<li>Expression: \D(\d+\s[a-z.]+\s([a-z]+\s){0,2} (lane|ln|street|st|avenue|ave| road|rd|place|pl|drive|dr|circle| cr|court|ct|boulevard|blvd)\.? [0-9a-z,#\s\.]{0,30}[\s|,][a-z]{2}\ s\d{5}(-\d{4})?)[^\d-]</li>
+<li>Suffix characters: 0123456789-</li>
+<li>Number of characters: 5</li>
+<li>Minimum characters in the expression: 25</li>
+<li>Maximum characters in the expression: 80</li>
+</ul></td>
+</tr>
+<tr>
+<td style="border-right-width: 1px; border-right-style: solid"><p>Single- character separator</p></td>
+<td style="border-right-width: 1px; border-right-style: solid"><p>An expression must have two segments separated by a character. The character must be 1 byte in length.</p>
+<p>In addition, the number of characters left of the separator must be within the minimum and maximum limits. The number of characters right of the separator must not exceed the maximum limit.</p></td>
+<td><p>All - Email Address</p>
+<ul>
+<li>Expression: [^\w.]([\w\.]{1,20}@[a-z0-9]{2,20}[\.][a-z]{2,5}[a-z\.]{0,10})[^\w.]</li>
+<li>Separator: @</li>
+<li>Minimum characters to the left: 3</li>
+<li>Maximum characters to the left: 15</li>
+<li>Maximum characters to the right: 30</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+## Adding custom expressions {#adding-custom-expressions}
+
+Add custom expressions if no predefined expressions meet your requirements.
+
+### Procedure {#procedure}
+
+1.  Go to **Data Loss Prevention → Data Identifiers → Expressions**.
+
+2.  Click **Add**.
+
+3.  Specify custom expression settings.
+
+    ::: {.simpletable-container}
+    <table id="GUID-6CDAF442-CAAD-4FCB-8374-BFF3B245A704__CHOICETABLE_E1N_L1S_BQ" class="choicetable" data-border="1">
+    <colgroup>
+    <col style="width: 50%" />
+    <col style="width: 50%" />
+    </colgroup>
+    <thead>
+    <tr class="chhead table-header-style">
+    <th class="choptionhd">Option</th>
+    <th class="chdeschd">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="chrow">
+    <td class="choption"><p>Basic Properties</p></td>
+    <td class="chdesc"><ul>
+    <li><p><strong>Name</strong>: Type a name that does not exceed 512 bytes in length.</p></li>
+    <li><p><strong>Description</strong>: Type a description that does not exceed 2048 bytes in length.</p></li>
+    <li><p><strong>Criteria</strong>: Select the criteria and then specify the additional settings.</p></li>
+    <li><p><strong>Expression</strong>: Type the expression and specify whether it is case-sensitive.</p></li>
+    <li><p><strong>Displayed data</strong>: Type the format that represents this custom expression. The data is for reference purposes only and will not appear elsewhere in the product. For example, if you are creating an expression for email addresses, type xxxx@xxxx.xxxx.</p></li>
+    <li><p><strong>Example</strong>: Type an example that represents this custom expression. The example is for reference purposes only and will not appear elsewhere in the product. For example, if you are creating an expression for ID numbers, type a sample ID number.</p></li>
+    <li><p><strong>Validation</strong>: Select an additional validation method if necessary. These additional validators were specifically designed to detect highly specialized digital assets.</p></li>
+    </ul></td>
+    </tr>
+    <tr class="chrow">
+    <td class="choption"><p>Test Area</p></td>
+    <td class="chdesc"><p>Specify actual data to test the expression.</p>
+    <p>For example, if the expression is for a national ID, type a valid ID number in the <strong>Test data</strong> text box, click <strong>Test</strong>, and then check the result.</p>
+
+
+    :::note
+
+    <p>Save the settings only if the testing was successful. An expression that cannot detect any data wastes system resources and may impact performance.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    </tbody>
+    </table>
+    :::
+
+4.  Click **Save**.
+
+    Cloud Email and Collaboration Protection performs a matching performance check to ensure the expression is properly configured. The process takes up to 20 seconds to complete. If the expression took too long to complete the check, the check fails, with a warning advising you to review and update the expression.
+
+## Importing custom expressions {#importing-custom-expressions}
+
+Importing custom expressions requires a properly-formatted .xml file containing the expressions.
+
+:::note
+
+Each expression contains a unique ID value. If an expression with the same ID already exists, Cloud Email and Collaboration Protection overwrites the existing expression. If an expression with the same display name already exists, Cloud Email and Collaboration Protection appends a time stamp suffix to the new expression before adding it to the list.
+:::
+
+### Procedure {#procedure-1}
+
+1.  Go to **Data Loss Prevention → Data Identifiers → Expressions**.
+
+2.  Click **Import**, and then click **Choose File** to locate the .xml file to import.
+
+3.  Click **Open**.
+
+4.  Click **Import**.
+::::

@@ -1,0 +1,62 @@
+---
+slug: trend-vision-one-aws-feature-mapping
+title: AWS deployment architecture
+---
+# AWS deployment architecture
+
+Get an overview of how the Cloud Accounts stack fits into your environment and how data is shared with Trend Vision One.
+
+The diagrams below provide an abstract visualization of how the deployment stack fits into your AWS cloud account. Additionally, these diagrams show the flow of information between related AWS assets and how that data is shared with Trend Vision One to power cloud security features.
+
+For details about the resources used and deployed to your AWS environment, see [Resources deployed by Cloud Accounts](resources-deployed-cloud-accounts.mdx).
+
+**Related information**
+
+- Cloud Accounts core features and stack deployment
+- Agentless Vulnerability & Threat Detection
+- XDR for Cloud - AWS CloudTrail
+- File Security Storage
+
+## Cloud Accounts core features and stack deployment {#cloud-accounts-core-features-and-stack-deployment}
+
+When deploying the Cloud Accounts stack to your AWS account, the stack creates IAM policies and roles to allow Trend Vision One to connect with your account. Additionally, nested stacks are deployed based on the features you enable.
+
+For details about the resources used and deployed to your AWS environment, see [Resources deployed by Cloud Accounts](resources-deployed-cloud-accounts.mdx).
+
+<figure>
+<img src="./images/CAM=GUID-3a908e1e-b930-4bb3-a285-ed64dc058106.webp" />
+<figcaption>Core Features Deployment Architecture</figcaption>
+</figure>
+
+## Agentless Vulnerability & Threat Detection {#agentless-vulnerability-threat-detection}
+
+The diagram shows how the Agentless Vulnerability & Threat Detection feature utilizes assets within your AWS account to discover vulnerabilities in EBS volumes attached to EC2 instances and ECR images.
+
+<figure>
+<img src="./images/Sentry=GUID-6031b545-082a-48f0-8bed-1a23ac35f631.webp" />
+<figcaption>Agentless Vulnerability &amp; Threat Detection</figcaption>
+</figure>
+
+## XDR for Cloud - AWS CloudTrail {#xdr-for-cloud---aws-cloudtrail}
+
+Trend Vision One supports monitoring your CloudTrail logs either through a single account, or by leveraging ControlTower. The diagrams below detail the resources leveraged to enable the XDR for Cloud - AWS CloudTrail feature.
+
+<figure>
+<img src="./images/CALM=GUID-347f2904-5127-438c-8bce-3eecfa3b60b5.webp" />
+<figcaption>CloudTrail Log Monitoring for a Single Account</figcaption>
+</figure>
+
+<figure>
+<img src="./images/ConrolTower=GUID-397a82aa-ec27-450b-b520-7dd20cf5d0e2.webp" />
+<figcaption>CloudTrail Log Monitoring using ControlTower</figcaption>
+</figure>
+
+## File Security Storage {#file-security-storage}
+
+The diagram shows how the File Security Storage feature utilizes assets within your AWS account to monitor and scan files and cloud storage.
+
+<figure>
+<img src="./images/FSS=GUID-9b10d393-162e-4d89-87a2-f33fd03934c0.webp" />
+<figcaption>File Security</figcaption>
+</figure>
+:::

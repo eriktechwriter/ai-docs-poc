@@ -1,0 +1,116 @@
+---
+slug: trend-vision-one-attack-paths-detected
+title: How potential attack paths are detected and analyzed
+---
+# How potential attack paths are detected and analyzed
+
+:Learn how Attack Path Prediction detects attack paths before the paths are exploited.
+
+Attack Path Prediction uses threat detection, behavior analysis, vulnerability and misconfiguration scanning, and asset relationships and profile analysis to predict potential attack paths. Cyber Risk Exposure Management core features and generative AI help determine likely entry point assets, potential targets, paths an attacker may take, and steps needed to remediate vulnerable assets. All attack paths require:
+
+- Entry point assets with risk detections indicating the asset is vulnerable to compromise
+
+- A potential path for lateral movement
+
+- High-value critical assets that serve as desirable target points for attackers
+
+To learn more, see [Attack path components](attack-path-components.mdx).
+
+:::note
+
+In certain cases, an asset may serve as the entry and target point for an attack path, so no lateral movement path is required.
+:::
+
+Once a potential attack path is identified, remediation steps are provided to help secure vulnerable entry point assets and eliminate the attack path.
+
+Attack Path Prediction uses the following methods and data sources to identify potential attack path components.
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Attack path component</p></th>
+<th><p>Detection methods</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Entry point</p></td>
+<td><ul>
+<li><p>Identified based on internet exposure:</p>
+<ul>
+<li><p>Correlating External Attack Surface Management (EASM) data with asset properties</p></li>
+<li><p>Analyzing logs from Trend Micro Network Sensor, Trend Micro Endpoint Sensor, or other data sources</p></li>
+<li><p>Scanning cloud asset configurations using Cyber Risk Exposure Management for Cloud or Trend Vision One – Container Security capabilities</p></li>
+</ul></li>
+<li><p>Identified based on vulnerability data sources, including Trend Micro products and third-party data sources. For more information, see <a href="trend-vision-one-vulnerabilities">Vulnerabilities</a>.</p></li>
+<li><p>Identified based on potential compromise:</p>
+<ul>
+<li><p>Correlating threat detections and Workbench alerts with asset types</p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Lateral movement path</p></td>
+<td><ul>
+<li><p>Identified using telemetry and detection logs from the following data sources to map asset relationships</p>
+<ul>
+<li><p>Network activities: Trend Micro Endpoint Sensor, Trend Micro Network Sensor</p></li>
+<li><p>User activities: Trend Micro Endpoint Sensor, Trend Micro Cloud App Security, third-party data sources</p></li>
+<li><p>Administrative actions: Active Directory (on-premises), Microsoft Entra ID, Trend Micro Cloud App Security</p></li>
+<li><p>Permissions: Active Directory (on-premises), Microsoft Entra ID, Trend Micro Cloud App Security</p></li>
+<li><p>Cloud asset traffic: Cyber Risk Exposure Management for Cloud</p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Target point</p></td>
+<td><ul>
+<li><p>Identified based on asset profile platform tags and asset criticality levels</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+:::note
+
+If no attack paths are identified in your environment, one or more of the required components have not been detected. To learn more, see [Attack path components](attack-path-components.mdx).
+:::
+
+Below is an example of a potential attack path detected by Attack Path Prediction.
+
+1.  A vulnerable entry point asset, high-value target asset, and relationships between the assets are identified:
+
+    1.  A server on the network is exposed to the internet and contains a known vulnerability and a misconfiguration.
+
+    2.  An "administrator" user has a relationship with the server, allowing the user to sign in to the system.
+
+    3.  The "administrator" user is assigned the "global admin" role, allowing the user full system privileges.
+
+    4.  The global admin role can view and edit a highly critical user account.
+
+2.  A likely lateral movement path is predicted:
+
+    1.  Attackers access the server from the internet and exploit the vulnerability to gain network access.
+
+    2.  The attackers use the administrator credentials to sign in and assume the "global admin" role.
+
+    3.  With full system privileges, the attackers can compromise the critical user account and potentially steal data or move deeper into the network.
+
+3.  Remediation steps are provided:
+
+    1.  Patch the vulnerability on the server and update the system.
+
+    2.  Configure proper access controls on the server.
+
+    3.  Enable multi-factor authentication for accounts and enforce least-privilege access.
+
+    4.  Monitor user roles and permissions to prevent unauthorized escalation of privileges.
+
+**Related information**
+
+- [Key attack path components](attack-path-components.md "Learn about the types of components found in potential attack paths and common component characteristics.")
+:::::

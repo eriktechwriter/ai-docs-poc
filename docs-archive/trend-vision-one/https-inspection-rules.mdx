@@ -1,0 +1,94 @@
+---
+slug: trend-vision-one-https-inspection-rules
+title: HTTPS inspection rules
+---
+# HTTPS inspection rules
+
+Define rules to decrypt HTTPS traffic from selected URL categories to apply configured secure access rules in the same way as HTTP traffic.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Add an HTTPS inspection rule</p></td>
+<td><p>For more information, see <a href="trend-vision-one-adding-https-inspection-rule">Adding an HTTPS inspection rule</a>.</p></td>
+</tr>
+<tr>
+<td><p>Check an HTTPS inspection rule</p></td>
+<td><ul>
+<li><p>View the basic information about an HTTPS inspection rule.</p>
+
+
+:::note
+
+<p>Trend Vision One automatically creates a default rule to decrypt all HTTPS traffic initiated from any location. When enabled, the default rule applies whenever no other HTTPS inspection rules are matched. The default rule always has the lowest priority and cannot be deleted.</p>
+
+
+:::
+
+</li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Configure an HTTPS inspection rule</p></td>
+<td><ul>
+<li><p>To change the basic information about an HTTPS inspection rule, click <img src="./images/edit_icon=GUID-1F1D1164-5310-4D6D-ACD0-6049C86960AF.webp" /> in the <strong>Action</strong> column.</p></li>
+<li><p>To duplicate an HTTPS inspection rule, click <img src="./images/duplicate=e79af1b6-17af-40ad-b942-53ffb9e796d2.webp" /> in the <strong>Action</strong> column. This provides a convenient way of adding a new inspection rule with settings similar to an existing rule.</p></li>
+<li><p>To delete an HTTPS inspection rule from Trend Vision One, click <img src="./images/trash_icon=GUID-47cf6867-6315-438e-8670-86ff36f22a28.webp" /> in the <strong>Action</strong> column .</p>
+<p>To delete more than one HTTPS inspection rule, select the rules and click <strong>Delete</strong> in the upper left.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Configure a default CA certificate for the Internet Access Cloud or On-Premises Gateway to decrypt HTTPS traffic</p></td>
+<td><ol>
+<li><p>Click the <strong>Settings</strong> gear icon in the upper right.</p></li>
+<li><p>Determine and configure the default CA certificate that automatically applies to HTTPS inspection rules.</p>
+<ul>
+<li><p>Built-in CA certificate provided by Internet Access: Download the certificate from the console and <a href="trend-vision-one-deploying-built-ca-certificate">deploy it to the browsers of your users</a>.</p>
+
+
+:::note
+
+<ul>
+<li><p>The built-in CA certificate is not signed by a trusted CA on the internet. To avoid certificate warnings on browsers when users access HTTPS websites, make sure that you deploy the built-in CA certificate to the supported browsers.</p></li>
+<li><p>Internet Access provides different built-in certificates for the cloud gateway and on-premises gateways.</p></li>
+</ul>
+
+
+:::
+
+</li>
+<li><p>Your own CA certificate: <a href="trend-vision-one-cross-signing-ca-certificate">Cross-sign your organization's CA certificate</a> and upload the cross-signed certificate to the console.</p></li>
+</ul>
+<p>To reset the default certificate, click <strong>Reset to Built-in Certificate</strong>.</p></li>
+<li><p>Click <strong>Save</strong>.</p></li>
+</ol>
+<p>You can choose to use another CA certificate when <a href="trend-vision-one-adding-https-inspection-rule">configuring an HTTPS inspection rule</a>.</p></td>
+</tr>
+<tr>
+<td><p>Pass HTTPS requests to web servers when decryption fails</p></td>
+<td><p>Select whether to allow your users to access HTTPS content when the Internet Access Gateway fails to decrypt HTTPS traffic for some reason.</p>
+<ol>
+<li><p>Click the <strong>Settings</strong> gear icon in the upper right.</p></li>
+<li><p>On the <strong>Bypass Mode</strong> tab, click the toggle under <strong>Pass HTTPS requests to web servers when decryption fails</strong> to enable this feature.</p></li>
+<li><p>Click <strong>Save</strong>.</p></li>
+</ol></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Adding an HTTPS inspection rule](adding-https-inspection-rule.md "Create an HTTPS inspection rule to decrypt content of specified URL categories, and apply the rule to selected locations.")
+- [Cross-signing a CA certificate](cross-signing-ca-certificate.md "Cross-sign your CA certificate with the Certificate Signing Request (CSR) file provided by Internet Access for use by Internet Access Gateways.")
+- [Deploying the built-in CA certificate](deploying-built-ca-certificate.md "Deploy the Internet Access built-in CA certificate for the Internet Access Cloud or On-Premises Gateway to use on supported browsers to avoid certificate warnings when users visit HTTPS websites.")
+:::

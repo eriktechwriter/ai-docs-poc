@@ -1,0 +1,99 @@
+---
+slug: trend-vision-one-network-settings
+title: Network Settings
+---
+# Network Settings
+
+### Procedure {#procedure}
+
+1.  Select **Global Agent Settings**.
+
+2.  Click the **Network** tab.
+
+3.  Configure settings as required.
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Section</p></th>
+    <th><p>Settings</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><strong>Preferred IP Addresses</strong></td>
+    <td><p>This setting is only available on dual-stack Apex One servers and is applied only by dual-stack Trend Vision One Endpoint Security agents.</p>
+    <ul>
+    <li><p><strong>IPv4 only</strong>: Trend Vision One Endpoint Security agents use their IPv4 address.</p></li>
+    <li><p><strong>IPv4 first, then IPv6</strong>: Trend Vision One Endpoint Security agents use their IPv4 address first. If the Trend Vision One Endpoint Security agent cannot register using its IPv4 address, it uses its IPv6 address. If registration is unsuccessful using both IP addresses, the agent retries using the IP address priority for this selection.</p></li>
+    <li><p><strong>IPv6 first, then IPv4</strong>: Trend Vision One Endpoint Security agents use their IPv6 address first. If the Trend Vision One Endpoint Security agent cannot register using its IPv6 address, it uses its IPv4 address. If registration is unsuccessful using both IP addresses, the Trend Vision One Endpoint Security agent retries using the IP address priority for this selection.</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p><strong>Virus/Malware Log Bandwidth Settings</strong></p></td>
+    <td><p><strong>Enable the Security Agent to create a single virus/malware log entry for recurring detections of the same virus/malware within an hour</strong>: Consolidates virus log entries when detecting multiple infections from the same virus/malware over a short period of time</p>
+    <p>The Trend Vision One Endpoint Security agent may detect a single virus/malware multiple times, quickly filling the virus/malware logs and consuming network bandwidth when sending log information to the server. Enabling this feature helps reduce both the number of virus/malware log entries made and the amount of network bandwidth Trend Vision One Endpoint Security agents consume when reporting malware log information to the server.</p></td>
+    </tr>
+    <tr>
+    <td><strong>Unreachable Network</strong></td>
+    <td><p>Configure the server polling settings:</p>
+    <ul>
+    <li><p>If the Apex One server has both an IPv4 and IPv6 address, you can type an IPv4 address range and IPv6 prefix and length.</p>
+    <p>For example:</p>
+    <p>Type an IPv4 address range if the server is pure IPv4, or an IPv6 prefix and length if the server is pure IPv6.</p>
+    <p>When any Trend Vision One Endpoint Security agent IP address matches an IP address in the range, the Trend Vision One Endpoint Security agent applies the heartbeat and server polling settings and the server treats the Trend Vision One Endpoint Security agent as part of the unreachable network.</p>
+
+
+    :::note
+
+    <p>Trend Vision One Endpoint Security agents with an IPv4 address can connect to a pure IPv4 or dual-stack Apex One server.</p>
+    <p>Trend Vision One Endpoint Security agents with an IPv6 address can connect to a pure IPv6 or dual-stack Apex One server.</p>
+    <p>Dual-stack Trend Vision One Endpoint Security agents can connect to dual-stack, pure IPv4, or pure IPv6 Apex One server.</p>
+
+
+    :::
+
+    </li>
+    <li><p><strong>Agents poll the server for updated components and settings every __ minute(s)</strong>: Specify the server polling frequency. Type a value between 1 and 129600 minutes.</p>
+
+
+    :::tip
+
+    <p>Trend Micro recommends that the server polling frequency be at least three times the heartbeat sending frequency.</p>
+
+
+    :::
+
+    </li>
+    </ul>
+    <p>Configure the heartbeat settings:</p>
+    <ol>
+    <li><p>Select <strong>Allow agents to send heartbeat to the server</strong>.</p></li>
+    <li><p>Select <strong>All agents</strong> or <strong>Only agents in the unreachable network</strong>.</p></li>
+    <li><p>In <strong>Agents send heartbeat every __ minute(s)</strong>, specify how often Trend Vision One Endpoint Security agents send heartbeat. Type a value between 1 and 129600 minutes.</p></li>
+    <li><p>In <strong>An agent is offline if there is no heartbeat after __ minute(s)</strong>, specify how much time without a heartbeat must elapse before the Apex One server treats the Trend Vision One Endpoint Security agent as offline. Type a value between 1 and 129600 minutes.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p><strong>Server Polling Interval</strong></p></td>
+    <td><p><strong>Polling interval: XX minute(s)</strong>: Configures the Trend Vision One Endpoint Security agents to automatically attempt to connect with the Trend Vision One at a regular interval to receive updated settings or components and to report the Trend Vision One Endpoint Security agent status</p>
+
+
+    :::note
+
+    <p>The Trend Vision One server classifies all Trend Vision One Endpoint Security agents that did not successfully poll the server at the specified interval as being "Unreachable".</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    </tbody>
+    </table>
+
+4.  Click **Save**.
+:::

@@ -1,0 +1,91 @@
+---
+slug: trend-vision-one-cis-gke17-561
+title: 5.6.1 - Enable VPC Flow Logs and Intranode Visibility (Automated)
+---
+# 5.6.1 - Enable VPC Flow Logs and Intranode Visibility (Automated)
+
+Profile applicability: Level 2
+
+Enable VPC Flow Logs and Intranode Visibility to see pod-level traffic, even for traffic within a worker node.
+
+Enabling Intranode Visibility makes intranode pod to pod traffic visible to the networking fabric. With this feature, VPC Flow Logs or other VPC features can be used for intranode traffic.
+
+:::note
+
+By default, Intranode Visibility is disabled.
+:::
+
+### Impact {#impact}
+
+Enabling it on existing cluster causes the cluster master and the cluster nodes to restart, which might cause disruption.
+
+### Audit {#audit}
+
+Using Google Cloud Console:
+
+1.  Go to [Kubernetes Engine website](https://console.cloud.google.com/kubernetes/list).
+2.  Select the desired cluster.
+3.  Under the Cluster section, make sure that Intranode visibility is set to **Enabled**.
+
+Using Command Line:
+
+Run this command:
+
+```bash
+gcloud container clusters describe <cluster_name> --zone <compute_zone> --
+format json | jq '.networkConfig.enableIntraNodeVisibility'
+```
+
+The result should return `true` if Intranode Visibility is Enabled.
+
+### Remediation {#remediation}
+
+### Enable Intranode Visibility: {#enable-intranode-visibility}
+
+Using Google Cloud Console:
+
+1.  Go to [Kubernetes Engine website](https://console.cloud.google.com/kubernetes/list).
+2.  Select Kubernetes clusters for which intranode visibility is disabled.
+3.  Within the Details pane, under the Network section, click on the pencil icon named **Edit intranode visibility**.
+4.  Check the box next to **Enable Intranode visibility**.
+5.  Click **SAVE CHANGES**.
+
+Using Command Line:
+
+To enable intranode visibility on an existing cluster, run the following command:
+
+```bash
+gcloud container clusters update <cluster_name> --enable-intra-node-
+visibility
+```
+
+### Enable VPC Flow Logs: {#enable-vpc-flow-logs}
+
+Using Google Cloud Console:
+
+1.  Go to [Kubernetes Engine website](https://console.cloud.google.com/kubernetes/list).
+2.  Select Kubernetes clusters for which VPC Flow Logs are disabled.
+3.  Select **Nodes** tab.
+4.  Select **Node Pool** without VPC Flow Logs enabled.
+5.  Select an Instance Group within the node pool.
+6.  Select an **Instance Group Member**.
+7.  Select the **Subnetwork** under Network Interfaces.
+8.  Click **EDIT**.
+9.  Set Flow logs to `On`.
+10. Click **SAVE**.
+
+Using Command Line:
+
+Find the subnetwork name associated with the cluster:
+
+```bash
+gcloud container clusters describe <cluster_name> --region <cluster_region>
+--format json | jq '.subnetwork'
+```
+
+Update the subnetwork to enable VPC Flow Logs:
+
+```bash
+gcloud compute networks subnets update <subnet_name> --enable-flow-logs
+```
+::::

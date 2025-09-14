@@ -1,0 +1,97 @@
+---
+slug: trend-vision-one-telemetry-entra-id
+title: Microsoft Entra ID data used by Identity Security
+---
+# Microsoft Entra ID data used by Identity Security
+
+Identity Security uses data from Microsoft Entra ID for identity asset discovery and identity exposure management. The following table lists the Microsoft Entra ID data used by Identity Security and the permissions used to obtain data.
+
+:::note
+
+- Identity Security uses Microsoft Graph API to obtain data from Microsoft Entra ID. All the permissions used by Identity Security are application permissions that allows Identity Security to access resources without requiring a signed-in user. All the permissions require admin consent.
+
+- Identity Security uses the least privileged permissions necessary to collect data. When a permission required for certain data also grants access to additional data, Identity Security uses this permission instead of requesting a separate, more specific permission for the additional data.
+:::
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 50%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Category</p></th>
+<th><p>Data</p></th>
+<th><p>Permission Used</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>User</p></td>
+<td><p>Users' properties and relationships</p></td>
+<td><p>User.Read.All</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p>Sign in</p></td>
+<td><p>User sign-in activity</p></td>
+<td><p>AuditLog.Read.All</p></td>
+</tr>
+<tr>
+<td><p>Attributes related to applied conditional access policy or policies that are triggered by a sign-in activity</p></td>
+<td><p>Policy.Read.All</p></td>
+</tr>
+<tr>
+<td><p>Directory audit</p></td>
+<td><p>Directory audit logs</p></td>
+<td><p>AuditLog.Read.All</p>
+<p>Directory.Read.All</p></td>
+</tr>
+<tr>
+<td><p>Message rule</p></td>
+<td><p>Rules that apply to messages in the Inboxes of users</p></td>
+<td><p>MailboxSettings.Read</p></td>
+</tr>
+<tr>
+<td><p>Directory role</p></td>
+<td><p>Directory roles that are activated in the tenant and their members</p></td>
+<td><p>Directory.Read.All</p></td>
+</tr>
+<tr>
+<td><p>Group</p></td>
+<td><p>Group information, including:</p>
+<ul>
+<li><p>All the groups available in an organization</p></li>
+<li><p>Properties and relationships of groups</p></li>
+<li><p>Members in groups</p></li>
+</ul></td>
+<td><p>Directory.Read.All</p>
+<p>Group.Read.All</p></td>
+</tr>
+<tr>
+<td><p>Service principal</p></td>
+<td><p>Service principal information, including:</p>
+<ul>
+<li><p>Instances of applications in a directory</p></li>
+<li><p>Delegated permissions that have been granted to an application's service principal</p></li>
+</ul></td>
+<td><p>Directory.Read.All</p></td>
+</tr>
+<tr>
+<td><p>Conditional access policy</p></td>
+<td><p>Properties and relationships of conditional access policies</p></td>
+<td><p>Policy.Read.All</p></td>
+</tr>
+<tr>
+<td><p>Organization</p></td>
+<td><p>Properties and relationships of organizations</p></td>
+<td><p>Organization.Read.All</p></td>
+</tr>
+<tr>
+<td><p>Place</p></td>
+<td><p>Basic location attributes such as name, physical address, and geographic coordinates</p></td>
+<td><p>Place.Read.All</p></td>
+</tr>
+</tbody>
+</table>
+::::

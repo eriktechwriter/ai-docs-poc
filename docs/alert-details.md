@@ -1,0 +1,173 @@
+---
+slug: trend-vision-one-alert-details
+title: Alert details
+---
+
+**Workbench** provides detailed alert information for more effective investigations.
+
+The following table describes the basic information **Workbench** provides about alerts.
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Element</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Status</p></td>
+<td><p><strong>Status</strong>: The current status of the alert or investigation triggered in <strong>Workbench</strong></p>
+<ul>
+<li><p><img src="./images/Workbench_status_new=GUID-ECE0863A-AFD9-43A7-9245-9ECD4E1D18AB=1=en-us=Low.webp" /> <strong>Open</strong>: The alert is new and not currently under investigation</p></li>
+<li><p><img src="./images/Workbench_status_in_progress=GUID-E3AF045A-35FC-489C-A753-DE2960F7D022=1=en-us=Low.webp" /> <strong>In progress</strong>: The alert is under investigation.</p></li>
+<li><p><img src="./images/Workbench_status_closed=GUID-25658551-3D98-49BC-AE83-48B6710C2065=1=en-us=Low.webp" /> <strong>Closed</strong>: The alert investigation is complete.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Score</p></td>
+<td><p>The overall severity assigned to the alert</p>
+<p>Trend Vision One calculates the score based on the severity of the matched detection model and the impact scope of the alert.</p>
+
+
+:::note
+
+<p>Starting on January 18, 2021, Trend Vision One adjusted the scoring model and redefined the maximum alert score as 99. The new scoring model only affects new alerts.</p>
+<p>The new scoring model takes the severity of the matched model as the dominant factor in calculation and defines a certain threshold for the impact scope value.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Workbench ID</p></td>
+<td><p>The unique identifier for the alert</p></td>
+</tr>
+<tr>
+<td><p>Model name</p></td>
+<td><p>The <a href="trend-vision-one-detection-model-management">detection model</a> that triggered the alert</p></td>
+</tr>
+<tr>
+<td><p>Model severity</p></td>
+<td><p>The severity assigned to a model that triggered the alert</p></td>
+</tr>
+<tr>
+<td><p>Impact scope</p></td>
+<td><p>The number of entities that the alert affects within the company network</p></td>
+</tr>
+<tr>
+<td><p>Data source / processor</p></td>
+<td><p>The product that is providing the data to the Workbench app</p></td>
+</tr>
+<tr>
+<td><p>Created</p></td>
+<td><p>The date and time that Trend Vision One generated the alert</p></td>
+</tr>
+<tr>
+<td><p>Findings</p></td>
+<td><p><strong>Findings</strong>: The findings of the alert investigation.</p>
+<p>Available values:</p>
+<ul>
+<li><p><strong>True positive</strong>: The investigation confirmed the occurrence of threats or malicious activities.</p></li>
+<li><p><strong>Benign true positive</strong>: The investigation confirmed the presence of a genuine threat that poses no risk to the organization.</p>
+<p>Benign true positives are the result of penetration tests or other legitimate activities in your environment.</p></li>
+<li><p><strong>False positive</strong>: No malicious activity found.</p></li>
+<li><p><strong>Noteworthy</strong>: Trend Vision One detected unusual activity that requires more investigation.</p></li>
+<li><p><strong>Other findings</strong>: The investigation did not have not enough data to validate the findings.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Case</p></td>
+<td><p>The ID of the case assigned to the alert.</p></td>
+</tr>
+<tr>
+<td><p>Owner</p></td>
+<td><p>The user assigned to the alert.</p></td>
+</tr>
+<tr>
+<td><p>Associated insight</p></td>
+<td><p>The <a href="trend-vision-one-workbench-insights">Workbench insight</a> associated with the alert</p></td>
+</tr>
+<tr>
+<td><p>Automated response</p></td>
+<td><p>The status of the automated response tasks associated with the alert</p></td>
+</tr>
+</tbody>
+</table>
+
+The following table describes the alert information displayed on the alert details screen.
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Element</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Summary</p></td>
+<td><p>Basic information of the alert you investigate</p>
+<p>If the Threat Intelligence Sweeping model triggers the alert, the following information displays:</p>
+<ul>
+<li><p><strong>Campaign</strong>: The associated threat campaign</p></li>
+<li><p><strong>Industry</strong>: The industry that the threat campaign belongs to</p></li>
+<li><p><strong>Intelligence source</strong>: The data source that provides the matched intelligence report</p></li>
+<li><p><strong>First seen</strong>: The date and time indicators of compromise were first identified in the environment</p></li>
+<li><p><strong>Last seen</strong>: The date and time indicators of compromise were last identified in the environment</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Highlights</p></td>
+<td><p>The list of the event objects that triggered the alert with contextually enriched information.</p>
+<p>Events consist of the following information:</p>
+<ul>
+<li><p>The filter that detected suspicious behavior</p></li>
+<li><p><strong>Technique</strong>: The detected MITRE technique</p></li>
+<li><p><strong>Detection</strong>: The detected malware</p></li>
+<li><p><strong>Data source / processor</strong>: The product that sent the alert data to <strong>Workbench</strong></p></li>
+<li><p><strong>Emerging threats</strong>: The emerging threats associated with the detection</p></li>
+<li><p><strong>Threat actors</strong>: The threat actors associated with the detection</p></li>
+<li><p><strong>Exploited CVE</strong>: The detected common vulnerabilities and exposures (CVE) and information about campaigns actively exploiting the vulnerability</p></li>
+<li><p><strong>Malware/Tool</strong>: The tools or malware detected in the alert</p></li>
+<li><p>The date and time the detection occurred</p></li>
+<li><p>The objects involved in the event, such as endpoints, commands, email messages, and registry values</p>
+<p>An event comprises two types of objects:</p>
+<ul>
+<li><p>Highlighted objects that triggered the current filter</p></li>
+<li><p>Entities included in the impact scope</p></li>
+</ul>
+<p>If the Threat Intelligence Sweeping model triggers the alert, the <strong>Highlights</strong> section shows the identified indicators of compromise (IoCs), data source/processor, and the related objects instead.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Timeline</p></td>
+<td><p>Date and time that the detection occurred</p></td>
+</tr>
+<tr>
+<td><p>Observable Graph</p></td>
+<td><p>More detailed context for the alert in a visualized form</p>
+<p>Click any of the events in the <strong>Highlights</strong> section to highlight the specific objects in the <strong>Observable Graph</strong>.</p>
+<p>Each node in the graph refers to an object, and each link reflects the relationship between one node and the adjacent node.</p>
+<ul>
+<li><p>Each line (<img src="./images/observable_graph_line=GUID-4074BA53-A2FA-4435-ABD2-64D558508C9B=1=en-us=Low.webp" />) represents the association between the two objects, for example, a user account associated with an endpoint.</p></li>
+<li><p>Each arrow (<img src="./images/Workbench_analysis_chain_-_event=GUID-CBD67C27-A3BF-4E1C-B046-C21D9E2D42D4=1=en-us=Low.webp" />) indicates the direction of the transaction between the two objects, for example, the direction from the email sender to the recipient.</p></li>
+<li><p>The Connection Details icon (<img src="./images/Workbench_alert_observable_graph_doubleheaded_arrow=GUID-20230116113939=1=en-us=Low.webp" />) indicates the connection between the two objects. For example, the connection between an endpoint and a website.</p>
+<p>Click the Connection Details icon to view more information.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Related assets</p></td>
+<td><p>The most recent endpoints and users that communicated with the assets involved in the event</p></td>
+</tr>
+</tbody>
+</table>

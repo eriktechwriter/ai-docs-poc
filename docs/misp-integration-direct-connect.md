@@ -1,0 +1,42 @@
+---
+slug: trend-vision-one-misp-integration-direct-connect
+title: MISP integration (via direct connection)
+---
+
+Trend Vision One enables transfer of suspicious object data and retrieval of threat intelligence data directly with the MISP threat sharing platform.
+
+:::note
+To enable the transfer of suspicious object data and retrieval of MISP threat intelligence data through a Service Gateway, see [MISP integration (via Service Gateway)](misp-integration.md).
+:::
+
+:::warning[Important]
+- The MISP API does not return unpublished events for version 2.4.717 or later. Publish events on the MISP server to ensure that threat intelligence data can be sent to Trend Vision One.
+
+- To send MISP attributes as suspicious objects to Trend Vision One, add the Intrusion Detection System flag. This determines if the attribute can be automated.
+
+- For more information about MISP instance sizing, see [Sizing your MISP instance](https://www.misp-project.org/sizing-your-misp-instance/).
+:::
+
+### Procedure {#procedure}
+
+1.  On the Trend Vision One console, go to **Workflow and Automation → Third-Party Integration → MISP → Direct Connection**.
+
+2.  Click **Add Connection**.
+
+3.  Turn on the toggle to enable the MISP connection.
+
+4.  Select **Send data to MISP**.
+
+5.  Configure settings to allow Trend Vision One to send suspicious object data to MISP.
+
+6.  Select **Retrieve data from MISP**.
+
+7.  Configure settings to allow Trend Vision One to retrieve threat intelligence data from MISP.
+
+    :::note
+    - You can only add indicator type STIX objects that are not revoked and do not have the anomalous activity, anonymization, benign, compromised, or unknown labels to the Suspicious Objects List.
+
+    - Auto sweeping is only supported for report type STIX objects.
+    :::
+
+8.  Click **Save**.

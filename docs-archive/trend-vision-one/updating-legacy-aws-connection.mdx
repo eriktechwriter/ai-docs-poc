@@ -1,0 +1,43 @@
+---
+slug: trend-vision-one-updating-legacy-aws-connection
+title: Updating a legacy AWS connection
+---
+# Updating a legacy AWS connection
+
+Update your AWS accounts imported from **Cloud Security Posture** and Server & Workload Protection.
+
+When updating certain Trend Micro products to Trend Vision One, the Cloud Accounts app automatically imports your monitored AWS accounts as legacy connections. Legacy connections include accounts added when updating the following products:
+
+- Updating Trend Cloud One - Conformity to Trend Vision One **Cloud Security Posture**.
+
+- Updating Trend Cloud One Endpoint & Workload Security to Trend Vision One Server & Workload Protection.
+
+To enable the advanced cloud security features of Trend Vision One, including Container Security features, you must update your legacy connections. Updating a legacy AWS account connection allows Trend Vision One to access your cloud service to provide security and visibility into your cloud assets. Some Cloud Account features have limited support for AWS regions. For more information, see [AWS supported regions and limitations](aws-supported-regions-limitations.mdx).
+
+:::note
+
+The steps are valid for the AWS console as of November 2023.
+:::
+
+### Procedure {#procedure}
+
+1.  Sign in to the Trend Vision One console.
+
+2.  In a new tab in the same browser session, sign in to the AWS account you want to update.
+
+3.  In the Trend Vision One console, go to **Cloud Security → Cloud Accounts → AWS**.
+
+4.  Click the name of the legacy connection account you want to update.
+
+5.  In the **Cloud Accounts Settings** screen, click **Update**.
+
+    The **Add AWS Account** window appears.
+
+6.  Choose your deployment type.
+
+    - If you want to update your connection using a CloudFormation template, select **CloudFormation** as the **Deployment Method**, and continue following the steps in [Adding an AWS account using CloudFormation](adding-aws-account.mdx).
+
+    - If you want to update your connection using a Terraform script, select **Terraform** as the **Deployment Method**, and continue following the steps in [Adding an AWS account using Terraform](adding-aws-account-using-terraform.mdx).
+
+    After you complete the connection steps, you can safely remove any Trend Cloud One Endpoint & Workload Security and Trend Cloud One Conformity stack data from your cloud account.
+::::

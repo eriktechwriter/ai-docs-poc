@@ -1,0 +1,145 @@
+---
+slug: trend-vision-one-cef-product-auditing-events
+title: CEF Product Auditing Events
+---
+# CEF Product Auditing Events
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 38%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>CEF Key</p></th>
+<th><p>Description</p></th>
+<th><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Header (logVer)</p></td>
+<td><p>CEF format version</p></td>
+<td><p>CEF:0</p></td>
+</tr>
+<tr>
+<td><p>Header (vendor)</p></td>
+<td><p>Product vendor</p></td>
+<td><p>Trend Micro</p></td>
+</tr>
+<tr>
+<td><p>Header (pname)</p></td>
+<td><p>Product name</p></td>
+<td><p>Apex Central</p></td>
+</tr>
+<tr>
+<td><p>Header (pver)</p></td>
+<td><p>Product version</p></td>
+<td><p>2019</p></td>
+</tr>
+<tr>
+<td><p>Header (eventid)</p></td>
+<td><p>Event ID</p></td>
+<td><p>1745</p></td>
+</tr>
+<tr>
+<td><p>Header (eventName)</p></td>
+<td><p>Log name</p></td>
+<td><p>Product Auditing Events</p></td>
+</tr>
+<tr>
+<td><p>Header (severity)</p></td>
+<td><p>Severity</p></td>
+<td><p>3</p></td>
+</tr>
+<tr>
+<td><p>cat</p></td>
+<td><p>Log type</p></td>
+<td><p>1745</p></td>
+</tr>
+<tr>
+<td><p>deviceFacility</p></td>
+<td><p>Managed product</p></td>
+<td><p>Example: "Apex One"</p></td>
+</tr>
+<tr>
+<td><p>dvchost</p></td>
+<td><p>Display name of the managed endpoint</p></td>
+<td><p>Example: "localhost"</p></td>
+</tr>
+<tr>
+<td><p>rt</p></td>
+<td><p>Event trigger time in UTC</p></td>
+<td><p>Example: "Mar 22 2018 08:23:23 GMT+00:00"</p></td>
+</tr>
+<tr>
+<td><p>cn1Label</p></td>
+<td><p>Corresponding label for the "cn1" field</p></td>
+<td><p>SLF_CategoryID</p></td>
+</tr>
+<tr>
+<td><p>cn1</p></td>
+<td><p>Category ID</p></td>
+<td><p>Example: "536,870,912"</p></td>
+</tr>
+<tr>
+<td><p>cn2Label</p></td>
+<td><p>Corresponding label for the "cn2" field</p></td>
+<td><p>SLF_SeverityLevel</p></td>
+</tr>
+<tr>
+<td><p>cn2</p></td>
+<td><p>Severity level</p></td>
+<td><p>Example: "4"</p>
+<ul>
+<li><p>1 = ERROR</p></li>
+<li><p>2 = WARNING</p></li>
+<li><p>4 = INFORMATION</p></li>
+<li><p>16 = FAILURE AUDIT</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>suser</p></td>
+<td><p>The name of the user on whose behalf the event occurred</p></td>
+<td><p>Example: "administrator"</p></td>
+</tr>
+<tr>
+<td><p>deviceNtDomain</p></td>
+<td><p>Active Directory domain</p></td>
+<td><p>Example: APEXTMCM</p></td>
+</tr>
+<tr>
+<td><p>dntdom</p></td>
+<td><p>Apex One domain hierarchy</p></td>
+<td><p>Example: OSCEDomain1</p></td>
+</tr>
+<tr>
+<td><p>ApexCentralHost</p></td>
+<td><p>Apex Central host name</p></td>
+<td><p>Example: TW-CHRIS-W2019</p></td>
+</tr>
+<tr>
+<td><p>devicePayloadId</p></td>
+<td><p>Unique message GUID</p></td>
+<td><p>Example: 1C00290C0360-9CDE11EB-D4B8-F51F-C697</p></td>
+</tr>
+</tbody>
+</table>
+
+Log sample:
+
+```bash
+CEF:0|Trend Micro|Apex Central|2019|Delete|1009490 - Block A
+dministrative Share - 1 (ATT&CK T1077,T1105)|3|rt=Apr 20 202
+0 03:33:15 GMT+00:00 dvchost=OSCEClient22 deviceFacility=Ape
+x One act=Delete, src=10.1.1.8 dst=80.1.1.8 smac=54-BF-64-84
+-7F-08 spt=88 dmac=54-BF-64-84-7F-18 dpt=448 cn2Label=SLF_Is
+DetectionOnly cn2=1 deviceDirection=Outbound cn3Label=SLF_Ra
+nk cn3=100 cn4Label=SLF_SeverityCode cn4=4 proto=10008 cs2La
+bel=SLF_ConnectionType cs2=Suspicious Client Application Act
+ivity cn1Label=SLF_RuleID cn1=1009490 cs1Label=SLF_RuleConte
+nt cs1=1009490 - Block Administrative Share - 1 (ATT&CK T107
+7,T1105) cnt=1 deviceNtDomain=APEXTMCM dntdom=OSCEDomain1
+```
+:::

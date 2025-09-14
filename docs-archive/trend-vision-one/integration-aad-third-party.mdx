@@ -1,0 +1,94 @@
+---
+slug: trend-vision-one-integration-aad-third-party
+title: Microsoft Entra ID integration
+---
+# Microsoft Entra ID integration
+
+Manage access permissions to your Microsoft Entra ID data in multiple tenants for use in Trend Vision One apps.
+
+The **Microsoft Entra ID** screen (**Workflow and Automation → Third-Party Integration**) provides [an overview of permissions](access-permissions-data.mdx) that Trend Vision One apps require to access Microsoft Entra ID data or trigger policy enforcement actions in Microsoft Entra ID. Each app or group of apps is associated with a set of permissions that must be enabled within Microsoft Entra ID to facilitate integration with Trend Vision One.
+
+The following table describes the actions available in the **Microsoft Entra ID** screen.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Grant permissions</p></td>
+<td><p>Connect Trend Vision One to your Microsoft Entra ID and grant permission to allow associated apps to access your Microsoft Entra ID data in one or multiple tenants.</p>
+<p>For more information, see <a href="trend-vision-one-configuring-integration">Configure Microsoft Entra ID integration</a>.</p>
+
+
+:::note
+
+<p><strong>Mobile Security</strong> can access your Microsoft Entra ID data in one tenant only.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>View permission details</p></td>
+<td><p>Click <strong>Details</strong> in the <strong>Permissions</strong> column of each permission set to view specific permissions required.</p>
+<p>For more information about how Microsoft Entra ID data is used in associated apps, see <a href="trend-vision-one-data-usage-associated-apps">Microsoft Entra ID data usage in associated apps</a>.</p></td>
+</tr>
+<tr>
+<td><p>View permission granting status</p></td>
+<td><p>Check whether permissions are granted successfully or any warning or error has occurred in the <strong>Status</strong> column of each permission set.</p>
+<p>Permission granting statuses include:</p>
+<ul>
+<li><p><img src="./images/FullPermissionsIcon=GUID-20220831165959.webp" />: All permissions in the permission set are granted.</p></li>
+<li><p><img src="./images/PartialPermissionsIcon=GUID-20220831170000.webp" />: All permissions in the permission set are granted, but certain associated app requires additional settings in Microsoft Entra ID to access more user data for greater insights or take specific policy enforcement actions.</p></li>
+<li><p><img src="./images/warning=44ee8f55-ca2d-46c7-88cb-b6e4a4a47f6d.webp" />: All permissions in the permission set are granted, but Microsoft Entra ID requires new or additional permissions for complete functionality of the associated app.</p></li>
+<li><p><img src="./images/error=5cc21722-7ceb-480c-b9c2-a47d420cf1cc.webp" />: An error occurred during or after permission granting.</p></li>
+</ul>
+<p>To view permission error or warning details and available actions, click the status icon or <strong>Details</strong> next to each status.</p>
+<p>For more information about permission errors, see <a href="trend-vision-one-troubleshooting-connections">Troubleshoot Microsoft Entra ID connections</a>.</p></td>
+</tr>
+<tr>
+<td><p>Block permissions or reset</p></td>
+<td><ul>
+<li><p>If you no longer want to integrate Microsoft Entra ID with a previously associated app or group of apps, click <strong>Block permissions</strong>.</p>
+<p>Blocking permissions disconnects Microsoft Entra ID from the app but does not delete or revoke the permissions in Microsoft Entra ID. For more information, see <a href="trend-vision-one-blocking-permissions">Block Microsoft Entra ID permissions</a>.</p></li>
+<li><p>If an error occurs during permission granting and you want to reset the process by clearing the error data, click <strong>Reset</strong>.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Synchronize Microsoft Entra ID data</p></td>
+<td><p>The <strong>Third-Party Integration</strong> app regularly synchronizes permission-related data in all tenants from your Microsoft Entra ID.</p>
+<p>To manually synchronize data in a tenant whenever you need to, click the sync icon (<img src="./images/Sync_icon=bc994a2c-3a6c-419b-a584-a12efb14eacc.webp" />) for the corresponding tenant. The synchronization updates data for all associated apps with permissions granted.</p>
+
+
+:::note
+
+<p>Manual synchronization is not applicable to <strong>Email Asset Inventory</strong> and <strong>Cyber Risk Exposure Management</strong>.</p>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Overview of access permissions to Microsoft Entra ID data](access-permissions-data.md "View a list of permissions that must be enabled within Microsoft Entra ID to facilitate integration with Trend Vision One.")
+- [Microsoft Entra ID data usage in associated apps](data-usage-associated-apps.md "Understand how Microsoft Entra ID data is used in associated apps after you grant access permissions.")
+- [Configure Microsoft Entra ID integration](configuring-integration.md "Grant Trend Micro permission to access your Microsoft Entra ID data in one or multiple tenants for use in Trend Vision One apps.")
+- [Migrate from Azure AD Graph APIs to Microsoft Graph APIs](updating-permissions.md "Migrate from Azure AD Graph APIs to Microsoft Graph APIs by updating permissions granted to an app or group of apps.")
+- [Block Microsoft Entra ID permissions](blocking-permissions.md "Disconnect Microsoft Entra ID from Trend Vision One apps by blocking permissions granted to an app or group of apps.")
+- [Assign the Password Administrator role](assigning-password-admin-role.md "Assign the Password Administrator role on the Microsoft Azure portal to Trend Vision One.")
+- [Assign the Global Reader role](assign-global-reader-role.md "Assign the Global Reader role on the Microsoft Azure portal to Trend Vision One.")
+- [Troubleshoot Microsoft Entra ID connections](troubleshooting-connections.md "Resolve Microsoft Entra ID connection problems related to error messages displayed in the Microsoft Entra ID screen.")
+:::

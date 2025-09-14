@@ -1,0 +1,38 @@
+---
+slug: trend-vision-one-config-imdsv2-launchtemplate
+title: Configure IMDSv2 from LaunchTemplate
+---
+# Configure IMDSv2 from LaunchTemplate
+
+### Procedure {#procedure}
+
+1.  Log into your AWS console.
+
+2.  Go to **AWS Marketplace → Manage subscriptions → Trend Vision One - Zero Trust Secure Access**.
+
+3.  Under **Actions**, select **Launch CloudFormation Stack**.
+
+4.  Select:
+
+    1.  **Fulfillment option**: Private Access connectors with high availability
+
+    2.  **Software version**: the latest Zero Trust Secure Access - Private Access version
+
+    3.  **Region**: the appropriate region
+
+5.  Click **Continue to Launch**.
+
+6.  Click **Launch** to begin creating the CloudFormation Stack.
+
+7.  Modify the template:
+
+    1.  Open the **Infrastructure Composer**.
+
+    2.  Open the **LaunchTemplate** component to display its Details.` `Under **Resource Configuration**, scroll to **MetadataOptions**.
+
+    3.  Change HttpTokens to “required" and click **Save**.
+
+8.  Click **Create template**.
+
+9.  Continue following the [instructions](private-access-aws-marketplace.mdx) for deploying the CloudFormation stack as per AWS CloudFormation stack instructions. The registration token used can be obtained in Trend Vision One under the Amazon Web Services Platform.
+:::

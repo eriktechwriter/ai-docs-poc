@@ -1,0 +1,33 @@
+---
+slug: trend-vision-one-1-2-12
+title: >-
+  1.2.12 - Ensure that the admission control plugin ServiceAccount is set
+  (Automated)
+---
+# 1.2.12 - Ensure that the admission control plugin ServiceAccount is set (Automated)
+
+Profile applicability: Level 2 - Master Node
+
+Automate service accounts management.
+
+When you create a pod, if you do not specify a service account, it is automatically assigned the `default` service account in the same namespace. You should create your own service account and let the API server manage its security tokens.
+
+:::note
+
+By default, `ServiceAccount` is set.
+:::
+
+### Audit {#audit}
+
+Run the following command on the Control Plane node:
+
+```bash
+ps -ef | grep kube-apiserver
+```
+
+Verify that the `--disable-admission-plugins` argument is set to a value that does not includes `ServiceAccount`.
+
+### Remediation {#remediation}
+
+Follow the documentation and create `ServiceAccount` objects as per your environment. Then, edit the API server pod specification file` /etc/kubernetes/manifests/kube-apiserver.yaml` on the master node and ensure that the `--disable-admission-plugins` parameter is set to a value that does not include `ServiceAccount`.
+::::

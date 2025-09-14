@@ -1,0 +1,880 @@
+---
+slug: trend-vision-one-secure-access-activity-data
+title: Secure access activity data sources
+---
+# Secure access activity data sources
+
+**Secure Access Activity Data**
+
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Field Name</p></th>
+<th>Type</th>
+<th><p>General Field</p></th>
+<th><p>Description</p></th>
+<th><p>Example</p></th>
+<th><p>Products</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="vertical-align: top"><p>act</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The action</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>Allow</code></p></li>
+<li><p><code>Block</code></p></li>
+</ul></td>
+<td style="vertical-align: top"><ul>
+<li>Palo Alto Networks Next-Generation Firewalls</li>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Trend Vision One Zero Trust Secure Access Private Access</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>application</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The name of the requested application</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>Facebook</code></p></li>
+<li><p><code>wiki</code></p></li>
+</ul></td>
+<td style="vertical-align: top"><ul>
+<li>Palo Alto Networks Next-Generation Firewalls</li>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Trend Vision OneZero Trust Secure Access Private Access</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>authType</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The authentication method</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>ordereddict([('Agent JWT', 'Authenticated by Secure Access Module with JWT token')])</code></p></li>
+<li><p><code>ordereddict([('Cookie JWT', 'Authenticated by browser cookie with JWT token')])</code></p></li>
+<li><p><code>ordereddict([('IP', 'Authentication bypassed by private IP.')])</code></p></li>
+<li><p><code>ordereddict([('No Auth', 'No authentication.')])</code></p></li>
+</ul></td>
+<td style="vertical-align: top"><p>Trend Vision One Zero Trust Secure Access Internet Access</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>clientIp</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><ul>
+<li><p>IPv4</p></li>
+<li><p>IPv6</p></li>
+</ul></td>
+<td style="vertical-align: top"><p>The endpoint internet protocol (IP)</p></td>
+<td style="vertical-align: top"><p><code>10.64.23.45</code></p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Deep Discovery Inspector</p></li>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Trend Vision OneZero Trust Secure Access Private Access</p></li>
+<li>Virtual Network Sensor</li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>clientProtocol</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The client protocol</p></td>
+<td style="vertical-align: top"><p><code>HTTP/1.1</code></p></td>
+<td style="vertical-align: top"><p>Trend Vision One Zero Trust Secure Access Internet Access</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>clientTls</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The transport layer security (TLS) of the client</p></td>
+<td style="vertical-align: top"><p><code>TLS 1.2</code></p></td>
+<td style="vertical-align: top"><p>Trend Vision One Zero Trust Secure Access Internet Access</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>cloudAppCat</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The category of the event in Cloud Reputation Service</p></td>
+<td style="vertical-align: top"><ul>
+<li><code>All</code></li>
+<li><code>Application Suite</code></li>
+<li><code>Business Intelligence and Analytics</code></li>
+<li><code>Cloud Computing Platform</code></li>
+<li><code>Online Service</code></li>
+</ul></td>
+<td style="vertical-align: top"><p>Trend Vision One Zero Trust Secure Access Internet Access</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>companyName</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The company name</p></td>
+<td style="vertical-align: top"><p><code>Trend Micro</code></p></td>
+<td style="vertical-align: top"><p>Trend Vision OneZero Trust Secure Access Private Access</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>contentEncoding</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The content encoding of the request or the response</p></td>
+<td style="vertical-align: top"><p><code>gzip</code></p></td>
+<td style="vertical-align: top"><p>Trend Vision One Zero Trust Secure Access Internet Access</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>detectionType</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The traffic detection type</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>AI Service Access</code></p></li>
+<li><p><code>AI Service File Upload Detection</code></p></li>
+<li><p><code>AI Service Improper Answer</code></p></li>
+<li><p><code>AI Service Malicious URL Answer</code></p></li>
+<li><p><code>AI Service Prompt Injection</code></p></li>
+<li><p><code>AI Service Rate Limiting</code></p></li>
+<li><p><code>AI Service Risk Control</code></p></li>
+<li><p><code>AI Service Sensitive Data Prevention</code></p></li>
+<li><p><code>Anti-malware scan</code></p></li>
+<li><p><code>Application Control</code></p></li>
+<li><p><code>Approved URLs</code></p></li>
+<li><p><code>Blocked URLs</code></p></li>
+<li><p><code>Botnet</code></p></li>
+<li><p><code>Data Loss Prevention</code></p></li>
+<li><p><code>File scan exception</code></p></li>
+<li><p><code>HTTPS bypass at inspection failure</code></p></li>
+<li><p><code>HTTPS inspection exception</code></p></li>
+<li><p><code>HTTPS inspection failure</code></p></li>
+<li><p><code>Missing or invalid client certificate</code></p></li>
+<li><p><code>No matched Zero Trust Secure Access rule</code></p></li>
+<li><p><code>Non-compliant device</code></p></li>
+<li><p><code>Predictive Machine Learning</code></p></li>
+<li><p><code>Private IP address access</code></p></li>
+<li><p><code>Ransomware</code></p></li>
+<li><p><code>Restricted MIME type</code></p></li>
+<li><p><code>Restricted file extension type</code></p></li>
+<li><p><code>Restricted file type</code></p></li>
+<li><p><code>Risk Control</code></p></li>
+<li><p><code>Suspicious Object Blocked List</code></p></li>
+<li><p><code>Tenancy Restriction</code></p></li>
+<li><p><code>URL Filtering</code></p></li>
+<li><p><code>Untrusted server certificate</code></p></li>
+<li><p><code>Virtual Analyzer submission</code></p></li>
+<li><p><code>Web Reputation</code></p></li>
+<li><p><code>Zero Trust Secure Access</code></p></li>
+</ul></td>
+<td style="vertical-align: top"><ul>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Trend Vision OneZero Trust Secure Access Private Access</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>deviceGUID</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The globally unique identifier (GUID) of a non-endpoint object such as a network appliance</p></td>
+<td style="vertical-align: top"><p><code>11111111-1111-1111-1111-111111111111</code></p></td>
+<td style="vertical-align: top"><ul>
+<li>Deep Discovery Inspector</li>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Virtual Network Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>dpt</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>Port</p></td>
+<td style="vertical-align: top"><p>The service destination port of the private application server (dstport)</p></td>
+<td style="vertical-align: top"><p><code>443</code></p></td>
+<td style="vertical-align: top"><ul>
+<li>Palo Alto Networks Next-Generation Firewalls</li>
+<li><p>Trend Vision OneZero Trust Secure Access Private Access</p></li>
+<li>XDR for Cloud - AWS VPC Flow Logs</li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>dst</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><ul>
+<li><p>IPv4</p></li>
+<li><p>IPv6</p></li>
+</ul></td>
+<td style="vertical-align: top"><p>The destination IP (dstaddr)</p></td>
+<td style="vertical-align: top"><p><code>10.10.10.10</code></p></td>
+<td style="vertical-align: top"><ul>
+<li>Palo Alto Networks Next-Generation Firewalls</li>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Trend Vision OneZero Trust Secure Access Private Access</p></li>
+<li>XDR for Cloud - AWS VPC Flow Logs</li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>dstLocation</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td style="vertical-align: top"><p>-</p></td>
+<td style="vertical-align: top"><p>The destination country</p></td>
+<td style="vertical-align: top"><p><code>JP</code></p></td>
+<td style="vertical-align: top"><ul>
+<li>Trend Vision One Zero Trust Secure Access Internet Access</li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>duration</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The time it took the scanner to complete the scan (in milliseconds)</p></td>
+<td style="vertical-align: top"><p><code>1599465660123</code></p></td>
+<td style="vertical-align: top"><p>Trend Vision One Zero Trust Secure Access Internet Access</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>e2eLatency</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The end-to-end traffic latency time (in milliseconds)</p></td>
+<td style="vertical-align: top"><p><code>10000</code></p></td>
+<td style="vertical-align: top"><p>Trend Vision One Zero Trust Secure Access Internet Access</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>endpointGuid</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>EndpointID</p></td>
+<td style="vertical-align: top"><p>The device GUID</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+<li><p><code>DSP84573ULLJHM5GK2R7</code></p></li>
+</ul></td>
+<td style="vertical-align: top"><ul>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Trend Vision OneZero Trust Secure Access Private Access</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>endpointHostName</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>EndpointName</p></td>
+<td style="vertical-align: top"><p>The hostname of the device on which the event was detected</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>jeremy-mbp</code></p></li>
+<li><p><code>my_machine</code></p></li>
+</ul></td>
+<td style="vertical-align: top"><ul>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Trend Vision OneZero Trust Secure Access Private Access</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>eventName</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The name of the log event</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>FIREWALL_ACTIVITY_LOG</code></p></li>
+<li><p><code>SWG_ACTIVITY_LOG</code></p></li>
+<li><p><code>VPC_ACTIVITY_LOG</code></p></li>
+</ul></td>
+<td style="vertical-align: top"><ul>
+<li><p>Deep Discovery Inspector</p></li>
+<li>Palo Alto Networks Next-Generation Firewalls</li>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Trend Vision OneZero Trust Secure Access Private Access</p></li>
+<li><p>XDR for Cloud - AWS VPC Flow Logs</p></li>
+<li><p>Virtual Network Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>eventSubName</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The Zero Trust Secure Access - Internet Access cloud app action or the Palo Alto Networks firewall log sub-type</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>OneDrive download file</code></p></li>
+<li><p><code>deny</code></p></li>
+<li><p><code>drop</code></p></li>
+<li><p><code>end</code></p></li>
+<li><p><code>start</code></p></li>
+</ul></td>
+<td style="vertical-align: top"><ul>
+<li><p>Palo Alto Networks Next-Generation Firewalls</p></li>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>eventTime</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top">The time the agent or product detected the event</td>
+<td style="vertical-align: top"><p>1657135700000</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Deep Discovery Inspector</p></li>
+<li>Palo Alto Networks Next-Generation Firewalls</li>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Trend Vision OneZero Trust Secure Access Private Access</p></li>
+<li><p>XDR for Cloud - AWS VPC Flow Logs</p></li>
+<li><p>Virtual Network Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>failedHTTPSInspection</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>Whether the hypertext transfer protocol secure (HTTPS) traffic inspection failed</p></td>
+<td style="vertical-align: top"><p><code>true</code></p></td>
+<td style="vertical-align: top"><p>Trend Vision One Zero Trust Secure Access Internet Access</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>fileHash</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>FileSHA1</p></td>
+<td style="vertical-align: top"><p>The secure hash algorithm 1 (SHA-1) of the file that violated the policy</p></td>
+<td style="vertical-align: top"><p>1e15bf99022a9164708cebb3eace8fd61ad45cba</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Deep Discovery Inspector</p></li>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Virtual Network Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>fileHashSha256</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>FileSHA2</p></td>
+<td style="vertical-align: top"><p>The SHA-256 of the file that violated the policy</p></td>
+<td style="vertical-align: top"><p>ba9edecdd09de1307714564c24409bd25508e22fe11c768053a08f173f263e93</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Deep Discovery Inspector</p></li>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Virtual Network Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>fileName</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><ul>
+<li><p>FileFullPath</p></li>
+<li><p>FileName</p></li>
+</ul></td>
+<td style="vertical-align: top"><p>The name of file that violated the policy</p></td>
+<td style="vertical-align: top"><p><code>word.doc</code></p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Deep Discovery Inspector</p></li>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Virtual Network Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>fileSize</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The size of file that violated the policy</p></td>
+<td style="vertical-align: top"><p>12134</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Deep Discovery Inspector</p></li>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Virtual Network Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>fileType</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The type of file that violated the policy</p></td>
+<td style="vertical-align: top"><p><code>Microsoft Word</code></p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Deep Discovery Inspector</p></li>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Virtual Network Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>filterRiskLevel</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The top level risk level of the event</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>info</code></p></li>
+<li><p><code>low</code></p></li>
+<li><p><code>medium</code></p></li>
+</ul></td>
+<td style="vertical-align: top"><p>Security Analytics Engine</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>groupId</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The group ID for the management scope filter</p></td>
+<td style="vertical-align: top"><p><code>11111111-1111-1111-1111-111111111111</code></p></td>
+<td style="vertical-align: top"><p>Security Analytics Engine</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>isPrivateApp</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>Whether the requested application is private</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>false</code></p></li>
+<li><p><code>true</code></p></li>
+</ul></td>
+<td style="vertical-align: top"><p>Trend Vision One Zero Trust Secure Access Internet Access</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>isRetroScan</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>Whether the event matches the Security Analytics Engine filter</p></td>
+<td style="vertical-align: top"><p><code>true</code></p></td>
+<td style="vertical-align: top"><p>Security Analytics Engine</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>logReceivedTime</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The time when the Extended Detection and Response (XDR) log was received</p></td>
+<td style="vertical-align: top"><p><code>1656324260000</code></p></td>
+<td style="vertical-align: top"><p>Security Analytics Engine</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>malName</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The name of the detected malware</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>Trend Vision One Zero Trust Secure Access Internet Access</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>mimeType</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The mime type or content type of the response body</p></td>
+<td style="vertical-align: top"><p><code>Text/HTML</code></p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Deep Discovery Inspector</p></li>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Virtual Network Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>objectId</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The universally unique identifier (UUID) of Trend Vision One Zero Trust Secure Access Private Access</p></td>
+<td style="vertical-align: top"><p><code>11111111-1111-1111-1111-111111111111</code></p></td>
+<td style="vertical-align: top"><p>Trend Vision OneZero Trust Secure Access Private Access</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>originEventSourceType</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The source type of the original event which matches the Security Analytics Engine filter</p></td>
+<td style="vertical-align: top"><p><code>EVENT_SOURCE_NETWORK_ACTIVITY</code></p></td>
+<td style="vertical-align: top"><p>Security Analytics Engine</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>originUUID</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The UUID of the original event which matches the Security Analytics Engine filter</p></td>
+<td style="vertical-align: top"><p><code>11111111-1111-1111-1111-111111111111</code></p></td>
+<td style="vertical-align: top"><p>Security Analytics Engine</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>osName</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The host operating system (OS) name</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>Windows 10</code></p></li>
+<li><p><code>macOS 12.1</code></p></li>
+</ul></td>
+<td style="vertical-align: top"><ul>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Trend Vision OneZero Trust Secure Access Private Access</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>pname</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The product name</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>Secure Web Gateway</code></p></li>
+<li><p><code>XDR for Cloud - AWS VPC Flow Logs</code></p></li>
+</ul></td>
+<td style="vertical-align: top"><ul>
+<li><p>Deep Discovery Inspector</p></li>
+<li><p>Palo Alto Networks Next-Generation Firewalls</p></li>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>XDR for Cloud - AWS VPC Flow Logs</p></li>
+<li><p>Virtual Network Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>policyTemplate</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The Data Loss Prevention template names</p></td>
+<td style="vertical-align: top"><p><code>Australia, New Zealand: Healthcare Template, Germany: Banking and Financial Information</code></p></td>
+<td style="vertical-align: top"><p>Trend Vision One Zero Trust Secure Access Internet Access</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>policyTreePath</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The policy tree path (endpoint only)</p></td>
+<td style="vertical-align: top"><p><code>policyname1/policyname2/policyname3</code></p></td>
+<td style="vertical-align: top"><p>Security Analytics Engine</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>policyUuid</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The policy UUID</p></td>
+<td style="vertical-align: top"><p><code>11111111-1111-1111-1111-111111111111</code></p></td>
+<td style="vertical-align: top"><ul>
+<li>Palo Alto Networks Next-Generation Firewalls</li>
+<li><p>Trend Vision OneZero Trust Secure Access Private Access</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>principalName</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>UserAccount</p></td>
+<td style="vertical-align: top"><p>The User Principal Name</p></td>
+<td style="vertical-align: top"><p><code>sample_email@trendmicro.com</code></p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Trend Vision OneZero Trust Secure Access Private Access</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>productCode</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The internal product code</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>sig</code></p></li>
+<li><p><code>szn</code></p></li>
+</ul></td>
+<td style="vertical-align: top"><ul>
+<li><p>Palo Alto Networks Next-Generation Firewalls</p></li>
+<li><p>Security Analytics Engine</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>profile</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The name of the triggered Threat Protection template or Data Loss Prevention profile</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>Trend Vision One Zero Trust Secure Access Internet Access</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>pver</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The product version</p></td>
+<td style="vertical-align: top"><p>1</p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Palo Alto Networks Next-Generation Firewalls</p></li>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>request</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>URL</p></td>
+<td style="vertical-align: top"><p>The destination uniform resource locator (URL) that the user is accessing</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>https://api/example/v1/testit</code></p></li>
+<li><p><code>https://google.com/</code></p></li>
+</ul></td>
+<td style="vertical-align: top"><ul>
+<li><p>Deep Discovery Inspector</p></li>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Trend Vision OneZero Trust Secure Access Private Access</p></li>
+<li><p>Virtual Network Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>requestBase</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><ul>
+<li><p>DomainName</p></li>
+<li><p>HostDomain</p></li>
+</ul></td>
+<td style="vertical-align: top"><p>The URL domain</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>gary.webserver64.com</code></p></li>
+<li><p><code>www.facebook.com</code></p></li>
+</ul></td>
+<td style="vertical-align: top"><ul>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Trend Vision OneZero Trust Secure Access Private Access</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>requestMethod</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The network protocol request method</p></td>
+<td style="vertical-align: top"><p><code>POST</code></p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Deep Discovery Inspector</p></li>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Virtual Network Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>requestMimeType</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The type of request content</p></td>
+<td style="vertical-align: top"><p><code>application/json; charset=utf-8</code></p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Deep Discovery Inspector</p></li>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Virtual Network Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>requestSize</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The request length</p></td>
+<td style="vertical-align: top"><p><code>1324</code></p></td>
+<td style="vertical-align: top"><p>Trend Vision One Zero Trust Secure Access Internet Access</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>responseSize</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The response length</p></td>
+<td style="vertical-align: top"><p><code>1324</code></p></td>
+<td style="vertical-align: top"><p>Trend Vision One Zero Trust Secure Access Internet Access</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>ruleName</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The name of the triggered cloud access rule</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>ETL_Access Rules_Web_Host</code></p></li>
+<li><p><code>block_wiki_for_guest</code></p></li>
+</ul></td>
+<td style="vertical-align: top"><ul>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Trend Vision OneZero Trust Secure Access Private Access</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>ruleUuid</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The risk assessment and control design that is defined by Zero Trust Secure Access risk control rules</p></td>
+<td style="vertical-align: top"><p><code>11111111-1111-1111-1111-111111111111</code></p></td>
+<td style="vertical-align: top"><p>Trend Vision OneZero Trust Secure Access Private Access</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>sender</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The Zero Trust Internet Access gateway location</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>ordereddict([('Anything else', 'The pre-defined location name of cloud gateway or on-premises gateway.')])</code></p></li>
+<li><p><code>ordereddict([('Public/Home network', 'The default cloud gateway.')])</code></p></li>
+</ul></td>
+<td style="vertical-align: top"><p>Trend Vision One Zero Trust Secure Access Internet Access</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>serverProtocol</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The version of the HTTP protocol between the Service Gateway and server or website</p></td>
+<td style="vertical-align: top"><p><code>HTTP/1.1</code></p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Trend Vision OneZero Trust Secure Access Private Access</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>serverRespTime</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The time the server took to respond to the request (in milliseconds)</p></td>
+<td style="vertical-align: top"><p><code>1599465660123</code></p></td>
+<td style="vertical-align: top"><p>Trend Vision One Zero Trust Secure Access Internet Access</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>serverTls</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The TLS version between the Service Gateway and server or website</p></td>
+<td style="vertical-align: top"><p><code>TLS 1.2</code></p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Trend Vision OneZero Trust Secure Access Private Access</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>sessionEnd</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The session end time (in seconds)</p></td>
+<td style="vertical-align: top"><p><code>1575462989</code></p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Deep Discovery Inspector</p></li>
+<li><p>Trend Vision OneZero Trust Secure Access Private Access</p></li>
+<li><p>Virtual Network Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>sessionStart</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>Session start time (in seconds)</p></td>
+<td style="vertical-align: top"><p><code>1575462989</code></p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Deep Discovery Inspector</p></li>
+<li><p>Palo Alto Networks Next-Generation Firewalls</p></li>
+<li><p>Trend Vision OneZero Trust Secure Access Private Access</p></li>
+<li><p>Virtual Network Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>spt</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>Port</p></td>
+<td style="vertical-align: top"><p>The virtual port assigned to the Secure Access Module (srcport)</p></td>
+<td style="vertical-align: top"><p><code>57763</code></p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Palo Alto Networks Next-Generation Firewalls</p></li>
+<li><p>Trend Vision OneZero Trust Secure Access Private Access</p></li>
+<li><p>XDR for Cloud - AWS VPC Flow Logs</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>src</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><ul>
+<li><p>IPv4</p></li>
+<li><p>IPv6</p></li>
+</ul></td>
+<td style="vertical-align: top"><p>Source IP (srcaddr)</p></td>
+<td style="vertical-align: top"><p><code>100.100.100.100</code></p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Palo Alto Networks Next-Generation Firewalls</p></li>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Trend Vision OneZero Trust Secure Access Private Access</p></li>
+<li><p>XDR for Cloud - AWS VPC Flow Logs</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>srcLocation</p></td>
+<td style="vertical-align: top"><ul>
+<li><code>string</code></li>
+</ul></td>
+<td style="vertical-align: top"><p>-</p></td>
+<td style="vertical-align: top"><p>The source country</p></td>
+<td style="vertical-align: top"><p><code>JP</code></p></td>
+<td style="vertical-align: top"><ul>
+<li>Trend Vision One Zero Trust Secure Access Internet Access</li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>suid</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>UserAccount</p></td>
+<td style="vertical-align: top"><p>The user name or IP address (IPv4)</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>18.162.103.100</code></p></li>
+<li><p><code>Sample User Name</code></p></li>
+</ul></td>
+<td style="vertical-align: top"><ul>
+<li><p>Deep Discovery Inspector</p></li>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Virtual Network Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>tags</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>Technique</p></td>
+<td style="vertical-align: top"><p>The detected technique ID based on the alert filter</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>MITREV9.T1057</code></p></li>
+<li><p><code>MITREV9.T1059.003</code></p></li>
+<li><p><code>XSAE.F2924</code></p></li>
+</ul></td>
+<td style="vertical-align: top"><p>Security Analytics Engine</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>tlsJA3Fingerprint</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>JA3 fingerprint</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><ul>
+<li>Deep Discovery Inspector</li>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Virtual Network Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>trafficType</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The Zero Trust Internet Access gateway service mode</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>ordereddict([('Forward (xx)', 'Cloud Gateway in xx PoP with forward proxy mode for port forwarding')])</code></p></li>
+<li><p><code>ordereddict([('Forward', 'Zero Trust Internet Access On-Premises Gateway with forward proxy mode and port forwarding configured')])</code></p></li>
+<li><p><code>ordereddict([('ICAP', 'Zero Trust Internet Access On-Premises Gateway with ICAP configured')])</code></p></li>
+<li><p><code>ordereddict([('Proxy (xx)', 'Cloud Gateway in xx PoP with forward proxy mode')])</code></p></li>
+<li><p><code>ordereddict([('Proxy', 'Zero Trust Internet Access On-Premises Gateway with forward proxy mode configured')])</code></p></li>
+<li><p><code>ordereddict([('Reverse', 'Zero Trust Internet Access On-Premises Gateway with reverse proxy mode configured')])</code></p></li>
+</ul></td>
+<td style="vertical-align: top"><p>Trend Vision One Zero Trust Secure Access Internet Access</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>userDepartment</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The user department request method</p></td>
+<td style="vertical-align: top"><p><code>Sales</code></p></td>
+<td style="vertical-align: top"><p>Trend Vision One Zero Trust Secure Access Internet Access</p></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>userDomain</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><ul>
+<li><p>AccountDomain</p></li>
+<li><p>DomainName</p></li>
+</ul></td>
+<td style="vertical-align: top"><p>The Microsoft Entra ID domain or the domain of the Trend Micro Anti-Spam administrator portal user name</p></td>
+<td style="vertical-align: top"><p><code>trendmicro.com</code></p></td>
+<td style="vertical-align: top"><ul>
+<li><p>Deep Discovery Inspector</p></li>
+<li><p>Trend Vision One Zero Trust Secure Access Internet Access</p></li>
+<li><p>Virtual Network Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>uuid</p></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"></td>
+<td style="vertical-align: top"><p>The unique key of the log</p></td>
+<td style="vertical-align: top"><p><code>11111111-1111-1111-1111-111111111111</code></p></td>
+<td style="vertical-align: top"><p>Security Analytics Engine</p></td>
+</tr>
+</tbody>
+</table>
+:::

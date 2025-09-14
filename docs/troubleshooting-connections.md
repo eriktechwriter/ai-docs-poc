@@ -1,0 +1,61 @@
+---
+slug: trend-vision-one-troubleshooting-connections
+title: Troubleshooting Microsoft Entra ID connections
+---
+
+Resolve Microsoft Entra ID connection problems related to error messages displayed in the **Microsoft Entra ID** screen.
+
+The following table lists error messages that display in the **Microsoft Entra ID** screen and outlines the steps required to resolve the errors.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Error Message</p></th>
+<th><p>Steps</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Authentication error</p></td>
+<td><ol>
+<li><p>Click the status icon or <strong>Details</strong> next to the status icon, and then click <strong>Grant Permissions</strong>.</p></li>
+<li><p>On the Microsoft authentication screen, sign in to Microsoft Entra ID with administrator credentials if prompted.</p></li>
+<li><p>Review the permissions required and click <strong>Accept</strong>.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Application disabled in Microsoft Entra ID</p></td>
+<td><ol>
+<li><p>Sign in to Microsoft Entra ID with administrator credentials.</p></li>
+<li><p>Locate the Trend Vision One application.</p></li>
+<li><p>Go to the <strong>Properties</strong> section and change <strong>Enabled for users to sign-in?</strong> to <strong>Yes</strong>.</p></li>
+<li><p>Go back to the <strong>Microsoft Entra ID</strong> screen in the Trend Vision One console.</p></li>
+<li><p>Locate the error, click the status icon or <strong>Details</strong> next to the status icon, and then click <strong>Grant Permissions</strong>.</p></li>
+<li><p>On the Microsoft authenticator screen that appears, sign in to Microsoft Entra ID with administrator credentials if prompted.</p></li>
+<li><p>Review the permissions required and click <strong>Accept</strong>.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Apps require certain permissions in Microsoft Entra ID to interact with the correct data</p></td>
+<td><ol>
+<li><p>Click the status icon or <strong>Details</strong> next to the status icon, and then click <strong>Grant Permissions</strong>.</p></li>
+<li><p>On the Microsoft authentication screen, sign in to Microsoft Entra ID with administrator credentials if prompted.</p></li>
+<li><p>Review the permissions required and click <strong>Accept</strong>.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Another Trend Micro Account has already been connected to Microsoft Entra ID</p></td>
+<td><ol>
+<li><p>Contact your support provider to resolve the conflict.</p></li>
+<li><p>Go back to the <strong>Microsoft Entra ID</strong> screen in the Trend Vision One console.</p></li>
+<li><p>Click the status icon or <strong>Details</strong> next to the status icon, and then click <strong>Grant Permissions</strong>.</p></li>
+<li><p>On the Microsoft authentication screen, sign in to Microsoft Entra ID with administrator credentials if prompted.</p></li>
+<li><p>Review the permissions required and click <strong>Accept</strong>.</p></li>
+</ol></td>
+</tr>
+</tbody>
+</table>

@@ -1,0 +1,61 @@
+---
+slug: trend-vision-one-testing-cloudtrail-integration
+title: Testing CloudTrail integration for XDR for Cloud
+---
+# Testing CloudTrail integration for XDR for Cloud
+
+Test XDR for Cloud - AWS CloudTrail integration in your AWS cloud environment.
+
+:::warning[Important]
+
+XDR for Cloud currently only supports AWS cloud accounts. Support for additional cloud providers is coming soon.
+
+Enabling XDR for Cloud - AWS CloudTrail requires allocating credits. For information about estimating credit usage with XDR for Cloud, see [Estimating and monitoring XDR for Cloud usage](xdr-for-cloud-usage.mdx).
+:::
+
+XDR for Cloud - AWS CloudTrail integration allows Trend Vision One to access and monitor your AWS CloudTrail logs and automate response actions to detected threats. The following steps provide a guide on how to test the feature within your environment.
+
+### Procedure {#procedure}
+
+1.  Sign in to the AWS account you want to use to test XDR for Cloud - AWS CloudTrail.
+
+2.  Configure your CloudTrail settings.
+
+    For full steps, see [CloudTrail configuration](cloudtrail-configuration.mdx).
+
+3.  Add your AWS account to Trend Vision One cloud accounts app.
+
+    Follow the steps in [Adding an AWS account using CloudFormation](adding-aws-account.mdx) and enable the following features and permissions:
+
+    - Core Features
+
+    - XDR for Cloud - AWS CloudTrail
+
+    - Cloud Response for AWS
+
+    :::note
+
+    If you want to test integration with Control Tower, see [Adding an AWS account with CloudTrail and Control Tower](add-cloudtrail-control-tower.mdx).
+    :::
+
+4.  After your account successfully connects, use **XDR Data Explorer** to verify data is being sent.
+
+5.  Use one of the following demo models to trigger a Workbench alert.
+
+    :::warning[Important]
+
+    Make sure to use an IAM user in AWS when using a demo model to enable testing the Revoke Access Permission response task.
+    :::
+
+    - [Demo: Model - AWS Bedrock Successful Guardrail Deletion Detected](cloudtrail-demo-models.mdx)
+
+    - [Demo: Model - AWS Bedrock Model Invocation Logs Successful Deletion Detected](cloudtrail-demo-models.mdx)
+
+    - [Demo: Model - AWS IAM Login MFA Deactivated for a User](cloudtrail-demo-models.mdx)
+
+    - [Demo: Model - AWS EC2 EBS Snapshot Shared Publicly or to an External Account](cloudtrail-demo-models.mdx)
+
+    - [Demo: Model - AWS IAM Administrator Access Policy Attached to a Role](cloudtrail-demo-models.mdx)
+
+6.  Test response capabilities with the Revoke Access Permission task.
+::::

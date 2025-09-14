@@ -1,0 +1,130 @@
+---
+slug: trend-vision-one-filepath-example-usage
+title: File Path Example Usage
+---
+# File Path Example Usage
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Goal</p></th>
+<th><p>Allow Rule</p></th>
+<th><p>Block Rule</p></th>
+<th><p>Results</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Monitor all users' <code>Downloads</code> folder</p></td>
+<td><p>-</p></td>
+<td><ol>
+<li><p><strong>Enable assessment mode</strong></p></li>
+<li><p><strong>Any local storage</strong></p></li>
+<li><p><strong>String</strong></p></li>
+<li><p><code>C:\Users\*\Downloads\*</code></p></li>
+</ol></td>
+<td><p>Logs all attempts to access applications in all users' <code>Downloads</code> folder.</p>
+<p>Monitors:</p>
+<ul>
+<li><p><code>C:\Users\john_doe\Downloads\start.exe</code></p></li>
+<li><p><code>C:\Users\Administrator\Downloads\start.exe</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Block all applications located in any folder under the<code>MyApps</code> subfolder of either <code>Program Files</code> directory</p></td>
+<td><p>-</p></td>
+<td><ol>
+<li><p><strong>Program Files folders</strong></p></li>
+<li><p><strong>String</strong></p></li>
+<li><p><code>\MyApps*</code></p></li>
+</ol></td>
+<td><p>Blocks:</p>
+<ul>
+<li><p><code>C:\Program Files(x86)\MyApps\start.exe</code></p></li>
+<li><p><code>C:\Program Files\MyApps\start.exe</code></p></li>
+<li><p><code>C:\Program Files(x86)\MyApps\bin\start.exe</code></p></li>
+</ul>
+<p>Allows:</p>
+<ul>
+<li><p><code>C:\Program Files(x86)\start.exe</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Allow all applications located in any folder under the<code>MyApps</code> subfolder of either <code>Program Files</code> directory but Block all other applications/folders</p></td>
+<td><ol>
+<li><p><strong>Program Files folders</strong></p></li>
+<li><p><strong>String</strong></p></li>
+<li><p><code>\MyApps*</code></p></li>
+</ol></td>
+<td><ol>
+<li><p><strong>Any local storage</strong></p></li>
+<li><p><strong>String</strong></p></li>
+<li><p><code>C:\Program Files\*</code></p></li>
+</ol>
+<p>AND</p>
+<ol>
+<li><p><strong>Any local storage</strong></p></li>
+<li><p><strong>String</strong></p></li>
+<li><p><code>C:\Program Files (x86)\*</code></p></li>
+</ol></td>
+<td><p>Blocks:</p>
+<ul>
+<li><p><code>C:\Program Files(x86)\start.exe</code></p></li>
+</ul>
+<p>Allows:</p>
+<ul>
+<li><p><code>C:\Program Files(x86)\MyApps\start.exe</code></p></li>
+<li><p><code>C:\Program Files\MyApps\start.exe</code></p></li>
+<li><p><code>C:\Program Files(x86)\MyApps\bin\start.exe</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Block only applications located in the<code>MyApps</code> subfolder of either <code>Program Files</code> directory but Allow all other applications/folders</p></td>
+<td><ol>
+<li><p>Allow the subfolders of the <code>MyApps</code> directory</p>
+<ol>
+<li><p><strong>Program Files folders</strong></p></li>
+<li><p><strong>String</strong></p></li>
+<li><p><code>\MyApps\*\*</code></p></li>
+</ol></li>
+</ol></td>
+<td><ol>
+<li><p><strong>Program Files folders</strong></p></li>
+<li><p><strong>String</strong></p></li>
+<li><p><code>\MyApps\*</code></p></li>
+</ol></td>
+<td><p>Blocks:</p>
+<ul>
+<li><p><code>C:\Program Files(x86)\MyApps\start.exe</code></p></li>
+<li><p><code>C:\Program Files\MyApps\start.exe</code></p></li>
+</ul>
+<p>Allows:</p>
+<ul>
+<li><p><code>C:\Program Files(x86)\start.exe</code></p></li>
+<li><p><code>C:\Program Files(x86)\MyApps\bin\start.exe</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Block a specific application file name in any folder</p></td>
+<td><p>-</p></td>
+<td><ol>
+<li><strong>Specific path</strong></li>
+<li><strong>Regular expression (PCRE)</strong></li>
+<li><p><code>.*\\(?i)test(?-i)\..*</code></p></li>
+</ol></td>
+<td><p>Blocks:</p>
+<ul>
+<li><p><code>C:\MyApps\test.exe</code></p></li>
+<li><p><code>C:\Users\guet\AppData\Local\Temp\test.exe</code></p></li>
+<li><p><code>C:\Program Files(x86)\MyApps\test.exe</code></p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+:::

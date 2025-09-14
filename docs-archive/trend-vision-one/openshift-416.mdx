@@ -1,0 +1,33 @@
+---
+slug: trend-vision-one-openshift-416
+title: >-
+  4.1.6 - Ensure that the –kubeconfig kubelet.conf file ownership is set to
+  root:root (Automated)
+---
+# 4.1.6 - Ensure that the –kubeconfig kubelet.conf file ownership is set to root:root (Automated)
+
+Profile applicability: Level 1
+
+Ensure that the `kubelet.conf` file ownership is set to `root:root`.
+
+The `kubelet.conf` file is the Kubernetes configuration file for the node, and controls various parameters that set the behavior and identity of the worker node. You should set its file ownership to maintain the integrity of the file. The file should be owned by `root:root`.
+
+:::note
+
+By default, `kubelet.conf` file ownership is set to `root:root`.
+:::
+
+### Audit {#audit}
+
+Run the following command to view the user and group ownership of the `kubelet.conf` file:
+
+```bash
+for node in $(oc get nodes -o jsonpath='{.items[*].metadata.name}')
+do
+         oc debug node/${node} -- chroot /host stat -c %U:%G
+/etc/kubernetes/kubelet.conf
+done
+```
+
+Verify that the ownership is set to `root:root`.
+::::

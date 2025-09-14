@@ -1,0 +1,133 @@
+---
+slug: trend-vision-one-secure-access-module
+title: Secure Access Module
+---
+# Secure Access Module
+
+Deploy the Secure Access Module to supported endpoints or mobile devices and manage the deployment status in the Trend Vision One console.
+
+Before deploying the Secure Access Module, install the endpoint agent on target endpoints or the Mobile Agent on target mobile devices. The Secure Access Module functions as a separate app on endpoints and a feature of the Mobile Agent on mobile devices.
+
+The Secure Access Module authenticates users when they sign in and then controls their access to internal apps and the internet based on configured secure access rules. By default, the Secure Access Module authenticates users to both Internet Access and Private Access simultaneously when both solutions are available.
+
+:::warning[Important]
+
+Make sure you have configured SAML single sign-on under **Administration → Identity Providers**. Trend Vision One works with your SAML-based IAM vendor to authenticate your company's users when they use the Secure Access Module.
+:::
+
+The following table outlines the options available on the **Secure Access Module** screen.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Tab</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Endpoints</p></td>
+<td><p>Displays a list of endpoints in your environment that have the endpoint agent installed.</p>
+<ul>
+<li><p>View endpoint details, including service configuration, connection status, and device posture information if available.</p></li>
+<li><p>Select endpoints for <a href="trend-vision-one-secure-access-module-deployment">deployment</a> or removal of the Secure Access Module.</p></li>
+<li><p>Select endpoints with the Secure Access Module deployed to <a href="trend-vision-one-pac-file-replacement">replace the proxy auto-configuration (PAC) file</a> in use.</p></li>
+<li><p>To install the endpoint agent on endpoints, click <strong>Download the Agent Installer</strong> and download the agent installation package based on the endpoint operating system.</p></li>
+<li><p>To manage Secure Access Module updates, click <a href="trend-vision-one-deploy-sam-endpoint-agents">Module Version Management</a> where you may perform the following actions:</p>
+<ul>
+<li><p>Choose which Secure Access Module version to update or deploy to endpoints. Available versions are limited to the previous three versions, and newer versions that have already been deployed cannot be downgraded. The latest version is selected by default.</p></li>
+<li><p>Select a group of test endpoints to always update to the latest Secure Access Module version in order to ensure compatibility and functionality before wider deployment.</p></li>
+<li><p>Specify a time period to pause automatic module updates in order to avoid service disruption. The maximum allowed time period is 18 hours.</p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Mobile Devices</p></td>
+<td><p>Displays a list of mobile device groups in your environment that have the Mobile Security for Business deployed.</p>
+<ul>
+<li><p>Select mobile device groups to enable or disable Secure Access. For more information, see <a href="trend-vision-one-deploying-sam-mobile-devices">Enabling Zero Trust Secure Access on mobile devices</a>.</p></li>
+<li><p>To install the Mobile Agent on mobile devices, click <strong>Deploy Mobile Agent</strong> to go to <a href="trend-vision-one-mobile-inventory">Mobile Inventory</a> and complete the Mobile Security for Business deployment process.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Action Required</p></td>
+<td><p>Displays a list of endpoints that have encountered issues while attempting to deploy, update, or remove the Secure Access Module.</p>
+
+
+:::tip
+
+<p>You may be able to resolve some issues by attempting to deploy or remove the module again, or by updating the endpoints to later operating system versions. For other issues, contact your support provider.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Global Settings</p></td>
+<td><ul>
+<li><p>Require an additional authentication for users to connect to Private Access while both Private Access and Internet Access solutions are enabled. Only supported for Secure Access Module versions later than 2.8.1369 (Windows) or 2.8.615 (macOS).</p>
+
+
+:::tip
+
+<p>By default, users connect to both Internet Access and Private Access when signing in to the Secure Access Module. Requiring an additional authentication to Private Access ensures that Private Access is available only on demand.</p>
+
+
+:::
+
+</li>
+<li><p>Configure the authentication method for the Secure Access Module.</p>
+
+
+:::warning[Important]
+
+<p>Browser-based authentication only supports Microsoft Entra ID, Okta, and Duo for SAML single sign-on (SSO) authentication. Using an unsupported identity provider automatically switches the authentication method to module-based authentication.</p>
+
+
+:::
+
+</li>
+<li><p>Select how the Secure Access Module sends traffic from user devices for Internet Access.</p>
+<ul>
+<li><p>Windows service modes include:</p>
+<ul>
+<li><p><strong>Adaptive mode (Default)</strong>: Allows the Secure Access Module to switch between supported modes based on network conditions</p></li>
+<li><p><strong>Localhost proxy</strong>: Forces all Internet Access traffic to go to the local host</p></li>
+<li><p><strong>TUN (Wintun)</strong>: Allows for greater traffic throughput than the TUN (TAP-Windows) service mode.</p></li>
+<li><p><strong>TUN (TAP-Windows)</strong>: Provides a functional Internet Access service mode for devices that have compatibility issues with both the Wintun virtual adapter and the localhost proxy</p></li>
+</ul></li>
+<li><p>macOS service modes include:</p>
+<ul>
+<li><p><strong>Tunnel (VPN)</strong>: Sends traffic through the VPN configured on the device</p>
+
+
+:::note
+
+<p>The Tunnel (VPN) mode for macOS requires users to allow VPN configurations on their devices.</p>
+
+
+:::
+
+</li>
+</ul></li>
+</ul></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Secure Access Module system requirements](sam-sys-requirements.md "Find the minimum system requirements for the Secure Access Module deployment.")
+- [Secure Access Module deployment](secure-access-module-deploy-ztsa.mdx)
+- [PAC File replacement](pac-file-replacement.mdx)
+- [Enabling Zero Trust Secure Access on mobile devices](deploying-sam-mobile-devices.md "Use Zero Trust Secure Access features to control web and private resource access on compatible managed mobile devices.")
+- [Configure settings for restricted environment](config-settings-restricted-environ.mdx)
+- [Configure the agent update rate](config-upgrade-rate.mdx)
+- [Collecting debug logs from endpoints](collecting-debug-logs-endpoints.md "Collect debug logs to troubleshoot endpoints with your support provider.")
+::::

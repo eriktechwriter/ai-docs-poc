@@ -1,0 +1,24 @@
+---
+slug: trend-vision-one-ibm-soar-integration
+title: IBM SOAR integration
+---
+
+Set up the IBM SOAR integration to enable IBM to retrieve events and automate actions in Trend Vision One.
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, generate the API authentication token.
+
+    1.  Go to **Workflow and Automation → Third-Party Integration**.
+
+    2.  Click **IBM SOAR**.
+
+    3.  Click **Generate** to create a new API authentication token.
+
+2.  Find and download the Trend Micro app from [IBM X-Force Exchange / App Exchange](https://exchange.xforce.ibmcloud.com/hub/extension/8647830dff20e9e10522d60a6b0557c7).
+
+3.  Deploy the app to the IBM Security QRadar SOAR Platform using an App Host or an integration server.
+
+    For more information, see [IBM documentation](https://exchange.xforce.ibmcloud.com/hub/extension/8647830dff20e9e10522d60a6b0557c7).
+
+    IBM SOAR begins collecting event data from Trend Vision One. IBM SOAR can only collect data generated after connecting to Trend Vision One. You might need to allow some time before new data starts to appear.

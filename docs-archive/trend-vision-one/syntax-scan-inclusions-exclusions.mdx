@@ -1,0 +1,334 @@
+---
+slug: trend-vision-one-syntax-scan-inclusions-exclusions
+title: Syntax for malware scan inclusions and exclusions
+---
+# Syntax for malware scan inclusions and exclusions
+
+**Related information**
+
+- Syntax for directory lists
+- Syntax of file lists
+- Syntax of file extension lists
+- Syntax of process image file lists
+
+## Syntax for directory lists {#syntax-for-directory-lists}
+
+:::note
+
+Directory list items accept either forward slash "/" or backslash "\\ to support both Windows and Linux conventions.
+:::
+
+<table>
+<thead>
+<tr>
+<th><p>Exclusion</p></th>
+<th><p>Format</p></th>
+<th><p>Description</p></th>
+<th><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Directory</p></td>
+<td><p>DIRECTORY\</p></td>
+<td><p>Excludes all files in the specified directory and all files in all subdirectories.</p></td>
+<td><p><code>C:\Program Files\</code> Excludes all files in the "Program Files" directory and all subdirectories.</p></td>
+</tr>
+<tr>
+<td><p>Directory with wildcard (*)</p></td>
+<td><p>DIRECTORY\*\</p></td>
+<td><p>Excludes all subdirectories except for the specified subdirectory and the files that it contains.</p></td>
+<td><p><code>C:\abc\*\</code>: Excludes all files in all subdirectories of <code>abc</code>, but does not exclude the files in the <code>abc</code> directory.</p>
+<p><code>C:\abc\wx*z\</code></p>
+<ul>
+<li><p>Matches <code>C:\abc\wxz\</code>, <code>C:\abc\wx123z\</code></p></li>
+<li><p>Does not match <code>C:\abc\wxz</code>, <code>C:\abc\wx123z</code></p></li>
+</ul>
+<p><em>C:\abc\*wx\</em></p>
+<ul>
+<li><p>Matches <code>C:\abc\wx\</code>, <code>C:\abc\123wx\</code></p></li>
+<li><p>Does not match <code>C:\abc\wx</code>, <code>C:\abc\123wx</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Directory with wildcard (*)</p></td>
+<td><p>DIRECTORY*\</p></td>
+<td><p>Excludes any subdirectories with a matching name, but does not exclude the files in that directory and any subdirectories.</p></td>
+<td><p><code>C:\Program Files\SubDirName*\</code>: Excludes any subdirectories with a folder name that begins with “SubDirName”. Does not exclude all files under C:\Program Files\ or any other subdirectories.</p></td>
+</tr>
+<tr>
+<td><p>Environment variable</p></td>
+<td><p>${ENV VAR}</p></td>
+<td><p>Excludes all files and subdirectories defined by an environment variable. For a Virtual Appliance, the value pairs for the environment variable must be defined in <em>Policy or Computer Editor &gt; Settings &gt; General &gt; Environment Variable Overrides.</em></p></td>
+<td><p><code>${windir}</code>: If the variable resolves to <code>C:\Windows</code>, excludes all the files in <code>C:\Windows</code> and all its subdirectories.</p></td>
+</tr>
+<tr>
+<td><p>Comments</p></td>
+<td><p>DIRECTORY #Comment</p></td>
+<td><p>Adds a comment to your exclusion definitions.</p></td>
+<td><p><code>c:\abc #Exclude the abc directory</code></p></td>
+</tr>
+</tbody>
+</table>
+
+## Syntax of file lists {#syntax-of-file-lists}
+
+<table>
+<thead>
+<tr>
+<th><p>Exclusion</p></th>
+<th><p>Format</p></th>
+<th><p>Description</p></th>
+<th><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>File</p></td>
+<td><p>FILE</p></td>
+<td><p>Excludes all files with the specified file name regardless of its location or directory.</p></td>
+<td><p><code>abc.doc</code>: Excludes all files named <code>abc.doc</code> in all directories. Does not exclude <code>abc.exe</code>.</p></td>
+</tr>
+<tr>
+<td><p>File path</p></td>
+<td><p>FILEPATH</p></td>
+<td><p>Excludes the single file specified by the file path.</p></td>
+<td><p><code>C:\Documents\abc.doc</code>: Excludes only the file named <code>abc.doc</code> in the <code>Documents</code> directory.</p></td>
+</tr>
+<tr>
+<td><p>File path with wildcard (*)</p></td>
+<td><p>FILEPATH</p></td>
+<td><p>Excludes all the files specified by the file path.</p></td>
+<td><p><code>C:\Documents\abc.co*</code> (For Windows Agent platforms only): Excludes any file that has file name of <code>abc</code> and extension beginning with <code>.co</code> in the <code>Documents</code> directory.</p></td>
+</tr>
+<tr>
+<td><p>Filename is a wildcard (*)</p></td>
+<td><p>FILEPATH\*</p></td>
+<td><p>Excludes all files under the path, but does not include the files in unspecified subdirectories</p></td>
+<td><ul>
+<li><p><code>C:\Documents\*</code>: Excludes all files under the directory <code>C:\Documents\</code></p></li>
+<li><p><code>C:\Documents\SubDirName*\*</code>: Excludes all files within subdirectories with a folder name that begins with <code>SubDirName</code>. Does not exclude all files under <code>C:\Documents\</code> or any other subdirectories.</p></li>
+<li><p><code>C:\Documents\*\*</code>: Excludes all files within all direct subdirectories under <code>C:\Documents</code>. Does not exclude files in subsequent subdirectories.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>File with wildcard (*)</p></td>
+<td><p>FILE*</p></td>
+<td><p>Excludes all files with a matching pattern in the file name.</p></td>
+<td><ul>
+<li><p><code>abc*.exe</code>: Excludes any file that has prefix of <code>abc</code> and extension of <code>.exe</code></p></li>
+<li><p><code>*.db</code>: Matches:</p>
+<ul>
+<li><p><code>123.db</code></p></li>
+<li><p><code>abc.db</code></p></li>
+</ul>
+<p>Does not match:</p>
+<ul>
+<li><p><code>123db</code></p></li>
+<li><p><code>123.abd</code></p></li>
+<li><p><code>cbc.dba</code></p></li>
+</ul></li>
+<li><p><code>*db</code>: Matches:</p>
+<ul>
+<li><p><code>123.db</code></p></li>
+<li><p><code>123db</code></p></li>
+<li><p><code>ac.db</code></p></li>
+<li><p><code>acdb</code></p></li>
+<li><p><code>db</code></p></li>
+</ul>
+<p>Does not match <code>db123</code></p></li>
+<li><p><code>wxy*.db</code>: Matches:</p>
+<ul>
+<li><p><code>wxy.db</code></p></li>
+<li><p><code>wxy123.db</code></p></li>
+</ul>
+<p>Does not match <code>wxydb</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>File with wildcard (*)</p></td>
+<td><p>FILE.EXT*</p></td>
+<td><p>Excludes all files with a matching pattern in the file extension.</p></td>
+<td><ul>
+<li><p><em>abc.v*</em>: Excludes any file that has file name of <code>abc</code> and extension beginning with <code>.v</code></p></li>
+<li><p><code>abc.*pp</code>: Matches <code>abc.pp</code>, <code>abc.app</code>. Does not match <code>wxy.app</code></p></li>
+<li><p><code>abc.a*p</code>: Matches <code>abc.ap</code>, <code>abc.a123p</code>. Does not match <code>abc.pp</code></p></li>
+<li><p><code>abc.*</code>: Matches <code>abc.123</code>, <code>abc.xyz</code>. Does not match <code>wxy.123</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>File with wildcard (*)</p></td>
+<td><p>FILE*.EXT*</p></td>
+<td><p>Excludes all files with a matching pattern in the file name and in the extension.</p></td>
+<td><p><code>a*c.a*p</code>: Matches:</p>
+<ul>
+<li><p><code>ac.ap</code></p></li>
+<li><p><code>a123c.ap</code></p></li>
+<li><p><code>ac.a456p</code></p></li>
+<li><p><code>a123c.a456p</code></p></li>
+</ul>
+<p>Does not match <code>ad.aa</code></p></td>
+</tr>
+<tr>
+<td><p>Environment variable</p></td>
+<td><p>${ENV VAR}</p></td>
+<td><p>Excludes files specified by an environment variable with the format ${ENV VAR}. These can be defined or overridden using <strong>Policy or Computer Editor → Settings → General → Environment Variable Overrides</strong></p></td>
+<td><p><code>${myDBFile}</code>: Excludes the file <code>myDBFile</code>.</p></td>
+</tr>
+<tr>
+<td><p>Comments</p></td>
+<td><p>FILEPATH #Comment</p></td>
+<td><p>Adds a comment to your exclusion definitions.</p></td>
+<td><p><code>C:\Documents\abc.doc #This is a comment</code></p></td>
+</tr>
+</tbody>
+</table>
+
+## Syntax of file extension lists {#syntax-of-file-extension-lists}
+
+<table>
+<thead>
+<tr>
+<th><p>Exclusion</p></th>
+<th><p>Format</p></th>
+<th><p>Description</p></th>
+<th><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>File Extension</p></td>
+<td><p>EXT</p></td>
+<td><p>Matches all files with a matching file extension.</p></td>
+<td><p><code>doc</code>: Matches all files with a <code>.doc</code> extension in all directories.</p></td>
+</tr>
+<tr>
+<td><p>Comments</p></td>
+<td><p>EXT #Comment</p></td>
+<td><p>Adds a comment to your exclusion definitions.</p></td>
+<td><p><code>doc #This a comment</code></p></td>
+</tr>
+</tbody>
+</table>
+
+## Syntax of process image file lists {#syntax-of-process-image-file-lists}
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Exclusion</p></th>
+<th><p>Format</p></th>
+<th><p>Description</p></th>
+<th><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="vertical-align: top"><p>File path</p></td>
+<td style="vertical-align: top"><p><code>C:\DIR\FILE.EXT</code></p></td>
+<td style="vertical-align: top"><p>Excludes the process image file.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>C:\DIR\FILE.EXT</code></p>
+<p>Excludes only the file named <code>FILE.EXT</code> in the <code>DIR</code> directory.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Directories with wildcard (*)</p></td>
+<td style="vertical-align: top"><p><code>C:\DIR*\FILE.EXT</code></p></td>
+<td style="vertical-align: top"><p>The wildcard replaces the directory name.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>C:\DIR*\FILE.EXT</code></p>
+<p>Matches:</p>
+<ul>
+<li><p><code>C:\DIR\FILE.EXT</code></p></li>
+<li><p><code>C:\DIR1\FILE.EXT</code></p></li>
+<li><p><code>C:\DIR1\DIR2\FILE.EXT</code></p></li>
+</ul></li>
+<li><p><code>C:\DIR*\*\FILE.EXT</code></p>
+<p>Matches <code>C:\DIR1\DIR2\FILE.EXT</code></p>
+<p>Does not match:</p>
+<ul>
+<li><p><code>C:\DIR\FILE.EXT</code></p></li>
+<li><p><code>C:\DIR1\FILE.EXT</code></p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>File names with wildcard (*)</p></td>
+<td style="vertical-align: top"><p><code>C:\DIR\FILE*.EXT</code></p>
+<p><code>C:\DIR\FILE.EXT*</code></p>
+<p><code>C:\DIR\FILE*.EXT*</code></p></td>
+<td style="vertical-align: top"><p>The wildcard replaces the file names.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>C:\DIR\FILE*.EXT</code></p>
+<p>Matches:</p>
+<ul>
+<li><p><code>C:\DIR\FILE.EXT</code></p></li>
+<li><p><code>C:\DIR\FILE123.EXT</code></p></li>
+</ul>
+<p>Does not match:</p>
+<ul>
+<li><p><code>C:\DIR\FILE.EXT123</code></p></li>
+<li><p><code>C:\DIR\FILE123.EXT123</code></p></li>
+</ul></li>
+<li><p><code>C:\DIR\FILE.EXT*</code></p>
+<p>Matches:</p>
+<ul>
+<li><p><code>C:\DIR\FILE.EXT</code></p></li>
+<li><p><code>C:\DIR\FILE.EXT123</code></p></li>
+</ul>
+<p>Does not match:</p>
+<ul>
+<li><p><code>C:\DIR\FILE123.EXT</code></p></li>
+<li><p><code>C:\DIR\FILE123.EXT123</code></p></li>
+</ul></li>
+<li><p><code>C:\DIR\FILE*.EXT*</code></p>
+<p>Matches:</p>
+<ul>
+<li><p><code>C:\DIR\FILE.EXT</code></p></li>
+<li><p><code>C:\DIR\FILE123.EXT</code></p></li>
+<li><p><code>C:\DIR\FILE.EXT123</code></p></li>
+<li><p><code>C:\DIR\FILE123.EXT123</code></p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Drive name with wildcard (*)</p></td>
+<td style="vertical-align: top"><p><code>*:\DIR\FILE.EXT</code></p></td>
+<td style="vertical-align: top"><p>The wildcard replaces the drive name.</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>*:\DIR\FILE.EXT</code></p>
+<p>Matches <code>C:\DIR\FILE.EXT</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Special character with wildcard (*)</p></td>
+<td style="vertical-align: top"><p><code>C:\DIR\FILE*EXT</code></p>
+<p><code>C:\DIR\DIR2*FILE.EXT</code></p></td>
+<td style="vertical-align: top"><p>The wildcard replaces a special character like "<code>:</code>", "<code>\</code>", and "<code>.</code>".</p></td>
+<td style="vertical-align: top"><ul>
+<li><p><code>C:\DIR\FILE*EXT</code></p>
+<p>Matches <code>C:\DIR\FILE.EXT</code></p>
+<p>Does not match:</p>
+<ul>
+<li><p><code>C:\DIR\DIR2\FILE.EXT</code></p></li>
+<li><p><code>C:\DIR\DIR2\DIR3\FILE.EXT</code></p></li>
+</ul></li>
+<li><p><code>C:\DIR\DIR2*FILE.EXT</code></p>
+<p>Matches:</p>
+<ul>
+<li><p><code>C:\DIR\DIR2\FILE.EXT</code></p></li>
+<li><p><code>C:\DIR\DIR2\DIR3\FILE.EXT</code></p></li>
+</ul>
+<p>Does not match: <code>C:\DIR\FILE.EXT</code></p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+::::

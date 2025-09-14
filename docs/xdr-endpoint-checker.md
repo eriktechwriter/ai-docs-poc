@@ -1,0 +1,36 @@
+---
+slug: trend-vision-one-xdr-endpoint-checker
+title: XDR Endpoint Checker
+---
+
+Learn about the available methods to use the XDR Endpoint Checker tool.
+
+The following table outlines the available methods to use the XDR endpoint checker.
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Method</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><a href="trend-vision-one-use-xdr-checker-browser">Web browser</a></p></td>
+<td><p>Determine the causes of a Windows endpoint not connecting to Trend Vision One using the XDR endpoint checker.</p></td>
+</tr>
+<tr>
+<td><p><a href="trend-vision-one-use-xdr-checker-cli">Command line</a></p></td>
+<td><p>Use the XDR endpoint checker tool in endpoints that do not have a supported web browser.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Using XDR Endpoint Checker from a web browser](use-xdr-checker-browser.md "Determine why a Windows endpoint does not connect to Trend Vision One using the XDR endpoint checker tool.")
+- [Using XDR Endpoint Checker from the command line](use-xdr-checker-cli.md "Use the XDR endpoint checker tool in endpoints that do not have a supported web browser.")

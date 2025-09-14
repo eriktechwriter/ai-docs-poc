@@ -1,0 +1,74 @@
+---
+slug: trend-vision-one-uninstall-sep-agent
+title: Uninstall the Standard Endpoint Protection Agent
+---
+# Uninstall the Standard Endpoint Protection Agent
+
+Manually uninstall the agent from the endpoint or use the web console to automate the process.
+
+## Uninstall the Windows Agent Locally {#uninstall-the-windows-agent-locally}
+
+If prompted, type the uninstallation password. Apex One notifies the user of the uninstallation progress and completion.
+
+### Procedure {#procedure}
+
+- On the Windows **Start** menu, click **Programs → Trend Micro Apex One Security Agent** \> **Uninstall Security Agent**.
+
+- Uninstall using the Control Panel.
+
+  1.  Click **Control Panel → Uninstall a program**.
+
+  2.  Locate **Trend Micro Apex One Security Agent** and click **Uninstall**.
+
+  3.  Follow the on-screen instructions.
+
+  :::note
+
+  If you installed Data Protection on the agent, you must restart the endpoint to complete the uninstallation process.
+  :::
+
+## Uninstall the Windows Agent from the Endpoint Group Manager Console {#uninstall-the-windows-agent-from-the-endpoint-group-manager-console}
+
+### Procedure {#procedure-1}
+
+1.  Go to **Endpoint Security → Standard Endpoint Protection → Directories → Product Servers**.
+
+2.  Click the Windows Endpoint Group Manager the agents report to.
+
+3.  In the Agent Management list, click the root domain icon to include all agents or select specific domains or agents.
+
+4.  Click **Tasks → Agent Uninstallation**.
+
+5.  On the Agent Uninstallation screen, click **Initiate Uninstallation**.
+
+    The Security Agents receive the command after polling the server or during the next scheduled update.
+
+## Uninstall the macOS Agent from the Endpoint Group Manager Console {#uninstall-the-macos-agent-from-the-endpoint-group-manager-console}
+
+### Procedure {#procedure-2}
+
+1.  Go to **Endpoint Security → Standard Endpoint Protection → Directories → Product Servers**.
+
+2.  Click the macOS Endpoint Group Manager the agents report to.
+
+3.  Obtain the Trend Vision One Endpoint Security agent uninstallation package (`tmsmuninstall.zip`) by going to **Agents → Agent Setup Files** and click the link under **Agent Uninstallation File**.
+
+4.  Copy and then launch the package on the endpoint.
+
+5.  Fill in the **Name** and **Password** fields to begin the uninstallation process.
+
+    :::note
+
+    Specify the name and password for an account with administrative rights on the endpoint.
+    :::
+
+6.  (For macOS 11.0 only) Click **Continue** to remove the system extensions.
+
+7.  If the uninstallation was successful, click **Close** to finish the uninstallation process.
+
+8.  After the uninstallation completes, unregister the agent from the server.
+
+    1.  On the web console, click **Agent Management** and select the agent that was uninstalled.
+
+    2.  Click **Manage Agent Tree → Remove Group/Agent**.
+:::

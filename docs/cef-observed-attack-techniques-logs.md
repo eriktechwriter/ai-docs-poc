@@ -1,0 +1,247 @@
+---
+slug: trend-vision-one-cef-observed-attack-techniques-logs
+title: CEF Observed Attack Techniques logs
+---
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>CEF Key</p></th>
+<th><p>Description</p></th>
+<th><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Header (Device Event Class ID)</p></td>
+<td><p>A unique identifier per event-type</p></td>
+<td><ul>
+<li><p><code>900002</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Header (Device Product)</p></td>
+<td><p>Product of sending device</p></td>
+<td><ul>
+<li><p><code>Trend Vision One</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Header (Device Vendor)</p></td>
+<td><p>Product vendor</p></td>
+<td><ul>
+<li><p><code>Trend Micro</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Header (Device Version)</p></td>
+<td><p>Service version</p></td>
+<td><ul>
+<li><p><code>1.0.0</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Header (Name)</p></td>
+<td><p>Category of the event</p></td>
+<td><ul>
+<li><p><code>Trend Vision One Observed Attack Techniques</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Header (Severity)</p></td>
+<td><p>Importance of the event</p></td>
+<td><ul>
+<li><p><code>1: Undefined</code></p></li>
+<li><p><code>2: Info</code></p></li>
+<li><p><code>3: Low</code></p></li>
+<li><p><code>5: Medium</code></p></li>
+<li><p><code>7: High</code></p></li>
+<li><p><code>9: Critical</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Header (Version)</p></td>
+<td><p>CEF format version</p></td>
+<td><ul>
+<li><p><code>CEF:0</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>act</p></td>
+<td><p>Action taken for the violation</p></td>
+<td><ul>
+<li><p><code>Not blocked</code></p></li>
+<li><p><code>Block</code></p></li>
+<li><p><code>Reset</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>app</p></td>
+<td><p>Network protocol being exploited</p></td>
+<td><ul>
+<li><p><code>HTTP</code></p></li>
+<li><p><code>KERBEROS</code></p></li>
+<li><p><code>TCP</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cat</p></td>
+<td><p>Detection name</p></td>
+<td><ul>
+<li><p><code>Connection to Commonly Used Ports</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cs1</p></td>
+<td><p>MITRE tactics list</p></td>
+<td><ul>
+<li><p><code>TA0002, TA0006</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cs1Label</p></td>
+<td><p>Corresponding label for the "cs1" field</p></td>
+<td><ul>
+<li><p><code>MITRE Tactic IDs</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cs2</p></td>
+<td><p>MITRE techniques list</p></td>
+<td><ul>
+<li><p><code>T1003.001, T1059.001</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cs2Label</p></td>
+<td><p>Corresponding label for the "cs2" field</p></td>
+<td><ul>
+<li><p><code>MITRE Technique IDs</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>deviceDirection</p></td>
+<td><p>Device direction</p></td>
+<td><ul>
+<li><p><code>0 (inbound)</code></p></li>
+<li><p><code>1 (outbound)</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>deviceExternalId</p></td>
+<td><p>GUID of the agent which reported this detection</p></td>
+<td><ul>
+<li><p><code>B0DA10B4-EA5A-44EA-8D78-41FE6CD1C3E2</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>deviceFacility</p></td>
+<td><p>Product name</p></td>
+<td><ul>
+<li><p><code>Trend Micro Deep Security</code></p></li>
+<li><p><code>Deep Discovery Inspector</code></p></li>
+<li><p><code>Apex One</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>deviceProcessName</p></td>
+<td><p>Process name in device</p></td>
+<td><ul>
+<li><p><code>C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38-32\\python.exe</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>dst</p></td>
+<td><p>Destination IP</p></td>
+<td><ul>
+<li><p><code>239.255.255.250</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>dhost</p></td>
+<td><p>Destination hostname</p></td>
+<td><ul>
+<li><p><code>10.46.91.40</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>dpt</p></td>
+<td><p>Port of "dst"</p></td>
+<td><ul>
+<li><p><code>8080</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>dvchost</p></td>
+<td><p>Endpoint hostname</p></td>
+<td><ul>
+<li><p><code>ip-10-209-120-47.ap-northeast-1.compute.internal</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>externalId</p></td>
+<td><p>Event ID</p></td>
+<td><ul>
+<li><p><code>100116</code></p></li>
+<li><p><code>100117</code></p></li>
+<li><p><code>100119</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>msg</p></td>
+<td><p>Filter description</p></td>
+<td><ul>
+<li><p><code>Detects the connection to commonly used ports</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>request</p></td>
+<td><p>Notable URL</p></td>
+<td><ul>
+<li><p><code>http://detectportal.firefox.com/canonical.html</code></p></li>
+<li><p><code>http://35.247.144.219/</code></p></li>
+<li><p><code>http://35.247.144.219</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>rt</p></td>
+<td><p>Event time</p></td>
+<td><ul>
+<li><p><code>Dec 05 2022 05:26:45</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>shost</p></td>
+<td><p>Source hostname</p></td>
+<td><ul>
+<li><p><code>dns.google</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>src</p></td>
+<td><p>Source IP</p></td>
+<td><ul>
+<li><p><code>8.8.8.8</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>spt</p></td>
+<td><p>Port of "src"</p></td>
+<td><ul>
+<li><p><code>544</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>TrendMicroV1CompanyID</p></td>
+<td><p>Company ID</p></td>
+<td><ul>
+<li><p><code>68960c94-9be6-4343-a4ca-6408de7aa331</code></p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>

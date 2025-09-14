@@ -1,0 +1,95 @@
+---
+slug: trend-vision-one-okta-url-api-token
+title: Obtaining your Okta URL domain and API token
+---
+# Obtaining your Okta URL domain and API token
+
+:::warning[Important]
+
+The following instructions and screen captures were valid as of December, 2022. For further help, check your Okta documentation.
+:::
+
+### Procedure {#procedure}
+
+1.  Sign in to your Okta organization.
+
+2.  Click **Admin** to open the **Admin Console**.
+
+    <figure>
+    <img src="./images/okta_admin_console=ee855b4e-950b-478c-80ab-4991ed05f4ae.webp" />
+    </figure>
+
+3.  Find your Okta URL domain.
+
+    1.  In the upper-right corner of the Okta admin console, click on your user name.
+
+        A panel with your user name and Okta domain appears.
+
+        <figure>
+        <img src="./images/okta_console_url=bff5a148-fd1a-4d7d-9ad6-043e3ad23155.webp" />
+        </figure>
+
+4.  Create an API token.
+
+    :::warning[Important]
+
+    - Ensure your account has any of the following roles assigned before creating an API token.
+
+      <table>
+      <colgroup>
+      <col style="width: 20%" />
+      <col style="width: 80%" />
+      </colgroup>
+      <thead>
+      <tr>
+      <th><p>Feature</p></th>
+      <th><p>User roles allowed</p></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td><p>Data upload</p></td>
+      <td><ul>
+      <li><p>Super admin</p></li>
+      <li><p>Org admin</p></li>
+      <li><p>API access management admin</p></li>
+      <li><p>Mobile admin</p></li>
+      <li><p>Read-only admin</p></li>
+      <li><p>App admin</p></li>
+      </ul></td>
+      </tr>
+      <tr>
+      <td><p>User enforcement</p></td>
+      <td><ul>
+      <li><p>Super admin</p></li>
+      <li><p>Org admin</p></li>
+      <li><p>Group admin</p></li>
+      </ul></td>
+      </tr>
+      </tbody>
+      </table>
+
+    - API tokens have the same permissions as the user who creates them. If the user permissions change, the API token permissions also change.
+    :::
+
+    1.  In the Okta admin console, go to **Security → API → Tokens**.
+
+    2.  Click **Create Token**.
+
+        <figure>
+        <img src="./images/okta_console_createToken=5a22ef85-0e85-4db5-9962-e8adec0a1eb8.webp" />
+        </figure>
+
+    3.  Specify a name for the token and click **Create Token**.
+
+    4.  Copy the token value.
+
+        :::warning[Important]
+
+        Once you close the **Create token** dialog, the authentication token is no longer available to view or copy.
+        :::
+
+        <figure>
+        <img src="./images/okta_auth_token=2d1aa403-fd5c-4590-83cf-2e228c54961a.webp" />
+        </figure>
+::::

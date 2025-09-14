@@ -1,74 +1,58 @@
-# AI-Centric Docs-as-Code POC
+# Trend Vision One Documentation
 
-This project demonstrates an AI-enhanced documentation workflow for technical writing teams, built on top of Docusaurus 3.x with MDX support.
+## AI-Centric Docs-as-Code POC
 
-## Overview
+This repository contains the Trend Vision One documentation converted from WebHelp to a modern Docusaurus site as part of our AI-centric docs-as-code proof of concept.
 
-This POC transforms traditional documentation workflows by integrating AI assistance at every step:
-- AI-powered content planning and generation
-- Intelligent VS Code environment with contextual assistance
-- Dynamic content capabilities with React components
-- Automated quality assurance and CI/CD pipelines
-- Context-aware help system for end users
+### Features
 
-## Quick Start
-
-### Prerequisites
-
-- Node.js 18+ 
-- Git
-- VS Code (recommended)
-
-### Installation
-
-```bash
-npm install
-```
+- ✅ **495+ Documentation Pages** - Complete Trend Vision One documentation
+- ✅ **Modern Docusaurus 3.8.1** - Latest static site generator with TypeScript
+- ✅ **Full-Text Search** - Lunr.js powered search across all content
+- ✅ **Responsive Design** - Mobile-friendly documentation
+- ✅ **Trend Micro Branding** - Official colors and styling
+- ✅ **Auto-Deploy** - GitHub Actions CI/CD pipeline
+- ✅ **Grid Tables Support** - Enhanced table rendering
+- ✅ **Image Optimization** - Automatic image processing
 
 ### Development
 
 ```bash
+# Install dependencies
+npm install
+
+# Start development server
 npm start
-```
 
-This starts the development server with hot reloading at `http://localhost:3000`.
-
-### Build
-
-```bash
+# Build for production
 npm run build
+
+# Serve production build locally
+npm run serve
 ```
 
-## Project Structure
+### Deployment
+
+This site automatically deploys to GitHub Pages when changes are pushed to the `main` branch.
+
+### Architecture
+
+- **Source**: Converted from Trend Vision One WebHelp using Beautiful Goose
+- **Generator**: Docusaurus 3.8.1 with TypeScript
+- **Search**: Lunr.js for client-side full-text search
+- **Hosting**: GitHub Pages
+- **CI/CD**: GitHub Actions
+
+### Project Structure
 
 ```
-ai-docs-poc/
-├── docs/                   # Documentation content (MDX files)
-├── src/                    # Custom React components and pages
-├── static/                 # Static assets
-├── scripts/                # Conversion and automation scripts
-├── .vscode/               # VS Code configuration
-├── data/                  # YAML data sources for dynamic content
-└── docusaurus.config.ts   # Docusaurus configuration
+├── docs/                 # Markdown documentation files
+├── src/                  # React components and pages
+├── static/               # Static assets (images, files)
+├── docusaurus.config.ts  # Docusaurus configuration
+└── .github/workflows/   # CI/CD pipeline
 ```
 
-## Features
+---
 
-- **MD to MDX Conversion**: Automated conversion of existing Markdown files
-- **AI-Enhanced Writing**: Integrated AI assistance for content creation
-- **Dynamic Content**: Data-driven tables and components
-- **Live Preview**: Real-time preview with hot reloading
-- **Quality Automation**: Automated linting, testing, and deployment
-- **Context-Aware Help**: Adaptive documentation based on user context
-
-## Documentation
-
-See the [docs](./docs) directory for detailed documentation on:
-- Setup and configuration
-- AI assistant usage
-- Content creation workflows
-- Deployment and maintenance
-
-## License
-
-MIT License - see [LICENSE](./LICENSE) for details.
+**Part of the AI-Centric Docs-as-Code POC Initiative**

@@ -1,217 +1,105 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
-import type * as Preset from '@docusaurus/preset-classic';
-import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
-import remarkGfm from 'remark-gfm';
+import { themes as prismThemes } from "prism-react-renderer";
+import type { Config } from "@docusaurus/types";
+import type * as Preset from "@docusaurus/preset-classic";
+import rehypeUnwrapImages from "rehype-unwrap-images";
+import remarkGridTable from "@adobe/remark-gridtables";
+
+const productName: string = "Trend Vision One"; // The product name without any versions. For example: Deep Discovery Inspector
+const mainUrl: string = "https://docs.trendmicro.com"; // Always `docs.trendmicro.com`
+
+// Dropdowns
 
 const config: Config = {
-  title: 'AI-Enhanced Documentation POC',
-  tagline: 'Demonstrating the future of technical documentation workflows',
-  favicon: 'img/favicon.ico',
+  title: `${productName} | Trend Micro Online Help`, // Do not edit this value
+  //tagline: 'Dinosaurs are cool',
+  favicon: "brand/favicon.ico", // Do not edit this value
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  baseUrl: '/',
+  url: mainUrl,
+  // Do not edit this value
+  baseUrl: "/en-us/documentation/article/",
 
-  // GitHub pages deployment config
-  organizationName: 'trendmicro',
-  projectName: 'ai-docs-poc',
+  // GitHub pages deployment config.
+  // If you aren't using GitHub pages, you don't need these.
+  organizationName: "Trend Micro", // Usually your GitHub org/user name.
+  projectName: "docusaurus", // The repository name
 
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: "warn",
+  onBrokenMarkdownLinks: "warn",
 
-  // Development server configuration for optimal live preview
-  future: {
-    experimental_faster: true,
-    v4: {
-      removeLegacyPostBuildHeadAttribute: true,
-    },
-  },
-
-  // Webpack configuration for better development experience
-  webpack: {
-    jsLoader: (isServer) => ({
-      loader: require.resolve('swc-loader'),
-      options: {
-        jsc: {
-          parser: {
-            syntax: 'typescript',
-            tsx: true,
-          },
-          target: 'es2017',
-        },
-        module: {
-          type: isServer ? 'commonjs' : 'es6',
-        },
-      },
-    }),
-  },
-
-  // Internationalization config
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
-  },
-
-  // Markdown configuration for MDX support
   markdown: {
-    mermaid: true,
-    format: 'mdx',
+    format: "detect",
+  },
+
+  noIndex: false, // Adds <meta name="robots" content="noindex, nofollow"> to every page to avoid indexing
+
+  //Add the required language codes in the locales array. Always leave en-us as the default locale
+  i18n: {
+    defaultLocale: "en-us",
+    locales: ["en-us"],
+    localeConfigs: {
+      "en-us": {
+        htmlLang: "en-us",
+      },
+    },
   },
 
   presets: [
     [
-      'classic',
+      "classic",
       {
         docs: {
-          sidebarPath: './sidebars.ts',
-          // Enable edit links
-          editUrl: 'https://github.com/trendmicro/ai-docs-poc/tree/main/',
-          // MDX support with enhanced configuration
-          remarkPlugins: [remarkMath, remarkGfm],
-          rehypePlugins: [rehypeKatex],
-          showLastUpdateAuthor: true,
-          showLastUpdateTime: true,
-          // Enhanced development experience
-          include: ['**/*.{md,mdx}'],
-          exclude: [
-            '**/_*.{js,jsx,ts,tsx,md,mdx}',
-            '**/_*/**',
-            '**/*.test.{js,jsx,ts,tsx}',
-            '**/__tests__/**',
-          ],
-          // Live reload configuration
-          watchIgnore: [
-            '**/node_modules/**',
-            '**/.docusaurus/**',
-            '**/build/**',
-            '**/.git/**',
-          ],
+          sidebarPath: "./toc.ts", // Do not edit this value
+          routeBasePath: "/", // Serve the docs at the site's root
+          remarkPlugins: [remarkGridTable],
+          rehypePlugins: [rehypeUnwrapImages],
         },
-        blog: {
-          showReadingTime: true,
-          editUrl: 'https://github.com/trendmicro/ai-docs-poc/tree/main/',
-          remarkPlugins: [remarkMath, remarkGfm],
-          rehypePlugins: [rehypeKatex],
-        },
+        blog: false,
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: "./src/css/custom.css",
         },
       } satisfies Preset.Options,
     ],
   ],
 
-  themes: ['@docusaurus/theme-mermaid'],
-
   themeConfig: {
-    // Social card image
-    image: 'img/docusaurus-social-card.jpg',
-    
-    // Navbar configuration
+    // Replace with your project's social card
+    //image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'AI Docs POC',
+      style: "dark",
+      title: "Online Help Center", // The title that appears in the navbar
       logo: {
-        alt: 'AI Docs POC Logo',
-        src: 'img/logo.svg',
+        alt: "Trend Micro Online Help Center",
+        src: "brand/logo.svg",
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Documentation',
-        },
-        // Additional navigation items will be added as features are implemented
-        {
-          href: 'https://github.com/trendmicro/ai-docs-poc',
-          label: 'GitHub',
-          position: 'right',
+          type: "search", // Search bar
+          position: "right",
         },
       ],
     },
-    
-    // Footer configuration
     footer: {
-      style: 'dark',
-      links: [
-        {
-          title: 'Documentation',
-          items: [
-            {
-              label: 'Getting Started',
-              to: '/docs/intro',
-            },
-            // Additional documentation links will be added as content is created
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'GitHub',
-              href: 'https://github.com/trendmicro/ai-docs-poc',
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} Trend Micro. Built with Docusaurus.`,
+      style: "dark",
+      copyright: `© ${new Date().getFullYear()}  Trend Micro Incorporated. All rights reserved.`,
     },
-    
-    // Prism theme for code highlighting
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
-      additionalLanguages: ['bash', 'json', 'yaml', 'typescript', 'jsx', 'tsx'],
-    },
-    
-    // Search configuration (Algolia DocSearch)
-    algolia: {
-      appId: 'YOUR_APP_ID',
-      apiKey: 'YOUR_SEARCH_API_KEY',
-      indexName: 'ai-docs-poc',
-      contextualSearch: true,
-      searchParameters: {},
-      searchPagePath: 'search',
-    },
-    
-    // Color mode configuration
-    colorMode: {
-      defaultMode: 'light',
-      disableSwitch: false,
-      respectPrefersColorScheme: true,
-    },
-    
-    // Announcement bar for important updates
-    announcementBar: {
-      id: 'poc-announcement',
-      content: '🚀 This is a POC demonstrating AI-enhanced documentation workflows. <a target="_blank" rel="noopener noreferrer" href="/docs/intro">Learn more</a>!',
-      backgroundColor: '#fafbfc',
-      textColor: '#091E42',
-      isCloseable: true,
+      additionalLanguages: ["powershell", "bash", "batch"],
     },
   } satisfies Preset.ThemeConfig,
 
-  // Plugin configuration
-  plugins: [
-    // Custom plugins can be added here
-  ],
+  plugins: [require.resolve("docusaurus-lunr-search")],
 
-  // Stylesheets
-  stylesheets: [
-    {
-      href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
-      type: 'text/css',
-      integrity: 'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
-      crossorigin: 'anonymous',
+  future: {
+    v4: {
+      removeLegacyPostBuildHeadAttribute: true, // required
     },
-  ],
-
-  // Client modules
-  clientModules: [
-    // Custom client modules can be added here
-  ],
+    experimental_faster: {
+      ssgWorkerThreads: true,
+    },
+  },
 };
 
 export default config;

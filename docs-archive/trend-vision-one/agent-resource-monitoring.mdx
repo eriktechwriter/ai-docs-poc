@@ -1,0 +1,126 @@
+---
+slug: trend-vision-one-agent-resource-monitoring
+title: Agent Resource Monitoring
+---
+# Agent Resource Monitoring
+
+Get an overview of how your deployed Trend Vision One Endpoint Security agents impact the system performance of your endpoints.
+
+:::warning[Important]
+
+- Agent Resource Monitoring is a "Pre-release" feature and is not considered an official release. Please review the [Pre-Release Disclaimer](pre-release-disclaimer.mdx) before using the feature.
+
+- This feature is not available in all regions.
+
+- Agent Resource Monitoring currently only supports Trend Vision One Endpoint Security agents with Server & Workload Protection version 202503 (feature version 20.0.2-4960) or later.
+
+- Agent Resource Monitoring requires enabling IoT Traffic in the Server & Workload Protection Manager. To learn how to enable IoT Traffic, contact your support provider.
+:::
+
+Agent Resource Monitoring provides both a top-level overview of how Trend Vision One Endpoint Security agents impact performance in your environment and individualized details for each of your managed endpoints. You can use this information to help tailor security settings to your performance needs or quickly identify abnormal system behavior and diagnose issues.
+
+Figure 1 shows the different sections of Agent Resource Monitoring.
+
+<figure>
+<img src="./images/AgentResourceMonitoringMain=00312946-c436-4187-b2c4-eda220698c13.webp" />
+<figcaption>Figure 1 - Agent Resource Monitoring Overview</figcaption>
+</figure>
+
+1.  **Agent Resource Overview**: This section provides a quick glance of how much CPU and Memory resources agents are using across your environment.
+
+    - The **CPU** and **Memory** summary show the (a) calculated average resource usage of your agents across your environment for the past hour, and (b) how usage has trended, whether increasing or decreasing, over the past 7 days. See figure 2.
+
+      <figure>
+      <img src="./images/CPU-Memory-Usage-Trend=29298ec1-1f27-464c-bb28-43eec76e3d25.webp" />
+      <figcaption>Figure 2 - CPU and memory overview</figcaption>
+      </figure>
+
+    - The **Security Process** overview provides the average resource usage of individual agent modules across your environment for the past hour.
+
+      **Security Processes**
+
+      <table style="width:99%;">
+      <colgroup>
+      <col style="width: 33%" />
+      <col style="width: 33%" />
+      <col style="width: 33%" />
+      </colgroup>
+      <thead>
+      <tr>
+      <th><p>Module</p></th>
+      <th><p>Description</p></th>
+      <th><p>Processes</p></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td><p>Anti-Malware Scan</p></td>
+      <td><p>Includes the processes used to run anti-malware scans</p></td>
+      <td><ul>
+      <li><p>Linux: ds_am</p></li>
+      <li><p>Windows: coreServiceShell.exe</p></li>
+      </ul></td>
+      </tr>
+      <tr>
+      <td><p>Server &amp; Workload Protection</p></td>
+      <td><p>Includes the processes and services used by the main endpoint protection module.</p></td>
+      <td><ul>
+      <li><p>Linux: ds_agent</p></li>
+      <li><p>Windows: dsa.exe</p></li>
+      </ul></td>
+      </tr>
+      <tr>
+      <td><p>Server &amp; Workload Protection Connect</p></td>
+      <td><p>Includes the processes and services used to connect to Trend Micro services.</p></td>
+      <td><ul>
+      <li><p>Linux: dsa-connect</p></li>
+      <li><p>Windows: dsa-connect.exe</p></li>
+      </ul></td>
+      </tr>
+      <tr>
+      <td><p>Net Module</p></td>
+      <td><p>Includes the processes and services used by network monitoring features.</p></td>
+      <td><ul>
+      <li><p>Linux: tm_netagent</p></li>
+      <li><p>Windows: tm_netagent.exe</p></li>
+      </ul></td>
+      </tr>
+      </tbody>
+      </table>
+
+      :::note
+
+      The averages calculated for CPU and memory are calculated by finding the median total usage of each agent over the past hour and averaging across all managed endpoints.
+
+      Each module contains a number of processes and services which utilize CPU and memory resources on the endpoint. For more information about agent process for Server & Workload Protection, see [the Success Portal](https://success.trendmicro.com/en-US/solution/KA-0009114).
+      :::
+
+2.  The usage graph provides a visual representation of average resource usage across your environment. You can choose to view usage over the past seven days or 24 hours. Memory usage is measured in Megabytes.
+
+3.  The endpoint list displays the managed endpoints in your environment and the median CPU and memory usage for the past hour. You can filter the list or search for specific endpoints. Clicking an endpoint name opens the detailed resource view for that endpoint (see Figure 3).
+
+    :::note
+
+    Filtering by **Security Process** only shows endpoints with non-zero resource usage for that process. For example, if you select Anti-malware scan, agents with the feature disabled do not appear in the list.
+    :::
+
+<figure>
+<img src="./images/AgentResourceEndpointView=bac7ac6a-9c1f-448c-998b-85c91dc55210.webp" />
+<figcaption>Figure 3 - Endpoint Detailed Resource View</figcaption>
+</figure>
+
+The detailed resource view allows you to look at how agents are impacting the performance of individual endpoints.
+
+1.  The endpoint details provide a quick summary of information including the endpoint name, operating system, and last check-in. Click the link to view more details in Endpoint Inventory.
+
+2.  The resource overview provides the median memory and CPU usage for the past hour and the usage trend for the past seven days. Additionally, you can view the resource usage of each security process over the past hour.
+
+3.  The usage graph provides a visual representation of resource usage. You can choose to view usage over the past seven days or 24 hours.
+
+4.  The **Top 10 Anti-malware scanned files and paths** provides a list of the most frequently scanned files, processes, and folders on the endpoint. You can filter the list by object type.
+
+    :::note
+
+    If Anti-malware Scan is not enabled on the endpoint, no data appears in the list.
+    :::
+::::

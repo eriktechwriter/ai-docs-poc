@@ -1,0 +1,33 @@
+---
+slug: trend-vision-one-1-2-13
+title: >-
+  1.2.13 - Ensure that the admission control plugin NamespaceLifecycle is set
+  (Automated)
+---
+# 1.2.13 - Ensure that the admission control plugin NamespaceLifecycle is set (Automated)
+
+Profile applicability: Level 2 - Master Node
+
+Reject creating objects in a namespace that is undergoing termination.
+
+Setting admission control policy to `NamespaceLifecycle` ensures that objects cannot be created in non-existent namespaces, and that namespaces undergoing termination are not used for creating the new objects. This is recommended to enforce the integrity of the namespace termination process and also for the availability of the newer objects.
+
+:::note
+
+By default, `NamespaceLifecycle` is set.
+:::
+
+### Audit {#audit}
+
+Run the following command on the Control Plane node:
+
+```bash
+ps -ef | grep kube-apiserver
+```
+
+Verify that the `--disable-admission-plugins` argument is set to a value that does not include `NamespaceLifecycle`.
+
+### Remediation {#remediation}
+
+Edit the API server pod specification file `/etc/kubernetes/manifests/kube-apiserver.yaml` on the Control Plane node and set the `--disable-admission-plugins` parameter to ensure it does not include `NamespaceLifecycle`.
+::::

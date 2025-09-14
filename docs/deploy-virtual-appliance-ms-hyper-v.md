@@ -1,0 +1,166 @@
+---
+slug: trend-vision-one-deploy-virtual-appliance-ms-hyper-v
+title: Deploying a Service Gateway virtual appliance with Microsoft Hyper-V
+---
+
+Instructions on how to use the Command Line Interface (CLI) to deploy a Service Gateway virtual appliance with Microsoft Hyper-V.
+
+Verify that system requirements are met. For more information, see [Service Gateway appliance system requirements](sg-sys-requirements.md).
+
+### Procedure {#procedure}
+
+1.  Go to **Workflow and Automation → Service Gateway Management**.
+
+2.  Click **Download Virtual Appliance**.
+
+    The **Service Gateway Virtual Appliance** panel appears.
+
+3.  Select **Microsoft Hyper-V (VHD)**.
+
+4.  Select a virtual appliance specification and click **Download Disk Image** to download an VHD file in a compressed archive.
+
+    :::tip
+    Copy the registration token for later steps. The registration token will expire within 24 hours if not used.
+    :::
+
+5.  Extract the VHD file using a ZIP extractor.
+
+6.  Create a virtual machine.
+
+    1.  On Hyper-V Manager, right-click on your machine and **New → Virtual Machine**.
+
+        <figure>
+        <img src="./images/sg_hyperv_new=20211115170204.webp" />
+        </figure>
+
+    2.  Click **Next**.
+
+        <figure>
+        <img src="./images/sg_hyperv_1_beforeyoubegin=20220525104621.webp" />
+        </figure>
+
+    3.  Specify a name for the Service Gateway virtual appliance and click **Next**.
+
+        <figure>
+        <img src="./images/sg_hyperv_2_name=20211022152937=.webp" />
+        </figure>
+
+    4.  Specify **Generation 1** and click **Next**.
+
+        <figure>
+        <img src="./images/sg_hyperv_3_generation=20211022153037=.webp" />
+        </figure>
+
+    5.  Specify the amount of memory needed for the VM based on the system requirements, and then click **Next**.
+
+        <figure>
+        <img src="./images/sg_hyperv_4_memory=20211022153058=.webp" />
+        </figure>
+
+    6.  Specify the network connection that the VM will use, and then click **Next**.
+
+        <figure>
+        <img src="./images/sg_hyperv_5_networking=20211022153406=.webp" />
+        </figure>
+
+    7.  Click **Use an existing virtual hard disk**, and then click **Browse**.
+
+        <figure>
+        <img src="./images/sg_hyperv_6_hdd=20211022153447=.webp" />
+        </figure>
+
+    8.  Navigate to the location where you extracted the VHD file, select the file, and then click **Open**.
+
+        <figure>
+        <img src="./images/sg_hyperv_7_hddfile=20211022153513=.webp" />
+        </figure>
+
+    9.  Click **Next**.
+
+        <figure>
+        <img src="./images/sg_hyperv_8_hddnext=20211022153608=.webp" />
+        </figure>
+
+    10. Review the settings, and then click **Finish**.
+
+        <figure>
+        <img src="./images/sg_hyperv_9_finish=20211022155239=.webp" />
+        </figure>
+
+    <!-- -->
+
+    1.  From the **Hyper-V Manager** **Virtual Machines** list, right-click on the Service Gateway virtual appliance and click **Settings**.
+
+        <figure>
+        <img src="./images/sg_hyperv_11_offstatesettings=20211022161940=.webp" />
+        </figure>
+
+    2.  Click **Processor**, specify the number of virtual processors, and then click **OK**.
+
+        <figure>
+        <img src="./images/sg_hyperv_12_cpus=20211022162017=.webp" />
+        </figure>
+
+7.  From the **Hyper-V Manager** **Virtual Machines** list, right-click on the Service Gateway virtual appliance and click **Connect**.
+
+    <figure>
+    <img src="./images/sg_hyperv_13_connect=20211022162114=.webp" />
+    </figure>
+
+8.  Click **Start** to start the virtual machine.
+
+    Service installation during the first launch of the appliance takes approximately 10 minutes.
+
+    <figure>
+    <img src="./images/sg_hyperv_14_start=20211022162141=.webp" />
+    </figure>
+
+9.  On the Service Gateway virtual appliance, log on to the Command Line Interface (CLI) with the default credentials.
+
+    User name: admin
+
+    Password: V1SG@2021
+
+10. Change your password.
+
+11. Type `enable` and press the `ENTER` key to enable administrative commands. Provide your password when asked.
+
+    The command prompt changes from \> to \#.
+
+12. Configure the required network settings using the following CLISH commands.
+
+    `Configure network primary ipv4.static <interface> <ip_cidr> <gateway> <dns1> [dns2] [cni] `
+
+    `Configure static IPv4 network settings for the primary network interface`
+
+    `<interface>: Name of the network interface (for example, eth0)`
+
+    `<ip_cidr>: IPv4 address of the network interface in CIDR notation`
+
+    `<gateway>: Gateway router address`
+
+    `<dns1>: Primary DNS server address`
+
+    `[dns2]: Secondary DNS server address`
+
+    `[cni]: Internal network address pool (IP address ending in .0.0)`
+
+13. To register the Service Gateway virtual appliance to Trend Vision One, use an SSH tool, such as the latest version of PuTTY, and using an account with administrator privileges, type the following command.
+
+    `register <registration_token>`
+
+    You can obtain the token from the same screen you download the virtual appliance on Trend Vision One (step 3).
+
+    :::warning[Important]
+    The virtual appliance only supports UTC time. Ensure your hypervisor is correctly configured.
+    :::
+
+    :::note
+    - If your environment uses a local Network Time Protocol (NTP) server, make sure the NTP server synchronizes with the local time for successful registration.
+
+    - Trend Micro recommends using an SSH client to easily copy and paste the registration token.
+    :::
+
+14. Use the CLI to configure other settings, if required.
+
+    For more information on available commands, see [Service Gateway CLI commands](service-gateway-cli-commands.md).

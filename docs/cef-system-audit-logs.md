@@ -1,0 +1,131 @@
+---
+slug: trend-vision-one-cef-system-audit-logs
+title: CEF system audit logs
+---
+
+<table>
+<thead>
+<tr>
+<th><p>CEF Key</p></th>
+<th><p>Description</p></th>
+<th><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Header (Device Event Class ID)</p></td>
+<td><p>Unique identifier per event-type</p></td>
+<td><ul>
+<li><p><code>900004</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Header (Device Product)</p></td>
+<td><p>Product of sending device</p></td>
+<td><ul>
+<li><p><code>Trend Vision One</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Header (Device Vendor)</p></td>
+<td><p>Product vendor</p></td>
+<td><ul>
+<li><p><code>Trend Micro</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Header (Device Version)</p></td>
+<td><p>Service version</p></td>
+<td><ul>
+<li><p><code>1.0.0</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Header (Name)</p></td>
+<td><p>Category of the event</p></td>
+<td><ul>
+<li><p><code>Trend Vision One System Audit Log</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Header (Severity)</p></td>
+<td><p>Importance of the event</p></td>
+<td><ul>
+<li><p><code>2: Info</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Header (Version)</p></td>
+<td><p>CEF format version</p></td>
+<td><ul>
+<li><p><code>CEF:0</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cat</p></td>
+<td><p>category</p></td>
+<td><ul>
+<li><p><code>Reports</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cs1</p></td>
+<td><p>Activity</p></td>
+<td><ul>
+<li><p><code>Generate report</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cs1Label</p></td>
+<td><p>Corresponding label for the <code>cs1</code> field</p></td>
+<td><ul>
+<li><p><code>Activity</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cn1</p></td>
+<td><p>Timestamp</p></td>
+<td><ul>
+<li><p><code>1727107450</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cn1Label</p></td>
+<td><p>Corresponding label for the <code>cn1</code> field</p></td>
+<td><ul>
+<li><p><code>Timestamp</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>msg</p></td>
+<td><p>Details</p></td>
+<td><ul>
+<li><p><code>{"Report ID": "6841f152-03ef-411e-9a54-cfe9e6ce5dba","Report final status": "OK","Report name": "Risk Overview - example","Report format": "pdf","Report type": "scheduled"}</code></p></li>
+</ul>
+
+
+:::note
+
+<p>Message is in JSON format, and is truncated if exceeding the maximum length of 1000 characters.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>rt</p></td>
+<td><p>Logged time</p></td>
+<td><ul>
+<li><p><code>2024-09-23T17:18:42Z</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>TrendMicroV1CompanyID</p></td>
+<td><p>Company ID</p></td>
+<td><ul>
+<li><p><code>68960c94-9be6-4343-a4ca-6408de7aa331</code></p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>

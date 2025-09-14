@@ -1,0 +1,51 @@
+---
+slug: trend-vision-one-policy-email-accounts-cas
+title: Deploying policies for email accounts with Cloud App Security
+---
+# Deploying policies for email accounts with Cloud App Security
+
+Protect the email accounts in your email service by deploying Cloud App Security policies to the accounts.
+
+For email accounts without Cloud App Security policies assigned, you can deploy policies to the accounts from the Email Asset Inventory.
+
+The following operation is available only when you click the number of accounts with no policy assigned in **Cyber Risk Overview → Security Configuration → Email Security → Email Protection**.
+
+### Procedure {#procedure}
+
+1.  Click **Manage Policy** to deploy Cloud App Security policies for the selected accounts.
+
+2.  On the **Manage Policy** screen, choose a way to deploy policies.
+
+    <table>
+    <thead>
+    <tr>
+    <th><p>Option</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Enable the default ATP policy</p></td>
+    <td><p>Enables the default ATP policy in Cloud App Security immediately</p>
+    <p>Click <strong>Enable Default ATP Policy</strong>.</p>
+    <p>Th default ATP policy protects all the accounts in your organization, including the selected accounts. It has the lowest priority and does not affect the protection you have configured for other accounts.</p></td>
+    </tr>
+    <tr>
+    <td><p>Configure custom ATP policies in Cloud App Security</p></td>
+    <td><p>Allows you to add the selected accounts to the targets of the existing custom policies or create a new policy for the these accounts in Cloud App Security</p>
+    <ol>
+    <li><p>Click <strong>Open Cloud App Security</strong>.</p>
+    <ul>
+    <li><p>If you are using the Primary User Account, the <strong>Advanced Threat Protection</strong> screen of Cloud App Security is displayed.</p></li>
+    <li><p>If you are using other accounts, the logon page of Cloud App Security is displayed. You need to log on using a Cloud App Security account and navigate to the <strong>Advanced Threat Protection</strong> screen.</p></li>
+    </ul></li>
+    <li><p>On the <strong>Advanced Threat Protection</strong> screen in Cloud App Security, click an existing Exchange Online policy or add a new policy by clicking <strong>Add Policy</strong> and choosing <strong>Exchange Online</strong>.</p></li>
+    <li><p>In the <strong>General</strong> tab, select accounts in <strong>Available Targets</strong> and click the right arrow (<img src="./images/simulationsRightArrow=20220525102311.webp" />) to add them to <strong>Selected Targets</strong>.</p></li>
+    <li><p>Click <strong>Save</strong>.</p></li>
+    </ol></td>
+    </tr>
+    </tbody>
+    </table>
+
+    Wait a few minutes for Cloud App Security to synchronize the status to Trend Vision One. When the synchronization is complete, you can click the refresh icon (![](/images/refresh_EAI=GUID-FDD6ABC7-C91E-47E7-8255-4A8DFCBF3871=en-us=.webp)) at the upper right corner of the **Email Asset Inventory** screen to get the latest status. The value of **Cloud App Security protection** for the related accounts will change from **Disabled** to **Partially enabled** or **Fully enabled**.
+:::

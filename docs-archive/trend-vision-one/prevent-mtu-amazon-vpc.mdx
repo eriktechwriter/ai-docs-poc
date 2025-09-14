@@ -1,0 +1,16 @@
+---
+slug: trend-vision-one-prevent-mtu-amazon-vpc
+title: >-
+  Prevent MTU-related agent communication issues across Amazon Virtual Private
+  Clouds (VPC)
+---
+# Prevent MTU-related agent communication issues across Amazon Virtual Private Clouds (VPC)
+
+Agents in different VPCs might experience problems when trying to communicate with Server & Workload Protection. This could be because the network [maximum transmission unit (MTU)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/network_mtu.mdx) supported by Amazon Web Services is 1500 and agent communication traffic can exceed this, which results in fragmented and dropped packets.
+
+You can prevent this MTU-related communication issue from happening by adding a new firewall rule to all firewall policies. The key settings for this new firewall rule are shown in the image below.
+
+<figure>
+<img src="./images/2016-07-07_000114_DS10=a87b2def-55a5-4e12-be94-1df11282777c.webp" />
+</figure>
+:::

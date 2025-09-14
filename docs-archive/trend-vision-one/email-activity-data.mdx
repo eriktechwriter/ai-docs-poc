@@ -1,0 +1,1500 @@
+---
+slug: trend-vision-one-email-activity-data
+title: Email and Collaboration activity data sources
+---
+# Email and Collaboration activity data sources
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Field Name</p></th>
+<th><p>Type</p></th>
+<th><p>General Field</p></th>
+<th><p>Description</p></th>
+<th><p>Example</p></th>
+<th><p>Products</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>actResult</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The action result</p></td>
+<td><ul>
+<li><p><code>Success</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>actionName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The user or service action</p></td>
+<td><ul>
+<li><p><code>UserLoggedIn</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>applicationId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The application ID</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>attachmentFileHashSha256s</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileSHA2</p></li>
+</ul></td>
+<td><p>The SHA-256 hash of the email attachment</p></td>
+<td><ul>
+<li><p><code>0570dfd156ee00cb7bc2a94998157cb3a29292b9e9feed82d4b6c7d2c6bdd9d4</code></p></li>
+<li><p><code>2d96ebbbc5a5687b0f18fd5620e4e5489d49a877430146bbca447fabe9c47a6e</code></p></li>
+<li><p><code>20d27422610967122439735cbcb48e4382a16e94a8b29c068e6b7d0e40466427</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>attachmentFileHashes</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileSHA1</p></li>
+</ul></td>
+<td><p>The SHA-1 hash of the email attachment</p></td>
+<td><ul>
+<li><p><code>acedb7898338a46f38d148d1d0456e644576d41b</code></p></li>
+<li><p><code>ea6fcc4c0c1f10d71742b29e98a977d995473dd1</code></p></li>
+<li><p><code>03d8fb85556edf397d8afcafc0b13f11ecbde50c</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>attachmentFileName</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileName</p></li>
+</ul></td>
+<td><p>The file name of the email attachment</p></td>
+<td><ul>
+<li><p><code>image001.png</code></p></li>
+<li><p><code>image002.png</code></p></li>
+<li><p><code>image003.png</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>attachmentFileTlshes</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The TLSH hash detected by Trend Micro Anti-Spam Engine</p></td>
+<td><p>-</p></td>
+<td><ul>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>attachmentMd5</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileMD5</p></li>
+</ul></td>
+<td><p>The MD5 hash of the email attachment</p></td>
+<td><ul>
+<li><p><code>003fa299ab119219596f952c68029810</code></p></li>
+<li><p><code>03aeabf6a745cb627ee29c05a22e58cb</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>attachmentSha1</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileSHA1</p></li>
+</ul></td>
+<td><p>The SHA-1 hash of the email attachment</p></td>
+<td><ul>
+<li><p><code>03d8fb85556edf397d8afcafc0b13f11ecbde50c</code></p></li>
+<li><p><code>056a2975edffe7188c03c324ae4335f9380b57e3</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>attachmentSha256</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileSHA2</p></li>
+</ul></td>
+<td><p>The SHA-256 hash of the email attachment</p></td>
+<td><ul>
+<li><p><code>29d72af5608ee5eade7c4346d3c32dfcc6b54f8fb43d977ff0306ad68b255a01</code></p></li>
+<li><p><code>cb0628092ddea96bb040221b5c793dbbb792a67d0621bdfba170c07374d85801</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>attachmentSize</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The attachment file size</p></td>
+<td><p>-</p></td>
+<td><ul>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>attachmentSource</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The attachment source</p></td>
+<td><ul>
+<li><p><code>TMASE</code></p></li>
+<li><p><code>PRODUCT</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>attachmentTlsh</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The TLSH hash detected by Trend Micro Anti-Spam Engine</p></td>
+<td><ul>
+<li><p><code>0FE18E0807B75799EF3ADD7A98D62411FEB31DAB419C913C058068A3A6B33BD114EA39</code></p></li>
+<li><p><code>7C31C9827A71A905CC6B0A73B10FE80C06F01E814AA396347F8B6F979690E9C3D75147</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>attachmentUrls</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The URLs and URL sources extracted from the email attachment</p></td>
+<td><p>-</p></td>
+<td><ul>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>clientIp</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>IPv4</p></li>
+<li><p>IPv6</p></li>
+</ul></td>
+<td><p>The client IP</p></td>
+<td><ul>
+<li><p><code>10.10.10.10</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cloudStorageId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The file or folder location ID</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cloudStorageName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The file or folder URL</p></td>
+<td><ul>
+<li><p><code>https://test.trendmicro.com/sites/123</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>correlationId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The correlation ID</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>eventId</p></td>
+<td><ul>
+<li><p><code>int</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The event ID</p></td>
+<td><ul>
+<li><p><code>1 - MESSAGING_EMAIL_META</code></p></li>
+<li><p><code>2 - MESSAGING_COLLABORATION_ACTIVITY</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>eventName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The event type</p></td>
+<td><ul>
+<li><p><code>COLLABORATION_ACTIVITY</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>eventSubName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The event type sub-name</p></td>
+<td><ul>
+<li><p><code>Audit.Exchange</code></p></li>
+<li><p><code>Audit.Sharepoint</code></p></li>
+<li><p><code>Audit.General</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>eventTime</p></td>
+<td><ul>
+<li><p><code>real</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The time the agent detected the event</p></td>
+<td><ul>
+<li><p><code>1657135700000</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>extraInfo</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The additional information about the sharing action</p></td>
+<td><ul>
+<li><p><code>&lt;ClientType&gt;SPHomePagesWeb&lt;/ClientType&gt;</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>fileExt</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The file extension (If the object is a folder, there is no value for this field.)</p></td>
+<td><ul>
+<li><p><code>jpg</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>fileName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileName</p></li>
+</ul></td>
+<td><p>The file or folder name</p></td>
+<td><ul>
+<li><p><code>test.pdf</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>filterRiskLevel</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The top-level risk level of the event</p></td>
+<td><ul>
+<li><p><code>info</code></p></li>
+<li><p><code>low</code></p></li>
+<li><p><code>medium</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>groupId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The group ID for the management scope filter</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>isExternalAccess</p></td>
+<td><ul>
+<li><p><code>bool</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>Whether the cmdlet was run by an external user (True=external user, False=internal user in your organization)</p></td>
+<td><ul>
+<li><p><code>true</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>isSensitiveInfo</p></td>
+<td><ul>
+<li><p><code>bool</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>Whether the event contains sensitive information</p></td>
+<td><ul>
+<li><p><code>true</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>logReceivedTime</p></td>
+<td><ul>
+<li><p><code>long</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The time when the XDR log was received</p></td>
+<td><ul>
+<li><p><code>1656324260000</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mExternalUid</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The unique ID of the email</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailAttachmentHash</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileMD5</p></li>
+</ul></td>
+<td><p>The hash value of the email attachment</p></td>
+<td><ul>
+<li><p><code>02ab50ee0bccadb43d6cc504928f2ff2</code></p></li>
+<li><p><code>0a0f335fb04f1acebb7500d5358321c0</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailBccAddresses</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>EmailRecipient</p></li>
+</ul></td>
+<td><p>The BCC address in the email header</p></td>
+<td><ul>
+<li><p><code>sample_email@trendmicro.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailCacheId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The internal email cache ID to identify emails in the same group mails</p></td>
+<td><ul>
+<li><p><code>&lt;sample_email@trendmicro.com&gt;</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailCcAddresses</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>EmailRecipient</p></li>
+</ul></td>
+<td><p>The CC address in the email header</p></td>
+<td><ul>
+<li><p><code>&lt;sample_email@trendmicro.com&gt;</code></p></li>
+<li><p><code>sample_email@trendmicro.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailDirection</p></td>
+<td><ul>
+<li><p><code>int</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The email traffic direction</p></td>
+<td><ul>
+<li><p><code>1</code></p></li>
+<li><p><code>3</code></p></li>
+<li><p><code>25</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailEurekaRuleIds</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The list of rule IDs scanned by Eureka and detected by Trend Micro Anti-Spam Engine</p></td>
+<td><ul>
+<li><p><code>661030</code></p></li>
+<li><p><code>661230</code></p></li>
+<li><p><code>661267</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailFeatureId</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The email protocol detected by Trend Micro Anti-Spam Engine</p></td>
+<td><p>-</p></td>
+<td><ul>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailFolder</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The email folder name</p></td>
+<td><ul>
+<li><p><code>Inbox</code></p></li>
+<li><p><code>Bandeja de entrada</code></p></li>
+<li><p><code>Sent Items</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailFromAddresses</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>EmailSender</p></li>
+</ul></td>
+<td><p>The From address in the email header</p></td>
+<td><ul>
+<li><p><code>sample_email@trendmicro.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailHeaderHash</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The email header hash detected by Trend Micro Anti-Spam Engine</p></td>
+<td><ul>
+<li><p><code>43f8bfc02d8f78f069c254bc17eba80b</code></p></li>
+<li><p><code>aa5d16ca145f91471e482d235843aac5</code></p></li>
+<li><p><code>ad8776382ea4b7cffd0961c70223162e</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailHelo</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The HELO command detected by Trend Micro Anti-Spam Engine</p></td>
+<td><ul>
+<li><p><code>HELO inpost.tmes.trendmicro.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailMetaText</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The postman meta text detected by Trend Micro Anti-Spam Engine</p></td>
+<td><ul>
+<li></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailMetaTraceId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The trace ID generated by Trend Micro Feedback Engine</p></td>
+<td><ul>
+<li></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailMsgId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>EmailMessageID</p></li>
+</ul></td>
+<td><p>The email ID</p></td>
+<td><ul>
+<li><p><code>&lt;sample-id@trendmicro.com&gt;</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailMsgSubject</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>EmailSubject</p></li>
+</ul></td>
+<td><p>The email subject</p></td>
+<td><ul>
+<li><p><code>Your daily briefing</code></p></li>
+<li><p><code>Security alert for DeleteSecurityGroup on Account 549918006255 in Region: ap-southeast-1</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailReplyToAddresses</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The Reply To address detected by Trend Micro Anti-Spam Engine</p></td>
+<td><ul>
+<li><p><code>sample_email@trendmicro.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailRuleId</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The rule ID of the matched rule detected by Trend Micro Anti-Spam Engine</p></td>
+<td><ul>
+<li><p><code>42003</code></p></li>
+<li><p><code>148036</code></p></li>
+<li><p><code>148140</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailScore</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The score assigned to the email by Trend Micro Anti-Spam Engine</p></td>
+<td><p>-</p></td>
+<td><ul>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailSenderIp</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The email sender IP address</p></td>
+<td><ul>
+<li><p><code>10.10.10.10</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailSmtpFromAddresses</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The sender email address</p></td>
+<td><ul>
+<li><p><code>sample_email@trendmicro.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailSmtpOriginalRecipients</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The original email recipients in the SMTP envelope</p></td>
+<td><ul>
+<li><p><code>sample_email@trendmicro.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailSmtpRecipients</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The email recipients in the SMTP envelope after scanning</p></td>
+<td><ul>
+<li><p><code>sample_email@trendmicro.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailSmtpTls</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The SMTP TLS version number</p></td>
+<td><ul>
+<li><p><code>TLS 1.2</code></p></li>
+<li><p><code>TLS 1.3</code></p></li>
+<li><p><code>noTLS</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailSourceDomain</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The email domain of the sender</p></td>
+<td><ul>
+<li><p><code>example.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailTagHash</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The email tag hash detected by Trend Micro Anti-Spam Engine</p></td>
+<td><ul>
+<li><p><code>9ce01ebc63f408264876646e20905349</code></p></li>
+<li><p><code>cf679dc99042b781106cbaccd4045ed3</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailTagHashRawSignature</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The raw signature hash of the email</p></td>
+<td><ul>
+<li><p><code>PGh0bWw+PGhlYWQ+PG1ldGEgaHR0cC1lcXVpdj0gY29udGVudD0gY2hhcnNldD0gPjxtZXRhIG5hbWU9IGNvbnRlbnQ9ID48c3R5bGU+PCEtLS0tPjwvc3R5bGU+PC9oZWFkPjxib2R5IGxhbmc9IGxpbms9IHZsaW5rPSBzdHlsZT0gPjxkaXYgY2xhc3M9ID48cCBjbGFzcz0gPjxURVhUPjwvcD48L2Rpdj48L2JvZHk+PC9odG1sPg==</code></p></li>
+<li><p><code>PGh0bWw+PGhlYWQ+PG1ldGEgaHR0cC1lcXVpdj0gY29udGVudD0gY2hhcnNldD0gPjwvaGVhZD48Ym9keT48VEVYVD48L2JvZHk+PC9odG1sPg==</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailTextHash</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The email text hash detected by Trend Micro Anti-Spam Engine</p></td>
+<td><ul>
+<li><p><code>221bab3766f6d2a2c6fcc37056511d53</code></p></li>
+<li><p><code>f26f3a415103ea083ac49be6bb60f337</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailThreatType</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The type of email detected by Trend Micro Anti-Spam Engine</p></td>
+<td><ul>
+<li><p><code>suspected</code></p></li>
+<li><p><code>suspected,</code></p></li>
+<li><p><code>suspected, phishing</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailToAddresses</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>EmailRecipient</p></li>
+</ul></td>
+<td><p>The Mail To address in the email header</p></td>
+<td><ul>
+<li><p><code>sample_email@trendmicro.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailUrlHash</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The email URL hash detected by Trend Micro Anti-Spam Engine</p></td>
+<td><ul>
+<li><p><code>ca52197d96e4a00ce19eaf34b20c8937</code></p></li>
+<li><p><code>ad50776a891bead6bf222e2b7be17724</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailUrlsOriginalLink</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The original URL extracted from the email content</p></td>
+<td><ul>
+<li><p><code>https://aka.ms/JoinTeamsMeeting</code></p></li>
+<li><p><code>http://go.microsoft.com/fwlink/p/?LinkID=12345</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailUrlsRealLink</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>URL</p></li>
+</ul></td>
+<td><p>The URL extracted from the email content</p></td>
+<td><ul>
+<li><p><code>https://aka.ms/JoinTeamsMeeting</code></p></li>
+<li><p><code>http://go.microsoft.com/fwlink/p/?LinkID=12345</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailUrlsVisibleLink</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>URL</p></li>
+</ul></td>
+<td><p>The URL extracted from the email content</p></td>
+<td><ul>
+<li><p><code>Unsubscribe</code></p></li>
+<li><p><code>Android</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailUserAgent</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The user agent</p></td>
+<td><ul>
+<li><p><code>Mutt/1.4.2.2i</code></p></li>
+<li><p><code>Heirloom mailx 12.5 7/5/10</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailWantedHeaderName</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The WantedHeader key name detected by Trend Micro Anti-Spam Engine</p></td>
+<td><ul>
+<li><p><code>CC</code></p></li>
+<li><p><code>X-TM-Product-Ver</code></p></li>
+<li><p><code>Received</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailWantedHeaderValue</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The WantedHeader key value detected by Trend Micro Anti-Spam Engine</p></td>
+<td><ul>
+<li><p><code>cloud-app-security-5.0</code></p></li>
+<li><p><code>BCL:0;</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailWholeHeader</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The name and email address of the sender in the From header detected by Trend Micro Anti-Spam Engine</p></td>
+<td><ul>
+<li><p><code>&lt;sample_email@trendmicro.com&gt;</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailXMailer</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The X-Mailer header of the email</p></td>
+<td><ul>
+<li><p><code>Microsoft Outlook 16.0</code></p></li>
+<li><p><code>Microsoft CDO for Windows 2000</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>mailbox</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The primary email address</p></td>
+<td><ul>
+<li><p><code>sample_email@trendmicro.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>msgUuid</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The internal email UUID to identify each email message</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>msgUuidChain</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The internal UUID chain for each email in Trend Micro Feedback Engine</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111;00000000-0000-0000-0000-000000000000</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>orgId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The organization ID</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>orgName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The tenant name</p></td>
+<td><ul>
+<li><p><code>test.trendmicro.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>originatingServer</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The server where the operation originated</p></td>
+<td><ul>
+<li><p><code>TY0PR03MB6449 (15.20.5746.023)</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>parameters</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The names and values of all parameters used in the cmdlet identified in the Operations property</p></td>
+<td><ul>
+<li><p><code>[{"Name": "AlwaysDeleteOutlookRulesBlob","Value": "False"},{"Name" : "Force","Value": "False"}]</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>pname</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The internal product code (deprecated)</p></td>
+<td><ul>
+<li><p><code>733</code></p></li>
+<li><p><code>742</code></p></li>
+<li><p><code>TMEMS</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>policyTreePath</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The policy tree path (endpoint only)</p></td>
+<td><ul>
+<li><p><code>policyname1/policyname2/policyname3</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>principalName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>UserAccount</p></li>
+</ul></td>
+<td><p>The User Principal Name</p></td>
+<td><ul>
+<li><p><code>sample_email@trendmicro.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>productCode</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The product code of the product that sent the log</p></td>
+<td><ul>
+<li><p><code>sca</code></p></li>
+<li><p><code>sem</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>recordType</p></td>
+<td><ul>
+<li><p><code>int</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The operation type</p></td>
+<td><ul>
+<li><p><code>1</code></p></li>
+<li><p><code>2</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>scanTs</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The time the email was scanned</p></td>
+<td><ul>
+<li><p><code>1657135700000</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Email Sensor</p></li>
+<li><p>Trend Micro Email Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>scanType</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The manual or real-time scan type</p></td>
+<td><ul>
+<li><p><code>realtime_mailmeta-exchange</code></p></li>
+<li><p><code>realtime_mailmeta-gmail</code></p></li>
+<li><p><code>gateway_mailmetadata</code></p></li>
+<li><p><code>gateway_realtime_accepted_mail_traffic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Micro Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Email Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>service</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The Microsoft 365 service where the activity occurred</p></td>
+<td><ul>
+<li><p><code>SecurityComplianceCenter</code></p></li>
+<li><p><code>AzureActiveDirectory</code></p></li>
+<li><p><code>SharePoint</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>tags</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The detected technique ID based on the alert filter</p></td>
+<td><ul>
+<li><p><code>MITREV9.T1057</code></p></li>
+<li><p><code>MITREV9.T1059.003</code></p></li>
+<li><p><code>XSAE.F2924</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>target</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The object accessed by a user or application</p></td>
+<td><ul>
+<li><p><code>APCPR000000.PROD.OUTLOOK.COM/Microsoft Exchange Hosted</code></p></li>
+<li><p><code>Organizations/test.trendmicro.com/test\\testRule001</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>targetType</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The type of object that was accessed or modified</p></td>
+<td><ul>
+<li><p><code>File</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>userAgent</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The user agent</p></td>
+<td><ul>
+<li><p><code>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>userSessionId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The user session ID</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>userType</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The user type</p></td>
+<td><ul>
+<li><p><code>Regular</code></p></li>
+<li><p><code>Reserved</code></p></li>
+<li><p><code>Admin</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Collaboration Sensor</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>uuid</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The unique key of the log entry</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Query format for SharePoint and OneDrive file upload events](email-collab-query-format.md "Learn how to format your queries for Microsoft SharePoint and OneDrive file upload events.")
+:::

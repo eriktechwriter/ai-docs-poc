@@ -1,0 +1,153 @@
+---
+slug: trend-vision-one-virtual-network-sensor-faqs
+title: Virtual Network Sensor FAQ
+---
+# Virtual Network Sensor FAQ
+
+Frequently asked support and security questions for Virtual Network Sensor.
+
+Click a link to jump to the topic.
+
+- How can I verify the successful deployment of Virtual Network Sensor?
+
+- How can I test the connection between a Virtual Network Sensor and Trend Vision One?
+
+- How can I change the network IP settings from static IP to DHCP?
+
+- How can I manually register a Virtual Network Sensor in Trend Vision One?
+
+- How to fix a failure to register?
+
+- How can I download debug logs from the Virtual Network Sensor CLI?
+
+## How can I verify the successful deployment of Virtual Network Sensor? {#how-can-i-verify-the-successful-deployment-of-virtual-network-sensor}
+
+### Procedure {#procedure}
+
+1.  Sign in to the Virtual Network Sensor CLISH console using an admin account.
+
+2.  Connect to VMware ESXi (either directly or through SSH) or VMware vCenter and open the Virtual Network Sensor. To sign on with the default admin account, type `admin` for the user name.
+
+3.  Execute the `enable` command.
+
+4.  Execute the `connect` command.
+
+    :::note
+
+    If the Virtual Network Sensor has successfully deployed, the results show as `good` for Trend Vision One, Virtual Network Sensor, and Network Analytics.
+    :::
+
+5.  Execute the `troubleshoot` command.
+
+6.  Execute the `network-services` command.
+
+7.  Execute the `test all` command.
+
+    The test all command tests both the connection and the status of the Virtual Network Sensor services.
+
+    :::tip
+
+    - If your virtual appliance deployment is unsuccessful, you can first check the Virtual Network Sensor firewall exceptions for your region. For more information, see [Firewall exception requirements for Trend Vision One](firewall-exception-requirements-for.mdx).
+
+    - You can also troubleshoot with the following CLI commands. For more information, see [Virtual Network Sensor CLI commands](virtual-network-sensor-cli-commands.mdx).
+
+      - `show network management`: IP settings
+
+      - `ping`: network connectivity
+    :::
+
+## How can I test the connection between a Virtual Network Sensor and Trend Vision One? {#how-can-i-test-the-connection-between-a-virtual-network-sensor-and-trend-vision-one}
+
+### Procedure {#procedure-1}
+
+1.  Sign in to the Virtual Network Sensor CLISH console using an admin account.
+
+2.  Execute the `show traffic` command.
+
+3.  Choose an endpoint monitored by the Virtual Network Sensor appliance.
+
+4.  Open a browser window, paste the following link, and press Enter:
+
+    `http://wrs81.winshipway.com/ddi_detection_test`
+
+    :::note
+
+    Accessing the URL triggers a testing rule used for verifying the connection. The rule is successfully triggered even though the page shows "Not Found".
+    :::
+
+5.  Wait several minutes.
+
+6.  On the Trend Vision One console, go to **Network Security → Network Inventory** and verify that the appliance connection status is healthy.
+
+7.  Copy the appliance GUID.
+
+8.  Go to **XDR Data Explorer** and search for `"deviceGUID: AAAAAAAAAAAA-BBBBBBBB-CCCC-DDDD-EEEE" AND "wrs81"` using the Detections or Telemetry search methods.
+
+    If Trend Vision One and the Virtual Network Sensor are connected, the search results return `ruleId: 2246` and `ruleName: DEMO RULE - HTTP (Request)`.
+
+## How can I change the network IP settings from static IP to DHCP? {#how-can-i-change-the-network-ip-settings-from-static-ip-to-dhcp}
+
+### Procedure {#procedure-2}
+
+1.  Sign in to the Virtual Network Sensor appliance CLISH console using an admin account.
+
+2.  Execute the `enable` command.
+
+3.  Execute the `configure network primary ipv4.dhcp` command.
+
+4.  Execute the `configure network primary ipv4.static <ip> <submask> <gateway> <dns1> [dns2]` command.
+
+    :::note
+
+    Arguments with angle brackets (\< \>) are required. Arguments with square brackets (\[ \]) are optional.
+    :::
+
+## How can I manually register a Virtual Network Sensor in Trend Vision One? {#how-can-i-manually-register-a-virtual-network-sensor-in-trend-vision-one}
+
+### Procedure {#procedure-3}
+
+1.  Sign in to the Virtual Network Sensor appliance CLISH console using an admin account.
+
+2.  Execute the `enable` command.
+
+3.  Execute the `register` command.
+
+    :::warning[Important]
+
+    - The command registers your Virtual Network Sensor by default to the Trend Vision One account that was used to download the OVA file.
+
+    - Trend Vision One automatically renews registration tokens before expiration while your Virtual Network Sensor is still connected. Registration tokens expire 30 days after automatic renewal. If your Virtual Network Sensor loses connection to Trend Vision One, reconnect as soon as possible to avoid having to redeploy the sensor.
+    :::
+
+## How to fix a failure to register? {#how-to-fix-a-failure-to-register}
+
+If your Virtual Network Sensor fails to register with Trend Vision One, use the following steps to verify your connection and try again.
+
+1.  Use an endpoint on the same network as the Virtual Network Sensor to verify you are able to establish a connection with Trend Vision One services.
+
+    Use the command `curl -v` with the [FQDN list in the firewall requirements for Trend Vision One](firewall-exception-requirements-for.mdx) to check if you can connect to the required services. If the connection fails, check your firewall settings.
+
+    If you are in the Americas region, an example test command is `curl -v xlogr-ue1.xdr.trendmicro.com`
+
+2.  Download and redeploy the installer package.
+
+If you are unable to resolve the situation with the methods listed above, download the debug logs and contact your service provider for assistance.
+
+## How can I download debug logs from the Virtual Network Sensor CLI? {#how-can-i-download-debug-logs-from-the-virtual-network-sensor-cli}
+
+### Procedure {#procedure-4}
+
+1.  Sign in to the Virtual Network Sensor CLISH console using an admin account.
+
+2.  Execute the `enable` command.
+
+3.  Execute the `log export <startdate-enddate>` command.
+
+    You must include a date range with the command in the format `YYYYMMDD-YYYYMMDD`. You can specify the same date twice to gather logs from a single day.
+
+    For example, to retrieve logs generated on May 1, 2024, input the command `log export 20240501-20240501`.
+
+    The CLI generates a download link for the debug log.
+
+4.  Copy the download link into your browser to download the debug log from the Virtual Network Sensor.
+:::

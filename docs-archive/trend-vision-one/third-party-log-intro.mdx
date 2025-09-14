@@ -1,0 +1,133 @@
+---
+slug: trend-vision-one-third-party-log-intro
+title: Third-Party Log Collection
+---
+# Third-Party Log Collection
+
+Collect, organize, manage, and store third-party log data in Trend Vision One log repositories using collectors connected to a deployed Service Gateway.
+
+Third-Party Log Collection is a log management system that allows you to ingest and retain log data from your organization's third-party data sources. Ingested data gives you actionable data visibility for threat detection and correlation in Agentic SIEM plus support for compliance audits and regulatory data management. Set specific ingestion and retention types for each log repository to more efficiently organize collected log data and access the data when needed in Trend Vision One solutions.
+
+Third-Party Log Collection manages log data using a hierarchical system consisting of:
+
+- [Log repositories](log-repositories.mdx): Ingest and store third-party log data according to specified ingestion and retention types and time periods
+
+- [Collectors](collectors.mdx): Receive log data from configured third-party data sources and forward the data to specific log repositories
+
+- [Service Gateway virtual appliances](service-gateway-management.mdx): Install the Third-Party Log Collection service on your deployed Service Gateways to facilitate log collection from your third-party data sources
+
+To set up a log repository to ingest and store third-party log data:
+
+1.  If you do not already have a deployed Service Gateway that meets the minimum requirements for the Third-Party Log Collection service, [deploy a Service Gateway virtual appliance](deployment-guides.mdx). The Service Gateway must have at least 1 CPU and 128 MB of virtual memory available.
+
+2.  [Install the Third-Party Log Collection service](install-tplc-service.mdx) on your Service Gateway.
+
+3.  If using the TLS protocol to receive third-party data logs from a data source, [upload a certificate](dslm-faqs.mdx) to your Service Gateway for validation purposes.
+
+4.  [Create a log repository](create-log-repository.mdx) in Third-Party Log Collection with the desired ingestion and retention settings.
+
+5.  [Add one or more collectors](create-collector.mdx) to the log repository configured to receive data from your third-party data sources.
+
+6.  Configure your third-party data source to export log data to [collectors](collectors.mdx).
+
+7.  Execute queries on ingested log data in [XDR Data Explorer](search-app.mdx) and monitor log repository traffic usage in [Service Gateway Management](service-gateway-management.mdx).
+
+Collectors receive and forward all valid logs from the specified third-party log data sources.
+
+![](/images/TPLC_diagram=GUID-5eaa9e3e-9889-4618-b988-15de83dec476.webp)
+
+The following actions are available in Third-Party Log Collection.
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>View existing log repositories and collectors</p></td>
+<td>Log repositories are displayed along with details including:
+<ul>
+<li><p>Ingestion type</p></li>
+<li><p>Retention period</p></li>
+<li><p>Number of collectors assigned</p></li>
+</ul>
+<p>Drill down to see details on the collectors connected to the log repository, including:</p>
+<ul>
+<li><p>Collector name</p></li>
+<li><p>Log source</p></li>
+<li><p>Log format</p></li>
+<li><p>Collector status</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Create a new log repository</p></td>
+<td><p>Click <strong>Create New Log Repository</strong> to name and configure a new log repository. To learn more, see <a href="trend-vision-one-create-log-repository">Create a log repository</a>.</p></td>
+</tr>
+<tr>
+<td><p>View log repository and collector details</p></td>
+<td><p>Click the name of a log repository to display the log repository details drawer with the following sections:</p>
+<ul>
+<li><p><strong>Basic</strong>: Displays the ingestion and retention types assigned to the log repository.</p>
+<ul>
+<li><p>Ingestion types</p>
+<ul>
+<li><p>Analytic: Ingests log data for analysis, correlation, and threat hunting</p>
+<ul>
+<li><p>Supports both analytic and archival retention</p></li>
+</ul></li>
+<li><p>Archival: Ingests log data for infrequent queries or to meet compliance requirements</p>
+<ul>
+<li><p>Only supports archival retention</p></li>
+</ul></li>
+</ul></li>
+<li><p>Retention types:</p>
+<ul>
+<li><p>Analytic: Allows for frequent retrieval of log data for analysis, correlation, and threat hunting. Default retention period: 30 days</p></li>
+<li><p>Archival: Stores data for compliance purposes or infrequent queries</p></li>
+</ul></li>
+</ul></li>
+<li><strong>Collectors</strong>: Displays details about collectors forwarding log data to the log repository
+<ul>
+<li><p>Click <strong>Add Collector</strong> to add a new collector to the log repository.</p>
+
+
+:::warning[Important]
+
+<p>All log data received by a collector is ingested according to the associated log repository settings. To use different ingestion or retention settings, create a new log repository.</p>
+
+
+:::
+
+</li>
+<li><p>Edit or remove individual collectors</p></li>
+<li><p><a href="trend-vision-one-create-collector">Manage log filters</a> applied to each collector</p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Set up alert notifications</p></td>
+<td><p>Click <strong>Configure alert notifications</strong> to enable email or webhook notifications when one or more of the following Third Party Log Collection issues occurs:</p>
+<ul>
+<li><p>Log collection has been interrupted due to abnormal Service Gateway or Third-Party Log Collection service status</p></li>
+<li><p>Log collection has stopped because the Third-Party Log Collection service is out of date</p></li>
+<li><p>No supported logs have been collected from a data source for an extended period</p></li>
+<li><p>Collector status has changed</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Install the Third-Party Log Collection service on a Service Gateway](install-tplc-service.md "Enable third-party log collection by installing the Third-Party Log Collection service on your deployed Service Gateway.")
+- [Log repositories](log-repositories.md "Use log repositories to organize and manage your third-party log data according to specified ingestion and retention settings.")
+- [Collectors](collectors.md "Use collectors to receive log data from configured third-party data sources in your organization's network via a deployed Service Gateway.")
+- [Third-Party Log Collection supported vendors and products](log-vendors-products.md "Find the products supported by Trend Vision One for third-party log ingestion.")
+:::

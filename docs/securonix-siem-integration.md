@@ -1,0 +1,116 @@
+---
+slug: trend-vision-one-securonix-siem-integration
+title: Securonix SIEM integration
+---
+
+Set up the Securonix SIEM integration to enable Securonix to collect alerts, events, and audit logs from Trend Vision One.
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, obtain the endpoint URL and authentication token.
+
+    1.  Go to **Workflow and Automation → Third-Party Integration**.
+
+    2.  Click **Securonix SIEM**.
+
+    3.  Obtain the values from the following fields.
+
+        - Click ![](/images/dddna_summary_detection_copy=GUID-4DE35BE5-57A5-4919-BF9C-5EC95F9CA8FD=1=en-us=Low.webp) to copy the **Endpoint URL**.
+
+        - Click **Generate** and copy the **Authentication token**.
+
+2.  Configure and save setup credentials for Trend Vision One on the Securonix platform.
+
+    For more information on the configuration, see [Securonix Cloud documentation](https://documentation.securonix.com/bundle/securonix-cloud-user-guide/page/content/active-deployment-guides/trend-micro-vision-one.htm).
+
+    1.  In **Unified Defense SIEM**, go to **Menu → Add Data → Activity**.
+
+    2.  Click **Add Data → Add Data for Supported Device Type**.
+
+    3.  In the **Resource Type Information** window, enter the following values.
+
+        <table>
+        <colgroup>
+        <col style="width: 25%" />
+        <col style="width: 75%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Setting</p></th>
+        <th><p>Description</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p><strong>Vendors</strong></p></td>
+        <td><p>Trend Micro Inc.</p></td>
+        </tr>
+        <tr>
+        <td><p><strong>Resource Types</strong></p></td>
+        <td><p>Trend Micro Vision One - Alerts : [trendmicroxdr] [JSON]</p></td>
+        </tr>
+        <tr>
+        <td><p><strong>Parser Name</strong></p></td>
+        <td><p>SCNX_TRENDM_TRENDMICROVISIONONEALERT_CEDR_TRE_JSO_COMM</p></td>
+        </tr>
+        </tbody>
+        </table>
+
+    4.  Select an **Ingester** from the list.
+
+    5.  In the **Connection Details** window, configure the following settings.
+
+        <table>
+        <colgroup>
+        <col style="width: 25%" />
+        <col style="width: 75%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Setting</p></th>
+        <th><p>Description</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p><strong>Log Types</strong></p></td>
+        <td><p>Select one of the following:</p>
+        <ul>
+        <li><p>Alerts V3</p></li>
+        <li><p>Audit Logs V3</p></li>
+        </ul></td>
+        </tr>
+        <tr>
+        <td><p><strong>Base URL</strong></p></td>
+        <td><p>Paste the endpoint URL copied from the Trend Vision One console.</p></td>
+        </tr>
+        <tr>
+        <td><p><strong>Token</strong></p></td>
+        <td><p>Paste the authentication token copied from the Trend Vision One console.</p></td>
+        </tr>
+        </tbody>
+        </table>
+
+    6.  Click **Save & Next**.
+
+    7.  In the **Parser Management** window, click **Save & Next**.
+
+3.  Add a correlation rule on the Securonix platform.
+
+    1.  Click **Add Condition → Add New Correlation Rule**.
+
+    2.  Give the correlation rule a descriptive name.
+
+    3.  Specify a value for each column in the **Correlate events to user using rule** table.
+
+    4.  Click **Save → Save & Next**.
+
+    5.  In the **Policy Violations** window, click **Save & Next**.
+
+4.  Run the integration to save Trend Vision One as a data source on the Securonix platform.
+
+    1.  In the **Job Scheduling Information** window, select **Do you want to run job Once?**.
+
+    2.  Click **Save & Run**.
+
+        Securonix begins collecting event data from Trend Vision One. Securonix can only collect data generated after connecting to Trend Vision One. You might need to allow some time before new data starts to appear.

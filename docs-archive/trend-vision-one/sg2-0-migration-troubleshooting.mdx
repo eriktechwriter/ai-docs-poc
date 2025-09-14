@@ -1,0 +1,74 @@
+---
+slug: trend-vision-one-sg2-0-migration-troubleshooting
+title: Service Gateway 2.0 migration troubleshooting
+---
+# Service Gateway 2.0 migration troubleshooting
+
+Resolve problems which may occur when migrating from Service Gateway 1.0 to 2.0.
+
+The following topics detail how to troubleshoot problems that occur during migration. If the steps do not resolve the issue or if the problem persists, contact your support provider.
+
+**Related information**
+
+- Unable to migrate service (Error code: 5040001)
+- Unable to unregister and shutdown (Error code: 5040002)
+- Unable to change target IP address (Error code: 5040003)
+
+## Unable to migrate service (Error code: 5040001) {#unable-to-migrate-service-error-code-5040001}
+
+The following error occurs when Service Gateway is unable to migrate one or more services from the source 1.0 appliance to the target 2.0 appliance.
+
+![](/images/migration_error_service=GUID-D5CFBF0E-9373-4954-8E89-58D6D49767B3.webp)
+
+The error normally occurs when the target Service Gateway 2.0 virtual appliance already has services installed. Uninstall services from the target Service Gateway 2.0 virtual appliance to resolve the problem.
+
+### Procedure {#procedure}
+
+1.  Go to **Workflow and Automation → Service Gateway Management**.
+
+2.  Click the name of the target Service Gateway appliance.
+
+    The **Service Gateway** screen appears.
+
+3.  Click **Manage Services**.
+
+4.  In the **Manage Services** panel, click ![](/images/disableService=f714f433-8549-4b96-857f-8814663a51d0.webp) next to any installed service and click **Uninstall**.
+
+5.  Migrate the Service Gateway 1.0 appliance again.
+
+## Unable to unregister and shutdown (Error code: 5040002) {#unable-to-unregister-and-shutdown-error-code-5040002}
+
+The following error occurs when Service Gateway is unable to unregister and shutdown the source Service Gateway 1.0 virtual appliance when transferring the IP address to the target Service Gateway 2.0 virtual appliance.
+
+![](/images/migration_error_unregister=GUID-9F0E47CD-DC68-486F-8207-BE2B21BBF7A3.webp)
+
+Manually unregister the source Service Gateway 1.0 appliance and use the [Command Line Interface](service-gateway-cli-commands.mdx) to modify the IP address in the Service Gateway 2.0 appliance.
+
+### Procedure {#procedure-1}
+
+1.  Go to **Workflow and Automation → Service Gateway Management**.
+
+2.  On the **Service Gateway Management (Legacy)** tab, click the unregister icon (![](/images/unregister=GUID-02C2D122-5C98-4502-8F31-6AD1B9D026F8.webp)) for the source Service Gateway appliance.
+
+3.  Access the target Service Gateway 2.0 appliance Command Line Interface.
+
+4.  Type `enable` and press **ENTER** to access administrative commands.
+
+5.  Type `configure network primary ipv4.static eth0 [IP/NETMASK] [GATEWAY] [DNS]` and press **ENTER**.
+
+## Unable to change target IP address (Error code: 5040003) {#unable-to-change-target-ip-address-error-code-5040003}
+
+The following error occurs when Service Gateway Management is unable to change the IP address on the target Service Gateway 2.0 virtual appliance when transferring the IP address from the source Service Gateway 1.0 virtual appliance.
+
+![](/images/migration_error_targetIP=GUID-F990BCDA-C3E2-4A0E-B2C4-EA60F6069C8D.webp)
+
+Use the [Command Line Interface](service-gateway-cli-commands.mdx) to modify the IP address in the Service Gateway 2.0 appliance.
+
+### Procedure {#procedure-2}
+
+1.  Access the target Service Gateway 2.0 appliance Command Line Interface.
+
+2.  Type `enable` and press **ENTER** to access administrative commands.
+
+3.  Type `configure network primary ipv4.static eth0 [IP/NETMASK] [GATEWAY] [DNS]` and press **ENTER**.
+:::

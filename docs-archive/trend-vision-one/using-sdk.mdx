@@ -1,0 +1,224 @@
+---
+slug: trend-vision-one-using-sdk
+title: Use the SDK
+---
+# Use the SDK
+
+How to use the Go SDK for Trend Vision One™ File Security
+
+After initializing the Go SDK for File Security, you can start using it to interact with File Security. Here are some basic examples of how to use the SDK.
+
+### Procedure {#procedure}
+
+- Scan a file.
+
+  ```bash
+  filePath := "path/to/your/file.txt"
+  tags := []string{"tag1", "tag2"}
+
+  response, err := client.ScanFile(filePath, tags)
+  if err != nil {
+      // Handle scanning error
+      panic(err)
+  }
+
+  // Use the 'response' as needed
+  ```
+
+- Scan a buffer. You can use up to eight tags each with a maximum length of 63 characters.
+
+  ```bash
+  filePath := "path/to/your/file.txt"
+  tags := []string{"tag1", "tag2"}
+
+  response, err := client.ScanFile(filePath, tags)
+  if err != nil {
+      // Handle scanning error
+      panic(err)
+  }
+
+  // Use the 'response' as needed
+  ```
+
+## Using advanced functions {#using-advanced-functions}
+
+The Go SDK provides additional functions for advanced use such as enabling PML, dumping the configuration, and cleaning up resources.
+
+### Procedure {#procedure-1}
+
+- Dump the configuration.
+
+  You can dump the current configuration for debugging purposes.
+
+  ```bash
+  configDump := client.DumpConfig()
+  fmt.Println("SDK Configuration:\n", configDump)
+  ```
+
+- Clean up resources.
+
+  You can destroy the SDK client when you are done to release any allocated resources.
+
+  ```bash
+  client.Destroy()
+  ```
+
+- Enable Predictive Machine Learning (PML)
+
+  ```bash
+  client.SetPMLEnable()
+  ```
+
+- Enable SPN feedback
+
+  ```bash
+  client.SetFeedbackEnable()
+  ```
+
+## Viewing Examples {#viewing-examples}
+
+The `tools/` directory of the SDK package contains two important files with code examples.
+
+### Procedure {#procedure-2}
+
+- Refer to these examples for a deeper understanding of how to integrate and use the SDK with File Security.
+
+  - `client.go`: This file contains the main client initialization logic and functions for scanning a single file.
+
+  - `scanfiles.go`: This file provides examples of how to scan multiple files using the SDK.
+
+## Using client tools {#using-client-tools}
+
+### Procedure {#procedure-3}
+
+- Execute `make build` in the root directory to build the client tools.
+
+  The build process produces the following client tools in the `tools/`directory:
+
+  - `client`
+
+    This program supports servers with Google™ remote procedure call (gRPC).
+
+    ```bash
+    client [command-line flags]
+    ```
+
+    This program supports the following flags:
+
+    **Client Supported Flags**
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead style="text-align: left;">
+    <tr>
+    <th style="text-align: left;"><p>Flag</p></th>
+    <th style="text-align: left;"><p>Use</p></th>
+    </tr>
+    </thead>
+    <tbody style="text-align: left;">
+    <tr>
+    <td style="text-align: left; vertical-align: top;"><p><code>-tls</code></p></td>
+    <td style="text-align: left; vertical-align: top;"><p>Specify to enable server authentication by client for gRPC.</p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left; vertical-align: top;"><p><code>-region &lt;string&gt;</code></p></td>
+    <td style="text-align: left; vertical-align: top;"><p>Specify the region to connect to for gRPC.</p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left; vertical-align: top;"><p><code>-addr &lt;string&gt;</code></p></td>
+    <td style="text-align: left; vertical-align: top;"><p>Set the address to connect to for gRPC. The default is <code>localhost:50051</code>.</p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left; vertical-align: top;"><p><code>-filename &lt;string&gt;</code></p></td>
+    <td style="text-align: left; vertical-align: top;"><p>Indicate the path of file to scan.</p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left; vertical-align: top;"><p><code>-apikey &lt;string&gt;</code></p></td>
+    <td style="text-align: left; vertical-align: top;"><p>Use the API key for service authentication if authentication is enabled.</p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left; vertical-align: top;"><p><code>-pml</code></p></td>
+    <td style="text-align: left; vertical-align: top;"><p>Specify to enable Predictive Machine Learning (PML) detection.</p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left; vertical-align: top;"><p><code>-feedback</code></p></td>
+    <td style="text-align: left; vertical-align: top;"><p>Specify to enable SPN feedback.</p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left; vertical-align: top;"><p><code>tag &lt;string&gt;</code></p></td>
+    <td style="text-align: left; vertical-align: top;"><p>Specify the tags to be used for scanning, separated by commas. The maximum number tags that you can use is 8, and the length of each tag cannot exceed 63.</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+  - `scanfiles`
+
+    This is another program that uses the gRPC client library to communicate with the File Security server. When the `-good` flag is specified, this program shows whether testing was successful and the files are non-malicious. So, for example, if File Security indicates a file is malicious, the program output indicates the testing failed.
+
+    This program supports the following flags:
+
+    **Scanfiles Supported Flags**
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead style="text-align: left;">
+    <tr>
+    <th style="text-align: left;"><p>Flag</p></th>
+    <th style="text-align: left;"><p>Use</p></th>
+    </tr>
+    </thead>
+    <tbody style="text-align: left;">
+    <tr>
+    <td style="text-align: left; vertical-align: top;"><p><code>-path &lt;string&gt;</code></p></td>
+    <td style="text-align: left; vertical-align: top;"><p>Indicate the directory or file to scan. This flag must be specified in all scenarios.</p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left; vertical-align: top;"><p><code>-good</code></p></td>
+    <td style="text-align: left; vertical-align: top;"><p>Specify if scanning non-malicious files.</p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left; vertical-align: top;"><p><code>-parallel</code></p></td>
+    <td style="text-align: left; vertical-align: top;"><p>Specify to scan multiple files simultaneously instead of sequentially.</p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left; vertical-align: top;"><p><code>-tls</code></p></td>
+    <td style="text-align: left; vertical-align: top;"><p>Specify to enable server authentication by client for gRPC.</p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left; vertical-align: top;"><p><code>-region &lt;string&gt;</code></p></td>
+    <td style="text-align: left; vertical-align: top;"><p>Specify the region to connect to for gRPC.</p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left; vertical-align: top;"><p><code>-addr &lt;string&gt;</code></p></td>
+    <td style="text-align: left; vertical-align: top;"><p>Set the address to connect to for gRPC. The default is <code>localhost:50051</code>.</p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left; vertical-align: top;"><p><code>-apikey &lt;string&gt;</code></p></td>
+    <td style="text-align: left; vertical-align: top;"><p>Use the API key for service authentication if authentication is enabled.</p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left; vertical-align: top;"><p><code>-pml</code></p></td>
+    <td style="text-align: left; vertical-align: top;"><p>Specify to enable Predictive Machine Learning (PML) detection.</p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left; vertical-align: top;"><p><code>-active-content</code></p></td>
+    <td style="text-align: left; vertical-align: top;"><p>Specify to enable active content detection.</p>
+    <p>Active content is a dynamic element in a file that can execute code or perform actions automatically and can be exploited to deliver malware or phishing attacks.</p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left; vertical-align: top;"><p><code>-feedback</code></p></td>
+    <td style="text-align: left; vertical-align: top;"><p>Specify to enable SPN feedback.</p></td>
+    </tr>
+    <tr>
+    <td style="text-align: left; vertical-align: top;"><p><code>-tag &lt;string&gt;</code></p></td>
+    <td style="text-align: left; vertical-align: top;"><p>Specify the tags to be used for scanning, separated by commas. The maximum number tags that you can use is 8, and the length of each tag cannot exceed 63.</p></td>
+    </tr>
+    </tbody>
+    </table>
+:::

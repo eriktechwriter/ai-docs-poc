@@ -1,0 +1,203 @@
+---
+slug: trend-vision-one-sg-sys-requirements
+title: Service Gateway appliance system requirements
+---
+
+Service Gateway requires the following minimum specifications.
+
+The Service Gateway virtual appliance supports local deployment on VMware ESXi 6.5, 6.7, 7.0, or 8.0, on Windows Server 2019 and 2022 with Hyper-V enabled, and on Nutanix AHV clusters. Cloud deployments are supported on AWS and Azure. Service Gateway does not support deployment as a nested virtual machine.
+
+The Service Gateway virtual appliance supports two types of appliance specifications to choose from, depending on predicted traffic usage:
+
+- **Standard image**: 12 CPUs, 16 GB memory, 500 GB storage
+
+- **Minimal image**: 8 CPUs, 12 GB memory, 200 GB storage
+
+:::warning[Important]
+When configuring multiple services, you must allocate the minimum virtual CPU and virtual memory requirement per service to ensure proper functionality.
+
+For example, to configure a Service Gateway with the minimum requirements for both "TippingPoint log forwarding" and "TippingPoint policy management" (rounding up to logical units):
+
+- Virtual CPUs: 1 + 0.5 = 2 CPUs
+
+- Virtual memory: 2 GB + 786 MB = 3 GB
+:::
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Service</p></th>
+<th><p>Virtual CPUs (Minimum / Recommended)</p></th>
+<th><p>Virtual Memory (Minimum / Recommended)</p></th>
+<th><p>Virtual NICs</p></th>
+<th><p>Supported Products</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Firmware</p></td>
+<td><p>2 / 4</p></td>
+<td><p>4 GB / 8 GB</p></td>
+<td><p>1</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>ActiveUpdate</p></td>
+<td><p>1 / 2</p></td>
+<td><p>2 GB / 4 GB</p></td>
+<td><p>1</p></td>
+<td><ul>
+<li><p>Apex One / OfficeScan 11-14</p></li>
+<li><p>Deep Discovery Inspector 5.6-6.2, 6.5</p></li>
+<li><p>Deep Security 10-20</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>On-premises directory connection</p></td>
+<td><p>2 / 4</p></td>
+<td><p>4 GB / 8 GB</p></td>
+<td><p>1</p></td>
+<td><ul>
+<li><p><a href="trend-vision-one-ad-premises-integration">Active directory services</a> supported on the following Windows operating systems:</p>
+<ul>
+<li><p>Windows Server 2012</p></li>
+<li><p>Windows Server 2016</p></li>
+<li><p>Windows Server 2019</p></li>
+<li><p>Windows Server 2022</p></li>
+</ul></li>
+<li><p><a href="trend-vision-one-openldap-integration">OpenLDAP 2.4 and above</a></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Forward Proxy</p></td>
+<td><p>3 / 6</p></td>
+<td><p>4 GB / 8 GB</p></td>
+<td><p>1</p></td>
+<td><p>Endpoint agents installed on the following operating system types:</p>
+<ul>
+<li><p>Windows</p></li>
+<li><p>macOS</p></li>
+<li><p>Linux</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Generic Caching Service</p></td>
+<td><p>3 / 6</p></td>
+<td><p>4 GB / 8 GB</p></td>
+<td><p>1</p></td>
+<td><ul>
+<li><p>Trend Vision One Endpoint Security agent</p></li>
+<li><p>Standard Endpoint Protection</p></li>
+<li><p>Server &amp; Workload Protection</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>TippingPoint log forwarding</p></td>
+<td><p>1 / 2</p></td>
+<td><p>2 GB / 4 GB</p></td>
+<td><p>1</p></td>
+<td><p>TippingPoint Security Management System 5.5.4 and 6.0.0</p>
+<p>Requires an API key. To obtain the key, go to <strong>Workflow and Automation → Service Gateway Management</strong> and click <strong>Manage API Key</strong>.</p></td>
+</tr>
+<tr>
+<td><p>Nessus Pro</p></td>
+<td><p>0.5 / 1</p></td>
+<td><p>500 MB / 1 GB</p></td>
+<td><p>1</p></td>
+<td><p>Nessus Pro</p>
+<p>For more information, see <a href="trend-vision-one-nessus-pro-integration">Nessus Pro integration</a>.</p></td>
+</tr>
+<tr>
+<td><p>Rapid7 - Nexpose</p></td>
+<td><p>0.5 / 0.5</p></td>
+<td><p>500 MB / 1 GB</p></td>
+<td><p>1</p></td>
+<td><p>Rapid7 - Nexpose</p></td>
+</tr>
+<tr>
+<td><p>Smart Protection Services</p></td>
+<td><p>2 / 4</p></td>
+<td><p>2 GB / 4 GB</p></td>
+<td><p>1</p></td>
+<td><p>For more information on Smart Protection Services support, see <a href="trend-vision-one-sps-product-support">Smart Protection Services product support</a>.</p></td>
+</tr>
+<tr>
+<td><p>Suspicious Object List synchronization</p></td>
+<td><p>1 / 2</p></td>
+<td><p>2 GB / 4 GB</p></td>
+<td><p>1</p></td>
+<td><ul>
+<li><p>Deep Discovery Inspector 5.8 SP1 and above</p></li>
+<li><p>Deep Discovery Analyzer 7.1 and above</p></li>
+<li><p>TippingPoint Security Management System 5.5.4 and above</p></li>
+</ul>
+<p>Requires an API key. To obtain the key, go to <strong>Workflow and Automation → Service Gateway Management</strong> and click <strong>Manage API Key</strong>.</p></td>
+</tr>
+<tr>
+<td><p>Syslog Connector</p></td>
+<td><p>2 / 4</p></td>
+<td><p>500 MB / 1 GB</p></td>
+<td><p>1</p></td>
+<td><p>For more information, see <a href="trend-vision-one-third-party-integration">Third-Party Integration</a>.</p></td>
+</tr>
+<tr>
+<td><p>Third-party intelligence synchronization</p></td>
+<td><p>1 / 2</p></td>
+<td><p>2 GB / 4 GB</p></td>
+<td><p>1</p></td>
+<td><p>For more information, see <a href="trend-vision-one-third-party-integration">Third-Party Integration</a>.</p></td>
+</tr>
+<tr>
+<td><p>Third-Party Log Collection Service</p></td>
+<td><p>The minimum and recommended requirements for this service depend on the predicted number of logs per second (LPS):</p>
+<ul>
+<li><p>30,000 LPS: 1 / 2</p></li>
+<li><p>50,000 LPS: 2 / 4</p></li>
+<li><p>100,000 LPS: 4 / 8</p></li>
+</ul></td>
+<td><p>4 GB / 8 GB</p></td>
+<td><p>1</p></td>
+<td><p>For more information, see <a href="trend-vision-one-third-party-integration">Third-Party Integration</a>.</p></td>
+</tr>
+<tr>
+<td><p>TippingPoint policy management</p></td>
+<td><p>0.5 / 0.5</p></td>
+<td><p>768 MB / 768 MB</p></td>
+<td><p>1</p></td>
+<td><ul>
+<li><p>Intrusion Prevention Configuration</p></li>
+<li><p>TippingPoint Security Management System 5.5.4 and 6.0.0</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+:::note
+- The virtual CPUs require a minimum speed of 2.3 GHz with hyper-threading support, Virtualization Technology (VT), and 64-bit architecture.
+
+- System requirements for services do not include firmware. When estimating requirements, add firmware to the services you want to use.
+
+  For example, the minimum system requirements for a virtual appliance with ActiveUpdate is 3 virtual CPUs (2 + 1) and 6 GB virtual memory (4 + 2) in total.
+
+- Before upgrading to Service Gateway 3.0, ensure that your system meets the minimum architecture requirements. Service Gateway 3.0 supports the following architectures:
+
+  - AMD or Intel 64-bit (x86-64-v2 and later)
+
+  - ARM 64-bit (ARMv8.0-A and later)
+
+  - IBM Power Systems Little Endian (POWER9 and later)
+
+  - IBM Z 64-bit (z14 and later)
+:::
+
+**Related information**
+
+- [Service Gateway virtual appliance communication ports](sg-ports-used.md "Configure your firewall and connected products to allow inbound communication to the Service Gateway.")
+- [Service Gateway sizing guide for endpoints](sizing-guide-sg-endpoints.md "Select a Service Gateway appliance specification based on type and number of endpoints.")

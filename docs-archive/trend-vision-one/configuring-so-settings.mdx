@@ -1,0 +1,34 @@
+---
+slug: trend-vision-one-configuring-so-settings
+title: Configuring suspicious object settings
+---
+# Configuring suspicious object settings
+
+A suspicious object is a known malicious or potentially malicious IP address, domain, URL, or SHA-1 value found in submitted samples. Cloud Email and Collaboration Protection can use the Suspicious Object lists synchronized from the Suspicious Object Management app during scanning.
+
+:::note
+
+The Suspicious Object List feature is disabled by default. It applies to all ATP policies.
+:::
+
+### Procedure {#procedure}
+
+1.  In Cloud Email and Collaboration Protection, go to **Policies → Global Settings → Other Settings → Suspicious Object Settings**.
+
+2.  On the **Suspicious Object List** screen that appears, enable or disable the use of the lists during scanning as necessary.
+
+3.  Click **Save**.
+
+    Cloud Email and Collaboration Protection utilizes the suspicious file list in Malware Scanning and the suspicious URL list in Web Reputation.
+
+    When a URL or file matches an item in the list, Cloud Email and Collaboration Protection takes actions based on how you have configured Suspicious Object Management.
+
+    - **Pass**: Record the detection in a log and leave the scanned item unchanged.
+
+    - **Block/Quarantine**: Block the scanned item, or move the scanned item to a dedicated quarantine folder.
+
+      :::note
+
+      The quarantine action does not apply to Gmail. Instead, Cloud Email and Collaboration Protection labels the email message as risky.
+      :::
+::::

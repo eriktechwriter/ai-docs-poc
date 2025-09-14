@@ -1,0 +1,45 @@
+---
+slug: trend-vision-one-system-log-data
+title: System log data
+---
+
+Trend Vision One maintains system logs that provide summaries about system events that occurred.
+
+The following table outlines the available system log information.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Data</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Logged</p></td>
+<td><p>The date and time the activity occurred</p></td>
+</tr>
+<tr>
+<td><p>Category</p></td>
+<td><p>The category of the activity.</p>
+<p>Categories include:</p>
+<ul>
+<li><p>Service Gateway</p></li>
+<li><p>Network sensor</p></li>
+<li><p>Product connector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Activity</p></td>
+<td><p>The activity that occurred</p></td>
+</tr>
+<tr>
+<td><p>Details</p></td>
+<td><p>Details on the activity that occurred</p></td>
+</tr>
+</tbody>
+</table>

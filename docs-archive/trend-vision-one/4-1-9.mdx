@@ -1,0 +1,43 @@
+---
+slug: trend-vision-one-4-1-9
+title: >-
+  4.1.9 - If the kubelet config.yaml configuration file is being used validate
+  permissions set to 600 or more restrictive (Automated)
+---
+# 4.1.9 - If the kubelet config.yaml configuration file is being used validate permissions set to 600 or more restrictive (Automated)
+
+Profile applicability: Level 1 - Worker Node
+
+Ensure that if the kubelet refers to a configuration file with the `--config` argument, that file has permissions of 600 or more restrictive.
+
+The kubelet reads various parameters, including security settings, from a config file specified by the `--config` argument. If this file is specified you should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system.
+
+:::note
+
+By default, the `/var/lib/kubelet/config.yaml` file as set up by `kubeadm` has permissions of 600.
+:::
+
+### Audit {#audit}
+
+Automated AAC auditing has been modified to allow CIS-CAT to input a variable for the \<PATH\>/\<FILENAME\> of the kubelet config yaml file. Set $kubelet_config_yaml=\<PATH\> based on the file location on your system:
+
+```bash
+export kubelet_config_yaml=/var/lib/kubelet/config.yaml
+```
+
+To perform the audit manually, run the below command (based on the file location on your system) on the each worker node:
+
+```bash
+stat -c %a /var/lib/kubelet/config.yaml
+```
+
+Verify that the permissions are 600 or more restrictive.
+
+### Remediation {#remediation}
+
+Run the following command (using the config file location identied in the Audit step):
+
+```bash
+chmod 600 /var/lib/kubelet/config.yaml
+```
+::::

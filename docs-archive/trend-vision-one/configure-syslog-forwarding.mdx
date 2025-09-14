@@ -1,0 +1,107 @@
+---
+slug: trend-vision-one-configure-syslog-forwarding
+title: Configuring Syslog Forwarding
+---
+# Configuring Syslog Forwarding
+
+Use the **Syslog Settings** screen to configure Trend Micro Apex Central to forward supported logs to a syslog server.
+
+For more information, see the following topics:
+
+- [Disabling Syslog Forwarding](disabling-syslog-forwarding.mdx)
+
+- [Supported Log Types and Formats](supported-log-types-formats.mdx)
+
+### Procedure {#procedure}
+
+1.  Go to **Administration → Settings → Syslog Settings**.
+
+    The **Syslog Settings** screen appears.
+
+2.  Select the **Enable syslog forwarding** check box.
+
+3.  Configure the following settings for the server that receives the forwarded syslogs:
+
+    - **Server address**: Syslog server IP address or FQDN
+
+    - **Port**: Syslog server port number
+
+    - **Protocol**: Select the transmission protocol
+
+      :::note
+
+      If **SSL/TLS** is selected, Trend Micro Apex Central accepts valid self-signed certificates by default.
+
+      - If the server certificate contains a Subject Alternative Name, the Subject Alternative Name must contain the server FQDN or IP address.
+
+      - For additional security, use a valid server certificate or upload the server certificate to Trend Micro Apex Central.
+      :::
+
+4.  (Optional) To upload a server certificate:
+
+    :::warning[Important]
+
+    - Trend Micro Apex Central only supports server certificates in X.509 format with .DER or .PEM encoding.
+
+    - Trend Micro Apex Central only supports uploading server certificates for SSL/TLS transmissions.
+    :::
+
+    1.  Select the **Use server certificate** check box.
+
+    2.  Click **Select** to select the server certificate from your computer.
+
+    3.  Click **Open**.
+
+        Trend Micro Apex Central uploads the selected server certificate.
+
+5.  Select the log format:
+
+    - **CEF**: Uses the standard Common Event Format (CEF) for log messages
+
+    - **Apex Central format**: Sets the syslog **Facility** code to "Local0" and the **Severity** code to "Notice"
+
+    For more information, see [Supported Log Types and Formats](supported-log-types-formats.mdx).
+
+6.  Configure the frequency for when Trend Micro Apex Central forwards the logs.
+
+7.  Select the log type(s) to forward:
+
+    1.  Select a log category from the **Log type** drop-down list:
+
+        :::note
+
+        You can select log types from multiple log categories.
+        :::
+
+        - **Security logs**
+
+        - **Product information**
+
+    2.  Select the check box(es) for the log(s) you want to forward.
+
+        Trend Micro Apex Central displays the total number of selected log types next to the **Log type** drop-down list.
+
+    3.  (Optional) Select another log category from **Log type** drop-down list to select additional logs types to forward.
+
+8.  (Optional) Click **Test Connection** to test the server connection.
+
+    :::note
+
+    Testing the connection does not save the syslog server settings.
+    :::
+
+    The syslog server connection status appears at the top of the screen.
+
+9.  Click **Save**.
+
+    - Trend Micro Apex Central starts forwarding logs to the configured syslog server.
+
+    - To monitor the log forwarding status, go to **Administration → Command Tracking** and select **Forward Syslog** from the **Command** drop-down list.
+
+      For more information, see [Querying and Viewing Commands](querying-viewing-commands.mdx).
+
+**Related information**
+
+- [Disabling Syslog Forwarding](disabling-syslog-forwarding.mdx)
+- [Supported Log Types and Formats](supported-log-types-formats.mdx)
+:::

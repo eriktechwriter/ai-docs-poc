@@ -1,0 +1,297 @@
+---
+slug: trend-vision-one-kubernetes-cluster-descriptions
+title: Kubernetes cluster components descriptions
+---
+# Kubernetes cluster components descriptions
+
+The following diagram shows the components in a cluster environment to illustrate the data flow and to explain how each component is used within the clusters.
+
+![](/images/k8s-cluster-customer-dataflow=15ce8387-7492-402b-8acc-0c6a5bf6f78e.webp)
+
+The following tables provide brief descriptions of the components that make up Kubernetes clusters in Container Security.
+
+:::note
+
+Add ports to your firewall or network policy allow lists. This allows Container Security to post component information from clusters to the backend, like health checks and metrics, and to implement features that require communication among in-cluster components.
+:::
+
+**Default components**
+
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 38%" />
+<col style="width: 11%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Component name</p></th>
+<th><p>Description</p></th>
+<th><p>Pod name</p></th>
+<th><p>Container names</p></th>
+<th>Ports</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="vertical-align: top"><p>Usage Controller</p></td>
+<td style="vertical-align: top"><p>Usage Controller regularly reports usage data which is used for Cloud One billing and for determining installed helm versions.</p>
+
+
+:::warning[Important]
+
+&#10;
+
+:::
+
+
+Usage Controller will be deprecated in Vision One.</td>
+<td style="vertical-align: top"><p>trendmicro-usage-controller-xxxxxxxxxx-xxxxx</p></td>
+<td style="vertical-align: top"><ul>
+<li>controller-manager</li>
+<li>rbac-proxy</li>
+</ul></td>
+<td style="vertical-align: top"><ul>
+<li>8081</li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Admission Controller</p></td>
+<td style="vertical-align: top"><p>Admission Controller is used to validate Kubernetes and to perform block or log actions based on deployment policy.</p>
+
+
+:::warning[Important]
+
+Admission Controller only works with <code>registry:type</code> artifacts.
+
+
+:::
+
+</td>
+<td style="vertical-align: top"><p>trendmicro-admission-controller-xxxxxxxxxx-xxxxx</p></td>
+<td style="vertical-align: top"><ul>
+<li>trendmicro-admission-controller</li>
+</ul></td>
+<td style="vertical-align: top"><ul>
+<li><p>443</p></li>
+<li><p>8443</p></li>
+<li><p>8083</p></li>
+</ul>
+
+
+:::note
+
+<p>Port 443 is used for outbound connections from in-cluster to the backend.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Oversight Controller</p></td>
+<td style="vertical-align: top"><p>The Oversight Controller component repeatedly scans Kubernetes resources against continuous policy and handles isolation and termination actions. Used for continuous compliance policy enforcement.</p></td>
+<td style="vertical-align: top"><p>trendmicro-oversight-controller-xxxxxxxxx-xxxxx</p></td>
+<td style="vertical-align: top"><ul>
+<li>controller-manager</li>
+<li>rbac-proxy</li>
+</ul></td>
+<td style="vertical-align: top"><ul>
+<li><p>8443</p></li>
+<li><p>8070</p></li>
+<li><p>8081</p></li>
+</ul></td>
+</tr>
+<tr>
+<td style="vertical-align: top"><p>Workload Operator</p></td>
+<td style="vertical-align: top"><p>The Workload Operator component detects unique, running container images for the runtime scanning feature and also collects Kubernetes resource data for the Inventory feature.</p></td>
+<td style="vertical-align: top"><p>trendmicro-workload-operator-xxxxxxxxxx-xxxxx</p></td>
+<td style="vertical-align: top"><ul>
+<li>trendmicro-workload-operator</li>
+</ul></td>
+<td style="vertical-align: top"> </td>
+</tr>
+<tr>
+<td><p>Policy Operator</p></td>
+<td><p>The Policy Operator manages the lifecycle of Container Security resources like clusters, policies, and custom rulesets. The Policy Operator also keeps these resources in sync with Vision One and handles authentication token rotation. Other Trend Micro components contact the Policy Operator to get the policy and to request to apply mitigations.</p></td>
+<td><p>trendmicro-policy-operator-xxxxxxxxxx-xxxxx</p></td>
+<td><ul>
+<li>trendmicro-policy-operator</li>
+</ul></td>
+<td><ul>
+<li><p>8070</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Runtime security components**
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 27%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Component name</p></th>
+<th><p>Description</p></th>
+<th><p>Pod name</p></th>
+<th><p>Container names</p></th>
+<th>Ports</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Scout</p></td>
+<td><p>Scout provides a runtime security feature, controls runtime rules, and handles event aggregation and uploads. A deamonset is deployed per node.</p></td>
+<td><p>trendmicro-scout-xxxxx</p></td>
+<td><ul>
+<li>falco</li>
+<li>scout</li>
+</ul></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>K8s-metacollector</p></td>
+<td><p>The k8s-metacollector fetches the metadata from the API server for various Kubernetes resources and transmits the metadata to the in-cluster components, like Falco instances, to decrease the performance impact to Kubernetes API server.</p></td>
+<td><p>trendmicro-metacollector-xxxxxxxxxx-xxxxx</p></td>
+<td><ul>
+<li><p>k8s-metacollector</p></li>
+</ul></td>
+<td><ul>
+<li><p>45000</p></li>
+<li><p>8081</p></li>
+<li><p>8080</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>fargate-injector</p></td>
+<td><p>The fargate-injector component injects scout and falco sidecar containers into a pod running in an EKS Fargate environment.</p></td>
+<td><p>trendmicro-fargate-injector</p></td>
+<td><ul>
+<li><code>trendmicro-fargate-injector</code></li>
+</ul></td>
+<td><ul>
+<li><p>443</p></li>
+<li><p>8443</p></li>
+</ul>
+
+
+:::note
+
+<p>Port 443 is used for outbound connections from in-cluster to the backend.</p>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+
+**Vulnerability scanning components**
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 27%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Component name</p></th>
+<th><p>Description</p></th>
+<th><p>Pod name</p></th>
+<th><p>Container names</p></th>
+<th>Ports</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Scan Manager</p></td>
+<td><p>Scan Manager manages in-cluster vulnerability scans and starts Scan Jobs.</p></td>
+<td><p>trendmicro-scan-manager-xxxxxxxx-xxxxx</p></td>
+<td><ul>
+<li>scan-manager</li>
+</ul></td>
+<td><ul>
+<li><p>443</p></li>
+<li><p>8080</p></li>
+<li><p>8070</p></li>
+<li><p>8071</p></li>
+</ul>
+
+
+:::note
+
+<p>Port 443 is used for outbound connections from in-cluster to the backend.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Scan Job</p></td>
+<td><p>Scan Job generates SBOMs for container images and reports to Scan Manager. This pod deploys in the target pod name-space.</p>
+
+
+:::warning[Important]
+
+We recommend allowing cross-namespace network communication between the IP address of the scan job pod and the IP address of the scan manager pod with port 8070.
+
+
+:::
+
+</td>
+<td><p>trendmicro-scan-job-xxxxxxxxxx-xxxxx</p></td>
+<td><ul>
+<li><p>scan-job</p></li>
+</ul></td>
+<td> </td>
+</tr>
+</tbody>
+</table>
+
+**Malware scanning components**
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 27%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Component name</p></th>
+<th><p>Description</p></th>
+<th><p>Pod name</p></th>
+<th><p>Container names</p></th>
+<th>Ports</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Malware scanner</p></td>
+<td><p>Malware scanner provides an in-cluster malware scanning capability to analyze files.</p></td>
+<td><p>trendmicro-malware-scanner-xxxxxxxxxx-xxxxx</p></td>
+<td><ul>
+<li><p>malware-scanner</p></li>
+</ul></td>
+<td><ul>
+<li><p>50051</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+::::

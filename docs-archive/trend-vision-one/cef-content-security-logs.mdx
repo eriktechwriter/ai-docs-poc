@@ -1,0 +1,311 @@
+---
+slug: trend-vision-one-cef-content-security-logs
+title: CEF Content Security Logs
+---
+# CEF Content Security Logs
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 38%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>CEF Key</p></th>
+<th><p>Description</p></th>
+<th><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Header (logVer)</p></td>
+<td><p>CEF format version</p></td>
+<td><p>CEF:0</p></td>
+</tr>
+<tr>
+<td><p>Header (vendor)</p></td>
+<td><p>Appliance vendor</p></td>
+<td><p>Trend Micro</p></td>
+</tr>
+<tr>
+<td><p>Header (pname)</p></td>
+<td><p>Appliance product</p></td>
+<td><p>Apex Central</p></td>
+</tr>
+<tr>
+<td><p>Header (pver)</p></td>
+<td><p>Appliance product version</p></td>
+<td><p>2019</p></td>
+</tr>
+<tr>
+<td><p>Header (eventid)</p></td>
+<td><p>MS: Filter action</p></td>
+<td><p>MS:Clean</p></td>
+</tr>
+<tr>
+<td><p>Header (eventName)</p></td>
+<td><p>Policy name</p></td>
+<td><p>Policy</p></td>
+</tr>
+<tr>
+<td><p>Header (severity)</p></td>
+<td><p>Severity</p></td>
+<td><p>3</p></td>
+</tr>
+<tr>
+<td><p>cnt</p></td>
+<td><p>Number of detections</p></td>
+<td><p>Example: 10</p></td>
+</tr>
+<tr>
+<td><p>dhost</p></td>
+<td><p>List of all recipients</p></td>
+<td><p>Example: employee_a1@Acompany.com;employee_a2@Acompany.com</p></td>
+</tr>
+<tr>
+<td><p>duser</p></td>
+<td><p>One of the recipients</p></td>
+<td><p>Example: employee_a1@Acompany.com</p></td>
+</tr>
+<tr>
+<td><p>act</p></td>
+<td><p>Filter action</p></td>
+<td><p>Example: "Clean"</p>
+<p>For more information, see <a href="trend-vision-one-filter-action-mapping-table">Filter Action Mapping Table</a>.</p></td>
+</tr>
+<tr>
+<td><p>cs1Label</p></td>
+<td><p>Corresponding label for the "cs1" field</p></td>
+<td><p>Example: "Policy_Settings"</p></td>
+</tr>
+<tr>
+<td><p>cs1</p></td>
+<td><p>Policy settings</p></td>
+<td><p>Example: "Default_policy"</p></td>
+</tr>
+<tr>
+<td><p>cs2Label</p></td>
+<td><p>Corresponding label for the "cs2" field</p></td>
+<td><p>Example: "Product_Version"</p></td>
+</tr>
+<tr>
+<td><p>cs2</p></td>
+<td><p>Product version</p></td>
+<td><p>Example: "11"</p></td>
+</tr>
+<tr>
+<td><p>cs3Label</p></td>
+<td><p>Corresponding label for the "cs3" field</p></td>
+<td><p>Example: "Filter_Type"</p></td>
+</tr>
+<tr>
+<td><p>cs3</p></td>
+<td><p>Filter type</p></td>
+<td><p>Example: "URL reputation filter"</p>
+<ul>
+<li><p>0: Unknown</p></li>
+<li><p>1: ContentFilter</p></li>
+<li><p>2: AttachmentFilter</p></li>
+<li><p>3: StandardFilter</p></li>
+<li><p>4: SizeFilter</p></li>
+<li><p>5: DisclaimerMgr</p></li>
+<li><p>6: SpamFilter</p></li>
+<li><p>7: OPP</p></li>
+<li><p>8: ImportFilter</p></li>
+<li><p>9: PhishingFilter</p></li>
+<li><p>10: UrlReputationFilter</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cs4Label</p></td>
+<td><p>Corresponding label for the "cs4" field</p></td>
+<td><p>Example: "CLF_ReasonCode"</p></td>
+</tr>
+<tr>
+<td><p>cs4</p></td>
+<td><p>Reason Code</p></td>
+<td><p>Example: "access"</p></td>
+</tr>
+<tr>
+<td><p>cs5Label</p></td>
+<td><p>Corresponding label for the "cs5" field</p></td>
+<td><p>Example: "CLF_ReasonCodeSource"</p></td>
+</tr>
+<tr>
+<td><p>cs5</p></td>
+<td><p>Reason code source</p></td>
+<td><p>Example: "web"</p></td>
+</tr>
+<tr>
+<td><p>cs6Label</p></td>
+<td><p>Corresponding label for the "cs6" field</p></td>
+<td><p>Example: "Action_on_Message"</p></td>
+</tr>
+<tr>
+<td><p>cs6</p></td>
+<td><p>Action</p></td>
+<td><p>Example: "3"</p>
+<ul>
+<li><p>0: Unknown</p></li>
+<li><p>1: N/A</p></li>
+<li><p>2: Deliver</p></li>
+<li><p>3: Delete</p></li>
+<li><p>4: Quarantine</p></li>
+<li><p>5: Postpone</p></li>
+<li><p>6: Forward</p></li>
+<li><p>7: Replace</p></li>
+<li><p>8: Archive</p></li>
+<li><p>100: Strip</p></li>
+<li><p>101: Pass</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cat</p></td>
+<td><p>Log type</p></td>
+<td><p>Example: "1705"</p></td>
+</tr>
+<tr>
+<td><p>dvchost</p></td>
+<td><p>Endpoint host name</p></td>
+<td><p>Example: "ApexOneClient01"</p></td>
+</tr>
+<tr>
+<td><p>rt</p></td>
+<td><p>Event trigger time in UTC</p></td>
+<td><p>Example: "Mar 22 2018 08:23:23 GMT+00:00"</p></td>
+</tr>
+<tr>
+<td><p>cn1Label</p></td>
+<td><p>Corresponding label for the "cn1" field</p></td>
+<td><p>Example: "Severity"</p></td>
+</tr>
+<tr>
+<td><p>cn1</p></td>
+<td><p>Severity code</p></td>
+<td><p>Example: "2"</p>
+<ul>
+<li><p>0: Unknown</p></li>
+<li><p>1: Information</p></li>
+<li><p>2: Warning</p></li>
+<li><p>3: Error</p></li>
+<li><p>4: Critical</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>TMCMLogSeverity</p></td>
+<td><p>Description of severity</p></td>
+<td><p>Second scan engine</p></td>
+</tr>
+<tr>
+<td><p>cn2Label</p></td>
+<td><p>Corresponding label for the "cn2" field</p></td>
+<td><p>Filter_Action_Result</p></td>
+</tr>
+<tr>
+<td><p>cn2</p></td>
+<td><p>Filter action result</p></td>
+<td><p>Example: 21</p>
+<p>For more information, see <a href="trend-vision-one-filter-action-table-apex-central">Filter Action Result Mapping Table</a>.</p></td>
+</tr>
+<tr>
+<td><p>deviceExternalId</p></td>
+<td><p>ID</p></td>
+<td><p>Example: "5"</p></td>
+</tr>
+<tr>
+<td><p>fname</p></td>
+<td><p>File</p></td>
+<td><p>Example: "RERERW~42w.exe"</p></td>
+</tr>
+<tr>
+<td><p>msg</p></td>
+<td><p>Subject</p></td>
+<td><p>Example: "Open this email to win a free phone"</p></td>
+</tr>
+<tr>
+<td><p>shost</p></td>
+<td><p>List of all senders/users in violation</p></td>
+<td><p>Example: "bear" &lt;bear@abc.mail.com&gt;;"yumi" &lt;yumi@abc.mail.com&gt;</p></td>
+</tr>
+<tr>
+<td><p>suser</p></td>
+<td><p>One of the senders/users in violation</p></td>
+<td><p>Example: "bear" &lt;bear@abc.mail.com&gt;</p></td>
+</tr>
+<tr>
+<td><p>deviceFacility</p></td>
+<td><p>Product</p></td>
+<td><p>Example: "Deep Discovery Email Inspector"</p></td>
+</tr>
+<tr>
+<td><p>src</p></td>
+<td><p>Email sender IP address</p></td>
+<td><p>Example: "10.206.155.122"</p></td>
+</tr>
+<tr>
+<td><p>filepath</p></td>
+<td><p>Suspicious file location</p></td>
+<td><p>Example: "https://ca91-1.testurl.com:443"</p></td>
+</tr>
+<tr>
+<td><p>request</p></td>
+<td><p>Suspicious URL</p></td>
+<td><p>Example: "https://ca91-1.testurl.com:443"</p></td>
+</tr>
+<tr>
+<td><p>reason</p></td>
+<td><p>Critical threat type</p></td>
+<td><p>Example: "E"</p>
+<ul>
+<li><p>A: Known Advanced Persistent Threat (APT)</p></li>
+<li><p>B: Social engineering attack</p></li>
+<li><p>C: Vulnerability attack</p></li>
+<li><p>D: Lateral movement</p></li>
+<li><p>E: Unknown threats</p></li>
+<li><p>F: C&amp;C callback</p></li>
+<li><p>G: Ransomware</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>ApexCentralHost</p></td>
+<td><p>Apex Central host name</p></td>
+<td><p>Example: TW-CHRIS-W2019</p></td>
+</tr>
+<tr>
+<td><p>devicePayloadId</p></td>
+<td><p>Unique message GUID</p></td>
+<td><p>Example: 1C00290C0360-9CDE11EB-D4B8-F51F-C697</p></td>
+</tr>
+<tr>
+<td><p>TMCMdevicePlatform</p></td>
+<td><p>Endpoint operating system</p></td>
+<td><p>Example: Windows 7 6.1 (Build 7601) Service Pack 1</p></td>
+</tr>
+</tbody>
+</table>
+
+Log sample:
+
+```bash
+CEF:0|Trend Micro|Apex Central|2019|MS:Clean|This is a policy
+name|3|deviceExternalId=90045 rt=Sep 17 2018 01:27:42 GMT+00
+:00 dhost=user@test.com duser=user@test.com act=Clean cs1Label
+=Policy_Settings cs1=This is policy content cs2Label=CLF_Produ
+ctVersion cs2=3.2 cs3Label=Filter_Type cs3=URL reputation filt
+er cs5Label=CLF_ReasonCodeSource cs5=20 cs6Label=Action_on_Mes
+sage cs6=0 cat=1705 dvchost=ApexOneClient01 cn1Label=Severity
+cn1=2 TMCMLogSeverity=Second scan engine fname=NE_AEP.1550
+msg=plain_qp_no8_av1u_NE_AEP.1550 shost=user2@test.com suser=
+user2@test.com cn2Label=Filter_Action_Result cn2=21 deviceFaci
+lity=Deep Discovery Email Inspector src=10.206.155.122 reason=
+B,G ApexCentralHost=TW-CHRIS-W2019 devicePayloadId=1C00290C036
+0-9CDE11EB-D4B8-F51F-C697 TMCMdevicePlatform=Windows 7 6.1 (B
+uild 7601) Service Pack 1
+```
+
+**Related information**
+
+- [Filter Action Mapping Table](filter-action-mapping-table.mdx)
+- [Filter Action Result Mapping Table](filter-action-table-apex-central.mdx)
+:::

@@ -1,0 +1,70 @@
+---
+slug: trend-vision-one-gcp-id-usage-associated-apps
+title: Google Cloud Identity data usage in associated apps
+---
+
+Understand how Google Cloud Identity data is used in associated apps after you grant access permissions.
+
+:::note
+This feature is not available in all regions.
+:::
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Associated App</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><strong>Email Asset Inventory</strong></p></td>
+<td><p><strong>Email Asset Inventory</strong> uses Google Cloud Identity data to manage Email Sensors on protected email accounts.</p></td>
+</tr>
+<tr>
+<td><p><strong>Mobile Security</strong></p></td>
+<td><p><strong>Mobile Security</strong> uses Google Cloud Identity data to enable end users to authenticate with Google Cloud Identity during mobile device enrollment.</p></td>
+</tr>
+<tr>
+<td><p><strong>Cyber Risk Exposure Management</strong></p></td>
+<td><p><strong>Cyber Risk Exposure Management</strong> uses Google Cloud Identity data for the following purposes:</p>
+<ul>
+<li><p>Gain deeper insight regarding the apps and devices your users access, and the behaviors that contribute to users' risk analysis.</p></li>
+<li><p>Perform policy enforcement actions in Google Cloud Identity, such as disabling user accounts and forcing password reset.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p><strong>Search</strong></p>
+<p><strong>Observed Attack Techniques</strong></p>
+<p><strong>Workbench</strong></p></td>
+<td><p><strong>Observed Attack Techniques</strong>, <strong>Search</strong>, and <strong>Workbench</strong> use Google Cloud Identity data to perform policy enforcement actions, such as disabling user accounts and forcing password reset, through the <strong>Response Management</strong> app.</p></td>
+</tr>
+<tr>
+<td><p><strong>User Accounts</strong></p></td>
+<td><p><strong>User Accounts</strong> uses Google Cloud Identity data to create Trend Vision One user accounts using the distribution list email addresses and member names.</p></td>
+</tr>
+<tr>
+<td><p><strong>Zero Trust Secure Access</strong></p></td>
+<td><p><strong>Zero Trust Secure Access</strong> uses Google Cloud Identity data for the following purposes:</p>
+<ul>
+<li><p>Sync users and user groups to provide granular access control over specified users or groups.</p></li>
+<li><p>Perform policy enforcement actions in Google Cloud Identity, such as disabling user accounts and forcing password reset.</p>
+
+
+:::note
+
+<p>If you use Private Access and Internet Access only, the least permission required is <strong>Read directory data</strong>. If you use the full features of <strong>Zero Trust Secure Access</strong>, grant the <strong>Read directory data and perform account management actions</strong> permission.</p>
+
+
+:::
+
+</li>
+<li><p>Sync your published Microsoft Purview Information Protection-encrypted sensitivity labels with user data to create data loss prevention rules for Internet Access.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>

@@ -1,0 +1,76 @@
+---
+slug: trend-vision-one-threats-using-pml
+title: Detect emerging threats using Predictive Machine Learning
+---
+# Detect emerging threats using Predictive Machine Learning
+
+:::::note
+
+Predictive Machine Learning is supported with version 11.0+ agents. For details on which platforms support this feature, see [Supported features by platform](supported-features-linux-platform.mdx).
+:::
+
+Use Predictive Machine Learning to detect unknown or low-prevalence malware. (For more information, see [Predictive Machine Learning](anti-malware.mdx).)
+
+Predictive Machine Learning uses the Advanced Threat Scan Engine (ATSE) to extract file features and sends the report to the Predictive Machine Learning engine on the Trend Micro Smart Protection Network.
+
+As with all detected malware, Predictive Machine Learning logs an event when it detects malware. (See [Events collection in Server & Workload Protection](event-logging.mdx).) You can also create an exception for any false positives. (See [Create anti-malware exceptions](create-anti-malware-exceptions.mdx).)
+
+## Enable Predictive Machine Learning {#enable-predictive-machine-learning}
+
+Predictive Machine Learning is configured as part of a real-time scan configuration that is applied to a policy or individual computer. (See [Configure malware scans](configure-malware-scans.mdx).) After you configure the scan configuration, apply it to a policy or computer.
+
+:::note
+
+Predictive Machine Learning protects only the files and directories that real-time scan is configured to scan. See [Configure malware scan inclusions](configure-malware-scan-inclusions.mdx) and [Configure malware scan exclusions](configure-malware-scan-exclusions.mdx).
+:::
+
+These settings can only be applied to real-time scan configurations.
+
+:::warning[Important]
+
+For macOS agents, only the *Quarantine* action is supported.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Policies → Common Objects → Other → Malware Scan Configurations**.
+
+2.  Select the real-time scan configuration to configure and click *Details*.
+
+    You can also create a new real-time scan configuration if desired.
+
+3.  On the **General** tab, under **Predictive Machine Learning**, select **Enable Predictive Machine Learning**.
+
+4.  Configure the settings for **Detection level** and **Prevention level**.
+
+    :::warning[Important]
+
+    - Adjusting Detection and Prevention levels only supports agent version version 20.0.1.25770 and later. Unsupported versions use the default level of **2 - Moderate** and cannot be changed.
+
+    - Higher levels provide greater sensitivity but might generate a large number of nonessential logs and impact endpoint performance. Trend Micro recommends selecting **2 - Moderate** for more relevant data with minimal impact on your endpoints.
+
+    - The **Prevention level** must be the same or lower than **Detection level**.
+
+    - The **Action to take** selection might affect the prevention actions taken for the selected prevention level.
+    :::
+
+5.  For **Action to take**, choose the remediation action that you want Server & Workload Protection to take when it detects malware:
+
+    - **Quarantine (recommended):** Moves the infected file to the quarantine directory on the protected computer. The quarantined file can be viewed and restored in **Events & Reports → Events → Anti-Malware Events → Identified Files**.
+
+    - **Pass**: Server & Workload Protection records an Anti-Malware Event without taking action on the file.
+
+    - **Delete**: On Linux, the infected file is deleted without a backup. On Windows, the infected file is backed up and then deleted. Windows backup files can be viewed and restored in **Events & Reports → Events → Anti-Malware Events → Identified Files**.
+
+6.  Click *OK*.
+
+7.  Open the policy or computer editor to which you want to apply the scan configuration and go to **Anti-Malware → General**.
+
+8.  Ensure that *Anti-Malware State* is *On* or *Inherited (On)*.
+
+9.  In the *Real-Time Scan* section, select the malware scan configuration.
+
+10. Click *Save*.
+
+### Next steps {#next-steps}
+::::::

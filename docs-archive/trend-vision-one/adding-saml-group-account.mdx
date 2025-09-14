@@ -1,0 +1,100 @@
+---
+slug: trend-vision-one-adding-saml-group-account
+title: Add a SAML Group Account for Microsoft Entra ID
+---
+# Add a SAML Group Account for Microsoft Entra ID
+
+Invite all users in a Microsoft Entra ID group to sign in to the Trend Vision One console using their identities in the IdP solution.
+
+:::warning[Important]
+
+Trend Vision One has optimized group data synchronization from Microsoft Entra ID to keep the SAML groups up to date.
+
+This optimization requires access to the Microsoft Entra ID tenants where the groups reside. For SAML groups added before June 30, 2025 with no tenant access granted, you need to manually grant the access in **Third-Party Integration** for the groups to support SSO access and stay current. For details, see [Configure Microsoft Entra ID integration](configuring-integration.mdx). Make sure you grant at least one of the permission sets whose associated apps include **User Accounts**.
+:::
+
+### Procedure {#procedure}
+
+1.  Make sure that Microsoft Entra ID is configured in **Administration → Identity Providers** to set up SSO authentication between Microsoft Entra ID and Trend Vision One.
+
+    For details, see [Configure Microsoft Entra ID](configuring-saml-ad.mdx).
+
+2.  Make sure that you have granted required access to Microsoft Entra ID in **Workflow and Automation → Third-Party Integration** to synchronize group data from the identity provider.
+
+    For details, see [Configure Microsoft Entra ID integration](configuring-integration.mdx).
+
+    When multiple tenants are available in your organization, ensure that you have granted access to the tenants associated with the groups that you want to add as SAML groups. You must grant at least one of the permission sets whose associated apps include **User Accounts**.
+
+3.  Go to **Administration → User Accounts**.
+
+4.  Click **Add User Account**.
+
+5.  Select **SAML Group**.
+
+6.  Select **Microsoft Entra ID** from the **Identity provider** drop-down list box.
+
+7.  Select **Tenant**.
+
+    If you cannot find your target tenant, check whether you have granted the proper access to the tenant in **Third-Party Integration**.
+
+8.  Enter the object ID or email address of a group in the tenant.
+
+    An object ID can uniquely identify a group. For some groups without group email addresses, such as security groups, specify their object IDs to add them as SAML groups.
+
+    To find the object ID or email address of a group:
+
+    - Sign in to the [Microsoft Entra admin center](https://entra.microsoft.com/) as at least a [Groups Administrator](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/permissions-reference)..
+
+    - Go to **Entra ID → Groups → All groups**.
+
+    - Select the target group.
+
+    - Select **Properties** from the side menu.
+
+      The object ID is available on the screen.
+
+      The group email address is available only when the group has one.
+
+9.  Specify the name of the group.
+
+    If you leave the name empty, Trend Vision One will use the group name synchronized from Microsoft Entra ID. Using the original group name helps ensure accurate mapping between the SAML group in Trend Vision One and the corresponding group in Microsoft Entra ID.
+
+10. Select a Trend Vision One role to assign to the users in the group.
+
+    To create a custom user role, click **Create a custom role in User Roles**. For more information, see [User Roles](user-roles-foundation-services.mdx).
+
+    :::note
+
+    Creating a custom role leaves the current screen and discards all changes made in the screen.
+    :::
+
+11. Add some description about the SAML group.
+
+12. Click **Add**.
+
+    The group and its members appear in the **User Accounts** list.
+
+    Trend Vision One provides real-time sync and regular sync to synchronize group data from Microsoft Entra ID and keep the SAML group up to date. You can also trigger manual sync on the console by clicking the ![](/images/manual_sync=37801184-4937-4d8c-af79-9c00af3812b3.webp) icon when necessary.
+
+    :::warning[Important]
+
+    The real-time sync uses Microsoft Graph API to get group change notifications, for which Microsoft imposes quotas. For details, see the quota limitations for the resource type "group" in this [Microsoft documentation](https://learn.microsoft.com/en-us/graph/change-notifications-overview).
+
+    When you have reached the quota limits for getting group change notifications, Trend Vision One will not be able to perform real-time sync. This happens mostly because the existing apps in your tenant have used up the quota. In this case, you can click the manual sync icon (![](/images/manual_sync=37801184-4937-4d8c-af79-9c00af3812b3.webp)) to sync the updates immediately. Trend Vision One will also periodically sync the group data to keep it current.
+    :::
+
+13. Make sure that group users verify their email addresses.
+
+    Users who need to verify their email addresses have an email sent icon (![](/images/verify_email=765a7beb-7f89-425f-bc96-850966cec0cf.webp)) in the **Status** column.
+
+    :::note
+
+    - Users must verify their email addresses to be able to sign in to Trend Vision One.
+
+    - The verification link expires after 24 hours. If the verification link expires, any account with the **Configure account settings** permission can resend the verification email.
+
+    - If one or more of your domains have been verified using [Domain Verification](domain-verification.mdx), all SAML users or user group members under a verified domain can be added directly without the need to verify email addresses.
+    :::
+
+14. (Optional) When editing an account, enable or disable the account by clicking the toggle in the **Status** column.
+::::

@@ -1,0 +1,116 @@
+---
+slug: trend-vision-one-azure-features-permissions
+title: Azure features and permissions
+---
+# Azure features and permissions
+
+Connect your subscription to enable cloud security features and give Trend Vision One greater visibility and protection over your cloud assets.
+
+Connecting your Azure subscription allows Trend Vision One apps and security features to access your cloud assets and gain greater visibility over assets and check for potential threats. Each feature and permission is described in the table below.
+
+<table>
+<thead>
+<tr>
+<th><p>Feature</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Core Features and Cyber Risk Exposure Management</p></td>
+<td><p>The core set of features and permissions required to connect your Azure subscription.</p>
+<p>Core features enable you to connect your Azure subscription to Trend Vision One to discover your cloud assets and identify risks such as compliance and security best practice violations on your cloud infrastructure.</p>
+
+
+:::note
+
+Core features are required to connect your Azure subscription and cannot be disabled. If you need to disconnect your subscription, see <a href="trend-vision-one-azure-subscriptions">Azure subscriptions</a>.
+
+
+:::
+
+
+<p>The core features enable the following Trend Vision One apps and features to monitor your cloud environment:</p>
+<ul>
+<li><p><strong>Cyber Risk Exposure Management → Attack Surface Discovery → Cloud Assets</strong></p>
+<p>For more information, see <a href="trend-vision-one-cloud-assets">Cloud assets</a>.</p></li>
+<li><p><strong>Cyber Risk Exposure Management → Attack Surface Discovery → APIs</strong></p>
+<p>For more information, see <a href="trend-vision-one-apis">APIs</a>.</p></li>
+<li><p><strong>Cyber Risk Exposure Management → Cloud Security Posture</strong></p>
+<p>For more information, see <a href="trend-vision-one-cloud-posture">Cloud Security Posture</a>.</p></li>
+<li><p><strong>Endpoint Security → Server &amp; Workload Protection</strong></p>
+<p>You can view and manage your Azure virtual machines in Server &amp; Workload Protection like any other computer. These instances are tree structures and are treated as computer groups.</p>
+<p>For more information, see <a href="trend-vision-one-computers">Computers</a>.</p></li>
+</ul>
+
+
+:::note
+
+<p>Your Azure assets appear in the Endpoint Inventory list. Assets without the endpoint agent installed appear as unmanaged endpoints.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Agentless Vulnerability &amp; Threat Detection</p></td>
+<td><p>The feature and permission set to enable Cyber Risk Exposure Management capabilities for your account.</p>
+<p>This feature set allows Trend Vision One to deploy Agentless Vulnerability &amp; Threat Protection in your Azure subscription to discover vulnerabilities and malware in your Azure Virtual Machines, disks, and Azure Container Registry images. For more information, see <a href="trend-vision-one-agentless-vulnerability-threat">Agentless Vulnerability &amp; Threat Detection</a>.</p></td>
+</tr>
+<tr>
+<td><p>Real-Time Posture Monitoring</p></td>
+<td><p>The feature and permission set to enable Real-Time Posture Monitoring for the Cloud Risk Management app.</p>
+<p>This feature allows Trend Vision One permission to monitor you cloud account to provide live monitoring with instant thread and remediation alerts for activities and events within your cloud environment. For more information, see <a href="trend-vision-one-real-time-threat-monitoring">Real-Time Posture Monitoring</a>.</p></td>
+</tr>
+<tr>
+<td><p>Data Security Posture</p></td>
+<td><p>The feature and permission set to allow Data Security Posture to monitor your Azure cloud assets for sensitive data.</p>
+<p>This feature gives instant visibility into cloud assets containing sensitive data. Data Security Posture helps you understand your organization's overall data risk, and to view and address cloud assets with the riskiest sensitive data.</p>
+<p>Data Security Posture uses Terraform templates to deploy and execute a script in your cloud environment. This script enables Trend Vision One to monitor the changes in your storage accounts to perform scans efficiently and effectively.</p>
+<p>For more information, see <a href="trend-vision-one-data-security-posture-azure">Enable Data Security Posture on an Azure subscription</a>.</p></td>
+</tr>
+<tr>
+<td><p>Microsoft Defender for Endpoint Log Collection</p></td>
+<td><p>Deploy Microsoft Defender for Endpoint Log Collection in your environment to gain actionable insight into endpoint activities. Microsoft Defender for Endpoint Log Collection detects behaviors such as malware execution, suspicious file modifications, lateral movement attempts, and unauthorized access to sensitive data.</p>
+<p>Microsoft Defender for Endpoint Log Collection requires that you do the following:</p>
+<ul>
+<li><p>Select or create a log repository for the data collected from Microsoft Defender. For more information, see <a href="trend-vision-one-log-repositories">Log repositories</a>.</p></li>
+<li><p>Configure Microsoft Defender to export events to Trend Vision One.</p></li>
+</ul>
+
+
+:::note
+
+To enable this feature, you must be assigned the Key Vault Secrets role assigned in Azure. This role is required to create and manage secrets in Azure Key Vault during deployment.
+
+
+:::
+
+
+<p>For full instructions for setting up Microsoft Defender for Endpoint Log Collection, see <a href="trend-vision-one-ms-defender-endpoint-log-collection">Enable Microsoft Defender for Endpoint Log Collection</a>.</p></td>
+</tr>
+<tr>
+<td><p>Cloud Detections for Microsoft Azure Activity Logs</p></td>
+<td><p>Deploy Cloud Detections for Microsoft Azure Activity Logs in your Azure account to gain actionable insight into user, service, and resource activity. Cloud Detections for Microsoft Azure Activity Logs uses detection models to identify behaviors such as privilege escalation, password modification, attempted data exfiltration, and potentially unauthorized changes to MFA settings.</p>
+
+
+:::note
+
+To enable this feature, you must be assigned the Key Vault Secrets role assigned in Azure. This role is required to create and manage secrets in Azure Key Vault during deployment.
+
+
+:::
+
+
+<p>For full instructions for setting up Cloud Detections for Microsoft Azure Activity Logs, see <a href="trend-vision-one-azure-cloud-detection">Enable Cloud Detections for Azure Activity Logs</a>.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Enable Data Security Posture on an Azure subscription](data-security-posture-azure-3.mdx)
+- [Enable Cloud Detections for Azure Activity Logs](azure-cloud-detection.mdx)
+- [Enable Microsoft Defender for Endpoint Log Collection](ms-defender-endpoint-log-collection.mdx)
+:::

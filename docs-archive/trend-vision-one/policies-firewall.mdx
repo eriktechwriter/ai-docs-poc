@@ -1,0 +1,63 @@
+---
+slug: trend-vision-one-policies-firewall
+title: Firewall
+---
+# Firewall
+
+Configure and manage the Firewall module settings.
+
+:::warning[Important]
+
+- Policies, Access Control, and the Firewall module are "Pre-release" features and are not considered an official release. Please review the [Pre-Release Disclaimer](pre-release-disclaimer.mdx) before using the feature.
+
+- These features are not available in all regions.
+
+- Firewall supports Windows and Linux deployments.
+
+- Endpoint Security Policies supports agent version 202507 and later. Assigning policies to older agent versions might cause unwanted behavior or fail. Enabling Firewall on older agent versions might cause agents to ignore the **Allowed programs** list.
+
+- Firewall uses several policy resources for configuring scans and exclusions. Configure the resources before configuring Firewall.
+
+  - [Firewall rules](resources-firewall-rules.mdx) are used for overriding the configured **Security level** to allow or block specific connections.
+
+  - [Program lists](resources-program-lists.mdx) are used to specify trusted programs allowed to bypass the firewall.
+
+- Verify your firewall settings carefully before applying the policy to your endpoints. Setting the security level to **Medium** or **High** without configuring firewall rules or trusted programs might interfere with attempts to communicate with your network and Trend Micro services. For information about Trend Vision One firewall requirements, see [Firewall exception requirements for Trend Vision One](firewall-exception-requirements-for.mdx).
+
+- The Agent Interface provides additional settings including threat detection notifications. For more information, see [Agent Interface](policies-agent-interface.mdx).
+
+- Navigating between the security modules or leaving the **Policy Settings** screen discards any unsaved changes. To avoid losing your work, always click **Save** before leaving the current screen.
+:::
+
+Firewall provides bidirectional stateful inspection of incoming and outgoing network traffic. Firewall rules define what actions to take on individual packets and can filter packets by IP address and port across all IP-based protocols.
+
+### Procedure {#procedure}
+
+1.  To control internet connections with Firewall, select **Enable**.
+
+    :::note
+
+    When you enable Firewall, the rule list might be filtered by **Enabled** status and might appear empty. Remove the filter to view the Firewall rules.
+    :::
+
+2.  To configure the aggressiveness of the Firewall, set the **Security level**.
+
+    - **High**: Blocks all inbound and outbound traffic.
+
+    - **Medium**: Blocks all inbound traffic, allows all outbound traffic.
+
+    - **Low**: Allows all inbound and outbound traffic.
+
+3.  To apply a firewall rule to override the security level settings, locate the rule in the list under **Rule management** and click to **Enable** the rule.
+
+    Firewall rules act as exceptions to the **Security level** to allow or block specified connections. Rules apply in order of priority from **4 - Highest** to **0 - Lowest** and actions always override the security level settings. Trend Micro provides preset firewall rules for typical security configurations. You can also create your own [firewall rules](resources-firewall-rules.mdx) in Policy Resources.
+
+4.  To specify a list of trusted programs allowed to bypass the firewall, select a program list for **Allowed programs**.
+
+    :::note
+
+    Firewall **Allowed programs** list only supports Windows agents.
+
+    You can create and manage [program lists](resources-program-lists.mdx) in Policy Resources.
+    :::
+::::

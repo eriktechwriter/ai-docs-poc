@@ -1,0 +1,222 @@
+---
+slug: trend-vision-one-cef-pattern-update-status-logs
+title: CEF Pattern Update Status Logs
+---
+# CEF Pattern Update Status Logs
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 38%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>CEF Key</p></th>
+<th><p>Description</p></th>
+<th><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Header (logVer)</p></td>
+<td><p>CEF format version</p></td>
+<td><p>CEF:0</p></td>
+</tr>
+<tr>
+<td><p>Header (vendor)</p></td>
+<td><p>Product vendor</p></td>
+<td><p>Trend Micro</p></td>
+</tr>
+<tr>
+<td><p>Header (pname)</p></td>
+<td><p>Product name</p></td>
+<td><p>Apex Central</p></td>
+</tr>
+<tr>
+<td><p>Header (pver)</p></td>
+<td><p>Product version</p></td>
+<td><p>2019</p></td>
+</tr>
+<tr>
+<td><p>Header (eventid)</p></td>
+<td><p>Event ID</p></td>
+<td><p>800101</p></td>
+</tr>
+<tr>
+<td><p>Header (eventName)</p></td>
+<td><p>Log name</p></td>
+<td><p>Pattern Update Status</p></td>
+</tr>
+<tr>
+<td><p>Header (severity)</p></td>
+<td><p>Severity</p></td>
+<td><p>3</p></td>
+</tr>
+<tr>
+<td><p>rt</p></td>
+<td><p>Event trigger time in UTC</p></td>
+<td><p>Example: "Mar 22 2018 08:23:23 GMT+00:00"</p></td>
+</tr>
+<tr>
+<td><p>shost</p></td>
+<td><p>Product Entity/Endpoint</p></td>
+<td><p>Example: "shost1"</p></td>
+</tr>
+<tr>
+<td><p>cs1Label</p></td>
+<td><p>Corresponding label for the "cs1" field</p></td>
+<td><p>"Operating System"</p></td>
+</tr>
+<tr>
+<td><p>cs1</p></td>
+<td><p>Operating system</p></td>
+<td><p>Example: "Windows 7"</p></td>
+</tr>
+<tr>
+<td><p>cs2Label</p></td>
+<td><p>Corresponding label for the "cs2" field</p></td>
+<td><p>"Product/Endpoint IP"</p></td>
+</tr>
+<tr>
+<td><p>cs2</p></td>
+<td><p>Product/Endpoint IP</p></td>
+<td><p>Example: "10.0.7.20"</p></td>
+</tr>
+<tr>
+<td><p>cs3Label</p></td>
+<td><p>Corresponding label for the "cs3" field</p></td>
+<td><p>"Update Agent"</p></td>
+</tr>
+<tr>
+<td><p>cs3</p></td>
+<td><p>Update Agent</p></td>
+<td><p>Example: "0"</p></td>
+</tr>
+<tr>
+<td><p>cs4Label</p></td>
+<td><p>Corresponding label for the "cs4" field</p></td>
+<td><p>"Domain"</p></td>
+</tr>
+<tr>
+<td><p>cs4</p></td>
+<td><p>Domain</p></td>
+<td><p>Example: "Default"</p></td>
+</tr>
+<tr>
+<td><p>cn1Label</p></td>
+<td><p>Corresponding label for the "cn1" field</p></td>
+<td><p>"Connection Status"</p></td>
+</tr>
+<tr>
+<td><p>cn1</p></td>
+<td><p>Connection status</p></td>
+<td><p>Example: "100"</p>
+<ul>
+<li><p>0: Unable to connect</p></li>
+<li><p>1: Active</p></li>
+<li><p>2: Inactive</p></li>
+<li><p>100: Product active</p></li>
+<li><p>101: Product inactive but agent is active</p></li>
+<li><p>102: Roaming</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cn2Label</p></td>
+<td><p>Corresponding label for the "cn2" field</p></td>
+<td><p>"Pattern/Rule"</p></td>
+</tr>
+<tr>
+<td><p>cn2</p></td>
+<td><p>Pattern/Rule</p></td>
+<td><p>Example: "2048"</p></td>
+</tr>
+<tr>
+<td><p>cs5Label</p></td>
+<td><p>Corresponding label for the "cs5" field</p></td>
+<td><p>"Pattern/Rule Version"</p></td>
+</tr>
+<tr>
+<td><p>cs5</p></td>
+<td><p>Pattern/Rule version</p></td>
+<td><p>Example: "1548"</p></td>
+</tr>
+<tr>
+<td><p>cn3Label</p></td>
+<td><p>Corresponding label for the "cn3" field</p></td>
+<td><p>"Pattern/Rule Status"</p></td>
+</tr>
+<tr>
+<td><p>cn3</p></td>
+<td><p>Pattern/Rule status</p></td>
+<td><p>Example: "1"</p>
+<ul>
+<li><p>1: Up-to-date</p></li>
+<li><p>2: 1 version old</p></li>
+<li><p>3: 2 versions old</p></li>
+<li><p>4: 3 versions old</p></li>
+<li><p>5: 4 versions old</p></li>
+<li><p>6: 5 versions old</p></li>
+<li><p>7: 6 or more versions old</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cs6Label</p></td>
+<td><p>Corresponding label for the "cs6" field</p></td>
+<td><p>"AUComponent_Type"</p></td>
+</tr>
+<tr>
+<td><p>cs6</p></td>
+<td><p>ActiveUpdate component type</p></td>
+<td><p>Example: "2"</p>
+<ul>
+<li><p>2: Pattern</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>deviceFacility</p></td>
+<td><p>Managed product name</p></td>
+<td><p>Example: "Apex One"</p></td>
+</tr>
+<tr>
+<td><p>msg</p></td>
+<td><p>Pattern type display name</p></td>
+<td><p>Example: "Virus Pattern"</p></td>
+</tr>
+<tr>
+<td><p>deviceNtDomain</p></td>
+<td><p>Active Directory domain</p></td>
+<td><p>Example: APEXTMCM</p></td>
+</tr>
+<tr>
+<td><p>dntdom</p></td>
+<td><p>Apex One domain hierarchy</p></td>
+<td><p>Example: OSCEDomain1</p></td>
+</tr>
+<tr>
+<td><p>ApexCentralHost</p></td>
+<td><p>Apex Central host name</p></td>
+<td><p>Example: TW-CHRIS-W2019</p></td>
+</tr>
+<tr>
+<td><p>devicePayloadId</p></td>
+<td><p>Unique message GUID</p></td>
+<td><p>Example: 1C00290C0360-9CDE11EB-D4B8-F51F-C697</p></td>
+</tr>
+</tbody>
+</table>
+
+Log sample:
+
+```bash
+CEF:0|Trend Micro|Apex Central|2019|800101|Pattern Update
+Status|3|rt=Nov 02 2017 12:46:44 GMT+00:00 shost=shost1 cs1L
+abel=Operating_System cs1=Windows 7  cs2Label=Product/Endpoi
+nt_IP cs2=10.0.7.20 cs3Label=Update_Agent cs3=0 cs4Label=Dom
+ain cs4=Default cn1Label=Connection_Status cn1=100 cn2Label=
+Pattern/Rule cn2=2048 cs5Label=Pattern/Rule_Version cs5=1548
+ cn3Label=Pattern/Rule_Status cn3=1 cs6Label=AUComponent_Typ
+e cs6=2 deviceFacility=Apex One deviceNtDomain=APEXTMCM dntd
+om=OSCEDomain1
+```
+:::

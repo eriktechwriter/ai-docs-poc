@@ -1,0 +1,143 @@
+---
+slug: trend-vision-one-aws-faqs
+title: AWS troubleshooting and frequently asked questions
+---
+# AWS troubleshooting and frequently asked questions
+
+**Related information**
+
+- How do I address a stack removal error that is preventing me from redeploying Agentless Vulnerability & Threat Detection?
+- How do I remove residual AWS log groups and Lambda functions blocking Agentless Vulnerability & Threat Detection redeployment?
+- How do I disable Agentless Vulnerability & Threat Detection scanning without deleting the feature stack?
+- How do I remove the Agentless Vulnerability & Threat Detection stack and all deployed resources?
+- How do I remove my AWS account from Trend Vision One and delete all deployed Trend Vision One stacks from the account?
+- How do I ensure my Agentless Vulnerability & Threat Detection stack is compatible with Cyber Risk Exposure Management pricing packages?
+
+## How do I address a stack removal error that is preventing me from redeploying Agentless Vulnerability & Threat Detection? {#how-do-i-address-a-stack-removal-error-that-is-preventing-me-from-redeploying-agentless-vulnerability-threat-detection}
+
+Correct missing permission issues that could prevent Agentless Vulnerability & Threat Detection redeployment.
+
+Previous versions of the Agentless Vulnerability & Threat Detection AWS template had a missing permission issue that caused stack removal failures, leaving StackSets in your AWS environment that could block redeployment. If you encounter the issue, you need to manually remove the problematic stack from AWS CloudFormation.
+
+1.  In AWS CloudFormation, go to **CloudFormation → StackSets**.
+
+2.  Select the StackSet you want to remove.
+
+3.  From the **Actions** list, select **Delete stacks from StackSet**.
+
+4.  On the **Set deployment options** page, copy the AWS account number and add the number to **Account numbers**.
+
+5.  In the **Specify regions** area, click **Add all regions**.
+
+6.  In the **Deployment options** area, enable **Retain stacks**.
+
+7.  Click **Next**.
+
+8.  On the **Review** page, click **Submit**.
+
+    - Clicking **Submit** deletes the stacks from the StackSet.
+
+9.  Go back to the **Actions** list and click **Delete StackSet**.
+
+    The StackSet is now deleted.
+
+10. To remove any problematic stacks in CloudFormation that failed to delete, select each stack you want to remove and click **Retry Delete**.
+
+## How do I remove residual AWS log groups and Lambda functions blocking Agentless Vulnerability & Threat Detection redeployment? {#how-do-i-remove-residual-aws-log-groups-and-lambda-functions-blocking-agentless-vulnerability-threat-detection-redeployment}
+
+Learn to solve a common error that could prevent you from updating or redeploying Agentless Vulnerability & Threat Detection
+
+Agentless Vulnerability & Threat Detection may require occasional updates or redeployment after stack removal. After updating or removing the stack, residual log groups or Lambda functions might remain in your AWS account. Residual resources can block the creation of new required log groups during redeployment.
+
+If you encounter errors during stack deployment or update, such as: `The following resources failed to create: [GenerateSentryAPITokenLog, ReplicateSentryAPITokenLog, FilterUnsupportedRegionsLog]`, follow the steps below to resolve the issue.
+
+### Procedure {#procedure}
+
+1.  Sign in to the AWS CloudWatch console for the region experiencing the errors.
+
+2.  Locate and remove the log groups left over from the previous Agentless Vulnerability & Threat detection deployment.
+
+    1.  Search for log groups using the keywords `sentry` or `v1-common`.
+
+    2.  Delete all matching log groups, including but not limited to:
+
+        - `GenerateSentryAPITokenLog`
+
+        - `ReplicateSentryAPITokenLog`
+
+        - `FilterUnsupportedRegionsLog`
+
+3.  Sign in to the AWS Lambda console for the region experiencing the errors.
+
+4.  Locate and remove the Lambda functions left over from the previous Agentless Vulnerability & Threat detection deployment.
+
+    1.  Search for Lambda functions using the keywords `sentry` or `v1-common`.
+
+    2.  Delete any matching Lambda functions if they exist.
+
+5.  After all residual resources are removed, retry the update or stack redeployment.
+
+## How do I disable Agentless Vulnerability & Threat Detection scanning without deleting the feature stack? {#how-do-i-disable-agentless-vulnerability-threat-detection-scanning-without-deleting-the-feature-stack}
+
+Disable vulnerability and anti-malware scanning by Agentless Vulnerability & Threat Detection for your AWS account without removing the feature stack.
+
+The version 1.360.051518050 update to Agentless Vulnerability & Threat Detection supports configuration editing after the stack has been deployed. From the latest version onward, you may edit the configuration in order to disable scans.
+
+### Procedure {#procedure-1}
+
+1.  In the Trend Vision One console, go to **Cloud Security → Cloud Accounts**.
+
+2.  In the AWS tab, select the AWS account you wish to reconfigure.
+
+3.  Under **Stack update** in **Cloud account settings**, expand Agentless Vulnerability & Threat Detection and click **Scanner settings**.
+
+4.  To completely disable scans, deselect all resource types, including EBS, ECR, and Lambda, for both vulnerability scanning and anti-malware.
+
+5.  Click **Save changes**.
+
+    All scans are effectively disabled. You may still incur minimal costs due to Agentless Vulnerability & Threat Detection stack resources running in the background.
+
+## How do I remove the Agentless Vulnerability & Threat Detection stack and all deployed resources? {#how-do-i-remove-the-agentless-vulnerability-threat-detection-stack-and-all-deployed-resources}
+
+Learn how to fully remove Agentless Vulnerability & Threat Detection resources from your AWS account.
+
+### Procedure {#procedure-2}
+
+1.  In the Trend Vision One console, go to **Cloud Security → Cloud Accounts**.
+
+2.  In the AWS tab, select the AWS account you wish to reconfigure.
+
+3.  Under **Stack update** in **Cloud account settings**, disable Agentless Vulnerability & Threat Detection.
+
+4.  [Update your AWS stack](stack-update.mdx).
+
+## How do I remove my AWS account from Trend Vision One and delete all deployed Trend Vision One stacks from the account? {#how-do-i-remove-my-aws-account-from-trend-vision-one-and-delete-all-deployed-trend-vision-one-stacks-from-the-account}
+
+Learn how to completely remove an AWS account from Trend Vision One and delete all deployed Trend Vision One resources.
+
+### Procedure {#procedure-3}
+
+1.  In the AWS console, search for all stacks deployed by Trend Vision One using the `TrendMicroProduct` tag. For a list of deployed stack resources by feature, see [Trend Vision One AWS services](resources-deployed-cloud-accounts.mdx).
+
+2.  Delete all deployed stacks, including the Agentless Vulnerability & Threat Detection stack, from your AWS account.
+
+3.  In the Trend Vision One console, go to **Cloud Security → Cloud Accounts**.
+
+4.  Select the AWS account you wish to remove and click **Remove**.
+
+5.  Copy any information you wish to save, then confirm removal of the selected account.
+
+## How do I ensure my Agentless Vulnerability & Threat Detection stack is compatible with Cyber Risk Exposure Management pricing packages? {#how-do-i-ensure-my-agentless-vulnerability-threat-detection-stack-is-compatible-with-cyber-risk-exposure-management-pricing-packages}
+
+Learn what to do to ensure your deployed Agentless Vulnerability & Threat Detection stack is supported by the pricing packages available for Cyber Risk Exposure Management.
+
+To ensure support for Agentless Vulnerability & Threat Detection after the release of [the latest Cyber Risk Exposure Management pricing packages](credit-req-for-apps-services.mdx) on April 1, 2025, you should update your stack to the latest version if:
+
+- The stack was deployed prior to June 2024
+
+- The stack has never been updated
+
+- The template version uses is earlier than version 1.360.051518050
+
+Updating the Agentless Vulnerability & Threat Detection stack allows you to enable or disable vulnerability or anti-malware scans when you enable or disable features in Cyber Risk Exposure Management.
+:::

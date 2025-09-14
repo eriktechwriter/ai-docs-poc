@@ -1,0 +1,126 @@
+---
+slug: trend-vision-one-firewall-settings-2
+title: Firewall settings
+---
+# Firewall settings
+
+:::::The *Firewall* module provides bidirectional stateful firewall protection. It prevents denial of service attacks and provides coverage for all IP-based protocols and frame types as well as filtering for ports and IP and MAC addresses.
+
+The Firewall section of the Computer or Policy editor has the following tabbed sections:
+
+- General
+- Interface Isolation
+- Reconnaissance
+- Advanced
+- Firewall events
+
+## General {#general}
+
+## Firewall {#firewall}
+
+You can configure this policy or computer to inherit its firewall On/Off state from its parent policy or you can lock the setting locally.
+
+## Firewall Stateful Configurations {#firewall-stateful-configurations}
+
+Select which firewall stateful configuration to apply to this policy. If you have defined multiple Interfaces for this policy (above), you can specify independent configurations for each interface. For more information on creating a stateful configuration see [Define stateful configurations](define-stateful-firewall.mdx).
+
+## Assigned Firewall Rules {#assigned-firewall-rules}
+
+Displays the firewall rules that are in effect for this policy or computer. To add or remove firewall rules, click *Assign/Unassign* This will display a window showing all available firewall rules from which you can select or deselect rules.
+
+From a Computer or Policy editor window, you can edit a firewall rule so that your changes apply only locally in the context of your editor, or you can edit the rule so that the changes apply globally to all other policies and computers that are using the rule.
+
+*To edit the Rule locally,* right-click the rule and select *Properties*.
+
+*To edit the Rule globally,* right-click the rule and select *Properties (Global)*.
+
+For more information on creating firewall rules, see [Create a Firewall rule](create-firewall-rule.mdx).
+
+## Interface Isolation {#interface-isolation}
+
+You can configure this policy or computer to inherit its Interface Isolation enabled or disabled state from its parent policy or you can lock the setting locally.
+
+:::danger[Warning]
+
+Before you enable Interface Isolation make sure that you have configured the interface patterns in the proper order and that you have removed or added all necessary string patterns. Only interfaces matching the highest priority pattern will be permitted to transmit traffic. Other interfaces (which match any of the remaining patterns on the list) will be "restricted". Restricted Interfaces will block all traffic unless an Allow Firewall Rule is used to allow specific traffic to pass through.
+:::
+
+To configure the Interface Isolation policy:
+
+### Procedure {#procedure}
+
+1.  On the Interface Isolation tab, select *Enable interface isolation*.
+
+2.  Configure the Interface Patterns. (See below)
+
+3.  Click *Save*.
+
+## Interface Patterns {#interface-patterns}
+
+When Interface Isolation is enabled, the firewall will try to match the regular expression patterns to interface names on the local computer.
+
+:::note
+
+Server & Workload Protection uses POSIX basic regular expressions to match interface names.
+:::
+
+Only interfaces matching the highest priority pattern will be permitted to transmit traffic. Other interfaces (which match any of the remaining patterns on the list) will be "restricted". Restricted Interfaces will block all traffic unless an *Allow* firewall rule is used to allow specific traffic to pass through.
+
+Selecting *Limit to one active interface* will restrict traffic to only a single interface (even if more than one interface matches the highest priority pattern).
+
+## Reconnaissance {#reconnaissance}
+
+The *Reconnaissance* page allows you to enable and configure traffic analysis settings on your computers. This feature can detect possible reconnaissance scans that attackers often use to discover weaknesses before beginning a targeted attack.
+
+:::note
+
+Reconnaissance scans do not work in TAP mode. Reconnaissance scans can only be detected on IPv4 traffic.
+:::
+
+To enable reconnaissance protection, you must also enable the Firewall and Stateful Inspection on the **Computer or Policy editor → Firewall → General** tab. You should also go to the **Computer or Policy editor → Firewall → Advanced** tab and enable the *Generate Firewall Events for packets that are 'Out of Allowed Policy'* setting. This will generate firewall events that are required for reconnaissance.
+
+When setting up Reconnaissance scans, you have the following options:
+
+- *Reconnaissance Scan Detection Enabled:* Turn the ability to detect reconnaissance scans on or off. The default is that all scans are enabled in report mode with notifications. If you want to turn off the notifications or switch from the report mode to a temporary blocking mode, select *Yes* from the drop-down list and make your changes.
+
+- *Computers/Networks on which to perform detection:* Choose from the list the IPs to protect. Choose from existing IP Lists. (You can use the **Policies → Common Objects → Lists → IP Lists** page to create an IP List specifically for this purpose.)
+
+- *Do not perform detection on traffic coming from:* Select from a set of IP Lists which computers and networks to ignore. (As above, you can use the **Policies → Common Objects → Lists → IP Lists** page to create an IP List specifically for this purpose.)
+
+For each type of attack, the agent can be instructed to send the information to Server & Workload Protection where an alert will be triggered. You can configure Server & Workload Protection to send an email notification when the alerts are triggered. For more information, see **Administration → System Settings → Alerts**. Select *Notify DSM Immediately* for this option.
+
+:::note
+
+For the "Notify DSM Immediately" option to work, the agents must be configured for *agent-initiated* or *bidirectional* communication in **Computer or Policy editor → Settings → General.**) If enabled, the agent will initiate a heartbeat to Server & Workload Protection immediately upon detecting the attack or probe.
+:::
+
+Once an attack has been detected, you can instruct the agents to block traffic from the source IPs for a period of time. Use the *Block Traffic* drop-down to set the number of minutes.
+
+The alerts are:
+
+- *Computer OS Fingerprint Probe:* The agent detects an attempt to discover the computers OS.
+- *Network or Port Scan:* The agent reports a network or port scan if it detects that a remote IP is visiting an abnormal ratio of IPs to ports. Normally, an agent computer will only see traffic destined for itself, so a port scan is the most common type of probe that will be detected. The statistical analysis method used in computer or port scan detection is derived from the "TAPS" algorithm proposed in the paper "Connectionless Port Scan Detection on the Backbone" presented at IPCCC in 2006.
+- *TCP Null Scan:* The agent detects packages with no flags set.
+- *TCP SYNFIN Scan:* The agent detects packets with only the SYN and FIN flags set.
+- *TCP Xmas Scan:* The agent detects packets with only the FIN, URG, and PSH flags set or a value of 0xFF (every possible flag set).
+
+:::note
+
+"Network or Port Scans" differs from the other types of reconnaissance in that it cannot be recognized by a single packet and requires Server & Workload Protection to watch traffic for a period of time. The agent reports a computer or port scan if it detects that a remote IP is visiting an abnormal ratio of IPs to ports. Normally an agent computer will only see traffic destined for itself, so a port scan is by far the most common type of probe that will be detected. However, if a computer is acting as a router or bridge it could see traffic destined for a number of other computers, making it possible for the agent to detect a computer scan (ex. scanning a whole subnet for computers with port 80 open). Detecting these scans can take several seconds since the agent needs to be able to track failed connections and decide that there are an abnormal number of failed connections coming from a single computer in a relatively short period of time.
+:::
+
+:::note
+
+Agents running on Windows computers with browser applications may occasionally report false-positive reconnaissance scans due to residual traffic arriving from closed connections. For information on how to handle reconnaissance warnings, see [Warning: Reconnaissance Detected](warning-reconnaissance-detected.mdx).
+:::
+
+## Advanced {#advanced}
+
+## Events {#events}
+
+Set whether to generate events for packets that are "Out of Allowed Policy". These are packets that have been blocked because they have not been specifically allowed by an *Allow* firewall rule. Setting this option to *Yes* may generate a large number of events depending on the firewall rules you have in effect.
+
+## Firewall Events {#firewall-events}
+
+Firewall events are displayed the same way as they are in the main Server & Workload Protection console window except that only events relating to this policy or specific computer are displayed.
+:::::::::

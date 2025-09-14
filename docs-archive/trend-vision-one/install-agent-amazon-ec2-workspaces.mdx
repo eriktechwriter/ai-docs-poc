@@ -1,0 +1,165 @@
+---
+slug: trend-vision-one-install-agent-amazon-ec2-workspaces
+title: Install the agent on Amazon EC2 and WorkSpaces
+---
+# Install the agent on Amazon EC2 and WorkSpaces
+
+:::::warning[Important]
+
+AWS Accounts in Trend Vision One are now managed by the Cloud Accounts app.
+
+To update your AWS accounts, see [Updating a legacy AWS connection](updating-legacy-aws-connection.mdx).
+
+You can still use APIs to add new accounts to Server & Workload Protection. However, Trend Micro recommends using the Cloud Accounts app, which provides access to more advanced cloud security and XDR capabilities. The following topic is for reference only.
+:::
+
+:::note
+
+The agent only supports Amazon WorkSpaces Windows desktops—it does not support Linux desktops.
+:::
+
+Read this page if you want to protect existing Amazon EC2 instances and Amazon WorkSpaces with Server & Workload Protection.
+
+If instead you want to:
+
+- launch new Amazon EC2 instances and Amazon WorkSpaces with the agent 'baked in', see [Bake the agent into your AMI or WorkSpace bundle](install-agent-ami-workspace.mdx).
+- protect Amazon WorkSpaces after already protecting your Amazon EC2 instances, see instead [Protect Amazon WorkSpaces if you already added your AWS account](add-amazon-workspaces.mdx).
+
+To protect your existing Amazon EC2 instances and Amazon WorkSpaces with Server & Workload Protection, follow these steps:
+
+### Procedure {#procedure}
+
+1.  Add your AWS accounts to Server & Workload Protection
+
+2.  Configure the activation type
+
+3.  Open ports
+
+4.  Deploy agents to your Amazon EC2 instances and WorkSpaces
+
+5.  Verify that the agent was installed and activated properly
+
+6.  Assign a policy
+
+## Add your AWS accounts to Server & Workload Protection {#add-your-aws-accounts-to-server-workload-protection}
+
+:::warning[Important]
+
+AWS Accounts in Trend Vision One are now managed by the Cloud Accounts app. To add new AWS accounts, see [Adding an AWS account using CloudFormation](adding-aws-account.mdx). You can still add accounts to Server & Workload Protection using the API functions. However, Trend Micro recommends using the Cloud Accounts app, which provides access to more advanced cloud security and XDR capabilities.
+:::
+
+For AWS accounts that were added to Server & Workload Protection which have not been updated in the Cloud Accounts app:
+
+- your existing Amazon EC2 instances and Amazon WorkSpaces appear in the Server & Workload Protection console. If no agent is installed on them, they appear with a *Status of Unmanaged (Unknown)* and a grey dot next to them. If an agent was already installed, they appear with a *Status of Managed (Online)* and green dot next to them.
+- any new Amazon EC2 instances or Amazon WorkSpaces that you launch through AWS under this AWS account are auto-detected by Server & Workload Protection and displayed in the list of computers.
+
+## Configure the activation type {#configure-the-activation-type}
+
+'Activation' is the process of registering an agent with a manager. You'll need to indicate whether you'll allow agent-initiated activation. If not, only manager-initiated activation is allowed.
+
+### Procedure {#procedure-1}
+
+1.  Log in to the Server & Workload Protection console.
+
+2.  Click *Administration* at the top.
+
+3.  On the left, click *System Settings*.
+
+4.  In the main pane, make sure the *Agents* tab is selected.
+
+5.  Select or deselect *Allow Agent-Initiated Activation*, noting that:
+
+    - Agent-initiated activation does not require you to open up inbound ports to your Amazon EC2 instances or Amazon WorkSpaces, while manager-initiated activation does.
+
+    - If agent-initiated activation is enabled, manager-initiated activation continues to work.
+
+6.  If you selected *Allow Agent-Initiated Activation*, also select *Reactivate cloned Agents*, and *Enable Reactivate unknown Agents*. See [Agent settings](agent-settings.mdx) for more information.
+
+7.  Click *Save*.
+
+8.  If you're using Amazon WorkSpaces, and you didn't allow agent-initiated activation, [manually assign an elastic IP address to each WorkSpace now](https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-internet-access), before proceeding with further steps on this page. This gives each Amazon WorkSpace a public IP that can be contacted by other computers. This is not required for EC2 instances because they already use public IP addresses.
+
+    ![](/images/BakeAMI=c7f8cf30-e760-4b54-a425-a7f219378ac0.webp)
+
+### Next steps {#next-steps}
+
+## Open ports {#open-ports}
+
+You'll need to make sure that the necessary ports are open to your Amazon EC2 instances or Amazon WorkSpaces.
+
+To open ports:
+
+### Procedure {#procedure-2}
+
+1.  Open ports to your Amazon EC2 instances, as follows:
+
+    a\. Log in to your [Amazon Web Services Console](https://console.aws.amazon.com/console/home). b. Go to **EC2 → Network & Security → Security Groups**. c. Select the security group that is associated with your EC2 instances, then select *Actions* \> *Edit outbound rules*. d. Open the necessary ports. See Which ports should be opened? below.
+
+2.  Open ports to your Amazon WorkSpaces, as follows:
+
+    a\. Go to the firewall software that is protecting your Amazon WorkSpaces, and open the ports listed above.
+
+### Next steps {#next-steps-1}
+
+You have now opened the necessary ports so that the agent and Server & Workload Protection can communicate.
+
+## Which ports should be opened? {#which-ports-should-be-opened}
+
+Generally-speaking:
+
+- agent-to-manager communication requires you to open the outbound TCP port (443 or 80, by default)
+- manager-to-agent communication requires you to open an inbound TCP port (4118).
+
+More specifically:
+
+- If you enabled *Allow Agent-Initiated Activation*, you'll need to open the outbound TCP port (443 or 80, by default)
+- If you disabled *Allow Agent-Initiated Activation*, you'll need to open the inbound TCP port of 4118.
+
+## Deploy agents to your Amazon EC2 instances and WorkSpaces {#deploy-agents-to-your-amazon-ec2-instances-and-workspaces}
+
+You'll need to deploy agents onto your Amazon EC2 instances and Amazon WorkSpaces. Below are a couple of options.
+
+- *Option 1: Use a deployment script to install, activate, and assign a policy*
+
+  Use Option 1 if you need to deploy agents to many Amazon EC2 instances and Amazon WorkSpaces.
+
+  With this option, you must run a deployment script on the Amazon EC2 instances or Amazon WorkSpaces. The script installs and activates the agent and then assigns a policy. See [Use deployment scripts to add and protect computers](deployment-scripts-add-computers.mdx) for details.
+
+  OR
+
+- *Option 2: Manually install and activate*
+
+  Use Option 2 if you only need to deploy agents to a few EC2 instances and Amazon WorkSpaces.
+
+  a\. Get the agent software, copy it to the Amazon EC2 instance or Amazon WorkSpace, and then install it. For details, see [Get the agent software](get-agent-software.mdx), and [Manually install the agent](install-agent.mdx).
+
+  b\. Activate the agent. You can do so on the agent (if agent-initiated activation was enabled) or in Server & Workload Protection. For details, see [Activate the agent.](activate-agent.mdx)
+
+You have now installed and activated the agent on an Amazon EC2 instance or Amazon WorkSpace. A policy may or may not have been assigned, depending on the option you chose. If you chose Option 1 (you used a deployment script), a policy was assigned to the agent during activation. If you chose Option 2 (you manually installed and activated the agent), then no policy has been assigned, and you will need to assign one following the instructions further down on this page.
+
+## Verify that the agent was installed and activated properly {#verify-that-the-agent-was-installed-and-activated-properly}
+
+You should verify that your agent was installed and activated properly.
+
+### Procedure {#procedure-3}
+
+1.  Log in to the Server & Workload Protection console.
+
+2.  Click *Computers* at the top.
+
+3.  On the navigation pane on the left, make sure your Amazon EC2 instance or Amazon WorkSpace appears under *Computers* \> your_AWS_account \> your_region . (Look for WorkSpaces in a *WorkSpaces* sub-node.)
+
+4.  In the main pane, make sure your Amazon EC2 instances or Amazon WorkSpaces appear with a *Status* of *Managed (Online)* and a green dot next to them.
+
+### Next steps {#next-steps-2}
+
+## Assign a policy {#assign-a-policy}
+
+Skip this step if you ran a deployment script to install and activate the agent. The script already assigned a policy so no further action is required.
+
+If you installed and activated the agent manually, you must assign a policy to the agent. Assigning the policy sends the necessary protection modules to the agent so that your computer is protected.
+
+To assign a policy, see [Assign a policy to a computer](create-policies.mdx).
+
+After assigning a policy, your Amazon EC2 instance or Amazon WorkSpace is now protected.
+::::::

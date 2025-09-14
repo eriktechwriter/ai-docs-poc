@@ -1,0 +1,46 @@
+---
+slug: trend-vision-one-activate-ddi-clp
+title: Activating a Deep Discovery Inspector license using the Customer Licensing Portal
+---
+
+Activate your Deep Discovery Inspector license to connect to Network Security and integrate with Sandbox as a Service.
+
+If you did not use a company-specific disk image to deploy the Deep Discovery Inspector virtual appliance, you must activate your Deep Discovery Inspector license before connecting to **Network Security** or integrating Sandbox as a Service.
+
+### Procedure {#procedure}
+
+1.  Register Deep Discovery Inspector in the Customer Licensing Portal. For more information see [Managing Product/Service Licenses](https://docs.trendmicro.com/en-us/smb/customer-licensing-portal/product-service-mana/managing-product-ser.aspx).
+
+    <figure>
+    <img src="./images/DDI_Sandbox_integration=61055e70-1e25-478e-ba7a-2ab48efb3410.webp" />
+    </figure>
+
+2.  Activate the Deep Discovery Inspector license.
+
+    1.  In the Deep Discovery Inspector console, go to **Administration → Licenses**.
+
+    2.  Under **Deep Discovery Inspector**, click **New Activation Code**.
+
+    3.  Specify the Deep Discovery Inspector activation code available in the Customer Licensing Portal, then click **Save**.
+
+        <figure>
+        <img src="./images/DDI_Sandbox_integration_2=7c152e9d-7c23-4e5c-9164-a4e7e5b78746.webp" />
+        </figure>
+
+3.  Activate Sandbox as a Service in Deep Discovery Inspector.
+
+    :::note
+    To obtain a license for Sandbox as a Service, contact your support provider.
+    :::
+
+    1.  In the Deep Discovery Inspector console, go to **Administration → Licenses**.
+
+    2.  Under **Sandbox as a Service**, click **New Activation Code**.
+
+    3.  Specify the Sandbox as a Service activation code then click **Save**.
+
+4.  Connect the Deep Discovery Inspector appliance.
+
+    - To connect directly, see [Connecting a Deep Discovery Inspector appliance directly](connecting-ddi-directly.md).
+
+    - To connect using a Service Gateway as a proxy, see [Connecting a Deep Discovery Inspector appliance using Service Gateway as a proxy](ddi-connect-service-gateway.md).

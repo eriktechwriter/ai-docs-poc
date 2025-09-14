@@ -1,0 +1,249 @@
+---
+slug: trend-vision-one-upgrade-agent
+title: Upgrade the agent
+---
+# Upgrade the agent
+
+Software upgrades can be initiated through Server & Workload Protection or a third-party deployment system.
+
+## Before you begin {#before-you-begin}
+
+Before you begin an agent upgrade:
+
+### Procedure {#procedure}
+
+1.  Verify that you are upgrading from a supported version. You can upgrade to the latest version 20 agent from the following:
+
+    - Deep Security Agent 11 LTS (GA version or LTS updates)
+    - Deep Security Agent 12 LTS (GA version or LTS updates)
+    - Deep Security Agent 12 Feature Releases
+
+2.  Back up the agent computers that you plan to upgrade. Make a system restore point or VM snapshot of each agent.
+
+3.  If you have set up the local Deep Security Relay servers, [upgrade all relays](upgrade-relay.mdx).
+
+    :::note
+
+    When you upgrade the agent, Server & Workload Protection verifies your signature on the agent to ensure that the software files have not changed since the time of signing. For more information, see [Agent package integrity check](agent-package-integrity-check.mdx).
+    :::
+
+4.  Review the following platform-specific information and complete any advised tasks:
+
+    - *Linux* agent upgrade:
+
+      - Before upgrading the agent on a Linux platform, confirm the OS kernel is supported by the latest version of the agent. See [Agent Linux kernel support.](linux-kernel-compatibility.mdx).
+
+    - *Windows* agent upgrade:
+
+      - Immediately after upgrading version 12 or later of the agent on Windows with Anti-Malware enabled, be aware that the Anti-Malware engine may appear as 'Offline'. The engine will return to the 'Online' state after the first heartbeat following the upgrade.
+
+    - *Solaris* agent upgrade:
+
+      - On Solaris 11, if you are upgrading from agent version 9.0, you must first upgrade to agent version 9.0.0-5616 or later and from there, upgrade to agent version 11.0. If you upgrade from an earlier build, the agent may fail to start. If this problem occurs, see [Fix the upgrade issue on Solaris 11](offline-agent.mdx).
+      - An upgrade on Solaris may take five minutes or longer to complete in some cases.
+
+    - *AIX* agent upgrade:
+
+      - There is no upgrade information for AIX at this time.
+
+### Next steps {#next-steps}
+
+You are now ready to upgrade your agent using any of the methods described in this topic.
+
+## Upgrade the agent starting from an alert {#upgrade-the-agent-starting-from-an-alert}
+
+When a new agent software version is available, the following message appears on Alerts:
+
+![](/images/Upgrade-of-the-AgentAppliance=2748d635-bb2e-4fc0-9ccc-0a3fd1e371a4.webp)
+
+### Procedure {#procedure-1}
+
+1.  In the alert, click *Show Details*, and then click *View all out-of-date computers*. *Computers* appears, displaying all computers where *Software Update Status* is *Out-of-Date*. What is considered 'out-of-date' is determined by version control rules you've set up. For details, see [Configure agent version control](configure-agent-version-control.mdx).
+
+2.  Continue with Upgrade an agent from the Computers page or Upgrade the agent by running the installer manually.
+
+## Upgrade multiple agents at once {#upgrade-multiple-agents-at-once}
+
+### Procedure {#procedure-2}
+
+1.  In the Server & Workload Protection console, go to **Administration → Updates → Software**.
+
+2.  In the main pane, look under the *Computers* section to see whether any computers are running agents for which upgrades are available.
+
+3.  Click *Upgrade Agent / Appliance Software* to upgrade all out-of-date computers. What is considered 'out-of-date' is determined by version control rules you've set up. For details, see [Configure agent version control](configure-agent-version-control.mdx).
+
+## Upgrade the agent from the Computers page {#upgrade-the-agent-from-the-computers-page}
+
+### Procedure {#procedure-3}
+
+1.  In the Server & Workload Protection console, go to *Computers*, and then do one of the following:
+
+    - Right-click the computer(s) that you want to upgrade, and select **Actions → Upgrade Agent Software**.
+    - Select the computer(s) that you want to upgrade, click *Actions* at the top, and select *Upgrade Agent Software*.
+    - Double-click the computer that you want to upgrade click *Upgrade Agent* on *Computer* dialog.
+
+    :::danger[Warning]
+
+    You must upgrade your relays before upgrading your agents to prevent failures. [Learn more](upgrade-relay.mdx). To identify a relay, look for the relay icon:
+
+    ![](/images/relay_server=ee64af72-a190-4a0a-b332-0bd1bcea02e9.webp)
+    :::
+
+2.  In the dialog box that appears, select the *Agent Version*. We recommend that you select the default *Use the latest version for platform (X.Y.Z.NNNN)*. Click *Next*.
+
+## Upgrade the agent on activation {#upgrade-the-agent-on-activation}
+
+If the agent is installed on Linux or Windows, you can choose to automatically upgrade the agent to the newest software version that's compatible with Server & Workload Protection when the agent is activated or reactivated. For details, see [Automatically upgrade agents on activation](autoupgrade-agents-activation.mdx).
+
+## Upgrade the agent from a Scheduled Task {#upgrade-the-agent-from-a-scheduled-task}
+
+You can create a Scheduled Task to upgrade a group of agents on a set schedule. For details, see [Scheduled Agent Upgrade Task](schedule-perform-tasks.mdx).
+
+:::note
+
+If you set Agent Version Control to a specific version on a certain platform, then the Scheduled Agent Upgrade Task does not upgrade the agent on that platform.
+:::
+
+## Upgrade the agent manually {#upgrade-the-agent-manually}
+
+Sometimes you may not be able to upgrade the agent software from the Server & Workload Protection console. Reasons may include:
+
+- There are connectivity restrictions between Server & Workload Protection and agent computers.
+- Your agent software is too old, and Server & Workload Protection doesn't support upgrading it anymore.
+- You prefer to deploy upgrades using a third-party system.
+
+If any of the above scenarios describes your situation, you can upgrade the agent by running the installer manually. The method varies by operating system:
+
+- Upgrade the agent on Windows
+- Upgrade the agent on Linux
+- Upgrade the agent on Solaris
+- Upgrade the agent on AIX
+
+## Upgrade the agent on Windows {#upgrade-the-agent-on-windows}
+
+### Procedure {#procedure-4}
+
+1.  Disable [agent self-protection](use-agent-self-protection.mdx) to allow the installer to make modifications to the agent. To disable self-protection: a. In the Server & Workload Protection console, go to **Computer editor → Settings → General**. In *Agent Self Protection*. b. Deselect *Prevent local end-users from uninstalling, stopping, or otherwise modifying the Agent* or enter a password for a local override.
+
+2.  Export the new agent ZIP from Server & Workload Protection. See [Export the agent installer](get-agent-software.mdx) for instructions. If multiple new agents are available for your platform, choose the latest one.
+
+3.  Copy the ZIP to the agent computer and extract it.
+
+4.  Double-click the MSI file in the root of the ZIP file. The installer detects the previous agent and performs the upgrade.
+
+## Upgrade the agent on Linux {#upgrade-the-agent-on-linux}
+
+### Procedure {#procedure-5}
+
+1.  Export the new agent ZIP from Server & Workload Protection. See [Export the agent installer](get-agent-software.mdx) for instructions. If multiple new agents are available for your platform, choose the latest one.
+
+2.  Copy the ZIP to the agent computer and extract it.
+
+3.  If the computer uses the rpm package manager (Red Hat, CentOS, Amazon Linux, Cloud Linux, SUSE), enter the command:
+
+    `rpm -U <new agent installer rpm>`
+
+    The `-U` argument instructs the installer to perform an upgrade.
+
+4.  If the computer uses the dpkg package manager (Debian or Ubuntu), enter the command:
+
+    `dpkg -i <new agent installer dpkg>`
+
+## Upgrade the agent on Solaris {#upgrade-the-agent-on-solaris}
+
+### Procedure {#procedure-6}
+
+1.  Export the new agent ZIP from Server & Workload Protection. See [Export the agent installer](get-agent-software.mdx) for instructions. If multiple new agents are available for your platform, choose the latest one.
+
+2.  Copy the ZIP to the agent computer and extract it.
+
+3.  Run the installer:
+
+    - Solaris 11, one zone (run in the global zone):
+
+      - x86:
+
+        `pkg update -g file://mnt/Agent-Solaris_5.11-9.x.x-xxxx.x86_64/Agent-Core-Solaris_5.11-9.x.x-xxxx.x86_64.p5p pkg:/security/ds-agent`
+
+      - SPARC:
+
+        `pkg update -g file:///mnt/Agent-Solaris_5.11-9.x.x-xxxx.x86_64/Agent-Solaris_5.11-9.x.x-xxxx.sparc.p5p pkg:/security/ds-agent`
+
+    - Solaris 11, multiple zones (run in the global zone):
+
+      `mkdir <path>`
+
+      `pkgrepo create <path>`
+
+      `pkgrecv -s file://<dsa core p5p file location> -d <path> '\*'`
+
+      `pkg set-publisher -g <path> trendmicro`
+
+      `pkg update pkg://trendmicro/security/ds-agent`
+
+      `pkg unset-publisher trendmicro`
+
+      `rm -rf <path>`
+
+    - Solaris 10:
+
+      1.  Create an installation configuration file named `ds_adm.file` with the content listed below, and then save it in the root directory.
+
+          `mail=`
+
+          `instance=overwrite`
+
+          `partial=nocheck`
+
+          `runlevel=quit`
+
+          `idepend=nocheck`
+
+          `rdepend=quit`
+
+          `space=quit`
+
+          `setuid=nocheck`
+
+          `conflict=quit`
+
+          `action=nocheck`
+
+          `proxy=`
+
+          `basedir=default\`
+
+      2.  Next, run this command to install the package:
+
+          `pkgadd -G -v -a /root/ds_adm.file -d Agent-Core-Solaris_5.10_U7-10.0.0-1783.x86_64.pkg`
+
+### Next steps {#next-steps-1}
+
+## Upgrade the agent on AIX {#upgrade-the-agent-on-aix}
+
+### Procedure {#procedure-7}
+
+1.  Export the new agent ZIP from Server & Workload Protection. See [Export the agent installer](get-agent-software.mdx) for instructions. If multiple new agents are available for your platform, choose the latest one.
+
+2.  Copy the ZIP to the agent computer and extract it. A BFF file becomes available.
+
+3.  Copy the BFF file to a temporary folder such as `/tmp` on the AIX computer. For detailed instructions, see [Install the agent manually](install-agent.mdx).
+
+4.  Upgrade the agent. Use these commands:
+
+    `/tmp> rm -f ./.toc`
+
+    `/tmp> installp -a -d /tmp/<agent_BFF_file_name> ds_agent`
+
+    where `<agent_BFF_file_name>` is replaced with the name of the BFF installer file you extracted.
+
+## Best practices for agent upgrade {#best-practices-for-agent-upgrade}
+
+If you have critical workloads running on your agent servers, you should follow these best practices when upgrading:
+
+- Upgrade when the computers are less busy.
+- Test the upgrade procedure first in a staging environment before upgrading production servers.
+- When upgrading production servers, upgrade one server at a time for the first few servers. Allow a soak period in between each server upgrade.
+- After individually upgrading a number of production servers for a given OS version (and application role, on Solaris or AIX), upgrade the remaining servers in groups.
+- Also review the [Best practices for upgrades](upgrades.mdx).
+::::

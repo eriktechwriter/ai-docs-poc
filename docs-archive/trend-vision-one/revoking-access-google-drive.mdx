@@ -1,0 +1,58 @@
+---
+slug: trend-vision-one-revoking-access-google-drive
+title: Revoking access to Google Drive
+---
+# Revoking access to Google Drive
+
+The steps outlined below detail how to revoke the access of Cloud Email and Collaboration Protection to Google Drive.
+
+### Procedure {#procedure}
+
+1.  Choose **Administration → Service Account**.
+
+2.  Select the Google Drive service account and click **Remove**.
+
+3.  Remove the Cloud Email and Collaboration Protection application for all of your users.
+
+    :::note
+
+    The Google Drive, Gmail, Gmail (Inline Mode) service accounts share the same *Trend Micro Cloud App Security* application. If you are still using the Gmail or Gmail (Inline Mode) service account, skip this step and step 4.
+    :::
+
+    1.  Visit [https://admin.google.com/AdminHome?hl=en&pli=1&fral=1#AppsList:serviceType=MARKETPLACE](https://admin.google.com/AdminHome?hl=en&pli=1&fral=1).
+
+    2.  Click the application named *Trend Micro Cloud App Security*.
+
+    3.  Click the trash icon in the upper right to remove the application.
+
+4.  Remove the Cloud Email and Collaboration Protection application from the administrator's personal settings.
+
+    :::note
+
+    The Google Drive, Gmail, Gmail (Inline Mode) service accounts share the same *Trend Micro Cloud App Security* application. If you are still using the Gmail or Gmail (Inline Mode) service account, do not remove this application.
+    :::
+
+    1.  Go to **Google Account → Security → Third-party apps with account access** and click **manage third-party access**.
+
+    2.  On the **Apps with access to your account** screen, click the application named *Trend Micro Cloud App Security*, and then click **REMOVE ACCESS**.
+
+5.  Remove the folders created by Cloud Email and Collaboration Protection from the Google Drive administrator's root directory:
+
+    - Temporary folder: `trendmicro_cas_temp__dont_change_or_delete`
+
+      :::note
+
+      Unshare the temporary folder and make the folder unavailable to others before removing it.
+      :::
+
+    - Quarantine folder: `trendmicro_cas_quarantine__dont_change_or_delete`
+
+      :::note
+
+      Back up the existing quarantined files if necessary.
+      :::
+
+6.  Manually remove the remaining data.
+
+    For details, see [Changes made under API-based protection](changes-api-based-protection.mdx).
+:::

@@ -1,0 +1,44 @@
+---
+slug: trend-vision-one-nessus-pro-integration
+title: Nessus Pro integration
+---
+
+Integrate your Nessus Pro server through a Service Gateway.
+
+Configure the sharing of Nessus Pro data to gain deeper insight regarding the apps and devices your users access and the behaviors that contribute to users’ risk analyses.
+
+Through Nessus Pro integration, you gain access to the following insightful reports:
+
+- Operating systems containing CVEs
+
+- Applications containing CVEs
+
+:::note
+At least one Service Gateway must be configured to enable integration.
+
+For more information, see [Service Gateway Management](service-gateway-management.md).
+:::
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Workflow and Automation → Third-Party Integration**.
+
+2.  In the **Integration** column, click **Nessus Pro**.
+
+    The **Nessus Pro** integration screen appears.
+
+3.  If no Service Gateway is available, click the **Service Gateway Management** link to [deploy a Service Gateway](deployment-guides.md) or install the Nessus Pro service on an existing Service Gateway.
+
+4.  Click **+ Connect**.
+
+    The **Connection Settings** screen appears.
+
+5.  Configure the Nessus Pro Server Settings.
+
+6.  Select a Service Gateway.
+
+7.  Click **Connect**.
+
+    :::note
+    After connecting to the Service Gateway, the system automatically synchronizes data every 24 hours. To manually sync data, click the sync icon ( ![](/images/syncDataIcon=GUID-faeddf7f-b24a-4942-bcec-1e075bbbc2b0.webp) ).
+    :::

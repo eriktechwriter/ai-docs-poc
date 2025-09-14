@@ -1,0 +1,150 @@
+---
+slug: trend-vision-one-config-the-scan-exclusion-lists
+title: Configuring Scan Exclusion Lists
+---
+# Configuring Scan Exclusion Lists
+
+For details about Scan Exclusion Lists, see [Scan Exclusions](scan-exclusions.mdx).
+
+### Procedure {#procedure}
+
+1.  Select the check box to enable scan exclusion.
+
+2.  To configure the **Scan Exclusion List (Files)**:
+
+    1.  Type a full file path or directory path and click **Add**.
+
+        Reminders:
+
+        - It is not possible to type only a file name.
+
+        - You can specify a maximum of 64 paths. See the following table for examples.
+
+          <table>
+          <colgroup>
+          <col style="width: 21%" />
+          <col style="width: 26%" />
+          <col style="width: 53%" />
+          </colgroup>
+          <thead>
+          <tr>
+          <th><p>Path</p></th>
+          <th><p>Details</p></th>
+          <th><p>Examples</p></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Full file path</p></td>
+          <td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Excludes a specific file on the endpoint</p></td>
+          <td style="border-bottom-width: 1px; border-bottom-style: solid"><ul>
+          <li><p>Example 1:</p>
+          <p><code>/file.log</code></p></li>
+          <li><p>Example 2:</p>
+          <p><code>/System/file.log</code></p></li>
+          </ul></td>
+          </tr>
+          <tr>
+          <td style="border-right-width: 1px; border-right-style: solid"><p>Directory path</p></td>
+          <td style="border-right-width: 1px; border-right-style: solid"><p>Excludes all files located on a specific folder and all its subfolders</p></td>
+          <td><ul>
+          <li><p>Example 1:</p>
+          <p><code>/System/</code></p>
+          <p>Examples of files excluded from scans:</p>
+          <ul>
+          <li><p><code>/System/file.log</code></p></li>
+          <li><p><code>/System/Library/file.log</code></p></li>
+          </ul>
+          <p>Examples of files that will be scanned:</p>
+          <ul>
+          <li><p><code>/Applications/file.log</code></p></li>
+          </ul></li>
+          <li><p>Example 2:</p>
+          <p><code>/System/Library</code></p>
+          <p>Examples of files excluded from scans:</p>
+          <ul>
+          <li><p><code>/System/Library/file.log</code></p></li>
+          <li><p><code>/System/Library/Filters/file.log</code></p></li>
+          </ul>
+          <p>Examples of files that will be scanned:</p>
+          <ul>
+          <li><p><code>/System/file.log</code></p></li>
+          </ul></li>
+          </ul></td>
+          </tr>
+          </tbody>
+          </table>
+
+        - Use the asterisk wildcard (\*) in place of folder names.
+
+          See the following table for examples.
+
+          <table>
+          <colgroup>
+          <col style="width: 22%" />
+          <col style="width: 78%" />
+          </colgroup>
+          <thead>
+          <tr>
+          <th><p>Path</p></th>
+          <th><p>Wildcard Usage Examples</p></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Full file path</p></td>
+          <td style="border-bottom-width: 1px; border-bottom-style: solid"><p><code>/Users/Mac/*/file.log</code></p>
+          <p>Examples of files excluded from scans:</p>
+          <ul>
+          <li><p><code>/Users/Mac/Desktop/file.log</code></p></li>
+          <li><p><code>/Users/Mac/Movies/file.log</code></p></li>
+          </ul>
+          <p>Examples of files that will be scanned:</p>
+          <ul>
+          <li><p><code>/Users/file.log</code></p></li>
+          <li><p><code>/Users/Mac/file.log</code></p></li>
+          </ul></td>
+          </tr>
+          <tr>
+          <td style="border-right-width: 1px; border-right-style: solid"><p>Directory path</p></td>
+          <td><ul>
+          <li><p>Example 1:</p>
+          <p><code>/Users/Mac/*</code></p>
+          <p>Examples of files excluded from scans:</p>
+          <ul>
+          <li><p><code>/Users/Mac/doc.html</code></p></li>
+          <li><p><code>/Users/Mac/Documents/doc.html</code></p></li>
+          <li><p><code>/Users/Mac/Documents/Pics/pic.jpg</code></p></li>
+          </ul>
+          <p>Examples of files that will be scanned:</p>
+          <ul>
+          <li><p><code>/Users/doc.html</code></p></li>
+          </ul></li>
+          <li><p>Example 2:</p>
+          <p><code>/*/Components</code></p>
+          <p>Examples of files excluded from scans:</p>
+          <ul>
+          <li><p><code>/Users/Components/file.log</code></p></li>
+          <li><p><code>/System/Components/file.log</code></p></li>
+          </ul>
+          <p>Examples of files that will be scanned:</p>
+          <ul>
+          <li><p><code>/file.log</code></p></li>
+          <li><p><code>/Users/file.log</code></p></li>
+          <li><p><code>/System/Files/file.log</code></p></li>
+          </ul></li>
+          </ul></td>
+          </tr>
+          </tbody>
+          </table>
+
+        - Partial matching of folder names is not supported. For example, it is not possible to type `/Users/*user/temp` to exclude files on folder names ending in "user", such as "end_user" or "new_user".
+
+    2.  To delete a path, select it and click **Remove**.
+
+3.  To configure the **Scan Exclusion List (File Extensions)**:
+
+    1.  Type a file extension without a period (.) and click **Add**. For example, type `pdf`. You can specify a maximum of 64 file extensions.
+
+    2.  To delete a file extension, select it and click **Remove**.
+:::

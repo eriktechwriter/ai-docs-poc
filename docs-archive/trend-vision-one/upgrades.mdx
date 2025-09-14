@@ -1,0 +1,84 @@
+---
+slug: trend-vision-one-upgrades
+title: About upgrades
+---
+# About upgrades
+
+:Types of updates from Trend Micro include:
+
+- **Software upgrades**: New software such as the [agent](upgrade-agent.mdx) and [relay](upgrade-relay.mdx).
+
+- **Component updates**: Rules and malware patterns that agent software uses to identify potential threats. Types of component updates include:
+
+  - **Pattern updates**: Used by Anti-Malware
+
+  - **Rule updates**: Used by:
+
+    - Firewall
+
+    - Intrusion Prevention
+
+    - Integrity Monitoring
+
+    - Log Inspection
+
+:::note
+
+Application Control rule updates are created locally, based on your computers' software. They are not from Trend Micro.
+:::
+
+Trend Micro releases new rule updates every Tuesday, with additional updates as new threats are discovered. Information about the updates is available in the Trend Micro [Threat Encyclopedia](https://www.trendmicro.com/vinfo/us/threat-encyclopedia/vulnerability/deep-security-center).
+
+**Related information**
+
+- How Server & Workload Protection checks for software upgrades
+- Best practices for upgrades
+- How Server & Workload Protection validates update integrity
+- Digital signatures
+- Checksums
+
+## How Server & Workload Protection checks for software upgrades {#how-server-workload-protection-checks-for-software-upgrades}
+
+Updated agent software packages are automatically imported into Server & Workload Protection and appear on **Administration → Updates → Software → Local**.
+
+:::warning[Important]
+
+Server & Workload Protection only informs you of minor software version updates, not major updates.
+
+For example, if you have agent version 9.6.100, and Trend Micro releases 9.6.200, the system creates an alert to inform you that software updates are available. However, if Trend Micro releases version 10.0.xxx and you do not have any version 10.0 agents, the system does not create an alert.
+:::
+
+## Best practices for upgrades {#best-practices-for-upgrades}
+
+When deploying a new release of the agent:
+
+- Relays must be the same version or newer than all agents in your environment. The relays provided as part of Server & Workload Protection are kept up to date and compatible with the latest available agents. However, if you have deployed your own relays, always upgrade them before upgrading your agents.
+
+- Server & Workload Protection customers can ignore the **Minimum DSM Version** for agents. Trend Micro hosts and updates the manager as part of the service, and maintains compatibility with the latest available agents.
+
+## How Server & Workload Protection validates update integrity {#how-server-workload-protection-validates-update-integrity}
+
+Both software updates and component updates are digitally signed. In addition to automatic checks, if you want to manually validate the signatures or checksums, you can use external tools such as:
+
+- sha256sum (Linux)
+
+- Checksum Calculator (Windows)
+
+- jarsigner (Java Development Kit (JDK); for more information, see [Check digital signatures on software packages](check-digital-signatures.mdx))
+
+## Digital signatures {#digital-signatures}
+
+When component updates are viewed or used, Server & Workload Protection validates the signature. A correct digital signature indicates that the software is authentically from Trend Micro and has not been corrupted or tampered with. If the digital signature is invalid, Server & Workload Protection does not use the file. A warning is also recorded in log files such as `server0.log`. For example:
+
+- `WARNING: ThID:85|TID:0|TNAME:Primary|UID:1|UNAME:MasterAdmin|Verifying the signature failed.`
+
+- `com.thirdbrigade.manager.core.general.exceptions.FileNotSignedValidationException: "corrupted_rules.zip." has not been digitally signed by Trend Micro and cannot be imported.`
+
+The agent also validates the digital signature, compares checksums (sometimes called hashes or fingerprints) and uses other, non-disclosed integrity methods.
+
+## Checksums {#checksums}
+
+Software checksums (also called hashes or fingerprints) are published on the [Download Center](https://help.deepsecurity.trendmicro.com/software.mdx). To view the SHA-256 hash, click the expand icon (![](/images/plus_expand_downloadcenter=f4a45e63-72b6-4619-b7fe-37ad71adbbe4.webp)) next to the software name.
+
+![](/images/verify-download-hash=a4668ef3-b62d-48cd-b93b-86b782066afb.webp)
+:::::

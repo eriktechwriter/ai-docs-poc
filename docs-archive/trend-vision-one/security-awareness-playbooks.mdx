@@ -1,0 +1,243 @@
+---
+slug: trend-vision-one-security-awareness-playbooks
+title: Create Security Awareness Training Campaign playbooks
+---
+# Create Security Awareness Training Campaign playbooks
+
+Create and manage security awareness training campaigns for user accounts targeted by account compromise and XDR detection risk events.
+
+This playbook streamlines the delivery of training campaigns, reducing manual effort and increasing efficiency. The playbook also allows you to tailor training materials to educate your employees on specific threats and vulnerabilities relevant to your organization.
+
+Each execution of the playbook generates a training campaign, which can be tracked in the Training Campaigns app under **Cyber Risk Exposure Management → Security Awareness**.
+
+Each training campaign can be applied to a maximum of 15,000 user accounts. If the risk events target more than 15,000 user accounts, multiple training campaigns will be generated, each containing up to 15,000 users, upon approval.
+
+:::warning[Important]
+
+You must have the Cyber Risk Exposure Management entitlement enabled and the required data sources configured to create Security Awareness Training Campaign playbooks.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Workflow and Automation → Security Playbooks**.
+
+2.  On the **Playbooks** tab, choose **Add → Create playbook**.
+
+3.  On the **Playbook Settings** panel, select the **Risk events** type, specify a unique name for the playbook, and click **Apply**.
+
+4.  On the **Trigger Settings** panel, select the trigger type and click **Apply**.
+
+    - **Manual**: Allows you to start the playbook execution by clicking the **Run** icon (![](/images/run=fddd0df8-993a-4aa5-b09c-51ad84aec2a4.webp))
+
+    - **Scheduled**: Allows you to schedule the playbook to run hourly, daily, weekly, or monthly
+
+    :::warning[Important]
+
+    To create Security Awareness Training Campaign playbooks, make sure that the trigger type is set to **Manual** or **Scheduled** with the **Frequency** set to **Monthly**.
+    :::
+
+5.  On the **Target Settings** panel, select and configure the **Target** for the playbook and click **Apply**.
+
+    You can add a maximum of 10 **Target** nodes for each Security Awareness Training Campaign playbook.
+
+    1.  In the **Risk factor** drop-down list, select **Account compromise** or **XDR detection** from the **Risk factor** drop-down list.
+
+    2.  In the **Risk event** drop-down list, select the risk events for which the user accounts need to receive the necessary training.
+
+        :::warning[Important]
+
+        If you select **All risk events**, the playbook target automatically includes any future risk events associated with the selected risk factor.
+
+        Only risk events with New and In progress states trigger playbook actions.
+        :::
+
+    3.  In the **Risk level** drop-down list, select the risk levels of the risk events.
+
+6.  If you need to take actions when specific conditions are met, configure the **Condition** node.
+
+    1.  Click the add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) on the right of the **Target** node and click **Condition**.
+
+    2.  Create a condition setting by specifying the **Parameter**, **Operator**, and **Value**.
+
+        - **IS**: The condition is triggered if any of the values is matched
+
+        - **IS NOT**: The condition is triggered if none of the values is matched
+
+    3.  Click **Apply**.
+
+    4.  If you need to add more than one parallel **Condition** node, click the add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) on the right of the **Target** node.
+
+    5.  If you need to configure action settings for the **Condition** node, add an **Action** node by clicking the add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) on the right.
+
+        For details, see Step 7.
+
+    6.  If you need to configure else-if conditions or else actions, add an **Else-If Condition** or **Else Action** node by clicking the add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) under the **Condition** node.
+
+        For details, see Step 9.
+
+7.  Configure actions by adding an **Action** node.
+
+    1.  Click the add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) on the right of the **Condition** node and click **Action**.
+
+    2.  On the **Action Settings** panel, select **Create training campaign** and configure the training campaign settings.
+
+        <table>
+        <colgroup>
+        <col style="width: 25%" />
+        <col style="width: 75%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th>Setting</th>
+        <th><p>Description</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Training program</p></td>
+        <td><p>The training program you want to use for the campaign</p>
+        <p>For more information about the training programs, see <a href="trend-vision-one-getting-started-security-awareness">Get started with training campaigns</a>.</p></td>
+        </tr>
+        <tr>
+        <td><p>Category</p></td>
+        <td><p>The category of the training program you selected</p></td>
+        </tr>
+        <tr>
+        <td><p>Campaign duration</p></td>
+        <td><p>The length of time the campaign will run</p></td>
+        </tr>
+        </tbody>
+        </table>
+
+    3.  Select whether to send a notification to request manual approval to create general actions, and then configure the notification settings if you require manual approval.
+
+        :::note
+
+        Actions pending manual approval for over 24 hours expire and cannot be performed.
+        :::
+
+        <table>
+        <colgroup>
+        <col style="width: 20%" />
+        <col style="width: 80%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Setting</p></th>
+        <th><p>Description</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Notification method</p></td>
+        <td><ul>
+        <li><p><strong>Email</strong>: Sends an email notification to specified recipients</p></li>
+        <li><p><strong>Webhook</strong>: Sends a notification to specified webhook channels</p></li>
+        </ul></td>
+        </tr>
+        <tr>
+        <td><p>Subject prefix</p></td>
+        <td><p>The prefix that appears at the start of the notification subject line</p></td>
+        </tr>
+        <tr>
+        <td><p>Recipients</p></td>
+        <td><p>The email addresses of recipients</p>
+        <p>The field only appears if you select <strong>Email</strong> for <strong>Notification method</strong>.</p></td>
+        </tr>
+        <tr>
+        <td><p>Webhook</p></td>
+        <td><p>The webhook channels to receive notifications</p>
+        <p>The field only appears if you select <strong>Webhook</strong> for <strong>Notification method</strong>.</p>
+
+
+        :::tip
+
+        <p>To <a href="trend-vision-one-managing-webhooks">add a webhook connection</a>, click <strong>Create channel</strong> in the drop-down list.</p>
+
+
+        :::
+
+        </td>
+        </tr>
+        </tbody>
+        </table>
+
+    4.  Click **Apply**.
+
+    5.  If you need to add more than one parallel action, use the add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) on the right of the **Target** or **Condition** node.
+
+8.  Configure notification settings by adding the second **Action** node.
+
+    1.  Click the add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) on the right of the first **Action** node and click **Action**.
+
+    2.  On the **Action Settings** panel, specify how to notify recipients of the playbook results.
+
+    3.  For email and webhook notifications, configure the following settings.
+
+        :::note
+
+        ServiceNow ticket notifications are not available to send playbook results.
+        :::
+
+        <table>
+        <colgroup>
+        <col style="width: 20%" />
+        <col style="width: 80%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Setting</p></th>
+        <th><p>Description</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Subject prefix</p></td>
+        <td><p>The prefix that appears at the start of the notification subject line</p></td>
+        </tr>
+        <tr>
+        <td><p>Recipients</p></td>
+        <td><p>The email addresses of recipients</p>
+        <p>The field only appears if you select <strong>Email</strong> for <strong>Notification method</strong>.</p></td>
+        </tr>
+        <tr>
+        <td><p>Webhook</p></td>
+        <td><p>The webhook channels to receive notifications</p>
+        <p>The field only appears if you select <strong>Webhook</strong> for <strong>Notification method</strong>.</p>
+
+
+        :::tip
+
+        <p>To <a href="trend-vision-one-managing-webhooks">add a webhook connection</a>, click <strong>Create channel</strong> in the drop-down list.</p>
+
+
+        :::
+
+        </td>
+        </tr>
+        </tbody>
+        </table>
+
+    4.  Click **Apply**.
+
+9.  Configure **Else-If Conditions** or **Else Actions** if necessary.
+
+    1.  Click the add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) below the **Condition** node and click **Else-If Condition** or **Else Action**.
+
+    2.  Configure a **Condition** node by following Step 6 or an **Action** node by following Step 7 or Step 8.
+
+    :::note
+
+    - The nodes that can be added by using an add node (![](/images/plus_icon=e074b462-87df-4630-ab7f-552d598013d7.webp)) vary depending on the preceding node. For example, an **Action** node can only be possibly followed by another **Action** node; a **Condition** node can be followed by an **Action** node or have an **Else-If Condition** or **Else Action** attached to it.
+
+    - When a condition is false, the playbook performs the **Else Action** or checks if its **Else-If Condition** is met. If the **Else-If Condition** is met, the playbook continues to perform the corresponding **Else Action**.
+
+    - Multiple **Action** nodes configured in a serial mode are taken sequentially.
+    :::
+
+10. Enable the playbook by toggling the **Enable** control on.
+
+11. Click **Save**.
+
+    The playbook appears on the **Playbooks** tab in the **Security Playbooks** app.
+::::

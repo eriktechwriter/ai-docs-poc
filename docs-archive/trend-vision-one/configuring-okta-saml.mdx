@@ -1,0 +1,182 @@
+---
+slug: trend-vision-one-configuring-okta-saml
+title: Configure Okta
+---
+# Configure Okta
+
+Configure Okta as a SAML (2.0) identity provider for Trend Vision One to use.
+
+Okta is a standards-compliant OAuth 2.0 authorization server that provides cloud identity solutions for your organization. Okta is a single sign-on provider that allows you to manage user access to Trend Vision One.
+
+Before you begin configuring Okta, make sure that:
+
+- You have a valid subscription with Okta that handles the sign-in process and that eventually provides the authentication credentials to the Trend Vision One management console.
+
+- You are logged on to the management console as a Trend Vision One administrator.
+
+### Procedure {#procedure}
+
+1.  Log in to your Okta organization as a user with administrative privileges.
+
+2.  Add a new application for Trend Vision One.
+
+    1.  Click **Admin** in the upper right, and then navigate to **Applications → Applications**.
+
+    2.  Click **Add Application**, and then click **Create New App**.
+
+        The **Create a New Application Integration** screen appears.
+
+    3.  Select **Web** as the **Platform** and **SAML 2.0** as the **Sign on method**, and then click **Create**.
+
+        The **General Settings** section of the **Create SAML Integration** screen appears.
+
+    4.  On the **General Settings** screen, type a name for Trend Vision One in **App name**, for example, "Trend Vision One", and click **Next**.
+
+        The **Configure SAML** section of the **Create SAML Integration** screen appears.
+
+3.  Configure SAML settings for the Trend Vision One application.
+
+    1.  On the **Configure SAML** screen, type the Trend Vision One logon URL in **Single sign on URL**.
+
+        The logon URL can be obtained from the SP metadata file downloaded from Trend Vision One.
+
+        Open the SP metadata file in a text editor, and then copy the value of the **Location** attribute for the **md:AssertionConsumerService** element. Use the copied value as the logon URL.
+
+        In the following example, the logon URL is `https://example.com/xdr-logon-url`.
+
+        ```bash
+        ...
+            <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://example.com/xdr-logon-url" index="0"/>
+          </md:SPSSODescriptor>
+        </md:EntityDescriptor>
+        ```
+
+    2.  Select **Use this for Recipient URL and Destination URL**.
+
+    3.  Specify the audience URI in **Audience URI (SP Entity ID)**.
+
+        The audience URI can be obtained from the SP metadata file downloaded from Trend Vision One.
+
+        Open the SP metadata file in a text editor, and then copy the value of the **entityID** attribute for the **md:EntityDescriptor** element. Use the copied value as the audience URI.
+
+        In the following example, the audience URI is `https://example.com/xdr-audience-uri`.
+
+        ```bash
+        <?xml version="1.0"?>
+        <md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="https://example.com/xdr-audience-uri">
+          <md:SPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol" AuthnRequestsSigned="true" WantAssertionsSigned="true">
+        ...
+        ```
+
+    4.  For **Name ID format**, select **Email Address**.
+
+    5.  For **Application username**, select **Okta username**.
+
+    6.  To support IdP-Only SAML Group Account, configure attribute statements and group attribute statements.
+
+        **Attribute Statements**
+
+        <table>
+        <colgroup>
+        <col style="width: 20%" />
+        <col style="width: 20%" />
+        <col style="width: 20%" />
+        <col style="width: 40%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Attribute</p></th>
+        <th><p>Name</p></th>
+        <th><p>Name format</p></th>
+        <th><p>Value</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>User</p></td>
+        <td><p>name</p></td>
+        <td><p>Unspecified</p></td>
+        <td><p>Example, <code>user.email</code></p></td>
+        </tr>
+        <tr>
+        <td><p>User display name</p></td>
+        <td><p>displayName</p></td>
+        <td><p>Unspecified</p></td>
+        <td><p>String.append (user.firstName + " " + user.lastName)</p></td>
+        </tr>
+        </tbody>
+        </table>
+
+        :::note
+
+        The preceding SAML attribute claims are recommendations. You can customize the claims as needed.
+        :::
+
+        **Group Attribute Statements**
+
+        <table>
+        <colgroup>
+        <col style="width: 20%" />
+        <col style="width: 20%" />
+        <col style="width: 20%" />
+        <col style="width: 40%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Attribute</p></th>
+        <th><p>Name</p></th>
+        <th><p>Name format</p></th>
+        <th><p>Filter</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Group</p></td>
+        <td><p>groups</p></td>
+        <td><p>Unspecified</p></td>
+        <td><p>Define exactly what groups you want to allow access. For any group, use <strong>Matches regex</strong> + <code>.*</code></p></td>
+        </tr>
+        </tbody>
+        </table>
+
+    7.  Click **Next**.
+
+        The **Feedback** section of the **Create SAML Integration** screen appears.
+
+4.  For **Are you a customer or partner**, select **I'm an Okta customer adding an internal app**, and then click **Finish**.
+
+    The **Sign On** tab of your newly created Trend Vision One application appears.
+
+5.  In the **Settings** table, under **Sign on Methods**, download and save the file for the **Identity Provider metadata**.
+
+    :::note
+
+    Import this metadata file to Trend Vision One.
+    :::
+
+6.  Assign the application to groups and add people to groups.
+
+    1.  Select **Directory → Groups**.
+
+    2.  Click the groups that you want to assign the application to, and then click **Manage Apps**.
+
+        The **Assign Applications** screen appears.
+
+    3.  Locate Trend Vision One you added and click **Assign**.
+
+    4.  Click **Manage People**.
+
+        The **Add People to Groups** screen appears.
+
+    5.  Locate the user you want to allow access to Trend Vision One and add the user to the Trend Vision One group.
+
+    6.  Confirm that the application is assigned to the user and group.
+
+        After assigning an application to a group, the system automatically assigns the application to all users in the group.
+
+    7.  Repeat the above steps to assign the application to more groups as necessary.
+
+**Related information**
+
+- [Configuring SAML Assertion Encryption in Okta](saml-assertion-encryption-okta.md "Configure assertion encryption to secure data transferred between Okta and Trend Vision One.")
+:::

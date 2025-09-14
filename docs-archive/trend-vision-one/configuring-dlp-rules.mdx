@@ -1,0 +1,86 @@
+---
+slug: trend-vision-one-configuring-dlp-rules
+title: Configuring Data Loss Prevention Rules
+---
+# Configuring Data Loss Prevention Rules
+
+:::note
+
+Data Loss Prevention processes rules and templates by priority. If a rule is set to "Pass", Data Loss Prevention processes the next rule in the list. If a rule is set to "Block" or "User Justification", Data Loss Prevention blocks or accepts the user action and does not process that rule/template further.
+:::
+
+### Procedure {#procedure}
+
+1.  Select **Enable this rule**.
+
+2.  Specify a name for the rule.
+
+3.  Configure the template settings:
+
+4.  Click the **Template** tab.
+
+5.  Select templates from the **Available templates** list and then click **Add**.
+
+    When selecting templates:
+
+    - Select multiple entries by clicking the template names which highlights the name.
+
+    - Use the search feature if you have a specific template in mind. You can type the full or partial name of the template.
+
+    :::note
+
+    Each rule can contain a maximum of 200 templates.
+    :::
+
+6.  Configure the channel settings:
+
+7.  Click the **Channel** tab.
+
+8.  Select the channels for the rule.
+
+    For details about channels, see [Network Channels](network-channels.mdx) and [System and Application Channels](system-application-channels.mdx).
+
+9.  If you selected any of the network channels, select the transmission scope:
+
+    - **All transmissions**
+
+    - **Only transmissions outside the Local Area Network**
+
+    See [Transmission Scope and Targets for Network Channels](transmission-scope-network-channels.mdx) for details on transmission scope, how targets work depending on the transmission scope, and how to define targets correctly.
+
+10. If you selected **Email clients**:
+
+    1.  Click **Exceptions**.
+
+    2.  Specify monitored and non-monitored internal email domains.
+
+        For details on monitored and non-monitored email domains, see [Email Clients](email-clients.mdx).
+
+11. If you selected **Removable storage**:
+
+    1.  Click **Exceptions**.
+
+    2.  Add non-monitored removable storage devices, identifying them by their vendors. The device model and serial ID are optional.
+
+        The approved list for USB devices supports the use of the asterisk (\*) wildcard. Replace any field with the asterisk (\*) to include all devices that satisfy the other fields.
+
+        For example, \[vendor\]-\[model\]-\* places all USB devices from the specified vendor and the specified model type, regardless of serial ID, to the approved list.
+
+    3.  To add more devices, click the plus (**+**) icon.
+
+12. Configure the action settings:
+
+13. Click the **Action** tab.
+
+14. Select a primary action and any additional actions. For details about actions, see [Data Loss Prevention Actions](data-loss-prevention-actions.mdx).
+
+15. After configuring the **Template**, **Channel**, and **Action** settings, click **Save**.
+
+**Related information**
+
+- [Transmission Scope and Targets for Network Channels](transmission-scope-network-channels.mdx)
+- [Network Channels](network-channels.mdx)
+- [System and Application Channels](system-application-channels.mdx)
+- [Device List Tool](device-list-tool.mdx)
+- [Data Loss Prevention Actions](data-loss-prevention-actions.mdx)
+::::

@@ -1,0 +1,87 @@
+---
+slug: trend-vision-one-config-syslog-email-security
+title: Configuring syslog settings
+---
+# Configuring syslog settings
+
+When receiving events, Cloud Email Gateway Protection stores the events in its database and forwards syslog messages to an external syslog server in a structured format, which allows third-party application integration.
+
+The **Syslog Settings** screen is composed of the following tabs:
+
+- **Syslog Forwarding**: Specifies the mapping between syslog servers and different types of logs.
+
+- **Syslog Server Profiles**: Enables you to add, edit or delete syslog servers for syslog forwarding.
+
+To ensure Cloud Email Gateway Protection can properly forward syslog messages, configure your firewall to accept connections from the following IP addresses or CIDR blocks:
+
+- North America, Latin America and Asia Pacific:
+
+  `18.208.22.64/26`
+
+  `18.208.22.128/25`
+
+  `18.188.9.192/26`
+
+  `18.188.239.128/26`
+
+- Europe and Africa:
+
+  `18.185.115.0/25`
+
+  `18.185.115.128/26`
+
+  `34.253.238.128/26`
+
+  `34.253.238.192/26`
+
+- Australia and New Zealand:
+
+  `13.238.202.0/25`
+
+  `13.238.202.128/26`
+
+- Japan:
+
+  `18.176.203.128/26`
+
+  `18.176.203.192/26`
+
+  `18.177.156.0/26`
+
+  `18.177.156.64/26`
+
+  `15.168.56.0/25`
+
+  `15.168.49.64/26`
+
+  `15.168.56.128/26`
+
+- Singapore:
+
+  `13.213.174.128/25`
+
+  `13.213.220.0/26`
+
+- India:
+
+  `3.110.59.128/25`
+
+  `3.110.71.192/26`
+
+- Middle East (UAE):
+
+  `3.29.202.0/25`
+
+  `3.29.194.192/26`
+
+:::note
+
+Be aware that Cloud Email Gateway Protection keeps syslog messages for 7 days if your syslog server is unavailable. Messages older than 7 days will not be restored when your syslog server recovers.
+:::
+
+**Related information**
+
+- [Syslog forwarding](syslog-forwarding.mdx)
+- [Syslog server profiles](syslog-server-profiles.mdx)
+- [Content mapping between log output and CEF syslog type](cef-syslog-type-email-security.mdx)
+::::

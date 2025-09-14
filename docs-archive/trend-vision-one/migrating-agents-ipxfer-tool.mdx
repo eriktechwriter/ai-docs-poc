@@ -1,0 +1,143 @@
+---
+slug: trend-vision-one-migrating-agents-ipxfer-tool
+title: Migrating Agents with the IPXfer Tool
+---
+# Migrating Agents with the IPXfer Tool
+
+:Use the IPXfer tool to move agents to Trend Vision One Standard Endpoint Protection.
+
+Follow the instructions below to migrate endpoints from your Apex One server to Standard Endpoint Protection with the IPXfer tool.
+
+:::warning[Important]
+
+The IPXfer tool can only move one agent at a time and you must have administrator access to the endpoint device where the agent is installed.
+
+To move more than one agent at a time, see [Migrating Agents with the Apex One Server Console](migrate-agents-apex-one-server.mdx).
+:::
+
+:::note
+
+- After moving agents to Standard Endpoint Protection, you cannot move them back to Apex One Server using the Trend Vision One console. If you need to move agents from Trend Vision One, you must use the IPXfer tool.
+
+- When moving agents using this method, the agents automatically inherit the settings of the parent group or domain. They do not retain their settings from the source Trend Micro Apex One server.
+
+- To move the agents using the IPXfer tool, please note the following requirements:
+
+  - You must download the IPXfer tool from the target server.
+
+  - The certificate (OfcNTCer.dat) must be downloaded from the target server.
+
+  - For 32-bit devices, use IpXfer.exe.
+
+  - For 64-bit devices, use IpXfer_x64.exe
+:::
+
+### Procedure {#procedure}
+
+1.  Export Apex One Security Agent policies to Standard Endpoint Protection.
+
+    1.  In the Apex One Server host machine, locate the Policy Export Tool package in the installation folder.
+
+        The tool is located at `<installation folder>\PCCSRV\Admin\Utility\PolicyExportTool`.
+
+    2.  Extract the Policy Export Tool package.
+
+    3.  Open Command Prompt or PowerShell as an administrator from the folder of the extracted package.
+
+    4.  Type the following command to run the tool.
+
+        `run ApexOneSettingsExportTool.exe`
+
+        The tool generates two archive files:
+
+        - `ApexOne_Agent_Policies.zip`
+
+        - `ApexOne_Agent_DLP_Policies.zip`
+
+    5.  In the Trend Vision One console, go to **Endpoint Security → Standard Endpoint Protection**.
+
+        If you have more than one Standard Endpoint Protection instance, select the instance you want to migrate your endpoints to.
+
+    6.  In the target instance, go to **Policies → Policy Management**
+
+    7.  For **Product**, select **Apex One Security Agent**.
+
+    8.  Click **Import Settings** and locate the `ApexOne_Agent_Policies.zip` policy file.
+
+    9.  Click **OK** to continue.
+
+    10. Change the **Product** to **Apex One Data Loss Prevention**.
+
+    11. Click **Import Settings** and locate the `ApexOne_Agent_DLP_Policies.zip` policy file.
+
+    12. Click **OK** to continue.
+
+    Policies imported from the policy files are created and displayed on the policy list. The policies by default have no targets. The targets must be set by an administrator.
+
+2.  In the Trend Vision One console, go to **Endpoint Security → Standard Endpoint Protection**.
+
+    If you have more than one Standard Endpoint Protection instance, select the instance you want to migrate your endpoints to.
+
+3.  In the target instance, go to **Directories → Product Servers**
+
+4.  Copy the first six characters of the server FQDN before `manage.trendmicro.com`.
+
+    For example, if the target server address is `https://exampl.manage.trendmicro.com:443/officescan`, then copy `exampl`.
+
+5.  Open a new tab in your browser and use the following links to download the necessary files.
+
+    Replace \<FQDN\> with the six characters copied in the previous step.
+
+    <table>
+    <colgroup>
+    <col style="width: 67%" />
+    <col style="width: 33%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>URL</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><code>https://&lt;FQDN&gt;.manage.trendmicro.com:443/officescan/hotfix_pccnt/Common/OfcNTCer.dat</code></p></td>
+    <td><p>Target server certificate</p></td>
+    </tr>
+    <tr>
+    <td><p><code>https://&lt;FQDN&gt;.manage.trendmicro.com:443/officescan/hotfix_admin/utility/ipxfer/ipxfer.exe</code></p></td>
+    <td><p>IpXfer tool for 32-bit devices</p></td>
+    </tr>
+    <tr>
+    <td><p><code>https://&lt;FQDN&gt;.manage.trendmicro.com:443/officescan/hotfix_admin/utility/ipxfer/ipxfer_x64.exe</code></p></td>
+    <td><p>IpXfer tool for 64-bit devices</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+6.  Transfer the files to the target endpoints you want to move to Trend Vision One Endpoint Security.
+
+    :::note
+
+    Make sure the IPXfer tool and certificate files are in the same folder.
+    :::
+
+7.  On the target endpoint, run Command Prompt with administrator permission in the folder where the IPXfer tool is located.
+
+8.  Type the following command and press ENTER.
+
+    `<TOOL> -s <FQDN>.manage.trendmicro.com -p 80 -sp 443 -e ofcntcer.dat -pwd <unload password>`
+
+    - `<TOOL>` is the IPXfer version, `ipxfer.exe` for 32-bit devices, `ipxfer_x64.exe` for 64-bit devices.
+
+    - `<FQDN>` is the six characters from the target server address.
+
+    - `<unload password>` is the unload password of the Trend Micro Apex One agent on the endpoint.
+
+    Once the selected agents complete moving, the agents begin reporting to the Trend Vision One Standard Endpoint Protection instance.
+
+    :::warning[Important]
+
+    Policies are not automatically applied to the moved agents. You must apply the policies to the target agents once migration has finished.
+    :::
+:::::

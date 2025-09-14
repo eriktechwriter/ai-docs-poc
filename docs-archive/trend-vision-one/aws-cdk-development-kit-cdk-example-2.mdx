@@ -1,0 +1,339 @@
+---
+slug: trend-vision-one-aws-cdk-development-kit-cdk-example-2
+title: AWS CDK Development Kit (CDK) Example
+---
+Examples of AWS CDK template scanning.
+
+### Example CDK Definition {#example-cdk-definition}
+
+```bash
+import cdk = require("aws-cdk-lib");
+import {
+  Table,
+  AttributeType,
+  StreamViewType,
+  BillingMode,
+} from "aws-cdk-lib/aws-dynamodb";
+import { Construct } from "constructs";
+
+export class AppSyncCdkStack extends cdk.Stack {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+    super(scope, id, props);
+
+    const tableName = "items";
+
+    new Table(this, "ItemsTable", {
+      tableName: tableName,
+      partitionKey: {
+        name: `${tableName}Id`,
+        type: AttributeType.STRING,
+      },
+      billingMode: BillingMode.PAY_PER_REQUEST,
+      stream: StreamViewType.NEW_IMAGE,
+    });
+  }
+}
+
+const app = new cdk.App();
+new AppSyncCdkStack(app, "DynamoDBExample");
+app.synth();
+```
+
+### Example CDK Synth Output {#example-cdk-synth-output}
+
+```bash
+Resources:
+  ItemsTable5AAC2C46:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: itemsId
+          AttributeType: S
+      BillingMode: PAY_PER_REQUEST
+      KeySchema:
+        - AttributeName: itemsId
+          KeyType: HASH
+      StreamSpecification:
+        StreamViewType: NEW_IMAGE
+      TableName: items
+    UpdateReplacePolicy: Retain
+    DeletionPolicy: Retain
+    Metadata:
+      aws:cdk:path: DynamoDBExample/ItemsTable/Resource
+  CDKMetadata:
+    Type: AWS::CDK::Metadata
+    Properties:
+      Analytics: v2:deflate64:H4sIAAAAAAAA/zPSMzQ20jNQTCwv1k1OydbNyUzSqw4uSUzO1gEKxadU5iXm5qcAxUISk3JSdZzT8sCMWp2g1OL80qJksBAy2zk/LyWzJDM/r1YnLz8lVS+rWL/M0EwPiAwUs4ozM3WLSvNKMnNT9YIgNABcnFrfgQAAAA==
+    Metadata:
+      aws:cdk:path: DynamoDBExample/CDKMetadata/Default
+    Condition: CDKMetadataAvailable
+Conditions:
+  CDKMetadataAvailable:
+    Fn::Or:
+      - Fn::Or:
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - af-south-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - ap-east-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - ap-northeast-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - ap-northeast-2
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - ap-south-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - ap-southeast-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - ap-southeast-2
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - ca-central-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - cn-north-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - cn-northwest-1
+      - Fn::Or:
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - eu-central-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - eu-north-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - eu-south-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - eu-west-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - eu-west-2
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - eu-west-3
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - il-central-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - me-central-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - me-south-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - sa-east-1
+      - Fn::Or:
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - us-east-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - us-east-2
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - us-west-1
+          - Fn::Equals:
+              - Ref: AWS::Region
+              - us-west-2
+Parameters:
+  BootstrapVersion:
+    Type: AWS::SSM::Parameter::Value<String>
+    Default: /cdk-bootstrap/hnb659fds/version
+    Description: Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]
+Rules:
+  CheckBootstrapVersion:
+    Assertions:
+      - Assert:
+          Fn::Not:
+            - Fn::Contains:
+                - - "1"
+                  - "2"
+                  - "3"
+                  - "4"
+                  - "5"
+                - Ref: BootstrapVersion
+        AssertDescription: CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.
+```
+
+### Example Scan command {#example-scan-command}
+
+```bash
+#!/usr/bin/env bash
+# Scans a template file
+# Requires "cdk" (https://docs.aws.amazon.com/cdk/v2/guide/home.html) to be installed
+# Requires "jq" (https://stedolan.github.io/jq/) to be installed
+
+api_key="Your Trend Vision One API Key"
+api_base_url="https://api.xdr.trendmicro.com"
+
+# Perform any language specific compilation steps before this line. (example transpiling typescript to javascript)
+
+content=$(cdk synth | jq '.' -MRs)
+payload="{\"type\":\"cloudformation-template\",\"content\":${content}}"
+
+echo Request:
+echo ${payload} | jq '.' -M
+
+echo Response:
+curl -s -X POST \
+     -H "Authorization: Bearer ${api_key}" \
+     -H "Content-Type: application/json" \
+     ${api_base_url}/beta/cloudPosture/scanTemplate \
+     --data-binary "${payload}" | jq '.' -M
+```
+
+### Example Template Scanner API Output {#example-template-scanner-api-output}
+
+*Output truncated, actual number of checks generated for this template may be greater than seen below:*
+
+```bash
+{
+  "scanResults": [
+    {
+      "id": "ccc:OrganisationId:RG-001:ResourceGroup:us-east-1:itemstable5aac2c46-qp3d3l7gcv5r",
+      "accountId": "",
+      "ruleId": "RG-001",
+      "provider": "aws",
+      "ruleTitle": "Tags",
+      "riskLevel": "LOW",
+      "status": "FAILURE",
+      "service": "ResourceGroup",
+      "description": "dynamodb-table itemstable5aac2c46-qp3d3l7gcv5r has [Environment, Role, Owner, Name] tags missing",
+      "resource": "itemstable5aac2c46-qp3d3l7gcv5r",
+      "resourceType": "dynamodb-table",
+      "ignored": false,
+      "categories": [
+        "security",
+        "reliability",
+        "performance-efficiency",
+        "cost-optimisation",
+        "operational-excellence",
+        "sustainability"
+      ],
+      "compliances": [
+        "AWAF",
+        "CIS-V8",
+        "NIST4",
+        "NIST5",
+        "SOC2",
+        "NIST-CSF",
+        "ISO27001",
+        "ISO27001-2022",
+        "AGISM",
+        "HITRUST",
+        "ASAE-3150",
+        "PCI-V4",
+        "FEDRAMP",
+        "MAS",
+        "CSA"
+      ],
+      "region": "us-east-1",
+      "notScored": false,
+      "resolutionPageUrl": "https://wstaging.cloudconformity.com/knowledge-base/aws/ResourceGroup/tags.html"
+    },
+    {
+      "id": "ccc:OrganisationId:DynamoDB-003:DynamoDB:us-east-1:itemstable5aac2c46-qp3d3l7gcv5r",
+      "accountId": "",
+      "ruleId": "DynamoDB-003",
+      "provider": "aws",
+      "ruleTitle": "DynamoDB Continuous Backups",
+      "riskLevel": "HIGH",
+      "status": "FAILURE",
+      "service": "DynamoDB",
+      "description": "Continuous Backups aren't enabled for [itemstable5aac2c46-qp3d3l7gcv5r]",
+      "resource": "itemstable5aac2c46-qp3d3l7gcv5r",
+      "resourceType": "dynamodb-table",
+      "resourceId": "itemstable5aac2c46-qp3d3l7gcv5r",
+      "ignored": false,
+      "categories": [
+        "reliability"
+      ],
+      "compliances": [
+        "AWAF",
+        "CIS-V8",
+        "NIST4",
+        "NIST5",
+        "SOC2",
+        "NIST-CSF",
+        "ISO27001",
+        "ISO27001-2022",
+        "AGISM",
+        "HIPAA",
+        "HITRUST",
+        "ASAE-3150",
+        "PCI",
+        "PCI-V4",
+        "APRA",
+        "FEDRAMP",
+        "MAS",
+        "CSA",
+        "ENISA",
+        "FISC-V9"
+      ],
+      "region": "us-east-1",
+      "tags": [],
+      "notScored": false,
+      "resolutionPageUrl": "https://wstaging.cloudconformity.com/knowledge-base/aws/DynamoDB/continuous-backups.html"
+    },
+    {
+      "id": "ccc:OrganisationId:DynamoDB-004:DynamoDB:us-east-1:itemstable5aac2c46-qp3d3l7gcv5r",
+      "accountId": "",
+      "ruleId": "DynamoDB-004",
+      "provider": "aws",
+      "ruleTitle": "Enable Encryption at Rest with Amazon KMS Keys",
+      "riskLevel": "HIGH",
+      "status": "FAILURE",
+      "service": "DynamoDB",
+      "description": "Table [itemstable5aac2c46-qp3d3l7gcv5r] is encrypted at rest using the AWS-owned key",
+      "resource": "itemstable5aac2c46-qp3d3l7gcv5r",
+      "resourceType": "dynamodb-table",
+      "resourceId": "itemstable5aac2c46-qp3d3l7gcv5r",
+      "ignored": false,
+      "categories": [
+        "security"
+      ],
+      "compliances": [
+        "GDPR",
+        "AWAF",
+        "CIS-V8",
+        "NIST4",
+        "NIST5",
+        "SOC2",
+        "NIST-CSF",
+        "ISO27001",
+        "ISO27001-2022",
+        "AGISM",
+        "HIPAA",
+        "HITRUST",
+        "ASAE-3150",
+        "PCI",
+        "PCI-V4",
+        "APRA",
+        "FEDRAMP",
+        "MAS",
+        "CSA",
+        "ENISA",
+        "FISC-V9",
+        "LGPD"
+      ],
+      "region": "us-east-1",
+      "tags": [],
+      "notScored": false,
+      "resolutionPageUrl": "https://wstaging.cloudconformity.com/knowledge-base/aws/DynamoDB/encrypted-with-cmk.html"
+    }
+  ],
+  "missingParameters": [],
+  "skippedRules": []
+}
+```
+:::

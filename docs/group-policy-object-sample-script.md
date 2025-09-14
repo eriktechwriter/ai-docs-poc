@@ -1,0 +1,32 @@
+---
+slug: trend-vision-one-group-policy-object-sample-script
+title: Group Policy Object Sample Script
+---
+
+A sample PowerShell script to deploy the Agent Installer using the Active Directory Group Policy Management console.
+
+Change the variables in the code to match your environment if needed, such as `$logpathlocal`, `$uncPath`, and `$localPath`.
+
+The script requires using System to execute to avoid security concerns with using a high privilege account.
+
+``` codeblock
+$logpathlocal="C:\temp\V1ES\Logs" #Specify a path users have enough permission to write to.
+Start-Transcript -Path $logpathlocal -Append
+$service = Get-Service -Name tmlisten,ntrtscan,amsp,ds_agent -ErrorAction SilentlyContinue
+if ($service -eq $null) {
+    $uncPath = "\\TrendMicro_Demo_VS\V1ES_client\V1ES" #Specify the UNC location of the unzipped agent installation files
+    $localPath = "C:\temp\" #The location to copy the installation files to on the target endpoint 
+    $installerFileName = "EndpointBasecamp.exe"
+
+    Copy-Item -Path $uncPath -Destination $localPath -Recurse -Force
+    while ((Get-ChildItem $localPath).Count -lt (Get-ChildItem $uncPath).Count) {
+        Start-Sleep -Seconds 1
+    }
+    Write-host "File copy completed, start to install progress" 
+    $localInstallerPath = Join-Path $localPath $installerFileName
+    Start-Process -Wait -FilePath $localInstallerPath -ArgumentList '/s /v/qn' -PassThru
+} else {
+    Write-host "The services already existed, skip the installation." 
+}
+Stop-Transcript
+```

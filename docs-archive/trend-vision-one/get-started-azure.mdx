@@ -1,0 +1,261 @@
+---
+slug: trend-vision-one-get-started-azure
+title: Get started with Agentless Vulnerability & Threat Detection in Microsoft Azure
+---
+# Get started with Agentless Vulnerability & Threat Detection in Microsoft Azure
+
+:::Learn how to enable Agentless Vulnerability & Threat Detection in your Microsoft Azure subscriptions and understand provider-specific feature requirements and limitations.
+
+:::warning[Important]
+
+This is a "Pre-release" feature and is not considered an official release. Please review the [Pre-release disclaimer](pre-release-disclaimer.mdx) before using the feature.
+:::
+
+To start scanning for vulnerabilities and malware in your cloud resources, connect your Azure subscription to Trend Vision One in [Cloud Accounts](cloud-accounts.mdx) using the Terraform template. Enable Agentless Vulnerability & Threat Detection in Features and Permissions.
+
+:::warning[Important]
+
+Before enabling Agentless Vulnerability & Threat Detection for your Azure subscription, you must:
+
+- Ensure your subscription [has Azure Storage enabled](https://learn.microsoft.com/en-us/power-pages/configure/enable-azure-storage)
+
+- Ensure quotas are sufficient for the following services in all regions to which you are deploying Agentless Vulnerability & Threat Detection:
+
+  - Standard DSv2 Family vCPUs
+
+  - Total Regional vCPUs
+
+  - Virtual Machines
+
+  - Standard Storage Managed Disks
+
+  - StandardStorageSnapshots
+:::
+
+Agentless Vulnerability & Threat Detection scans the following Azure resource types:
+
+- Managed disks attached to VMs
+
+- Container Registry container images
+
+:::warning[Important]
+
+Agentless Vulnerability & Threat Detection vulnerability and anti-malware scanning options are enabled by default for all supported Azure resources. Scan settings are not currently configurable. For detailed instructions, see [Adding an Azure subscription](adding-azure-subscription.mdx).
+:::
+
+Agentless Vulnerability & Threat Detection works in Azure as a resource group within your subscription that takes snapshots of disks and collects container images. The collected resources are then scanned for vulnerabilities or malware. Disk scan results are stored in Azure Blob Storage while container images are stored in Azure Files. Results are forwarded to Trend Vision One for analysis.
+
+:::warning[Important]
+
+Agentless Vulnerability & Threat Detection takes snapshots of your disks prior to scanning and tags the snapshots with the tag `trend-micro-product:avtd`. Use the tag to identify snapshots waiting to be scanned and to exclude the snapshots from any automated deletion processes you have configured. Snapshots are automatically deleted from your Azure subscription after the scan completes.
+:::
+
+![Agentless Vulnerability & Threat Detection architecture diagram for Microsoft Azure deployments](/images/Azure_AVTD_diagram=GUID-fab67d41-bd44-480d-8cbc-65443e6faea8.webp)
+
+Scan results can be seen in the Trend Vision One console in **Cloud Risk Management**, **Cyber Risk Overview**, **Threat and Exposure Management**, and asset profile screens in **Attack Surface Discovery**. After you patch vulnerabilities or remediate malware in disks, the detections no longer appear after the next daily scan. Vulnerability detections in container images remain visible in **Threat and Exposure Management → Vulnerabilities** for seven days after mitigation. Malware detections in container images remain visible in **Threat and Exposure Management → All Risk Events** for seven days after remediation.
+
+The following table lists scanning limitations that apply to each supported Azure resource type.
+
+**Microsoft Azure resource scanning limitations**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Azure resource</p></th>
+<th><p>Limitations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Disks</p></td>
+<td><ul>
+<li><p>Only disk types attached to VMs are supported for scans. Supported disk types include:</p>
+<ul>
+<li><p>Premium SSDs</p></li>
+<li><p>Standard SSDs</p></li>
+<li><p>Standard HDDs</p></li>
+</ul>
+<p>The following disk types are not supported:</p>
+<ul>
+<li><p>Ultra Disks</p></li>
+<li><p>Premium SSD v2</p></li>
+</ul></li>
+<li><p>Agentless Vulnerability &amp; Threat Detection does not currently support scans of disks that are part of a single file system, such as RAID or LVM.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Container images</p></td>
+<td><ul>
+<li><p>Agentless Vulnerability &amp; Threat Detection does not scan container images larger than 1 GB.</p></li>
+<li><p>Only container images from registries in the same region as the Agentless Vulnerability &amp; Threat Detection resource group are scanned.</p></li>
+<li>Container images must be in the same subscription as the Agentless Vulnerability &amp; Threat Detection resource group to be scanned.</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+For a list of operating systems supported by Agentless Vulnerability & Threat Detection see [Agentless Vulnerability & Threat Detection supported operating systems](avtd-supported-operating-systems.mdx).
+
+The following table lists the Azure regions supported for Agentless Vulnerability & Threat Detection deployment.
+
+**Supported Azure regions**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Region code</p></th>
+<th><p>Region name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>westus</p></td>
+<td><p>West US</p></td>
+</tr>
+<tr>
+<td><p>eastus</p></td>
+<td><p>East US</p></td>
+</tr>
+<tr>
+<td><p>southcentralus</p></td>
+<td><p>South Central US</p></td>
+</tr>
+<tr>
+<td><p>westus2</p></td>
+<td><p>West US 2</p></td>
+</tr>
+<tr>
+<td><p>westus3</p></td>
+<td><p>West US 3</p></td>
+</tr>
+<tr>
+<td><p>australiaeast</p></td>
+<td><p>Australia East</p></td>
+</tr>
+<tr>
+<td><p>southeastasia</p></td>
+<td><p>Southeast Asia</p></td>
+</tr>
+<tr>
+<td><p>northeurope</p></td>
+<td><p>North Europe</p></td>
+</tr>
+<tr>
+<td><p>swedencentral</p></td>
+<td><p>Sweden Central</p></td>
+</tr>
+<tr>
+<td><p>uksouth</p></td>
+<td><p>UK South</p></td>
+</tr>
+<tr>
+<td><p>westeurope</p></td>
+<td><p>West Europe</p></td>
+</tr>
+<tr>
+<td><p>centralus</p></td>
+<td><p>Central US</p></td>
+</tr>
+<tr>
+<td><p>southafricanorth</p></td>
+<td><p>South Africa North</p></td>
+</tr>
+<tr>
+<td><p>centralindia</p></td>
+<td><p>Central India</p></td>
+</tr>
+<tr>
+<td><p>eastasia</p></td>
+<td><p>East Asia</p></td>
+</tr>
+<tr>
+<td><p>japaneast</p></td>
+<td><p>Japan East</p></td>
+</tr>
+<tr>
+<td><p>koreacentral</p></td>
+<td><p>Korea Central</p></td>
+</tr>
+<tr>
+<td><p>canadacentral</p></td>
+<td><p>Canada Central</p></td>
+</tr>
+<tr>
+<td><p>francecentral</p></td>
+<td><p>France Central</p></td>
+</tr>
+<tr>
+<td><p>germanywestcentral</p></td>
+<td><p>Germany West Central</p></td>
+</tr>
+<tr>
+<td><p>norwayeast</p></td>
+<td><p>Norway East</p></td>
+</tr>
+<tr>
+<td><p>switzerlandnorth</p></td>
+<td><p>Switzerland North</p></td>
+</tr>
+<tr>
+<td><p>uaenorth</p></td>
+<td><p>UAE North</p></td>
+</tr>
+<tr>
+<td><p>brazilsouth</p></td>
+<td><p>Brazil South</p></td>
+</tr>
+<tr>
+<td><p>eastus2</p></td>
+<td><p>East US 2</p></td>
+</tr>
+<tr>
+<td><p>northcentralus</p></td>
+<td><p>North Central US</p></td>
+</tr>
+<tr>
+<td><p>japanwest</p></td>
+<td><p>Japan West</p></td>
+</tr>
+<tr>
+<td><p>centraluseuap</p></td>
+<td><p>Central US Early Updates Access Program (EUAP)</p></td>
+</tr>
+<tr>
+<td><p>eastus2euap</p></td>
+<td><p>East US 2 Early Updates Access Program (EUAP)</p></td>
+</tr>
+<tr>
+<td><p>westcentralus</p></td>
+<td><p>West Central US</p></td>
+</tr>
+<tr>
+<td><p>australiasoutheast</p></td>
+<td><p>Australia Southeast</p></td>
+</tr>
+<tr>
+<td><p>southindia</p></td>
+<td><p>South India</p></td>
+</tr>
+<tr>
+<td><p>westindia</p></td>
+<td><p>West India</p></td>
+</tr>
+<tr>
+<td><p>canadaeast</p></td>
+<td><p>Canada East</p></td>
+</tr>
+<tr>
+<td><p>ukwest</p></td>
+<td><p>UK West</p></td>
+</tr>
+</tbody>
+</table>
+:::::::

@@ -1,0 +1,55 @@
+---
+slug: trend-vision-one-device-posture-certificatets
+title: Device posture certificate requirements
+---
+# Device posture certificate requirements
+
+For your Android and iOS devices, you must provide the certificate in PEM format (plain text, Base64 encoded) for the two options:
+
+- The company Certificate Authority (CA) certificate that is present in the Trust Store.
+
+- The client certificate that is signed by company's CA
+
+The content should look like this:
+
+```bash
+-----BEGIN CERTIFICATE-----
+(Base64-encoded certificate content here)
+-----END CERTIFICATE-----
+```
+
+Format Requirements:
+
+- Plain text format (can be opened in a text editor)
+
+- Must start with `-----BEGIN CERTIFICATE-----` and end with `-----END CERTIFICATE-----`
+
+- The content between must be Base64 encoded
+
+- The certificate must include the public key
+
+- Do not remove or alter any line breaks
+
+Do not provide:
+
+- Binary formats such as `.der` or binary `.cer` files
+
+- Files that contain unreadable characters or cannot be opened as plain text
+
+:::note
+
+If your current certificate is binary, you can convert it to PEM using the following commands
+
+- For a macOS or linux environment:
+
+  ```bash
+  openssl x509 -inform der -in certificate.cer -out certificate.pem
+  ```
+
+- For a Windows environment(PowerShell, Windows 7 or later):
+
+  ```bash
+  certutil -encode "C:\certificate.cer" "C:\certificate.pem"
+  ```
+:::
+::::

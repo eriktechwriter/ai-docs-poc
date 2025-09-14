@@ -1,0 +1,108 @@
+---
+slug: trend-vision-one-rotatekubeletservercertificate-arg
+title: >-
+  3.2.9 - Ensure that the RotateKubeletServerCertificate argument is set to true
+  (automated)
+---
+# 3.2.9 - Ensure that the RotateKubeletServerCertificate argument is set to true (automated)
+
+Profile applicability: Level 1 - Worker Node
+
+Enable kubelet server certificate rotation to ensure continuous system availability by avoiding downtimes caused by expired certificates. The `RotateKubeletServerCertificate` feature automates the renewal process, whereby the kubelet requests and rotates its serving certificate as existing credentials expire, thus supporting the CIA (Confidentiality, Integrity, and Availability) security triad. This feature is relevant only if the kubelets receive their certificates from the API server; if certificates are issued by an external authority or tool like Vault, you will need to manage the rotation process independently.
+
+:::note
+
+This recommendation is only applicable if kubelets obtain their certificates from the API server. If your kubelet certificates are issued by an external authority/tool (e.g., Vault), you need to implement the rotation manually.
+:::
+
+### Impact {#impact}
+
+Enabling certificate rotation avoids potential downtimes caused by expired certificates, thus ensuring continuous availability and reliability of the kubelet service.
+
+### Audit {#audit}
+
+Audit Method 1:
+
+1.  SSH into each node and run the following command to find the Kubelet process:
+
+    ```bash
+    ps -ef | grep kubelet
+    ```
+
+2.  If the command output includes the `--rotate-kubelet-server-certificate` argument, verify that it is set to true. If the argument is not present, check the Kubelet configuration file specified by the `--config` argument:
+
+    ```bash
+    cat /etc/kubernetes/kubelet/kubelet-config.json
+    ```
+
+3.  Open the Kubelet config file:
+
+    ```bash
+    sudo less /path/to/kubelet-config.json
+    ```
+
+4.  Verify that the `RotateKubeletServerCertificate` argument exists in the `featureGates` section and is set to true.
+
+Audit Method 2:
+
+1.  If using the API configz endpoint, consider searching for the status of `RotateKubeletServerCertificate:true` by extracting the live configuration from the nodes running kubelet. Set the local proxy port and the following variables, providing the proxy port number and node name:
+
+    ```bash
+    kubectl proxy --port=8001 &
+          export HOSTNAME_PORT=localhost:8001
+          export NODE_NAME=The-Name-Of-Node-To-Extract-Configuration
+          kubectl get nodes
+    ```
+
+2.  Run the following command:
+
+    ```bash
+    curl -sSL "http://${HOSTNAME_PORT}/api/v1/nodes/${NODE_NAME}/proxy/configz"
+    ```
+
+### Remediation {#remediation}
+
+Remediation Method 1:
+
+1.  If modifying the Kubelet config file, edit the `/etc/kubernetes/kubelet/kubelet-config.json` file:
+
+    ```bash
+          {
+          "featureGates": {
+          "RotateKubeletServerCertificate": true
+          }
+          }
+
+    ```
+
+2.  Ensure that the kubelet service file `/etc/systemd/system/kubelet.service.d/10-kubelet-args.conf` does not set the `--rotate-kubelet-server-certificate` argument to false because this would override the Kubelet config file.
+
+Remediation Method 2:
+
+1.  If using executable arguments, edit the kubelet service file `/etc/systemd/system/kubelet.service.d/10-kubelet-args.conf` on each worker node and add the below parameter at the end of the KUBELET_ARGS variable string:
+
+    ```bash
+    --rotate-kubelet-server-certificate=true
+    ```
+
+Remediation Method 3:
+
+1.  If using the API configz endpoint, consider searching for the status of `RotateKubeletServerCertificate` by extracting the live configuration from the nodes running kubelet.
+
+    ```bash
+    kubectl proxy --port=8001 &
+          export HOSTNAME_PORT=localhost:8001
+          export NODE_NAME=ip-192.168.31.226.ec2.internal
+          curl -sSL "http://${HOSTNAME_PORT}/api/v1/nodes/${NODE_NAME}/proxy/configz"
+    ```
+
+For all three remediation methods:
+
+Restart the kubelet service and check the status. The example below is for when using systemctl to manage services:
+
+```bash
+systemctl daemon-reload
+    systemctl restart kubelet.service
+    systemctl status kubelet -l
+```
+::::

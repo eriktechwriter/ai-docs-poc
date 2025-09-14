@@ -1,0 +1,50 @@
+---
+slug: trend-vision-one-assigning-alerts
+title: Assign owners to Workbench alerts
+---
+
+Assign owners to your Workbench alerts so that your security team can track changes and receive notifications.
+
+You can assign the following as owners of an alert:
+
+- Users with a valid Trend Vision One account
+
+- SAML groups
+
+- SAML group members
+
+- IdP-only SAML groups
+
+- IdP-only SAML group members
+
+You can assign multiple owners to one alert and you can assign owners to multiple alerts at once.
+
+:::warning[Important]
+Assigning owners has the following limitations:
+
+- Adding new assignees overrides the current alert owners.
+
+- For IdP-only SAML group users:
+
+  - You can only assign users who have signed in and are still cached in Trend Vision One.
+
+  - [User Accounts](user-accounts-foundation-services.md) cannot list all users under the IdP-only SAML group.
+
+- *IdP-only SAML groups* and *IdP-only SAML group users* cannot get email notifications.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **XDR Threat Investigation → Workbench → All Alerts**.
+
+2.  Select one or more alerts.
+
+3.  Click **Assign Owners**.
+
+4.  Specify one or more Trend Vision One accounts as **Owners**.
+
+    :::tip
+    To remove all owners from an alert with assigned owners, leave **Owners** empty and click **Apply**.
+    :::
+
+5.  Click **Apply**.

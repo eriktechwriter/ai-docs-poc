@@ -1,0 +1,2027 @@
+---
+slug: trend-vision-one-syslog-message-formats
+title: Syslog message formats
+---
+# Syslog message formats
+
+:::::Common Event Format (CEF) and Log Event Extended Format (LEEF) log message formats are slightly different. For example, the "Source User" column in the GUI corresponds to a field named "suser" in CEF; in LEEF, the same field is named "usrName" instead. Log message fields also vary by whether the event originated on the agent or Server & Workload Protection and which feature created the log message.
+
+:::note
+
+If your syslog messages are being truncated, it may be because you're using User Datagram Protocol (UDP). To prevent truncation, transfer your syslog messages over Transport Layer Security (TLS) instead. For instructions on switching to TLS, see [Define a syslog configuration](forward-syslog-siem-server.mdx).
+:::
+
+:::note
+
+Basic syslog format is not supported by the Anti-Malware, Web Reputation, Integrity Monitoring, and Application Control protection modules.
+:::
+
+If the syslog messages are sent from Server & Workload Protection, there are several differences. In order to preserve the original agent hostname (the source of the event), a new extension ("dvc" or "dvchost") is present. "dvc" is used if the hostname is an IPv4 address; "dvchost" is used for hostnames and IPv6 addresses.
+
+Additionally, the extension "TrendMicroDsTags" is used if the events are tagged. This applies only to auto-tagging with run on future, since events are forwarded via syslog only as they are collected by Server & Workload Protection. The product for logs relayed through Workload Security will still read "Deep Security Agent"; however, the product version is the version of Server & Workload Protection.
+
+### CEF syslog message format {#cef-syslog-message-format}
+
+All CEF events include 'dvc=IPv4 Address' or 'dvchost=Hostname' (or the IPv6 address) for the purposes of determining the original agent that was the source of the event. This extension is important for events sent from Server & Workload Protection, since in this case the syslog sender of the message is not the originator of the event.
+
+*Base CEF format:* CEF:Version|Device Vendor|Device Product|Device Version|Signature ID|Name|Severity|Extension
+
+To determine whether the log entry comes from Server & Workload Protection or an agent, look at the "Device Product" field:
+
+*Sample CEF Log Entry:* Jan 18 11:07:53 dsmhost CEF:0|Trend Micro|*Workload Security Manager*|\<Workload Security version\>|600|Administrator Signed In|4|suser=Master...
+
+:::note
+
+Events that occur on a VM that is protected by a virtual appliance, but that don't have an in-guest agent, will still be identified as coming from an agent.
+:::
+
+To further determine what kind of rule triggered the event, look at the "Signature ID" and "Name" fields:
+
+*Sample Log Entry:* Mar 19 15:19:15 root CEF:0|Trend Micro|Deep Security Agent|\<Agent version\>|123|Out Of Allowed Policy|5|cn1=1...
+
+The "Signature ID" value indicates what kind of event has been triggered:
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Signature IDs</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>10</p></td>
+<td><p>Custom Intrusion Prevention (IPS) rule</p></td>
+</tr>
+<tr>
+<td><p>20</p></td>
+<td><p>Log-only Firewall rule</p></td>
+</tr>
+<tr>
+<td><p>21</p></td>
+<td><p>Deny Firewall rule</p></td>
+</tr>
+<tr>
+<td><p>30</p></td>
+<td><p>Custom Integrity Monitoring rule</p></td>
+</tr>
+<tr>
+<td><p>40</p></td>
+<td><p>Custom Log Inspection rule</p></td>
+</tr>
+<tr>
+<td><p>100-7499</p></td>
+<td><p>System events</p></td>
+</tr>
+<tr>
+<td><p>100-199</p></td>
+<td><p>Policy Firewall rule and Firewall stateful configuration</p></td>
+</tr>
+<tr>
+<td><p>200-299</p></td>
+<td><p>IPS internal errors</p></td>
+</tr>
+<tr>
+<td><p>300-399</p></td>
+<td><p>SSL/TLS events</p></td>
+</tr>
+<tr>
+<td><p>500-899</p></td>
+<td><p>IPS normalization</p></td>
+</tr>
+<tr>
+<td><p>1,000,000-1,999,999</p></td>
+<td><p>Trend Micro IPS rule. The signature ID is the same as the IPSrule ID.</p></td>
+</tr>
+<tr>
+<td><p>2,000,000-2,999,999</p></td>
+<td><p>Integrity Monitoring rule. The signature ID is the Integrity Monitoring rule ID + 1,000,000.</p></td>
+</tr>
+<tr>
+<td><p>3,000,000-3,999,999</p></td>
+<td><p>Log Inspection rule. The signature ID is the Log Inspection rule ID + 2,000,000.</p></td>
+</tr>
+<tr>
+<td><p>4,000,000-4,999,999</p></td>
+<td><p>Anti-Malware events. Currently, only these signature IDs are used:</p>
+<ul>
+<li>4,000,000 - Anti-Malware - Real-Time Scan</li>
+<li>4,000,001 - Anti-Malware - Manual Scan</li>
+<li>4,000,002 - Anti-Malware - Scheduled Scan</li>
+<li>4,000,003 - Anti-Malware - Quick Scan</li>
+<li>4,000,010 - Anti-Spyware - Real-Time Scan</li>
+<li>4,000,011 - Anti-Spyware - Manual Scan</li>
+<li>4,000,012 - Anti-Spyware - Scheduled Scan</li>
+<li>4,000,013 - Anti-Spyware - Quick Scan</li>
+<li>4,000,020 - Suspicious Activity - Real-Time Scan</li>
+<li>4,000,030 - Unauthorized Change - Real-Time Scan</li>
+</ul></td>
+</tr>
+<tr>
+<td><p>5,000,000-5,999,999</p></td>
+<td><p>Web Reputation events. Currently, only these signature IDs are used:</p>
+<ul>
+<li>5,000,000 - Web Reputation - Blocked</li>
+<li>5,000,001 - Web Reputation - Detect Only</li>
+</ul></td>
+</tr>
+<tr>
+<td><p>6,000,000-6,999,999</p></td>
+<td><p>Application Control events. Currently, only these signature IDs are used:</p>
+<ul>
+<li>6,001,100 - Application Control - Detect Only, in block list</li>
+<li>6,001,200 - Application Control - Detect Only, not in allow list</li>
+<li>6,002,100 - Application Control - Blocked, in block list</li>
+<li>6,002,200 - Application Control – Blocked, not in allow list</li>
+</ul></td>
+</tr>
+<tr>
+<td><p>7,000,000-7,999,999</p></td>
+<td><p>Device Control events. Currently, only these signature IDs are used:</p>
+<ul>
+<li>7,000,000 - Device Control - access unknown device was blocked</li>
+<li>7,000,200 - Device Control - write unknown device was blocked</li>
+<li>7,001,000 - Device Control - access USB device was blocked</li>
+<li>7,001,200 - Device Control - write USB device was blocked</li>
+<li>7,002,000 - Device Control - access mobile device was blocked</li>
+<li>7,002,200 - Device Control - write mobile device was blocked</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+:::note
+
+Log entries don't always have all CEF extensions described in the event log format tables below. CEF extensions also may not be always in the same order. If you are using regular expressions (regex) to parse the entries, make sure your expressions do not depend on each key-value pair to exist, or to be in a specific order.
+:::
+
+:::note
+
+Syslog messages are limited to 64 KB by the syslog protocol specification. If the message is longer, data may be truncated. The basic syslog format is limited to 1 KB.
+:::
+
+### LEEF 2.0 syslog message format {#leef-2.0-syslog-message-format}
+
+*Base LEEF 2.0 format:* LEEF:2.0|Vendor|Product|Version|EventID|(Delimiter Character, optional if the Delimiter Character is tab)|Extension
+
+*Sample LEEF 2.0 Log Entry (Workload Security System Event Log Sample):* LEEF:2.0|Trend Micro|Server & Workload Protection Manager|\<Agent version\>|192|cat=System name=Alert Ended desc=Alert: CPU Warning Threshold Exceeded\nSubject: 10.201.114.164\nSeverity: Warning sev=3 src=10.201.114.164 usrName=System msg=Alert: CPUWarning Threshold Exceeded\nSubject: 10.201.114.164\nSeverity:Warning TrendMicroDsTenant=Primary
+
+### Events originating in Server & Workload Protection {#events-originating-in-server-workload-protection}
+
+### System event log format {#system-event-log-format}
+
+*Base CEF Format:* CEF:Version|Device Vendor|Device Product|Device Version|Signature ID|Name|Severity|Extension
+
+*Sample CEF Log Entry:* CEF:0|Trend Micro|Server & Workload Protection Manager|\<Server & Workload Protection version\>|600|User Signed In|3|src=10.52.116.160 suser=admin target=admin msg=User signed in from 2001:db8::5
+
+*Base LEEF 2.0 format:* LEEF:2.0|Vendor|Product|Version|EventID|(Delimiter Character, optional if the Delimiter Character is tab)|Extension
+
+*Sample LEEF 2.0 Log Entry:* LEEF:2.0|Trend Micro|Server & Workload Protection Manager|\<DSA version\>|192|cat=System name=Alert Ended desc=Alert: CPU Warning Threshold Exceeded\nSubject: 10.201.114.164\nSeverity: Warning sev=3 src=10.201.114.164 usrName=System msg=Alert: CPU Warning Threshold Exceeded\nSubject: 10.201.114.164\nSeverity: Warning TrendMicroDsTenant=Primary
+
+:::note
+
+LEEF format uses a reserved "sev" key to show severity and "name" for the Name value.
+:::
+
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 38%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>CEF Extension Field</p></th>
+<th><p>LEEF Extension Field</p></th>
+<th><p>Name</p></th>
+<th><p>Description</p></th>
+<th><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>src</p></td>
+<td><p>src</p></td>
+<td><p>Source IP Address</p></td>
+<td><p>Server &amp; Workload Protection IP address.</p></td>
+<td><p>src=10.52.116.23</p></td>
+</tr>
+<tr>
+<td><p>suser</p></td>
+<td><p>usrName</p></td>
+<td><p>Source User</p></td>
+<td><p>Server &amp; Workload Protection administrator's account.</p></td>
+<td><p>suser=MasterAdmin</p></td>
+</tr>
+<tr>
+<td><p>target</p></td>
+<td><p>target</p></td>
+<td><p>Target Entity</p></td>
+<td><p>The subject of the event. It can be the administrator account logged into Server &amp; Workload Protection, or a computer.</p></td>
+<td><p>target=MasterAdmin target=server01</p></td>
+</tr>
+<tr>
+<td><p>targetID</p></td>
+<td><p>targetID</p></td>
+<td><p>Target Entity ID</p></td>
+<td><p>The identifier added in Server &amp; Workload Protection.</p></td>
+<td><p>targetID=1</p></td>
+</tr>
+<tr>
+<td><p>targetType</p></td>
+<td><p>targetType</p></td>
+<td><p>Target Entity Type</p></td>
+<td><p>The event target entity type.</p></td>
+<td><p>targetType=Host</p></td>
+</tr>
+<tr>
+<td><p>msg</p></td>
+<td><p>msg</p></td>
+<td><p>Details</p></td>
+<td><p>Details of the system event. May contain a verbose description of the event.</p></td>
+<td><p>msg=User password incorrect for username MasterAdmin on an attempt to sign in from 127.0.0.1 msg=A Scan for Recommendations on computer (localhost) has completed...</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsProcessImagePath</p></td>
+<td><p>TrendMicroDsProcessImagePath</p></td>
+<td><p>Process Image Path</p></td>
+<td><p>The full path of the process that generates an anti-malware event detection.</p>
+
+
+:::note
+
+Windows does not support this information.
+
+
+:::
+
+</td>
+<td><p>TrendMicroDsProcessImagePath=/usr/bin/bash</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsProcessPid</p></td>
+<td><p>TrendMicroDsProcessPid</p></td>
+<td><p>Process PID</p></td>
+<td><p>The PID of the process that generates an anti-malware event detection</p>
+
+
+:::note
+
+Windows does not support this information.
+
+
+:::
+
+</td>
+<td><p>TrendMicroDsProcessPid=4422</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTags</p></td>
+<td><p>TrendMicroDsTags</p></td>
+<td><p>Event Tags</p></td>
+<td><p>Server &amp; Workload Protection event tags assigned to the event</p></td>
+<td><p>TrendMicroDsTags=suspicious</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTenant</p></td>
+<td><p>TrendMicroDsTenant</p></td>
+<td><p>Tenant Name</p></td>
+<td><p>Server &amp; Workload Protection tenant</p></td>
+<td><p>TrendMicroDsTenant=Primary</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTenantId</p></td>
+<td><p>TrendMicroDsTenantId</p></td>
+<td><p>Tenant ID</p></td>
+<td><p>Server &amp; Workload Protection tenant ID</p></td>
+<td><p>TrendMicroDsTenantId=0</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsReasonId</p></td>
+<td><p>TrendMicroDsReasonId</p></td>
+<td><p>Event reason ID</p></td>
+<td><p>Indicates the reason ID for event descriptions. Each event has its own reason ID definition.</p></td>
+<td><p>TrendMicroDsReasonId=1</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>sev</p></td>
+<td><p>Severity</p></td>
+<td><p>The severity of the event. 1 is the least severe; 10 is the most severe.</p></td>
+<td><p>sev=3</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>cat</p></td>
+<td><p>Category</p></td>
+<td><p>Event category</p></td>
+<td><p>cat=System</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>name</p></td>
+<td><p>Name</p></td>
+<td><p>Event name</p></td>
+<td><p>name=Alert Ended</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>desc</p></td>
+<td><p>Description</p></td>
+<td><p>Event description</p></td>
+<td><p>desc:Alert: CPU Warning Threshold Exceeded</p></td>
+</tr>
+</tbody>
+</table>
+
+### Events originating in the agent {#events-originating-in-the-agent}
+
+### Anti-Malware event format {#anti-malware-event-format}
+
+*Base CEF format:* CEF:Version|Device Vendor|Device Product|Device Version|Signature ID|Name|Severity|Extension
+
+*Sample CEF Log Entry:* CEF:0|Trend Micro|Deep Security Agent|\<Agent version\>|4000000|Eicar_test_file|6|cn1=1 cn1Label=Host ID dvchost=hostname cn2=205 cn2Label=Quarantine File Size cs6=ContainerImageName | ContainerName | ContainerID cs6Label=Container filePath=C:\Users\trend\Desktop\eicar.exe act=Delete result=Delete msg=Realtime TrendMicroDsMalwareTarget=N/A TrendMicroDsMalwareTargetType=N/TrendMicroDsFileMD5=44D88612FEA8A8F36DE82E1278ABB02F TrendMicroDsFileSHA1=3395856CE81F2B7382DEE72602F798B642F14140 TrendMicroDsFileSHA256=275A021BBFB6489E54D471899F7DB9D1663FC695EC2FE2A2C4538AABF651FD0F TrendMicroDsDetectionConfidence=95 TrendMicroDsRelevantDetectionNames=Ransom_CERBER.BZC;Ransom_CERBER.C;Ransom_CRYPNISCA.SM
+
+*Base LEEF 2.0 format:* LEEF:2.0|Vendor|Product|Version|EventID|(Delimiter Character, optional if the Delimiter Character is tab)|Extension
+
+*Sample LEEF Log Entry:* LEEF: 2.0|Trend Micro|Deep Security Agent|\<Agent version\>|4000030|cat=Anti-Malware name=HEU_AEGIS_CRYPT desc=HEU_AEGIS_CRYPT sev=6 cn1=241 cn1Label=Host ID dvc=10.0.0.1 TrendMicroDsTags=FS TrendMicroDsTenant=Primary TrendMicroDsTenantId=0 filePath=C:\Windows\System32\virus.exe act=Terminate msg=Realtime TrendMicroDsMalwareTarget=Multiple TrendMicroDsMalwareTargetType=File System TrendMicroDsFileMD5=1947A1BC0982C5871FA3768CD025453E#011 TrendMicroDsFileSHA1=5AD084DDCD8F80FBF2EE3F0E4F812E812DEE60C1#011 TrendMicroDsFileSHA256=25F231556700749F8F0394CAABDED83C2882317669DA2C01299B45173482FA6E TrendMicroDsDetectionConfidence=95 TrendMicroDsRelevantDetectionNames=Ransom_CERBER.BZC;Ransom_CERBER.C;Ransom_CRYPNISCA.SM
+
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 38%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>CEF Extension Field</p></th>
+<th><p>LEEF Extension Field</p></th>
+<th><p>Name</p></th>
+<th><p>Description</p></th>
+<th><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>cn1</p></td>
+<td><p>cn1</p></td>
+<td><p>Host Identifier</p></td>
+<td><p>The agent computer's internal unique identifier.</p></td>
+<td><p>cn1=1</p></td>
+</tr>
+<tr>
+<td><p>cn1Label</p></td>
+<td><p>cn1Label</p></td>
+<td><p>Host ID</p></td>
+<td><p>The name label for the field cn1.</p></td>
+<td><p>cn1Label=Host ID</p></td>
+</tr>
+<tr>
+<td><p>cn2</p></td>
+<td><p>cn2</p></td>
+<td><p>File Size</p></td>
+<td><p>The size of the quarantine file. This extension is included only when the "direct forward" from agent /appliance is selected.</p></td>
+<td><p>cn2=100</p></td>
+</tr>
+<tr>
+<td><p>cn2Label</p></td>
+<td><p>cn2Label</p></td>
+<td><p>File Size</p></td>
+<td><p>The name label for the field cn2.</p></td>
+<td><p>cn2Label=Quarantine File Size</p></td>
+</tr>
+<tr>
+<td><p>cs3</p></td>
+<td><p>cs3</p></td>
+<td><p>Infected Resource</p></td>
+<td><p>The path of the spyware item. This field is only for spyware detection events.</p></td>
+<td><p>cs3=C:\test\atse_samples\SPYW_Test_Virus.exe</p></td>
+</tr>
+<tr>
+<td><p>cs3Label</p></td>
+<td><p>cs3Label</p></td>
+<td><p>Infected Resource</p></td>
+<td><p>The name label for the field cs3. This field is only for spyware detection events.</p></td>
+<td><p>cs3Label=Infected Resource</p></td>
+</tr>
+<tr>
+<td><p>cs4</p></td>
+<td><p>cs4</p></td>
+<td><p>Resource Type</p></td>
+<td><p>Resource Type values:</p>
+<p>10=Files and Directories</p>
+<p>11=System Registry</p>
+<p>12=Internet Cookies</p>
+<p>13=Internet URL Shortcut</p>
+<p>14=Programs in Memory</p>
+<p>15=Program Startup Areas</p>
+<p>16=Browser Helper Object</p>
+<p>17=Layered Service Provider</p>
+<p>18=Hosts File</p>
+<p>19=Windows Policy Settings</p>
+<p>20=Browser</p>
+<p>23=Windows Shell Setting</p>
+<p>24=IE Downloaded Program Files</p>
+<p>25=Add/Remove Programs</p>
+<p>26=Services</p>
+<p>other=Other</p>
+<p>For example, if there's a spyware file named spy.exe that creates a registry run key to keep its persistence after system reboot, there will be two items in the spyware report: the item for spy.exe has cs4=10 (Files and Directories), and the item for the run key registry has cs4=11 (System Registry).</p>
+<p>This field is only for spyware detection events.</p></td>
+<td><p>cs4=10</p></td>
+</tr>
+<tr>
+<td><p>cs4Label</p></td>
+<td><p>cd4Label</p></td>
+<td><p>Resource Type</p></td>
+<td><p>The name label for the field cs4. This field is only for spyware detection events.</p></td>
+<td><p>cs4Label=Resource Type</p></td>
+</tr>
+<tr>
+<td><p>cs5</p></td>
+<td><p>cs5</p></td>
+<td><p>Risk Level</p></td>
+<td><p>Risk level values:</p>
+<p>0=Very Low</p>
+<p>25=Low</p>
+<p>50=Medium</p>
+<p>75=High</p>
+<p>100=Very High</p>
+<p>This field is only for spyware detection events.</p></td>
+<td><p>cs5=25</p></td>
+</tr>
+<tr>
+<td><p>cs5Label</p></td>
+<td><p>cs5Label</p></td>
+<td><p>Risk Level</p></td>
+<td><p>The name label for the field cs5. This field is only for spyware detection events.</p></td>
+<td><p>cs5Label=Risk Level</p></td>
+</tr>
+<tr>
+<td><p>cs6</p></td>
+<td><p>cs6</p></td>
+<td><p>Container</p></td>
+<td><p>The image name of the Docker container, container name, and container ID where the malware was detected.</p></td>
+<td><p>cs6=ContainerImageName | ContainerName | ContainerID</p></td>
+</tr>
+<tr>
+<td><p>cs6Label</p></td>
+<td><p>cs6Label</p></td>
+<td><p>Container</p></td>
+<td><p>The name label for the field cs6.</p></td>
+<td><p>cs6Label=Container</p></td>
+</tr>
+<tr>
+<td><p>filePath</p></td>
+<td><p>filePath</p></td>
+<td><p>File Path</p></td>
+<td><p>The location of the malware file.</p></td>
+<td><p>filePath=C:\\Users\\Mei\\Desktop\\virus.exe</p></td>
+</tr>
+<tr>
+<td><p>act</p></td>
+<td><p>act</p></td>
+<td><p>Action</p></td>
+<td><p>The action performed by the Anti-Malware engine. Possible values are: Deny Access, Quarantine, Delete, Pass, Clean, Terminate, and Unspecified.</p></td>
+<td><p>act=Clean act=Pass</p></td>
+</tr>
+<tr>
+<td><p>result</p></td>
+<td><p>result</p></td>
+<td><p>Result</p></td>
+<td><p>The result of the failed Anti-Malware action.</p></td>
+<td><p>result=Passed result=Deleted result=Quarantined result=Cleaned result=Access Denied result=Terminated result=Log result=Failed result=Pass Failed result=Delete Failed result=Quarantine Failed result=Clean Failed result=Terminate Failed result=Log Failed result=Scan Failed result=Passed (Scan Failed) result=Quarantined (Scan Failed) result=Quarantine Failed (Scan Failed) result=Deny Access (Scan Failed)</p></td>
+</tr>
+<tr>
+<td><p>msg</p></td>
+<td><p>msg</p></td>
+<td><p>Message</p></td>
+<td><p>The type of scan. Possible values are: Realtime, Scheduled, and Manual.</p></td>
+<td><p>msg=Realtime msg=Scheduled</p></td>
+</tr>
+<tr>
+<td><p>dvc</p></td>
+<td><p>dvc</p></td>
+<td><p>Device address</p></td>
+<td><p>The IPv4 address for cn1.</p>
+<p>Does not appear if the source is an IPv6 address or hostname. (Uses dvchost instead.)</p></td>
+<td><p>dvc=10.1.144.199</p></td>
+</tr>
+<tr>
+<td><p>dvchost</p></td>
+<td><p>dvchost</p></td>
+<td><p>Device host name</p></td>
+<td><p>The hostname or IPv6 address for cn1.</p>
+<p>Does not appear if the source is an IPv4 address. (Uses dvc field instead.)</p></td>
+<td><p>dvchost=www.example.com dvchost=fe80::f018:a3c6:20f9:afa6%5</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsBehaviorRuleID</p></td>
+<td><p>TrendMicroDsBehaviorRuleID</p></td>
+<td><p>Behavior monitoring rule ID</p></td>
+<td><p>The behavior monitoring rule ID for internal malware case tracking.</p></td>
+<td><p>BehaviorRuleID=CS913</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsBehaviorType</p></td>
+<td><p>TrendMicroDsBehaviorType</p></td>
+<td><p>Behavior Monitoring type</p></td>
+<td><p>The type of behavior monitoring event detected.</p></td>
+<td><p>BehaviorType=Threat-Detection</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTags</p></td>
+<td><p>TrendMicroDsTags</p></td>
+<td><p>Events tags</p></td>
+<td><p>Server &amp; Workload Protection event tags assigned to the event</p></td>
+<td><p>TrendMicroDsTags=suspicious</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTenant</p></td>
+<td><p>TrendMicroDsTenant</p></td>
+<td><p>Tenant name</p></td>
+<td><p>Server &amp; Workload Protection tenant</p></td>
+<td><p>TrendMicroDsTenant=Primary</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTenantId</p></td>
+<td><p>TrendMicroDsTenantId</p></td>
+<td><p>Tenant ID</p></td>
+<td><p>Server &amp; Workload Protection tenant ID</p></td>
+<td><p>TrendMicroDsTenantId=0</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsMalwareTargetCount</p></td>
+<td><p>TrendMicroDsMalwareTargetCount</p></td>
+<td><p>Target count</p></td>
+<td><p>The number of target files.</p></td>
+<td><p>TrendMicroDsMalwareTargetCount=3</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsMalwareTarget</p></td>
+<td><p>TrendMicroDsMalwareTarget</p></td>
+<td><p>Target(s)</p></td>
+<td><p>The file, process, or registry key (if any) that the malware was trying to affect. If the malware was trying to affect more than one, this field will contain the value "Multiple."</p>
+<p>Only suspicious activity monitoring and unauthorized change monitoring have values for this field.</p></td>
+<td><p>TrendMicroDsMalwareTarget=N/A TrendMicroDsMalwareTarget=C:\\Windows\\System32\\cmd.exe TrendMicroDsMalwareTarget=HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings TrendMicroDsMalwareTarget=Multiple</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsMalwareTargetType</p></td>
+<td><p>TrendMicroDsMalwareTargetType</p></td>
+<td><p>Target Type</p></td>
+<td><p>The type of system resource that this malware was trying to affect, such as the file system, a process, or Windows registry.</p>
+<p>Only suspicious activity monitoring and unauthorized change monitoring have values for this field.</p></td>
+<td><p>TrendMicroDsMalwareTargetType=N/A TrendMicroDsMalwareTargetType=Exploit TrendMicroDsMalwareTargetType=File System TrendMicroDsMalwareTargetType=Process TrendMicroDsMalwareTargetType=Registry</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsProcess</p></td>
+<td><p>TrendMicroDsProcess</p></td>
+<td><p>Process</p></td>
+<td><p>Process Name</p></td>
+<td><p>TrendMicroDsProcess= abc.exe</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsFileMD5</p></td>
+<td><p>TrendMicroDsFileMD5</p></td>
+<td><p>File MD5</p></td>
+<td><p>The MD5 hash of the file</p></td>
+<td><p>TrendMicroDsFileMD5=1947A1BC0982C5871FA3768CD025453E</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsFileSHA1</p></td>
+<td><p>TrendMicroDsFileSHA1</p></td>
+<td><p>File SHA1</p></td>
+<td><p>The SHA1 hash of the file</p></td>
+<td><p>TrendMicroDsFileSHA1=5AD084DDCD8F80FBF2EE3F0E4F812E812DEE60C1</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsFileSHA256</p></td>
+<td><p>TrendMicroDsFileSHA256</p></td>
+<td><p>File SHA256</p></td>
+<td><p>The SHA256 hash of the file</p></td>
+<td><p>TrendMicroDsFileSHA256=25F231556700749F8F0394CAABDED83C2882317669DA2C01299B45173482FA6E</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsDetectionConfidence</p></td>
+<td><p>TrendMicroDsDetectionConfidence</p></td>
+<td><p>Threat Probability</p></td>
+<td><p>Indicates how closely (in %) the file matched the malware model</p></td>
+<td><p>TrendMicroDsDetectionConfidence=95</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsRelevantDetectionNames</p></td>
+<td><p>TrendMicroDsRelevantDetectionNames</p></td>
+<td><p>Probable Threat Type</p></td>
+<td><p>Indicates the most likely type of threat contained in the file after Predictive Machine Learning compared the analysis to other known threats(separate by semicolon";" )</p></td>
+<td><p>TrendMicroDsRelevantDetectionNames=Ransom_CERBER.BZC;Ransom_CERBER.C;Ransom_CRYPNISCA.SM</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>sev</p></td>
+<td><p>Severity</p></td>
+<td><p>The severity of the event. 1 is the least severe; 10 is the most severe.</p></td>
+<td><p>sev=6</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>cat</p></td>
+<td><p>Category</p></td>
+<td><p>Category</p></td>
+<td><p>cat=Anti-Malware</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>name</p></td>
+<td><p>Name</p></td>
+<td><p>Event name</p></td>
+<td><p>name=SPYWARE_KEYL_ACTIVE</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>desc</p></td>
+<td><p>Description</p></td>
+<td><p>Event description. Anti-Malware uses the event name as the description.</p></td>
+<td><p>desc=SPYWARE_KEYL_ACTIVE</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsCommandLine</p></td>
+<td><p>TrendMicroDsCommandLine</p></td>
+<td><p>Command Line</p></td>
+<td><p>The commands that the subject process executes</p></td>
+<td><p>TrendMicroDsCommandLine=/tmp/orca-testkit-sample/testsys_m64 -u 1000 -g 1000 -U 1000 -G 1000 -e cve_2017_16995 1 -d 4000000</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsCve</p></td>
+<td><p>TrendMicroDsCve</p></td>
+<td><p>CVE</p></td>
+<td><p>CVE information, if the process behavior is identified in one of Common Vulnerabilities and Exposures.</p></td>
+<td><p>TrendMicroDsCve=CVE-2016-5195,CVE-2016-5195,CVE-2016-5195</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsMitre</p></td>
+<td><p>TrendMicroDsMitre</p></td>
+<td><p>MITRE</p></td>
+<td><p>The MITRE information, if the process behavior is identified in one of MITRE attack scenarios.</p></td>
+<td><p>TrendMicroDsMitre=T1068,T1068,T1068</p></td>
+</tr>
+<tr>
+<td><p>suser</p></td>
+<td><p>suser</p></td>
+<td><p>user name</p></td>
+<td><p>The user account name who triggered this event</p></td>
+<td><p>suser=root</p></td>
+</tr>
+</tbody>
+</table>
+
+### Application Control event format {#application-control-event-format}
+
+*Base CEF format:* CEF:Version|Device Vendor|Device Product|Device Version|Signature ID|Name|Severity|Extension
+
+*Example CEF Log Entry:* `CEF: 0|Trend Micro|Deep Security Agent|10.2.229|6001200|AppControl detectOnly|6|cn1=202 cn1Label=Host ID dvc=192.168.33.128 TrendMicroDsTenant=Primary TrendMicroDsTenantId=0 fileHash=80D4AC182F97D2AB48EE4310AC51DA5974167C596D133D64A83107B9069745E0 suser=root suid=0 act=detectOnly filePath=/home/user1/Desktop/Directory1//heartbeatSync.sh fsize=20 aggregationType=0 repeatCount=1 cs1=notWhitelisted cs1Label=actionReason cs2=0CC9713BA896193A527213D9C94892D41797EB7C cs2Label=sha1 cs3=7EA8EF10BEB2E9876D4D7F7E5A46CF8D cs3Label=md5`
+
+*Base LEEF 2.0 format:* LEEF:2.0|Vendor|Product|Version|EventID|(Delimiter Character, optional if the Delimiter Character is tab)|Extension
+
+*Example LEEF Log Entry:* `LEEF:2.0|Trend Micro|Deep Security Agent|10.0.2883|60|cat=AppControl name=blocked desc=blocked sev=6 cn1=2 cn1Label=Host ID dvc=10.203.156.39 TrendMicroDsTenant=Primary TrendMicroDsTenantId=0 fileHash=E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855 suser=root suid=0 act=blocked filePath=/bin/my.jar fsize=123857 aggregationType=0 repeatCount=1 cs1=notWhitelisted cs1Label=actionReason`
+
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 38%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>CEF Extension Field</p></th>
+<th><p>LEEF Extension Field</p></th>
+<th><p>Name</p></th>
+<th><p>Description</p></th>
+<th><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>cn1</p></td>
+<td><p>cn1</p></td>
+<td><p>Host Identifier</p></td>
+<td><p>The agent computer's internal unique identifier.</p></td>
+<td><p>cn1=2</p></td>
+</tr>
+<tr>
+<td><p>cn1Label</p></td>
+<td><p>cn1Label</p></td>
+<td><p>Host ID</p></td>
+<td><p>The name label for the field cn1.</p></td>
+<td><p>cn1Label=Host ID</p></td>
+</tr>
+<tr>
+<td><p>cs1</p></td>
+<td><p>cs1</p></td>
+<td><p>Reason</p></td>
+<td><p>The reason why application control performed the specified action, such as "notWhitelisted" (the software did not have a matching rule, and application control was configured to block unrecognized software).</p></td>
+<td><p>cs1=notWhitelisted</p></td>
+</tr>
+<tr>
+<td><p>cs1Label</p></td>
+<td><p>cs1Label</p></td>
+<td></td>
+<td><p>The name label for the field cs1.</p></td>
+<td><p>cs1Label=actionReason</p></td>
+</tr>
+<tr>
+<td><p>cs2</p></td>
+<td><p>cs2</p></td>
+<td></td>
+<td><p>If it was calculated, the SHA-1 hash of the file.</p></td>
+<td><p>cs2=156F4CB711FDBD668943711F853FB6DA89581AAD</p></td>
+</tr>
+<tr>
+<td><p>cs2Label</p></td>
+<td><p>cs2Label</p></td>
+<td></td>
+<td><p>The name label for the field cs2.</p></td>
+<td><p>cs2Label=sha1</p></td>
+</tr>
+<tr>
+<td><p>cs3</p></td>
+<td><p>cs3</p></td>
+<td></td>
+<td><p>If it was calculated, the MD5 hash of the file.</p></td>
+<td><p>cs3=4E8701AC951BC4537F8420FDAC7EFBB5</p></td>
+</tr>
+<tr>
+<td><p>cs3Label</p></td>
+<td><p>cs3Label</p></td>
+<td></td>
+<td><p>The name label for the field cs3.</p></td>
+<td><p>cs3Label=md5</p></td>
+</tr>
+<tr>
+<td><p>act</p></td>
+<td><p>act</p></td>
+<td><p>Action</p></td>
+<td><p>The action performed by the Application Control engine. Possible values are: Blocked, Allowed.</p></td>
+<td><p>act=blocked</p></td>
+</tr>
+<tr>
+<td><p>dvc</p></td>
+<td><p>dvc</p></td>
+<td><p>Device address</p></td>
+<td><p>The IPv4 address for cn1.</p>
+<p>Does not appear if the source is an IPv6 address or hostname. (Uses dvchost instead.)</p></td>
+<td><p>dvc=10.1.1.10</p></td>
+</tr>
+<tr>
+<td><p>dvchost</p></td>
+<td><p>dvchost</p></td>
+<td><p>Device host name</p></td>
+<td><p>The hostname or IPv6 address for cn1.</p>
+<p>Does not appear if the source is an IPv4 address. (Uses dvc field instead.)</p></td>
+<td><p>dvchost=www.example.com dvchost=2001:db8::5</p></td>
+</tr>
+<tr>
+<td><p>suid</p></td>
+<td><p>suid</p></td>
+<td><p>User ID</p></td>
+<td><p>The account IDnumber of the user name.</p></td>
+<td><p>suid=0</p></td>
+</tr>
+<tr>
+<td><p>suser</p></td>
+<td><p>suser</p></td>
+<td><p>User Name</p></td>
+<td><p>The name of the user account that installed the software on the protected computer.</p></td>
+<td><p>suser=root</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTenant</p></td>
+<td><p>TrendMicroDsTenant</p></td>
+<td><p>Tenant name</p></td>
+<td><p>Server &amp; Workload Protection tenant name.</p></td>
+<td><p>TrendMicroDsTenant=Primary</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTenantId</p></td>
+<td><p>TrendMicroDsTenantId</p></td>
+<td><p>Tenant ID</p></td>
+<td><p>Server &amp; Workload Protection tenant ID number.</p></td>
+<td><p>TrendMicroDsTenantId=0</p></td>
+</tr>
+<tr>
+<td><p>fileHash</p></td>
+<td><p>fileHash</p></td>
+<td><p>File hash</p></td>
+<td><p>The SHA 256 hash that identifies the software file.</p></td>
+<td><p>fileHash=E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855</p></td>
+</tr>
+<tr>
+<td><p>filePath</p></td>
+<td><p>filePath</p></td>
+<td><p>File Path</p></td>
+<td><p>The location of the malware file.</p></td>
+<td><p>filePath=/bin/my.jar</p></td>
+</tr>
+<tr>
+<td><p>fsize</p></td>
+<td><p>fsize</p></td>
+<td><p>File Size</p></td>
+<td><p>The file size in bytes.</p></td>
+<td><p>fsize=16</p></td>
+</tr>
+<tr>
+<td><p>aggregationType</p></td>
+<td><p>aggregationType</p></td>
+<td><p>Aggregation Type</p></td>
+<td><p>An integer that indicates how the event is aggregated:</p>
+<ul>
+<li>0: The event is not aggregated</li>
+<li>1: The event is aggregated based on file name, path, and event type.</li>
+<li>2: The event is aggregated based on event type.</li>
+</ul>
+<p>For information, about event aggregation, see <a href="trend-vision-one-monitor-application-control-events">View Application Control event logs</a>.</p></td>
+<td><p>aggregationType=2</p></td>
+</tr>
+<tr>
+<td><p>repeatCount</p></td>
+<td><p>repeatCount</p></td>
+<td><p>Repeat Count</p></td>
+<td><p>The number of occurrences of the event. Non-aggregated events have a value of 1. Aggregated events have a value of 2 or more.</p></td>
+<td><p>repeatCount=4</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>sev</p></td>
+<td><p>Severity</p></td>
+<td><p>The severity of the event. 1 is the least severe; 10 is the most severe.</p></td>
+<td><p>sev=6</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>cat</p></td>
+<td><p>Category</p></td>
+<td><p>Category</p></td>
+<td><p>cat=AppControl</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>name</p></td>
+<td><p>Name</p></td>
+<td><p>Event name</p></td>
+<td><p>name=blocked</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>desc</p></td>
+<td><p>Description</p></td>
+<td><p>Event description. Application Control uses the action as the description.</p></td>
+<td><p>desc=blocked</p></td>
+</tr>
+</tbody>
+</table>
+
+### Firewall event log format {#firewall-event-log-format}
+
+*Base CEF format:* CEF:Version|Device Vendor|Device Product|Device Version|Signature ID|Name|Severity|Extension
+
+*Sample CEF Log Entry:* CEF:0|Trend Micro|Deep Security Agent|\<Agent version\>|20|Log for TCP Port 80|0|cn1=1 cn1Label=Host ID dvc=hostname act=Log dmac=00:50:56:F5:7F:47 smac=00:0C:29:EB:35:DE TrendMicroDsFrameType=IP src=192.168.126.150 dst=72.14.204.147 out=1019 cs3=DF MF cs3Label=Fragmentation Bits proto=TCP spt=49617 dpt=80 cs2=0x00 ACK PSH cs2Label=TCP Flags cnt=1 TrendMicroDsPacketData=AFB...
+
+*Sample LEEF Log Entry:* LEEF:2.0|Trend Micro|Deep Security Agent|\<Agent version\>|21|cat=Firewall name=Remote Domain Enforcement (Split Tunnel) desc=Remote Domain Enforcement (Split Tunnel) sev=5 cn1=37 cn1Label=Host ID dvchost=www.example.com TrendMicroDsTenant=Primary TrendMicroDsTenantId=0 act=Deny dstMAC=67:BF:1B:2F:13:EE srcMAC=78:FD:E7:07:9F:2C TrendMicroDsFrameType=IP src=10.0.110.221 dst=105.152.185.81 out=177 cs3= cs3Label=Fragmentation Bits proto=UDP srcPort=23 dstPort=445 cnt=1 TrendMicroDsPacketData=AFB...
+
+*Sample TendMicroDsScannerIp Log Entry:* CEF Field : (wait check), LEEF Field: TrendMicroDsScannerIp, Name: Scanner IP, Description: Scanner IP Address, Example: TrendMicroDsScannerIp=192.168.33.1
+
+*TrendMicroDsTargetPortList Log Entry:* CEF Field : (wait check), LEEF Field: TrendMicroDsTargetPortList, Name: Target Port List, Description: Scanned Port List, Example: TrendMicroDsTargetPortList=12;13;16;18;22;23;27;32;38;42;44;47;48;60;67;
+
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 38%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>CEF Extension Field</p></th>
+<th><p>LEEF Extension Field</p></th>
+<th><p>Name</p></th>
+<th><p>Description</p></th>
+<th><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>act</p></td>
+<td><p>act</p></td>
+<td><p>Action</p></td>
+<td></td>
+<td><p>act=Log act=Deny</p></td>
+</tr>
+<tr>
+<td><p>cn1</p></td>
+<td><p>cn1</p></td>
+<td><p>Host Identifier</p></td>
+<td><p>The agent computer's internal unique identifier.</p></td>
+<td><p>cn1=113</p></td>
+</tr>
+<tr>
+<td><p>cn1Label</p></td>
+<td><p>cn1Label</p></td>
+<td><p>Host ID</p></td>
+<td><p>The name label for the field cn1.</p></td>
+<td><p>cn1Label=Host ID</p></td>
+</tr>
+<tr>
+<td><p>cnt</p></td>
+<td><p>cnt</p></td>
+<td><p>Repeat Count</p></td>
+<td><p>The number of times this event was sequentially repeated.</p></td>
+<td><p>cnt=8</p></td>
+</tr>
+<tr>
+<td><p>cs2</p></td>
+<td><p>cs2</p></td>
+<td><p>TCP Flags</p></td>
+<td></td>
+<td><p>cs2=0x10 ACK cs2=0x14 ACK RST</p></td>
+</tr>
+<tr>
+<td><p>cs2Label</p></td>
+<td><p>cs2Label</p></td>
+<td><p>TCP Flags</p></td>
+<td><p>The name label for the field cs2.</p></td>
+<td><p>cs2Label=TCP Flags</p></td>
+</tr>
+<tr>
+<td><p>cs3</p></td>
+<td><p>cs3</p></td>
+<td><p>Packet Fragmentation Information</p></td>
+<td></td>
+<td><p>cs3=DF cs3=MF cs3=DF MF</p></td>
+</tr>
+<tr>
+<td><p>cs3Label</p></td>
+<td><p>cs3Label</p></td>
+<td><p>Fragmentation Bits</p></td>
+<td><p>The name label for the field cs3.</p></td>
+<td><p>cs3Label=Fragmentation Bits</p></td>
+</tr>
+<tr>
+<td><p>cs4</p></td>
+<td><p>cs4</p></td>
+<td><p>ICMP Type and Code</p></td>
+<td><p>(For the ICMP protocol only) The ICMP type and code, delimited by a space.</p></td>
+<td><p>cs4=11 0 cs4=8 0</p></td>
+</tr>
+<tr>
+<td><p>cs4Label</p></td>
+<td><p>cs4Label</p></td>
+<td><p>ICMP</p></td>
+<td><p>The name label for the field cs4.</p></td>
+<td><p>cs4Label=ICMP Type and Code</p></td>
+</tr>
+<tr>
+<td><p>dmac</p></td>
+<td><p>dstMAC</p></td>
+<td><p>Destination MAC Address</p></td>
+<td><p>MAC address of the destination computer's network interface.</p></td>
+<td><p>dmac= 00:0C:29:2F:09:B3</p></td>
+</tr>
+<tr>
+<td><p>dpt</p></td>
+<td><p>dstPort</p></td>
+<td><p>Destination Port</p></td>
+<td><p>(For TCP and UDP protocol only) <a href="trend-vision-one-swp-port-numbers">Port number</a> of the destination computer's connection or session.</p></td>
+<td><p>dpt=80 dpt=135</p></td>
+</tr>
+<tr>
+<td><p>dst</p></td>
+<td><p>dst</p></td>
+<td><p>Destination IP Address</p></td>
+<td><p>IP address of the destination computer.</p></td>
+<td><p>dst=192.168.1.102 dst=10.30.128.2</p></td>
+</tr>
+<tr>
+<td><p>in</p></td>
+<td><p>in</p></td>
+<td><p>Inbound Bytes Read</p></td>
+<td><p>(For inbound connections only) Number of inbound bytes read.</p></td>
+<td><p>in=137 in=21</p></td>
+</tr>
+<tr>
+<td><p>out</p></td>
+<td><p>out</p></td>
+<td><p>Outbound Bytes Read</p></td>
+<td><p>(For outbound connections only) Number of outbound bytes read.</p></td>
+<td><p>out=216 out=13</p></td>
+</tr>
+<tr>
+<td><p>proto</p></td>
+<td><p>proto</p></td>
+<td><p>Transport protocol</p></td>
+<td><p>Name of the transport protocol used.</p></td>
+<td><p>proto=tcp proto=udp proto=icmp</p></td>
+</tr>
+<tr>
+<td><p>smac</p></td>
+<td><p>srcMAC</p></td>
+<td><p>Source MAC Address</p></td>
+<td><p>MAC address of the source computer's network interface.</p></td>
+<td><p>smac= 00:0E:04:2C:02:B3</p></td>
+</tr>
+<tr>
+<td><p>spt</p></td>
+<td><p>srcPort</p></td>
+<td><p>Source Port</p></td>
+<td><p>(For TCP and UDP protocol only) Port number of the source computer's connection or session.</p></td>
+<td><p>spt=1032 spt=443</p></td>
+</tr>
+<tr>
+<td><p>src</p></td>
+<td><p>src</p></td>
+<td><p>Source IP Address</p></td>
+<td><p>The packet's source IP address at this event.</p></td>
+<td><p>src=192.168.1.105 src=10.10.251.231</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsFrameType</p></td>
+<td><p>TrendMicroDsFrameType</p></td>
+<td><p>Ethernet frame type</p></td>
+<td><p>Connection ethernet frame type.</p></td>
+<td><p>TrendMicroDsFrameType=IP TrendMicroDsFrameType=ARP TrendMicroDsFrameType=RevARP TrendMicroDsFrameType=NetBEUI</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsPacketData</p></td>
+<td><p>TrendMicroDsPacketData</p></td>
+<td><p>Packet data</p></td>
+<td><p>The packet data, represented in Base64.</p></td>
+<td><p>TrendMicroDsPacketData=AFB...</p></td>
+</tr>
+<tr>
+<td><p>dvc</p></td>
+<td><p>dvc</p></td>
+<td><p>Device address</p></td>
+<td><p>The IPv4 address for cn1.</p>
+<p>Does not appear if the source is an IPv6 address or hostname. (Uses dvchost instead.)</p></td>
+<td><p>dvc=10.1.144.199</p></td>
+</tr>
+<tr>
+<td><p>dvchost</p></td>
+<td><p>dvchost</p></td>
+<td><p>Device host name</p></td>
+<td><p>The hostname or IPv6 address for cn1.</p>
+<p>Does not appear if the source is an IPv4 address. (Uses dvc field instead.)</p></td>
+<td><p>dvchost=exch01.example.com dvchost=2001:db8::5</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTags</p></td>
+<td><p>TrendMicroDsTags</p></td>
+<td><p>Event Tags</p></td>
+<td><p>Server &amp; Workload Protection event tags assigned to the event</p></td>
+<td><p>TrendMicroDsTags=suspicious</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTenant</p></td>
+<td><p>TrendMicroDsTenant</p></td>
+<td><p>Tenant Name</p></td>
+<td><p>Server &amp; Workload Protection tenant</p></td>
+<td><p>TrendMicroDsTenant=Primary</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTenantId</p></td>
+<td><p>TrendMicroDsTenantId</p></td>
+<td><p>Tenant ID</p></td>
+<td><p>Server &amp; Workload Protection tenant ID</p></td>
+<td><p>TrendMicroDsTenantId=0</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>sev</p></td>
+<td><p>Severity</p></td>
+<td><p>The severity of the event. 1 is the least severe; 10 is the most severe.</p></td>
+<td><p>sev=5</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>cat</p></td>
+<td><p>Category</p></td>
+<td><p>Category</p></td>
+<td><p>cat=Firewall</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>name</p></td>
+<td><p>Name</p></td>
+<td><p>Event name</p></td>
+<td><p>name=Remote Domain Enforcement (Split Tunnel)</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>desc</p></td>
+<td><p>Description</p></td>
+<td><p>Event description. Firewall events use the event name as the description.</p></td>
+<td><p>desc=Remote Domain Enforcement (Split Tunnel)</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsScannerIp</p></td>
+<td><p>TrendMicroDsScannerIp</p></td>
+<td><p>Scanner IP</p></td>
+<td><p>Scanner IP Address</p></td>
+<td><p>TrendMicroDsScannerIp=192.168.33.1</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTargetPortList</p></td>
+<td><p>TrendMicroDsTargetPortList</p></td>
+<td><p>Target Port List</p></td>
+<td><p>Scanned Port List</p></td>
+<td><p>TrendMicroDsTargetPortList=12;13;16;18;22;23;27;32;38;42;44;47;48;60;67;</p></td>
+</tr>
+</tbody>
+</table>
+
+### Integrity Monitoring log event format {#integrity-monitoring-log-event-format}
+
+*Base CEF format:* CEF:Version|Device Vendor|Device Product|Device Version|Signature ID|Name|Severity|Extension
+
+*Sample CEF Log Entry:* CEF:0|Trend Micro|Deep Security Agent|\<Agent version\>|30|New Integrity Monitoring Rule|6|cn1=1 cn1Label=Host ID dvchost=hostname act=updated filePath=c:\windows\message.dll suser=admin sproc=C:\Windows\System32\notepad.exe msg=lastModified,sha1,size
+
+*Base LEEF 2.0 format:* LEEF:2.0|Vendor|Product|Version|EventID|(Delimiter Character, optional if the Delimiter Character is tab)|Extension
+
+*Sample LEEF Log Entry:* LEEF:2.0|Trend Micro|Deep Security Agent|\<Agent version\>|2002779|cat=Integrity Monitor name=Microsoft Windows - System file modified desc=Microsoft Windows - System file modified sev=8 cn1=37 cn1Label=Host ID dvchost=www.example.com TrendMicroDsTenant=Primary TrendMicroDsTenantId=0 act=updated suser=admin sproc=C:\Windows\System32\notepad.exe
+
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 38%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>CEF Extension Field</p></th>
+<th><p>LEEF Extension Field</p></th>
+<th><p>Name</p></th>
+<th><p>Description</p></th>
+<th><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>act</p></td>
+<td><p>act</p></td>
+<td><p>Action</p></td>
+<td><p>The action detected by the integrity rule. Can contain: created, updated, deleted or renamed.</p></td>
+<td><p>act=created act=deleted</p></td>
+</tr>
+<tr>
+<td><p>cn1</p></td>
+<td><p>cn1</p></td>
+<td><p>Host Identifier</p></td>
+<td><p>The agent computer's internal unique identifier.</p></td>
+<td><p>cn1=113</p></td>
+</tr>
+<tr>
+<td><p>cn1Label</p></td>
+<td><p>cn1Label</p></td>
+<td><p>Host ID</p></td>
+<td><p>The name label for the field cn1.</p></td>
+<td><p>cn1Label=Host ID</p></td>
+</tr>
+<tr>
+<td><p>filePath</p></td>
+<td><p>filePath</p></td>
+<td><p>Target Entity</p></td>
+<td><p>The integrity rule target entity. May contain a file or directory path, registry key, etc.</p></td>
+<td><p>filePath=C:\WINDOWS\system32\drivers\etc\hosts</p></td>
+</tr>
+<tr>
+<td><p>suser</p></td>
+<td><p>suser</p></td>
+<td><p>Source User</p></td>
+<td><p>Account of the user who changed the file being monitored.</p></td>
+<td><p>suser=WIN-038M7CQDHIN\Administrator</p></td>
+</tr>
+<tr>
+<td><p>sproc</p></td>
+<td><p>sproc</p></td>
+<td><p>Source Process</p></td>
+<td><p>The name of the event's source process.</p></td>
+<td><p>sproc=C:\\Windows\\System32\\notepad.exe</p></td>
+</tr>
+<tr>
+<td><p>msg</p></td>
+<td><p>msg</p></td>
+<td><p>Attribute changes</p></td>
+<td><p>(For "renamed" action only) A list of changed attribute names. If "Relay via Manager" is selected, all event action types include a full description.</p></td>
+<td><p>msg=lastModified,sha1,size</p></td>
+</tr>
+<tr>
+<td><p>oldfilePath</p></td>
+<td><p>oldfilePath</p></td>
+<td><p>Old target entity</p></td>
+<td><p>(For "renamed" action only) The previous integrity rule target entity to capture the rename action from the previous target entity to the new, which is recorded in the filePath field.</p></td>
+<td><p>oldFilePath=C:\WINDOWS\system32\logfiles\ds_agent.log</p></td>
+</tr>
+<tr>
+<td><p>dvc</p></td>
+<td><p>dvc</p></td>
+<td><p>Device address</p></td>
+<td><p>The IPv4 address for cn1.</p>
+<p>Does not appear if the source is an IPv6 address or hostname. (Uses dvchost instead.)</p></td>
+<td><p>dvc=10.1.144.199</p></td>
+</tr>
+<tr>
+<td><p>dvchost</p></td>
+<td><p>dvchost</p></td>
+<td><p>Device host name</p></td>
+<td><p>The hostname or IPv6 address for cn1.</p>
+<p>Does not appear if the source is an IPv4 address. (Uses dvc field instead.)</p></td>
+<td><p>dvchost=www.example.com dvchost=2001:db8::5</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTags</p></td>
+<td><p>TrendMicroDsTags</p></td>
+<td><p>Events tags</p></td>
+<td><p>Server &amp; Workload Protection event tags assigned to the event</p></td>
+<td><p>TrendMicroDsTags=suspicious</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTenant</p></td>
+<td><p>TrendMicroDsTenant</p></td>
+<td><p>Tenant name</p></td>
+<td><p>Server &amp; Workload Protection tenant</p></td>
+<td><p>TrendMicroDsTenant=Primary</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTenantId</p></td>
+<td><p>TrendMicroDsTenantId</p></td>
+<td><p>Tenant ID</p></td>
+<td><p>Server &amp; Workload Protection tenant ID</p></td>
+<td><p>TrendMicroDsTenantId=0</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>sev</p></td>
+<td><p>Severity</p></td>
+<td><p>The severity of the event. 1 is the least severe; 10 is the most severe.</p></td>
+<td><p>sev=8</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>cat</p></td>
+<td><p>Category</p></td>
+<td><p>Category</p></td>
+<td><p>cat=Integrity Monitor</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>name</p></td>
+<td><p>Name</p></td>
+<td><p>Event name</p></td>
+<td><p>name=Microsoft Windows - System file modified</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>desc</p></td>
+<td><p>Description</p></td>
+<td><p>Event description. Integrity Monitoring uses the event name as the description.</p></td>
+<td><p>desc=Microsoft Windows - System file modified</p></td>
+</tr>
+</tbody>
+</table>
+
+### Intrusion Prevention event log format {#intrusion-prevention-event-log-format}
+
+*Base CEF format:* CEF:Version|Device Vendor|Device Product|Device Version|Signature ID|Name|Severity|Extension
+
+*Sample CEF Log Entry:* CEF:0|Trend Micro|Deep Security Agent|\<Agent version\>|1001111|Test Intrusion Prevention Rule|3|cn1=1 cn1Label=Host ID dvchost=hostname dmac=00:50:56:F5:7F:47 smac=00:0C:29:EB:35:DE TrendMicroDsFrameType=IP src=192.168.126.150 dst=72.14.204.105 out=1093 cs3=DF MF cs3Label=Fragmentation Bits proto=TCP spt=49786 dpt=80 cs2=0x00 ACK PSH cs2Label=TCP Flags cnt=1 act=IDS:Reset cn3=10 cn3Label=Intrusion Prevention Packet Position cs5=10 cs5Label=Intrusion Prevention Stream Position cs6=8 cs6Label=Intrusion Prevention Flags TrendMicroDsPacketData=R0VUIC9zP3...
+
+*Base LEEF 2.0 format:* LEEF:2.0|Vendor|Product|Version|EventID|(Delimiter Character, optional if the Delimiter Character is tab)|Extension
+
+*Sample LEEF Log Entry:* LEEF:2.0|Trend Micro|Deep Security Agent|\<Agent version\>|1000940|cat=Intrusion Prevention name=Sun Java RunTime Environment Multiple Buffer Overflow Vulnerabilities desc=Sun Java RunTime Environment Multiple Buffer Overflow Vulnerabilities sev=10 cn1=6 cn1Label=Host ID dvchost=exch01 TrendMicroDsTenant=Primary TrendMicroDsTenantId=0 dstMAC=55:C0:A8:55:FF:41 srcMAC=CA:36:42:B1:78:3D TrendMicroDsFrameType=IP src=10.0.251.84 dst=56.19.41.128 out=166 cs3= cs3Label=Fragmentation Bits proto=ICMP srcPort=0 dstPort=0 cnt=1 act=IDS:Reset cn3=0 cn3Label=DPI Packet Position cs5=0 cs5Label=DPI Stream Position cs6=0 cs6Label=DPI Flags TrendMicroDsPacketData=R0VUIC9zP3...
+
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 38%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>CEF Extension Field</p></th>
+<th><p>LEEF Extension Field</p></th>
+<th><p>Name</p></th>
+<th><p>Description</p></th>
+<th><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>act</p></td>
+<td><p>act</p></td>
+<td><p>Action</p></td>
+<td><p>(IPS rules written before Deep Security version 7.5 SP1 could additionally perform Insert, Replace, and Delete actions. These actions are no longer performed. If an older IPS Rule is triggered which still attempts to perform those actions, the event will indicate that the rule was applied in detect-only mode.)</p></td>
+<td><p>act=Block</p></td>
+</tr>
+<tr>
+<td><p>cn1</p></td>
+<td><p>cn1</p></td>
+<td><p>Host Identifier</p></td>
+<td><p>The agent computer's internal unique identifier.</p></td>
+<td><p>cn1=113</p></td>
+</tr>
+<tr>
+<td><p>cn1Label</p></td>
+<td><p>cn1Label</p></td>
+<td><p>Host ID</p></td>
+<td><p>The name label for the field cn1.</p></td>
+<td><p>cn1Label=Host ID</p></td>
+</tr>
+<tr>
+<td><p>cn3</p></td>
+<td><p>cn3</p></td>
+<td><p>Intrusion Prevention Packet Position</p></td>
+<td><p>Position within packet of data that triggered the event.</p></td>
+<td><p>cn3=37</p></td>
+</tr>
+<tr>
+<td><p>cn3Label</p></td>
+<td><p>cn3Label</p></td>
+<td><p>Intrusion Prevention Packet Position</p></td>
+<td><p>The name label for the field cn3.</p></td>
+<td><p>cn3Label=Intrusion Prevention Packet Position</p></td>
+</tr>
+<tr>
+<td><p>cnt</p></td>
+<td><p>cnt</p></td>
+<td><p>Repeat Count</p></td>
+<td><p>The number of times this event was sequentially repeated.</p></td>
+<td><p>cnt=8</p></td>
+</tr>
+<tr>
+<td><p>cs1</p></td>
+<td><p>cs1</p></td>
+<td><p>Intrusion Prevention Filter Note</p></td>
+<td><p>(Optional) A note field which can contain a short binary or text note associated with the payload file. If the value of the note field is all printable ASCII characters, it will be logged as text with spaces converted to underscores. If it contains binary data, it will be logged using Base-64 encoding.</p></td>
+<td><p>cs1=Drop_data</p></td>
+</tr>
+<tr>
+<td><p>cs1Label</p></td>
+<td><p>cs1Label</p></td>
+<td><p>Intrusion Prevention Note</p></td>
+<td><p>The name label for the field cs1.</p></td>
+<td><p>cs1Label=Intrusion Prevention Note</p></td>
+</tr>
+<tr>
+<td><p>cs2</p></td>
+<td><p>cs2</p></td>
+<td><p>TCP Flags</p></td>
+<td><p>(For the TCP protocol only) The raw TCP flag byte followed by the URG, ACK, PSH, RST, SYN and FIN fields may be present if the TCP header was set.</p></td>
+<td><p>cs2=0x10 ACK cs2=0x14 ACK RST</p></td>
+</tr>
+<tr>
+<td><p>cs2Label</p></td>
+<td><p>cs2Label</p></td>
+<td><p>TCP Flags</p></td>
+<td><p>The name label for the field cs2.</p></td>
+<td><p>cs2Label=TCP Flags</p></td>
+</tr>
+<tr>
+<td><p>cs3</p></td>
+<td><p>cs3</p></td>
+<td><p>Packet Fragmentation Information</p></td>
+<td></td>
+<td><p>cs3=DF cs3=MF cs3=DF MF</p></td>
+</tr>
+<tr>
+<td><p>cs3Label</p></td>
+<td><p>cs3Label</p></td>
+<td><p>Fragmentation Bits</p></td>
+<td><p>The name label for the field cs3.</p></td>
+<td><p>cs3Label=Fragmentation Bits</p></td>
+</tr>
+<tr>
+<td><p>cs4</p></td>
+<td><p>cs4</p></td>
+<td><p>ICMP Type and Code</p></td>
+<td><p>(For the ICMP protocol only) The ICMP type and code stored in their respective order delimited by a space.</p></td>
+<td><p>cs4=11 0 cs4=8 0</p></td>
+</tr>
+<tr>
+<td><p>cs4Label</p></td>
+<td><p>cs4Label</p></td>
+<td><p>ICMP</p></td>
+<td><p>The name label for the field cs4.</p></td>
+<td><p>cs4Label=ICMP Type and Code</p></td>
+</tr>
+<tr>
+<td><p>cs5</p></td>
+<td><p>cs5</p></td>
+<td><p>Intrusion Prevention Stream Position</p></td>
+<td><p>Position within stream of data that triggered the event.</p></td>
+<td><p>cs5=128 cs5=20</p></td>
+</tr>
+<tr>
+<td><p>cs5Label</p></td>
+<td><p>cs5Label</p></td>
+<td><p>Intrusion Prevention Stream Position</p></td>
+<td><p>The name label for the field cs5.</p></td>
+<td><p>cs5Label=Intrusion Prevention Stream Position</p></td>
+</tr>
+<tr>
+<td><p>cs6</p></td>
+<td><p>cs6</p></td>
+<td><p>Intrusion Prevention Filter Flags</p></td>
+<td><p>A combined value that includes the sum of the flag values: 1 - Data truncated - Data could not be logged. 2 - Log Overflow - Log overflowed after this log. 4 - Suppressed - Logs threshold suppressed after this log. 8 - Have Data - Contains packet data 16 - Reference Data - References previously logged data.</p></td>
+<td><p>The following example would be a summed combination of 1 (Data truncated) and 8 (Have Data): cs6=9</p></td>
+</tr>
+<tr>
+<td><p>cs6Label</p></td>
+<td><p>cs6Label</p></td>
+<td><p>Intrusion Prevention Flags</p></td>
+<td><p>The name label for the field cs6.</p></td>
+<td><p>cs6=Intrusion Prevention Filter Flags</p></td>
+</tr>
+<tr>
+<td><p>dmac</p></td>
+<td><p>dstMAC</p></td>
+<td><p>Destination MAC Address</p></td>
+<td><p>Destination computer network interface MAC address.</p></td>
+<td><p>dmac= 00:0C:29:2F:09:B3</p></td>
+</tr>
+<tr>
+<td><p>dpt</p></td>
+<td><p>dstPort</p></td>
+<td><p>Destination Port</p></td>
+<td><p>Destination computer connection port. Applicable to TCP and UDP protocol only.</p></td>
+<td><p>dpt=80 dpt=135</p></td>
+</tr>
+<tr>
+<td><p>dst</p></td>
+<td><p>dst</p></td>
+<td><p>Destination IP Address</p></td>
+<td><p>Destination computer IP Address.</p></td>
+<td><p>dst=192.168.1.102 dst=10.30.128.2</p></td>
+</tr>
+<tr>
+<td><p>xff</p></td>
+<td><p>xff</p></td>
+<td><p>X-Forwarded-For</p></td>
+<td><p>The IPaddress of the last hub in the X-Forwarded-For header. This is typically originating IP address, beyond the proxy that may exist. See also the src field. To include xff in events, enable the "1006540 - Enable X-Forwarded-For HTTP Header Logging" <a href="trend-vision-one-config-intrusion-prevention-rules">Intrusion Prevention rule</a>.</p></td>
+<td><p>xff=192.168.137.1</p></td>
+</tr>
+<tr>
+<td><p>in</p></td>
+<td><p>in</p></td>
+<td><p>Inbound Bytes Read</p></td>
+<td><p>Number of inbound bytes read. Applicable to inbound connections only.</p></td>
+<td><p>in=137 in=21</p></td>
+</tr>
+<tr>
+<td><p>out</p></td>
+<td><p>out</p></td>
+<td><p>Outbound Bytes Read</p></td>
+<td><p>Number of outbound bytes read. Applicable to outbound connections only.</p></td>
+<td><p>out=216 out=13</p></td>
+</tr>
+<tr>
+<td><p>proto</p></td>
+<td><p>proto</p></td>
+<td><p>Transport protocol</p></td>
+<td><p>Name of the connection transport protocol used.</p></td>
+<td><p>proto=tcp proto=udp proto=icmp</p></td>
+</tr>
+<tr>
+<td><p>smac</p></td>
+<td><p>srcMAC</p></td>
+<td><p>Source MAC Address</p></td>
+<td><p>Source computer network interface MAC address.</p></td>
+<td><p>smac= 00:0E:04:2C:02:B3</p></td>
+</tr>
+<tr>
+<td><p>spt</p></td>
+<td><p>srcPort</p></td>
+<td><p>Source Port</p></td>
+<td><p>Source computer connection port. Applicable to TCP and UDP protocol only.</p></td>
+<td><p>spt=1032 spt=443</p></td>
+</tr>
+<tr>
+<td><p>src</p></td>
+<td><p>src</p></td>
+<td><p>Source IP Address</p></td>
+<td><p>Source computer IP Address. This is the IP of the last proxy server, if it exists, or the client IP. See also the xff field.</p></td>
+<td><p>src=192.168.1.105 src=10.10.251.231</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsFrameType</p></td>
+<td><p>TrendMicroDsFrameType</p></td>
+<td><p>Ethernet frame type</p></td>
+<td><p>Connection ethernet frame type.</p></td>
+<td><p>TrendMicroDsFrameType=IP TrendMicroDsFrameType=ARP TrendMicroDsFrameType=RevARP TrendMicroDsFrameType=NetBEUI</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsPacketData</p></td>
+<td><p>TrendMicroDsPacketData</p></td>
+<td><p>Packet data</p></td>
+<td><p>The packet data, represented in Base64.</p></td>
+<td><p>TrendMicroDsPacketData=R0VUIC9zP3...</p></td>
+</tr>
+<tr>
+<td><p>dvc</p></td>
+<td><p>dvc</p></td>
+<td><p>Device address</p></td>
+<td><p>The IPv4 address for cn1.</p>
+<p>Does not appear if the source is an IPv6 address or hostname. Uses dvchost instead.</p></td>
+<td><p>dvc=10.1.144.199</p></td>
+</tr>
+<tr>
+<td><p>dvchost</p></td>
+<td><p>dvchost</p></td>
+<td><p>Device host name</p></td>
+<td><p>The hostname or IPv6 address for cn1.</p>
+<p>Does not appear if the source is an IPv4 address. Uses dvc field instead.</p></td>
+<td><p>dvchost=www.example.com dvchost=2001:db8::5</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTags</p></td>
+<td><p>TrendMicroDsTags</p></td>
+<td><p>Event tags</p></td>
+<td><p>Server &amp; Workload Protection event tags assigned to the event</p></td>
+<td><p>TrendMicroDsTags=Suspicious</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTenant</p></td>
+<td><p>TrendMicroDsTenant</p></td>
+<td><p>Tenant name</p></td>
+<td><p>Server &amp; Workload Protection tenant name</p></td>
+<td><p>TrendMicroDsTenant=Primary</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTenantId</p></td>
+<td><p>TrendMicroDsTenantId</p></td>
+<td><p>Tenant ID</p></td>
+<td><p>Server &amp; Workload Protection tenant ID</p></td>
+<td><p>TrendMicroDsTenantId=0</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>sev</p></td>
+<td><p>Severity</p></td>
+<td><p>The severity of the event. 1 is the least severe; 10 is the most severe.</p></td>
+<td><p>sev=10</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>cat</p></td>
+<td><p>Category</p></td>
+<td><p>Category</p></td>
+<td><p>cat=Intrusion Prevention</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>name</p></td>
+<td><p>Name</p></td>
+<td><p>Event name</p></td>
+<td><p>name=Sun Java RunTime Environment Multiple Buffer Overflow Vulnerabilities</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>desc</p></td>
+<td><p>Description</p></td>
+<td><p>Event description. Intrusion Prevention events use the event name as the description.</p></td>
+<td><p>desc=Sun Java RunTime Environment Multiple Buffer Overflow Vulnerabilities</p></td>
+</tr>
+<tr>
+<td><p>cn2</p></td>
+<td><p>cn2</p></td>
+<td><p>Status Code</p></td>
+<td><p>Status code.</p></td>
+<td><p>cn2=-501</p></td>
+</tr>
+</tbody>
+</table>
+
+### Log Inspection event format {#log-inspection-event-format}
+
+*Base CEF format:* CEF:Version|Device Vendor|Device Product|Device Version|Signature ID|Name|Severity|Extension
+
+*Sample CEF Log Entry:* CEF:0|Trend Micro|Deep Security Agent|\<Agent version\>|3002795|Microsoft Windows Events|8|cn1=1 cn1Label=Host ID dvchost=hostname cs1Label=LI Description cs1=Multiple Windows Logon Failures fname=Security src=127.0.0.1 duser=(no user) shost=WIN-RM6HM42G65V msg=WinEvtLog Security: AUDIT_FAILURE(4625): Microsoft-Windows-Security-Auditing: (no user): no domain: WIN-RM6HM42G65V: An account failed to log on. Subject: ..
+
+*Base LEEF 2.0 format:* LEEF:2.0|Vendor|Product|Version|EventID|(Delimiter Character, optional if the Delimiter Character is tab)|Extension
+
+*Sample LEEF Log Entry:* LEEF:2.0|Trend Micro|Deep Security Agent|\<Agent version\>|3003486|cat=Log Inspection name=Mail Server - MDaemon desc=Server Shutdown. sev=3 cn1=37 cn1Label=Host ID dvchost=exch01.example.com TrendMicroDsTenant=Primary TrendMicroDsTenantId=0 cs1=Server Shutdown. cs1Label=LI Description fname= shost= msg=
+
+<table>
+<thead>
+<tr>
+<th><p>CEF Extension Field</p></th>
+<th><p>LEEF Extension Field</p></th>
+<th><p>Name</p></th>
+<th><p>Description</p></th>
+<th><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>cn1</p></td>
+<td><p>cn1</p></td>
+<td><p>Host Identifier</p></td>
+<td><p>The agent computer's internal unique identifier.</p></td>
+<td><p>cn1=113</p></td>
+</tr>
+<tr>
+<td><p>cn1Label</p></td>
+<td><p>cn1Label</p></td>
+<td><p>Host ID</p></td>
+<td><p>The name label for the field cn1.</p></td>
+<td><p>cn1Label=Host ID</p></td>
+</tr>
+<tr>
+<td><p>cs1</p></td>
+<td><p>cs1</p></td>
+<td><p>Specific Sub-Rule</p></td>
+<td><p>The Log Inspection sub-rule which triggered this event.</p></td>
+<td><p>cs1=Multiple Windows audit failure events</p></td>
+</tr>
+<tr>
+<td><p>cs1Label</p></td>
+<td><p>cs1Label</p></td>
+<td><p>LI Description</p></td>
+<td><p>The name label for the field cs1.</p></td>
+<td><p>cs1Label=LI Description</p></td>
+</tr>
+<tr>
+<td><p>duser</p></td>
+<td><p>duser</p></td>
+<td><p>User Information</p></td>
+<td><p>(If parse-able username exists) The name of the target user initiated the log entry.</p></td>
+<td><p>duser=(no user) duser=NETWORK SERVICE</p></td>
+</tr>
+<tr>
+<td><p>fname</p></td>
+<td><p>fname</p></td>
+<td><p>Target entity</p></td>
+<td><p>The Log Inspection rule target entity. May contain a file or directory path, registry key, etc.</p></td>
+<td><p>fname=Application fname=C:\Program Files\CMS\logs\server0.log</p></td>
+</tr>
+<tr>
+<td><p>msg</p></td>
+<td><p>msg</p></td>
+<td><p>Details</p></td>
+<td><p>Details of the Log Inspection event. May contain a verbose description of the detected log event.</p></td>
+<td><p>msg=WinEvtLog: Application: AUDIT_FAILURE(20187): pgEvent: (no user): no domain: SERVER01: Remote login failure for user 'xyz'</p></td>
+</tr>
+<tr>
+<td><p>shost</p></td>
+<td><p>shost</p></td>
+<td><p>Source Hostname</p></td>
+<td><p>Source computer hostname.</p></td>
+<td><p>shost=webserver01.corp.com</p></td>
+</tr>
+<tr>
+<td><p>src</p></td>
+<td><p>src</p></td>
+<td><p>Source IP Address</p></td>
+<td><p>Source computer IP address.</p></td>
+<td><p>src=192.168.1.105 src=10.10.251.231</p></td>
+</tr>
+<tr>
+<td><p>dvc</p></td>
+<td><p>dvc</p></td>
+<td><p>Device address</p></td>
+<td><p>The IPv4 address for cn1.</p>
+<p>Does not appear if the source is an IPv6 address or hostname. (Uses dvchost instead.)</p></td>
+<td><p>dvc=10.1.144.199</p></td>
+</tr>
+<tr>
+<td><p>dvchost</p></td>
+<td><p>dvchost</p></td>
+<td><p>Device host name</p></td>
+<td><p>The hostname or IPv6 address for cn1.</p>
+<p>Does not appear if the source is an IPv4 address. (Uses dvc field instead.)</p></td>
+<td><p>dvchost=www.example.com dvchost=2001:db8::5</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTags</p></td>
+<td><p>TrendMicroDsTags</p></td>
+<td><p>Events tags</p></td>
+<td><p>Server &amp; Workload Protection event tags assigned to the event</p></td>
+<td><p>TrendMicroDsTags=suspicious</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTenant</p></td>
+<td><p>TrendMicroDsTenant</p></td>
+<td><p>Tenant name</p></td>
+<td><p>Server &amp; Workload Protection tenant</p></td>
+<td><p>TrendMicroDsTenant=Primary</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTenantId</p></td>
+<td><p>TrendMicroDsTenantId</p></td>
+<td><p>Tenant ID</p></td>
+<td><p>Server &amp; Workload Protection tenant ID</p></td>
+<td><p>TrendMicroDsTenantId=0</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>sev</p></td>
+<td><p>Severity</p></td>
+<td><p>The severity of the event. 1 is the least severe; 10 is the most severe.</p></td>
+<td><p>sev=3</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>cat</p></td>
+<td><p>Category</p></td>
+<td><p>Category</p></td>
+<td><p>cat=Log Inspection</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>name</p></td>
+<td><p>Name</p></td>
+<td><p>Event name</p></td>
+<td><p>name=Mail Server - MDaemon</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>desc</p></td>
+<td><p>Description</p></td>
+<td><p>Event description.</p></td>
+<td><p>desc=Server Shutdown</p></td>
+</tr>
+</tbody>
+</table>
+
+### Web Reputation event format {#web-reputation-event-format}
+
+*Base CEF format:* CEF:Version|Device Vendor|Device Product|Device Version|Signature ID|Name|Severity|Extension
+
+*Sample CEF Log Entry:* CEF:0|Trend Micro|Deep Security Agent|\<Agent version\>|5000000|WebReputation|5|cn1=1 cn1Label=Host ID dvchost=hostname request=example.com msg=Blocked By Admin
+
+*Base LEEF 2.0 format:* LEEF:2.0|Vendor|Product|Version|EventID|(Delimiter Character, optional if the Delimiter Character is tab)|Extension
+
+*Sample LEEF Log Entry:* LEEF:2.0|Trend Micro|Deep Security Agent|\<Agent version\>|5000000|cat=Web Reputation name=WebReputation desc=WebReputation sev=6 cn1=3 cn1Label=Host ID dvchost=exch01.example.com TrendMicroDsTenant=Primary TrendMicroDsTenantId=0 request=http://yw.olx5x9ny.org.it/HvuauRH/eighgSS.htm msg=Suspicious
+
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 38%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>CEF Extension Field</p></th>
+<th><p>LEEF Extension Field</p></th>
+<th><p>Name</p></th>
+<th><p>Description</p></th>
+<th><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>cn1</p></td>
+<td><p>cn1</p></td>
+<td><p>Host Identifier</p></td>
+<td><p>The agent computer's internal unique identifier.</p></td>
+<td><p>cn1=1</p></td>
+</tr>
+<tr>
+<td><p>cn1Label</p></td>
+<td><p>cn1Label</p></td>
+<td><p>Host ID</p></td>
+<td><p>The name label for the field cn1.</p></td>
+<td><p>cn1Label=Host ID</p></td>
+</tr>
+<tr>
+<td><p>request</p></td>
+<td><p>request</p></td>
+<td><p>Request</p></td>
+<td><p>The URL of the request.</p></td>
+<td><p>request=http://www.example.com/index.php</p></td>
+</tr>
+<tr>
+<td><p>msg</p></td>
+<td><p>msg</p></td>
+<td><p>Message</p></td>
+<td><p>The type of action. Possible values are: Realtime, Scheduled, and Manual.</p></td>
+<td><p>msg=Realtime msg=Scheduled</p></td>
+</tr>
+<tr>
+<td><p>dvc</p></td>
+<td><p>dvc</p></td>
+<td><p>Device address</p></td>
+<td><p>The IPv4 address for cn1.</p>
+<p>Does not appear if the source is an IPv6 address or hostname. (Uses dvchost instead.)</p></td>
+<td><p>dvc=10.1.144.199</p></td>
+</tr>
+<tr>
+<td><p>dvchost</p></td>
+<td><p>dvchost</p></td>
+<td><p>Device host name</p></td>
+<td><p>The hostname or IPv6 address for cn1.</p>
+<p>Does not appear if the source is an IPv4 address. (Uses dvc field instead.)</p></td>
+<td><p>dvchost=www.example.com dvchost=2001:db8::5</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTags</p></td>
+<td><p>TrendMicroDsTags</p></td>
+<td><p>Events tags</p></td>
+<td><p>Server &amp; Workload Protection event tags assigned to the event</p></td>
+<td><p>TrendMicroDsTags=suspicious</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTenant</p></td>
+<td><p>TrendMicroDsTenant</p></td>
+<td><p>Tenant name</p></td>
+<td><p>Server &amp; Workload Protection tenant</p></td>
+<td><p>TrendMicroDsTenant=Primary</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTenantId</p></td>
+<td><p>TrendMicroDsTenantId</p></td>
+<td><p>Tenant ID</p></td>
+<td><p>Server &amp; Workload Protection tenant ID</p></td>
+<td><p>TrendMicroDsTenantId=0</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>sev</p></td>
+<td><p>Severity</p></td>
+<td><p>The severity of the event. 1 is the least severe; 10 is the most severe.</p></td>
+<td><p>sev=6</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>cat</p></td>
+<td><p>Category</p></td>
+<td><p>Category</p></td>
+<td><p>cat=Web Reputation</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>name</p></td>
+<td><p>Name</p></td>
+<td><p>Event name</p></td>
+<td><p>name=WebReputation</p></td>
+</tr>
+<tr>
+<td><p>None</p></td>
+<td><p>desc</p></td>
+<td><p>Description</p></td>
+<td><p>Event description. Web Reputation uses the event name as the description.</p></td>
+<td><p>desc=WebReputation</p></td>
+</tr>
+</tbody>
+</table>
+
+### Device Control event format {#device-control-event-format}
+
+*Base CEF format:* CEF:Version|Device Vendor|Device Product|Device Version|Signature ID|Name|Severity|Extension
+
+*Sample CEF Log Entry:* CEF:0|Trend Micro|Deep Security Agent|50.0.1063|7000000|Device Control DeviceControl|6|cn1=1 cn1Label=Host ID dvchost=test-hostname TrendMicroDsTenant=tenantName TrendMicroDsTenantId=1 device=deviceName processName=processName1 fileName=/tmp/some_path2 vendor=vendorName serial=aaaa-bbbb-cccc model=modelName computerName=computerName domainName=computerDomain deviceType=0 permission=0
+
+*Base LEEF 2.0 format:* LEEF:2.0|Vendor|Product|Version|EventID|(Delimiter Character, optional if the Delimiter Character is tab)|Extension
+
+*Sample LEEF Log Entry:* LEEF:2.0|Trend Micro|Deep Security Agent|50.0.1063|7000000|cat=Device Control name=DeviceControl desc=DeviceControl sev=6 cn1=1 cn1Label=Host ID dvchost=test-hostname TrendMicroDsTenant=tenantName TrendMicroDsTenantId=1 device=deviceName processName=processName1 fileName=/tmp/some_path2 vendor=vendorName serial=aaaa-bbbb-cccc model=modelName computerName=computerName domainName=computerDomain deviceType=0 permission=0
+
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 38%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>CEF Extension Field</p></th>
+<th><p>LEEF Extension Field</p></th>
+<th><p>Name</p></th>
+<th><p>Description</p></th>
+<th><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>cn1</p></td>
+<td><p>cn1</p></td>
+<td><p>Host Identifier</p></td>
+<td><p>The agent computer's internal unique identifier.</p></td>
+<td><p>cn1=1</p></td>
+</tr>
+<tr>
+<td><p>cn1Label</p></td>
+<td><p>cn1Label</p></td>
+<td><p>Host ID</p></td>
+<td><p>The name label for the field cn1.</p></td>
+<td><p>cn1Label=Host ID</p></td>
+</tr>
+<tr>
+<td><p>dvchost</p></td>
+<td><p>dvchost</p></td>
+<td><p>Device host name</p></td>
+<td><p>The hostname or IPv6 address for cn1.</p>
+<p>Does not appear if the source is an IPv4 address. (Uses dvc field instead.)</p></td>
+<td><p>dvchost=www.example.com dvchost=2001:db8::5</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTenant</p></td>
+<td><p>TrendMicroDsTenant</p></td>
+<td><p>Tenant name</p></td>
+<td><p>Server &amp; Workload Protection tenant</p></td>
+<td><p>TrendMicroDsTenant=Primary</p></td>
+</tr>
+<tr>
+<td><p>TrendMicroDsTenantId</p></td>
+<td><p>TrendMicroDsTenantId</p></td>
+<td><p>Tenant ID</p></td>
+<td><p>Server &amp; Workload Protection tenant ID</p></td>
+<td><p>TrendMicroDsTenantId=0</p></td>
+</tr>
+<tr>
+<td><p>device</p></td>
+<td><p>device</p></td>
+<td><p>Device Name</p></td>
+<td><p>The device that was accessed.</p></td>
+<td><p>device=Sandisk_USB</p></td>
+</tr>
+<tr>
+<td><p>processName</p></td>
+<td><p>processName</p></td>
+<td><p>Process Name</p></td>
+<td><p>The process name.</p></td>
+<td><p>processName=someProcess.exe</p></td>
+</tr>
+<tr>
+<td><p>fileName</p></td>
+<td><p>fileName</p></td>
+<td><p>File Name</p></td>
+<td><p>The file name that was accessed.</p></td>
+<td><p>fileName=E:\somepath\a.exe</p></td>
+</tr>
+<tr>
+<td><p>vendor</p></td>
+<td><p>vendor</p></td>
+<td><p>Vendor Name</p></td>
+<td><p>The vendor name of the device.</p></td>
+<td><p>vendor=sandisk</p></td>
+</tr>
+<tr>
+<td><p>serial</p></td>
+<td><p>serial</p></td>
+<td><p>Serial Number</p></td>
+<td><p>The serial number of the device.</p></td>
+<td><p>serial=aaa-bbb-ccc</p></td>
+</tr>
+<tr>
+<td><p>model</p></td>
+<td><p>model</p></td>
+<td><p>Model</p></td>
+<td><p>The product name of the device.</p></td>
+<td><p>model=A270_USB</p></td>
+</tr>
+<tr>
+<td><p>computerName</p></td>
+<td><p>computerName</p></td>
+<td><p>Computer Name</p></td>
+<td><p>The computer name.</p></td>
+<td><p>computerName=Jonh_Computer</p></td>
+</tr>
+<tr>
+<td><p>domainName</p></td>
+<td><p>domainName</p></td>
+<td><p>Domain Name</p></td>
+<td><p>The domain name.</p></td>
+<td><p>domainName=CompanyDomain</p></td>
+</tr>
+<tr>
+<td><p>deviceType</p></td>
+<td><p>deviceType</p></td>
+<td><p>Device Type</p></td>
+<td><p>The device type of the device USB_STORAGE_DEVICE(1) MOBILE_DEVICE(2)</p></td>
+<td><p>deviceType=1</p></td>
+</tr>
+<tr>
+<td><p>permission</p></td>
+<td><p>permission</p></td>
+<td><p>Permission</p></td>
+<td><p>The block reason of the access BLOCK(0) READ_ONLY(2)</p></td>
+<td><p>permission=0</p></td>
+</tr>
+</tbody>
+</table>
+:::::::::

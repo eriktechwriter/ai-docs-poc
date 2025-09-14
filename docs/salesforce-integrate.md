@@ -1,0 +1,55 @@
+---
+slug: trend-vision-one-salesforce-integrate
+title: Salesforce integration
+---
+
+Grant Trend Vision One access to Salesforce metadata and information on system misconfigurations for use in compliance and risk assessments.
+
+The **Salesforce** screen (**Workflow and Automation → Third-Party Integration**) provides an overview of all your connected Salesforce tenants and the data that each tenant shares with Trend Vision One.
+
+The following table describes the features available for this integration.
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Feature</p></th>
+<th><p>Description</p></th>
+<th><p>Associated apps</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Manage user data (production tenant)</p></td>
+<td><p>Grants Trend Micro the following permissions:</p>
+<ul>
+<li><p>Manage user data in a production environment via APIs</p></li>
+<li><p>Perform requests at any time (refresh_token, offline_access)</p></li>
+</ul></td>
+<td><ul>
+<li><p><strong>Cyber Risk Exposure Management</strong></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Manage user data (sandbox tenant)</p></td>
+<td><p>Grants Trend Micro the following permissions:</p>
+<ul>
+<li><p>Manage user data in a sandbox environment via APIs</p></li>
+<li><p>Perform requests at any time (refresh_token, offline_access)</p></li>
+</ul></td>
+<td><ul>
+<li><p><strong>Cyber Risk Exposure Management</strong></p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+For more information on granting permissions and connecting tenants, see [Configuring Salesforce tenants](salesforce-tennants.md).
+
+**Related information**
+
+- [Configuring Salesforce tenants](salesforce-tennants.md "Connect Salesforce tenants to share Salesforce metadata and information on system misconfigurations with Trend Vision One.")

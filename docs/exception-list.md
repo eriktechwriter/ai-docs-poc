@@ -1,0 +1,56 @@
+---
+slug: trend-vision-one-exception-list
+title: Exception list
+---
+
+You can select objects that are considered safe and add them to the exception list.
+
+When a connected product detects a suspicious object in the exception list, the connected product considers the object as "safe" and does not take action on the object.
+
+The following table outlines the actions available on the **Exception List** screen.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Filter object data</p></td>
+<td><p>Use the <strong>Search</strong> field and <strong>Object type</strong> drop-down list to filter objects.</p></td>
+</tr>
+<tr>
+<td><p>View or edit object details</p></td>
+<td><p>Click any object name in the <strong>Object</strong> column to open the details panel. View the object settings and make changes if necessary.</p></td>
+</tr>
+<tr>
+<td><p>Add exceptions</p></td>
+<td><p>Click <strong>Add</strong> to open the <strong>Add Exception</strong> screen.</p>
+<p>Choose to manually add different types of objects as exceptions. For more information, see <a href="trend-vision-one-adding-exceptions">Adding exceptions</a>.</p>
+
+
+:::note
+
+<p>You can add a maximum of 5,000 exceptions.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Delete exceptions</p></td>
+<td><p>Select one or more exceptions and click <strong>Delete</strong>.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Adding exceptions](adding-exceptions.md "You can add the domain, file SHA-1, file SHA-256, IP address, sender address, or URL object to the Exception List.")

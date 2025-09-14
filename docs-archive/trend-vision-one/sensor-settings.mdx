@@ -1,0 +1,172 @@
+---
+slug: trend-vision-one-sensor-settings
+title: Endpoint Settings
+---
+# Endpoint Settings
+
+Configure inactive endpoint removal and agent download bandwidth settings.
+
+You can access **Endpoint Settings** by going to **Endpoint Security → Endpoint Inventory** then clicking on the Default and Global Settings icon (![](/images/gear_icon=fc9a51ad-35af-4fe3-92c6-5e41b2dfc5d9.webp)) and selecting **Global Settings**.
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Section</p></th>
+<th><p>Setting</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="3"><p>Inactive Endpoint Removal Settings</p>
+
+
+:::note
+
+<p>Inactive agent removal occurs daily beginning at 00:00 local time according to your business account region.</p>
+
+
+:::
+
+</td>
+<td><p>Automatically remove inactive endpoints</p></td>
+<td><p>Removes endpoints from the Endpoint Inventory list that have the Trend Vision One Endpoint Security agent installed an have not reported back to the server in the specified time</p>
+<p>An inactive endpoint is an endpoint with an agent that has not connected to Trend Vision One within a specified time. Select to enable the feature, then configure the time in days after which to remove endpoints that have not reported to Trend Vision One.</p>
+
+
+:::warning[Important]
+
+<p>Removing the endpoint from the inventory list does not uninstall the agent program or disable any features. To restore an endpoint to the inventory, you must manually uninstall and then reinstall the agent program.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Automatically remove inactive non-persistent virtual desktop endpoints</p></td>
+<td><p>Removes non-persistent endpoints from the Endpoint Inventory list that were configured using the Trend Vision One Endpoint Security Image Setup Tool and have not reported back to the server in the specified time</p>
+<p>This feature applies to non-persistent endpoints. For more information about using the Trend Vision One Endpoint Security agent with non-persistent endpoints, see <a href="trend-vision-one-deployment-using-golden-image">Deployment using a golden image</a>.</p></td>
+</tr>
+<tr>
+<td colspan="2"><p>Inactive endpoint removal settings apply to all Trend Vision One Endpoint Security agents, including agents with Standard Endpoint Protection and Server &amp; Workload Protection. The settings do not apply to agents managed by connected security products, such as Trend Cloud One or Trend Micro Apex One. To configure inactive agent removal for agents managed by connected security products, access the management console for the connected endpoint.</p>
+
+
+:::note
+
+<p>An agent is inactive if both the Endpoint Sensor and protection module (for endpoints with Standard Endpoint Protection and Server &amp; Workload Protection):</p>
+<ul>
+<li><p>Have a disconnected status and</p></li>
+<li><p>Do not check in within the specified time.</p></li>
+</ul>
+<p>To view when the last connection occurred in Endpoint Inventory, click the <strong>Show/Hide Columns</strong> icon (<img src="./images/columnDisplayIcon=20230614105421.webp" />) and select <strong>Agent last connected</strong> and <strong>Sensor last connected</strong>. Select <strong>Agent program status</strong> and <strong>Sensor connectivity</strong> to view the connection status.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Update Download Bandwidth</p></td>
+<td><p>Apply bandwidth throttling when downloading Endpoint Sensor components</p></td>
+<td><p>Limit the number of concurrent agent downloads to limit bandwidth usage and ensure that endpoints upgrades and component downloads do not slow your network</p>
+<p>Select to enable the setting and specify the maximum number of allowed concurrent downloads. See the following <strong>Throttling Considerations</strong> table to estimate download usage.</p>
+
+
+:::note
+
+<ul>
+<li><p>Linux agents do not support bandwidth throttling.</p></li>
+<li><p>If you do not enable the setting, your agents follow the default limit of 11 concurrent downloads.</p></li>
+<li><p>The limit applies to all endpoint download actions, including:</p>
+<ul>
+<li><p>Downloads for new agent deployments such as using the deployment script or retrieving required modules during the installation process</p></li>
+<li><p>Agent updates</p></li>
+<li><p>Endpoint assessments</p></li>
+<li><p>Deploying and updating ZTSA</p></li>
+<li><p>Solution Center deployments</p></li>
+<li><p>Other agent actions which require downloading information</p></li>
+</ul>
+<p>Setting the limit too low might slow deployment, updates, and other endpoint commands. If your endpoints appear to be responding slowly, consider raising the limit.</p></li>
+</ul>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+
+Endpoint removal occurs at 00:00 daily, based on the timezone for your business account region. This might be different from your physical location or console settings. The follow list details the regional timezones used by endpoint removal:
+
+- ADDA: GST (UTC+4)
+
+- Australia (AU): AEST (UTC+10)
+
+- Europe (EU): CET (UTC+1)
+
+- India (IN): IST (UTC+5:30)
+
+- Japan (JP): JST (UTC+9)
+
+- Singapore (SG): CST (UTC+8)
+
+- United States (US): EST (UTC-5)
+
+The following table provides estimated bandwidth throttling settings to update all your endpoints within seven days using a 300 Mbps connection. The settings also affect agent deployment and configuration changes. You can adjust the settings to accelerate the speed based on your network bandwidth.
+
+**Throttling Considerations**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Endpoint Count</p></th>
+<th><p>Max Concurrent Agent Downloads</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>1,000</p></td>
+<td><p>10</p></td>
+</tr>
+<tr>
+<td><p>5,000</p></td>
+<td><p>50</p></td>
+</tr>
+<tr>
+<td><p>10,000</p></td>
+<td><p>100</p></td>
+</tr>
+<tr>
+<td><p>25,000</p></td>
+<td><p>250</p></td>
+</tr>
+<tr>
+<td><p>50,000</p></td>
+<td><p>500</p></td>
+</tr>
+<tr>
+<td><p>100,000</p></td>
+<td><p>1000</p></td>
+</tr>
+<tr>
+<td><p>150,000</p></td>
+<td><p>1500</p></td>
+</tr>
+<tr>
+<td><p>200,000</p></td>
+<td><p>2000</p></td>
+</tr>
+</tbody>
+</table>
+:::

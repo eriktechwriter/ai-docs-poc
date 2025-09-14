@@ -1,0 +1,62 @@
+---
+slug: trend-vision-one-adding-data-loss-prevention-rule
+title: Adding a data loss prevention rule
+---
+# Adding a data loss prevention rule
+
+Select one or more Trend Micro predefined or customized DLP templates or your published sensitivity labels from Microsoft Purview Information Protection to form a data loss prevention rule.
+
+### Procedure {#procedure}
+
+1.  On the **Secure Access Resources** screen, click the **Data Loss Prevention** tab and then click **Add**.
+
+2.  Specify a unique name and a description for the rule.
+
+3.  In the **Settings** section,
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Tab</p></th>
+    <th><p>Setting</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><strong>Data Loss Prevention Templates</strong></p></td>
+    <td><p>Select one or more Trend Micro <a href="trend-vision-one-predefined-dlp-templates-ztsa">predefined</a> or <a href="trend-vision-one-custom-dlp-templates">user customized</a> DLP templates from the <strong>Available DLP Templates</strong> section and add them to the <strong>Selected DLP Templates</strong> section.</p>
+    <p>To manage DLP templates, click the gear icon (<img src="./images/gear_icon=fc9a51ad-35af-4fe3-92c6-5e41b2dfc5d9.webp" />) to open the <strong>Data Loss Prevention Templates</strong> screen in a new browser tab.</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Sensitivity Labels</strong></p></td>
+    <td><ol>
+    <li><p>On first use, click <strong>Grant permissions</strong> to allow Internet Access to read your Microsoft Purview Information Protection-encrypted content and synchronize your published sensitivity labels.</p>
+    <p>For more information about sensitivity labels, see Microsoft Purview Information Protection documentation.</p></li>
+    <li><p>Select one or more sensitivity labels from the <strong>Available Sensitivity Labels</strong> section and add them to the <strong>Selected Sensitivity Labels</strong> section.</p>
+    <p>The protection is available for the following file types:</p>
+    <ul>
+    <li><p>Microsoft Word: docm, docx, dotm, and dotx</p></li>
+    <li><p>Microsoft Excel: xlam, xlsm, xlsx, xltx, xlsb, and xltm</p></li>
+    <li><p>Microsoft PowerPoint: potm, potx, ppsx, ppsm, pptm, pptx, pot, pps, xps, and ppt</p></li>
+    <li><p>PDF: pdf</p></li>
+    <li><p>Text: text</p></li>
+    </ul></li>
+    </ol>
+    <p>To synchronize the published sensitivity labels, click the refresh icon (<img src="./images/refresh=5bd75452-c2fb-43ed-90e6-7b552fdc5dd2.webp" />).</p>
+    <p>To manage Microsoft Entra ID permissions, click the gear icon (<img src="./images/gear_icon=fc9a51ad-35af-4fe3-92c6-5e41b2dfc5d9.webp" />) to open the <strong>Third-Party Integration → Microsoft Entra ID</strong> screen in a new browser tab.</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+4.  In the **Action** section, select an action on the outbound web traffic for content including the sensitive data identified in the **Settings** section.
+
+    - Monitor: Users can transmit the data but the Internet Access Gateway logs this user activity for monitoring and analysis.
+
+    - Block: Users cannot send the data out of your organization's network.
+
+5.  Click **Save**.
+:::

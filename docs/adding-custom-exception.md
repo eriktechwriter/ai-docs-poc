@@ -1,0 +1,72 @@
+---
+slug: trend-vision-one-adding-custom-exception
+title: Add a custom exception
+---
+
+Create a custom exception to exclude specified objects or events from future detections.
+
+:::danger[Warning]
+- Detection model exceptions can cause false negatives, which might let threats to go undetected.
+
+- New exceptions might require a few minutes before taking effect.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **XDR Threat Investigation → Detection Model Management → Exceptions → + Add**.
+
+2.  Specify the general settings for the new exception.
+
+3.  Define up to 10 targets.
+
+    1.  Specify the target settings:
+
+        - **Field**
+
+        - **Values**
+
+          - You can specify up to 50 values. Each value cannot exceed 128 characters.
+
+          - The values must match the format of the selected field. For example, if the field is **endpointGUID**, you must specify a GUID.
+
+    2.  If you need to define multiple targets, click **+Add Target** to define another target.
+
+4.  Define the event source.
+
+    - **Event type**
+
+      Each event type is associated with one type of activity data that specific data sources collect. For example, the **ENDPOINT_ACTIVITY_DATA** event type is associated with endpoint activity data that endpoint sensors collect.
+
+      To learn more about activity data and data sources, see [Search method data sources](search-method-data-sources.md).
+
+    - **Event ID**
+
+    - **Event sub-ID**
+
+5.  Define up to 10 match criteria.
+
+    1.  Specify the match criteria:
+
+        - **Field type**
+
+        - **Field**
+
+        - **Values**
+
+          You can specify up to 20 values. Each value cannot exceed 2048 characters.
+
+    2.  To replace certain parts of the object with wildcards, select **Edit using wildcards**.
+
+        The object value supports the following elements:
+
+        - `.*`: Multiple character substitute
+
+        - `\`: Escape character
+
+        - If the object value contains any of the following characters, use the escape character, backslash (\\, to indicate an ordinary characters that has no special meaning:
+
+          \\ { } ( ) \[ \] . + \* ? ^ $ |
+
+    3.  If you need to add multiple criteria, click **+Add Criteria** to add another match criteria.
+
+6.  Click **Add**.

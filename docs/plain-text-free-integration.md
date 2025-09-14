@@ -1,0 +1,62 @@
+---
+slug: trend-vision-one-plain-text-free-integration
+title: Plain text (freetext) feed integration
+---
+
+Trend Vision One enables sharing of suspicious object data with any third-party apps and services that can import data from plain text files through a Service Gateway.
+
+Configure sharing of suspicious object data with this integration through a Service Gateway.
+
+:::note
+At least one [Service Gateway](deployment-guides.md) installed with the Suspicious Object Exchange Service must be configured to enable integration.
+
+For more information, see [Service Gateway Management](service-gateway-management.md).
+:::
+
+### Procedure {#procedure}
+
+1.  Configure settings on Trend Vision One.
+
+    1.  In the Trend Vision One console, go to **Workflow and Automation → Third-Party Integration**.
+
+    2.  In the **Integration** column, click **Plain text (freetext) feeds**.
+
+    3.  Use the toggle to enable or disable the integration.
+
+    4.  Review the *Legal Statement* and click **Accept** or **Close** to continue.
+
+    5.  Under **Data Transfer**, configure data sharing criteria and integration settings.
+
+        1.  **Risk level**: Select the risk level of the suspicious object data to include in the shared data.
+
+        2.  **Frequency**: Select the frequency at which suspicious object data is shared.
+
+        3.  **URL parameters**: Select whether to remove query strings from URLs.
+
+        4.  (Optional) Type a description to help you identify which app or service you are using with this integration.
+
+    6.  Under **Service Gateway Connection**, configure the connection between the Service Gateway and the integration.
+
+        1.  Click **Connect**.
+
+            The **Service Gateway Connection** panel appears.
+
+        2.  Select a Service Gateway installed with the Suspicious Object Exchange Service.
+
+        3.  Configure the integration server settings.
+
+        4.  (Optional) Click **Test Connection** to verify if the settings are valid.
+
+        5.  Click **Connect**.
+
+            The connection configuration is added to the list.
+
+        6.  Click the **Generate Now** icon (![](/images/GenerateNowIcon=GUID-60CE3573-F37D-4CD3-9E0A-74C7DCBF3525.webp)) to generate suspicious object data sharing files immediately.
+
+        7.  Hover over the **Copy URL** icon (![](/images/ServiceGatewayCopyIcon=GUID-EE08C798-0F99-467B-996A-93D14044BF0E.webp)) to copy the suspicious object data sharing URLs to use on your integration.
+
+    7.  Repeat the previous step to add multiple connection configurations for this integration.
+
+    8.  Click **Save**.
+
+2.  Configure settings on your integration. For more information, see the documentation for the integration.

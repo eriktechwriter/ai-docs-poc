@@ -1,0 +1,206 @@
+---
+slug: trend-vision-one-email-routing-outbound
+title: Configuring email routing for outbound protection
+---
+# Configuring email routing for outbound protection
+
+The steps outlined below detail how to add a mail route, an SMTP relay, and a content compliance rules in the Google Workspace Admin console to route outbound emails to Cloud Email and Collaboration Protection for Inline Protection.
+
+:::warning[Important]
+
+The steps contained in these instructions were valid as of September 2023.
+:::
+
+### Procedure {#procedure}
+
+1.  Log on to the [Google Workspace Admin console](https://admin.google.com) as a Google Super Admin.
+
+2.  Add a mail route to direct outbound emails to Cloud Email and Collaboration Protection .
+
+    1.  Go to **Apps → Google Workspace → Gmail** and click **Hosts**.
+
+    2.  Add a mail route for outbound messages by clicking **ADD ROUTE** specifying the following settings on the **Add mail route** screen.
+
+        <table>
+        <colgroup>
+        <col style="width: 25%" />
+        <col style="width: 75%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Setting</p></th>
+        <th><p>Outbound Messages</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Name</p></td>
+        <td><p>Set a name for the mail route for outbound messages.</p></td>
+        </tr>
+        <tr>
+        <td><p>Specify email server</p></td>
+        <td><p>Select <strong>Single host</strong> and specify the hostname and port number of Cloud Email and Collaboration Protection for outbound protection.</p>
+        <ul>
+        <li><p>Hostname: Type the <strong>Cloud App Security hostname</strong> for outbound protection displayed on the access grant screen in the Cloud Email and Collaboration Protection console. The hostname is also available in <strong>Administration → Global Settings → Inline Protection Settings for Gmail</strong>.</p></li>
+        <li><p>Port number: Type <code>25</code>.</p></li>
+        </ul></td>
+        </tr>
+        <tr>
+        <td><p>Options</p></td>
+        <td><p>Make sure the following settings are selected to implement secure communication between Gmail and Cloud Email and Collaboration Protection:</p>
+        <ul>
+        <li><p><strong>Require mail to be transmitted over a secure transport (TLS) connection (recommended)</strong>: Encrypt messages between sending mail servers and receiving mail servers with Transport Layer Security (TLS).</p></li>
+        <li><p><strong>Require CA signed certificate (recommended)</strong>: The client SMTP server must present a certificate signed by a Certificate Authority that is trusted by Google.</p></li>
+        <li><p><strong>Validate certificate hostname (recommended)</strong>: Verify that the receiving hostname matches the certificate presented by the SMTP server.</p></li>
+        </ul>
+        <p>To verify the connection to Cloud Email and Collaboration Protection, click <strong>Test TLS connection</strong>.</p></td>
+        </tr>
+        </tbody>
+        </table>
+
+    3.  Click **Save**.
+
+3.  Create an SMTP relay that receives scanned outbound messages from Cloud Email and Collaboration Protection.
+
+    1.  Go to **Apps → Google Workspace → Settings for Gmail → Routing**. Locate **SMTP relay service**.
+
+    2.  Click **CONFIGURE** or **ADD ANOTHER RULE** (if the setting is already configured) and specify the following settings:
+
+        <table>
+        <colgroup>
+        <col style="width: 25%" />
+        <col style="width: 75%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Setting</p></th>
+        <th><p>Description</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>SMTP relay service</p></td>
+        <td><p>Type <strong>TMCAS Inline SMTP Relay Service</strong>.</p></td>
+        </tr>
+        <tr>
+        <td><p>Allowed senders</p></td>
+        <td><p>Select <strong>Only addresses in my domain</strong>.</p></td>
+        </tr>
+        <tr>
+        <td><p>Authentication</p></td>
+        <td><ol>
+        <li><p>Select <strong>Only accept mail from the specified IP addresses</strong>.</p></li>
+        <li><p>Click <strong>ADD</strong>, add the IP address of Cloud Email and Collaboration Protection based on your serving site, and click <strong>SAVE</strong>.</p>
+        <p>The IP addresses of Cloud Email and Collaboration Protection for outbound protection are as follows:</p>
+        <ul>
+        <li><p>US site: 20.66.85.0/28, 104.210.59.109, 104.42.190.154, 20.72.147.115, 20.72.140.41</p></li>
+        <li><p>EU site: 20.160.56.80/28, 20.126.64.109, 20.126.70.251, 20.54.65.179, 20.54.68.120</p></li>
+        <li><p>Japan site: 20.78.49.240/28, 20.222.60.8, 52.140.200.104, 104.46.227.238, 104.46.237.93</p></li>
+        <li><p>Australia and New Zealand site: 20.227.209.48/28, 20.227.165.104, 20.213.244.63, 20.39.98.131, 20.39.97.73</p></li>
+        <li><p>Canada site: 20.220.229.208/28, 52.228.125.196, 52.139.13.202, 20.104.170.106, 20.104.172.35</p></li>
+        <li><p>Singapore site: 52.163.216.240/28, 20.43.148.85, 20.195.17.222</p></li>
+        <li><p>UK site: 20.0.233.224/28, 20.68.214.138, 20.68.212.120, 52.142.171.6, 52.142.170.53</p></li>
+        <li><p>India site: 20.235.86.144/28, 4.213.51.121, 4.213.51.126, 104.211.202.104, 52.172.7.14</p></li>
+        <li><p>Middle East (UAE) site: 20.233.170.240/28, 20.74.137.84, 20.74.179.106, 20.21.106.164, 20.21.108.130</p></li>
+        </ul></li>
+        </ol></td>
+        </tr>
+        <tr>
+        <td><p>Encryption</p></td>
+        <td><p>Select <strong>Require TLS encryption</strong>.</p></td>
+        </tr>
+        </tbody>
+        </table>
+
+4.  Add a content compliance rule for routing outbound messages to Cloud Email and Collaboration Protection.
+
+    1.  Go to **Apps → Google Workspace → Gmail** and click **Compliance**.
+
+    2.  In the **Content compliance** section, add a compliance rule for outbound messages by clicking **CONFIGURE** or **ADD ANOTHER RULE** (if the setting is already configured) and specifying the settings on the **Add setting** screen.
+
+        <table>
+        <colgroup>
+        <col style="width: 25%" />
+        <col style="width: 75%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Setting</p></th>
+        <th><p>Outbound Messages</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Content compliance</p></td>
+        <td><p>Type <strong>TMCAS Content Compliance Rule for Outgoing Messages</strong>.</p></td>
+        </tr>
+        <tr>
+        <td><p>Email messages to affect</p></td>
+        <td><p>Select <strong>Outbound</strong>.</p></td>
+        </tr>
+        <tr>
+        <td><p>Add expressions that describe the content you want to search for in each message</p></td>
+        <td><p>The following settings ensure that messages already scanned by Cloud Email and Collaboration Protection are not routed to Cloud Email and Collaboration Protection again.</p>
+        <ol>
+        <li><p>Select <strong>If ANY of the following match the message</strong>.</p></li>
+        <li><p>Click <strong>ADD</strong>.</p></li>
+        <li><p>On the <strong>Add setting</strong> screen, specify the following settings:</p>
+        <ul>
+        <li><p>Select <strong>Advanced content match</strong>.</p></li>
+        <li><p>Under <strong>Location</strong>, select <strong>Full headers</strong>.</p></li>
+        <li><p>Under <strong>Match type</strong>, select <strong>Not contains text</strong>.</p></li>
+        <li><p>Under <strong>Content</strong>, type the <strong>Loop prevention header</strong> for outbound protection displayed on the access grant screen in the Cloud Email and Collaboration Protection console. The loop prevention header is also available in <strong>Administration → Global Settings → Inline Protection Settings for Gmail</strong>.</p></li>
+        </ul></li>
+        </ol></td>
+        </tr>
+        <tr>
+        <td><p>If the above expressions match, do the following</p></td>
+        <td><p>The following settings ensures that messages already scanned by Cloud Email and Collaboration Protection will not be routed to Cloud Email and Collaboration Protection again.</p>
+        <ol>
+        <li><p>Select <strong>Modify message</strong>.</p></li>
+        <li><p>Under <strong>Headers</strong>, select <strong>Add custom headers</strong>, and click <strong>ADD</strong>.</p></li>
+        <li><p>Add the string you just typed in Content.</p></li>
+        <li><p>Under <strong>Route</strong>, select <strong>Change the route</strong> and select the name of the mail route you just created for outbound messages.</p></li>
+        </ol></td>
+        </tr>
+        <tr>
+        <td><p>Account types to affect</p></td>
+        <td><ol>
+        <li><p>Click <strong>Show options</strong>.</p></li>
+        <li><p>Select <strong>Users</strong> and <strong>Groups</strong>.</p></li>
+        </ol></td>
+        </tr>
+        <tr>
+        <td><p>Envelope filter</p></td>
+        <td><ol>
+        <li><p>Select <strong>Only affect specific envelope senders</strong>.</p></li>
+        <li><p>Specify the senders affected by this rule based on the targets of your Cloud Email and Collaboration Protection policies for Gmail (Inline Mode).</p>
+        <ul>
+        <li><p>Users/groups: Select <strong>Group membership (sent mail only)</strong>, click <strong>Select groups</strong> and select the group <strong>TMCAS Inline Outgoing Gmail Virtual Group</strong>.</p></li>
+        <li><p>Domains only or both domains and users/groups in these domains: Select <strong>Pattern match</strong>, type the target domains in the format <code>.*@&lt;domain&gt;</code>, for example, .*@example.com.</p></li>
+        </ul>
+
+
+        :::warning[Important]
+
+        <p>The default targets for a Gmail (Inline Mode) policy are all domains.</p>
+        <p>If the targets of your Cloud Email and Collaboration Protection policies for Gmail (Inline Mode) include some domains and users/groups in some other domains, create two content compliance rules for each target type. Make sure the two rules share the same configuration except the <strong>Only affect specific envelope recipients</strong> settings.</p>
+
+
+        :::
+
+        </li>
+        </ol></td>
+        </tr>
+        </tbody>
+        </table>
+
+    3.  Click **Save**.
+
+    4.  Disable the compliance rule by clicking **Disable** after the rule and then clicking **PROCEED** on the displayed dialog box.
+
+        :::note
+
+        This ensures that emails can deliver to their destinations properly before the access grant for Gmail (Inline Mode) is completed.
+        :::
+::::

@@ -1,0 +1,94 @@
+---
+slug: trend-vision-one-compliance-evolution
+title: Compliance evolution
+---
+# Compliance evolution
+
+The Compliance evolution graph shows the change in compliance levels within *All accounts*, *Individual accounts*, or *Groups* over the last 30 days. The graph sets out the scores against the [six pillars of the AWS Well-Architected Framework](https://aws.amazon.com/blogs/apn/the-6-pillars-of-the-aws-well-architected-framework/)
+
+1.  Security
+2.  Cost Optimization
+3.  Operational Excellence
+4.  Reliability
+5.  Performance Efficiency
+6.  Sustainability
+
+![](/images/compliance-evolution=13d74cb9-afa6-4f94-97b5-a65336808bbd.webp){.zoom}
+
+### Calculation of Daily Compliance Evolution Score for all Categories {#calculation-of-daily-compliance-evolution-score-for-all-categories}
+
+### Individual Cloud Risk Management Account Evolution Score {#individual-cloud-risk-management-account-evolution-score}
+
+Cloud Risk Management Scan can run multiple times per day, thus an average is calculated for all the Cloud Risk Management Scan runs. For each account, the individual scores of each category is obtained by the following formula for every bot run.
+
+(`Total number of successful Checks for the category / Total number of Checks for the category`) \* 100 = category score
+
+For example:
+
+*Account 1*: had two bot runs for the day as below:
+
+<table>
+<thead>
+<tr>
+<th><p>Bot Run No.</p></th>
+<th><p>Success Check count</p></th>
+<th><p>Total check count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>First Bot Run</p></td>
+<td><p><code>50</code></p></td>
+<td><p><code>100</code></p></td>
+</tr>
+<tr>
+<td><p>Second Bot Run</p></td>
+<td><p><code>30</code></p></td>
+<td><p><code>100</code></p></td>
+</tr>
+</tbody>
+</table>
+
+*Average score for this category of Account 1 for a day* = `(50 + 30) / (100 + 100) = 40%`
+
+### Group Accounts Evolution Score {#group-accounts-evolution-score}
+
+For group accounts, the average score of each category is calculated by averaging all the category scores of all accounts for the day:
+
+For Example:
+
+*Account 1*: had two bot runs for the day as per the example above `(50 + 30) / (100 + 100)` = `40%`
+
+*Account 2*: had three bot runs for the day as below:
+
+<table>
+<thead>
+<tr>
+<th><p>Bot Run No.</p></th>
+<th><p>Success Check count</p></th>
+<th><p>Total check count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>First Bot Run</p></td>
+<td><p><code>50</code></p></td>
+<td><p><code>125</code></p></td>
+</tr>
+<tr>
+<td><p>Second Bot Run</p></td>
+<td><p><code>30</code></p></td>
+<td><p><code>100</code></p></td>
+</tr>
+<tr>
+<td><p>Third Bot Run</p></td>
+<td><p><code>30</code></p></td>
+<td><p><code>100</code></p></td>
+</tr>
+</tbody>
+</table>
+
+*Average score for this category for Account 2 for a day* = `(50 + 30 + 20) / (125 + 100 + 75)` = `33%`
+
+*Group account evolution score (Comprising of Account 1 and Account 2)* = `(50 + 30 + 50 + 30 + 20) / (100 + 100 + 125 + 100 +75) = 36%`
+:::

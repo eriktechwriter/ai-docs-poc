@@ -1,0 +1,52 @@
+---
+slug: trend-vision-one-inline-settings-exchange
+title: Configuring inline protection settings for Exchange Online
+---
+# Configuring inline protection settings for Exchange Online
+
+### Procedure {#procedure}
+
+1.  In Cloud Email and Collaboration Protection, go to **Policies → Global Settings → Other Settings → Inline Protection Settings for Exchange Online**.
+
+2.  To turn off Inline Protection for Exchange Online without revoking access to Exchange Online (Inline Mode), disable **Inbound Protection** and **Outbound Protection** under **Inline Protection**.
+
+3.  To use the message header address for matching the approved or blocked sender lists in the ATP policy, select **Message header address** under **Sender Address Match**.
+
+    The envelope address is always used for matching the lists.
+
+4.  If you have also granted Cloud Email and Collaboration Protection access to Exchange Online, to avoid scanning an inbound message twice with the same security filters, enable **Trust Scan**.
+
+    Trust Scan applies only to a security filter that is enabled for both Exchange Online and Exchange Online (Inline Mode) - Inbound Protection.
+
+    **Email Scanning by the Same Security Filter**
+
+    <table>
+    <thead>
+    <tr>
+    <th><p>Protection Mode</p></th>
+    <th><p>Scanning Time</p></th>
+    <th><p>If Trust Scan Disabled</p></th>
+    <th><p>If Trust Scan Enabled</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Exchange Online (Inline Mode) - Inbound Protection</p></td>
+    <td><p>When email in transmission</p></td>
+    <td><p>Scan</p></td>
+    <td><p>Scan</p></td>
+    </tr>
+    <tr>
+    <td><p>Exchange Online</p></td>
+    <td><p>When email arriving at the mailbox</p></td>
+    <td><p>Scan</p></td>
+    <td><p>Not scan</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+    :::note
+
+    Trust Scan applies to real-time scanning only.
+    :::
+:::

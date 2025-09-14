@@ -1,0 +1,170 @@
+---
+slug: trend-vision-one-internet-facing-ip-addresses
+title: Internet-facing IP addresses
+---
+# Internet-facing IP addresses
+
+Attack Surface Discovery discovers and assesses your internet-facing IP addresses as part of your external attack surface.
+
+Attack Surface Discovery discovers your internet-facing IP addresses by checking A records for your domains, the pointer (PTR) records for the related IPs, and information from your domains' SSL certificates. You may also add IP addresses manually. Manually added IP addresses undergo a secondary verification process before appearing in **Internet-Facing Assets**. Data for internet-facing IP addresses is updated daily.
+
+IP-related risks are identified based on the following factors:
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Factor</p></th>
+<th><p>Example of risk</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Service</p></td>
+<td><p>Unexpected service observed on the public network</p></td>
+</tr>
+<tr>
+<td><p>Port</p></td>
+<td><p>Unexpected port observed</p></td>
+</tr>
+<tr>
+<td><p>CVE</p></td>
+<td><p>Application vulnerability identified on internet-facing assets</p></td>
+</tr>
+</tbody>
+</table>
+
+The following table outlines the actions you can perform on the **Public IPs** tab:
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>View an overview of internet-facing IP addresses</p></td>
+<td><p>The <strong>Internet-Facing Assets</strong> widget provides the following information:</p>
+<ul>
+<li><p>Number of discovered IP addresses per month</p></li>
+<li><p>Discovery trend over the last 12 months</p></li>
+<li><p>Distribution by geographic location</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>View a list of discovered internet-facing IP addresses</p></td>
+<td><p>The public IP list provides key information about discovered IPv4 and IPv6 addresses, including latest risk score, number of related hosts, and number of CVEs detected.</p>
+<p>You can filter list entries based on criteria such as criticality and host provider.</p>
+
+
+:::note
+
+<ul>
+<li><p>Assets marked with the star icon are highly critical to your organization's operations. For more information, see <a href="trend-vision-one-asset-criticality">Asset criticality</a> .</p></li>
+<li><p>If you see an IP address that you don't believe belongs to your organization, check the PTR record for the related domain.</p></li>
+</ul>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Add public IP addresses to the list</p></td>
+<td><ol>
+<li><p>Click <strong>Add</strong>.</p></li>
+<li><p>Follow the instructions in the <strong>Add IP Addresses</strong> dialog to add IPv4 or IPv6 addresses that belong to your organization.</p>
+<p>You can add a maximum of 1,000 IP addresses. IPv$ ranges are supported. IPv6 addresses must be added individually.</p></li>
+<li><p>Click <strong>Add</strong>.</p></li>
+<li><p>View the information about the IP addresses that you have added by clicking <strong>View Manually Added IP Addresses</strong>.</p>
+<p>Processing the new IP addresses might take up to 10 days. Cyber Risk Exposure Management displays the public IP addresses that have been verified on the <strong>Public IP List</strong>.</p></li>
+</ol>
+
+
+:::warning[Important]
+
+<p>This action is not available if you have an active trial for Cyber Risk Exposure Management or if you are using a third-party solution as the data source for internet-facing assets.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Remove public IP addresses from the list</p></td>
+<td><ol>
+<li><p>Select one or more IP addresses from the list.</p></li>
+<li><p>Click <strong>Remove</strong>.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>View the asset details screen for each listed IP address</p></td>
+<td><p>The asset details screen includes the following tabs:</p>
+<ul>
+<li><p><strong>Risk Assessment</strong>: Displays the risk score and list of risk indicators, including descriptions of risk events and recommended remediation actions</p></li>
+<li><p><strong>Related Hosts</strong>: Lists the related domains and subdomains with information such as host provider, services, and ports</p></li>
+<li><p><strong>Open Services and Ports</strong>: Lists internet-facing ports, the related services, and service status</p></li>
+<li><p><strong>Asset Profile</strong>: Displays criticality-related information, including the criticality level and list of profile tags</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Export information about internet-facing IP addresses discovered in the last 7 days</p></td>
+<td><ol>
+<li><p>Click <strong>Manage Reports</strong>.</p></li>
+<li><p>Select <strong>Internet-Facing Assets</strong>.</p>
+<p>The <strong>Report Management › Internet-Facing Assets Template</strong> screen appears.</p></li>
+<li><p>Configure the report settings.</p>
+
+
+:::note
+
+<p>To view the list of data fields for each asset type, click <strong>View CSV Fields</strong>.</p>
+
+
+:::
+
+</li>
+<li><p>Click <strong>Create</strong>.</p></li>
+</ol>
+<p>Each CSV file contains a maximum of 100,000 records.</p></td>
+</tr>
+<tr>
+<td><p>Scan selected public IPv4 addresses for exposures</p></td>
+<td>
+
+:::warning[Important]
+
+<p>This is a "Pre-release" feature and is not considered an official release. Please review the <a href="trend-vision-one-pre-release-disclaimer">Pre-release disclaimer</a> before using the feature.</p>
+
+
+:::
+
+
+:::note
+
+<p>This feature is not available in all regions.</p>
+
+
+:::
+
+
+<ol>
+<li><p>Select up to five IPv4 addresses and click <strong>Scan for exposures</strong>.</p></li>
+<li><p>Select a Service Gateway deployed to a public cloud platform.</p></li>
+<li><p>Confirm the assets to be scanned.</p></li>
+<li><p>Click <strong>Scan for exposures</strong>.</p></li>
+</ol>
+<p>For more information, see <a href="trend-vision-one-internet-facing-asset-scan">Internet-facing asset exposure scans</a>.</p></td>
+</tr>
+</tbody>
+</table>
+:::

@@ -1,0 +1,76 @@
+---
+slug: trend-vision-one-configuring-custom-model
+title: Configure a custom model
+---
+
+Create a custom model to define the specific events that trigger Workbench alerts.
+
+:::warning[Important]
+You can create a maximum of 50 custom models.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **XDR Threat Investigation → Detection Model Management → Custom Models → Add**.
+
+2.  Specify the general settings of the model.
+
+    - **Model name**
+
+    - **Description**
+
+    - **Severity**
+
+      :::warning[Important]
+      Selecting a severity of **Medium** or higher affects the Risk Index in Executive Dashboard and Operations Dashboard.
+
+      During testing and tuning of the model, select a severity of **Low** to avoid inadvertently affecting your indexes.
+      :::
+
+3.  Select the filtering mode for the model.
+
+    There are three filtering modes:
+
+    - **Single Filter**: The custom model applies only one filter.
+
+    - **Multiple filters**: The custom model applies multiple filters using the AND logical operator.
+
+    - **Multiple filters in sequence**: The custom model applies multiple filters in the specified order.
+
+4.  Specify the filter settings:
+
+    - **Filter name**: the filter the custom model uses
+
+      :::note
+      [Create custom filter](creating-custom-filter.md) opens **Custom Filter Settings** in a new browser tab. After creating the new custom filter, you can select the filter from **Filter name** in **Custom Models**.
+      :::
+
+    - **Threshold**: the number of events that must occur to trigger an alert. The threshold must be greater than 0.
+
+5.  If you selected **Multiple filters** or **Multiple filters in sequence**, you can add another filter by clicking **Add filter**.
+
+    You can have up to five filters. Each filter has an independent threshold setting.
+
+6.  Specify the event grouping.
+
+    - **Company**: Trigger an event when the threshold is met anywhere in your organization.
+
+    - **Endpoint**: Trigger an event when the threshold is met and associated with a single endpoint. The event includes only the 10 endpoints with the most matched events.
+
+    - **User account**: Trigger an event when the threshold is met and associated with a single user account.
+
+    To reduce alert fatigue, Workbench alerts only include the top targets with matched events. For example, if you group by `Endpoint`, alerts include only the top 10 endpoints with the highest number of matched events.
+
+7.  Specify the model schedule.
+
+    - **Frequency**: How often the model queries the activity data
+
+    - **Period**: The span of time that is queried each time the model is used
+
+      If the period greater than the frequency, the filter is applied to previously queried data. This might cause the same event to appear in multiple alerts.
+
+    - **Status**: Whether to enable the custom detection model after saving the settings.
+
+8.  Click **Save**.
+
+When enabled, custom models continuously search for matched events.

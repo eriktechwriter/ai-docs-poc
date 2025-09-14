@@ -1,0 +1,101 @@
+---
+slug: trend-vision-one-custom-filters
+title: Custom filters
+---
+# Custom filters
+
+Create, import, and manage filters to detect events in your environment.
+
+Custom filters are user-defined filters that allow you to tailor the detection of specific threats and suspicious behaviors to your environment's unique needs. Trend Vision One uses custom filters to detect security events which appear in **Observed Attack Techniques**. You can then incorporate these filters into custom detection models to generate alerts and insights in **Workbench**, allowing you to transform event detection into a complete threat monitoring workflow.
+
+The **Custom Filters** screen (**Agentic SIEM & XDR → Detection Model Management → Custom Filters**) allows you to create and manage custom filters. Custom filters consist of:
+
+- Basic information
+- Event type
+- Event ID or vendor
+- A query for detecting events in your environment
+
+The event type, and event ID / vendor define the type of data queried by the filter. For example, ENDPOINT_ACTIVITY queries endpoint data from endpoint-based data sources such as Endpoint Sensor. Selecting TELEMETRY_FILE, further refines the query to only file events within endpoint activity data. For more information about event types and data sources, see [Data sources](search-method-data-sources.mdx).
+
+:::warning[Important]
+
+You can add a maximum of 50 custom filters. If you need to add more filters, contact your support provider.
+:::
+
+The following table outlines the actions available in **Custom Filters**:
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Add custom filters</p></td>
+<td><ul>
+<li><p><a href="trend-vision-one-creating-custom-filter">Create a custom filter from scratch</a></p></li>
+<li><p><a href="trend-vision-one-use-template-create-custom-filter">Use a template to create a new filter</a></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Export custom filters</p></td>
+<td><ul>
+<li><p>To export all custom filters, click <img src="./images/export_button=GUID-C683DEEE-C19C-484D-A5B1-4CA9D1794756=1=en-us=Low.webp" />.</p></li>
+<li><p>To export some custom filters, select one or more filters and click <strong>Export Selected Filters</strong>.</p></li>
+</ul>
+<p>Trend Vision One generates a password-protected ZIP file that contains all your custom filters (one YAML file per filter). When the export completes, click <img src="./images/dddna_summary_detection_copy=GUID-4DE35BE5-57A5-4919-BF9C-5EC95F9CA8FD=1=en-us=Low.webp" /> under <strong>Export Custom Filters</strong> to copy the password for the ZIP file.</p></td>
+</tr>
+<tr>
+<td><p>Import custom filters</p></td>
+<td><p>Click <strong>Add filters</strong> and select <strong>Import from computer</strong> from the drop-down menu to import one ZIP file or multiple YAML files.</p></td>
+</tr>
+<tr>
+<td><p>Search and filter the list</p></td>
+<td><p>Use the following options to locate specific filters:</p>
+<ul>
+<li><p><strong>Severity</strong>: Filter by low, high, or critical severity</p></li>
+<li><p><strong>Event type</strong>: Filter by data source types</p></li>
+<li><p><strong>Last updated</strong>: Filter by when filters were last modified</p></li>
+<li><p>Search bar: Search by filter ID, name, or query content</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>See filter details</p></td>
+<td><p>Click a filter name to view <a href="trend-vision-one-custom-filter-data">detailed information about the custom filter</a>.</p></td>
+</tr>
+<tr>
+<td><p>Edit custom filters</p></td>
+<td><p>Click <img src="./images/edit_icon=GUID-1F1D1164-5310-4D6D-ACD0-6049C86960AF.webp" /> to edit a custom filter.</p>
+
+
+:::danger[Warning]
+
+<p>Changing a custom filter affects how the models that use the filter trigger <strong>Workbench</strong> alerts.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Delete custom filters</p></td>
+<td><p>Click <img src="./images/trash_icon=GUID-47cf6867-6315-438e-8670-86ff36f22a28.webp" /> to delete a custom filter.</p>
+<p>You can only delete custom filters that are not included in any model.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Create a custom filter](creating-custom-filter.md "Define a custom filter with specific settings to detect events in your environment based on your criteria.")
+- [Use a template to create a custom filter](use-template-create-custom-filter.md "Use one of the pre-built filter templates to create a custom filter to detect events in your environment.")
+- [Filter query format](custom-filter-query-format.md "Format your query string using the same query language as in XDR Data Explorer.")
+- [Custom filter data](custom-filter-data.md "Understand the fields available for each custom filter, including name, description, severity, and associated models.")
+- [Trend Micro Sigma specification](trend-micro-sigma-specification.mdx)
+::::

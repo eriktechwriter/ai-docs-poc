@@ -1,0 +1,42 @@
+---
+slug: trend-vision-one-adding-saml-account
+title: Adding a SAML Account
+---
+
+Add individual SAML Accounts to allow users to sign in to the Trend Vision One console using your corporate identity provider solution.
+
+### Procedure {#procedure}
+
+1.  Go to **Administration → User Accounts**.
+
+2.  Click **Add User Account**.
+
+3.  Select **SAML Account**.
+
+4.  Enter an email address for the **Account**.
+
+    :::note
+    - The **Account** must match the SAML user name.
+
+    - SAML account usage is not available for trial users.
+    :::
+
+5.  Select a **Role**.
+
+    To create a custom user role, click **Create a custom role in User Roles**.
+
+    :::note
+    Creating a custom role leaves the current screen and discards all changes made in the screen.
+    :::
+
+6.  Click **Add**.
+
+7.  Ensure that your users verify their email addresses.
+
+    :::note
+    - The verification link expires after 24 hours. If the verification link expires, any user account with the **Configure account settings** permission can resend the verification email.
+
+    - If one or more of your domains have been verified using [Domain Verification](domain-verification.md), all SAML users or user group members under a verified domain can be added directly without the need to verify email addresses.
+    :::
+
+8.  (Optional) When editing an account, enable or disable the account by clicking the **Status** toggle.

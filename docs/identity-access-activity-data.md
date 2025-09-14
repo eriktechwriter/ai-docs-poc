@@ -1,0 +1,878 @@
+---
+slug: trend-vision-one-identity-access-activity-data
+title: Identity and access activity data
+---
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Field Name</p></th>
+<th><p>Type</p></th>
+<th><p>General Field</p></th>
+<th><p>Description</p></th>
+<th><p>Example</p></th>
+<th><p>Products</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>actionName</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The user or service action</p></td>
+<td><ul>
+<li><p><code>Create User</code></p></li>
+<li><p><code>Add member to group</code></p></li>
+<li><p><code>Update application</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>clientApp</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The app that the client accessed</p></td>
+<td><ul>
+<li><p><code>browser</code></p></li>
+<li><p><code>Mobile Apps and Desktop clients</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>clientBrowser</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The client browser</p></td>
+<td><ul>
+<li><p><code>Chrome 119.0.0</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>clientDisplayName</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>EndpointName</p></li>
+</ul></td>
+<td><p>The client display name</p></td>
+<td><ul>
+<li><p><code>DESKTOP-TKOS222</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>clientId</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The unique client device ID</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>clientOS</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The client OS</p></td>
+<td><ul>
+<li><p><code>Windows</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>correlationId</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The correlation id</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>eventAdditionalDetails</p></td>
+<td><ul>
+<li><p><code>object</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The raw data string that contains additional information</p></td>
+<td><ul>
+<li><p><code>[{"key": "&lt;example&gt;","value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"}]</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>eventCategory</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The resource category targeted by the event</p></td>
+<td><ul>
+<li><p><code>UserManagement</code></p></li>
+<li><p><code>ApplicationManagement</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>eventId</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The identity provider event ID</p></td>
+<td><ul>
+<li><p><code>1 - EVENT_SOURCE_AAD_SIGN_INS</code></p></li>
+<li><p><code>2 - EVENT_SOURCE_AAD_DIR_AUDIT</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>eventName</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The identity provider event name</p></td>
+<td><ul>
+<li><p><code>4624</code></p></li>
+<li><p><code>aad_signin</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>eventSourceType</p></td>
+<td><ul>
+<li><p><code>integer</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The event source type</p></td>
+<td><ul>
+<li><p><code>1 - EVENT_SOURCE_IDENTITY_ACTIVITY</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>eventTime</p></td>
+<td><ul>
+<li><p><code>date</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The time the identity provider detected the event</p></td>
+<td><ul>
+<li><p><code>1657781088000</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>filterRiskLevel</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The top-level risk level of the event</p></td>
+<td><ul>
+<li><p><code>info</code></p></li>
+<li><p><code>low</code></p></li>
+<li><p><code>medium</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>groupId</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The group ID for the management scope filter</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>idpId</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The internal product code of the identity provider</p></td>
+<td><ul>
+<li><p><code>aad</code></p></li>
+<li><p><code>opa</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>idpName</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The identity provider</p></td>
+<td><ul>
+<li><p><code>Microsoft Entra ID</code></p></li>
+<li><p><code>Microsoft Active Directory</code></p></li>
+<li><p><code>google</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>initiatedByAppDisplayName</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The application display name</p></td>
+<td><ul>
+<li><p><code>Microsoft Intune</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>initiatedByAppId</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The resource category targeted by the event</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>initiatedByServicePrincipalId</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The unique ID of the service principal</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>initiatedByServicePrincipalName</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The unique ID of the service principal</p></td>
+<td><ul>
+<li></li>
+<li><p><code>Microsoft Intune</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>initiatedByUserDisplayName</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>UserAccount</p></li>
+</ul></td>
+<td><p>The user display name</p></td>
+<td><ul>
+<li><p><code>Sample User</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>initiatedByUserHomeTenantId</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The tenant ID of the user</p></td>
+<td><ul>
+<li></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>initiatedByUserHomeTenantName</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The tenant ID of the user</p></td>
+<td><ul>
+<li></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>initiatedByUserId</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>UserAccount</p></li>
+</ul></td>
+<td><p>The unique ID of the user who initiated the event</p></td>
+<td><ul>
+<li></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>initiatedByUserIpAddress</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>IPv4</p></li>
+<li><p>IPv6</p></li>
+</ul></td>
+<td><p>The client IP of the user</p></td>
+<td><ul>
+<li><p><code>10.10.10.10</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>initiatedByUserPrincipalName</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>UserAccount</p></li>
+</ul></td>
+<td><p>The User Principal Name of the user</p></td>
+<td><ul>
+<li><p><code>sample_email@trendmicro.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>ipAddress</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>IPv4</p></li>
+<li><p>IPv6</p></li>
+</ul></td>
+<td><p>The client IP</p></td>
+<td><ul>
+<li><p><code>10.10.10.10</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>locationCity</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The city where the event happened</p></td>
+<td><ul>
+<li><p><code>Singapore</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>locationCountry</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The country where the event happened</p></td>
+<td><ul>
+<li><p><code>US</code></p></li>
+<li><p><code>TW</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>locationLatitude</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The latitude of the event location</p></td>
+<td><ul>
+<li><p><code>121.568</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>locationLongitude</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The longitude of the event location</p></td>
+<td><ul>
+<li><p><code>121.568</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>locationState</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The state where the event happened</p></td>
+<td><ul>
+<li><p><code>Central Singapore</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>logBatchId</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The batch data retrieval process ID</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>logReceivedTime</p></td>
+<td><ul>
+<li><p><code>date</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The time when the XDR log was received</p></td>
+<td><ul>
+<li><p><code>1656324260000</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>loggedByService</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The service that initiated the event</p></td>
+<td><ul>
+<li><p><code>Core Directory</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>operationType</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The operation performed in the event</p></td>
+<td><ul>
+<li><p><code>Add</code></p></li>
+<li><p><code>Assign</code></p></li>
+<li><p><code>Update</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>orgId</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The organization ID</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>pname</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The internal product ID</p></td>
+<td><ul>
+<li><p><code>2200</code></p></li>
+<li><p><code>751</code></p></li>
+<li><p><code>533</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>policyTreePath</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The policy tree path (endpoint only)</p></td>
+<td><ul>
+<li><p><code>policyname1/policyname2/policyname3</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>principalName</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>UserAccount</p></li>
+</ul></td>
+<td><p>The User Principal Name</p></td>
+<td><ul>
+<li><p><code>sample_email@trendmicro.com</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>productCode</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The internal product code of the identity provider (aad=Microsoft Entra ID, opa=Microsoft Active Directory)</p></td>
+<td><ul>
+<li><p><code>aad</code></p></li>
+<li><p><code>opa</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>requestMethod</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The sign-in authentication method</p></td>
+<td><ul>
+<li><p><code>[{"authenticationStepDateTime": "2023-11-28T03:44:05Z","authenticationMethod": "Previously satisfied","authenticationMethodDetail": null,"succeeded" : true,"authenticationStepResultDetail": "MFA requirement satisfied by claim in the Token","authenticationStepRequirement": ""}]</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>result</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The event result</p></td>
+<td><ul>
+<li><p><code>success</code></p></li>
+<li><p><code>failure</code></p></li>
+<li><p><code>timeout</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>resultReason</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The cause of event failure or timeout</p></td>
+<td><ul>
+<li><p><code>success</code></p></li>
+<li><p><code>failure</code></p></li>
+<li><p><code>timeout</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>status</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The sign-in status result</p></td>
+<td><ul>
+<li><p><code>0</code></p></li>
+<li><p><code>50126</code></p></li>
+<li><p><code>50155</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>statusDetail</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The additional information about sign-in status</p></td>
+<td><ul>
+<li><p><code>MFA requirement satisfied by claim in the token</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>statusReason</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The sign-in status</p></td>
+<td><ul>
+<li><p><code>Error validating credentials due to invalid username or password.</code></p></li>
+<li><p><code>Others.</code></p></li>
+<li></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>tags</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Technique</p></li>
+<li><p>Tactic</p></li>
+</ul></td>
+<td><p>The attack technique ID detected by Trend Vision One based on the alert filter</p></td>
+<td><ul>
+<li><p><code>MITREV9.T1057</code></p></li>
+<li><p><code>MITREV9.T1059.003</code></p></li>
+<li><p><code>XSAE.F2924</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>targetResourceDisplayName</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The target resource display name</p></td>
+<td><ul>
+<li><p><code>Microsoft Graph</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>targetResourceId</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The target resource ID</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>targetResources</p></td>
+<td><ul>
+<li><p><code>object</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The targeted resource of the event</p></td>
+<td><ul>
+<li></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>tenantId</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The Microsoft Entra ID Tenant ID of the organization</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>userAgent</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The user agent</p></td>
+<td><ul>
+<li><p><code>Microsoft.OData.Client/7.12.5</code></p></li>
+<li><p><code>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>userDisplayName</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>UserAccount</p></li>
+</ul></td>
+<td><p>The user display name</p></td>
+<td><ul>
+<li><p><code>Test User(RD-TW)</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>userId</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>UserAccount</p></li>
+</ul></td>
+<td><p>The user ID</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Microsoft Entra ID</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>uuid</p></td>
+<td><ul>
+<li><p><code>keyword</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The unique key of the log entry</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>

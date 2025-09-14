@@ -1,0 +1,67 @@
+---
+slug: trend-vision-one-mttp-average-unpatched-time
+title: Mean time to patch (MTTP) and average unpatched time (AUT)
+---
+# Mean time to patch (MTTP) and average unpatched time (AUT)
+
+Evaluate your company's response time to CVEs and Windows updates.
+
+To better assist you in determining and responding to your company's vulnerabilities, Trend Micro designed certain metrics to complement each other for greater clarity.
+
+The Mean Time to Patch (MTTP) and Average Unpatched Time (AUT) metrics work together to help you evaluate your company's typical response time for installing important patches on vulnerable Windows operating systems. The MTTP metric represents devices that have had patches installed in the past. If no patches have been installed on a device, the device will not be considered in the MTTP calculation. AUT represents all devices with detected unpatched vulnerabilities.
+
+Even if your MTTP is low, you must still consider AUT to get a full picture of unpatched vulnerabilities in your environment. For example:
+
+- Your organization has a MTTP of 10 days, which is a good value.
+
+- When viewing details for your AUT, you discover three devices that have never been patched with an AUT of over 180 days.
+
+The unpatched devices require immediate attention. However, the devices are not included in the MTTP calculation because the devices have never been patched. AUT helps identify vulnerable devices that MTTP cannot. Similarly, a high MTTP and a low AUT also indicates vulnerable devices that require attention. Keep both metrics low to ensure your organization's devices are secure and up-to-date.
+
+:::warning[Important]
+
+MTTP and AUT only apply to devices running supported Windows operating systems.
+:::
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Metric</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Mean Time to Patch (MTTP)</p></td>
+<td><p>Calculated by subtracting the release date of important Windows KBs from the time you installed the KB on endpoints and then averaged out across all supported endpoints.</p>
+<p>Only includes cumulative KBs listed on the following sites for the calculations:</p>
+<ul>
+<li><p><a href="https://support.microsoft.com/en-us/topic/windows-10-update-history-857b8ccb-71e4-49e5-b3f6-7073197d98fb">https://support.microsoft.com/en-us/topic/windows-10-update-history-857b8ccb-71e4-49e5-b3f6-7073197d98fb</a> (including security updates for Windows Server 2016 and Windows Server 2019)</p></li>
+<li><p><a href="https://support.microsoft.com/en-us/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9">https://support.microsoft.com/en-us/topic/windows-11-update-history-a19cd327-b57f-44b9-84e0-26ced7109ba9</a></p></li>
+<li><p><a href="https://support.microsoft.com/en-us/topic/windows-server-2022-update-history-e1caa597-00c5-4ab9-9f3e-8212fe80b2ee">https://support.microsoft.com/en-us/topic/windows-server-2022-update-history-e1caa597-00c5-4ab9-9f3e-8212fe80b2ee</a></p></li>
+</ul>
+<p>Although there is a daily MTTP value, the weekly and monthly values are a weighted average based on the number of KB installation events due to the highly uneven distribution of events across days.</p>
+<p>For example, companies typically test an operating system KB before distributing the patch to all endpoints, which results in a large number of events clustered right after testing completes.</p></td>
+</tr>
+<tr>
+<td><p>Average Unpatched Time</p></td>
+<td><p>Calculated by subtracting the release date of important Windows KBs from the current date for all unpatched endpoints.</p>
+<p>Average Unpatched Time calculations occur daily. Weekly and monthly averages use a simple average calculation based off the daily values.</p>
+
+
+:::note
+
+<p>The Average Unpatched Time only applies to vulnerable endpoints unlike the MTTP. You should compare the values to better understand how vulnerable your network may be.</p>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+::::

@@ -1,0 +1,46 @@
+---
+slug: trend-vision-one-api-sdk-devops-tools-for-automation
+title: The API and SDK - DevOps tools for automation
+---
+# The API and SDK - DevOps tools for automation
+
+The Server & Workload Protection API enables you to automate operational tasks, thereby increasing the productivity of your value stream and improving the security services that you support:
+
+- Configure policies and protect computers
+- Discover vulnerabilities and patch them
+- Perform routine maintenance tasks
+
+### The API and SDK {#the-api-and-sdk}
+
+The Server & Workload Protection API is a RESTful API that you use to make HTTP requests to interact with Server & Workload Protection. The SDK includes a Python package that makes it easy to use the API in [Python](python-sdk.mdx).
+
+The [API Reference](https://automation.trendmicro.com/cloudone/workload-security/) provides information about each resource that you interact with:
+
+- Descriptions of operations that you can perform on each resource (GET, POST, etc)
+- Request paths, headers, and payloads
+- Example requests and response messages
+
+Guides, such as this one, describe how to use the SDKs via examples of how to automate typical Server & Workload Protection operational tasks.
+
+### API versions {#api-versions}
+
+The API is versioned. Each request that you make must include the version to use in the `api-version` header. The first version is `v1`.
+
+Although new versions are rarely released, you must ensure that the API version you are using is compatible with Server & Workload Protection. However, Server & Workload Protection is backward-compatible with all versions of the API. For example, if your code uses the `v1` API and you upgrade the manager, your code behavior does not change. However, you should always use the latest available version of the API.
+
+### Legacy REST and SOAP APIs {#legacy-rest-and-soap-apis}
+
+:::note
+
+The REST and SOAP APIs that were provided before Deep Security 11.1 have not changed. They have been deprecated, so new features will not be added but the existing API functionality will continue to function as usual.
+:::
+
+Server & Workload Protection still includes the legacy Deep Security REST and SOAP APIs. For guidance on using them, see the following guides:
+
+- [Transition from the SOAP API](transition-soap-api.mdx)
+- [Use the Legacy REST API](use-legacy-rest-api.mdx)
+
+### Next Step {#next-step}
+
+[Send Your First Request Using the API](send-your-first-request-using-api.mdx)
+::::

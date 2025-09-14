@@ -1,0 +1,75 @@
+---
+slug: trend-vision-one-configuring-bandwidth-control-rule
+title: Configuring a bandwidth control rule
+---
+# Configuring a bandwidth control rule
+
+Prioritize the access to certain URL categories over other traffic by configuring bandwidth control rules.
+
+### Procedure {#procedure}
+
+1.  On the **Configure Bandwidth Control** screen, click **Create Rule** in the **Bandwidth Control Rules** area.
+
+2.  In the **Basic information** section, configure basic rule information.
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Item</p></th>
+    <th><p>Setting</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Rule name</p></td>
+    <td><p>Specify a unique name for the bandwidth control rule.</p></td>
+    </tr>
+    <tr>
+    <td><p>Description</p></td>
+    <td><p>Meaningful description to easily identify the bandwidth control rule.</p></td>
+    </tr>
+    <tr>
+    <td><p>Status</p></td>
+    <td><p>Click the toggle to enable or disable the bandwidth control rule.</p>
+    <p>The rule is enabled by default. If you no longer need a bandwidth control rule, delete it instead of disabling it.</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+3.  In the **Source** section, select the users/groups/private IP address groups and on-premises gateways that the bandwidth control rule applies to.
+
+    :::note
+
+    Bandwidth control rules do not apply to on-premises gateways with ICAP enabled.
+    :::
+
+4.  In the **Traffic** section, select the URL categories that the bandwidth control rule applies to.
+
+5.  In the **Schedule** section, select the day and time to enforce the bandwidth control rule. You can enforce the rule all the time, or on certain days of the week and hours of the day.
+
+6.  In the **Bandwidth throttling** section, specify the upstream and downstream bandwidth limits and service priority for traffic of the selected URL categories in the bandwidth control rule.
+
+    - **Guaranteed bandwidth**: bandwidth that can be expected to be provided for traffic that matches the rule.
+
+      :::note
+
+      The guaranteed upstream or downstream bandwidth cannot be greater than the maximum bandwidth.
+
+      The total guaranteed upstream or downstream bandwidth in all enabled bandwidth control rules cannot exceed the overall bandwidth in **Overall bandwidth settings**.
+      :::
+
+    - **Maximum bandwidth**: upper threshold of bandwidth that can be expected to be provided for traffic that matches the rule.
+
+      :::note
+
+      The maximum upstream or downstream bandwidth in a bandwidth control rule cannot exceed the overall bandwidth in **Overall bandwidth settings**.
+      :::
+
+    - **Service priority**: Whether the transport channel for traffic that matches the bandwidth control rule should be dropped. This allows the transport channel to free up the required resources or pre-empt the resources from another transport channel with a lower service priority during exceptional network resource limitations, for example, network congestion. Service priorities come with the following order from high to low: **Premium**, **High**, **Medium**, **Low**.
+
+7.  Click **Save**.
+:::

@@ -1,0 +1,59 @@
+---
+slug: trend-vision-one-devices-id-inv
+title: Device
+---
+# Device
+
+View information about the devices in your organization, including compliance and sync status.
+
+The **Device** tab allows you to view devices in your organization managed by your identity provider. Devices registered with your identity provider include desktops, laptops, printers, and mobile devices that use single-sign on (SSO) or have conditional access policies applied.
+
+The following table details the columns on the **Device** tab.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Column name</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Device name</p></td>
+<td><p>Name of a device in your organization.</p></td>
+</tr>
+<tr>
+<td><p>Device ID</p></td>
+<td><p>Unique identifier of a device.</p></td>
+</tr>
+<tr>
+<td><p>Join type</p></td>
+<td><p>Join type of a device.</p>
+<ul>
+<li><p><a href="https://learn.microsoft.com/en-us/entra/identity/devices/concept-device-registration">Microsoft Entra registered</a>: Registered to Microsoft Entra ID, requiring no organizational account to sign in to the device. This type supports bring-your-own devices or mobile devices.</p></li>
+<li><p><a href="https://learn.microsoft.com/en-us/entra/identity/devices/concept-directory-join">Microsoft Entra joined</a>: Joined only to Microsoft Entra ID, requiring an organizational account to sign in to the device. This type of devices is generally owned by the organization.</p></li>
+<li><p><a href="https://learn.microsoft.com/en-us/entra/identity/devices/concept-hybrid-join">Microsoft Entra hybrid joined</a>: Joined to your on-premises Active Directory and registered with Microsoft Entra ID, requiring an organizational account to sign in to the device</p></li>
+<li><p>None: The device does not have a join type.</p>
+<p>This happens for various reasons, such as device unregistration or configuration errors .</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Mobile policy compliant</p></td>
+<td><p>Indicates whether a devices is compliant with Mobile Device Management (MDM) policies.</p></td>
+</tr>
+<tr>
+<td><p>Last checked in</p></td>
+<td><p>Last time when a device was signed in to.</p></td>
+</tr>
+<tr>
+<td><p>Synced with Active Directory</p></td>
+<td><p>Indicates whether a device is synced from an on-premises directory.</p>
+<p>Devices synced with Active Directory are in the on-premises identity provider system as well as the cloud-based system. Trend Micro does not recommend syncing a device in both systems unless necessary due to an increased risk of intrusion or attack.</p></td>
+</tr>
+</tbody>
+</table>
+:::

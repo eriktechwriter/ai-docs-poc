@@ -1,0 +1,53 @@
+---
+slug: trend-vision-one-configure-proxy-ECS-instances
+title: Configure a proxy for ECS instances
+---
+# Configure a proxy for ECS instances
+
+Add a proxy server for Cloud Security to connect with your EC2 and AWS Fargate clusters.
+
+:::warning[Important]
+
+If your instance contains Fargate clusters, you must also modify the Task Definition file in your AWS account. For more information, see [Set up connected Amazon ECS Fargate clusters](fargate-clusters-amazon-ecs.mdx).
+:::
+
+You can set up proxy connections for individual clusters in your AWS ECS instances.
+
+### Procedure {#procedure}
+
+1.  On the **Container Inventory** page, select the ECS cluster you want to configure.
+
+    The **Cluster Details** page opens.
+
+2.  Ensure that **Runtime Security** is on.
+
+    :::warning[Important]
+
+    In order to create, use, or modify a proxy, you must have Runtime security enabled.
+    :::
+
+3.  Click **Proxy settings**.
+
+    - If your ECS instance contains Fargate clusters, you must update the Task Definition file using the `-p` flag. For more information, see [Set up connected Amazon ECS Fargate clusters](fargate-clusters-amazon-ecs.mdx).
+
+    - If your ECS instance contains EC2 clusters, the **Proxy Settings** window appears. Configure the settings shown for your EC2 clusters.
+
+4.  Turn on **Use proxy**.
+
+5.  Select the proxy protocol.
+
+6.  Specify the **Proxy address**.
+
+7.  Specify the **Port** number.
+
+8.  If your proxy requires authentication, select **Require authentication credentials**, then specify the **Account** and **Password** credentials.
+
+9.  Click **OK**.
+
+10. On the **Cluster Details** page, click **Save**.
+
+    :::warning[Important]
+
+    You must click **Save** on the cluster details page in order for the proxy settings take effect.
+    :::
+::::

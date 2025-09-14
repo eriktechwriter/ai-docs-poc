@@ -1,0 +1,18 @@
+---
+slug: trend-vision-one-distance-condition
+title: Distance condition
+---
+# Distance condition
+
+Some of the lists contain a “distance” condition to determine if a violation is present. “Distance” refers to the amount of characters between the first character of one keyword and the first character of another keyword. Consider the following entry:
+
+F**irst Name:\_John\_ L**ast Name:\_Smith\_
+
+The **Forms - First Name, Last Name** list has a “distance” condition of fifty (50) and the commonly used form fields of “First Name” and “Last Name”. In the example above, Data Loss Prevention triggers a violation as the number of characters between the “F” in First Name and the “L” in Last Name is equal to eighteen (18).
+
+For an example of an entry that does not trigger a violation, consider the following:
+
+The f**irst name of our new employee from Switzerland is John. His l**ast name is Smith.
+
+In this example, the number of characters between the “f” in “first name” and the “l” in “last name” is sixty-one (61). This exceeds the distance threshold and does not trigger a violation.
+:::

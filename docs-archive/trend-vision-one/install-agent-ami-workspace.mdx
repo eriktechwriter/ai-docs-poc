@@ -1,0 +1,118 @@
+---
+slug: trend-vision-one-install-agent-ami-workspace
+title: Install the agent on an AMI or WorkSpace bundle
+---
+# Install the agent on an AMI or WorkSpace bundle
+
+AWS Accounts in Trend Vision One are now managed by the Cloud Accounts app. To add new AWS accounts, see [Adding an AWS account using CloudFormation](adding-aws-account.mdx).
+
+You can still use APIs to add new accounts to Server & Workload Protection. However, Trend Micro recommends using the Cloud Accounts app, which provides access to more advanced cloud security and XDR capabilities. The following topic is for reference only.
+
+This page describes how to launch new Amazon EC2 instances and Amazon WorkSpaces with the agent baked in.
+
+For information on how to protect existing Amazon EC2 instances and Amazon WorkSpaces withServer & Workload Protection, see [Install the agent on Amazon EC2 and WorkSpace instances](install-agent-amazon-ec2-workspaces.mdx).
+
+For information on how to protect Amazon WorkSpaces after already protecting your Amazon EC2 instances, see [Protect Amazon WorkSpaces if you already added your AWS account](add-amazon-workspaces.mdx).
+
+Baking the agent is the process of launching an EC2 instance based on a public AMI, installing the agent on it, and then saving this custom EC2 image as an AMI. This AMI (with the agent 'baked in') can then be selected when launching new Amazon EC2 instances.
+
+Similarly, if you want to deploy the agent on multiple Amazon WorkSpaces, you can create a custom WorkSpace bundle that includes the agent. The custom bundle can then be selected when launching new Amazon WorkSpaces.
+
+To bake an AMI and create a custom WorkSpace bundle with a pre-installed and pre-activated agent, follow these steps:
+
+### Procedure {#procedure}
+
+1.  Add your AWS account to Server & Workload Protection
+
+2.  Configure the activation type
+
+3.  Launch a 'master' Amazon EC2 instance or Amazon WorkSpace
+
+4.  Deploy an agent on the master
+
+5.  Verify that the agent was installed and activated properly
+
+6.  Set up policy auto-assignment
+
+7.  Create an AMI or custom WorkSpace bundle based on the master
+
+8.  Use the AMI
+
+## Add your AWS account to Server & Workload Protection {#add-your-aws-account-to-server-workload-protection}
+
+## Configure the activation type {#configure-the-activation-type}
+
+You need to indicate whether or not to allow agent-initiated activation. For instructions, see [Install the agent on Amazon EC2 and WorkSpaces](install-agent-amazon-ec2-workspaces.mdx) \> [Configure the activation type](install-agent-amazon-ec2-workspaces.mdx).
+
+## Launch a master Amazon EC2 instance or Amazon WorkSpace {#launch-a-master-amazon-ec2-instance-or-amazon-workspace}
+
+You need to launch a master Amazon EC2 instance or Amazon WorkSpace. The master instance is the basis for the EC2 AMI or WorkSpace bundle that you will create later.
+
+### Procedure {#procedure-1}
+
+1.  In AWS, launch an Amazon EC2 instance or Amazon WorkSpace. See the [Amazon EC2 documentation](https://docs.aws.amazon.com/ec2/index) and [Amazon WorkSpaces documentation](https://docs.aws.amazon.com/workspaces/index) for details.
+
+2.  Call the instance master.
+
+## Deploy an agent on the master {#deploy-an-agent-on-the-master}
+
+You need to install and activate the agent on the master. During this process, you can optionally install a policy. For instructions, see [Install the agent on Amazon EC2 and WorkSpaces](install-agent-amazon-ec2-workspaces.mdx) \> [Deploy agents to your Amazon EC2 instances and WorkSpaces](install-agent-amazon-ec2-workspaces.mdx) for instructions.
+
+Ideally, if you bake the agent into your AMI or workspace bundle and then want to use a newer agent later on, you should update the bundle to include the new agent. However, if that's not possible, you can use the Automatically upgrade agents on activation setting so when the agent in the AMI or bundle activates itself, Server & Workload Protection can automatically upgrade the agent to the latest version. For details, see [Automatically upgrade agents on activation](autoupgrade-agents-activation.mdx).
+
+## Verify that the agent was installed and activated properly {#verify-that-the-agent-was-installed-and-activated-properly}
+
+You should verify that the agent was installed and activated properly on the master before proceeding. For instructions, see [Install the agent on Amazon EC2 and WorkSpaces](install-agent-amazon-ec2-workspaces.mdx) \> [Verify that the agent was installed and activated properly](install-agent-amazon-ec2-workspaces.mdx)
+
+## Set up policy auto-assignment {#set-up-policy-auto-assignment}
+
+Optionally, you may need to set up policy auto-assignment depending on how you deployed the agent on the master:
+
+- If you used a deployment script, then a policy has already been assigned, and no further action is required.
+- If you manually installed and activated the agent, no policy was assigned to the agent, and one should be assigned now so that the master is protected. The Amazon EC2 instances and Amazon WorkSpaces that are launched based on the master will also be protected.
+
+If you want to assign a policy to the master, as well as auto-assign a policy to future EC2 instances and WorkSpaces that are launched using the master, follow these instructions:
+
+### Procedure {#procedure-2}
+
+1.  In the Server & Workload Protection console, create an event-based task with these parameters:
+
+    - Set the **Event** to **Agent-Initiated Activation**.
+    - Set **Assign Policy** to the policy you want to assign.
+    - Optionally, set a condition to **Cloud Instance Metadata**, with either
+      - a **tagKey** of **EC2** and a **tagValue.** of **True** (for an EC2 instance)
+      - a **tagKey** of **WorkSpaces** and a **tagValue.** of **True** (for WorkSpaces)
+
+    The preceding event-based task says:
+
+    When an agent is activated, assign the specified policy, on condition that `EC2=true` or `WorkSpaces=true` exists in the Amazon EC2 instance or WorkSpace.
+
+    If that key/value pair does not exist in the EC2 instance or WorkSpace, then the policy is not assigned (but the agent is still activated). If you do not specify a condition, then the policy is assigned on activation unconditionally.
+
+    For details on creating event-based tasks, see [Automatically assign policies based on AWS EC2 instance tags](auto-assign-provider-tags-labels.mdx).
+
+2.  If you added a key/value pair in the Server & Workload Protection console in the previous step, do the following:
+
+    1.  Go to AWS.
+    2.  Find your master EC2 instance or WorkSpace.
+    3.  Add tags to the master with a **Key** of **EC2** or **WorkSpaces** and a **Value** of **True**. For details, see this [Amazon EC2 documentation on tagging](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags), and this [Amazon WorkSpace documentation on tagging](https://docs.aws.amazon.com/workspaces/latest/adminguide/tag-workspaces-resources). You have now set up policy auto-assignment. New Amazon EC2 instances and Amazon WorkSpaces that are launched using the master are activated automatically (since the agent is pre-activated on the master), and then auto-assigned a policy through the event-based task.
+
+3.  On the master EC2 instance or WorkSpace, reactivate the agent by re-running the activation command on the agent, or by clicking the **Reactivate** button in the Server & Workload Protection console. For details, see [Activate the agent.](activate-agent.mdx) The re-activation causes the event-based task to assign the policy to the master. The master is now protected.
+
+### Next steps {#next-steps}
+
+You are now ready to bake your AMI or create a custom WorkSpace bundle.
+
+## Create an AMI or custom WorkSpace bundle based on the master {#create-an-ami-or-custom-workspace-bundle-based-on-the-master}
+
+When creating an AMI from AWS, remember to **stop** the instance prior to creation and do not select the AWS option **No reboot**. Images created with the **No reboot** option will not be protected by the agent.
+
+- To create an AMI on Linux or Windows, see [Create an Amazon EBS-backed AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.mdx).
+- To create a custom WorkSpace bundle, see [Create a custom WorkSpaces image and bundle for WorkSpaces Personal](https://docs.aws.amazon.com/workspaces/latest/adminguide/create-custom-bundle).
+
+You now have an AMI or WorkSpace bundle that includes a preinstalled and preactivated agent.
+
+## Use the AMI {#use-the-ami}
+
+Now that you have a custom AMI or WorkSpace bundle, you can use it as the basis for future Amazon EC2 instances and Amazon WorkSpaces. With the custom AMI or bundle, the agent starts up automatically, activates itself, and applies the protection policy assigned to it. It appears in the Server & Workload Protection console with a Status of Managed and a green dot next to it.
+:::

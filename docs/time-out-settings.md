@@ -1,0 +1,24 @@
+---
+slug: trend-vision-one-time-out-settings
+title: Configure time-out settings
+---
+
+Specify how long Response Management waits before each endpoint response action times out.
+
+### Procedure {#procedure}
+
+1.  Go to **Workflow and Automation → Response Management** and click the **Settings** tab.
+
+2.  Click **Edit settings** in the **Time-out settings** section.
+
+    :::note
+    If you see **View settings**, you lack the necessary permissions to edit the settings.
+    :::
+
+3.  Select a time-out period for each response action.
+
+    :::warning[Important]
+    If left unspecified, the default setting is used.
+    :::
+
+4.  To restore the default settings, click **Reset defaults**.

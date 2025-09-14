@@ -1,0 +1,41 @@
+---
+slug: trend-vision-one-system-logs
+title: System logs
+---
+
+Trend Vision One maintains system logs that provide summaries about system events that occurred.
+
+The following table outlines the actions available on the **System** tab.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Filter system log entries</p></td>
+<td><p>Use the <strong>Search</strong> field and drop-down lists to filter system log entries</p>
+<ul>
+<li><p><strong>Logged</strong>: The date and time the activity occurred</p></li>
+<li><p><strong>Category</strong>: The activity category</p></li>
+<li><p><strong>Activity</strong>: The activity type</p></li>
+<li><p><strong>Search</strong>: Provides partial matching for the <em>Details</em> column</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>View system log entry details</p></td>
+<td><p>View the table to check the details of system log entries</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [System log data](system-log-data.md "Trend Vision One maintains system logs that provide summaries about system events that occurred.")

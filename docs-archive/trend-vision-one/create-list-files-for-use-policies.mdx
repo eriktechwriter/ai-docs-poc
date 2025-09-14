@@ -1,0 +1,105 @@
+---
+slug: trend-vision-one-create-list-files-for-use-policies
+title: Create a list of files for use in policies
+---
+# Create a list of files for use in policies
+
+You can create lists of file paths so that you can use them in multiple policies. A single list is easier to manage than several identical lists that are each created in a different policy. The most common use cases for these lists are for Anti-Malware scan inclusions or exclusions. For more information, see [Configure malware scan inclusions](configure-malware-scan-inclusions.mdx) and [Configure malware scan exclusions](configure-malware-scan-exclusions.mdx).
+
+To create a file list that is similar to an existing one, duplicate the list and then edit it.
+
+The following table describes the syntax for defining file list items. The use of forward slashes and backslashes is supported for both Windows and Linux conventions.
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Inclusion</p></th>
+<th><p>Format</p></th>
+<th><p>Description</p></th>
+<th><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>File</p></td>
+<td><p>FILE</p></td>
+<td><p>Includes all files with the specified file name regardless of its location or directory.</p></td>
+<td><p><em>abc.doc</em> Includes all files named "abc.doc" in all directories. Does not include "abc.exe".</p></td>
+</tr>
+<tr>
+<td><p>File path</p></td>
+<td><p>FILEPATH</p></td>
+<td><p>Includes the specific file specified by the file path.</p></td>
+<td><p><em>C:\Documents\abc.doc</em> Includes only the file named "abc.doc" in the "Documents" directory.</p></td>
+</tr>
+<tr>
+<td><p>File with wildcard (*)</p></td>
+<td><p>FILE*</p></td>
+<td><p>Includes all files with a matching pattern in the file name.</p></td>
+<td><p><em>abc*.exe</em> Includes any file that has prefix of "abc" and extension of ".exe". <em>*.db</em> Matches: 123.db abc.db Does not match: 123db 123.abd cbc.dba <em>*db</em> Matches: 123.db 123db ac.db acdb db Does not match: db123 <em>wxy*.db</em> Matches: wxy.db wxy123.db Does not match: wxydb</p></td>
+</tr>
+<tr>
+<td><p>File with wildcard (*)</p></td>
+<td><p>FILE.EXT*</p></td>
+<td><p>Includes all files with a matching pattern in the file extension.</p></td>
+<td><p><em>abc.v*</em> Includes any file that has file name of "abc" and extension beginning with ".v". <em>abc.*pp</em> Matches: abc.pp abc.app Does not match: wxy.app <em>abc.a*p</em> <em>Matches: abc.ap abc.a123p Does not match: abc.pp <em>abc.*</em> Matches: abc.123 abc.xyz Does not match: wxy.123</em></p></td>
+</tr>
+<tr>
+<td><p>File with wildcard (*)</p></td>
+<td><p>FILE*.EXT*</p></td>
+<td><p>Includes all files with a matching pattern in the file name and in the extension.</p></td>
+<td><p><em>a*c.a*p</em> Matches: ac.ap a123c.ap ac.a456p a123c.a456p Does not match: ad.aa</p></td>
+</tr>
+<tr>
+<td><p>Environment variable</p></td>
+<td><p>${ENV VAR}</p></td>
+<td><p>Includes files specified by an environment variable with the format ${ENV VAR}. These can be defined or overridden using <em>Policy or Computer Editor &gt; Settings &gt; General &gt; Environment Variable Overrides.</em></p></td>
+<td><p><em>${myDBFile}</em> Includes the file "myDBFile".</p></td>
+</tr>
+<tr>
+<td><p>Comments</p></td>
+<td><p>FILEPATH #Comment</p></td>
+<td><p>Allows you to add comments to your inclusion definitions.</p></td>
+<td><p><em>C:\Documents\abc.doc #This a comment</em></p></td>
+</tr>
+</tbody>
+</table>
+
+1.  Click **Policies → Common Objects → Lists → File Lists**.
+
+2.  Click **New → New File List**.
+
+3.  Type a name and, optionally, a description.
+
+4.  In the *File(s)* list, add the file paths, one per line.
+
+5.  Click *OK*.
+
+### Import and export file lists {#import-and-export-file-lists}
+
+You can export one or more file lists to an XML or CSV file, and import lists from an XML file.
+
+1.  Click **Policies → Common Objects → Lists → File Lists**.
+
+2.  To export one or more lists, select them and click **Export → Export Selected to CSV** or **Export → Export Selected to XML**.
+
+3.  To export all lists, click **Export → Export to CSV** or **Export → Export to XML**.
+
+4.  To import lists, click **New → Import From File** and follow the instructions on the wizard.
+
+### See which policies use a file list {#see-which-policies-use-a-file-list}
+
+It is useful to see which policies use a file list to be aware of which policies are affected by any changes you make. For example, you can ensure no policies use a file list before deleting it.
+
+1.  Click **Policies → Common Objects → Lists → File Lists**.
+
+2.  Select the file list and click *Properties*.
+
+3.  Click the *Assigned To* tab.
+:::

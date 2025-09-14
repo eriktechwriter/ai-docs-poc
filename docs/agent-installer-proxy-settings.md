@@ -1,0 +1,42 @@
+---
+slug: trend-vision-one-agent-installer-proxy-settings
+title: Agent Installer Proxy Settings
+---
+
+Configure custom proxy settings to ensure newly deployed agents can connect and register.
+
+The Agent Installer Proxy Settings tab allows you to view and configure custom proxy settings for each of your Standard Endpoint Protection Group Managers, Server & Workload Protection Manager, or globally for sensor only agents. The proxy settings are used when deploying endpoint agents, enabling the agent to connect while deploying and registering to Trend Vision One.
+
+Click the edit icon (![](/images/proxyConfigIcon=20230614160101.webp)) to [configure a custom installer proxy](configure-agent-installer-proxy.md) for the Protection Manager or sensor only agents.
+
+:::note
+If you have recently created a new Protection Manager or Endpoint Group Manager instance, you may need to wait until the provisioning process completes before the new instance appears in the list.
+:::
+
+Endpoint agents follow a priority logic to determine how to connect to Trend Vision One. Agents attempt to connect using the following proxy hierarchy:
+
+1.  Service Gateway appliances with Forward Proxy Service enabled
+
+    Agents automatically connect to a Service Gateway appliance based on availability.
+
+2.  Primary custom proxy configured in Global Settings
+
+3.  Custom proxy configured in the Protection Manager (see note)
+
+4.  Default system proxy
+
+    The default system proxy is the proxy configured in the settings of the endpoint operating system. Default system proxy is not supported by Linux agents.
+
+If none of the above are configured, the endpoint agent attempts to connect to Trend Vision One directly.
+
+:::warning[Important]
+For Protection Managers provisioned by updating a connected endpoint security product, be aware of the following behavior:
+
+- Standard Endpoint Protection does not have the ability to configure a custom proxy. If you updated a connected Apex One or Apex Central product to Standard Endpoint Protection, the Protection Manager inherits the proxy settings from the updated product.
+
+- Server & Workload Protection can be configured directly in the Protection Manager. However, configuring a custom proxy in Global Settings overwrites the proxy settings for the targeted Server & Workload Protection Manager. This cannot be reversed and deleting the proxy configuration from Global Settings does not restore the previous settings.
+:::
+
+**Related information**
+
+- [Configuring a custom agent installer proxy](configure-agent-installer-proxy.md "Set up a custom proxy for newly deployed endpoints to connect and register.")

@@ -1,0 +1,65 @@
+---
+slug: trend-vision-one-deploy-fss-aws-org-account
+title: Deploy File Security Storage to an AWS Organization account
+---
+# Deploy File Security Storage to an AWS Organization account
+
+File Security Storage provides easy deployment using AWS CloudFormation to integrate automated scanning of files as you upload them into your storage and effortlessly detect all types of malware including viruses, trojans, spyware, and more. T=You can apply them to either a single or an organization account.
+
+The first time you time deploy a File Security Storage stack, it, by default, monitors all the S3 buckets in which EventBridge is on. When you add or remove the monitoring buckets, File Security Storage stores the list of monitoring buckets in the config. File Security Storage scans buckets based on the config. (This behavior is for backward compatibility. When you upgrade the old File Security Storage template (in which monitoring bucket is simply based on EventBridge on) to the enhanced version (in which monitoring buckets is based on customer’s choice in the console), you are protected without having to re-configure the monitoring bucket.
+
+- Before stack version 1.2.0, you need to turn on or turn off EventBridge to control whether the scanning is enable or not.
+- In stack versions 1.2.0 or greater, File Security Storage creates an S3 configuration bucket in your environment. it uses the information in this configuration bucket to determine whether to scan a specific bucket. Every time you turn on scanning, File Security Storage enables EventBridge. However, if you turn off scanning, File Security Storage does not disable EventBridge, but rather saves the current scanning status in the configuration bucket.
+- If you already have installed an enhanced version and update the template for new features, the config of the monitoring bucket remains, so you will still be protected by the previous monitoring settings. If, however, you remove the existing stack and then re-install a new stack instead of updating the stack, File Security Storage considers this a new installation, and you lose the previous settings.
+
+:::note
+
+When you add a bucket to your CloudFormation template, it does not immediately appear in the File Security Inventory. The Inventory is updated when Trend Vision One carries out its scheduled asset sync. This occurs every hour for licensed Trend Vision One users and once per day for non-licensed users. To have the bucket added in real-time, you can enable [Real-Time Posture Monitoring](https://docs.trendmicro.com/en-us/documentation/article/trend-vision-one-real-time-threat-monitoring).
+:::
+
+You can deploy File Security Storage when adding an AWS account to Trend Vision One.
+
+### Procedure {#procedure}
+
+1.  Click **AWS** under the **Inventory** tab.
+
+2.  Click **Add Cloud Account**.
+
+3.  Click **AWS Organization** and click **Next**.
+
+4.  In the **Account Name** field, enter a name for the AWS organization account.
+
+5.  Select the region to deploy the CloudFormation template, and click **Next**.
+
+6.  You can add a **Description** of the account to help identify it.
+
+7.  In the **All Features** list, scroll down and enable **File Security Storage**.
+
+8.  Open the **File Security Storage** section.
+
+9.  From the **Deployment** list, select at least one region. This is the region where you will deploy the File Security Scanner.
+
+10. In a new browser tab, log in to your AWS account.
+
+11. Go back to the Trend Vision One console and click **Launch Stack**.
+
+    Clicking **Launch Stack** opens the **Quick create stack** screen in your AWS account in the browser tab that you opened in the previous step.
+
+12. Scroll down to the File Storage Security section, and provide the following parameters:
+
+    1.  For **OrganizationID**, provide Organization Unit ID in AWS Organizations page you want to deploy in Organization Unit.
+
+    2.  For **OrganizationExcludedAccounts**, (Optional) The IDs of any AWS accounts you want to exclude from the stack deployment. Provide the account IDs in a comma-separated list with no space between each entry.
+
+    3.  For **FileSecurityStorageEnableQuarantine**, select "true" to enable the feature or "false" to disable the feature. If you enable the feature but do not provide a quarantine bucket, File Security Storage creates a quarantine bucket. If you enable the feature and provide a quarantine bucket, File Security Storage uses the provided bucket.
+
+    4.  For **FileSecurityStorageEnablePromote**, select "true" to enable the feature or "false" to disable the feature. If you enable the feature but do not provide a promote bucket, File Security Storage creates a quarantine bucket. If you enable the feature and provide a promote bucket, File Security Storage uses the provided bucket.
+
+    5.  For **FileSecurityStorageEnableIsolate**, select "true" to enable the feature or "false" to disable the feature. If you enable the feature but do not provide an isolate bucket, File Security Storage creates an isolate bucket. If you enable the feature and provide an isolate bucket, File Security Storage uses the provided bucket.
+
+    6.  For **SyncBucketEventBridge**, select "true" to enable the feature or "false" to disable the feature. If you enable this feature, File Security Storage automatically syncs EventBridge settings by default. If you do not enable this feature, you must enable the individual buckets.
+
+13. Scroll to the bottom of the **Quick create stack** screen, select the acknowledgment options, and click **Create stack.**
+
+14. In the Trend Vision One console, click **Done**.
+::::

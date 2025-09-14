@@ -1,0 +1,36 @@
+---
+slug: trend-vision-one-add-import-suspicious-objects
+title: Adding or importing suspicious objects
+---
+
+You can directly add suspicious objects or import suspicious objects contained in CSV, OpenIOC, and STIX files to the Suspicious Object List.
+
+Trend Vision One can extract suspicious domains, file SHA-1, file SHA-256, IP addresses, sender addresses, and URL objects from imported files.
+
+### Procedure {#procedure}
+
+1.  Go to **Threat Intelligence → Suspicious Object Management**.
+
+2.  Click **Add**.
+
+3.  Select the **Method**.
+
+    - Wildcards (\*) are not supported for domains, URLs, sender addresses, or CIDR IP addresses.
+
+    - The maximum file size for import is 1 MB.
+
+    - Each CSV or OpenIOC file can contain a maximum of 2,000 objects.
+
+    - For STIX files, only versions 2.0 and 2.1 are supported.
+
+4.  Select a risk level.
+
+5.  Specify the [actions](suspicious-object-actions.md) that connected products apply after detecting the object.
+
+6.  Select an expiration option.
+
+7.  Type a description.
+
+8.  Click **Submit**.
+
+Connected products receive the new object information from Trend Vision One during the next synchronization.

@@ -1,0 +1,75 @@
+---
+slug: trend-vision-one-managing-attestors
+title: Managing attestors
+---
+# Managing attestors
+
+:This topic explains how to create, edit, and delete attestors (Cosign public keys) for use in container image signature verification.
+
+Attestors are trusted Cosign public keys in PEM format used to verify the digital signatures of container images. They ensure that the images originate from a trusted source and have not been tampered with.
+
+:::note
+
+To validate Trend Micro container images, see [How do I verify the authenticity of Trend Micro container images with Cosign public keys?](container-security-faqs.mdx).
+:::
+
+Prerequisites:
+
+- You have a Cosign public key in PEM format. This key corresponds to the private key that was used to sign your container images.
+
+  For instructions on how to create a Cosign public key, see [Signing Containers](https://docs.sigstore.dev/cosign/signing/signing_with_containers/) on the Sigstore documentation site.
+
+- Your account has the necessary permissions to access the **Object Management** section in Container Protection.
+
+:::warning[Important]
+
+To ensure the security and integrity of your container images, follow these best practices when managing attestors:
+
+- Regularly update attestors to include new trusted keys.
+
+- Remove attestors that are no longer needed or have been compromised.
+
+- Ensure the corresponding private keys are stored securely by the development team and that access to them is restricted.
+:::
+
+### Procedure {#procedure}
+
+1.  From the **Object management** tab, click **Attestors**.
+
+2.  To create an attestor:
+
+    1.  Click **Add**.
+
+    2.  On the **Add attestor** screen, type a name for the attestor.
+
+    3.  Select the **Type** of attestor.
+
+        :::note
+
+        Currently only **Cosign: Key-pair** is supported.
+        :::
+
+    4.  In the **Public key** field, paste the content of your Cosign public key file.
+
+    5.  If you want to configure transparency logs, turn the toggle to **On** and specify the **Transparency log server** and **Transparency log key**.
+
+    6.  Type a description.
+
+    7.  Click **Save** to create the attestor.
+
+3.  To edit an attestor:
+
+    1.  Click the attestor name to open the **Modify attestor** screen.
+
+    2.  Update the attestor details as needed.
+
+    3.  Click **Save** to apply the changes.
+
+4.  To delete an attestor:
+
+    1.  Select the attestor you want to delete.
+
+    2.  Click **Delete**.
+
+    3.  Confirm the deletion when prompted.
+:::::

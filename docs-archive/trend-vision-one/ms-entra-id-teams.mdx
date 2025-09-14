@@ -1,0 +1,106 @@
+---
+slug: trend-vision-one-ms-entra-id-teams
+title: Creating an Microsoft Entra ID app for Teams protection
+---
+# Creating an Microsoft Entra ID app for Teams protection
+
+### Procedure {#procedure}
+
+1.  Log on to the [Microsoft Entra ID portal](https://portal.azure.com/) as a Microsoft 365 Global Administrator.
+
+2.  Register an app.
+
+    1.  Click **Microsoft Entra ID**, **App registrations**, and **New registration**.
+
+        The **Reigster an application** page appears.
+
+    2.  Name the application.
+
+    3.  Select a supported account type.
+
+        The account type determines who can use the app.
+
+        If you have multiple organizations in Cloud Email and Collaboration Protection, Trend Micro recommends that you select **Accounts in any organizational directory (Any Microsoft Entra ID directory - Multitenant)** for all the organizations to use this app.
+
+    4.  Under Redirect URI, select Web and type \<URL of your Trend Vision One console logon page\>/ui/cas/provision.html.
+
+        For example, if your URL is https://portal.xdr.trendmicro.com, type `https://portal.xdr.trendmicro.com/ui/cas/provision.html`.
+
+    5.  Click **Register**.
+
+        The **Overview** screen of the registered app appears.
+
+    6.  Record the value of **Application (client) ID**.
+
+        You need to use the app ID when granting Cloud Email and Collaboration Protection access to Teams Chat.
+
+3.  Assign permissions to the app.
+
+    1.  Click the **Manifest** tab.
+
+    2.  Locate **resourceAccess** under **requiredResourceAccess**, change the parameter value to the following, and click **Save**.
+
+        ```bash
+        "resourceAccess": [
+                        {
+                            "id": "e1fe6dd8-ba31-4d61-89e7-88639da4683d",
+                            "type": "Scope"
+                        },
+                        {
+                            "id": "75359482-378d-4052-8f01-80520e7db3cd",
+                            "type": "Role"
+                        },
+                        {
+                            "id": "df021288-bdef-4463-88db-98f22de89214",
+                            "type": "Role"
+                        },
+                        {
+                            "id": "7e847308-e030-4183-9899-5235d7270f58",
+                            "type": "Role"
+                        },
+                        {
+                            "id": "6b7d71aa-70aa-4810-a8d9-5d9fb2830017",
+                            "type": "Role"
+                        },
+                        {
+                            "id": "5b567255-7703-4780-807c-7be8301ae99b",
+                            "type": "Role"
+                        }
+                    ]
+        ```
+
+    3.  Click **API permissions** and verify that the following permissions are present:
+
+        - Chat.Read.All
+
+        - Chat.UpdatePolicyViolation.All
+
+        - Files.ReadWrite.All
+
+        - Group.Read.All
+
+        - User.Read
+
+        - User.Read.All
+
+4.  Create an app secret.
+
+    1.  Click the **Certificates & secrets** tab.
+
+    2.  Click **New client secret**, specify a description and a duration for the secret, and click **Add**.
+
+        The new secret is displayed.
+
+        :::note
+
+        When the secret expires, Cloud Email and Collaboration Protection can no longer protect Teams Chat. Select a longer duration to avoid frequently replacing the secret.
+        :::
+
+    3.  Copy and store the secret value.
+
+        You need to use the secret when granting Cloud Email and Collaboration Protection access to Teams Chat. The secret cannot be retrieved later.
+
+5.  Set up an active Azure subscription for billing purpose.
+
+    For details, see [Microsoft Documentation](https://learn.microsoft.com/en-us/graph/metered-api-setup?tabs=azurecloudshell).
+:::

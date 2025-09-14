@@ -1,0 +1,53 @@
+---
+slug: trend-vision-one-application-types
+title: Application types
+---
+# Application types
+
+The applications defined by Application Types are identified by the direction of traffic, the protocol being used, and the port number through which the traffic passes. Application Types are useful for grouping intrusion prevention rules.that have a common purpose. Rule groups simplify the process of selecting a set of intrusion prevention rules to assign to a computer. For example, consider the set of rules required to protect HTTP traffic to an Oracle Report Server. Simply select the rules in the "Web Server Common" and "Web Server Oracle Report Server" application types and then exclude unneeded rules, such as the rules that are specific to IIS servers.
+
+## See a list of application types {#see-a-list-of-application-types}
+
+Open the list of application types where you can see the properties of existing application types, as well as configure, export, and duplicate them. You can export to XML or CSV files. You can import XML files. You can also create and delete application types.
+
+### Procedure {#procedure}
+
+1.  Click **Policies → Intrusion Prevention Rules**.
+
+2.  Click *Application Types*.
+
+3.  To apply a command to an application type, select the type and click the appropriate button.
+
+### Next steps {#next-steps}
+
+:::tip
+
+Application types that have configurable properties have an icon with a gear.
+
+![](/images/application_type_option=b4235ad3-296a-4261-8810-e9bc8b03b139.webp)
+:::
+
+See also [Override rule and application type configurations](config-intrusion-prevention-rules.mdx).
+
+## General Information {#general-information}
+
+The name and description of the Application Type. "Minimum Agent/Appliance Version" tells you what version of the agent is required to support this Application Type.
+
+## Connection {#connection}
+
+- *Direction*: The direction of the initiating communication. That is, the direction of the first packet that establishes a connection between two computers. For example, if you wanted to define an Application Type for Web browsers, you would select "Outgoing" because it is the Web browser that sends the first packet to a server to establish a connection (even though you may only want to examine traffic traveling from the server to the browser). The Intrusion Prevention Rules associated with a particular Application Type can be written to examine individual packets traveling in either direction.
+- *Protocol*: The protocol this Application Type applies to.
+- *Port*: The port(s) this Application Type monitors. (Not the port(s) over which traffic is exclusively allowed.)
+
+## Configuration {#configuration}
+
+The *Configuration* tab displays options that control how Intrusion Prevention Rules associated with this Application Type behave. For example, the "Web Server Common" Application Type has an option to "Monitor responses from Web Server". If this option is deselected, Intrusion Prevention Rules associated with this Application Type will not inspect response traffic.
+
+## Options {#options}
+
+Items in the *Options* tab control how Server & Workload Protection uses and applies the Application Type. For example, most Application Types have an option to exclude them from [recommendation scans](recommendation-scans-intro.mdx). This means that if the **Exclude from Recommendations** optionsis selected, a recommendation scan will not recommend this Application Type and its associated Intrusion Prevention Rules for a computer even if the application in question is detected.
+
+## Assigned To {#assigned-to}
+
+The *Assigned To* tab lists the Intrusion Prevention Rules associated with this Application Type.
+::::

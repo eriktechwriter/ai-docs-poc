@@ -1,0 +1,317 @@
+---
+slug: trend-vision-one-network-engine-settings
+title: Network engine settings
+---
+# Network engine settings
+
+To edit the network engine settings of a policy or computer, open the Policy editor or the Computer editor for the policy or computer to configure and click **Settings → Advanced**.
+
+:::note
+
+The *Advanced* tab also contains *Events* settings. For information on those settings, see [Limit log file sizes](log-event-storage.mdx). It also contains the *Generate an Alert when Agent configuration package exceeds maximum size* setting, which controls the display of the "Agent configuration package too large" setting.
+:::
+
+The following settings are available:
+
+- *Network Engine Mode*: The network engine is a component within the Intrusion Prevention, Firewall, and Web Reputation modules that decides whether to block or allow packets. For the Firewall and Intrusion Prevention modules, the network engine performs a packet sanity check and also makes sure each packet passes the Firewall and Intrusion Prevention rules (called, rules matching). The network engine can operate inline or in tap mode. When operating inline, the packet stream passes through the network engine and is either dropped or passed based on the rules you've set. Stateful tables are maintained, Firewall rules are applied and traffic normalization is carried out so that Intrusion Prevention and Firewall rules can be applied. When operating in tap mode, the packet is always passed, with the exception of driver hooking issue or interface isolation. In tap mode, packet delay is also introduced, which can create a drop in throughput.
+
+  ![](/images/inline-vs-tap=23460f5b-8de7-4155-aeaa-6cf3ee6bae51.webp)
+
+- *Network Engine Status Check*: This setting determines if the agent will monitor the status of the Network Engine. This is enabled by default, but can be disabled. For related events, see [Network Engine Status (Windows)](network-engine-status-windows.mdx).
+
+- *Failure Response*: The settings here determine how the network engine behaves when it finds faulty packets. The default is to block them (Fail closed), but you can let some of them through (Fail open) for the reasons explained below.
+
+  - *Network Engine System Failure*: This setting determines whether the network engine blocks or allows faulty packets that occur as a result of system failures on the network engine host, such as out of memory failures, allocated memory failures, and network engine (DPI) decoding failures occur. The options are:
+    - *Fail closed* (default): The network engine blocks the faulty packet. It does not perform rules matching. This option provides the highest level of security.
+    - *Fail open*: The network engine allows the faulty packet through, does not perform rules matching, and logs an event. Consider using *Fail open* if your agent frequently encounters network exceptions because of heavy loads or lack of resources.
+  - *Network Packet Sanity Check Failure*: This setting determines whether the network engine blocks or allows packets that fail the packet sanity checks. Examples of sanity check failures: Firewall sanity check failures, network layer 2, 3, or 4 attribute check failures, TCP state check failures. The options are:
+    - *Fail closed* (default): The network engine blocks the failed packet. It does not perform any rules matching. This option provides the highest level of security.
+    - *Fail open*: The network engine allows the failed packet, does not perform any rules matching on it, and logs an event. Consider using *Fail open* if you want to disable the packet sanity checks, but preserve rules matching functionality.
+
+- *Anti-Evasion Posture*: The anti-evasion setting controls the network engine handling of abnormal packets that may be attempting to evade analysis. For details, see [Configure anti-evasion settings](configure-anti-evasion-settings.mdx).
+
+- *Advanced Network Engine Options*: If you deselect the *Inherited* check box, you can customize these settings:
+
+  - *CLOSED timeout:* For gateway use. When a gateway passes on a "hard close" (RST), the side of the gateway that received the RST will keep the connection alive for this amount of time before closing it.
+
+  - *SYN_SENT Timeout:* How long to stay in the SYN-SENT state before closing the connection.
+
+  - *SYN_RCVD Timeout:* How long to stay in the SYN_RCVD state before closing the connection.
+
+  - *FIN_WAIT1 Timeout:* How long to stay in the FIN-WAIT1 state before closing the connection.
+
+  - *ESTABLISHED Timeout:* How long to stay in the ESTABLISHED state before closing the connection.
+
+  - *ERROR Timeout:* How long to maintain a connection in an Error state. (For UDP connections, the error can be caused by any of a variety of UDP problems. For TCP connections, the errors are probably due to packets being dropped by the Firewall.)
+
+  - *DISCONNECT Timeout:* How long to maintain idle connections before disconnecting.
+
+  - *CLOSE_WAIT Timeout:* How long to stay in the CLOSE-WAIT state before closing the connection.
+
+  - *CLOSING Timeout:* How long to stay in the CLOSING state before closing the connection.
+
+  - *LAST_ACK Timeout:* How long to stay in the LAST-ACK state before closing the connection.
+
+  - *ACK Storm timeout:* The maximum period of time between retransmitted ACKs within an ACK Storm. In other words, if ACKs are being retransmitted at a lower frequency then this timeout, they will NOT be considered part of an ACK Storm.
+
+  - *Boot Start Timeout:* For gateway use. When a gateway is booted, there may already exist established connections passing through the gateway. This timeout defines the amount of time to allow non-SYN packets that could be part of a connection that was established before the gateway was booted to close.
+
+  - *Cold Start Timeout:* Amount of time to allow non-SYN packets that could belong to a connection that was established before the stateful mechanism was started.
+
+  - *UDP Timeout:* Maximum duration of a UDP connection.
+
+  - *ICMP Timeout:* Maximum duration of an ICMP connection.
+
+  - *Allow Null IP:* Allow or block packets with no source or destination IP address.
+
+  - *Block IPv6 on Agents and Appliances versions 8 and earlier:* Block or Allow IPv6 packets on older version 8.0 agents.
+
+  - *Block IPv6 on Agents and Appliances versions 9 and later:* Block or Allow IPv6 packets on agents that are version 9 or later.
+
+  - *Connection Cleanup Timeout:* Time between cleanup of closed connections (see next).
+
+  - *Maximum Connections per Cleanup:* Maximum number of closed connections to cleanup per periodic connection cleanup (see previous).
+
+  - *Block Same Src-Dest IP Address:* Block or allow packets with same source and destination IP address. (Doesn't apply to loopback interface.)
+
+  - *Maximum TCP Connections:* Maximum simultaneous TCP Connections
+
+  - *Maximum UDP Connections:* Maximum simultaneous UDP Connections.
+
+  - *Maximum ICMP Connections:* Maximum simultaneous ICMP Connections.
+
+  - *Maximum Events per Second:* Maximum number of events that can be written per second.
+
+  - *TCP MSS Limit:* 'TCP MSS' is a parameter in the TCP header that defines the maximum segment size of TCP segments, in bytes. The 'TCP MSS Limit' setting defines the minimum value allowed for TCP MSS parameter. Having a lower limit for this parameter is important because it prevents kernel panic and denial of service (DoS) attacks that may occur when a remote attacker sets up a TCP connection with a very small maximum segment size (MSS). See CVE-2019-11477, CVE-2019-11478, and CVE-2019-11479 for details on these attacks. The 'TCP MSS Limit' default is 128 bytes, which shields against most attack sizes. A value of 'No Limit' means that there is no lower limit and any TCP MSS value is accepted.
+
+  - *Number of Event Nodes:* The maximum amount of kernel memory the driver will use to store log/event information for folding at any one time.
+
+    :::note
+
+    Event folding occurs when many events of the same type occur in succession. In such cases, the agent will "fold" all the events into one.
+    :::
+
+  - *Ignore Status Code:* This option lets you ignore certain types of events. If, for example, you are getting a lot of "Invalid Flags" you can simply ignore all instances of that event.
+
+  - *Ignore Status Code:* Same as above.
+
+  - *Ignore Status Code:* Same as above.
+
+  - *Advanced Logging Policy:*
+
+    - *Bypass:* No filtering of events. Overrides the "Ignore Status Code" settings (above) and other advanced settings, but does not override logging settings defined in the Server & Workload Protection console. For example, if Firewall stateful configuration logging options set from a Firewall Stateful Configuration Properties window in the Server & Workload Protection console will not be affected.
+
+    - *Normal:* All events are logged except dropped retransmits.
+
+    - *Default:* Will switch to "Tap Mode" (below) if the engine is in tap mode, and will switch to "Normal" (above) if the engine is in inline mode.
+
+    - *Backwards Compatibility Mode:* For support use only.
+
+    - *Verbose Mode:* Same as "Normal" but including dropped retransmits.
+
+    - *Stateful and Normalization Suppression:* Ignores dropped retransmit, out of connection, invalid flags, invalid sequence, invalid ack, unsolicited udp, unsolicited ICMP, out of allowed policy.
+
+    - *Stateful, Normalization, and Frag Suppression:* Ignores everything that *Stateful and Normalization Suppression* ignores as well as events related to fragmentation.
+
+    - *Stateful, Frag, and Verifier Suppression:* Ignores everything that *Stateful, Normalization, and Frag Suppression* ignores as well as verifier-related events.
+
+    - *Tap Mode:* Ignores dropped retransmit, out of connection, invalid flags, invalid sequence, invalid ack, max ack retransmit, packet on closed connection.
+
+      :::note
+
+      For a more comprehensive list of which events are ignored in *Stateful and Normalization Suppression*, *Stateful, Normalization, and Frag Suppression*, *Stateful, Frag, and Verifier Suppression*, and *Tap Mode*, see [Reduce the number of logged events](reduce-number-logged-events.mdx).
+      :::
+
+  - *Silent TCP Connection Drop:* When Silent TCP Connection Drop is on, a RST packet is only sent to the local stack. No RST packet is sent on the wire. This reduces the amount of information sent back to a potential attacker.
+
+    :::note
+
+    If you enable the Silent TCP Connection Drop you must also adjust the DISCONNECT Timeout. Possible values for DISCONNECT Timeout range from 0 seconds to 10 minutes. This must be set high enough that the connection is closed by the application before it is closed by the agent. Factors that will affect the DISCONNECT Timeout value include the operating system, the applications that are creating the connections, and network topology.
+    :::
+
+  - *Enable Debug Mode:* When in debug mode, the agent captures a certain number of packets (specified by the setting below: Number of Packets to retain in Debug Mode). When a rule is triggered and debug mode is on, the agent will keep a record of the last X packets that passed before the rule was triggered. It will return those packets to Server & Workload Protection as debug events.
+
+    :::note
+
+    Debug mode can very easily cause excessive log generation and should only be used under Client Services supervision.
+    :::
+
+  - *Number of Packets to retain in Debug Mode:* The number of packets to retain and log when debug mode is on.
+
+  - *Log All Packet Data:* Record the packet data for events that are not associated with specific Firewall or Intrusion Prevention rules. That is, log packet data for events such as "Dropped Retransmit" or "Invalid ACK".
+
+    :::note
+
+    Events that have been aggregated because of event folding cannot have their packet data saved.
+    :::
+
+  - *Log only one packet within period:* If this option is enabled and *Log All Packet Data* is not, most logs will contain only the header data. A full packet will be attached periodically, as specified by the *Period for Log only one packet within period* setting.
+
+  - *Period for Log only one packet within period:* When *Log only one packet within period* is enabled, this setting specifies how often the log will contain full packet data.
+
+  - *Maximum data size to store when packet data is captured:* The maximum size of header or packet data to be attached to a log.
+
+  - *Generate Connection Events for TCP:* Generates a Firewall event every time a TCP connection is established.
+
+  - *Generate Connection Events for ICMP:* Generates a Firewall event every time an ICMP connection is established.
+
+  - *Generate Connection Events for UDP:* Generates a Firewall event every time a UDP connection is established.
+
+  - *Bypass CISCO WAAS Connections:* This mode bypasses stateful analysis of TCP sequence numbers for connections initiated with the proprietary CISCO WAAS TCP option selected. This protocol carries extra information in invalid TCP Sequence and ACK numbers that interfere with stateful Firewall checks. Only enable this option if you are using CISCO WAAS and you are seeing connections with Invalid SEQ or Invalid ACK in the Firewall logs. When this option is selected, TCP stateful sequence number checks are still performed for non WAAS enabled connections.
+
+  - *Drop Evasive Retransmit:* Incoming packets containing data that has already been processed will be dropped to avoid possible evasive retransmit attack techniques.
+
+  - *Verify TCP Checksum:* The segment's checksum field data will be used to assess the integrity of the segment.
+
+  - *Minimum Fragment Offset:* Defines the minimum acceptable IP fragment offset. Packets with offsets less than this will be dropped with reason "IP fragment offset too small". If set to 0 no limit is enforced. (default 60)
+
+  - *Minimum Fragment Size:* Defines the minimum acceptable IP fragment size. Fragmented packets that are smaller than this will be dropped with reason "First fragment too small" as potentially malicious. (default 120)
+
+  - *SSL Session Size:* Sets the maximum number of SSL session entries maintained for SSL session keys.
+
+  - *SSL Session Time:* Sets how long SSL session renewal keys are valid before they expire.
+
+  - *Filter IPv4 Tunnels:* Not used by Server & Workload Protection.
+
+  - *Filter IPv6 Tunnels:* Not used by Server & Workload Protection.
+
+  - *Strict Teredo Port Check:* Not used by Server & Workload Protection.
+
+  - *Drop Teredo Anomalies:* Not used by Server & Workload Protection.
+
+  - *Maximum Tunnel Depth:* Not used by Server & Workload Protection.
+
+  - *Action if Maximum Tunnel Depth Exceeded:* Not used by Server & Workload Protection.
+
+  - *Drop IPv6 Extension Type 0:* Not used by Server & Workload Protection.
+
+  - *Drop IPv6 Fragments Lower Than minimum MTU:* Drop IPv6 fragments that do not meet the minimum MTU size specified by IETF RFC 2460.
+
+  - *Drop IPv6 Reserved Addresses*: Drop these reserved addresses:
+
+    - IETF reserved 0000::/8
+    - IETF reserved 0100::/8
+    - IETF reserved 0200::/7
+    - IETF reserved 0400::/6
+    - IETF reserved 0800::/5
+    - IETF reserved 1000::/4
+    - IETF reserved 4000::/2
+    - IETF reserved 8000::/2
+    - IETF reserved C000::/3
+    - IETF reserved E000::/4
+    - IETF reserved F000::/5
+    - IETF reserved F800::/6
+
+  - *Drop IPv6 Site Local Addresses:* Drop site local addresses FEC0::/10.
+
+  - *Drop IPv6 Bogon Addresses:* Drop these addresses:
+
+    - "loopback ::1
+    - "IPv4 compatible address", ::/96
+    - "IPv4 mapped address" ::FFFF:0.0.0.0/96
+    - "IPv4 mapped address", ::/8
+    - "OSI NSAP prefix (deprecated by RFC4048)" 0200::/7
+    - "6bone (deprecated)", 3ffe::/16
+    - "Documentation prefix", 2001:db8::/32
+
+  - *Drop 6to4 Bogon Addresses:* Drop these addresses:
+
+    - "6to4 IPv4 multicast", 2002:e000:: /20
+    - "6to4 IPv4 loopback", 2002:7f00:: /24
+    - "6to4 IPv4 default", 2002:0000:: /24
+    - "6to4 IPv4 invalid", 2002:ff00:: /24
+    - "6to4 IPv4 10.0.0.0/8", 2002:0a00:: /24
+    - "6to4 IPv4 172.16.0.0/12", 2002:ac10:: /28
+    - "6to4 IPv4 192.168.0.0/16", 2002:c0a8:: /32
+
+  - *Drop IP Packet with Zero Payload:* Drop IP packets that have a zero-length payload.
+
+  - *Drop Unknown SSL Protocol:* Drop connection if a client attempts to connect to Server & Workload Protection with the wrong protocol. By default, any protocol other than "http/1.1" will cause an error.
+
+  - *Force Allow DHCP DNS:* Controls whether the following hidden Firewall rules are enabled:
+
+    <table>
+    <thead>
+    <tr>
+    <th><p>Rule type</p></th>
+    <th><p>Priority</p></th>
+    <th><p>Direction</p></th>
+    <th><p>Protocol</p></th>
+    <th><p>Sourceport</p></th>
+    <th><p>Destinationport</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Force Allow</p></td>
+    <td><p>4</p></td>
+    <td><p>Outgoing</p></td>
+    <td><p>DNS</p></td>
+    <td><p>Any</p></td>
+    <td><p>53</p></td>
+    </tr>
+    <tr>
+    <td><p>Force Allow</p></td>
+    <td><p>4</p></td>
+    <td><p>Outgoing</p></td>
+    <td><p>DHCP</p></td>
+    <td><p>68</p></td>
+    <td><p>67</p></td>
+    </tr>
+    <tr>
+    <td><p>Force Allow</p></td>
+    <td><p>4</p></td>
+    <td><p>Incoming</p></td>
+    <td><p>DHCP</p></td>
+    <td><p>67</p></td>
+    <td><p>68</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+    When the rules are enabled, agent computers can connect with Server & Workload Protection using the listed protocols and ports. The following values for this property are available:
+
+    - Inherited: Inherits the setting from the policy
+    - Turn off rules: Disables the rules. Note that this setting can cause agent computers to appear offline
+    - Allow DNS Query: Enable only the DNS-related rule
+    - Allow DNS Query and DHCP Client: Enable all 3 rules
+
+  - *Force Allow ICMP type3 code4:* Controls whether the following hidden Firewall rules are enabled:
+
+    <table>
+    <thead>
+    <tr>
+    <th><p>Rule type</p></th>
+    <th><p>Priority</p></th>
+    <th><p>Direction</p></th>
+    <th><p>Protocol</p></th>
+    <th><p>Type</p></th>
+    <th><p>Code</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Force Allow</p></td>
+    <td><p>4</p></td>
+    <td><p>Incoming</p></td>
+    <td><p>ICMP</p></td>
+    <td><p>3</p></td>
+    <td><p>4</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+    When enabled, these rules allow relay computers to connect with Server & Workload Protection so that the relay's heartbeat is transmitted. The following values are available:
+
+    - Inherited: Inherits the setting from the policy.
+    - Turn off rules: Disables the rule. This value can cause connection timeouts or "Destination cannot be reached" responses.
+    - Add Force Allow rule for ICMP type3 code4: Enables the rule.
+
+  - *Fragment Timeout:* If configured to do so, the Intrusion Prevention rules will inspect the content of a packet (or packet fragment) if that content is considered suspicious. This setting determines how long after inspecting to wait for the remaining packet fragments before discarding the packet.
+
+  - *Maximum number of fragmented IP packets to keep:* Specifies the maximum number of fragmented packets that Server & Workload Protection will keep.
+
+  - *Send ICMP to indicate fragmented packet timeout exceeded:* When this setting is enabled and the fragment timeout is exceeded, an ICMP packet is sent to the remote computer.
+
+  - *Bypass MAC addresses that don't belong to host:* Bypass incoming packets whose destination MAC address does not belong to the host. Enabling this option reduces the number of network events caused by fetching packets that are created due to NIC teaming or a NIC in promiscuous mode on agents that are version 10.2 or later.
+::::

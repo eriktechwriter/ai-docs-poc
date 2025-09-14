@@ -1,0 +1,136 @@
+---
+slug: trend-vision-one-cloudtrail-configuration
+title: CloudTrail configuration
+---
+# CloudTrail configuration
+
+:Configure your CloudTrail settings to provide greater visibility for XDR monitoring.
+
+:::note
+
+The steps contained in these instructions were valid as of November 2023.
+:::
+
+:::warning[Important]
+
+The CloudTrail SNS topic must be on the same account and in the same region as the CloudTrail you want to monitor.
+:::
+
+### Procedure {#procedure}
+
+1.  Sign in to your AWS account and access the CloudTrail console.
+
+2.  If you are creating a new trail, click **Create a trail** and complete the following steps.
+
+    1.  Configure the Trail Attributes and click **Next**.
+
+    2.  Under **Events** select the following event types:
+
+        - Management events
+
+        - Data events
+
+    3.  Configure **Management events**.
+
+        - Select **Read**.
+
+        - Select **Write**.
+
+        - Ensure **Exclude AWS KMS events** and **Exclude Amazon RDS Data API events** are not selected.
+
+    4.  Under **Data events**, set **Data event type** to **S3**.
+
+    5.  For **Log selector template**, select **Log all events**.
+
+    6.  Under **Additional settings**, ensure **Log file validation** is enabled.
+
+    7.  Enable **SNS notification delivery**, and select **New**.
+
+        :::note
+
+        Setting up the SNS notification delivery is required for Cloud Detections for AWS CloudTrail. You are required to provide the SNS topic ARN when deploying or updating the stack.
+        :::
+
+    8.  Click **Next**.
+
+    9.  Review the configuration and click **Create trail**.
+
+3.  If you are editing a trail, click **Trails** in the navigation pane and complete the following steps.
+
+    1.  Click the name of the trail you want to edit.
+
+    2.  In **Management events**, click **Edit** and configure the settings.
+
+        - Select **Read**.
+
+        - Select **Write**.
+
+        - Ensure **Exclude AWS KMS events** and **Exclude Amazon RDS Data API events** are not selected.
+
+    3.  Click **Save changes**.
+
+    4.  In **Data events**, click **Edit** and configure the settings.
+
+        - For **Data event source**, select **S3**.
+
+        - For **Log selector template**, select **Log all events**.
+
+    5.  Click **Save changes**.
+
+    6.  In **General details**, click **Edit**.
+
+    7.  Under **Additional settings**, ensure **Log file validation** is enabled.
+
+    8.  Enable **SNS notification delivery**.
+
+        - Select **New** to create a new SNS topic.
+
+        - Select **Existing** to use an existing SNS topic.
+
+        :::note
+
+        Setting up the SNS notification delivery is required for Cloud Detections for AWS CloudTrail. You are required to provide the SNS topic ARN when deploying or updating the stack.
+        :::
+
+    9.  Click **Save changes**.
+
+    10. Click **Update trail** to save changes.
+
+4.  Copy the CloudTrail ARN and SNS Topic ARN.
+
+    Use one of the following steps to find the CloudTrail ARN and SNS Topic ARN. You must provide this information when deploying or updating a stack to enable the Cloud Detections for AWS CloudTrail feature.
+
+    - Locate the information in the CloudTrail console:
+
+      1.  Click **Trails** in the navigation pane, and select the CloudTrail you want to monitor.
+
+      2.  The CloudTrail ARN appears as part of the location path: **CloudTrail → Trails → arn:aws:...**.
+
+          Copy the full ARN starting with `arn:aws:...` and including the trail name `.../trail-name`.
+
+      3.  The SNS Topic ARN is located under **SNS notification delivery** under the **General details** section.
+
+    - Use the AWS Command Line Interface to access the information:
+
+      1.  Run the command `aws cloudtrail describe-trails`.
+
+      2.  Locate the CloudTrail you want to monitor.
+
+      3.  Copy the data from the following fields:
+
+          - `SnsTopicARN`: The SNS Topic ARN
+
+          - `TrailARN`: The CloudTrail ARN
+
+    - Use the AWS SDK to call DescribeTrails:
+
+      1.  Run the AWS SDK.
+
+      2.  Locate the CloudTrail you want to monitor in the response.
+
+      3.  Copy the data from the following fields:
+
+          - `SnsTopicARN`: The SNS Topic ARN
+
+          - `TrailARN`: The CloudTrail ARN
+:::::

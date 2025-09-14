@@ -1,0 +1,125 @@
+---
+slug: trend-vision-one-service-gateway-faqs
+title: Service Gateway FAQs
+---
+
+Frequently asked support and security questions for Service Gateway.
+
+Click a link to jump to the topic.
+
+- What operating system does Service Gateway use?
+
+- How often are security patch updates released?
+
+- Who can access the Service Gateway CLI?
+
+- What are the password requirements for the Service Gateway CLI?
+
+- What addresses and ports does Service Gateway use?
+
+- What deployment options does Service Gateway support?
+
+- How do you check CPU compatibility for Service Gateway 3.0?
+
+## What operating system does Service Gateway use? {#what-operating-system-does-service-gateway-use}
+
+The Service Gateway virtual appliance uses a customized Linux kernel which removes unnecessary tools, software, and commands to secure the environment.
+
+## How often are security patch updates released? {#how-often-are-security-patch-updates-released}
+
+When Trend Micro receives a CVE or ZDI vulnerability report, our security team performs a CVSS evaluation of the current Service Gateway build. If the vulnerability impacts Service Gateway, a critical patch is released or the vulnerability is resolved in the next build release depending on the severity. New builds are normally released every two weeks.
+
+## Who can access the Service Gateway CLI? {#who-can-access-the-service-gateway-cli}
+
+The Service Gateway virtual appliance only allows the default admin user to sign in to the Command Line Interface Shell (CLISH) console. The admin user is required to change the password when signing in for the first time. The password can be changed manually with the command `configure password`.
+
+## What are the password requirements for the Service Gateway CLI? {#what-are-the-password-requirements-for-the-service-gateway-cli}
+
+The password must meet the following requirements:
+
+- Must be 8 to 32 characters
+
+- At least one uppercase letter (A-Z)
+
+- At least one lowercase letter (a-z)
+
+- At least one number (0-9)
+
+- At least one special character: ~!\`@#$%^&\*()/\_+=\[\]{}-\\\<\>',.?:;"
+
+Follow security best practices to create a strong password:
+
+- Avoid using words found in the dictionary
+
+- Intentionally misspell words
+
+- Use phrases or combine words
+
+- Use both uppercase and lowercase letters
+
+## What addresses and ports does Service Gateway use? {#what-addresses-and-ports-does-service-gateway-use}
+
+Service Gateway provides HTTP and HTTPS ports for integration with other on-premises products. For more information, see [Service Gateway virtual appliance communication ports](sg-ports-used.md)
+
+## What deployment options does Service Gateway support? {#what-deployment-options-does-service-gateway-support}
+
+Service Gateway supports installation on a range of different network virtualization platforms. For virtual machine deployments with a hypervisor, Service Gateway supports [VMware ESXi](sg-virtual-app-vmware-esxi.md) and [Microsoft Hyper-V](deploy-virtual-appliance-ms-hyper-v.md).
+
+Service Gateway supports cloud deployments with Amazon Web Services and Microsoft Azure.
+
+## How do you check CPU compatibility for Service Gateway 3.0? {#how-do-you-check-cpu-compatibility-for-service-gateway-3.0}
+
+Service Gateway 3.0 migrates the base operating system from CentOS to ensure continued service and security. The new base operating system has minimum CPU architecture requirements. If your CPU does not meet the minimum requirements, you cannot upgrade to Service Gateway 3.0. Service Gateway 3.0 supports the following CPU architectures at the following versions or later:
+
+- AMD and Intel 64-bit (x86-64-v2)
+
+- 64-bit ARM (ARMv8.0-A)
+
+- IBM Power Systems, Little Endian (POWER9)
+
+- 64-bit IBM Z (z14)
+
+To determine whether your CPU meets the minimum architecture requirements, check your system properties. Alternatively, you may run a script or program to check your CPU architecture.
+
+For Linux systems, run the following script from the command line shell:
+
+``` codeblock
+#!/bin/bash
+function check_cpu_support_x86_64_v2() {
+    flags=$(cat /proc/cpuinfo | grep flags | head -n 1 | cut -d: -f2)
+    supports_v2='awk "/cx16/&&/lahf/&&/popcnt/&&/sse4_1/&&/sse4_2/&&/ssse3/ {found=1} END {exit !found}"'
+    echo "$flags" | eval $supports_v2
+    if [ $? -eq 0 ]; then
+        echo "CPU supports upgrade to SG3.0."
+    else
+        echo "CPU doesn't support upgrade to SG3.0."
+    fi
+}
+  
+check_cpu_support_x86_64_v2
+```
+
+If the CPU is compatible, the script outputs the message `CPU supports upgrade to SG3.0.`.
+
+For Windows systems, download [Coreinfo](https://learn.microsoft.com/en-us/sysinternals/downloads/coreinfo) from Microsoft.
+
+:::warning[Important]
+The following instructions use Coreinfo v3.6. The information and screens contained in these instructions were valid as of January 2024. Coreinfo is a third-party program not affiliated with Trend Micro. Trend Micro takes no responsibility for any system changes caused by the program. Download and use the program at your own risk.
+:::
+
+After downloading, extract all files, and then run Coreinfo.exe from the containing directory using the command line. If Coreinfo outputs any of the following, your CPU meets the minimum architecture requirements:
+
+- CX16: Supports CMPXCHG16B instruction
+
+- POPCNT: Supports POPCNT instruction
+
+- SSE3: Supports Streaming SIMD Extensions 3
+
+- SSE4.1: Supports Streaming SIMD Extensions 4.1
+
+- SSE4.2: Supports Streaming SIMD Extensions 4.2
+
+<figure>
+<img src="./images/Coreinfo_CPU_check=GUID-024523af-ff5f-4dce-a8d5-83e1fca562c1.webp" />
+<figcaption>Coreinfo output from a compatible CPU</figcaption>
+</figure>

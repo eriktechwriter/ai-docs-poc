@@ -1,0 +1,91 @@
+---
+slug: trend-vision-one-restart-security-agent
+title: How to restart the Trend Vision One Endpoint Security agent
+---
+# How to restart the Trend Vision One Endpoint Security agent
+
+Restart the agent after using an authorization token to terminate the program.
+
+:::note
+
+This FAQ is about how to restart the Trend Vision One Endpoint Security agent after using the agent interface to shut down the agent on a Windows endpoint. For information about shutting down the agent, see [Agent Interface](policies-agent-interface.mdx).
+
+For steps on shutting down agent services manually, see [How to manually terminate Trend Vision One Endpoint Security agent processes](manually-stop-agent-processes.mdx).
+
+Some services might require enabling the feature in Endpoint Security Policies before the services restart.
+:::
+
+After successfully shutting down the Trend Vision One Endpoint Security agent, follow the steps to restart the agent and agent services.
+
+### Procedure {#procedure}
+
+1.  Restart the agent basecamp program.
+
+    1.  Access Task Manager.
+
+    2.  Go to **Services**.
+
+    3.  Locate the service **Trend Micro Endpoint Basecamp**.
+
+    4.  Right click and select **Start**.
+
+    5.  Once the service status updates to **Running**, the agent interface appears when restarting completes successfully.
+
+2.  Restart Endpoint Sensor.
+
+    1.  Access Task Manager.
+
+    2.  Go to **Services**.
+
+    3.  Locate the service **CloudEndpointService**.
+
+    4.  Right click and select **Start**.
+
+    5.  Verify the status updates to **Running** to ensure restart is successful.
+
+3.  For Standard Endpoint Protection deployments, restart the related services.
+
+    1.  Locate and execute the application `C:\Program Files (x86)\Trend Micro\Security Agent\PccNTMon.exe`
+
+    2.  Run `services.msc`.
+
+    3.  For Anti-Malware and Web Reputation, check the following services are running:
+
+        - Apex One Common Client Solution Framework
+
+        - Apex One NT Frameworkhost Service
+
+        - Apex One NT Listener
+
+        - Apex One NT RealTime Scan
+
+        - Trend Micro Unauthorized Change Prevention Service
+
+    4.  For Intrusion Prevention, check that Trend Micro Vulnerability Protection Service (Agent) is running.
+
+    5.  For Application Control, check that Trend Micro Application Control Service (Agent) is running.
+
+    6.  For Device Control, check that Trend Micro Apex One Data Protection Service is running.
+
+    7.  For Firewall, check that Apex One NT Firewall is running.
+
+4.  For Server & Workload Protection deployments, restart the related services.
+
+    1.  Access Task Manager.
+
+    2.  Go to **Services**.
+
+    3.  Locate the following services. Right-click each and select **Start**.
+
+        - AMSP
+
+        - ds_agent
+
+        - ds_notifier
+
+        - ds_monitor
+
+    4.  Verify the status updates to **Running** for each service to ensure restart is successful.
+
+5.  If any service fails to restart, check if the feature is enabled in Endpoint Security Policies.
+::::

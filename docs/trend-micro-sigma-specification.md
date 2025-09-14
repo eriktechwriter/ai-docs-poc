@@ -1,0 +1,16 @@
+---
+slug: trend-vision-one-trend-micro-sigma-specification
+title: Trend Micro Sigma specification
+---
+
+Trend Micro Sigma is a YAML-based query language used to create custom detection filters for Trend Vision One.
+
+You can use custom detection filters to detect events in your environment and create [custom models](custom-models.md) that trigger Workbench alerts.
+
+**Related information**
+
+- [General guidelines](general-guidelines.md)
+- [Structure](structure.md)
+- [Available data subtypes](available-data-subtypes.md)
+- [The search-identifier element](search-identifier-element.md)
+- [Use regex in custom filters](using-regex-custom-filters.md "Create and import custom filters containing queries that match specified patterns with regular expressions (regex).")

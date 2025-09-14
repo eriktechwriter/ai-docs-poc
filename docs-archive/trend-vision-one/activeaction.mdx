@@ -1,0 +1,110 @@
+---
+slug: trend-vision-one-activeaction
+title: ActiveAction
+---
+# ActiveAction
+
+Different types of virus/malware require different scan actions. Customizing scan actions requires knowledge about virus/malware and can be a tedious task. The Trend Vision One Endpoint Security agent uses ActiveAction to counter these issues.
+
+ActiveAction is a set of pre-configured scan actions for viruses/malware. If you are not familiar with scan actions or if you are not sure which scan action is suitable for a certain type of virus/malware, Trend Micro recommends using ActiveAction.
+
+Using ActiveAction provides the following benefits:
+
+- ActiveAction uses scan actions that are recommended by Trend Micro. You do not have to spend time configuring the scan actions.
+
+- Virus writers constantly change the way virus/malware attack endpoints. ActiveAction settings are updated to protect against the latest threats and the latest methods of virus/malware attacks.
+
+The following table illustrates how ActiveAction handles each type of virus/malware.
+
+**Trend Micro Recommended Scan Actions Against Viruses and Malware**
+
+<table>
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 19%" />
+<col style="width: 20%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr>
+<th rowspan="2"><p>Virus/Malware Type</p></th>
+<th colspan="2"><p>Real-time Scan</p></th>
+<th colspan="2"><p>Manual Scan/Scheduled Scan</p></th>
+</tr>
+<tr>
+<th><p>First Action</p></th>
+<th><p>Second Action</p></th>
+<th><p>First Action</p></th>
+<th><p>Second Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>CVE exploit</p></td>
+<td><p>Pass</p></td>
+<td><p>N/A</p></td>
+<td><p>N/A</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr>
+<td><p>Joke</p></td>
+<td><p>Quarantine</p></td>
+<td><p>N/A</p></td>
+<td><p>Quarantine</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr>
+<td><p>Trojans</p></td>
+<td><p>Quarantine</p></td>
+<td><p>N/A</p></td>
+<td><p>Quarantine</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr>
+<td><p>Virus</p></td>
+<td><p>Clean</p></td>
+<td><p>Quarantine</p></td>
+<td><p>Clean</p></td>
+<td><p>Quarantine</p></td>
+</tr>
+<tr>
+<td><p>Test virus</p></td>
+<td><p>Deny Access</p></td>
+<td><p>N/A</p></td>
+<td><p>Pass</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr>
+<td><p>Packer</p></td>
+<td><p>Quarantine</p></td>
+<td><p>N/A</p></td>
+<td><p>Quarantine</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr>
+<td><p>Others</p></td>
+<td><p>Clean</p></td>
+<td><p>Quarantine</p></td>
+<td><p>Clean</p></td>
+<td><p>Quarantine</p></td>
+</tr>
+<tr>
+<td><p>Probable malware</p></td>
+<td><p>Pass</p></td>
+<td><p>N/A</p></td>
+<td><p>Pass or user-configured action</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+
+:::note
+
+- For probable virus/malware, the default action is "Deny Access" during Real-time Scan and "Pass" during Manual Scan and Scheduled Scan. If these are not your preferred actions, you can change them to "Quarantine", "Delete", or "Rename".
+
+- Some files are uncleanable.
+
+- ActiveAction is not available for spyware/grayware scan.
+:::
+::::

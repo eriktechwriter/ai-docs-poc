@@ -1,0 +1,40 @@
+---
+slug: trend-vision-one-logrhythm-siem-integration
+title: LogRhythm SIEM integration
+---
+
+Configure the integration to allow LogRhythm to receive alert and event information from Trend Vision One, as well as to create response actions and add notes to Workbench alerts.
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, obtain the endpoint URL and authentication token.
+
+    1.  Go to **Workflow and Automation → Third-Party Integration**.
+
+    2.  Click **LogRhythm SIEM**.
+
+    3.  Obtain the values from the following fields.
+
+        - Click ![](/images/dddna_summary_detection_copy=GUID-4DE35BE5-57A5-4919-BF9C-5EC95F9CA8FD=1=en-us=Low.webp) to copy the **Endpoint URL**.
+
+        - Click **Generate** and copy the **Authentication token**.
+
+2.  Sign in and download the *SmartResponse* plug-in for Trend Vision One from [LogRhythm](https://logrhythm.my.site.com/CustomLoginPage?startURL=%2Fidp%2Flogin%3Fapp%3D0sp340000004CFf%26RelayState%3Da36bdjeigf619e08957fai97bb509%26binding%3DHttpPost%26inresponseto%3Da3c8561ebh6b7d4a45gc45jed3c51e).
+
+3.  Install the plug-in in the LogRhythm console.
+
+    1.  Go to the **Deployment Manager** tab.
+
+    2.  Go to **Tools → Administration** and select **SmartResponse Plugin Manager** from the drop-down menu.
+
+    3.  Click **Actions → Import**.
+
+    4.  In **Downloads**, select the Trend Vision One package and click **Open**.
+
+        The plug-in is installed.
+
+4.  Activate and configure the Trend Vision One plug-in in the LogRhythm console.
+
+    For more information, see the [activation demo video](https://www.youtube.com/watch?v=-vrdSpJki7Q).
+
+    LogRhythm SIEM begins pulling data from Trend Vision One. LogRhythm SIEM can only collect data generated after connecting to Trend Vision One. You might need to allow some time before new data starts to appear.

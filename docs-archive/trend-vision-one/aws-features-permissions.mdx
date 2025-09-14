@@ -1,0 +1,209 @@
+---
+slug: trend-vision-one-aws-features-permissions
+title: AWS features and permissions
+---
+# AWS features and permissions
+
+Enable cloud security features and permissions to give Trend Vision One greater visibility and protection over your cloud assets.
+
+Enabling the Cloud Account features and permissions on your AWS accounts allows Trend Vision One apps and security features to access your cloud account and gain greater visibility over assets and monitor for potential threats. Each feature and permission is described in the table below.
+
+:::warning[Important]
+
+- Some features support a limited number of AWS regions. For more information, see [AWS supported regions and limitations](aws-supported-regions-limitations.mdx).
+
+- Agentless Vulnerability & Threat Detection is a pre-release feature and is not part of the existing features of an official commercial or general release. Please review the [Pre-release disclaimer](pre-release-disclaimer.mdx) before using the feature.
+:::
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Feature</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Core Features and Cyber Risk Exposure Management</p></td>
+<td><p>The core set of features and permissions required to connect your AWS account</p>
+<p>Core features enable you to connect your AWS account to Trend Vision One to discover your cloud assets and rapidly identify risks such as compliance and security best practice violations on your cloud infrastructure.</p>
+
+
+:::note
+
+<p>Core features are required to connect your AWS account and cannot be disabled. If you need to disconnect your account, see <a href="trend-vision-one-aws-accounts">AWS accounts</a></p>
+
+
+:::
+
+
+<p>The core features enable the following Trend Vision One apps and features to monitor your cloud environment:</p>
+<ul>
+<li><p><strong>Cyber Risk Exposure Management → Attack Surface Discovery → Cloud Assets</strong></p>
+<p>For more information, see <a href="trend-vision-one-cloud-assets">Cloud assets</a>.</p></li>
+<li><p><strong>Cyber Risk Exposure Management → Attack Surface Discovery → APIs</strong></p>
+<p>For more information, see <a href="trend-vision-one-apis">APIs</a>.</p></li>
+<li><p><strong>Cyber Risk Exposure Management → Cloud Security Posture</strong></p>
+<p>For more information, see <a href="trend-vision-one-cloud-posture">Cloud Security Posture</a>.</p></li>
+<li><p><strong>Endpoint Security → Server &amp; Workload Protection</strong></p>
+<p>You can manage EC2 instances and Amazon WorkSpaces can in Server &amp; Workload Protection like any other computer. These instances are tree structures and are treated as computer groups.</p>
+<p>AWS assets are visible in the following locations:</p>
+<ul>
+<li><p>EC2 instances appear in the <strong>Computers</strong> screen, listed under your AWS account by region, VPC, and subnet.</p></li>
+<li><p>Amazon WorkSpaces appear in the <strong>Computers</strong> screen, listed under your AWS account by region as part of the <strong>WorkSpaces</strong> group.</p></li>
+</ul>
+<p>For more information, see <a href="trend-vision-one-computers">Computers</a>.</p></li>
+</ul>
+
+
+:::note
+
+<p>Your AWS assets appear in the Endpoint Inventory list. Assets without the endpoint agent installed appear as unmanaged endpoints.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Agentless Vulnerability &amp; Threat Detection</p></td>
+<td><p>The feature and permission set to enable Cyber Risk Exposure Management (CREM) capabilities for your account</p>
+<p>This feature set allows Trend Vision One to deploy Agentless Vulnerability &amp; Threat Detection in your AWS account to discover vulnerabilities and malware in AWS EBS volumes attached to EC2 instances, ECR images, and Lambda functions with zero impact to your applications. To learn more, see <a href="trend-vision-one-agentless-vulnerability-threat">Agentless Vulnerability &amp; Threat Detection</a>.</p>
+
+
+:::note
+
+<p>You can specify which resource types to include in scans when you <a href="trend-vision-one-adding-aws-account">add your AWS account</a> in Cloud Accounts. Three AWS resource types are currently supported: EBS (Elastic Block Store), ECR (Elastic Container Registry), and Lambda. All resources are included in vulnerability scanning by default. Anti-malware scanning is disabled by default but may be enabled at any time.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Container Protection for Amazon ECS</p></td>
+<td><p>The feature and permission set to view and protect your containers</p>
+<p>This feature set allows Container Security to connect and deploy components to your AWS account to protect your containers and container images in Elastic Container Service (ECS) environments.</p>
+
+
+:::warning[Important]
+
+<ul>
+<li><p>As of November 2023, AWS private and freemium accounts allow up to 10 Lambda executions. Container Protection deployment requires at least 20 concurrent Lambda executions. Please verify your AWS account status before enabling this feature.</p></li>
+<li><p>At this time, the ECS runtime vulnerability scanning feature does not support scanning ECR images installed on AWS accounts where Container Security is not installed.</p></li>
+</ul>
+
+
+:::
+
+
+<p>For more information, see <a href="trend-vision-one-container-security">Container Security</a>.</p></td>
+</tr>
+<tr>
+<td><p>Cloud Detections for AWS CloudTrail</p></td>
+<td><p>The feature and permission set to enable XDR for Cloud to monitor Cloud Audit Logs for your account</p>
+<p>This feature set enables XDR monitoring of your cloud account to gain actionable insight into user, service, and resource activity with detection models identifying activity such as privilege escalation, password modification, and other attack techniques. Detections generated by this feature can be viewed in the Search and Workbench apps.</p>
+<p>Cloud audit logs are used as a data source in the following Trend Vision One apps and services:</p>
+<ul>
+<li><p>Observed Attack Techniques</p></li>
+<li><p>Workbench</p></li>
+<li><p>Detection Model Management (used for custom exceptions and models)</p></li>
+</ul>
+<p>This feature requires additional configuration of your CloudTrail settings. For more information, see <a href="trend-vision-one-cloudtrail-configuration">CloudTrail configuration</a>.</p>
+
+
+:::note
+
+<p>XDR for Cloud requires credits to use. Click the <strong>Credit settings</strong> icon (<img src="./images/gear_icon=fc9a51ad-35af-4fe3-92c6-5e41b2dfc5d9.webp" />) to view your usage reservation, allocated credits, and a graph of past data usage. Eligible customers can <a href="trend-vision-one-v1-features-free-trials">start a free trial</a>, or directly allocate credits.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Cloud Detections for Amazon Security Lake</p></td>
+<td><p>The feature and permission set to enable XDR for Cloud monitoring of your Amazon Security Lake data</p>
+<p>The feature set forwards data from your Amazon Security Lake to Trend Vision One to gain actionable insight into your environment with XDR detection models to alert when malicious and suspicious activity is detected in your cloud resources, services, and network.</p>
+<p>Data forwarded includes the following scanned logs:</p>
+<ul>
+<li><p>CloudTrail - Management Events</p></li>
+<li><p>CloudTrail - S3 Data Events</p></li>
+<li><p>CloudTrail - Lambda Data</p></li>
+<li><p>EKS Audit Logs</p></li>
+<li><p>Route 53 Resolver Query Logs</p></li>
+<li><p>SecurityHub Findings</p></li>
+<li><p>VPC Flow Logs</p></li>
+<li><p>WAF Logs</p></li>
+</ul>
+
+
+:::warning[Important]
+
+<p>You must set up Amazon Security Lake before enabling this feature.</p>
+<p>XDR for Cloud requires credits to use. Click the <strong>Credit settings</strong> icon (<img src="./images/gear_icon=fc9a51ad-35af-4fe3-92c6-5e41b2dfc5d9.webp" />) to view your usage reservation, allocated credits, and a graph of past data usage. Eligible customers can <a href="trend-vision-one-v1-features-free-trials">start a free trial</a>, or directly allocate credits.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Cloud Response for AWS</p></td>
+<td><p>The feature and permission set to allow response actions for your account</p>
+<p>This feature set allows Trend Vision One permission to take response actions to contain incidents within your cloud account, such as revoking access for suspicious IAM users. Additional response actions leverage integration with third party ticketing systems. Response actions can be taken from the context menu in the Workbench app.</p>
+<p>This feature requires enabling XDR for Cloud - AWS CloudTrail for your account.</p></td>
+</tr>
+<tr>
+<td><p>File Security Storage</p></td>
+<td><p>The feature and permission set to allow the File Security app to monitor and scan files and cloud storage</p>
+<p>This feature allows Trend Vision One permission to view and scan files and cloud objects within your cloud storage to search for and detect possible malware. For more information, see <a href="trend-vision-one-file-security-intro-origin">File Security</a>.</p></td>
+</tr>
+<tr>
+<td><p>Real-Time Posture Monitoring</p></td>
+<td><p>The feature and permission set to enable Real-Time Posture Monitoring for the Cloud Risk Management app</p>
+<p>This feature allows Trend Vision One permission to monitor your cloud account to provide live monitoring with instant threat and remediation alerts for activities and events within your cloud environment. For more information, see <a href="trend-vision-one-real-time-threat-monitoring">Real-Time Posture Monitoring</a>.</p>
+<p>This feature requires enabling XDR for Cloud - AWS CloudTrail for your account.</p></td>
+</tr>
+<tr>
+<td><p>Cloud Detections for AWS VPC Flow Logs</p></td>
+<td><p>The feature and permission set to enable XDR for Cloud monitoring of Virtual Private Cloud (VPC) flow logs</p>
+<p>This feature set allows Trend Vision One to collect and analyze VPC flow logs to identify and provide alerts for malicious IP traffic, SSH brute force attacks, data exfiltration, and more.</p>
+<p>AWS VPC flow logs are used as a data source in the following Trend Vision One apps and services:</p>
+<ul>
+<li><p>Threat Intelligence Sweeping</p></li>
+<li><p>Observed Attack Techniques</p></li>
+<li><p>Workbench</p></li>
+<li><p>Detection Model Management (used for custom exceptions and models)</p></li>
+</ul>
+<p>You can search for VPC Flow Log events using <strong>XDR Data Explorer</strong> by selecting Cloud Activity Data or Network Activity Data as the search method. For more information, see <a href="trend-vision-one-search-method-data-sources">Data sources</a>.</p>
+<p>This feature has additional requirements and considerations. For more information, see <a href="trend-vision-one-vpc-flow-logs-requirements">VPC Flow Logs recommendations and requirements</a>.</p>
+
+
+:::warning[Important]
+
+<p>XDR for Cloud only supports monitoring VPC Flow Logs version 5 or later. For more information, see <a href="trend-vision-one-vpc-flow-logs-requirements">VPC Flow Logs recommendations and requirements</a>.</p>
+<p>XDR for Cloud requires credits to use. Click the <strong>Credit settings</strong> icon (<img src="./images/gear_icon=fc9a51ad-35af-4fe3-92c6-5e41b2dfc5d9.webp" />) to view your usage reservation, allocated credits, and a graph of past data usage. Eligible customers can <a href="trend-vision-one-v1-features-free-trials">start a free trial</a>, or directly allocate credits.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Data Security Posture</p></td>
+<td><p>The feature and permission set to allow Data Security Posture to monitor your AWS cloud assets for sensitive data.</p>
+<p>This feature gives instant visibility into cloud assets containing sensitive data. Data Security Posture helps you understand your organization's overall data risk, and to view and address cloud assets with the riskiest sensitive data.</p>
+<p>For more information, see <a href="trend-vision-one-data-posture">Data Security Posture</a>.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [VPC Flow Logs recommendations and requirements](vpc-flow-logs-requirements.md "Review required and recommended configuration settings for using XDR for Cloud - AWS VPC Flow Logs.")
+::::

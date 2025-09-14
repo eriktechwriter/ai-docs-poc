@@ -1,0 +1,124 @@
+---
+slug: trend-vision-one-google-secops
+title: Google Security Operations SIEM integration
+---
+# Google Security Operations SIEM integration
+
+Configure the integration to enable Trend Vision One to share data with Google Security Operations (Google SecOps) SIEM for enhanced security telemetry analysis.
+
+Trend Vision One pushes alerts, event data, container vulnerabilities, activity data, and audit logs to AWS S3 buckets managed by Trend Micro. Google SecOps retrieves this data using data feeds approximately every 15 minutes. Unretrieved data in the S3 buckets is retained for 7 days before being purged.
+
+You can create multiple feeds in Google SecOps and configure the data obtained using the feeds individually.
+
+:::warning[Important]
+
+The following instructions and screen captures were valid as of April 7, 2024. For further help, check your Google SecOps documentation.
+:::
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, generate the access key and specify the data to send to Google SecOps.
+
+    1.  Go to **Workflow and Automation → Third-Party Integration**.
+
+    2.  In the **Integration** column, click **Google Security Operations SIEM**.
+
+    3.  Under **Access key**, click **Generate key** to generate the access key ID and secret access key used for data feed configuration in Google SecOps.
+
+    4.  Under **Data transfer**, enable the toggle next to the data you want to send to S3 buckets.
+
+        :::note
+
+        Sending activity data to an S3 bucket requires Trend Vision One credits. [Configure the data allowance for transferring activity data and manage credit allocation](credit-req-for-apps-services.mdx) in the Credits & Billing app.
+        :::
+
+        For information on the data format and requirements, see [Data specification for AWS S3 buckets](data-spec-for-aws-s3-buckets.mdx).
+
+        :::warning[Important]
+
+        Data in S3 buckets is retained for 7 days before being purged. Ensure your Google SecOps feeds are properly configured to ingest data from Trend Vision One.
+        :::
+
+        Whenever a data transfer is enabled, an S3 URI is generated and the data begins to be sent to the corresponding S3 bucket. Copy and store the S3 URI in a safe location.
+
+    5.  For **Events** and **Activity data**, click **Edit** to modify the scope of the data.
+
+        Modifying the scope does not change the generated S3 URI.
+
+    6.  To stop sending a type of data to Google SecOps, disable the toggle next to the data.
+
+        Re-enabling the data transfer generates a new S3 URI. You need to configure a new feed in Google SecOps.
+
+2.  In Google SecOps, configure SIEM settings by creating feeds to pull data from AWS S3 buckets.
+
+    1.  From the Google SecOps menu, select **Settings**, and then click **Feeds**.
+
+    2.  Click **Add New**.
+
+    3.  Configure the new feed settings.
+
+        <table>
+        <colgroup>
+        <col style="width: 14%" />
+        <col style="width: 28%" />
+        <col style="width: 56%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Step</p></th>
+        <th><p>Screenshot</p></th>
+        <th><p>Settings</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Set Properties</p></td>
+        <td><img src="./images/GoogleSecOps_1=fa9eda37-d5e8-400a-88ad-578394b40bcf.webp" /></td>
+        <td><ol>
+        <li><p>Specify a <strong>FEED NAME</strong>.</p></li>
+        <li><p>Select <strong>Amazon S3</strong> for <strong>SOURCE TYPE</strong>.</p></li>
+        <li><p>Select the Trend Vision One data you want Google SecOps to ingest for <strong>LOG TYPE</strong>. Available options include:</p>
+        <ul>
+        <li><p>Trend Micro Vision One Activity</p></li>
+        <li><p>Trend Micro Vision One Detections</p></li>
+        <li><p>Trend Micro Vision One Container Vulnerabilities</p></li>
+        <li><p>Trend Micro Vision One Workbench</p></li>
+        <li><p>Trend Micro Vision One Audit</p></li>
+        <li><p>Trend Micro Vision One Observed Attack Techniques</p></li>
+        </ul></li>
+        <li><p>Click <strong>Next</strong>.</p></li>
+        </ol></td>
+        </tr>
+        <tr>
+        <td><p>Input Parameters</p></td>
+        <td><img src="./images/GoogleSecOps_2=51129d62-7464-4094-9b0c-a2a09677f945.webp" /></td>
+        <td><ol>
+        <li>Select <strong>Auto Detect</strong> for <strong>REGION</strong>.</li>
+        <li><p>Paste the S3 URI obtained in the previous step in <strong>S3 URI</strong>.</p></li>
+        <li><p>Select <strong>Directory which includes subdirectories</strong> for <strong>URI IS A</strong>.</p></li>
+        <li><p>Select <strong>Never delete files</strong> for <strong>SOURCE DELETION OPTION</strong>.</p></li>
+        <li><p>Paste the access key ID and secrete access key obtained in the previous step into <strong>ACCESS KEY ID</strong> and <strong>SECRET ACCESS KEY</strong>.</p></li>
+        <li><p>Click <strong>NEXT</strong>.</p></li>
+        </ol></td>
+        </tr>
+        <tr>
+        <td><p>Finalize</p></td>
+        <td><img src="./images/GoogleSecOps_3=b35ba15a-045d-4b60-8be6-f2fa79e60cb3.webp" /></td>
+        <td><ol>
+        <li><p>Review your new feed settings.</p></li>
+        <li><p>Click <strong>SUBMIT</strong>.</p></li>
+        </ol></td>
+        </tr>
+        </tbody>
+        </table>
+
+    4.  Repeat to add multiple feeds for all the data types.
+
+    For more information on creating and managing feeds, see the [Google SecOps documentation](https://cloud.google.com/chronicle/docs/administration/feed-management).
+
+    Google SecOps begins to pull Trend Vision One data from the S3 buckets approximately every 15 minutes.
+
+**Related information**
+
+- [Unified Data Model (UDM) mapping](udm-mapping.md "Learn how Trend Vision One data types are mapped to the UDM used by Google SecOps SIEM.")
+::::

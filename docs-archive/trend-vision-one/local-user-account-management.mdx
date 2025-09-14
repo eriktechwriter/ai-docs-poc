@@ -1,0 +1,99 @@
+---
+slug: trend-vision-one-local-user-account-management
+title: Local user account management
+---
+# Local user account management
+
+Add users not connected with a third-party identity provider in order to allow authentication into Private Access and Internet Access services.
+
+:::warning[Important]
+
+This feature is only available for customers that have updated to the [Foundation Services release](update-foundation-services-release.mdx).
+:::
+
+**Local User Account Management** gives **Zero Trust Secure Access** administrators the option to authorize user authentication into Internet Access and Private Access services without using a third-party identity provider. Administrators can enable or disable enrolled local user accounts at any time, allowing for controlled web access and connection to internal applications as necessary. Local users may also be assigned to one or more local user groups. As soon as a local user account or group is added, the individual account or group may be included as a target in a secure access rule.
+
+The following table outlines the actions available in the **Local User Account Management** tab within **Identity and Access Management**.
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Add local user accounts</p></td>
+<td><ul>
+<li><p>Add individual local user accounts by clicking <strong>Add Local User Account</strong> and entering the account email and optional description. Accounts can be enabled or disabled after enrollment is complete.</p></li>
+<li><p>Batch add local user accounts by clicking <strong>Import</strong> and uploading a CSV file no larger than 5 MB containing account emails and descriptions. Imported accounts are enabled by default.</p></li>
+</ul>
+<p>You may add up to 10,000 local user accounts. Account emails can be no longer than 256 characters and descriptions no longer than 512 characters.</p>
+
+
+:::note
+
+<p>Added local user accounts receive an enrollment email requesting email verification and password creation. Verification links expire after 24 hours.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Add local user groups</p></td>
+<td><p>Click <strong>Groups</strong> on the side menu to access the local group management screen. Add a new group by clicking <strong>Add Group</strong>. Enter a unique name and select available local users to add to the group.</p>
+
+
+:::note
+
+<ul>
+<li><p>All local user accounts are automatically added to the default group "All local users." The default group cannot be modified.</p></li>
+<li><p>You must have at least one local user account added in order to access the local user groups screen.</p></li>
+<li><p>The maximum possible number of local groups is 1,000. Group names may be a maximum of 512 characters and descriptions a maximum of 1024 characters.</p></li>
+</ul>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Delete individual local user accounts</p></td>
+<td><p>Delete a single local user account by clicking the delete (<img src="./images/delete_connector=3fc07446-32b8-4304-a62e-6c9ecc08d84f.webp" />) icon.</p></td>
+</tr>
+<tr>
+<td><p>Delete local user groups</p></td>
+<td><p>From the local group management screen, delete a single local user group by clicking the delete (<img src="./images/delete_connector=3fc07446-32b8-4304-a62e-6c9ecc08d84f.webp" />) icon. Delete multiple local user groups by selecting the groups and clicking the <strong>Delete</strong> button.</p></td>
+</tr>
+<tr>
+<td><p>View account enrollment status</p></td>
+<td><ul>
+<li><p><em>Waiting for enrollment</em> (<img src="./images/wait_for_rechability_check=3ac136b1-b643-4b57-95b7-f18fcf10812f.webp" />): Email verification and password creation is still pending for the account.</p></li>
+<li><p><em>Link expired</em> (<img src="./images/LinkExpired=e78ab670-ecc2-42fe-9b66-e9c1d5d515ec.webp" />: The verification link in the user enrollment email is expired. Resend the email by clicking the send email (<img src="./images/sendEmail=282fa4e3-ff92-47ae-92aa-eaf5f90d0b0f.webp" />) icon.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Batch enable, disable, or delete accounts</p></td>
+<td><ul>
+<li><p>Enable, disable, or delete multiple local user accounts by selecting the accounts and clicking the appropriate button.</p></li>
+<li><p>Enable, disable, or delete all local user accounts using the <strong>Manage all accounts</strong> menu.</p></li>
+</ul>
+<p>A progress bar appears above the table to indicate the status of the current batch action. When the action is complete, the result displays. View error details by clicking <strong>View details</strong>.</p></td>
+</tr>
+<tr>
+<td><p>Enable multi-factor authentication (MFA)</p></td>
+<td><p>Enforce MFA for local user accounts by turning on the <strong>Multi-factor authentication</strong> setting.</p></td>
+</tr>
+<tr>
+<td><p>Get the Trend Vision One local user sign-in link</p></td>
+<td><p>Copy the link for the Trend Vision One sign in page and distribute the link to local users.</p></td>
+</tr>
+</tbody>
+</table>
+::::

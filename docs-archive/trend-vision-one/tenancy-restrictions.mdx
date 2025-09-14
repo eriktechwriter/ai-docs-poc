@@ -1,0 +1,72 @@
+---
+slug: trend-vision-one-tenancy-restrictions
+title: Tenancy restrictions
+---
+# Tenancy restrictions
+
+Manage tenancy restrictions to maintain a list of tenants or contents for certain cloud apps that users are permitted to access.
+
+Internet Access allows you to restrict access to cloud apps that support tenancy restrictions by creating tenancy restriction rules and applying them to secure access rules. For example, you might want the employees in your organization to sign in to a cloud app such as Google Workspace using corporate accounts rather than personal accounts.
+
+When a user makes an HTTP or HTTPS request to a supported cloud app, the request is forwarded to the Internet Access Gateway. The gateway then inserts required HTTP/HTTPS header fields for the cloud app along with the specified values, allowing the app to identify what content the user may access.
+
+:::note
+
+Tenancy restrictions can be applied to the following:
+
+- Internet access rules
+:::
+
+The following table outlines the options available on the **Tenancy Restrictions** tab (**Zero Trust Secure Access → Secure Access Resources → Tenancy Restrictions**).
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Add a tenancy restriction rule</p></td>
+<td><ol>
+<li><p>On the <strong>Tenancy Restrictions</strong> tab, click <strong>Add</strong>.</p></li>
+<li><p>Follow the instructions to add a tenancy restriction rule.</p>
+<p>For more information, see <a href="trend-vision-one-adding-tenancy-restriction">Adding a tenancy restriction</a>.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Check tenancy restriction rule details</p></td>
+<td><ul>
+<li><p>View the basic information about a tenancy restriction rule, including the number of secure access rules that are using the rule.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Configure a tenancy restriction rule</p></td>
+<td><ul>
+<li><p>To change the basic information about a tenancy restriction rule, click <img src="./images/edit_icon=GUID-1F1D1164-5310-4D6D-ACD0-6049C86960AF.webp" /> in the <strong>Action</strong> column.</p></li>
+<li><p>To delete a tenancy restriction rule from Trend Vision One, click <img src="./images/trash_icon=GUID-47cf6867-6315-438e-8670-86ff36f22a28.webp" /> in the <strong>Action</strong> column.</p></li>
+<li><p>To delete more than one tenancy restriction rule, select the rules and click <strong>Delete</strong> in the upper left.</p>
+
+
+:::note
+
+<p>Only the tenancy restriction rule that is not in use by any secure access rule can be deleted.</p>
+
+
+:::
+
+</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Adding a tenancy restriction](adding-tenancy-restriction.md "Configure values for the HTTP/HTTPS header fields that you use to control access to a supported cloud app.")
+::::

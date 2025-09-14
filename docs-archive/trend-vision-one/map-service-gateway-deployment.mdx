@@ -1,0 +1,136 @@
+---
+slug: trend-vision-one-map-service-gateway-deployment
+title: Mapping your Service Gateway deployment
+---
+# Mapping your Service Gateway deployment
+
+Visualize how the Service Gateway appliance fits into your network environment before planning your deployment.
+
+The following maps provide an overview of several typical Service Gateway appliance deployment scenarios. Use these maps to help guide your deployment plans to best meet the needs of your network. View the [Deployment guides](deployment-guides.mdx) when you are ready to set up your Service Gateway appliance.
+
+- Service Gateway single appliance deployment
+
+- Service Gateway multiple appliance deployment
+
+- Service Gateway backup appliance deployment
+
+- Service Gateway cloud deployment
+
+**Related information**
+
+- Service Gateway single appliance deployment
+- Service Gateway multiple appliance deployment
+- Service Gateway backup appliance deployment
+- Service Gateway cloud deployment
+
+## Service Gateway single appliance deployment {#service-gateway-single-appliance-deployment}
+
+The simplest deployment for Service Gateway is a single Service Gateway virtual appliance within your network environment, behind your firewall and proxy.
+
+- **Scenario 1:** Single Service Gateway appliance with forward proxy service for endpoints
+
+  This scenario is for network environments where only endpoints with the security agent installed connect to the Service Gateway appliance and there are no other Trend Micro or third-party on-premises products.
+
+  :::note
+
+  When using a Service Gateway appliance with the forward proxy service as the sole gateway for endpoints connecting to Trend Vision One, deploying a backup Service Gateway appliance is strongly recommended. See the section on Service Gateway backup appliance deployment below for more information.
+  :::
+
+<figure>
+<img src="./images/MAP03-singleSG=GUID-ba1e5643-dce9-4b09-abae-2c7a3df5244e.webp" />
+<figcaption>Single Service Gateway Appliance with Forward Proxy Service</figcaption>
+</figure>
+
+- **Scenario 2:** Single Service Gateway appliance with connected on-premises security products
+
+  This scenario is for network environments with Trend Micro or third-party on-premises security products. This scenario operates similarly to the single Service Gateway with forward proxy service scenario. Use this mapping for connecting products such as Deep Discovery Inspector, or third-party products which connect with Trend Vision One.
+
+<figure>
+<img src="./images/MAP06-SGwithOnPremProd=GUID-9c3751c8-b1fe-4bc5-9e08-036f6ad58570.webp" />
+<figcaption>Single Service Gateway Appliance with On-Premises Security Products</figcaption>
+</figure>
+
+## Service Gateway multiple appliance deployment {#service-gateway-multiple-appliance-deployment}
+
+For networks with a large number of endpoints or higher traffic needs, deploying multiple Service Gateway appliances can help to spread the load of your environment to meet your networking needs.
+
+- **Scenario 1:** Service Gateway appliance group with forward proxy service for endpoints
+
+  This scenario is for network environments where only endpoints with the security agent installed connect to the Service Gateway appliances and there are no other Trend Micro or third-party on-premises products. This scenario can be used for load balancing with a network that contains a large number of endpoints. Endpoints automatically connect to a Service Gateway appliance within the group based on availability and workload. For best results, each Service Gateway appliance must have a unique FQDN and IP address.
+
+<figure>
+<img src="./images/MAP04-multipleSG=GUID-1e0afd65-9c0f-4ff0-936a-39f4d219ead7.webp" />
+<figcaption>Service Gateway Appliance Group for Load Balancing with Forward Proxy Service</figcaption>
+</figure>
+
+- **Scenario 2:** Service Gateway appliance group with a network load balancer
+
+  This scenario is for network environments where only endpoints with the security agent installed connect to the Service Gateway appliances and there are no other Trend Micro or third-party on-premises products. In this scenario, a dedicated network load balancer directs traffic to each Service Gateway appliance based on availability rather than relying on the endpoints to automatically direct traffic. For best results, each Service Gateway appliance must have the same FQDN with the FQDN mapped by the DNS server, and each Service Gateway appliance must be configured to use the DNS server.
+
+<figure>
+<img src="./images/MAP09-multiplewithLoadBalancer=GUID-94900e4e-4e97-4fbf-ac2d-8cabf801d008.webp" />
+<figcaption>Multiple Service Gateway Appliances with Network Load Balancer</figcaption>
+</figure>
+
+- **Scenario 3:** Multiple Service Gateway appliances with connected on-premises security products
+
+  This scenario is for network environments with Trend Micro or third-party on-premises products deployed which require more than one Service Gateway appliance to manage connections. Unlike endpoints, on-premises products cannot automatically connect to an appliance in a group based on availability. Each product must be configured to connect to a specified Service Gateway appliance. For best results, each Service Gateway appliance must have a unique FQDN and IP address.
+
+<figure>
+<img src="./images/MAP07-multiplewithOnPremProd=GUID-6b466e06-e0b0-4beb-8265-4a955f10ea53.webp" />
+<figcaption>Multiple Service Gateway Appliances with On-Premises Security Products</figcaption>
+</figure>
+
+## Service Gateway backup appliance deployment {#service-gateway-backup-appliance-deployment}
+
+Deploying a Service Gateway appliance with a backup Service Gateway appliance is a good way to ensure redundancy in your network. Should your primary Service Gateway appliance become unhealthy or require maintenance, you can simply power on the backup appliance, reducing interruption and downtime for your network. For best results, the primary and backup appliance must have the same network settings including FQDN and IP address.
+
+- **Scenario 1:** Service Gateway backup appliance with forward proxy service for endpoints
+
+  This scenario is for network environments where only endpoints with the security agent installed connect to the Service Gateway appliances and there are no other Trend Micro or third-party on-premises products. This scenario typically operates the same as the single Service Gateway appliance with forward proxy service. This scenario is strongly recommended if you plan to use the Service Gateway appliance with forward proxy service as the sole method for endpoints to connect to Trend Vision One.
+
+<figure>
+<img src="./images/MAP05-backup=fd305d5f-2e5a-4106-8793-2012d9d9dd1f.webp" />
+<figcaption>Service Gateway Backup Appliance with Forward Proxy Service</figcaption>
+</figure>
+
+- **Scenario 2:** Service Gateway backup appliance with connected on-premises security products
+
+  This scenario is for network environments with Trend Micro or third-party on-premises security products. This scenario typically operates the same as the single Service Gateway appliance with connected on-premises security products.
+
+<figure>
+<img src="./images/MAP08-backupwithOnPremProd=GUID-f8ba8f3b-c049-42ff-b28b-9098286eb61b.webp" />
+<figcaption>Service Gateway Backup Appliance with On-Premises Security Products</figcaption>
+</figure>
+
+## Service Gateway cloud deployment {#service-gateway-cloud-deployment}
+
+You can deploy the Service Gateway virtual appliance to supported cloud services. Deploying to the cloud helps reduce the hardware requirements needed to deploy within your environment. Traffic is routed from the endpoints, through your firewall to the Service Gateway virtual appliance.
+
+- **Scenario 1:** AWS cloud deployment
+
+  For more information on AWS deployment, see [Deploying a Service Gateway virtual appliance with AWS](deploy-service-gateway-aws.mdx).
+
+<figure>
+<img src="./images/MAP01-AWSdeployment=GUID-6766243a-0751-45b9-ab14-620ade9e7257.webp" />
+<figcaption>Service Gateway Deployment to AWS</figcaption>
+</figure>
+
+- **Scenario 2:** Azure cloud deployment
+
+  For more information on Azure deployment, see [Deploying a Service Gateway virtual appliance with Microsoft Azure](service-gateway-azure.mdx).
+
+<figure>
+<img src="./images/MAP02-Azuredeployment=GUID-a4f44a79-ac78-4759-9ca3-7a3854eab369.webp" />
+<figcaption>Service Gateway Deployment to Azure</figcaption>
+</figure>
+
+- **Scenario 3:** Google Cloud Platform (GCP) deployment
+
+  For more information on GCP deployment, see [Deploying a Service Gateway virtual appliance with GCP](sg-virtual-app-gcp.mdx).
+
+<figure>
+<img src="./images/MAP10-GCPdeployment=362a92a5-9802-490e-b082-a98d923b3159.webp" />
+<figcaption>Service Gateway Deployment to GCP</figcaption>
+</figure>
+:::

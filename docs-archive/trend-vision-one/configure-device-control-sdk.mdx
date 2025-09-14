@@ -1,0 +1,175 @@
+---
+slug: trend-vision-one-configure-device-control-sdk
+title: Configure Device Control
+---
+::Configure the Device Control module to define its behavior for a policy.
+
+When designing the module's behavior and implementing it using the API, use the background information and guidance that is provided in [About Device Control](configure-device-control.mdx).
+
+Policy objects contain two objects that you use to configure the Device Control module:
+
+- `DeviceControlPolicyExtension`: Controls the module state (on or off), identifies the applied Device Control rules, and identifies the stateful configuration to use with the module.
+
+- `PolicySettings`: Policy settings include several Device Control related settings that control the runtime behavior of the module, such as
+
+  - action of `USB Mass Storage` and `Mobile (MTP/PTP)`
+  - permission of `USB AutoRun Function`
+
+Configure Device Control related policy settings as described in [Configure policy and default policy settings](create-configure-policy.mdx).
+
+The following JSON represents the data structure of a `DeviceControlPolicyExtension` object:
+
+```bash
+{
+    "state": "off",
+    "moduleStatus": {...}
+}
+```
+
+The `moduleStatus` property is read-only. It provides the runtime status of the Device Control module. (See [Report on Computer Status](report-computer-status.mdx)).
+
+## General steps {#general-steps}
+
+To configure Device Control, use the following general steps:
+
+### Procedure {#procedure}
+
+1.  Create a `DeviceControlPolicyExtension` object and set the properties.
+
+2.  Create a `PolicySettings` object to configure runtime settings of the module.
+
+3.  Create a `Policy` object and add the `DeviceControlPolicyExtension` and `PolicySettings` objects.
+
+4.  Use a `PoliciesApi` object to add or update the policy in Server & Workload Protection.
+
+    :::tip
+
+    If you only need to set a single Device Control related policy setting, see [Configure a single policy or default policy setting](create-configure-policy.mdx).
+    :::
+
+### Next steps {#next-steps}
+
+Create a `DeviceControlPolicyExtension` object and set the state and rule IDs:
+
+```bash
+device_control_policy_extension = api.DeviceControlPolicyExtension()
+device_control_policy_extension.state = "on"
+```
+
+Next, create a `PolicySettings` object to configure Device Control related settings. (For detailed information about policy settings, see [Configure policy and default policy settings](create-configure-policy.mdx).) For example, you can block USB mass storage access:
+
+```bash
+policy_settings = api.PolicySettings()
+setting_value = api.SettingValue()
+setting_value.value = "Block"
+policy_settings.device_control_setting_device_control_usb_storage_device_action = setting_value
+```
+
+At this point, the Device Control policy extension and the policy settings are configured. Next, add them to a `Policy` object, and use a `PoliciesApi` object to modify a policy in Server & Workload Protection.
+
+```bash
+policy = api.Policy()
+policy.device_control = device_control_policy_extension
+policy.policy_settings = policy_settings
+
+policies_api = api.PoliciesApi(api.ApiClient(configuration))
+returned_policy = policies_api.modify_policy(policy_id, policy, api_version)
+```
+
+The `policy_id` (or `policyID`) parameter of `modifyPolicy` identifies the actual policy in Server & Workload Protection that is to be modified. This policy is modified according to the policy object that is used as the `policy` parameter. Any properties of the `policy` parameter that are not set remain unchanged on the actual policy.
+
+## Example {#example}
+
+The following example creates a `Policy` object, modifies its `DeviceControlPolicyExtension`, and configures a policy setting. The policy is then updated in Server & Workload Protection.
+
+```bash
+policies_api = api.PoliciesApi(api.ApiClient(configuration))
+policy = api.Policy()
+device_control_policy_extension = api.DeviceControlPolicyExtension()
+
+# Turn on Device Control
+device_control_policy_extension.state = "on"
+
+# Add the Device Control state to the policy
+policy.device_control = device_control_policy_extension
+
+# Create a policy_settings
+policy_settings = api.PolicySettings()
+
+# Block USB mass storage access
+usb_mass_storage_setting_value = api.SettingValue()
+usb_mass_storage_setting_value.value = "Block" # Allow values: Full Access, Read Only, Block
+policy_settings.device_control_setting_device_control_usb_storage_device_action = usb_mass_storage_setting_value
+
+# Block USB autorun
+usb_autorun_setting_value = api.SettingValue()
+usb_autorun_setting_value.value = "Block" # Allow values: Allow, Block
+policy_settings.device_control_setting_device_control_auto_run_usb_action = usb_autorun_setting_value
+
+# Block "Mobile (MTP/PTP)" access
+mobile_setting_value = api.SettingValue()
+mobile_setting_value.value = "Block" # Allow values: Full Access, Read Only, Block
+policy_settings.device_control_setting_device_control_mobile_device_action = mobile_setting_value
+
+# Add USB mass storage access to the policy
+policy.policy_settings = policy_settings
+
+# Modify the policy on Server & Workload Protection
+                    policies_api.modify_policy(policy_id, policy, api_version)
+```
+
+:::tip
+
+Also see the [Modify a Policy](https://automation.trendmicro.com/cloudone/workload-security/) operation in the API Reference.
+:::
+
+For information about authenticating API calls, see [Authenticate with Server & Workload Protection](send-your-first-request-using-api.mdx).
+
+## Create a USB Device Exception {#create-a-usb-device-exception}
+
+Generally, to create a Device Control exception rule you perform the following steps:
+
+### Procedure {#procedure-1}
+
+1.  Create a `USBDevice` object.
+
+2.  Add the USB device to Server & Workload Protection with `USBStorageDevicesApi`.
+
+3.  Set the USB device to "full-access" with `PolicyDeviceControlExceptionRulesApi` to a policy.
+
+### Next steps {#next-steps-1}
+
+```bash
+# Create a new USB device
+device = api.USBDevice()
+device.name = 'device name'
+device.vendor = 'device vendor'
+device.model = 'device model'
+device.serial_number = 'device serial number'
+
+usb_storage_device_api = api.USBStorageDevicesApi(api.ApiClient(configuration))
+created_device = usb_storage_device_api.create_usb_device(device, api_version)
+
+# Configure exception list
+exception_rules = api.ExceptionRules([])
+exception_rule1 = api.ExceptionRule()
+exception_rule1.device_id = created_device.id
+exception_rule1.action = "full-access"
+exception_rules.exception_rules.append(exception_rule1)
+
+# Set the exception list to policy
+policy_id = 1
+policy_exception_rule_api = api.PolicyDeviceControlExceptionRulesApi(api.ApiClient(configuration))
+policy_exception_rule_api.set_exception_rules_on_policy(policy_id, exception_rules, api_version)
+```
+
+:::tip
+
+Also see [How to get vendor, model and serial_number](https://success.trendmicro.com/dcx/s/solution/000286159?language=en_US)
+:::
+
+:::tip
+
+If you only need to assign an existing USB device to a policy, use the `USBStorageDevicesApi.list_usb_devices` to get the `device_id` and `set_exception_rules_on_policy` directly.
+:::
+::::::

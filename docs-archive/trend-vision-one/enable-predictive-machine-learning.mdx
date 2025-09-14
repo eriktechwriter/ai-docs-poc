@@ -1,0 +1,49 @@
+---
+slug: trend-vision-one-enable-predictive-machine-learning
+title: Enable Predictive Machine Learning in File Security SDK
+---
+# Enable Predictive Machine Learning in File Security SDK
+
+You can enable Predictive Machine Learning (PML) for File Security SDK. When a file has been identified as possible malware by PML, the file name displays a percentage symbol (%) to indicate the probability that it is a malicious file.
+
+To enable PML for File Storage SDK:
+
+### Procedure {#procedure}
+
+1.  In the SDK that you deployed for File Security, enter the following command line parameters:
+
+    ::: {.simpletable-container}
+    <table id="GUID-BED80320-70E5-47C4-9530-CC26073D469D-blzr2i__choicetable_crx_qlk_w1c" class="choicetable" data-border="1">
+    <thead>
+    <tr class="chhead table-header-style">
+    <th class="choptionhd">Command Line Parameter</th>
+    <th class="chdeschd">Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="chrow">
+    <td class="choption"><code>pml</code></td>
+    <td class="chdesc">True or false. Default value is false</td>
+    </tr>
+    <tr class="chrow">
+    <td class="choption"><code>feedback</code></td>
+    <td class="chdesc">True or false. Default value is false.</td>
+    </tr>
+    </tbody>
+    </table>
+    :::
+
+The following example shows one file scanned using the Python SDK with the following parameters:
+
+- File name: FILENAME
+
+- V1 region: us-east-1
+
+- Turn on Trend PML: true
+
+- Turn on Trend Smart Feedback: true
+
+- API Key: API_KEY
+
+  `python3 client.py -f FILENAME -r us-east-1 --api_key API_KEY --pml true --feedback true`
+:::

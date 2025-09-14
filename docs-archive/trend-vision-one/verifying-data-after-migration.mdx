@@ -1,0 +1,57 @@
+---
+slug: trend-vision-one-verifying-data-after-migration
+title: Verifying data after migration
+---
+# Verifying data after migration
+
+To ensure your organization achieves effective email security protection, Cloud Email Gateway Protection recommends you perform the following tasks after data migration:
+
+### Procedure {#procedure}
+
+1.  Verify migrated policy data under **Inbound Protection** and **Outbound Protection**.
+
+    1.  Go to the following locations respectively:
+
+        - **Virus Scan**
+
+        - **Spam Filtering**
+
+        - **Correlated Intelligence → Correlated Intelligence Policy**
+
+        - **Content Filtering → Content Policy**
+
+        - **Data Loss Prevention → Data Loss Prevention (DLP) Policy**
+
+        :::note
+
+        After migration, policy rules are categorized into the following types: virus scan, spam filtering, Correlated Intelligence, content filtering, and DLP.
+        :::
+
+    2.  Select **Error** or **Warning** from the **Migration status** drop-down list.
+
+    3.  Follow the on-screen instructions in the **Migration Status** column to fix error settings or confirm warning settings and enable the corresponding policies.
+
+    4.  Reorder policy rules.
+
+        You can manually reorder the policy rules in each domain after migration if they do not meet your requirements. For details, see [Reordering policy rules](reordering-policy-rules.mdx).
+
+2.  Verify other migrated data.
+
+    1.  Go to **Inbound Protection → Connection Filtering → IP Reputation → Settings** to verify email reputation settings.
+
+    2.  Go to the following locations respectively to verify approved and blocked IP addresses:
+
+        - **Inbound Protection → Connection Filtering → IP Reputation → Approved IP Addresses**
+
+        - **Inbound Protection → Connection Filtering → IP Reputation → Blocked IP Addresses**
+
+    3.  Go to **Inbound Protection → Domain-based Authentication → DomainKeys Identified Mail (DKIM) Verification** to verify the Global DKIM Enforcement rule.
+
+    4.  Go to **Inbound Protection → Domain-based Authentication → Domain-based Message Authentication, Reporting and Conformance (DMARC)** to verify DMARC settings.
+
+    5.  Go to **Inbound Protection → Spam Filtering → Time-of-Click Protection** to verify time-of-click protection settings.
+
+    6.  Go to **Outbound Protection → Domain-based Authentication → DomainKeys Identified Mail (DKIM) Signing** to verify DKIM signature settings.
+
+    7.  Go to **Administration → Policy Objects** to verify policy object settings.
+:::

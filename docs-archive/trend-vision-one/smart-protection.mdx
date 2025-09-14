@@ -1,0 +1,138 @@
+---
+slug: trend-vision-one-smart-protection
+title: Smart Protection in Server & Workload Protection
+---
+# Smart Protection in Server & Workload Protection
+
+:::Smart Protection Network integration is available for your computers and workloads through Anti-Malware and Web Reputation modules. Smart Feedback, which is set at the system level, allows you to provide continuous feedback to the Smart Protection Network.
+
+For more about Trend Micro's Smart Protection Network, see [Smart Protection Network](https://www.trendmicro.com/en_us/business/technologies/smart-protection-network.mdx).
+
+In this topic:
+
+- Anti-Malware and Smart Protection
+- Web Reputation and Smart Protection
+- Smart Feedback
+
+See also [Deploy a Smart Protection Server in AWS](integrate-smart-protection-server.mdx) for AWS deployment instructions, and the [Smart Protection Server documentation](https://docs.trendmicro.com/en-us/enterprise/smart-protection-server.aspx) for instructions on manually deploying the server.
+
+## Anti-Malware and Smart Protection {#anti-malware-and-smart-protection}
+
+- Benefits of Smart Scan
+- Enable Smart Scan
+- Smart Protection Server for File Reputation Service
+
+## Benefits of Smart Scan {#benefits-of-smart-scan}
+
+Smart Scan provides the following features and benefits:
+
+- Provides fast, real-time security status lookup capabilities in the cloud.
+- Reduces the overall time it takes to deliver protection against emerging threats.
+- Reduces network bandwidth consumed during pattern updates. The bulk of pattern definition updates only needs to be delivered to the cloud, not to many endpoints.
+- Reduces the cost and overhead associated with corporate-wide pattern deployments.
+
+## Enable Smart Scan {#enable-smart-scan}
+
+Smart Scan is available in the Anti-Malware module. It leverages Trend Micro's [Smart Protection Network](https://www.trendmicro.com/en_us/business/technologies/smart-protection-network.mdindex.mdx) to allow local pattern files to be small and reduces the size and number of updates required by agents and appliances. When Smart Scan is enabled, the agent downloads a small version of the much larger full malware pattern from a Trend Micro Update Server. This smaller pattern can quickly identify files as either "confirmed safe", or "possibly dangerous". "Possibly dangerous" files are compared against the larger complete pattern files stored on Trend Micro Smart Protection Servers to determine with certainty whether they pose a danger or not.
+
+Without Smart Scan enabled, your relay agents must download the full malware pattern from a Trend Micro Update Server to be used locally on the agent. The pattern will only be updated as scheduled component updates are processed. The pattern is typically updated once per day for your agents to download and is around 120 MB.
+
+:::note
+
+Verify that the computer can reliably connect to the global Trend Micro Smart Protection Network URLs (see [Firewall exception requirements for Trend Vision One](firewall-exception-requirements-for.mdx) for a list of URLs). If connectivity is blocked by a firewall, proxy, or AWS security group or if the connection is unreliable, Anti-Malware performance is reduced.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to *Policies*.
+
+2.  Double-click a policy.
+
+3.  Go to **Anti-Malware → Smart Protection**.
+
+4.  In the *Smart Scan* section, either:
+
+    - select *Inherited* (if the parent policy has Smart Scan enabled)
+    - deselect *Inherited*, and then select either *On* or *On for Deep Security Agent, Off for Virtual Appliance*.
+
+5.  Click *Save*.
+
+### Next steps {#next-steps}
+
+:::note
+
+A computer that is configured to use Smart Scan will not download full anti-malware patterns locally. Therefore if your Anti-Malware license expires while a computer is configured to use Smart Scan, switching Smart Scan off will not result in local patterns being used to scan for malware since no anti-malware patterns will be present locally.
+:::
+
+## Smart Protection Server for File Reputation Service {#smart-protection-server-for-file-reputation-service}
+
+Smart Protection Server for File Reputation Service is available in the Anti-Malware module. It supplies file reputation information required by Smart Scan.
+
+To edit Smart Protection Server for File Reputation Service:
+
+### Procedure {#procedure-1}
+
+1.  Go to *Computers* or **Policies → Anti-Malware → Smart Protection**.
+
+2.  You can select to connect directly to Trend Micro's Smart Protection Server or to connect to one or more locally installed Smart Protection Servers.
+
+3.  If you want to use a proxy for communication between agents and the Smart Protection Network, we recommend that you create a proxy server specifically for the Smart Protection Network. You can view and edit the list of available proxies on the *Proxies* tab on the **Administration → System Settings** page. For information on proxy protocols, see [Supported proxy protocols](configure-proxies-server-workload.mdx).
+
+    :::note
+
+    After you select a proxy, you will need to restart any agents that will be using it.
+    :::
+
+4.  Select the *When off domain, connect to global Smart Protection Service (Windows and macOS only)* option to use the global Smart Protection Service if the computer is off domain. The computer is considered to be off domain if it cannot connect to its domain controller. (This option is for Windows and macOS agents only.)
+
+    :::note
+
+    If you have a locally installed Smart Protection Server, this option should be set to *Yes* on at least one computer so that you are notified if there is a problem with the Smart Protection Server itself.
+    :::
+
+5.  Set the *Smart Protection Server Connection Warning* to generate error events and alerts when a computer loses its connection to the Smart Protection Server.
+
+## Web Reputation and Smart Protection {#web-reputation-and-smart-protection}
+
+Smart Protection Server for Web Reputation supplies web reputation information required by the Web Reputation module.
+
+To edit Smart Protection Server for Web Reputation Service:
+
+### Procedure {#procedure-2}
+
+1.  Go to *Computers* or *Policies* **Web Reputation → Smart Protection**.
+
+2.  You can select to connect directly to Trend Micro's Smart Protection Server or to connect to one or more locally installed Smart Protection Servers.
+
+3.  If you want to use a proxy for communication between agents and the Smart Protection Network, we recommend that you create a proxy server specifically for the Smart Protection Network. You can view and edit the list of available proxies on the *Proxies* tab on the **Administration → System Settings** page. For information on proxy protocols, see [Supported proxy protocols](configure-proxies-server-workload.mdx).
+
+    :::note
+
+    After you select a proxy, you will need to restart any agents that will be using it.
+    :::
+
+4.  Select the *When off domain, connect to global Smart Protection Service (Windows and macOS only)* option to use the global Smart Protection Service if the computer is off domain. The computer is considered to be off domain if it cannot connect to its domain controller. (This option is for Windows and macOS agents only.)
+
+    :::note
+
+    If you have a locally installed Smart Protection Server, this option should be set to *Yes* on at least one computer so that you are notified if there is a problem with the Smart Protection Server itself.
+    :::
+
+5.  Set the *Smart Protection Server Connection Warning* to generate error events and alerts when a computer loses its connection to the Smart Protection Server.
+
+## Smart Feedback {#smart-feedback}
+
+Trend Micro Smart Feedback provides continuous communication between Trend Micro products and the company's 24/7 threat research centers and technologies. With Smart Feedback, products become an active part of the Trend Micro Smart Protection Network, where large amounts of threat data is shared and analyzed in real time. This interconnection enables never before possible rates of analysis, identification, and prevention of new threats-a level of responsiveness that addresses the thousands of new threats and threat variants released daily.
+
+Trend Micro Smart Feedback is a system setting in Server & Workload Protection. When enabled, Smart Feedback shares protected threat information with the Smart Protection Network, allowing Trend Micro to rapidly identify and address new threats. By default, Smart Feedback is enabled. You can disable it or adjust its settings by going to **Administration → System Settings → Smart Feedback**.
+
+:::note
+
+macOS agents support only the enabling and disabling of Smart Feedback. The parameters associated with Smart Feedback, such as selecing an industry and setting the frequency of sending feedback and the maximum bandwidth, are not supported by macOS agents. Other agents *do* support these parameters.
+:::
+
+:::note
+
+Smart Feedback will use the agents, appliances, and relays (component updates) proxy selected in the Proxy Server Use section on the **Administration → System Settings → Proxies** tab.
+:::
+:::::::

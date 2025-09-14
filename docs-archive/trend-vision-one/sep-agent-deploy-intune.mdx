@@ -1,0 +1,180 @@
+---
+slug: trend-vision-one-sep-agent-deploy-intune
+title: Standard Endpoint Protection Agent Deployment using Microsoft Intune
+---
+# Standard Endpoint Protection Agent Deployment using Microsoft Intune
+
+:Deploy the Standard Endpoint Protection agent to your endpoints using Microsoft Intune.
+
+:::warning[Important]
+
+The steps are valid for Microsoft Intune as of December, 2023.
+
+This deployment method has only been tested for 64-bit Windows agents.
+:::
+
+Configure your agent installation packages to ensure that your newly-deployed agents:
+
+- Report to the correct Protection Manager or Endpoint Inventory
+
+- Automatically apply the correct default settings
+
+:::note
+
+For Standard Endpoint Protection agents, you can set up the [agent for VDI environments](create-golden-agent-image.mdx) if your network includes virtual desktops.
+:::
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Endpoint Security → Endpoint Inventory**.
+
+2.  Click **Agent Installer**.
+
+3.  Specify the **Standard Endpoint Protection** package settings.
+
+    1.  Select the **Windows** operating system.
+
+    2.  Select **x86_64** for the **OS architecture**.
+
+    3.  Select the **Endpoint Group Manager** that the newly-deployed agents report to.
+
+    4.  Click the **Download installer** icon (![](/images/downloadInstaller=20230617123737.webp)).
+
+4.  On your local machine, unzip the agent installer package to a folder that is easy to find.
+
+5.  Locate where you have downloaded and unzipped the [Microsoft Win32 Content Prep Tool](https://github.com/Microsoft/Microsoft-Win32-Content-Prep-Tool).
+
+6.  Run `IntuneWinAppUtil.exe` and specify the information when prompted.
+
+    <table>
+    <colgroup>
+    <col style="width: 33%" />
+    <col style="width: 67%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Prompt</p></th>
+    <th><p>Setting</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Source folder</p></td>
+    <td><p>Specify the directory where the agent installer is located</p>
+    <p>The following example uses <code>D:\TMStandardAgent_Windows_x86_64_Windows</code></p></td>
+    </tr>
+    <tr>
+    <td><p>Setup file</p></td>
+    <td><p>Type the full file path with <code>EndpointBasecamp.exe</code></p></td>
+    </tr>
+    <tr>
+    <td><p>Output folder</p></td>
+    <td><p>Specify the destination for the created package</p>
+    <p>The following example uses the same location as the unzipped agent installer package.</p></td>
+    </tr>
+    <tr>
+    <td><p>Specify catalog folder</p></td>
+    <td><p>Type <code>N</code></p></td>
+    </tr>
+    </tbody>
+    </table>
+
+    <figure>
+    <img src="./images/Win32Tool=GUID-fc84ca78-6051-466c-9c47-dea74f1e02ad.webp" />
+    <figcaption>Microsoft Win32 Content Prep Tool Example</figcaption>
+    </figure>
+
+    The tool creates a deployment package named `EndpointBasecamp.intunewin`.
+
+7.  In Microsoft Intune, go to **Apps → All apps** and click **Add**.
+
+    The **Select app type** window appears.
+
+8.  Select **Windows app (Win32)**.
+
+    The **Add App** window appears.
+
+9.  On the **App information** tab, click **Select app package file**.
+
+10. In the **App package file** screen, click the folder icon to locate the `EndpointBasecamp.intunewin` package.
+
+11. Click **OK**.
+
+12. Specify a unique **Name** for the app.
+
+    Trend Micro recommends using a name which includes the agent information, such as `Trend Vision One Standard Endpoint Agent.`
+
+13. Specify a **Description** to easily identify the purpose of the app.
+
+14. For **Publisher**, type `Trend Micro`.
+
+15. Click **Next**.
+
+16. Configure the **Program** tab and click **Next**.
+
+    - **Install command**: Type `EndpointBasecamp.exe`
+
+    - **Uninstall command**: Type `msiexec /x {1841AFE1-4BA7-44D4-8700-6ACF860A8ED1} /q`
+
+17. Configure the **Requirements** tab and click **Next**.
+
+    - **Operating system architecture**: Select **64-bit**.
+
+    - **Minimum operating system**: Refer to the [Trend Vision One Endpoint Security agent system requirements](endpoint-agent-system-requirements.mdx) for your agent and security environment needs.
+
+18. Configure the **Detection rules** tab.
+
+19. For **Rules format**, select **Manually configure detection rules**.
+
+20. Click **Add** to add new detection rules.
+
+    <table>
+    <colgroup>
+    <col style="width: 33%" />
+    <col style="width: 67%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Rule Type</p></th>
+    <th><p>Settings</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>MSI</p></td>
+    <td><ul>
+    <li><p><strong>MSI product code</strong>: Type <code>{1841AFE1-4BA7-44D4-8700-6ACF860A8ED1}</code></p></li>
+    <li><p><strong>MSI product version check</strong>: Select <strong>No</strong>.</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>File</p></td>
+    <td><ul>
+    <li><p><strong>Path</strong>: Type <code>%ProgramFiles%\Trend Micro\Cloud Endpoint</code></p></li>
+    <li><p><strong>File or folder</strong>: Type <code>CloudEndpointService.exe</code></p></li>
+    <li><p><strong>Detection method</strong>: Select <strong>File or folder exists</strong>.</p></li>
+    <li><p><strong>Associated with a 32-bit app on 64-bit clients</strong>: Select <strong>No</strong>.</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>File</p></td>
+    <td><ul>
+    <li><p><strong>Path</strong>: Type <code>%ProgramFiles(x86)%\Trend Micro\Endpoint Basecamp</code></p></li>
+    <li><p><strong>File or folder</strong>: Type <code>EndpointBasecamp.exe</code></p></li>
+    <li><p><strong>Detection method</strong>: Select <strong>File or folder exists</strong>.</p></li>
+    <li><p><strong>Associated with a 32-bit app on 64-bit clients</strong>: Select <strong>No</strong>.</p></li>
+    </ul></td>
+    </tr>
+    </tbody>
+    </table>
+
+21. Click **Next**, then click **Next** again to go to the **Scope tags** tab.
+
+22. Click **Select scope tags** to assign a scope tag for the agent installer.
+
+23. Click **Next** to go to the **Assignments** tab.
+
+24. Add the groups or users you wish to deploy the agent installer to, then click **Next**.
+
+25. Review the settings and then click **Create**.
+:::::

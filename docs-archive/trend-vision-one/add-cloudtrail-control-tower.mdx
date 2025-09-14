@@ -1,0 +1,199 @@
+---
+slug: trend-vision-one-add-cloudtrail-control-tower
+title: Adding an AWS account with CloudTrail and Control Tower
+---
+# Adding an AWS account with CloudTrail and Control Tower
+
+Connect your AWS Log Archive account with AWS CloudTrail and Control Tower configured to allow Trend Vision One to provide security for your multi-account AWS environment.
+
+Adding an AWS Log Archive account to the Cloud Accounts app allows Trend Vision One to access your cloud service to provide security and visibility into your cloud assets across multiple accounts. Some Cloud Account features have limited support for AWS regions. For more information, see [AWS supported regions and limitations](aws-supported-regions-limitations.mdx).
+
+:::warning[Important]
+
+The Cloud Accounts app currently only supports connecting Log Archive accounts using the CloudFormation stack template.
+
+The steps are valid for the AWS console as of April 2024.
+:::
+
+### Procedure {#procedure}
+
+1.  Sign in to the Trend Vision One console.
+
+2.  In a separate browser tab, sign into your AWS Log Archive account.
+
+3.  In the Trend Vision One console, go to **Cloud Security → Cloud Accounts → AWS**.
+
+4.  Click **Add Account**.
+
+    The **Add AWS Account** window appears.
+
+5.  Specify the Deployment Type.
+
+    1.  For **Deployment Method**, select **CloudFormation**.
+
+    2.  For account type, select **Single AWS Account**.
+
+    3.  Click **Next**.
+
+6.  Specify the general information for the account.
+
+    1.  Specify the **Account name** to display in the Cloud Accounts app.
+
+    2.  Add a **Description** to display in Cloud Accounts.
+
+    3.  Select the AWS region for CloudFormation template deployment.
+
+        :::note
+
+        The default region is your Trend Vision One region.
+
+        Some features and permissions have limited support for some AWS regions. For more information, see [AWS supported regions and limitations](aws-supported-regions-limitations.mdx).
+        :::
+
+    4.  If you have more than one Server & Workload Protection Manager instance, select the instance to associate with the connected account.
+
+        :::note
+
+        - If you have one Server & Workload Protection Manager instance, the account is automatically associated with that instance.
+        :::
+
+    5.  To add custom tags to the resources deployed by Trend Vision One, select **Resource tagging** and specify the key-value pairs.
+
+        Click **Create a new tag** to add up to three tags.
+
+        :::note
+
+        - Keys can be up to 128 characters long, and cannot start with `aws`.
+
+        - Values can be up to 256 characters long.
+        :::
+
+    6.  Click **Next**.
+
+7.  Configure the **Features and Permissions** for your Log Account.
+
+    1.  Enable **Cloud Detections for AWS CloudTrail**.
+
+    2.  Expand **Cloud Detections for AWS CloudTrail** and then enable **Control Tower deployment**.
+
+    3.  Click **Next**.
+
+8.  Launch the CloudFormation template in the AWS console.
+
+    1.  If you want to review the stack template before launching, click **Download and Review Template**.
+
+    2.  Click **Launch Stack**.
+
+    Your AWS Log Archive account opens to the **CloudFormation** service on the **Quick create stack** screen.
+
+9.  Scroll down to **Parameters** and locate the section labeled **These are the parameters required to enable service cloud audit log monitoring control tower**.
+
+    :::warning[Important]
+
+    - The monitored CloudTrail and CloudTrail SNS must be on the same account and located in the same region you selected for the template deployment.
+
+    - Do not change any other settings in the **Parameters** section. CloudFormation automatically provides the settings for the parameters. Changing parameters might cause stack creation to fail.
+    :::
+
+10. Specify the first parameter (**CloudAuditLogMonitoringCloudTrailArn**). This is the ARN of the CloudTrail you want to monitor.
+
+    1.  Open the **CloudTrail** service.
+
+    2.  On the **Trails** screen, locate the following trail: `aws-controltower-BaselineCloudTrail`
+
+    3.  Copy the ARN.
+
+    4.  Make a note of the "Trail log location". You will need this information in the following step.
+
+    5.  In your Log Archive account, paste the ARN into the **CloudAuditLogMonitoringCloudTrailArn** field.
+
+11. Specify the third parameter (**CloudAuditLogMonitoringCloudTrailS3Arn**). This is the ARN for the CloudTrail S3 bucket.
+
+    1.  Open the **S3 Bucket** service.
+
+    2.  Under **General purpose buckets**, select the **aws-controltower-logs** S3 bucket with a number and region matching the "Trail log location" from the previous step.
+
+    3.  Go to the **Properties** tab.
+
+    4.  Scroll down to the **Amazon EventBridge** section and ensure that **Send notifications to Amazon EventBridge for all events in this bucket** is turned on. If not, click **Edit** to turn on the setting.
+
+    5.  Scroll up to the **Bucket overview** section and copy the bucket ARN.
+
+    6.  On the **CloudFormation** screen, paste the ARN into the **CloudAuditLogMonitoringCloudTrailS3Arn** field.
+
+12. Create an Amazon SNS topic.
+
+    1.  In your Log Archive account, open the **Simple Notification Service**.
+
+    2.  Go to **Topics** and click **Create topic**.
+
+    3.  Select **Standard**.
+
+    4.  Type a name for the topic.
+
+    5.  Leaving the remaining settings default, click **Create topic**.
+
+13. Create an EventBridge.
+
+    1.  In your Log Archive account, open the **Amazon EventBridge** service.
+
+    2.  Go to **Buses → Rules**.
+
+    3.  Click **Create rule**.
+
+    4.  Type a name for the rule.
+
+    5.  Leaving the remaining settings default, click **Next**.
+
+    6.  Under **Creation method**, select **Use pattern form**.
+
+    7.  In the **Event pattern** section, for **Event source**, select **AWS service**.
+
+    8.  For **AWS service**, select **Simple Storage Service (S3)**.
+
+    9.  For **Event type**, select **Amazon S3 Event Notification**.
+
+    10. For **Event type specification 1**, select **Any event**.
+
+    11. For **Event type specification 2**, select **Specify bucket(s) by name**.
+
+    12. Go to **CloudFormation** and copy the S3 name from the **CloudAuditLogMonitoringCloudTrailS3Arn** field.
+
+        The S3 name is everything following the three colons (:::) in the ARN.
+
+    13. Return to **Simple Name Service** and paste the S3 name in the **Specify bucket(s) by name** field.
+
+    14. Click **Next**.
+
+    15. On the **Select target(s)** screen, select **AWS service**.
+
+    16. Under **Select a target**, select **SNS topic**
+
+    17. Under **Topic**, select the SNS topic using the name you specified.
+
+    18. Click **Next**.
+
+    19. On the **Configure tags - optional** screen, click **Next**.
+
+    20. On the **Review and create** screen, click **Create rule**.
+
+    21. Copy the ARN.
+
+14. Specify the second parameter (**CloudAuditLogMonitoringCloudTrailSNSTopicArn**). This is ARN of the CloudTrail SNS topic.
+
+    1.  Paste the ARN you just copied into the **CloudAuditLogMonitoringCloudTrailS3Arn** field.
+
+15. In the **Capabilities** section, select the following acknowledgments:
+
+    - **I acknowledge that AWS CloudFormation might create IAM resources with custom names.**
+
+    - **I acknowledge that AWS CloudFormation might require the following capability: CAPABILITY_AUTO_EXPAND**.
+
+16. Click **Create Stack**.
+
+    The **Stack details** screen for the new stack appears with the **Events** tab displayed. Creation might take a few minutes. Click **Refresh** to check the progress.
+
+17. In the Trend Vision One console, click **Done**.
+
+    The account appears in Cloud Accounts once the CloudFormation template deployment successfully completes. Refresh the screen to update the table.
+::::

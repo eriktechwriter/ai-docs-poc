@@ -1,0 +1,103 @@
+---
+slug: trend-vision-one-sec-event-fwd-via-endpoint-agent
+title: Security event forwarding via Trend Vision One Endpoint Security agent
+---
+# Security event forwarding via Trend Vision One Endpoint Security agent
+
+Enable sharing security event information from an on-premises Active Directory server with Trend Vision One.
+
+Configuring security event forwarding enhances visibility into identity-related risks by allowing Active Directory to share the following security event information with Trend Vision One:
+
+- Object access events
+
+- Logon/logoff events
+
+- System events
+
+- Account management events
+
+This function is now achieved using the Trend Vision One Endpoint Security agent with the Identity Security Sensor - Active Directory enabled, replacing the previous requirements to install a separate Active Directory Connector.
+
+:::warning[Important]
+
+Security event forwarding via Trend Vision One Endpoint Security agent is a "Pre-release" feature and is not considered an official release. Please review the [Pre-Release Disclaimer](pre-release-disclaimer.mdx) before using the feature.
+
+This feature is not available in all regions.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Workflow and Automation → Third-Party Integration → Active Directory (on-premises)**.
+
+2.  Use the toggle to enable Active Directory integration.
+
+3.  [Configure data synchronization and user access control](adfs-user-access-control.mdx).
+
+4.  Go to **Endpoint Security → Endpoint Inventory**, and click **Agent Installer** to deploy the Trend Vision One Endpoint Security agent.
+
+    :::note
+
+    Identity Security Sensor – Active Directory is supported on any of the following types of agents. Ensure you install the correct agent package on more Active Directory servers in your network.
+
+    - Standard Endpoint Protection
+
+    - Server & Workload Protection
+
+    - Endpoint Sensor
+    :::
+
+    For detailed deployment instructions, see [Manage your agent deployments](manage-your-agent-deployments.mdx).
+
+5.  Configure an endpoint security policy and enable Identity Security Sensor - Active Directory in the policy settings.
+
+    1.  Go to **Endpoint Security → Endpoint Security Configuration → Endpoint Security Policies → Policies**.
+
+    2.  Click **Create policy**.
+
+        The **Create policy** window appears.
+
+    3.  Specify the **Policy name**.
+
+        Trend Micro recommends using a name that is easy to search and identify the purpose of the policy.
+
+    4.  From the **Identity Security Sensor** drop-down list, select **Enable**.
+
+6.  Monitor agent deployment status and verify that agents are functioning correctly.
+
+    :::note
+
+    For customers that have previously deployed the Active Directory Connector, you can still view the Active Directory Connector deployments in **Third-Party Integration → Active Directory (on-premises)**.
+    :::
+
+    <table>
+    <colgroup>
+    <col style="width: 40%" />
+    <col style="width: 60%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Action</p></th>
+    <th><p>Steps</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>View agents with the Identity Security Sensor - Active Directory enabled</p></td>
+    <td><ol>
+    <li><p>Go to <strong>Endpoint Security → Endpoint Inventory</strong>.</p></li>
+    <li><p>Click <strong>Add filters</strong> (<img src="./images/endpointSecurityFilterIcon=20230614105454.webp" />).</p></li>
+    <li><p>Select the filter <strong>Endpoint security policy setting</strong>.</p></li>
+    <li><p>From the security module list, search and set <strong>Identity Security Sensor - Active Directory</strong> to <strong>Enabled</strong>.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>View agents properly forwarding security events to Trend Vision One</p></td>
+    <td><ol>
+    <li><p>Go to <strong>Endpoint Security → Endpoint Inventory</strong>.</p></li>
+    <li><p>Click <strong>Add filters</strong> (<img src="./images/endpointSecurityFilterIcon=20230614105454.webp" />).</p></li>
+    <li><p>Select the filter <strong>Identity Security Sensor - Active Directory</strong>.</p></li>
+    </ol></td>
+    </tr>
+    </tbody>
+    </table>
+::::

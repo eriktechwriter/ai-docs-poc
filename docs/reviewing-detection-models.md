@@ -1,0 +1,24 @@
+---
+slug: trend-vision-one-reviewing-detection-models
+title: Reviewing detection models
+---
+
+Use the Detection Model Management app to control the types of alerts that Trend Vision One triggers and sends to the Workbench.
+
+By default, Trend Vision One enables alerts for all detection models that your applicable products support. As you add more supported products to your environment, Trend Vision One automatically enables the newly-supported alert triggers.
+
+### Procedure {#procedure}
+
+1.  Go to **Detection Model Management**.
+
+2.  Review the currently enabled models or use the filters to locate specific models.
+
+    - **Severity**: Depending on the type of event and MITRE information, the level assigned to the model changes
+
+    - **Applicable products**: Each model requires specific data from supported products
+
+      :::note
+      You cannot enable an alert trigger if your environment does not have the required products connected.
+      :::
+
+    - **Status**: Whether Trend Vision One triggers alerts for the model

@@ -1,0 +1,87 @@
+---
+slug: trend-vision-one-manual-evidence-collection
+title: Manual evidence collection for Windows endpoints
+---
+# Manual evidence collection for Windows endpoints
+
+:Collect evidence from Windows endpoints manually using the Trend Micro Incident Response Toolkit or by executing a playbook to support threat investigation and incident response.
+
+:::warning[Important]
+
+- Evidence archives use the same folder structures as the SANS Institute and the CyLR tool.
+
+- You can automatically collect evidence from Windows endpoints with the [Incident Response Evidence Collection playbook](create-ir-collection-playbooks.mdx). This playbook currently only supports Windows endpoints.
+:::
+
+### Procedure {#procedure}
+
+1.  Select **Agentic SIEM & XDR → Forensics → Packages**.
+
+2.  Click **Collect Evidence**.
+
+3.  Configure the following settings for manual collection.
+
+    <table>
+    <colgroup>
+    <col style="width: 20%" />
+    <col style="width: 80%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Setting</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Evidence types</p></td>
+    <td><p>The <a href="trend-vision-one-supported-evidence-types-overview">types of evidence</a> to collect.</p>
+    <p>For Windows endpoints, you need <a href="trend-vision-one-basic-information-windows">basic information</a>.</p></td>
+    </tr>
+    <tr>
+    <td><p>Archive location on endpoint</p></td>
+    <td><p>Location of the evidence package on the local endpoint.</p>
+
+
+    :::warning[Important]
+
+    <ul>
+    <li><p>The local archive does not have encryption and remains on the endpoint until deleted. This might allow anyone with access to the file system to access sensitive information or reveal the presence of an ongoing investigation.</p></li>
+    <li><p>Evidence archives take up hard drive space which may impact endpoint performance.</p></li>
+    </ul>
+
+
+    :::
+
+    </td>
+    </tr>
+    </tbody>
+    </table>
+
+4.  Click ![](/images/download_icon=5c7476c2-cf15-4572-b7cd-5fc67a57d22f.webp) to download the Trend Micro Incident Response Toolkit.
+
+5.  Deploy the toolkit to the endpoints on which you want to collect evidence.
+
+6.  Execute the toolkit.
+
+    1.  Extract the contents of the .zip archive.
+
+    2.  Execute `TMIRT.ps1` as an administrator.
+
+        If you cannot execute the `TMIRT.ps1` command, the following command directly downloads and executes the toolkit based on your operating system (OS) version and architecture:
+
+        ```bash
+        .\TMIRT.exe evidence --config_file .\config.json
+        ```
+
+7.  Upload the evidence packages that the toolkit generates to **Forensics**. You can upload multiple files at once. Each file must not exceed 4 GB.
+
+**Forensics** begins processing the uploaded evidence packages.
+
+:::warning[Important]
+
+- Processing an evidence package can take several minutes.
+
+- Do not close the browser tab or refresh the screen until the process finishes.
+:::
+:::::

@@ -1,0 +1,59 @@
+---
+slug: trend-vision-one-azure-cloud-detection
+title: Enable Cloud Detections for Azure Activity Logs
+---
+# Enable Cloud Detections for Azure Activity Logs
+
+Enable Cloud Detections for Azure Activity Logs to gain actionable insights to user, service, and resource activity in your Azure cloud environments. This feature provides comprehensive log ingestion and advanced XDR detections for Azure Audit Logs, Azure VNET Flow Logs, and Azure AI Services.
+
+You can enable Cloud Detections for Azure Activity Logs on both new and existing Azure subscriptions in **Cloud Accounts**. For more information on XDR for Cloud, see [About XDR for Cloud](xdr-for-cloud.mdx)
+
+:::note
+
+To enable this feature, you must have the **Key Vault Secrets Officer** role assigned in Azure. This role is required to create and manage secrets in Azure Key Vault during deployment.
+:::
+
+### Procedure {#procedure}
+
+1.
+
+2.  Enable Cloud Detections for Microsoft Azure Activity Logs for a new or existing Azure subscription:
+
+    1.  Go to **Cloud Security → Cloud Accounts**.
+
+    2.  Click the Azure tab.
+
+    3.  Click **Add Subscription** or select an Azure subscription from the list.
+
+    4.  On the Features and Permissions page (if you are adding a new subscription), or the Resource Update tab (if you are configuring an existing subscription), enable **Cloud Detections for Azure Activity Logs** .
+
+3.  Save your changes. If you are adding a new Azure subscription, complete the steps to add the subscription. For more information, see [Adding an Azure subscription](adding-azure-subscription.mdx).
+
+4.  Configure Azure to export activity logs to Trend Vision One.
+
+    1.  Log into the Azure portal.
+
+    2.  Go to **Monitor** \> **Activity log**.
+
+    3.  Click **Export Activity Logs**.
+
+    4.  From the **Subscription** list, select the subscription for which you want to export activity logs.
+
+    5.  Click **Add diagnostic setting**.
+
+    6.  Provide a name for the diagnostic setting.
+
+    7.  In the **Logs** area, select **Administrative**.
+
+    8.  Select **Stream to an event hub**, and then enter the following:
+
+        - Subscription: `{subscriptionID}`
+
+        - Event hub namespace:` aml-eventhub-ns-{first 8 characters of subscriptionID}`
+
+        - Event hub name: `azure-activity-log`
+
+        - Event hub policy name: `RootManageSharedAccessKey`
+
+5.  Click **Save**.
+::::

@@ -1,0 +1,140 @@
+---
+slug: trend-vision-one-browser-configuration
+title: Browser configuration
+---
+# Browser configuration
+
+Configure supported browsers to reference the location of a PAC file or specify the Internet Access Gateway proxy address and port directly.
+
+Prepare the PAC file path or Internet Access Gateway proxy address before you start.
+
+- PAC file path: Get the file path of the desired PAC file in the **PAC file location** column on the **PAC Files** tab (**Zero Trust Secure Access → Secure Access Configuration → Internet Access and AI Service Access Configuration**).
+
+- Internet Access Gateway proxy address: The default, globally applicable cloud proxy address and port are `proxy.ztsa-iag.trendmicro.com` and `80`.
+
+  To use the cloud proxy address for a specific data center, see [Port and FQDN/IP address requirements](port-fqdn-ip-address-requirements.mdx).
+
+Internet Access supports the following browsers:
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Browser</p></th>
+<th><p>Version</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Google Chrome™</p></td>
+<td><p>Newest and most recent previous version</p></td>
+</tr>
+<tr>
+<td><p>Mozilla® Firefox®</p></td>
+<td><p>Newest and most recent previous version</p></td>
+</tr>
+<tr>
+<td><p>Microsoft Edge™ (Chromium-based)</p></td>
+<td><p>Newest and most recent previous version</p></td>
+</tr>
+<tr>
+<td><p>Apple™ Safari™</p></td>
+<td><p>Newest and most recent previous version</p></td>
+</tr>
+</tbody>
+</table>
+
+:::note
+
+The steps contained in these instructions were valid as of September 2022.
+:::
+
+**Related information**
+
+- Microsoft Edge
+- Google Chrome
+- Mozilla Firefox
+- Apple Safari
+
+## Microsoft Edge {#microsoft-edge}
+
+### Procedure {#procedure}
+
+1.  Click the **More** icon in the top-right corner of the browser.
+
+2.  Go to **Settings → System and performance → Open your computer's proxy settings**.
+
+    The **Automatic proxy setup** screen appears.
+
+3.  Do one of the following:
+
+    - Turn on **Use setup script**, provide the PAC file path in the **Script address** text box, and click **Save**.
+
+    - Turn on **Use a proxy server**, provide the Internet Access Gateway proxy address, and click **Save**.
+
+4.  Close the screen.
+
+## Google Chrome {#google-chrome}
+
+### Procedure {#procedure-1}
+
+1.  Click the ![](/images/chromeSettingsIcon=20220803163131.webp) icon at the top-right section of the browser window and select **Settings**.
+
+2.  Click **System** on the left navigation and click **Open your computer's proxy settings**.
+
+    The **Automatic proxy setup** screen appears.
+
+3.  Do one of the following:
+
+    - Turn on **Use setup script**, provide the PAC file path in the **Script address** text box, and click **Save**.
+
+    - Turn on **Use a proxy server**, provide the Internet Access Gateway proxy address, and click **Save**.
+
+4.  Close the screen.
+
+## Mozilla Firefox {#mozilla-firefox}
+
+### Procedure {#procedure-2}
+
+1.  Click the **Open menu** icon in the top-right corner of the browser, and then select **Settings**.
+
+2.  Click the **General** tab, and under **Network Proxy**, click **Settings**.
+
+    The **Connection Settings** screen appears.
+
+3.  Do one of the following:
+
+    - Select **Manual proxy configuration** and provide the Internet Access Gateway proxy address.
+
+      :::note
+
+      To have the Internet Access Gateway scan HTTPS traffic, select **Also use this proxy for HTTPS**.
+      :::
+
+    - Select **Automatic proxy configuration URL** and provide the PAC file path.
+
+4.  Click **OK** to close the **Connection Settings** screen, and then click **OK** again to close **Settings**.
+
+## Apple Safari {#apple-safari}
+
+### Procedure {#procedure-3}
+
+1.  Go to **System Preferences → Network**.
+
+2.  Choose the method that the device uses to connect to the internet, and then click **Advanced**.
+
+3.  Click the **Proxies** tab.
+
+4.  Do one of the following:
+
+    - Select **Automatic Proxy Configuration** and type the PAC file path in the proxy configuration file URL text box that appears.
+
+    - Select **Web Proxy (HTTP)** and **Secure Web Proxy (HTTPS)**, and provide the Internet Access Gateway proxy address and port.
+
+5.  Click **OK**.
+
+6.  Click **Apply**.
+::::

@@ -1,0 +1,93 @@
+---
+slug: trend-vision-one-adding-aws-account-using-terraform
+title: Adding an AWS account using Terraform
+---
+# Adding an AWS account using Terraform
+
+Connect your AWS account using a terraform script to deploy monitoring assets to your account.
+
+Adding an AWS account to the Cloud Accounts app allows Trend Vision One to access your cloud service to provide security and visibility into your cloud assets. Some Cloud Account features have limited support for AWS regions. For more information, see [AWS supported regions and limitations](aws-supported-regions-limitations.mdx).
+
+:::warning[Important]
+
+The steps are valid for the AWS CloudShell as of September 2024.
+
+Terraform only supports Core Features.
+:::
+
+### Procedure {#procedure}
+
+1.  Sign in to the Trend Vision One console.
+
+2.  In a new tab in the same browser session, access the AWS CloudShell for the account you want to connect.
+
+3.  In the Trend Vision One console, go to **Cloud Security → Cloud Accounts → AWS**.
+
+4.  Click **Add Account**.
+
+    The **Add AWS Account** window appears.
+
+5.  Specify the Deployment Type.
+
+    1.  For **Deployment Method**, select **Terraform**.
+
+    2.  For account type, select **Single AWS Account**.
+
+6.  Specify the general information for the account.
+
+    1.  Specify the **Account name** to display in the Cloud Accounts app.
+
+    2.  Specify a **Description** to display in the Cloud Accounts app.
+
+    3.  Select the AWS region for terraform template deployment.
+
+        :::warning[Important]
+
+        - The selected region must be the same as your CloudShell region. Attempting to run a terraform script for a different region can cause the deployment to fail.
+
+        - The default region is based on your Trend Vision One region.
+        :::
+
+    4.  If you have more than one Server & Workload Protection Manager instance, select the instance to associate with the connected account.
+
+        :::note
+
+        If you only have one Server & Workload Protection Manager instance, the account is automatically associated with that instance.
+        :::
+
+    5.  Click **Next**.
+
+    Commands for the following steps are provided on the **Launch** screen in the Trend Vision One console. Trend Micro recommends using these commands as the filename for the terraform package is uniquely generated for the package.
+
+7.  Choose your upload method.
+
+    - To use a command to upload the template directly to your CloudShell, select **Upload via CLI**.
+
+      Copy and paste the `curl` command into your CloudShell interface to retrieve the template package. The command is dynamically generated based on your account and region.
+
+    - To download the template first and upload from your local machine, select **Manual Upload**.
+
+      Click **Download the Terraform Template** to save the template to your local machine. Make sure your CloudShell environment is set to the same region you selected for the terraform deployment before uploading the package.
+
+8.  In your AWS CloudShell, extract the template to a unique folder.
+
+    :::warning[Important]
+
+    The terraform script must be in a folder with no other terraform files. Attempting to run a terraform from a folder with more than one script can cause the deployment to fail.
+    :::
+
+9.  Access the folder containing the extracted terraform script.
+
+10. Run the terraform script using the command `./deploy .sh`
+
+    AWS begins the terraform process to deploy Trend Vision One security resources.
+
+11. In the Trend Vision One console, in the Add AWS Account screen, click **Done**.
+
+    :::note
+
+    If the **Done** button is not enabled, make sure you have copied the command line for each step on the screen.
+    :::
+
+    The connection process might take a few moments to complete. You can refresh the Cloud Accounts screen to check the status of your added account.
+::::

@@ -1,0 +1,63 @@
+---
+slug: trend-vision-one-groupset
+title: GroupSet
+---
+# GroupSet
+
+:::note
+
+The Integrity Monitoring module scans for unexpected changes to [directories](directoryset.mdx), [registry values](registryvalueset.mdx), [registry keys](registrykeyset.mdx), [services](serviceset.mdx), [processes](processset.mdx), [installed software](installedsoftwareset.mdx), [ports](portset.mdx), groups, [users](userset.mdx), [files](fileset.mdx), and the [WQL](wqlset.mdx) query statement on agents. To enable and configure Integrity Monitoring, see [Set up integrity monitoring](set-up-integrity-monitoring.mdx).
+:::
+
+GroupSet represents a set of groups. Note these are local groups only.
+
+### Tag Attributes {#tag-attributes}
+
+<table>
+<thead>
+<tr>
+<th><p>Attribute</p></th>
+<th><p>Description</p></th>
+<th><p>Required</p></th>
+<th><p>Default Value</p></th>
+<th><p>Allowed Values</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>onChange</p></td>
+<td><p>Will be monitored in real time</p></td>
+<td><p>No</p></td>
+<td><p>false</p></td>
+<td><p>true, false</p></td>
+</tr>
+</tbody>
+</table>
+
+### Entity Set Attributes {#entity-set-attributes}
+
+These are the attributes of the entity that can be monitored:
+
+- *Description:* (Windows only) The textual description of the group.
+- *Group:* The group ID and name. The group name is part of the entity key, but it's still important to be able to monitor the group ID-name pairing in case groups are renamed and given new IDs. Operating systems generally enforce security based on its ID.
+- *Members:* A comma separated list of the members of the group.
+- *SubGroups:* (Windows only) A comma separated list of sub-groups of the group.
+
+### Short Hand Attributes {#short-hand-attributes}
+
+- *Standard:* Group Members SubGroups
+
+### Meaning of "Key" {#meaning-of-key}
+
+The key is the group's name. This is not a hierarchical Entity Set. Patterns are applied only to the group name. As a result the "\*\*" pattern is not applicable. The following example monitors the "Administrators" group for additions and deletions. (The "Member" attribute is included implicitly because it is a part of the STANDARD set, and no attributes are explicitly listed.)
+
+```bash
+<GroupSet>
+<include key="Administrators" />
+</GroupSet>
+```
+
+### Include and Exclude {#include-and-exclude}
+
+See [Integrity monitoring rules language](integrity-monitoring-language-swp.mdx) for a general description of Include and Exclude and their allowed attributes and sub elements.
+::::

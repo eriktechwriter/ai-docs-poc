@@ -1,0 +1,96 @@
+---
+slug: trend-vision-one-map-deployment-vmware-vcenter
+title: Mapping your deployment with VMware vCenter
+---
+# Mapping your deployment with VMware vCenter
+
+Visualize how the Virtual Network Sensor fits into your network environment before planning your deployment.
+
+The following maps provide an overview of deployment scenarios tested and supported by the Virtual Network Sensor. Use these maps to help guide your deployment plans to best meet the needs of your network. Each scenario contains a link to the post-deployment network configuration steps for the mapped configuration.
+
+- To monitor network traffic within the host machine the Virtual Network Sensor is deployed on, see Internal network traffic scenarios.
+
+- To monitor network traffic between virtual machines deployed on a different host machine than the Virtual Network Sensor, see External inter-VM traffic scenarios.
+
+- To monitor all network traffic passing through a physical network switch, see External traffic scenarios.
+
+- For monitoring traffic bandwidth above 2 Gbps regardless of source, see External traffic PCI passthrough scenario.
+
+## Internal network traffic scenarios {#internal-network-traffic-scenarios}
+
+Internal network traffic refers to traffic occurring within the host machine where the Virtual Network Sensor is deployed. These scenarios are best for monitoring traffic between virtual machines on the same host as the Virtual Network Sensor. Traffic is mirrored from a virtual network switch set up on the host machine to the Virtual Network Sensor data port virtual NIC.
+
+Virtual Network Sensor supports several methods for VMware vCenter deployments. Review the scenarios below to determine which is the best fit for your network.
+
+- **VMware vSphere Distributed Switch (promiscuous mode)**
+
+  To configure your network using this scenario, see [Configuring internal network traffic with the VMware vSphere Distributed Switch (promiscuous mode)](vsphere-dist-switch-promiscuous.mdx).
+
+  ![](/images/VMWare_Int_vDS_Promiscuous=GUID-d21dea8f-b2be-4b54-937f-7f10c446fc53.webp)
+
+- **VMware vSphere Distributed Switch (SPAN)**
+
+  To configure your network using this scenario, see [Configuring internal network traffic with the VMware vSphere Distributed Switch (SPAN)](vsphere-distributed-switch-span.mdx).
+
+  ![](/images/VMWare_Int_vDS_SPAN=GUID-db3cc1db-0355-4215-8030-a8cacf0da8ce.webp)
+
+- **VMware vSphere Standard Switch (promiscuous mode)**
+
+  To configure your network using this scenario, see [Configuring internal network traffic with the VMware vSphere Standard Switch (promiscuous mode)](intertraffic-vsphere-promiscuous.mdx).
+
+  ![](/images/VMWare_Int_vSS_Promiscuous=GUID-140fe993-058a-448d-a75b-967bb6f4f794.webp)
+
+## External inter-VM traffic scenarios {#external-inter-vm-traffic-scenarios}
+
+External traffic refers to any scenario where monitored traffic is mirrored from a source outside of the host machine where the Virtual Network Sensor is deployed. External inter-VM deployments are best for monitoring traffic between virtual machines on a different host from the Virtual Network Sensor. Traffic is mirrored from a virtual network switch set up on the source host machine, through a physical network switch, to the Virtual Network Sensor via the physical network connection of the host machine.
+
+Virtual Network Sensor supports several methods for VMware vCenter deployments. Review the scenarios below to determine which is the best fit for your network.
+
+- **ERSPAN**
+
+  To configure your network using this scenario, see [Configuring external inter-VM traffic with ERSPAN](external-inter-erspan.mdx).
+
+  ![](/images/VMWare_IntVM_vDS_ERSPAN=GUID-ec79cb01-f0dc-415b-9c09-1aef87f7b92d.webp)
+
+- **VMware vSphere Distributed Switch (RSPAN)**
+
+  To configure your network using this scenario, see [Configuring external inter-VM traffic with the VMware vSphere Distributed Switch (RSPAN)](vm-vsphere-switch-rspan.mdx).
+
+  ![](/images/VMWare_IntVM_vDS_RSPAN=GUID-003523c0-8a22-4e04-bb7f-ab3d5d1501ac.webp)
+
+## External traffic scenarios {#external-traffic-scenarios}
+
+External traffic refers to any scenario where monitored traffic is mirrored from a source outside of the host machine where the Virtual Network Sensor is deployed. These scenarios are best for monitoring traffic on your network as it passes through a physical network switch. Traffic is mirrored from source physical network switch to the Virtual Network Sensor via the physical network connection of the host machine.
+
+Virtual Network Sensor supports several methods for VMware vCenter deployments. Review the scenarios below to determine which is the best fit for your network.
+
+- **VMware vSphere Standard Switch (promiscuous mode/RSPAN)**
+
+  To configure your network using this scenario, see [Configuring external network traffic with the VMware vSphere Standard Switch (promiscuous mode/RSPAN)](vsphere-st-switch-promiscuous-rspan.mdx).
+
+  ![](/images/VMWare_Ext_vSS_PromisRSPAN=GUID-f8264c07-4fcb-45ad-87d4-760fa8173227.webp)
+
+- **VMware vSphere Distributed Switch (RSPAN)**
+
+  To configure your network using this scenario, see [Configuring external network traffic with the VMware vSphere Distributed Switch (RSPAN)](external-vsphere-switch-rspan.mdx).
+
+  ![](/images/VMWare_Ext_vDS_RSPAN=GUID-4275b5a5-0c0f-4c10-b57d-e349903718ce.webp)
+
+- **VMware vSphere Distributed Switch (SPAN)**
+
+  To configure your network using this scenario, see [Configuring external network traffic with the VMware vSphere Distributed Switch (SPAN)](external-vsphere-dist-switch-span.mdx).
+
+  ![](/images/VMWare_Ext_vDS_SPAN=GUID-a4125d49-8578-4ae2-9013-f86543d0c976.webp)
+
+## External traffic PCI passthrough scenario {#external-traffic-pci-passthrough-scenario}
+
+External traffic refers to any scenario where monitored traffic is mirrored from a source outside of the host machine where the Virtual Network Sensor is deployed. This scenario is best for deploying a Virtual Network Sensor with an expected bandwidth throughput greater than 2 Gbps. Traffic is mirrored from a source physical network switch to the Virtual Network Sensor via a physical connection configured for PCI passthrough on the host machine.
+
+Review the scenario below to determine if it is the best fit for your network.
+
+- **PCI passthrough (SPAN/RSPAN)**
+
+  To configure your network using this scenario, see [Configuring external network traffic with PCI passthrough (SPAN/RSPAN)](external-pci-passthrough-rspan.mdx).
+
+  ![](/images/VMWare_PCIPassthrough=GUID-d53997a2-b3ad-4a86-ac8c-567810f28234.webp)
+:::

@@ -1,0 +1,116 @@
+---
+slug: trend-vision-one-data-source-setup
+title: Tenable Security Center data source setup
+---
+# Tenable Security Center data source setup
+
+Gain vulnerability insights by connecting your Tenable Security Center data source with Trend Vision One.
+
+Connect your Tenable Security Center environment to Trend Vision One to gain access to the following reports:
+
+- Operating systems with vulnerabilities
+
+- Applications with vulnerabilities
+
+:::note
+
+The specified Tenable Security Center account requires the following permission:
+
+- Access Control - Can View (for the asset objects to be exported)
+:::
+
+### Procedure {#procedure}
+
+1.  Generate the Tenable Security Center secret key and access key required to allow a connection to Trend Vision One.
+
+    :::warning[Important]
+
+    The following Tenable Security Center instructions were valid as of April 3, 2024. For further help, see the [Tenable Security Center documentation](https://docs.tenable.com/security-center.htm).
+    :::
+
+    1.  Sign in to Tenable Security Center via the user interface.
+
+    2.  Go to **Users → Users**.
+
+    3.  Select the box next to the user account with administrative or organizational permissions to use for generating the required API keys.
+
+        The available actions for the user account appear at the top of the table.
+
+    4.  Click **API Keys → Generate API Key**.
+
+        A confirmation window appears.
+
+    5.  Click **Generate**.
+
+    6.  Copy your access key and secret key for later use in the Trend Vision One console.
+
+2.  Configure a Service Gateway with the Tenable Security Center Connector service.
+
+    - To use an existing Service Gateway:
+
+      1.  In the Trend Vision One console, go to **Workflow and Automation → Service Gateway Management**.
+
+      2.  Click the name of the Service Gateway on which you want to configure the Tenable Security Center Connector service.
+
+      3.  Click **Manage Services**.
+
+      4.  Click the install icon (![](/images/SG2_install_icon=GUID-feef28dd-2ddb-4093-b4e4-5455a0b110bb.webp)) next to **Tenable Security Center Connector**.
+
+    - To install and use a new Service Gateway:
+
+      1.  In the Trend Vision One console, go to **Workflow and Automation → Service Gateway Management**.
+
+      2.  Click **Download Virtual Appliance**.
+
+      3.  Select either **VMware ESXi (OVA)** or **Microsoft Hyper-V (VHDX)** as the disk image type you want to use.
+
+      4.  Click **Download Disk Image**.
+
+      5.  Copy the **Registration Token**, which you will need when deploying the appliance.
+
+      6.  Install the Service Gateway virtual appliance.
+
+          For detailed deployment instructions, see:
+
+          1.  [Deploying a Service Gateway virtual appliance with VMware ESXi](sg-virtual-app-vmware-esxi.mdx)
+
+          2.  [Deploying a Service Gateway virtual appliance with Microsoft Hyper-V](deploy-virtual-appliance-ms-hyper-v.mdx)
+
+      7.  Click **Close**.
+
+      8.  If you do not see the new Service Gateway in Service Gateway Management, click the refresh icon (![](/images/refresh=5bd75452-c2fb-43ed-90e6-7b552fdc5dd2.webp)).
+
+      9.  Click the name of the Service Gateway on which you want to configure the Tenable Security Center Connector service.
+
+      10. Click **Manage Services**.
+
+      11. Click the install icon (![](/images/SG2_install_icon=GUID-feef28dd-2ddb-4093-b4e4-5455a0b110bb.webp)) next to **Tenable Security Center Connector**.
+
+3.  Connect the Tenable Security Center data source to Trend Vision One.
+
+    1.  In the Trend Vision One console, go to **Cyber Risk Exposure Management → Cyber Risk Overview** and click **Data sources**.
+
+    2.  In the **Third-Party Data Sources** section, click **Tenable Security Center**.
+
+    3.  Click **Configure integration settings in Third-Party Integration**.
+
+        The **Tenable Security Center** screen in **Third-Party Integration** opens.
+
+    4.  In the **Service Gateway Connection** section, click **Connect**.
+
+        The **Connection Settings** screen appears.
+
+    5.  Configure the following settings:
+
+        - **Service Gateway**: Select the Service Gateway with the Tenable Security Center Connector service installed.
+
+        - **Server URL**: Enter the URL of your on-premises Tenable Security Center server.
+
+        - **Secret key**: Enter the secret key copied after generating API keys in Tenable Security Center.
+
+        - **Access key**: Enter the access key copied after generating API keys in Tenable Security Center.
+
+    6.  Click **Test Connection** to verify your connection to the server.
+
+    7.  Click **Connect** to save your settings and establish the connection.
+::::

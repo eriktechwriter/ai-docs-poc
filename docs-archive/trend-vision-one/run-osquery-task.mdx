@@ -1,0 +1,88 @@
+---
+slug: trend-vision-one-run-osquery-task
+title: Run osquery task
+---
+# Run osquery task
+
+Run SQL-based queries on the specified endpoints to support threat investigation and incident response.
+
+:::warning[Important]
+
+- This task is supported by the following services:
+
+- Trend Vision One
+
+  - Windows agent
+
+  - Linux agent
+
+- This task uses osquery 5.7.0. For more information about the SQL syntax used in osquery 5.7.0, see [osquery documentation](https://osquery.io/schema/5.7.0).
+:::
+
+After [creating a workspace and adding endpoints to the workspace](workspaces.mdx) in the **Forensics** app, you can collect detailed evidence from potentially compromised endpoints for internal investigations into critical incidents that occurred on your network and may require further attention.
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Agentic SIEM & XDR → Forensics**.
+
+2.  Click the name of the workspace that has the endpoints you want to triage.
+
+3.  Select one or more endpoints from the list. Selected endpoints must all use the same operating system.
+
+4.  Click **Run osquery**.
+
+    :::note
+
+    You can also perform this response from the [context menu](context-menu.mdx) in **XDR Data Explorer**, Workbench, and Observed Attack Techniques.
+    :::
+
+    The **Run osquery Task** window appears.
+
+5.  Configure the task.
+
+    1.  Use the radio buttons either to select an existing SQL query or to input a new query.
+
+        - Choose **Select a query**: Click **Select a query**, pause on a query to view its details, select a query, and click **Continue**.
+
+          To add a new query to the selection list, go to **osquery** on the **Response Scripts** tab of Response Management. Click **Add query** to specify the operating system, type a new query, and validate the query syntax.
+
+        - Choose **Input a query**: Type a query and click **Validate query**.
+
+          :::tip
+
+          Use [Companion](companion.mdx) to generate osquery queries by clicking **Generate osquery Query** (![](/images/companion_icon=ebfb1301-169d-4687-b329-7c6b4e235192.webp)).
+          :::
+
+    2.  Specify a **Description** for the response or event.
+
+    3.  Click **Create**.
+
+    4.  In the **Multi-factor authentication (MFA) required** window, paste the verification code and click **Submit**.
+
+        If authentication succeeds, the task appears in the **Response Management** **Task List**.
+
+        :::tip
+
+        For response tasks created from the [context menu](context-menu.mdx) in **XDR Data Explorer**, click the **View details in Forensics** icon (![](/images/export_icon=GUID-88c87c83-f1e1-465e-9d60-9ba4a60f6849.webp)) in the **Response Management** **Task List** to go directly to **Forensics → Query Results**.
+        :::
+
+6.  Monitor the task status.
+
+    1.  In the workspace that has the endpoints you are triaging, click **View Query Results**
+
+    2.  Select **osquery**.
+
+    3.  Locate the task using the **Task name** menu.
+
+    4.  View the task status.
+
+        - **In progress** (![](/images/in_progress=GUID-A55897DB-3DEA-4F5C-B7F9-70B3D7FB9EDE=1=en-us=Low.webp)): Trend Vision One sent the command and is waiting for a response.
+
+        - **Queued** (![](/images/queued=GUID-65C0DF81-E50D-4D51-9602-2E9B7A0E5F14=1=en-us=Low.webp)): The managing server queued the command because the agent was offline.
+
+        - **Successful** (![](/images/successful=GUID-1E31AD86-DE2E-48B5-85F7-7C78A3E8BB11=1=en-us=Low.webp)): The command was successfully executed.
+
+        - **Unsuccessful** (![](/images/error=5cc21722-7ceb-480c-b9c2-a47d420cf1cc.webp)): An error or time-out occurred when attempting to send the command to the managing server, the agent is offline for more than 24 hours, or the command execution timed out.
+
+    5.  If the task is successful, click the ![](/images/download_icon=5c7476c2-cf15-4572-b7cd-5fc67a57d22f.webp) icon to open the **Download File** window, copy and retain the password, and click **Download** to obtain the task archive file.
+::::

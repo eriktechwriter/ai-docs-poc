@@ -1,0 +1,38 @@
+---
+slug: trend-vision-one-configuring-euq-settings
+title: Configuring end user quarantine settings
+---
+# Configuring end user quarantine settings
+
+By default, both envelope addresses and message sender addresses are shown in the quarantine list on the End User Console and in the quarantine digest notifications. Each envelope address is followed by the corresponding message header address in parentheses, in the format Envelope@example.com (Header@example.com).
+
+For incoming email messages quarantined for a specific reason, you can choose to let end users view them and take action on the End User Console and in the quarantine digest notifications. Quarantined outgoing messages are always invisible to end users.
+
+### Procedure {#procedure}
+
+1.  In the **Sender Address Type** section, specify the type of sender addresses shown on the End User Console and in the quarantine digest notifications.
+
+    - **Envelope addresses**
+
+    - **Message header addresses**
+
+    :::note
+
+    If **Message header addresses** is selected on this screen, Trend Micro recommends you also select it on the **Inbound Protection → Connection Filtering → Sender Filter → Sender Filter Settings** screen. Otherwise, the approved or blocked senders added by end users will not work as expected.
+    :::
+
+2.  In the **Quarantined Message Permissions** section, specify the permissions that end users will have on the email messages quarantined for a specific reason.
+
+    For more information about the quarantine reason, see [Querying the quarantine](querying-quarantine.mdx).
+
+    By default, the "View" and "Take Action" permissions are selected for **Spam** and **Graymail**.
+
+    If you specify the "Take Action" permission for messages quarantined for a specific reason, the "View" permission will be automatically selected.
+
+    :::note
+
+    The "Deliver", "Delete", and "Block Sender" actions are available for messages quarantined for all reasons listed. The "Approve Sender" action, however, is available only for messages quarantined for the reasons under the Spam Filtering category. For more information, see [Configuring approved and blocked sender lists](config-approved-blocked-sender.mdx).
+    :::
+
+3.  Click **Save**.
+:::

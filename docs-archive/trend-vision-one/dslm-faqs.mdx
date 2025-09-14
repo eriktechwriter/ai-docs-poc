@@ -1,0 +1,86 @@
+---
+slug: trend-vision-one-dslm-faqs
+title: Troubleshooting and frequently asked questions
+---
+# Troubleshooting and frequently asked questions
+
+Get help and find answers to questions about Data Source and Log Management.
+
+**Related information**
+
+- How do I upload a certificate to a Service Gateway?
+
+## How do I upload a certificate to a Service Gateway? {#how-do-i-upload-a-certificate-to-a-service-gateway}
+
+Your third-party data sources may require your Service Gateway to have a certificate for validation purposes. To receive data from the data source, you must upload a valid certificate. In order to perform the following steps, you need a CA certificate for your organization that meets the following requirements:
+
+- Satisfies PKCS \#1 standards
+
+- Contains both `RSA PRIVATE KEY` and `CERTIFICATE`
+
+### Procedure {#procedure}
+
+1.  Ensure the private key is not encrypted.
+
+    1.  Run the following script to decrypt and regenerate your certificate PEM file.
+
+        ```bash
+        #!/bin/bash
+
+        # Check if exactly 2 parameters are provided
+        if [ "$#" -ne 2 ]; then
+            echo "Warning: You must provide exactly 2 parameters."
+            echo "Usage: $0 <<original>>.pem <<decrypted>>.pem"
+            exit 1
+        fi
+
+        # Parameters
+        INPUT_PEM=$1
+        OUTPUT_PEM=$2
+
+        TEMP_CERT="temp_cert.pem"
+        TEMP_KEY="temp_key_encrypted.pem"
+        TEMP_KEY_DEC="temp_key_decrypted.pem"
+
+        # extract cert
+        openssl x509 -in "$INPUT_PEM" -out "$TEMP_CERT"
+
+        # extract key
+        openssl pkey -in "$INPUT_PEM" -out "$TEMP_KEY"
+
+        # decrypt key
+        openssl rsa -in "$TEMP_KEY" -out "$TEMP_KEY_DEC"
+
+        # combine cert and decrypt key into new PEM
+        cat "$TEMP_CERT" "$TEMP_KEY_DEC" > "$OUTPUT_PEM"
+        # clear temp
+        rm "$TEMP_CERT" "$TEMP_KEY" "$TEMP_KEY_DEC"
+
+        echo "New pem generated.New filename = "$OUTPUT_PEM"
+        ```
+
+2.  Confirm the output format is as follows:
+
+    ```bash
+    -----BEGIN CERTIFICATE-----
+    (base64....)
+    -----END CERTIFICATE-----
+    -----BEGIN PRIVATE KEY-----
+    (base64....)
+    -----END PRIVATE KEY-----
+    ```
+
+3.  In **Service Gateway Management**, click the **Configure settings** icon (![](/images/configure=GUID-657DB993-ADC7-4DEC-8C62-C8739D74760E.webp)) next to the Service Gateway to which you wish to upload the certificate.
+
+    The **Service Gateway Settings** window appears.
+
+4.  Click **Import certificate**.
+
+5.  Click **Select file…** and select your certificate file.
+
+6.  Click **Import**.
+
+7.  Click **Save**.
+
+    The certificate is uploaded to the virtual appliance.
+:::

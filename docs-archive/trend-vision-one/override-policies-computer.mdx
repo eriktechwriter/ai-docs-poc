@@ -1,0 +1,105 @@
+---
+slug: trend-vision-one-override-policies-computer
+title: Override policies on a computer
+---
+:Many computer properties are configured by the policy that is assigned to the computer. You can configure these properties at the computer level to override the policy. You can also discover overrides that have been configured for a computer.
+
+:::tip
+
+Override a policy setting on a computer only when you are certain that the override is unique for that computer. As much as possible, you should use policies to configure security and avoid overrides:
+
+- Policies can be assigned to multiple computers, so you can re-use configuration work.
+- Policies are more easily managed than computer overrides.
+
+For information about configuring policy settings, see the [Create and Configure a Policy](create-configure-policy.mdx) guide.
+:::
+
+## Discover overrides {#discover-overrides}
+
+To discover the overrides that are configured for a computer, use any method or function that returns the computer with the `overrides` parameter set to `true`. As described in [About the overrides parameter](overrides-parameter.mdx), the `Computer` object that is returned contains values only for the properties that are overrides. All other property values are `null`.
+
+All properties of a `Computer` object can be configured, except for the name and description.
+
+:::tip
+
+When there are no overrides, all properties of the object are null. Check for a null `ID` to quickly determine if there are no overrides.
+:::
+
+The following example gets the overrides for a computer.
+
+[View source](https://github.com/deep-security/automation-center-sdk-samples/blob/master/python/src/computer_override_examples.py)
+
+```bash
+# Get the Computer object with overrides set to True
+computers_api = api.ComputersApi(api.ApiClient(configuration))
+
+return computers_api.describe_computer(computer_id, api_version, expand=expand.list(), overrides=True)
+```
+
+Also see the [Describe a Computer](https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Computers) operation in the API Reference. For information about the expand parameter, see "Minimize computer response size" in the [Performance Tips](performance-tips.mdx) guide.
+
+## Configure computer overrides {#configure-computer-overrides}
+
+Configure the properties of a computer to override the computer's policy. The following properties of the `Computer` class are those that inherit their values from the policy and that you can configure to override the policy:
+
+- Properties that store the configurations of the Server & Workload Protection protection modules, such as `firewall`. The types of these properties are classes that define the computer-level extensions of the protection modules, such as `FirewallComputerExtension`. These classes control the behavior of protection modules for a computer and override the settings of the policy-level extension classes such as `FirewallPolicyExtension`.
+
+- The `computerSettings` property, of type `ComputerSettings`, stores protection module and platform settings that are applied at the computer level. This property overrides the values of the `policySettings` property of the computer's policy.
+
+For a list of computer settings, see [Default policy, policy, and computer settings](settings-reference.mdx) in the Settings Reference. Also see the [Modify a Computer](https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Computers) operation in the API Reference.
+
+## Configure a single computer setting {#configure-a-single-computer-setting}
+
+The `ComputersApi` class enables you to set the value of a single setting for a computer.
+
+### Procedure {#procedure}
+
+1.  Create a `SettingValue` object and set the value (all values are strings).
+
+    When settings accept one value from a list of choices, you can either use the ID of the choice or the exact wording of the choice as it appears in the Server & Workload Protection console.
+
+2.  Create a `ComputersApi` object and use it with the `SettingValue` object to modify the computer setting. you also provide the computer ID.
+
+### Next steps {#next-steps}
+
+The following example sets the value of the firewall network engine mode of a computer to override the policy.
+
+[View source](https://github.com/deep-security/automation-center-sdk-samples/blob/master/python/src/computer_override_examples.py)
+
+```bash
+# Set the value for firewall_setting_reconnaissance_enabled
+setting_value = api.SettingValue()
+setting_value.value = "true"
+
+# Apply the override to the computer
+computers_api = api.ComputersApi(api.ApiClient(configuration))
+
+return computers_api.modify_computer_setting(computer_id, api.ComputerSettings.firewall_setting_reconnaissance_enabled, setting_value, api_version, overrides=True)
+```
+
+## Configure settings and protection modules {#configure-settings-and-protection-modules}
+
+Use the following steps to configure several computer settings, one or more protection modules for a computer, or both:
+
+### Procedure {#procedure-1}
+
+1.  Create a computer-level extension object for a protection module and configure the settings that you want to override.
+
+2.  Create a `ComputerSettings` object and configure the settings that you want to override. To set the value of a setting, create a `SettingValue` object, set the value (all values are strings), and add it to the `ComputerSettings` object. When settings accept one value from a list of choices, you can either use the ID of the choice or the exact wording of the choice as it appears in the Server & Workload Protection console.
+
+3.  Add the computer-level extension object and `ComputerSettings` object to a `Computer` object.
+
+4.  Use `ComputersApi` to modify the computer on Server & Workload Protection.
+
+### Next steps {#next-steps-1}
+
+## Rule overrides {#rule-overrides}
+
+A rule that is applied to a computer is considered an override when the rule has been modified at the computer level to be different than the original rule.
+
+Simply assigning a rule to a computer is not considered an override:
+
+- When a rule is assigned to a computer and the rule is not assigned to the computer's policy, the rule is not considered an override.
+
+- When a rule is assigned to a computer's policy and the same rule is applied to the computer and is unchanged, the rule is not considered an override.
+:::::

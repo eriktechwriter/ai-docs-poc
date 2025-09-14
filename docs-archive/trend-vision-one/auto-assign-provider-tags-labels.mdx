@@ -1,0 +1,39 @@
+---
+slug: trend-vision-one-auto-assign-provider-tags-labels
+title: Automatically assign policies using cloud provider tags/labels
+---
+# Automatically assign policies using cloud provider tags/labels
+
+AWS tags, Azure tags, and GCP labels allow you to categorize your resources by assigning metadata to [AWS EC2 instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.mdx), [Azure VMs](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources), or [GCP VM instances](https://cloud.google.com/compute/docs/labeling-resources) in the form of keys and values. You can also [tag Amazon WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/tag-workspaces-resources) with the similar key and value pair. Server & Workload Protection can use this metadata to trigger the automatic assigning of a policy to an agent when that agent is activated. This is done by creating an event-based task in Server & Workload Protection and defining the event, policy, and metadata. Event-based tasks are used to monitor protected resources for specific events and then perform tasks based on certain conditions. In this example, the event is agent-initiated activation and a specific AWS instance tag is the condition:
+
+- Policy: AIA_Policy
+- AWS tag key: Group
+- AWS tag value: development
+
+:::note
+
+The example below is based on the assumption that the policy AIA_Policy has already been created.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Administration → Event-Based Tasks** in the Server & Workload Protection console and click *New*.
+
+2.  Select *Agent-Initiated Activation* from the *Event* list and click *Next*.
+
+3.  Select the *Assign Policy* check box, select *AIA_Policy* from the list, and click *Next*.
+
+4.  Select *Cloud Instance Metadata* from the list, type *Group* and *development* into the key and value fields, and click *Next*.
+
+    ![](/images/2016-07-06_000086_DS10=af29be5b-3984-4b80-ba84-3645db27e920.webp)
+
+5.  (Optional) To restrict the scope to only one cloud vendor, select *Cloud Vendor* from the list and select *AWS*, *Azure*, or *GCP* as the matching criteria. If you want to apply the rule to all three, don't define the Cloud Vendor condition.
+
+6.  Click *Next*.
+
+7.  Type a name for the event-based task and click *Finish* to save it.
+
+### Next steps {#next-steps}
+
+You have now created an event-based task that will apply the AIA_Policy to an instance tagged with the key "Group" and the value "development" when the agent is activated on that instance.
+::::

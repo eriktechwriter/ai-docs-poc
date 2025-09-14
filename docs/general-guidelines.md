@@ -1,0 +1,41 @@
+---
+slug: trend-vision-one-general-guidelines
+title: General guidelines
+---
+
+Custom filters are YAML files with key-value pairs that define patterns and conditions to detect events. Each file can only contain one filter.
+
+Follow these guidelines when creating custom filters:
+
+- Indent four spaces for data.
+
+  Example:
+
+  ``` codeblock
+  detection:
+      operation:
+          eventname: 'string'
+      
+  ```
+
+- Use lowercase characters for keys.
+
+  Example:
+
+  ``` codeblock
+  title:
+  id:
+  description:
+  ```
+
+- Use underscores instead of spaces for file names.
+
+  Example:
+
+  `file_name`
+
+- Ensure the file extension is `.yml`.
+
+  Example:
+
+  `possible_brute_force_attack.yml`

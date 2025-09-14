@@ -1,0 +1,113 @@
+---
+slug: trend-vision-one-uncleanable-files
+title: Uncleanable Files
+---
+# Uncleanable Files
+
+The Virus Scan Engine is unable to clean the following files:
+
+**Uncleanable File Solutions**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Uncleanable File</p></th>
+<th><p>Explanation and Solution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Files infected with Trojans</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Trojans are programs that perform unexpected or unauthorized, usually malicious, actions such as displaying messages, erasing files, or formatting disks. Trojans do not infect files, thus cleaning is not necessary.</p>
+<p>Solution: The Damage Cleanup Engine and Damage Cleanup Template remove Trojans.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Files infected with worms</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>A worm is a self-contained program (or set of programs) able to spread functional copies of itself or its segments to other endpoint systems. The propagation usually takes place through network connections or email attachments. Worms are uncleanable because the file is a self-contained program.</p>
+<p>Solution: Trend Micro recommends deleting worms.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Write-protected infected files</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Solution: Remove the write-protection which allows for the cleaning of the file.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Password-protected files</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Password-protected files include password-protected compressed files or password-protected Microsoft Office files.</p>
+<p>Solution: Remove the password protection which allows for the cleaning of the file.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Backup files</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Files with the RB0~RB9 extensions are backup copies of infected files. The cleaning process creates a backup of the infected file in case the virus/malware damaged the file during the cleaning process.</p>
+<p>Solution: If successfully cleaned, you do not need to keep the backup copy of the infected file. If the endpoint functions normally, you can delete the backup file.</p></td>
+</tr>
+<tr>
+<td rowspan="2" style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Infected files in the Recycle Bin</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>The system may not allow the removal of infected files from the Recycle Bin because the system is running.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ol>
+<li><p>Log on to the endpoint with Administrator privilege.</p></li>
+<li><p>Close all running applications to prevent applications from locking the file, which would make Windows unable to delete it.</p></li>
+<li><p>Open the command prompt.</p></li>
+<li><p>Type the following to delete the files:</p>
+<p><code>del /s \$Recycle.Bin\*</code></p></li>
+<li><p>Check if the files were removed.</p></li>
+</ol></td>
+</tr>
+<tr>
+<td rowspan="2" style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Infected files in Windows Temp Folder or Internet Explorer Temporary Folder</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>The system may not allow the cleaning of infected files in the Windows Temp folder or the Internet Explorer temporary folder because the endpoint uses them. The files to clean may be temporary files needed for Windows operation.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><ol>
+<li><p>Log on to the endpoint with Administrator privilege.</p></li>
+<li><p>Close all running applications to prevent applications from locking the file, which would make Windows unable to delete it.</p></li>
+<li><p>If the infected file is in the Windows Temp folder:</p>
+<ol>
+<li><p>Open the command prompt.</p></li>
+<li><p>Type the following to delete the files:</p>
+<p><code>del /s \Windows\Temp\*</code></p></li>
+<li><p>Restart the endpoint in normal mode.</p></li>
+</ol></li>
+<li><p>If the infected file is in the Internet Explorer temporary folder:</p>
+<ol>
+<li><p>Open a command prompt and go to the Internet Explorer Temp folder.</p>
+<ul>
+<li><p>For Windows 7: <code>%LocalAppData%\Microsoft\Windows\Temporary Internet Files</code></p></li>
+<li><p>For Windows 8/8.1: <code>%LocalAppData%\Microsoft\Windows\INetCache</code></p></li>
+<li><p>For Windows 10: <code>%LocalAppData%\Microsoft\Windows\INetCache\IE</code></p></li>
+</ul></li>
+<li><p>Type the following to delete the files:</p>
+<p><code>del /s .\*</code></p>
+<p>The last command deletes all files in the Internet Explorer temporary folder.</p></li>
+<li><p>Restart the endpoint in normal mode.</p></li>
+</ol></li>
+</ol></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Files compressed using an unsupported compression format</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Solution: Uncompress the files.</p></td>
+</tr>
+<tr>
+<td style="border-bottom-width: 1px; border-bottom-style: solid; border-right-width: 1px; border-right-style: solid"><p>Locked files or files that are currently executing</p></td>
+<td style="border-bottom-width: 1px; border-bottom-style: solid"><p>Solution: Unlock the files or wait until the files have been executed.</p></td>
+</tr>
+<tr>
+<td style="border-right-width: 1px; border-right-style: solid"><p>Corrupted files</p></td>
+<td><p>Solution: Delete the files.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Files Infected with Trojans](files-infected-trojans.mdx)
+- [Files Infected with Worms](files-infected-worms.mdx)
+- [Write-protected Infected Files](write-protected-infected-files.mdx)
+- [Password-protected Files](password-protected-files.mdx)
+- [Backup Files](backup-files.mdx)
+:::

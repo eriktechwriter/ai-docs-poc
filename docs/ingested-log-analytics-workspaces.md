@@ -1,0 +1,22 @@
+---
+slug: trend-vision-one-ingested-log-analytics-workspaces
+title: View the ingested data in Log Analytics workspaces
+---
+
+Verify successful data ingestion by checking your Log Analytics workspace and running queries to view alert data.
+
+Microsoft Sentinel stores ingested alert data Log Analytics workspaces. An empty Log Analytics workspace indicates there are no new alerts after deploying the connector. The connector does not pull preexisting alert data from Trend Vision One.
+
+The **TrendMicro_XDR_WORKBENCH_CL** or **TrendMicro_XDR_OAT_CL** tables should exist if there are new alerts in Trend Vision One after deploying the connector.
+
+### Procedure {#procedure}
+
+1.  Go to **Log Analytics workspaces → {your_workspace} → General → Logs**.
+
+2.  In **Tables** under **Custom Logs**, verify that the **TrendMicro_XDR_WORKBENCH_CL** or **TrendMicro_XDR_OAT_CL** table exists.
+
+3.  Click **Run** to run the query and view the data.
+
+    :::tip
+    - To disable Observed Attack Techniques alert data, go to your function app in your resource group, click ![](/images/horizontalEllipsisIcon=GUID-20240826102020.webp), and select **Disable** for **timer_trigger_oat**, **oat_pipeline_file_poison_qt**, **oat_pipeline_file_qt**, **oat_pipeline_task_poison_qt**, and **oatpipeline_task_qt**.
+    :::

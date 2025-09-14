@@ -1,0 +1,93 @@
+---
+slug: trend-vision-one-generate-download-report
+title: Generate and download report
+---
+# Generate and download report
+
+:You can generate [Reports](rules-status-reports.mdx) on demand and download them in the following formats:
+
+- *CSV* - contains all rule and check information, as well as links to resolution pages
+- *PDF* - contains a summary section that provides account information and summary stats, rule and check information, and links to resolution pages.
+
+### Download a report {#download-a-report}
+
+1.  From the main Dashboard, click on *Reports* or Click on *Confugured Reports*.
+2.  Click on *Generate* for the report you want to download.
+3.  In the pop-up new window, enter a *Title*.
+    1.  Select whether you want to include
+        - *Individual checks in PDF report*
+        - *Account names*
+        - *Send reports via email*
+    2.  Click on *Generate report*.
+4.  Allow the platform a few moments to generate the report.
+5.  Select the format you wsih to download.
+
+You can also view the Report in the *Reports Section* by expanding on the report you generated under its *History*.
+
+:::note
+
+The format of download for\_ [Compliance and Cloud Risk Management Reports](compliance-reports.mdx) may also be dependent on the formatting guidelines of the standard or framework.
+:::
+
+### All Generated Reports {#all-generated-reports}
+
+All Generated Reports is the central repository of all reports generated since the creation of your account on the Cloud Risk Management platform. You have the option to download reports in *PDF* or *CSV* format that display your compliance score and status along with the data as per your selected filters.
+
+:::note
+
+The number of reports available is limited to the 50 most recent reports
+:::
+
+![](/images/all-generated-report-tajchq=f93df395-0881-4eb5-bebe-ebcbba4dabb0.webp){.zoom}
+
+### Generate PDF with all check data from CSV {#generate-pdf-with-all-check-data-from-csv}
+
+Step 1: Download report as CSV
+
+Step 2:
+
+*From Google Sheets*
+
+1.  *File* \> *Import*
+2.  Select the CSV
+3.  Once CSV is imported, select sheet with CSV data
+4.  *Data* \> *Pivot Table*
+5.  Select the data on pop-up
+6.  In Pivot Table Editor
+    1.  *Rows*
+        1.  Add:
+            1.  Rule ID
+            2.  Rule Title
+            3.  Service
+            4.  Categories
+            5.  Check Status
+            6.  Risk Level
+            7.  Resolution Page
+            8.  Resource
+            9.  Tags
+            10. Message
+            11. ... any other fields you want
+        2.  Uncheck "Show totals"
+    2.  *Values*
+        1.  Add:
+            1.  Resource - Summarise by COUNTA
+    3.  *Filters*
+        1.  Add:
+            1.  Check Status ← select to show Failures and or Success
+7.  \[ Optional \] Add conditional formatting_Example\_: CSV pivot table showing Rule failures Example: CSV pivot table with expanded rule failure showing failed checks
+8.  *File* \> *Download* \> *PDF Document*
+
+### Import data through Text Import Wizard {#import-data-through-text-import-wizard}
+
+Cloud Risk Management generated CSV report might contain special double-byte characters. Excel cannot display these characters if you open the file directly with Excel. This is an Excel limitation. Microsoft recommends to import file with UTF-8 encoding instead of opening directly. The following steps allow you to import data with `UTF-8` encoding so it can display the double-byte characters correctly.
+
+1.  Create a workbook and go to *Data* tab \> From Text to launch the *Text Import Wizard*.
+
+2.  From *Text Import Wizard*, select the *File origin* as: *Unicode (UTF-8)*
+
+3.  *Finish* Text Import Wizard. The data from CSV file can be loaded correctly in Excel workbook.
+
+### Get Reports using API {#get-reports-using-api}
+
+You can download all reports generated for your Cloud Risk Management account using our [Reports API](https://github.com/cloudconformity/documentation-api/blob/master/reports-cloud-posture.xml) based on your role and permissions.
+:::::

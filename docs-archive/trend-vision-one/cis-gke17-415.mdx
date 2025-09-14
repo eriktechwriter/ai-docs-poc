@@ -1,0 +1,37 @@
+---
+slug: trend-vision-one-cis-gke17-415
+title: >-
+  4.1.5 - Ensure that Service Account Tokens are only mounted where necessary
+  (Automated)
+---
+# 4.1.5 - Ensure that Service Account Tokens are only mounted where necessary (Automated)
+
+Profile applicability: Level 1
+
+Service accounts tokens should not be mounted in pods except where the workload running in the pod explicitly needs to communicate with the API server
+
+Mounting service account tokens inside pods can provide an avenue for privilege escalation attacks where an attacker is able to compromise a single pod in the cluster.
+
+Avoiding mounting these tokens removes this attack avenue.
+
+:::note
+
+By default, all pods get a service account token mounted in them.
+:::
+
+### Impact {#impact}
+
+Pods mounted without service account tokens will not be able to communicate with the API server, except where the resource is available to unauthenticated principals.
+
+### Audit {#audit}
+
+Review pod and service account objects in the cluster and ensure that the option below is set, unless the resource explicitly requires this access:
+
+```bash
+automountServiceAccountToken: false
+```
+
+### Remediation {#remediation}
+
+Modify the definition of pods and service accounts which do not need to mount service account tokens to disable it.
+::::

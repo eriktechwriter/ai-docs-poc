@@ -1,0 +1,227 @@
+---
+slug: trend-vision-one-linux-secure-boot-support
+title: Linux Secure Boot support
+---
+# Linux Secure Boot support
+
+Some versions of Deep Security Agent for Linux support [Secure Boot](https://uefi.org/sites/default/files/resources/UEFI_Secure_Boot_in_Modern_Computer_Security_Solutions_2013.pdf), as shown in the following table. See also [Configure Linux Secure Boot for agents](config-linux-secure-boot-agents.mdx).
+
+Each operating system is associated with corresponding Secure Boot public keys, such as `DS2022.der`, `DS20.der`, and so on. These keys have different expiration dates. For more information, see [The public key has expired](config-linux-secure-boot-agents.mdx).
+
+Deep Security Agent does not currently support Secure Boot on Azure virtual machines.
+
+Indicators:
+
+✔ - Supported. If an update added support, then the minimum required version appears in the footnote.
+
+• - Support for these releases is ending soon. Please upgrade as soon as possible.
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr>
+<th></th>
+<th colspan="4"><p>Agent Version</p>
+5</th>
+</tr>
+<tr>
+<th><p>Operating System</p></th>
+<th><p>20 LTS</p></th>
+<th><p>12 FR</p></th>
+<th><p>12 LTS</p></th>
+<th><p>11 LTS</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>AlmaLinux 9 (64-bit)</p></td>
+<td><p>✔ 5DS2022.der</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>CentOS 7 (64-bit)</p></td>
+<td><p>✔ DS2022.der</p></td>
+<td><p>✔</p></td>
+<td><p>✔ DS12.der</p></td>
+<td><p>✔ DS11_2022.der</p></td>
+</tr>
+<tr>
+<td><p>CentOS 8 (64-bit)</p></td>
+<td><p>✔ DS2022.der</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Debian 10 (64-bit)</p></td>
+<td><p>✔ DS2022.der</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Debian 11 (64-bit)</p></td>
+<td><p>✔ DS2022.der</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Debian 12 (64-bit)</p></td>
+<td><p>✔ 7DS2022.der</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Miracle Linux 9 (64-bit)</p></td>
+<td><p>6DS2022.der</p></td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Oracle Linux 7 (64-bit)</p></td>
+<td><p>✔ 1DS20_V2.der</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Oracle Linux 8 (64-bit)</p></td>
+<td><p>✔ 2DS20_V2.der</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Oracle Linux 9 (64-bit)</p></td>
+<td><p>✔ DS2022.der</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Red Hat Enterprise Linux 7 (64-bit)</p></td>
+<td><p>✔ DS2022.der</p></td>
+<td><p>✔</p></td>
+<td><p>✔DS12.der</p></td>
+<td><p>✔DS11_2022.der</p></td>
+</tr>
+<tr>
+<td><p>Red Hat Enterprise Linux 8 (64-bit)</p></td>
+<td><p>✔ DS2022.der</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Red Hat Enterprise Linux 9 (64-bit)</p></td>
+<td><p>✔ DS2022.der</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Red Hat Enterprise Linux 10 (64-bit)</p></td>
+<td><p>✔ DS2022.der</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Red Hat Enterprise Linux Workstation 7 (64-bit)</p></td>
+<td><p>✔ 5DS2022.der</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Rocky Linux 9 (64-bit)</p></td>
+<td><p>✔ 3DS2022.der</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>SUSE Linux Enterprise Server 12 (64-bit)</p></td>
+<td><p>✔ DS2022.der</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>SUSE Linux Enterprise Server 15 (64-bit)</p></td>
+<td><p>✔ DS2022.der, DS20_V2.der</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Ubuntu 16.04 (64-bit)</p></td>
+<td><p>✔ DS2022.der</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Ubuntu 18.04 (64-bit)</p></td>
+<td><p>✔ DS2022.der</p></td>
+<td><p>✔</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Ubuntu 20.04 (64-bit)</p></td>
+<td><p>✔ DS2022.der</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Ubuntu 22.04 (64-bit)</p></td>
+<td><p>✔ 4DS2022.der</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><p>Ubuntu 24.04 (64-bit)</p></td>
+<td><p>✔ 8DS2022.der</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+### Footnotes: {#footnotes}
+
+1.  Requires Deep Security Agent 20.0.0-3165 (20 LTS Update 2021-10-08) or later.
+
+2.  Requires Deep Security Agent 20.0.0-3288 (20 LTS Update 2021-10-28) or later.
+
+3.  Requires Deep Security Agent 20.0.0-6313 (20 LTS Update 2023-01-31) or later.
+
+4.  Requires Deep Security Agent 20.0.0-6658 (20 LTS Update 2023-03-22) or later.
+
+5.  Requires Deep Security Agent 20.0.0-6912 (20 LTS Update 2023-05-02) or later.
+
+6.  Requires Deep Security Agent 20.0.1-19250 (20 LTS Update 2024-09-18) or later.
+
+7.  Requires Deep Security Agent 20.0.1-19250 (20 LTS Update 2024-09-18) or later.
+
+8.  Requires Deep Security Agent 20.0.1-19250 (20 LTS Update 2024-09-18) or later.
+
+**Related information**
+
+- [Configure Linux Secure Boot for agents](config-linux-secure-boot-agents.md "Prepare your Linux endpoints to allow the Trend Vision One Endpoint Security agent to run within the UEFI Secure Boot environment.")
+:::

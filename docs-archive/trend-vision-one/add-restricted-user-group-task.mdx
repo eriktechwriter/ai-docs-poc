@@ -1,0 +1,53 @@
+---
+slug: trend-vision-one-add-restricted-user-group-task
+title: Add to Zscaler Restricted User Group task
+---
+# Add to Zscaler Restricted User Group task
+
+Manually or autocratically add user accounts with a high risk exposure to the Zscaler-defined restricted user group to allow for Zscaler policy enforcement.
+
+This task can be triggered manually using the context menu in **Attack Surface Discovery** or automatically by [creating Automated High-Risk Account Response playbooks](auto-high-risk-account-response.mdx).
+
+This task is supported by the following services:
+
+- Microsoft Entra ID
+
+:::warning[Important]
+
+The response action is available only after you have configured [Zscaler Internet Access integration](Zscaler-internet-access.mdx) or [Zscaler Private Access integration](zscaler-private-access.mdx) in **Third-Party Integration**.
+:::
+
+### Procedure {#procedure}
+
+1.  After identifying the user account to apply Zscaler policies to, access the context or response menu and click **Add to Zscaler Restricted User Group**.
+
+    The **Add to Zscaler Restricted User Group** screen appears.
+
+2.  Confirm the targets of the response.
+
+3.  Specify a **Description** for the response or event.
+
+4.  Click **Create**.
+
+5.  Monitor the task status.
+
+    1.  Go to **Workflow and Automation → Response Management** .
+
+    2.  (Optional) Locate the task using the **Search** field or by selecting **Add to Zscaler Restricted User Group** from the **Action** drop-down list.
+
+    3.  View the task status.
+
+        - **In progress** (![](/images/in_progress=GUID-A55897DB-3DEA-4F5C-B7F9-70B3D7FB9EDE=1=en-us=Low.webp)): Trend Vision One sent the command and is waiting for a response.
+
+        - **Successful** (![](/images/successful=GUID-1E31AD86-DE2E-48B5-85F7-7C78A3E8BB11=1=en-us=Low.webp)): The command was successfully executed.
+
+          When successful, the access control policy defined in Zscaler can be applied to the user account.
+
+        - **Partially successful** (![](/images/partially_successful_icon=GUID-20230103030733.webp)): The task was unsuccessful on one or more IAM service
+
+        - **Unsuccessful** (![](/images/error=5cc21722-7ceb-480c-b9c2-a47d420cf1cc.webp)): The task was unsuccessful on all connected IAM services
+
+        - **Pending approval** (![](/images/pending_approval=f0525c66-199a-46f5-b40a-902bd498cf53.webp)): The task is pending approval from specified users
+
+        - **Rejected** (![](/images/rejected=bd05fc87-5b5d-4d84-bfb1-3a6dc09ddac5.webp)): The task has been rejected
+::::

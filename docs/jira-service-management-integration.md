@@ -1,0 +1,39 @@
+---
+slug: trend-vision-one-jira-service-management-integration
+title: Jira Service Management integration
+---
+
+Configure the Jira Service Management integration to allow Jira to create tickets based on Workbench alerts and synchronize ticket updates between the Trend Vision One and Jira platforms.
+
+### Procedure {#procedure}
+
+1.  Prepare the necessary information to configure the integration.
+
+    1.  In the Trend Vision One console, go to **Workflow and Automation → Third-Party Integration**.
+
+    2.  Click **Jira Service Management**.
+
+    3.  Click ![](/images/dddna_summary_detection_copy=GUID-4DE35BE5-57A5-4919-BF9C-5EC95F9CA8FD=1=en-us=Low.webp) to copy the **Endpoint URL**.
+
+    4.  Click **Generate** and copy the **Authentication token**.
+
+    5.  Obtain the Jira API URL and authentication token.
+
+    6.  Make sure you are running Python 3.7 or later.
+
+2.  Use the following commands to install the Trend Vision One integration.
+
+    ``` python
+    python3 -m venv .venv
+    source .venv/bin/activate
+    pip install --upgrade pip
+    pip install -r requirements.txt
+    ```
+
+3.  Edit the configuration YAML file.
+
+    For more information on the YAML configuration, see the [GitHub documentation](https://github.com/trendmicro/tm-v1-connectors/tree/main/JIRA) for the integration.
+
+4.  Use the command `python3 app.py` to start the application.
+
+    Jira Service Management begins creating tickets based on data collected from Trend Vision One. Jira can only collect data generated after connecting to Trend Vision One. You might need to allow some time before new data or tickets start to appear.

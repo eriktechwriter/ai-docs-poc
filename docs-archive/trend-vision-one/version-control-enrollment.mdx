@@ -1,0 +1,99 @@
+---
+slug: trend-vision-one-version-control-enrollment
+title: Version control policies feature enrollment
+---
+# Version control policies feature enrollment
+
+:Enroll your Standard Endpoint Protection and Server & Workload Protection instances in version control policies to centralize management of agent and component updates.
+
+:::warning[Important]
+
+- Version control policies only support endpoints with the Trend Vision One Endpoint Security agent version 202412 or later installed. For detailed information, see [Version control policies agent requirements](version-control-requirements.mdx).
+:::
+
+Version control policies automatically manage agent and component updates for the Trend Vision One Endpoint Security agent. Updates for endpoint protection components are managed based on the enrollment status of your Protection Managers. The table below details what version control policies manages:
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Solution</p></th>
+<th><p>Trend Vision One Endpoint Security agent components</p></th>
+<th><p>Endpoint protection components (patterns, engines)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Trend Micro agents reporting to Trend Vision One Endpoint Inventory</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>Standard Endpoint Protection Managers - enrolled in version control policies</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>Standard Endpoint Protection Managers - not enrolled in version control policies</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr>
+<td><p>Server &amp; Workload Protection Managers - enrolled in version control policies</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>Server &amp; Workload Protection Managers - not enrolled in version control policies</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+
+For connected endpoint protection solutions (for example, Apex One as a Service or Trend Cloud One Endpoint & Workload Protection), the version control policies only apply to endpoints that report to Trend Vision One Endpoint Inventory (endpoints with the Trend Vision One Endpoint Security agent installed). The connected endpoint protection servers apply their own components policies to manage all other components.
+
+To manage endpoint protection updates for Standard Endpoint Protection and Server & Workload Protection, you must enroll your Protection Manager instances. To enroll your Protection Manager instances, click the settings icon (![](/images/gear_icon=fc9a51ad-35af-4fe3-92c6-5e41b2dfc5d9.webp)) and select **Protection Manager enrollment**.
+
+:::warning[Important]
+
+Newly created Protection Manager instances are automatically enrolled in Version Control Policies and do not appear in **Protection Manager enrollment**. If you need to unenroll an instance not listed in **Protection Manager enrollment**, please contact your support provider.
+
+If you updated from Trend Cloud One Endpoint & Workload Security to Server & Workload Protection, verify the API keys have been generated in your Trend Cloud One console. If the API keys do not generate correctly, you cannot view or select your Server & Workload Protection Manager in the enrollment list. For more information, see [Why is my Protection Manager not on the enrollment list?](version-control-policies-faq.mdx)
+
+You can still assign endpoint groups to version control policies even if the Protection Manager instance is not enrolled.
+:::
+
+When enrolling, please note the following:
+
+- Version control policies only support Trend Vision One Endpoint Security agent version 202412 and later. For detailed information, see [Version control policies agent requirements](version-control-requirements.mdx).
+
+- Version control policies cannot manage endpoints which do not have the Trend Vision One Endpoint Security agent installed. For more information, see [What is an unmanaged endpoint?](endpoint-list-faq.mdx).
+
+  To download and install the Trend Vision One Endpoint Security agent package, see [Deploy agents](deploy-agents.mdx).
+
+- If you use Update Agents or Relays to manage distribution of agent updates, deploy a Service Gateway with the ActiveUpdate service and Generic Caching Service enabled. Otherwise, agents connect directly to Trend Vision One servers to retrieve updates.
+
+  The Service Gateway provides local proxy and ActiveUpdate services for endpoint agents. Additionally, the Generic Caching Service helps simplify your environment by replacing the Update Agents feature for Standard Endpoint Protection and the Relays feature for Server & Workload Protection. For more information about Service Gateways, see [Service Gateway Management](service-gateway-management.mdx).
+
+  :::warning[Important]
+
+  The Generic Caching Service is a pre-release feature not supported in all regions and might not appear in your list of Service Gateway services. To access the service, please contact your sales representative.
+  :::
+
+- Policy settings override any settings in the Protection Manager. This includes version control and pausing, resuming, or disabling updates.
+
+- Some component update settings are handled by the Protection Managers.
+
+  - For Standard Endpoint Protection, you can configure the agent update schedule as well as which components are included in agent updates. Updating the agent program is controlled by the assigned version control policy.
+
+    To configure the update schedule and component settings for Standard Endpoint Protection, see [Component Updates](component-updates-apex.mdx).
+
+  - For Server & Workload Protection, you can configure the agent update schedule. All other settings are ignored by endpoint agents managed by a version control policy.
+
+    To configure the update schedule for Server & Workload Protection, see [Apply component updates](apply-security-updates.mdx).
+:::::

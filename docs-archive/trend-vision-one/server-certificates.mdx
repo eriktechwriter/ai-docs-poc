@@ -1,0 +1,97 @@
+---
+slug: trend-vision-one-server-certificates
+title: Server certificates
+---
+# Server certificates
+
+Manage the server certificates of HTTPS web servers.
+
+### Procedure {#procedure}
+
+1.  Go to **Zero Trust Secure Access → Secure Access Configuration → Internet Access Configuration**.
+
+    The **Internet Access Configuration** screen appears.
+
+2.  Select **TLS/SSL Certificates** from the **HTTPS Inspection** drop-down list.
+
+3.  Select **Server certificate** from the **Certificate type** drop-down list in the upper left to view and manage the server certificates added automatically by the system or manually by administrators.
+
+    The list includes the following server certificates:
+
+    - The server certificates that fail in certificate validation.
+
+      The system automatically adds them to the list and sets the default action to **Warn**. When users attempt to access a website using this server certificate, a warning page displays for them to choose whether to continue.
+
+    - The server certificates that you want to configure specific actions for.
+
+4.  You can complete the actions outlined in the following table.
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Action</p></th>
+    <th><p>Description</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Check a server certificate</p></td>
+    <td><p>View the server certificate information:</p>
+    <ul>
+    <li><p>Common name: The CommonName (CN) field in the certificate</p></li>
+    <li><p>Type: Whether the certificate is automatically added by the system or manually added by the administrator</p></li>
+    <li><p>Description: The description of the certificate</p></li>
+    <li><p>Certificate error: The errors discovered in certificate validation</p></li>
+    <li><p>Action: The action to take upon access to the websites using the certificate in the certificate chain</p>
+    <ul>
+    <li><p>Allow: The system decrypts the HTTPS traffic towards the websites based on inspection rules for further access control.</p></li>
+    <li><p>Warn: The system displays a warning page for users to choose whether to continue.</p>
+    <p>If users choose to continue, the system decrypts the HTTPS traffic towards the websites based on inspection rules for further access control.</p></li>
+    <li><p>Block: The system blocks access to the websites.</p></li>
+    </ul></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>Add a server certificate</p></td>
+    <td><ol>
+    <li><p>Click <strong>Add</strong>.</p></li>
+    <li><p>Specify the following:</p>
+    <ul>
+    <li><p>Common name: The CommonName (CN) field in the certificate.</p>
+
+
+    :::note
+
+    <p>A common name can identify one or multiple server certificates using this name.</p>
+    <p>If you add a common name that is already in the list, the latest settings override the existing settings.</p>
+
+
+    :::
+
+    </li>
+    <li><p>Type: <strong>Administrator added</strong>. This field is not editable.</p></li>
+    <li><p>Description: A description to easily identify the certificate entry</p></li>
+    <li><p>Action: The action to take upon access to the websites using the certificate in the certificate chain</p></li>
+    </ul></li>
+    <li><p>Click <strong>Save</strong>.</p></li>
+    </ol></td>
+    </tr>
+    <tr>
+    <td><p>Configure a server certificate</p></td>
+    <td><p>Select one or multiple certificates and click <strong>Delete</strong> in the upper left to delete the certificates from Trend Vision One.</p></td>
+    </tr>
+    <tr>
+    <td><p>Filter server certificates</p></td>
+    <td><p>Use the search text box and the following drop-down lists to filter certificates:</p>
+    <ul>
+    <li><p>Type: Whether the certificate is automatically added by the system or manually added by the administrator</p></li>
+    <li><p>Action: The action to take upon access to the websites using the certificate in the certificate chain</p></li>
+    </ul></td>
+    </tr>
+    </tbody>
+    </table>
+:::

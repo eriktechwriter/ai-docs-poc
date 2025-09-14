@@ -1,0 +1,218 @@
+---
+slug: trend-vision-one-swp-bandwidth-sizing
+title: Server & Workload Protection bandwidth sizing
+---
+# Server & Workload Protection bandwidth sizing
+
+Review the network usage requirements for the Server & Workload Protection agent based on your environment.
+
+Once deployed, the agent package connects to Trend Vision One in regular intervals called a heartbeat. Individual components of the agent package have different heartbeat rates. The table below lists typical heartbeat rates for the agent package based on environment.
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Operating System</p></th>
+<th><p>Agent Component</p></th>
+<th><p>Heartbeat Frequency</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="3"><p>Windows Server 2016</p></td>
+<td><p>Server &amp; Workload Protection</p></td>
+<td><p>Once every 10 minutes</p></td>
+</tr>
+<tr>
+<td><p>Endpoint agent</p></td>
+<td><p>Once every 5 minutes</p></td>
+</tr>
+<tr>
+<td><p>Endpoint sensor</p></td>
+<td><p>Once every 5 minutes</p></td>
+</tr>
+<tr>
+<td rowspan="3"><p>Centos 7</p></td>
+<td><p>Server &amp; Workload Protection</p></td>
+<td><p>Once every 10 minutes</p></td>
+</tr>
+<tr>
+<td><p>Endpoint agent</p></td>
+<td><p>Once every 5 minutes</p></td>
+</tr>
+<tr>
+<td><p>Endpoint sensor</p></td>
+<td><p>Once every 5 minutes</p></td>
+</tr>
+</tbody>
+</table>
+
+Based on the heartbeat frequency, the amount of traffic created by connecting to Trend Vision One can be estimated based on the number of deployed agents. The table below lists the estimated traffic usage for Windows and Linux environments. Use this information to plan your security deployments and network resources.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Deployed Agents</p></th>
+<th><p>Platform</p></th>
+<th><p>Agent Component</p></th>
+<th><p>Traffic (Kbps)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="8"><p>1</p>
+<p>Connection sessions: 3~4</p></td>
+<td rowspan="4"><p>Windows</p></td>
+<td><p>Server &amp; Workload Protection</p></td>
+<td><p>0.339</p></td>
+</tr>
+<tr>
+<td><p>Endpoint agent</p></td>
+<td><p>1.989</p></td>
+</tr>
+<tr>
+<td><p>Endpoint sensor</p></td>
+<td><p>0.282</p></td>
+</tr>
+<tr>
+<td><p>Total</p></td>
+<td><p>2.61</p></td>
+</tr>
+<tr>
+<td rowspan="4"><p>Linux</p></td>
+<td><p>Server &amp; Workload Protection</p></td>
+<td><p>0.204</p></td>
+</tr>
+<tr>
+<td><p>Endpoint agent</p></td>
+<td><p>0.449</p></td>
+</tr>
+<tr>
+<td><p>Endpoint sensor</p></td>
+<td><p>0.218</p></td>
+</tr>
+<tr>
+<td><p>Total</p></td>
+<td><p>0.871</p></td>
+</tr>
+<tr>
+<td rowspan="8"><p>100</p>
+<p>Connection sessions: 300~400</p></td>
+<td rowspan="4"><p>Windows</p></td>
+<td><p>Server &amp; Workload Protection</p></td>
+<td><p>33.9</p></td>
+</tr>
+<tr>
+<td><p>Endpoint agent</p></td>
+<td><p>198.9</p></td>
+</tr>
+<tr>
+<td><p>Endpoint sensor</p></td>
+<td><p>28.2</p></td>
+</tr>
+<tr>
+<td><p>Total</p></td>
+<td><p>261</p></td>
+</tr>
+<tr>
+<td rowspan="4"><p>Linux</p></td>
+<td><p>Server &amp; Workload Protection</p></td>
+<td><p>20.4</p></td>
+</tr>
+<tr>
+<td><p>Endpoint agent</p></td>
+<td><p>44.9</p></td>
+</tr>
+<tr>
+<td><p>Endpoint sensor</p></td>
+<td><p>21.8</p></td>
+</tr>
+<tr>
+<td><p>Total</p></td>
+<td><p>87.1</p></td>
+</tr>
+<tr>
+<td rowspan="8"><p>1000</p>
+<p>Connection sessions: 3000~4000</p></td>
+<td rowspan="4"><p>Windows</p></td>
+<td><p>Server &amp; Workload Protection</p></td>
+<td><p>339</p></td>
+</tr>
+<tr>
+<td><p>Endpoint agent</p></td>
+<td><p>1989</p></td>
+</tr>
+<tr>
+<td><p>Endpoint sensor</p></td>
+<td><p>282</p></td>
+</tr>
+<tr>
+<td><p>Total</p></td>
+<td><p>2610</p></td>
+</tr>
+<tr>
+<td rowspan="4"><p>Linux</p></td>
+<td><p>Server &amp; Workload Protection</p></td>
+<td><p>204</p></td>
+</tr>
+<tr>
+<td><p>Endpoint agent</p></td>
+<td><p>449</p></td>
+</tr>
+<tr>
+<td><p>Endpoint sensor</p></td>
+<td><p>218</p></td>
+</tr>
+<tr>
+<td><p>Total</p></td>
+<td><p>871</p></td>
+</tr>
+<tr>
+<td rowspan="8"><p>10000</p>
+<p>Connection sessions: 30000~40000</p></td>
+<td rowspan="4"><p>Windows</p></td>
+<td><p>Server &amp; Workload Protection</p></td>
+<td><p>3390</p></td>
+</tr>
+<tr>
+<td><p>Endpoint agent</p></td>
+<td><p>19890</p></td>
+</tr>
+<tr>
+<td><p>Endpoint sensor</p></td>
+<td><p>2820</p></td>
+</tr>
+<tr>
+<td><p>Total</p></td>
+<td><p>26100</p></td>
+</tr>
+<tr>
+<td rowspan="4"><p>Linux</p></td>
+<td><p>Server &amp; Workload Protection</p></td>
+<td><p>2040</p></td>
+</tr>
+<tr>
+<td><p>Endpoint agent</p></td>
+<td><p>4490</p></td>
+</tr>
+<tr>
+<td><p>Endpoint sensor</p></td>
+<td><p>2180</p></td>
+</tr>
+<tr>
+<td><p>Total</p></td>
+<td><p>8710</p></td>
+</tr>
+</tbody>
+</table>
+:::

@@ -1,0 +1,10 @@
+---
+slug: trend-vision-one-europe-firewall-exceptions-part
+title: Europe - firewall exceptions
+---
+
+**Related information**
+
+- [Firewall exceptions: Europe - all exceptions](firewall-europe-all-exceptions.md)
+- [Firewall exceptions: Europe - cloud service extension](firewall-europe-cloud-service.md)
+- [Firewall exceptions: Europe - hosted Service Gateway](firewall-europe-hosted-service.md)

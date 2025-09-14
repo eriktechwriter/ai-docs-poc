@@ -1,0 +1,425 @@
+---
+slug: trend-vision-one-token-list
+title: Token list
+---
+# Token list
+
+The following tokens are provided for you to customize notification messages for administrators and users.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Token ID</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>%Product_Name%</p></td>
+<td><p>Name of our product.</p></td>
+</tr>
+<tr>
+<td><p>%Security_risk_name%</p></td>
+<td><p>Name of the security risk detected, for example, "HEUR_PDFEXP.A", "EXPL_CVE20060022".</p>
+<p>For unscannable files, options for this token are as follows:</p>
+<ul>
+<li><p>For files whose size exceeds the limitation:</p>
+<ul>
+<li><p>Over restriction (message body size)</p></li>
+<li><p>Over restriction (file size)</p></li>
+</ul></li>
+<li><p>For unscannable compressed files:</p>
+<ul>
+<li><p>Over restriction (compression ratio)</p></li>
+<li><p>Over restriction (number of layer of compression)</p></li>
+<li><p>Over restriction (decompressed file size)</p></li>
+<li><p>Over restriction (decompressed file count)</p></li>
+<li><p>Over restriction (mail entity count)</p></li>
+<li><p>Over restriction (others)</p></li>
+</ul></li>
+<li><p>For password-protected compressed files: Protected compressed file</p></li>
+<li><p>For other password-protected files: Other protected file</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>%action%</p></td>
+<td><p>Action taken after detection of a security risk.</p></td>
+</tr>
+<tr>
+<td><p>%date% %time%</p></td>
+<td><ul>
+<li><p>For Exchange Online and Gmail: Date and time when an email message detected as containing a security risk was received</p></li>
+<li><p>For SharePoint Online, OneDrive, Microsoft Teams (Teams), Box, Dropbox, and Google Drive: Date and time when a file detected as containing a security risk was uploaded or last modified</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>%foundin%</p></td>
+<td><p>Location where a security risk was detected.</p>
+<p>For Exchange Online, it is &lt;email address&gt;\&lt;mailbox folder path&gt;; for SharePoint Online, OneDrive, Microsoft Teams (Teams), Box, Dropbox, and Google Drive, it is the folder path or website URL; for Gmail, it is the label(s) of the email message; for Teams Chat, it is the private teams chat URL.</p></td>
+</tr>
+<tr>
+<td><p>%policy_name%</p></td>
+<td><p>Name of a configured policy that was violated.</p></td>
+</tr>
+<tr>
+<td><p>%sender%</p></td>
+<td><p>Email address of the sender.</p></td>
+</tr>
+<tr>
+<td><p>%violator%</p></td>
+<td><p>Affected user related to a policy violation. For Exchange Online and Gmail, it is the mailbox of a protected user that received or sent an email message violating a policy; for SharePoint Online, OneDrive, Microsoft Teams (Teams), Box, Dropbox, and Google Drive, it is the user who uploaded or modified a file violating a policy; for Teams Chat, it is the user that sent a private chat message violating a policy.</p></td>
+</tr>
+<tr>
+<td><p>%recipient%</p></td>
+<td><p>Email address of the recipient.</p></td>
+</tr>
+<tr>
+<td><p>%subject%</p></td>
+<td><p>Subject of an email message violating a policy.</p></td>
+</tr>
+<tr>
+<td><p>%attachments%</p></td>
+<td><p>Name of an attachment violating a policy.</p></td>
+</tr>
+<tr>
+<td><p>%filename%</p></td>
+<td><p>Name of a file violating a policy.</p></td>
+</tr>
+<tr>
+<td><p>%suspicious_url%</p></td>
+<td><p>Suspicious URL detected.</p></td>
+</tr>
+<tr>
+<td><p>%risk_level%</p></td>
+<td><p>There are five Web Reputation risk levels assigned to an analyzed URL:</p>
+<ul>
+<li><p>Dangerous</p></li>
+<li><p>Highly suspicious</p></li>
+<li><p>Suspicious</p></li>
+<li><p>Safe</p></li>
+<li><p>Untested</p></li>
+</ul>
+<p>There are five Virtual Analyzer risk levels assigned to an analyzed object:</p>
+<ul>
+<li><p>High risk</p></li>
+<li><p>Medium risk</p></li>
+<li><p>Low risk</p></li>
+<li><p>No risk</p></li>
+<li><p>Unrated</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>%url_category%</p></td>
+<td><p>Category of a suspicious URL detected.</p>
+<p>There are more than 90 categories, such as "Spyware" and "Crack".</p></td>
+</tr>
+<tr>
+<td><p>%dlptemplatename%</p></td>
+<td><p>Name of a sensitivity label or compliance template that triggers the Data Loss Prevention policy.</p></td>
+</tr>
+<tr>
+<td><p>%spam_category%</p></td>
+<td><p>Category of a spam email message detected.</p>
+<p>There are four spam categories supported:</p>
+<ul>
+<li><p>BEC</p></li>
+<li><p>Phishing</p></li>
+<li><p>Ransomware</p></li>
+<li><p>Malicious spam</p></li>
+<li><p>Other spam</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>%detected_by%</p></td>
+<td><p>Technology or method through which email messages and files were detected as containing a security threat. Options include:</p>
+<ul>
+<li><p>Pattern-based scanning</p></li>
+<li><p>Predictive Machine Learning</p></li>
+<li><p>Suspicious Object list</p></li>
+<li><p>Web Reputation</p></li>
+<li><p>Antispam engine</p></li>
+<li><p>Writing style analysis</p></li>
+<li><p>Blocked sender list</p></li>
+<li><p>Blocked URL list</p></li>
+<li><p>Dynamic URL scanning</p></li>
+<li><p>Computer vision</p></li>
+<li><p>Retro Scan &amp; Auto Remediate</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>%file_format%</p></td>
+<td><p>Format of a file that violated the Keyword Extraction security filter in a Data Loss Prevention policy.</p></td>
+</tr>
+<tr>
+<td><p>%violated_keyword%</p></td>
+<td><p>Keyword(s) that caused a file to violate the Keyword Extraction security filter in a Data Loss Prevention policy.</p></td>
+</tr>
+<tr>
+<td id="GUID-7EC28F21-46C5-4180-AC64-D513A5F298F4__entry_zbj_nkw_5wb"><p>%redirected_to%</p></td>
+<td id="GUID-7EC28F21-46C5-4180-AC64-D513A5F298F4__entry_cm3_5kw_5wb"><p>Email addresses to which email messages triggering the "Change recipient" action are redirected.</p></td>
+</tr>
+</tbody>
+</table>
+
+The following tokens are provided for you to specify the content in **Replacement text**.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Service</p></th>
+<th><p>Token ID</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Exchange Online</p>
+<p>Exchange Online (Inline Mode)</p>
+<p>Gmail (Inline Mode) - Inbound Protection</p></td>
+<td><p>[Attachment Name]</p></td>
+<td><p>Name of an attachment violating a policy.</p></td>
+</tr>
+<tr>
+<td rowspan="8"><p>SharePoint Online</p>
+<p>OneDrive</p>
+<p>Microsoft Teams</p>
+<p>Box</p>
+<p>Dropbox</p>
+<p>Google Drive</p></td>
+<td><p>%action%</p></td>
+<td><p>Action taken after detection of a security risk.</p></td>
+</tr>
+<tr>
+<td><p>%policy_name%</p></td>
+<td><p>Name of a configured policy that was violated.</p></td>
+</tr>
+<tr>
+<td><p>%FilterName%</p></td>
+<td><p>Filter in an Advanced Threat Protection or Data Loss Prevention policy that detects an violation by a file in the protected application or service.</p>
+<p>Applicable filters include:</p>
+<ul>
+<li><p>Malware Scanning</p></li>
+<li><p>File Blocking</p></li>
+<li><p>Web Reputation</p></li>
+<li><p>Virtual Analyzer</p></li>
+<li><p>Data Loss Prevention</p></li>
+<li><p>Keyword Extraction (for Box only)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>%Security_risk_name%</p></td>
+<td><p>Name of the security risk detected, for example, "HEUR_PDFEXP.A", "EXPL_CVE20060022".</p>
+<p>For unscannable files, options for this token are as follows:</p>
+<ul>
+<li><p>For files whose size exceeds the limitation:</p>
+<ul>
+<li><p>Over restriction (message body size)</p></li>
+<li><p>Over restriction (file size)</p></li>
+</ul></li>
+<li><p>For unscannable compressed files:</p>
+<ul>
+<li><p>Over restriction (compression ratio)</p></li>
+<li><p>Over restriction (number of layer of compression)</p></li>
+<li><p>Over restriction (decompressed file size)</p></li>
+<li><p>Over restriction (decompressed file count)</p></li>
+<li><p>Over restriction (mail entity count)</p></li>
+<li><p>Over restriction (others)</p></li>
+</ul></li>
+<li><p>For password-protected compressed files: Protected compressed file</p></li>
+<li><p>For other password-protected files: Other protected file</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>%filename%</p></td>
+<td><p>Name of a file violating a policy.</p></td>
+</tr>
+<tr>
+<td><p>%suspicious_url%</p></td>
+<td><p>Suspicious URL detected.</p></td>
+</tr>
+<tr>
+<td><p>%dlptemplatename%</p></td>
+<td><p>Name of a sensitivity label or compliance template that triggers the Data Loss Prevention policy.</p></td>
+</tr>
+<tr>
+<td><p>%risk_level%</p></td>
+<td><p>There are five Web Reputation risk levels assigned to an analyzed URL:</p>
+<ul>
+<li><p>Dangerous</p></li>
+<li><p>Highly suspicious</p></li>
+<li><p>Suspicious</p></li>
+<li><p>Safe</p></li>
+<li><p>Untested</p></li>
+</ul>
+<p>There are five Virtual Analyzer risk levels assigned to an analyzed object:</p>
+<ul>
+<li><p>High risk</p></li>
+<li><p>Medium risk</p></li>
+<li><p>Low risk</p></li>
+<li><p>No risk</p></li>
+<li><p>Unrated</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+The following tokens are provided for you to customize notification messages for administrators and users in **Writing Style Analysis for BEC**.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Token ID</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>%expected_sender_displayname%</p></td>
+<td><p>Display name of the high profile user who is expected to be the real sender of an email message.</p></td>
+</tr>
+<tr>
+<td><p>%action%</p></td>
+<td><p>Action taken after detection of a probable BEC attack, which includes:</p>
+<ul>
+<li><p>Tag subject</p></li>
+<li><p>Add disclaimer</p></li>
+<li><p>Pass</p></li>
+<li><p>Move to Spam</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>%spam_category%</p></td>
+<td><p>Category of a spam email message detected, which is <strong>BEC</strong>.</p></td>
+</tr>
+<tr>
+<td><p>%date%</p>
+<p>%time%</p></td>
+<td><p>Date and time when a probable BEC attack was detected.</p></td>
+</tr>
+<tr>
+<td><p>%foundin%</p></td>
+<td><p>Location where a probable BEC attack was detected. For Exchange Online, it is &lt;email address&gt;\&lt;mailbox folder path&gt;; for Gmail, it is the label(s) of the email message.</p></td>
+</tr>
+<tr>
+<td><p>%policy_name%</p></td>
+<td><p>Name of a configured policy that was violated.</p></td>
+</tr>
+<tr>
+<td><p>%detected_by%</p></td>
+<td><p>Technology or method through which an email message was detected as containing a probable BEC attack, which is <strong>Writing style analysis</strong>.</p></td>
+</tr>
+<tr>
+<td><p>%sender%</p></td>
+<td><p>Email address of the sender.</p></td>
+</tr>
+<tr>
+<td><p>%recipient%</p></td>
+<td><p>Email address of the recipient.</p></td>
+</tr>
+<tr>
+<td><p>%subject%</p></td>
+<td><p>Subject of an email message violating a policy.</p></td>
+</tr>
+<tr>
+<td><p>%attachments%</p></td>
+<td><p>Name of an attachment violating a policy.</p></td>
+</tr>
+<tr>
+<td><p>%expected_sender%</p></td>
+<td><p>Display name of the high profile user who is expected to be the real sender of an email message.</p></td>
+</tr>
+<tr>
+<td><p>%origin_mail_message_id%</p></td>
+<td><p>ID of an email message.</p></td>
+</tr>
+</tbody>
+</table>
+
+The following tokens are provided for you to customize the disclaimer in the redirected emails that triggered the "Change recipient" action.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Token ID</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>%policy_name%</p></td>
+<td><p>Name of a configured policy that was violated.</p></td>
+</tr>
+</tbody>
+</table>
+
+The following tokens are provided for you to customize the disclaimer for messages detected as from suspicious senders.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Token ID</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>%detected_risk%</p></td>
+<td><p>Specific risk that caused the message sender to be identified as suspicious.</p></td>
+</tr>
+</tbody>
+</table>
+
+The following tokens are provided for you to customize the confirmation email that is sent to end users upon receipt of a reported email to acknowledge their feedback.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Token ID</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>%subject%</p></td>
+<td><p>Subject of the reported email message.</p></td>
+</tr>
+<tr>
+<td><p>%sender%</p></td>
+<td><p>Sender email address of the reported email message.</p></td>
+</tr>
+<tr>
+<td><p>%recipients%</p></td>
+<td><p>Recipient email addresses of the reported email message.</p></td>
+</tr>
+<tr>
+<td><p>%reporter%</p></td>
+<td><p>Email address of the reporter.</p></td>
+</tr>
+</tbody>
+</table>
+:::

@@ -1,0 +1,63 @@
+---
+slug: trend-vision-one-organization-management
+title: Organization management
+---
+# Organization management
+
+Cloud Email and Collaboration Protection allows the administrator to manage organizations where they grant Cloud Email and Collaboration Protection access to a cloud service on multiple tenants. In this way, you can secure all the tenants' services you manage and switch quickly between organizations using one single CLP/LMP account.
+
+After you log on to the management console, a default organization is created. You can rename the organization but cannot remove it.
+
+You can also create more organizations based on your needs.
+
+The steps outlined below illustrate how to manage your organizations.
+
+### Procedure {#procedure}
+
+1.  Go to **Email and Collaboration Security Operations → Cloud Email and Collaboration Protection → Administration → Organization Management**.
+
+2.  On the **Organization Management** screen that appears, perform the following tasks:
+
+    - Add an organization.
+
+      1.  Click **Add**.
+
+      2.  On the **Add Organization** screen that appears, specify an organization name (required) and description (optional), and then click **Save**.
+
+          :::note
+
+          The organization name cannot exceed 32 characters, and the description cannot exceed 128 characters.
+
+          A maximum of 20 organizations is supported.
+          :::
+
+          To grant Cloud Email and Collaboration Protection access to services under an added organization, in Cloud Email and Collaboration Protection, go to **Administration → Service Account** and grant access to the services that you are going to manage under that organization.
+
+          :::note
+
+          You can grant access to a service for one tenant under only one organization. For example, if you have granted access to the Exchange Online service account for Azure AD tenant A under one organization, you are not able to grant access for Microsoft Entra ID tenant A again under another organization.
+          :::
+
+          When you return to the **Organization Management** screen, you can see the services to which you have granted Cloud Email and Collaboration Protection access under that organization in the **Services with access granted** column.
+
+    - Remove an organization.
+
+      1.  Select an organization and click **Remove**.
+
+      2.  Click **OK**.
+
+          :::note
+
+          You can remove only one organization at a time.
+
+          You cannot remove an organization if it has:
+
+          - Services with access granted
+
+          - Pending or failed tasks
+
+          - Authentication tokens generated for automation APIs
+
+          - Exchange Server registered to it
+          :::
+:::

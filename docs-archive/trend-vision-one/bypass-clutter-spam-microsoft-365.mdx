@@ -1,0 +1,64 @@
+---
+slug: trend-vision-one-bypass-clutter-spam-microsoft-365
+title: >-
+  Bypass clutter and spam filtering by email header for phishing simulation
+  emails in Microsoft 365
+---
+# Bypass clutter and spam filtering by email header for phishing simulation emails in Microsoft 365
+
+Create rules in Microsoft 365 to allow phishing simulation emails to bypass your organization's clutter and spam filters.
+
+To ensure Microsoft 365 users can receive phishing simulation emails, you can configure rules to allow emails to bypass clutter and spam filtering using keys contained in the email header.
+
+:::note
+
+These instructions were valid for Microsoft 365 Exchange as of January 25, 2025.
+:::
+
+### Procedure {#procedure}
+
+1.  Get the required header key and value from the Trend Vision One console.
+
+    1.  In the Trend Vision One console, go to **Cyber Risk Exposure Management → Security Awareness → Phishing Simulations**.
+
+    2.  Click the settings icon (![](/images/gear_icon=fc9a51ad-35af-4fe3-92c6-5e41b2dfc5d9.webp)).
+
+    3.  In **Allow List Settings**, copy the header key and value.
+
+2.  Create a new transport rule for Microsoft 365.
+
+    1.  In the Microsoft 365 Exchange admin center, go to **Mail flow → Rules**.
+
+    2.  Click **Add a rule**, and then select **Create a new rule**.
+
+        The **New transport rule** window appears.
+
+    3.  Give the rule a descriptive name.
+
+    4.  Under **Apply this rule if**, select **The message headers...** and **includes any of these words**.
+
+    5.  Click **Enter text**, paste the header key previously copied from the Trend Vision One console, and click **Save**.
+
+    6.  Click **Enter words**, paste the header value previously copied from the Trend Vision One console, then click **Add** and **Save**.
+
+        :::note
+
+        You may need to update the header value from time to time.
+        :::
+
+    7.  Under **Do the following**, select **Modify the message properties** and **set the spam confidence level (SCL)**.
+
+    8.  Click the displayed SCL level, select **Bypass spam filtering** in the window that appears, and click **Save**.
+
+    9.  Add a new action by clicking the add icon (+).
+
+    10. Select **Modify the message properties** and **set a message header**.
+
+    11. Click the first **Enter text** link, type `X-MSExchange-Organization-BypassClutter`, and click **Save**.
+
+    12. Click the second **Enter text** link, type `true`, and click **Save**.
+
+    13. Review the rule settings and click **Save**. The new rule may take some time to propagate.
+
+3.  Test the rule by setting up a test phishing simulation with a small group of recipients to ensure users can receive the simulation emails.
+::::

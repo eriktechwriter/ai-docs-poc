@@ -1,0 +1,113 @@
+---
+slug: trend-vision-one-analysis-chains
+title: Analysis Chains
+---
+# Analysis Chains
+
+The **Analysis Chains** tab displays the Root Cause Analysis and also highlights additional information which might be beneficial to the investigation.
+
+Threat Investigations can correlate information from Endpoint Sensor, Cloud App Security, and Active Directory to display attack information about an endpoint, user account, and possible email attack vectors throughout your network.
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Information</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Target Endpoint</p></td>
+<td><p>Displays details about the endpoint that was investigated</p>
+<p>Click the endpoint name and user name to view details.</p>
+<p>Click <strong>Isolate Endpoint</strong> to disconnect the endpoint from the network. During isolation, the agent can only communicate with the server.</p>
+
+
+:::note
+
+<p>After resolving the security threats on an isolated endpoint, the following locations on the <strong>Directories → Users/Endpoints</strong> screen provides options to restore the network connection of an isolated endpoint:</p>
+<ul>
+<li><p><strong>Endpoints → All</strong>: Click the name of an endpoint in the table, and click <strong>Task → Restore</strong> on the screen that appears.</p></li>
+<li><p><strong>Endpoints → Filters → Network Connection → Isolated</strong>: Select the endpoint row in the table, and click <strong>Task → Restore Network Connection</strong>.</p></li>
+</ul>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>First Observed Object</p></td>
+<td><p>The first object in the analysis chain suspected to have been responsible for the creation of the investigated object.</p>
+<p>This is often the entry point of a targeted attack.</p>
+<p>Hover over an object and click <img src="./images/search=20240717141818.webp" /> to locate the object in the Analysis Chain.</p></td>
+</tr>
+<tr>
+<td><p>Matched Objects</p></td>
+<td><p>Displays the object or a list of objects matching the investigation criteria</p>
+<p>Hover over an object and click <img src="./images/search=20240717141818.webp" /> to locate the object in the Root Cause Analysis.</p></td>
+</tr>
+<tr>
+<td><p>Noteworthy Objects</p></td>
+<td><p>Highlights objects in the chain that are possibly malicious, based on existing Trend Micro intelligence</p>
+<p>The value counts the number of unique noteworthy objects in the chain.</p>
+<p>Click to view the list of noteworthy objects.</p>
+<p>Hover over an object and click <img src="./images/search=20240717141818.webp" /> to locate the object in the Analysis Chain.</p></td>
+</tr>
+<tr>
+<td><p>Root Cause Analysis area</p></td>
+<td><p>Displays a visual analysis of the objects involved in an event</p>
+
+
+:::note
+
+<p>If the number of nodes in the analysis chain exceeds the presentation limit, only the main analysis chains are displayed. To avoid this issue, refine the investigation criteria.</p>
+
+
+:::
+
+
+<p>Click any available node to view more information about the selected object.</p>
+<p>For more information on how to interpret Analysis Chains, see:</p>
+<ul>
+<li><p><a href="trend-vision-one-matched-object-details-profile-tab">Object Details: Profile Tab</a></p>
+
+
+:::note
+
+<p>The <strong>Profile</strong> tab is the default view if no other tabs are available for a selected object.</p>
+
+
+:::
+
+</li>
+<li><p><a href="trend-vision-one-matched-obj-related-obj-tab">Object Details: Related Objects Tab</a></p></li>
+<li><p><a href="trend-vision-one-email-message-correlation">Email Message Correlation</a></p></li>
+<li><p><a href="trend-vision-one-navigating-analysis-chain-apex">Navigating the Analysis Chain</a></p></li>
+<li><p><a href="trend-vision-one-root-cause-icons">Root Cause Analysis Icons</a></p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+:::note
+
+To export the data, click ![](/images/export=GUID-8F04F6E4-5B5D-4C5B-9EAD-5E82284BB174=1=en-us=Low.webp) and perform one of the following:
+
+- Select **Analysis Chains** to export all root cause chains as `.png` files.
+
+- Select **Object Details** to export all data as CSV files.
+:::
+
+**Related information**
+
+- [Object Details: Profile Tab](matched-object-details-profile-tab.mdx)
+- [Object Details: Related Objects Tab](matched-obj-related-obj-tab.mdx)
+- [Email Message Correlation](email-message-correlation.mdx)
+- [Navigating the Analysis Chain](navigating-analysis-chain-apex.mdx)
+- [Root Cause Analysis Icons](root-cause-icons.mdx)
+::::

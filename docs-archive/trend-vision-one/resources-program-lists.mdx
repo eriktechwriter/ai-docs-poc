@@ -1,0 +1,72 @@
+---
+slug: trend-vision-one-resources-program-lists
+title: Program Lists
+---
+# Program Lists
+
+Configure lists to define trusted programs to bypass firewall settings or exclude from security scans.
+
+:::warning[Important]
+
+If you are working on a policy, make sure to save your settings before leaving the screen. Leaving the screen without saving discards any changes.
+:::
+
+Programs lists are a policy resource you can configure to define trusted programs within your security environment. These lists are used by the following policy features:
+
+- [Firewall](policies-firewall.mdx) to define trusted programs allowed to bypass the firewall
+
+- [Exclusions](policies-exclusions.mdx) to define trusted programs excluded from security and anti-malware scans
+
+You can add up to 250 program lists.
+
+### Procedure {#procedure}
+
+1.  Go to **Endpoint Security → Endpoint Security Configuration → Policy Resources → Program Lists**.
+
+2.  Create or edit a list.
+
+    - To create a new list, click **Add program list**.
+
+    - To edit an existing list, click the list name and go to **General**
+
+3.  Specify a name and description for the list.
+
+4.  Click the operating system you want to specify programs for.
+
+    :::warning[Important]
+
+    - You must specify at least one program per list. For example, specifying one program for Windows and not specifying a program for macOS or Linux is a valid list.
+
+    - You can specify programs for more than one operating system per list. For example, specifying one program each for Windows, macOS, and Linux is a valid list.
+
+    - You can specify up to a total of 125 items per list.
+    :::
+
+5.  Specify the **Full program path**.
+
+    Program paths must be complete and follow the formatting guidelines for the specified operating system. The following formatting rules apply to the program lists:
+
+    - Entry length maximum is 256 characters.
+
+    - Entry cannot end with a slash (`/` or `\`).
+
+    - Wildcards (`*`) and environmental variables are allowed. Windows allows using `?` as a wildcard.
+
+    - Entry cannot be a relative path.
+
+    - Entry cannot use a basename.
+
+    - Folder and file names cannot contain certain special characters:
+
+      - Windows: `\ / : " < > | ,`
+
+      - Linux: `? < > | // , &`
+
+      - macOS: `& = //`
+
+6.  To add more programs, click **Add**.
+
+    You can specify up to 125 items per list.
+
+7.  Click **Save**.
+::::

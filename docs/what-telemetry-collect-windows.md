@@ -1,0 +1,212 @@
+---
+slug: trend-vision-one-what-telemetry-collect-windows
+title: What telemetry does the endpoint agent collect from Windows?
+---
+
+The following table lists the Windows telemetry monitored and collected by the endpoint agent.
+
+For information about eventId and eventSubId mapping for the Search app, see [eventId and eventSubId mapping](eventid-eventsubid-mapping.md).
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Category</p></th>
+<th><p>Sub-category</p></th>
+<th><p>Details</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="6"><p>PROCESS ACTIVITY</p></td>
+<td><p>Process Creation</p></td>
+<td><p>Collected through standard settings</p></td>
+</tr>
+<tr>
+<td><p>Process Termination</p></td>
+<td><p>Requires enabling hypersensitive mode</p></td>
+</tr>
+<tr>
+<td><p>Process Access</p></td>
+<td><p>Collected through standard settings</p></td>
+</tr>
+<tr>
+<td><p>Image/Library Loaded</p></td>
+<td><p>Collected through standard settings</p></td>
+</tr>
+<tr>
+<td><p>Remote Thread Creation</p></td>
+<td><p>Collected through standard settings</p></td>
+</tr>
+<tr>
+<td><p>Process Tampering Activity</p></td>
+<td><p>Collected through standard settings</p></td>
+</tr>
+<tr>
+<td rowspan="5"><p>FILE MANIPULATION</p></td>
+<td><p>File Creation</p></td>
+<td><p>Collected through standard settings</p></td>
+</tr>
+<tr>
+<td><p>File Opened</p></td>
+<td><p>Requires enabling hypersensitive mode</p></td>
+</tr>
+<tr>
+<td><p>File Deletion</p></td>
+<td><p>Requires enabling hypersensitive mode</p></td>
+</tr>
+<tr>
+<td><p>File Modification</p></td>
+<td><p>Collected through standard settings</p></td>
+</tr>
+<tr>
+<td><p>File Renaming</p></td>
+<td><p>Collected through standard settings</p></td>
+</tr>
+<tr>
+<td rowspan="5"><p>USER ACCOUNT ACTIVITY</p></td>
+<td><p>Local Account Creation</p></td>
+<td><p>Requires enabling hypersensitive mode</p>
+<p>Collected via Windows Event ID 4720.</p></td>
+</tr>
+<tr>
+<td><p>Local Account Modification</p></td>
+<td><p>Requires enabling hypersensitive mode</p>
+<p>Collected via Windows Event ID 4738.</p></td>
+</tr>
+<tr>
+<td><p>Local Account Deletion</p></td>
+<td><p>Requires enabling hypersensitive mode</p></td>
+</tr>
+<tr>
+<td><p>Account Login</p></td>
+<td><p>Collected via Windows EventLogs</p>
+<p>Collected via Windows Event ID 4624.</p></td>
+</tr>
+<tr>
+<td><p>Account Logoff</p></td>
+<td><p>Collected via Windows EventLogs</p>
+<p>Collected via Windows Event ID 4634.</p></td>
+</tr>
+<tr>
+<td rowspan="5"><p>NETWORK ACTIVITY</p></td>
+<td><p>TCP Connection</p></td>
+<td><p>Collected through standard settings</p></td>
+</tr>
+<tr>
+<td><p>UDP Connection</p></td>
+<td><p>Collected through standard settings</p></td>
+</tr>
+<tr>
+<td><p>URL</p></td>
+<td><p>Collected through standard settings</p></td>
+</tr>
+<tr>
+<td><p>DNS Query</p></td>
+<td><p>Collected through standard settings</p></td>
+</tr>
+<tr>
+<td><p>File Downloaded</p></td>
+<td><p>Collected through standard settings</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p>HASH ALGORITHMS</p></td>
+<td><p>MD5</p></td>
+<td><p>Collected through standard settings</p></td>
+</tr>
+<tr>
+<td><p>SHA</p></td>
+<td><p>Collected through standard settings</p></td>
+</tr>
+<tr>
+<td rowspan="3"><p>REGISTRY ACTIVITY</p></td>
+<td><p>Key/Value Creation</p></td>
+<td><p>Collected through standard settings</p></td>
+</tr>
+<tr>
+<td><p>Key/Value Creation</p></td>
+<td><p>Collected through standard settings</p></td>
+</tr>
+<tr>
+<td><p>Key/Value Deletion</p></td>
+<td><p>Collected through standard settings</p></td>
+</tr>
+<tr>
+<td rowspan="3"><p>SCHEDULE TASK ACTIVITY</p></td>
+<td><p>Scheduled Task Creation</p></td>
+<td><p>Requires enabling hypersensitive mode</p>
+<p>Collected via Windows EventLogs</p>
+<p>Collected via Windows Event ID 4698.</p></td>
+</tr>
+<tr>
+<td><p>Scheduled Task Modification</p></td>
+<td><p>Requires enabling hypersensitive mode</p>
+<p>Collected via Windows EventLogs</p>
+<p>Collected via Windows Event ID 4702.</p></td>
+</tr>
+<tr>
+<td><p>Scheduled Task Deletion</p></td>
+<td><p>Requires enabling hypersensitive mode</p>
+<p>Collected via Windows EventLogs</p>
+<p>Collected via Windows Event ID 4699.</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p>SERVICE ACTIVITY</p></td>
+<td><p>Service Creation</p></td>
+<td><p>Requires enabling hypersensitive mode</p>
+<p>Collected via Windows EventLogs</p>
+<p>Collected via Windows Event ID 4697/7045.</p></td>
+</tr>
+<tr>
+<td><p>Service Modification</p></td>
+<td><p>Requires enabling hypersensitive mode</p>
+<p>Collected via Windows EventLogs</p>
+<p>Only <strong>Start Type</strong> modification is collected via Windows Event ID 7040.</p></td>
+</tr>
+<tr>
+<td><p>DRIVER/MODULE ACTIVITY</p></td>
+<td><p>Driver Loaded</p></td>
+<td><p>Requires enabling hypersensitive mode</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p>NAMED PIPE ACTIVITY</p></td>
+<td><p>Pipe Creation</p></td>
+<td><p>Requires enabling hypersensitive mode</p></td>
+</tr>
+<tr>
+<td><p>Pipe Connection</p></td>
+<td><p>Requires enabling hypersensitive mode</p></td>
+</tr>
+<tr>
+<td rowspan="3"><p>WMI ACTIVITY</p></td>
+<td><p>WmiEventConsumerToFilter</p></td>
+<td><p>Collected via Windows EventLogs</p>
+<p>Collected via Windows Event ID 5861.</p></td>
+</tr>
+<tr>
+<td><p>WmiEventConsumer</p></td>
+<td><p>Collected via Windows EventLogs</p>
+<p>Collected via Windows Event ID 5861.</p></td>
+</tr>
+<tr>
+<td><p>WmiEventFilter</p></td>
+<td><p>Collected via Windows EventLogs</p>
+<p>Collected via Windows Event ID 5861.</p></td>
+</tr>
+<tr>
+<td><p>BITS JOBS ACTIVITY</p></td>
+<td><p>BITS JOBS Activity</p></td>
+<td><p>Collected via Windows EventLogs</p>
+<p>Only creation of a new BITS job is collected via Windows Event ID 3.</p></td>
+</tr>
+<tr>
+<td><p>POWERSHELL ACTIVITY</p></td>
+<td><p>Script-Block Activity</p></td>
+<td><p>Collected through standard settings</p></td>
+</tr>
+</tbody>
+</table>

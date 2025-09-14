@@ -1,0 +1,342 @@
+---
+slug: trend-vision-one-create-configure-policy
+title: Create and configure a policy
+---
+::::::::Use policies to protect computers using one or more Server & Workload Protection modules.
+
+:::tip
+
+For information about configuring specific protection modules for a policy, see the following guides:
+
+- [Configure Firewall](configure-firewall-sdk.mdx)
+- [Configure Intrusion Prevention](configure-intrusion-prevention-sdk.mdx)
+- [Configure Anti-Malware](configure-anti-malware-sdk.mdx)
+- [Configure Web Reputation](configure-wrs-server-workload.mdx)
+- [Configure Device Control](configure-device-control-sdk.mdx)
+- [Configure Application Control](config-app-control-policy.mdx)
+- [Configure Integrity Monitoring](configure-integrity-monitoring-sdk.mdx)
+- [Configure Log Inspection](config-log-inspection-swp.mdx)
+:::
+
+Before you use the API, you should understand the essential concepts about policies. For background information, see [Create policies to protect your computers and other resources](create-policies.mdx).
+
+## Create a policy {#create-a-policy}
+
+Create a policy that defines the behavior of the Server & Workload Protection modules that you are using, and that configures policy settings such as agent-manager communication, scanning behavior, logging, event retention, and network engine settings. After you create a policy you can assign it to one or more computers.
+
+To create a policy you create a `Policy` object, set its properties to define behaviors, and then use the `PoliciesApi` class to add it to Server & Workload Protection. Because policies are hierarchical, when creating a policy you need to indicate the ID of the parent policy. (Use an ID of 0 to create a top-level policy.)
+
+The `Policy` object provides access to many policy properties:
+
+- The ID of the parent policy
+
+- The interfaces to which the policy applies rules
+
+- Whether to perform ongoing recommendation scans
+
+- Whether to automatically send policy changes to computers (AutoRequiresUpdate)
+
+- Policy settings
+
+:::tip
+
+To see the available policy properties, expand the 200 response to the [Describe a Policy](https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Policies) operation in the API Reference.
+:::
+
+This example creates a policy below Base Policy. A search obtains Base Policy to obtain its ID, which is used as the parent of a new policy. (The creation of the search criteria and search filter is not shown.)
+
+[View source](https://github.com/deep-security/automation-center-sdk-samples/blob/master/python/src/policy_examples.py)
+
+```bash
+# Search for the Base Policy
+policies_api = api.PoliciesApi(api.ApiClient(configuration))
+policy_search_results = policies_api.search_policies(api_version, search_filter=search_filter)
+
+# Set the parent ID of the new policy to the ID of the Base Policy
+new_policy.parent_id = policy_search_results.policies[0].id
+
+# Add the new policy to Server & Workload Protection
+created_policy = policies_api.create_policy(new_policy, api_version)
+```
+
+The `Policy` object that is created contains no module configurations or setting values. When the configurations and settings are omitted, the values are inherited from the parent policy. Therefore, the policy that is created inherits almost all behavior from the Base Policy. Also note that policy ID's are immutable, so if you know the ID of the policy you can just use it instead of searching.
+
+To use the API to interact with policies, use the `/api/policies` endpoint. (See the [Policies](https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Policies) group of operations in the API Reference.)
+
+For information about searching, see [Search for Resources](search-for-resources.mdx). For information about authenticating API calls, see [Authenticate with Server & Workload Protection](send-your-first-request-using-api.mdx).
+
+## Assign a policy to a computer {#assign-a-policy-to-a-computer}
+
+Assign a policy to a computer to protect the computer according to the policy settings and the configuration of the security modules:
+
+- Create a `Computer` object.
+
+- Set the policy ID to use on the object.
+
+- Use a `ComputersApi` object to update the computer on Server & Workload Protection.
+
+The following example assigns a policy to a computer. A search obtains the policy to obtain its ID, which is assigned to a computer. (The creation of the search criteria and search filter is not shown.)
+
+[View source](https://github.com/deep-security/automation-center-sdk-samples/blob/master/python/src/policy_examples.py)
+
+```bash
+# Perform the search
+policy_search_results = policies_api.search_policies(api_version, search_filter=search_filter)
+
+# Assign the policy to the computer
+computer.policy_id = policy_search_results.policies[0].id
+```
+
+:::tip
+
+Also see the [Modify a Policy](https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Policies) operation in the API Reference.
+:::
+
+:::tip
+
+You can override a policy at the computer level. See [Configure Computers to Override Policies](override-policies-computer.mdx).
+:::
+
+## Configure policy and default policy settings {#configure-policy-and-default-policy-settings}
+
+Policy Settings control many of the behaviors of the protection modules and the Server & Workload Protection platform. Therefore, many tasks that you automate using the API require you to configure policy settings.
+
+For a list of policy and default policy settings, see [Default policy, policy, and computer settings](settings-reference.mdx) in the Settings Reference.
+
+## Default setting values and overrides {#default-setting-values-and-overrides}
+
+Server & Workload Protection policies are hierarchical. A policy's location in the hierarchy determines the default values of their settings:
+
+- *Top-level policies:* A set of default policy settings defines the default values for all top-level policies.
+
+- *Child policies:* Default values are inherited from their parent policy.
+
+You can configure any setting for a policy to override the default. Therefore, a default policy setting is inherited by policies down the hierarchy until a policy overrides it.
+
+For more information about the policy hierarchy and inheritance, see [Policies, inheritance, and overrides](policies-inheritance-overrides.mdx).
+
+## Policy setting and default policy setting classes {#policy-setting-and-default-policy-setting-classes}
+
+The Server & Workload Protection SDKs provide the following classes for storing policy and default policy settings. These classes are used to pass setting values between Server & Workload Protection and SDK or API clients.
+
+- `DefaultPolicySettings`: Stores the values of all default policy settings.
+
+- `PolicySettings`: Stores setting values for a specific policy.
+
+The settings of the `DefaultPolicySettings` and `PolicySettings` classes are identical, with a few exceptions. (See [Default policy, policy, and computer settings](settings-reference.mdx) in the Settings Reference.)
+
+## Retrieve the value of a policy setting or default policy setting {#retrieve-the-value-of-a-policy-setting-or-default-policy-setting}
+
+The `PoliciesApi` class enables you to retrieve the value of a single setting for a policy or for the default policy settings. For a policy, you can either retrieve the effective value of the setting or the override value:
+
+- *Effective setting:* The value that is being used for the policy. This value is either inherited or has been set specifically for this policy (overridden).
+
+- *Override:* The value that has been set specifically for this policy. No value indicates that the setting value is inherited.
+
+Retrieve a default setting when you want to know the default value for top-level policies.
+
+When you retrieve a setting value, identify the setting by name. The value is returned as a `SettingValue` object. For a list of policy and default policy settings, see [Default policy, policy, and computer settings](settings-reference.mdx) in the Settings Reference.
+
+The following example retrieves the firewall network engine mode of a policy.
+
+[View source](https://github.com/deep-security/automation-center-sdk-samples/blob/master/python/src/settings_examples.py)
+
+```bash
+# Get the policy details from Server & Workload Protection
+policies_api = api.PoliciesApi(api.ApiClient(configuration))
+return policies_api.describe_policy_setting(policy_id, api.PolicySettings.firewall_setting_network_engine_mode, api_version, overrides=False)
+```
+
+:::tip
+
+To get the value for the default policy setting, use the `describe_default_setting` method.
+:::
+
+## List all policy or default policy settings {#list-all-policy-or-default-policy-settings}
+
+You can retrieve all policy and default policy settings in a single call. The way you retrieve settings from Server & Workload Protection depends on the setting class.
+
+- *Default policy settings:* Use a `PoliciesApi` object to get a `DefaultPolicySettings` object from the manager.
+
+- *Policy settings:* Use a `PoliciesApi` object to get a policy from Server & Workload Protection as a `Policy` object. Then, get the `PolicySettings` object from the `Policy` object.
+
+For examples, see the [List default policy settings](https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Policies) and [Describe a policy](https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Policies) operations in the Policies section of the API Reference.
+
+## Configure a single policy or default policy setting {#configure-a-single-policy-or-default-policy-setting}
+
+The `PoliciesApi` class enables you to set the value of a single setting for a policy or for the default policy settings.
+
+### Procedure {#procedure}
+
+1.  Create a `SettingValue` object and set the value (all values are strings). When settings accept one value from a list of choices, you can either use the ID of the choice or the exact wording of the choice as it appears in the Server & Workload Protection console.
+
+2.  Create a `PoliciesApi` object and use it with the `SettingValue` object to modify either the policy setting or default setting. When modifying a policy setting, you also provide the policy ID.
+
+### Next steps {#next-steps}
+
+The following example sets the value of the firewall network engine mode of a policy
+
+[View source](https://github.com/deep-security/automation-center-sdk-samples/blob/master/python/src/settings_examples.py)
+
+```bash
+# Create a SettingValue object and set the value to either "Inline" or "Tap"
+network_engine_mode_value = api.SettingValue()
+network_engine_mode_value.value = "Inline"
+
+# Modify the setting on Server & Workload Protection
+policies_api = api.PoliciesApi(api.ApiClient(configuration))
+return policies_api.modify_policy_setting(policy_id, api.PolicySettings.firewall_setting_network_engine_mode, network_engine_mode_value, api_version, overrides=False)
+```
+
+:::tip
+
+To set the value for the default policy setting, use the `modify_default_setting` method.
+:::
+
+Also see the [Modify a Policy Setting](https://cloudone.trendmicro.com/docs/workload-security/api-reference/tag/Policies) operation in the API Reference.
+
+## Configure multiple policy and default policy settings {#configure-multiple-policy-and-default-policy-settings}
+
+To configure multiple policy or default policy settings, you first create a settings object for each setting and set the values:
+
+### Procedure {#procedure-1}
+
+1.  Create a `SettingValue` object and set the value (all values are strings). When settings accept one value from a list of choices, you can either use the ID of the choice or the exact wording of the choice as it appears in the Server & Workload Protection console.
+
+2.  Create an object from the settings class (`DefaultPolicySettings` or `PolicySettings`).
+
+3.  Set the value of the setting to the `SettingValue` object.
+
+### Next steps {#next-steps-1}
+
+Set the value of as many settings as required in the same `DefaultPolicySettings` or `PolicySettings` object.
+
+For either class of settings, the way you modify the setting on Server & Workload Protection is slightly different:
+
+- *Default policy settings:* Use a `PoliciesApi` object to modify the `DefaultPolicySettings` object on the manager.
+
+- *Policy settings:* Add the `PolicySettings` object to a `Policy` object. Then, use the `PoliciesApi` class to modify the policy on the manager.
+
+Settings in the `DefaultPolicySettings` or `PolicySettings` object that have no values are unchanged on Server & Workload Protection.
+
+Server & Workload Protection validates all modified settings before persisting the values. If one or more settings in the object is invalid, none of the modified settings are persisted. The error response includes the reason for each failure.
+
+:::note
+
+When Server & Workload Protection validates setting values, it does not check that interdependent settings are concordant.
+:::
+
+The following example configures two settings for a policy to enable either fail open or fail closed mode of operation.
+
+[View source](https://github.com/deep-security/automation-center-sdk-samples/blob/master/python/src/settings_examples.py)
+
+```bash
+# Create the SettingValue objects
+failure_response_engine_system = api.SettingValue()
+failure_response_packet_sanity_check = api.SettingValue()
+
+# Set the values
+if fail_open:
+    failure_response_engine_system.value = failure_response_packet_sanity_check.value = "Fail open"
+else:
+    failure_response_engine_system.value = failure_response_packet_sanity_check.value = "Fail closed"
+
+# Set the setting values and add to a policy
+policy_settings = api.PolicySettings()
+policy_settings.firewall_setting_failure_response_engine_system = failure_response_engine_system
+policy_settings.firewall_setting_failure_response_packet_sanity_check = failure_response_packet_sanity_check
+
+policy = api.Policy()
+policy.policy_settings = policy_settings
+
+# Modify the policy on Server & Workload Protection.
+policies_api = api.PoliciesApi(api.ApiClient(configuration))
+return policies_api.modify_policy(policy_id, policy, api_version, overrides=False)
+```
+
+For an example of configuring a system setting, see [Configure Server & Workload Protection System Settings](configure-system-settings.mdx).
+
+## Reset policy overrides {#reset-policy-overrides}
+
+Reset policy overrides so that the policy inherits the property or setting value of the parent policy (or, for top-level policies, the default policy settings). The way you reset a policy override depends on the type of property or setting.
+
+:::tip
+
+Generally, the information in this section also applies to computers. Where some situations use policy-specific classes, you use computer-specific classes. For example, instead of `PoliciesApi` and `PolicySettings`, you use `ComputersApi` and `ComputerSettings`.
+:::
+
+## Reset an ID reference {#reset-an-id-reference}
+
+To reset an ID reference override to inherit the value, modify the policy and set the value of the property to 0. An ID reference is a property that uses the ID of another item as a value.
+
+For example, the [Set the real time Anti-Malware scan configuration](configure-anti-malware-sdk.mdx) example overrides the realTimeScanConfigurationID for a policy. To reset the property to inherit the value from the parent policy, set `realTimeScanConfigurationID` to `0`.
+
+## Reset a setting {#reset-a-setting}
+
+The `PoliciesApi` class provides methods for resetting a single policy setting. For an example, see the Reset the Value of a Policy Setting operation in the Policies section of the [API Reference](https://cloudone.trendmicro.com/docs/workload-security/api-reference/).
+
+To reset several policy settings at the same time, use a `PolicySettings` object with `PoliciesApi` to set the value of the settings to an empty string. For example, the [Configure Firewall](configure-firewall-sdk.mdx) example overrides the value of the `FirewallSettingReconnaissanceEnabled` setting for a policy. To reset the setting to inherit the value from the parent policy, you set the value to `""`.
+
+## Reset the status of a security module {#reset-the-status-of-a-security-module}
+
+To reset the status of a security module, modify the policy and set the value of the module's state to `inherited`.
+
+For example, the [Turn on Application Control](config-app-control-policy.mdx) example overrides the status property of the Application Control module to `on` for a policy. To reset the setting to inherit the value from the parent policy, you set the status value to `inherited`.
+
+## Reset a rule {#reset-a-rule}
+
+A rule override is achieved when the rule that is added to a policy is changed from the original rule. You can either reset all overrides of a rule, or reset the overrides selectively.
+
+:::tip
+
+When a rule is assigned to a policy it is not considered an override, whether the parent policy is assigned the rule or not.
+:::
+
+## Reset all overrides of a rule {#reset-all-overrides-of-a-rule}
+
+Each module-specific policy rules details class (`FirewallRulesDetailsApi`, `PolicyIntegrityMonitoringRulesDetailsApi`, `PolicyIntrusionPreventionRuleDetailsApi`, and `PolicyLogInspectionRulesDetailsApi`) provide a method for resetting all of the overrides of a rule that is assigned to a specific policy.
+
+To see a code example, go to the Reset firewall rule overrides operation of Policy Firewall Rule Details in the [API Reference](https://cloudone.trendmicro.com/docs/workload-security/api-reference/), and see the code example for the operation.
+
+## Selectively reset overrides of a rule {#selectively-reset-overrides-of-a-rule}
+
+Use the following procedure to reset only some properties of a rule.
+
+### Procedure {#procedure-2}
+
+1.  Obtain all of the overrides for the policy's rule. Use the `describe` method of a module-specific rules details class with the `overrides` parameter set to `true`. Save the results. (See [About the Overrides Parameter](overrides-parameter.mdx).)
+
+2.  Reset all of the overrides of the rule.
+
+3.  Restore the overrides that you want to keep in a new rule.
+
+4.  Modify the policy rule with the overrides.
+
+### Next steps {#next-steps-2}
+
+The following example resets a subset of Log Inspection rule overrides for a policy.
+
+[View source](https://github.com/deep-security/automation-center-sdk-samples/blob/master/python/src/policy_examples.py)
+
+```bash
+policy_log_inspection_rule_details_api = api.PolicyLogInspectionRuleDetailsApi(api.ApiClient(configuration))
+
+# Get the rule overrides
+rule_overrides = policy_log_inspection_rule_details_api.describe_log_inspection_rule_on_policy(policy_id, rule_id, api_version, overrides=True)
+
+# Reset the rule
+policy_log_inspection_rule_details_api.reset_log_inspection_rule_on_policy(policy_id, rule_id, api_version, overrides=False)
+
+# Add the desired overrides to a new rule
+li_rule_overrides_restored = api.LogInspectionRule()
+
+if rule_overrides.alert_minimum_severity:
+    li_rule_overrides_restored.alert_minimum_severity = rule_overrides.alert_minimum_severity
+
+if rule_overrides.recommendations_mode:
+    li_rule_overrides_restored.recommendations_mode = rule_overrides.recommendations_mode
+
+# Modify the rule on Server & Workload Protection
+return policy_log_inspection_rule_details_api.modify_log_inspection_rule_on_policy(policy_id, rule_id, li_rule_overrides_restored, api_version, overrides=False)
+```
+::::::::::::

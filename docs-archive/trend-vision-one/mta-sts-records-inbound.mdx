@@ -1,0 +1,93 @@
+---
+slug: trend-vision-one-mta-sts-records-inbound
+title: About mta-sts records for inbound protection
+---
+# About mta-sts records for inbound protection
+
+To use MTA-STS to protect SMTP connections sending emails to your domains, you need to add a DNS record and publish a policy for each of the domains. Optionally, you can add a TLS reporting DNS record for each domain to receive reports from TLS peers protected by MTA-STS.
+
+- The following is an example of the DNS record for MTA-STS:
+
+  ```bash
+  _mta-sts.example.com. 3600 IN  TXT v=STSv1; id=20220831012215;
+  ```
+
+- The following is an example of the MTA-STS policy for the "example.com" domain, which needs to be published at `https://mta-sts.example.com/.well-known/mta-sts.txt`:
+
+  ```bash
+  version: STSv1
+  mode: enforce
+  mx: *.in.tmes.trendmicro.com
+  mx: *.tmes.trendmicro.com
+  max_age: 604800
+  ```
+
+  :::note
+
+  Set **mx** based on your serving site.
+
+  <table>
+  <thead>
+  <tr>
+  <th><p>Serving Site</p></th>
+  <th><p>mx Value</p></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td><p>North America, Latin America and Asia Pacific</p></td>
+  <td><ul>
+  <li><p>*.in.tmes.trendmicro.com</p></li>
+  <li><p>*.tmes.trendmicro.com</p></li>
+  </ul></td>
+  </tr>
+  <tr>
+  <td><p>Europe and Africa</p></td>
+  <td><ul>
+  <li><p>*.in.tmes.trendmicro.eu</p></li>
+  <li><p>*.tmes.trendmicro.eu</p></li>
+  </ul></td>
+  </tr>
+  <tr>
+  <td><p>Australia and New Zealand</p></td>
+  <td><ul>
+  <li><p>*.in.tmes-anz.trendmicro.com</p></li>
+  <li><p>*.tmes-anz.trendmicro.com</p></li>
+  </ul></td>
+  </tr>
+  <tr>
+  <td><p>Japan</p></td>
+  <td><ul>
+  <li><p>*.in.tmems-jp.trendmicro.com</p></li>
+  <li><p>*.tmems-jp.trendmicro.com</p></li>
+  </ul></td>
+  </tr>
+  <tr>
+  <td><p>Singapore</p></td>
+  <td><ul>
+  <li><p>*.in.tmes-sg.trendmicro.com</p></li>
+  <li><p>*.tmes-sg.trendmicro.com</p></li>
+  </ul></td>
+  </tr>
+  <tr>
+  <td><p>India</p></td>
+  <td><ul>
+  <li><p>*.in.tmes-in.trendmicro.com</p></li>
+  <li><p>*.tmes-in.trendmicro.com</p></li>
+  </ul></td>
+  </tr>
+  <tr>
+  <td><p>Middle East (UAE)</p></td>
+  <td><ul>
+  <li><p>*.in.tmes-uae.trendmicro.com</p></li>
+  <li><p>*.tmes-uae.trendmicro.com</p></li>
+  </ul></td>
+  </tr>
+  </tbody>
+  </table>
+  :::
+
+- The following is an example of the DNS record for TLS reporting:
+
+  `_smtp._tls.example.com. 3600 IN TXT v=TLSRPTv1;rua=mailto:reports@example.com`
+:::

@@ -1,0 +1,259 @@
+---
+slug: trend-vision-one-process-information-linux
+title: Process information
+---
+# Process information
+
+Learn about the types of evidence in the process information category that Forensics might collect from Linux endpoints.
+
+### Primary evidence collected on running processes {#primary-evidence-collected-on-running-processes}
+
+Forensics displays primary process information a table after selecting **Running Processes** in the [evidence report](evidence-report.mdx).
+
+![](/images/forensics-running-process-primary-info=3b56a48e-1f59-49c9-b382-d994778ff5b1.webp)
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Evidence Data</p></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>User name</p></td>
+<td><p>The user names associated with the process</p></td>
+</tr>
+<tr>
+<td><p>PID</p></td>
+<td><p>The process ID</p></td>
+</tr>
+<tr>
+<td><p>Command line</p></td>
+<td><p>The command line used to execute the process</p></td>
+</tr>
+<tr>
+<td><p>Creation time</p></td>
+<td><p>The time the process was started</p></td>
+</tr>
+<tr>
+<td><p>Parent PID</p></td>
+<td><p>The process ID of the parent process</p></td>
+</tr>
+<tr>
+<td><p>SHA1</p></td>
+<td><p>The secure hash algorithm 1 (SHA-1) of the associated file</p></td>
+</tr>
+<tr>
+<td><p>Kernel time</p></td>
+<td><p>The amount of time spent in kernel mode in ticks</p></td>
+</tr>
+<tr>
+<td><p>User time</p></td>
+<td><p>The amount of time spent in user mode in ticks</p></td>
+</tr>
+</tbody>
+</table>
+
+## Detailed process information {#detailed-process-information}
+
+:::warning[Important]
+
+Your system might not collect and display all listed metadata.
+:::
+
+### Primary evidence collected on running processes {#primary-evidence-collected-on-running-processes-1}
+
+Forensics displays detailed process information in columns after selecting an evidence category when examining an [Evidence Report](evidence-report.mdx).
+
+![](/images/forensics-process-detailed-info=ef66095d-2dbe-4dc2-9263-c4735476f497.webp)
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Evidence Data</p></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>User name</p></td>
+<td><p>The user names associated with the process</p></td>
+</tr>
+<tr>
+<td><p>PID</p></td>
+<td><p>The process ID</p></td>
+</tr>
+<tr>
+<td><p>Command line</p></td>
+<td><p>The command line used to execute the process</p></td>
+</tr>
+<tr>
+<td><p>Creation time</p></td>
+<td><p>The time the process was started</p></td>
+</tr>
+<tr>
+<td><p>Parent PID</p></td>
+<td><p>The process ID of the parent process</p></td>
+</tr>
+<tr>
+<td><p>SHA1</p></td>
+<td><p>The secure hash algorithm 1 (SHA-1) of the associated file</p></td>
+</tr>
+<tr>
+<td><p>Kernel time</p></td>
+<td><p>The amount of time spent in kernel mode in ticks</p></td>
+</tr>
+<tr>
+<td><p>User time</p></td>
+<td><p>The amount of time spent in user mode in ticks</p></td>
+</tr>
+</tbody>
+</table>
+
+### File information {#file-information}
+
+See [Shared File Info Objects](shared-file-info-objects-linux.mdx)
+
+### Socket connections {#socket-connections}
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Evidence Data</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Local address</p></td>
+<td><p>The associated local internet protocol (IP) address</p></td>
+</tr>
+<tr>
+<td><p>Local port</p></td>
+<td><p>The associated local transmission control protocol / user datagram protocol (TCP)/(UDP) port number</p></td>
+</tr>
+<tr>
+<td><p>Protocol</p></td>
+<td><p>The associated transmission control protocol</p></td>
+</tr>
+<tr>
+<td><p>Remote address</p></td>
+<td><p>The associated remote IP address</p></td>
+</tr>
+<tr>
+<td><p>Remote port</p></td>
+<td><p>The associated remote TCP/UDP port number</p></td>
+</tr>
+<tr>
+<td><p>State</p></td>
+<td><p>The state of the connection</p></td>
+</tr>
+<tr>
+<td><p>Creator UID</p></td>
+<td><p>The user ID of the socket creator</p></td>
+</tr>
+</tbody>
+</table>
+
+### Associated threads {#associated-threads}
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Evidence Data</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Thread ID</p></td>
+<td><p>The process ID of the thread</p></td>
+</tr>
+<tr>
+<td><p>Command line</p></td>
+<td><p>The file name of the executable file or the command name associated with the thread</p></td>
+</tr>
+<tr>
+<td><p>Current state</p></td>
+<td><p>The current state of the process expressed as a representative character</p></td>
+</tr>
+<tr>
+<td><p>Parent PID</p></td>
+<td><p>The process ID of the parent process</p></td>
+</tr>
+<tr>
+<td><p>Process group ID</p></td>
+<td><p>The group ID associated with the process</p></td>
+</tr>
+<tr>
+<td><p>Session ID</p></td>
+<td><p>The session ID of the process</p></td>
+</tr>
+<tr>
+<td><p>Controlling terminal process group ID</p></td>
+<td><p>The ID of the foreground process group in the controlling terminal</p></td>
+</tr>
+<tr>
+<td><p>User time</p></td>
+<td><p>The amount of time spent in user mode in ticks</p></td>
+</tr>
+<tr>
+<td><p>Kernel time</p></td>
+<td><p>The amount of time spent in kernel mode in ticks</p></td>
+</tr>
+<tr>
+<td><p>Priority</p></td>
+<td><p>The priority value of the process</p></td>
+</tr>
+<tr>
+<td><p>Nice value</p></td>
+<td><p>The value used to set the true process priority</p></td>
+</tr>
+<tr>
+<td><p>Start time</p></td>
+<td><p>The running time of the process in ticks</p></td>
+</tr>
+<tr>
+<td><p>Virtual memory (bytes)</p></td>
+<td><p>The amount of virtual memory used in bytes</p></td>
+</tr>
+<tr>
+<td><p>Waiting channel</p></td>
+<td><p>The kernel address of the process when sleeping</p></td>
+</tr>
+<tr>
+<td><p>Real-time priority value</p></td>
+<td><p>The priority value used for real-time processes</p></td>
+</tr>
+<tr>
+<td><p>Exit code</p></td>
+<td><p>The value representing the exit status of the thread</p></td>
+</tr>
+</tbody>
+</table>
+
+### Accessible libraries {#accessible-libraries}
+
+See [Shared File Info Objects](shared-file-info-objects-linux.mdx)
+
+### Opened files {#opened-files}
+
+See [Shared File Info Objects](shared-file-info-objects-linux.mdx)
+::::

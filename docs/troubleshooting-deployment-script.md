@@ -1,0 +1,36 @@
+---
+slug: trend-vision-one-troubleshooting-deployment-script
+title: Troubleshooting common errors when using the Deployment Script
+---
+
+Review solutions to resolving typical issues that may arise when attempting to use the deployment script to deploy endpoint agents.
+
+The deployment script performs multiple checks to ensure complete and successful installation of the endpoint agent program. If you are experiencing installation errors, review the following tips to resolve most issues.
+
+- Make sure you are running the installer with Administration or root privileges. Not having sufficient access rights causes installation to fail.
+
+- Ensure your operating system has the required utilities to perform the installation.
+
+  - Windows requires the following PowerShell utilities:
+
+    - `Invoke-WebRequest`: required for downloading tools and agent components
+
+    - `Expand-Archive`: required for extracting files
+
+  - Linux rquires the following utilities:
+
+    - `curl`: required for downloading. Must have a version installed that supports TLS v1.2.
+
+    - `tar`: required for extracting files
+
+    - `base64`: required for processing the agent configuration
+
+- For Linux, the installation script automatically detects the OS version. Verify you are installing the agent on a supported Linux operating system.
+
+- If you are using a proxy for deployment, ensure the proxy is available and able to connect to the internet.
+
+- Verify the endpoint can connect to the internet and that the connection is stable.
+
+The agent installer performs each step of the deployment process one at a time, and waits until the current task is finished before proceeding to the next step. If the installer is unable to successfully complete a task, it might fail due to timeout or when the retry count is exceeded.
+
+The agent installer does not perform the registration step until all other installation tasks are successfully completed. If your agent is having trouble connecting and registering to Trend Vision One, check your internet connection and verify that your [firewall settings are properly configured](firewall-exception-requirements-for.md).

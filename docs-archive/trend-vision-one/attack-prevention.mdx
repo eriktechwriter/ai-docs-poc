@@ -1,0 +1,88 @@
+---
+slug: trend-vision-one-attack-prevention
+title: Attack prevention/detection rules
+---
+# Attack prevention/detection rules
+
+:Apply attack prevention/detection rules from Trend Micro products to vulnerable assets in Cyber Risk Exposure Management in order to mitigate specific vulnerabilities and reduce risk.
+
+When remediation options such as patches and updates are not available or otherwise possible to apply to assets containing known CVEs, you may apply attack prevention/detection rules from Trend Micro products and solutions to the vulnerable assets to mitigate the vulnerability. Applying endpoint-based attack prevention/detection rules also lowers the asset risk score. Asset risk score reduction due to application of endpoint-based attack prevention/detection rules is visible on the radar chart on the asset profile screen, with the hashed area of the vulnerabilities section representing the amount the risk score has been reduced.
+
+![Asset risk score reduction due to application of attack prevention/detection rules](/images/radarChartODmitigation=d9bcee5f-e2ac-491a-9ecc-b0d9f32fdc1d.webp)
+
+:::note
+
+Only endpoint-based attack prevention/detection rules currently affect the asset risk score.
+:::
+
+Specific attack prevention/detection rules are available based on your connected Trend Micro endpoint and network protection products or Trend Vision One solutions, including:
+
+- Trend Cloud One™ - Endpoint & Workload Security
+
+- Trend Micro Apex One™
+
+- Trend Micro™ Deep Security™
+
+- Trend Vision One™ - Standard Endpoint Protection
+
+- Trend Vision One ™- Server & Workload Protection
+
+- Trend Micro™ TippingPoint™ Security Management System (SMS)
+
+- Trend Micro™ Worry-Free Services™
+
+When viewing detected vulnerabilities in the **Risk Assessment** tab on an asset profile screen, the indicator next to the detection data source informs you of the CVE mitigation status based on available and applied attack prevention/detection rules:
+
+- No indicator: No attack prevention/detection rules are currently available for this CVE
+
+- Not mitigated (![](/images/notMitigated=00037f3b-c546-453f-b1de-c3856d71520b.webp)): Attack prevention/detection rules are available for this CVE, but the rules have not been applied to the asset
+
+- Partially mitigated (![](/images/partiallyMitigated=045bed5b-ff38-4bdd-9ba4-39907249ea33.webp)): Only some available attack prevention/detection rules have been applied to the asset, or only network-based attack prevention/detection rules have been applied
+
+- Mitigated (![](/images/fullyMitigated=d2d2c6a4-1262-4eef-a752-e9e18aaa8cfb.webp)): All available attack prevention/detection rules have been applied to the asset
+
+:::warning[Important]
+
+Network-based attack prevention-detection rules can only protect assets when they are connected to the protected network segment. If an asset disconnects from or otherwise leaves the network segment, network-based solutions can no longer protect the asset. If you cannot patch the asset, Trend Micro recommends applying endpoint-based attack prevention/detection rules in addition to network-based rules in order to ensure the asset is protected at all times. Assets with only network-based rules applied cannot be considered fully mitigated and will not experience a risk score reduction.
+:::
+
+To see whether attack prevention/detection rules are available for a vulnerable asset, go to the asset profile screen and filter the displayed risk events by new vulnerabilities. CVEs with available attack prevention/detection rules display a mitigation status indicator. Expand the risk event details to view available mitigation options, and click **View vulnerability mitigation details** or click the mitigation status indicator to view a list of available attack prevention/detection rules by product or solution.
+
+The following table details the information available in the **Vulnerability mitigation details** drawer for an asset.
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Information</p></th>
+<th><p>Details</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Overall protection status</p></td>
+<td><p>Whether the asset is protected by available attack prevention/detection rules and when the rules were applied</p></td>
+</tr>
+<tr>
+<td><p>Available protection solutions</p></td>
+<td><p>Available Trend Micro products and solutions with applicable attack prevention/detection rules, divided into endpoint and network-based solutions</p>
+<ul>
+<li><p>If not all available rules have been applied to the asset, follow the on-screen instructions to access the product or solution and apply the available rules. Attack prevention/detection rules currently must be applied from within the relevant product or solution.</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Available attack prevention/detection rules</p></td>
+<td><p>Available rules from each product or solution, listed by filter rule ID</p>
+<ul>
+<li><p>A check icon (<img src="./images/case_Closed=ba556e15-9f9e-4e7a-9007-12f89a447dd4.webp" />) indicates the rule has been applied</p></li>
+<li><p>A pending icon (<img src="./images/pending_approval=6fd5282c-abf5-4f88-92f4-24d42491ffa4.webp" />) indicates the rule has not been applied</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+Once attack prevention/detection rules are applied to the asset, the status of associated vulnerability risk events will automatically change to mitigated (![](/images/mitigatedStatus=206fd404-1005-4c3e-9ae9-c604ff307d1a.webp)).
+:::::

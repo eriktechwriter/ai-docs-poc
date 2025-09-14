@@ -1,0 +1,35 @@
+---
+slug: trend-vision-one-enable-windows-amsi-protection
+title: Enable Windows AMSI protection (real-time scans only)
+---
+# Enable Windows AMSI protection (real-time scans only)
+
+The [Windows Antimalware Scan Interface](https://docs.microsoft.com/en-us/windows/win32/amsi/antimalware-scan-interface-portal) (AMSI) is an interface provided by Microsoft in Windows 10 and later. Server & Workload Protection leverages AMSI to help detect malicious scripts. By default, this option is enabled in Server & Workload Protection malware scan configurations.
+
+### Procedure {#procedure}
+
+1.  Open the properties of the malware scan configuration.
+
+2.  On the **General** tab, select **Enable AMSI protection**.
+
+3.  Configure the settings for **Detection level** and **Prevention level**.
+
+    :::warning[Important]
+
+    - Adjusting Detection and Prevention levels only supports agent version version 20.0.1.25770 and later. Unsupported versions use the default level of **2 - Moderate** and cannot be changed.
+
+    - Higher levels provide greater sensitivity but might generate a large number of nonessential logs and impact endpoint performance. Trend Micro recommends selecting **2 - Moderate** for more relevant data with minimal impact on your endpoints.
+
+    - The **Prevention level** must be the same or lower than **Detection level**.
+
+    - The **Action to take** selection might affect the prevention actions taken for the selected prevention level.
+    :::
+
+4.  For **Action to take**, choose the remediation action that you want Server & Workload Protection to take when it detects malware:
+
+    - **Terminate (recommended)**: Stops execution or running of the detected process.
+
+    - **Pass**: Server & Workload Protection records an Anti-Malware Event without taking action on the process.
+
+5.  Click **OK**.
+:::

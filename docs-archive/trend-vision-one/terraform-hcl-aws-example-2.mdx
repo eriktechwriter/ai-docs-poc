@@ -1,0 +1,293 @@
+---
+slug: trend-vision-one-terraform-hcl-aws-example-2
+title: Terraform HCL (AWS) Example
+---
+- Example template
+- Example ZIP contents
+- Example scan command
+- Example Template Scanner API Output
+
+## Example template {#example-template}
+
+``` h
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.27"
+    }
+  }
+  required_version = ">= 0.14.9"
+}
+provider "aws" {
+  region = "us-east-2"
+}
+resource "aws_dynamodb_table" "dynamodb003S1" {
+  name             = "mydynamodbtable"
+  hash_key         = "TestTableHashKey"
+  billing_mode     = "PAY_PER_REQUEST"
+  stream_enabled   = true
+  stream_view_type = "NEW_AND_OLD_IMAGES"
+  attribute {
+    name = "TestTableHashKey"
+    type = "S"
+  }
+  server_side_encryption {
+    enabled     = true
+    kms_key_arn = "arn:aws:kms:us-east-1:123456789012:key/abcd1234-abcd-1234-abcd-1234abcd1234"
+  }
+  point_in_time_recovery {
+    enabled = true
+  }
+  tags = {
+    Owner       = "Sample Team"
+    Environment = "Test"
+  }
+}
+```
+
+## Example ZIP contents {#example-zip-contents}
+
+```bash
+# terraform-archive.zip
+
+- main.tf
+  -- subfolder1
+     -- s3.tf
+     -- sns.tf
+  -- subfolder2
+    -- lambda.tf
+    -- ec2.tf
+```
+
+## Example scan command {#example-scan-command}
+
+Scan a ZIP file containing Terraform .tf templates using Bash:
+
+``` bash
+#!/usr/bin/env bash
+# Scans an archive
+
+api_key="Your Cloud One API Key"
+
+# Cloud One account region
+region="us-1"
+
+echo Response:
+curl --location "https://conformity.${region}.cloudone.trendmicro.com/api/template-scanner/archive-scan" \
+--header "Authorization: ApiKey ${api_key}" \
+--form 'type="terraform-archive"' \
+--form 'archive=@"/Users/admin/Documents/terraform-archive.zip"'
+```
+
+## Example Template Scanner API Output {#example-template-scanner-api-output}
+
+``` json
+{
+  "data": [
+    {
+      "type": "checks",
+      "id": "ccc:OrganisationId:RG-001:ResourceGroup:us-east-1:aws_dynamodb_table.dynamodb003S1",
+      "attributes": {
+        "region": "us-east-1",
+        "status": "FAILURE",
+        "risk-level": "LOW",
+        "pretty-risk-level": "Low",
+        "message": "dynamodb-table aws_dynamodb_table.dynamodb003S1 has [Role, Name] tags missing",
+        "resource": "aws_dynamodb_table.dynamodb003S1",
+        "descriptorType": "dynamodb-table",
+        "categories": [
+          "security",
+          "reliability",
+          "performance-efficiency",
+          "cost-optimisation",
+          "operational-excellence",
+          "sustainability"
+        ],
+        "compliances": [
+          "AWAF-2025",
+          "CIS-V8",
+          "NIST4",
+          "NIST5",
+          "SOC2",
+          "NIST-CSF",
+          "ISO27001",
+          "ISO27001-2022",
+          "AGISM",
+          "HITRUST",
+          "ASAE-3150",
+          "PCI-V4",
+          "FEDRAMP",
+          "MAS",
+          "CSA"
+        ],
+        "extradata": [
+          {
+            "name": "DETAILED_STATUS",
+            "label": "Resource tags status for dynamodb-table aws_dynamodb_table.dynamodb003S1",
+            "value": "{\"service\":\"DynamoDB\",\"descriptorType\":\"dynamodb-table\",\"resourceName\":\"aws_dynamodb_table.dynamodb003S1\",\"tags\":[{\"key\":\"Environment\",\"hasValue\":true},{\"key\":\"Role\",\"hasValue\":false},{\"key\":\"Owner\",\"hasValue\":true},{\"key\":\"Name\",\"hasValue\":false}]}",
+            "type": "META",
+            "internal": true
+          }
+        ],
+        "cost": 0,
+        "waste": 0,
+        "not-scored": false,
+        "ignored": false,
+        "rule-title": "Tags",
+        "provider": "aws",
+        "resolution-page-url": "https://wSample Team.cloudconformity.com/knowledge-base/aws/ResourceGroup/tags.html",
+        "service": "ResourceGroup"
+      },
+      "relationships": {
+        "rule": {
+          "data": {
+            "type": "rules",
+            "id": "RG-001"
+          }
+        },
+        "account": {
+          "data": null
+        }
+      }
+    },
+    {
+      "type": "checks",
+      "id": "ccc:OrganisationId:DynamoDB-003:DynamoDB:us-east-1:aws_dynamodb_table.dynamodb003S1",
+      "attributes": {
+        "region": "us-east-1",
+        "status": "SUCCESS",
+        "risk-level": "HIGH",
+        "pretty-risk-level": "High",
+        "message": "Continuous Backups are enabled for [aws_dynamodb_table.dynamodb003S1]",
+        "resource": "aws_dynamodb_table.dynamodb003S1",
+        "descriptorType": "dynamodb-table",
+        "categories": ["reliability"],
+        "compliances": [
+          "AWAF-2025",
+          "CIS-V8",
+          "NIST4",
+          "NIST5",
+          "SOC2",
+          "NIST-CSF",
+          "ISO27001",
+          "ISO27001-2022",
+          "AGISM",
+          "HIPAA",
+          "HITRUST",
+          "ASAE-3150",
+          "PCI",
+          "PCI-V4",
+          "APRA",
+          "FEDRAMP",
+          "MAS",
+          "CSA",
+          "ENISA",
+          "FISC-V9"
+        ],
+        "last-updated-date": null,
+        "extradata": [
+          {
+            "name": "EarliestRestorableDateTime",
+            "label": "Earliest Restorable DateTime",
+            "value": 1707793280148,
+            "type": "META"
+          },
+          {
+            "name": "LatestRestorableDateTime",
+            "label": "Latest Restorable DateTime",
+            "value": 1707793280148,
+            "type": "META"
+          }
+        ],
+        "tags": ["Environment::test", "Owner::Sample Team"],
+        "cost": 0,
+        "waste": 0,
+        "not-scored": false,
+        "ignored": false,
+        "rule-title": "DynamoDB Continuous Backups",
+        "provider": "aws",
+        "resolution-page-url": "https://wSample Team.cloudconformity.com/knowledge-base/aws/DynamoDB/continuous-backups.html",
+        "service": "DynamoDB",
+        "logicalResourceId": "aws_dynamodb_table.dynamodb003S1"
+      },
+      "relationships": {
+        "rule": {
+          "data": {
+            "type": "rules",
+            "id": "DynamoDB-003"
+          }
+        },
+        "account": {
+          "data": null
+        }
+      }
+    },
+    {
+      "type": "checks",
+      "id": "ccc:OrganisationId:DynamoDB-004:DynamoDB:us-east-1:dynamodb003S1",
+      "attributes": {
+        "region": "us-east-1",
+        "status": "SUCCESS",
+        "risk-level": "HIGH",
+        "pretty-risk-level": "High",
+        "message": "Table [dynamodb003S1] is encrypted at rest using the AWS managed key or Customer managed key",
+        "resource": "dynamodb003S1",
+        "descriptorType": "dynamodb-table",
+        "categories": ["security"],
+        "compliances": [
+          "GDPR",
+          "AWAF-2025",
+          "CIS-V8",
+          "NIST4",
+          "NIST5",
+          "SOC2",
+          "NIST-CSF",
+          "ISO27001",
+          "ISO27001-2022",
+          "AGISM",
+          "HIPAA",
+          "HITRUST",
+          "ASAE-3150",
+          "PCI",
+          "PCI-V4",
+          "APRA",
+          "FEDRAMP",
+          "MAS",
+          "CSA",
+          "ENISA",
+          "FISC-V9",
+          "LGPD"
+        ],
+        "last-updated-date": null,
+        "tags": ["Environment::test", "Owner::Sample Team"],
+        "cost": 0,
+        "waste": 0,
+        "not-scored": false,
+        "ignored": false,
+        "rule-title": "Enable Encryption at Rest with Amazon KMS Keys",
+        "provider": "aws",
+        "resolution-page-url": "https://wSample Team.cloudconformity.com/knowledge-base/aws/DynamoDB/encrypted-with-cmk.html",
+        "service": "DynamoDB",
+        "logicalResourceId": "aws_dynamodb_table.dynamodb003S1"
+      },
+      "relationships": {
+        "rule": {
+          "data": {
+            "type": "rules",
+            "id": "DynamoDB-004"
+          }
+        },
+        "account": {
+          "data": null
+        }
+      }
+    }
+  ],
+  "meta": {
+    "missingParameters": [],
+    "errors": []
+  }
+}
+```
+:::

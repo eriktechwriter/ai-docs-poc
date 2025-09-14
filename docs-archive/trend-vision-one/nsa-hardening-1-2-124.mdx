@@ -1,0 +1,61 @@
+---
+slug: trend-vision-one-nsa-hardening-1-2-124
+title: 1.2.4 - Ensure that the –kubelet-https argument is set to true (Automated)
+---
+Profile applicability: Level 1
+
+Use https for kubelet connections.
+
+Connections from `apiserver` to `kubelets` could potentially carry sensitive data such as secrets and keys. It is thus important to use in-transit encryption for any communication between the `apiserver` and `kubelets`.
+
+:::note
+
+By default, kubelet connections are encrypted.
+:::
+
+### Impact {#impact}
+
+You require TLS to be configured on `apiserver` as well as `kubelets`.
+
+### Audit {#audit}
+
+OpenShift does not use the --kubelet-https argument. OpenShift utilizes X.509 certificates for authentication of the control-plane components. OpenShift configures the API server to use an internal certificate authority (CA) to validate the user certificate sent during TLS negotiation. If the validation of the certificate is successful, the request is authenticated and user information is derived from the certificate subject fields.
+
+To verify the kubelet client certificates are present, run the following command:
+
+```bash
+oc get configmap config -n openshift-kube-apiserver -ojson | jq -r
+'.data["config.yaml"]' | jq '.apiServerArguments["kubelet-client-
+certificate"]'
+
+oc get configmap config -n openshift-kube-apiserver -ojson | jq -r
+'.data["config.yaml"]' | jq '.apiServerArguments["kubelet-client-key"]'
+
+oc -n openshift-apiserver describe secret serving-cert
+
+# Run the following command and the output should return true or no output at all
+
+oc get configmap config -n openshift-kube-apiserver -ojson | jq -r
+'.data["config.yaml"]' | jq '.apiServerArguments["kubelet-https"]'
+```
+
+Verify that the kubelet client-certificate and kubelet client-key files are present.
+
+Client-certificate:
+
+```bash
+/etc/kubernetes/static-pod-resources/kube-apiserver-certs/secrets/kubelet-client/tls.crt
+```
+
+Client-key:
+
+```bash
+/etc/kubernetes/static-pod-resources/kube-apiserver-certs/secrets/kubelet-client/tls.key
+```
+
+Verify that the serving-cert for the `openshift-apiserver` is type kubernetes.io/tls and that returned Data includes `tls.crt` and `tls.key`.
+
+### Remediation {#remediation}
+
+No remediation is required. OpenShift platform components use X.509 certificates for authentication. OpenShift manages the CAs and certificates for platform components. This is not configurable.
+::::

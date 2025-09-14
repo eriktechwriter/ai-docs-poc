@@ -1,0 +1,151 @@
+---
+slug: trend-vision-one-companion
+title: Trend Companion
+---
+# Trend Companion
+
+Analyze, investigate, and respond to incidents and alerts using the power of AI.
+
+Trend Companion is an AI-powered cybersecurity chatbot that helps you to investigate, analyze, and respond to Workbench alerts, generate **XDR Data Explorer** queries, and answer any cybersecurity questions.
+
+To use Trend Companion, your system administrator must [opt in to all pre-release apps/services](platform-directory.mdx).
+
+:::warning[Important]
+
+- Each user can send up to 100 messages per day and 10 messages per minute. The message limit resets every day at 00:00 UTC.
+
+- Prompts have a 500-character limit.
+
+- Trend Companion has [filters to remove personal information](frequently-asked-questions.mdx) from prompts.
+:::
+
+The following table outlines the available functions in **Trend Companion**.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 50%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+<th><p>Supported Apps</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Open Trend Companion</p></td>
+<td><p>Click the Trend Companion icon (<img src="./images/newCompanionIcon=GUID-20240819112525.webp" />) to start a conversation.</p></td>
+<td><p>All apps and screens in Trend Vision One™</p></td>
+</tr>
+<tr>
+<td><p>Enable generative AI capabilities</p></td>
+<td><p>Some features require generative AI capabilities.</p>
+<p>To enable generative AI capabilities, open Trend Companion and go to <strong>Settings () → Turn On Generative AI</strong>.</p></td>
+<td>-</td>
+</tr>
+<tr>
+<td><p>Explain a Workbench alert</p></td>
+<td><p>During alert investigations, Trend Companion can explain the alert displayed on your screen.</p>
+<p>You can use prompts such as "Provide an explanation of this Workbench alert".</p></td>
+<td><ul>
+<li><p><strong>Workbench</strong> (Only during <a href="trend-vision-one-investigating-alert">alert investigations</a>)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Add response to case</p></td>
+<td><p>Click <strong>Add to Case</strong> to add a response as a case note.</p></td>
+<td><ul>
+<li><p><strong>Workbench</strong> (Only during <a href="trend-vision-one-investigating-alert">alert investigations</a>)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Add response to a Workbench alert note</p></td>
+<td><p>Click <strong>Add to Note</strong> to add a response to the alert notes.</p></td>
+<td><ul>
+<li><p><strong>Workbench</strong> (Only during <a href="trend-vision-one-investigating-alert">alert investigations</a>)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Generate search queries</p></td>
+<td><p>When using the <strong>XDR Data Explorer</strong> app, Trend Companion can help you write search queries and decide what is the appropriate search method for your query.</p>
+
+
+:::tip
+
+<p>Begin your prompts with "Query" to have Trend Companion create queries.</p>
+<p>Example: "Query all elements where the destination port is 80"</p>
+
+
+:::
+
+</td>
+<td><ul>
+<li><p><strong>XDR Data Explorer</strong></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Add generated search query to search box</p></td>
+<td><p>Click <strong>Add to Query</strong> to add the generated query to the search box.</p>
+<p>Trend Companion automatically selects the suggested search method when adding queries to the search box.</p></td>
+<td><ul>
+<li><p><strong>XDR Data Explorer</strong></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Explain CLI commands in Workbench alerts, Search results, and Observed Attack Techniques events</p></td>
+<td><p>Right-click a CLI command element (<img src="./images/cmd_icon=a5184412-0713-41ea-868c-b948a93e9fea.webp" />) and choose <strong>Explain Command</strong>.</p>
+<p>Trend Companion can also provide explanations for CLI commands that include base64-encoded elements.</p></td>
+<td><ul>
+<li><p><strong>Workbench</strong> (Only during <a href="trend-vision-one-investigating-alert">alert investigations</a>)</p></li>
+<li><p><strong>XDR Data Explorer</strong></p></li>
+<li><p><strong>Observed Attack Techniques</strong></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Explain Observed Attack Techniques events</p></td>
+<td><p>To learn about an event, right-click an event or click <img src="./images/options=ddb0b67f-0654-4aa5-8bc7-48ec554c5448.webp" /> and choose <strong>Explain Event</strong>.</p>
+
+
+:::warning[Important]
+
+<p>Trend Companion cannot explain events that contain only custom filters.</p>
+
+
+:::
+
+</td>
+<td><ul>
+<li><p><strong>Observed Attack Techniques</strong></p></li>
+<li><p><strong>XDR Data Explorer</strong></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Create an investigation summary report for a case in Case Management</p></td>
+<td><p>Do one of the following:</p>
+<ul>
+<li><p>Click a case name to open the case details. From the <strong>Trend Companion</strong> list, select <strong>Summarize investigation report</strong>.</p></li>
+<li><p>In Case Viewer, click a case. Click the three dots, and then click <strong>Summarize investigation report</strong>.</p></li>
+</ul>
+<p>Trend Companion generates a threat investigation and remediation report for the case, which you can preview, edit, and download by going to <strong>Dashboards and Reports → Reports</strong>. This action is only available for Workbench cases with a “True positive” finding.</p></td>
+<td> </td>
+</tr>
+<tr>
+<td><p>Summarize progress notes for a case in Case Management</p></td>
+<td><p>Do one of the following:</p>
+<ul>
+<li><p>Click a case name to open the case details. From the Trend Companion list, select Summarize progress notes.</p></li>
+<li><p>In Case Viewer, click a case. Click the three dots, and then click <strong>Summarize progress notes</strong>.</p></li>
+</ul>
+<p>Trend Companion summarizes all the notes created in the case since last time a summarized progress note was created. Summarized progress notes are helpful when transferring a case to a new owner.</p></td>
+<td> </td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Troubleshooting and FAQ](troubleshoot-companion-faq.mdx)
+::::

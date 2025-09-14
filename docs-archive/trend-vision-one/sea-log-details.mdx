@@ -1,0 +1,183 @@
+---
+slug: trend-vision-one-sea-log-details
+title: Social engineering attack log details
+---
+# Social engineering attack log details
+
+Cloud Email Gateway Protection provides detailed information for email messages detected as possible social engineering attacks. To view social engineering attack details, click the **Details** link beside **Social engineering attack** on the **Mail Tracking Details** screen.
+
+The following table lists the possible reasons for social engineering attack detections.
+
+**Possible reasons for social engineering attack detections**
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Email Characteristics</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Inconsistent sender host names</p></td>
+<td><p>The Message-ID host name (&lt;host_name&gt;) does not match the From host name (&lt;host_name&gt;).</p></td>
+</tr>
+<tr>
+<td><p>Broken mail routing path</p></td>
+<td><p>Broken mail routing path from hop (&lt;IP_address&gt;) to hop (&lt;IP_address&gt;).</p></td>
+</tr>
+<tr>
+<td><p>Mail routing path contains mail server with bad reputation</p></td>
+<td><p>The mail routing path contains mail server with bad reputation (&lt;IP_address&gt;).</p></td>
+</tr>
+<tr>
+<td><p>Significant time gap during email message transit</p></td>
+<td><p>Significant time gap (&lt;duration&gt;) detected during email message transit between hops (&lt;source&gt; &amp; &lt;destination&gt;) from time (&lt;date_time&gt;) to time (&lt;date_time&gt;).</p></td>
+</tr>
+<tr>
+<td><p>Inconsistent recipient ​accounts</p></td>
+<td><p>Envelope recipient (&lt;email_address&gt;) is inconsistent with header recipient (&lt;email_address&gt;).</p></td>
+</tr>
+<tr>
+<td><p>Inconsistent sender ASNs or unexpected relay or forward</p></td>
+<td><p>The sender host (&lt;host_address&gt;) belongs to an ASN (&lt;ASN&gt;) that does not match the ASN (&lt;ASN&gt;) of the sender account (&lt;email_address&gt;). This message may occur from an unexpected server-side relay or forward.</p></td>
+</tr>
+<tr>
+<td><p>Email message travels across multiple time zones</p></td>
+<td><p>The email message travels across time zones (&lt;time_zone_list&gt;).</p></td>
+</tr>
+<tr>
+<td><p>Possible social engineering attack characterized by suspicious charsets in email entities</p></td>
+<td><p>Suspicious charsets (&lt;character_set_list&gt;) are identified in a single email message, implying the email message originated from a foreign region. This behavior is an indicator of a social engineering attack.</p></td>
+</tr>
+<tr>
+<td><p>Violation of time headers</p></td>
+<td><p>Multiple time headers (&lt;date_time&gt;, &lt;date_time&gt;) exist in one message, which violates RFC5322 section 3.6.</p></td>
+</tr>
+<tr>
+<td><p>Malicious client IP address</p></td>
+<td><p>The client IP address (&lt;IP_address&gt;) has been associated with known malicious activity</p></td>
+</tr>
+<tr>
+<td><p>Possibly forged sender (Yahoo)</p></td>
+<td><p>The email message claimed from Yahoo (&lt;email_address&gt;) lost required headers.</p></td>
+</tr>
+<tr>
+<td><p>Executable files with tampered extension names in the attachment</p></td>
+<td><p>Files in compressed attachment (&lt;file_name&gt;) may be executable files with modified extension names.</p></td>
+</tr>
+<tr>
+<td><p>Anomalous relationship between sender/recipient(s) related email headers</p></td>
+<td><p>Anomalous relationship between sender/recipient(s) related email headers (&lt;email_address&gt;).</p></td>
+</tr>
+<tr>
+<td><p>Encrypted attachment intends to bypass antivirus scan engines</p></td>
+<td><p>Encrypted attachment (&lt;file_name&gt;) with password (&lt;password&gt;) provided in email content possibly intends to bypass antivirus scan engines.</p></td>
+</tr>
+<tr>
+<td><p>Exploitable attachment</p></td>
+<td><p>The attached file (&lt;file_name&gt;) may contain exploits.</p></td>
+</tr>
+<tr>
+<td><p>Email message might be sent from a self-written mail agent due to abnormal transfer encoding in email entities</p></td>
+<td><p>Content-Transfer-Encoding (&lt;encoding_type&gt;) is abnormal in the email message. The email message might be sent from a self-written mail agent.</p></td>
+</tr>
+<tr>
+<td><p>Short message body</p></td>
+<td><p>The body text or the HTML text of the email is short. The text length (&lt;character_count&gt; characters, for body text/HTML text respectively) may suggest that the email content has little meaning.</p></td>
+</tr>
+<tr>
+<td><p>Replied or forwarded email contains no corresponding headers</p></td>
+<td><p>The email message was claimed as a forwarded or replied message with subject-tagging (&lt;email_subject&gt;), but the email message does not contain corresponding email headers (RFC 5322).</p></td>
+</tr>
+<tr>
+<td><p>Email message travels across multiple ASNs</p></td>
+<td><p>The email message travels across multiple ASNs (&lt;ASN_list&gt;).</p></td>
+</tr>
+<tr>
+<td><p>Email message travels across multiple countries</p></td>
+<td><p>The email message travels across multiple countries (&lt;country_code_list&gt;).</p></td>
+</tr>
+<tr>
+<td><p>​Abnormal Content-type behavior in email message</p></td>
+<td><p>Content-type in email content should not have attributes (&lt;attribute_list&gt;).</p></td>
+</tr>
+<tr>
+<td><p>Executable files archived in the compressed attachment</p></td>
+<td><p>The compressed attachment (&lt;file_name&gt;) contains executable files.</p></td>
+</tr>
+<tr>
+<td><p>Exploitable file types detected in the compressed attachment</p></td>
+<td><p>The compressed attachment (&lt;file_name&gt;) contains exploitable file types.</p></td>
+</tr>
+<tr>
+<td><p>Inconsistent host domains or unexpected relay or forward</p></td>
+<td><p>The sender host (&lt;host_address&gt;) belongs to a different domain from the sender account (&lt;email_address&gt;). This message may occur from an unexpected server-side relay or forward.</p></td>
+</tr>
+<tr>
+<td><p>Email nickname is inconsistent with email address</p></td>
+<td><p>The recipient account uses an email nickname (&lt;nickname&gt;) that is inconsistent with its email address (&lt;email_address&gt;).</p></td>
+</tr>
+<tr>
+<td><p>Sender account is inconsistent with reply-to account</p></td>
+<td><p>The sender account (&lt;email_account&gt;) is inconsistent with the reply-to account (&lt;email_account&gt;).</p></td>
+</tr>
+<tr>
+<td><p>Sender host name possibly associated with targeted attacks</p></td>
+<td><p>The sender host name (&lt;host_name&gt;) has been associated with one or more targeted attacks or performed behavior consistent with targeted attacks.</p></td>
+</tr>
+<tr>
+<td><p>Sender IP address possibly associated with targeted attacks</p></td>
+<td><p>The sender IP address (&lt;ip_address&gt;) has been associated with one or more targeted attacks or performed behavior consistent with targeted attacks.</p></td>
+</tr>
+<tr>
+<td><p>Sender account possibly associated with targeted attacks</p></td>
+<td><p>The sender account (&lt;email_account&gt;) has been associated with one or more targeted attacks or performed behavior consistent with targeted attacks.</p></td>
+</tr>
+<tr>
+<td><p>Sender account header potentially modified</p></td>
+<td><p>The email message was sent from an email client or service provider (&lt;user_agent&gt;) that allows modification of the sender address or nickname.</p></td>
+</tr>
+<tr>
+<td><p>Internal email with a public reply-to domain</p></td>
+<td><p>The reply-to domain (&lt;domain_name&gt;) belongs to a public messaging service but the sender and recipient domains are the same (&lt;domain_name&gt;). The email message may be disguised to appear internal.</p></td>
+</tr>
+<tr>
+<td><p>Internal email with a disguised reply-to domain</p></td>
+<td><p>The reply-to domain (&lt;domain_name&gt;) has been disguised to be similar to the sender and recipient domains (domain_name). The email message may be disguised to appear internal.</p></td>
+</tr>
+<tr>
+<td><p>Reply-to account disguised to be similar to sender account</p></td>
+<td><p>The reply-to account (&lt;email_account&gt;) uses a different domain but similar information to the sender account (&lt;email_account&gt;) to disguise the two accounts to be from the same individual.</p></td>
+</tr>
+<tr>
+<td><p>Conversation history in email body</p></td>
+<td><p>The email message includes a conversation history between (&lt;email_account&gt;) and (&lt;email_account&gt;). This email message may be part of a man-in-the-middle attack.</p></td>
+</tr>
+<tr>
+<td><p>Nickname of company executive with public domain address</p></td>
+<td><p>The sender header (&lt;sender_header&gt;) contains a nickname that appears to be a company executive and an email address from a public messaging service.</p></td>
+</tr>
+<tr>
+<td><p>Sender domain disguised to be similar to recipient domain</p></td>
+<td><p>The sender domain (&lt;domain_name&gt;) is different but similar to the recipient domain (&lt;domain_name&gt;). The email message may be disguised to appear internal.</p></td>
+</tr>
+<tr>
+<td><p>Potentially deceptive message header text</p></td>
+<td><p>Because (&lt;header_text&gt;) closely resembles (&lt;header_text&gt;), this message seems intended to deceive the recipient.</p></td>
+</tr>
+<tr>
+<td><p>Message contains suspicious content</p></td>
+<td><p>Some text in the message meets the criteria for the (&lt;category_name&gt;) category, indicating a possible intent to deceive the recipient.</p></td>
+</tr>
+<tr>
+<td><p>Name of a protected sender used with a suspicious domain</p></td>
+<td><p>The message uses the name (&lt;sender_name&gt;) in combination with an unfamiliar domain in an apparent attempt to deceive the recipient.</p></td>
+</tr>
+</tbody>
+</table>
+:::

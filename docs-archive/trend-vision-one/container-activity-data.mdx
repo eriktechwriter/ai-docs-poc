@@ -1,0 +1,568 @@
+---
+slug: trend-vision-one-container-activity-data
+title: Container activity data sources
+---
+# Container activity data sources
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Field Name</p></th>
+<th><p>Type</p></th>
+<th><p>General Field</p></th>
+<th><p>Description</p></th>
+<th><p>Example</p></th>
+<th><p>Products</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>clusterId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The cluster ID of the container</p></td>
+<td><ul>
+<li><p><code>TestCluster-2HJdImvH6eO1fgTnCBK3xYA7Sph</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>clusterName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The cluster name of the container</p></td>
+<td><ul>
+<li><p><code>TestCluster</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>containerId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The Kubernetes container ID</p></td>
+<td><ul>
+<li><p><code>7d1e00176d78</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>containerImage</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The Kubernetes container image</p></td>
+<td><ul>
+<li><p><code>debian:latest</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>containerName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The Kubernetes container name</p></td>
+<td><ul>
+<li><p><code>k8s_democon_longrunl_default_11111111-1111-1111-1111-111111111111_0</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>customAssetTags</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The list of custom asset tags</p></td>
+<td><ul>
+<li><p><code>{"os":["linux", "windows"], "org":["bu1"]}</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>dpt</p></td>
+<td><ul>
+<li><p><code>int</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Port</p></li>
+</ul></td>
+<td><p>The destination port</p></td>
+<td><p>-</p></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>dst</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>IPv4</p></li>
+<li><p>IPv6</p></li>
+</ul></td>
+<td><p>The destination IP</p></td>
+<td><ul>
+<li><p><code>::</code></p></li>
+<li><p><code>10.10.10.10</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>eventId</p></td>
+<td><ul>
+<li><p><code>int</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The event type</p></td>
+<td><p>-</p></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>eventSubId</p></td>
+<td><ul>
+<li><p><code>int</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The access type</p></td>
+<td><ul>
+<li><p><code>2 - TELEMETRY_PROCESS_CREATE</code></p></li>
+<li><p><code>101 - TELEMETRY_FILE_CREATE</code></p></li>
+<li><p><code>204 - TELEMETRY_CONNECTION_CONNECT_OUTBOUND</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>eventTime</p></td>
+<td><ul>
+<li><p><code>real</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The time the agent detected the event</p></td>
+<td><ul>
+<li><p><code>1657781088000</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>filterRiskLevel</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The top-level risk level of the event</p></td>
+<td><ul>
+<li><p><code>info</code></p></li>
+<li><p><code>low</code></p></li>
+<li><p><code>medium</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>groupId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The group ID for the management scope filter</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>k8sNamespace</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The Kubernetes namespace of the container</p></td>
+<td><ul>
+<li><p><code>default</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>k8sPodId</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The Kubernetes pod ID of the container</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>k8sPodName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The Kubernetes pod name of the container</p></td>
+<td><ul>
+<li><p><code>longrunl</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>logReceivedTime</p></td>
+<td><ul>
+<li><p><code>long</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The time when the XDR log was received</p></td>
+<td><ul>
+<li><p><code>1656324260000</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectFilePath</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileFullPath</p></li>
+<li><p>FileName</p></li>
+</ul></td>
+<td><p>The file path of the target process image or target file</p></td>
+<td><ul>
+<li><p><code>/usr/bin/bash</code></p></li>
+<li><p><code>/bin/bash</code></p></li>
+<li><p><code>/opt/folder1/probes/system/processes/processes</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>objectUser</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>UserAccount</p></li>
+</ul></td>
+<td><p>The owner name of the target process or the sign-in user name</p></td>
+<td><ul>
+<li><p><code>root</code></p></li>
+<li><p><code>SYSTEM</code></p></li>
+<li><p><code>oracle</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>parentCmd</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>CLICommand</p></li>
+</ul></td>
+<td><p>The command line entry of the parent process</p></td>
+<td><ul>
+<li><p><code>C:\WINDOWS\system32\services.exe</code></p></li>
+<li><p><code>C:\Windows\system32\services.exe</code></p></li>
+<li><p><code>/sbin/launchd</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>parentFilePath</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileFullPath</p></li>
+<li><p>FileName</p></li>
+</ul></td>
+<td><p>The file path of the parent process</p></td>
+<td><ul>
+<li><p><code>c:\windows\system32\services.exe</code></p></li>
+<li><p><code>/usr/bin/bash</code></p></li>
+<li><p><code>c:\windows\system32\svchost.exe</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>parentPid</p></td>
+<td><ul>
+<li><p><code>int</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The PID of the parent process</p></td>
+<td><ul>
+<li><p><code>4</code></p></li>
+<li><p><code>1</code></p></li>
+<li><p><code>784</code></p></li>
+<li><p><code>792</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>platformAssetTags</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The list of platform custom asset tags</p></td>
+<td><ul>
+<li><p><code>{"Asset group":["finance"], "some.ip": ["10.1.0.1"]}</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>processCmd</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>CLICommand</p></li>
+</ul></td>
+<td><p>The command line entry of the subject process</p></td>
+<td><ul>
+<li><p><code>C:\WINDOWS\system32\services.exe</code></p></li>
+<li><p><code>C:\Windows\system32\services.exe</code></p></li>
+<li><p><code>/sbin/launchd</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>processFilePath</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>ProcessFullPath</p></li>
+</ul></td>
+<td><p>The file path of the subject process</p></td>
+<td><ul>
+<li><p><code>c:\windows\system32\services.exe</code></p></li>
+<li><p><code>/usr/bin/bash</code></p></li>
+<li><p><code>c:\windows\system32\svchost.exe</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>processName</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>ProcessName</p></li>
+</ul></td>
+<td><p>The image name of the process that triggered the event</p></td>
+<td><ul>
+<li><p><code>/usr/bin/bash</code></p></li>
+<li><p><code>c:\windows\system32\svchost.exe</code></p></li>
+<li><p><code>c:\windows\system32\lsass.exe</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>processPid</p></td>
+<td><ul>
+<li><p><code>int</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The PID of the subject process</p></td>
+<td><ul>
+<li><p><code>4</code></p></li>
+<li><p><code>1</code></p></li>
+<li><p><code>784</code></p></li>
+<li><p><code>792</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>productCode</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The internal product code</p></td>
+<td><ul>
+<li><p><code>scs</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>pver</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The product version</p></td>
+<td><ul>
+<li><p><code>1.2.0.2752</code></p></li>
+<li><p><code>1.0.345</code></p></li>
+<li><p><code>1.2.0.2657</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>spt</p></td>
+<td><ul>
+<li><p><code>int</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Port</p></li>
+</ul></td>
+<td><p>The source port</p></td>
+<td><ul>
+<li><p><code>53</code></p></li>
+<li><p><code>5353</code></p></li>
+<li><p><code>443</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>src</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>IPv4</p></li>
+<li><p>IPv6</p></li>
+</ul></td>
+<td><p>The source IP</p></td>
+<td><ul>
+<li><p><code>::</code></p></li>
+<li><p><code>10.10.10.10</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>srcFilePath</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>FileFullPath</p></li>
+<li><p>FileName</p></li>
+</ul></td>
+<td><p>The source file path</p></td>
+<td><ul>
+<li><p><code>\\cnva-apps\megaclockprod\traveler\travelerprint.accdb</code></p></li>
+<li><p><code>c:\program files\common files\microsoft shared\clicktorun\officesvcmgrschedule.xml</code></p></li>
+<li><p><code>q:\a7_dbs\a4_pkg\a4_packaging.accde</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>tags</p></td>
+<td><ul>
+<li><p><code>dynamic</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>Technique</p></li>
+<li><p>Tactic</p></li>
+</ul></td>
+<td><p>The detected ID based on the alert filter</p></td>
+<td><ul>
+<li><p><code>MITREV9.T1057</code></p></li>
+<li><p><code>MITREV9.T1059.003</code></p></li>
+<li><p><code>XSAE.F2924</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+<li><p>Trend Cloud One - Container Security</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>uuid</p></td>
+<td><ul>
+<li><p><code>string</code></p></li>
+</ul></td>
+<td><p>-</p></td>
+<td><p>The unique key of the log</p></td>
+<td><ul>
+<li><p><code>11111111-1111-1111-1111-111111111111</code></p></li>
+</ul></td>
+<td><ul>
+<li><p>All products</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+:::

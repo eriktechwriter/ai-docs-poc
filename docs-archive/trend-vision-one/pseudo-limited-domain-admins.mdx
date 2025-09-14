@@ -1,0 +1,32 @@
+---
+slug: trend-vision-one-pseudo-limited-domain-admins
+title: Pseudo limited domain admins
+---
+# Pseudo limited domain admins
+
+Learn about pseudo limited domain admins and how to mitigate this type of identity-related risk.
+
+Pseudo limited domain admins are user accounts that do not belong to certain default Active Directory security groups, but have limited domain administration privileges equivalent to membership in the security groups. These user accounts indirectly acquired the privileges via misconfigured Active Directory access control lists. The existence of these accounts might lead to potential risks in your environment.
+
+The limited domain administration privileges are equivalent to membership in the following default Active Directory security groups:
+
+- Server Operator
+
+- Backup Operator
+
+- Account Operator
+
+- Printer Operator
+
+- DNS Admin
+
+- Group Policy Creator Owner
+
+- Remote Desktop User
+
+To mitigate the risk of pseudo limited domain admins, Trend Micro recommends:
+
+- Remove pseudo limited domain admins from any relevant groups that grant sensitive privileges.
+
+- If there are multiple relationships between a pseudo limited domain admin and a genuine security admin, start by deleting the relationships that are closer to the security admin.
+:::

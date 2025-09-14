@@ -1,0 +1,77 @@
+---
+slug: trend-vision-one-response-data
+title: Response data
+---
+
+Trend Vision One tracks and provides feedback on the actions taken on endpoints, email messages, and network events.
+
+After triggering a response to an event or object, you can view the response task status and command details in the Response Management table.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Data</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Task ID</p></td>
+<td><p>The current status of the command sent to the managing server and the unique ID assigned to the task</p>
+<p>If you trigger a response for multiple targets, the Response Management app displays the least successful task status for the group. Click the number to view the task status for each target in the group.</p>
+<p>Possible task statuses include:</p>
+<ul>
+<li><p><em>In progress</em> (<img src="./images/in_progress=GUID-A55897DB-3DEA-4F5C-B7F9-70B3D7FB9EDE=1=en-us=Low.webp" />): Trend Vision One sent the command and is waiting for a response.</p></li>
+<li><p><em>Successful</em> (<img src="./images/successful=GUID-1E31AD86-DE2E-48B5-85F7-7C78A3E8BB11=1=en-us=Low.webp" />): The command was successfully executed.</p></li>
+<li><p><em>Partially successful</em> (<img src="./images/partially_successful_icon=GUID-20230103030733.webp" />): One or more commands was unsuccessful.</p></li>
+<li><p><em>Unsuccessful</em> (<img src="./images/error=5cc21722-7ceb-480c-b9c2-a47d420cf1cc.webp" />): An error or time-out occurred when attempting to send the command to the managing server, the agent is offline for more than 24 hours, or the command execution timed out.</p></li>
+<li><p><em>Pending approval</em> (<img src="./images/pending_approval=f0525c66-199a-46f5-b40a-902bd498cf53.webp" />): The task is pending approval from specified users</p></li>
+<li><p><em>Rejected</em> (<img src="./images/rejected=bd05fc87-5b5d-4d84-bfb1-3a6dc09ddac5.webp" />): The task has been rejected</p></li>
+<li><p><em>Queued</em> (<img src="./images/queued=GUID-65C0DF81-E50D-4D51-9602-2E9B7A0E5F14=1=en-us=Low.webp" />): The managing server queued the command because the agent was offline.</p></li>
+<li><p><em>Manually terminated</em> (<img src="./images/ManuallyTerminated=678443aa-f9c6-4f0d-b3e9-9cfc6590c14c.webp" />): The task has been manually terminated</p></li>
+</ul>
+
+
+:::warning[Important]
+
+<p>The <em>Task status</em> indicates whether the managing server was able to successfully receive and execute the command. If the command target is a Security Agent, the <em>Task status</em> does not necessarily indicate whether the target Security Agent or object successfully executed the command.</p>
+<p>If the task status is <em>Queued</em> (<img src="./images/queued=GUID-65C0DF81-E50D-4D51-9602-2E9B7A0E5F14=1=en-us=Low.webp" />) or <em>Unsuccessful</em> (<img src="./images/error=5cc21722-7ceb-480c-b9c2-a47d420cf1cc.webp" />), you can click the <strong>Resend command</strong> (<img src="./images/resendCommand=GUID-47F93E03-99D1-49B4-95D0-C6D07F10B592=1=en-us=Low.webp" />) icon to immediately send the exact same command to the managing server.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Action</p></td>
+<td><p>The command sent to the target</p>
+<p>For more information, see <a href="trend-vision-one-response-actions-section">Response actions</a>.</p></td>
+</tr>
+<tr>
+<td><p>Target</p></td>
+<td><p>The target that the command attempts to take action on</p>
+<p>The type of target determines the actions that are available. For example, the <em>Terminate</em> action is available for processes and containers but not for email messages.</p></td>
+</tr>
+<tr>
+<td><p>Created by</p></td>
+<td><p>The user that triggered the response</p></td>
+</tr>
+<tr>
+<td><p>Created from</p></td>
+<td><p>The location on the Trend Vision One console where the user triggered the response</p></td>
+</tr>
+<tr>
+<td><p>Last updated</p></td>
+<td><p>The last date and time that the Trend Vision One console received data regarding the task</p></td>
+</tr>
+<tr>
+<td><p>[Additional actions]</p></td>
+<td><p>Depending on the action taken, additional actions may be available by clicking the options button (<img src="./images/options_icon=GUID-408062FA-DA13-4ECA-81EB-31A5B68355A1=1=en-us=Low.webp" />) at the end of the row</p>
+<p>For more information, see <a href="trend-vision-one-response-actions-section">Response actions</a>.</p></td>
+</tr>
+</tbody>
+</table>

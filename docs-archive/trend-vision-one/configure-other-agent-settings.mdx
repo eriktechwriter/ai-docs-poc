@@ -1,0 +1,124 @@
+---
+slug: trend-vision-one-configure-other-agent-settings
+title: Configuring Other Agent Settings
+---
+# Configuring Other Agent Settings
+
+### Procedure {#procedure}
+
+1.  Configure settings as required.
+
+    <table>
+    <colgroup>
+    <col style="width: 20%" />
+    <col style="width: 80%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Section</p></th>
+    <th><p>Settings</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><strong>Coexist Mode Conversion</strong></p></td>
+    <td><p><strong>Permanently convert Security Agents using coexist mode into fully-functional Security Agents</strong>: Activates all functions on Trend Vision One Endpoint Security agents installed in "Co-exist mode"</p>
+
+
+    :::warning[Important]
+
+    <p>You cannot undo this action. After converting coexist mode Trend Vision One Endpoint Security agents into fully-functional Trend Vision One Endpoint Security agents, the agent program attempts to uninstall any incompatible third-party security software on the endpoint. After the conversion completes, Apex One enables all necessary services and functions related to normal Trend Vision One Endpoint Security agent functionality.</p>
+    <p>If you need to use a coexist mode Trend Vision One Endpoint Security agent on a converted endpoint, you must unistall the Trend Vision One Endpoint Security agent program and reinstall a coexist mode Trend Vision One Endpoint Security agent.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p><strong>Update Settings</strong></p></td>
+    <td><ul>
+    <li><p><strong>Security Agents download updates from the Trend Micro ActiveUpdate Server</strong>: Configures Trend Vision One Endpoint Security agents that cannot connect to the specified update source to attempt to update from the Trend Micro ActiveUpdate server</p></li>
+    <li><p><strong>Enable schedule-based updates on Security Agents</strong>: Configures all Trend Vision One Endpoint Security agents to enable schedule-based updates by default</p></li>
+    <li><p><strong>Security Agents only update the following components</strong>: Controls how component updates proceed on the Trend Vision One Endpoint Security agents</p>
+    <ul>
+    <li><p><strong>All components (including hotfixes and the agent program)</strong>: Trend Vision One Endpoint Security agents update all components</p></li>
+    <li><p><strong>Pattern files, engines, drivers</strong>: Trend Vision One Endpoint Security agents do not upgrade the Trend Vision One Endpoint Security agent program or deploy hotfixes</p></li>
+    <li><p><strong>Pattern files</strong>: Trend Vision One Endpoint Security agents do not upgrade the Trend Vision One Endpoint Security agent program, deploy hotfixes, or update engines and drivers</p></li>
+    </ul></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p><strong>Web Reputation Settings</strong></p></td>
+    <td><p><strong>Display a notification when a website is blocked</strong>: Displays a notification message on the Trend Vision One Endpoint Security agent after blocking a URL that violates a Web Reputation policy</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Behavior Monitoring Settings</strong></p></td>
+    <td><p><strong>Display a notification when a program is blocked</strong>: Displays a notification message on the Trend Vision One Endpoint Security agent after blocking a program that violates a Behavior Monitoring policy</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>C&amp;C Contact Alert Settings</strong></p></td>
+    <td><p><strong>Display a notification when a C&amp;C callback is detected</strong>: Displays a notification message on the Trend Vision One Endpoint Security agent after detecting a C&amp;C callback</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Central Quarantine Restore Settings</strong></p></td>
+    <td><p><strong>Display a notification when a quarantined file is Restored</strong>: Displays a notification message on the Trend Vision One Endpoint Security agent after restoring a quarantined file</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Predictive Machine Learning Settings</strong></p></td>
+    <td><p><strong>Display a notification when a threat is detected</strong>: Displays a notification message on the Trend Vision One Endpoint Security agent after Predictive Machine Learning detects an unknown threat</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Security Agent Self-protection</strong></p></td>
+    <td><ul>
+    <li><p><strong>Protect Security Agent services</strong>: Prevents users or applications from terminating Trend Vision One Endpoint Security agent services</p></li>
+    <li><p><strong>Protect files in the Security Agent installation folder</strong>: Prevents users or applications from modifying or deleting files in the Trend Vision One Endpoint Security agent installation folder</p></li>
+    <li><p><strong>Protect Security Agent registry keys</strong>: Prevents users or applications from modifying, deleting, or adding registry values used by the Trend Vision One Endpoint Security agent program</p></li>
+    <li><p><strong>Protect Security Agent processes</strong>: Prevents users or applications from terminating Trend Vision One Endpoint Security agent processes</p></li>
+    </ul>
+    <p>For more information, see <a href="trend-vision-one-prmt-self-prot-tmcm">Security Agent Self-protection</a>.</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Scheduled Scan Settings</strong></p></td>
+    <td><p><strong>Display a notification before a scheduled scan occurs</strong>: Displays a notification message on the Trend Vision One Endpoint Security agent before a configured Scheduled Scan starts</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Cache Settings for Scans</strong></p></td>
+    <td><ul>
+    <li><p><strong>Enable the digital signature cache</strong>: Configures the Trend Vision One Endpoint Security agent to use the Behavior Monitoring Digital Signature Pattern to exclude files from Manual Scans, Scheduled Scans, and Scan Now</p></li>
+    <li><p><strong>Enable the on-demand scan cache</strong>: Configures the Trend Vision One Endpoint Security agent to maintain a local on-demand scan cache to exclude file during Manual Scan, Scheduled Scan, and Scan Now to improve scan performance</p></li>
+    </ul>
+    <p>For more information, see <a href="trend-vision-one-cache-settings-for-scans">Cache Settings for Scans</a>.</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>POP3 Email Scan Settings</strong></p></td>
+    <td><p><strong>Scan POP3 email</strong>: Enables POP3 mail scanning on the Trend Vision One Endpoint Security agent</p>
+    <p>For more information, see <a href="trend-vision-one-pop3-mail-scan">POP3 Mail Scan</a>.</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Security Agent Access Restriction</strong></p></td>
+    <td><p><strong>Do not allow users to access the Security Agent console from the system tray or Windows Start menu</strong>: Disables user access to the Trend Vision One Endpoint Security agent console using the system tray or Windows Start menu</p>
+
+
+    :::note
+
+    <p>This setting does not disable the Trend Vision One Endpoint Security agent. The Trend Vision One Endpoint Security agent runs in the background and continues to provide protection from security risks.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p><strong>Restart Notification</strong></p></td>
+    <td><p><strong>Display a notification if the endpoint needs to restart to finish cleaning infected files</strong>: Displays a notification message on the Trend Vision One Endpoint Security agent if the user needs to restart the endpoint to finish cleaning a malicious file</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+**Related information**
+
+- [Security Agent Self-protection](prmt-self-prot-tmcm.mdx)
+- [Cache Settings for Scans](cache-settings-for-scans.mdx)
+- [POP3 Mail Scan](pop3-mail-scan.mdx)
+:::

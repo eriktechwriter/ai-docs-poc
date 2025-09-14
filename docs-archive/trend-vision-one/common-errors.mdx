@@ -1,0 +1,51 @@
+---
+slug: trend-vision-one-common-errors
+title: Common errors
+---
+# Common errors
+
+Common errors encountered when using the Node.js SDK for Trend Vision One™ File Security
+
+The error messages in the following table may vary depending on your environment.
+
+**Common Errors**
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead style="text-align: left;">
+<tr>
+<th style="text-align: left;">Sample message</th>
+<th style="text-align: left;">Description and handling</th>
+</tr>
+</thead>
+<tbody style="text-align: left;">
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>Error: Name resolution failed for target dns:{server_address}</p></td>
+<td style="text-align: left; vertical-align: top;"><p>There is a network issue. Please verify the network connection to AMaaS server, and make sure the server address specified in the <code>AmaasGrpcClient</code> is correct.</p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>Error: Failed to create scan client. Could not parse target name "".</p></td>
+<td style="text-align: left; vertical-align: top;"><p>The AMaaS server address is not set or is empty. Please make sure the server address specified in the <code>AmaasGrpcClient</code> is correct.</p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>Error: You are not authenticated. Invalid token or API key.</p></td>
+<td style="text-align: left; vertical-align: top;"><p>The API key is invalid. Please make sure to use a valid Trend Vision One API key.</p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>Error: Failed to open file. ENOENT: no such file or directory, stat {file_path}</p></td>
+<td style="text-align: left; vertical-align: top;"><p>The {file_path} specified in <code>scanFile</code> cannot be found. Please make sure the file exists and {file_path} specified is correct.</p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>Error: Failed to open file. EACCES: permission denied, open {file_path}</p></td>
+<td style="text-align: left; vertical-align: top;"><p>There is a file access permission issue. Please ensure the SDK has read permission of the {file_path}.</p></td>
+</tr>
+<tr>
+<td style="text-align: left; vertical-align: top;"><p>Error: Invalid region. {region}</p></td>
+<td style="text-align: left; vertical-align: top;"><p>The region is invalid. Please verify you are using the correct region.</p></td>
+</tr>
+</tbody>
+</table>
+:::

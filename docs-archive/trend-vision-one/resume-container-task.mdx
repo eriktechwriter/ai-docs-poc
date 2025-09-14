@@ -1,0 +1,47 @@
+---
+slug: trend-vision-one-resume-container-task
+title: Resume Container task
+---
+# Resume Container task
+
+Resume containers within previously isolated pods using the context menu in **Response Management**.
+
+This task is supported by the following services:
+
+- Trend Vision One Container Security
+
+:::warning[Important]
+
+The Resume Container response action becomes available after you isolate a pod and examine its behavior.
+
+You can reconnect the pod to relevant networks and resume data transfer by selecting **Resume Container** from the options button (![](/images/options_icon=GUID-408062FA-DA13-4ECA-81EB-31A5B68355A1=1=en-us=Low.webp)) associated with the corresponding **Isolate Container** task. You can also trigger **Resume Container** tasks via the context menu in **Attack Surface Discovery**, **Workbench**, **Observed Attack Techniques**, and the **XDR Data Explorer** app.
+:::
+
+### Procedure {#procedure}
+
+1.  After identifying the container to resume, access the options menu or the context menu and click **Resume Container**.
+
+    The **Resume Container Task** screen appears.
+
+2.  Confirm the target of the response.
+
+3.  Specify a **Description** for the response or event.
+
+4.  Click **Create**.
+
+    Trend Vision One creates the task and displays the current task status in **Response Management**.
+
+5.  Monitor the task status.
+
+    1.  Go to **Workflow and Automation → Response Management** .
+
+    2.  (Optional) Locate the task using the **Search** field or by selecting **Resume Container** from the **Action** drop-down list.
+
+    3.  View the task status.
+
+        - **In progress** (![](/images/in_progress=GUID-A55897DB-3DEA-4F5C-B7F9-70B3D7FB9EDE=1=en-us=Low.webp)): Trend Vision One sent the command and is waiting for a response.
+
+        - **Successful** (![](/images/successful=GUID-1E31AD86-DE2E-48B5-85F7-7C78A3E8BB11=1=en-us=Low.webp)): The command was successfully executed.
+
+        - *Unsuccessful* (![](/images/error=5cc21722-7ceb-480c-b9c2-a47d420cf1cc.webp)): An error or time-out occurred when attempting to send the command, or the specified pod no longer exists.
+::::

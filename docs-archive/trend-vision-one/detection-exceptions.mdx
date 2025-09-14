@@ -1,0 +1,84 @@
+---
+slug: trend-vision-one-detection-exceptions
+title: Detection Exceptions
+---
+# Detection Exceptions
+
+:Import or create lists of exception criteria to exempt criteria matches from appearing in detection logs.
+
+The **Detection Exceptions** tab in **Monitoring/Scanning** displays a list of imported or custom exception criteria. Connected Virtual Network Sensors and synced Deep Discovery Inspector appliances scan for and log unusual or suspicious network traffic. Detections that match exception criteria are not recorded in detection logs.
+
+Exceptions are automatically synced across all connected Virtual Network Sensors. Turn on **Enable central management of Deep Discovery Inspector resources** to sync with connected Deep Discovery Inspector appliances version 6.7 or later.
+
+:::warning[Important]
+
+Enabling central management overwrites the corresponding local settings on Deep Discovery Inspector appliances. Before turning on the toggle, Trend Micro recommends you export your Deep Discovery Inspector Network Groups and Assets lists to back up your system settings. For more information, see [About central management of Deep Discovery Inspector](central-management-ddi.mdx).
+:::
+
+The following table outlines actions available in the **Detection Exceptions** tab.
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Add new exception</p></td>
+<td><p>Select the exception status, add an optional description, and configure the exception criteria. One exception may contain up to 10 criteria. A detection must meet all criteria to be considered an exception.</p>
+<p>To learn more, see <a href="trend-vision-one-configuring-detection-exceptions">Configuring Detection Exceptions</a>.</p>
+
+
+:::note
+
+<p>Detection exception lists may contain no more than 1,000 items.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Import exception list</p></td>
+<td><p>You may import a list of exceptions from an external source.</p>
+
+
+:::warning[Important]
+
+<p>Importing a list of detection exceptions overwrites the current list of detection exceptions.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Filter exceptions by status</p></td>
+<td><p>View enabled, disabled, or all exceptions.</p></td>
+</tr>
+<tr>
+<td><p>Edit exceptions</p></td>
+<td><p>Change the exception status from enabled to disabled or modify the exception criteria.</p></td>
+</tr>
+<tr>
+<td><p>Delete exceptions</p></td>
+<td><p>Select the exception you wish to remove and click <strong>Delete</strong>.</p></td>
+</tr>
+</tbody>
+</table>
+
+:::note
+
+After making any configuration or status changes in the **Detection Exceptions** tab, click **Save** before leaving or any unsaved changes will be discarded.
+:::
+
+**Related information**
+
+- [Configuring Detection Exceptions](configuring-detection-exceptions.md "Configure new detection exceptions to prevent detections that match specified criteria from appearing in detection logs.")
+:::::

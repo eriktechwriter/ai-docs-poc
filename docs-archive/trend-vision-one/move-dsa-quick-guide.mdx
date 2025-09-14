@@ -1,0 +1,41 @@
+---
+slug: trend-vision-one-move-dsa-quick-guide
+title: Moving Trend Cloud One Agents Quick Guide
+---
+# Moving Trend Cloud One Agents Quick Guide
+
+Move agents to Trend Vision One Endpoint Security using a deployment script.
+
+The following steps detail how to move agents from Trend Cloud One - Endpoint & Workload Security to the new Trend Vision One Endpoint Security for evaluation of Server & Workload Protection.
+
+Before starting, you must deactivate the target agent you want to move.
+
+- For information on how to deactivate agents, see [Deactivate the agent](https://docs.trendmicro.com/en-us/documentation/article/trend-micro-cloud-one-workload-security-agent-activate) on the Trend Cloud One Help Center.
+
+- You may also need to disable agent self-protection before you can deactivate the agent. For more information, see [Enable or disable agent self-protection](https://docs.trendmicro.com/en-us/documentation/article/trend-micro-cloud-one-workload-security-agent-self-protection) on the Trend Cloud One Help Center.
+
+:::note
+
+The following steps do not include transferring custom policies and configurations. If you want to import your Trend Cloud One - Endpoint & Workload Security to Trend Vision One Endpoint Security, see [Moving Trend Cloud One Agents Complete Guide](move-dsa-complete-guide.mdx).
+:::
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Endpoint Security Operations → Server & Workload Protection**.
+
+    If you have more than one Server & Workload Protection instance, select the instance where you want to move the agents.
+
+2.  Go to **Administration → Updates → Software → Local**.
+
+3.  Click **Generate Deployment Scripts**.
+
+4.  Select the **Platform** and configure the other settings.
+
+5.  Click **Save to File** to save the deployment script.
+
+6.  Use RDP or SSH to access the device where the target agent is installed.
+
+7.  Run the deployment script on the device to reactivate the agent in Trend Vision One.
+
+    You can verify that the agent moved and activated successfully on the Trend Vision One console by viewing the **Computers** screen in the Server & Workload Protection instance you selected.
+::::

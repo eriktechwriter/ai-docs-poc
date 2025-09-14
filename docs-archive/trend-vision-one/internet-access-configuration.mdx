@@ -1,0 +1,44 @@
+---
+slug: trend-vision-one-internet-access-configuration
+title: Internet Access and AI Service Access configuration
+---
+# Internet Access and AI Service Access configuration
+
+**Internet Access and AI Service Access Configuration** allows you to deploy the Trend Micro internet access service to analyze web activity and enforce secure access rules to protect your users' internet visits.
+
+The internet access and AI service access service safeguards your users' web activity by inspecting all internet traffic bi-directionally and enforcing secure access rules. With a default, globally-available cloud gateway, users' web traffic can be monitored, analyzed, and controlled, regardless of locations. With a dedicated corporate network location that identifies the location of your organization, the service can accelerate access control, internet visits, and AI service use.
+
+The internet access and AI service access service consists of two major components:
+
+- Gateways: Analyze your users' forwarded HTTPS/HTTP traffic to enforce secure access rules.
+
+- Secure Access Module: Deployed to endpoints managed by Trend Vision One to ensure that internet traffic is forwarded to the Internet Access Gateway for analysis and control.
+
+### Procedure {#procedure}
+
+1.  Define a corporate network location, such as the corporate headquarters, a branch office, or company VPN.
+
+    For more information, see [Internet Access gateways and corporate network locations](corporate-network-locations-ia.mdx).
+
+2.  [Deploy the Secure Access Module](secure-access-module.mdx) to the endpoints that you want to manage to forward their web traffic to an appropriate Internet Access Gateway.
+
+    Alternatively, you can create a [Proxy Auto Configuration (PAC) file](pac-files.mdx) on the Trend Vision One console and manually deploy it to client browsers to forward web traffic from your endpoints to the Internet Access Gateway.
+
+3.  Turn on the **Internet Access and AI Service Access** toggle on the **Internet Access and AI Service Access Configuration** screen and instruct your users to log in to the module to make the internet access service work.
+
+    :::note
+
+    To manage access to specific AI services and enable advanced AI content generation checks, go to Secure Access Rules and create at least one AI service access rule.
+    :::
+
+4.  (Optional) Configure [HTTPS inspection rules](https-inspection-rules.mdx) to decrypt HTTPS traffic if you need to determine whether to allow access to HTTPS contents.
+
+**Related information**
+
+- [Internet Access gateways and corporate network locations](corporate-network-locations-ia.md "Manage Internet Access gateways and corporate network locations to monitor, analyze, and control web activities on known locations, such as the corporate headquarters, a branch office, or company VPN.")
+- [PAC files](pac-files.md "Manage proxy auto-configuration (PAC) files that you can use to forward web traffic from your organization's devices to the Internet Access Gateway.")
+- [HTTPS inspection](https-inspection.md "Decrypt and inspect encrypted content over HTTPS connections for internet access control.")
+- [URL allow and deny lists](url-allow-deny-lists.md "Configure the URL allow list and URL deny list to add URLs that are always accessible or not accessible to users.")
+- [Bypass URL list for the Windows agent](bypass-url-list-for-windows-agent.mdx)
+- [Global settings](global-settings-for-ztsa.md "Configure the settings that apply to all Internet Access gateways.")
+:::

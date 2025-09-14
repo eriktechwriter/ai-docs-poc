@@ -1,0 +1,64 @@
+---
+slug: trend-vision-one-smart-protection-services
+title: Smart Protection Services
+---
+
+Enable Smart Protection Services to provide File Reputation and Web Reputation Services to connected products.
+
+Smart Protection Services allows your Service Gateway appliance to provide File Reputation and Web Reputation Services to connected products. Connected products can utilize the Service Gateway as a forward proxy to the Trend Micro Smart Protection Network or as a standalone Smart Protection Server.
+
+Additionally, Smart Protection Services includes the Smart Protection Network proxy which facilitates routing traffic to Trend Micro services using a Trend Micro hosted proxy, reducing the firewall and port requirements.
+
+1.  To install and enable Smart Protection Services, see [Managing services in Service Gateway](managing-services-service-gateway.md).
+
+    After enabling Smart Protection Services, access the settings screen to view the File Reputation Services and Web Reputation Services URLs and to enable the Smart Protection Network Proxy.
+
+2.  Go to **Workflow and Automation → Service Gateway Management**.
+
+3.  Locate the Service Gateway appliance with Smart Protection Services installed and click on the identifier to open the Service Gateway screen.
+
+4.  In the **Installed Services** list, locate Smart Protection Services and click the configure icon (![](/images/configure=GUID-657DB993-ADC7-4DEC-8C62-C8739D74760E.webp)) .
+
+5.  Configure the connected products to use Smart Protection Services on the Service Gateway appliance.
+
+    - For Trend Micro products which require custom settings, use the File Reputation Services and Web Reputation Services URL information listed in the Smart Protection Services settings screen to connect to the Service Gateway appliance. For more information about supported products, see [Smart Protection Services product support](sps-product-support.md).
+
+    - For on-premises Trend Micro products which use the Smart Protection Network, including Deep Security Software, Apex One, Deep Discovery Inspector, and Deep Discovery Analyzer, see [Connecting Trend Micro products to Smart Protection Server](connect-smart-protection-server.md).
+
+6.  Select **On** to enable the **Smart Protection Network Proxy** as needed.
+
+    View the table below for the Smart Protection Network proxy firewall exceptions and port requirements.
+
+    <table>
+    <colgroup>
+    <col style="width: 20%" />
+    <col style="width: 20%" />
+    <col style="width: 60%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Setting</p></th>
+    <th><p>Value</p></th>
+    <th><p>Notes</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>FQDN</p></td>
+    <td><p><code>ctapi.trendmicro.com</code></p></td>
+    <td><p>All regions. Service Gateway 2.0 and later only.</p></td>
+    </tr>
+    <tr>
+    <td><p>Port</p></td>
+    <td><p>443</p></td>
+    <td><p>Service enabled queries for on-premises Active Directory servers, connected Trend Micro products (such as endpoint agents), Predictive Machine Learning, File Reputation Services, or Third-Party Integration</p></td>
+    </tr>
+    </tbody>
+    </table>
+
+    For a full list of Service Gateway port and firewall settings, see [Service Gateway virtual appliance communication ports](sg-ports-used.md).
+
+**Related information**
+
+- [Smart Protection Services product support](sps-product-support.md "Discover which Trend products and services are supported by Service Gateway Smart Protection Services.")
+- [Connecting Trend Micro products to Smart Protection Server](connect-smart-protection-server.md)

@@ -1,0 +1,90 @@
+---
+slug: trend-vision-one-reviewing-summary
+title: Review the summary
+---
+# Review the summary
+
+Get an overview of the detected network events associated with the target node and associated objects.
+
+The **Summary** displays the severity, number of detected internal hosts, number of indicators of compromise (IOCs), and attack patterns, as well as provides a high-level overview of the malicious activity of the correlated event.
+
+<figure>
+<img src="./images/SummaryBlurred=603c5501-f165-4ed2-b47a-31e726d31182.webp" />
+<figcaption>Network analytics summary</figcaption>
+</figure>
+
+You can export the summary data as a CSV file or in a printer-friendly format. Click **Export** and choose the format you want to use.
+
+:::note
+
+If you applied an advanced filter in the Correlation Graph, the exported report only contains the filtered information.
+:::
+
+The summary includes various details about the network activity and provides actions you can take to investigate the event.
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Detail</p></th>
+<th><p>Description</p></th>
+<th><p>Available actions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Severity</p></td>
+<td><p>The severity assigned by Network Analytics to the event and related correlations.</p>
+<p>Network Analytics uses a number of factors to assign severity, including proprietary analysis.</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Internal Hosts and Indicators of Compromise detection count</p></td>
+<td><p>The number of hosts within your network involved in the event and the number of indicators of compromise (IoCs) detected</p></td>
+<td><p>Click the detection number and then click <em>Copy to clipboard</em> (<img src="./images/dddna_summary_detection_copy=GUID-4DE35BE5-57A5-4919-BF9C-5EC95F9CA8FD=1=en-us=Low.webp" />) to copy the list to your clipboard.</p></td>
+</tr>
+<tr>
+<td><p>Attack patterns</p></td>
+<td><p>The detected attack patterns for the suspicious object selected in Workbench.</p></td>
+<td><p>Hover over an attack pattern to highlight only activities related to that attack pattern in the summary.</p></td>
+</tr>
+<tr>
+<td><p>Activity summary</p></td>
+<td><p>The activity summary is organized by attack pattern and provides the following information:</p>
+<ul>
+<li><p>Protocols on which activities were detected.</p></li>
+<li><p>Hosts involved in suspicious or malicious activity.</p>
+<p>Activity might be between internal hosts and external servers or might include lateral activity between internal hosts.</p>
+<p>Internal hosts are defined by the Network Group List in Network Resources.</p>
+
+
+:::note
+
+<ul>
+<li><p>To provide an accurate analysis of correlation data, configure your <a href="trend-vision-one-network-resource-lists">Network Resource Lists</a>.</p></li>
+<li><p>By default, private networks are considered trusted and set internally as trusted. You only need to add non-private internet protocol (IP) addresses to the Network Group List.</p></li>
+</ul>
+
+
+:::
+
+</li>
+<li><p>Additional hosts that participated in the suspicious activity.</p></li>
+<li><p>Additional suspicious objects when viewing correlation data for suspicious objects.</p></li>
+</ul></td>
+<td><p>Hover over the details icon (<img src="./images/dddna_summary_ip_domain_button=GUID-45B7939C-DDB8-447B-8DEF-9F6055E5B75A=1=en-us=Low.webp" />) for an IP address or domain and select one of the following actions:</p>
+<ul>
+<li><p><strong>Focus</strong>: Focus on the item in the correlation graph.</p></li>
+<li><p><strong>Copy to clipboard</strong>: Copy the value to your clipboard.</p></li>
+<li><p><strong>Threat Connect</strong>: Open Trend Micro Threat Connect in a new browser tab with a query for this object.</p></li>
+<li><p><strong>DomainTools (WHOIS)</strong>: Open DomainTools in a new browser tab with a query for this IP address or domain.</p></li>
+<li><p><strong>VirusTotal</strong>: Open VirusTotal in a new browser tab with a query for this object.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+::::

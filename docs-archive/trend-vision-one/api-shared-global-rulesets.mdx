@@ -1,0 +1,147 @@
+---
+slug: trend-vision-one-api-shared-global-rulesets
+title: Use the API to create shared and global rulesets
+---
+# Use the API to create shared and global rulesets
+
+For an overview of Application Control, see [Lock down software with Application Control](application-control.mdx). For initial configuration instructions, see [Set up Application Control](set-up-application-control.mdx).
+
+Using the Server & Workload Protection API, you can create shared rulesets and global rules. You can use one type of ruleset, or a combination. For more information, see [Create a shared ruleset](create-shared-ruleset.mdx) and [Add global rules](add-global-rules.mdx).
+
+- **Local ruleset**: Rules that are added as part of a computer's software inventory or when in maintenance mode are stored only on the protected computer and are not visible in Server & Workload Protection. Allow or block rules that you configure in Server & Workload Protection are sent to the agent and stored in both places. Because agents don't transfer their inventory information to Server & Workload Protection, local rulesets offer better performance than shared rulesets.
+
+  To determine whether software is new or has changed, version 10 of the agent compares the file with the initially installed software's SHA-256 hash, file size, path, and file name (they have a "file-based" local ruleset). Version 11+ of the agent compares only the file's SHA-256 hash and file size (they have a "hash-based" local ruleset). Because the rules created by version 11+ agents compare only the unique hash and file size, a rule will continue to be applied even if the software file is renamed or moved. As a result, using version 11+ agents reduces the number of software changes that you need to deal with. Version 10 agents continue to use a file-based local ruleset until they are upgraded to version 11+. When you upgrade, its local ruleset is converted to use hash-based rules.
+
+  :::note
+
+  If there are multiple file-based rules for the same hash value, they are consolidated into one hash-based rule. If the rules being consolidated conflict with each other (one rule blocks the file and another allows it), the new hash-based rule will be an "allow" rule.
+  :::
+
+- **Shared ruleset**: Syncs all of its rule data onto both agents and manager (and also relays, if enabled). This increases network and disk space usage. However, it may be easier if you need to verify the rules from the initial inventory scan or maintenance mode, or if you manage a server farm with many computers that should be identical. For example, if you have a server pool of identical LAMP web servers, or if they are virtual machines (VMs) that are part of an auto-scaling group, shared rulesets can be useful. It can also reduce administrator workload.
+
+  :::danger[Warning]
+
+  Don't use a shared ruleset if you enabled *Block unrecognized software until it is explicitly allowed*, and if computers are merely similar (but not identical). It will block all software on other computers that isn't in the first computer's ruleset. If those include critical files, it could break the OS. If that happens, you may be required to reinstall, revert to a backup, or use the OS recovery mode.
+  :::
+
+  When you create a new shared ruleset, it can only contain hash-based rules (rules that compare only a file's hash and size). If you created a shared ruleset using an earlier version of Server & Workload Protection, it contains file-based rules (rules that compare a file's name, path, size, and hash). Older shared rulesets will continue to use file-based rules until all agents using the shared ruleset are upgraded to agent version 11+. Then the shared ruleset will be converted to use hash-based rules.
+
+  :::danger[Warning]
+
+  Don't create a new shared ruleset until all agents are upgraded to version 11.0+. New shared rulesets are hash-based and are not compatible with agent version 10.3 or earlier, which supports only file-based rulesets.
+  :::
+
+  :::tip
+
+  If there are multiple file-based rules for the same hash value, they are consolidated into one hash-based rule. If the rules being consolidated conflict with each other (one rule blocks the file and another allows it), the new hash-based rule will be an "allow" rule.
+  :::
+
+  To create shared rules, see [Create a shared ruleset](create-shared-ruleset.mdx).
+
+- **Global rules**: Like shared rulesets, global rules are distributed to agents by Server & Workload Protection (and also relays, if enabled). This increases network and disk space usage. However, because they are global, you don't need to spend time selecting them in each policy. Global rules aren't part of the rulesets you can see in Server & Workload Protection. Global rules can only contain block rules, not allow rules.
+
+  Global rules require a version 10.2+ agent. Server & Workload Protection will not send the global rules to older agents. Global rules take precedence over all other Application Control rules and are enforced on all computers where Application Control is enabled. The rules in global rules are based on a file's MD5, SHA-1 or SHA-256 hash. Because a software file's hash is unique, you can block specific software everywhere — regardless of file path, policy, or computer group, and regardless of whether Application Control has detected the software before.
+
+  :::note
+
+  In a multi-tenant deployment, each tenant has a separate global rules. To block software for all tenants, create the same global rules for each tenant.
+  :::
+
+  To create global rules, see [Add global rules](add-global-rules.mdx).
+
+In this article:
+
+- Create a shared ruleset
+- Change from shared to computer-specific allow and block rules
+- Deploy Application Control shared rulesets via relays
+- Considerations when using relays with share rulesets
+
+## Create a shared ruleset {#create-a-shared-ruleset}
+
+You can use the API to create shared allow or block rules and apply the ruleset to other computers. This can be useful if you have many identical computers (such as a load balanced web server farm). *Shared rulesets should be applied only to computers with the exact same inventory.*
+
+### Procedure {#procedure}
+
+1.  Use the API to build a computer's shared allow and block rules. For more information, [Create a Shared Ruleset](create-shared-ruleset.mdx). If you want to examine the shared ruleset before you deploy it, see [View and change Application Control rulesets](application-control-rulesets.mdx).
+
+2.  Go to **Computer or Policy editor → Application Control**.
+
+3.  In the ruleset section, make sure *Inherit settings* is not selected and then select *Use a shared ruleset*. Indicate which shared rules to use.
+
+    :::note
+
+    These settings are hidden until you use the API to create at least one shared ruleset. If you haven't created any shared rulesets, or if you keep the default settings, each computer will keep its own allow and block rules locally. Changes to local rules don't affect other computers.
+    :::
+
+4.  Click *Save*.
+
+    The next time that the agent on the computer connects with Server & Workload Protection, the agent applies those rules.
+
+    If you see an error saying that the ruleset upload was not successful, verify that network devices between the agent and Server & Workload Protection or relay allow communications on the heartbeat port or relay [port numbers](swp-port-numbers.mdx).
+
+## Change from shared to computer-specific allow and block rules {#change-from-shared-to-computer-specific-allow-and-block-rules}
+
+If the computer is currently using shared allow or block rules created via the API, you can change it to use local rules. Application control scans the file system for all currently-installed software and creates an initial ruleset for it, similar to when you first enabled Application Control.
+
+:::danger[Warning]
+
+Before you start, verify that only good software is currently installed. Rebuilding the ruleset will allow all currently installed software, even if it is insecure or malware. If you are not sure what is installed, the safest approach is to make a clean install and then enable Application Control.
+:::
+
+The steps below configure a computer's agent to use a local ruleset. If you want all computers to use local rules, edit the setting in the *Policies* tab instead.
+
+### Procedure {#procedure-1}
+
+1.  Go to **Computer editor → Application Control**.
+
+2.  In the ruleset section, deselect *Inherit settings* (if necessary), and then select *Use local ruleset initially based on installed software*.
+
+3.  Click *Save*.
+
+    To verify the change, the next time the agent and Server & Workload Protection connect, look for [event log messages about building the Application Control ruleset](system-events.mdx).
+
+## Deploy Application Control shared rulesets via relays {#deploy-application-control-shared-rulesets-via-relays}
+
+Each time you create an Application Control ruleset or change it, it must be distributed to all computers that use it. Shared rulesets are bigger than local rulesets. Shared rulesets are also often applied to many servers. If they all downloaded the ruleset directly from Server & Workload Protection at the same time, high load could cause slower performance. Global rulesets have the same considerations.
+
+Using relays can solve this problem. (For information on configuring relays, see [Distribute security and software updates with relays](deploy-more-relays.mdx).)
+
+Steps vary depending whether or not you have a multi-tenant deployment.
+
+## Single tenant deployments {#single-tenant-deployments}
+
+Go to **Administration → System Settings → Advanced** and then select *Serve Application Control rulesets from relays*.
+
+<figure>
+<img src="./images/app-control-local-vs-shared2=8ee1c3bb-22d1-4204-b74f-0f7aead25cef.webp" />
+</figure>
+
+## Multi-tenant deployments {#multi-tenant-deployments}
+
+The primary tenant (t0) can't access other tenants' (tN) configurations, so t0 relays don't have tN Application Control rulesets. Other tenants (Tn) must create their own [relay group](deploy-more-relays.mdx), then select *Serve Application Control rulesets from relays*.
+
+<figure>
+<img src="./images/app-control-tenant-relays=f3217e0e-8fe7-4d7f-a8d1-3a82af8bf64b.webp" />
+</figure>
+
+## Considerations when using relays with shared rulesets {#considerations-when-using-relays-with-shared-rulesets}
+
+Before using relays, verify that they are compatible with your deployment. If the agent doesn't have any previously downloaded ruleset currently in effect, and *if it doesn't receive new Application Control rules, then the computer won't be protected by Application Control.* If Application Control ruleset download fails, a ruleset download failure event will be recorded in the Server & Workload Protection console and on the agent.
+
+- If you are using a proxy to connect agents to a manager, you must use a relay.
+
+  :::note
+
+  In version 10.0 and earlier of the agent, agents didn't have support for connections through a proxy to relays. If a ruleset download fails due to a proxy, and if your agents require a proxy to access the relay or Server & Workload Protection, then you must either:
+
+  - [update agents' software](get-agent-software.mdx), then [configure the proxy](configure-proxies-server-workload.mdx)
+  - bypass the proxy
+  - add a relay and then select *Serve Application Control rulesets from relays*
+  :::
+
+- If you are using shared or global rulesets, a relay can result in faster performance.
+
+- If you are using local rulesets, a relay can cause slower performance,
+
+- Do not use a relay with multi-tenant configurations when non-primary tenants (tN) use the default, primary (t0) relay group.
+::::

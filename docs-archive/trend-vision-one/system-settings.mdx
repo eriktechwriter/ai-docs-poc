@@ -1,0 +1,92 @@
+---
+slug: trend-vision-one-system-settings
+title: System Settings
+---
+# System Settings
+
+### Procedure {#procedure}
+
+1.  Select **Global Agent Settings**.
+
+2.  Click the **System** tab.
+
+3.  Configure settings as required.
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Section</p></th>
+    <th><p>Settings</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p><strong>Certified Safe Software Service Settings</strong></p></td>
+    <td><p><strong>Enable the Certified Safe Software Service for Behavior Monitoring, Firewall, and antivirus scans</strong>: Queries Trend Micro data centers to verify the safety of a program detected by Malware Behavior Blocking, Event Monitoring, Firewall, or antivirus scans to reduce the likelihood of false positives</p></td>
+    </tr>
+    <tr>
+    <td><p><strong>Smart Protection Service Proxy</strong></p></td>
+    <td><p><strong>Use configured Smart Protection Sources for service queries</strong>: Trend Vision One Endpoint Security agents use the configured Smart Protection Service Proxy settings when querying Smart Protection sources for the following features:</p>
+    <ul>
+    <li><p>Predictive Machine Learning</p></li>
+    <li><p>Behavior Monitoring</p></li>
+    </ul>
+
+
+    :::note
+
+    <p>If the integrated Smart Protection Server is unavailable, Trend Vision One Endpoint Security agents connect to the Trend Micro Smart Protection Network when performing queries.</p>
+
+
+    :::
+
+    </td>
+    </tr>
+    <tr>
+    <td><p><strong>Updates</strong></p></td>
+    <td><ul>
+    <li><strong>Download only the pattern files from the ActiveUpdate server when performing updates</strong>: Limit Trend Vision One Endpoint Security agents to download only the pattern files from the Trend Micro ActiveUpdate server to reduce the bandwidth consumed during updates and speed up the update process.</li>
+    <li><p><strong>Reserve __ MB of disk space for updates</strong>: Specify the amount of agent disk space for hot fixes, pattern files, scan engines, and program updates. Trend Vision One reserves 60MB of disk space by default.</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p><strong>Services Restart</strong></p></td>
+    <td><p><strong>Automatically restart any Security Agent service if the service terminates unexpectedly</strong>: Restart Trend Vision One Endpoint Security agent services that stopped responding unexpectedly</p>
+    <p>Configure the following:</p>
+    <ul>
+    <li><p><strong>Restart the service after __ minutes</strong>: Specify the amount of time (in number of minutes) that must elapse before Trend Vision One restarts a service.</p></li>
+    <li><p><strong>If the first attempt to restart the service is unsuccessful, retry __ times</strong>: Specify the maximum retry attempts for restarting a service. Manually restart a service if it remains stopped after the maximum retry attempts.</p></li>
+    <li><p><strong>Reset the unsuccessful restart count after_ hour(s)</strong>: If a service remains stopped after exhausting the maximum retry attempts, Trend Vision One waits a certain number of hours to reset the failure count. If a service remains stopped after the number of hours elapses, Trend Vision One restarts the service.</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p><strong>Root Certificate Import</strong></p></td>
+    <td><p>For file integrity checking, you can enable Trend Vision One Endpoint Security agents to automatically import root certificates on endpoints based on the selected Windows versions.</p>
+
+
+    :::note
+
+    <ul>
+    <li><p>It is recommended you enable this feature for protected endpoints in an isolated network environment.</p></li>
+    <li><p>For the list of locations from which Trend Vision One Endpoint Security agents obtain the root certificates, see <a href="trend-vision-one-root-certificate-locations">Root Certificate Locations</a>.</p></li>
+    <li><p>For information on intermediate and root certificate locations, see the <a href="https://success.trendmicro.com/dcx/s/solution/1099410-resolving-certificate-related-issues-in-apex-one?language=en_US">Knowledge Base article</a>.</p></li>
+    </ul>
+
+
+    :::
+
+    </td>
+    </tr>
+    </tbody>
+    </table>
+
+4.  Click **Save**.
+
+**Related information**
+
+- [Root Certificate Locations](root-certificate-locations.mdx)
+:::

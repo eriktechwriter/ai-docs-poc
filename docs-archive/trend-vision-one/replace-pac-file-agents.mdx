@@ -1,0 +1,52 @@
+---
+slug: trend-vision-one-replace-pac-file-agents
+title: Replacing the PAC file on Trend Vision One Endpoint Security agents
+---
+# Replacing the PAC file on Trend Vision One Endpoint Security agents
+
+:Change the proxy settings by replacing the PAC file in use in the Secure Access Module.
+
+:::note
+
+Only customers that have updated to the [Foundation Services release](update-foundation-services-release.mdx) have access to the feature.
+
+This feature is not available in all regions.
+:::
+
+Internet Access provides a default PAC file built in the Secure Access Module for HTTP/HTTPS traffic forwarding to the Internet Access Gateway. You can change the PAC file by individual endpoint, endpoint group, or operating system.
+
+:::note
+
+For a single endpoint, the PAC file applied using the following steps takes effect, regardless of the platform-based PAC file configured for the endpoint.
+:::
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Zero Trust Secure Access → Secure Access Configuration → Secure Access Module**.
+
+2.  Filter out the desired endpoints by either security deployment type or endpoint group.
+
+    - To replace the PAC file by security deployment type, click a security deployment type in the **Endpoints** section to the left of the list.
+
+    - To replace the PAC file by endpoint group, click an endpoint group in the **Endpoint Groups** section to the left of the list.
+
+    :::note
+
+    Only endpoints with operating systems supported by the Secure Access Module are listed.
+    :::
+
+3.  Select one or multiple endpoints that you want to replace the PAC file on and click **Replace PAC File**.
+
+    You can also click **Replace PAC File on All Endpoints** if you want to replace the PAC file on all endpoints in the current list.
+
+4.  On the **Replace PAC File** dialog that appears, select the PAC file that you want to apply from the list, and then click **Select**.
+
+    The PAC file list shows all the available PAC files that are created in the **PAC Files** screen (**Zero Trust Secure Access → Secure Access Configuration → Internet Access and AI Service Access Configuration**).
+
+5.  Confirm the selected endpoints and click **Apply PAC File**.
+
+    :::note
+
+    Applying a PAC file requires that you first deploy the Secure Access Module to endpoints. Make sure that the selected endpoints already have the Secure Access Module deployed.
+    :::
+:::::

@@ -1,0 +1,60 @@
+---
+slug: trend-vision-one-matched-object-details-profile-tab
+title: 'Object Details: Profile Tab'
+---
+# Object Details: Profile Tab
+
+The **Profile** tab shows the details applicable for the selected object type.
+
+Some objects may show only a limited set of details, or may not have any details available at the time of execution.
+
+:::note
+
+You can further examine objects with "Malicious" ratings in Threat Connect or VirusTotal.
+:::
+
+The tab may also display additional options for **Matched Objects** and **Noteworthy Objects**.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Option</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><strong>Terminate Object</strong></p></td>
+<td><p>Terminates all running instances of the object only on the target endpoint's current state</p>
+
+
+:::note
+
+<p>This action is available only for unrated, malicious, and suspicious "process" type objects. To verify if the command was successful, go to <strong>Administration → Command Tracking</strong>.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><strong>Add to Suspicious Objects List</strong></p></td>
+<td><p>Terminates all running instances of the object only on the target endpoint's current state, and then adds the object to the <strong>User-Defined Suspicious Object</strong> list</p>
+
+
+:::note
+
+<p>If Application Control is enabled, processes that match the hash value of objects added to the <strong>User-Defined Suspicious Object</strong> list are not allowed to run on all endpoints. Endpoint Sensor also terminates "process" type objects before adding them to the list, and Application Control prevents them from starting again.</p>
+
+
+:::
+
+</td>
+</tr>
+</tbody>
+</table>
+::::

@@ -1,0 +1,62 @@
+---
+slug: trend-vision-one-execution-profile
+title: Execution Profile
+---
+
+View objects and events using a dynamic and interactive visualization.
+
+The Execution Profile offers a visualization of objects and events using a dynamic and interactive chain view instead of static analysis results. You can adjust the view by expanding or collapsing the chain to focus on the objects and events you want to investigate.
+
+Click **Save Progress** to save the current view. Saved Execution Profiles generated directly from **Observed Attack Techniques** or the **Search** app are only accessible using the provided URL.
+
+The following table describes the elements that comprise the Execution Profile.
+
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 28%" />
+<col style="width: 52%" />
+</colgroup>
+<thead>
+<tr>
+<th colspan="2"><p>Element</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="2"><p>Left panels</p></td>
+<td><p><strong>Observed Attack Techniques</strong></p></td>
+<td><p>Lists the individual events detected in your environment and related MITRE information</p>
+<p>Click <strong>View event</strong> to further examine the event details in the <strong>Observed Attack Techniques</strong> app.</p></td>
+</tr>
+<tr>
+<td><p><strong>Endpoints</strong></p></td>
+<td><p>Lists the affected endpoints and highlighted objects of the alert</p></td>
+</tr>
+<tr>
+<td><p>Graph</p></td>
+<td><p>Chain view</p></td>
+<td><p>Visualizes objects and events to facilitate an interactive investigation</p>
+<p>Click any node to view the detailed profile and check related events of the object. The initial analysis chain shows the most critical events as a baseline and allows you to add more events to the chain if necessary.</p></td>
+</tr>
+<tr>
+<td rowspan="3"><p>Right tabs</p></td>
+<td><p><strong>Profile</strong></p></td>
+<td><p>Displays the details applicable to the selected object</p></td>
+</tr>
+<tr>
+<td><p><strong>Events</strong></p></td>
+<td><p>Displays the actions performed by the selected object</p>
+<p>Expand each action to review the objects involved in the event and choose to dynamically show them in or hide them from the chain view.</p></td>
+</tr>
+<tr>
+<td><p><strong>Sources</strong></p></td>
+<td><p>Displays the point of origin for the selected object, which is the additional information not shown in the chain view</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Enable WebGL](enabling-webgl.md "Enable WebGL in your browser to properly show the Execution Profile.")

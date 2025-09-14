@@ -1,0 +1,110 @@
+---
+slug: trend-vision-one-runtime-security-scanning-kubernete
+title: Enable Runtime Security and scanning features
+---
+# Enable Runtime Security and scanning features
+
+Enable Runtime Security, Runtime Vulnerability Scanning, and Runtime Malware Scanning on Kubernetes clusters.
+
+The following table details the runtime security and scanning features available for Kubernetes clusters.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Feature</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Runtime Security</strong></td>
+<td><p>Provides visibility into any activity of your running containers that violates a customizable set of rules.</p></td>
+</tr>
+<tr>
+<td><strong>Runtime Vulnerability Scanning</strong></td>
+<td><p>Provides visibility of operating system and open source code vulnerabilities that are part of containers running in clusters.</p>
+
+
+:::warning[Important]
+
+<ul>
+<li><p>Runtime Vulnerability Scanning supports running the malware-scanner component on both ARM64 and x86_64 CPU nodes. Clusters using Helm chart versions older than 3.0.1 can support only x86_64 CPU nodes.</p></li>
+<li><p>A vulnerability scan occurs for each newly-deployed image, and then is rescanned every 24 hours.</p></li>
+<li><p>Cluster worker nodes require at least <code>2 vCPU</code> and <code>8 GiB Memory</code>. For more details on the specifications and default limits for these components, you can check the resources section in the <a href="https://github.com/trendmicro/cloudone-container-security-helm/blob/master/values.yaml">helm chart</a>.</p></li>
+</ul>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><strong>Runtime Malware Scanning</strong></td>
+<td><p>Provides detection of malware in your running containers, enabling you to identify and respond to malware threats introduced after deployment.</p></td>
+</tr>
+<tr>
+<td><strong>Runtime Secret Scanning</strong></td>
+<td><p>Provides detection of secrets in your running containers. Secret scanning ensures that any secret leaks in production containers are detected quickly.</p></td>
+</tr>
+</tbody>
+</table>
+
+### Procedure {#procedure}
+
+1.  To enable runtime security and scanning features, add the following parameters to your overrides YAML file (usually named '`overrides.yaml'`).
+
+    - `runtimeSecurity: enabled: true`
+    - `vulnerabilityScanning: enabled: true`
+    - `malwareScanning: enabled: true`
+    - `secretScanning: enabled: true`
+
+    Example:
+
+    ```bash
+    visionOne:
+        bootstrapToken: <BOOTSTRAP_TOKEN>
+        endpoint: <ENDPOINT>
+        runtimeSecurity:
+            enabled: true
+        vulnerabilityScanning:
+            enabled: true
+        malwareScanning:
+            enabled: true
+       secretScanning:
+            enabled: true
+    ```
+
+2.  To hide sensitive fields for runtime security events, add `scout.falco.sanitizer_output` to the override file.
+
+    The `scout.falco.sanitizer_output.patterns` field uses the key-value pairs that have a Falco event field as the key and a regular expression as the value. (See [the fields supported by Falco](https://falco.org/docs/reference/rules/supported-fields/) for more information.) The regular expression determines if the string matching the pattern should be hidden in the event output. The redaction occurs in both `output` and `output_fields` in a Falco event.
+
+    Example:
+
+    ```bash
+    scout:
+        falco:
+            sanitizer_output:
+                enabled: true
+                patterns:
+                    proc.pcmdline: (?<=--process\s)\s?(\S+)|(?<=--root\s)\s?(\S+)
+                    fd.sip: (?<=169\.254\.)(\S+)
+    ```
+
+3.  Upgrade Container Security using the following command.
+
+    ```bash
+    helm upgrade \
+        trendmicro \
+        --namespace trendmicro-system --create-namespace \
+        --values overrides.yaml \
+        https://github.com/trendmicro/visionone-container-security-helm/archive/main.tar.gz
+    ```
+
+**Related information**
+
+- [Runtime Malware Scanning Configuration Settings](malware-scanning-configuration.mdx)
+:::

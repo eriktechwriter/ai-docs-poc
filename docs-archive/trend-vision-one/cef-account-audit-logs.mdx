@@ -1,0 +1,204 @@
+---
+slug: trend-vision-one-cef-account-audit-logs
+title: CEF account audit logs
+---
+# CEF account audit logs
+
+<table>
+<thead>
+<tr>
+<th><p>CEF Key</p></th>
+<th><p>Description</p></th>
+<th><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Header (Device Event Class ID)</p></td>
+<td><p>Unique identifier per event-type</p></td>
+<td><ul>
+<li><p><code>900003</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Header (Device Product)</p></td>
+<td><p>Product of sending device</p></td>
+<td><ul>
+<li><p><code>Trend Vision One</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Header (Device Vendor)</p></td>
+<td><p>Product vendor</p></td>
+<td><ul>
+<li><p><code>Trend Micro</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Header (Device Version)</p></td>
+<td><p>Service version</p></td>
+<td><ul>
+<li><p><code>1.0.0</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Header (Name)</p></td>
+<td><p>Category of the event</p></td>
+<td><ul>
+<li><p><code>Trend Vision One Account Audit Log</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Header (Severity)</p></td>
+<td><p>Importance of the event</p></td>
+<td><ul>
+<li><p><code>2: Info</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Header (Version)</p></td>
+<td><p>CEF format version</p></td>
+<td><ul>
+<li><p><code>CEF:0</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cat</p></td>
+<td><p>category</p></td>
+<td><ul>
+<li><p><code>Sign in and sign out</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cs1</p></td>
+<td><p>Account</p></td>
+<td><ul>
+<li><p><code>Root account</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cs1Label</p></td>
+<td><p>Corresponding label for the <code>cs1</code> field</p></td>
+<td><ul>
+<li><p><code>Account</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cs2</p></td>
+<td><p>Role</p></td>
+<td><ul>
+<li><p><code>Master Administrator</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cs2Label</p></td>
+<td><p>Corresponding label for the <code>cs2</code> field</p></td>
+<td><ul>
+<li><p><code>Role</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cs3</p></td>
+<td><p>Activity</p></td>
+<td><ul>
+<li><p><code>Sign in</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cs3Label</p></td>
+<td><p>Corresponding label for the <code>cs3</code> field</p></td>
+<td><ul>
+<li><p><code>Activity</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cn1</p></td>
+<td><p>Result</p></td>
+<td><ul>
+<li><p><code>1</code></p></li>
+</ul>
+
+
+:::note
+
+<p>Possible values include:</p>
+<ul>
+<li><p><code>1</code>: Success</p></li>
+<li><p><code>0</code>: Fail</p></li>
+</ul>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>cn1Label</p></td>
+<td><p>Corresponding label for the <code>cn1</code> field</p></td>
+<td><ul>
+<li><p><code>Result</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cn2</p></td>
+<td><p>Source</p></td>
+<td><ul>
+<li><p><code>0</code></p></li>
+</ul>
+
+
+:::note
+
+<p>Possible values include:</p>
+<ul>
+<li><p><code>0</code>: Console</p></li>
+<li><p><code>1</code>: API</p></li>
+<li><p><code>6</code>: Service Gateway</p></li>
+</ul>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>cn2Label</p></td>
+<td><p>Corresponding label for the <code>cn2</code> field</p></td>
+<td><ul>
+<li><p><code>Source</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>msg</p></td>
+<td><p>Details</p></td>
+<td><ul>
+<li><p><code>{"IP address": "10.1.1.1", "Identifier": {"id":"0e9b00aa-6ee4-4f83-9e42-dd83e19a5e60","type":"managedAccount","name":"Root Account</code><a href="trend-vision-one-mailto:Wang%22,%22email%22:%22jim_j_wang@trendmicro.com"><code>","email":"admin@example.com</code></a><code>","subType":"local"}}</code></p></li>
+</ul>
+
+
+:::note
+
+<p>Message is in JSON format, and is truncated if exceeding the maximum length of 1000 characters.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>rt</p></td>
+<td><p>Logged time</p></td>
+<td><ul>
+<li><p><code>2024-09-23T17:18:42Z</code></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>TrendMicroV1CompanyID</p></td>
+<td><p>Company ID</p></td>
+<td><ul>
+<li><p><code>68960c94-9be6-4343-a4ca-6408de7aa331</code></p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+:::

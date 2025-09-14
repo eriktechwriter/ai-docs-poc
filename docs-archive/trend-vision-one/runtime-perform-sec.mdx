@@ -1,0 +1,93 @@
+---
+slug: trend-vision-one-runtime-perform-sec
+title: Runtime Security performance impact
+---
+# Runtime Security performance impact
+
+Kubernetes environments can be dynamic, and Runtime Security's performance impact depends on both the workload being run in a given environment and the cluster’s applied rulesets. This topic documents the recommended resource configuration for different node sizes.
+
+Runtime Security’s performance depends directly on the number of syscalls overall and the number of those syscalls that trigger active runtime rules for the cluster. Different applications have varying volumes of syscalls and resource usage impact on Runtime Security. The table below is a recommended configuration based on Trend Micro's test environment, which you may need adjust based on your actual environment. All values in the following table are for a single node of the stated size.
+
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Node Environment</p></th>
+<th><p>Resource Type</p></th>
+<th><p>Falco Requests</p></th>
+<th><p>Falco Limits</p></th>
+<th><p>Scout Request</p></th>
+<th><p>Scout Limits</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="2"><p><strong>CPU: 1 vCPU</strong></p>
+<p><strong>Memory: 4.0 GiB</strong></p></td>
+<td><p>CPU</p></td>
+<td><p>100m</p></td>
+<td><p>200m</p></td>
+<td><p>100m</p></td>
+<td><p>200m</p></td>
+</tr>
+<tr>
+<td><p>Memory</p></td>
+<td><p>256Mi</p></td>
+<td><p>512Mi</p></td>
+<td><p>256Mi</p></td>
+<td><p>512Mi</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p><strong>CPU: 4 vCPU</strong></p>
+<p><strong>Memory: 16.0 GiB</strong></p></td>
+<td><p>CPU</p></td>
+<td><p>500m</p></td>
+<td><p>700m</p></td>
+<td><p>100m</p></td>
+<td><p>200m</p></td>
+</tr>
+<tr>
+<td><p>Memory</p></td>
+<td><p>1Gi</p></td>
+<td><p>2Gi</p></td>
+<td><p>256Mi</p></td>
+<td><p>512Mi</p></td>
+</tr>
+<tr>
+<td rowspan="2"><p><strong>CPU: 8 vCPU</strong></p>
+<p><strong>Memory: 32.0 GiB</strong></p></td>
+<td><p>CPU</p></td>
+<td><p>500m</p></td>
+<td><p>1000m</p></td>
+<td><p>100m</p></td>
+<td><p>512m</p></td>
+</tr>
+<tr>
+<td><p>Memory</p></td>
+<td><p>2Gi</p></td>
+<td><p>4Gi</p></td>
+<td><p>512Mi</p></td>
+<td><p>700Mi</p></td>
+</tr>
+</tbody>
+</table>
+
+**General Sizing Guidance**
+
+We recommend that you maintain the default size settings for the majority of components, and adjust only the Falco and Scout resources using the recommendations in the table above, and within the [Helm chart](https://github.com/trendmicro/cloudone-container-security-helm/blob/master/values.yaml) using overrides file. If you encounter persistent Out Of Memory (OOM) kill issues, consider allocating additional resources to your cluster to ensure it meets the requirements listed in [Kubernetes system requirements for Container Security](kubernetes-system-req.mdx).
+
+If your instance differs from the sizes listed above, we recommend that you set the following resource limits for Falco and Scout:
+
+- Allocate 12.5% of your instance's total vCPU and memory to Falco.
+
+- If Falco is restarting often because of Out of Memory (OOM) issue, incrementally raise the memory allocation up to a maximum of 25% of the instance's total memory. Exceeding this threshold could negatively impact the performance of other applications on the instance.
+
+- Set Scout's CPU and memory limits to half of the limit set for Falco.
+:::

@@ -1,0 +1,55 @@
+---
+slug: trend-vision-one-upgrading-service-gateway-1-0-2-0
+title: Upgrade from Service Gateway 1.0 to 2.0
+---
+# Upgrade from Service Gateway 1.0 to 2.0
+
+:Upgrade to Service Gateway 2.0 to manage services more easily and use resources more efficiently.
+
+:::note
+
+This feature is not available in all regions.
+:::
+
+Upgrading requires fewer configuration steps than migrating, but results in a longer downtime. All services on the Service Gateway are unavailable during downtime.
+
+Trend Micro recommends [migrating from Service Gateway 1.0 to 2.0](migrating-service-gateway-1-0-2-0.mdx). If an unexpected error occurs during the upgrade process, you could experience an interruption in services and may need to reinstall the server.
+
+:::warning[Important]
+
+To ensure a smooth upgrade, make sure you have configured correct “Allow” rules for the following services in your firewall settings:
+
+- Setting Synchronization for Service Gateway
+
+- Upload Center
+
+To find the FQDNs of these services, refer to the topics under [Service Gateway virtual appliance communication ports](sg-ports-used.mdx) based on your region.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Workflow and Automation → Service Gateway Management**.
+
+2.  Click the configuration icon (![](/images/configure=GUID-657DB993-ADC7-4DEC-8C62-C8739D74760E.webp)) for the Service Gateway appliance that you want to upgrade.
+
+3.  Click the **Migration Options** tab.
+
+4.  Click **Upgrade to Service Gateway 2.0**.
+
+5.  Select the services to upgrade and install on Service Gateway 2.0.
+
+    :::note
+
+    Active services used within the last 30 days are selected by default. Services not selected can be installed manually after upgrading.
+    :::
+
+6.  Click **Start Upgrade**.
+
+    The upgrade process may take up to an hour. If the process stops progressing:
+
+    - Ensure Service Gateway 1.0 can download the upgrade package by verifying access to the correct FQDNs.
+
+    - Sign in to the Service Gateway from the CLISH and check the displayed version number.
+
+    - Ensure the Service Gateway 1.0 status is healthy. Unhealthy Service Gateway Virtual Appliances must be migrated rather than upgraded.
+:::::

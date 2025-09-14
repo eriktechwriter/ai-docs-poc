@@ -1,0 +1,340 @@
+---
+slug: trend-vision-one-iws-features-migration
+title: InterScan Web Security Features and Settings Migration
+---
+# InterScan Web Security Features and Settings Migration
+
+Gain a better understanding of which features and settings migrate when you upgrade from InterScan Web Security products, including InterScan Web Security Virtual Appliance and InterScan Web Security Suite, to Zero Trust Secure Access Internet Access.
+
+The following tables detail how InterScan Web Security features and settings migrate when you upgrade to Internet Access.
+
+**Features**
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 17%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Feature</p></th>
+<th><p>Migratable</p></th>
+<th><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Dashboard</p></td>
+<td><p>No</p></td>
+<td><p>All relevant information and settings are found in the Zero Trust Secure Access app in Trend Vision One.</p>
+<p>Go to <strong>Zero Trust Secure Access → Secure Access Overview</strong> and click the <strong>Internet Access</strong> tab for an overview of the Internet Access service.</p>
+<p>Go to <strong>Zero Trust Secure Access → Secure Access Configuration → Internet Access Configuration</strong> to configure your Internet Access settings.</p></td>
+</tr>
+<tr>
+<td><p>Logs</p></td>
+<td><p>No</p></td>
+<td><p>Activity logs are available via <strong>XDR Data Explorer</strong> in Trend Vision One.</p>
+<p>Go to <strong>Agentic SIEM &amp; XDR → XDR Data Explorer</strong> and select <strong>Secure Access Activity Data</strong> in the <strong>Search Method</strong> dropdown menu.</p>
+
+
+:::warning[Important]
+
+<p>Your existing logs in InterScan Web Security are not migrated to Trend Vision One.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Reports</p></td>
+<td><p>No</p></td>
+<td><p>Reports are available via the Reports app in Trend Vision One.</p>
+<p>Go to <strong>Dashboards and Reports → Reports</strong>.</p>
+
+
+:::warning[Important]
+
+<p>Your existing reports in InterScan Web Security are not migrated to Trend Vision One.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Updates</p></td>
+<td><p>No</p></td>
+<td><p>Zero Trust Secure Access Internet Access pattern and engine updates occur every 8 hours from midnight local time. The schedule is not configurable.</p></td>
+</tr>
+<tr>
+<td><p>Notifications</p></td>
+<td><p>No</p></td>
+<td><p>Notifications are not migrated to Trend Vision One.</p>
+<p>Go to <strong>Zero Trust Secure Access → Secure Access Configuration → Customization Settings</strong> and select the related block/warning page to customize your notifications.</p></td>
+</tr>
+<tr>
+<td><p>Audit Log</p></td>
+<td><p>No</p></td>
+<td><p>Log auditing is available via the <strong>Audit Logs</strong> app.</p>
+<p>Go to <strong>Administration → Audit Logs</strong> and select <strong>Zero Trust Secure Access</strong> from the <strong>Category</strong> dropdown menu.</p></td>
+</tr>
+<tr>
+<td><p>Deployment Wizard</p></td>
+<td><p>No</p></td>
+<td><p>The Zero Trust Secure Access app features a deployment wizard to assist you in setting up various services.</p>
+<p>Go to <strong>Zero Trust Secure Access → Secure Access Overview</strong> and click <strong>Deployment Wizard</strong>. In the <strong>Internet Access</strong> section, click <strong>Configure</strong> to launch the wizard.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Settings**
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 17%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>InterScan Web Security Setting</p></th>
+<th><p>Migratable</p></th>
+<th><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><strong>Application Control → Policies</strong></p></td>
+<td><p>Yes (Partial)</p></td>
+<td><p>Only policies with granular actions migrate to Internet Access.</p>
+<p>Go to <strong>Zero Trust Secure Access → Secure Access Rules</strong> and click the <strong>Internet Access Control</strong> tab to manage rules.</p></td>
+</tr>
+<tr>
+<td><p><strong>Bandwidth Control → Policies</strong></p></td>
+<td><p>No</p></td>
+<td><p>Go to <strong>Zero Trust Secure Access → Secure Access Configuration → Internet Access and AI Service Access Configuration</strong> and click <strong>Configure Bandwidth Control</strong> in the <strong>On-Premises Gateways</strong> section to manage global bandwidth control rules for Internet Access On-Premises Gateways.</p></td>
+</tr>
+<tr>
+<td><p><strong>HTTP → HTTPS Decryption → Policies</strong></p></td>
+<td><p>Yes (Partial)</p></td>
+<td><p>Only the global policy migrates to Internet Access.</p>
+<p>Go to <strong>Zero Trust Secure Access → Secure Access Configuration → Internet Access and AI Service Access Configuration</strong> and click <strong>HTTPS Inspection</strong> to manage HTTPS inspection rules.</p>
+<p>Go to <strong>Zero Trust Secure Access → Secure Access Configuration → Internet Access and AI Service Access Configuration</strong> and click <strong>Inspection Exceptions</strong> in the <strong>HTTPS Inspection</strong> dropdown menu to manage HTTPS inspection exceptions.</p></td>
+</tr>
+<tr>
+<td><p><strong>HTTP → Advanced Threat Protection → Policies</strong></p></td>
+<td><p>Yes (Partial)</p></td>
+<td><p>The Compressed File Handling and Large File Handling settings of policies do not migrate to Internet Access.</p>
+<p>The URL list exceptions of policies do not migrate to Internet Access.</p>
+<p>Blocking and scanning by file type settings migrate to Internet Access as file profiles. Go to <strong>Zero Trust Secure Access → Secure Access Resources</strong> and click the <strong>File Profiles</strong> tab to manage file profiles.</p></td>
+</tr>
+<tr>
+<td><p><strong>HTTP → HTTP Inspection → Policies</strong></p></td>
+<td><p>No</p></td>
+<td><p>Go to <strong>Zero Trust Secure Access → Secure Access Resources</strong> and click the <strong>HTTP/HTTPS Request Filters</strong> tab to manage filters for HTTP and HTTPS requests.</p></td>
+</tr>
+<tr>
+<td><p><strong>HTTP → Data Loss Prevention → Policies</strong></p></td>
+<td><p>No</p></td>
+<td><p>Go to <strong>Zero Trust Secure Access → Secure Access Resources</strong> and click the <strong>Data Loss Prevent</strong> tab to manage data loss prevention rules.</p></td>
+</tr>
+<tr>
+<td><p><strong>HTTP → URL Filtering → Policies</strong></p></td>
+<td><p>Yes (Partial)</p></td>
+<td><p>Only policies with the block action migrate to Internet Access.</p></td>
+</tr>
+<tr>
+<td><p><strong>HTTP → Access Quota Policies</strong></p></td>
+<td><p>No</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p><strong>HTTP → URL Access Control → Global URL Blocking</strong></p></td>
+<td><p>Yes (Partial)</p></td>
+<td><p>Items in <strong>Exceptions to the Block List</strong> do not migrate to Internet Access.</p>
+<p>Go to <strong>Zero Trust Secure Access → Secure Access Configuration → Internet Access and AI Service Access Configuration</strong> and select <strong>URL Deny List</strong> in the <strong>Allow List/Deny List</strong> dropdown menu.</p></td>
+</tr>
+<tr>
+<td><p><strong>HTTP → URL Access Control → Global Trust URLs</strong></p></td>
+<td><p>Yes (Partial)</p></td>
+<td><p>Items in <strong>Exceptions to the Trusted URL List</strong> do not migrate to Internet Access.</p>
+<p>Go to <strong>Zero Trust Secure Access → Secure Access Configuration → Internet Access and AI Service Access Configuration</strong> and select <strong>URL Allow List</strong> in the <strong>Allow List/Deny List</strong> dropdown menu.</p></td>
+</tr>
+<tr>
+<td><p><strong>HTTP → Configuration → X-Forwarded-For Header</strong></p></td>
+<td><p>No</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p><strong>HTTP → Configuration → Approved Lists</strong></p></td>
+<td><p>No</p></td>
+<td><p>Yes, ZTSA Internet Access can support the exception lists in Access Rules/AI rules. Migrate the Approved Lists to the ZTSA custom URL categories and then apply them to the Access Rules/AI rules.</p>
+<p>Go to <strong>Zero Trust Secure Access</strong> <strong>Secure Access Resources</strong> and click the <strong>Custom URL Categories</strong> tab to manage custom categories.</p></td>
+</tr>
+<tr>
+<td><p><strong>HTTP → Configuration → Access Control Settings</strong></p></td>
+<td><p>No</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p><strong>HTTP → Configuration → Custom Categories</strong></p></td>
+<td><p>Yes</p></td>
+<td><p>Go to <strong>Zero Trust Secure Access → Secure Access Resources</strong> and click the <strong>Custom URL Categories</strong> tab to manage custom categories.</p></td>
+</tr>
+<tr>
+<td><p><strong>HTTP → Configuration → Digital Certificates</strong></p></td>
+<td><p>Yes</p></td>
+<td><p>Go to <strong>Zero Trust Secure Access → Secure Access Configuration → Internet Access and AI Service Access Configuration</strong> and select <strong>TLS/SSL Certificates</strong> from the <strong>HTTPS Inspection</strong> dropdown menu.</p></td>
+</tr>
+<tr>
+<td><p><strong>HTTP → Configuration → WRS/URL Cache</strong></p></td>
+<td><p>No</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p><strong>HTTP → Configuration → Content Cache</strong></p></td>
+<td><p>No</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p><strong>FTP → Scan Rules</strong></p></td>
+<td><p>No</p></td>
+<td><p>ZTSA Internet Access can support the FTP scan rules, but only for the on-premises gateways. And the setting is configured based on the on-premises gateways. It does not support the FTP Scan Rules migration.</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Configuration → User Identification</strong></p></td>
+<td><p>No</p></td>
+<td><p>Go to <strong>Zero Trust Secure Access → Secure Access Configuration → Identity and Access Management</strong> to sync user data and enforce user access.</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Configuration → Policy Deployment</strong></p></td>
+<td><p>No</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Configuration → Database Connection</strong></p></td>
+<td><p>No</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Configuration → Quarantine Management</strong></p></td>
+<td><p>No</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Configuration → System Time</strong></p></td>
+<td><p>No</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Configuration → Scheduled Times</strong></p></td>
+<td><p>Yes</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Configuration → Register to Control Manager</strong></p></td>
+<td><p>No</p></td>
+<td><p>Zero Trust Secure Access Internet Access references suspicious objects from the Threat Intelligence app.</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Configuration → Replication Configuration</strong></p></td>
+<td><p>No</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Configuration → Central Log/Reporting</strong></p></td>
+<td><p>No</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Configuration → Scan Method</strong></p></td>
+<td><p>No</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Configuration → PAC File Management</strong></p></td>
+<td><p>No</p></td>
+<td><p>PAC files are not migrated to Trend Vision One. Use the default PAC file provided by Zero Trust Secure Access Internet Access or copy the PAC file from InterScan Web Security and replace the proxy address with the FQDN or IP address of your Internet Access Cloud Gateway or Internet Access On-Premises Gateway.</p>
+<p>Go to <strong>Zero Trust Secure Access → Secure Access Configuration → Internet Access and AI Service Access Configuration</strong> and click the <strong>PAC Files</strong> tab to manage your PAC files.</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Network Configuration → Network Interface</strong></p></td>
+<td><p>No</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Network Configuration → Web Console</strong></p></td>
+<td><p>No</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Network Configuration → Remote CLI</strong></p></td>
+<td><p>No</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Network Configuration → SNMP Settings</strong></p></td>
+<td><p>No</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Network Configuration → Static Routes</strong></p></td>
+<td><p>No</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><strong>Administration → Management Console → Account Administration</strong></td>
+<td><p>No</p></td>
+<td><p>Go to <strong>Administration → User Accounts</strong> to manage accounts.</p>
+
+
+:::note
+
+<p>Trend Vision One does not support setting LDAP user accounts as administrators.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p><strong>Administration → Management Console → Role Management</strong></p></td>
+<td><p>No</p></td>
+<td><p>Go to <strong>Administration → User Roles</strong> to manage user roles.</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Management Console → Access Control Settings</strong></p></td>
+<td><p>No</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Config Backup/Restore</strong></p></td>
+<td><p>No</p></td>
+<td><p>Go to <strong>Zero Trust Secure Access → Secure Access Configuration → Internet Access and AI Service Access Configuration</strong> and click <strong>Global Settings</strong>, then select <strong>Configuration Backup and Restoration</strong> to add some backup rules.</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → System Updates</strong></p></td>
+<td><p>No</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → System Maintenance</strong></p></td>
+<td><p>No</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Product License</strong></p></td>
+<td><p>No</p></td>
+<td><p>Your InterScan Web Security license entitles to complimentary use of Zero Trust Secure Access Internet Access for the duration of the license. After the license expires, you must allocate credits to continue using Internet Access.</p>
+<p>For more information, see <a href="trend-vision-one-introducing-credit-based-licensing">Introduction to credit-based licensing</a>.</p></td>
+</tr>
+<tr>
+<td><p><strong>Administration → Support</strong></p></td>
+<td><p>No</p></td>
+<td><p>-</p></td>
+</tr>
+</tbody>
+</table>
+:::

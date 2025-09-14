@@ -1,0 +1,259 @@
+---
+slug: trend-vision-one-notification-case-update-summary
+title: Configure notifications for case update summary
+---
+
+Send Trend Vision One email notifications about **Case update summary** alerts.
+
+The alert periodically sends an email notification summarizing updates made to Trend Vision One cases over a specified period, including Workbench cases, Forensics cases, and other cases.
+
+### Procedure {#procedure}
+
+1.  In the Trend Vision One console, go to **Administration → Notifications**.
+
+2.  Click **Case update summary** to open its settings panel.
+
+3.  Enable the alert toggle in the panel.
+
+4.  Configure which case updates trigger a notification.
+
+    :::warning[Important]
+    The alert settings only apply to Trend Vision One cases in Case Management. Email notifications for MDR case updates are sent via the Business Success Portal.
+    :::
+
+    1.  In the **Alert Settings** panel, click **Select Case Updates**.
+
+    2.  On the **Workbench** tab, select the Workbench case updates that trigger a notification.
+
+        <table>
+        <colgroup>
+        <col style="width: 35%" />
+        <col style="width: 65%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Category</p></th>
+        <th><p>Case Update</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Case information updates</p></td>
+        <td><ul>
+        <li><p>Case opened</p></li>
+        <li><p>Case name updated</p></li>
+        <li><p>Case description updated</p></li>
+        <li><p>Case owner updated</p></li>
+        <li><p>Case status updated</p>
+        
+
+        :::note
+        
+        <p>The updated case status includes manually closed cases and cases closed automatically due to inactivity.</p>
+        
+
+        :::
+
+        </li>
+        <li><p>Case findings updated</p></li>
+        <li><p>Case priority updated</p></li>
+        </ul></td>
+        </tr>
+        <tr>
+        <td><p>Case content updates</p></td>
+        <td><ul>
+        <li><p>Alerts added to an insight</p></li>
+        <li><p>Alerts removed from an insight</p></li>
+        <li><p>Insights merged due to correlation</p></li>
+        <li><p>Comment updated</p></li>
+        <li><p>Note added</p></li>
+        <li><p>Note added with attachments</p></li>
+        <li><p>Note updated with attachments</p></li>
+        <li><p>Note deleted</p></li>
+        <li><p>Observed Attack Techniques event added</p></li>
+        <li><p>Observed Attack Techniques event removed</p></li>
+        <li><p>Case updated from ServiceNow</p></li>
+        <li><p>Case progress summarized</p></li>
+        <li><p>Investigation report generated</p></li>
+        </ul></td>
+        </tr>
+        </tbody>
+        </table>
+
+    3.  On the **Forensics** tab, select the Forensics case updates that trigger a notification.
+
+        <table>
+        <colgroup>
+        <col style="width: 35%" />
+        <col style="width: 65%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Category</p></th>
+        <th><p>Case Update</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Case information updates</p></td>
+        <td><ul>
+        <li><p>Case opened</p></li>
+        <li><p>Case name updated</p></li>
+        <li><p>Case description updated</p></li>
+        <li><p>Case owner updated</p></li>
+        <li><p>Case status updated</p>
+        
+
+        :::note
+        
+        <p>The updated case status includes manually closed cases and cases closed automatically due to inactivity.</p>
+        
+
+        :::
+
+        </li>
+        </ul></td>
+        </tr>
+        <tr>
+        <td><p>Case content updates</p></td>
+        <td><ul>
+        <li><p>Alerts added to an insight</p></li>
+        <li><p>Alerts removed from an insight</p></li>
+        <li><p>Insights merged due to correlation</p></li>
+        <li><p>Comment updated</p></li>
+        <li><p>Note added</p></li>
+        <li><p>Note added with attachments</p></li>
+        <li><p>Note updated with attachments</p></li>
+        <li><p>Note deleted</p></li>
+        <li><p>Observed Attack Techniques event added</p></li>
+        <li><p>Forensics workspace created</p></li>
+        <li><p>Forensics workspace renamed</p></li>
+        <li><p>Forensics workspace updated</p></li>
+        <li><p>Forensics workspace closed</p></li>
+        <li><p>Forensics workspace expired</p></li>
+        <li><p>Forensics workspace deleted</p></li>
+        <li><p>Forensics timeline added</p></li>
+        <li><p>Case progress summarized</p></li>
+        </ul></td>
+        </tr>
+        </tbody>
+        </table>
+
+    4.  On the **Risk Event** tab, select the risk event case updates that trigger a notification.
+
+        <table>
+        <colgroup>
+        <col style="width: 35%" />
+        <col style="width: 65%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Category</p></th>
+        <th><p>Case Update</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Case information updates</p></td>
+        <td><ul>
+        <li><p>Case opened</p></li>
+        <li><p>Case name updated</p></li>
+        <li><p>Case owner updated</p></li>
+        <li><p>Case status updated</p>
+        
+
+        :::note
+        
+        <p>The updated case status includes manually closed cases and cases closed automatically due to inactivity.</p>
+        
+
+        :::
+
+        </li>
+        <li><p>Case description updated</p></li>
+        </ul></td>
+        </tr>
+        <tr>
+        <td><p>Case content updates</p></td>
+        <td><ul>
+        <li><p>Note added</p></li>
+        <li><p>Note added with attachments</p></li>
+        <li><p>Note updated with attachments</p></li>
+        <li><p>Case progress summarized</p></li>
+        <li><p>Asset added</p></li>
+        <li><p>Asset moved</p></li>
+        <li><p>Asset removed</p></li>
+        <li><p>Risk events status changed</p></li>
+        </ul></td>
+        </tr>
+        </tbody>
+        </table>
+
+    5.  On the **Others** tab, select the other case updates that trigger a notification.
+
+        <table>
+        <colgroup>
+        <col style="width: 35%" />
+        <col style="width: 65%" />
+        </colgroup>
+        <thead>
+        <tr>
+        <th><p>Category</p></th>
+        <th><p>Case Update</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>Case information updates</p></td>
+        <td><ul>
+        <li><p>Case opened</p></li>
+        <li><p>Case name updated</p></li>
+        <li><p>Case description updated</p></li>
+        <li><p>Case owner updated</p></li>
+        <li><p>Case status updated</p>
+        
+
+        :::note
+        
+        <p>The updated case status includes manually closed cases and cases closed automatically due to inactivity.</p>
+        
+
+        :::
+
+        </li>
+        </ul></td>
+        </tr>
+        <tr>
+        <td><p>Case content updates</p></td>
+        <td><ul>
+        <li><p>Comment updated</p></li>
+        <li><p>Note added</p></li>
+        <li><p>Note added with attachments</p></li>
+        <li><p>Note updated with attachments</p></li>
+        <li><p>Note deleted</p></li>
+        <li><p>Observed Attack Techniques event added</p></li>
+        <li><p>Case progress summarized</p></li>
+        </ul></td>
+        </tr>
+        </tbody>
+        </table>
+
+    6.  Click **Apply**.
+
+5.  Select the notification **Frequency**.
+
+6.  On the **Email** tab, configure the **Recipients**list.
+
+    1.  Specify email addresses or select from the list of Trend Vision One accounts.
+
+        :::note
+        Recently created Trend Vision One accounts may not immediately appear on the list.
+        :::
+
+    2.  Click **Send Test Message** to send a test notification. To send the test message only to emails you are adding to the recipient list, select **Send only to newly added recipients**. To send the test message to all recipients, select **Send to all recipients**.
+
+        :::note
+        You must wait a few minutes between sending test messages.
+        :::
+
+7.  Click **Save**.

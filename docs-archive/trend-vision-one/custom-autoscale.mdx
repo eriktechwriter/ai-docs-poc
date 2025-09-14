@@ -1,0 +1,178 @@
+---
+slug: trend-vision-one-custom-autoscale
+title: Custom Autoscale
+---
+# Custom Autoscale
+
+Scale your Private Access Connector VM instances based on metric thresholds by creating a custom autoscale policy.
+
+### Procedure {#procedure}
+
+1.  In the left navigation, click **Scaling**.
+
+2.  On the **Configure** tab of the **Scaling** screen that appears, select **Custom autoscale**.
+
+3.  In the **Custom autoscale** configuration area, set **Scale mode** to **Scale based on a metric**.
+
+4.  Add a "Scale out" rule to increase the instance count by clicking **Add a rule** and specifying the following fields.
+
+    <table>
+    <colgroup>
+    <col style="width: 20%" />
+    <col style="width: 40%" />
+    <col style="width: 40%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th colspan="2"><p>Field</p></th>
+    <th><p>Setting</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td></td>
+    <td><p>Metric source</p></td>
+    <td><p><code>Current resource</code></p></td>
+    </tr>
+    <tr>
+    <td rowspan="9"><p>Criteria</p></td>
+    <td><p>Metric namespace</p></td>
+    <td><p><code>Virtual Machine Host</code></p></td>
+    </tr>
+    <tr>
+    <td><p>Metric name</p></td>
+    <td><p><code>Percentage CPU</code></p></td>
+    </tr>
+    <tr>
+    <td><p>Dimension Name</p></td>
+    <td><p><code>VMNAME "= All values"</code></p></td>
+    </tr>
+    <tr>
+    <td><p>Enable metric divide by instance count</p></td>
+    <td><p>Do not toggle on.</p></td>
+    </tr>
+    <tr>
+    <td><p>Operator</p></td>
+    <td><p><code>Greater than</code></p></td>
+    </tr>
+    <tr>
+    <td><p>Metric threshold to trigger scale action</p></td>
+    <td><ul>
+    <li><p><code>80</code> (suggested) for 2 virtual CPUs</p></li>
+    <li><p><code>70</code> (suggested) for 4 virtual CPUs</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>Duration</p></td>
+    <td><p><code>5</code></p></td>
+    </tr>
+    <tr>
+    <td><p>Time grain statistic</p></td>
+    <td><p><code>Average</code></p></td>
+    </tr>
+    <tr>
+    <td><p>Time aggregation</p></td>
+    <td><p><code>Average</code></p></td>
+    </tr>
+    <tr>
+    <td rowspan="3"><p>Action</p></td>
+    <td><p>Operation</p></td>
+    <td><p><code>Increase count by</code></p></td>
+    </tr>
+    <tr>
+    <td><p>Cool down</p></td>
+    <td><p><code>10</code></p></td>
+    </tr>
+    <tr>
+    <td><p>Instance count</p></td>
+    <td><p><code>1</code></p></td>
+    </tr>
+    </tbody>
+    </table>
+
+    (Optional) To modify an existing metric trigger rule, click the metric threshold part of the rule, update the desired fields, and then click **Update**.
+
+5.  Click **Add**.
+
+6.  Add a "Scale in" rule to decrease the instance count by clicking **Add a rule** and specifying the following fields.
+
+    <table>
+    <colgroup>
+    <col style="width: 20%" />
+    <col style="width: 40%" />
+    <col style="width: 40%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th colspan="2"><p>Field</p></th>
+    <th><p>Setting</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td></td>
+    <td><p>Metric source</p></td>
+    <td><p><code>Current resource</code></p></td>
+    </tr>
+    <tr>
+    <td rowspan="9"><p>Criteria</p></td>
+    <td><p>Metric namespace</p></td>
+    <td><p><code>Virtual Machine Host</code></p></td>
+    </tr>
+    <tr>
+    <td><p>Metric name</p></td>
+    <td><p><code>Percentage CPU</code></p></td>
+    </tr>
+    <tr>
+    <td><p>Dimension Name</p></td>
+    <td><p><code>VMNAME "= All values"</code></p></td>
+    </tr>
+    <tr>
+    <td><p>Enable metric divide by instance count</p></td>
+    <td><p>Do not toggle on.</p></td>
+    </tr>
+    <tr>
+    <td><p>Operator</p></td>
+    <td><p><code>Less than</code></p></td>
+    </tr>
+    <tr>
+    <td><p>Metric threshold to trigger scale action</p></td>
+    <td><ul>
+    <li><p><code>15</code> (suggested) for 2 virtual CPUs</p></li>
+    <li><p><code>10</code> (suggested) for 4 virtual CPUs</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>Duration</p></td>
+    <td><p><code>10</code></p></td>
+    </tr>
+    <tr>
+    <td><p>Time grain statistic</p></td>
+    <td><p><code>Average</code></p></td>
+    </tr>
+    <tr>
+    <td><p>Time aggregation</p></td>
+    <td><p><code>Average</code></p></td>
+    </tr>
+    <tr>
+    <td rowspan="3"><p>Action</p></td>
+    <td><p>Operation</p></td>
+    <td><p><code>Decrease count by</code></p></td>
+    </tr>
+    <tr>
+    <td><p>Cool down</p></td>
+    <td><p><code>20</code></p></td>
+    </tr>
+    <tr>
+    <td><p>Instance count</p></td>
+    <td><p><code>1</code></p></td>
+    </tr>
+    </tbody>
+    </table>
+
+    (Optional) To modify an existing metric trigger rule, click the metric threshold part of the rule, update the desired fields, and then click **Update**.
+
+7.  Click **Add**.
+
+8.  Click **Save**.
+:::

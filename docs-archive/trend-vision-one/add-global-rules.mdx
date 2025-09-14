@@ -1,0 +1,35 @@
+---
+slug: trend-vision-one-add-global-rules
+title: Add Global Rules
+---
+Global rules allow you to enforce and track block rules that have a global scope over all protected computers in your network. Currently, this feature is only available for block rules. Generally, use the following steps to create global rules:
+
+### Procedure {#procedure}
+
+1.  Create and configure an `ApplicationControlGlobalRule` object.
+
+2.  Use an `ApplicationControlGlobalRuleApi` object to create the global rule on Server & Workload Protection.
+
+### Next steps {#next-steps}
+
+Also see the [Create and add new global rules](https://automation.trendmicro.com/cloudone/workload-security/) operation in the API Reference. For more information about global rules, see the [Use the API to create shared and global rulesets](api-shared-global-rulesets.mdx) .
+
+The following example adds software to the Global Rules.
+
+[source](https://github.com/deep-security/automation-center-sdk-samples/blob/master/python/src/application_control_examples.py)
+
+```bash
+# Create the rules
+new_rules = []
+for sha256 in sha256_list:
+    new_rule = api.ApplicationControlGlobalRule()
+    new_rule.sha256 = sha256
+    new_rules.append(new_rule)
+
+# Add the rules
+global_rules_api = api.GlobalRulesApi(api.ApiClient(configuration))
+rules_list = api.ApplicationControlGlobalRules()
+rules_list.application_control_global_rules = new_rules
+return global_rules_api.add_global_rules(rules_list, api_version)
+```
+:::

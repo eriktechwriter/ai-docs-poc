@@ -1,0 +1,113 @@
+---
+slug: trend-vision-one-user-log-data
+title: User log data
+---
+
+Trend Vision One maintains user logs that provide summaries about user access, app-related actions, setting changes, and other configuration modifications on the console, as well as login and logout activities on the Service Gateway.
+
+The following table outlines the available user log information.
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Data</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Logged</p></td>
+<td><p>The date and time the activity occurred</p></td>
+</tr>
+<tr>
+<td><p>Account</p></td>
+<td><p>The name of the Trend Vision One user account, API key, or local account on the Service Gateway</p></td>
+</tr>
+<tr>
+<td><p>Role</p></td>
+<td><p>The role of the account</p>
+
+
+:::note
+
+<p>Role is not available for the local account on the Service Gateway.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Source</p></td>
+<td><p>The source of the activity</p>
+<p>Possible sources include:</p>
+<ul>
+<li><p><em>API</em></p></li>
+<li><p><em>Console</em></p></li>
+<li><p><em>Service Gateway</em></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Category</p></td>
+<td><p>The category of the activity</p>
+<p>Possible categories include:</p>
+<ul>
+<li><p><em>Logon and Logoff</em></p></li>
+<li><p><em>SAML Single Sign-On</em></p></li>
+<li><p><em>Account Management</em></p></li>
+<li><p><em>Product Connector</em></p></li>
+<li><p><em>Notifications</em></p></li>
+<li><p><em>Detection Model Management</em></p></li>
+<li><p><em>Workbench</em></p></li>
+<li><p><em>Response Management</em></p></li>
+<li><p><em>Third-Party Integration</em></p></li>
+<li><p><em>Threat Intelligence</em></p></li>
+<li><p><em>Reports</em></p></li>
+<li><p><em>Security Playbooks</em></p></li>
+<li><p><em>API Keys</em></p></li>
+<li><p><em>Console Settings</em></p></li>
+<li><p><em>Support Settings</em></p></li>
+<li><p><em>Service Gateway Management</em></p></li>
+<li><p><em>ServiceNow</em></p></li>
+<li><p><em>Support Request</em></p></li>
+<li><p><em>Network Intrusion Prevention</em></p></li>
+<li><p><em>User Roles</em></p></li>
+<li><p><em>Trend Companion</em></p></li>
+<li><p><em>Container Security</em></p></li>
+<li><p><em>Phishing Simulation Assessment</em></p></li>
+<li><p><em>Cloud Accounts</em></p></li>
+<li><p><em>Identity Providers</em></p></li>
+<li><p><em>Case Management</em></p></li>
+<li><p><em>Security Awareness App</em></p></li>
+<li><p><em>Domain Verification</em></p></li>
+<li><p><em>Platform Directory</em></p></li>
+<li><p><em>Asset Visibility Management</em></p></li>
+<li><p><em>Forensics</em></p></li>
+<li><p><em>Mobile Security</em></p></li>
+<li><p><em>Network Inventory</em></p></li>
+<li><p><em>Cyber Risk Exposure Management</em></p></li>
+<li><p><em>Endpoint Inventory</em></p></li>
+<li><p><em>Endpoint Policies</em></p></li>
+<li><p><em>Zero Trust Secure Access</em></p></li>
+<li><p><em>Sandbox Analysis</em></p></li>
+<li><p><em>Observed Attack Techniques</em></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Activity</p></td>
+<td><p>The activity that was performed</p></td>
+</tr>
+<tr>
+<td><p>Result</p></td>
+<td><p>The result of the activity</p></td>
+</tr>
+<tr>
+<td><p>Details</p></td>
+<td><p>Details on the activity that was performed</p></td>
+</tr>
+</tbody>
+</table>

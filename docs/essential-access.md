@@ -1,0 +1,146 @@
+---
+slug: trend-vision-one-essential-access
+title: Essential Access
+---
+
+Use an existing license to access a Trend Vision One console with a limited but powerful set of apps and features.
+
+Essential Access grants you access to a limited but powerful set of apps and features in the Trend Vision One console. Essential Access is available to organizations with a valid license for a supported product.
+
+:::tip
+If you currently have Essential Access but require an Advanced Access app or feature, contact your sales representative. You may be eligible to receive a free 30-day Advanced Trend Vision One trial.
+:::
+
+The following table lists the licenses you can use to activate Essential Access.
+
+**Supported Licenses**
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>SaaS Products</p></th>
+<th><p>On-Premises Products</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><ul>
+<li><p>ApexOne as a Service</p></li>
+<li><p>Trend Cloud One</p></li>
+<li><p>Cloud App Security</p></li>
+<li><p>Trend Micro Email Security</p></li>
+<li><p>Trend Micro Web Security</p></li>
+</ul></td>
+<td><ul>
+<li><p>ApexOne / OfficeScan</p></li>
+<li><p>Deep Security</p></li>
+<li><p>Deep Discovery Inspector</p></li>
+<li><p>Deep Discovery Analyzer</p></li>
+<li><p>Deep Discovery Email Inspector</p></li>
+<li><p>InterScan Messaging Security Virtual Appliance / InterScan Messaging Security Suite</p></li>
+<li><p>InterScan Web Security Virtual Appliance / InterScan Web Security Suite</p></li>
+<li><p>ScanMail for Microsoft Exchange</p></li>
+<li><p>ScanMail for IBM Domino / ScanMail for Lotus Domino</p></li>
+<li><p>PortalProtect for Microsoft SharePoint</p></li>
+<li><p>TippingPoint Security Management System</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+The following table lists the apps and features available with Essential Access.
+
+**Essential Access Apps and Features**
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>App Group</p></th>
+<th>App/Feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cyber Risk Exposure Management</td>
+<td><ul>
+<li><p>Executive Dashboard</p></li>
+<li><p>Security Dashboard</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Dashboards and Reports</p></td>
+<td><ul>
+<li><p>Reports</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>XDR Threat Investigation</p></td>
+<td><ul>
+<li><p>Search</p></li>
+<li><p>Targeted Attack Detection</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Threat Intelligence</p></td>
+<td><ul>
+<li><p>Intelligence Reports</p></li>
+<li><p>Suspicious Object Management</p></li>
+<li><p>Third-Party Intelligence (TAXII, MISP)</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Assessment</p></td>
+<td><ul>
+<li><p>Security Assessment</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Workflow and Automation</p></td>
+<td><ul>
+<li><p>Service Gateway Management</p></li>
+<li><p>Third-Party Integration</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Email and Collaboration Security</p></td>
+<td><ul>
+<li><p>Email Asset Inventory</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Point Product Connections</p></td>
+<td><ul>
+<li><p>Product Connector</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Account</p></td>
+<td><ul>
+<li><p>Single Sign-On</p></li>
+<li><p>User Accounts</p></li>
+<li><p>Notifications</p></li>
+<li><p>Audit Logs</p></li>
+<li><p>Console Settings</p></li>
+<li><p>License Information</p></li>
+<li><p>Credits &amp; Billing</p></li>
+<li><p>Support Settings</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+:::note
+Certain features within the included apps may require [Advanced Access](activating-advanced-access.md).
+:::
+
+**Related information**
+
+- [Activating Trend Vision One with Essential Access](activating-essential-access.md "Use an existing product license to activate Trend Vision One with Essential Access.")

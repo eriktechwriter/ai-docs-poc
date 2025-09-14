@@ -1,0 +1,84 @@
+---
+slug: trend-vision-one-user-role-cortex-xsoar
+title: Creating a user role for Cortex XSOAR integration
+---
+
+Create a custom user role to generate Authentication keys and enable integration with the Trend Micro Vision One for Cortex XSOAR app.
+
+The following steps detail how to create a custom user role with the permissions needed to integrate with the Trend Micro Vision One for Cortex XSOAR app by generating an *authentication token*.
+
+:::note
+The *Master Administrator* role is capable of connecting with third-party apps. However, Trend Micro recommends using a dedicated user account with custom permission settings.
+:::
+
+### Procedure {#procedure}
+
+1.  Go to **Administration → User Roles**.
+
+2.  Click **Add**.
+
+    The **Custom Role Setting** panel opens.
+
+3.  In the general tab, type a descriptive name for the role, such as *Cortex XSOAR Integration*.
+
+4.  (Optional) Type a description for the role.
+
+5.  In the permissions tab, select the following:
+
+    <table>
+    <colgroup>
+    <col style="width: 25%" />
+    <col style="width: 75%" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th><p>Category</p></th>
+    <th><p>Application</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><p>Threat Intelligence</p></td>
+    <td><p><em>Suspicious Object Management</em>:</p>
+    <ul>
+    <li><p>View, filter, and search</p></li>
+    <li><p>Manage lists and configure settings</p></li>
+    <li><p>View object in Sandbox Analysis</p></li>
+    </ul>
+    <p><em>Sandbox Analysis</em>:</p>
+    <ul>
+    <li><p>View, filter, and search</p></li>
+    <li><p>Submit objects</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>XDR</p></td>
+    <td><p><em>Workbench</em>:</p>
+    <ul>
+    <li><p>Add exceptions</p></li>
+    <li><p>Modify alert details</p></li>
+    <li><p>View, filter, and search</p></li>
+    </ul></td>
+    </tr>
+    <tr>
+    <td><p>Response Management</p></td>
+    <td><p><em>Response Management</em>:</p>
+    <ul>
+    <li><p>View, filter, and search Task List tab</p></li>
+    <li><p>Approve/Reject Automated Response tasks</p></li>
+    <li><p>Collect file</p></li>
+    <li><p>Delete/Quarantine messages</p></li>
+    <li><p>Isolate endpoint</p></li>
+    <li><p>Terminate process</p></li>
+    <li><p>View network exceptions</p></li>
+    <li><p>Add to block list</p></li>
+    <li><p>Edit network exceptions</p></li>
+    <li><p>Submit to sandbox</p></li>
+    </ul></td>
+    </tr>
+    </tbody>
+    </table>
+
+6.  Click **Submit**.
+
+    The user role appears in the list.

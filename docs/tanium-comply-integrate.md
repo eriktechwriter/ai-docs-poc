@@ -1,0 +1,56 @@
+---
+slug: trend-vision-one-tanium-comply-integrate
+title: Tanium Comply integration
+---
+
+Gain insight into CVEs in your environment by connecting your Tanium Comply data source with Trend Vision One.
+
+Connect your Tanium Comply account to Trend Vision One to gain access to endpoint information and CVE detections in order to enhance risk analyses in **Cyber Risk Exposure Management**.
+
+### Procedure {#procedure}
+
+1.  Sign in to your Tanium account as a user with user creation permissions.
+
+2.  Go to **Administration → Permissions → Users**.
+
+3.  Click **New User** and complete the user details.
+
+4.  Under **Roles**, click **Manage Roles**.
+
+5.  Select **Comply Report Reviewer** and **API Gateway User** and then click **Apply**.
+
+6.  Under **Computer Groups**, click **Manage Computer Groups**.
+
+7.  Deselect the default **No Computers** group and select **All Computers** or only the groups about which you wish to collect data.
+
+8.  Click **Save**.
+
+    The new user is displayed on the **Users** screen.
+
+9.  Sign in to your Tanium Account as the newly created user with API Gateway User and Comply Report Viewer roles.
+
+10. Go to **Administration → Permissions → API Tokens** and click **New API Token**.
+
+11. Fill in a description of the token and the number of days until expiry.
+
+12. In the **Trusted IP addresses** field, add the URL of your Tanium server and the Trend Vision One IP addresses for your region. See [Firewall exception requirements for Trend Vision One](firewall-exception-requirements-for.md) for your regional IP addresses.
+
+13. Click **Save**.
+
+    The Tanium API token generates and is displayed on the console. Ensure you copy the token.
+
+14. In the Trend Vision One console, go to **Workflow and Automation → Third-Party Integration** and click **Tanium Comply**.
+
+    You are directed to the Tanium Comply data source drawer in **Cyber Risk Exposure Management → Data Sources**.
+
+15. Turn on **Data upload permission**.
+
+16. Input the URL of your Tanium server in the **URL** field.
+
+17. Input the newly generated API token in the **API token** field.
+
+18. Click **Save**.
+
+    :::note
+    You may update the API token at any time by clicking **Edit settings**.
+    :::

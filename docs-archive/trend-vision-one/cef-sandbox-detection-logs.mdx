@@ -1,0 +1,243 @@
+---
+slug: trend-vision-one-cef-sandbox-detection-logs
+title: CEF Sandbox Detection Logs
+---
+# CEF Sandbox Detection Logs
+
+:::note
+
+Sandbox Detection logs are called Virtual Analyzer Detections on the Apex Central console.
+:::
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 38%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>CEF Key</p></th>
+<th><p>Description</p></th>
+<th><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Header (logVer)</p></td>
+<td><p>CEF format version</p></td>
+<td><p>CEF:0</p></td>
+</tr>
+<tr>
+<td><p>Header (vendor)</p></td>
+<td><p>Appliance vendor</p></td>
+<td><p>Trend Micro</p></td>
+</tr>
+<tr>
+<td><p>Header (pname)</p></td>
+<td><p>Appliance product</p></td>
+<td><p>Apex Central</p></td>
+</tr>
+<tr>
+<td><p>Header (pver)</p></td>
+<td><p>Appliance version</p></td>
+<td><p>2019</p></td>
+</tr>
+<tr>
+<td><p>Header (eventid)</p></td>
+<td><p>Device event class ID</p></td>
+<td><p>VAD</p></td>
+</tr>
+<tr>
+<td><p>Header (eventName)</p></td>
+<td><p>Event name</p></td>
+<td><p>Virtual Analyzer detection name</p></td>
+</tr>
+<tr>
+<td><p>Header (severity)</p></td>
+<td><p>Severity</p></td>
+<td><p>3</p></td>
+</tr>
+<tr>
+<td><p>deviceExternalId</p></td>
+<td><p>ID</p></td>
+<td><p>Example: "2"</p></td>
+</tr>
+<tr>
+<td><p>rt</p></td>
+<td><p>Event trigger time in UTC</p></td>
+<td><p>Example: "Mar 22 2018 08:23:23 GMT+00:00"</p></td>
+</tr>
+<tr>
+<td><p>deviceFacility</p></td>
+<td><p>Product</p></td>
+<td><p>Example: "Apex One"</p></td>
+</tr>
+<tr>
+<td><p>dvchost</p></td>
+<td><p>Server name</p></td>
+<td><p>Example: "OSCE01"</p></td>
+</tr>
+<tr>
+<td><p>dhost</p></td>
+<td><p>Endpoint name</p></td>
+<td><p>Example: "Isolate-ClientA"</p></td>
+</tr>
+<tr>
+<td><p>dst</p></td>
+<td><p>Endpoint IPv4 address</p></td>
+<td><p>Example: "10.0.17.6"</p></td>
+</tr>
+<tr>
+<td><p>c6a3</p></td>
+<td><p>Endpoint IPv6 address</p></td>
+<td><p>Example: "fe80::38ca:cd15:443c:40bb%11"</p></td>
+</tr>
+<tr>
+<td><p>app</p></td>
+<td><p>Entry channel</p></td>
+<td><p>Example: "0"</p>
+<p>For more information, see <a href="trend-vision-one-protocol-mapping-table">Protocol Mapping Table</a></p></td>
+</tr>
+<tr>
+<td><p>sourceServiceName</p></td>
+<td><p>Source</p></td>
+<td><p>Example: "Test1@tmcm.extbeta.com"</p></td>
+</tr>
+<tr>
+<td><p>destinationServiceName</p></td>
+<td><p>Destination</p></td>
+<td><p>Example: "Test2@tmcm.extbeta.com;Test3@tmcm.extbeta.com"</p></td>
+</tr>
+<tr>
+<td><p>sproc</p></td>
+<td><p>Process name</p></td>
+<td><p>Example: "VA"</p></td>
+</tr>
+<tr>
+<td><p>fileHash</p></td>
+<td><p>File SHA-1 hash</p></td>
+<td><p>Example: "D6712CAE5EC821F910E14945153AE7871AA536CA"</p></td>
+</tr>
+<tr>
+<td><p>fname</p></td>
+<td><p>File name</p></td>
+<td><p>Example: "C:\\\\QA_Log.zip"</p></td>
+</tr>
+<tr>
+<td><p>request</p></td>
+<td><p>URL</p></td>
+<td><p>Example: "http://127.1.1.1"</p></td>
+</tr>
+<tr>
+<td><p>cs1</p></td>
+<td><p>The name of the security threat determined by Virtual Analyzer</p></td>
+<td><p>Example: "VAN_RANSOMWARE.umxxhelloransom_abc"</p></td>
+</tr>
+<tr>
+<td><p>cn1</p></td>
+<td><p>Displays the risk level assigned by Virtual Analyzer</p></td>
+<td><p>Example: "0"</p>
+<ul>
+<li><p>0: No risk</p></li>
+<li><p>1: Low risk</p></li>
+<li><p>2: Medium risk</p></li>
+<li><p>3: High risk</p></li>
+<li><p>9999: Unknown</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>cs2</p></td>
+<td><p>Displays the security threat type</p></td>
+<td><p>Example: "Anti-security, self-preservation"</p></td>
+</tr>
+<tr>
+<td><p>cs3</p></td>
+<td><p>Cloud storage vendor</p></td>
+<td><p>Example: "Google Drive"</p>
+<ul>
+<li><p>Dropbox</p></li>
+<li><p>Box</p></li>
+<li><p>Google Drive</p></li>
+<li><p>Microsoft OneDrive</p></li>
+<li><p>SugarSync</p></li>
+<li><p>Hightail</p></li>
+<li><p>Evernote</p></li>
+<li><p>Microsoft Exchange Online</p></li>
+<li><p>Microsoft SharePoint Online</p></li>
+<li><p>Unknown</p></li>
+<li><p>N/A</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>reason</p></td>
+<td><p>Critical threat type</p></td>
+<td><p>Example: "E"</p>
+<ul>
+<li><p>A: Known Advanced Persistent Threat (APT)</p></li>
+<li><p>B: Social engineering attack</p></li>
+<li><p>C: Vulnerability attack</p></li>
+<li><p>D: Lateral movement</p></li>
+<li><p>E: Unknown threats</p></li>
+<li><p>F: C&amp;C callback</p></li>
+<li><p>G: Ransomware</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>deviceNtDomain</p></td>
+<td><p>Active Directory domain</p></td>
+<td><p>Example: APEXTMCM</p></td>
+</tr>
+<tr>
+<td><p>dntdom</p></td>
+<td><p>Apex One domain hierarchy</p></td>
+<td><p>Example: OSCEDomain1</p></td>
+</tr>
+<tr>
+<td><p>TMCMLogDetectedHost</p></td>
+<td><p>Endpoint name where the log event occurred</p></td>
+<td><p>Example: MachineHostName</p></td>
+</tr>
+<tr>
+<td><p>TMCMLogDetectedIP</p></td>
+<td><p>IP address where the log event occurred</p></td>
+<td><p>Example: 10.1.2.3</p></td>
+</tr>
+<tr>
+<td><p>ApexCentralHost</p></td>
+<td><p>Apex Central host name</p></td>
+<td><p>Example: TW-CHRIS-W2019</p></td>
+</tr>
+<tr>
+<td><p>devicePayloadId</p></td>
+<td><p>Unique message GUID</p></td>
+<td><p>Example: 1C00290C0360-9CDE11EB-D4B8-F51F-C697</p></td>
+</tr>
+<tr>
+<td><p>TMCMdevicePlatform</p></td>
+<td><p>Endpoint operating system</p></td>
+<td><p>Example: Windows 7 6.1 (Build 7601) Service Pack 1</p></td>
+</tr>
+</tbody>
+</table>
+
+Log sample:
+
+```bash
+CEF: 0|Trend Micro|Apex Central|2019|VAD|VAN_RANSOMWARE.um
+xxhelloransom_abc|3|deviceExternalId=2 rt=Mar 22 2018 08:23:
+23 GMT+00:00 deviceFacility=Apex One dvchost=OSCE01 dhost=
+Isolate-ClientA dst=0.0.0.0 app=1 sourceServiceNameTest1@tre
+nd.com.tw destinationServiceName=Test2@tmcm.extbeta.com;Test
+3@tmcm.extbeta.com sproc=VA fileHash=3395856CE81F2B7382DEE72
+602F798B642F14140 fname=C:\\\\QA_Log.zip request=http://127.
+1.1.1 cs1Label=Security_Threat cs1=VAN_RANSOMWARE.umxxhellor
+ansom_abc cn1Label=Risk_Level cn1=0 cs2Label=Threat_Categori
+es cs2=Anti-security, self-preservation cs3Label=Cloud_Servi
+ce_Vendor cs3=Google Drive reason=E deviceNtDomain=APEXTMCM
+dntdom=OSCEDomain1 TMCMLogDetectedHost=OSCEClient TMCMLogDe
+tectedIP=0.0.0.0 ApexCentralHost=TW-CHRIS-W2019 devicePaylo
+adId=1C00290C0360-9CDE11EB-D4B8-F51F-C697 TMCMdevicePlatfor
+m=Windows 7 6.1 (Build 7601) Service Pack 1
+```
+::::

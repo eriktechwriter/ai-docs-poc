@@ -1,0 +1,177 @@
+---
+slug: trend-vision-one-devices-tab-mdd
+title: Devices tab
+---
+# Devices tab
+
+View information about devices and manage devices on the **Devices** tab.
+
+You can view the following information on the **Devices** tab.
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Data</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Device</p></td>
+<td><p>Device information in the following format: Owner's name + Brand + Model</p>
+<p>Example: <code>John Doe's Apple iPhone 7</code></p>
+<p>Click the device name to view detailed information on the device details screen.</p></td>
+</tr>
+<tr>
+<td><p>Risk level</p></td>
+<td><p>The risk level that Mobile Device Director assigns to the device based on security policy evaluation</p>
+<ul>
+<li><p><strong>Secured</strong></p></li>
+<li><p><strong>Low</strong></p></li>
+<li><p><strong>Medium</strong></p></li>
+<li><p><strong>High</strong></p></li>
+</ul>
+<a href="trend-vision-one-mobile-security-policies">Learn more about mobile security policies</a></td>
+</tr>
+<tr>
+<td><p>Compliance</p></td>
+<td><p>Whether the device meets the compliance requirements of applied compliance policies</p>
+<ul>
+<li><p><strong>Compliant</strong></p>
+<p>The device meets all settings of all applied compliance policies.</p></li>
+<li><p><strong>Noncompliant</strong></p>
+<p>The device fails to meet any settings of any applied compliance policy.</p></li>
+<li><p><strong>Evaluating</strong></p>
+<p>The device is undergoing compliance policy evaluation.</p></li>
+</ul>
+<a href="trend-vision-one-mobile-compliance-policies">Learn more about mobile compliance policies</a></td>
+</tr>
+<tr>
+<td><ul>
+<li><p>Operating system</p></li>
+<li><p>OS version</p></li>
+</ul></td>
+<td><p>The operating system running on the device</p>
+<p><strong>Operating system</strong> also includes the enrollment profile type of the device running Android.</p>
+
+
+:::note
+
+<p><strong>Mobile Security</strong> supports the following Android management solutions and enrollment profile types:</p>
+<ul>
+<li><p><em>Android Enterprise</em>: <em>Personally-owned devices with work profile</em>, <em>Corporate-owned dedicated devices</em>, and <em>Corporate-owned, fully managed user devices</em></p></li>
+<li><p><em>Android device administrator</em></p></li>
+</ul>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Ownership</p></td>
+<td><p>Whether the device is corporate-owned or personally-owned</p></td>
+</tr>
+<tr>
+<td><p>Phone Number</p></td>
+<td><p>The phone number of the device</p></td>
+</tr>
+<tr>
+<td><p>IMEI</p></td>
+<td><p>The International Mobile Equipment Identity (IMEI) number of a device</p></td>
+</tr>
+<tr>
+<td><p>Security policy</p></td>
+<td><p>The security policy that the device applies</p></td>
+</tr>
+<tr>
+<td><p>User</p></td>
+<td><p>The owner of the device</p></td>
+</tr>
+<tr>
+<td><p>Last connected</p></td>
+<td><p>The time the Mobile Security for Business last interacted with <strong>Mobile Security</strong> for check-in, enrollment, or scanning purpose</p></td>
+</tr>
+</tbody>
+</table>
+
+You can perform the following actions on the **Devices** tab.
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Filter device data</p></td>
+<td><p>Use the following drop-down lists and the search box to locate specific device data:</p>
+<ul>
+<li><p><strong>Compliance</strong></p></li>
+<li><p><strong>Operating system</strong></p></li>
+<li><p><strong>Risk level</strong></p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>View device details</p></td>
+<td><p>Click a device name. View the basic information, security profile, permissions enabled, applied compliance policies and security policies, as well as mobile activity data and detection data.</p>
+<p>You can click the actions icon (<img src="./images/Actions_icon=4b986280-60d5-4d43-bd4e-8a097d9dfb06.webp" />) to access actions for the selected device. Using this menu, you can perform the following actions:</p>
+<ul>
+<li><p>Wipe the device</p></li>
+<li><p>Remote lock the device</p></li>
+<li><p>Access the detection logs generated within the last 7 days with the detection type filtered by "Malware Detection", "Configuration Manager", "Wi-Fi Protection", or "Web Reputation".</p></li>
+</ul></td>
+</tr>
+<tr>
+<td><p>Delete devices</p></td>
+<td><p>Click the Delete action icon (<img src="./images/delete_policy=cce60f96-0e5c-4565-895f-d648c42e8495.webp" />) corresponding to a device, or select one or more devices from the list and click <strong>Delete</strong>.</p>
+<p>The Delete action unenrolls the devices from Mobile Device Director and removes the devices from the Mobile Inventory list. To manage the devices again, you must re-enroll the devices.</p>
+<p>When deleting devices, Mobile Device Director only restores the company-owned devices to their defaults. User-owned devices are not.</p></td>
+</tr>
+<tr>
+<td><p>Wipe devices</p></td>
+<td><p>Click the Wipe action icon (<img src="./images/wipe_device=20230317090707.webp" />) corresponding to a device, or select one or more devices from the list and click <strong>Wipe</strong>.</p>
+<p>The Wipe action restores devices to their factory defaults and permanently deletes all data from the devices. To manage the devices again, you must re-enroll the devices. Wiped devices are not removed from the Mobile Inventory list.</p>
+
+
+:::note
+
+<p><strong>Mobile Security</strong> cannot remotely wipe Android devices with the <em>Personally-owned devices with work profile</em> type. <strong>Mobile Security</strong> can only uninstall the work profile from this type of devices.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Remote lock devices</p></td>
+<td><p>Click the Remote Lock action icon (<img src="./images/remote_lock_device=dea03be0-cd7e-4a62-a611-282000b0a931.webp" />) corresponding to a device, or select one or more devices from the list and click <strong>Remote Lock</strong>.</p>
+<p>The Remote Lock action locks the devices. To unlock a device, the device owner needs to enter their passcode.</p>
+
+
+:::note
+
+<p><strong>Mobile Security</strong> cannot remotely wipe devices that do not have a PIN or password configured.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Start a manual scan</p></td>
+<td><p>Click the Start Manual Scan icon (<img src="./images/manual_scan_icon=20250212050123.webp" />) corresponding to a device.</p></td>
+</tr>
+</tbody>
+</table>
+:::

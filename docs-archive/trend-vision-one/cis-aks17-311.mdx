@@ -1,0 +1,108 @@
+---
+slug: trend-vision-one-cis-aks17-311
+title: >-
+  3.1.1 - Ensure that the kubeconfig file permissions are set to 644 or more
+  restrictive (Automated)
+---
+# 3.1.1 - Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Automated)
+
+Profile applicability: Level 1
+
+If `kubelet` is running, and if it is configured by a kubeconfig file, ensure that the proxy kubeconfig file has permissions of 644 or more restrictive.
+
+The `kubelet` kubeconfig file controls various parameters of the `kubelet` service in the worker node. You should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system. It is possible to run `kubelet` with the kubeconfig parameters configured as a Kubernetes ConfigMap instead of a file. In this case, there is no proxy kubeconfig file.
+
+:::note
+
+See the Azure AKS documentation for the default value.
+:::
+
+### Audit {#audit}
+
+**Method 1**
+
+1.  SSH to the worker nodes.
+
+2.  Enter the following command to check if the Kubelet Service is running:
+
+    ```bash
+    sudo systemctl status kubelet
+    ```
+
+    The output should return `Active: active (running)`.
+
+3.  Run the following command on each node to find the appropriate kubeconfig file:
+
+    ```bash
+    ps -ef | grep kubelet
+    ```
+
+    The output should return something similar to `--kubeconfig /var/lib/kubelet/kubeconfig`, which is the location of the kubeconfig file.
+
+4.  Run this command to obtain the kubeconfig file permissions:
+
+    ```bash
+    stat -c %a /var/lib/kubelet/kubeconfig
+    ```
+
+5.  Verify that if a file is specified and it exists, the permissions are 644 or more restrictive.
+
+**Method 2**
+
+Create and Run a Privileged Pod
+
+1.  Run a pod that is privileged enough to access the host's file system. To do this, deploy a pod that uses the hostPath volume to mount the node's file system into the pod.
+
+    An example of a simple pod definition that mounts the root of the host to /host within the pod:
+
+    ```bash
+           apiVersion: v1
+           kind: Pod
+           metadata:
+           name: file-check
+           spec:
+           volumes:
+           - name: host-root
+           hostPath:
+           path: /
+           type: Directory
+           containers:
+           - name: nsenter
+           image: busybox
+           command: ["sleep", "3600"]
+           volumeMounts:
+           - name: host-root
+           mountPath: /host
+           securityContext:
+           privileged: true
+
+    ```
+
+2.  Save this to a file (e.g., file-check-pod.yaml) and create the pod:
+
+    ```bash
+    kubectl apply -f file-check-pod.yaml
+    ```
+
+3.  Once the pod is running, exec into it to check file permissions on the node:
+
+    ```bash
+    kubectl exec -it file-check -- sh
+    ```
+
+4.  Now you are in a shell inside the pod, but you can access the node's file system through the /host directory and check the permission level of the file:
+
+    ```bash
+    ls -l /host/var/lib/kubelet/kubeconfig
+    ```
+
+5.  Verify that if a file is specified and it exists, the permissions are 644 or more restrictive.
+
+### Remediation {#remediation}
+
+Run the below command (based on the file location on your system) on each worker node:
+
+```bash
+chmod 644 <kubeconfig file>
+```
+::::

@@ -1,0 +1,36 @@
+---
+slug: trend-vision-one-editing-custom-exception
+title: Edit a custom exception
+---
+
+Edit the settings of a custom exception.
+
+### Procedure {#procedure}
+
+1.  Go to **XDR Threat Investigation → Detection Model Management** and click the **Exceptions** tab.
+
+2.  Click ![](/images/edit_icon=GUID-1F1D1164-5310-4D6D-ACD0-6049C86960AF.webp) for the exception you want to modify.
+
+3.  Edit the settings you want to modify.
+
+    You can change the following settings categories of custom exceptions:
+
+    - **General Settings**
+
+      :::note
+      [Context menu exceptions](adding-exception-context-menu.md) do not have names.
+      :::
+
+    - **Targets**
+
+    - **Event source**
+
+    - **Exception type**
+
+      :::warning[Important]
+      If you change **Exception type** from **Filter-based exception** to **Global exception**, you cannot revert this exception back to filter-based.
+      :::
+
+    - **Match criteria**
+
+4.  Click **Save**. Your changes might take a few minutes to take effect.

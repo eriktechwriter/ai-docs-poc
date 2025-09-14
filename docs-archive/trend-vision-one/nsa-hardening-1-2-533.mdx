@@ -1,0 +1,57 @@
+---
+slug: trend-vision-one-nsa-hardening-1-2-533
+title: >-
+  5.3.3 - Ensure Secure Computing mode (seccomp) is enabled to sandbox
+  containers (Automated)
+---
+# 5.3.3 - Ensure Secure Computing mode (seccomp) is enabled to sandbox containers (Automated)
+
+Profile applicability: Level 1
+
+One method for auditing container system calls in Kubernetes is to use the seccomp tool. This tool is disabled by default but can be used to limit a container’s system call abilities, lowering the kernel’s attack surface. Seccomp can also log what calls are being made by using an audit profile.
+
+A custom seccomp profile defines which system calls are allowed, denied, or logged, and default actions for calls not specified.
+
+Logging all system calls can help administrators know what system calls are needed for standard operations allowing them to restrict the seccomp profile further without losing system functionality. It can also help administrators establish a baseline for a Pod’s standard operation patterns, allowing them to identify any major discrepancies from this pattern that could be indicative of malicious activity.
+
+### Audit {#audit}
+
+Run the following command and verify that pods and containers have seccomp configured:
+
+```bash
+kubectl get pods --all-namespaces
+```
+
+Ensure pods and containers have seccomp configured in their spec:
+
+- `spec.securityContext.seccompProfile.type` is `RuntimeDefault`
+
+Confirm the annotation values:
+
+- `seccomp.security.alpha.kubernetes.io/pod` is `runtime/default` for pods
+- `container.seccomp.security.alpha.kubernetes.io/<container name>` is `runtime/default` for containers
+
+### Remediation {#remediation}
+
+To enable a custom seccomp profile within a Pod, Kubernetes admins can write their seccomp profile JSON file to the `/var/lib/kubelet/seccomp/` directory and add a `seccompProfile` to the Pod’s securityContext.
+
+A custom `seccompProfile` should also include two fields: `Type: Localhost` and `localhostProfile: myseccomppolicy.json`.
+
+In pod and container configuration, set `spec.securityContext.seccompProfile.type`, `spec.containers[*].securityContext.seccompProfile`, and `spec.initContainers[*].securityContext.seccompProfile` to `RuntimeDefault`.
+
+The following is an example spec for a pod and its containers, which sets seccompProfile to `RuntimeDefault`:
+
+```bash
+...
+spec:
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+  template:
+    spec:
+      containers:
+      - ...
+        securityContext:
+          seccompProfile: RuntimeDefault
+```
+:::

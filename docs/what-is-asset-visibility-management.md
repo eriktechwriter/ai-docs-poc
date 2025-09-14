@@ -1,0 +1,22 @@
+---
+slug: trend-vision-one-what-is-asset-visibility-management
+title: What is Asset Visibility Management?
+---
+
+The **Asset Visibility Management** app allows you to group your organization's data and Trend Vision One app assets in a centralized location.
+
+Data assets of your organization that can be managed cover multiple layers, including endpoints, containers, accounts, cloud assets, network assets, and more. Trend Vision One app assets are the settings that the administrators configure and manage in the Trend Vision One console, for example, scheduled playbooks in the Security Playbooks app and custom reports in the Reports app.
+
+Large-sized customers that run multiple businesses or have the need to segregate asset data visibility for different teams can leverage this capability to achieve granular data visibility and multi-tenancy management purposes within a single Trend Vision One console.
+
+:::note
+For customers who have configured scopes for endpoints and containers in **User Roles**, asset visibility scopes that include newly supported assets are automatically created and associated to the corresponding roles and are given the same role name for easy mapping.
+:::
+
+By organizing your assets into asset visibility scopes for different businesses, teams, or regions, you can assign the scopes to one or more user roles to determine which assets are visible or manageable to these roles in all applicable Trend Vision One apps that display the data of the selected assets. For more information about creating a custom user role, see [User Roles](user-roles-foundation-services.md).
+
+For example, users having a user role with a specified endpoint visibility scope can view the data of endpoints within their responsibility in not only Endpoint Security Operations but also Search and Cyber Risk Exposure Management, and take actions on these assets if having necessary permissions. At the same time, the users are not able to view data of endpoints outside of their asset visibility scope.
+
+:::note
+In some Trend Vision One apps, to provide a full landscape of security posture (for example, in Cyber Risk Exposure Management) or attack tracking (for example, in Workbench), users with a specified asset visibility scope can still see assets outside of the scope, but are not able to drill down for further visibility or take actions on these assets.
+:::

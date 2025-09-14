@@ -1,0 +1,101 @@
+---
+slug: trend-vision-one-user-roles-foundation-services
+title: User Roles (Foundation Services release)
+---
+
+Configure user roles to grant app permissions and asset visibility scope to Trend Vision One user accounts.
+
+:::note
+Only customers that have updated to the [Foundation Services release](update-foundation-services-release.md) have access to the feature.
+:::
+
+- User roles are automatically updated from the following:
+  - Apex One as a Service
+
+  - Cloud One - Endpoint & Workload Security
+- All automatically updated roles become custom roles in Trend Vision One.
+- All custom roles can be edited from the User Roles page.
+- We recommend reviewing the asset visibility scope settings for user roles that were updated from Endpoint & Workload Security to Trend Vision One. There might be some configuration differences for the roles in Trend Vision One.
+
+The following tables outline the actions available in the **User Roles** screen (**Administration → User Roles**).
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Add a custom user role</p></td>
+<td><p>Click <strong>+ Add Role</strong> to <a href="trend-vision-one-custom-user-roles-trend-vision-one">create a new custom role</a>.</p></td>
+</tr>
+<tr>
+<td><p>View user role details</p></td>
+<td><p>Click a <strong>Role name</strong> to open its details panel.</p></td>
+</tr>
+<tr>
+<td><p>View assigned accounts</p></td>
+<td><p>Click the number in the <strong>Total accounts</strong> column to open the details panel to the <strong>Accounts</strong> tab.</p></td>
+</tr>
+<tr>
+<td><p>View API keys</p></td>
+<td><p>Click the number in the <strong>Total API keys</strong> column to open the details panel to the <strong>Accounts</strong> tab.</p>
+
+
+:::note
+
+<p>Server &amp; Workload API keys only display the total count.</p>
+
+
+:::
+
+</td>
+</tr>
+<tr>
+<td><p>Filter user roles</p></td>
+<td><p>Use the <strong>Role type:</strong> drop-down list to filter by "Predefined Role" or "Custom Role".</p></td>
+</tr>
+</tbody>
+</table>
+
+:::note
+You cannot edit or delete [predefined roles](predefined-roles-trend-vision-one.md).
+:::
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Action</p></th>
+<th><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Edit a user role</p></td>
+<td><p>Click the <strong>Edit</strong> icon under action to <a href="trend-vision-one-custom-user-roles-trend-vision-one">modify role name, description, permissions, and asset visibility scope of custom roles</a>.</p></td>
+</tr>
+<tr>
+<td><p>Duplicate a user role</p></td>
+<td><p>Click <strong>Duplicate</strong> to copy a role's settings into a new custom role.</p></td>
+</tr>
+<tr>
+<td><p>Delete a user role</p></td>
+<td><p>Select a role and click <strong>Delete</strong> to remove a role. You can select and delete multiple roles at the same time.</p></td>
+</tr>
+</tbody>
+</table>
+
+**Related information**
+
+- [Configuring custom user roles](custom-user-roles-trend-vision-one.md "Add or edit a custom user role to grant custom app permissions and scope to Trend Vision One user accounts.")
+- [Predefined roles](predefined-roles-trend-vision-one.md "View the built-in permissions for predefined roles and the Trend Vision One user accounts the role has been assigned to.")

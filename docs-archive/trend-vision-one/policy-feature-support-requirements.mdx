@@ -1,0 +1,170 @@
+---
+slug: trend-vision-one-policy-feature-support-requirements
+title: Endpoint Security Policy feature support requirements
+---
+# Endpoint Security Policy feature support requirements
+
+:Review which protection features are supported by deployment type and operating system.
+
+:::warning[Important]
+
+Endpoint security policies (unified assignment) only support endpoints with the Trend Vision One Endpoint Security agent version 202507 release or later installed.
+:::
+
+Some endpoint protection features do not support all agent deployments or operating systems. If you apply a policy with protection features enabled to an unsupported endpoint, the agent treats the setting as disabled and shows the disabled status in Endpoint Inventory.
+
+**Operating System support by Trend Vision One Endpoint Security agent deployment**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Operating System</p></th>
+<th><p>Standard Endpoint Protection</p></th>
+<th><p>Server &amp; Workload Protection</p></th>
+<th><p>Endpoint Sensor only</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Windows</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>Linux</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr>
+<td><p>macOS</p></td>
+<td><p>Yes</p></td>
+<td><p>Limited: see note</p></td>
+<td><p>Yes</p></td>
+</tr>
+</tbody>
+</table>
+
+:::warning[Important]
+
+The Trend Vision One Endpoint Security agent does not support deploying the Server & Workload Protection agent configuration to macOS. However, Server & Workload Protection does support managing macOS endpoints with the Trend Cloud One or Deep Security agent installed and can deploy the Endpoint Sensor to the endpoint. Endpoint Security Policies can only manage Endpoint Sensor related features on macOS endpoints managed using Server & Workload Protection.
+:::
+
+**Support by protection feature**
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th><p>Feature</p></th>
+<th><p>Standard Endpoint Protection</p></th>
+<th><p>Server &amp; Workload Protection</p></th>
+<th><p>Endpoint Sensor only</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Anti-Malware</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Web Reputation</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Intrusion Prevention</p></td>
+<td><p>Support for Windows</p>
+<p>Does not support Recommendation Scan</p></td>
+<td><p>Supported</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Application Control</p></td>
+<td><p>Support for Windows</p></td>
+<td><p>Supported</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Device Control</p></td>
+<td><p>Supported</p>
+<p>macOS supports USB storage devices only</p></td>
+<td><p>Support for Windows</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Firewall</p></td>
+<td><p>Support for Windows</p></td>
+<td><p>Supported</p>
+<p>Allowed programs list not supported for Linux</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Advanced Risk Telemetry</p></td>
+<td><p>Support for Windows</p>
+<p>Non-persistent virtual desktops unsupported</p></td>
+<td><p>Supported</p></td>
+<td><p>Support for Windows and Linux</p>
+<p>Non-persistent virtual desktops unsupported</p></td>
+</tr>
+<tr>
+<td><p>Endpoint Sensor</p></td>
+<td><p>Supported</p>
+<p>Deepfake detector only supports Windows</p></td>
+<td><p>Supported</p>
+<p>Deepfake detector only supports Windows</p></td>
+<td><p>Supported</p>
+<p>Deepfake detector only supports Windows</p></td>
+</tr>
+<tr>
+<td><p>Data Security Sensor</p></td>
+<td><p>Supported</p></td>
+<td><p>Support for Windows</p></td>
+<td><p>Support for Windows and macOS</p></td>
+</tr>
+<tr>
+<td><p>Sandbox Submission</p></td>
+<td><p>Support for Windows</p></td>
+<td><p>Coming Soon</p></td>
+<td><p>-</p></td>
+</tr>
+<tr>
+<td><p>Exclusions</p></td>
+<td><p>Supported</p></td>
+<td><p>Supported</p></td>
+<td><p>Support for Linux and macOS</p></td>
+</tr>
+<tr>
+<td><p>Browser Extension</p></td>
+<td><p>Supported</p></td>
+<td><p>Support for Windows</p></td>
+<td><p>Support for Windows</p></td>
+</tr>
+<tr>
+<td><p>Agent Interface</p></td>
+<td><p>Supported</p>
+<p>Some notifications not supported for macOS</p>
+<p>Agent termination only supported for Windows</p></td>
+<td><p>Support for Windows</p></td>
+<td><p>Support for Windows and macOS</p>
+<p>Some notifications not supported for macOS</p>
+<p>Agent termination only supported for Windows</p></td>
+</tr>
+</tbody>
+</table>
+:::::

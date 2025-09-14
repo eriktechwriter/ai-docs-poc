@@ -1,0 +1,67 @@
+---
+slug: trend-vision-one-live-investigations
+title: Live Investigations
+---
+# Live Investigations
+
+Live Investigations perform the investigation on the current system state. Live Investigations can be configured to run at specific periods, and also support a wider set of criteria through the use of OpenIOC and YARA rules.
+
+:::warning[Important]
+
+Only available for Trend Vision One Endpoint Security agents installed on Windows platforms.
+:::
+
+Live Investigations support the following criteria:
+
+- **OpenIOC rules**: Use OpenIOC rules to scan for all files currently on the disk.
+
+  :::note
+
+  After selection, Endpoint Sensor displays a preview of the OpenIOC file. Review the preview to verify if the OpenIOC file contains supported indicators and conditions. Unsupported combinations are formatted with a strike-through and are ignored during the investigation.
+
+  For more information, see [Supported IOC Indicators for Live Investigations](ioc-indicators-for-live.mdx).
+  :::
+
+- **YARA rules**: Use YARA rules to scan all processes currently running in memory.
+
+  :::note
+
+  Root Cause Analysis results are only available for YARA rules.
+
+  Because Live Investigations run on the current system state, some files and registry entries may be locked or in use during this period. Root Cause Analysis results are not available for investigations using OpenIOC rules or registry search.
+  :::
+
+- **Search registry**: Specify registry keys, names and data to match on the target endpoints.
+
+  :::note
+
+  Investigations are performed only on registry values under the following root keys:
+
+  - HKEY_CURRENT_USER
+
+  - HKEY_CLASSES_ROOT
+
+  - HKEY_LOCAL_MACHINE
+
+  - HKEY_USERS
+  :::
+
+Administrators can specify the type of Live Investigation to run:
+
+- A one-time investigation runs only once. The investigation runs immediately after creation.
+
+  For more information, see [Starting a One-time Investigation](starting-one-time-investigation.mdx).
+
+- A scheduled investigation can be configured to run automatically at specific intervals.
+
+  For more information, see [Starting a Scheduled Investigation](starting-scheduled-investigation.mdx).
+
+Live Investigations take some time to complete.
+
+**Related information**
+
+- [Starting a One-time Investigation](starting-one-time-investigation.mdx)
+- [Starting a Scheduled Investigation](starting-scheduled-investigation.mdx)
+- [Supported IOC Indicators for Live Investigations](ioc-indicators-for-live.mdx)
+- [Investigation Results](investigation-results-screen.mdx)
+::::

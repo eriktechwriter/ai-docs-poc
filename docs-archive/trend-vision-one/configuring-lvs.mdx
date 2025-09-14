@@ -1,0 +1,164 @@
+---
+slug: trend-vision-one-configuring-lvs
+title: >-
+  Configuring Linux Virtual Server (LVS) as a load balancer for use with
+  multiple Internet Access on-premises gateways
+---
+# Configuring Linux Virtual Server (LVS) as a load balancer for use with multiple Internet Access on-premises gateways
+
+Configure and deploy Linux Virtual Server (LVS) as your load balancer to support using multiple Internet Access on-premises gateways as the authentication proxy for single sign-on.
+
+Linux supports network address translation (NAT) and full network address translation including source and destination (full NAT) modes for use as an authentication proxy.
+
+:::note
+
+- These screens and instructions are valid as of July 15, 2024 using LVS version 1.27-8.
+
+- The instructions assume there are two network interface controllers (NIC) on the machine being used as your LVS, each with different networks and Service Gateways.
+
+  ![](/images/NICnetworkTopology=GUID-1cbbf8ec-b284-4e74-8759-9d9d5a992dea.webp)
+:::
+
+### Procedure {#procedure}
+
+1.  To set up your LVS to operate in NAT mode:
+
+    :::warning[Important]
+
+    When operating in NAT mode, the LVS only performs destination network address translation (DNAT) when sending packets to upstream servers, so the LVS must be the gateway to all connected on-premises gateways.
+    :::
+
+    1.  Install [Keepalived](https://www.keepalived.org/) to provide load balancing functionality to your LVS.
+
+    2.  Edit the Keepalived config file at `/etc/keepalived/keepalived.conf` and create a block for `virtual_server`.
+
+        ```bash
+        virtual_server <IP> <port> {
+            delay_loop <loop>
+            lb_algo <lb_algo>
+            lb_kind NAT
+            persistent_timeout <persistent_timeout>
+            protocol TCP
+            real_server <IP 1> <port 1> {
+                weight <weight 1>
+            }
+            real_server <IP 2> <port 2> {
+                weight <weight 2>
+            }
+            ...
+        }
+        ```
+
+    3.  Specify the values from the table below in the placeholder fields in order to complete the configuration.
+
+        <table>
+        <thead>
+        <tr>
+        <th><p>Field</p></th>
+        <th><p>Value</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><p>IP</p></td>
+        <td><p>The IP address of the load balancer to be accessed by clients. It can be the load balancer’s IP or a virtual IP.</p></td>
+        </tr>
+        <tr>
+        <td><p>Port</p></td>
+        <td>The listening port on the load balancer used as the authentication proxy</td>
+        </tr>
+        <tr>
+        <td><p>lb_algo</p></td>
+        <td><p>Choose from:</p>
+        <ul>
+        <li><p><code>rr</code>: Round robin</p></li>
+        <li><p><code>wrr</code>: Weighted round robin</p></li>
+        <li><p><code>lc</code>: Least connection</p></li>
+        <li><p><code>wlc</code>: Weighted least connection</p></li>
+        <li><p><code>sh</code>: Source hash</p></li>
+        <li><p><code>dh</code>: Destination hash</p></li>
+        <li><p><code>lblc</code>: Locality-based least connection</p></li>
+        </ul>
+
+
+        :::warning[Important]
+
+        <p>If not using <code>sh</code> or <code>dh</code>, you must set a value for the persistence_timeout field in order to make connections persistent.</p>
+
+
+        :::
+
+        </td>
+        </tr>
+        <tr>
+        <td><p>lb_kind</p></td>
+        <td><p>NAT</p></td>
+        </tr>
+        <tr>
+        <td><p>Persistence_timeout (optional)</p></td>
+        <td><p>Required if the value for lb_algo is not <code>sh</code> or <code>dh</code></p>
+        <p>Specify a timeout value (in seconds) for persistent connections.</p></td>
+        </tr>
+        <tr>
+        <td><p>Protocol</p></td>
+        <td><p>TCP</p></td>
+        </tr>
+        <tr>
+        <td><p>IP (1, 2, 3, … )</p></td>
+        <td><p>The IP addresses of the Service Gateways with Internet Access on-premises gateways installed</p></td>
+        </tr>
+        <tr>
+        <td><p>Port (1, 2, 3, … )</p></td>
+        <td><p>The listening ports on the Service Gateways used for the authentication proxy</p></td>
+        </tr>
+        <tr>
+        <td><p>Weight</p></td>
+        <td><p>The weight to be used for load balancing decisions</p></td>
+        </tr>
+        </tbody>
+        </table>
+
+        Below is an example configuration with one virtual server listening on port 10000. The load balancing algorithm is round robin working in NAT mode. The persistence timeout is 10 seconds. Two upstream Service Gateways are connected: one is at 192.168.1.100, listening on 8089, and the other is at 192.168.1.101 listening at 18089.
+
+        ```bash
+        virtual_server 10.64.1.2 10000 {
+            delay_loop 20
+            lb_algo rr
+            lb_kind NAT
+            persistent_timeout 10
+            protocol TCP
+            real_server 192.168.1.100 8089 {
+                weight 1
+            }
+            real_server 192.168.1.101 18089 {
+                weight 1
+            }
+        }
+        ```
+
+2.  (Optional) To set up your LVS to run in full NAT mode, perform the following additional configuration steps:
+
+    :::warning[Important]
+
+    When operating in full NAT mode, the LVS performs both DNAT and SNAT when sending packets to upstream servers, so it does not need to serve as the gateway for all connected on-premises gateways.
+    :::
+
+    1.  Configure the following rules in iptables for use with NAT, where the IP field is the IP address to be accessed by clients, and the port field is the listening port on the load balancer used as the authentication proxy.
+
+        ```bash
+        iptables -t nat -I PREROUTING -d <IP> <port> -j MARK --set-xmark 0x4000/0x4000
+        iptables -t nat -I POSTROUTING -m mark --mark 0x4000/0x4000 -j MASQUERADE
+        ```
+
+    2.  Use the following command to enable conntrack for IPVS.
+
+        ```bash
+        sysctl net.ipv4.vs.conntrack=1
+        ```
+
+    3.  Use the following command to enable IP forwarding.
+
+        ```bash
+        sysctl net.ipv4.ip_forward=1
+        ```
+::::

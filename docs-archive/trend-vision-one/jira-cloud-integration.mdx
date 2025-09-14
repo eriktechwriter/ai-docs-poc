@@ -1,0 +1,84 @@
+---
+slug: trend-vision-one-jira-cloud-integration
+title: Jira Cloud integration (for Case Management)
+---
+# Jira Cloud integration (for Case Management)
+
+Configure bi-directional updates between Jira Cloud and Trend Vision One Case Management. Configuration requires a Jira administrator account.
+
+### Procedure {#procedure}
+
+1.  Download and install the **Trend Vision One Connector** from the [Atlassian Marketplace](https://marketplace.atlassian.com/apps/1237447/trend-vision-one-connector). Follow the instructions in the marketplace installation.
+
+2.  In Jira Cloud, go to **Apps → Trend Vision One Connector**.
+
+3.  Configure the settings for fields and value mapping. Mapping enables Jira and Case Management to bi-directionally sync updates.
+
+    1.  On the **Settings** tab, select the Case Management field value and choose the equivalent Jira field value.
+
+        - Priority Mappings: Matches the case priority level in Case Management to the Jira ticket equivalent. For example, **P1** in Case Management might equal **Highest** in Jira.
+
+        - Status Mappings; Matches the case status in Case Management to the Jira ticket equivalent. For example, **Closed** in Case Management might equal **Done** in Jira.
+
+        - Other Mappings: Matches other Case Management fields like **Case ID**, **Description**, or **Attachment** to equivalent fields in Jira.
+
+        - To move a row up, click ![](/images/Atlassian-up-arrow=b4836fd7-f83c-48d1-b770-d7f98a401488.webp).
+
+        - To move a row down, click ![](/images/Atlassian-down-arrow=46ad682e-8603-4f01-a51e-1f7a0b4e1f6b.webp).
+
+        - To delete a row, click ![](/images/Atlassian-delete=edeaf690-3374-4578-abce-71534cd98642.webp) **Delete**.
+
+    2.  Click **Apply Changes**.
+
+4.  Create a user specifically for integration:
+
+    1.  Go to **Settings → User Management**.
+
+    2.  Add and configure a new user.
+
+    3.  Assign the following permissions to the integration user:
+
+        - Browse project
+
+        - Create issues
+
+        - Edit issues
+
+        - Assign issues
+
+        - Resolve issues
+
+        - Close issues
+
+        - Transition issues
+
+        - Add comments
+
+        - Edit own comments
+
+        - Delete own comments
+
+        - Create attachments
+
+        For more information, see the [Jira Cloud documentation](https://support.atlassian.com/jira-cloud-administration/docs/manage-users-groups-permissions-and-roles-in-jira-cloud/).
+
+5.  Manage the API token.
+
+    1.  Click the **API** tab.
+
+    2.  Enter the universal resource locator (URL) for Trend Vision One.
+
+    3.  Paste the API token from Trend Vision One.
+
+    4.  Click **Test Connection**.
+
+        - If the token is invalid, copy and paste a correct API token for Trend Vision One.
+
+        - If a connection error occurs, try again later.
+
+    5.  After verifying the connection, click **Apply**.
+
+    - To remove the connection between Jira and Case Management, click **Revoke** then click **Yes** to confirm.
+
+6.  [Create a ticket profile](create-profile-jira.mdx).
+:::

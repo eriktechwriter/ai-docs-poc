@@ -1,0 +1,22 @@
+---
+slug: trend-vision-one-troubleshoot-azure-code-signing
+title: Troubleshoot Azure Code Signing
+---
+# Troubleshoot Azure Code Signing
+
+Since Microsoft Windows Agent components are now signed with [Azure Code Signing (ACS)](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/azure-code-signing-democratizing-trust-for-developers-and/ba-p/3604669), computers running earlier versions of Windows need to be updated with the [Microsoft KB5022661](https://support.microsoft.com/en-gb/topic/kb5022661-windows-support-for-the-azure-code-signing-program-4b505a31-fa1e-4ea6-85dd-6630229e8ef4) patch to be able to identify Azure Code Signing certificates. If this patch has not been applied, the Deep Security Agent installation or upgrade is expected to fail and the Deep Security Manager will display a warning to that effect.
+
+The following is a part of the Deep Security Agent log produced during a failed upgrade:
+
+<figure>
+<img src="./images/azure-code-signing=20230608102222.webp" />
+</figure>
+
+The following is a part of the Deep Security Manager system event log produced during a failed upgrade:
+
+<figure>
+<img src="./images/azure-code-signing-dsm=20230608102224.webp" />
+</figure>
+
+For more information, see [Trend Micro Server and Endpoint Protection Agent minimum Windows version requirements for updated binaries after February 2023](https://success.trendmicro.com/dcx/s/solution/000291904?language=en_US).
+:::

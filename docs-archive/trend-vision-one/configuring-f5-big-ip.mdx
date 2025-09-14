@@ -1,0 +1,90 @@
+---
+slug: trend-vision-one-configuring-f5-big-ip
+title: >-
+  Configuring F5 BIG-IP LTM as a load balancer for use with multiple Internet
+  Access on-premises gateways
+---
+# Configuring F5 BIG-IP LTM as a load balancer for use with multiple Internet Access on-premises gateways
+
+Configure and deploy F5 BIG-IP LTM as your load balancer to support using multiple Internet Access on-premises gateways as the authentication proxy for single sign-on.
+
+:::note
+
+- The screens and instructions are valid as of July 17. 2024 using F5 BIG-IP LTM version 17.1.1.
+
+- The instructions describe a single-NIC deployment.
+:::
+
+### Procedure {#procedure}
+
+1.  Create a pool.
+
+    1.  Go to **Local Traffic → Pools → Pool List → New Pool...**.
+
+        ![](/images/f5_Big-IP_New_Pool=GUID-882a2eaa-cb9d-4ba2-a946-d9e62b7569ce.webp)
+
+    2.  Specify a name for the new pool.
+
+    3.  Choose `tcp` from available health monitors and move it to **Active**.
+
+    4.  Choose your preferred load balancing method or keep the default setting.
+
+    5.  In **New Members**, add the IP address and port or FQDN and port of the Services Gateways with the Internet Access on-premises gateway installed that you wish to use as the authentication proxy.
+
+    6.  Click **Finished**.
+
+2.  Create a virtual server.
+
+    1.  Go to **Local Traffic → Virtual Servers → Virtual Server List**.
+
+    2.  Click **Create** and input the following values into the fields.
+
+        <table>
+        <thead>
+        <tr>
+        <th><p><strong>Field</strong></p></th>
+        <th><p><strong>Value</strong></p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>Name</td>
+        <td>The name of the server</td>
+        </tr>
+        <tr>
+        <td>Destination Address/Mask</td>
+        <td>BIG-IP VE IP address</td>
+        </tr>
+        <tr>
+        <td>Service Port</td>
+        <td>The listening port on in the load balancer to be used as the authentication proxy.</td>
+        </tr>
+        <tr>
+        <td>Protocol</td>
+        <td>TCP</td>
+        </tr>
+        <tr>
+        <td>Protocol Profile (Client)</td>
+        <td>TCP</td>
+        </tr>
+        <tr>
+        <td>Protocol Profile (Server)</td>
+        <td>The current client profile</td>
+        </tr>
+        <tr>
+        <td>Source Address Translation</td>
+        <td>Auto Map</td>
+        </tr>
+        <tr>
+        <td>Default Pool</td>
+        <td>The newly created pool</td>
+        </tr>
+        <tr>
+        <td>Default Persistence Profile</td>
+        <td>The persistence profile, for example <code>source_addr</code></td>
+        </tr>
+        </tbody>
+        </table>
+
+    3.  Click **Finished**.
+::::

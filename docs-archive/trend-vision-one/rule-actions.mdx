@@ -1,0 +1,48 @@
+---
+slug: trend-vision-one-rule-actions
+title: About policy rule actions
+---
+# About policy rule actions
+
+Policy rule actions allow you to specify what happens to messages that satisfy the conditions of the policy rule's criteria.
+
+Actions fall into these classes:
+
+- "Intercept" actions: Actions in this class intercept the message, preventing it from reaching the original recipient. Intercept actions include deleting the entire message and re-addressing the message.
+
+  :::note
+
+  "Intercept" actions are terminal actions. For more details about terminal actions, see [“Intercept” actions](actions.mdx).
+  :::
+
+- "Modify" actions: Actions in this class change the message or its attachments. Modify actions include cleaning cleanable viruses, deleting message attachments, inserting a stamp in the message body, or tagging the subject line.
+
+  :::note
+
+  "Modify" actions are non-terminal actions, as the email can continue to be processed by lower-priority policy rules after the triggered rule applies the modify action. "Modify" actions can be combined, such as **Delete matching attachments** and **Insert stamp in body**.
+  :::
+
+- "Monitor" actions: Actions in this class allow administrators to monitor messaging. Monitor actions include sending a notification message to others or sending a BCC (blind carbon copy) of the message to others.
+
+- "Encrypt Email Message" actions: Actions in this class encrypt the message and then queue it for delivery. This is a non-intercept action, but no other actions can be taken on the target message after this policy rule is triggered. This action has the lowest priority of all actions, but when triggered it is always the final policy rule run before the message is queued for delivery. If more than one policy rule in the policy rule set is triggered, the policy rule that uses the encrypt email action will always be triggered last.
+
+  :::note
+
+  This action only applies to outbound policy rules.
+  :::
+
+Each policy rule can contain:
+
+- One and only one intercept action, and
+
+- Any combination of modify or monitor actions
+
+**Related information**
+
+- [Specifying policy rule actions](specifying-rule-actions.mdx)
+- [intercept actions](actions.mdx)
+- [modify actions](actions-email-security.mdx)
+- [monitor actions](action-monitor-email-security.mdx)
+- [Encrypting outbound messages](encrypting-outbound-messages.mdx)
+- [About the send notification action](send-notification-action.mdx)
+:::

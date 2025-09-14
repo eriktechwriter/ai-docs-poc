@@ -1,0 +1,63 @@
+---
+slug: trend-vision-one-activity-monitoring-engine-offline
+title: 'Error: Activity Monitoring engine offline'
+---
+# Error: Activity Monitoring engine offline
+
+For an overview of the Activity Monitoring module, see [About Anti-Malware](anti-malware.mdx).
+
+To troubleshoot this error:
+
+1.  In the Workload Security console, look for other errors on the same machine. If errors exist, other issues could cause your Activity Monitoring engine to be offline, such as communications or agent installation failure.
+
+2.  Check communications from the agent to the Workload Security Relay and Workload Security.
+
+3.  In the Workload Security console, view the details for the agent with the issue.
+
+    - Verify that the policy or setting for Activity Monitoring is enabled.
+
+4.  Deactivate and uninstall the agent before reinstalling and reactivating it.
+
+    For more information, see [Uninstall the Server & Workload Protection Agent](uninstall-swp-agent.mdx) and [Activate the agent](activate-agent.mdx).
+
+5.  In the Workload Security console, go to Updates for that computer.
+
+    1.  Verify that the Security Updates are present and current.
+
+    2.  If not, click **Download Security Updates**.
+
+**Related information**
+
+- Troubleshoot the Agent on Windows
+- Troubleshoot the Agent on Linux
+
+## Troubleshoot the Agent on Windows {#troubleshoot-the-agent-on-windows}
+
+To troubleshoot the Workload Security Agent on Windows:
+
+1.  Make sure the following services are running:
+
+    - Trend Micro Workload Security Agent
+
+    - Trend Micro Solution Platform
+
+2.  Check that all the Anti-Malware related drivers are running properly by executing the following command: `# sc query AMSP`
+
+    - If a driver is not running, restart the Trend Micro services.
+
+    - If the driver is still not running, perform the following steps:
+
+      1.  Verify the installation method. Only install the MSI, not the ZIP file.
+
+      2.  Manually remove and reinstall the Agent. See [Manually uninstalling Workload Security Agent, Relay, and Notifier from Windows](https://success.trendmicro.com/solution/1096150).
+
+## Troubleshoot the Agent on Linux {#troubleshoot-the-agent-on-linux}
+
+To troubleshoot the Workload Security Agent on Linux:
+
+1.  Verify that the agent is running using the following command in the command line: `service ds_agent status`
+
+2.  If you are using a Linux server, your kernel might not be supported. For more information, see [Error: Module installation failed (Linux)](error-module-install-linux.mdx).
+
+    - When a Linux kernel is not supported, the Anti-Malware engine may remain partially functional and show a Warning rather than an Error. For details, see [Warning: Activity Monitoring engine has only basic functions](activity-monitoring-basic.mdx).
+:::

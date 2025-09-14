@@ -1,0 +1,45 @@
+---
+slug: trend-vision-one-blocked-lists-online
+title: Viewing blocked lists for Exchange Online
+---
+# Viewing blocked lists for Exchange Online
+
+The Blocked Lists for Exchange Online specify the blocked senders, URLs, SHA-1 hash values, and SHA-256 hash values for your organization through the Threat Remediation API. Email messages that match any item in the lists will be automatically quarantined by Cloud Email and Collaboration Protection.
+
+After the blocked lists are configured, a message **Blocked Lists for Exchange Online enabled** displays on the **Advanced Threat Protection** screen for Exchange Online policies. The blocked lists apply to all targets in the enabled Exchange Online policies and take precedence over the configurations in these policies.
+
+### Procedure {#procedure}
+
+1.  Generate an authentication token to use the Threat Remediation API.
+
+    For more information about how to manage the token, see [Generating an Authentication Token](http://docs.trendmicro.com/en-us/enterprise/cloud-app-security-integration-api-online-help/getting-started-with/generating-an-authen.aspx).
+
+2.  Add, remove or view blocked senders, URLs, SHA-1 hash values, and SHA-256 hash values through the Threat Remediation API.
+
+    For more information about how to use this API, see [Supported Cloud Email and Collaboration Protection Automation APIs](https://docs.trendmicro.com/en-us/enterprise/cloud-app-security-integration-api-online-help/supported-cloud-app-.aspx).
+
+3.  View the blocked lists.
+
+    1.  In Cloud Email and Collaboration Protection, go to **Policies → Global Settings → User-Defined Lists → Approved/Blocked Lists**, click **Exchange Online**, and locate the **Blocked Lists** section.
+
+    2.  Optionally enable or disable the blocked lists.
+
+    3.  View the items specified in each blocked list:
+
+        - **Blocked Senders**: email address that an email message is sent from
+
+        - **Blocked URLs**: URL that is included in an email message
+
+        - **Blocked SHA-1 Values**: SHA-1 hash value of an email attachment
+
+        - **Blocked SHA-256 Values**: SHA-256 hash value of an email attachment
+
+        :::note
+
+        In this release, you can only view the blocked lists on the management console. To add or remove a blocked item, use the Threat Remediation API.
+        :::
+
+    4.  Optionally click **Export** to export the blocked lists to a CSV file.
+
+    5.  Click **OK**.
+:::

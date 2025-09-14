@@ -1,0 +1,82 @@
+---
+slug: trend-vision-one-proxysg-adv-secure-gateway
+title: ProxySG and Advanced Secure Gateway integration
+---
+
+Trend Vision One enables sharing of suspicious object data with ProxySG and Advanced Secure Gateway through a Service Gateway.
+
+Configure sharing of suspicious object data with this integration through a Service Gateway.
+
+:::note
+At least one [Service Gateway](deployment-guides.md) installed with the Suspicious Object Exchange Service must be configured to enable integration.
+
+For more information, see [Service Gateway Management](service-gateway-management.md).
+:::
+
+### Procedure {#procedure}
+
+1.  Configure settings on Trend Vision One.
+
+    1.  In the Trend Vision One console, go to **Workflow and Automation → Third-Party Integration**.
+
+    2.  In the **Integration** column, click **ProxySG and Advanced Secure Gateway**.
+
+    3.  Use the toggle to enable or disable the integration.
+
+    4.  Review the *Legal Statement* and click **Accept** or **Close** to continue.
+
+    5.  Under **Data Transfer**, configure data sharing criteria and integration settings.
+
+        1.  **Risk level**: Select the risk level of the suspicious object data to include in the shared data.
+
+        2.  **Frequency**: Select the frequency at which suspicious object data is shared.
+
+    6.  Under **Service Gateway Connection**, configure the connection between the Service Gateway and the integration.
+
+        1.  Click **Connect**.
+
+            The **Service Gateway Connection** panel appears.
+
+        2.  Select a Service Gateway installed with the Suspicious Object Exchange Service.
+
+        3.  Configure the integration server settings.
+
+        4.  (Optional) Click **Test Connection** to verify if the settings are valid.
+
+        5.  Click **Connect**.
+
+            The connection configuration is added to the list.
+
+        6.  Click the **Generate Now** icon (![](/images/GenerateNowIcon=GUID-60CE3573-F37D-4CD3-9E0A-74C7DCBF3525.webp)) to generate suspicious object data sharing files immediately.
+
+        7.  Hover over the **Copy URL** icon (![](/images/ServiceGatewayCopyIcon=GUID-EE08C798-0F99-467B-996A-93D14044BF0E.webp)) to copy the suspicious object data sharing URLs to use on your integration.
+
+    7.  Repeat the previous step to add multiple connection configurations for this integration.
+
+    8.  Click **Save**.
+
+2.  Configure settings on your integration.
+
+    :::note
+    The following steps were performed using version 6.7 of the ProxySG Management Console.
+
+    If you are using a different version, refer to the documentation for your version.
+    :::
+
+    1.  On the ProxySG Management Console, go to **Configuration → Policy → Policy Files → Policy Files**.
+
+    2.  From the **Install Central File from** drop-down list, select **Remote URL**.
+
+    3.  Paste the suspicious object data sharing URL that you obtained from the Trend Vision One console.
+
+    4.  (Optional) To view the file before installing it, click **View**.
+
+    5.  Click **Install**.
+
+        A summarized view of the reinstallation results appears.
+
+    6.  Close the window and then click **OK**.
+
+    7.  Click **Apply**.
+
+        Your ProxySG appliance is configured to retrieve suspicious object data from the Trend Vision One Service Gateway.

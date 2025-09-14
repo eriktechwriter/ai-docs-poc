@@ -1,0 +1,112 @@
+---
+slug: trend-vision-one-fortigate-ng-firewall
+title: FortiGate Next-Generation Firewall integration
+---
+
+Trend Vision One enables sharing of suspicious object data with FortiGate Next-Generation Firewall through a Service Gateway.
+
+Configure sharing of suspicious object data with this integration through a Service Gateway.
+
+:::note
+At least one [Service Gateway](deployment-guides.md) installed with the Suspicious Object Exchange Service must be configured to enable integration.
+
+For more information, see [Service Gateway Management](service-gateway-management.md).
+:::
+
+### Procedure {#procedure}
+
+1.  Configure settings on Trend Vision One.
+
+    1.  In the Trend Vision One console, go to **Workflow and Automation → Third-Party Integration**.
+
+    2.  In the **Integration** column, click **FortiGate Next-Generation Firewall**.
+
+    3.  Use the toggle to enable or disable the integration.
+
+    4.  Review the *Legal Statement* and click **Accept** or **Close** to continue.
+
+    5.  Under **Data Transfer**, configure data sharing criteria and integration settings.
+
+        1.  **Object type**: Select the file hash value format to use.
+
+        2.  **Risk level**: Select the risk level of the suspicious object data to include in the shared data.
+
+        3.  **Frequency**: Select the frequency at which suspicious object data is shared.
+
+        4.  **URL parameters**: Select whether to remove query strings from URLs.
+
+    6.  Under **Service Gateway Connection**, configure the connection between the Service Gateway and the integration.
+
+        1.  Click **Connect**.
+
+            The **Service Gateway Connection** panel appears.
+
+        2.  Select a Service Gateway installed with the Suspicious Object Exchange Service.
+
+        3.  Configure the integration server settings.
+
+        4.  (Optional) Click **Test Connection** to verify if the settings are valid.
+
+        5.  Click **Connect**.
+
+            The connection configuration is added to the list.
+
+        6.  Click the **Generate Now** icon (![](/images/GenerateNowIcon=GUID-60CE3573-F37D-4CD3-9E0A-74C7DCBF3525.webp)) to generate suspicious object data sharing files immediately.
+
+        7.  Hover over the **Copy URL** icon (![](/images/ServiceGatewayCopyIcon=GUID-EE08C798-0F99-467B-996A-93D14044BF0E.webp)) to copy the suspicious object data sharing URLs to use on your integration.
+
+    7.  Repeat the previous step to add multiple connection configurations for this integration.
+
+    8.  Click **Save**.
+
+2.  Configure settings on your integration.
+
+    :::note
+    The following steps were performed using version 7.0.0 of the FortiOS GUI.
+
+    If you are using a different version, refer to the documentation for your version.
+    :::
+
+    1.  On the FortiOS GUI, go to **Security Fabric → External Connectors**.
+
+    2.  Click **Create New** and create an object for each of the following types of **Threat Feeds**.
+
+        - **FortiGuard Category**: Create an object to retrieve suspicious object data for URLs.
+
+        - **IP Address**: Create an object to retrieve suspicious object data for IP addresses.
+
+        - **Domain Name**: Create an object to retrieve suspicious object data for domain names.
+
+        - **Malware Hash**: Create an object to retrieve suspicious object data for file hashes.
+
+    3.  Configure the object.
+
+        1.  **Name**: Type a name for this object.
+
+        2.  **URI of external resource**: Paste the suspicious object data sharing URL that you obtained from the Trend Vision One console.
+
+        3.  **HTTP basic authentication**: Disable this setting.
+
+        4.  **Refresh rate**: Specify the rate at which this object checks for updates.
+
+            :::tip
+            Trend Micro recommends matching the refresh rate to the suspicious object data sharing **Frequency** configured on Trend Vision One.
+            :::
+
+        5.  **Comments**: Type some comments to help you identify this object.
+
+        6.  **Status**: Enable this setting.
+
+        7.  Click **OK**.
+
+        - Your FortiGate appliance is configured to retrieve suspicious object data from the Trend Vision One Service Gateway.
+
+        - The configured **Threat Feeds** objects can be used as external resources in *Policies* and *Security Profiles*.
+
+    4.  Repeat the previous two steps until you have created objects for each of the specified types of **Threat Feeds**.
+
+    5.  Go to **Security Fabric → External Connectors → Threat Feeds**, double-click on each object you created, and do the following:
+
+        - Click the **Refresh** icon to retrieve suspicious object data from the Trend Vision One Service Gateway immediately.
+
+        - (Optional) Click **View Entries** to display the suspicious object data retrieved from the Trend Vision One Service Gateway.
