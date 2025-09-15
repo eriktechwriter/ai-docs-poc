@@ -4,27 +4,71 @@
  * work well for content-centric websites.
  */
 
-/* You can override the default Infima variables here. */
+/* Trend Micro brand colors */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #d71921;
+  --ifm-color-primary-dark: #c2161d;
+  --ifm-color-primary-darker: #b6151c;
+  --ifm-color-primary-darkest: #961117;
+  --ifm-color-primary-light: #dc2d34;
+  --ifm-color-primary-lighter: #de3740;
+  --ifm-color-primary-lightest: #e45158;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* Trend Micro brand colors for dark mode */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
+  --ifm-color-primary: #ff4757;
+  --ifm-color-primary-dark: #ff3742;
+  --ifm-color-primary-darker: #ff2d3a;
+  --ifm-color-primary-darkest: #ff0d1f;
+  --ifm-color-primary-light: #ff576c;
+  --ifm-color-primary-lighter: #ff6175;
+  --ifm-color-primary-lightest: #ff7b8c;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Additional Trend Micro brand styling */
+.navbar__brand {
+  font-weight: 600;
+}
+
+.navbar__title {
+  color: var(--ifm-navbar-link-color) !important;
+}
+
+/* Style the search button with Trend Micro red accent */
+.DocSearch-Button {
+  border: 1px solid var(--ifm-color-primary);
+}
+
+.DocSearch-Button:hover {
+  background-color: var(--ifm-color-primary-lightest);
+  border-color: var(--ifm-color-primary);
+}
+
+/* Style links with Trend Micro red */
+.markdown a {
+  color: var(--ifm-color-primary);
+}
+
+.markdown a:hover {
+  color: var(--ifm-color-primary-dark);
+}
+
+/* Style the table of contents with Trend Micro red accents */
+.table-of-contents__link--active {
+  color: var(--ifm-color-primary);
+  border-left-color: var(--ifm-color-primary);
+}
+
+/* Style pagination with Trend Micro red */
+.pagination-nav__link:hover {
+  border-color: var(--ifm-color-primary);
+}
+
+.pagination-nav__link--next:hover .pagination-nav__label::after,
+.pagination-nav__link--prev:hover .pagination-nav__label::before {
+  color: var(--ifm-color-primary);
 }
