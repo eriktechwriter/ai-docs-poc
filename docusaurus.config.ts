@@ -10,7 +10,7 @@ const mainUrl: string = "https://docs.trendmicro.com"; // Always `docs.trendmicr
 // Dropdowns
 
 const config: Config = {
-  title: `${productName} | Trend Micro Online Help`, // Do not edit this value
+  title: `${productName} TechDocs | Trend Micro`, // Updated for TechDocs branding
   //tagline: 'Dinosaurs are cool',
   favicon: "brand/favicon.ico", // Do not edit this value
 
@@ -67,9 +67,9 @@ const config: Config = {
     //image: 'img/docusaurus-social-card.jpg',
     navbar: {
       style: "dark",
-      title: "Online Help Center", // The title that appears in the navbar
+      title: "Trend Vision One TechDocs", // The title that appears in the navbar
       logo: {
-        alt: "Trend Micro Online Help Center",
+        alt: "Trend Vision One TechDocs",
         src: "brand/logo.svg",
       },
       items: [
