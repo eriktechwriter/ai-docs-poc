@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en-us" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-configuring-saml-ad" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">Configuring Microsoft Entra ID | Trend Vision One TechDocs | Trend Micro</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-configuring-saml-ad"><meta data-rh="true" property="og:locale" content="en_us"><meta data-rh="true" name="docusaurus_locale" content="en-us"><meta data-rh="true" name="docsearch:language" content="en-us"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Configuring Microsoft Entra ID | Trend Vision One TechDocs | Trend Micro"><meta data-rh="true" name="description" content="Configure Microsoft Entra ID as a SAML (2.0) identity provider for Trend Vision One to use."><meta data-rh="true" property="og:description" content="Configure Microsoft Entra ID as a SAML (2.0) identity provider for Trend Vision One to use."><link data-rh="true" rel="icon" href="/ai-docs-poc/brand/favicon.ico"><link data-rh="true" rel="canonical" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-configuring-saml-ad"><link data-rh="true" rel="alternate" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-configuring-saml-ad" hreflang="en-us"><link data-rh="true" rel="alternate" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-configuring-saml-ad" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Administration","item":"https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-administration-setting"},{"@type":"ListItem","position":2,"name":"Identity providers","item":"https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-identity-providers"},{"@type":"ListItem","position":3,"name":"Configuring Microsoft Entra ID","item":"https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-configuring-saml-ad"}]}</script><link rel="stylesheet" href="/ai-docs-poc/assets/css/styles.f31b9b34.css">
+<script src="/ai-docs-poc/assets/js/runtime~main.a698b785.js" defer="defer"></script>
+<script src="/ai-docs-poc/assets/js/main.af1712bd.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav class="navbar_thvB"><div class="navbarContainer_T6aE"><div class="navbarLeft__b30"><a class="navbarBrand_EDOm" href="/ai-docs-poc/"><img src="/ai-docs-poc/brand/t-ball-icon.svg" alt="Trend Vision One" class="navbarIcon_K54r"><span class="navbarText_AeJ_">Trend Vision One <span class="techDocs_EEyr">TechDocs</span></span></a><div class="navbarNav_bcxn"><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Solutions<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Updates<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Guides<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Resources<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Support &amp; Compliance<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Legacy Products<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div></div></div><div class="navbarActions_Kz3N"><div class="searchContainer_bUHY"><input type="search" placeholder="Search docs..." class="searchInput_wxeP"></div><div class="darkModeToggle_kLkm"><button class="darkModeButton_WNed" aria-label="Toggle dark mode">🌙</button></div><button class="mobileMenuButton_OkTY" aria-label="Toggle mobile menu"><span class="hamburger_uk35"></span><span class="hamburger_uk35"></span><span class="hamburger_uk35"></span></button></div></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/ai-docs-poc/">Endpoint Security</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ai-docs-poc/trend-vision-one-ppdcd-trend-vision-one">Privacy and personal data collection disclosure</a><button aria-label="Expand sidebar category &#x27;Privacy and personal data collection disclosure&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/ai-docs-poc/trend-vision-one-data-privacy-security-compliance">Trend Vision One data privacy, security, and compliance</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/ai-docs-poc/trend-vision-one-pci-security-standards">PCI Security Standards</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ai-docs-poc/trend-vision-one-introduction-part-trend-vision-one">Introduction</a><button aria-label="Expand sidebar category &#x27;Introduction&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ai-docs-poc/trend-vision-one-getting-started-part">Getting started</a><button aria-label="Expand sidebar category &#x27;Getting started&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ai-docs-poc/trend-vision-one-get-start-endpoint-security">Endpoint Security (for Standard Endpoint and Server &amp; Workload Protection)</a><button aria-label="Expand sidebar category &#x27;Endpoint Security (for Standard Endpoint and Server &amp; Workload Protection)&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/ai-docs-poc/trend-vision-one-administration-setting">Administration</a><button aria-label="Collapse sidebar category &#x27;Administration&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ai-docs-poc/trend-vision-one-user-accounts-foundation-services">User accounts and roles for Foundation Services</a><button aria-label="Expand sidebar category &#x27;User accounts and roles for Foundation Services&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" tabindex="0" href="/ai-docs-poc/trend-vision-one-identity-providers">Identity providers</a><button aria-label="Collapse sidebar category &#x27;Identity providers&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-configuring-adfs">Configuring Active Directory Federation Services</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/ai-docs-poc/trend-vision-one-configuring-saml-ad">Configuring Microsoft Entra ID</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-configuring-okta-saml">Configuring Okta</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-configuring-onelogin">Configuring OneLogin</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-okta-integration">Okta integration</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-openldap-integration">OpenLDAP integration</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ai-docs-poc/trend-vision-one-notifications">Notifications</a><button aria-label="Expand sidebar category &#x27;Notifications&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ai-docs-poc/trend-vision-one-third-party-integration">Third-party integration</a><button aria-label="Expand sidebar category &#x27;Third-party integration&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ai-docs-poc/trend-vision-one-platform-api-keys">Platform API keys</a><button aria-label="Expand sidebar category &#x27;Platform API keys&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-console-settings">Console Settings</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-audit-logs">Audit Logs</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ai-docs-poc/trend-vision-one-getting-help-troubleshooting">Getting Help and Troubleshooting</a><button aria-label="Expand sidebar category &#x27;Getting Help and Troubleshooting&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/ai-docs-poc/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/ai-docs-poc/trend-vision-one-administration-setting"><span>Administration</span></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/ai-docs-poc/trend-vision-one-identity-providers"><span>Identity providers</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Configuring Microsoft Entra ID</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Configuring Microsoft Entra ID</h1></header><p>Configure Microsoft Entra ID as a SAML (2.0) identity provider for Trend Vision One to use.</p>
+<p>Microsoft Entra ID is a multi-tenant cloud based directory and identity management service.</p>
+<p>To use Microsoft Entra ID as an identity provider (IdP), you must have a valid subscription with a Microsoft Entra ID edition license (Free, Basic, or Premium) that handles the sign-in process and provides authentication credentials to the Trend Vision One management console.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="procedure">Procedure<a href="#procedure" class="hash-link" aria-label="Direct link to Procedure" title="Direct link to Procedure">​</a></h3>
+<ol>
+<li>
+<p>Create a new enterprise application in the Microsoft Entra ID console.</p>
+<ol>
+<li>
+<p>Sign in to the <a href="https://portal.azure.com" target="_blank" rel="noopener noreferrer">Microsoft Azure portal</a> using your Microsoft Entra ID administrator account.</p>
+</li>
+<li>
+<p>Under <strong>Azure services</strong>, click <strong>Microsoft Entra ID</strong>.</p>
+<p>On first use, you might need to click <strong>More services</strong> and search for <em>Microsoft Entra ID</em>.</p>
+</li>
+<li>
+<p>In the left navigation bar, go to <strong>Manage → Enterprise applications</strong>.</p>
+</li>
+<li>
+<p>Click <strong>+ New application</strong>.</p>
+</li>
+<li>
+<p>On the <strong>Browse Microsoft Entra Gallery</strong> screen, click <strong>+ Create your own application</strong>.</p>
+<p>The <strong>Create your own application</strong> window appears.</p>
+</li>
+<li>
+<p>Specify a display name for the application.</p>
+</li>
+<li>
+<p>Under <strong>What are you looking to do with your application?</strong>, select <strong>Integrate any other application you don&#x27;t find in the gallery (Non-gallery)</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Create</strong>.</p>
+<p>The <strong>Overview</strong> screen for the application appears.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Assign users and roles to the application.</p>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Important</div><div class="admonitionContent_BuS1"><p>If you intend to use the Private Access and Internet Access services in Zero Trust Secure Access, Trend Micro recommends skipping this step. Instead, go to <strong>Manage → Properties</strong> in the left navigation bar, use the toggle to disable <strong>Assignment required?</strong> toggle, click <strong>Save</strong>, and then go on to Step 3.</p><p>If user assignment is required, assign each user individually to use the Private Access service and Internet Access service.</p></div></div>
+<ol>
+<li>
+<p>Under <strong>Getting Started</strong>, click the link in the <strong>1. Assign users and groups</strong> section.</p>
+</li>
+<li>
+<p>Click <strong>+ Add user/group</strong>.</p>
+</li>
+<li>
+<p>Under <strong>Users and groups</strong> in the left navigation bar, click <strong>None Selected</strong>.</p>
+</li>
+<li>
+<p>Select or search for the users you want to assign, and then click <strong>Select</strong>.</p>
+</li>
+<li>
+<p>When you have finished selecting users, click <strong>Assign</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Assign</strong>.</p>
+<p>The selected users appear on the <strong>Users and groups</strong> screen</p>
+<p>for the application.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Configure single sign-on for the application.</p>
+<ol>
+<li>
+<p>Go to <strong>Overview</strong> in the left navigation bar.</p>
+</li>
+<li>
+<p>Under <strong>Getting Started</strong>, click the link in the <strong>2. Set up single sign on</strong> section.</p>
+</li>
+<li>
+<p>Under <strong>Select a single sign-on method</strong>, click <strong>SAML</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Upload metadata file</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Select a file</strong> and select the metadata XML file downloaded from Identity Providers in the Trend Vision One console.</p>
+<p>For more information on obtaining the Trend Vision One metadata file, see <a href="/ai-docs-poc/trend-vision-one-identity-providers">Identity Providers (Foundation Services release)</a>.</p>
+</li>
+<li>
+<p>Click <strong>Add</strong> to upload the file.</p>
+<p>The <strong>Basic SAML Configuration</strong> window appears automatically.</p>
+</li>
+<li>
+<p>Click <strong>Save</strong> and close the <strong>Basic SAML Configuration</strong> window.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>(Optional) Configure attributes and claims to support IdP-Only SAML Group Accounts.</p>
+<ol>
+<li>
+<p>In the <strong>Attributes &amp; Claims</strong> section, click <strong>Edit</strong>.</p>
+<p>The <strong>Attributes &amp; Claims</strong> screen appears.</p>
+</li>
+<li>
+<p>For <code>Unique User Identifier (Name ID)</code>, ensure that the default value is <code>user.userprincipalname</code>.</p>
+</li>
+<li>
+<p>Click <strong>+ Add a group claim</strong> to grant selected groups access to Trend Vision One.</p>
+</li>
+<li>
+<p>Based on the users you assigned to the application, select the most suitable option.</p>
+<p>For more information on selecting groups, see <a href="https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/how-to-connect-fed-group-claims" target="_blank" rel="noopener noreferrer">Microsoft Entra ID documentation</a>.</p>
+</li>
+<li>
+<p>For <strong>Source attribute</strong>, use the default value <strong>Group ID</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Save</strong>.</p>
+<p>Be sure to copy and retain the <strong>Group ID</strong> claim name to specify as the <strong>Group attribute</strong> in the Trend Vision One <a href="/ai-docs-poc/trend-vision-one-identity-providers">Identity Providers app</a>.</p>
+</li>
+<li>
+<p>(Optional) Click <strong>+ Add new claim</strong>, specify <code>name</code> in the <strong>Name</strong> field and select an attribute for the <strong>Source attribute</strong> field, then click <strong>Save</strong>.</p>
+<p>Trend Micro recommends skipping this step unless you want to use an attribute other than the default, <code>user.userprincipalname</code>, to distinguish different users. By default, users are distinguished by their <strong>NameID</strong>.</p>
+<p>If you choose to complete this step, be sure to copy and retain this claim name to specify as the <strong>User attribute</strong> in the Trend Vision One <a href="/ai-docs-poc/trend-vision-one-identity-providers">Identity Providers app</a>.</p>
+</li>
+<li>
+<p>Click <strong>+ Add new claim</strong>, specify <code>displayname</code> in the <strong>Name</strong> field and <code>user.displayname</code> in the <strong>Source attribute</strong> field, and click <strong>Save</strong>.</p>
+<p>Be sure to copy and retain this claim name to specify as the <strong>User display name attribute</strong> in the Trend Vision One <a href="/ai-docs-poc/trend-vision-one-identity-providers">Identity Providers app</a>.</p>
+<p><img decoding="async" loading="lazy" src="/ai-docs-poc/assets/images/MicrosoftEntraIDClaims=GUID-b8fb2432-007c-4e19-876d-826703b95818-47d9145e4cd06af6d0705e4c7e11bb02.webp" width="787" height="548" class="img_ev3q"></p>
+</li>
+<li>
+<p>Click <strong>SAML-based Sign-on</strong> to return to the previous screen.</p>
+</li>
+<li>
+<p>If prompted to test single sign-on with the new application, click <strong>No, I&#x27;ll test later</strong>.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>In the <strong>SAML Certificates</strong> section, click <strong>Download</strong> to obtain the <em>Federation Metadata XML</em> file.</p>
+</li>
+<li>
+<p>In the Trend Vision One console, add Microsoft Entra ID as an identity provider and import the downloaded metadata file.</p>
+<p>For more information on adding identity providers to Trend Vision One, see <a href="/ai-docs-poc/trend-vision-one-identity-providers">Identity Providers (Foundation Services release)</a>.</p>
+</li>
+</ol></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/ai-docs-poc/trend-vision-one-configuring-adfs"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Configuring Active Directory Federation Services</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/ai-docs-poc/trend-vision-one-configuring-okta-saml"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Configuring Okta</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#procedure" class="table-of-contents__link toc-highlight">Procedure</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">© 2025  Trend Micro Incorporated. All rights reserved.</div></div></div></footer></div>
+</body>
+</html>

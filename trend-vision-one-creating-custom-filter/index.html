@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en-us" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-creating-custom-filter" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">Create a custom filter | Trend Vision One TechDocs | Trend Micro</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-creating-custom-filter"><meta data-rh="true" property="og:locale" content="en_us"><meta data-rh="true" name="docusaurus_locale" content="en-us"><meta data-rh="true" name="docsearch:language" content="en-us"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Create a custom filter | Trend Vision One TechDocs | Trend Micro"><meta data-rh="true" name="description" content="Use a query string to create a custom filter that detects events in your environment and enable custom models to trigger Workbench alerts."><meta data-rh="true" property="og:description" content="Use a query string to create a custom filter that detects events in your environment and enable custom models to trigger Workbench alerts."><link data-rh="true" rel="icon" href="/ai-docs-poc/brand/favicon.ico"><link data-rh="true" rel="canonical" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-creating-custom-filter"><link data-rh="true" rel="alternate" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-creating-custom-filter" hreflang="en-us"><link data-rh="true" rel="alternate" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-creating-custom-filter" hreflang="x-default"><link rel="stylesheet" href="/ai-docs-poc/assets/css/styles.f31b9b34.css">
+<script src="/ai-docs-poc/assets/js/runtime~main.a698b785.js" defer="defer"></script>
+<script src="/ai-docs-poc/assets/js/main.af1712bd.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav class="navbar_thvB"><div class="navbarContainer_T6aE"><div class="navbarLeft__b30"><a class="navbarBrand_EDOm" href="/ai-docs-poc/"><img src="/ai-docs-poc/brand/t-ball-icon.svg" alt="Trend Vision One" class="navbarIcon_K54r"><span class="navbarText_AeJ_">Trend Vision One <span class="techDocs_EEyr">TechDocs</span></span></a><div class="navbarNav_bcxn"><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Solutions<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Updates<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Guides<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Resources<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Support &amp; Compliance<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Legacy Products<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div></div></div><div class="navbarActions_Kz3N"><div class="searchContainer_bUHY"><input type="search" placeholder="Search docs..." class="searchInput_wxeP"></div><div class="darkModeToggle_kLkm"><button class="darkModeButton_WNed" aria-label="Toggle dark mode">🌙</button></div><button class="mobileMenuButton_OkTY" aria-label="Toggle mobile menu"><span class="hamburger_uk35"></span><span class="hamburger_uk35"></span><span class="hamburger_uk35"></span></button></div></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><main class="docMainContainer_TBSr docMainContainerEnhanced_lQrH"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Create a custom filter</h1></header><p>Use a query string to create a custom filter that detects events in your environment and enable custom models to trigger <strong>Workbench</strong> alerts.</p>
+<p>Custom filters consist of basic information, event type, event ID or vendor, and a query string for detecting events in your environment. You can create a maximum of 50 custom filters. The event type and event ID or vendor define the type of data queried by the filter. For example, ENDPOINT_ACTIVITY queries endpoint data from endpoint-based data sources such as Endpoint Sensor. Selecting TELEMETRY_FILE, further refines the query to only file events within endpoint activity data. For more information about event types and data sources, see <a href="/ai-docs-poc/trend-vision-one-search-method-data-sources">Search method data sources</a>.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="procedure">Procedure<a href="#procedure" class="hash-link" aria-label="Direct link to Procedure" title="Direct link to Procedure">​</a></h3>
+<ol>
+<li>
+<p>Go to <strong>XDR Threat Investigation → Detection Model Management → Custom Filters</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Add</strong>.</p>
+</li>
+<li>
+<p>Specify the <strong>Filter name</strong>.</p>
+</li>
+<li>
+<p>Type a <strong>Description</strong> of the filter.</p>
+</li>
+<li>
+<p>Specify the <strong>Severity</strong> associated with the event that this filter detects.</p>
+</li>
+<li>
+<p>Select the <strong>Event type</strong>.</p>
+<ul>
+<li>For THIRD_PARTY_LOG, provide the <strong>Vendor</strong> associated with the event you want to match.</li>
+<li>For all other event types, select <strong>Event ID</strong>.</li>
+</ul>
+</li>
+<li>
+<p>Specify a <strong>Query</strong> to locate the target events in the activity data.</p>
+<p>For more information about formatting filter queries, see <a href="/ai-docs-poc/trend-vision-one-custom-filter-query-format">Filter query format</a> and <a href="/ai-docs-poc/trend-vision-one-using-regex-custom-filters">Use regex in custom filters</a>.</p>
+</li>
+<li>
+<p>Click <strong>Validate Query</strong> to validate your query string. If the query string is valid, you can click <strong>Preview Search Results</strong> to view a preview of what a search using your query returns.</p>
+</li>
+<li>
+<p>Specify up to 10 <strong>Custom tags</strong> to help you identify events detected by custom filters in <strong>Workbench</strong>, <strong>Observed Attack Techniques</strong>, and <strong>Search</strong>.</p>
+<p>Tag length cannot exceed 64 characters.</p>
+</li>
+<li>
+<p>Click <strong>Save</strong>.</p>
+</li>
+</ol></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#procedure" class="table-of-contents__link toc-highlight">Procedure</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">© 2025  Trend Micro Incorporated. All rights reserved.</div></div></div></footer></div>
+</body>
+</html>

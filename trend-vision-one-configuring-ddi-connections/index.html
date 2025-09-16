@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en-us" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-configuring-ddi-connections" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">Configuring Deep Discovery Inspector connections | Trend Vision One TechDocs | Trend Micro</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-configuring-ddi-connections"><meta data-rh="true" property="og:locale" content="en_us"><meta data-rh="true" name="docusaurus_locale" content="en-us"><meta data-rh="true" name="docsearch:language" content="en-us"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Configuring Deep Discovery Inspector connections | Trend Vision One TechDocs | Trend Micro"><meta data-rh="true" name="description" content="Manage how Deep Discovery Inspector appliances connect to Network Security and whether to leverage a Service Gateway as a service source."><meta data-rh="true" property="og:description" content="Manage how Deep Discovery Inspector appliances connect to Network Security and whether to leverage a Service Gateway as a service source."><link data-rh="true" rel="icon" href="/ai-docs-poc/brand/favicon.ico"><link data-rh="true" rel="canonical" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-configuring-ddi-connections"><link data-rh="true" rel="alternate" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-configuring-ddi-connections" hreflang="en-us"><link data-rh="true" rel="alternate" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-configuring-ddi-connections" hreflang="x-default"><link rel="stylesheet" href="/ai-docs-poc/assets/css/styles.f31b9b34.css">
+<script src="/ai-docs-poc/assets/js/runtime~main.a698b785.js" defer="defer"></script>
+<script src="/ai-docs-poc/assets/js/main.af1712bd.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav class="navbar_thvB"><div class="navbarContainer_T6aE"><div class="navbarLeft__b30"><a class="navbarBrand_EDOm" href="/ai-docs-poc/"><img src="/ai-docs-poc/brand/t-ball-icon.svg" alt="Trend Vision One" class="navbarIcon_K54r"><span class="navbarText_AeJ_">Trend Vision One <span class="techDocs_EEyr">TechDocs</span></span></a><div class="navbarNav_bcxn"><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Solutions<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Updates<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Guides<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Resources<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Support &amp; Compliance<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Legacy Products<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div></div></div><div class="navbarActions_Kz3N"><div class="searchContainer_bUHY"><input type="search" placeholder="Search docs..." class="searchInput_wxeP"></div><div class="darkModeToggle_kLkm"><button class="darkModeButton_WNed" aria-label="Toggle dark mode">🌙</button></div><button class="mobileMenuButton_OkTY" aria-label="Toggle mobile menu"><span class="hamburger_uk35"></span><span class="hamburger_uk35"></span><span class="hamburger_uk35"></span></button></div></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><main class="docMainContainer_TBSr docMainContainerEnhanced_lQrH"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Configuring Deep Discovery Inspector connections</h1></header><p>Manage how Deep Discovery Inspector appliances connect to Network Security and whether to leverage a Service Gateway as a service source.</p>
+<p>You can manage and change the method your Deep Discovery Inspector appliances use to connect to Trend Vision One in the Network Inventory app. Additionally, you can configure Deep Discovery Inspector appliances which connect directly to use a Service Gateway as a service source.</p>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><ul>
+<li>
+<p>Connecting to <strong>Network Security</strong> using a Service Gateway as a proxy is only supported by Deep Discovery Inspector version 6.7 or later.</p>
+</li>
+<li>
+<p>Make sure you have at least one Service Gateway configured with the following services installed and enabled:</p>
+<ul>
+<li>
+<p>Forward Proxy Service (for using a Service Gateway as a proxy)</p>
+</li>
+<li>
+<p>ActiveUpdate</p>
+</li>
+<li>
+<p>Smart Protection Services</p>
+</li>
+<li>
+<p>Suspicious Object List synchronization (required for Deep Discovery Inspector version 6.7 and earlier)</p>
+</li>
+</ul>
+<p>For more information, see <a href="/ai-docs-poc/managing-services-service-gateway.md">Managing services in Service Gateway</a>.</p>
+</li>
+<li>
+<p>For ActiveUpdate and Smart Protection Services, use the Service Gateway host name or IP address to configure settings on the Deep Discovery Inspector console.</p>
+</li>
+<li>
+<p>Connecting to a Service Gateway is not required to integrate the Deep Discovery Inspector appliance with Sandbox as a Service.</p>
+<p>Deep Discovery Inspector appliances can only connect to one Service Gateway at a time. If the appliance is already connected to a Service Gateway, the appliance disconnects from the currently connected Service Gateway and connects to the new Service Gateway.</p>
+</li>
+</ul></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="procedure">Procedure<a href="#procedure" class="hash-link" aria-label="Direct link to Procedure" title="Direct link to Procedure">​</a></h3>
+<ol>
+<li>
+<p>In the Trend Vision One console, go to <strong>Network Security → Network Inventory → Deep Discovery Inspector</strong>.</p>
+</li>
+<li>
+<p>Select one or more connected appliances</p>
+</li>
+<li>
+<p>Click <strong>Configure Connection Settings</strong>.</p>
+<p>The <strong>Appliance Connection Settings</strong> panel appears.</p>
+</li>
+<li>
+<p>For the <strong>Connect method</strong> select how to connect the selected appliances to Network Inventory.</p>
+<ul>
+<li>
+<p>To connect directly to Network Inventory, select <strong>Direct connection</strong>.</p>
+</li>
+<li>
+<p>To connect through a Service Gateway, select <strong>Connect using a Service Gateway as a proxy</strong>.</p>
+</li>
+</ul>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Important</div><div class="admonitionContent_BuS1"><ul>
+<li>
+<p>Connect using a Service Gateway as a proxy is only supported by Deep Discovery Inspector version 6.7 or later.</p>
+</li>
+<li>
+<p>If you are changing from using a Service Gateway as a proxy to a direct connection, ensure your Deep Discovery Inspector is able to connect to the internet before updating the setting.</p>
+</li>
+</ul></div></div>
+</li>
+<li>
+<p>For direct connections, configure the service source.</p>
+<ul>
+<li>
+<p>To use service source configured on the Deep Discovery Inspector, select <strong>Use the appliance settings to connect to services</strong>.</p>
+</li>
+<li>
+<p>To connect to a Service Gateway, select <strong>Use the configured service settings on the selected Service Gateway</strong> and then select the Service Gateway to use as the source.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Click <strong>Test Connection</strong>.</p>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Important</div><div class="admonitionContent_BuS1"><p>Network Inventory can only perform the connection test on Deep Discovery Inspector version 6.7 or later. You can confirm if the settings were applied successfully to earlier versions in the <a href="/ai-docs-poc/trend-vision-one-appliance-details">Appliance Details</a> screen.</p></div></div>
+<p>You can apply the settings to Deep Discovery Inspector version 6.7 or later appliances if the status is <strong>Successful</strong>.</p>
+<p>Earlier versions of Deep Discover Inspector show a status of <strong>Not tested</strong>. You can apply settings even if all other appliances return a status of <strong>Failed</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Apply</strong> to apply the settings to all Deep Discovery Inspector appliances with a status of <strong>Successful</strong> or <strong>Not tested</strong>.</p>
+</li>
+</ol></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#procedure" class="table-of-contents__link toc-highlight">Procedure</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">© 2025  Trend Micro Incorporated. All rights reserved.</div></div></div></footer></div>
+</body>
+</html>

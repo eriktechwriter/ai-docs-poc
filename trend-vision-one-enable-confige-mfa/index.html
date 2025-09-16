@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en-us" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-enable-confige-mfa" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">Enabling and configuring multi-factor authentication | Trend Vision One TechDocs | Trend Micro</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-enable-confige-mfa"><meta data-rh="true" property="og:locale" content="en_us"><meta data-rh="true" name="docusaurus_locale" content="en-us"><meta data-rh="true" name="docsearch:language" content="en-us"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Enabling and configuring multi-factor authentication | Trend Vision One TechDocs | Trend Micro"><meta data-rh="true" name="description" content="Enforce multi-factor authentication (MFA) to enhance account security and prevent attackers from exploiting critical actions for malicious activities."><meta data-rh="true" property="og:description" content="Enforce multi-factor authentication (MFA) to enhance account security and prevent attackers from exploiting critical actions for malicious activities."><link data-rh="true" rel="icon" href="/ai-docs-poc/brand/favicon.ico"><link data-rh="true" rel="canonical" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-enable-confige-mfa"><link data-rh="true" rel="alternate" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-enable-confige-mfa" hreflang="en-us"><link data-rh="true" rel="alternate" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-enable-confige-mfa" hreflang="x-default"><link rel="stylesheet" href="/ai-docs-poc/assets/css/styles.f31b9b34.css">
+<script src="/ai-docs-poc/assets/js/runtime~main.a698b785.js" defer="defer"></script>
+<script src="/ai-docs-poc/assets/js/main.af1712bd.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav class="navbar_thvB"><div class="navbarContainer_T6aE"><div class="navbarLeft__b30"><a class="navbarBrand_EDOm" href="/ai-docs-poc/"><img src="/ai-docs-poc/brand/t-ball-icon.svg" alt="Trend Vision One" class="navbarIcon_K54r"><span class="navbarText_AeJ_">Trend Vision One <span class="techDocs_EEyr">TechDocs</span></span></a><div class="navbarNav_bcxn"><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Solutions<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Updates<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Guides<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Resources<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Support &amp; Compliance<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Legacy Products<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div></div></div><div class="navbarActions_Kz3N"><div class="searchContainer_bUHY"><input type="search" placeholder="Search docs..." class="searchInput_wxeP"></div><div class="darkModeToggle_kLkm"><button class="darkModeButton_WNed" aria-label="Toggle dark mode">🌙</button></div><button class="mobileMenuButton_OkTY" aria-label="Toggle mobile menu"><span class="hamburger_uk35"></span><span class="hamburger_uk35"></span><span class="hamburger_uk35"></span></button></div></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><main class="docMainContainer_TBSr docMainContainerEnhanced_lQrH"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Enabling and configuring multi-factor authentication</h1></header><p>Enforce multi-factor authentication (MFA) to enhance account security and prevent attackers from exploiting critical actions for malicious activities.</p>
+<p>Enabling MFA for all users is only available to Master Administrator users. Once MFA is enabled, all users are required to configure MFA settings on their devices before they can authenticate with Trend Vision One. This configuration is a one-time requirement.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="procedure">Procedure<a href="#procedure" class="hash-link" aria-label="Direct link to Procedure" title="Direct link to Procedure">​</a></h3>
+<ol>
+<li>
+<p>Go to <strong>Administration → User Accounts</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Multi-factor authentication</strong>.</p>
+</li>
+<li>
+<p>In the <strong>Multi-Factor Authentication Settings</strong> panel, click the toggle to enable MFA.</p>
+</li>
+<li>
+<p>Select the operations for which you want MFA to be enforced before execution, and click <strong>Save</strong>.</p>
+<p>The following table provides a list of operations where MFA can be implemented.</p>
+<table><colgroup>
+<col style="width:33%">
+<col style="width:67%">
+</colgroup><thead><tr><th><p>Category</p></th><th><p>Operation</p></th></tr></thead><tbody><tr><td rowspan="3"><p>Identity and access management operations</p></td><td><p>Configure API Keys settings</p></td></tr><tr><td><p>Configure identity providers</p></td></tr><tr><td><p>Configure user roles, user accounts, and asset visibility scopes</p></td></tr><tr><td rowspan="8"><p>Response actions</p></td><td><p>Add custom scripts</p></td></tr><tr><td><p>Collect Evidence task</p></td></tr><tr><td><p>Collect File task</p></td></tr><tr><td><p>Run YARA rules task</p></td></tr><tr><td><p>Run Remote Custom Script task</p></td></tr><tr><td><p>Run osquery task</p></td></tr><tr><td><p>Start Remote Shell Session task</p></td></tr><tr><td><p>Submit for Sandbox Analysis task</p></td></tr><tr><td rowspan="4"><p>Security playbook operations</p></td><td><p>Create, edit, or delete playbooks</p></td></tr><tr><td><p>Approve or reject pending actions</p></td></tr><tr><td><p>Upload a new custom script</p></td></tr><tr><td><p>Manually execute playbooks in Security Playbooks or from Workbench</p></td></tr></tbody></table>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Important</div><div class="admonitionContent_BuS1"><p>MFA is not required in the following circumstances:</p><ul>
+<li>
+<p>MFA settings do not apply to response actions taken by the Managed Services operations team.</p>
+</li>
+<li>
+<p>Response actions in automatically triggered security playbooks do not require MFA.</p>
+</li>
+<li>
+<p>MFA is not required when retrying a timed-out action.</p>
+</li>
+<li>
+<p>MFA is not supported for SAML Account or SAML Group Account users to sign in to Trend Vision One.</p>
+</li>
+</ul></div></div>
+</li>
+<li>
+<p>Configure MFA settings.</p>
+<ol>
+<li>
+<p>Review the information in the <strong>Enable Multi-Factor Authentication (MFA)</strong> screen that appears when signing in to the Trend Vision One console or performing specified operations.</p>
+<ul>
+<li>
+<p>For users with the Master Administrator role, you can require MFA for all users in your business each time they sign in by clicking <strong>Enable MFA</strong>.</p>
+</li>
+<li>
+<p>For users with other roles, you can configure MFA for your own user account by clicking <strong>Enable MFA</strong>.</p>
+</li>
+</ul>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_BuS1"><p>You can also configure MFA in advance. To do this, access the <strong>Account Settings</strong> screen using your profile picture in the upper-right corner of the Trend Vision One console, and then click the <strong>Multi-factor authentication</strong> toggle.</p></div></div>
+</li>
+<li>
+<p>Install a compatible virtual MFA application (such as Google Authenticator) on your smartphone, PC, or other device.</p>
+</li>
+<li>
+<p>Configure MFA on your device by scanning the QR code or using the secret key.</p>
+</li>
+<li>
+<p>Enter the one-time password provided by the MFA application and click <strong>Next</strong>.</p>
+</li>
+<li>
+<p>Record the reset code, click <strong>I have stored my reset code in a safe location.</strong>, and click <strong>Done</strong>.</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>Local accounts need to provide a verification code from your authenticator app to sign in to Trend Vision One.</p>
+</li>
+<li>
+<p>All accounts need to provide a verification code from your authenticator app to do the specified operations in Trend Vision One.</p>
+</li>
+</ul>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><ul>
+<li>
+<p>To ensure security, the verification code generated is valid for only 30 seconds. If the code is not used within this time frame, a new one must be requested.</p>
+</li>
+<li>
+<p>Once authenticated, MFA sessions remain valid for 15 minutes. The users do not need to do MFA again to initiate critical actions during this period.</p>
+</li>
+</ul></div></div>
+</li>
+</ol></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#procedure" class="table-of-contents__link toc-highlight">Procedure</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">© 2025  Trend Micro Incorporated. All rights reserved.</div></div></div></footer></div>
+</body>
+</html>

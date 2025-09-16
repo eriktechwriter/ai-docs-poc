@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-us" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-okta-url-api-token" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">Obtaining your Okta URL domain and API token | Trend Vision One TechDocs | Trend Micro</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-okta-url-api-token"><meta data-rh="true" property="og:locale" content="en_us"><meta data-rh="true" name="docusaurus_locale" content="en-us"><meta data-rh="true" name="docsearch:language" content="en-us"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Obtaining your Okta URL domain and API token | Trend Vision One TechDocs | Trend Micro"><meta data-rh="true" name="description" content="The following instructions and screen captures were valid as of December, 2022. For further help, check your Okta documentation."><meta data-rh="true" property="og:description" content="The following instructions and screen captures were valid as of December, 2022. For further help, check your Okta documentation."><link data-rh="true" rel="icon" href="/ai-docs-poc/brand/favicon.ico"><link data-rh="true" rel="canonical" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-okta-url-api-token"><link data-rh="true" rel="alternate" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-okta-url-api-token" hreflang="en-us"><link data-rh="true" rel="alternate" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-okta-url-api-token" hreflang="x-default"><link rel="stylesheet" href="/ai-docs-poc/assets/css/styles.f31b9b34.css">
+<script src="/ai-docs-poc/assets/js/runtime~main.a698b785.js" defer="defer"></script>
+<script src="/ai-docs-poc/assets/js/main.af1712bd.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav class="navbar_thvB"><div class="navbarContainer_T6aE"><div class="navbarLeft__b30"><a class="navbarBrand_EDOm" href="/ai-docs-poc/"><img src="/ai-docs-poc/brand/t-ball-icon.svg" alt="Trend Vision One" class="navbarIcon_K54r"><span class="navbarText_AeJ_">Trend Vision One <span class="techDocs_EEyr">TechDocs</span></span></a><div class="navbarNav_bcxn"><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Solutions<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Updates<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Guides<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Resources<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Support &amp; Compliance<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Legacy Products<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div></div></div><div class="navbarActions_Kz3N"><div class="searchContainer_bUHY"><input type="search" placeholder="Search docs..." class="searchInput_wxeP"></div><div class="darkModeToggle_kLkm"><button class="darkModeButton_WNed" aria-label="Toggle dark mode">🌙</button></div><button class="mobileMenuButton_OkTY" aria-label="Toggle mobile menu"><span class="hamburger_uk35"></span><span class="hamburger_uk35"></span><span class="hamburger_uk35"></span></button></div></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><main class="docMainContainer_TBSr docMainContainerEnhanced_lQrH"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Obtaining your Okta URL domain and API token</h1></header><div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Important</div><div class="admonitionContent_BuS1"><p>The following instructions and screen captures were valid as of December, 2022. For further help, check your Okta documentation.</p></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="procedure">Procedure<a href="#procedure" class="hash-link" aria-label="Direct link to Procedure" title="Direct link to Procedure">​</a></h3>
+<ol>
+<li>
+<p>Sign in to your Okta organization.</p>
+</li>
+<li>
+<p>Click <strong>Admin</strong> to open the <strong>Admin Console</strong>.</p>
+<figure>
+<img decoding="async" loading="lazy" src="./images/okta_admin_console=ee855b4e-950b-478c-80ab-4991ed05f4ae.webp" class="img_ev3q">
+</figure>
+</li>
+<li>
+<p>Find your Okta URL domain.</p>
+<ol>
+<li>
+<p>In the upper-right corner of the Okta admin console, click on your user name.</p>
+<p>A panel with your user name and Okta domain appears.</p>
+<figure>
+<img decoding="async" loading="lazy" src="./images/okta_console_url=bff5a148-fd1a-4d7d-9ad6-043e3ad23155.webp" class="img_ev3q">
+</figure>
+</li>
+</ol>
+</li>
+<li>
+<p>Create an API token.</p>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Important</div><div class="admonitionContent_BuS1"><ul>
+<li>
+<p>Ensure your account has any of the following roles assigned before creating an API token.</p>
+<table><colgroup>
+<col style="width:20%">
+<col style="width:80%">
+</colgroup><thead><tr><th><p>Feature</p></th><th><p>User roles allowed</p></th></tr></thead><tbody><tr><td><p>Data upload</p></td><td><ul>
+<li><p>Super admin</p></li>
+<li><p>Org admin</p></li>
+<li><p>API access management admin</p></li>
+<li><p>Mobile admin</p></li>
+<li><p>Read-only admin</p></li>
+<li><p>App admin</p></li>
+</ul></td></tr><tr><td><p>User enforcement</p></td><td><ul>
+<li><p>Super admin</p></li>
+<li><p>Org admin</p></li>
+<li><p>Group admin</p></li>
+</ul></td></tr></tbody></table>
+</li>
+<li>
+<p>API tokens have the same permissions as the user who creates them. If the user permissions change, the API token permissions also change.</p>
+</li>
+</ul></div></div>
+<ol>
+<li>
+<p>In the Okta admin console, go to <strong>Security → API → Tokens</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Create Token</strong>.</p>
+<figure>
+<img decoding="async" loading="lazy" src="./images/okta_console_createToken=5a22ef85-0e85-4db5-9962-e8adec0a1eb8.webp" class="img_ev3q">
+</figure>
+</li>
+<li>
+<p>Specify a name for the token and click <strong>Create Token</strong>.</p>
+</li>
+<li>
+<p>Copy the token value.</p>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Important</div><div class="admonitionContent_BuS1"><p>Once you close the <strong>Create token</strong> dialog, the authentication token is no longer available to view or copy.</p></div></div>
+<figure>
+<img decoding="async" loading="lazy" src="./images/okta_auth_token=2d1aa403-fd5c-4590-83cf-2e228c54961a.webp" class="img_ev3q">
+</figure>
+</li>
+</ol>
+</li>
+</ol></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#procedure" class="table-of-contents__link toc-highlight">Procedure</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">© 2025  Trend Micro Incorporated. All rights reserved.</div></div></div></footer></div>
+</body>
+</html>

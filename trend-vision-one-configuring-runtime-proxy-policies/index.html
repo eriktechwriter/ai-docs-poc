@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en-us" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-configuring-runtime-proxy-policies" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">Configuring Runtime Proxy policies | Trend Vision One TechDocs | Trend Micro</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-configuring-runtime-proxy-policies"><meta data-rh="true" property="og:locale" content="en_us"><meta data-rh="true" name="docusaurus_locale" content="en-us"><meta data-rh="true" name="docsearch:language" content="en-us"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Configuring Runtime Proxy policies | Trend Vision One TechDocs | Trend Micro"><meta data-rh="true" name="description" content="Edit and create proxy policies for your endpoint agents."><meta data-rh="true" property="og:description" content="Edit and create proxy policies for your endpoint agents."><link data-rh="true" rel="icon" href="/ai-docs-poc/brand/favicon.ico"><link data-rh="true" rel="canonical" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-configuring-runtime-proxy-policies"><link data-rh="true" rel="alternate" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-configuring-runtime-proxy-policies" hreflang="en-us"><link data-rh="true" rel="alternate" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-configuring-runtime-proxy-policies" hreflang="x-default"><link rel="stylesheet" href="/ai-docs-poc/assets/css/styles.f31b9b34.css">
+<script src="/ai-docs-poc/assets/js/runtime~main.a698b785.js" defer="defer"></script>
+<script src="/ai-docs-poc/assets/js/main.af1712bd.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav class="navbar_thvB"><div class="navbarContainer_T6aE"><div class="navbarLeft__b30"><a class="navbarBrand_EDOm" href="/ai-docs-poc/"><img src="/ai-docs-poc/brand/t-ball-icon.svg" alt="Trend Vision One" class="navbarIcon_K54r"><span class="navbarText_AeJ_">Trend Vision One <span class="techDocs_EEyr">TechDocs</span></span></a><div class="navbarNav_bcxn"><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Solutions<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Updates<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Guides<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Resources<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Support &amp; Compliance<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Legacy Products<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div></div></div><div class="navbarActions_Kz3N"><div class="searchContainer_bUHY"><input type="search" placeholder="Search docs..." class="searchInput_wxeP"></div><div class="darkModeToggle_kLkm"><button class="darkModeButton_WNed" aria-label="Toggle dark mode">🌙</button></div><button class="mobileMenuButton_OkTY" aria-label="Toggle mobile menu"><span class="hamburger_uk35"></span><span class="hamburger_uk35"></span><span class="hamburger_uk35"></span></button></div></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><main class="docMainContainer_TBSr docMainContainerEnhanced_lQrH"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Configuring Runtime Proxy policies</h1></header><p>Edit and create proxy policies for your endpoint agents.</p>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Important</div><div class="admonitionContent_BuS1"><p>Runtime Proxy Settings only supports the Trend Vision One Endpoint Security agent installed from Endpoint Inventory.</p><p>Sensor-only endpoints and Trend Vision One Endpoint Security agents deployed to endpoints managed by a connected endpoint security product only apply the Sensor Policy in Runtime Proxy Settings. You cannot add or remove target groups from the Sensor Policy.</p><p>You must update the agent to use this feature. Runtime Proxy Settings supports the following versions:</p><ul>
+<li>
+<p>Standard Endpoint Protection (Windows) version 14.0.13139 or later</p>
+</li>
+<li>
+<p>Server and Workload Protection (Windows/Linux ) version 20.0.1.9400 or later</p>
+</li>
+<li>
+<p>Trend Vision One Endpoint Security agent package June 2024 release or later</p>
+</li>
+</ul><p>Runtime Proxy Settings do not apply to connected endpoint security agents. The settings only apply to the Trend Vision One Endpoint Security agent deployed to those endpoints. You must configure the proxy settings for your connected agents through the respective product consoles.</p></div></div>
+<p>Create or edit runtime proxy policies to assign proxy settings to your Trend Vision One Endpoint Security agents. Agents aapply runtime proxy policies after successfully registering to Trend Vision One.</p>
+<p>Trend Micro recommends reviewing the following before configuring new proxy policies:</p>
+<ul>
+<li>
+<p>Endpoint groups not assigned to any policy default to the Base Policy. Sensor-only endpoints and Trend Vision One Endpoint Security agents deployed to endpoints managed by a connected endpoint security product only apply the Sensor Policy. Trend Micro recommends reviewing and configuring the Sensor Policy and Base Policy before adding any new proxy policies.</p>
+</li>
+<li>
+<p>If you want to use a Service Gateway as a proxy, make sure to deploy and configure a Service Gateway with the Forward Proxy Service enabled. For more information, see <a href="/ai-docs-poc/deploy-service-gateway-exceptions.md">Deploy a Service Gateway and Configure Firewall Exceptions</a>.</p>
+</li>
+<li>
+<p>The Base Policy defaults to using all available Service Gateways. If you do not want to use a Service Gateway, you can either modify the Base Policy or create a new policy with no Service Gateways selected. Read the steps below for more information.</p>
+</li>
+<li>
+<p>The endpoint name criteria uses a partial match to apply the criteria to target endpoints. You can use the search function in Endpoint Inventory to test values to ensure the endpoints you want to target are included.</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="procedure">Procedure<a href="#procedure" class="hash-link" aria-label="Direct link to Procedure" title="Direct link to Procedure">​</a></h3>
+<ol>
+<li>
+<p>In the Trend Vision One console, go to <strong>Endpoint Security → Endpoint Inventory</strong></p>
+</li>
+<li>
+<p>Click the <strong>Default and Global Settings</strong> icon (<img decoding="async" loading="lazy" src="data:image/webp;base64,UklGRroAAABXRUJQVlA4IK4AAAAwBACdASoSABIAPpFAmkolo6IhqAgAsBIJaQAD5REHZBFVg8LvR3h+QSAA/vph6jEQiX+pTxPgHZZPTKSGan8hT+yAua/x3nKpUlu/PbbHK6vk/5fsBZJ9olvyPDtPNyM2Ie7TmnTvzI5cg8WZrZPqzcEWjR9OUbczNk/wKQn7MuYVl/Eqp+Fg8coAoEX4Mc37+b5DzRbXrJ/V3XzpbeOKdqxU0pdNzs1m7YQAAAA=" width="18" height="18" class="img_ev3q">) and then click <strong>Global settings</strong>.</p>
+</li>
+<li>
+<p>Go to the <strong>Runtime Proxy Settings</strong> tab.</p>
+</li>
+<li>
+<p>Click <strong>Add Policy</strong> to create a new policy, or click a policy name to edit.</p>
+<p>The <strong>Runtime Proxy Policy Settings</strong> window appears.</p>
+</li>
+<li>
+<p>Configure the <strong>General Settings</strong>.</p>
+<ol>
+<li>
+<p>Specify the <strong>Policy name</strong>.</p>
+</li>
+<li>
+<p>To select the target endpoint groups, click the edit icon (<img decoding="async" loading="lazy" src="data:image/webp;base64,UklGRrwAAABXRUJQVlA4ILAAAADQBACdASoSABMAPikQh0IhoQoDVAwBQlpAAPg7oF/yb/DcCB+qode4fCQ/6HrsoAD+/5Lk2G50yY/M8Uf7/6YffW/f4J/JMO1LfqL9r/UzniV9nR5Np97/8THhxpfIHtR7JyVoudL2dcr2o/4s4xLWckB+ADySf8x74qqUyopWEULvrx5rnq65H6Jn+9f7T2Mvb9/eXZaQbaFUv3sktH/cI3N558SIRb/vvO9aDwTAAA==" width="18" height="19" class="img_ev3q">).</p>
+</li>
+<li>
+<p>In the window that appears, select one or more endpoint groups to target.</p>
+<p>Selecting a parent group automatically selects all child groups, and includes any child groups added later. You can clear the selection for specific child groups you do not want included in the policy. You can select a child group even if the parent group is already targeted by another policy.</p>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Important</div><div class="admonitionContent_BuS1"><p>Endpoint groups which are not assigned to a policy apply the Base Policy.</p></div></div>
+</li>
+<li>
+<p>Click <strong>Select</strong>.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>To add a priority, click the add icon (<img decoding="async" loading="lazy" src="data:image/webp;base64,UklGRiQDAABXRUJQVlA4WAoAAAAgAAAAEQAAEQAASUNDUKACAAAAAAKgbGNtcwQwAABtbnRyUkdCIFhZWiAH5wAGAA0ACAA1AARhY3NwTVNGVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWxjbXMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1kZXNjAAABIAAAAEBjcHJ0AAABYAAAADZ3dHB0AAABmAAAABRjaGFkAAABrAAAACxyWFlaAAAB2AAAABRiWFlaAAAB7AAAABRnWFlaAAACAAAAABRyVFJDAAACFAAAACBnVFJDAAACFAAAACBiVFJDAAACFAAAACBjaHJtAAACNAAAACRkbW5kAAACWAAAACRkbWRkAAACfAAAACRtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACQAAAAcAEcASQBNAFAAIABiAHUAaQBsAHQALQBpAG4AIABzAFIARwBCbWx1YwAAAAAAAAABAAAADGVuVVMAAAAaAAAAHABQAHUAYgBsAGkAYwAgAEQAbwBtAGEAaQBuAABYWVogAAAAAAAA9tYAAQAAAADTLXNmMzIAAAAAAAEMQgAABd7///MlAAAHkwAA/ZD///uh///9ogAAA9wAAMBuWFlaIAAAAAAAAG+gAAA49QAAA5BYWVogAAAAAAAAJJ8AAA+EAAC2xFhZWiAAAAAAAABilwAAt4cAABjZcGFyYQAAAAAAAwAAAAJmZgAA8qcAAA1ZAAAT0AAACltjaHJtAAAAAAADAAAAAKPXAABUfAAATM0AAJmaAAAmZwAAD1xtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAEcASQBNAFBtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJWUDggXgAAANADAJ0BKhIAEgA+iTaVR6UjIiE39VgAoBEJaQAEPmCs84lWAUK6AAD++urtqJryu226S2xE5iGk+6asC3+WWwfSOmWuLkoiNUF5SqqpbwZJGV19rEQ5YuW05Qy9AAA=" width="18" height="18" class="img_ev3q">).</p>
+<p>The <strong>Runtime Proxy Policy Settings</strong> window displays each priority as a tab in order of priority from left to right with the <strong>Base priority</strong> tab always on the right. New priorities are always added as the highest priority. You can rearrange priorities by clicking and dragging. You can delete a priority by clicking the remove icon (<img decoding="async" loading="lazy" src="data:image/webp;base64,UklGRkIDAABXRUJQVlA4WAoAAAAgAAAAEQAAEQAASUNDUKACAAAAAAKgbGNtcwRAAABtbnRyUkdCIFhZWiAH5wAIAB0AAQAiAA1hY3NwTVNGVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWxjbXMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1kZXNjAAABIAAAAEBjcHJ0AAABYAAAADZ3dHB0AAABmAAAABRjaGFkAAABrAAAACxyWFlaAAAB2AAAABRiWFlaAAAB7AAAABRnWFlaAAACAAAAABRyVFJDAAACFAAAACBnVFJDAAACFAAAACBiVFJDAAACFAAAACBjaHJtAAACNAAAACRkbW5kAAACWAAAACRkbWRkAAACfAAAACRtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACQAAAAcAEcASQBNAFAAIABiAHUAaQBsAHQALQBpAG4AIABzAFIARwBCbWx1YwAAAAAAAAABAAAADGVuVVMAAAAaAAAAHABQAHUAYgBsAGkAYwAgAEQAbwBtAGEAaQBuAABYWVogAAAAAAAA9tYAAQAAAADTLXNmMzIAAAAAAAEMQgAABd7///MlAAAHkwAA/ZD///uh///9ogAAA9wAAMBuWFlaIAAAAAAAAG+gAAA49QAAA5BYWVogAAAAAAAAJJ8AAA+EAAC2xFhZWiAAAAAAAABilwAAt4cAABjZcGFyYQAAAAAAAwAAAAJmZgAA8qcAAA1ZAAAT0AAACltjaHJtAAAAAAADAAAAAKPXAABUfAAATM0AAJmaAAAmZwAAD1xtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAEcASQBNAFBtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJWUDggfAAAAJADAJ0BKhIAEgA+kUKbSiWjoiGoCACwEglpAAApGgTWqOKjaAAA/vG6XuKkzfqTUyH177kaVem/O6yILBSS4RqakOS2htZIF0mrwfBve06vYEHfXVQnAjUz9f0xu5NG2uINaW+aJvDQcBVvbD6s8cS8V3xZExN9WO9gAAA=" width="18" height="18" class="img_ev3q">). You cannot delete the Base priority tab.</p>
+</li>
+<li>
+<p>Set the priority criteria.</p>
+<table><colgroup>
+<col style="width:20%">
+<col style="width:40%">
+<col style="width:40%">
+</colgroup><thead><tr><th><p>Criteria type</p></th><th><p>Description</p></th><th><p>Input method</p></th></tr></thead><tbody><tr><td><p><strong>All</strong></p></td><td><p>The priority rule applies to all endpoints in the selected endpoint groups</p>
+<p>The Base priority is set to <strong>All</strong> and cannot be changed.</p></td><td><p>No input method, the rule applies to all endpoints.</p></td></tr><tr><td><p><strong>Operating system</strong></p></td><td><p>The priority rule applies to any endpoint with the specified operating system</p></td><td><p>Click the edit icon (<img decoding="async" loading="lazy" src="./images/proxyConfigIcon=20230614160101.webp" class="img_ev3q">) to select the OS family or a specific OS version.</p></td></tr><tr><td><p><strong>Endpoint name</strong></p></td><td><p>The priority rule applies to any endpoint containing at least one specified value in the endpoint name</p>
+<p>For example, if you specify <code>Test</code>, the priority rule applies to the endpoint <code>Test01</code>.</p></td><td><p>Specify a value and either type a comma (,) or press ENTER to separate values.</p></td></tr><tr><td><p><strong>IP range</strong></p></td><td><p>The priority rule applies to any endpoint with an IP address within one of the specified ranges</p></td><td><p>Specify an IP range in either IPv4 or IPv6 format. Click the add icon (<img decoding="async" loading="lazy" src="./images/add_icon=cf892c2f-1a1f-4d22-848f-023067e4a507.webp" class="img_ev3q">) to add up to 3 IP ranges.</p></td></tr></tbody></table>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Important</div><div class="admonitionContent_BuS1"><p>Endpoints must connect to Trend Vision One to receive the proxy information. If you choose to use the IP range criteria and a targeted endpoint IP Address changes, make sure the endpoint can access Trend Vision One with the new IP address.</p><p>For example, if you move an endpoint to a new location, causing the IP address to change, the endpoint must connect to Trend Vision One to retrieve the proxy settings for the new location.</p></div></div>
+</li>
+<li>
+<p>Specify the Service Gateway policy.</p>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Important</div><div class="admonitionContent_BuS1"><p>You must have at least one Service Gateway with Forward Proxy Service enabled to connect using this method.</p></div></div>
+<ul>
+<li>
+<p>Click <strong>Use selected Service Gateways</strong> to specify which Service Gateway appliances to connect</p>
+<p>After selecting this option, a drop-down appears. Select one or more Service Gateway appliances. Hover over the info icon (<img decoding="async" loading="lazy" src="data:image/webp;base64,UklGRtgAAABXRUJQVlA4IMwAAABwBQCdASoSABIAPpE+l0kloyIhKA1QsBIJaQAEQt8fBGoPKPOkXrVyqtM3Yejfs1u68E5AAP7zUzA8EurYkYlH0j98Ao5/JkCPeTHA4zn4NnU5BKJutS72frBuk8T8K2Bdl5/+ez99fxLW20XIOvDwQjwNg7gd/mCC/W8r9QfgMb/3LIM11GW9xqZAkSem/ZojCPCjkGAdcfxyTaYAk1m/f/jAmQHrBDcjGNUFvI/i/eQ8IsUyIDHEmHxXdjDwv20vZkp5Ws2L+OTS4AA=" width="18" height="18" class="img_ev3q">) to view the associated IPv4 address and enabled services.</p>
+</li>
+<li>
+<p>Click <strong>Use all available Service Gateways</strong> to allow the endpoint agent to connect to any Service Gateway based on availability</p>
+</li>
+<li>
+<p>Do not select anything and leave the settings blank if you do not want the targeted endpoints to connect to a Service Gateway appliance</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Specify the <strong>Primary Custom Proxy Settings</strong>.</p>
+<p>Leave the settings blank if you do not want the targeted endpoints to use a proxy server to connect to Trend Vision One.</p>
+<ul>
+<li>
+<p><strong>Proxy address</strong>: The IPv4 address or FQDN of the proxy server</p>
+</li>
+<li>
+<p><strong>Port</strong>: The connection port for the proxy server</p>
+</li>
+<li>
+<p>If the proxy server requires credentials, select <strong>Require authentication credentials</strong>, and provide the <strong>Account</strong> and <strong>Password</strong>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Specify the <strong>Default System Proxy Settings</strong>.</p>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Important</div><div class="admonitionContent_BuS1"><p>Linux agents do not support using the default system proxy.</p><p>Server &amp; Workload Protection agents do not support connecting with a default system proxy that requires authentication credentials.</p></div></div>
+<ul>
+<li>
+<p>If your endpoint system proxy requires authentication credentials, select <strong>Require authentication credentials</strong>, and provide the <strong>Account</strong> and <strong>Password</strong>.</p>
+</li>
+<li>
+<p>Otherwise, leave blank.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>After you have configured your priority settings, click <strong>Save</strong>.</p>
+<p>The policy appears on the Runtime Proxy Settings list. Target endpoints apply the proxy settings the next time they connect with Trend Vision One.</p>
+</li>
+</ol></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#procedure" class="table-of-contents__link toc-highlight">Procedure</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">© 2025  Trend Micro Incorporated. All rights reserved.</div></div></div></footer></div>
+</body>
+</html>

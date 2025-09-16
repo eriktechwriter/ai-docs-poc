@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en-us" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-deploy-agents-using-sccm" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">Deploying Agents Using Microsoft Endpoint Configuration Manager (SCCM) | Trend Vision One TechDocs | Trend Micro</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-deploy-agents-using-sccm"><meta data-rh="true" property="og:locale" content="en_us"><meta data-rh="true" name="docusaurus_locale" content="en-us"><meta data-rh="true" name="docsearch:language" content="en-us"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Deploying Agents Using Microsoft Endpoint Configuration Manager (SCCM) | Trend Vision One TechDocs | Trend Micro"><meta data-rh="true" name="description" content="Use Microsoft Endpoint Configuration Manager (SCCM) to deploy the agent package to your managed endpoints."><meta data-rh="true" property="og:description" content="Use Microsoft Endpoint Configuration Manager (SCCM) to deploy the agent package to your managed endpoints."><link data-rh="true" rel="icon" href="/ai-docs-poc/brand/favicon.ico"><link data-rh="true" rel="canonical" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-deploy-agents-using-sccm"><link data-rh="true" rel="alternate" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-deploy-agents-using-sccm" hreflang="en-us"><link data-rh="true" rel="alternate" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-deploy-agents-using-sccm" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endpoint Security (for Standard Endpoint and Server & Workload Protection)","item":"https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-get-start-endpoint-security"},{"@type":"ListItem","position":2,"name":"Endpoint Management","item":"https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-endpoint-management"},{"@type":"ListItem","position":3,"name":"Endpoint Sensor Agent Deployment","item":"https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-endpoint-sensor-agent-deployment"},{"@type":"ListItem","position":4,"name":"Deploy agents","item":"https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-deploy-agents"},{"@type":"ListItem","position":5,"name":"Deploying Agents Using Microsoft Endpoint Configuration Manager (SCCM)","item":"https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-deploy-agents-using-sccm"}]}</script><link rel="stylesheet" href="/ai-docs-poc/assets/css/styles.f31b9b34.css">
+<script src="/ai-docs-poc/assets/js/runtime~main.a698b785.js" defer="defer"></script>
+<script src="/ai-docs-poc/assets/js/main.af1712bd.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav class="navbar_thvB"><div class="navbarContainer_T6aE"><div class="navbarLeft__b30"><a class="navbarBrand_EDOm" href="/ai-docs-poc/"><img src="/ai-docs-poc/brand/t-ball-icon.svg" alt="Trend Vision One" class="navbarIcon_K54r"><span class="navbarText_AeJ_">Trend Vision One <span class="techDocs_EEyr">TechDocs</span></span></a><div class="navbarNav_bcxn"><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Solutions<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Updates<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Guides<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Resources<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Support &amp; Compliance<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Legacy Products<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div></div></div><div class="navbarActions_Kz3N"><div class="searchContainer_bUHY"><input type="search" placeholder="Search docs..." class="searchInput_wxeP"></div><div class="darkModeToggle_kLkm"><button class="darkModeButton_WNed" aria-label="Toggle dark mode">🌙</button></div><button class="mobileMenuButton_OkTY" aria-label="Toggle mobile menu"><span class="hamburger_uk35"></span><span class="hamburger_uk35"></span><span class="hamburger_uk35"></span></button></div></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/ai-docs-poc/">Endpoint Security</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ai-docs-poc/trend-vision-one-ppdcd-trend-vision-one">Privacy and personal data collection disclosure</a><button aria-label="Expand sidebar category &#x27;Privacy and personal data collection disclosure&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/ai-docs-poc/trend-vision-one-data-privacy-security-compliance">Trend Vision One data privacy, security, and compliance</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/ai-docs-poc/trend-vision-one-pci-security-standards">PCI Security Standards</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ai-docs-poc/trend-vision-one-introduction-part-trend-vision-one">Introduction</a><button aria-label="Expand sidebar category &#x27;Introduction&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ai-docs-poc/trend-vision-one-getting-started-part">Getting started</a><button aria-label="Expand sidebar category &#x27;Getting started&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/ai-docs-poc/trend-vision-one-get-start-endpoint-security">Endpoint Security (for Standard Endpoint and Server &amp; Workload Protection)</a><button aria-label="Collapse sidebar category &#x27;Endpoint Security (for Standard Endpoint and Server &amp; Workload Protection)&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ai-docs-poc/trend-vision-one-endpoint-inventory-intro-part">Endpoint Inventory</a><button aria-label="Expand sidebar category &#x27;Endpoint Inventory&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" tabindex="0" href="/ai-docs-poc/trend-vision-one-endpoint-management">Endpoint Management</a><button aria-label="Collapse sidebar category &#x27;Endpoint Management&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" tabindex="0" href="/ai-docs-poc/trend-vision-one-endpoint-sensor-agent-deployment">Endpoint Sensor Agent Deployment</a><button aria-label="Collapse sidebar category &#x27;Endpoint Sensor Agent Deployment&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-endpoint-agent-system-requirements">Endpoint Agent System Requirements</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-4 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" tabindex="0" href="/ai-docs-poc/trend-vision-one-deploy-agents">Deploy agents</a><button aria-label="Collapse sidebar category &#x27;Deploy agents&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-5 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-deploy-agents-gpo">Deploying Agents Using Group Policy Objects</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-5 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-deploy-agents-ms-intune">Deploying Agents Using Microsoft Intune</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-5 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/ai-docs-poc/trend-vision-one-deploy-agents-using-sccm">Deploying Agents Using Microsoft Endpoint Configuration Manager (SCCM)</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-5 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-deploy-agents-manage-system">Deploying Agents with a Software Management System</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-5 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-using-endpoint-deployment-script">Using the Deployment Script</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-5 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-deployment-using-golden-image">Deployment using a golden image</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-5 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-create-golden-agent-image">Creating a golden image with the agent software</a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-manage-your-agent-deployments">Manage Your Agent Deployments</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-4 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ai-docs-poc/trend-vision-one-uninstalling-agents">Uninstalling agents</a><button aria-label="Expand sidebar category &#x27;Uninstalling agents&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-cleaning-up-uninstalled-agents">Cleaning Up Uninstalled Agents</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-extended-support-for-agents">Standard and Extended Support Policies for Agents</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-updating-agent-for-templates">Updating the agent for golden image templates</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-update-agent-virtual-desktops">Updating the agent on virtual desktops</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ai-docs-poc/trend-vision-one-endpoint-security-configuration">Endpoint Security Configuration</a><button aria-label="Expand sidebar category &#x27;Endpoint Security Configuration&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ai-docs-poc/trend-vision-one-response-management">Response Management</a><button aria-label="Expand sidebar category &#x27;Response Management&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ai-docs-poc/trend-vision-one-endpoint-security-for-sep-swp">Connecting Endpoint Products</a><button aria-label="Expand sidebar category &#x27;Connecting Endpoint Products&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ai-docs-poc/trend-vision-one-administration-setting">Administration</a><button aria-label="Expand sidebar category &#x27;Administration&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ai-docs-poc/trend-vision-one-getting-help-troubleshooting">Getting Help and Troubleshooting</a><button aria-label="Expand sidebar category &#x27;Getting Help and Troubleshooting&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/ai-docs-poc/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/ai-docs-poc/trend-vision-one-get-start-endpoint-security"><span>Endpoint Security (for Standard Endpoint and Server &amp; Workload Protection)</span></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/ai-docs-poc/trend-vision-one-endpoint-management"><span>Endpoint Management</span></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/ai-docs-poc/trend-vision-one-endpoint-sensor-agent-deployment"><span>Endpoint Sensor Agent Deployment</span></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/ai-docs-poc/trend-vision-one-deploy-agents"><span>Deploy agents</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Deploying Agents Using Microsoft Endpoint Configuration Manager (SCCM)</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Deploying Agents Using Microsoft Endpoint Configuration Manager (SCCM)</h1></header><p>Use Microsoft Endpoint Configuration Manager (SCCM) to deploy the agent package to your managed endpoints.</p>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Important</div><div class="admonitionContent_BuS1"><p>The steps contained in this topic reference Configuration Manager version 2207 and are valid as of December, 2023. If you are using a different version of Configuration Manager, refer to the documentation for your version.</p><p>This deployment method only supports Windows agents.</p></div></div>
+<p>Configure your agent installation packages to ensure that your newly-deployed agents:</p>
+<ul>
+<li>
+<p>Report to the correct Protection Manager or Endpoint Inventory</p>
+</li>
+<li>
+<p>Automatically apply the correct default settings</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="procedure">Procedure<a href="#procedure" class="hash-link" aria-label="Direct link to Procedure" title="Direct link to Procedure">​</a></h3>
+<ol>
+<li>
+<p>Go to <strong>Endpoint Security → Endpoint Inventory</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Agent Installer</strong>.</p>
+</li>
+<li>
+<p>Locate the Agent Installer type you want to use and select the <strong>Windows</strong> operating system.</p>
+</li>
+<li>
+<p>For <strong>Endpoint Sensor</strong>, specify the <strong>OS architecture</strong> and click the <strong>Download installer</strong> icon (<img decoding="async" loading="lazy" src="data:image/webp;base64,UklGRvgAAABXRUJQVlA4IOwAAAAwBgCdASoSABIAPpE8mEiloyIhKA1QsBIJbACdMoRwN6rvARgFWzAKL/offpaLa4IhpDE6uR32k8AAAP73xzZL2kIO9DgbSCa5gMpbNyO+Z+O/0CPw5gmXOaPbN8rosTLTOK08zh3K41tD85eXr0ZEKugx5TpUdlIrIqbyWlB/x1tr9qdHXw+L/S0/YeiFK3VtQlrGLYm+/Pzq97nc7hvP2QhkO7AL6CzWe3vlzSM79N9c/QT+P047/cLYx6bYtaaTXHpqapPX5tfiXvWdTrL2yiqlr/XdRQ3kRGleITTxYI7bVi3a5Ir6FEgAAA==" width="18" height="18" class="img_ev3q">).</p>
+</li>
+<li>
+<p>Unzip the Agent Package and move the contents to the Configuration Manager server.</p>
+</li>
+<li>
+<p>Create the package.</p>
+<ol>
+<li>
+<p>In the Configuration Manager console, go to <strong>Software Library → Application Management</strong>.</p>
+</li>
+<li>
+<p>Right-click <strong>Packages</strong> and click <strong>Create Package</strong>.</p>
+<p>The <strong>Create Package and Program Wizard</strong> appears.</p>
+</li>
+<li>
+<p>Configure the settings in the <strong>Package</strong> tab.</p>
+<ul>
+<li>
+<p>Provide a readable package name and description. Trend Micro recommends including the agent type in the package name.</p>
+</li>
+<li>
+<p>Select <strong>This package contains source files</strong>.</p>
+</li>
+</ul>
+<p><img decoding="async" loading="lazy" src="/ai-docs-poc/assets/images/CPPW_PackageTab=GUID-82315f73-a237-4fc1-8368-d0f0e896b160-55120c63715a786ada6d2ce0c0601202.webp" width="720" height="618" class="img_ev3q"></p>
+</li>
+<li>
+<p>Next to the <strong>Source folder</strong> field, click <strong>Browse...</strong>.</p>
+</li>
+<li>
+<p>Select <strong>Local folder on site server</strong> and click <strong>Browse...</strong></p>
+</li>
+<li>
+<p>Select the folder containing the Agent Package and click <strong>OK</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Next</strong>.</p>
+</li>
+<li>
+<p>Select <strong>Standard program</strong> and click <strong>Next</strong>.</p>
+</li>
+<li>
+<p>Configure the settings in the <strong>Standard Program</strong> tab.</p>
+<table><colgroup>
+<col style="width:50%">
+<col style="width:50%">
+</colgroup><thead><tr><th><p>Setting</p></th><th><p>Configuration</p></th></tr></thead><tbody><tr><td><p><strong>Name</strong></p></td><td><p>Provide a readable and descriptive software name</p>
+<p>This is not the same name you provided in the <strong>Package</strong> tab.</p></td></tr><tr><td><p><strong>Command line</strong></p></td><td><p>Click <strong>Browse...</strong> and select the installation program <code>EndpointBasecamp.exe</code></p></td></tr><tr><td><p><strong>Startup folder</strong></p></td><td><p>Leave blank</p></td></tr><tr><td><p><strong>Run</strong></p></td><td><p>Select <strong>Hidden</strong></p></td></tr><tr><td><p><strong>Program can run</strong></p></td><td><p>Select <strong>Whether or not a user is logged on</strong></p></td></tr><tr><td><p><strong>Run mode</strong></p></td><td><p>Select <strong>Run with administrative rights</strong></p></td></tr><tr><td><p><strong>Drive mode</strong></p></td><td><p>Select <strong>Runs with UNC name</strong></p></td></tr></tbody></table>
+<p><img decoding="async" loading="lazy" src="/ai-docs-poc/assets/images/CPPW_StandardProgram=GUID-c43847bd-3abe-41d5-9a0c-674d724442b8-a6ef87e328d31f2e808bfb15f7ae703a.webp" width="721" height="616" class="img_ev3q"></p>
+</li>
+<li>
+<p>Click <strong>Next</strong>.</p>
+</li>
+<li>
+<p>In the <strong>Platform requirements</strong> section, select <strong>This program can run only on specified platforms</strong>.</p>
+</li>
+<li>
+<p>Select the specified platforms based on the <a href="/ai-docs-poc/trend-vision-one-endpoint-agent-system-requirements">system requirements</a> of the agent you are deploying and the needs of your security environment.</p>
+</li>
+<li>
+<p>Click <strong>Next</strong>.</p>
+</li>
+<li>
+<p>Review the settings and click <strong>Next</strong> to create the package.</p>
+</li>
+<li>
+<p>Once the wizard finishes creating the package, click <strong>Close</strong>.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Upload the package to distribution points.</p>
+<ol>
+<li>
+<p>Right-click on the package you created and select <strong>Distribute Content</strong>.</p>
+<p>The <strong>Distribute Content Wizard</strong> appears.</p>
+</li>
+<li>
+<p>Select the package name in the <strong>Content</strong> field.</p>
+<p><img decoding="async" loading="lazy" src="/ai-docs-poc/assets/images/DCW_GeneralTab=GUID-c0680116-798b-4b3d-92d3-abee47a7d85b-414971f6ed7c32e5f7f988edeadff23f.webp" width="693" height="598" class="img_ev3q"></p>
+</li>
+<li>
+<p>Click <strong>Next</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Add</strong> and select <strong>Distribution Point</strong> to add distribution points to the <strong>Content destination</strong> list.</p>
+</li>
+<li>
+<p>Click <strong>Next</strong>, and in the <strong>Summary</strong> screen, click <strong>Next</strong> again to process the task.</p>
+</li>
+<li>
+<p>Click <strong>Close</strong> once the task completes.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Deploy the package.</p>
+<ol>
+<li>
+<p>Right-click on the package you created and select <strong>Deploy</strong>.</p>
+<p>The <strong>Deploy Software Wizard</strong> appears.</p>
+</li>
+<li>
+<p>Verify the software is already selected.</p>
+<p>The <strong>Software</strong> field should display <code>Package Name (Software Name)</code> based on the names you provided in the Create Package and Program Wizard.</p>
+<p><img decoding="async" loading="lazy" src="/ai-docs-poc/assets/images/DSW_GeneralTabNameMarked=GUID-eff28d6d-0098-4d47-8ba0-9b63fc44a560-fa8b62ff30e2269cf22067604344f7b7.webp" width="720" height="611" class="img_ev3q"></p>
+</li>
+<li>
+<p>For <strong>Collection</strong>, click <strong>Browse...</strong>, then <strong>Select Device Collections</strong> and select the collection to deploy the agent installer to.</p>
+</li>
+<li>
+<p>Click <strong>OK</strong>, then click <strong>Next</strong>.</p>
+</li>
+<li>
+<p>In the <strong>Content</strong> screen, verify the content destination.</p>
+<p>If you want to add more distribution points, click <strong>Add</strong> and select <strong>Distribution Point</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Next</strong>.</p>
+</li>
+<li>
+<p>In the <strong>Deployment Settings</strong> screen, select <strong>Required</strong> for <strong>Purpose</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Next</strong>.</p>
+</li>
+<li>
+<p>In the <strong>Scheduling</strong> screen, click <strong>New</strong> to create the deployment schedule.</p>
+</li>
+<li>
+<p>Click <strong>Next</strong>.</p>
+</li>
+<li>
+<p>Review the <strong>User Experience</strong> screen and change the settings based on the best fit for your environment and users.</p>
+</li>
+<li>
+<p>Click <strong>Next</strong>.</p>
+</li>
+<li>
+<p>Configure settings in the <strong>Distribution Points</strong> screen.</p>
+<ul>
+<li>
+<p>For <strong>Deployment options</strong>, select <strong>Download content from distribution point and run locally</strong> for both scenarios.</p>
+</li>
+<li>
+<p>Select <strong>Allow clients to use distribution points from the default site boundary group</strong>.</p>
+</li>
+</ul>
+<p><img decoding="async" loading="lazy" src="/ai-docs-poc/assets/images/DSW_DistributionPoints=GUID-2699e5e5-d2c6-4d72-bcee-ad85802ff67d-1bc48ee17a32ab439e89f03d2323054b.webp" width="721" height="608" class="img_ev3q"></p>
+</li>
+<li>
+<p>Click <strong>Next</strong>.</p>
+</li>
+<li>
+<p>Review the <strong>Summary</strong> and click <strong>Next</strong> to create the deployment task.</p>
+</li>
+<li>
+<p>After the wizard completes, click <strong>Close</strong>.</p>
+</li>
+<li>
+<p>Go to <strong>Assets and Compliance → Devices</strong>.</p>
+</li>
+<li>
+<p>Right-click on the collection you selected to deploy to, select <strong>Client Notification</strong> and click <strong>Download Computer Policy and Evaluate Application Deployments</strong>.</p>
+</li>
+</ol>
+</li>
+</ol></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/ai-docs-poc/trend-vision-one-deploy-agents-ms-intune"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Deploying Agents Using Microsoft Intune</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/ai-docs-poc/trend-vision-one-deploy-agents-manage-system"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Deploying Agents with a Software Management System</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#procedure" class="table-of-contents__link toc-highlight">Procedure</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">© 2025  Trend Micro Incorporated. All rights reserved.</div></div></div></footer></div>
+</body>
+</html>

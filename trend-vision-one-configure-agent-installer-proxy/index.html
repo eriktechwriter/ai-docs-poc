@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en-us" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-configure-agent-installer-proxy" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">Configuring a custom agent installer proxy | Trend Vision One TechDocs | Trend Micro</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-configure-agent-installer-proxy"><meta data-rh="true" property="og:locale" content="en_us"><meta data-rh="true" name="docusaurus_locale" content="en-us"><meta data-rh="true" name="docsearch:language" content="en-us"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Configuring a custom agent installer proxy | Trend Vision One TechDocs | Trend Micro"><meta data-rh="true" name="description" content="Set up a custom proxy for newly deployed endpoints to connect and register."><meta data-rh="true" property="og:description" content="Set up a custom proxy for newly deployed endpoints to connect and register."><link data-rh="true" rel="icon" href="/ai-docs-poc/brand/favicon.ico"><link data-rh="true" rel="canonical" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-configure-agent-installer-proxy"><link data-rh="true" rel="alternate" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-configure-agent-installer-proxy" hreflang="en-us"><link data-rh="true" rel="alternate" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-configure-agent-installer-proxy" hreflang="x-default"><link rel="stylesheet" href="/ai-docs-poc/assets/css/styles.f31b9b34.css">
+<script src="/ai-docs-poc/assets/js/runtime~main.a698b785.js" defer="defer"></script>
+<script src="/ai-docs-poc/assets/js/main.af1712bd.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav class="navbar_thvB"><div class="navbarContainer_T6aE"><div class="navbarLeft__b30"><a class="navbarBrand_EDOm" href="/ai-docs-poc/"><img src="/ai-docs-poc/brand/t-ball-icon.svg" alt="Trend Vision One" class="navbarIcon_K54r"><span class="navbarText_AeJ_">Trend Vision One <span class="techDocs_EEyr">TechDocs</span></span></a><div class="navbarNav_bcxn"><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Solutions<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Updates<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Guides<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Resources<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Support &amp; Compliance<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Legacy Products<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div></div></div><div class="navbarActions_Kz3N"><div class="searchContainer_bUHY"><input type="search" placeholder="Search docs..." class="searchInput_wxeP"></div><div class="darkModeToggle_kLkm"><button class="darkModeButton_WNed" aria-label="Toggle dark mode">🌙</button></div><button class="mobileMenuButton_OkTY" aria-label="Toggle mobile menu"><span class="hamburger_uk35"></span><span class="hamburger_uk35"></span><span class="hamburger_uk35"></span></button></div></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><main class="docMainContainer_TBSr docMainContainerEnhanced_lQrH"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Configuring a custom agent installer proxy</h1></header><p>Set up a custom proxy for newly deployed endpoints to connect and register.</p>
+<p>Use the <a href="/ai-docs-poc/trend-vision-one-agent-installer-proxy-settings">Agent Installer Proxy Settings</a> tab in <a href="/ai-docs-poc/trend-vision-one-global-settings-endpoint-inventory">Global Settings</a> to configure a custom proxy for your Protection Managers or sensor only agents to perform initial connection and registration during deployment.</p>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Important</div><div class="admonitionContent_BuS1"><ul>
+<li>
+<p>If you have configured a Service Gateway appliance with Forward Proxy Service enabled, your endpoint agents prioritize connecting through the Service Gateway over your custom proxy if the endpoint is able to connect to the appliance.</p>
+</li>
+<li>
+<p>Configuring a custom proxy for a Server &amp; Workload Protection Manager overwrites any proxy settings currently configured for that Protection Manager. This cannot be undone, and deleting the custom proxy settings from Global Settings deletes all proxy settings from that Protection Manager as well.</p>
+<p>Verify the proxy configuration for your Server &amp; Workload Protection Manager before configuring a custom proxy. Trend Micro recommends using the Protection Manager settings to test the proxy configuration before applying the settings in Global Settings.</p>
+</li>
+</ul></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="procedure">Procedure<a href="#procedure" class="hash-link" aria-label="Direct link to Procedure" title="Direct link to Procedure">​</a></h3>
+<ol>
+<li>
+<p>In the Trend Vision Oneconsole, go to <strong>Endpoint Security → Endpoint Inventory</strong></p>
+</li>
+<li>
+<p>Click the <strong>Default and Global Settings</strong> icon (<img decoding="async" loading="lazy" src="data:image/webp;base64,UklGRroAAABXRUJQVlA4IK4AAAAwBACdASoSABIAPpFAmkolo6IhqAgAsBIJaQAD5REHZBFVg8LvR3h+QSAA/vph6jEQiX+pTxPgHZZPTKSGan8hT+yAua/x3nKpUlu/PbbHK6vk/5fsBZJ9olvyPDtPNyM2Ie7TmnTvzI5cg8WZrZPqzcEWjR9OUbczNk/wKQn7MuYVl/Eqp+Fg8coAoEX4Mc37+b5DzRbXrJ/V3XzpbeOKdqxU0pdNzs1m7YQAAAA=" width="18" height="18" class="img_ev3q">) and then click <strong>Global settings</strong>.</p>
+</li>
+<li>
+<p>Go to the <strong>Agent Installer Proxy Settings</strong> tab.</p>
+</li>
+<li>
+<p>Locate the management service you want to configure and click the edit icon (<img decoding="async" loading="lazy" src="data:image/webp;base64,UklGRrwAAABXRUJQVlA4ILAAAADQBACdASoSABMAPikQh0IhoQoDVAwBQlpAAPg7oF/yb/DcCB+qode4fCQ/6HrsoAD+/5Lk2G50yY/M8Uf7/6YffW/f4J/JMO1LfqL9r/UzniV9nR5Np97/8THhxpfIHtR7JyVoudL2dcr2o/4s4xLWckB+ADySf8x74qqUyopWEULvrx5rnq65H6Jn+9f7T2Mvb9/eXZaQbaFUv3sktH/cI3N558SIRb/vvO9aDwTAAA==" width="18" height="19" class="img_ev3q">).</p>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Important</div><div class="admonitionContent_BuS1"><p>Configuring a custom proxy for <strong>Sensor only</strong> agents applies the settings to all sensor only agents.</p></div></div>
+</li>
+<li>
+<p>Configure the <strong>Primary Custom Proxy Settings</strong>.</p>
+<p>Specify the following:</p>
+<ul>
+<li>
+<p><strong>Proxy address</strong>: The IP address of the proxy server</p>
+</li>
+<li>
+<p><strong>Port</strong>: The connection port of the proxy server</p>
+</li>
+</ul>
+</li>
+<li>
+<p>If the proxy requires credentials, select <strong>Require authentication credentials</strong> and specify the account and password for the proxy server.</p>
+</li>
+<li>
+<p>For Standard Endpoint Protection, configure the <strong>Default System Proxy Settings</strong>.</p>
+<p>If the default system proxy requires credentials, select <strong>Require authentication credentials</strong> and specify the account and password for the proxy server.</p>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Important</div><div class="admonitionContent_BuS1"><ul>
+<li>
+<p>Default system proxy does not support Linux agents.</p>
+</li>
+<li>
+<p>The Standard Endpoint Protection default system proxy is defined by your IAM policies, Windows, or macOS policies.</p>
+</li>
+<li>
+<p>The Server &amp; Workload Protection default system proxy is defined by your IAM policies or Windows policies.</p>
+</li>
+<li>
+<p>Server &amp; Workload Protection agents do not support the use of authentication credentials for connecting to the default system proxy. Using a proxy with credential requirements might cause connectivity issues.</p>
+</li>
+<li>
+<p>Sensor only agents default system proxy is defined by your IAM policies.</p>
+</li>
+</ul></div></div>
+</li>
+<li>
+<p>Click <strong>Save</strong>.</p>
+<p>Your configured custom proxy IP address and port appear on the table of the Agent Installer Proxy Settings tab. Agents receive the updated proxy settings the next time they connect to Trend Vision One. Configured proxy settings are automatically added to the installation package for new agent deployments.</p>
+</li>
+</ol></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#procedure" class="table-of-contents__link toc-highlight">Procedure</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">© 2025  Trend Micro Incorporated. All rights reserved.</div></div></div></footer></div>
+</body>
+</html>

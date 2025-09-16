@@ -1,0 +1,172 @@
+/* Hero Section Styles with Trend Micro Branding */
+
+.heroSection {
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-dark) 100%);
+  color: var(--tm-white, #ffffff);
+  padding: var(--tm-spacing-xl, 4rem) 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--tm-spacing-md, 2rem);
+  width: 100%;
+}
+
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: var(--tm-spacing-md, 2rem);
+  line-height: 1.2;
+  font-family: var(--ifm-heading-font-family);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: -0.02em;
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 0 auto;
+  opacity: 0.95;
+  max-width: 600px;
+  font-family: var(--ifm-font-family-base);
+}
+
+/* Tablet styles */
+@media (max-width: 996px) {
+  .heroSection {
+    padding: 3rem 0;
+    min-height: 350px;
+  }
+  
+  .heroTitle {
+    font-size: 2.8rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1.15rem;
+  }
+  
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 2.5rem 0;
+    min-height: 300px;
+  }
+  
+  .heroTitle {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+/* Small mobile styles */
+@media (max-width: 480px) {
+  .heroSection {
+    padding: 2rem 0;
+  }
+  
+  .heroTitle {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .heroSection {
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-darker) 100%);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .heroSection {
+    background: var(--ifm-color-primary);
+  }
+  
+  .heroTitle,
+  .heroSubtitle {
+    text-shadow: none;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .heroSection {
+    background: var(--ifm-color-primary);
+  }
+}
+
+/* Focus styles for accessibility */
+.heroSection:focus-within {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 4px;
+}
+
+/* Animation for hero content */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced accessibility and SEO */
+.heroTitle::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  margin: var(--tm-spacing-sm, 1rem) auto 0;
+  border-radius: 2px;
+}
+
+/* Print styles */
+@media print {
+  .heroSection {
+    background: var(--tm-gray-dark) !important;
+    color: white !important;
+    box-shadow: none;
+  }
+  
+  .heroTitle,
+  .heroSubtitle {
+    text-shadow: none;
+  }
+}

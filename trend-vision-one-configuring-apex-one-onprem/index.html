@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en-us" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-configuring-apex-one-onprem" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">Configuring Trend Micro Apex One On-Premises | Trend Vision One TechDocs | Trend Micro</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-configuring-apex-one-onprem"><meta data-rh="true" property="og:locale" content="en_us"><meta data-rh="true" name="docusaurus_locale" content="en-us"><meta data-rh="true" name="docsearch:language" content="en-us"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Configuring Trend Micro Apex One On-Premises | Trend Vision One TechDocs | Trend Micro"><meta data-rh="true" name="description" content="Connect your Trend Micro Apex One servers to Trend Vision One."><meta data-rh="true" property="og:description" content="Connect your Trend Micro Apex One servers to Trend Vision One."><link data-rh="true" rel="icon" href="/ai-docs-poc/brand/favicon.ico"><link data-rh="true" rel="canonical" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-configuring-apex-one-onprem"><link data-rh="true" rel="alternate" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-configuring-apex-one-onprem" hreflang="en-us"><link data-rh="true" rel="alternate" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-configuring-apex-one-onprem" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endpoint Security (for Standard Endpoint and Server & Workload Protection)","item":"https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-get-start-endpoint-security"},{"@type":"ListItem","position":2,"name":"Connecting Endpoint Products","item":"https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-endpoint-security-for-sep-swp"},{"@type":"ListItem","position":3,"name":"Configuring Trend Micro Apex One On-Premises","item":"https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-configuring-apex-one-onprem"}]}</script><link rel="stylesheet" href="/ai-docs-poc/assets/css/styles.f31b9b34.css">
+<script src="/ai-docs-poc/assets/js/runtime~main.a698b785.js" defer="defer"></script>
+<script src="/ai-docs-poc/assets/js/main.af1712bd.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav class="navbar_thvB"><div class="navbarContainer_T6aE"><div class="navbarLeft__b30"><a class="navbarBrand_EDOm" href="/ai-docs-poc/"><img src="/ai-docs-poc/brand/t-ball-icon.svg" alt="Trend Vision One" class="navbarIcon_K54r"><span class="navbarText_AeJ_">Trend Vision One <span class="techDocs_EEyr">TechDocs</span></span></a><div class="navbarNav_bcxn"><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Solutions<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Updates<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Guides<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Resources<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Support &amp; Compliance<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Legacy Products<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div></div></div><div class="navbarActions_Kz3N"><div class="searchContainer_bUHY"><input type="search" placeholder="Search docs..." class="searchInput_wxeP"></div><div class="darkModeToggle_kLkm"><button class="darkModeButton_WNed" aria-label="Toggle dark mode">🌙</button></div><button class="mobileMenuButton_OkTY" aria-label="Toggle mobile menu"><span class="hamburger_uk35"></span><span class="hamburger_uk35"></span><span class="hamburger_uk35"></span></button></div></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/ai-docs-poc/">Endpoint Security</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ai-docs-poc/trend-vision-one-ppdcd-trend-vision-one">Privacy and personal data collection disclosure</a><button aria-label="Expand sidebar category &#x27;Privacy and personal data collection disclosure&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/ai-docs-poc/trend-vision-one-data-privacy-security-compliance">Trend Vision One data privacy, security, and compliance</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/ai-docs-poc/trend-vision-one-pci-security-standards">PCI Security Standards</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ai-docs-poc/trend-vision-one-introduction-part-trend-vision-one">Introduction</a><button aria-label="Expand sidebar category &#x27;Introduction&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ai-docs-poc/trend-vision-one-getting-started-part">Getting started</a><button aria-label="Expand sidebar category &#x27;Getting started&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/ai-docs-poc/trend-vision-one-get-start-endpoint-security">Endpoint Security (for Standard Endpoint and Server &amp; Workload Protection)</a><button aria-label="Collapse sidebar category &#x27;Endpoint Security (for Standard Endpoint and Server &amp; Workload Protection)&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ai-docs-poc/trend-vision-one-endpoint-inventory-intro-part">Endpoint Inventory</a><button aria-label="Expand sidebar category &#x27;Endpoint Inventory&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ai-docs-poc/trend-vision-one-endpoint-management">Endpoint Management</a><button aria-label="Expand sidebar category &#x27;Endpoint Management&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" tabindex="0" href="/ai-docs-poc/trend-vision-one-endpoint-security-for-sep-swp">Connecting Endpoint Products</a><button aria-label="Collapse sidebar category &#x27;Connecting Endpoint Products&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-setup-endpoint-security-for-new">Setting up Endpoint Security for new Trend Micro customers</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-connecting-apex-one-saas">Connecting Trend Micro Apex One as a Service</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/ai-docs-poc/trend-vision-one-configuring-apex-one-onprem">Configuring Trend Micro Apex One On-Premises</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-sep-management">Standard Endpoint Protection Management</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-swp-management">Server &amp; Workload Protection Management</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-configure-deep-security-software">Configuring Deep Security Software</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-configuring-deep-security-software">Configuring Deep Security Software</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-configure-trend-cloud-one">Configuring Trend Cloud One</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-configure-txone-edgeone">Configuring TXOne EdgeOne</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-configure-txone-stellarone">Configuring TXOne StellarOne</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-configuring-txone-edgeone">Configuring TXOne EdgeOne</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ai-docs-poc/trend-vision-one-configuring-txone-stellarone">Configuring TXOne StellarOne</a></li></ul></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ai-docs-poc/trend-vision-one-administration-setting">Administration</a><button aria-label="Expand sidebar category &#x27;Administration&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ai-docs-poc/trend-vision-one-getting-help-troubleshooting">Getting Help and Troubleshooting</a><button aria-label="Expand sidebar category &#x27;Getting Help and Troubleshooting&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/ai-docs-poc/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/ai-docs-poc/trend-vision-one-get-start-endpoint-security"><span>Endpoint Security (for Standard Endpoint and Server &amp; Workload Protection)</span></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/ai-docs-poc/trend-vision-one-endpoint-security-for-sep-swp"><span>Connecting Endpoint Products</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Configuring Trend Micro Apex One On-Premises</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Configuring Trend Micro Apex One On-Premises</h1></header><p>Connect your Trend Micro Apex One servers to Trend Vision One.</p>
+<p>Trend Vision One does not support a direct connection to an on-premises Trend Micro Apex One server. You can connect your Trend Micro Apex One servers to Trend Vision One by first connecting to a Trend Micro Apex Central management server, then integrating your Apex Central server with Trend Vision One.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="procedure">Procedure<a href="#procedure" class="hash-link" aria-label="Direct link to Procedure" title="Direct link to Procedure">​</a></h3>
+<ol>
+<li>
+<p>Register your on-premises Apex Central server to Trend Micro Apex One.</p>
+<p>For more details, see <a href="https://docs.trendmicro.com/en-us/documentation/article/apex-one-service-pack-1-patch-3-server-online-help-osce-registering-pro" target="_blank" rel="noopener noreferrer">Trend Micro Apex One documentation</a>.</p>
+<ol>
+<li>
+<p>On the Trend Micro Apex One web-based management console, go to <strong>Administration → Settings → Apex Central</strong>.</p>
+</li>
+<li>
+<p>Specify a display name for the Apex Central server in the Trend Micro Apex One console.</p>
+<p>If you do not specify a display name, the name defaults to the host name of the server computer and the product name.</p>
+</li>
+<li>
+<p>Specify the Apex Central server FQDN or IP address and the port number to use to connect to this server.</p>
+<ul>
+<li>For a dual-stack Trend Micro Apex One server, type the Apex Central FQDN or IP address (IPv4 or IPv6, if available).</li>
+<li>For a pure IPv4 Trend Micro Apex One server, type the Apex Central FQDN or IPv4 address.</li>
+<li>For a pure IPv6 Trend Micro Apex One server, type the Apex Central FQDN or IPv6 address.</li>
+</ul>
+</li>
+<li>
+<p>In the <strong>Apex Central certificate</strong> section, click <strong>Browse...</strong> and upload the certificate file downloaded from the Apex Central server.</p>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><p>To obtain the Apex Central certificate file, go to the Apex Central server and copy the certificate file to the Trend Micro Apex One server from the following location: <code>&lt;Apex Central installation folder&gt;\Certificate\CA\TMCM_CA_Cert.pem</code></p></div></div>
+</li>
+<li>
+<p>To authenticate the Apex Central IIS web server, type the user name and password.</p>
+</li>
+<li>
+<p>To use a proxy server to connect to the Apex Central server, specify the following proxy settings:</p>
+<ul>
+<li>Proxy protocol</li>
+<li>Server FQDN or IPv4/IPv6 address and port</li>
+<li>Proxy server authentication user ID and password</li>
+</ul>
+</li>
+<li>
+<p>Depending on whether you want to use one-way communication or two-way communication port forwarding, specify the IPv4/IPv6 address and port.</p>
+</li>
+<li>
+<p>To test whether the Apex Central server can connect to Trend Micro Apex One, click <strong>Test Connection</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Register</strong>.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Generate an enrollment token in Trend Vision One.</p>
+<ol>
+<li>
+<p>Sign in to the Trend Vision One console.</p>
+</li>
+<li>
+<p>Go to <strong>Service Management → Product Instance</strong>.</p>
+<p>If you have not yet updated to the Foundation Services release, go to <strong>Service Management → Product Connector</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Add Existing Product</strong> or <strong>Connect.</strong></p>
+</li>
+<li>
+<p>In the <strong>Instance type</strong> field, select <strong>Trend Micro Apex Central On-Premises</strong>.</p>
+<p>If you have not yet updated to the Foundation Services release, select <strong>Trend Micro Apex Central On-Premises</strong> in the <strong>Product name</strong>.</p>
+</li>
+<li>
+<p>Click the link to generate an enrollment token, and copy the new token.</p>
+</li>
+<li>
+<p>Click <strong>Save</strong>.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Integrate Apex Central with Trend Vision One.</p>
+<p>For more details, see <a href="https://docs.trendmicro.com/en-us/documentation/article/apex-central-patch-8-online-help-v1integration" target="_blank" rel="noopener noreferrer">Apex Central documentation</a>.</p>
+<ol>
+<li>
+<p>On the Apex Central console, go to <strong>Trend Vision One → Integration Settings</strong>.</p>
+</li>
+<li>
+<p>Paste in the enrollment token obtained from the Trend Vision One console.</p>
+</li>
+<li>
+<p>Under <strong>Settings</strong>, enable the following settings:</p>
+<ul>
+<li>
+<p>Forward detection logs and endpoint information to Trend Vision One</p>
+</li>
+<li>
+<p>Synchronize suspicious object lists from Trend Vision One</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Click <strong>Register</strong>.</p>
+<p>Your Apex Central management server connects to Trend Vision One.</p>
+</li>
+</ol>
+</li>
+</ol></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/ai-docs-poc/trend-vision-one-connecting-apex-one-saas"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Connecting Trend Micro Apex One as a Service</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/ai-docs-poc/trend-vision-one-sep-management"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Standard Endpoint Protection Management</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#procedure" class="table-of-contents__link toc-highlight">Procedure</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">© 2025  Trend Micro Incorporated. All rights reserved.</div></div></div></footer></div>
+</body>
+</html>

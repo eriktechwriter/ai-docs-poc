@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en-us" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-deploying-ddi-appliance-aws" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">Deploying a Deep Discovery Inspector virtual appliance on AWS | Trend Vision One TechDocs | Trend Micro</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-deploying-ddi-appliance-aws"><meta data-rh="true" property="og:locale" content="en_us"><meta data-rh="true" name="docusaurus_locale" content="en-us"><meta data-rh="true" name="docsearch:language" content="en-us"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Deploying a Deep Discovery Inspector virtual appliance on AWS | Trend Vision One TechDocs | Trend Micro"><meta data-rh="true" name="description" content="Learn how to connect a Deep Discovery Inspector virtual appliance deployed on AWS."><meta data-rh="true" property="og:description" content="Learn how to connect a Deep Discovery Inspector virtual appliance deployed on AWS."><link data-rh="true" rel="icon" href="/ai-docs-poc/brand/favicon.ico"><link data-rh="true" rel="canonical" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-deploying-ddi-appliance-aws"><link data-rh="true" rel="alternate" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-deploying-ddi-appliance-aws" hreflang="en-us"><link data-rh="true" rel="alternate" href="https://eriktechwriter.github.io/ai-docs-poc/trend-vision-one-deploying-ddi-appliance-aws" hreflang="x-default"><link rel="stylesheet" href="/ai-docs-poc/assets/css/styles.f31b9b34.css">
+<script src="/ai-docs-poc/assets/js/runtime~main.a698b785.js" defer="defer"></script>
+<script src="/ai-docs-poc/assets/js/main.af1712bd.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav class="navbar_thvB"><div class="navbarContainer_T6aE"><div class="navbarLeft__b30"><a class="navbarBrand_EDOm" href="/ai-docs-poc/"><img src="/ai-docs-poc/brand/t-ball-icon.svg" alt="Trend Vision One" class="navbarIcon_K54r"><span class="navbarText_AeJ_">Trend Vision One <span class="techDocs_EEyr">TechDocs</span></span></a><div class="navbarNav_bcxn"><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Solutions<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Updates<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Guides<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Resources<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Support &amp; Compliance<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div><div class="dropdownContainer_QtRV"><button class="dropdownTrigger_Qbat" aria-expanded="false" aria-haspopup="true">Legacy Products<svg class="chevron_Ot6n" width="12" height="12" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"></path></svg></button></div></div></div><div class="navbarActions_Kz3N"><div class="searchContainer_bUHY"><input type="search" placeholder="Search docs..." class="searchInput_wxeP"></div><div class="darkModeToggle_kLkm"><button class="darkModeButton_WNed" aria-label="Toggle dark mode">🌙</button></div><button class="mobileMenuButton_OkTY" aria-label="Toggle mobile menu"><span class="hamburger_uk35"></span><span class="hamburger_uk35"></span><span class="hamburger_uk35"></span></button></div></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><main class="docMainContainer_TBSr docMainContainerEnhanced_lQrH"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Deploying a Deep Discovery Inspector virtual appliance on AWS</h1></header><p>Learn how to connect a Deep Discovery Inspector virtual appliance deployed on AWS.</p>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><ul>
+<li>
+<p>In order to access and use the Deep Discovery Inspector virtual appliance in AWS, you must already have and continually maintain an active AWS Account on the AWS Marketplace and you are responsible for purchasing and maintaining through such AWS Account, your use of the Amazon Web Service platform/infrastructure that is required for your deployment of a Deep Discovery Inspector virtual appliance.</p>
+</li>
+<li>
+<p>The following instructions are current as of December 1, 2020. The AWS settings may be different if you are using a newer release of AWS. Refer to the AWS documentation for specific information related to your release.</p>
+</li>
+</ul></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="procedure">Procedure<a href="#procedure" class="hash-link" aria-label="Direct link to Procedure" title="Direct link to Procedure">​</a></h3>
+<ol>
+<li>
+<p>In the Trend Vision One console, go to <strong>Network Security → Network Inventory → Deep Discovery Inspector</strong>, then click <strong>Connect Appliance</strong>.</p>
+</li>
+<li>
+<p>For <strong>Product</strong>, select <strong>New appliance</strong>.</p>
+</li>
+<li>
+<p>Under <strong>Option: Deploy a virtual appliance on AWS</strong>, click <strong>Get AMI on Marketplace</strong> to open the AWS Marketplace and deploy Deep Discovery Inspector.</p>
+<p>The Amazon EC2 console opens.</p>
+</li>
+<li>
+<p>Initiate the instance launch.</p>
+<ol>
+<li>
+<p>In the navigation bar at the top of the screen, select a Region for the instance that meets your needs.</p>
+</li>
+<li>
+<p>From the <strong>Amazon EC2</strong> console dashboard, select <strong>Launch instance</strong>.</p>
+<figure>
+<img decoding="async" loading="lazy" src="./images/launch_instance=GUID-E7F18380-8EBE-41B6-9D05-12B496D6AADA=1=en-us=Low.webp" class="img_ev3q">
+</figure>
+</li>
+</ol>
+</li>
+<li>
+<p>Choose the AMI for Deep Discovery Inspector.</p>
+<ol>
+<li>
+<p>On the <strong>Choose an Amazon Machine Image (AMI)</strong> screen, select <strong>AWS Marketplace</strong> in the left pane.</p>
+</li>
+<li>
+<p>In the search box, search for <code>Trend Micro Deep Discovery Inspector</code>.</p>
+<figure>
+<img decoding="async" loading="lazy" src="./images/aws_marketplace=GUID-48CEC453-F116-421E-9FF3-BD7FE8B08D5E=1=en-us=Low.webp" class="img_ev3q">
+</figure>
+</li>
+<li>
+<p>After the search results appear, click <strong>Select</strong> for <strong>Trend Micro Deep Discovery Inspector &lt;version&gt;</strong>.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Choose an Instance Type.</p>
+<ol>
+<li>
+<p>On the <strong>Choose an Instance Type</strong> screen, choose an instance type that meets the minimum specifications based on your licensed model&#x27;s throughput.</p>
+<p>For details, see the Deep Discovery Inspector AWS Deployment Guide.</p>
+</li>
+<li>
+<p>Choose <strong>Next: Configure Instance Details</strong> to configure your instance further.</p>
+<figure>
+<img decoding="async" loading="lazy" src="./images/aws_deployment_process_2=GUID-021A56B3-5B85-41FB-9FC7-9E4D88795C80=1=en-us=Low.webp" class="img_ev3q">
+</figure>
+</li>
+</ol>
+</li>
+<li>
+<p>Configure the Instance Details.</p>
+<ol>
+<li>
+<p>On the <strong>Configure Instance Details</strong> screen, change the follow settings.</p>
+<ul>
+<li>
+<p><strong>Network</strong>: Select the VPC.</p>
+</li>
+<li>
+<p><strong>Subnet</strong>: Select the subnet into which to launch your instance. Select a subnet that is planned for the data port subnet.</p>
+</li>
+<li>
+<p><strong>Auto-assign Public IP</strong>: Select <strong>Disable</strong>. Trend Micro recommends that you deploy the Deep Discovery Inspector virtual appliance behind an AWS NAT gateway.</p>
+<figure>
+<img decoding="async" loading="lazy" src="./images/aws_deployment_process_3=GUID-5E89CD12-65E9-4364-A281-DA7BE9EC7D32=1=en-us=Low.webp" class="img_ev3q">
+</figure>
+</li>
+<li>
+<p><strong>Network interfaces</strong>: Add a secondary network interface for the Deep Discovery Inspector virtual appliance instance by choosing <strong>Add Device</strong>.</p>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Important</div><div class="admonitionContent_BuS1"><p>The management port for Deep Discovery Inspector on-premises is fixed at the first NIC port (eth0 in Deep Discovery Inspector). In order to adapt into the AWS environment, the Deep Discovery Inspector virtual appliance has swapped port enumeration for the management port to port 1 (eth1) and data port to port 0 (eth0).</p></div></div>
+</li>
+<li>
+<p>Device eth0:</p>
+<ul>
+<li>
+<p><strong>Subnet</strong>: The subnet has been configured in a previous step.</p>
+</li>
+<li>
+<p><strong>Primary IP</strong>: Type a private IPv4 address from the range of your subnet, or leave <strong>Auto-assign</strong> to let AWS choose a private IPv4 address for you.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Device eth1:</p>
+<ul>
+<li>
+<p><strong>Subnet</strong>: Select a subnet that is planned for the management port subnet.</p>
+</li>
+<li>
+<p><strong>Primary IP</strong>: Type a private IPv4 address from the range of your subnet, or leave <strong>Auto-assign</strong> to let AWS choose a private IPv4 address for you.</p>
+</li>
+<li>
+<p><strong>IPv6 IPs</strong>: (Optional) Click <strong>Add IP</strong> and type an IPv6 address from the range of the subnet, or leave <strong>Auto-assign</strong> to let AWS choose an IPv6 address for you.</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure>
+<img decoding="async" loading="lazy" src="./images/aws_deployment_process_4=GUID-D1CBEBD9-2DCA-4219-A21D-0AA3CD6CE03C=1=en-us=Low.webp" class="img_ev3q">
+</figure>
+</li>
+<li>
+<p>Click <strong>Next: Add Storage</strong> to specify the root volume size of your instance</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Add Storage.</p>
+<ol>
+<li>
+<p>Specify the following settings on the <strong>Add Storage</strong> screen.</p>
+<ul>
+<li>
+<p><strong>Size</strong>: The storage size should meet the minimum specifications based on your licensed model&#x27;s throughput.</p>
+<p>For details, see the Deep Discovery Inspector AWS Deployment Guide.</p>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><p>To enlarge the storage size, specify the storage size of the <strong>Volume Type: Root</strong>. The Deep Discovery Inspector virtual appliance only partitions the storage when the <strong>Volume Type</strong> is <strong>Root</strong>. The extra storage will not be used.</p></div></div>
+</li>
+<li>
+<p><strong>Volume Type</strong>: Use the default value, <strong>General Purpose SSD (gp2)</strong>.</p>
+<figure>
+<img decoding="async" loading="lazy" src="./images/aws_deployment_process_5=GUID-A8176AA5-E54D-47B9-B098-EA31C8B169C2=1=en-us=Low.webp" class="img_ev3q">
+</figure>
+</li>
+</ul>
+</li>
+<li>
+<p>Click <strong>Next: Add Tags</strong> to add some custom tags.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Add Tags.</p>
+<ol>
+<li>
+<p>On the <strong>Add Tags</strong> screen, specify tags by providing the key and value combinations.</p>
+<p>For example, for <strong>Key</strong> type <code>Name</code> and for <strong>Value</strong> type <code>vDDI-demo</code>.</p>
+</li>
+<li>
+<p>Click <strong>Next: Configure Security Group</strong>.</p>
+<figure>
+<img decoding="async" loading="lazy" src="./images/config_sec_group=GUID-EC249964-4D1F-45BE-9A3B-7B76164355D6=1=en-us=Low.webp" class="img_ev3q">
+</figure>
+</li>
+</ol>
+</li>
+<li>
+<p>Configure Security Group.</p>
+<ol>
+<li>
+<p>On the <strong>Configure Security Group</strong> screen, use a security group to define firewall rules for the Deep Discovery Inspector virtual appliance instance.</p>
+<ul>
+<li>
+<p>To use existing security group, select <strong>Select an existing security group</strong>, and select your security group.</p>
+</li>
+<li>
+<p>To create a new security group, select <strong>Create a new security group</strong>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Verify that your selected security group contains the following rules:</p>
+<p><strong>Inbound Rules</strong></p>
+<table><colgroup>
+<col style="width:13%">
+<col style="width:13%">
+<col style="width:13%">
+<col style="width:25%">
+<col style="width:38%">
+</colgroup><thead><tr><th><p>Type</p></th><th><p>Protocol</p></th><th><p>Port Range</p></th><th><p>Source</p></th><th><p>Reason</p></th></tr></thead><tbody><tr><td><p>SSH</p></td><td><p>TCP</p></td><td><p>22</p></td><td><p>CIDR that can reach your instance</p></td><td><p>For accessing Deep Discovery Inspector virtual appliance Pre-Configuration console</p></td></tr><tr><td><p>HTTPS</p></td><td><p>TCP</p></td><td><p>443</p></td><td><p>CIDR that can reach your instance</p></td><td><p>For accessing Deep Discovery Inspector virtual appliance management console</p></td></tr><tr><td><p>Custom UDP</p></td><td><p>UDP</p></td><td><p>4789</p></td><td><p>CIDR of your mirror source or the NLB</p></td><td><p>For VXLAN traffic required by AWS traffic mirror</p></td></tr><tr><td><p>Custom TCP</p></td><td><p>TCP</p></td><td><p>14789</p></td><td><p>CIDR of NLB</p></td><td><p>Implemented by the Deep Discovery Inspector virtual appliance for answering NLB health check</p></td></tr></tbody></table>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><p>Outbound Rules: Rules in default security group allow all traffic. The Deep Discovery Inspector virtual appliance works well with default outbound rules. The following exceptions may occur:</p><ul>
+<li>
+<p>For some organizations, whose policies may need more specific protocols and port numbers, see Chapter 2: About Your System &gt; Ports Used by the Appliance in the Deep Discovery Inspector Installation and Deployment Guide.</p>
+</li>
+<li>
+<p>For some organizations, whose infrastructures may need an outbound proxy with domains allowed to access the internet, see Deep Discovery Inspector Administrator&#x27;s Guide for detailed addresses.</p>
+</li>
+</ul></div></div>
+</li>
+<li>
+<p>Click <strong>Review and Launch</strong>.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Review Instance Launch and select key pair.</p>
+<ol>
+<li>
+<p>On the <strong>Review Instance Launch</strong> screen, check the details of your instance, and make any necessary changes by choosing the appropriate <strong>Edit</strong> link.</p>
+</li>
+<li>
+<p>Click <strong>Launch</strong>.</p>
+</li>
+<li>
+<p>In the <strong>Select an existing key pair or create a new key pair</strong> dialog box, select <strong>Proceed without a key pair</strong>.</p>
+</li>
+<li>
+<p>To launch your instance, select the acknowledgment check box, then click <strong>Launch Instances</strong>.</p>
+<figure>
+<img decoding="async" loading="lazy" src="./images/aws_deployment_process_6=GUID-B7E036E2-9875-4AF4-93C2-318458A9F3F5=1=en-us=Low.webp" class="img_ev3q">
+</figure>
+</li>
+</ol>
+</li>
+<li>
+<p>Wait for the Deep Discovery Inspector virtual appliance to become ready.</p>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><p>The Deep Discovery Inspector virtual appliance takes about 15 minutes to become ready.</p></div></div>
+<ol>
+<li>
+<p>View the Deep Discovery Inspector installation progress by using the following steps:</p>
+<ol>
+<li>
+<p>In the left navigation page, click <strong>Instances</strong>.</p>
+</li>
+<li>
+<p>Select the Deep Discovery Inspector virtual appliance instance.</p>
+</li>
+<li>
+<p>Select <strong>Actions → Instance Settings → Get Instance Screenshot</strong>.</p>
+<figure>
+<img decoding="async" loading="lazy" src="./images/aws_deployment_process_7=GUID-08336E8B-07E9-4373-ABA0-43CD9467644D=1=en-us=Low.webp" class="img_ev3q">
+</figure>
+</li>
+</ol>
+<p>For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/launching-instance.md" target="_blank" rel="noopener noreferrer">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/launching-instance.html</a>.</p>
+</li>
+<li>
+<p>When the Deep Discovery Inspector virtual appliance preconfiguration console appears, then Deep Discovery Inspector is ready.</p>
+<figure>
+<img decoding="async" loading="lazy" src="./images/aws_deployment_process_8=GUID-0CC989DD-1BEE-46C3-9FBA-4C4617D783B6=1=en-us=Low.webp" class="img_ev3q">
+</figure>
+</li>
+</ol>
+</li>
+<li>
+<p>View or configure the Deep Discovery Inspector network settings.</p>
+<ol>
+<li>
+<p>Open the Amazon EC2 console at <a href="https://console.aws.amazon.com/ec2/" target="_blank" rel="noopener noreferrer">https://console.aws.amazon.com/ec2/</a>.</p>
+</li>
+<li>
+<p>In the navigation pane, select <strong>Instances</strong>.</p>
+</li>
+<li>
+<p>Select the Deep Discovery Inspector virtual appliance.</p>
+</li>
+<li>
+<p>Select <strong>Actions → Networking → Manage IP Addresses</strong>.</p>
+</li>
+<li>
+<p>Expand <strong>eth1</strong>. The <strong>Private IP Address</strong> is the IP address of the management console for the Deep Discovery Inspector virtual appliance.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Connect the Deep Discovery Inspector appliance to Trend Vision One.</p>
+<ul>
+<li>
+<p>To connect directly, see <a href="/ai-docs-poc/trend-vision-one-connecting-ddi-directly">Connecting a Deep Discovery Inspector appliance directly</a>.</p>
+</li>
+<li>
+<p>To connect using a Service Gateway as a proxy, see <a href="/ai-docs-poc/trend-vision-one-ddi-connect-service-gateway">Connecting a Deep Discovery Inspector appliance using Service Gateway as a proxy</a>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Configure the Deep Discovery Inspector virtual appliance.</p>
+<p>Once the virtual appliance has connected, review the following to further configure and integrate the Deep Discovery Inspector virtual appliance.</p>
+<ul>
+<li>
+<p>Review <a href="/ai-docs-poc/trend-vision-one-sandbox-deep-discovery-inspector">sandbox options</a> for collecting and analyzing suspicious objects.</p>
+</li>
+<li>
+<p><a href="/ai-docs-poc/trend-vision-one-deep-discovery-inspector-appliances">Manage settings from Network Inventory</a> such as enabling the Network Sensor and connecting to a Service Gateway.</p>
+</li>
+<li>
+<p>Click <strong>Access</strong> to open the Deep Discovery Inspector management console.</p>
+<p>At <a href="https://docs.trendmicro.com/en-us/enterprise/deep-discovery-inspector.aspx" target="_blank" rel="noopener noreferrer">https://docs.trendmicro.com/en-us/enterprise/deep-discovery-inspector.aspx</a>, see the Deep Discovery Inspector AWS Deployment Guide for different deployment options and see the Deep Discovery Inspector Administrator&#x27;s Guide for details about configuring and administering Deep Discovery Inspector.</p>
+</li>
+</ul>
+</li>
+</ol></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#procedure" class="table-of-contents__link toc-highlight">Procedure</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">© 2025  Trend Micro Incorporated. All rights reserved.</div></div></div></footer></div>
+</body>
+</html>

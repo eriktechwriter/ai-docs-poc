@@ -49,7 +49,7 @@ const config: Config = {
       "classic",
       {
         docs: {
-          sidebarPath: "./toc.ts", // Do not edit this value
+          sidebarPath: "./sidebars.ts", // Updated to use proper sidebars file
           routeBasePath: "/", // Serve the docs at the site's root
           remarkPlugins: [remarkGridTable],
           rehypePlugins: [rehypeUnwrapImages],
