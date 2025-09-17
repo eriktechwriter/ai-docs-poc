@@ -88,6 +88,11 @@ function showComingSoon(feature) {
     alert(`${feature} documentation is coming soon! 🚀\n\nCurrently available:\n• Endpoint Security Documentation\n• API Reference\n• Technical Support`);
 }
 
+// Handle Endpoint Security navigation
+function goToEndpointSecurity() {
+    window.location.href = 'endpoint-security/';
+}
+
 // Intersection Observer for animations
 const observerOptions = {
     threshold: 0.1,
