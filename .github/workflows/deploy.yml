@@ -14,7 +14,7 @@ jobs:
       id-token: write
     defaults:
       run:
-        working-directory: .
+        working-directory: ./ai-docs-poc
 
     steps:
     - uses: actions/checkout@v4
@@ -39,7 +39,7 @@ jobs:
     - name: Upload to GitHub Pages
       uses: actions/upload-pages-artifact@v3
       with:
-        path: build
+        path: ai-docs-poc/build
 
     - name: Deploy to GitHub Pages
       id: deployment
