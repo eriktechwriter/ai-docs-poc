@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-firewall-exception-requirements-for
+slug: firewall-exception-requirements-for
 title: Firewall exception requirements for Trend Vision One
 ---
 

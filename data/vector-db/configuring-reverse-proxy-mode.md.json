@@ -1,0 +1,222 @@
+[
+  {
+    "id": "configuring-reverse-proxy-mode.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Configuring reverse proxy mode Configure reverse proxy mode on an Internet Access On-Premises Gateway in order to secure the use of your private general or generative AI applications. Reverse proxy mode for the Internet Access On-Premises Gateway allows for additional security and enhanced performance of your organization's private general or generative AI applications. The on-premises gateway accepts HTTP or HTTPS requests from endpoints and distributes the requests to your application or service according to your specifications. If configured to protect a general private application, reverse proxy mode allows you to create and apply internet access rules for the specific on-premises gateway protecting the private application. You may enforce access control, threat protection, and data loss prevention (DLP) specifically on requests made to the protected app.",
+    "metadata": {
+      "filename": "configuring-reverse-proxy-mode.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/configuring-reverse-proxy-mode.md",
+      "title": "Configuring reverse proxy mode",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.990Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      4,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      114,
+      67,
+      960
+    ]
+  },
+  {
+    "id": "configuring-reverse-proxy-mode.md_chunk_1",
+    "content": "If configured to protect a private generative AI service, reverse proxy mode allows you to create and apply AI service access and rate limiting rules specifically for the protected private generative AI service. The on-premises gateway receives requests to your private generative AI service and can apply content filtering, prevent prompt injection, and stop potential denial-of-service attacks with rate limiting rules. When protecting a private generative AI service, the on-premises gateway configured in reverse proxy mode must be deployed in front of the server hosting the service in order to receive and manage requests. When deploying the private gen AI access control, you can set the access control based on the user by using the X-Authenticated-User option. By default the X-Authenticated-User option not enabled and an on-premises gateway in reverse proxy mode can only apply IP-based AI service access rules.",
+    "metadata": {
+      "filename": "configuring-reverse-proxy-mode.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/configuring-reverse-proxy-mode.md",
+      "title": "Configuring reverse proxy mode",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.990Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      4,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      119,
+      60,
+      922
+    ]
+  },
+  {
+    "id": "configuring-reverse-proxy-mode.md_chunk_2",
+    "content": "To use this option, an X-Authenticated-User header needs to be inserted by a downstream app that is deployed in front of the on-premises gateway. The value of this X-Authenticated-User is the end-user's UPN info. This UPN must be associated with the user/group used to create the user-based AI service access rule. The format of header is: X-Authenticated-User: example@domain.com If this option is enabled, but the downstream app does not insert the header into the forwarding traffic, the on-premises gateway applies any user or IP-based AI service access rule for such traffic. Important To enable reverse proxy mode on an on-premises gateway, the corresponding Service Gateway and Internet Access On-Premises Gateway service must both be updated to the latest version. If you are using reverse proxy mode to protect a generative AI service, you must configure the server receiving requests from endpoints to add endpoint IP addresses to the X-Forwarded-For field in the request header.",
+    "metadata": {
+      "filename": "configuring-reverse-proxy-mode.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/configuring-reverse-proxy-mode.md",
+      "title": "Configuring reverse proxy mode",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.990Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      7,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      130,
+      75,
+      989
+    ]
+  },
+  {
+    "id": "configuring-reverse-proxy-mode.md_chunk_3",
+    "content": "Otherwise, the on-premises gateway is not able to identify endpoints and perform access control or rate limiting functions. Procedure In Internet Access and AI Service Access Configuration, deploy a new on-premises gateway or click the edit icon () corresponding to an existing on-premises gateway. In the Advanced Settings tab, select Reverse proxy as the service mode. The default HTTP listening port is 8088. Note Enabling reverse proxy mode causes Internet Access and AI Service Access to determine user count based on total vCPUs allocated to the corresponding Service Gateway. The new credit calculation will take effect in 24 hours. If desired, enable HTTPS listening. The default HTTPS listening port is 8443. For HTTPS requests, choose to use the default SSL certificate or provide a custom certificate with private key and passphrase. (Optional) Provide the name of the app you wish to protect.",
+    "metadata": {
+      "filename": "configuring-reverse-proxy-mode.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/configuring-reverse-proxy-mode.md",
+      "title": "Configuring reverse proxy mode",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.990Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      5,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      116,
+      76,
+      904
+    ]
+  },
+  {
+    "id": "configuring-reverse-proxy-mode.md_chunk_4",
+    "content": "(Optional) Specify whether the protected app is a general private app or a private generative AI service.If you specify a Private generative AI service, you can use X-Authenticated-Users. This requires an AI Service rule. For more information, see Creating an AI service access rule. Important Rate limiting rules can only be applied to on-premises gateways in reverse proxy mode that are protecting a private generative AI service. (Optional) Specify up to 10 FQDNs or IP addresses and ports used to connect to your protected app. Specify the weight of traffic, from 0 to 100 percent, to be routed through each specified FQDN or IP address. Click Save. Related information Managing rate limiting rules © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "configuring-reverse-proxy-mode.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/configuring-reverse-proxy-mode.md",
+      "title": "Configuring reverse proxy mode",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.990Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 4
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      94,
+      70,
+      777
+    ]
+  }
+]

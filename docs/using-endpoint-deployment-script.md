@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-using-endpoint-deployment-script
+slug: using-endpoint-deployment-script
 title: Using the Deployment Script
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-assigning-alerts
+slug: assigning-alerts
 title: Assign owners to Workbench alerts
 ---
 

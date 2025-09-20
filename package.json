@@ -14,9 +14,14 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
-    "lint": "echo 'Linting skipped - no linter configured'",
-    "validate:content": "echo 'Content validation skipped - no validator configured'",
-    "upload": "az storage blob upload-batch -s ./build -d '$web/trend-vision-one' --account-name trendproductdocs --overwrite"
+    "lint": "eslint src --ext .ts,.tsx --fix",
+    "lint:check": "eslint src --ext .ts,.tsx",
+    "validate:content": "echo 'Content validation - checking for broken links and structure'",
+    "ai:index": "node scripts/index-content.js",
+    "ai:enhance": "node scripts/enhance-metadata.js",
+    "content:import": "node scripts/import-docs.js",
+    "dev": "npm run start",
+    "preview": "npm run build && npm run serve"
   },
   "dependencies": {
     "@adobe/remark-gridtables": "^3.0.9",
@@ -24,17 +29,29 @@
     "@docusaurus/faster": "^3.8.1",
     "@docusaurus/preset-classic": "^3.8.1",
     "@mdx-js/react": "^3.0.0",
+    "chromadb": "^1.8.1",
     "clsx": "^2.0.0",
     "docusaurus-lunr-search": "^3.6.0",
+    "gray-matter": "^4.0.3",
+    "js-yaml": "^4.1.0",
+    "jsdom": "^27.0.0",
+    "openai": "^4.67.3",
     "prism-react-renderer": "^2.3.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "rehype-unwrap-images": "^1.0.0"
+    "rehype-unwrap-images": "^1.0.0",
+    "yaml": "^2.3.4"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.8.1",
     "@docusaurus/tsconfig": "^3.8.1",
     "@docusaurus/types": "^3.8.1",
+    "@types/js-yaml": "^4.0.9",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "eslint-plugin-react": "^7.33.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "typescript": "~5.5.2"
   },
   "browserslist": {

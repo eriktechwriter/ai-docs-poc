@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-execution-details
+slug: execution-details
 title: Execution details
 ---
 

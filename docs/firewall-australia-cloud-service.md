@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-firewall-australia-cloud-service
+slug: firewall-australia-cloud-service
 title: 'Firewall exceptions: Australia - cloud service extension'
 ---
 

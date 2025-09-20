@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-checking-service-status
+slug: checking-service-status
 title: Checking the Trend Vision One service status
 ---
 

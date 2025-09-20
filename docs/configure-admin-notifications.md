@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-configure-admin-notifications
+slug: configure-admin-notifications
 title: Configuring notifications
 ---
 

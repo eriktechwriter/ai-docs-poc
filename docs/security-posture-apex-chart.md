@@ -1,0 +1,11 @@
+---
+id: security-posture-apex-chart
+title: Security Posture Chart
+sidebar_label: Security Posture Chart
+description: Security Posture Chart
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Security Posture Chart The chart on the Security Posture tab displays the relationship between the critical threat ratio and compliance level of your network. The x-axis indicates the ratio of critical threats to total endpoints within a site or reporting line. The y-axis indicates the compliance levels of the sites or reporting lines for the selected compliance indicator. You can use this data to quickly identify high risk users and groups from an integrated Active Directory structure. Note To change the sample chart data and display sites or reporting lines based on your company network, enable Active Directory integration or create custom sites based on IP addresses. Hover over a node to view compliance and critical threat information for particular sites or reporting lines. The tail on a node indicates the direction from which the security status has changed over the specified time period. Click the settings icon ( → ) to change the Active Directory grouping (Sites, Reporting Lines) represented by the node. You can also customize sites and reporting lines by using the Active Directory and Compliance Settings screen. The default view displays the selected compliance indicator information for all nodes on your network for the last 7 days. Select a different compliance indicator to change the compliance information that displays. Click the settings icon ( → ) to change the Period for the data that displays. Click a node to view detailed information about the selected node in the summary panel on the right. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

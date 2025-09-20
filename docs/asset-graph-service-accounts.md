@@ -1,0 +1,11 @@
+---
+id: asset-graph-service-accounts
+title: Asset graph for service accounts
+sidebar_label: Asset graph for service accounts
+description: Asset graph for service accounts
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Asset graph for service accounts June 21, 2023—Attack Surface Discovery now provides asset graph support for service accounts. The asset graph provides detailed information about the service account and its relationships and interactions with other assets in your organization. The service account might also appear in the asset graph of other assets. Cyber Risk Exposure Management → Attack Surface Discovery © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

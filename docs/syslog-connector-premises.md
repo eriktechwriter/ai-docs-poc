@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-syslog-connector-premises
+slug: syslog-connector-premises
 title: Syslog connector (on-premises) configuration
 ---
 

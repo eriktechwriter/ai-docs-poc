@@ -1,0 +1,11 @@
+---
+id: user-and-threat-widget
+title: Users with Threats Widget
+sidebar_label: Users with Threats Widget
+description: Users with Threats Widget
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Users with Threats Widget This widget displays information about users with security threat detections. Use the Range drop-down to select the time period for the data that displays. Click the Important Users or Other Users tabs to switch between the different views. The table lists affected users in order by critical threat type severity first, and then by the number of threat detections for the user. Click the number in the Threats column for the user you want to view. The Most Critical Threat column displays the following threat types. Threat Type Description C&C callback Attempts to communicate with a command-and-control (C&C) server to deliver information, receive instructions, and download other malware Known Advanced Persistent Threat (APT) Intrusions by attackers that aggressively pursue and compromise chosen targets, often conducted in campaigns—a series of failed and successful attempts over time to get deeper and deeper into a target network—and not isolated incidents Lateral movement Searches for directories, email, and administration servers, and other assets to map the internal structure of a network, obtain credentials to access these systems, and allow the attacker to move from system to system Ransomware Malware that prevents or limits users from accessing their system unless a ransom is paid Social engineering attack Malware or hacker attacks that exploits a security vulnerability found in documents, such as a PDF file Unknown threats Suspicious objects (IP addresses, domains, file SHA-1 hash values, email messages) with the "high" risk level, as detected by Deep Discovery Inspector, endpoint security products, or other products with Virtual Analyzer Vulnerability attack Malware or hacker attacks that exploits a security weakness typically found in programs and operating systems © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

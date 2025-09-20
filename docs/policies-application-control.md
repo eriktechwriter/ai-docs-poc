@@ -1,0 +1,11 @@
+---
+id: policies-application-control
+title: Application Control
+sidebar_label: Application Control
+description: Application Control
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Application Control Configure and manage the Application Control module settings. Important Policies, Access Control, and the Application Control module are "Pre-release" features and are not considered an official release. Please review the Pre-Release Disclaimer before using the feature. These features are not available in all regions. You can configure Application Control rules in policy resources. Configure your Application Control rules before configuring Application Control. Navigating between the security modules or leaving the Policy Settings screen discards any unsaved changes. To avoid losing your work, always click Save before leaving the current screen. The Agent Interface provides additional settings including access violation notifications. For more information, see Agent Interface. Application Control continuously monitors your endpoints for software changes and allows or blocks software actions based on your enforcement settings, enabled rules, suspicious object list, and trusted program list. Procedure To protect your endpoints with Application Control, select Enable. Note When you enable Application Control, the rule list might be filtered by Active status and might appear empty. Change the Status filter to All to view the Application Control rules. To only allow previously installed applications on the endpoint to run and block all others, select Enable under Lockdown mode. Important Lockdown mode strictly blocks any software which might alter the software running on your endpoint. Enabling lockdown mode might block essential functions like Windows Update and the agent uninstaller tool. For more information, see Prepare for Lockdown Mode. To configure which Application Control rules the agent enforces, locate the rules you want to use and click to change the status to Active. Note You can set a maximum of 350 rules to Active status. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

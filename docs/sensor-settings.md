@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-sensor-settings
+slug: sensor-settings
 title: Sensor Settings
 ---
 

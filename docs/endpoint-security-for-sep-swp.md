@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-endpoint-security-for-sep-swp
+slug: endpoint-security-for-sep-swp
 title: Endpoint Security (for Standard Endpoint and Server & Workload Protection)
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-syslog-content-mapping-cef
+slug: syslog-content-mapping-cef
 title: Syslog content mapping - CEF
 ---
 

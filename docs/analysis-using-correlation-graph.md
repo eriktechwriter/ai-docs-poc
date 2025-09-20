@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-analysis-using-correlation-graph
+slug: analysis-using-correlation-graph
 title: Analysis using the Correlation Graph
 ---
 

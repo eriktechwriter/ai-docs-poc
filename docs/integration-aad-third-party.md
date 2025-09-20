@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-integration-aad-third-party
+slug: integration-aad-third-party
 title: Microsoft Entra ID integration
 ---
 

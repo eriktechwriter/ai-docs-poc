@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-predefined-allow-list
+slug: predefined-allow-list
 title: Predefined allow list for Trend Micro services
 ---
 

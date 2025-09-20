@@ -1,0 +1,11 @@
+---
+id: mobile-security-policy-data
+title: Mobile security policy data
+sidebar_label: Mobile security policy data
+description: Mobile security policy data
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Mobile security policy data View a list of mobile security policies you are managing. The following table outlines the available information on the Mobile Security Policies screen (Mobile Security → Mobile Security Policies). Action Description Priority Which policy to deploy if more than one policy targets the same devices. The policy with the highest priority will apply. Note The default policy has the lowest priority and will apply only when no other policy matches. When creating a policy, the new policy defaults to the highest priority. When replicating a policy, the new policy has priority immediately above the original policy. Policy The policy name, which must be unique Description The description of the policy Assignment group The assignment groups to which the security policy applies Last modified by The administrator that last modified the policy Last modified The time when the policy was last modified Active The current policy and corresponding updates have been deployed to Mobile Agents Click the number to see a list of devices with outdated Mobile Agents in the right panel. To view these devices in Mobile Inventory, click View in Mobile Inventory in the panel. Pending The current policy was updated, but the updates have not been deployed to Mobile Agents within 7 days. Click the number to see a list of devices with outdated Mobile Agents in the right panel. To view these devices in Mobile Inventory, click View in Mobile Inventory in the panel. Action required The current policy was updated, but the updates have not been deployed to Mobile Agents for more than 7 days Click the number to see a list of devices with inactive Mobile Agents in the right panel. To view these devices in Mobile Inventory, click View in Mobile Inventory in the panel. Note For these devices, Trend Micro recommends checking with device owners to verify that the Mobile Security for Business is functioning properly. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

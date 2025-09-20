@@ -1,0 +1,11 @@
+---
+id: network-information-linux
+title: Network information
+sidebar_label: Network information
+description: Network information
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Network information View data and descriptions of evidence in the network information category collected from Linux endpoints. These evidence types appear in columns after selecting an evidence category when examining an Evidence Report. The following table contains descriptions of the evidence data in the network information category that the Collect Evidence task and Trend Micro Incident Response Toolkit may collect from Linux endpoints. Address Resolution Protocol (ARP) Evidence Data Description Network interface The name of the network interface Address The associated internet protocol (IP) address Mask The associated subnet mask MAC The MAC address of the network interface hardware Type The type of hardware associated with the network interface DNS information Evidence Data Description Domain name server The address of the domain name server (DNS) Route Internet Protocol version 4 (IPv4) Evidence Data Description Destination The target of the route Flags The flags representing route characteristics as represented by a character Gateway address The address of the gateway if any Network interface The name of the associated network interface Mask The associates subnet mask of the route Target distance The distance to the target in hops Reference count The number of references to the associated route Lookup count The number of lookups for the associated route Route Internet Protocol version 6 (IPv6) Evidence Data Description Destination The target of the route Network interface The name of the associated network interface Source The origin of the route Next hop The next hop on the route toward the destination Flags The flags representing route characteristics as represented by a character Target distance The distance to the target in hops Reference count The number of references to the associated route Lookup count The number of lookups for the associated route © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-response-actions-section
+slug: response-actions-section
 title: Response actions
 ---
 

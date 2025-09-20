@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-smart-protection-services
+slug: smart-protection-services
 title: Smart Protection Services
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-force-password-reset-task
+slug: force-password-reset-task
 title: Force Password Reset task
 ---
 

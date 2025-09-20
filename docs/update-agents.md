@@ -1,0 +1,11 @@
+---
+id: update-agents
+title: Update Agents
+sidebar_label: Update Agents
+description: Update Agents
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Update Agents To distribute the task of deploying components, domain settings, or agent programs and hotfixes to Trend Vision One Endpoint Security agents, assign some Trend Vision One Endpoint Security agents to act as Update Agents, or update sources for other Trend Vision One Endpoint Security agents. This helps ensure that Trend Vision One Endpoint Security agents receive updates in a timely manner without directing a significant amount of network traffic to the Apex One server. If the network is segmented by location and the network link between segments experiences a heavy traffic load, assign at least one Update Agent on each location. Note Trend Vision One Endpoint Security agents assigned to update components from an Update Agent only receive updated components and settings from the Update Agent. All Trend Vision One Endpoint Security agents still report their status back to the Apex One server. Related information Assigning Trend Vision One Endpoint Security agents as Update Agents © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

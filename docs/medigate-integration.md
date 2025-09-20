@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-medigate-integration
+slug: medigate-integration
 title: Claroty xDome integration
 ---
 

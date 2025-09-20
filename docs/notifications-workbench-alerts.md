@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-notifications-workbench-alerts
+slug: notifications-workbench-alerts
 title: Configuring notifications for new Workbench alert
 ---
 

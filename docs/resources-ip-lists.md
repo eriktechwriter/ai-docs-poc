@@ -1,0 +1,11 @@
+---
+id: resources-ip-lists
+title: IP Lists
+sidebar_label: IP Lists
+description: IP Lists
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ IP Lists Configure lists of IP addresses to monitor or exclude from monitoring. Important If you are working on a policy, make sure to save your settings before leaving the screen. Leaving the screen without saving discards any changes. IP lists are a policy resource where you can define a list of IP addresses for the following features: Intrusion Prevention: Define trusted IP addresses, such as internal service hosts, to exclude from Intrusion Prevention monitoring and scans. Firewall rules: Define specific source or destination IP addresses you want your Firewall rules to monitor. You can add up to 250 IP lists. Procedure Go to Endpoint Security → Endpoint Security Configuration → Policy Resources → IP Lists. Create or edit a list. To create a new list, click Add IP list. To edit an existing list, click the list name and go to General Specify a name and description for the list. Specify an IP address or address range. You can specify IP addresses and ranges in IPv4 or IPv6 format. Important Firewall rules using ICMP or ICMPv6 protocol have strict support for IP address formats. Using an IP list that contains both IPv4 and IPv6 might cause unintended behavior. If you want to use the ICMP protocol, only include IP addresses with the IPv4 format. The ICMP protocol ignores IPv6 addresses. If you want to use the ICMPv6 protocol, only include IP addresses with the IPv6 format. The ICMPv6 protocol ignores IPv4 addresses. To add more IP addresses, click Add. You can specify up to 15 items per list. Click Save. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

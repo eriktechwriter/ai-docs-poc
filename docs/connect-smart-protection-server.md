@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-connect-smart-protection-server
+slug: connect-smart-protection-server
 title: Connecting Trend Micro products to Smart Protection Server
 ---
 

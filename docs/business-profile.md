@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-business-profile
+slug: business-profile
 title: Business Profile
 ---
 

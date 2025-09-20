@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-syslog-connector-saas
+slug: syslog-connector-saas
 title: Syslog connector (SaaS/cloud) configuration
 ---
 

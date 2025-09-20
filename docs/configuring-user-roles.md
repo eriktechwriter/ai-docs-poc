@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-configuring-user-roles
+slug: configuring-user-roles
 title: Configure user roles
 ---
 

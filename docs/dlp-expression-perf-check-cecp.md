@@ -1,0 +1,11 @@
+---
+id: dlp-expression-perf-check-cecp
+title: DLP expression performance check in Cloud Email and Collaboration Protection
+sidebar_label: DLP expression performance check in Cloud Email and Collaboration Protection
+description: DLP expression performance check in Cloud Email and Collaboration Protection
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ DLP expression performance check in Cloud Email and Collaboration Protection December 6, 2024—Cloud Email and Collaboration Protection conducts a performance check on custom expressions for Data Loss Prevention (DLP) to ensure that they have suitable matching performance. When administrators create and save an expression, the back-end conducts a performance check. Based on the results, the system either confirms that the expression can be saved successfully or displays a warning advising the administrator to review and update the expression before saving again. Email and Collaboration Security → Cloud Email and Collaboration Protection © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

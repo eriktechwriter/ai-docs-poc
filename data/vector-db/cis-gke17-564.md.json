@@ -1,0 +1,178 @@
+[
+  {
+    "id": "cis-gke17-564.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 5.6.4 - Ensure clusters are created with Private Endpoint Enabled and Public Access Disabled (Automated) Profile applicability: Level 2 Disable access to the Kubernetes API from outside the node network if it is not required. In a private cluster, the master node has two endpoints, a private and public endpoint. The private endpoint is the internal IP address of the master, behind an internal load balancer in the master's VPC network. Nodes communicate with the master using the private endpoint. The public endpoint enables the Kubernetes API to be accessed from outside the master's VPC network. Although Kubernetes API requires an authorized token to perform sensitive actions, a vulnerability could potentially expose the Kubernetes publically with unrestricted access.",
+    "metadata": {
+      "filename": "cis-gke17-564.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-564.md",
+      "title": "5.6.4 - Ensure clusters are created with Private Endpoint Enabled and Public Access Disabled (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.865Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      107,
+      64,
+      866
+    ]
+  },
+  {
+    "id": "cis-gke17-564.md_chunk_1",
+    "content": "Additionally, an attacker may be able to identify the current cluster and Kubernetes API version and determine whether it is vulnerable to an attack. Unless required, disabling public endpoint will help prevent such threats, and require the attacker to be on the master's VPC network to perform any attack on the Kubernetes API. Note By default, the Private Endpoint is disabled. Impact To enable a Private Endpoint, the cluster has to also be configured with private nodes, a private master IP range and IP aliasing enabled. If the Private Endpoint flag --enable-private-endpoint is passed to the gcloud CLI, or the external IP address undefined in the Google Cloud Console during cluster creation, then all access from a public IP address is prohibited. Audit Using Google Cloud Console: Go to Kubernetes Engine website. Select the required cluster, and within the Details pane, make sure the Endpoint does not have a public IP address.",
+    "metadata": {
+      "filename": "cis-gke17-564.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-564.md",
+      "title": "5.6.4 - Ensure clusters are created with Private Endpoint Enabled and Public Access Disabled (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.865Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      6,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      120,
+      76,
+      938
+    ]
+  },
+  {
+    "id": "cis-gke17-564.md_chunk_2",
+    "content": "Using Command Line: Run this command: gcloud container clusters describe <cluster_name> --format json | jq '.privateClusterConfig.enablePrivateEndpoint' The output of the above command returns true if a Private Endpoint is enabled with Public Access disabled. For an additional check, the endpoint parameter can be queried with the following command: gcloud container clusters describe <cluster_name> --format json | jq '.endpoint' The output of the above command returns a private IP address if Private Endpoint is enabled with Public Access disabled. Remediation Once a cluster is created without enabling Private Endpoint only, it cannot be remediated. Rather, the cluster must be recreated. Using Google Cloud Console: Go to Kubernetes Engine website. Click CREATE CLUSTER, and choose CONFIGURE for the Standard mode cluster. Configure the cluster as required, then click Networking under CLUSTER in the navigation pane. Under IPv4 network access, click the Private cluster radio button.",
+    "metadata": {
+      "filename": "cis-gke17-564.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-564.md",
+      "title": "5.6.4 - Ensure clusters are created with Private Endpoint Enabled and Public Access Disabled (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.865Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      120,
+      69,
+      991
+    ]
+  },
+  {
+    "id": "cis-gke17-564.md_chunk_3",
+    "content": "Uncheck the Access control plane using its external IP address checkbox. In the Control plane IP range textbox, provide an IP range for the control plane. Configure the other settings as required, and click CREATE. Using Command Line: Create a cluster with a Private Endpoint enabled and Public Access disabled by including the --enable-private-endpoint flag within the cluster create command: gcloud container clusters create <cluster_name> --enable-private-endpoint Setting this flag also requires the setting of --enable-private-nodes, --enable-ip-alias, and --master-ipv4-cidr=<master_cidr_range>. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-gke17-564.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-564.md",
+      "title": "5.6.4 - Ensure clusters are created with Private Endpoint Enabled and Public Access Disabled (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.865Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      88,
+      58,
+      676
+    ]
+  }
+]

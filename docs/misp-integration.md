@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-misp-integration
+slug: misp-integration
 title: MISP integration (via Service Gateway)
 ---
 

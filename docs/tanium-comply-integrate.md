@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-tanium-comply-integrate
+slug: tanium-comply-integrate
 title: Tanium Comply integration
 ---
 

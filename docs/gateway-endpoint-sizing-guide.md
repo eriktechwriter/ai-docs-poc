@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-gateway-endpoint-sizing-guide
+slug: gateway-endpoint-sizing-guide
 title: Service Gateway sizing guide for endpoints
 ---
 

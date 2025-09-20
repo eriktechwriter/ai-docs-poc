@@ -1,0 +1,134 @@
+[
+  {
+    "id": "install-contain-scanner2.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Install the Containerized Scanner Procedure Create secrets with the registration token.Create secrets using the following commands: (replace _your-v1-registration-token_ using your v1-registration token): kubectl create namespace visionone-filesecurity kubectl create secret generic token-secret --from-literal=registration-token=\"_your-v1-registration-token_\" -n visionone-filesecurity kubectl create secret generic device-token-secret -n visionone-filesecurity Validate the serests: Get secrets using following command: (should include two secrets token-secret and device-token-secret) kubectl get secret -n visionone-filesecurity Download the Helm chart containing the scanner from the GitHub repository: helm repo add visionone-filesecurity https://trendmicro.github.io/visionone-file-security-helm/ helm repo update If you wish you can verify that the helm chart has been signed and is valid: Download the",
+    "metadata": {
+      "filename": "install-contain-scanner2.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/install-contain-scanner2.md",
+      "title": "Install the Containerized Scanner",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.582Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      128,
+      65,
+      999
+    ]
+  },
+  {
+    "id": "install-contain-scanner2.md_chunk_1",
+    "content": "public key file and import curl -o public-key.asc https://trendmicro.github.io/visionone-file-security-helm/public-key.asc gpg --import public-key.asc WARNING The GnuPG v2 stores your secret keyring using a new format kbx on the default location ~/.gnupg/pubring.kbx. Please use the following command to convert your keyring to the legacy gpg format (Reference: Helm Provenance and Integrity) Verify that the chart has been signed and is valid helm pull --verify visionone-filesecurity/visionone-filesecurity Install the Helm Chart: Install the chart with the release name my-releasehelm install my-release visionone-filesecurity/visionone-filesecurity -n visionone-filesecurity Download and install a File Security SDK or the File Security CLI. You need to install the SDK or CLI to retrieve the scan results from the scanner. For more information on installing the SDKs and CLI, see: Go Java NodeJS Python CLI Verify that the scanner is working using the CLI.",
+    "metadata": {
+      "filename": "install-contain-scanner2.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/install-contain-scanner2.md",
+      "title": "Install the Containerized Scanner",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.582Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      138,
+      71,
+      961
+    ]
+  },
+  {
+    "id": "install-contain-scanner2.md_chunk_2",
+    "content": "Note If you installed an SDK instead of the CLI, you can also verify if the scanner is running using the installed SDK. For more information see File Security SDK Scan file from another pod using Trend Micro File Security CLI with service name as endpoint: ./tmfs scan file:./eicar.com.txt --tls=false --endpoint=my-release-visionone-filesecurity-scanner:50051 © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "install-contain-scanner2.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/install-contain-scanner2.md",
+      "title": "Install the Containerized Scanner",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.582Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      2,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      64,
+      47,
+      435
+    ]
+  }
+]

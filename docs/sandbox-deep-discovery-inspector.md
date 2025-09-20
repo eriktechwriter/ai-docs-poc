@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-sandbox-deep-discovery-inspector
+slug: sandbox-deep-discovery-inspector
 title: Sandbox options for connected Deep Discovery Inspector appliances
 ---
 

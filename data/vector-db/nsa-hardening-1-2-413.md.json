@@ -1,0 +1,134 @@
+[
+  {
+    "id": "nsa-hardening-1-2-413.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 4.1.3 - Minimize the admission of containers configured to share the host IPC namespace (Automated) Profile applicability: Level 1 Do not generally permit containers to be run with the hostIPC flag set to true. A container running in the host's IPC namespace can use IPC to interact with processes outside the container. There should be at least one admission control policy defined which does not permit containers to share the host IPC namespace. If you need to run containers which require hostIPC, this should be defined in a separate policy and you should carefully check to ensure that only limited service accounts and users are given permission to use that policy. Note By default, there are no restrictions on the creation of hostIPC containers. Impact Pods defined with spec.hostIPC: true will not be permitted unless they are run under a specific policy.",
+    "metadata": {
+      "filename": "nsa-hardening-1-2-413.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/nsa-hardening-1-2-413.md",
+      "title": "4.1.3 - Minimize the admission of containers configured to share the host IPC namespace (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.769Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      124,
+      78,
+      954
+    ]
+  },
+  {
+    "id": "nsa-hardening-1-2-413.md_chunk_1",
+    "content": "Audit List the policies in use for each namespace in the cluster, ensure that each policy disallows the admission of hostIPC containers. In the YAML output, look for the hostIPC setting under the spec section to check if it is set to true. Option 1 kubectl get pods --all-namespaces -o json | jq -r '.items[] | select(.spec.hostIPC == true) | \"\\(.metadata.namespace)/\\(.metadata.name)\"' Option 2 kubectl get pods --all-namespaces -o json | jq '.items[] | select(.metadata.namespace != \"kube-system\" and .spec.hostIPC == true) | {pod: .metadata.name, namespace: .metadata.namespace, container: .spec.containers[].name}' When creating a Pod Security Policy, [\"kube-system\"] namespaces are excluded by default. This command retrieves all pods across all namespaces in JSON format, then uses jq to filter out those with the hostIPC flag set to true, and finally it formats the output to show the namespace and name of each matching pod.",
+    "metadata": {
+      "filename": "nsa-hardening-1-2-413.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/nsa-hardening-1-2-413.md",
+      "title": "4.1.3 - Minimize the admission of containers configured to share the host IPC namespace (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.769Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      122,
+      64,
+      932
+    ]
+  },
+  {
+    "id": "nsa-hardening-1-2-413.md_chunk_2",
+    "content": "Remediation Add policies to each namespace in the cluster which has user workloads to restrict the admission of hostIPC containers. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "nsa-hardening-1-2-413.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/nsa-hardening-1-2-413.md",
+      "title": "4.1.3 - Minimize the admission of containers configured to share the host IPC namespace (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.769Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      26,
+      25,
+      206
+    ]
+  }
+]

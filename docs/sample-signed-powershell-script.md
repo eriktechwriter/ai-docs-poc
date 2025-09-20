@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-sample-signed-powershell-script
+slug: sample-signed-powershell-script
 title: Sample signed PowerShell script
 ---
 

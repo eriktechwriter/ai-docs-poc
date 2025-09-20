@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-configuring-ddi-connections
+slug: configuring-ddi-connections
 title: Configuring Deep Discovery Inspector connections
 ---
 

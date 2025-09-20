@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-notifications-response-tasks
+slug: notifications-response-tasks
 title: Configuring notifications for response tasks
 ---
 

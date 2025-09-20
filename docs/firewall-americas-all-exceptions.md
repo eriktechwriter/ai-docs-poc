@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-firewall-americas-all-exceptions
+slug: firewall-americas-all-exceptions
 title: 'Firewall exceptions: Americas - all exceptions'
 ---
 

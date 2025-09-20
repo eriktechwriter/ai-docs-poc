@@ -1,0 +1,11 @@
+---
+id: create-mac-addresses-policies
+title: Create a list of MAC addresses for use in policies
+sidebar_label: Create a list of MAC addresses for use in policies
+description: Create a list of MAC addresses for use in policies
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Create a list of MAC addresses for use in policies Create lists of MAC addresses so that you can use them in multiple policies. A single list is easier to manage than several identical lists that are each created in a different policy. Tip To create a MAC list that is similar to an existing one, duplicate the list and then edit it. MAC lists support MAC addresses in both hyphen- and colon-separated formats, for example 0A-0F-FF-F0-A0-AF and 0A:0F:FF:F0:A0:AF. You can insert comments into your MAC list by preceding the text with a pound sign ("#"). Procedure Click Policies → Common Objects → Lists → MAC Lists. Click New → New MAC List. Type a name and, optionally, a description. In the MAC(s) list, add the MAC addresses, one per line. Click OK. Next steps Import and export MAC lists You can export one or more MAC lists to an XML or CSV file, and import lists from an XML file. Procedure Click Policies → Common Objects → Lists → MAC Lists. To export one or more lists, select them and click Export → Export Selected to CSV or Export → Export Selected to XML. To export all lists, click Export → Export to CSV or Export → Export to XML. To import lists, click New → Import From File and follow the instructions in the wizard. Next steps See which policies use a MAC list It is useful to see which policies use a MAC list to be aware of which policies are affected by any changes you make. For example, you can ensure no policies use a MAC list before deleting it. Procedure Click Policies → Common Objects → Lists → MAC Lists. Select the MAC list and click Properties. Click the Assigned To tab. Next steps © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

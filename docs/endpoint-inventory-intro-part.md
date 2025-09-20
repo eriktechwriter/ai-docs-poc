@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-endpoint-inventory-intro-part
+slug: endpoint-inventory-intro-part
 title: Endpoint Inventory
 ---
 

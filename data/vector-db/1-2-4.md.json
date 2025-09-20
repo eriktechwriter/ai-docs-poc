@@ -1,0 +1,90 @@
+[
+  {
+    "id": "1-2-4.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 1.2.4 - Ensure that the --kubelet-client-certificate and --kubelet-client-key arguments are set as appropriate (Automated) Profile applicability: Level 1 - Master Node Enable certificate based kubelet authentication. The apiserver, by default, does not authenticate itself to the kubelet's HTTPS endpoints. The requests from the apiserver are treated anonymously. You should set up certificate- based kubelet authentication to ensure that the apiserver authenticates itself to kubelets when submitting requests. Note By default, certificate-based kubelet authentication is not set. Impact You require TLS to be configured on apiserver as well as kubelets. Audit Run the following command on the Control Plane node: ps -ef | grep kube-apiserver Verify that the --kubelet-client-certificate and --kubelet-client-key arguments exist and they are set as appropriately.",
+    "metadata": {
+      "filename": "1-2-4.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/1-2-4.md",
+      "title": "1.2.4 - Ensure that the --kubelet-client-certificate and --kubelet-client-key arguments are set as appropriate (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.531Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      115,
+      66,
+      953
+    ]
+  },
+  {
+    "id": "1-2-4.md_chunk_1",
+    "content": "Alternative Audit Method kubectl get pod -nkube-system -lcomponent=kube-apiserver -o=jsonpath='{range .items[]}{.spec.containers[].command} {\"\\n\"}{end}' | grep '--kubelet-client-certificate' | grep -i false If the exit code is '1', then the control isn't present / failed. Remediation Follow the Kubernetes documentation and set up the TLS connection between the apiserver and kubelets. Then, edit API server pod specification file /etc/kubernetes/manifests/kube-apiserver.yaml on the Control Plane node and set the kubelet client certificate and key parameters as below. --kubelet-client-certificate=<path/to/client-certificate-file> --kubelet-client-key=<path/to/client-key-file> © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "1-2-4.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/1-2-4.md",
+      "title": "1.2.4 - Ensure that the --kubelet-client-certificate and --kubelet-client-key arguments are set as appropriate (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.531Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      99,
+      65,
+      756
+    ]
+  }
+]

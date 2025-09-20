@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-endpoint-activity-data
+slug: endpoint-activity-data
 title: Endpoint activity data sources
 ---
 

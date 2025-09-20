@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-misp-integration-direct-connect
+slug: misp-integration-direct-connect
 title: MISP integration (via direct connection)
 ---
 

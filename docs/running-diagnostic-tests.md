@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-running-diagnostic-tests
+slug: running-diagnostic-tests
 title: Running diagnostic tests
 ---
 

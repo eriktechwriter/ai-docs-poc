@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-endpoint-management
+slug: endpoint-management
 title: Endpoint Management
 ---
 

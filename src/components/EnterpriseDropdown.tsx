@@ -1,3 +1,5 @@
+const mainUrl = 'https://docs.trendmicro.com';
+
 const enterpriseDropdownLinks = {
   type: 'dropdown',
   position: 'left',

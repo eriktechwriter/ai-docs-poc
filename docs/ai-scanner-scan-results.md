@@ -1,0 +1,11 @@
+---
+id: ai-scanner-scan-results
+title: AI Scanner scan results
+sidebar_label: AI Scanner scan results
+description: AI Scanner scan results
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ AI Scanner scan results Evaluate the results of scans of your AI models. The following table displays the information available in AI Scanner after a scan completes: Scan result Description Scan details Basic information on your target AI model and the start time and duration of the scan. Severity breakdown An overview of the severity levels of successful attacks on your AI model, organized into Critical, High, Medium, and Low severity levels. Top attack objectives A chart displaying the most commonly used attack objectives targeting your AI model. An attack objective is the outcome that an attack on an AI model attempts to produce, such as the disclosure of sensitive data. Top attack techniques A chart displaying the most common techniques used to attack your AI model, such as DAN (Do Anything Now) prompts. Framework compliance A chart of the percentage of scans in which your model demonstrated compliance with various global compliance standards, including the following: OWASP Application Security Verification Standard MITRE Attack outcome by objective A chart of the outcomes of failed and successful attacks on your model, organized by attack objective. Evaluation results A table of the aggregated results of all scans of your AI model, including the scan settings, severity level, and final attack outcome. Individual scan details Click View details in any row of the Evaluation results table to view the details of any individual scan, including the following: Original prompt: The initial prompt used to begin the chat Chat history: Click View full conversation to view the full chat between the user and the AI model Attack objective and Attack technique: The attack settings selected for the scan Framework compliance: The compliance status of the model based on different frameworks Evaluation: The reason that the attack on the model failed or succeeded © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

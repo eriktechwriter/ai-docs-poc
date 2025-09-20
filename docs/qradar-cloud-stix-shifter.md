@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-qradar-cloud-stix-shifter
+slug: qradar-cloud-stix-shifter
 title: QRadar on Cloud with STIX-Shifter integration
 ---
 

@@ -1,0 +1,11 @@
+---
+id: create-cases-asrm
+title: Create new cases or assign risk events to existing cases directly in Cyber Risk Exposure Management apps
+sidebar_label: Create new cases or assign risk events to existing cases directly in Cyber Risk Exposure Management apps
+description: Create new cases or assign risk events to existing cases directly in Cyber Risk Exposure Management apps
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Create new cases or assign risk events to existing cases directly in Cyber Risk Exposure Management apps December 9, 2024—Resolving risk events is an important task for security operations team members and IT operations. In large organizations, many individuals are involved in risk mitigation tasks, Requiting team members to leverage Case Management for more efficient collaboration. Now in Threat and Exposure Management, users can create new cases or assign risk events to existing cases. Cases can be closed after marking risk event statuses as risk mitigated, dismissed or accepted. All tasks related to the case can be viewed and managed from Case Management. Cyber Risk Exposure Management → Threat and Exposure Management © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

@@ -1,0 +1,11 @@
+---
+id: nsa-hardening-1-2-1226
+title: 1.2.26 - Ensure that the --etcd-cafile argument is set as appropriate (Automated)
+sidebar_label: 1.2.26 - Ensure that the --etcd-cafile argument is set as appropriate (Automated)
+description: 1.2.26 - Ensure that the --etcd-cafile argument is set as appropriate (Automated)
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 1.2.26 - Ensure that the --etcd-cafile argument is set as appropriate (Automated) Profile applicability: Level 1 - Master Node etcd should be configured to make use of TLS encryption for client connections. etcd is a highly-available key value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be protected by client authentication. This requires the API server to identify itself to the etcd server using a SSL Certificate Authority file. Note By default, --etcd-cafile is not set. Impact TLS and client certificate authentication must be configured for etcd. Audit Run the following command on the Control Plane node: ps -ef | grep kube-apiserver Verify that the --etcd-cafile argument exists and it is set as appropriate. Remediation Follow the Kubernetes documentation and set up the TLS connection between the apiserver and etcd. Then, edit the API server pod specification file /etc/kubernetes/manifests/kube-apiserver.yaml on the master node and set the etcd certificate authority file parameter. --etcd-cafile=<path/to/ca-file> © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

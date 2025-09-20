@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-get-start-endpoint-security
+slug: get-start-endpoint-security
 title: Getting Started with Trend Vision One Endpoint Security
 ---
 

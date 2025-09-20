@@ -1,0 +1,11 @@
+---
+id: disable-pattern-update-alerts
+title: Disable emails for New Pattern Update alerts
+sidebar_label: Disable emails for New Pattern Update alerts
+description: Disable emails for New Pattern Update alerts
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Disable emails for New Pattern Update alerts The "New Pattern Update is Downloaded and Available" alert is raised when a component update has not been applied to an agent one hour after Server & Workload Protection has downloaded it. The one-hour time span is not configurable. The alert is sent via email when the alert is raised by default. If you are receiving too many of these email alerts because one hour is not long enough to disperse the updates, you can disable email notifications for this alert. Instead, you can receive email messages for the "Computer Not Receiving Updates" alert for which you can configure the time that passes before the alert is raised. Procedure To ensure that the agent is configured to automatically download component updates, in Server & Workload Protection, click Administration → Scheduled Tasks. If there is no scheduled task of type Check for Component Updates, create one (see Schedule Server & Workload Protection to perform tasks). Click Administration → System Settings → Updates. In the Rules section under Component Updates, make sure Automatically apply Rule Updates to Policies is selected. For Server & Workload Protection, rule updates are automatically applied by default. Click Alerts → Configure Alerts. In the Alert Configuration window, click the New Pattern Update is Downloadable and Available alert and then click Properties. On the Alert Information window, deselect Send Email to notify when this alert is raised and then click OK. Click the Computer Not Receiving Updates alert and then click Properties. Make sure Send Email to notify when this alert is raised is selected, and click OK. The alert is raised when an update is pending for 7 days. To raise the alert after a different amount of time has passed since the update was pending, click Administration → System Settings → Alerts. In the alerts area, use the drop-down to select the period of time, and then click Save. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-cef-observed-attack-techniques-logs
+slug: cef-observed-attack-techniques-logs
 title: CEF Observed Attack Techniques logs
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-endpoint-list-faq
+slug: endpoint-list-faq
 title: Endpoint list FAQ
 ---
 

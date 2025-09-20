@@ -1,0 +1,11 @@
+---
+id: unable-apply-policies
+title: Unable to apply policies
+sidebar_label: Unable to apply policies
+description: Unable to apply policies
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Unable to apply policies The Unable to apply policies status indicates the endpoint is part of an endpoint group enrolled in Endpoint Security Policies (unified assignment) but is unable to use the policy settings. This can occur if the agent is missing components or requires and update. Review the following scenarios and follow the steps to resolve the status. Scenario 1 - Reconfigure agent This scenario might occur for the following issues: The agent is missing components, such as the Endpoint Sensor. The endpoint has the Trend Vision One Endpoint Security agent installed with the Sensor-only configuration. The endpoint is managed by a connected endpoint security product, such as Trend Micro Apex One or Trend Cloud One Workload Security, and has the Trend Vision One Endpoint Security agent installed with the Sensor-only configuration. To resolve the issue, click Reconfigure Trend Vision One Endpoint Security agent to download and install the missing components. Trend Micro recommends updating your connected endpoint security products. Scenario 2 - Update agent This scenario might occur for the following issues: The endpoint is managed by Server & Workload Protection and is missing components, such as the Endpoint Sensor. To resolve the issue, click Update Trend Vision One Endpoint Security agent. If the update fails, check the following: Agent version installed on the endpoint. The minimum supported agent version is Deep Security 20.0.1.25770 (20 LTS Update 2024-12-10) or later. If endpoint has an earlier version of the agent, manually update the agent by downloading the Trend Vision One Endpoint Security agent installation package. Operating system installed on the endpoint. Check the operating system requirements to verify the endpoint is supported by Trend Vision One Endpoint Security agent. If you are unable to resolve the issue, click Create support case to contact support providers. Create only one ticket, even if you have multiple affected endpoints. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

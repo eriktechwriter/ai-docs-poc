@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-group-policy-object-sample-script
+slug: group-policy-object-sample-script
 title: Group Policy Object Sample Script
 ---
 

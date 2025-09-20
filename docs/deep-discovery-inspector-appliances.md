@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-deep-discovery-inspector-appliances
+slug: deep-discovery-inspector-appliances
 title: Deep Discovery Inspector appliances
 ---
 

@@ -1,0 +1,11 @@
+---
+id: vsphere-distributed-switch-span
+title: Configure internal network traffic with the VMware vSphere Distributed Switch (SPAN)
+sidebar_label: Configure internal network traffic with the VMware vSphere Distributed Switch (SPAN)
+description: Configure internal network traffic with the VMware vSphere Distributed Switch (SPAN)
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Configure internal network traffic with the VMware vSphere Distributed Switch (SPAN) Configure internal network traffic with the VMware vSphere Distributed Switch using SPAN to allow Virtual Network Sensor to monitor data. Important The following instructions are valid as of July 2023. Procedure Turn off your Virtual Network Sensor. On the VMware vCenter console, click the tab. Right-click the name of your switch, and then select Distributed Port Group and New Distributed Port Group. On the Name and location screen, specify the port group name and location and click NEXT. On the Configure settings screen, view the default settings and click NEXT. On the Ready to complete screen, review the settings and click FINISH. Click the tab and then click the name of your virtual machine. Click . On the Edit Settings screen, click Network adapter 2 and select Browse.... Click the name of your port group and click OK. Click OK. Click the tab and then click the name of your switch. Click Configure, click Port Mirroring, and then click NEW... On the Select session type screen, select Distributed Port Mirroring and click NEXT. On the Edit properties screen, select Enabled for the status, and click NEXT. On the Select sources screen, select the port you want to be monitored. On the Select destinations screen, select the network traffic destination port that you just created and click NEXT. On the Ready to complete screen, review the settings and click FINISH. Turn on your Virtual Network Sensor. After configuring your network settings, access the Virtual Network Sensor console and use the command show traffic to verify the Virtual Network Sensor is receiving traffic. For more information about troubleshooting, see Virtual Network Sensor FAQ and Virtual Network Sensor CLI commands. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

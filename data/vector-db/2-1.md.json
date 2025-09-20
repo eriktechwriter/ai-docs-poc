@@ -1,0 +1,90 @@
+[
+  {
+    "id": "2-1.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 2.1 - Ensure that the --cert-file and --key-file arguments are set as appropriate (Automated) Profile applicability: Level 1 - Master Node Configure TLS encryption for the etcd service. etcd is a highly-available key value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be encrypted in transit. Note By default, TLS encryption is not set. Impact Client connections only over TLS would be served. Audit Run the following command on the etcd server node: ps -ef | grep etcd Verify that the --cert-file and the --key-file arguments are set as appropriate. Remediation Follow the etcd service documentation and configure TLS encryption. Then, edit the etcd pod specification file /etc/kubernetes/manifests/etcd.yaml on the master node and set the below parameters.",
+    "metadata": {
+      "filename": "2-1.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/2-1.md",
+      "title": "2.1 - Ensure that the --cert-file and --key-file arguments are set as appropriate (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.539Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      128,
+      81,
+      943
+    ]
+  },
+  {
+    "id": "2-1.md_chunk_1",
+    "content": "--cert-file=</path/to/ca-file> --key-file=</path/to/key-file> © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "2-1.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/2-1.md",
+      "title": "2.1 - Ensure that the --cert-file and --key-file arguments are set as appropriate (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.539Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      19,
+      14,
+      136
+    ]
+  }
+]

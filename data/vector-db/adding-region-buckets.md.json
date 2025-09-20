@@ -1,0 +1,134 @@
+[
+  {
+    "id": "adding-region-buckets.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Add by-region quarantine and promote buckets in single accounts By default, the FileSecurityStorageQuarantineBucket and the FileStorageSecurityCleanBucket in the CloudFormation template are global parameters. You can specify them to be global, by-region or a combination of both by entering a JSON script. If you have already set up your CloudFormation template and want to use by-region quarantine buckets, you need to re-deploy or update the CloudFormation template using Cloud Account Management. Use the one of the following JSON scripts in the FileSecurityStorageQuarantineBucket or the FileStorageSecurityCleanBucket field when creating or updating your CloudFormation templates: To enable the bucket to be global, you include only the global key:{\"global\":\"s3-global-bucket-name\"}All files are moved to the global bucket.",
+    "metadata": {
+      "filename": "adding-region-buckets.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/adding-region-buckets.md",
+      "title": "Add by-region quarantine and promote buckets in single accounts",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.624Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      103,
+      64,
+      917
+    ]
+  },
+  {
+    "id": "adding-region-buckets.md_chunk_1",
+    "content": "To enable the bucket to be by-region, you include only the region ID keys:{\"us-east-2\":\"s3-by-region-us-east-2-bucket-name\",\"ap-south-2\":\"s3-by-region-ap-south-2-bucket-name\"}The system checks if the current scanner region has a specified bucket: If the current scanner region has a specified bucket, the file is moved to that regional bucket. If the current scanner region does not have a specified bucket, the file is tagged with the original source file information, and an additional tag is added to inform the customer that the \"quarantine/promote\" feature is enabled, but no specific region bucket was configured. To enable the bucket to be both global and by-region, you include both the global and region ID keys:{\"global\":\"s3-global-bucket-name\",\"us-east-1\":\"s3-by-region-us-east-1-bucket-name\"}The system checks if the current scanner region has a specified bucket: If the current scanner region has a specified bucket, the file is moved to that regional bucket.",
+    "metadata": {
+      "filename": "adding-region-buckets.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/adding-region-buckets.md",
+      "title": "Add by-region quarantine and promote buckets in single accounts",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.624Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      127,
+      45,
+      972
+    ]
+  },
+  {
+    "id": "adding-region-buckets.md_chunk_2",
+    "content": "If the current scanner region does not have a specified bucket, the file is moved to the global bucket. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "adding-region-buckets.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/adding-region-buckets.md",
+      "title": "Add by-region quarantine and promote buckets in single accounts",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.624Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      25,
+      22,
+      178
+    ]
+  }
+]

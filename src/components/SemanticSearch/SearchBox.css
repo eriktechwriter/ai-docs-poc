@@ -1,0 +1,398 @@
+/**
+ * Semantic Search Box Styles
+ * 
+ * Modern, responsive styling for the semantic search interface
+ */
+
+.semantic-search-box {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Search Input Container */
+.search-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 48px 12px 16px;
+  font-size: 16px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  background: #ffffff;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #1976d2;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+}
+
+.search-input::placeholder {
+  color: #6c757d;
+}
+
+.search-icon {
+  position: absolute;
+  right: 12px;
+  color: #6c757d;
+  pointer-events: none;
+}
+
+.search-loading {
+  position: absolute;
+  right: 40px;
+}
+
+.loading-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #e1e5e9;
+  border-top: 2px solid #1976d2;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Category Filters */
+.category-filters {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.category-filter {
+  padding: 6px 12px;
+  font-size: 14px;
+  border: 1px solid #e1e5e9;
+  border-radius: 20px;
+  background: #ffffff;
+  color: #495057;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.category-filter:hover {
+  border-color: #1976d2;
+  color: #1976d2;
+}
+
+.category-filter.active {
+  background: #1976d2;
+  border-color: #1976d2;
+  color: #ffffff;
+}
+
+/* Search Dropdown */
+.search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #e1e5e9;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  max-height: 500px;
+  overflow-y: auto;
+  margin-top: 4px;
+}
+
+/* Results Header */
+.search-results-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e1e5e9;
+  background: #f8f9fa;
+}
+
+.results-count {
+  font-size: 14px;
+  color: #6c757d;
+}
+
+/* Search Results */
+.search-results {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.search-result {
+  padding: 16px;
+  border-bottom: 1px solid #e1e5e9;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.search-result:hover,
+.search-result.selected {
+  background: #f8f9fa;
+}
+
+.search-result:last-child {
+  border-bottom: none;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.result-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1976d2;
+  margin: 0;
+  line-height: 1.3;
+  flex: 1;
+  margin-right: 12px;
+}
+
+.result-meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.result-similarity {
+  font-size: 12px;
+  font-weight: 600;
+  color: #28a745;
+  background: rgba(40, 167, 69, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.result-category {
+  font-size: 12px;
+  color: #6c757d;
+  background: #e9ecef;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.result-preview {
+  font-size: 14px;
+  color: #495057;
+  line-height: 1.4;
+  margin: 0 0 8px 0;
+}
+
+.result-tags {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.result-tag {
+  font-size: 11px;
+  color: #6c757d;
+  background: #e9ecef;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+/* No Results */
+.no-results {
+  padding: 24px 16px;
+  text-align: center;
+}
+
+.no-results-message {
+  font-size: 16px;
+  color: #6c757d;
+  margin-bottom: 16px;
+}
+
+.no-results-suggestions {
+  font-size: 14px;
+  color: #495057;
+}
+
+/* Suggestions */
+.search-suggestions {
+  padding: 12px 16px;
+  border-top: 1px solid #e1e5e9;
+  background: #f8f9fa;
+}
+
+.suggestions-header {
+  font-size: 14px;
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 8px;
+}
+
+.suggestions-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.suggestion-item {
+  font-size: 13px;
+  color: #1976d2;
+  background: #ffffff;
+  border: 1px solid #e1e5e9;
+  border-radius: 16px;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.suggestion-item:hover {
+  background: #1976d2;
+  color: #ffffff;
+}
+
+/* Recommendations */
+.search-recommendations {
+  padding: 12px 16px;
+  border-top: 1px solid #e1e5e9;
+  background: #fff3cd;
+}
+
+.recommendations-header {
+  font-size: 14px;
+  font-weight: 600;
+  color: #856404;
+  margin-bottom: 8px;
+}
+
+.recommendations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.recommendation-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 8px;
+  background: #ffffff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.recommendation-item:hover {
+  background: #f8f9fa;
+}
+
+.recommendation-title {
+  font-size: 13px;
+  color: #495057;
+  flex: 1;
+}
+
+.recommendation-similarity {
+  font-size: 11px;
+  color: #28a745;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .semantic-search-box {
+    max-width: 100%;
+  }
+  
+  .search-input {
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+  
+  .category-filters {
+    margin-top: 8px;
+  }
+  
+  .category-filter {
+    font-size: 13px;
+    padding: 5px 10px;
+  }
+  
+  .search-dropdown {
+    max-height: 400px;
+  }
+  
+  .result-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  .result-meta {
+    align-self: flex-end;
+  }
+  
+  .suggestions-list {
+    gap: 6px;
+  }
+  
+  .suggestion-item {
+    font-size: 12px;
+    padding: 3px 10px;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .search-input {
+    background: #2d3748;
+    border-color: #4a5568;
+    color: #e2e8f0;
+  }
+  
+  .search-input::placeholder {
+    color: #a0aec0;
+  }
+  
+  .search-dropdown {
+    background: #2d3748;
+    border-color: #4a5568;
+  }
+  
+  .search-results-header {
+    background: #1a202c;
+    border-color: #4a5568;
+  }
+  
+  .search-result:hover,
+  .search-result.selected {
+    background: #1a202c;
+  }
+  
+  .result-title {
+    color: #63b3ed;
+  }
+  
+  .result-preview {
+    color: #e2e8f0;
+  }
+  
+  .category-filter {
+    background: #2d3748;
+    border-color: #4a5568;
+    color: #e2e8f0;
+  }
+  
+  .category-filter.active {
+    background: #3182ce;
+    border-color: #3182ce;
+  }
+}

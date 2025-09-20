@@ -1,0 +1,11 @@
+---
+id: managing-domains
+title: Managing domains
+sidebar_label: Managing domains
+description: Managing domains
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Managing domains Use the Domains screen to add, modify, or delete domains. To go to the Dashboard screen, choose Email and Collaboration Security Operations → Cloud Email Gateway Protection → Domain. Fields on the Domains screen Field Description Domain name Name of a domain you added. Inbound Servers Recipient: Recipient can be a wildcard (*) or an exact email address. IP address or FQDN: Fully qualified domain name (FQDN) is a unique name, which includes both host name and domain name, and resolves to a single IP address. For example: hostmaster1.example.com or mailhost.example.com Not valid: example.com Port: Port is a number from 1 to 65535 that an inbound server listens on. These ports vary based on server configuration. Preference: Preference, sometimes referred to as distance, is a value from 1 to 100. The lower the preference value, the higher the priority. Note If more than one mail server is available, delivery is prioritized to servers with lower values. Using the same value will balance delivery to each server. Outbound Servers If outbound protection is enabled, this is the information for the MTA(s) that Cloud Email Gateway Protection relays your outbound messages from. The following options are available: Microsoft 365: Relays your outbound messages from your Microsoft 365 solution. Google Workspace: Relays your outbound messages from your Google Workspace solution. User-defined mail servers: Relays your outbound messages from the mail servers you specified for your managed domain. Time Added Time when a domain was added. Status Status of a domain, which can be one of the following: Completed: All required information and operations have been completed. The domain is successfully added. Configuration Required: Certain required information or configurations are missing or incorrect. Related information Adding a domain Configuring a domain Editing or deleting domains © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

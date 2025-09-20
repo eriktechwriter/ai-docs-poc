@@ -1,0 +1,90 @@
+[
+  {
+    "id": "1-1-14.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 1.1.14 - Ensure that the default administrative credential file ownership is set to root:root (Automated) Profile applicability: Level 1 - Master Node Ensure that the admin.conf (and super-admin.conf file, where it exists) file ownership is set to root:root. As part of initial cluster setup, default kubeconfig files are created to be used by the administrator of the cluster. These files contain private keys and certificates which allow for privileged access to the cluster. You should set their file ownership to maintain the integrity and confidentiality of the file. The file(s) should be owned by root:root. Note By default, admin.conf and super-admin.conf file ownership is set to root:root. Audit Run the below command (based on the file location on your system) on the Control Plane node. stat -c %U:%G /etc/kubernetes/admin.conf On Kubernetes version 1.29 and higher run the following command as well.",
+    "metadata": {
+      "filename": "1-1-14.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/1-1-14.md",
+      "title": "1.1.14 - Ensure that the default administrative credential file ownership is set to root:root (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.502Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      132,
+      76,
+      1001
+    ]
+  },
+  {
+    "id": "1-1-14.md_chunk_1",
+    "content": "stat -c %a /etc/kubernetes/super-admin.conf Verify that the ownership is set to root:root. Remediation Run the below command (based on the file location on your system) on the Control Plane node. chown root:root /etc/kubernetes/admin.conf On Kubernetes 1.29+ the super-admin.conf file should also be modified, if present. chown root:root /etc/kubernetes/super-admin.conf © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "1-1-14.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/1-1-14.md",
+      "title": "1.1.14 - Ensure that the default administrative credential file ownership is set to root:root (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.502Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      63,
+      39,
+      445
+    ]
+  }
+]

@@ -1,0 +1,134 @@
+[
+  {
+    "id": "cis-gke17-583.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 5.8.3 - Ensure Legacy Authorization (ABAC) is Disabled (Automated) Profile applicability: Level 1 Legacy Authorization, also known as Attribute-Based Access Control (ABAC) has been superseded by Role-Based Access Control (RBAC) and is not under active development. RBAC is the recommended way to manage permissions in Kubernetes. In Kubernetes, RBAC is used to grant permissions to resources at the cluster and namespace level. RBAC allows the definition of roles with rules containing a set of permissions, whilst the legacy authorizer (ABAC) in Kubernetes Engine grants broad, statically defined permissions. As RBAC provides significant security advantages over ABAC, it is recommended option for access control. Where possible, legacy authorization must be disabled for GKE clusters.",
+    "metadata": {
+      "filename": "cis-gke17-583.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-583.md",
+      "title": "5.8.3 - Ensure Legacy Authorization (ABAC) is Disabled (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.867Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      101,
+      71,
+      876
+    ]
+  },
+  {
+    "id": "cis-gke17-583.md_chunk_1",
+    "content": "Note Kubernetes Engine clusters running GKE version 1.8 and later disable the legacy authorization system by default, and thus role-based access control permissions take effect with no special action required. Impact Once the cluster has the legacy authorizer disabled, the user must be granted the ability to create authorization roles using RBAC to ensure that the role-based access control permissions take effect. Audit Using Google Cloud Console: Go to Kubernetes Engine website. From the list of clusters, click on each cluster to open the Details pane, and make sure 'Legacy Authorization' is set to Disabled. Using Command Line: To check Legacy Authorization status for an existing cluster, run the following command: gcloud container clusters describe <cluster_name> --zone <compute_zone> --format json | jq '.legacyAbac' The output should return null ({}) if Legacy Authorization is Disabled. If Legacy Authorization is Enabled, the above command will return true value.",
+    "metadata": {
+      "filename": "cis-gke17-583.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-583.md",
+      "title": "5.8.3 - Ensure Legacy Authorization (ABAC) is Disabled (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.867Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      2,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      126,
+      84,
+      980
+    ]
+  },
+  {
+    "id": "cis-gke17-583.md_chunk_2",
+    "content": "Remediation Using Google Cloud Console: Go to Kubernetes Engine website. Select Kubernetes clusters for which Legacy Authorization is enabled. Click EDIT. Set Legacy Authorization to Disabled. Click SAVE. Using Command Line: To disable Legacy Authorization for an existing cluster, run the following command: gcloud container clusters update <cluster_name> --zone <compute_zone> --no-enable-legacy-authorization Additional Information: On clusters running GKE 1.6 or 1.7, Kubernetes Service accounts have full permissions on the Kubernetes API by default. To ensure that the role-based access control permissions take effect for a Kubernetes service account, the cluster must be created or updated with the option --no-enable-legacy-authorization. This requirement is removed for clusters running GKE version 1.8 or higher. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-gke17-583.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-583.md",
+      "title": "5.8.3 - Ensure Legacy Authorization (ABAC) is Disabled (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.867Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      106,
+      75,
+      898
+    ]
+  }
+]

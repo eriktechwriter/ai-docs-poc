@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-reviewing-detection-models
+slug: reviewing-detection-models
 title: Reviewing detection models
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-configure-deep-security-software
+slug: configure-deep-security-software
 title: Configuring Deep Security Software
 ---
 

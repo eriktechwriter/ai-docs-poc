@@ -1,0 +1,178 @@
+[
+  {
+    "id": "deploy-service-gateway-vmware-esxi.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Deploying a Service Gateway Virtual Appliance with VMware ESXi Discover how to install the Service Gateway virtual appliance on VMware ESXi. Verify that system requirements are met. For more information, see Service Gateway appliance system requirements. Procedure Go to Workflow and Automation → Service Gateway Management. Click Download Virtual Appliance. The Service Gateway Virtual Appliance panel appears. Select VMware ESXi (OVA). Select a virtual appliance specification and click Download Disk Image to download an OVA file. Tip Copy the registration token for later steps. The registration token will expire within 24 hours if not used. Create a virtual machine. On VMware ESXi, go to Virtual Machines and click Create / Register VM. Select Deploy a virtual machine from an OVF or OVA file and click Next. Specify a name for the Service Gateway virtual appliance, select the OVA file, and click Next.",
+    "metadata": {
+      "filename": "deploy-service-gateway-vmware-esxi.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/deploy-service-gateway-vmware-esxi.md",
+      "title": "Deploying a Service Gateway Virtual Appliance with VMware ESXi",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.175Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      130,
+      67,
+      999
+    ]
+  },
+  {
+    "id": "deploy-service-gateway-vmware-esxi.md_chunk_1",
+    "content": "Select the disk location and click Next. Specify deployment options and click Next. Review the settings and click Finish. Click Power on to start the virtual machine. Service installation during the first launch of the appliance takes approximately 10 minutes. After the service installation has completed, press the ENTER key to open the Command Line Interface (CLI) of the Service Gateway virtual appliance. Sign in using the default credentials. User name: admin Password: V1SG@2021 Change your password. Type enable and press the ENTER key to enable administrative commands. Provide your password when asked. The command prompt changes from > to #. Configure the required network settings using the following CLISH commands.",
+    "metadata": {
+      "filename": "deploy-service-gateway-vmware-esxi.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/deploy-service-gateway-vmware-esxi.md",
+      "title": "Deploying a Service Gateway Virtual Appliance with VMware ESXi",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.175Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      2,
+      1,
+      0,
+      0,
+      101,
+      65,
+      728
+    ]
+  },
+  {
+    "id": "deploy-service-gateway-vmware-esxi.md_chunk_2",
+    "content": "<dns1> [dns2] [cni] Configure static IPv4 network settings for the primary network interface <interface>: Name of the network interface (for example, eth0) <ip_cidr>: IPv4 address of the network interface in CIDR notation <gateway>: Gateway router address <dns1>: Primary DNS server address [dns2]: Secondary DNS server address [cni]: Internal network address pool (IP address ending in .0.0) To register the Service Gateway virtual appliance to Trend Vision One, use an SSH tool, such as the latest version of PuTTY, and using an account with administrator privileges, type the following command. register <registration_token> You can obtain the token from the same screen you download the virtual appliance on Trend Vision One (step 3). Important The virtual appliance only supports UTC time. Ensure your hypervisor is correctly configured.",
+    "metadata": {
+      "filename": "deploy-service-gateway-vmware-esxi.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/deploy-service-gateway-vmware-esxi.md",
+      "title": "Deploying a Service Gateway Virtual Appliance with VMware ESXi",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.175Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      110,
+      70,
+      842
+    ]
+  },
+  {
+    "id": "deploy-service-gateway-vmware-esxi.md_chunk_3",
+    "content": "Note If your environment uses a local Network Time Protocol (NTP) server, make sure the NTP server synchronizes with the local time for successful registration. Trend Micro recommends using an SSH client to easily copy and paste the registration token. Use the CLI to configure other settings, if required. For more information on available commands, see Service Gateway CLI commands. For details on setting up a virtual appliance with two network cards, see Service Gateway Virtual Appliance dual network card configuration. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "deploy-service-gateway-vmware-esxi.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/deploy-service-gateway-vmware-esxi.md",
+      "title": "Deploying a Service Gateway Virtual Appliance with VMware ESXi",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.175Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      81,
+      59,
+      600
+    ]
+  }
+]

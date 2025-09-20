@@ -1,0 +1,11 @@
+---
+id: asset-visibility-management-expand
+title: Asset Visibility Management expanded to include more asset types
+sidebar_label: Asset Visibility Management expanded to include more asset types
+description: Asset Visibility Management expanded to include more asset types
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Asset Visibility Management expanded to include more asset types May 21, 2024—Trend Vision One now extends its robust asset visibility capabilities to include more comprehensive data asset support. This update introduces more data asset types, including more network and cloud assets, as well as message data. Building on the existing management scope for endpoints, containers, mobile devices, accounts, unmanaged devices, Private Access Connectors and Internet Access Gateways, and web gateways, the latest update ensures that all critical data points are covered, providing a holistic view of the organization's asset landscape. This enhancement is particularly beneficial for large enterprises that require detailed, segmented visibility to manage multiple regions or teams effectively. For more information, see Add an asset visibility scope. Service Management → Asset Visibility Management © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

@@ -1,0 +1,134 @@
+[
+  {
+    "id": "agent-metadata-service.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ How does the agent use the Amazon Instance Metadata Service? When running on EC2 instances in AWS, the agent uses the Amazon Instance Metadata Service (IMDS) to query information about the EC2 instance. Note Support for IMDS v2 was added in agent version 12 FR 2020-05-19. If you are using an older version of the agent, only IMDS v1 is supported and you must ensure that your AWS configuration allows the agent access to host metadata using IMDS v1. The information retrieved by the agent is necessary to ensure that the agent activates under the proper AWS account within Server & Workload Protection and the right instance size is used for metered billing.",
+    "metadata": {
+      "filename": "agent-metadata-service.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/agent-metadata-service.md",
+      "title": "How does the agent use the Amazon Instance Metadata Service?",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.645Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      7,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      103,
+      65,
+      748
+    ]
+  },
+  {
+    "id": "agent-metadata-service.md_chunk_1",
+    "content": "the instance using a Metadata Service Version 1 (IMDSv1) or 2 (IMDSv2), the following issues might be encountered: Issue Root cause Resolution Additional notes Duplicate computers appear - one under the AWS account and another outside of the AWS account. If the agent does not have access to Instance Metadata Service Version 1 (IMDSv1) or 2 (IMDSv2), Server & Workload Protection cannot properly associate this activation with the desired cloud account. Ensure that Server & Workload Protection has access to IMDS v1 or IMDS v2. For details, see Configuring the Instance Metadata Service. If you determine that the creation of duplicate computers has occurred, you can use inactive agent cleanup to automatically remove these computers. Incorrect billing of instance hours . If the agent does not have access to Instance Metadata Service Version 1 (IMDSv1) or 2 (IMDSv2), Server & Workload Protection cannot properly determine the instance size for metered billing.",
+    "metadata": {
+      "filename": "agent-metadata-service.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/agent-metadata-service.md",
+      "title": "How does the agent use the Amazon Instance Metadata Service?",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.645Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      122,
+      68,
+      966
+    ]
+  },
+  {
+    "id": "agent-metadata-service.md_chunk_2",
+    "content": "As a result, the computer does not appear under a cloud account and is charged at the data center rate. If you believe overbilling has occurred please ensure that: The agent has access to IMDS v1 or IMDS v2. You have added the AWS cloud account to Server & Workload Protection. Adding AWS accounts is now handled by the Cloud Accounts app. Credit usage is based on enabled Trend Vision One Cloud Security features. For more information about credits, see Credit Usage. Smart folders or event-based tasks based on AWS metadata fail. If the agent does not have access to Instance Metadata Service Version 1 (IMDSv1) or 2 (IMDSv2), Server & Workload Protection cannot access the AWS metadata needed for these operations. N/A © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "agent-metadata-service.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/agent-metadata-service.md",
+      "title": "How does the agent use the Amazon Instance Metadata Service?",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.645Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      109,
+      75,
+      796
+    ]
+  }
+]

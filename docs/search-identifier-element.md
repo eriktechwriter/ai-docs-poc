@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-search-identifier-element
+slug: search-identifier-element
 title: The search-identifier element
 ---
 

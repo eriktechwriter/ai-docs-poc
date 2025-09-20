@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-firewall-uae-cloud-service
+slug: firewall-uae-cloud-service
 title: 'Firewall exceptions: Middle East and Africa - cloud service extension'
 ---
 

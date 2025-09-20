@@ -1,0 +1,178 @@
+[
+  {
+    "id": "roles-aws-s3-bucket.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Configuring roles for the AWS S3 bucket connector Create an S3 bucket and set up a custom role with custom permissions to allow Trend Vision One to connect to your S3 buckets. The following instructions detail how to create an S3 bucket in AWS, and how to configure a custom role and permissions in the AWS IAM console to allow you to connect to your configured S3 bucket. Important The following instructions are valid for the Amazon AWS console, S3 console, and IAM console as of July 2023. If you are using a newer version, refer to the official product/service documentation. Procedure Create a new S3 bucket. Sign in to your AWS management console and navigate to the S3 console. You can access the S3 console directly at https://console.aws.amazon.com/s3/. In the S3 console, click Create bucket. In the General Configuration section, specify a unique Bucket name.",
+    "metadata": {
+      "filename": "roles-aws-s3-bucket.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/roles-aws-s3-bucket.md",
+      "title": "Configuring roles for the AWS S3 bucket connector",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.962Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      122,
+      69,
+      959
+    ]
+  },
+  {
+    "id": "roles-aws-s3-bucket.md_chunk_1",
+    "content": "(Optional) Configure other settings as needed for your security environment. Click Create bucket. Find the bucket you created and click the bucket name. Click the Properties tab. Copy the bucket Amazon Resource Name (ARN). Create a role in the AWS IAM console to allow Trend Vision One to connect to your S3 bucket. In the AWS management console, navigate to the IAM console. You can access the IAM console directly at https://console.aws.amazon.com/iam/. In the IAM console, go to Access management → Roles. Click Create role. For Trusted entity type, select Custom trust policy. The Custom trust policy section appears. For Principal, type \"AWS\": and then the Trust Role ARN: arn:aws:iam::466026206465:role/PROD-TrendV1S3Exporter. You can also copy and paste the full line as follows: \"AWS\":\"arn:aws:iam::466026206465:role/PROD-TrendV1S3Exporter\" Add a Condition element to the trust policy, then type \"sts:ExternalId\": and paste the external ID copied from the Trend Vision One console.",
+    "metadata": {
+      "filename": "roles-aws-s3-bucket.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/roles-aws-s3-bucket.md",
+      "title": "Configuring roles for the AWS S3 bucket connector",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.962Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      146,
+      68,
+      989
+    ]
+  },
+  {
+    "id": "roles-aws-s3-bucket.md_chunk_2",
+    "content": "\"Principal\": {\"AWS\": \"Example Corp's AWS account ID\"}, \"Condition\": {\"StringEquals\": {\"sts:ExternalId\": \"Unique ID Assigned by Example Corp\"}} Click Next, then click Next. In the Name, review, create screen, specify a unique Role name. Click Create role. Search for the role you created. Click the name of the role you created. Copy the ARN. Create a policy to allow Trend Vision One to connect to the bucket and role. In the AWS management console, navigate to the IAM console. In the IAM console, go to Access management → Policies. Click Create policy. In the Specify permissions screen, locate Policy editor. Click JSON to view the policy code. Replace the code in the Policy editor with the following JSON format policy: { \"Version\": \"2012-10-17\", \"Statement\": [ { \"Effect\": \"Allow\", \"Action\": [ \"s3:PutObject\", \"s3:ListBucket\" ], \"Resource\": [ \"your-s3-bucket-arn\", \"your-s3-bucket-arn/*\" ] } ] } Replace your-s3-bucket-arn on line 11 and line 12 with the bucket ARN for the bucket you created.",
+    "metadata": {
+      "filename": "roles-aws-s3-bucket.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/roles-aws-s3-bucket.md",
+      "title": "Configuring roles for the AWS S3 bucket connector",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.962Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      6,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      131,
+      61,
+      1000
+    ]
+  },
+  {
+    "id": "roles-aws-s3-bucket.md_chunk_3",
+    "content": "The following is an example configuration. Click Next. In the Review and create screen, specify a unique Policy name. Click Create policy. Attach the policy to the role. In the AWS management console, navigate to the IAM console. In the IAM console, go to Access management → Roles. Search for the role you created. Click the name of the role you created. Click the Permissions tab. Click Add permissions, then click Attach policies. Search for the policy you created. Select the policy and click Add permissions. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "roles-aws-s3-bucket.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/roles-aws-s3-bucket.md",
+      "title": "Configuring roles for the AWS S3 bucket connector",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.962Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      84,
+      42,
+      588
+    ]
+  }
+]

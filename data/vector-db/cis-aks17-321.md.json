@@ -1,0 +1,178 @@
+[
+  {
+    "id": "cis-aks17-321.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 3.2.1 - Ensure that the --anonymous-auth argument is set to false (Automated) Profile Applicability: Level 1 Disable anonymous requests to the Kubelet server. When enabled, requests that are not rejected by other configured authentication methods are treated as anonymous requests and are served by the Kubelet server. You should rely on authentication to authorize access and disallow anonymous requests. Note See the Azure AKS documentation for the default value. Impact Anonymous requests will be rejected. Audit Audit Method 1: If using a Kubelet configuration file, check that there is an entry for authentication: anonymous: enabled set to false.",
+    "metadata": {
+      "filename": "cis-aks17-321.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-aks17-321.md",
+      "title": "3.2.1 - Ensure that the --anonymous-auth argument is set to false (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.825Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      90,
+      61,
+      741
+    ]
+  },
+  {
+    "id": "cis-aks17-321.md_chunk_1",
+    "content": "the Kubelet process: ps -ef | grep kubelet The output of the above command should return something similar to --config /etc/kubernetes/kubelet/kubelet-config.json which is the location of the Kubelet config file. Open the Kubelet config file: sudo more /etc/kubernetes/kubelet/kubelet-config.json Verify that the \"authentication\": { \"anonymous\": { \"enabled\": false } argument is set to false. Audit Method 2: If using the api configz endpoint, consider searching for the status of authentication... \"anonymous\":{\"enabled\":false} by extracting the live configuration from the nodes running kubelet. Set the local proxy port and the following variables, and provide the proxy port number and node name: HOSTNAME_PORT=\"localhost-and-port-number\" NODE_NAME=\"The-Name-Of-Node-To-Extract-Configuration\" from the output of \"kubectl get nodes\" kubectl proxy --port=8001 & export HOSTNAME_PORT=localhost:8001 (example host and port number) export NODE_NAME=ip-192.168.31.226.aks.internal (example node name f",
+    "metadata": {
+      "filename": "cis-aks17-321.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-aks17-321.md",
+      "title": "3.2.1 - Ensure that the --anonymous-auth argument is set to false (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.825Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      134,
+      70,
+      999
+    ]
+  },
+  {
+    "id": "cis-aks17-321.md_chunk_2",
+    "content": "rom \"kubectl get nodes\") curl -sSL \"http://${HOSTNAME_PORT}/api/v1/nodes/${NODE_NAME}/proxy/configz\" Remediation Remediation Method 1: If modifying the Kubelet config file, edit the kubelet-config.json file /etc/kubernetes/kubelet/kubelet-config.json and set the below parameter to false: \"anonymous\": \"enabled\": false Remediation Method 2: If using executable arguments, edit the kubelet service file /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf on each worker node and add the below parameter at the end of the KUBELET_ARGS variable string. --anonymous-auth=false Remediation Method 3: If using the api configz endpoint, consider searching for the status of \"authentication.*anonymous\":{\"enabled\":false}\" by extracting the live configuration from the nodes running kubelet.",
+    "metadata": {
+      "filename": "cis-aks17-321.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-aks17-321.md",
+      "title": "3.2.1 - Ensure that the --anonymous-auth argument is set to false (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.825Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      102,
+      58,
+      789
+    ]
+  },
+  {
+    "id": "cis-aks17-321.md_chunk_3",
+    "content": "iled step-by-step configmap procedures in Reconfigure a Node's Kubelet in a Live Cluster, and then rerun the curl statement from audit process to check for kubelet configuration changes: kubectl proxy --port=8001 & export HOSTNAME_PORT=localhost:8001 (example host and port number) export NODE_NAME=ip-192.168.31.226.aks.internal (example node name from \"kubectl get nodes\") curl -sSL \"http://${HOSTNAME_PORT}/api/v1/nodes/${NODE_NAME}/proxy/configz\" For all three remediations: Restart the kubelet service and check the service status: systemctl daemon-reload systemctl restart kubelet.service systemctl status kubelet -l © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-aks17-321.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-aks17-321.md",
+      "title": "3.2.1 - Ensure that the --anonymous-auth argument is set to false (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.825Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      93,
+      63,
+      697
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+---
+id: cloud-compliance
+title: Compliance
+sidebar_label: Compliance
+description: Compliance
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Compliance The Compliance widget showcases up to six compliance standards and provides links to detailed information about each one. From the Compliance dashboard, you can: Customize displayed standards: Click the three dots at the top-right of the widget and select "Edit settings" to choose up to six compliance standards to display. Detailed compliance overview: Click the percentage number at the top of the widget to open the Misconfiguration and Compliance page. Here, you can compare compliance across accounts, view all checks, and take steps to enhance compliance throughout your organization. Standard-specific checks: Click on a compliance standard to view all associated checks on the Misconfiguration and Compliance page. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

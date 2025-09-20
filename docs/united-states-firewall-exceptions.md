@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-united-states-firewall-exceptions
+slug: united-states-firewall-exceptions
 title: United States - firewall exceptions
 ---
 

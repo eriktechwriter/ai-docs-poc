@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-how-does-risk-level-event
+slug: how-does-risk-level-event
 title: How does Trend Vision One decide the risk level of an event?
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-config-case-management-ticket
+slug: config-case-management-ticket
 title: Configure ServiceNow ITSM to enable the Trend Vision One for ServiceNow Ticketing System
 ---
 

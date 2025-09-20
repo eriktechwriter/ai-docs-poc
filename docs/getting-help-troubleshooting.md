@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-getting-help-troubleshooting
+slug: getting-help-troubleshooting
 title: Getting Help and Troubleshooting
 ---
 

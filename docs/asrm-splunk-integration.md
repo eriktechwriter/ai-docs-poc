@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-asrm-splunk-integration
+slug: asrm-splunk-integration
 title: Cyber Risk Exposure Management for Splunk integration
 ---
 

@@ -1,0 +1,11 @@
+---
+id: top-data-discovery-widget
+title: Top Data Discovery Template Matches Widget
+sidebar_label: Top Data Discovery Template Matches Widget
+description: Top Data Discovery Template Matches Widget
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Top Data Discovery Template Matches Widget This widget displays information about the top Data Discovery template policy violations over time. Note By default, the widget displays data from all the managed products that a user account has privileges to view. Use the Range drop-down to select the time period for the data that displays. To specify a custom time range or time interval, click the settings icon ( → ) and select Customized for the Range. Use the Rule drop-down to specify the rule that triggered the detection. To specify the number of templates that display, click the settings icon ( → ) and select from the Templates to display drop-down. To aggregate the remaining data, click the settings icon ( → ) and select Display the remaining data as "Others". You can choose to display the data in a table, bar chart, or pie chart by clicking the display icons (). The default view displays the following information in a table. Column Name Description Templates Displays the template triggered by sensitive files Detections Displays the number of times that the template is triggered Click the Detections column name to sort the table by the number of detections. Percentage Displays the number of times that the template is triggered as a percentage of the total number of detections Click a number in the Detections column or click a chart section to view detailed information. Data Description Received The time and date Apex Central received the data Generated The time and date the detection occurred Rule The rule that is triggered Endpoint The endpoint that triggered the rule Domain The domain that triggered the rule User The user that triggered the rule User Domain The domain that the user belongs to File Path The file path for the sensitive file File The name of the sensitive file Template The template that the rule belongs to Action The action taken on the sensitive file © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

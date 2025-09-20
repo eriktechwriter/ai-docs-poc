@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-search-results
+slug: search-results
 title: Search results
 ---
 

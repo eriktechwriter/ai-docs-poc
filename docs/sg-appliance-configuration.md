@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-sg-appliance-configuration
+slug: sg-appliance-configuration
 title: Service Gateway appliance configuration
 ---
 

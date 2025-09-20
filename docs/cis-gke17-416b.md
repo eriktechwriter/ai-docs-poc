@@ -1,0 +1,11 @@
+---
+id: cis-gke17-416b
+title: 4.1.6 - Avoid use of system:masters group (Automated)
+sidebar_label: 4.1.6 - Avoid use of system:masters group (Automated)
+description: 4.1.6 - Avoid use of system:masters group (Automated)
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 4.1.6 - Avoid use of system:masters group (Automated) Profile applicability: Level 1 The special group system:masters should not be used to grant permissions to any user or service account, except where strictly necessary (e.g. bootstrapping access prior to RBAC being fully available) The system:masters group has unrestricted access to the Kubernetes API hard-coded into the API server source code. An authenticated user who is a member of this group cannot have their access reduced, even if all bindings and cluster role bindings which mention it, are removed. When combined with client certificate authentication, use of this group can allow for irrevocable cluster-admin level credentials to exist for a cluster. GKE includes the CertificateSubjectRestriction admission controller which rejects requests for the system:masters group. CertificateSubjectRestriction "This admission controller observes creation of CertificateSigningRequest resources that have a spec.signerName of kubernetes.io/kube-apiserver-client. It rejects any request that specifies a 'group' (or 'organization attribute') of system:masters." See the Kubernetes documentation for more information. Note By default some clusters will create a "break glass" client certificate which is a member of this group. Access to this client certificate should be carefully controlled and it should not be used for general cluster operations. Impact Once the RBAC system is operational in a cluster system:masters should not be specifically required, as ordinary bindings from principals to the cluster-admin cluster role can be made where unrestricted access is required. Audit Review a list of all credentials which have access to the cluster and ensure that the group system:masters is not used. Remediation Remove the system:masters group from all users in the cluster. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

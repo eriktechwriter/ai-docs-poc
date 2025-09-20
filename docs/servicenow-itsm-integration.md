@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-servicenow-itsm-integration
+slug: servicenow-itsm-integration
 title: ServiceNow ITSM integration (for Workbench)
 ---
 

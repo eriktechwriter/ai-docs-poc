@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-gcp-identity-integration
+slug: gcp-identity-integration
 title: Configuring Google Cloud Identity integration
 ---
 

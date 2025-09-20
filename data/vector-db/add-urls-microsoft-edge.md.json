@@ -1,0 +1,178 @@
+[
+  {
+    "id": "add-urls-microsoft-edge.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Allow phishing simulation URLs in Microsoft Edge via group policy Add phishing simulation URLs to the Microsoft Edge Allowed Domains list in Microsoft Entra ID to keep simulation links from triggering Microsoft Defender SmartScreen warnings. Before you beginBefore you start, make sure you have: Administrative access to Microsoft Entra ID Permission to configure group policy objects (GPOs) Permission to download and install policy files for Microsoft Edge Adding phishing simulation URLs to the Microsoft Edge Allowed Domains list involves downloading policy files, modifying group policy settings, and applying the changes to make sure simulation links function correctly. Procedure Download the Microsoft Edge policy files. Go to the Microsoft Edge Business Download page.",
+    "metadata": {
+      "filename": "add-urls-microsoft-edge.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/add-urls-microsoft-edge.md",
+      "title": "Allow phishing simulation URLs in Microsoft Edge via group policy",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.598Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      6,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      108,
+      61,
+      866
+    ]
+  },
+  {
+    "id": "add-urls-microsoft-edge.md_chunk_1",
+    "content": "Scroll to the section labeled \"Looking for an older version of Edge?\" Select the latest options for Select channel version, Select build, and Platform. Click Get Policy Files to download MicrosoftEdgePolicyTemplates.cab. Prepare the policy files. Double-click the downloaded CAB file and extract MicrosoftEdgePolicyTemplates.zip to a temporary folder. Go to the extracted folder and open \\windows\\admx. Copy msedgeupdate.admx and msedge.admx to C:\\Windows\\PolicyDefinitions. Install language-specific templates. Return to the extracted folder and go to \\windows\\admx\\<Appropriate Language> (for example, en-US). Copy msedge.adml and msedgeupdate.adml to C:\\Windows\\PolicyDefinitions\\<Appropriate Language>. Record the Security Awareness sending IP addresses. On the Trend Vision One console, go to Cyber Risk Exposure Management → Security Awareness → Phishing Simulations. Click Settings. Click Settings and copy the sending IP addresses and simulation URLs.",
+    "metadata": {
+      "filename": "add-urls-microsoft-edge.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/add-urls-microsoft-edge.md",
+      "title": "Allow phishing simulation URLs in Microsoft Edge via group policy",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.598Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      2,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      115,
+      65,
+      959
+    ]
+  },
+  {
+    "id": "add-urls-microsoft-edge.md_chunk_2",
+    "content": "Important The sending IP addresses change over time. Check the list before launching a training campaign or phishing simulation. Configure the group policy. Open the Group Policy Management Editor. Go to Computer Configuration → Microsoft Edge → SmartScreen Settings. Enable Configure the list of domains for which Microsoft Defender SmartScreen won’t trigger warnings and click Show. In the window that appears, add the URLs and IP addresses you copied from Security Awareness Training. Click OK, then Apply, and OK again to save and close the settings. Apply and verify the GPO. Link the newly configured GPO to the appropriate Organizational Unit (for example, Domain Controllers). On a target device, open a CLI as Administrator and run gpupdate /force to apply the GPO to the device. Open regedit and go to HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\SmartScreenAllowListDomains to verify the URLs are listed.",
+    "metadata": {
+      "filename": "add-urls-microsoft-edge.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/add-urls-microsoft-edge.md",
+      "title": "Allow phishing simulation URLs in Microsoft Edge via group policy",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.598Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      1,
+      0,
+      1,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      119,
+      78,
+      908
+    ]
+  },
+  {
+    "id": "add-urls-microsoft-edge.md_chunk_3",
+    "content": "Try to access a phishing simulation URL to make sure the page is accessible and displays correctly. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "add-urls-microsoft-edge.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/add-urls-microsoft-edge.md",
+      "title": "Allow phishing simulation URLs in Microsoft Edge via group policy",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.598Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      23,
+      23,
+      174
+    ]
+  }
+]

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-deploying-connector
+slug: deploying-connector
 title: Deploy the Trend Vision One connector
 ---
 

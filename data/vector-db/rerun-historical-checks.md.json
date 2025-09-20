@@ -1,0 +1,178 @@
+[
+  {
+    "id": "rerun-historical-checks.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Re-run historical check notifications This feature allows users to bulk ingest existing checks into a recently created Communication Channel. It is expected to be a one-time operation as newly discovered or updated checks will automatically be forwarded to Communication Channels through enabled automatic notifications. Why re-run historical check notifications? Using this feature will compliment the existing behavior for automatic notifications allowing users to re-run their historical checks (checks discovered prior to the creation of the communication channel) into their targeted communication channel. This is useful for users who may want to keep track of historical checks in their ticketing channel, whilst making use of the auto-resolve feature provided by the communication channels to resolve tickets.",
+    "metadata": {
+      "filename": "rerun-historical-checks.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/rerun-historical-checks.md",
+      "title": "Re-run historical check notifications",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.922Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      105,
+      65,
+      906
+    ]
+  },
+  {
+    "id": "rerun-historical-checks.md_chunk_1",
+    "content": "API Endpoint: Checks Replay Supported Communication Channels Jira ServiceNow Zendesk AWS SNS Webhook Important: For ticketing channels (Jira, ServiceNow and Zendesk) re-running historical checks will not create duplicate tickets if a check is already associated with the ticketing channel. For non-ticketing channels (AWS, SNS and Webhook) this will resend checks any time the endpoint is called. The feature only supports Account level Communication Channels currently. Only users with write access to the specified account (for which the communication setting is configured) can use this endpoint. It may take several minutes for the check notifications to appear in your Communication Channel following a successful request. Historical checks sent to your targeted communication channel will be filtered out based on the configured triggers for the communication channel.",
+    "metadata": {
+      "filename": "rerun-historical-checks.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/rerun-historical-checks.md",
+      "title": "Re-run historical check notifications",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.922Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      113,
+      67,
+      874
+    ]
+  },
+  {
+    "id": "rerun-historical-checks.md_chunk_2",
+    "content": "User Scenario It is highly recommended to have some triggers configured on your communication channel for details please visit here. The API endpoint takes in two filters newerThanDays or olderThanDays, we recommend a time frame which fits closer to the creation or updated time of your communication channel. To get an idea on what checks you may want, you can configure the filters in the Browse All Checks section of the Cloud Risk Management UI. e.g. If my automatic notification communication channel was created 30 days ago from today. A filter of olderThanDays 30 will deliver historical checks prior to the creation of that communication channel. Example Let's assume you have on-boarded an AWS account and Cloud Risk Management Scan has completed it's first scan, and you do not have a Jira Ticketing system setup. Visiting Browse All Checks, you can see that your S3 bucket resource has created 2 failures.",
+    "metadata": {
+      "filename": "rerun-historical-checks.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/rerun-historical-checks.md",
+      "title": "Re-run historical check notifications",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.922Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      119,
+      82,
+      916
+    ]
+  },
+  {
+    "id": "rerun-historical-checks.md_chunk_3",
+    "content": "As a user you want to see these failure check notifications delivered to your Jira ticketing system. {.zoom} To get all historical check notifications, you will create a new Jira ticketing communication channel and enable automatic notifications, and apply the following triggers: Service: S3 Risk Level: Extreme, Very High and High Tags: \"staging\" and \"demo\" {.zoom} Using the API Endpoint with Postman: {.zoom} Viewing that the Failed checks have been successfully imported into Jira. {.zoom} After addressing those failures the automatic notifications on the Jira communication will resolve the 2 tickets that were created. {.zoom} © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "rerun-historical-checks.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/rerun-historical-checks.md",
+      "title": "Re-run historical check notifications",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.922Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      96,
+      69,
+      709
+    ]
+  }
+]

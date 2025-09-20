@@ -1,0 +1,11 @@
+---
+id: synced-admin-accounts
+title: Synced admin accounts
+sidebar_label: Synced admin accounts
+description: Synced admin accounts
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Synced admin accounts Learn about synced admin accounts and how to mitigate the risk the accounts pose. When privileged admin accounts are synced with admin or regular accounts across Microsoft Entra ID and Active Directory, a potential security loophole is created. An attacker that gains unauthorized access to one synced account can more easily access others, enabling the attacker to access critical systems and perform malicious activities. Syncing admin accounts with personal Microsoft accounts is a particularly risky configuration. Best practices: Do not sync highly authorized Microsoft Entra ID or Active Directory admin accounts with admin or non-admin accounts. Microsoft Entra ID admins who must conduct on-premises administrative tasks should use separate non-synced Active Directory accounts. For more information, see Microsoft's guidance on securing on-premises Active Directory accounts. Configure separate accounts for administrative functions that are distinct from user accounts. Do not permit the sharing of accounts between users. Use only cloud-native accounts for Microsoft Entra ID roles. Avoid using on-premises synced accounts for Microsoft Entra ID role assignments. Use Microsoft Entra ID Connect Sync to control on-premises accounts that are synchronized with Microsoft Entra ID to reduce the number of synced admin accounts. For more information, see Microsoft's guide on configuring Connect Sync. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

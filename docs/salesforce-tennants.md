@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-salesforce-tennants
+slug: salesforce-tennants
 title: Configuring Salesforce tenants
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-firewall-europe-cloud-service
+slug: firewall-europe-cloud-service
 title: 'Firewall exceptions: Europe - cloud service extension'
 ---
 

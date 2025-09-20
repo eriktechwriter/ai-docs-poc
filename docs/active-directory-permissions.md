@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-active-directory-permissions
+slug: active-directory-permissions
 title: Active Directory permissions
 ---
 

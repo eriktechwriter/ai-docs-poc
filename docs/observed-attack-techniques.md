@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-observed-attack-techniques
+slug: observed-attack-techniques
 title: Observed Attack Techniques
 ---
 

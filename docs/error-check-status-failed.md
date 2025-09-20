@@ -1,0 +1,11 @@
+---
+id: error-check-status-failed
+title: "Error: Check Status Failed"
+sidebar_label: "Error: Check Status Failed"
+description: "Error: Check Status Failed"
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Error: Check Status Failed You can check the status of the agent on a computer from the Server & Workload Protection console. On the Computers page, right-click the computer and click Actions → Check Status. If you get a "Check Status Failed" error, open the error message to see a more detailed description. If description indicates a protocol error, it's usually caused by a communication issue. There are a few possible causes: Check whether the computer (or the policy assigned to the computer) is configured for agent-initiated communication or bidirectional communication. Check that Server & Workload Protection can communicate with the agent. See Port numbers. Check the resources on the agent computer. Lack of memory, CPU, or disk space can cause this error. If the description indicates a SQLITE_IOERR_WRITE[778]: disk I/O error, there is likely a problem with the agent computer. The most common problem is that the disk is full or write-protected. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

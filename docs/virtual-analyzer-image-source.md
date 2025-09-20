@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-virtual-analyzer-image-source
+slug: virtual-analyzer-image-source
 title: Virtual Analyzer Image Source
 ---
 

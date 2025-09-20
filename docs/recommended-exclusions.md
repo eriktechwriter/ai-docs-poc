@@ -1,0 +1,11 @@
+---
+id: recommended-exclusions
+title: Recommended Exclusions
+sidebar_label: Recommended Exclusions
+description: Recommended Exclusions
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Recommended Exclusions Use the list of recommended applications curated by Trend Micro to exclude from Anti-Malware real-time scans. Important Recommended Exclusions is not available in all regions. Recommended Exclusions supports Trend Vision One Endpoint Security agent version 202501 and later (Server & Workload Protection version 20.0.2.1390 and later). Activity Monitoring must be enabled for agent version 202503 and earlier (Server & Workload Protection version 20.0.2.4960 and earlier). Recommended Exclusions requires firewall settings to allow Internet of Things (IoT) traffic to Amazon Web Services. Automatically assigning recommended exclusions is an Advanced Server & Workload Protection feature that requires additional credits per endpoint the policy is applied to. Carefully review the recommended exclusions before enabling the feature to ensure any potential security risks are understood for your environment. Recommended Exclusions is a list of important applications Trend Micro recommends excluding from real-time scans to avoid impacts to endpoint performance or interruptions to application processes. You can view information about each application, including which policies and computers have assigned the exclusion, by selecting the application and clicking Properties. You can manually assign recommended exclusions or allow agents to automatically apply recommended exclusions in the Anti-Malware settings. To discover if applications installed on your endpoints are recommended exclusions, Trend Micro recommends for To configure Recommended Exclusions for Anti-Malware, see Configure scan exclusions. To run a recommendation scan on your computers, see Scan for recommended exclusions on computers. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

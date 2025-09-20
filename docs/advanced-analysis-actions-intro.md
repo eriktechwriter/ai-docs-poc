@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-advanced-analysis-actions-intro
+slug: advanced-analysis-actions-intro
 title: Advanced analysis actions
 ---
 

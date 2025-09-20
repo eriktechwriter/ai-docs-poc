@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-plan-details
+slug: plan-details
 title: Plan Details
 ---
 

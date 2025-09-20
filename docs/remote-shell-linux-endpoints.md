@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-remote-shell-linux-endpoints
+slug: remote-shell-linux-endpoints
 title: Remote Shell Commands for Linux Endpoints
 ---
 

@@ -1,0 +1,134 @@
+[
+  {
+    "id": "configure-maintenance-mode.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Configure maintenance mode during upgrades Maintenance mode allows new or updated software to run by automatically allowing the incoming software changes in the computer ruleset, while continuing to block any software that has a block rule. Generally, use the following steps to configure maintenance mode: Procedure Create a Computer object. Create and configure an ApplicationControlComputerExtension object to turn on maintenance mode. Optionally, set a duration to turn off maintenance mode automatically. Add the ApplicationControlComputerExtension object to the Computer object. Use a ComputerApi object to turn on maintenance mode on the computer. Use the ComputerApi object to verify maintenance mode is on. Next steps If you did not set maintenance mode to turn off automatically: Create a Computer object.",
+    "metadata": {
+      "filename": "configure-maintenance-mode.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/configure-maintenance-mode.md",
+      "title": "Configure maintenance mode during upgrades",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.945Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      103,
+      54,
+      904
+    ]
+  },
+  {
+    "id": "configure-maintenance-mode.md_chunk_1",
+    "content": "Create and configure an ApplicationControlComputerExtension object to turn off maintenance mode and add it to the Computer object. Use a ComputerApi object to turn off maintenance mode. For more information about maintenance mode, see the Turn on maintenance mode when making planned changes. The following example enables maintenance mode for 10 minutes during a scheduled upgrade. source # Create and configure an ApplicationControlComputerExtesnion object application_control = api.ApplicationControlComputerExtension() application_control.maintenance_mode_status = \"on\" application_control.maintenance_mode_duration = duration # Add the ApplicationControlComputerExtension to a Computer object computer = api.Computer() computer.application_control = application_control # Update the computer computers_api = api.ComputersApi(api.ApiClient(configuration)) return computers_api.modify_computer(computer_id, computer, api_version) Also see the Modify a Computer operation in the API Reference.",
+    "metadata": {
+      "filename": "configure-maintenance-mode.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/configure-maintenance-mode.md",
+      "title": "Configure maintenance mode during upgrades",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.945Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      96,
+      50,
+      995
+    ]
+  },
+  {
+    "id": "configure-maintenance-mode.md_chunk_2",
+    "content": "© 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "configure-maintenance-mode.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/configure-maintenance-mode.md",
+      "title": "Configure maintenance mode during upgrades",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.945Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      10,
+      10,
+      74
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+---
+id: ad-service-account
+title: Service Account
+sidebar_label: Service Account
+description: Service Account
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Service Account View details about the service accounts in your organization. The Service Account tab allows you to view details of all service accounts in your organization. A service account is the primary security identity of a service that determines its access permissions to resources. The following table details the columns on the Service Account tab. Column name Description Service account name Name of a service account in your organization. Privileged Indicates whether a service account is privileged. Users in certain default security groups are privileged. For details about these security groups, see Active Directory (on-premises) default privileged security groups. Status Status of a service account. An enabled service account is allowed to sign in to the domain network. Groups Groups to which a service belongs. Click on the number in the Groups column to view details about the groups to which the service account belongs. Primary group Default group to which a service account belongs. User account control Properties assigned to a service account to control access rights and behaviors, determine account type, and set restrictions. For details, see Active Directory user account controls. Service account type Type of a service account. Standalone managed: runs on a server farm or behind a network load balancer Group managed: runs on only one server Service principal names Service principal names associated with a service account. A service principal name is a unique identifier of a service instance. Password last changed Last time when the password of a service account was changed. Created Time when a service account was created. Distinguished name A fully qualified unique name that identifies a service account in a directory. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

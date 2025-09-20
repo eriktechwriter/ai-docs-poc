@@ -1,0 +1,11 @@
+---
+id: pml-log-details
+title: Predictive Machine Learning log details
+sidebar_label: Predictive Machine Learning log details
+description: Predictive Machine Learning log details
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Predictive Machine Learning log details You can view a comprehensive report for each Predictive Machine Learning log detection by clicking the Predictive Machine Learning Log Details link on the Policy Event Details screen. The Predictive Machine Learning Log Details screen consists of two sections: Top banner: Specific details related to this particular log detection Bottom tab controls: Details related to the Predictive Machine Learning threat, including threat probability scores and file information The following table discusses the information provided in the top banner. Log Details - Top Banner Section Description Detection name Indicates the name of the Predictive Machine Learning detection Example: Ransom.Win32.TRX.XXPE1 Detection time / Action Indicates when this specific log detection occurred and the action taken on the threat File name Indicates the name of the file that triggered the detection Recipient Displays the recipient of the email message that triggered the detection The following table discusses the information provided on the bottom tabs. Log Details - Tab Information Tab Description Threat Indicators Provides the results of the Predictive Machine Learning analysis Threat Probability: Indicates how closely the file matched the malware model Probable Threat Type: Indicates the most likely type of threat contained in the file after Predictive Machine Learning compared the analysis to other known threats Similar Known Threats: Provides a list of known threat types that exhibit similar file features to the detection File Details Provides general details about the file properties for this specific detection log © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

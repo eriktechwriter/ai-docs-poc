@@ -1,0 +1,178 @@
+[
+  {
+    "id": "cis-gke17-553b.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 5.5.3 - Ensure Node Auto-Upgrade is enabled for GKE nodes (Automated) Profile applicability: Level 2 Node auto-upgrade keeps nodes at the current Kubernetes and OS security patch level to mitigate known vulnerabilities. Note Node auto-upgrades are not available for Alpha Clusters. Node auto-upgrade helps you keep the nodes in the cluster or node pool up to date with the latest stable patch version of Kubernetes as well as the underlying node operating system. Node auto-upgrade uses the same update mechanism as manual node upgrades. Node pools with node auto-upgrade enabled are automatically scheduled for upgrades when a new stable Kubernetes version becomes available. When the upgrade is performed, the Node pool is upgraded to match the current cluster master version.",
+    "metadata": {
+      "filename": "cis-gke17-553b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-553b.md",
+      "title": "5.5.3 - Ensure Node Auto-Upgrade is enabled for GKE nodes (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.862Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      116,
+      67,
+      867
+    ]
+  },
+  {
+    "id": "cis-gke17-553b.md_chunk_1",
+    "content": "From a security perspective, this has the benefit of applying security updates automatically to the Kubernetes Engine when security fixes are released. Note Node auto-upgrade is enabled by default. Even if a cluster has been created with node auto-repair enabled, this only applies to the default Node pool. Subsequent node pools do not have node auto-upgrade enabled by default. Impact Enabling node auto-upgrade does not cause the nodes to upgrade immediately. Automatic upgrades occur at regular intervals at the discretion of the Kubernetes Engine team. To prevent upgrades occurring during a peak period for the cluster, a maintenance window should be defined. A maintenance window is a four-hour timeframe that can be chosen, during which automatic upgrades should occur. Upgrades can occur on any day of the week, and at any time within the timeframe. To prevent upgrades from occurring during certain dates, a maintenance exclusion should be defined.",
+    "metadata": {
+      "filename": "cis-gke17-553b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-553b.md",
+      "title": "5.5.3 - Ensure Node Auto-Upgrade is enabled for GKE nodes (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.862Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      126,
+      74,
+      958
+    ]
+  },
+  {
+    "id": "cis-gke17-553b.md_chunk_2",
+    "content": "A maintenance exclusion can span multiple days. Audit Using Google Cloud Console: Go to Kubernetes Engine website. From the list of clusters, select the desired cluster. For each Node pool, view the Node pool Details pane and ensure that under the Management heading, Auto-upgrade is set to Enabled. Using Command Line: To check the existence of node auto-upgrade for an existing cluster's Node pool, run: gcloud container node-pools describe <node_pool_name> --cluster <cluster_name> --zone <cluster_zone> --format json | jq '.management' Ensure the output of the above command has JSON key attribute autoUpgrade set to true: { \"autoUpgrade\": true } If node auto-upgrade is disabled, the output of the above command output will not contain the autoUpgrade entry. Remediation Using Google Cloud Console: Go to Kubernetes Engine website. Select the Kubernetes cluster containing the node pool for which auto-upgrade disabled. Select the Node pool by clicking on the name of the pool.",
+    "metadata": {
+      "filename": "cis-gke17-553b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-553b.md",
+      "title": "5.5.3 - Ensure Node Auto-Upgrade is enabled for GKE nodes (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.862Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      132,
+      71,
+      982
+    ]
+  },
+  {
+    "id": "cis-gke17-553b.md_chunk_3",
+    "content": "Navigate to the Node pool details pane and click EDIT. Under the Management heading, check the Enable auto-repair box. Click SAVE. Repeat steps 2-6 for every cluster and node pool with auto-upgrade disabled. Using Command Line: To enable node auto-upgrade for an existing cluster's Node pool, run the following command: gcloud container node-pools update <node_pool_name> --cluster <cluster_name> --zone <cluster_zone> --enable-autoupgrade © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-gke17-553b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-553b.md",
+      "title": "5.5.3 - Ensure Node Auto-Upgrade is enabled for GKE nodes (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.862Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      71,
+      51,
+      514
+    ]
+  }
+]

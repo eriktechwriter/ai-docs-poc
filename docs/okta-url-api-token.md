@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-okta-url-api-token
+slug: okta-url-api-token
 title: Obtaining your Okta URL domain and API token
 ---
 

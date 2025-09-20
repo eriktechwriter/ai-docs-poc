@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-config-google-cloud-saml
+slug: config-google-cloud-saml
 title: Configuring Google Cloud Identity
 ---
 

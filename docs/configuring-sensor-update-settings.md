@@ -1,0 +1,11 @@
+---
+id: configuring-sensor-update-settings
+title: Configure sensor update settings
+sidebar_label: Configure sensor update settings
+description: Configure sensor update settings
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Configure sensor update settings Manage whether your Virtual Network Sensor updates automatically and configure update schedules. Use the Sensor Update Settings screen to enable or disable automatic updates. If you enable automatic updates, you can also configure the update schedule to plan when your deployed Virtual Network Sensors perform updates. Important If you disable automatic updates, you must manually trigger the update process for the Virtual Network Sensor. Manually updating always updates to the latest version. Network Inventory only maintains update support for Virtual Network Sensor versions released within the last six months. Versions older than six months might require redeployment to use the latest version. Procedure On the Trend Vision One console, go to Network Security → Network Inventory → Virtual Network Sensor. Click the identifier of the Virtual Network Sensor you want to configure. The Sensor Details screen appears. Go to the System Settings tab. Locate Sensor update and click the configure icon (). The Sensor Update Settings appears. To enable automatic updates, select Automatic updates and configure the schedule settings. To always update as soon as a new sensor version is available, select Immediate. To configure when to perform updates, select Custom and specify the preferred update time. Note The update process begins at the preferred update time. If the Virtual Network Sensor is turned off or it takes more than 20 minutes to begin the update process, the Virtual Network Sensor waits until the next preferred update time to try again. To disable automatic updates, clear Automatic updates. Click Save. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

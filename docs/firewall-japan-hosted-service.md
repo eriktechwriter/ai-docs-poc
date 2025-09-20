@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-firewall-japan-hosted-service
+slug: firewall-japan-hosted-service
 title: 'Firewall exceptions: Japan - hosted Service Gateway'
 ---
 

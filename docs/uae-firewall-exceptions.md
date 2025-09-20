@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-uae-firewall-exceptions
+slug: uae-firewall-exceptions
 title: Middle East and Africa - firewall exceptions
 ---
 

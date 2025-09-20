@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-troubleshooting-connections
+slug: troubleshooting-connections
 title: Troubleshooting Microsoft Entra ID connections
 ---
 

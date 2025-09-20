@@ -1,0 +1,11 @@
+---
+id: email-account-central-visibility
+title: Email Account Inventory provides central visibility and management of email accounts
+sidebar_label: Email Account Inventory provides central visibility and management of email accounts
+description: Email Account Inventory provides central visibility and management of email accounts
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Email Account Inventory provides central visibility and management of email accounts October 9, 2023—Email Account Inventory now provides an overview of how well your organization’s email accounts are protected by Email Sensor and Cloud App Security and allows you to manage protection over the accounts. Email Account Inventory provides the following central features: Email Account Inventory provides an overview of your organization’s email account inventory and available actions to protect email accounts in your organization. If you have not yet enabled any email solutions, you can set up Email Sensor and Cloud App Security from the inventory. You can enable key features of Cloud App Security and configure policies for unprotected accounts. You can conduct necessary investigations into suspicious account activity. In addition, the sensor management functionality has moved from Email Account Inventory into a separate menu item. Email and Collaboration Security → Email Asset Inventory © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

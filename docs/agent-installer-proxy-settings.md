@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-agent-installer-proxy-settings
+slug: agent-installer-proxy-settings
 title: Agent Installer Proxy Settings
 ---
 

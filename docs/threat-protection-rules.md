@@ -1,0 +1,11 @@
+---
+id: threat-protection-rules
+title: Threat protection rules
+sidebar_label: Threat protection rules
+description: Threat protection rules
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Threat protection rules Manage threat protection rules to scan web traffic for threats and apply them to secure access rules for enhanced protection. The internet access service provides threat protection rules to secure your files by protecting them from emerging advanced threats. It also integrates with Trend Micro Web Reputation Services to prevent you from accessing infected websites, and provides Advanced Threat Scanning that leverages Predictive Machine Learning and Threat Intelligence to detect botnets, unknown threats, and suspicious objects. Note Threat protection rules can be applied to the following: Internet access rules The following table outlines the actions available on the Threat Protection tab (Zero Trust Secure Access → Secure Access Resources → Threat Protection). Action Description Add a threat protection rule On the Threat Protection tab, click Add. Follow the instructions to add a threat protection rule. For more information, see Adding a threat protection rule. Check threat protection rule details View the basic information about a threat protection rule, including the number of rules that are using the rule. Configure a threat protection rule Click in the Action column to change the basic information about a threat protection rule. Click in the Action column to duplicate a threat protection rule. This provides a convenient way of adding a new threat protection rule with settings similar to an existing rule. Click in the Action column to delete a threat protection rule from Trend Vision One. To delete more than one threat protection rule, select the rules and click Delete in the upper left. Note Only the threat protection rule that is not in use by any secure access rule can be deleted. Related information Adding a threat protection rule © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

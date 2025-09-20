@@ -1,0 +1,134 @@
+[
+  {
+    "id": "container-firewall-rules.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Container Firewall rules If you are using version 11.2+ agents to protect containers that use an overlay network, you may need to add some Firewall rules to allow network traffic for the Swarm or Kubernetes services because the default Firewall rules block that traffic. Kubernetes Firewall rules If you are using Kubernetes, add the following rules to bypass the k8s communication traffic and export service traffic: Name Action Type Priority Direction Frame Type Protocol Source IP Source Port Destination IP Destination Port HTTP incoming TCP 80 destination port Force Allow 0 - Lowest Incoming IP TCP Any N/A Any 80 HTTP outgoing TCP 80 source port Force Allow 0 - Lowest Outgoing IP TCP Any 80 Any Any K8s incoming TCP 10054 port Force Allow 0 - Lowest Incoming IP TCP Any Any Any 10054 K8s outgoing TCP 10054 port Force Allow 0 - Lowest Outgoing IP TCP Any Any Any 10054 K8s outgoing TCP 443 port Force Al",
+    "metadata": {
+      "filename": "container-firewall-rules.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/container-firewall-rules.md",
+      "title": "Container Firewall rules",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.023Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      139,
+      62,
+      1000
+    ]
+  },
+  {
+    "id": "container-firewall-rules.md_chunk_1",
+    "content": "low 0 - Lowest Outgoing IP TCP Any Any Any 443 K8s outgoing TCP 6443 port Force Allow 0 - Lowest Incoming IP TCP Any Any Any 6443 K8s outgoing TCP 6443 port Force Allow 0 - Lowest Outgoing IP TCP Any Any Any 6443 K8s outgoing TCP 8081 port Force Allow 0 - Lowest Incoming IP TCP Any Any Any 8081 K8s outgoing TCP 8081 port Force Allow 0 - Lowest Outgoing IP TCP Any Any Any 8081 K8s outgoing UDP 8472 port Force Allow 0 - Lowest Outgoing IP UDP Any Any Any 8472 K8s outgoing UDP 8285 port Force Allow 0 - Lowest Outgoing IP UDP Any Any Any 8285 K8s outgoing UDP 8285 port Force Allow 0 - Lowest Incoming IP UDP Any Any Any 8285 Swarm Firewall rules If you are using Swarm, add the following rules to bypass the k8s communication traffic and export service traffic: Name Action Type Priority Direction Frame Type Protocol Source IP Source Port Destination IP Destination Port HTTP incoming TCP 80 destination port Force Allow 0 - Lowest Incoming IP TCP Any N/A Any 80 HTTP outgoing TCP 80 source port",
+    "metadata": {
+      "filename": "container-firewall-rules.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/container-firewall-rules.md",
+      "title": "Container Firewall rules",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.023Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      157,
+      41,
+      999
+    ]
+  },
+  {
+    "id": "container-firewall-rules.md_chunk_2",
+    "content": "Force Allow 0 - Lowest Outgoing IP TCP Any 80 Any Any Swarm outgoing TCP 443 port Force Allow 0 - Lowest Outgoing IP TCP Any Any Any 443 Swarm incoming TCP 2377, 4789, 7946, 60012 port Force Allow 0 - Lowest Incoming IP TCP+UDP Any Any Any 2377, 4789, 7946, 60012 Swarm outgoing TCP 2377, 4789, 7946, 60012 port Force Allow 0 - Lowest Outgoing IP TCP+UDP Any 2377, 4789, 7946, 60012 Any Any © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "container-firewall-rules.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/container-firewall-rules.md",
+      "title": "Container Firewall rules",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.023Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      74,
+      25,
+      465
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+---
+id: create-file-attribute-email
+title: Creating a file attribute list
+sidebar_label: Creating a file attribute list
+description: Creating a file attribute list
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Creating a file attribute list Procedure Go to Administration → Policy Objects → DLP Data Identifiers. Click the File Attribute tab. Click Add. A new screen displays. Type a file attribute list name that does not exceed 256 characters in length. Type a description that does not exceed 256 characters in length. Select either of the following: Not selected: The selected file types will be excluded. Selected: The selected file types will be included. Select your preferred true file types. If a file type you want to include is not listed, select File extensions and then type the file type’s extension. Data Loss Prevention checks files with the specified extension but does not check their true file types. Guidelines when specifying file extensions: Each extension must start with an asterisk (*), followed by a period (.), and then the extension. The asterisk is a wildcard, which represents a file’s actual name. For example, *.pol matches 12345.pol and test.pol. You can include wildcards in extensions. Use a question mark (?) to represent a single character and an asterisk (*) to represent two or more characters. See the following examples: - *.*m matches the following files: ABC.dem, ABC.prm, ABC.sdcm - *.m*r matches the following files: ABC.mgdr, ABC.mtp2r, ABC.mdmr - *.fm? matches the following files: ABC.fme, ABC.fml, ABC.fmp Be careful when adding an asterisk at the end of an extension as this might match parts of a file name and an unrelated extension. For example: *.do* matches abc.doctor_john.jpg and abc.donor12.pdf. Use semicolons (;) to separate file extensions. There is no need to add a space after a semicolon. Type the minimum and maximum file sizes in bytes. Both file sizes must be whole numbers larger than zero. Click Save. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

@@ -1,0 +1,90 @@
+[
+  {
+    "id": "openshift-425.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 4.2.5 - Verify that the read only port is not used or is set to 0 (Automated) Profile applicability: Level 1 Disable the read-only port. The Kubelet process provides a read-only API in addition to the main Kubelet API. Unauthenticated access is provided to this read-only API which could possibly retrieve potentially sensitive information about the cluster. Note By default, in OpenShift 4.5 and earlier, the --read-only-port is not used. In OpenShift 4.6 and above, the kubelet-read-only-port is set to 0. Impact Removal of the read-only port will require that any service which made use of it will need to be re-configured to use the main Kubelet API. Audit In OpenShift 4, the kubelet is managed by the Machine Config Operator. The kubelet config file is found at /etc/kubernetes/kubelet.conf.",
+    "metadata": {
+      "filename": "openshift-425.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/openshift-425.md",
+      "title": "4.2.5 - Verify that the read only port is not used or is set to 0 (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.790Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      116,
+      68,
+      886
+    ]
+  },
+  {
+    "id": "openshift-425.md_chunk_1",
+    "content": "OpenShift disables the read-only port (10255) on all nodes by setting the read-only-port kubelet flag to 0 by default in OpenShift 4.6 and above. Run the following command to verify the kubelet-read-only-port is set to 0 for the Kubernetes API server configuration map. oc -n openshift-kube-apiserver get cm config -o json | jq -r '.data.\"config.yaml\"' | yq '.apiServerArguments.\"kubelet-read-only-port\"' Verify the output is a list that contains 0, like the following: [ \"0\" ] Remediation In earlier versions of OpenShift 4, the read-only-port argument is not used. Follow the instructions in the OpenShift documentation to create a kubeletconfig CRD and set the kubelet-read-only-port is set to 0. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "openshift-425.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/openshift-425.md",
+      "title": "4.2.5 - Verify that the read only port is not used or is set to 0 (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.790Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      99,
+      60,
+      774
+    ]
+  }
+]

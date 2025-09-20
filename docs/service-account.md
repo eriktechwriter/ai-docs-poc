@@ -1,0 +1,11 @@
+---
+id: service-account
+title: Service account
+sidebar_label: Service account
+description: Service account
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Service account Cloud Email and Collaboration Protection requires service accounts to integrate with those applications and services that it protects. The service accounts can be categorized as: Delegate accounts to integrate with Exchange Online, SharePoint Online, and OneDrive Note Cloud Email and Collaboration Protection no longer supports accessing Exchange Online using a Delegate Account. If you are using a Delegate Account for Exchange Online, Trend Micro strongly recommends that you migrate to an Authorized Account before October 1, 2022. Authorized accounts to integrate with Exchange Online, SharePoint Online, OneDrive, Microsoft Teams (Teams and Chat), Box, Dropbox, Google Drive, and Gmail Note The service account that you create in Cloud Email and Collaboration Protection does not require a license. Cloud Email and Collaboration Protection enables you to use either a Delegate Account or an Authorized Account to protect your Exchange Online, SharePoint Online, and OneDrive. Important Starting on April 19, 2020 Cloud Email and Collaboration Protection is supporting only using the Authorized Account to access Exchange Online, and stops the support for automatically and manually granting access to Exchange Online using the Delegate Account. If you have already created a Delegate Account, Cloud Email and Collaboration Protection will continue to protect your Exchange Online service using this account. If you have not created a service account for Exchange Online yet, you can start by creating an Authorized Account. For more information, see Granting access to Exchange Online with an authorized account. Related information Delegate account Authorized account © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

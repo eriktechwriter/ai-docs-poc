@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-uninstall-agents-intune
+slug: uninstall-agents-intune
 title: Uninstall Windows Agents with Microsoft Intune
 ---
 

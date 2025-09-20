@@ -1,0 +1,134 @@
+[
+  {
+    "id": "manually-stop-agent-processes.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ How to manually terminate Trend Vision One Endpoint Security agent processes Manually stop agent processes not halted when using an authorization token to terminate the program. Note This FAQ is about how to manually terminate agent processes when using the agent interface to shut down the Trend Vision One Endpoint Security agent on a Windows endpoint. For information about shutting down the agent, see Agent Interface. For steps on restarting the agent and agent services, see How to restart the Trend Vision One Endpoint Security agent. Some services might require disabling the feature in Endpoint Security Policies before shutting down the agent. Procedure Disable protection features which control the affected services before terminating the agent program.",
+    "metadata": {
+      "filename": "manually-stop-agent-processes.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/manually-stop-agent-processes.md",
+      "title": "How to manually terminate Trend Vision One Endpoint Security agent processes",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.686Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      4,
+      5,
+      0,
+      0,
+      12,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      114,
+      60,
+      854
+    ]
+  },
+  {
+    "id": "manually-stop-agent-processes.md_chunk_1",
+    "content": "In Endpoint Security Policies, disable the following protection features: Firewall Intrusion Prevention Web Reputation Go to Agent Interface and set Browser extension to Disable. Save the policy settings. Allow time for the agents to update the policy settings, then terminate the agent program using the agent interface. Terminate tm_netsrv manually. Once the agent program is successfully terminated, access Task Manager. Locate and select tm_netsrv. Click End task. To terminate dsa-wrs-app.exe manually, exit all Chrome and Edge browser sessions. Terminate the tbimwfp driver. Access Command Prompt as an administrator. To verify the status of the driver, use the command sc query tbimwfp. If the driver is running, use the command sc stop tbimwfp. Uninstall the tbimdsa driver. The tbimdsa driver cannot be stopped using commands. The driver must be uninstalled to stop tbimdsa from running. Go to Control Panel → Network Connections. Locate the network interface.",
+    "metadata": {
+      "filename": "manually-stop-agent-processes.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/manually-stop-agent-processes.md",
+      "title": "How to manually terminate Trend Vision One Endpoint Security agent processes",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.686Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      1,
+      1,
+      0,
+      2,
+      4,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      127,
+      75,
+      969
+    ]
+  },
+  {
+    "id": "manually-stop-agent-processes.md_chunk_2",
+    "content": "Right click and select Properties. In the list The connection uses the following items, locate and select Trend Micro LightWeight Filter Driver. Click Uninstall. In the confirmation notice, click Yes. To verify the driver status, access Command Prompt as an administrator. Use the command sc query tbimdsa. If uninstalling is successful, the command returns the following error: The specified service does not exist as an installed service. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "manually-stop-agent-processes.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/manually-stop-agent-processes.md",
+      "title": "How to manually terminate Trend Vision One Endpoint Security agent processes",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.686Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      67,
+      48,
+      515
+    ]
+  }
+]

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-allow-traffic-isolated-endpoints
+slug: allow-traffic-isolated-endpoints
 title: Allow network traffic on isolated endpoints
 ---
 

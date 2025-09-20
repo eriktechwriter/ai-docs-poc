@@ -1,0 +1,134 @@
+[
+  {
+    "id": "turning-scanner-for-aws.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Turn on scanning in AWS buckets Start scanning Amazon Web Services (AWS) buckets with File Security Storage When you add a region to File Security Storage, the scanner is automatically deployed in the region. However, you need to turn on scanning in each bucket to allow the scanner access to the files being uploaded to that bucket. When EventBridge is turned on, File Security can scan that bucket. File Security cannot scan a bucket when the Status is EventBridge off or the Scanner is not deployed. The first time you time deploy a File Security Storage stack, it, by default, monitors all the S3 buckets in which EventBridge is on. When you add or remove the monitoring buckets, File Security Storage stores the list of monitoring buckets in the config. File Security Storage scans buckets based on the config. (This behavior is for backward compatibility.",
+    "metadata": {
+      "filename": "turning-scanner-for-aws.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/turning-scanner-for-aws.md",
+      "title": "Turn on scanning in AWS buckets",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.282Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      7,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      124,
+      67,
+      950
+    ]
+  },
+  {
+    "id": "turning-scanner-for-aws.md_chunk_1",
+    "content": "When you upgrade the old File Security Storage template (in which monitoring bucket is simply based on EventBridge on) to the enhanced version (in which monitoring buckets is based on customer’s choice in the console), you are protected without having to re-configure the monitoring bucket. Before stack version 1.2.0, you need to turn on or turn off EventBridge to control whether the scanning is enable or not. In stack versions 1.2.0 or greater, File Security Storage creates an S3 configuration bucket in your environment. it uses the information in this configuration bucket to determine whether to scan a specific bucket. Every time you turn on scanning, File Security Storage enables EventBridge. However, if you turn off scanning, File Security Storage does not disable EventBridge, but rather saves the current scanning status in the configuration bucket.",
+    "metadata": {
+      "filename": "turning-scanner-for-aws.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/turning-scanner-for-aws.md",
+      "title": "Turn on scanning in AWS buckets",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.282Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      4,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      104,
+      59,
+      864
+    ]
+  },
+  {
+    "id": "turning-scanner-for-aws.md_chunk_2",
+    "content": "If you already have installed an enhanced version and update the template for new features, the config of the monitoring bucket remains, so you will still be protected by the previous monitoring settings. If, however, you remove the existing stack and then re-install a new stack instead of updating the stack, File Security Storage considers this a new installation, and you lose the previous settings. Procedure On the File Security Inventory tab, select the cloud account. Select the region. Select the buckets in which you want to enable EventBridge From the Change Status list, select Modify scanning. Verify the selected buckets. Enable Scanning.The Status changes to Scanning on and the indicator circle turns green. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "turning-scanner-for-aws.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/turning-scanner-for-aws.md",
+      "title": "Turn on scanning in AWS buckets",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.282Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      110,
+      72,
+      798
+    ]
+  }
+]

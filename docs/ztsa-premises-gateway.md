@@ -1,0 +1,11 @@
+---
+id: ztsa-premises-gateway
+title: Zero Trust Secure Access On-premises Gateway
+sidebar_label: Zero Trust Secure Access On-premises Gateway
+description: Zero Trust Secure Access On-premises Gateway
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Zero Trust Secure Access On-premises Gateway Related information Zero Trust Secure Access On-premises Gateway Version 1.0.70 Zero Trust Secure Access On-premises Gateway Version 1.0.69 Zero Trust Secure Access On-premises Gateway Version 1.0.68 Zero Trust Secure Access On-premises gateway version 1.0.67 Zero Trust Secure Access On-premises Gateway Version 1.0.66 Zero Trust Secure Access On-premises Gateway Version 1.0.65 Zero Trust Secure Access On-premises Gateway Version 1.0.64 Zero Trust Secure Access On-premises Gateway Version 1.0.63 Zero Trust Secure Access On-premises Gateway Version 1.0.62 Zero Trust Secure Access On-premises Gateway Version 1.0.61 Zero Trust Secure Access On-premises Gateway Version 1.0.60 Zero Trust Secure Access On-premises Gateway Version 1.0.59 Zero Trust Secure Access On-premises Gateway Version 1.0.58 Zero Trust Secure Access On-premises Gateway Version 1.0.57 Zero Trust Secure Access On-premises Gateway Version 1.0.56 Zero Trust Secure Access On-premises Gateway Version 1.0.55 Zero Trust Secure Access On-premises Gateway Version 1.0.54 Zero Trust Secure Access On-premises Gateway Version 1.0.53 Zero Trust Secure Access On-premises Gateway Version 1.0.52 Zero Trust Secure Access On-premises Gateway Version 1.0.51 Zero Trust Secure Access On-premises Gateway Version 1.0.50 Zero Trust Secure Access On-premises Gateway Version 1.0.49 Zero Trust Secure Access On-premises Gateway Version 1.0.48 Zero Trust Secure Access On-premises Gateway Version 1.0.46 Zero Trust Secure Access On-premises Gateway Version 1.0.44 Zero Trust Secure Access On-premises Gateway Version 1.0.43 Zero Trust Secure Access On-premises Gateway Version 1.0.41 Zero Trust Secure Access On-premises Gateway Version 1.0.40 Zero Trust Secure Access On-premises Gateway Version 1.0.39 Zero Trust Secure Access On-premises Gateway Version 1.0.38 © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

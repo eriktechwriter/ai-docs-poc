@@ -1,0 +1,178 @@
+[
+  {
+    "id": "vm-vsphere-switch-rspan.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Configure external inter-VM traffic with the VMware vSphere Distributed Switch (RSPAN) Configure network settings in VMware vCenter to allow Virtual Network Sensor to monitor data. Important The following instructions are valid as of July 2023. Note The following steps are for configuring the sender virtual appliance. For information about configuring the receiver virtual appliance (Virtual Network Sensor), see Configure external network traffic with the VMware vSphere Distributed Switch (RSPAN). Procedure On the VMware vCenter console, click the tab. Right-click the name of your data center, and go to Distributed Switch → New Distributed Switch.... On the Name and location screen, specify the distributed switch name and location and click NEXT. On the Select version screen, select your distributed switch version and click NEXT.",
+    "metadata": {
+      "filename": "vm-vsphere-switch-rspan.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/vm-vsphere-switch-rspan.md",
+      "title": "Configure external inter-VM traffic with the VMware vSphere Distributed Switch (RSPAN)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.369Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      121,
+      60,
+      929
+    ]
+  },
+  {
+    "id": "vm-vsphere-switch-rspan.md_chunk_1",
+    "content": "On the Configure settings screen, specify the port group name and the number of uplinks, and click NEXT. On the Ready to complete screen, review the settings and click FINISH. Right-click the name of your switch and select Add and Manage Hosts.... On the Select task screen, select Add hosts and click NEXT. On the Select hosts screen, select your virtual machine and click NEXT. On the Manage physical adapters screen, right-click the name of your NIC and select Uplink 1. Click NEXT. On the Manage VMkernel adapters screen, click NEXT. On the Migrate VM networking screen, click NEXT. On the Ready to complete screen, click FINISH. Click the name of your switch and click Networks. Right-click the name of your port group and select Edit Settings.... Click VLAN, select VLAN trunking for VLAN type, and click OK. Click the tab and then click the name of your client. Click . On the Edit Settings screen, click Network adapter 1 and select Browse.... Click the name of your port group and click OK.",
+    "metadata": {
+      "filename": "vm-vsphere-switch-rspan.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/vm-vsphere-switch-rspan.md",
+      "title": "Configure external inter-VM traffic with the VMware vSphere Distributed Switch (RSPAN)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.369Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      152,
+      46,
+      999
+    ]
+  },
+  {
+    "id": "vm-vsphere-switch-rspan.md_chunk_2",
+    "content": "Click OK. Click the tab and then click the name of your switch. Click Configure, click Port Mirroring, and click NEW.... On the Select session type screen, select Remote Mirroring Source and click NEXT. On the Edit properties screen, select Enabled for the status and enter your encapsulation VLAN ID for the destination VDS. Click NEXT. On the Select sources screen, select the virtual appliance you want to be monitored and click NEXT. On the Select destinations screen, select the uplink that you bound your NIC to and click ADD. Click NEXT. On the Ready to complete screen, review the settings and click FINISH. Configure the port mirror on your physical switch. Important Do not unpack the VLAN settings. After configuring your network settings, access the Virtual Network Sensor console and use the command show traffic to verify the Virtual Network Sensor is receiving traffic. For more information about troubleshooting, see Virtual Network Sensor FAQ and Virtual Network Sensor CLI commands.",
+    "metadata": {
+      "filename": "vm-vsphere-switch-rspan.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/vm-vsphere-switch-rspan.md",
+      "title": "Configure external inter-VM traffic with the VMware vSphere Distributed Switch (RSPAN)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.369Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      5,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      145,
+      71,
+      1000
+    ]
+  },
+  {
+    "id": "vm-vsphere-switch-rspan.md_chunk_3",
+    "content": "© 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "vm-vsphere-switch-rspan.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/vm-vsphere-switch-rspan.md",
+      "title": "Configure external inter-VM traffic with the VMware vSphere Distributed Switch (RSPAN)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.369Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      10,
+      10,
+      74
+    ]
+  }
+]

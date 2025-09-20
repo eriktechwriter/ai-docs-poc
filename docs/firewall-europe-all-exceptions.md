@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-firewall-europe-all-exceptions
+slug: firewall-europe-all-exceptions
 title: 'Firewall exceptions: Europe - all exceptions'
 ---
 

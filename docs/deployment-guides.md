@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-deployment-guides
+slug: deployment-guides
 title: Deployment guides
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-splunk-soar-integration
+slug: splunk-soar-integration
 title: Splunk SOAR integration
 ---
 

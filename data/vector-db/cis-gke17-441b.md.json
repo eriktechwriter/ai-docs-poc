@@ -1,0 +1,90 @@
+[
+  {
+    "id": "cis-gke17-441b.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 4.4.1 - Prefer using secrets as files over secrets as environment variables (Automated) Profile applicability: Level 2 Kubernetes supports mounting secrets as data volumes or as environment variables. Minimize the use of environment variable secrets. It is reasonably common for application code to log out its environment (particularly in the event of an error). This will include any secret values passed in as environment variables, so secrets can easily be exposed to any user or entity who has access to the logs. Note By default, secrets are not defined. Impact Application code which expects to read secrets in the form of environment variables would need modification. Audit Run the following command to find references to objects which use environment variables defined from secrets.",
+    "metadata": {
+      "filename": "cis-gke17-441b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-441b.md",
+      "title": "4.4.1 - Prefer using secrets as files over secrets as environment variables (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.857Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      104,
+      77,
+      881
+    ]
+  },
+  {
+    "id": "cis-gke17-441b.md_chunk_1",
+    "content": "kubectl get all -o jsonpath='{range .items[?(@..secretKeyRef)]} {.kind} {.metadata.name} {\"\\n\"}{end}' -A Remediation If possible, rewrite application code to read secrets from mounted secret files, rather than from environment variables. Note Mounting secrets as volumes has the additional benefit that secret values can be updated without restarting the pod. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-gke17-441b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-441b.md",
+      "title": "4.4.1 - Prefer using secrets as files over secrets as environment variables (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.857Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      54,
+      49,
+      434
+    ]
+  }
+]

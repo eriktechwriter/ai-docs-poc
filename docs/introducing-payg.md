@@ -1,0 +1,11 @@
+---
+id: introducing-payg
+title: Introduction to pay-as-you-go
+sidebar_label: Introduction to pay-as-you-go
+description: Introduction to pay-as-you-go
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Introduction to pay-as-you-go Pay-as-you-go billing offers a convenient, consumption-based option for accessing supported Trend Vision One features. Pay-as-you-go enables you to use Trend Vision One features without needing to estimate your usage in advance or modify your credit allocation later. Based on the rates in your pay-as-you-go contract, you are only billed for the amount that you use. Start using pay-as-you-go in three simple steps. Step 1: Purchase a pay-as-you-go contract On the Pay-as-you-go tab, click Purchase a contract in AWS to purchase a pay-as-you-go contract from AWS Marketplace. For more information, see Purchase a pay-as-you-go contract from AWS Marketplace. Step 2: Activate your contract Click the link in your activation email and follow the instructions to activate your pay-as-you-go contract. Your contract might take some time to activate. Step 3: Switch supported features to pay-as-you-go You can switch the following Trend Vision One features' billing model from credit-based licensing to pay-as-you-go: Cyber Risk Exposure Management - Cloud account assessment Container Security File Security Endpoint Security - Advanced Server & Workload Protection Tip Pay-as-you-go billing for Advanced Server & Workload Protection depends on which Endpoint Security features and modules you enable. For more information, see How does credit allocation work for Server & Workload Protection? and How is pay-as-you-go billing calculated for Endpoint Security Advanced Server & Workload Protection?. Important You can change the billing model of each feature once every 30 days. Once you change the billing model of a feature, you must wait 30 days to change the billing model back. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

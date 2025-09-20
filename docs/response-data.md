@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-response-data
+slug: response-data
 title: Response data
 ---
 

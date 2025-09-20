@@ -1,0 +1,11 @@
+---
+id: configuring-access-control-settings
+title: Configuring access control settings
+sidebar_label: Configuring access control settings
+description: Configuring access control settings
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Configuring access control settings Procedure Go to Administration → Other Settings → Logon Access Control. On the Access Control Settings tab, select whether to allow access to Cloud Email Gateway Protection from unapproved IP addresses. End User Console: Select an action (Bypass, Allow and log, and Block and log) to take on the access request to the Cloud Email Gateway Protection End User Console from an unapproved IP address. The default value is Bypass. Bypass: The request bypasses access control check. Cloud Email Gateway Protection allows the access without verifying the client's IP address. Allow and log: Cloud Email Gateway Protection allows the access but records audit logs. Block and log: Cloud Email Gateway Protection blocks the access and records audit logs. This setting also applies when end users attempt to activate their accounts from an unapproved IP address. API Access: Select an action (Bypass, Allow and log, and Block and log) to take on the access request to Cloud Email Gateway Protection through REST APIs from an unapproved IP address. The default value is Bypass. Note IP-based access control is enabled if you select Allow and log or Block and log for any of the drop-down lists. In this case, at least one approved IP address must be configured on the Approved IP Addresses tab; otherwise, IP-based access control will not take effect. Optionally select Also apply to digest inline action. Selecting this check box applies the same setting configured for End User Console to digest inline actions. Optionally specify the email addresses to receive alerts on blocked or logged access. Type one or more email addresses as the alert recipients in the Email Address field. Use semicolons (;) to separate email addresses. There is no need to add a space after a semicolon. Specify the maximum number of alerts that can be sent within 24 hours. Click Save. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-firewall-singapore-all-global
+slug: firewall-singapore-all-global
 title: 'Firewall exceptions: Singapore - all exceptions'
 ---
 

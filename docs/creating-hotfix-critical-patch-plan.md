@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-creating-hotfix-critical-patch-plan
+slug: creating-hotfix-critical-patch-plan
 title: Creating a hotfix/critical patch plan
 ---
 

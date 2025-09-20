@@ -1,0 +1,134 @@
+[
+  {
+    "id": "troubleshooting-case-management.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Troubleshooting Case Management Related information Cannot sync update from ServiceNow to Case Management Cannot sync update from ServiceNow to Case Management Problem: Communication between ServiceNow and Case Management appears to only work in one direction. For example, an update made to a ServiceNow ticket does not appear in Case Management. Perform the following: Procedure In ServiceNow, go to Trend Vision One Connector → Properties and verify that the Trend Vision One API endpoint URL and Trend Vision One API authentication token are filled. If empty, provide the corresponding information. If filled, continue to the next step. Update the case in ServiceNow then look for the update in the Trend Vision One case. If the update appears in both ServiceNow and Trend Vision One, you can stop here. If the update does not appear in both ServiceNow and Trend Vision One, continue to the next step.",
+    "metadata": {
+      "filename": "troubleshooting-case-management.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/troubleshooting-case-management.md",
+      "title": "Troubleshooting Case Management",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.275Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      5,
+      0,
+      0,
+      1,
+      0,
+      132,
+      65,
+      994
+    ]
+  },
+  {
+    "id": "troubleshooting-case-management.md_chunk_1",
+    "content": "Check the system log at Trend Vision One Connector → System Logs. If you see the below message in the log, select Enable Case Management Integration to sync ServiceNow to Trend Vision One. Case notes updated successfully. Note: Changes are not synced back to Trend Vision One when sync is disabled or when you use the API to do changes. If you see the below message in the log, the token is not valid. Unable to sync case to Trend Vision One. (HTTP status code:401; Trace ID: d8edd0ce-578b-432e-b927-6ad68092d16a, Response: {\"error\":{\"innererror\":{\"code\":\"InvalidToken\",\"service\":\"svp\"},\"code\":\"InvalidCredentials\",\"message\":\"Invalid token, Authentication fail:Verification failed\"}}) Generate the token from Trend Vision One. In Trend Vision One, go to Workflow and Automation → Third-Party Integration. Select Trend Vision One for ServiceNow Ticketing System. Click Manage API Key. Click Generate Token. Copy the generated authentication token. Update the new token in ServiceNow.",
+    "metadata": {
+      "filename": "troubleshooting-case-management.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/troubleshooting-case-management.md",
+      "title": "Troubleshooting Case Management",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.275Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      2,
+      133,
+      74,
+      982
+    ]
+  },
+  {
+    "id": "troubleshooting-case-management.md_chunk_2",
+    "content": "In ServiceNow, go to Trend Vision One Connector → Properties. Under Case Management Integration, paste the authentication token. Click Save. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "troubleshooting-case-management.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/troubleshooting-case-management.md",
+      "title": "Troubleshooting Case Management",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.275Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      26,
+      25,
+      215
+    ]
+  }
+]

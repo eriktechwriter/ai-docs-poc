@@ -1,0 +1,11 @@
+---
+id: oauth-client-jira-setup
+title: Oauth client Jira setup
+sidebar_label: Oauth client Jira setup
+description: Oauth client Jira setup
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Oauth client Jira setup You can configure your Jira instances for Cloud Risk Management to communicate via OAuth. Note Users should be able to create/update application links on their Jira instance. Procedure Log in to your Jira Instance. From the Applications tab, select Application links settings. For Jira on Premise - navigate to Jira settings (cog icon) > Applications > Application links. For Jira Cloud - navigate to Jira settings (cog icon) > Products > Application links. In the Enter the URL of the application you want to link field, Enter {your Jira instance URL}:{port}/cloudconformity then Click Create new link. For example, the URL would become https://yourdomain.atlassian.net/cloudconformity if your Jira instance is https://yourdomain.atlassian.net Click Continue Add the following information and click Continue. Application Name: CloudConformity Application Type: Generic Application Service Provider Name: Cloud Risk Management Consumer key: CloudConformity Shared secret: CloudConformity Request Token URL: https://yourdomain.atlassian.net/cloudconformity Access token URL: https://yourdomain.atlassian.net/cloudconformity Authorize URL: https://yourdomain.atlassian.net/cloudconformity Create incoming link: {Check} Add the following information and click Continue. Consumer Key: CloudConformity Consumer Name: CloudConformity Public Key: ---BEGIN PUBLIC KEY---- MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCRMU74RaKHDKfENpuRB/wdfIAapgAuwJLCF1fEf/d58qvSF06zu0toqtvHgsetTTAxLxcCt829UbjMwTEgE7E09t+9UMEUL7WUueUsV5sWtJ86SlHFjK5dRmI6HRfXfpe9Y5tml5D9mhavmO2xp+X8z3TUR6AiKGM0SSLUGkzKDQIDAQAB ----END PUBLIC KEY---- Upon successfully completing these steps you should see CloudConformity under Applications © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

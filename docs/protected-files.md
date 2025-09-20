@@ -1,0 +1,11 @@
+---
+id: protected-files
+title: Protected Trend Vision One Endpoint Security agent Files
+sidebar_label: Protected Trend Vision One Endpoint Security agent Files
+description: Protected Trend Vision One Endpoint Security agent Files
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Protected Trend Vision One Endpoint Security agent Files When you enable the Trend Vision One Endpoint Security agent self-protection feature, Apex One (Mac) locks the following files and folders to prevent other programs and even the user from modifying or deleting Trend Vision One Endpoint Security agent files: /Library/Application Support/TrendMicro/common /Library/Application Support/TrendMicro/Kext /Library/Application Support/TrendMicro/TmccMac /Library/Application Support/TrendMicro/TmccUpdate /Library/Application Support/TrendMicro/Plug-in /Library/Application Support/TrendMicro/Tools /Library/LaunchDaemons/com.trendmicro.icore.* /Library/LaunchDaemons/com.trendmicro.tmsm.plugin.plist /Library/LaunchDaemons/com.trendmicro.tmsm.launcher.plist /Application/TrendMicroSecurity.app Note Apex One (Mac) allows files to be added in the /Library/Application Support/TrendMicro/Tools folder, files cannot be deleted from the folder. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-uninstalling-agents
+slug: uninstalling-agents
 title: Uninstalling Agents
 ---
 

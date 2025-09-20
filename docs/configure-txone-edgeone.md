@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-configure-txone-edgeone
+slug: configure-txone-edgeone
 title: Configuring TXOne EdgeOne
 ---
 

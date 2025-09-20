@@ -1,0 +1,134 @@
+[
+  {
+    "id": "custom-keyword-list-criteria.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Custom keyword list criteria View criteria used to create custom keyword lists for use in data loss prevention templates. Criteria for a keyword list Criteria Rule Any keyword A file must contain at least one keyword in the keyword list. All keywords A file must contain all the keywords in the keyword list. All keywords within <x> characters A file must contain all the keywords in the keyword list. In addition, each keyword pair must be within <x> characters of each other. For example, your 3 keywords are WEB, DISK, and USB and the number of characters you specified is 20. If Data Loss Prevention detects all keywords in the order DISK, WEB, and USB, the number of characters from the \"D\" (in DISK) to the \"W\" (in WEB) and from the \"W\" to the \"U\" (in USB) must be 20 characters or less.",
+    "metadata": {
+      "filename": "custom-keyword-list-criteria.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/custom-keyword-list-criteria.md",
+      "title": "Custom keyword list criteria",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.089Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      119,
+      53,
+      882
+    ]
+  },
+  {
+    "id": "custom-keyword-list-criteria.md_chunk_1",
+    "content": "The following data matches the criteria: DISK####WEB############USB The following data does not match the criteria: DISK*******************WEB****USB(23 characters between \"D\" and \"W\") When deciding on the number of characters, remember that a small number, such as 10, usually results in a faster scanning time but only covers a relatively small area. This may reduce the likelihood of detecting sensitive data, especially in large files. As the number increases, the area covered also increases but scanning time might be slower. Combined score for keywords exceeds threshold A file must contain one or more keywords in the keyword list. If only one keyword was detected, its score must be higher than the threshold. If there are several keywords, their combined score must be higher than the threshold. Assign each keyword a score of 1 to 10. A highly confidential word or phrase, such as \"salary increase\" for the Human Resources department, should have a relatively high score.",
+    "metadata": {
+      "filename": "custom-keyword-list-criteria.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/custom-keyword-list-criteria.md",
+      "title": "Custom keyword list criteria",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.089Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      128,
+      81,
+      982
+    ]
+  },
+  {
+    "id": "custom-keyword-list-criteria.md_chunk_2",
+    "content": "Words or phrases that, by themselves, do not carry much weight can have lower scores. Consider the scores that you assigned to the keywords when configuring the threshold. For example, if you have five keywords and three of those keywords are high priority, the threshold can be equal to or lower than the combined score of the three high priority keywords. This means that the detection of these three keywords is enough to treat the file as sensitive. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "custom-keyword-list-criteria.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/custom-keyword-list-criteria.md",
+      "title": "Custom keyword list criteria",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.089Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      74,
+      51,
+      528
+    ]
+  }
+]

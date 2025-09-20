@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-logpoint-siem-integration
+slug: logpoint-siem-integration
 title: Logpoint SIEM integration
 ---
 

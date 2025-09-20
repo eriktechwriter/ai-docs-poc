@@ -1,0 +1,222 @@
+[
+  {
+    "id": "address-modification.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Address modification Rewrite email addresses of inbound or outbound traffic to help reroute emails, mask internal infrastructure, and align with organizational policies. Configure email address modification rules to: Rewrite sender or recipient addresses in both message envelopes and headers Rewrite domains in email addresses You can configure address or domain rewriting rules to replace the entire email address or only the domain portion of the address. The following table shows some examples. Original address New address test@example.com myname@mydomain.com test1@example.com test2@example.com test@test.com test@example.com If an email address matches both an address rewriting rule and a domain rewriting rule in the same direction, the address rewriting rule takes precedence. Note You can create only one rewriting rule for a domain or email address in one direction.",
+    "metadata": {
+      "filename": "address-modification.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/address-modification.md",
+      "title": "Address modification",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.631Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      126,
+      70,
+      968
+    ]
+  },
+  {
+    "id": "address-modification.md_chunk_1",
+    "content": "Address and domain rewriting rules apply to sender addresses for outbound traffic and recipient addresses for inbound traffic. Rewriting occurs before policy matching and message delivery. Cloud Email Gateway Protection scans emails and applies security policies based on the rewritten domains and addresses, not the original ones. Important Once rewriting rules are configured, existing inbound and outbound policy rules that reference original domains or email addresses will no longer apply. To ensure consistent enforcement, make sure appropriate inbound and outbound policy rules are in place for the rewritten domains and addresses. For inbound emails, if message header addresses are rewritten, DKIM and DMARC (which relies on DKIM) verification in Cloud Email Gateway Protection and downstream MTAs may fail due to modifications to the message body.",
+    "metadata": {
+      "filename": "address-modification.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/address-modification.md",
+      "title": "Address modification",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.631Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      114,
+      64,
+      857
+    ]
+  },
+  {
+    "id": "address-modification.md_chunk_2",
+    "content": "Procedure Make sure that your account has the appropriate permissions and that you have added both the original and rewritten domains in Cloud Email Gateway Protection. Operation Account role type and permissions View and edit (add, modify, and delete) rewriting rules Roles with the Configure settings permission under Administration - Other Settings: can edit those rewriting rules where both the original and rewritten domains are within their domain visibility scope View rewriting rules only Roles with the Configure settings permission under Administration - Other Settings and limited domain visibility: can only view those rewriting rules where at least one domain is outside their scope Roles with the View permission under Administration - Other Settings: can view those rewriting rules where either the original and rewritten domain is within their scope View and edit settings Roles with the Configure settings permission under Administration - Other Settings and full domain visibility",
+    "metadata": {
+      "filename": "address-modification.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/address-modification.md",
+      "title": "Address modification",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.631Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      141,
+      56,
+      998
+    ]
+  },
+  {
+    "id": "address-modification.md_chunk_3",
+    "content": "View settings only Roles with the View permission under Administration - Other Settings To add a domain to Cloud Email Gateway Protection, go to Domains. Add address rewriting rules or domain rewriting rules. To add an address rewriting rule, On the Address rewriting tab, click Add. In the Address rewriting rule settings dialog, select the direction to apply the rule. Type the original email address. Type the new email address to replace the original email address. Click Save. To add a domain rewriting rule, On the Domain rewriting tab, click Add. In the Domain rewriting rule settings dialog, select the direction to apply the rule. Type the original domain. Type the new domain to replace the original domain. Click Save. Note If a managed domain is deleted, the domain rewriting rules associated with the domain are unavailable. After you have configured one or more rules, you can: Click the name of a rule to edit the rule.",
+    "metadata": {
+      "filename": "address-modification.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/address-modification.md",
+      "title": "Address modification",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.631Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      131,
+      47,
+      934
+    ]
+  },
+  {
+    "id": "address-modification.md_chunk_4",
+    "content": "Select one or more rules and click Delete to remove the selected rules. Specify the type of email addresses that Cloud Email Gateway Protection uses to match the address modification rules and rewrite upon rule match. Click the Settings tab. Select how Cloud Email Gateway Protection matches and rewrites addresses: envelope addresses, message header addresses, or both By default, all options are disabled, meaning address modification is turned off. Click Save. When a rewriting rule is matched, Selected option Inbound emails Outbound emails Envelope addresses Rewrites recipient envelope addresses Rewrites sender envelope addresses Message header addresses Rewrites addresses in the To and Cc fields Rewrites addresses in the From and Reply-To fields © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "address-modification.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/address-modification.md",
+      "title": "Address modification",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.631Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 4
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      109,
+      64,
+      830
+    ]
+  }
+]

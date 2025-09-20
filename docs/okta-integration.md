@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-okta-integration
+slug: okta-integration
 title: Okta integration
 ---
 

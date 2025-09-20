@@ -1,0 +1,90 @@
+[
+  {
+    "id": "1-1-7.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 1.1.7 - Ensure that the etcd pod specification file permissions are set to 600 or more restrictive (Automated) Profile applicability: Level 1 - Master Node Ensure that the /etc/kubernetes/manifests/etcd.yaml file has permissions of 600 or more restrictive. The etcd pod specification file /etc/kubernetes/manifests/etcd.yaml controls various parameters that set the behavior of the etcd service in the master node. etcd is a highly- available key-value store which Kubernetes uses for persistent storage of all of its REST API object. You should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system. Note By default, /etc/kubernetes/manifests/etcd.yaml file has permissions of 640. Audit Run the below command (based on the file location on your system) on the Control Plane node.",
+    "metadata": {
+      "filename": "1-1-7.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/1-1-7.md",
+      "title": "1.1.7 - Ensure that the etcd pod specification file permissions are set to 600 or more restrictive (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.522Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      128,
+      74,
+      954
+    ]
+  },
+  {
+    "id": "1-1-7.md_chunk_1",
+    "content": "stat -c %a /etc/kubernetes/manifests/etcd.yaml Verify that the permissions are 600 or more restrictive. Remediation Run the below command (based on the file location on your system) on the Control Plane node. chmod 600 /etc/kubernetes/manifests/etcd.yaml © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "1-1-7.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/1-1-7.md",
+      "title": "1.1.7 - Ensure that the etcd pod specification file permissions are set to 600 or more restrictive (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.522Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      46,
+      37,
+      329
+    ]
+  }
+]

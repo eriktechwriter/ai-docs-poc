@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-rapid7-nexpose-integration
+slug: rapid7-nexpose-integration
 title: Rapid7 - Nexpose integration
 ---
 

@@ -1,0 +1,178 @@
+[
+  {
+    "id": "gpo-creation.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ GPO creation Use an Active Directory Group Policy Object (GPO) to enforce the use of a PAC file. Before you start, get the file path of the desired PAC file in the PAC file location column on the PAC Files tab (Zero Trust Secure Access → Secure Access Configuration → Internet Access and AI Service Access Configuration). This task uses the Active Directory domain controller server running Windows Server 2019 as an example to illustrate proxy configuration via GPO. Note The steps contained in these instructions were valid as of September 2022. Related information Deployment for Windows 8 and 10 Deployment for Windows 10 and 11 Deployment for Windows 8 and 10 This task applies the GPO using Internet Settings to end-user devices running Windows 8 or 10. Procedure Log on to the Active Directory domain controller server as an administrator. Go to Start → Server Manager → Tools → Group Policy Management.",
+    "metadata": {
+      "filename": "gpo-creation.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/gpo-creation.md",
+      "title": "GPO creation",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.522Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      3,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      4,
+      0,
+      1,
+      0,
+      3,
+      0,
+      0,
+      128,
+      77,
+      999
+    ]
+  },
+  {
+    "id": "gpo-creation.md_chunk_1",
+    "content": "The Group Policy Management window appears. From the left navigation, go to Forest: [your forest] → Domains → [your domain], right-click [your domain], and then select Create a GPO in this domain, and Link it here.... The New GPO window appears. Type a name for the new Group Policy Object in the Name text box and click OK. The newly created GPO displays under Group Policy Objects in the left navigation. Right-click the GPO and select Edit. The Group Policy Management Editor window appears. From the left navigation, go to User Configuration → Preferences → Control Panel Settings → Internet Settings, right-click Internet Settings, and then select New → Internet Explorer 10. The New Internet Explorer 10 Properties window appears. Click the Connections tab, and then click LAN Settings. The Local Area Network (LAN) Settings window appears. Type the PAC file path in the Address text box under the Automatic configuration section, and then press F5 to enable the setting. Click OK.",
+    "metadata": {
+      "filename": "gpo-creation.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/gpo-creation.md",
+      "title": "GPO creation",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.522Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      2,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2,
+      0,
+      0,
+      0,
+      0,
+      142,
+      61,
+      987
+    ]
+  },
+  {
+    "id": "gpo-creation.md_chunk_2",
+    "content": "Click Apply, and then click OK. Deployment for Windows 10 and 11 This task applies the GPO using Registry to end-user devices running Windows 10 or 11. Procedure Log on to the Active Directory domain controller server as an administrator. Go to Start → Server Manager → Tools → Group Policy Management. The Group Policy Management window appears. From the left navigation, go to Forest: [your forest] → Domains → [your domain], right-click [your domain], and then select Create a GPO in this domain, and Link it here.... The New GPO window appears. Type a name for the new Group Policy Object in the Name text box and click OK. The newly created GPO displays under Group Policy Objects in the left navigation. Right-click the GPO and select Edit. The Group Policy Management Editor window appears. From the left navigation, go to User Configuration → Preferences → Windows Settings → Registry, right-click Registry, and then select New → Registry Item. The New Registry Properties window appears.",
+    "metadata": {
+      "filename": "gpo-creation.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/gpo-creation.md",
+      "title": "GPO creation",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.522Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      1,
+      0,
+      0,
+      137,
+      63,
+      996
+    ]
+  },
+  {
+    "id": "gpo-creation.md_chunk_3",
+    "content": "On the General tab, specify the following fields: Key Path: Set the key path to SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings. Value name: Set the value name to AutoConfigURL. Value data: Type the PAC file path. Click Apply, and then click OK. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "gpo-creation.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/gpo-creation.md",
+      "title": "GPO creation",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.522Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      48,
+      36,
+      332
+    ]
+  }
+]

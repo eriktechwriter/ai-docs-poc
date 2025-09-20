@@ -1,0 +1,222 @@
+[
+  {
+    "id": "troubleshooting-tips.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Troubleshooting tips When a request that you send to Server & Workload Protection contains errors, the response includes information that you can use to identify the problem: hen you use the API directly with software like Postman or cURL, you can recognize errors by the status code of the response and the error message in the response body. When you use an SDK, the response is provided to you as an exception (Python and Java) or an error (JavaScript). The exception or error contains the error message from the response body. To better troubleshoot the error responses, you should understand the types of errors that can occur and some common causes. Obtain error information When you use an SDK, the error message is provided in the exceptions (Python and Java) or errors (JavaScript) that you catch.",
+    "metadata": {
+      "filename": "troubleshooting-tips.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/troubleshooting-tips.md",
+      "title": "Troubleshooting tips",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.279Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      123,
+      64,
+      895
+    ]
+  },
+  {
+    "id": "troubleshooting-tips.md_chunk_1",
+    "content": "The examples in Perform a GET request: list policies demonstrate how to catch exceptions and print the error message. The following examples are snippets from from the examples in that section. # Create a PoliciesApi object policies_api = api.PoliciesApi(api.ApiClient(configuration)) # List policies using version v1 of the API policies_list = policies_api.list_policies(api_version) # View the list of policies return policies_list For Postman or cURL, the error message is displayed when you receive the response. Authentication errors Authentication errors result in a response message of Invalid API Key. For Postman and cURL users, this error is associated with a 401 status code. The following circumstances commonly cause this error: The secret key used to authenticate the request is typed incorrectly The API key used to authenticate the request has been deleted Authorization errors Authorization errors occur when an API key is not permitted to perform an action or access a resource.",
+    "metadata": {
+      "filename": "troubleshooting-tips.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/troubleshooting-tips.md",
+      "title": "Troubleshooting tips",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.279Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      126,
+      73,
+      996
+    ]
+  },
+  {
+    "id": "troubleshooting-tips.md_chunk_2",
+    "content": "These errors result in a response message in the form of Not authorized to <action> <resource type>, for example, Not authorized to delete computers. For Postman and cURL users, this error is associated with a 403 status code. The following circumstances commonly cause this error: The role that is assigned to the API key does not have access rights for the resource, the operation, or both. The API key is locked out. The API key has expired. Resource not found errors Resource not found errors occur when a request is made to perform an action on a specific resource and the resource is not found. These errors result in a response message in the form of The <resource> does not exist, for example, The policy does not exist. For Postman and cURL users, this error is associated with a 404 status code. The following circumstances commonly cause this error: The ID used to identify the resource is incorrect. The resource has been deleted.",
+    "metadata": {
+      "filename": "troubleshooting-tips.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/troubleshooting-tips.md",
+      "title": "Troubleshooting tips",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.279Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      135,
+      61,
+      942
+    ]
+  },
+  {
+    "id": "troubleshooting-tips.md_chunk_3",
+    "content": "Bad request errors Bad request errors occur when the request does not conform to the format or syntax that Server & Workload Protection expects, or you attempt to perform a task that Server & Workload Protection does not allow. The message is specific to the circumstances that caused the error, which are varied: An object that is used as a parameter is not valid. For example, when creating a role and the provided Role object that does not have the name property set results in the error message Role Name cannot be blank. (Postman or cURL) A required header is missing, or the header name is mis-typed. For example, a mis-typed api-version header results in the error message Missing 'api-version' request header. Please set this header with the a value of a supported API version. An incorrect value for the API version. For example, the use of 1 as the API version results in the error message Invalid 'api-version' request header.",
+    "metadata": {
+      "filename": "troubleshooting-tips.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/troubleshooting-tips.md",
+      "title": "Troubleshooting tips",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.279Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      134,
+      63,
+      937
+    ]
+  },
+  {
+    "id": "troubleshooting-tips.md_chunk_4",
+    "content": "Please make sure this header starts with 'v' followed by a number. E.g. v1. You attempt to unassign a rule that has a dependent rule, which Server & Workload Protection does not allow. For example, an attempt to unassign the Intrusion Prevention rule named HTTP Protocol Decoding from a policy results in the error message Intrusion Prevention Rule 5341 could not be removed because Rule 8401 depends on Rule 5341. For Postman and cURL users, this error is associated with a 400 status code. Check SDK compatibility Errors can occur if the SDK that you are using is not compatible with Server & Workload Protection, or when you use a newer version of the SDK to run scripts that were developed with an older version of the SDK. For more information, see the SDK Version Compatibility guide. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "troubleshooting-tips.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/troubleshooting-tips.md",
+      "title": "Troubleshooting tips",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.279Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 4
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      121,
+      83,
+      865
+    ]
+  }
+]

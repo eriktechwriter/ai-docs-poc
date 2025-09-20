@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-firewall-india-hosted-service
+slug: firewall-india-hosted-service
 title: 'Firewall exceptions: India - hosted Service Gateway'
 ---
 

@@ -1,0 +1,178 @@
+[
+  {
+    "id": "sep-agent-deploy-intune.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Standard Endpoint Protection Agent Deployment using Microsoft Intune Deploy the Standard Endpoint Protection agent to your endpoints using Microsoft Intune. Important The steps are valid for Microsoft Intune as of December, 2023. This deployment method has only been tested for 64-bit Windows agents. Configure your agent installation packages to ensure that your newly-deployed agents: Report to the correct Protection Manager or Endpoint Inventory Automatically apply the correct default settings Note For Standard Endpoint Protection agents, you can set up the agent for VDI environments if your network includes virtual desktops. Procedure In the Trend Vision One console, go to Endpoint Security → Endpoint Inventory. Click Agent Installer. Specify the Standard Endpoint Protection package settings. Select the Windows operating system. Select x86_64 for the OS architecture.",
+    "metadata": {
+      "filename": "sep-agent-deploy-intune.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/sep-agent-deploy-intune.md",
+      "title": "Standard Endpoint Protection Agent Deployment using Microsoft Intune",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.040Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      7,
+      0,
+      0,
+      5,
+      0,
+      0,
+      5,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      0,
+      0,
+      122,
+      77,
+      969
+    ]
+  },
+  {
+    "id": "sep-agent-deploy-intune.md_chunk_1",
+    "content": "Select the Endpoint Group Manager that the newly-deployed agents report to. Click the Download installer icon (). On your local machine, unzip the agent installer package to a folder that is easy to find. Locate where you have downloaded and unzipped the Microsoft Win32 Content Prep Tool. Run IntuneWinAppUtil.exe and specify the information when prompted. Prompt Setting Source folder Specify the directory where the agent installer is located The following example uses D:\\TMStandardAgent_Windows_x86_64_Windows Setup file Type the full file path with EndpointBasecamp.exe Output folder Specify the destination for the created package The following example uses the same location as the unzipped agent installer package. Specify catalog folder Type N Microsoft Win32 Content Prep Tool Example The tool creates a deployment package named EndpointBasecamp.intunewin. In Microsoft Intune, go to Apps → All apps and click Add. The Select app type window appears. Select Windows app (Win32).",
+    "metadata": {
+      "filename": "sep-agent-deploy-intune.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/sep-agent-deploy-intune.md",
+      "title": "Standard Endpoint Protection Agent Deployment using Microsoft Intune",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.040Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      1,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      134,
+      77,
+      989
+    ]
+  },
+  {
+    "id": "sep-agent-deploy-intune.md_chunk_2",
+    "content": "The Add App window appears. On the App information tab, click Select app package file. In the App package file screen, click the folder icon to locate the EndpointBasecamp.intunewin package. Click OK. Specify a unique Name for the app. Trend Micro recommends using a name which includes the agent information, such as Trend Vision One Standard Endpoint Agent. Specify a Description to easily identify the purpose of the app. For Publisher, type Trend Micro. Click Next. Configure the Program tab and click Next. Install command: Type EndpointBasecamp.exe Uninstall command: Type msiexec /x {1841AFE1-4BA7-44D4-8700-6ACF860A8ED1} /q Configure the Requirements tab and click Next. Operating system architecture: Select 64-bit. Minimum operating system: Refer to the Trend Vision One Endpoint Security agent system requirements for your agent and security environment needs. Configure the Detection rules tab. For Rules format, select Manually configure detection rules.",
+    "metadata": {
+      "filename": "sep-agent-deploy-intune.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/sep-agent-deploy-intune.md",
+      "title": "Standard Endpoint Protection Agent Deployment using Microsoft Intune",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.040Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      2,
+      2,
+      0,
+      0,
+      4,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      133,
+      68,
+      967
+    ]
+  },
+  {
+    "id": "sep-agent-deploy-intune.md_chunk_3",
+    "content": "Click Add to add new detection rules. Rule Type Settings MSI MSI product code: Type {1841AFE1-4BA7-44D4-8700-6ACF860A8ED1} MSI product version check: Select No. File Path: Type %ProgramFiles%\\Trend Micro\\Cloud Endpoint File or folder: Type CloudEndpointService.exe Detection method: Select File or folder exists. Associated with a 32-bit app on 64-bit clients: Select No. File Path: Type %ProgramFiles(x86)%\\Trend Micro\\Endpoint Basecamp File or folder: Type EndpointBasecamp.exe Detection method: Select File or folder exists. Associated with a 32-bit app on 64-bit clients: Select No. Click Next, then click Next again to go to the Scope tags tab. Click Select scope tags to assign a scope tag for the agent installer. Click Next to go to the Assignments tab. Add the groups or users you wish to deploy the agent installer to, then click Next. Review the settings and then click Create. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "sep-agent-deploy-intune.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/sep-agent-deploy-intune.md",
+      "title": "Standard Endpoint Protection Agent Deployment using Microsoft Intune",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.040Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      2,
+      0,
+      0,
+      2,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      133,
+      68,
+      963
+    ]
+  }
+]

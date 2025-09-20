@@ -1,0 +1,178 @@
+[
+  {
+    "id": "cis-gke17-541b.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 5.4.1 - Ensure the GKE Metadata Server is Enabled (Automated) Profile applicability: Level 2 Running the GKE Metadata Server prevents workloads from accessing sensitive instance metadata and facilitates Workload Identity. Every node stores its metadata on a metadata server. Some of this metadata, such as kubelet credentials and the VM instance identity token, is sensitive and should not be exposed to a Kubernetes workload. Enabling the GKE Metadata server prevents pods (that are not running on the host network) from accessing this metadata and facilitates Workload Identity. When unspecified, the default setting allows running pods to have full access to the node's underlying metadata server. Note By default, running pods to have full access to the node's underlying metadata server. Impact The GKE Metadata Server must be run when using Workload Identity.",
+    "metadata": {
+      "filename": "cis-gke17-541b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-541b.md",
+      "title": "5.4.1 - Ensure the GKE Metadata Server is Enabled (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.861Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      121,
+      64,
+      954
+    ]
+  },
+  {
+    "id": "cis-gke17-541b.md_chunk_1",
+    "content": "Because Workload Identity replaces the need to use Metadata Concealment, the two approaches are incompatible. When the GKE Metadata Server and Workload Identity are enabled, unless the Pod is running on the host network, Pods cannot use the the Compute Engine default service account. Workloads may need modification in order for them to use Workload Identity. See the GKE documentation for more information. Audit Using Google Cloud Console: Go to Kubernetes Engine website. From the list of clusters, click on the name of the cluster of interest. For each Node pool within the cluster, open the Details pane, and ensure that the GKE Metadata Server is set to Enabled. Using Command Line: To check whether the GKE Metadata Server is enabled for each Node pool within a cluster, run the following command: gcloud container clusters describe <cluster_name> --zone <cluster_zone> -- format json | jq .nodePools[].config.workloadMetadataConfig This should return the following for each Node pool: { \"mo",
+    "metadata": {
+      "filename": "cis-gke17-541b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-541b.md",
+      "title": "5.4.1 - Ensure the GKE Metadata Server is Enabled (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.861Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      137,
+      84,
+      999
+    ]
+  },
+  {
+    "id": "cis-gke17-541b.md_chunk_2",
+    "content": "de\": \"GKE_METADATA\" } Null ({ }) is returned if the GKE Metadata Server is not enabled. Remediation The GKE Metadata Server requires Workload Identity to be enabled on a cluster. Modify the cluster to enable Workload Identity and enable the GKE Metadata Server. Using Google Cloud Console: Go to Kubernetes Engine website. From the list of clusters, select the cluster for which Workload Identity is disabled. Under the DETAILS pane, navigate down to the Security subsection. Click on the pencil icon named Edit Workload Identity, click on Enable Workload Identity in the pop-up window, and select a workload pool from the drop-down box. By default, it will be the namespace of the Cloud project containing the cluster, for example: <project_id>.svc.id.goog. Click SAVE CHANGES and wait for the cluster to update. Once the cluster has updated, select each Node pool within the cluster Details page. For each Node pool, select EDIT within the Node pool details page.",
+    "metadata": {
+      "filename": "cis-gke17-541b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-541b.md",
+      "title": "5.4.1 - Ensure the GKE Metadata Server is Enabled (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.861Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      133,
+      68,
+      965
+    ]
+  },
+  {
+    "id": "cis-gke17-541b.md_chunk_3",
+    "content": "Within the Edit node pool pane, check the Enable GKE Metadata Server checkbox. Click SAVE. Using Command Line: gcloud container clusters update <cluster_name> --identity- namespace=<project_id>.svc.id.goog Note Existing Node pools are unaffected. New Node pools default to --workload-metadata-from-node=GKE_METADATA_SERVER. To modify an existing Node pool to enable GKE Metadata Server: gcloud container node-pools update <node_pool_name> --cluster=<cluster_name> --workload-metadata-from-node=GKE_METADATA_SERVER Workloads may need modification in order for them to use Workload Identity. See the GKE documentation for more information. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-gke17-541b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-541b.md",
+      "title": "5.4.1 - Ensure the GKE Metadata Server is Enabled (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.861Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      91,
+      62,
+      712
+    ]
+  }
+]

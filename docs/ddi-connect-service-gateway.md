@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-ddi-connect-service-gateway
+slug: ddi-connect-service-gateway
 title: Connecting a Deep Discovery Inspector appliance using Service Gateway as a proxy
 ---
 

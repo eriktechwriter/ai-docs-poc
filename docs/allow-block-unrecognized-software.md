@@ -1,0 +1,11 @@
+---
+id: allow-block-unrecognized-software
+title: Allow or block unrecognized software
+sidebar_label: Allow or block unrecognized software
+description: Allow or block unrecognized software
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Allow or block unrecognized software When you allow or block unrecognized software, an allow or block rule is automatically created and assigned to the ruleset used by the computer. Generally, use the following steps to allow or block software with Application Control: Procedure Use a SoftwareChangeApi object to obtain a list of SoftwareChange objects. Decide which software changes you want to allow or block. Create a SoftwareChangeReview object and configure it with the list of software changes and the action to take on them. When you create a SoftwareChangeReview object, use it to define the IDs of the SoftwareChange objects you wish to allow or block and the action to take on the software changes. Use the SoftwareChangeApi object to perform the software change review. Next steps For more information about allow or block rules, see Set up Application Control. The following example searches for a list of unrecognized software on a computer and blocks the unrecognized software. (The creation of the search criteria and search filter is not shown.) See also the Review software changes operation in the API Reference. source # Perform the search software_changes_api = api.SoftwareChangesApi(api.ApiClient(configuration)) computer_software_changes = software_changes_api.search_software_changes(api_version, search_filter=search_filter) # Block the unrecognized software # Create the software change review object and set action to block software_change_review = api.SoftwareChangeReview() software_change_review.action = "block" software_change_review.software_change_ids = [] # Add the IDs of the software changes to block for software_change in computer_software_changes.software_changes: software_change_review.software_change_ids.append(software_change.id) # Perform the software change review return software_changes_api.review_software_changes(software_change_review, api_version) © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

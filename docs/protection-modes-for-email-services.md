@@ -1,0 +1,11 @@
+---
+id: protection-modes-for-email-services
+title: Protection modes for email services
+sidebar_label: Protection modes for email services
+description: Protection modes for email services
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Protection modes for email services Cloud Email and Collaboration Protection provides two protection modes for Exchange Online and Gmail: API-based Protection and Inline Protection. Protection Mode Description API-based Protection This mode scans messages when they arrive at or are delivered from protected mailboxes. In this mode, Cloud Email and Collaboration Protection integrates with the email services and obtain message data through APIs provided by email service providers. This solution guarantees "zero impact" on the email delivery and also allows protection over internal email traffic. The setup is simple with automatic access grant. Inline Protection This mode scans messages after they arrive at the mail server of the email service for your organization. In this mode, messages are routed from the mail server of your organization to Cloud Email and Collaboration Protection for real-time scanning before they enter destination mailboxes or are delivered to recipients, with no MX record change required. This solution enables you to block threats before they can reach your users' mailbox and prevent data leakage before it actually takes place. Note Inline Protection for Exchange Online and Gmail require the Cloud Email and Collaboration Protection for Email add-on license. Cloud Email and Collaboration Protection provides basically the same feature sets under the two protection modes, with slight differences. For details, see Features support under API-based protection and inline protection. You can choose to have both or either of the protection modes for your email services based on your requirements. Related information Features support under API-based protection and inline protection © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

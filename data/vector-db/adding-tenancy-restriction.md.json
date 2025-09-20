@@ -1,0 +1,134 @@
+[
+  {
+    "id": "adding-tenancy-restriction.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Adding a tenancy restriction Configure values for the HTTP/HTTPS header fields that you use to control access to a supported cloud app. Procedure On the Secure Access Resources screen, click the Tenancy Restrictions tab and then click Add. The Tenancy Restriction Rule screen appears. Select a cloud app from the dropdown list. Specify a unique name and a description for the rule. Confirm or modify the applicable domains for the selected cloud app. Specify values for each header field to allow the cloud app to implement the tenancy restriction. Cloud app Header Field Value description Microsoft Office 365 Restrict-Access-To-Tenants Name or ID of at least one tenant that you want to allow users to access Example: mytenant1.com,mytenant2.com,<my_tenant_id> Restrict-Access-Context Single directory ID of the tenant that sets tenant restrictions Example: <my_tenant_id> Google Workspace X-GoogApps-Allowed-",
+    "metadata": {
+      "filename": "adding-tenancy-restriction.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/adding-tenancy-restriction.md",
+      "title": "Adding a tenancy restriction",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.629Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      5,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      133,
+      79,
+      1000
+    ]
+  },
+  {
+    "id": "adding-tenancy-restriction.md_chunk_1",
+    "content": "Domains Name of at least one domain that you registered with Google Workspace and want to allow users to access Example: mydomain1.com,mydomain2.com Dropbox X-Dropbox-allowed-Team-Ids ID of at least one Dropbox team that you want to allow users to access Example: <dropbox_team_id>,<dropbox_team_id> YouTube x-Channel-Ids Id of at least one channel to which you want to allow users to access. Example: <Youtube_Channel_Id>,<Youtube_Channel_Id> Note Users can access only those channels that are listed in the Header Field. Microsoft consumer apps sec-Restrict-Tenant-Access-Policy Fixed value controlling access to Microsoft consumer apps such as Hotmail and OneDrive Required value: restrict-msa Note Tenancy restrictions for Microsoft consumer apps require the applicable domain login.live.com. Other cloud app <header_field_name_of_the_cloud_app> Specify a header field and configure an operation on the field. Add: Specify a value in the string type.",
+    "metadata": {
+      "filename": "adding-tenancy-restriction.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/adding-tenancy-restriction.md",
+      "title": "Adding a tenancy restriction",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.629Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      6,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      122,
+      71,
+      954
+    ]
+  },
+  {
+    "id": "adding-tenancy-restriction.md_chunk_2",
+    "content": "If the specified field exists, the Internet Access Gateway replaces the field value with the specified value. If it does not exist, the Internet Access Gateway adds the field to the header. Delete: If the specified field exists, the Internet Access Gateway deletes the field from the header. If it does not exist, the Internet Access Gateway ignores the action. Note Some HTTP/HTTPS header fields are reserved and cannot be modified, such as Host, Path, and Cookie. To add more header fields and set an action for each header field, click +Add. Note You can specify a maximum of 10 header fields. To delete an existing header setting, click . Note For more information about header field settings for tenancy restriction, see the documentation of each cloud app provider. For each header field with multiple values, you can specify a maximum of 1024 characters. Click Save. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "adding-tenancy-restriction.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/adding-tenancy-restriction.md",
+      "title": "Adding a tenancy restriction",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.629Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      137,
+      70,
+      948
+    ]
+  }
+]

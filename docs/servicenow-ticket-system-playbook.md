@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-servicenow-ticket-system-playbook
+slug: servicenow-ticket-system-playbook
 title: ServiceNow ticketing system integration (for Security Playbooks and Case Management)
 ---
 

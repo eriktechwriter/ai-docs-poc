@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-firewall-europe-hosted-service
+slug: firewall-europe-hosted-service
 title: 'Firewall exceptions: Europe - hosted Service Gateway'
 ---
 

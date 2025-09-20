@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-alerts-workbench-insights
+slug: alerts-workbench-insights
 title: Workbench Insights alerts
 ---
 

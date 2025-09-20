@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-removed-endpoint-reconnects-faq
+slug: removed-endpoint-reconnects-faq
 title: What happens when a removed endpoint reconnects to Trend Vision One Endpoint Security?
 ---
 

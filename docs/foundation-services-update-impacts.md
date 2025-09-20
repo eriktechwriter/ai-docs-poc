@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-foundation-services-update-impacts
+slug: foundation-services-update-impacts
 title: Impacts of migrating user accounts from other Trend Micro products
 ---
 

@@ -1,0 +1,11 @@
+---
+id: two-riskai-conditions-cecp
+title: Two more conditions available for detection signal customization in Correlated Intelligence in Cloud Email and Collaboration Protection
+sidebar_label: Two more conditions available for detection signal customization in Correlated Intelligence in Cloud Email and Collaboration Protection
+description: Two more conditions available for detection signal customization in Correlated Intelligence in Cloud Email and Collaboration Protection
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Two more conditions available for detection signal customization in Correlated Intelligence in Cloud Email and Collaboration Protection February 21, 2025—Cloud Email and Collaboration Protection adds two more conditions for defining custom detection signals for anomalies in Correlated Intelligence. These conditions define the number of days within a 30-day period that communication from a sender or sender's domain is considered abnormal on a company-wide basis. These conditions are not available in all regions. Email and Collaboration Security → Cloud Email and Collaboration Protection © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

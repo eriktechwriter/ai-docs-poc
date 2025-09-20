@@ -1,0 +1,11 @@
+---
+id: sg-firmware-version-3-0-8
+title: Service Gateway Firmware Version 3.0.8
+sidebar_label: Service Gateway Firmware Version 3.0.8
+description: Service Gateway Firmware Version 3.0.8
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Service Gateway Firmware Version 3.0.8 May 13, 2024—Service Gateway Firmware Version 3.0.8 includes enhancements, bug fixes, and security updates for Service Gateway. This update includes the following changes: This update introduces enhancements to the audit logs of Service Gateway virtual appliances. This update adds a new CLISH command to roll back the Service Gateway to the last version. This update addresses the security vulnerability CVE-2023-22652, which is a critical buffer overflow vulnerability in the libeconf library. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

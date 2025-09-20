@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-create-default-endpoint-policies
+slug: create-default-endpoint-policies
 title: Configure endpoint proxies and policies
 ---
 

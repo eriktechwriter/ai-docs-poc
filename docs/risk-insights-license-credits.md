@@ -1,0 +1,11 @@
+---
+id: risk-insights-license-credits
+title: Risk Insights capabilities require a license or credits
+sidebar_label: Risk Insights capabilities require a license or credits
+description: Risk Insights capabilities require a license or credits
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Risk Insights capabilities require a license or credits July 4, 2023—Risk Insights capabilities are now a paid feature. You must purchase a license or allocate sufficient credits for Risk Insights to access Threat and Exposure Management and Attack Surface Discovery. If you have not purchased a license or allocated credits to Risk Insights, you can start a 30-day free trial when you attempt to access Threat and Exposure Management or Attack Surface Discovery. To ensure uninterrupted access to Threat and Exposure Management and Attack Surface Discovery after your trial ends, contact your sales representative in advance to prepare a license or credits for Risk Insights. You can configure Trend Vision One to automatically allocate credits to Risk Insights capabilities at the end of your free trial period. Cyber Risk Exposure Management → Threat and Exposure Management Cyber Risk Exposure Management → Attack Surface Discovery © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

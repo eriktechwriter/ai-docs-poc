@@ -36,6 +36,82 @@
 
 .navbar__title {
   color: var(--ifm-navbar-link-color) !important;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Custom navbar styling for differentiated fonts */
+.navbar__title {
+  font-size: 1.1rem !important;
+  font-weight: 700 !important; /* Bold for "Trend Vision One" */
+  color: var(--ifm-navbar-link-color) !important;
+}
+
+/* Add TechDocs with thin font after the title */
+.navbar__title::after {
+  content: " TechDocs";
+  font-weight: 300 !important; /* Thin for "TechDocs" */
+  color: var(--ifm-navbar-link-color) !important;
+}
+
+/* Style the T-ball logo */
+.navbar__logo {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+}
+
+/* Multi-column dropdown styling */
+.dropdown__menu {
+  min-width: 600px !important;
+  max-width: 800px !important;
+}
+
+/* Create multi-column layout for dropdowns */
+.menu__list {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+  gap: 1rem !important;
+  padding: 1rem !important;
+}
+
+/* Style dropdown sections */
+.menu__list-item {
+  margin: 0 !important;
+}
+
+.menu__link {
+  padding: 0.5rem 0.75rem !important;
+  border-radius: 4px !important;
+  transition: all 0.2s ease !important;
+}
+
+.menu__link:hover {
+  background-color: var(--ifm-color-primary-lightest) !important;
+  color: var(--ifm-color-primary-dark) !important;
+}
+
+/* Style the brand section */
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Dropdown section headers */
+.dropdown-section {
+  padding: 0.5rem 0.75rem;
+  margin: 0.5rem 0;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.dropdown-section h4 {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-700);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 /* Style the search button with Trend Micro red accent */

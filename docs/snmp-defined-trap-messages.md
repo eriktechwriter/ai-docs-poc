@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-snmp-defined-trap-messages
+slug: snmp-defined-trap-messages
 title: SNMP trap messages defined for Service Gateway
 ---
 

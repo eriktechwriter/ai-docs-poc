@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-microsoft-sentinel-integration
+slug: microsoft-sentinel-integration
 title: Microsoft Sentinel integration
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-display-settings-actions
+slug: display-settings-actions
 title: Display settings actions
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-api-keys-third-party-apps
+slug: api-keys-third-party-apps
 title: Obtaining API keys for third-party apps
 ---
 

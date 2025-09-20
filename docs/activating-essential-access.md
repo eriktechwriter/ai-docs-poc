@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-activating-essential-access
+slug: activating-essential-access
 title: Activating Trend Vision One with Essential Access
 ---
 

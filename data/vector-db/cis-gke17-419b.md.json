@@ -1,0 +1,178 @@
+[
+  {
+    "id": "cis-gke17-419b.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 4.1.9 - Avoid non-default bindings to system:unauthenticated (Automated) Profile applicability: Level 1 Avoid non-default ClusterRoleBindings and RoleBindings with the group system:unauthenticated, except the ClusterRoleBinding system:public-info-viewer. Kubernetes assigns the group system:unauthenticated to API server requests that have no authentication information provided. Binding a role to this group gives any unauthenticated user the permissions granted by that role and is strongly discouraged. Default value: ClusterRoleBindings with group system:unauthenticated: system:public-info-viewer No RoleBindings with the group system:unauthenticated. Impact Unauthenticated users will have privileges and permissions associated with roles associated with the configured bindings.",
+    "metadata": {
+      "filename": "cis-gke17-419b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-419b.md",
+      "title": "4.1.9 - Avoid non-default bindings to system:unauthenticated (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.857Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      7,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      100,
+      58,
+      874
+    ]
+  },
+  {
+    "id": "cis-gke17-419b.md_chunk_1",
+    "content": "Care should be taken before removing any non-default clusterrolebindings or rolebindings from the environment to ensure they were not required for operation of the cluster. Leverage a more specific and authenticated user for cluster operations. Audit Both CusterRoleBindings and RoleBindings should be audited. Use the following command to confirm there are no non-default ClusterRoleBindings to group system:unauthenticated: $ kubectl get clusterrolebindings -o json | jq -r '[\"Name\"], [\"-----\"], (.items[] | select((.subjects | length) > 0) | select(any(.subjects[]; .name == \"system:unauthenticated\")) | [.metadata.namespace, .metadata.name]) | @tsv' Only the following default ClusterRoleBinding should be displayed: Name ----- system:public-info-viewer If any non-default bindings exist, review their permissions with the following command and reassess their privilege.",
+    "metadata": {
+      "filename": "cis-gke17-419b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-419b.md",
+      "title": "4.1.9 - Avoid non-default bindings to system:unauthenticated (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.857Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      99,
+      66,
+      874
+    ]
+  },
+  {
+    "id": "cis-gke17-419b.md_chunk_2",
+    "content": "$ kubectl get clusterrolebinding [CLUSTER_ROLE_BINDING_NAME] -o json \\ | jq ' .roleRef.name +\" \" + .roleRef.kind' \\ | sed -e 's/\"//g' \\ | xargs -l bash -c 'kubectl get $1 $0 -o yaml' Confirm that there are no RoleBindings including the system:unauthenticated group: $ kubectl get rolebindings -A -o json \\ | jq -r '[\"Namespace\", \"Name\"], [\"---------\", \"-----\"], (.items[] | select((.subjects | length) > 0) | select(any(.subjects[]; .name == \"system:unauthenticated\")) | [.metadata.namespace, .metadata.name]) | @tsv' There should be no RoleBindings listed. If any bindings exist, review their permissions with the following command and reassess their privilege. $ kubectl get rolebinding [ROLE_BINDING_NAME] --namespace [ROLE_BINDING_NAMESPACE] -o json \\ | jq ' .roleRef.name +\" \" + .roleRef.kind' \\ | sed -e 's/\"//g' \\ | xargs -l bash -c 'kubectl get $1 $0 -o yaml --namespace [ROLE_BINDING_NAMESPACE]' Remediation Identify all non-default clusterrolebindings and rolebindings to the group system:",
+    "metadata": {
+      "filename": "cis-gke17-419b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-419b.md",
+      "title": "4.1.9 - Avoid non-default bindings to system:unauthenticated (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.857Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      94,
+      52,
+      999
+    ]
+  },
+  {
+    "id": "cis-gke17-419b.md_chunk_3",
+    "content": "unauthenticated. Check if they are used and review the permissions associated with the binding using the commands in the Audit section above or refer to GKE documentation. Strongly consider replacing non-default, unsafe bindings with an authenticated, user-defined group. Where possible, bind to non-default, user-defined groups with least-privilege roles. If there are any non-default, unsafe bindings to the group system:unauthenticated, proceed to delete them after consideration for cluster operations with only necessary, safer bindings. kubectl delete clusterrolebinding [CLUSTER_ROLE_BINDING_NAME] kubectl delete rolebinding [ROLE_BINDING_NAME] --namespace [ROLE_BINDING_NAMESPACE] © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-gke17-419b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-419b.md",
+      "title": "4.1.9 - Avoid non-default bindings to system:unauthenticated (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.857Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      91,
+      69,
+      763
+    ]
+  }
+]

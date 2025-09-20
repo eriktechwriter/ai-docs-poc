@@ -1,0 +1,134 @@
+[
+  {
+    "id": "using-agent-iptables.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Using the agent with iptables When agent version 10.1 or earlier was installed on Linux, it disabled the iptables service to avoid firewall conflicts unless you added a configuration file that prevented that change. However, the iptables service is used for more than just firewall (for example, Docker manages iptables rules as part of its normal operation), so disabling it sometimes had negative consequences. With agent version 10.2 and higher, the functionality around iptables has changed. The agent no longer disables iptables. (If iptables is enabled, it stays enabled after the agent installation. If iptables is disabled, it stays disabled.) However, if the iptables service is running, the agent requires certain iptables rules, as described below. Rules required by the agent If iptables is enabled on the computer where the agent is being installed, iptables may require additional rules.",
+    "metadata": {
+      "filename": "using-agent-iptables.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/using-agent-iptables.md",
+      "title": "Using the agent with iptables",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.340Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      121,
+      76,
+      990
+    ]
+  },
+  {
+    "id": "using-agent-iptables.md_chunk_1",
+    "content": "By default, these rules are added when the agent starts up and removed when the agent is stopped or uninstalled. Alternatively, you can Prevent the agent from automatically adding iptables rules and add them manually instead: Allow incoming traffic on port 4118. This is required when the agent uses manager-initiated or bidirectional communication. (For more information, see Agent-manager communication.) Allow incoming traffic on port 4122. This is required when the agent is acting as a relay, so that the relay can distribute software updates. (For more information, see Distribute security and software updates with relays.) Note These are the default port numbers - yours may be different. For a complete list of ports used in Server & Workload Protection, see Port numbers. Prevent the agent from automatically adding iptables rules You can prevent the agent from modifying iptables if you would rather add the required rules manually.",
+    "metadata": {
+      "filename": "using-agent-iptables.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/using-agent-iptables.md",
+      "title": "Using the agent with iptables",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.340Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      8,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      129,
+      66,
+      943
+    ]
+  },
+  {
+    "id": "using-agent-iptables.md_chunk_2",
+    "content": "To prevent the automatic modification of iptables, create the following file on the computers where you plan to install the agent: /etc/do_not_open_ports_on_iptables © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "using-agent-iptables.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/using-agent-iptables.md",
+      "title": "Using the agent with iptables",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.340Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      29,
+      26,
+      240
+    ]
+  }
+]

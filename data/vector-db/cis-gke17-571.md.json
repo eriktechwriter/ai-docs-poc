@@ -1,0 +1,178 @@
+[
+  {
+    "id": "cis-gke17-571.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 5.7.1 - Ensure Logging and Cloud Monitoring is Enabled (Automated) Profile applicability: Level 1 Send logs and metrics to a remote aggregator to mitigate the risk of local tampering in the event of a breach. Exporting logs and metrics to a dedicated, persistent datastore such as Cloud Operations for GKE ensures availability of audit data following a cluster security event, and provides a central location for analysis of log and metric data collated from multiple sources. Note Logging and Cloud Monitoring is enabled by default starting in GKE version 1.14; Legacy Logging and Monitoring support is enabled by default for earlier versions. Impact Audit Using Google Cloud Console: LOGGING AND CLOUD MONITORING SUPPORT (PREFERRED): Go to Kubernetes Engine website. From the list of clusters, click on the cluster of interest.",
+    "metadata": {
+      "filename": "cis-gke17-571.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-571.md",
+      "title": "5.7.1 - Ensure Logging and Cloud Monitoring is Enabled (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.866Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      110,
+      76,
+      918
+    ]
+  },
+  {
+    "id": "cis-gke17-571.md_chunk_1",
+    "content": "Under the details pane, within the Features section, ensure that Logging is Enabled. Also ensure that Cloud Monitoring is Enabled. LEGACY STACKDRIVER SUPPORT: This option cannot be checked in the GCP console. Using Command Line: LOGGING AND CLOUD MONITORING SUPPORT (PREFERRED): Run the following commands: gcloud container clusters describe <cluster_name> --zone <compute_zone> --format json | jq '.loggingService' gcloud container clusters describe <cluster_name> --zone <compute_zone> --format json | jq '.monitoringService' The output of the above commands should return logging.googleapis.com/kubernetes and monitoring.googleapis.com/kubernetes respectively if Logging and Cloud Monitoring is Enabled. LEGACY STACKDRIVER SUPPORT: Note This functionality was decommissioned on 31st March 2021, kept here for posterity (see Google documentation for more information.) Both Logging and Monitoring support must be enabled.",
+    "metadata": {
+      "filename": "cis-gke17-571.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-571.md",
+      "title": "5.7.1 - Ensure Logging and Cloud Monitoring is Enabled (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.866Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      111,
+      68,
+      923
+    ]
+  },
+  {
+    "id": "cis-gke17-571.md_chunk_2",
+    "content": "For Logging, run the following command: gcloud container clusters describe <cluster_name> --zone <compute_zone> --format json | jq '.loggingService' The output should return monitoring.googleapis.com if Legacy Stackdriver Monitoring is Enabled. Remediation Using Google Cloud Console: To enable Logging: Go to Kubernetes Engine website. Select the cluster for which Logging is disabled. Under the details pane, within the Features section, click on the pencil icon named Edit logging. Check the box next to Enable Logging. In the drop-down Components box, select the components to be logged. Click SAVE CHANGES, and wait for the cluster to update. To enable Cloud Monitoring: Go to Kubernetes Engine website. Select the cluster for which Logging is disabled. Under the details pane, within the Features section, click on the pencil icon named Edit Cloud Monitoring. Check the box next to Enable Cloud Monitoring. In the drop-down Components box, select the components to be logged.",
+    "metadata": {
+      "filename": "cis-gke17-571.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-571.md",
+      "title": "5.7.1 - Ensure Logging and Cloud Monitoring is Enabled (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.866Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      128,
+      61,
+      981
+    ]
+  },
+  {
+    "id": "cis-gke17-571.md_chunk_3",
+    "content": "Click SAVE CHANGES, and wait for the cluster to update. Using Command Line: To enable Logging for an existing cluster, run the following command: gcloud container clusters update <cluster_name> --zone <compute_zone> --logging=<components_to_be_logged> Note See Google documentation for a list of available components for logging. To enable Cloud Monitoring for an existing cluster, run the following command: gcloud container clusters update <cluster_name> --zone <compute_zone> --monitoring=<components_to_be_logged> Note See Google documentation for a list of available components for Cloud Monitoring. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-gke17-571.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-571.md",
+      "title": "5.7.1 - Ensure Logging and Cloud Monitoring is Enabled (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.866Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      80,
+      43,
+      679
+    ]
+  }
+]

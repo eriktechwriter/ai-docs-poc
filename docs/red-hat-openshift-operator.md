@@ -1,0 +1,11 @@
+---
+id: red-hat-openshift-operator
+title: Deploy Container Security operator for Red Hat OpenShift
+sidebar_label: Deploy Container Security operator for Red Hat OpenShift
+description: Deploy Container Security operator for Red Hat OpenShift
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Deploy Container Security operator for Red Hat OpenShift The Container Security Operator is a method of deploying and managing the Trend Vision One Container Security application. The operator runs on the OpenShift container platform to deploy and manage the Container Security application, and is based on Container Security Helm Chart. Learn more about Helm Chart. This operator automatically installs and deploys Helm Chart as well as checking for and installing updates as they are released. Use the following steps to install the operator from the OpenShift Operator hub. Register with Trend Vision One. Install the Container Security operator from the OpenShift Operator Community Catalog in the OpenShift Console. To manually register, create an OpenShift cluster in Cloud Security → Container Security → Container Inventory. Store the overrides.yaml values provided at the end of cluster creation for later use. Create an instance of the operator, and define the following in the Trend Vision One section: For Auto Registration, set the following values: clusterName clusterNamePrefix policyId groupId clusterRegistrationKey Note See the automated cluster register README for more information. For Manual registration: Set the bootstrapToken to equal the value of the same name in overrides.yaml. Note This value expires after 1 day. This value is not required for auto-registration. Set the following values equal to the same values in your overrides.yaml file. Leave blank if the value is not present: inventoryCollection malwareScanning runtimeSecurity secretScanning vulnerabilityScanning policyOperator : clusterPolicyName Create the operator instance. The operator installs Container Security Helm Chart. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

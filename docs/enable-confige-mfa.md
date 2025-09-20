@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-enable-confige-mfa
+slug: enable-confige-mfa
 title: Enabling and configuring multi-factor authentication
 ---
 

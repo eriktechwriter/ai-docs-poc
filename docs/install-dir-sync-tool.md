@@ -1,0 +1,11 @@
+---
+id: install-dir-sync-tool
+title: Installing the directory synchronization tool
+sidebar_label: Installing the directory synchronization tool
+description: Installing the directory synchronization tool
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Installing the directory synchronization tool The Directory Synchronization Tool automates the import of directory files for valid recipient email addresses, user groups and email aliases. The Directory Synchronization Tool provides functionality similar to the Import User Directory feature on the Directory Import screen. Procedure Go to Administration → Service Integration. On the API Access tab, click Add to generate a key. The API Key is the global unique identifier for your Directory Synchronization Tool to authenticate its access to Cloud Email Gateway Protection. It must be used together with the administrator account that created it. A new API Key is enabled by default. If you want to change your API Key later on, click Add to generate a new key and use the new key in your requests. You can click the toggle button under Status to disable the old key or delete it if both of the following conditions are met: Requests can be sent successfully with the new key. The old key is not used by any other applications that have access to Cloud Email Gateway Protection. A maximum of two API Keys are allowed at a time. Important The API Key allows your Directory Synchronization Tool to communicate with Cloud Email Gateway Protection. Keep the API Key private. In the Downloads list, click download to download the desired items. Directory Synchronization Tool: Provided for synchronizing accounts and groups between local directories and the Cloud Email Gateway Protection server. Directory Synchronization Tool User's Guide: Available for more information on using the synchronization tool. Save the tool on a local drive. Follow the installation steps to install the tool. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

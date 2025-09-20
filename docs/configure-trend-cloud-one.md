@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-configure-trend-cloud-one
+slug: configure-trend-cloud-one
 title: Configuring Trend Cloud One
 ---
 

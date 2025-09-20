@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-appliance-details
+slug: appliance-details
 title: Appliance Details
 ---
 

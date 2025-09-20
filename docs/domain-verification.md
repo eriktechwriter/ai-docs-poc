@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-domain-verification
+slug: domain-verification
 title: Domain Verification
 ---
 

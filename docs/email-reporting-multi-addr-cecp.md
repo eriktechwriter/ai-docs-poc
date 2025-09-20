@@ -1,0 +1,11 @@
+---
+id: email-reporting-multi-addr-cecp
+title: Support for multiple administrator email addresses in email reporting
+sidebar_label: Support for multiple administrator email addresses in email reporting
+description: Support for multiple administrator email addresses in email reporting
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Support for multiple administrator email addresses in email reporting August 15, 2025—The Report to administrator option in email reporting settings now supports up to 10 email addresses in the current organization, an enhancement from the previous limit of one. This allows greater flexibility in notifying multiple stakeholders when emails are reported by end users, improving visibility and response coordination across teams. Email and Collaboration Security → Cloud Email and Collaboration Protection © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

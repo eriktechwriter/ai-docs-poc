@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-notifications-new-assets
+slug: notifications-new-assets
 title: Configuring notifications for newly discovered assets
 ---
 

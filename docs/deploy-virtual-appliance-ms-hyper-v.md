@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-deploy-virtual-appliance-ms-hyper-v
+slug: deploy-virtual-appliance-ms-hyper-v
 title: Deploying a Service Gateway virtual appliance with Microsoft Hyper-V
 ---
 

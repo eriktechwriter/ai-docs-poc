@@ -1,0 +1,90 @@
+[
+  {
+    "id": "cis-gke17-511b.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 5.1.1 - Ensure Image Vulnerability Scanning is enabled (Automated) Profile applicability: Level 2 Note GCR is now deprecated, being superseded by Artifact Registry starting 15th May 2024. Runtime Vulnerability scanning is available via GKE Security Posture. Scan images stored in Google Container Registry (GCR) or Artifact Registry (AR) for vulnerabilities. Vulnerabilities in software packages can be exploited by malicious users to obtain unauthorized access to local cloud resources. GCR Container Analysis API or Artifact Registry Container Scanning API allow images stored in GCR or AR respectively to be scanned for known vulnerabilities. Note By default, GCR Container Analysis and AR Container Scanning are disabled. Audit For Images Hosted in GCR: Using Google Cloud Console: Go to the GCR website. Select Settings and check if Vulnerability scanning is Enabled.",
+    "metadata": {
+      "filename": "cis-gke17-511b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-511b.md",
+      "title": "5.1.1 - Ensure Image Vulnerability Scanning is enabled (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.859Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      109,
+      74,
+      961
+    ]
+  },
+  {
+    "id": "cis-gke17-511b.md_chunk_1",
+    "content": "Using Command Line: gcloud services list --enabled Ensure that the Container Registry API and Container Analysis API are listed in the output. For Images Hosted in AR: Using Google Cloud Console: Go to the AR website. Select Settings and check if Vulnerability scanning is Enabled. Using Command Line: gcloud services list --enabled Ensure that the Container Scanning API and Artifact Registry API are listed in the output. Remediation For Images Hosted in GCR: Using Google Cloud Console: Go to the GCR website. Select Settings under the Vulnerability Scanning heading, click the TURN ON button. Using Command Line: gcloud services enable containeranalysis.googleapis.com For Images Hosted in AR: Using Google Cloud Console: Go to the AR website. Select Settings and, under the Vulnerability Scanning heading, click the ENABLE button. Using Command Line: gcloud services enable containerscanning.googleapis.com © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-gke17-511b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-511b.md",
+      "title": "5.1.1 - Ensure Image Vulnerability Scanning is enabled (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.859Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      130,
+      53,
+      986
+    ]
+  }
+]

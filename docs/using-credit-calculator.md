@@ -1,0 +1,11 @@
+---
+id: using-credit-calculator
+title: Estimate credit usage with the credit calculator
+sidebar_label: Estimate credit usage with the credit calculator
+description: Estimate credit usage with the credit calculator
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Estimate credit usage with the credit calculator Estimate your credit requirements based on your projected usage of the selected solutions. Note The credit calculator does not allocate credits to any Trend Vision One solutions. The tool allows you to estimate the number of credits that your organization would hypothetically require to enable given solutions. Procedure Go to Administration → Credits & Billing. Click Estimate credit usage. The Credit calculator drawer appears. Use the Select solutions dropdown list to choose the solution that your organization intends to use. For each solution, type an estimate of the total number of units your organization would require. Tip Units differ by solution. To view the unit for a given solution, see the credit requirement listed under the solution name in the Credit calculator drawer, or in the Credit requirement column in the table of all available solutions. The credit calculator displays the Estimated required credits that your organization would need to use the projected number of units of the selected solutions. To view the number of credits Trend Micro recommends purchasing for your selected solutions, use the toggle to enable the Show recommended credit purchase setting. If you enable this setting, in addition to your estimated required credits, the credit calculator displays your current credit balance and the recommended number of credits to purchase. The recommended credit purchase is calculated by taking your estimated required credits, subtracting any available credits, and adding any overused credits. You can click Export overview to download a spreadsheet of the displayed information, or click Contact your sales representative to contact a representative about purchasing Trend Vision One credits. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

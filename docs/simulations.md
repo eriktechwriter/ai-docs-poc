@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-simulations
+slug: simulations
 title: Simulations
 ---
 

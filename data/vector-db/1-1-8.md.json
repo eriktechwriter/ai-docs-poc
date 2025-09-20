@@ -1,0 +1,90 @@
+[
+  {
+    "id": "1-1-8.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 1.1.8 - Ensure that the etcd pod specification file ownership is set to root:root (Automated) Profile applicability: Level 1 - Master Node Ensure that the /etc/kubernetes/manifests/etcd.yaml file ownership is set to root:root. The etcd pod specification file /etc/kubernetes/manifests/etcd.yaml controls various parameters that set the behavior of the etcd service in the master node. etcd is a highly- available key-value store which Kubernetes uses for persistent storage of all of its REST API object. You should set its file ownership to maintain the integrity of the file. The file should be owned by root:root. Note By default, /etc/kubernetes/manifests/etcd.yaml file ownership is set to root:root. Audit Run the below command (based on the file location on your system) on the Control Plane node. stat -c %U:%G /etc/kubernetes/manifests/etcd.yaml Verify that the ownership is set to root:root.",
+    "metadata": {
+      "filename": "1-1-8.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/1-1-8.md",
+      "title": "1.1.8 - Ensure that the etcd pod specification file ownership is set to root:root (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.523Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      136,
+      68,
+      990
+    ]
+  },
+  {
+    "id": "1-1-8.md_chunk_1",
+    "content": "Remediation Run the below command (based on the file location on your system) on the Control Plane node. chown root:root /etc/kubernetes/manifests/etcd.yaml © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "1-1-8.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/1-1-8.md",
+      "title": "1.1.8 - Ensure that the etcd pod specification file ownership is set to root:root (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.523Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      33,
+      30,
+      231
+    ]
+  }
+]

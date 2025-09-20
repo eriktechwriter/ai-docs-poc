@@ -1,0 +1,222 @@
+[
+  {
+    "id": "openshift-requirements.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ OpenShift requirements To deploy runtime security onto OpenShift, you must use a privileged user (a user in the system:cluster-admins Kubernetes group). On ROSA, this is usually the cluster-admin user. On ARO, this is usually the kubeadmin user. Note Container Security supports OpenShift version 4.12 and later. OpenShift can trigger runtime security rules and generate a large number of events. Important For ArgoCD deployments, OpenShift namespaces must be manually added to the overrides file, regardless of the Helm chart version. Helm chart versions 2.6.2 or later exclude OpenShift namespaces by default, so no manual changes to the overrides file are required. For Helm chart versions earlier than 2.6.2, you must manually add OpenShift namespaces to your overrides file to prevent a large number of events from being generated.",
+    "metadata": {
+      "filename": "openshift-requirements.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/openshift-requirements.md",
+      "title": "OpenShift requirements",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.790Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      114,
+      72,
+      925
+    ]
+  },
+  {
+    "id": "openshift-requirements.md_chunk_1",
+    "content": "Use the following steps to manually exclude namespaces from your OpenShift overrides file. visionOne: exclusion: namespaces: [list, of, namespaces] On OpenShift, you might want to exclude the following namespaces: visionOne: exclusion: namespaces: [openshift, openshift-addon-operator, openshift-apiserver, openshift-apiserver-operator, openshift-aqua, openshift-authentication, openshift-authentication-operator, openshift-azure-logging, openshift-azure-operator, openshift-backplane, openshift-backplane-cee, openshift-backplane-managed-scripts, openshift-backplane-srep, openshift-build-test, openshift-cloud-controller-manager-operator, openshift-cloud-credential-operator, openshift-cloud-ingress-operator, openshift-cloud-network-config-controller, openshift-cluster-csi-drivers, openshift-cluster-machine-approver, openshift-cluster-node-tuning-operator, openshift-cluster-samples-operator, openshift-cluster-storage-operator, openshift-cluster-version, openshift-codeready-workspaces, opensh",
+    "metadata": {
+      "filename": "openshift-requirements.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/openshift-requirements.md",
+      "title": "OpenShift requirements",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.790Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      111,
+      52,
+      999
+    ]
+  },
+  {
+    "id": "openshift-requirements.md_chunk_2",
+    "content": "ift-config, openshift-config-managed, openshift-config-operator, openshift-console, openshift-console-operator, openshift-console-user-settings, openshift-controller-manager, openshift-controller-manager-operator, openshift-custom-domains-operator, openshift-customer-monitoring, openshift-deployment-validation-operator, openshift-dns, openshift-dns-operator, openshift-etcd, openshift-etcd-operator, openshift-host-network, openshift-image-registry, openshift-infra, openshift-ingress, openshift-ingress-canary, openshift-ingress-operator, openshift-insights, openshift-kni-infra, openshift-kube-apiserver, openshift-kube-apiserver-operator, openshift-kube-controller-manager, openshift-kube-controller-manager-operator, openshift-kube-scheduler, openshift-kube-scheduler-operator, openshift-kube-storage-version-migrator, openshift-kube-storage-version-migrator-operator, openshift-kubevirt-infra, openshift-logging, openshift-machine-api, openshift-machine-config-operator, openshift-managed-node",
+    "metadata": {
+      "filename": "openshift-requirements.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/openshift-requirements.md",
+      "title": "OpenShift requirements",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.790Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      115,
+      38,
+      1000
+    ]
+  },
+  {
+    "id": "openshift-requirements.md_chunk_3",
+    "content": "-metadata-operator, openshift-managed-upgrade-operator, openshift-marketplace, openshift-monitoring, openshift-multus, openshift-must-gather-operator, openshift-network-diagnostics, openshift-network-operator, openshift-node, openshift-oauth-apiserver, openshift-ocm-agent-operator, openshift-openstack-infra, openshift-operator-lifecycle-manager, openshift-operators, openshift-operators-redhat, openshift-osd-metrics, openshift-ovirt-infra, openshift-ovn-kubernetes, openshift-rbac-permissions, openshift-route-monitor-operator, openshift-sdn, openshift-security, openshift-service-ca, openshift-service-ca-operator, openshift-splunk-forwarder-operator, openshift-sre-pruning, openshift-sre-sshd, openshift-strimzi, openshift-user-workload-monitoring, openshift-validation-webhook, openshift-velero, openshift-vsphere-infra] By default, OpenShift applies taints to the infrastructure and master nodes, which results in the runtime security pods not being assigned to these nodes.",
+    "metadata": {
+      "filename": "openshift-requirements.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/openshift-requirements.md",
+      "title": "OpenShift requirements",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.790Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      2,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      2,
+      0,
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      112,
+      63,
+      981
+    ]
+  },
+  {
+    "id": "openshift-requirements.md_chunk_4",
+    "content": "If you would like to add runtime security to these nodes, you may add the following tolerations to your overrides file: tolerations: scout: - effect: NoSchedule key: node-role.kubernetes.io/infra operator: Exists - effect: NoSchedule key: node-role.kubernetes.io/master operator: Exists © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "openshift-requirements.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/openshift-requirements.md",
+      "title": "OpenShift requirements",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.790Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 4
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      47,
+      36,
+      361
+    ]
+  }
+]

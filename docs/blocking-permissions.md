@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-blocking-permissions
+slug: blocking-permissions
 title: Blocking Microsoft Entra ID permissions
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-response-management
+slug: response-management
 title: Response Management
 ---
 

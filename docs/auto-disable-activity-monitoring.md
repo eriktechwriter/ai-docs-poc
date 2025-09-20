@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-auto-disable-activity-monitoring
+slug: auto-disable-activity-monitoring
 title: Automatic disabling of Activity Monitoring after updating to Server & Workload Protection
 ---
 

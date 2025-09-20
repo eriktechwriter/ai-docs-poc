@@ -1,0 +1,11 @@
+---
+id: using-the-advanced-search
+title: Using the Advanced Search
+sidebar_label: Using the Advanced Search
+description: Using the Advanced Search
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Using the Advanced Search Trend Vision One allows you to search for Users or Endpoints using partial string matching. You can also filter the Users or Endpoints that display in the list using Boolean operators. Procedure Go to Directories → Users/Endpoints. The User/Endpoint Directory screen appears. Click the Advanced link above the table. In the Search drop-down, select Users or Endpoints. The search criteria in the second drop-down control dynamically changes based on your selection. For more information, see Advanced Search Categories. Filter users or endpoints based on the available criteria. Add multiple search criteria using the Boolean operators to the right of the filters. OR: Allows you to search for multiple values for the specified criteria. All records that match either value display. AND: Allows you to select a new search criteria. Only records that match the values specified for this criteria and all other selected criteria values display. To filter all users with "ja" in their name in the Finance department that report to "Mary" or "Bill" in the Active Directory domain "HR", specify the following criteria: Display results by clicking one of the following: Search: Displays the search results in the list but does not save the search criteria. Save as New Custom Filter: Displays the search results in the list and prompts you to save the search criteria to a custom filter. The custom filter displays under the Users or Endpoints node in the User/Endpoint Directory tree. For more information, see Filters. (Optional) Use the drop-down controls below the Endpoints or Users tab to specify the time period for the data that displays or to switch between Tabular view and Timeline view. (Optional) Click Export to export the data as a *.csv file or *.png image. Note Tabular view only supports exporting data as a *.csv file. Timeline view can export data as a *.csv file or a *.png image. Related information Advanced Search Categories © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

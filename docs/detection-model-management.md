@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-detection-model-management
+slug: detection-model-management
 title: Detection Model Management
 ---
 

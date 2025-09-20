@@ -1,0 +1,11 @@
+---
+id: configure-outbound-static-ip-pair
+title: Configure an outbound static IP pair
+sidebar_label: Configure an outbound static IP pair
+description: Configure an outbound static IP pair
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Configure an outbound static IP pair Important Trend Vision One supports one static IP address pair per regional PoP. This means that each of your regions can have their own static IP address pair. Only outbound traffic destined for the chosen PoP is forwarded. After selecting a PoP, ensure you are routing user traffic to the selected regional PoP proxy by changing the Internet Access Gateway Proxy URL in the relevant PAC file from the default URL to the region-specific URL. To find the appropriate region-specific URL, see Port and FQDN/IP address requirements. Procedure Go to Zero Trust Secure Access → Secure Access Configuration → Internet Access and AI Service Access Configuration and select Outbound Static IP Settings in the Global Settings tab. Click Add IP Address Pair. Select a region or location to serve as the PoP for the IP address pair. Select the bandwidth Note The bandwidth selected affects the amount of credits required. Bandwidth is charged by the number of units of 256Mb. The amount of credits required for 512Mb would be twice the amount of credits required for 256Mb, and 1Gb would be four times the amount required for 256Mb. Choose the outbound traffic to be forwarded through the static IP addresses. Any traffic: Forwards all outbound web traffic through the provisioned static IP addresses Selected custom URL categories: Forwards outbound web traffic through the provisioned static IP addresses to URLs listed in up to 100 selected custom URL categories Important Only custom URL categories with contents based on domain or keyword match modes are supported. For more information, see Custom URL categories. Click Save to generate the static IP address pair. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

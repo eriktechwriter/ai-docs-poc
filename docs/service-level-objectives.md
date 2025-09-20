@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-service-level-objectives
+slug: service-level-objectives
 title: SERVICE LEVEL OBJECTIVES FOR TREND VISION ONE™ (herein this “SLO”)
 ---
 

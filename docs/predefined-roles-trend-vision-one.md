@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-predefined-roles-trend-vision-one
+slug: predefined-roles-trend-vision-one
 title: Predefined roles
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-proxysg-adv-secure-gateway
+slug: proxysg-adv-secure-gateway
 title: ProxySG and Advanced Secure Gateway integration
 ---
 

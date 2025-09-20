@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-custom-view-search-results
+slug: custom-view-search-results
 title: Create a custom view for search results
 ---
 

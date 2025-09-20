@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-user-account-switch
+slug: user-account-switch
 title: User account switch
 ---
 

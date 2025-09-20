@@ -1,0 +1,11 @@
+---
+id: cp-security-posture
+title: Security Posture
+sidebar_label: Security Posture
+description: Security Posture
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Security Posture The Security Posture widget provides a comprehensive overview of detected vulnerabilities and misconfiguration risk events for your cloud assets. From this widget, you can: Interactive Circle Graphs: Hover over the circle graphs to view the percentage distribution of low, medium, and high-risk vulnerabilities and misconfiguration risks. Vulnerability Details: In the Vulnerabilities section, click the numbers next to cloud VMs, container clusters, and serverless assets to access a list of CVEs in Threat and Exposure Management. Misconfiguration Insights: In the Misconfigurations section, click on any number to view a detailed list of System Configuration risk events in Threat and Exposure Management. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

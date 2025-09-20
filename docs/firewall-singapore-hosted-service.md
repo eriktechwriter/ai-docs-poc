@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-firewall-singapore-hosted-service
+slug: firewall-singapore-hosted-service
 title: 'Firewall exceptions: Singapore - hosted Service Gateway'
 ---
 

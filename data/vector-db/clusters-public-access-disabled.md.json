@@ -1,0 +1,178 @@
+[
+  {
+    "id": "clusters-public-access-disabled.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 5.4.2 Ensure clusters are created with Private Endpoint Enabled and Public Access Disabled (Automated) Profile applicability: Level 1 - Cluster / Control Plane Ensure that clusters are created with the Private Endpoint enabled and Public Access disabled to enhance the security of the Kubernetes API. In private clusters, the master node features both a private and a public endpoint. The private endpoint, an internal IP address behind a VPC network's internal load balancer, facilitates node-to-master communications, whereas the public endpoint allows external access to the Kubernetes API from outside the master's VPC network. While the Kubernetes API requires an authorized token for sensitive operations, vulnerabilities might still expose it publicly, allowing attackers to potentially identify the cluster and its API version to exploit known vulnerabilities.",
+    "metadata": {
+      "filename": "clusters-public-access-disabled.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/clusters-public-access-disabled.md",
+      "title": "5.4.2 Ensure clusters are created with Private Endpoint Enabled and Public Access Disabled (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.890Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      3,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      118,
+      72,
+      957
+    ]
+  },
+  {
+    "id": "clusters-public-access-disabled.md_chunk_1",
+    "content": "By disabling the public endpoint, you limit such risks, necessitating attackers to be within the master’s VPC network to launch attacks. If public access is necessary, it should be configured to allow only specified whitelisted CIDR blocks, providing controlled access while maintaining all internal traffic between kubelets and the Kubernetes API through securely provisioned cross-account ENIs in the cluster’s VPC. Impact Configure the EKS cluster endpoint to be private. 1. Leave the cluster endpoint public and specify which CIDR blocks can communicate with the cluster endpoint. The blocks are effectively a whitelisted set of public IP addresses allowed to access the cluster endpoint. 2. Configure public access with a set of whitelisted CIDR blocks and set private endpoint access to enabled.",
+    "metadata": {
+      "filename": "clusters-public-access-disabled.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/clusters-public-access-disabled.md",
+      "title": "5.4.2 Ensure clusters are created with Private Endpoint Enabled and Public Access Disabled (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.890Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      6,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      101,
+      61,
+      801
+    ]
+  },
+  {
+    "id": "clusters-public-access-disabled.md_chunk_2",
+    "content": "This allows public access from a specific range of public IPs while forcing all network traffic between the kubelets (workers) and the Kubernetes API through the cross-account ENIs that get provisioned into the cluster VPC when the control plane is provisioned. Audit Check for private endpoint access to the Kubernetes API server. Check for the following to be 'enabled: false' export CLUSTER_NAME=<your cluster name> aws eks describe-cluster --name ${CLUSTER_NAME} --query \"cluster.resourcesVpcConfig.endpointPublicAccess\" Check for the following to be 'enabled: true' export CLUSTER_NAME=<your cluster name> aws eks describe-cluster --name ${CLUSTER_NAME} --query \"cluster.resourcesVpcConfig.endpointPrivateAccess\" Remediation By enabling private endpoint access to the Kubernetes API server, all communication between your nodes and the API server stays within your VPC.",
+    "metadata": {
+      "filename": "clusters-public-access-disabled.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/clusters-public-access-disabled.md",
+      "title": "5.4.2 Ensure clusters are created with Private Endpoint Enabled and Public Access Disabled (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.890Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      3,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      113,
+      60,
+      874
+    ]
+  },
+  {
+    "id": "clusters-public-access-disabled.md_chunk_3",
+    "content": "With this in mind, you can update your cluster accordingly using the AWS CLI to ensure that Private Endpoint Access is enabled. For example, the following command would enable private access to the Kubernetes API and ensure that no public access is permitted: aws eks update-cluster-config --region $AWS_REGION --name $CLUSTER_NAME --resources-vpc-config endpointPrivateAccess=true,endpointPublicAccess=false © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "clusters-public-access-disabled.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/clusters-public-access-disabled.md",
+      "title": "5.4.2 Ensure clusters are created with Private Endpoint Enabled and Public Access Disabled (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.890Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      63,
+      52,
+      483
+    ]
+  }
+]

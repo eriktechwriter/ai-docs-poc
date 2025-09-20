@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-obtain-api-keys-third-party
+slug: obtain-api-keys-third-party
 title: Obtaining API keys for third-party auditors
 ---
 

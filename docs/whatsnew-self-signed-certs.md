@@ -1,0 +1,11 @@
+---
+id: whatsnew-self-signed-certs
+title: Proxy settings now support self-signed certificates
+sidebar_label: Proxy settings now support self-signed certificates
+description: Proxy settings now support self-signed certificates
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Proxy settings now support self-signed certificates August 21, 2025—Trend Vision One now supports proxy for self-signed certificates for Kubernetes clusters in Container Security. This enables you to use secure web proxy solutions as a proxy to access the internet and inspect HTTPS traffic. For more information, see Proxy Settings Script Generator (for Kubernetes clusters). Cloud Security → Container Security → Container Inventory © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

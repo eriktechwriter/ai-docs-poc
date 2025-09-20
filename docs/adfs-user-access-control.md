@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-adfs-user-access-control
+slug: adfs-user-access-control
 title: Configuring data synchronization and user access control
 ---
 

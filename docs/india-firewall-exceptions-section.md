@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-india-firewall-exceptions-section
+slug: india-firewall-exceptions-section
 title: India - firewall exceptions
 ---
 

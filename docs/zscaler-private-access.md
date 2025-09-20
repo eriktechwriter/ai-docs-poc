@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-zscaler-private-access
+slug: zscaler-private-access
 title: Zscaler Private Access integration
 ---
 

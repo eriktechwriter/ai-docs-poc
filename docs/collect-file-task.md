@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-collect-file-task
+slug: collect-file-task
 title: Collect File task
 ---
 

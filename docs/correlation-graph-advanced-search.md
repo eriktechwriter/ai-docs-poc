@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-correlation-graph-advanced-search
+slug: correlation-graph-advanced-search
 title: Correlation Graph advanced search filter
 ---
 

@@ -1,0 +1,134 @@
+[
+  {
+    "id": "bypass-junk-folder-microsoft-365.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Create rules for bypassing the junk folder in Microsoft 365 Create rules in Microsoft 365 to allow phishing simulation emails to bypass user junk folders. To ensure Microsoft 365 users can receive phishing simulation emails, you can configure rules to allow emails to bypass the junk folder in user mailboxes. Note These instructions were valid for Microsoft 365 Exchange as of January 25, 2025. Procedure Get the required header key and value from the Trend Vision One console. In the Trend Vision One console, go to Cyber Risk Exposure Management → Security Awareness → Phishing Simulations. Click the settings icon (). In Allow List Settings, copy the header key and value. Create a new transport rule for Microsoft 365. In the Microsoft 365 Exchange admin center, go to Mail flow → Rules. Click Add a rule, and then select Create a new rule. The New transport rule window appears.",
+    "metadata": {
+      "filename": "bypass-junk-folder-microsoft-365.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/bypass-junk-folder-microsoft-365.md",
+      "title": "Create rules for bypassing the junk folder in Microsoft 365",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.789Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      133,
+      76,
+      973
+    ]
+  },
+  {
+    "id": "bypass-junk-folder-microsoft-365.md_chunk_1",
+    "content": "Give the rule a descriptive name. Under Apply this rule if, select The message headers... and includes any of these words. Click Enter text, paste the header key previously copied from the Trend Vision One console, and click Save. Click Enter words, paste the header value previously copied from the Trend Vision One console, then click Add and Save. Note You may need to update the header value from time to time. Under Do the following, select Modify the message properties and set a message header. Click the first Enter text link, type X-Forefront-Antispam-Report, and click Save. Click the second Enter text link, type SFV:SKI;CAT:NONE;, and click Save. Important All header text and values are case sensitive. Review the rule settings and click Save. The new rule may take some time to propagate.",
+    "metadata": {
+      "filename": "bypass-junk-folder-microsoft-365.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/bypass-junk-folder-microsoft-365.md",
+      "title": "Create rules for bypassing the junk folder in Microsoft 365",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.789Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      130,
+      66,
+      802
+    ]
+  },
+  {
+    "id": "bypass-junk-folder-microsoft-365.md_chunk_2",
+    "content": "If you have already created a rule to bypass clutter and spam filtering for phishing simulation emails, change the priority of the newly created rule to just below the clutter and spam filtering bypass rule. For more information, see Microsoft's documentation on setting the priority of a mail flow rule. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "bypass-junk-folder-microsoft-365.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/bypass-junk-folder-microsoft-365.md",
+      "title": "Create rules for bypassing the junk folder in Microsoft 365",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.789Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      52,
+      38,
+      379
+    ]
+  }
+]

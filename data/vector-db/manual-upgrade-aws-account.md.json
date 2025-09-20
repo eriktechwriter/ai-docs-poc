@@ -1,0 +1,134 @@
+[
+  {
+    "id": "manual-upgrade-aws-account.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Manually upgrade your AWS account connection In older iterations of Deep Security as a Service, you could add an AWS account by clicking Add AWS Account on the Computers page. This method used an AWS CloudFormation template to add your account. All of the AWS instances associated with your account would appear on the Computer page, listed under your AWS account name and regions. Server & Workload Protection includes the ability to display your AWS instances organized by region, VPC and subnet. The migration from the older type of AWS connection to the new method usually happens automatically. However, if Server & Workload Protection encounters a problem and cannot perform the migration automatically, it will produce an \"AWS Account Migration Failed\" alert. If you encounter this alert, follow the steps in this article to migrate your AWS account connection.",
+    "metadata": {
+      "filename": "manual-upgrade-aws-account.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/manual-upgrade-aws-account.md",
+      "title": "Manually upgrade your AWS account connection",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.685Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      124,
+      74,
+      957
+    ]
+  },
+  {
+    "id": "manual-upgrade-aws-account.md_chunk_1",
+    "content": "The main cause of the migration failure is a lack of permissions for the AWS role listed in the alert message. Verify the permissions associated with the AWS role Procedure Log in to your Amazon Web Services Console and go to the IAM service. In the left navigation pane, click Roles. Find the role that was identified in the alert message and click the role. Under Permissions, expand the \"DeepSecurity\" policy, and click Edit Policy. The policy in the \"Action\" section should be: \"Action\": [ \"ec2:DescribeImages\", \"ec2:DescribeInstances\", \"ec2:DescribeRegions\",git \"ec2:DescribeSubnets\", \"ec2:DescribeTags\", \"ec2:DescribeVpcs\", \"ec2:DescribeAvailabilityZones\", \"ec2:DescribeSecurityGroups\", \"workspaces:DescribeWorkspaces\", \"workspaces:DescribeWorkspaceDirectories\", \"workspaces:DescribeWorkspaceBundles\", \"workspaces:DescribeTags\", \"iam:ListAccountAliases\", \"iam:GetRole\", \"iam:GetRolePolicy\", \"sts:AssumeRole\" ] Note The \"sts:AssumeRole\" permission is required only if you are using cross accoun",
+    "metadata": {
+      "filename": "manual-upgrade-aws-account.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/manual-upgrade-aws-account.md",
+      "title": "Manually upgrade your AWS account connection",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.685Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      116,
+      71,
+      999
+    ]
+  },
+  {
+    "id": "manual-upgrade-aws-account.md_chunk_2",
+    "content": "t roles. Note The \"iam:GetRole\" and \"iam:GetRolePolicy\" permissions are optional, but recommended in case an update to Server & Workload Protection requires additional AWS permissions. Enabling those extra permissions allows Server & Workload Protection to determine whether you have the correct policy. Click Review policy and Save changes. Wait for up to 30 minutes and your connection should be upgraded. On the Computers tab in the Server & Workload Protection console, your AWS instances are organized by region, VPC and subnet. Your Amazon WorkSpaces are organized by region and WorkSpace directory. Next steps © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "manual-upgrade-aws-account.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/manual-upgrade-aws-account.md",
+      "title": "Manually upgrade your AWS account connection",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.685Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      89,
+      65,
+      691
+    ]
+  }
+]

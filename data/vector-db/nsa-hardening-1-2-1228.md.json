@@ -1,0 +1,90 @@
+[
+  {
+    "id": "nsa-hardening-1-2-1228.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 1.2.28 - Ensure that a minimal audit policy is created (Automated) Profile applicability: Level 1 Kubernetes can audit the details of requests made to the API server. The --audit-policy-file flag must be set for this logging to be enabled. Logging is an important detective control for all systems to detect potential unauthorized access. Note Unless the --audit-policy-file flag is specified, no auditing will be carried out. Impact Audit logs will be created on the master nodes, which consumes disk space. Care should be taken to avoid generating too large of volumes of log information as this could impact the available space of the cluster nodes. Audit Run the following command on one of the cluster master nodes: ps -ef | grep kube-apiserver Verify that the --audit-policy-file is set. Review the contents of the file specified and ensure that it contains a valid audit policy.",
+    "metadata": {
+      "filename": "nsa-hardening-1-2-1228.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/nsa-hardening-1-2-1228.md",
+      "title": "1.2.28 - Ensure that a minimal audit policy is created (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.766Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      127,
+      85,
+      974
+    ]
+  },
+  {
+    "id": "nsa-hardening-1-2-1228.md_chunk_1",
+    "content": "Remediation Create an audit policy file for your cluster. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "nsa-hardening-1-2-1228.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/nsa-hardening-1-2-1228.md",
+      "title": "1.2.28 - Ensure that a minimal audit policy is created (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.766Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      18,
+      132
+    ]
+  }
+]

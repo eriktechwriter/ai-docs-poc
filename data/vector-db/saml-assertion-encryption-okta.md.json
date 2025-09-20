@@ -1,0 +1,178 @@
+[
+  {
+    "id": "saml-assertion-encryption-okta.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Configuring SAML Assertion Encryption in Okta Configure assertion encryption to secure data transferred between Okta and Trend Vision One. Configuring SAML assertion encryption allow you to further secure the connection between Okta and Trend Vision One by specifying the data encryption algorithm and the key transport algorithm. Note The following instructions are valid as of March 2024. Important To complete the following configuration, ensure that you already have OpenSSL installed on your computer. Procedure Download the CSR (certificate signing request) file. On the Trend Vision One console, go to Administration → Single Sign-On. In step 3, click Download CSR file. The CSR file downloads to your computer. The file name is saml_encryption.csr. Open the CSR file using your computer's command line interface. Generate the private key file.",
+    "metadata": {
+      "filename": "saml-assertion-encryption-okta.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/saml-assertion-encryption-okta.md",
+      "title": "Configuring SAML Assertion Encryption in Okta",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.978Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      121,
+      72,
+      940
+    ]
+  },
+  {
+    "id": "saml-assertion-encryption-okta.md_chunk_1",
+    "content": "Enter the following command: openssl genpkey -algorithm RSA -out ca_private_key.pem -pkeyopt rsa_keygen_bits:2048 The private key file is generated in the same file location as the CSR file. The file name is ca_private_key.pem. Generate the certificate file. Enter the following command: openssl req -x509 -new -nodes -key ca_private_key.pem -sha256 -days 1024 -out ca_certificate.pem Tip Change the -days value to adjust the certificate validity duration. Provide the following information when prompted. Country Name (2 Letter code) [AU]: US State or Province Name (full name) [Some-State]: (leave blank) Locality Name (eg, city) [ ]: (leave blank) Organization Name (eg, company) [Internet Widggits Pty Ltd]: Trend Micro Organizational Unit Name (eg, section) [ ]: (leave blank) Common Name (e.g. server FODN or YOUR name) [ ]: (leave blank) Email Address [ ]: (leave blank) The certificate file is generated in the same file location as the CSR file. The file name is ca_certificate.pem.",
+    "metadata": {
+      "filename": "saml-assertion-encryption-okta.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/saml-assertion-encryption-okta.md",
+      "title": "Configuring SAML Assertion Encryption in Okta",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.978Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      130,
+      70,
+      991
+    ]
+  },
+  {
+    "id": "saml-assertion-encryption-okta.md_chunk_2",
+    "content": "Generate the encryption certificate file. Enter the following command: openssl x509 -req -in saml_encryption.csr -CA ca_certificate.pem -CAkey ca_private_key.pem -CAcreateserial -out certificate.crt -days 1024 -sha256 Tip Change the -days value to adjust the certificate validity duration. The encryption certificate file is generated in the same file location as the CSR file. The file name is certificate.crt. Configure assertion encryption in Okta. Log in to your Okta organization as a user with administrative privileges. Go to Applications → Applications and in the ACTIVE section, select sso-beta. In the SAML Settings section of the sso-beta screen, click Edit. On the General tab of the Configure SAML screen, click Show Advanced Settings. Next to Assertion Encryption, select Encrypted. Next to Encryption Algorithm, select AES256-CBC. Next to Key Transport Algorithm, select RSA-OAEP. Next to Encryption Certificate, click Browse files...",
+    "metadata": {
+      "filename": "saml-assertion-encryption-okta.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/saml-assertion-encryption-okta.md",
+      "title": "Configuring SAML Assertion Encryption in Okta",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.978Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      119,
+      70,
+      949
+    ]
+  },
+  {
+    "id": "saml-assertion-encryption-okta.md_chunk_3",
+    "content": "and select the certificate.crt file you previously generated. Click Next. Click Finish. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "saml-assertion-encryption-okta.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/saml-assertion-encryption-okta.md",
+      "title": "Configuring SAML Assertion Encryption in Okta",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.978Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      23,
+      22,
+      162
+    ]
+  }
+]

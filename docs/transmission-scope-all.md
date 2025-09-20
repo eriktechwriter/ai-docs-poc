@@ -1,0 +1,11 @@
+---
+id: transmission-scope-all
+title: "Transmission Scope: All Transmissions"
+sidebar_label: "Transmission Scope: All Transmissions"
+description: "Transmission Scope: All Transmissions"
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Transmission Scope: All Transmissions Data Loss Prevention monitors data transmitted outside the host computer. Note Trend Micro recommends choosing this scope for external agents. If you do not want to monitor data transmissions to certain targets outside the host computer, define the following: Non-monitored targets: Data Loss Prevention does not monitor data transmitted to these targets. Note Data transmissions to non-monitored targets and to monitored targets where "Monitor" is the action are similar in that the transmission is allowed. The only difference is that for non-monitored targets, Data Loss Prevention does not log the transmission, whereas for monitored targets, the transmission is always logged. Monitored targets: These are specific targets within the non-monitored targets that should be monitored. Monitored targets are: Optional if you defined non-monitored targets. Not configurable if you did not define non-monitored targets. For example: The following IP addresses are assigned to your company's Legal Department: 10.201.168.1 to 10.201.168.25 You are creating a policy that monitors the transmission of Employment Certificates to all employees except the Legal Department's full time staff. To do this, you would select All transmissions as the transmission scope and then: Option Steps Option 1 Add 10.201.168.1-10.201.168.25 to the non-monitored targets. Add the IP addresses of the Legal Department's part-time staff to the monitored targets. Assume that there are 3 IP addresses, 10.201.168.21-10.201.168.23. Option 2 Add the IP addresses of the Legal Department's full time staff to the non-monitored targets: 10.201.168.1-10.201.168.20 10.201.168.24-10.201.168.25 For guidelines on defining monitored and non-monitored targets, see Defining Non-monitored and Monitored Targets. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

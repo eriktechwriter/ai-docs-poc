@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-configuring-adfs
+slug: configuring-adfs
 title: Configuring Active Directory Federation Services
 ---
 

@@ -1,0 +1,134 @@
+[
+  {
+    "id": "fs-cs-autoscale-configuration.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Autoscaling configuration The Helm chart supports Horizontal Pod Autoscaling (HPA) for the scanner component to automatically scale the number of scanner pods based on CPU and memory utilization. Autoscaling works best when combined with appropriate resource requests and limits. Monitor your workload patterns to determine optimal scaling thresholds. Prerequisites for Autoscaling Metrics Server: The Kubernetes Metrics Server must be deployed in your cluster for HPA to collect CPU and memory metrics. If not already installed, deploy it using: kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml Verify the Metrics Server is running: kubectl get deployment metrics-server -n kube-system kubectl top nodes # This should return node metrics Resource Requests: The scanner pods must have CPU and memory resource requests defined (which are included by def",
+    "metadata": {
+      "filename": "fs-cs-autoscale-configuration.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/fs-cs-autoscale-configuration.md",
+      "title": "Autoscaling configuration",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.485Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      129,
+      89,
+      1000
+    ]
+  },
+  {
+    "id": "fs-cs-autoscale-configuration.md_chunk_1",
+    "content": "ault in this chart). Default autoscaling settings Autoscaling is disabled by default. The following settings are configured in the values.yaml: Scanner Autoscaling (scanner.autoscaling): enabled: false (autoscaling is disabled by default) minReplicas: 1 (minimum number of scanner pods) maxReplicas: 5 (maximum number of scanner pods) targetCPUUtilizationPercentage: 80 (target CPU utilization to trigger scaling) targetMemoryUtilizationPercentage: 80 (target memory utilization to trigger scaling) Enable autoscaling You can enable autoscaling during installation by using the --set flags. You can also enable autoscaling by overriding the values in your custom values.yaml file: # Example: Enable autoscaling with custom thresholds scanner: autoscaling: enabled: true minReplicas: 2 maxReplicas: 10 targetCPUUtilizationPercentage: 70 targetMemoryUtilizationPercentage: 80 Or by using the Helm command line: helm install my-release visionone-filesecurity/visionone-filesecurity \\ -n visionone-filese",
+    "metadata": {
+      "filename": "fs-cs-autoscale-configuration.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/fs-cs-autoscale-configuration.md",
+      "title": "Autoscaling configuration",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.485Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      101,
+      55,
+      1000
+    ]
+  },
+  {
+    "id": "fs-cs-autoscale-configuration.md_chunk_2",
+    "content": "curity \\ --set scanner.autoscaling.enabled=true \\ --set scanner.autoscaling.maxReplicas=10 \\ --set scanner.autoscaling.targetCPUUtilizationPercentage=70 Monitor autoscaling You can monitor the HPA status using: # Check HPA status kubectl get hpa -n visionone-filesecurity # Get detailed HPA information kubectl describe hpa -n visionone-filesecurity © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "fs-cs-autoscale-configuration.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/fs-cs-autoscale-configuration.md",
+      "title": "Autoscaling configuration",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.485Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      50,
+      33,
+      424
+    ]
+  }
+]

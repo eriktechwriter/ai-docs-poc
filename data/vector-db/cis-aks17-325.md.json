@@ -1,0 +1,222 @@
+[
+  {
+    "id": "cis-aks17-325.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 3.2.5 - Ensure that the --streaming-connection-idle-timeout argument is not set to 0 (Automated) Profile Applicability: Level 1 Do not disable timeouts on streaming connections. Setting idle timeouts ensures that you are protected against Denial-of-Service attacks, inactive connections and running out of ephemeral ports. Note By default, --streaming-connection-idle-timeout is set to 4 hours which might be too high for your environment. Setting this as appropriate would additionally ensure that such streaming connections are timed out after serving legitimate use cases. Note See the Azure AKS documentation for the default value. Impact Long-lived connections could be interrupted.",
+    "metadata": {
+      "filename": "cis-aks17-325.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-aks17-325.md",
+      "title": "3.2.5 - Ensure that the --streaming-connection-idle-timeout argument is not set to 0 (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.827Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      96,
+      72,
+      776
+    ]
+  },
+  {
+    "id": "cis-aks17-325.md_chunk_1",
+    "content": "SH into the relevant node and run the following command on each node to find the running kubelet process: ps -ef | grep kubelet If the command line for the process includes the argument streaming-connection-idle-timeout verify that it is not set to 0. If the streaming-connection-idle-timeout argument is not present in the output of the above command, refer instead to the config argument that specifies the location of the Kubelet config file e.g. --config /etc/kubernetes/kubelet/kubelet-config.json. Open the Kubelet config file: cat /etc/kubernetes/kubelet/kubelet-config.json Verify that the streamingConnectionIdleTimeout argument is not set to \"0\". Audit Method 2: If using the API configz endpoint, consider searching for the status of \"streamingConnectionIdleTimeout\":\"4h0m0s\" by extracting the live configuration from the nodes running Kubelet.",
+    "metadata": {
+      "filename": "cis-aks17-325.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-aks17-325.md",
+      "title": "3.2.5 - Ensure that the --streaming-connection-idle-timeout argument is not set to 0 (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.827Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      110,
+      56,
+      855
+    ]
+  },
+  {
+    "id": "cis-aks17-325.md_chunk_2",
+    "content": "Set the local proxy port and the following variables, and provide the proxy port number and node name: HOSTNAME_PORT=\"localhost-and-port-number\" NODE_NAME=\"The-Name-Of-Node-To-Extract-Configuration\" from the output of \"kubectl get nodes\" kubectl proxy --port=8001 & export HOSTNAME_PORT=localhost:8001 (example host and port number) export NODE_NAME=ip-192.168.31.226.aks.internal (example node name from \"kubectl get nodes\") curl -sSL \"http://${HOSTNAME_PORT}/api/v1/nodes/${NODE_NAME}/proxy/configz\" Remediation Remediation Method 1: If modifying the Kubelet config file, edit /etc/kubernetes/kubelet/kubelet-config.json and set the below parameter to a non-zero value in the format of #h#m#s: \"streamingConnectionIdleTimeout\": \"4h0m0s\" Ensure that the kubelet service file /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf does not specify a --streaming-connection-idle-timeout argument because it would override the Kubelet config file.",
+    "metadata": {
+      "filename": "cis-aks17-325.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-aks17-325.md",
+      "title": "3.2.5 - Ensure that the --streaming-connection-idle-timeout argument is not set to 0 (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.827Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      127,
+      72,
+      949
+    ]
+  },
+  {
+    "id": "cis-aks17-325.md_chunk_3",
+    "content": "Remediation Method 2: If using executable arguments, edit the Kubelet service file /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf on each worker node and add the below parameter at the end of the KUBELET_ARGS variable string: --streaming-connection-idle-timeout=4h0m0s Remediation Method 3: If using the API configz endpoint, consider searching for the status of \"streamingConnectionIdleTimeout\": by extracting the live configuration from the nodes running Kubelet. See step-by-step configmap procedures in the Kubernetes documentation, and rerun the curl statement from the audit process to check for kubelet configuration changes: kubectl proxy --port=8001 & export HOSTNAME_PORT=localhost:8001 (example host and port number) export NODE_NAME=ip-192.168.31.226.aks.internal (example node name from \"kubectl get nodes\") curl -sSL \"http://${HOSTNAME_PORT}/api/v1/nodes/${NODE_NAME}/proxy/configz\" For all remediations: Restart the kubelet service and verify the status: systemctl daemon-",
+    "metadata": {
+      "filename": "cis-aks17-325.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-aks17-325.md",
+      "title": "3.2.5 - Ensure that the --streaming-connection-idle-timeout argument is not set to 0 (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.827Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      130,
+      84,
+      999
+    ]
+  },
+  {
+    "id": "cis-aks17-325.md_chunk_4",
+    "content": "reload systemctl restart kubelet.service systemctl status kubelet -l © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-aks17-325.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-aks17-325.md",
+      "title": "3.2.5 - Ensure that the --streaming-connection-idle-timeout argument is not set to 0 (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.827Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 4
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      16,
+      143
+    ]
+  }
+]

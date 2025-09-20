@@ -1,0 +1,11 @@
+---
+id: adding-senders-email-security
+title: Adding senders
+sidebar_label: Adding senders
+description: Adding senders
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Adding senders Cloud Email Gateway Protection approves or blocks email messages from the specified sender for the entire organization, a managed domain, or a specific recipient address in your managed domains. For example, after adding spammerbob@examplespamdomain.com to the blocked list for your managed domain mydomain.com, Cloud Email Gateway Protection only blocks the email messages sent from spammerbob@examplespamdomain.com to addresses in the mydomain.com domain. Cloud Email Gateway Protection still scans and possibly passes email messages sent from spammerbob@examplespamdomain.com to your other managed domains. Procedure Click the Approved Senders or Blocked Senders tab, and click Add. On the Specify Target Recipient dialog box that appears, specify the target recipient of the sender you want to add and click Next. My organization Managed domain Email address In the Add Approved Senders dialog box, type a sender in the second field. A sender can be a specific email address or all addresses from a specific domain or subdomain. Filter a specific email address by typing that email address. Filter all addresses from a domain by using an asterisk (*) to the left of the at sign (@) in the email address. For example, *@example.com will filter all email addresses in the example.com domain. Filter all addresses from a subdomain by using an asterisk (*) to the left of the at sign (@) and also using an asterisk (*) in place of the subdomain in the email address. For example, *@*.example.com will filter all email addresses in all subdomains of the example.com domain. The following table provides format examples that are valid and invalid: Format Examples for Approved Senders and Blocked Senders Valid Valid name@example.com name@info.*.example.com name@info.example.com name@example.com.* name@*.example.com *name@info.example.com name@* *@* *@example.com *@server.example.com *@*.example.com Click Add. Cloud Email Gateway Protection validates the sender address and adds it to the list. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

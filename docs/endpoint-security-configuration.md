@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-endpoint-security-configuration
+slug: endpoint-security-configuration
 title: Endpoint Security Configuration
 ---
 

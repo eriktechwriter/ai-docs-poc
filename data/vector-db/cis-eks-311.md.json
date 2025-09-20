@@ -1,0 +1,178 @@
+[
+  {
+    "id": "cis-eks-311.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 3.1.1 - Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Automated) Profile applicability: Level 1 If kubelet is running, and if it is configured by a kubeconfig file, ensure that the proxy kubeconfig file has permissions of 644 or more restrictive. The kubelet kubeconfig file controls various parameters of the kubelet service in the worker node. You should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system. It is possible to run kubelet with the kubeconfig parameters configured as a Kubernetes ConfigMap instead of a file. In this case, there is no proxy kubeconfig file. Note See the AWS EKS documentation for the default value. Audit Method 1 SSH to the worker nodes.",
+    "metadata": {
+      "filename": "cis-eks-311.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-eks-311.md",
+      "title": "3.1.1 - Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.839Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      108,
+      67,
+      882
+    ]
+  },
+  {
+    "id": "cis-eks-311.md_chunk_1",
+    "content": "Enter the following command to check to see if the Kubelet Service is running: sudo systemctl status kubelet The output should return Active: active (running) since... Run the following command on each node to find the appropriate kubeconfig file: ps -ef | grep kubelet The output of the above command should return something similar to --kubeconfig/var/lib/kubelet/kubeconfig, which is the location of the kubeconfig file. Run this command to obtain the kubeconfig file permissions: stat -c %a /var/lib/kubelet/kubeconfig Verify that if a file is specified and it exists, the permissions are 644 or more restrictive. Method 2 Create and Run a Privileged Pod Run a pod that is privileged enough to access the host's file system. To do this, deploy a pod that uses the hostPath volume to mount the node's file system into the pod.",
+    "metadata": {
+      "filename": "cis-eks-311.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-eks-311.md",
+      "title": "3.1.1 - Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.839Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      112,
+      59,
+      829
+    ]
+  },
+  {
+    "id": "cis-eks-311.md_chunk_2",
+    "content": "An example of a simple pod definition that mounts the root of the host to /host within the pod: apiVersion: v1 kind: Pod metadata: name: file-check spec: volumes: - name: host-root hostPath: path: / type: Directory containers: - name: nsenter image: busybox command: [\"sleep\", \"3600\"] volumeMounts: - name: host-root mountPath: /host securityContext: privileged: true Save this to a file (e.g., file-check-pod.yaml) and create the pod: kubectl apply -f file-check-pod.yaml Once the pod is running, exec into it to check file permissions on the node: kubectl exec -it file-check -- sh Now you are in a shell inside the pod, but you can access the node's file system through the /host directory and check the permission level of the file: ls -l /host/var/lib/kubelet/kubeconfig Verify that if a file is specified and it exists, the permissions are 644 or more restrictive.",
+    "metadata": {
+      "filename": "cis-eks-311.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-eks-311.md",
+      "title": "3.1.1 - Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.839Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      122,
+      69,
+      870
+    ]
+  },
+  {
+    "id": "cis-eks-311.md_chunk_3",
+    "content": "Remediation Run the below command (based on the file location on your system) on the each worker node: chmod 644 <kubeconfig file> © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-eks-311.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-eks-311.md",
+      "title": "3.1.1 - Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.839Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      29,
+      26,
+      205
+    ]
+  }
+]

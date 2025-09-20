@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-notifications-case-update-for-owner
+slug: notifications-case-update-for-owner
 title: Configure notifications for case update for owners
 ---
 

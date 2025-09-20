@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-fortigate-ng-firewall
+slug: fortigate-ng-firewall
 title: FortiGate Next-Generation Firewall integration
 ---
 

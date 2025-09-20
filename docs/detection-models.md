@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-detection-models
+slug: detection-models
 title: Detection models
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-what-telemetry-collect-windows
+slug: what-telemetry-collect-windows
 title: What telemetry does the endpoint agent collect from Windows?
 ---
 

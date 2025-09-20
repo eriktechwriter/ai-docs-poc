@@ -1,0 +1,134 @@
+[
+  {
+    "id": "ai-guard-api-reference.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ AI Guard API reference Headers Name Required Description Authorization Yes The bearer token for authentication. Query parameters Name Required Description detailedResponse No The level of detail of the API response. Possible values include: false: A short evaluation of your prompts based on the AI Guard settings (default). true: A detailed evaluation of your prompts based on the AI Guard settings. Request OpenAI chat completion request format: { \"model\": \"us.meta.llama3-1-70b-instruct-v1:0\", \"messages\": [ { \"role\": \"user\", \"content\": \"Your prompt text here\" } ] } OpenAI chat completion response format: { \"id\": \"chatcmpl-8f88f71a-7d42-c548-d587-8fc8a17091b6\", \"object\": \"chat.completion\", \"created\": 1748535080, \"model\": \"us.meta.llama3-1-70b-instruct-v1:0\", \"choices\": [ { \"index\": 0, \"message\": { \"role\": \"assistant\", \"content\": \"Response content here\", \"refusal\": null }, \"finish_reason\": \"stop\" } ],",
+    "metadata": {
+      "filename": "ai-guard-api-reference.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/ai-guard-api-reference.md",
+      "title": "AI Guard API reference",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.655Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      110,
+      72,
+      999
+    ]
+  },
+  {
+    "id": "ai-guard-api-reference.md_chunk_1",
+    "content": "\"usage\": { \"prompt_tokens\": 139, \"completion_tokens\": 97, \"total_tokens\": 236 } } Simple string format: { \"guard\": \"Your prompt text here\" } Response Sample response (when detailedResponse: false): { \"id\": \"1234567890abcdef\", \"action\": \"Block\", \"reason\": \"[Violation] Policy Name: harmful_content\" } Sample response (when detailedResponse: true): { \"id\": \"1234567890abcdef\", \"action\": \"Allow\", \"reason\": \"No policy violations detected\", \"harmful_content\": [ { \"name\": \"harmful_content\", \"content_violation\": false, \"confidence_score\": 0.05 } ], \"sensitive_information\": { \"content_violation\": false, \"rule\": \"\" }, \"prompt_attack\": [ { \"name\": \"prompt_injection\", \"content_violation\": false, \"confidence_score\": 0.02 } ] } Parameter Description id The unique identifier of the AI Guard evaluation. action The recommend action. Possible values include: Allow Block reason The explanation of the action, including settings violation details.",
+    "metadata": {
+      "filename": "ai-guard-api-reference.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/ai-guard-api-reference.md",
+      "title": "AI Guard API reference",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.655Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      82,
+      51,
+      938
+    ]
+  },
+  {
+    "id": "ai-guard-api-reference.md_chunk_2",
+    "content": "harmful_content Any harmful content detected in the inputs or outputs, with confidence scores. sensitive_information Any detected violations related to personally identifiable information (PII) or sensitive information. prompt_attack An array of any prompt attacks detected, with confidence scores. Common errors The API returns standard HTTP status codes: 400 Bad Request: Check the error message for details 403 Forbidden: Insufficient user permissions or an authentication issue 429 Too Many Requests: Rate limit exceeded 500 Internal Server Error: A temporary issue occurred on the server side Related information Python code example Javascript code example curl code example Go code example © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "ai-guard-api-reference.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/ai-guard-api-reference.md",
+      "title": "AI Guard API reference",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.655Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      96,
+      74,
+      770
+    ]
+  }
+]

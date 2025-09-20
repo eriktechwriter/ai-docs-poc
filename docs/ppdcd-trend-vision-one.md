@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-ppdcd-trend-vision-one
+slug: ppdcd-trend-vision-one
 title: Privacy and personal data collection disclosure
 ---
 

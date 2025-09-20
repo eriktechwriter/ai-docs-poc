@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-assigning-password-admin-role
+slug: assigning-password-admin-role
 title: Assigning the Password administrator role
 ---
 

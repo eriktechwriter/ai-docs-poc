@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-ports-urls-used-ddi
+slug: ports-urls-used-ddi
 title: Ports and URLs used by Deep Discovery Inspector
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-firewall-india-cloud-service
+slug: firewall-india-cloud-service
 title: 'Firewall exceptions: India - cloud service extension'
 ---
 

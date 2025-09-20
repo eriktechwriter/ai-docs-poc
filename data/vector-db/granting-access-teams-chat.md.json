@@ -1,0 +1,222 @@
+[
+  {
+    "id": "granting-access-teams-chat.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Granting access to Teams Grant Cloud Email and Collaboration Protection access to Microsoft Teams (Chat) to allow Cloud Email and Collaboration Protection to run advanced threat protection and data loss prevention scanning on messages and files in protected private chats. Important Cloud Email and Collaboration Protection protects the Teams and Chat services in Microsoft Teams separately. Cloud Email and Collaboration Protection does not protect the messages and files in the chats that users have with themselves. As Microsoft's licensing models for Teams APIs impose usage restrictions and licensing requirements on API calls, you need to use your own app registered with Microsoft Entra ID and select an applicable licensing model when granting access to Teams Chat. For details about the licensing models, see Microsoft Documentation.",
+    "metadata": {
+      "filename": "granting-access-teams-chat.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/granting-access-teams-chat.md",
+      "title": "Granting access to Teams",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.532Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      120,
+      72,
+      931
+    ]
+  },
+  {
+    "id": "granting-access-teams-chat.md_chunk_1",
+    "content": "The following table summarizes the licensing models and the supported Cloud Email and Collaboration Protection protection under each model. Model Licensing and Payment Requirements Supported Cloud Email and Collaboration Protection Protection Model A An appropriate Microsoft 365 E5 license Payment to Microsoft when the API usage exceeds the upper limit Scan messages and files. Block or pass messages and files upon detecting risks. Model B Payment to Microsoft for each API call No license required Scan messages and files. Pass messages and files upon detecting risks. Note Blocking messages or files is not supported. Evaluation Mode No license or payment required Scan messages and files. Block or pass messages and files upon detecting risks. Note As this model provides limited API calls, Cloud Email and Collaboration Protection can scan and take action on only a limited number of messages and files.",
+    "metadata": {
+      "filename": "granting-access-teams-chat.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/granting-access-teams-chat.md",
+      "title": "Granting access to Teams",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.532Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      124,
+      52,
+      910
+    ]
+  },
+  {
+    "id": "granting-access-teams-chat.md_chunk_2",
+    "content": "Important If you have already granted access to Teams Chat in the old way without creating your own app, Evaluation Mode applies. Trend Micro recommends that you update the access grant to have access to all the licensing models and continued Cloud Email and Collaboration Protection protection by performing the following: Go to Administration → Service Account, locate your Teams Chat service account, click Protect with Your Own App, and complete the access grant by referring to the operations in this topic. Private chat files are stored in the sender's OneDrive folder. If you have also granted Cloud Email and Collaboration Protection access to OneDrive, when the user sending or uploading a file is selected as a policy target respectively, Cloud Email and Collaboration Protection applies the corresponding policies for Teams Chat and for OneDrive to this file. The steps outlined below detail how to grant access to Teams Chat from Dashboard. Procedure Go to Dashboard → Service Status.",
+    "metadata": {
+      "filename": "granting-access-teams-chat.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/granting-access-teams-chat.md",
+      "title": "Granting access to Teams",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.532Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      4,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      6,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      133,
+      77,
+      996
+    ]
+  },
+  {
+    "id": "granting-access-teams-chat.md_chunk_3",
+    "content": "Click Grant Access in the Action column for Teams Chat. The Grant Access to Teams Chat screen appears. Create an app in Microsoft Entra ID for protecting Teams Chat. For details, see Creating an Microsoft Entra ID app for Teams protection. Specify the app ID and secret, select the policy to enable automatically when the access grant is complete, and click Grant Permission. Cloud Email and Collaboration Protection uses the secret to obtain an access token from Microsoft. Note If for some reason the access token becomes invalid after the access grant, go to Administration → Service Account to create a new access token for the service account. For more information, see Service account. If the secret becomes invalid or you want to change to another app after the access grant, go to Administration → Service Account, locate your Teams Chat service account, and click Update Secret or Change App to start replacing the secret or changing to another app.",
+    "metadata": {
+      "filename": "granting-access-teams-chat.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/granting-access-teams-chat.md",
+      "title": "Granting access to Teams",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.532Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      2,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      131,
+      59,
+      958
+    ]
+  },
+  {
+    "id": "granting-access-teams-chat.md_chunk_4",
+    "content": "The subsequent procedure is the same as the access grant process described in this topic. Specify your Microsoft 365 Global Administrator credentials and click Sign in. The Microsoft authorization screen appears. Click Accept to grant Cloud Email and Collaboration Protection permission to use the Graph API to access your Teams Chat related service data. Wait until the process is completed. If the message \"Successfully created a service account and synced data.\" appears on the screen, the access grant is successful. Related information Creating an Microsoft Entra ID app for Teams protection © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "granting-access-teams-chat.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/granting-access-teams-chat.md",
+      "title": "Granting access to Teams",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.532Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 4
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      87,
+      61,
+      671
+    ]
+  }
+]

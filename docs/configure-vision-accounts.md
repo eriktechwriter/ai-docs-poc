@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-configure-vision-accounts
+slug: configure-vision-accounts
 title: Configuring accounts
 ---
 

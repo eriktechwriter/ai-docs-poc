@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-exceptions
+slug: exceptions
 title: Exceptions
 ---
 

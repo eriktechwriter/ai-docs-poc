@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-update-foundation-services-release
+slug: update-foundation-services-release
 title: Updating Trend Vision One to the Foundation Services release
 ---
 

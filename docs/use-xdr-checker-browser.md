@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-use-xdr-checker-browser
+slug: use-xdr-checker-browser
 title: Using XDR Endpoint Checker from a web browser
 ---
 

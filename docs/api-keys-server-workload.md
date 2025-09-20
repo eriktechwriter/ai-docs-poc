@@ -1,0 +1,11 @@
+---
+id: api-keys-server-workload
+title: About API Keys
+sidebar_label: About API Keys
+description: About API Keys
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ About API Keys Tip This article describes how to create API keys for legacy accounts. If you're using a new Trend Micro Cloud One account, see Manage API keys instead. Server & Workload Protection API keys enable you to authenticate your API calls with Server & Workload Protection. API keys provide a secret key that you include in your HTTP request headers that the manger authenticates. Each API key is also associated with a user role that determines the actions that you can perform. An expiry date determines when key access terminates. You can create API keys using the Server & Workload Protection console or the API: Create an API key using code Create an API key using Server & Workload Protection Manage API keys after their creation Tip The Creating a Workoad Security API Key video steps you through the process of creating an API key. Secure your secret keys Implement API key-management strategies to maximize their security and prevent system compromise. Due to the similarities between API key secret keys and cryptographic secret keys, you can adopt established best practices for managing cryptographic keys. The Open Web Application Security Project (OWASP) publishes a Key Management Cheat Sheet. Many of the items in the Key Management LifeCycle Best Practices section can be applied to the secret keys of API keys. If you are storing secret keys, you can use a key management system to encrypt, store, and decrypt your secret keys, such as the Amazon Key Management Service (KMS). Similarly you can use a trusted platform module (TPM). Consider regularly rotating keys to prevent access in the event that API keys are compromised. Alternatively, you can create API keys as needed and then delete them after use, or set a short expiry date. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

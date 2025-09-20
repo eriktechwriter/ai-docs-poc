@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-structure
+slug: structure
 title: Structure
 ---
 

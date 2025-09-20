@@ -1,0 +1,178 @@
+[
+  {
+    "id": "conventional-scan-to-smart-scan.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Switching from Conventional Scan to Smart Scan If you are switching Trend Vision One Endpoint Security agents from conventional scan to smart scan, ensure that you have set up Smart Protection Services on the Apex One server. For details, see the Apex One documentation. The following table provides other considerations when switching Trend Vision One Endpoint Security agent to smart scan. Considerations When Switching to Smart Scan Consideration Details Product license To use smart scan, ensure that you have activated the licenses for the following services on the Apex One server and that the licenses are not expired: Antivirus Web Reputation and Anti-spyware Apex One (Mac) server Ensure that Trend Vision One Endpoint Security agents can connect to the Apex One (Mac) server. Only online Trend Vision One Endpoint Security agents will be notified to switch to smart scan.",
+    "metadata": {
+      "filename": "conventional-scan-to-smart-scan.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/conventional-scan-to-smart-scan.md",
+      "title": "Switching from Conventional Scan to Smart Scan",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.032Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      4,
+      4,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      136,
+      64,
+      970
+    ]
+  },
+  {
+    "id": "conventional-scan-to-smart-scan.md_chunk_1",
+    "content": "Offline Trend Vision One Endpoint Security agents get notified when they become online. Roaming Trend Vision One Endpoint Security agents are notified when they become online or, if the Trend Vision One Endpoint Security agent has scheduled update privileges, when scheduled update runs. Number of Trend Vision One Endpoint Security agents to switch Switching a relatively small number of Trend Vision One Endpoint Security agents at a time allows efficient use of Apex One (Mac) server resources. The Apex One (Mac) server can perform other critical tasks while Trend Vision One Endpoint Security agents change their scan methods. Timing When switching to smart scan for the first time, Trend Vision One Endpoint Security agents need to download the full version of the Mac Heuristic Pattern and Smart Scan Agent Pattern from the Apex One (Mac) server. The Smart Scan Pattern is only used by smart scan agents.",
+    "metadata": {
+      "filename": "conventional-scan-to-smart-scan.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/conventional-scan-to-smart-scan.md",
+      "title": "Switching from Conventional Scan to Smart Scan",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.032Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      7,
+      7,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      133,
+      59,
+      911
+    ]
+  },
+  {
+    "id": "conventional-scan-to-smart-scan.md_chunk_2",
+    "content": "Consider switching during off-peak hours to ensure the download process finishes within a short amount of time. Also consider switching when no Trend Vision One Endpoint Security agent is scheduled to update from the server. Agent tree settings Scan method is a granular setting that can be set on the root, group, or individual agent level. When switching to smart scan, you can: Create a new group and assign smart scan as its scan method. Any Trend Vision One Endpoint Security agent you move to this group will use smart scan. When you move the Trend Vision One Endpoint Security agent, enable the setting Apply settings of new group to selected agent(s). Select a group and configure it to use smart scan. Conventional scan agents belonging to the group will switch to smart scan. Select one or several conventional scan agents from a group and then switch them to smart scan.",
+    "metadata": {
+      "filename": "conventional-scan-to-smart-scan.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/conventional-scan-to-smart-scan.md",
+      "title": "Switching from Conventional Scan to Smart Scan",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.032Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      3,
+      3,
+      0,
+      0,
+      6,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      127,
+      64,
+      881
+    ]
+  },
+  {
+    "id": "conventional-scan-to-smart-scan.md_chunk_3",
+    "content": "Note Any changes to the group's scan method overrides the scan method you have configured for individual Trend Vision One Endpoint Security agents. IPv6 support Smart scan agents send scan queries to smart protection sources. A pure IPv6 smart scan agent cannot send queries directly to pure IPv4 sources, such as: Smart Protection Server 3.0 (integrated or standalone) Trend Micro Smart Protection Network Similarly, a pure IPv4 smart scan agent cannot send queries to pure IPv6 Smart Protection Servers. A dual-stack proxy server that can convert IP addresses, such as DeleGate, is required to allow smart scan agents to connect to the sources. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "conventional-scan-to-smart-scan.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/conventional-scan-to-smart-scan.md",
+      "title": "Switching from Conventional Scan to Smart Scan",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.032Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      1,
+      1,
+      0,
+      0,
+      2,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      98,
+      58,
+      721
+    ]
+  }
+]

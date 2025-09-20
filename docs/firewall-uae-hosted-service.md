@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-firewall-uae-hosted-service
+slug: firewall-uae-hosted-service
 title: 'Firewall exceptions: Middle East and Africa - hosted Service Gateway'
 ---
 

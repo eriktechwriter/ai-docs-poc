@@ -1,0 +1,11 @@
+---
+id: ztsa-prem-gateway-v-1-0-46
+title: Zero Trust Secure Access On-premises Gateway Version 1.0.46
+sidebar_label: Zero Trust Secure Access On-premises Gateway Version 1.0.46
+description: Zero Trust Secure Access On-premises Gateway Version 1.0.46
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Zero Trust Secure Access On-premises Gateway Version 1.0.46 July 15, 2024—ZTSA On-Premises Gateway Version 1.0.46 provides enhanced security and connectivity features. This update includes the following changes: New feature Authentication proxy service for NTLM/Kerberos authentication supports High Availability with load balancer. Authentication proxy service for NTLM/Kerberos authentication supports multiple on-premises Active Directory servers as round-robin or failover High Availability. Enhancement Enhanced handling of changes in on-premises gateway status: healthy, unhealthy © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

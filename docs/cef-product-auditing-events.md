@@ -1,0 +1,11 @@
+---
+id: cef-product-auditing-events
+title: CEF Product Auditing Events
+sidebar_label: CEF Product Auditing Events
+description: CEF Product Auditing Events
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ CEF Product Auditing Events CEF Key Description Value Header (logVer) CEF format version CEF:0 Header (vendor) Product vendor Trend Micro Header (pname) Product name Apex Central Header (pver) Product version 2019 Header (eventid) Event ID 1745 Header (eventName) Log name Product Auditing Events Header (severity) Severity 3 cat Log type 1745 deviceFacility Managed product Example: Apex One dvchost Display name of the managed endpoint Example: localhost rt Event trigger time in UTC Example: Mar 22 2018 08:23:23 GMT+00:00 cn1Label Corresponding label for the cn1 field SLF_CategoryID cn1 Category ID Example: 536,870,912 cn2Label Corresponding label for the "cn2" field SLF_SeverityLevel cn2 Severity level Example: 4 1 = ERROR 2 = WARNING 4 = INFORMATION 16 = FAILURE AUDIT suser The name of the user on whose behalf the event occurred Example: "administrator" deviceNtDomain Active Directory domain Example: APEXTMCM dntdom Apex One domain hierarchy Example: OSCEDomain1 ApexCentralHost Apex Central host name Example: TW-CHRIS-W2019 devicePayloadId Unique message GUID Example: 1C00290C0360-9CDE11EB-D4B8-F51F-C697 Log sample: CEF:0|Trend Micro|Apex Central|2019|Delete|1009490 - Block A dministrative Share - 1 (ATT&CK T1077,T1105)|3|rt=Apr 20 202 0 03:33:15 GMT+00:00 dvchost=OSCEClient22 deviceFacility=Ape x One act=Delete, src=10.1.1.8 dst=80.1.1.8 smac=54-BF-64-84 -7F-08 spt=88 dmac=54-BF-64-84-7F-18 dpt=448 cn2Label=SLF_Is DetectionOnly cn2=1 deviceDirection=Outbound cn3Label=SLF_Ra nk cn3=100 cn4Label=SLF_SeverityCode cn4=4 proto=10008 cs2La bel=SLF_ConnectionType cs2=Suspicious Client Application Act ivity cn1Label=SLF_RuleID cn1=1009490 cs1Label=SLF_RuleConte nt cs1=1009490 - Block Administrative Share - 1 (ATT&CK T107 7,T1105) cnt=1 deviceNtDomain=APEXTMCM dntdom=OSCEDomain1 © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

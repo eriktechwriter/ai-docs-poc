@@ -1,0 +1,11 @@
+---
+id: granular-dmarc-reports
+title: More granular analysis results for DMARC reports available in Cloud Email Gateway Protection
+sidebar_label: More granular analysis results for DMARC reports available in Cloud Email Gateway Protection
+description: More granular analysis results for DMARC reports available in Cloud Email Gateway Protection
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ More granular analysis results for DMARC reports available in Cloud Email Gateway Protection June 19, 2024—Cloud Email Gateway Protection allows you to view your DMARC report data by sending source, including email service, hostname, and IP address. Besides, the solution now presents more details from raw DMARC reports in a readable format, enabling you to quickly drill down and identify the threats. Email and Collaboration Security → Cloud Email Gateway Protection © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

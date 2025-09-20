@@ -1,0 +1,11 @@
+---
+id: object-details
+title: Object Details
+sidebar_label: Object Details
+description: Object Details
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Object Details The Object Details tab displays the same information as the Root Cause Analysis tab, but presents the information as a table. It also organizes the objects into the following tabs: Objects: Objects involved in the execution of the matched object, grouped by their parent processes. Click ▶ to expand the list. Noteworthy events: Objects in the chain that are possibly malicious, based on existing Trend Micro intelligence File events: Objects in the chain that are files Registry events: Objects in the chain that are registry keys, data and entries IP address / DNS events: Objects that are IP addresses or DNS events The table provides the following details: Column Name Description Recorded Object Name of the recorded object Click the object name to view more details. PID Process ID of the recorded object Recorded Date and time when the object became involved in the chain Activity Action done by the object Click the object name to view more details. Object Reputation Rating assigned to the object based on Trend Micro intelligence You can further examine objects with Malicious ratings in Threat Connect or VirusTotal. Affected Endpoints Number of endpoints where the object appears Percentage of endpoints affected, based on the total number of endpoints on the network Click the value to view more details about the endpoint. Use the following options to manage the table: On all tabs, select at least one object in the Recorded Object column, and click Start a Historical Investigation to start another investigation. On the Objects tab, click the filter icon ( ) to filter the table according to the specified criteria. On the File events tab, sort the table by clicking on the Recorded and Object Reputation columns. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

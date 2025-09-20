@@ -1,0 +1,11 @@
+---
+id: create-shared-ruleset
+title: Create a shared ruleset
+sidebar_label: Create a shared ruleset
+description: Create a shared ruleset
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Create a shared ruleset Shared rulesets allow you to apply and manage your rules across multiple different computers. Generally, use the following steps to create a shared ruleset: Procedure Create and configure a SoftwareInventory object for the computer you wish to base the ruleset on. Use a SoftwareInventoryApi object to create the software inventory on Server & Workload Protection. Once it's created, an inventory build begins on the specified computer. Use the SoftwareInventoryApi object to confirm that the inventory build has completed successfully. Create a Ruleset object. Use a RulesetApi object to create the Ruleset on Server & Workload Protection. Use a ComputerApi object or a PolicyApi object to assign the shared ruleset to your computer(s). Next steps For more information about shared rulesets, see the Use the API to create shared and global rulesets. The following example creates a software inventory and uses that software inventory to create a Shared Ruleset. source software_inventory = api.SoftwareInventory() software_inventory.computer_id = computer_id # Build software_inventory software_inventories_api = api.SoftwareInventoriesApi(api.ApiClient(configuration)) new_inventory = software_inventories_api.create_software_inventory(software_inventory, api_version) while new_inventory.state != "complete": # check status every 30 seconds time.sleep(30) new_inventory = software_inventories_api.describe_software_inventory(new_inventory.id, api_version) # Create ruleset ruleset = api.Ruleset() ruleset.name = ruleset_name rulesets_api = api.RulesetsApi(api.ApiClient(configuration)) return rulesets_api.create_ruleset(ruleset, new_inventory.id, api_version) Also see the Create a Shared Ruleset operation in the API Reference. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

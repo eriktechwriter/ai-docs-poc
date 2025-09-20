@@ -1,0 +1,134 @@
+[
+  {
+    "id": "vsphere-st-switch-promiscuous-rspan.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Configure external network traffic with the VMware vSphere Standard Switch (promiscuous mode/RSPAN) Configure network settings in VMware vCenter to allow Virtual Network Sensor to monitor data. Important The following instructions are valid as of June 2023. Procedure Sign in to the VMware vCenter console using an admin account, and then click the tab. Right-click the IP address for your server and select Add Networking... On the Select connection type screen, select Virtual Machine Port Group for a Standard Switch and click NEXT. On the Select target device screen, select New standard switch and specify 1600 for MTU. Click NEXT. On the Create a Standard Switch screen, click + and select a NIC. Click OK. On the Connection settings screen, type Data Network in the Network label field and select All (4095) for the VLAN ID. Click NEXT.",
+    "metadata": {
+      "filename": "vsphere-st-switch-promiscuous-rspan.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/vsphere-st-switch-promiscuous-rspan.md",
+      "title": "Configure external network traffic with the VMware vSphere Standard Switch (promiscuous mode/RSPAN)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.374Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      5,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      128,
+      74,
+      932
+    ]
+  },
+  {
+    "id": "vsphere-st-switch-promiscuous-rspan.md_chunk_1",
+    "content": "On the Ready to complete screen, review your settings and click FINISH. Click the tab. Go to Configure → Networking → Virtual switches. Find the switch you just created and click EDIT. Go to Security, and select Reject for Promiscuous mode, MAC address changes, and Forged transmits. Note Send the network traffic you want to scan to the data port. The following instructions use promiscuous mode to enable Virtual Network Sensor to scan your network traffic. Click OK. Click the name of the switch you just created. Click next to Data Network and select Edit Settings. Go to Security, and select Override and Accept for Promiscuous mode. Select Reject for MAC address changes and Forged transmits, and click OK. After configuring your network settings, access the Virtual Network Sensor console and use the command show traffic to verify the Virtual Network Sensor is receiving traffic.",
+    "metadata": {
+      "filename": "vsphere-st-switch-promiscuous-rspan.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/vsphere-st-switch-promiscuous-rspan.md",
+      "title": "Configure external network traffic with the VMware vSphere Standard Switch (promiscuous mode/RSPAN)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.374Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      7,
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      125,
+      57,
+      887
+    ]
+  },
+  {
+    "id": "vsphere-st-switch-promiscuous-rspan.md_chunk_2",
+    "content": "For more information about troubleshooting, see Virtual Network Sensor FAQ and Virtual Network Sensor CLI commands. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "vsphere-st-switch-promiscuous-rspan.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/vsphere-st-switch-promiscuous-rspan.md",
+      "title": "Configure external network traffic with the VMware vSphere Standard Switch (promiscuous mode/RSPAN)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.374Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      26,
+      23,
+      190
+    ]
+  }
+]

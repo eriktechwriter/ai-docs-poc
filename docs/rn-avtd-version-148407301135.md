@@ -1,0 +1,11 @@
+---
+id: rn-avtd-version-148407301135
+title: Agentless Vulnerability & Threat Detection version 1.484.07301135
+sidebar_label: Agentless Vulnerability & Threat Detection version 1.484.07301135
+description: Agentless Vulnerability & Threat Detection version 1.484.07301135
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Agentless Vulnerability & Threat Detection version 1.484.07301135 August 11, 2025—The 1.484.07301135 Agentless Vulnerability & Threat Detection release updates the Python runtime version and adds tags for EBS snapshots. Detailed release notes: Cloud Platform: AWS Enhancements: Updates the runtime version to Python 3.12 for Agentless Vulnerability & Threat Detection Lambda functions to deploy in the CloudFormation stack. Adds tags for EBS snapshots temporarily created by the Agentless Vulnerability & Threat Detection scanning process. You can use these tags to include or exclude EBS snapshots. Cloud Security → Cloud Accounts © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

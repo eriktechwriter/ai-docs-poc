@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-jira-service-management-integration
+slug: jira-service-management-integration
 title: Jira Service Management integration
 ---
 

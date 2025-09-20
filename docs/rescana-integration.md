@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-rescana-integration
+slug: rescana-integration
 title: Rescana integration
 ---
 

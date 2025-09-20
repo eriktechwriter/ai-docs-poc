@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-firewall-activity-data
+slug: firewall-activity-data
 title: Firewall activity data sources
 ---
 

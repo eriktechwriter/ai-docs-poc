@@ -1,0 +1,178 @@
+[
+  {
+    "id": "bypass-vulner-scan-traffic.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Bypass vulnerability management scan traffic in Server & Workload Protection If you are using a vulnerability management provider such as Qualys or Nessus (for PCI compliance, for example), you need to set up Server & Workload Protection to bypass or allow this provider’s scan traffic through untouched. Create a new IP list from the vulnerability scan provider IP range or addresses Create firewall rules for incoming and outbound scan traffic Assign the new firewall rules to a policy to bypass vulnerability scans After these firewall rules have been assigned to the new policy, Server & Workload Protection will ignore ANY traffic from the IPs you have added in your IP List. Server & Workload Protection will not scan the vulnerability management provider traffic for stateful issues or vulnerabilities - it will be allowed through untouched.",
+    "metadata": {
+      "filename": "bypass-vulner-scan-traffic.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/bypass-vulner-scan-traffic.md",
+      "title": "Bypass vulnerability management scan traffic in Server & Workload Protection",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.790Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      117,
+      65,
+      937
+    ]
+  },
+  {
+    "id": "bypass-vulner-scan-traffic.md_chunk_1",
+    "content": "Create a new IP list from the vulnerability scan provider IP range or addresses Have handy the IP addresses that the vulnerability scan provider has given you. Procedure In the Server & Workload Protection console, go to Policies. In the left pane, expand Lists → IP Lists. Click New → New IP List. Type a Name for the new IP List, for example \"Qualys IP list\". Paste the IP addresses that the vulnerability management provider has given you into the IP(s) box, one per line. Click OK. Next steps Create firewall rules for incoming and outbound scan traffic After you’ve created the IP list, you need to create two firewall rules: one for incoming and one for outgoing traffic. Name them as suggested, below: <name of provider> Vulnerability Traffic - Incoming <name of provider> Vulnerability Traffic - Outgoing Procedure In the Server & Workload Protection console, click Policies. In the left pane, expand Rules. Click Firewall Rules → New → New Firewall Rule.",
+    "metadata": {
+      "filename": "bypass-vulner-scan-traffic.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/bypass-vulner-scan-traffic.md",
+      "title": "Bypass vulnerability management scan traffic in Server & Workload Protection",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.790Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      131,
+      56,
+      963
+    ]
+  },
+  {
+    "id": "bypass-vulner-scan-traffic.md_chunk_2",
+    "content": "Create the first rule to bypass Inbound AND Outbound for TCP and UDP connections that are incoming to and outgoing from the vulnerability management provider. Tip For settings not specified, you can leave them as the default. Name: (suggested) <name of provider> Vulnerability Traffic - Incoming Action: Bypass Protocol: Any Packet Source: IP List and then select the new IP list created above. Create a second rule: Name: <name of provider> Vulnerability Traffic - Outgoing Action: Bypass Protocol: Any Packet Source: IP List and then select the new IP list created above. Next steps Assign the new firewall rules to a policy to bypass vulnerability scans Identify which policies are already used by computers that will be scanned by the vulnerability management provider. Edit the policies individually to assign the rules in the firewall module. Procedure Click Policies on the main menu. Click Policies in the left pane.",
+    "metadata": {
+      "filename": "bypass-vulner-scan-traffic.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/bypass-vulner-scan-traffic.md",
+      "title": "Bypass vulnerability management scan traffic in Server & Workload Protection",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.790Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      126,
+      68,
+      924
+    ]
+  },
+  {
+    "id": "bypass-vulner-scan-traffic.md_chunk_3",
+    "content": "In the right pane, for each policy, double-click to open the policy details. In the pop-up, in the left pane, click Firewall. Under Assigned Firewall Rules, click Assign/Unassign. Ensure your view at the top-left shows All firewall rules. Use the search window to find the rules you created and select them. Click OK. Next steps © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "bypass-vulner-scan-traffic.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/bypass-vulner-scan-traffic.md",
+      "title": "Bypass vulnerability management scan traffic in Server & Workload Protection",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.790Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      61,
+      43,
+      403
+    ]
+  }
+]

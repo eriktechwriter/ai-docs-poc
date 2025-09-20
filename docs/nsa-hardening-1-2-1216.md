@@ -1,0 +1,11 @@
+---
+id: nsa-hardening-1-2-1216
+title: 1.2.16 - Ensure that the --audit-log-path argument is set (Automated)
+sidebar_label: 1.2.16 - Ensure that the --audit-log-path argument is set (Automated)
+description: 1.2.16 - Ensure that the --audit-log-path argument is set (Automated)
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 1.2.16 - Ensure that the --audit-log-path argument is set (Automated) Profile applicability: Level 1 - Master Node Enable auditing on the Kubernetes API Server and set the desired audit log path. Auditing the Kubernetes API Server provides a security-relevant chronological set of records documenting the sequence of activities that have affected system by individual users, administrators or other components of the system. Even though currently, Kubernetes provides only basic audit capabilities, it should be enabled. You can enable it by setting an appropriate audit log path. Note By default, auditing is not enabled. Audit Run the following command on the Control Plane node: ps -ef | grep kube-apiserver Verify that the --audit-log-path argument is set as appropriate. Remediation Edit the API server pod specification file /etc/kubernetes/manifests/kube-apiserver.yaml on the Control Plane node and set the --audit-log-path parameter to a suitable path and file where you would like audit logs to be written, for example: --audit-log-path=/var/log/apiserver/audit.log © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

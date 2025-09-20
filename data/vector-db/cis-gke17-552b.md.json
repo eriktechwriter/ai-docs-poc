@@ -1,0 +1,134 @@
+[
+  {
+    "id": "cis-gke17-552b.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 5.5.2 - Ensure Node Auto-Repair is enabled for GKE nodes (Automated) Profile applicability: Level 2 Nodes in a degraded state are an unknown quantity and so may pose a security risk. Kubernetes Engine's node auto-repair feature helps you keep the nodes in the cluster in a healthy, running state. When enabled, Kubernetes Engine makes periodic checks on the health state of each node in the cluster. If a node fails consecutive health checks over an extended time period, Kubernetes Engine initiates a repair process for that node. Note Node auto-repair is enabled by default. Impact If multiple nodes require repair, Kubernetes Engine might repair them in parallel. Kubernetes Engine limits number of repairs depending on the size of the cluster (bigger clusters have a higher limit) and the number of broken nodes in the cluster (limit decreases if many nodes are broken).",
+    "metadata": {
+      "filename": "cis-gke17-552b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-552b.md",
+      "title": "5.5.2 - Ensure Node Auto-Repair is enabled for GKE nodes (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.862Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      124,
+      77,
+      963
+    ]
+  },
+  {
+    "id": "cis-gke17-552b.md_chunk_1",
+    "content": "Node auto-repair is not available on Alpha Clusters. Audit Using Google Cloud Console: Go to Kubernetes Engine website. From the list of clusters, select the desired cluster. For each Node pool, view the Node pool Details pane and ensure that under the Management heading, Auto-repair is set to Enabled. Using Command Line: To check the existence of node auto-repair for an existing cluster's node pool, run: gcloud container node-pools describe <node_pool_name> --cluster <cluster_name> --zone <compute_zone> --format json | jq '.management' Ensure the output of the above command has JSON key attribute autoRepair set to true: { \"autoRepair\": true } Remediation Using Google Cloud Console: Go to Kubernetes Engine website. Select the Kubernetes cluster containing the node pool for which auto-repair is disabled. Select the Node pool by clicking on the name of the pool. Navigate to the Node pool details pane and click EDIT. Under the Management heading, check the Enable auto-repair box.",
+    "metadata": {
+      "filename": "cis-gke17-552b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-552b.md",
+      "title": "5.5.2 - Ensure Node Auto-Repair is enabled for GKE nodes (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.862Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      136,
+      69,
+      991
+    ]
+  },
+  {
+    "id": "cis-gke17-552b.md_chunk_2",
+    "content": "Click SAVE. Repeat steps 2-6 for every cluster and node pool with auto-upgrade disabled. Using Command Line: To enable node auto-repair for an existing cluster's Node pool: gcloud container node-pools update <node_pool_name> --cluster <cluster_name> --zone <compute_zone> --enable-autorepair © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-gke17-552b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-552b.md",
+      "title": "5.5.2 - Ensure Node Auto-Repair is enabled for GKE nodes (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.862Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      48,
+      39,
+      366
+    ]
+  }
+]

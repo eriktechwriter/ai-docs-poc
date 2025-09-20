@@ -1,0 +1,11 @@
+---
+id: cef-engine-update-status-logs
+title: CEF Engine Update Status Logs
+sidebar_label: CEF Engine Update Status Logs
+description: CEF Engine Update Status Logs
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ CEF Engine Update Status Logs CEF Key Description Value Header (logVer) CEF format version CEF:0 Header (vendor) Product vendor Trend Micro Header (pname) Product name Apex Central Header (pver) Product version 2019 Header (eventid) Event ID 800102 Header (eventName) Log name Engine Update Status Header (severity) Severity 3 rt Event trigger time in UTC Example: Mar 22 2018 08:23:23 GMT+00:00 shost Product Entity/Endpoint Example: shost1 cs2Label Corresponding label for the cs2 field Product/Endpoint IP cs2 Product/Endpoint IP Example: 10.0.17.6 cn1Label Corresponding label for the cn1 field Connection Status cn1 Connection status Example: 100 0: Unable to connect 1: Active 2: Inactive 100: Product active 101: Product inactive but agent is active 102: Roaming cn2Label Corresponding label for the cn2 field Engine cn2 Engine Example: 4096 cn5Label Corresponding label for the cn5 field Engine Version cs5 Engine version Example: 9.950.1006 cn3Level Corresponding label for the cn3 field Engine Status cn3 Engine status Example: 1 1: Up-to-date 2: Out-of-date cs6Label Corresponding label for the cs6 field AUComponent_Type cs6 ActiveUpdate component type Example: 1 1: Engine deviceFacility Managed product name Example: Apex One msg Engine type display name Example: "Virus Scan Engine DLL (Windows 2000/NT, 32-bit)" deviceNtDomain Active Directory domain Example: APEXTMCM dntdom Apex One domain hierarchy Example: OSCEDomain1 ApexCentralHost Apex Central host name Example: TW-CHRIS-W2019 devicePayloadId Unique message GUID Example: 1C00290C0360-9CDE11EB-D4B8-F51F-C697 Log sample: CEF:0|Trend Micro|Apex Central|2019|800102|Engine Update S tatus|3|rt=Apr 20 2017 12:04:34 GMT+00:00 shost=shost1 cs2La bel=Product/Endpoint_IP cs2=10.0.17.6 cn1Label=Connection_St atus cn1=100 cn2Label=Engine cn2=4096 cs5Label=Engine_Versio n cs5=9.950.1006 cn3Label=Engine_Status cn3=1 cs6Label=AUCom ponent_Type cs6=1 deviceFacility=Apex One deviceNtDomain=APE XTMCM dntdom=OSCEDomain1 © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

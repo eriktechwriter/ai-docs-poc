@@ -1,0 +1,222 @@
+[
+  {
+    "id": "cis-gke17-4110b.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 4.1.10 - Avoid non-default bindings to system:authenticated (Automated) Profile applicability: Level 1 Avoid non-default ClusterRoleBindings and RoleBindings with the group system:authenticated, except the ClusterRoleBindings system:basic-user, system:discovery, and system:public-info-viewer. Google's approach to authentication is to make authenticating to Google Cloud and GKE as simple and secure as possible without adding complex configuration steps. The group system:authenticated includes all users with a Google account, which includes all Gmail accounts. Consider your authorization controls with this extended group scope when granting permissions. Thus, group system:authenticated is not recommended for non-default use. GKE assigns the group system:authenticated to API server requests made by any user who is signed in with a Google Account, including all Gmail accounts.",
+    "metadata": {
+      "filename": "cis-gke17-4110b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-4110b.md",
+      "title": "4.1.10 - Avoid non-default bindings to system:authenticated (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.854Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      119,
+      78,
+      974
+    ]
+  },
+  {
+    "id": "cis-gke17-4110b.md_chunk_1",
+    "content": "In practice, this isn't meaningfully different from system:unauthenticated because anyone can create a Google Account. Binding a role to the group system:authenticated gives any user with a Google Account, including all Gmail accounts, the permissions granted by that role and is strongly discouraged. Default value: ClusterRoleBindings with group system:unauthenticated: system:public-info-viewer No RoleBindings with the group system:unauthenticated. Impact Authenticated users in group system:authenticated should be treated similarly to users in system:unauthenticated, having privileges and permissions associated with roles associated with the configured bindings. Care should be taken before removing any non-default clusterrolebindings or rolebindings from the environment to ensure they were not required for operation of the cluster. Leverage a more specific and authenticated user for cluster operations.",
+    "metadata": {
+      "filename": "cis-gke17-4110b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-4110b.md",
+      "title": "4.1.10 - Avoid non-default bindings to system:authenticated (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.854Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      7,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      110,
+      69,
+      915
+    ]
+  },
+  {
+    "id": "cis-gke17-4110b.md_chunk_2",
+    "content": "Audit Use the following command to confirm there are no non-default ClusterRoleBindings to system:authenticated: $ kubectl get clusterrolebindings -o json | jq -r '[\"Name\"], [\"-----\"], (.items[] | select((.subjects | length) > 0) | select(any(.subjects[]; .name == \"system:unauthenticated\")) | [.metadata.namespace, .metadata.name]) | @tsv' Only the following default ClusterRoleBindings should be displayed: Name ----- system:public-info-viewer system:discovery system:public-info-viewer If any non-default bindings exist, review their permissions with the following command and reassess their privilege. $ kubectl get clusterrolebinding [CLUSTER_ROLE_BINDING_NAME] -o json \\ | jq ' .roleRef.name +\" \" + .roleRef.kind' \\ | sed -e 's/\"//g' \\ | xargs -l bash -c 'kubectl get $1 $0 -o yaml' Confirm that there are no RoleBindings including the system:authenticated group: $ kubectl get rolebindings -A -o json \\ | jq -r '[\"Namespace\", \"Name\"], [\"---------\", \"-----\"], (.items[] | select((.subjects | l",
+    "metadata": {
+      "filename": "cis-gke17-4110b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-4110b.md",
+      "title": "4.1.10 - Avoid non-default bindings to system:authenticated (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.854Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      6,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      101,
+      54,
+      999
+    ]
+  },
+  {
+    "id": "cis-gke17-4110b.md_chunk_3",
+    "content": "ength) > 0) | select(any(.subjects[]; .name == \"system:unauthenticated\")) | [.metadata.namespace, .metadata.name]) | @tsv' There should be no RoleBindings listed. If any bindings exist, review their permissions with the following command and reassess their privilege. $ kubectl get rolebinding [ROLE_BINDING_NAME] --namespace [ROLE_BINDING_NAMESPACE] -o json \\ | jq ' .roleRef.name +\" \" + .roleRef.kind' \\ | sed -e 's/\"//g' \\ | xargs -l bash -c 'kubectl get $1 $0 -o yaml --namespace [ROLE_BINDING_NAMESPACE]' Remediation Identify all non-default clusterrolebindings and rolebindings to the group system:authenticated. Check if they are used and review the permissions associated with the binding using the commands in the Audit section above or refer to GKE documentation. Strongly consider replacing non-default, unsafe bindings with an authenticated, user-defined group. Where possible, bind to non-default, user-defined groups with least-privilege roles.",
+    "metadata": {
+      "filename": "cis-gke17-4110b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-4110b.md",
+      "title": "4.1.10 - Avoid non-default bindings to system:authenticated (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.854Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      107,
+      72,
+      958
+    ]
+  },
+  {
+    "id": "cis-gke17-4110b.md_chunk_4",
+    "content": "If there are any non-default, unsafe bindings to the group system:authenticated, proceed to delete them after consideration for cluster operations with only necessary, safer bindings. kubectl delete clusterrolebinding [CLUSTER_ROLE_BINDING_NAME] kubectl delete rolebinding [ROLE_BINDING_NAME] --namespace [ROLE_BINDING_NAMESPACE] © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-gke17-4110b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-4110b.md",
+      "title": "4.1.10 - Avoid non-default bindings to system:authenticated (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.854Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 4
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      44,
+      40,
+      404
+    ]
+  }
+]

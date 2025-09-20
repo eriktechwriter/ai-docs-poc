@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-remote-shell-mac-endpoints
+slug: remote-shell-mac-endpoints
 title: Remote Shell Commands for Mac Endpoints
 ---
 

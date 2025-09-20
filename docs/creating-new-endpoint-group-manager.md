@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-creating-new-endpoint-group-manager
+slug: creating-new-endpoint-group-manager
 title: Creating a new Endpoint Group Manager
 ---
 

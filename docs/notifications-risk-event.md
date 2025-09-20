@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-notifications-risk-event
+slug: notifications-risk-event
 title: Configuring notifications for new risk event
 ---
 

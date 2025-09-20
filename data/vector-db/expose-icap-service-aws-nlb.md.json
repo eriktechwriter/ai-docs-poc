@@ -1,0 +1,222 @@
+[
+  {
+    "id": "expose-icap-service-aws-nlb.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Expose the ICAP service with AWS NLB If you need to expose your ICAP service outside the EKS cluster for external clients, you can use AWS NLB. The ICAP (Internet Content Adaptation Protocol) server requires a Network Load Balancer because: ICAP runs on port 1344 and uses its own Layer 7 protocol ALB only supports HTTP-based protocols NLB operates at Layer 4 (TCP) and can properly handle ICAP traffic Prerequisites: EKS cluster up and running kubectl and helm configured with proper access AWS CLI installed and configured IAM permissions to create load balancer resources Procedure Install an AWS Load Balancer Controller (if not already installed): # Create IAM policy curl -o iam-policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/main/docs/install/iam_policy.json aws iam create-policy \\ --policy-name AWSLoadBalancerControllerIAMPolicy \\ --policy-document file://",
+    "metadata": {
+      "filename": "expose-icap-service-aws-nlb.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/expose-icap-service-aws-nlb.md",
+      "title": "Expose the ICAP service with AWS NLB",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.413Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      136,
+      88,
+      1000
+    ]
+  },
+  {
+    "id": "expose-icap-service-aws-nlb.md_chunk_1",
+    "content": "iam-policy.json # Create IAM role and service account eksctl create iamserviceaccount \\ --cluster <your-cluster-name> \\ --namespace kube-system \\ --name aws-load-balancer-controller \\ --attach-policy-arn arn:aws:iam::<your-account-id>:policy/AWSLoadBalancerControllerIAMPolicy \\ --approve # Install controller helm repo add eks https://aws.github.io/eks-charts helm repo update helm install aws-load-balancer-controller eks/aws-load-balancer-controller \\ -n kube-system \\ --set clusterName=<your-cluster-name> \\ --set serviceAccount.create=false \\ --set serviceAccount.name=aws-load-balancer-controller Tag the subnets for NLB: Go to AWS VPC Console → Subnets. Add these tags to each subnet that you want NLB to use: kubernetes.io/cluster/<your-cluster-name> = shared kubernetes.io/role/elb = 1 (for public) or kubernetes.io/role/internal-elb = 1 (for private) Note Ensure subnets have enough available IPs.",
+    "metadata": {
+      "filename": "expose-icap-service-aws-nlb.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/expose-icap-service-aws-nlb.md",
+      "title": "Expose the ICAP service with AWS NLB",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.413Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      121,
+      64,
+      907
+    ]
+  },
+  {
+    "id": "expose-icap-service-aws-nlb.md_chunk_2",
+    "content": "Update values.yaml for External Access scanner: # Other scanner settings remain unchanged # Enable external NLB service for ICAP externalService: enabled: true annotations: service.beta.kubernetes.io/aws-load-balancer-type: \"external\" service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: \"ip\" service.beta.kubernetes.io/aws-load-balancer-scheme: \"internet-facing\" icapPort: 1344 Update the deployment with a NLB configuration: helm upgrade my-release visionone-filesecurity/visionone-filesecurity \\ -n visionone-filesecurity \\ -f my-values.yaml Verify the NLB deployment: # Check the service status kubectl get service -n visionone-filesecurity | grep scanner-lb # Get the NLB DNS name NLB_DNS=$(kubectl get service -n visionone-filesecurity my-release-visionone-filesecurity-scanner-lb -o jsonpath='{.status.loadBalancer.ingress[0].hostname}') echo \"Your NLB DNS name is: $NLB_DNS\" Configure DNS (Route53) Go to Route53 Console → Hosted Zones.",
+    "metadata": {
+      "filename": "expose-icap-service-aws-nlb.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/expose-icap-service-aws-nlb.md",
+      "title": "Expose the ICAP service with AWS NLB",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.413Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      115,
+      60,
+      953
+    ]
+  },
+  {
+    "id": "expose-icap-service-aws-nlb.md_chunk_3",
+    "content": "Create an A record: Name: icap.example.com Type: A (Alias) Route traffic to: Network Load Balancer Select your NLB Install and use the c-icap-client to test your connection: # Install c-icap-client sudo apt-get install c-icap # Test with file scanning c-icap-client -i icap.example.com -s scan -p 1344 -f sample.txt -x \"X-scan-file-name: sample.txt\" If you want to enable TLS for your ICAP service, update your NLB configuration in my-values.yaml: scanner: externalService: enabled: true type: LoadBalancer annotations: service.beta.kubernetes.io/aws-load-balancer-type: \"external\" service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: \"ip\" service.beta.kubernetes.io/aws-load-balancer-scheme: \"internet-facing\" # TLS configuration service.beta.kubernetes.io/aws-load-balancer-ssl-cert: \"arn:aws:acm:region:account-id:certificate/certificate-id\" icapPort: 1344 Apply this configuration: helm upgrade my-release visionone-filesecurity/visionone-filesecurity \\ -n visionone-filesecurity \\ -f m",
+    "metadata": {
+      "filename": "expose-icap-service-aws-nlb.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/expose-icap-service-aws-nlb.md",
+      "title": "Expose the ICAP service with AWS NLB",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.413Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      129,
+      72,
+      999
+    ]
+  },
+  {
+    "id": "expose-icap-service-aws-nlb.md_chunk_4",
+    "content": "y-values.yaml © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "expose-icap-service-aws-nlb.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/expose-icap-service-aws-nlb.md",
+      "title": "Expose the ICAP service with AWS NLB",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.413Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 4
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      12,
+      12,
+      88
+    ]
+  }
+]

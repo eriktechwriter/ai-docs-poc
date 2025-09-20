@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-connecting-apex-one-saas
+slug: connecting-apex-one-saas
 title: Connecting Trend Micro Apex One as a Service
 ---
 

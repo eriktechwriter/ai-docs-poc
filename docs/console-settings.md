@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-console-settings
+slug: console-settings
 title: Console Settings
 ---
 

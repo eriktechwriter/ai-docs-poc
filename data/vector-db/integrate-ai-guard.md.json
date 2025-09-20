@@ -1,0 +1,134 @@
+[
+  {
+    "id": "integrate-ai-guard.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Integrate AI Guard Integrate AI Guard within your application to scan your AI usage for harmful content generation, sensitive information leakage, and prompt injections. Procedure Configure the AI Guard settings. Type a Name for the settings. Select a security level from the following: Cautious Moderate Aggressive Note Trend Micro recommends selecting Moderate. Use the toggles to determine which content types AI Guard scans for: Scan for harmful content Scan for sensitive information Scan for prompt attacks You can click Copy settings code to test the AI Guard settings in your environment. Click Apply to save the settings. Create an API key for AI Guard. Go to Administration → API Keys. Click Add API Key to create a new API key. Specify a name, user role, and expiration time for the API key. Important When adding the API key, you must select a Role with permission to run scans in AI Scanner.",
+    "metadata": {
+      "filename": "integrate-ai-guard.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/integrate-ai-guard.md",
+      "title": "Integrate AI Guard",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.584Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      135,
+      79,
+      993
+    ]
+  },
+  {
+    "id": "integrate-ai-guard.md_chunk_1",
+    "content": "If your organization does not have an existing user role with the necessary permissions, create a custom role or contact your administrator. For more information, see API Keys. Click Add. Copy and retain the API key. Integrate AI Guard with your application. Refer to the following code snippet for the integration. import os import requests # Get your Trend Vision One API key from environment variable api_key = os.environ.get(\"V1_API_KEY\") if not api_key: raise ValueError(\"Missing V1_API_KEY environment variable\") # Configure headers headers = { \"Authorization\": f\"Bearer {api_key}\", \"Content-Type\": \"application/json\" } # Prepare the payload for AI security scanning payload = { \"guard\": \"your_prompt_or_response_here\" } url = \"https://<BASE_V1_URL>/beta/aiSecurity/guard?detailedResponse=false\" # Make the API request response = requests.post( url, headers=headers, json=payload ) # Check response status if response.status_code == 200: result = response.json() print(\"Scan completed successf",
+    "metadata": {
+      "filename": "integrate-ai-guard.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/integrate-ai-guard.md",
+      "title": "Integrate AI Guard",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.584Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      122,
+      83,
+      999
+    ]
+  },
+  {
+    "id": "integrate-ai-guard.md_chunk_2",
+    "content": "ully\") else: print(f\"Error: {response.status_code} - {response.text}\") Note Trend Micro recommends storing your API key for AI Guard under the name $V1_API_KEY. Set the following as the base URL in the API request: <https://api.{region}.xdr.trendmicro.com/beta/aiSecurity> Unless your Trend Vision One account region is the US (the default region), replace {region} with the applicable region code in the base URL: eu jp au in sg mea For more information, see the AI Guard API reference. Related information AI Guard API reference © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "integrate-ai-guard.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/integrate-ai-guard.md",
+      "title": "Integrate AI Guard",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.584Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      84,
+      55,
+      605
+    ]
+  }
+]

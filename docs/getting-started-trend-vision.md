@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-getting-started-trend-vision
+slug: getting-started-trend-vision
 title: Getting started with Trend Vision One
 ---
 

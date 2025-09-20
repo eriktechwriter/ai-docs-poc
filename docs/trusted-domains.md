@@ -1,0 +1,11 @@
+---
+id: trusted-domains
+title: Trust Relationships
+sidebar_label: Trust Relationships
+description: Trust Relationships
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Trust Relationships View information about trust relationships of a domain in Active Directory (on-premises). The Trust Relationships tab allows you to view domains that have established trust relationships with the current domain you selected in the DOMAIN section on the left panel. Users authorized to authenticate into one domain can also authenticate into trusted domains with a relationship to the user's primary domain. The more trusted domains you have, the more resources users can access across the system. Limit or restrict trust relationships for domains to ensure users only have access to necessary resources. The following table details the columns on the Trust Relationships tab. Column name Description Domain name Name of a domain that has a trust relationship with the current selected domain. Trust direction Defines whether the trust relationship is one-way or two-way from the perspective of the current selected domain. Two-way: Both the current domain and the listed domain trust each other. Outgoing: The current domain trusts the listed domain, allowing users from the listed domain to access resources in the current domain. Incoming: The current domain is trusted by the listed domain, allowing users from the current domain to access resources in the listed domain. Disabled: The trust relationship between the current domain and the listed domain is disabled. Trust attributes Flags that define properties, behaviors, and restrictions for a trust relationship. To learn more about trust attributes, see Active Directory trust attributes. Last modified Time when a trust relationship was last modified. Created Time when a trust relationship was created. Distinguished name A fully qualified unique name that identifies the listed domain in a directory. Related information Active Directory trust attributes © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

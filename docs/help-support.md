@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-help-support
+slug: help-support
 title: Help and Support
 ---
 

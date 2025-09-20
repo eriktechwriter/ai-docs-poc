@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-firewall-americas-cloud-service
+slug: firewall-americas-cloud-service
 title: 'Firewall exceptions: Americas - cloud service extension'
 ---
 

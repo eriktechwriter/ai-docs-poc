@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-endpoint-inventory-faq
+slug: endpoint-inventory-faq
 title: Trend Vision One Endpoint Security Endpoint Inventory FAQ
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-license-information
+slug: license-information
 title: License Information
 ---
 

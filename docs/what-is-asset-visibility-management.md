@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-what-is-asset-visibility-management
+slug: what-is-asset-visibility-management
 title: What is Asset Visibility Management?
 ---
 

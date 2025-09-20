@@ -1,0 +1,90 @@
+[
+  {
+    "id": "4-1-10.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 4.1.10 - If the kubelet config.yaml configuration file is being used validate file ownership is set to root:root (Automated) Profile applicability: Level 1 - Worker Node Ensure that if the kubelet refers to a configuration file with the --config argument, that file is owned by root:root. The kubelet reads various parameters, including security settings, from a config file specified by the --config argument. If this file is specified you should restrict its file permissions to maintain the integrity of the file. The file should be owned by root:root. Note By default, /var/lib/kubelet/config.yaml file as set up by kubeadm is owned by root:root. Audit Automated AAC auditing has been modified to allow CIS-CAT to input a variable for the <PATH>/<FILENAME> of the kubelet config yaml file.",
+    "metadata": {
+      "filename": "4-1-10.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/4-1-10.md",
+      "title": "4.1.10 - If the kubelet config.yaml configuration file is being used validate file ownership is set to root:root (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.543Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      114,
+      68,
+      882
+    ]
+  },
+  {
+    "id": "4-1-10.md_chunk_1",
+    "content": "Set $kubelet_config_yaml=<PATH> based on the file location on your system: export kubelet_config_yaml=/var/lib/kubelet/config.yaml To perform the audit manually, run the below command (based on the file location on your system) on the each worker node: stat -c %aU %G /var/lib/kubelet/config.yaml Verify that the ownership is set to root:root. Remediation Run the following command (using the config file location identied in the Audit step): chown root:root /etc/kubernetes/kubelet.conf © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "4-1-10.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/4-1-10.md",
+      "title": "4.1.10 - If the kubelet config.yaml configuration file is being used validate file ownership is set to root:root (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.543Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      78,
+      48,
+      562
+    ]
+  }
+]

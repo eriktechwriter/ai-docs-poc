@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-forward-proxy-service
+slug: forward-proxy-service
 title: Forward Proxy Service
 ---
 

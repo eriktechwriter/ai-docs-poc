@@ -1,0 +1,11 @@
+---
+id: wildcard-support-dc
+title: Wildcard Support for the Device Control Allowed Programs List
+sidebar_label: Wildcard Support for the Device Control Allowed Programs List
+description: Wildcard Support for the Device Control Allowed Programs List
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Wildcard Support for the Device Control Allowed Programs List A program path and name should have a maximum of 259 characters and must only contain alphanumeric characters (A-Z, a-z, 0-9). It is not possible to specify only the program name. You can use wildcards in place of drive letters and program names. Use a question mark (?) to represent single-character data, such as a drive letter. Use an asterisk (*) to represent multi-character data, such as a program name. Note Wildcards cannot be used to represent folder names. The exact name of a folder must be specified. Wildcards are used correctly in the following examples: Correct Usage of Wildcards Example Matched Data ?:\Password.exe The "Password.exe" file located directly under any drive C:\Program Files\Microsoft\*.exe Any file in C:\Program Files that has a file extension C:\Program Files\*.* Any file in C:\Program Files that has a file extension C:\Program Files\a?c.exe Any .exe file in C:\Program Files that has 3 characters starting with the letter "a" and ending with the letter "c" C:\* Any file located directly under the C:\ drive, with or without file extensions Wildcards are used incorrectly in the following examples: Incorrect Usage of Wildcards Example Reason ??:\Buffalo\Password.exe ?? represents two characters and drive letters only have a single alphabetic character. *:\Buffalo\Password.exe * represents multi-character data and drive letters only have a single alphabetic character. C:\*\Password.exe Wildcards cannot be used to represent folder names. The exact name of a folder must be specified. C:\?\Password.exe © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

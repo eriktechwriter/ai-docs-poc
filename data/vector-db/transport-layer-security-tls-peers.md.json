@@ -1,0 +1,222 @@
+[
+  {
+    "id": "transport-layer-security-tls-peers.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Transport Layer Security (TLS) peers Transport Layer Security (TLS) is a protocol that helps to secure data and ensure communication privacy between endpoints. Cloud Email Gateway Protection allows you to configure TLS encryption policies between Cloud Email Gateway Protection and specified TLS peers. Cloud Email Gateway Protection supports the following TLS protocols in descending order of priority: TLS 1.3, TLS 1.2, TLS 1.1 and TLS 1.0. To prevent against man-in-the-middle attacks on TLS connections, Cloud Email Gateway Protection introduces DNS-based Authentication of Named Entities (DANE) and Mail Transfer Agent - Strict Transport Security (MTA-STS) to verify the identity of the destination servers. Note You can enable DANE or MTA-STS authentication between Cloud Email Gateway Protection and specified TLS peers during outbound mail delivery.",
+    "metadata": {
+      "filename": "transport-layer-security-tls-peers.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/transport-layer-security-tls-peers.md",
+      "title": "Transport Layer Security (TLS) peers",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.270Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      3,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      120,
+      71,
+      946
+    ]
+  },
+  {
+    "id": "transport-layer-security-tls-peers.md_chunk_1",
+    "content": "For inbound mails, Cloud Email Gateway Protection inherently supports MTA-STS after you have set up a DNS record and a policy for your domain. For details, see About mta-sts records for inbound protection. The Transport Layer Security (TLS) Peers screen uses the following important terms: Term Details Managed Domain list Status (Managed Domain) Enabled: Domain is enabled Disabled: Domain is disabled Default (for unspecified domains) This configuration applies to all domains that are not in the managed domain list Domain TLS Peers list Status (TLS Peer) Enabled: Cloud Email Gateway Protection applies your specified TLS configuration to the peer Disabled: Cloud Email Gateway Protection does not apply your specified TLS configuration to the peer Instead, the Default (for unspecified peers) TLS configuration applies. TLS peer Cloud Email Gateway Protection can apply your specified TLS configuration with this peer during network communications.",
+    "metadata": {
+      "filename": "transport-layer-security-tls-peers.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/transport-layer-security-tls-peers.md",
+      "title": "Transport Layer Security (TLS) peers",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.270Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      1,
+      0,
+      5,
+      1,
+      0,
+      0,
+      0,
+      5,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      134,
+      62,
+      953
+    ]
+  },
+  {
+    "id": "transport-layer-security-tls-peers.md_chunk_2",
+    "content": "Minimum TLS version Minimum TLS version that the TLS peer must use to communicate with Cloud Email Gateway Protection through the TLS protocol. TLS 1.3: The TLS peer must use TLS 1.3. TLS 1.2: The TLS peer must use TLS 1.2 or later. No restriction: The TLS peer can use any TLS protocol. Security level Opportunistic TLS: Communicates using encryption if the peer supports and elects to use TLS Communicates without encryption if the peer does not support TLS Communicates without encryption if the peer supports TLS but elects not to use TLS Mandatory TLS: Communicates using encryption if the peer supports and elects to use TLS Does not communicate if the peer does not support TLS Does not communicate if the peer supports TLS but elects not to use TLS Opportunistic DANE TLS (Outbound protection only) Communicates using encryption only if remote SMTP server has usable DANE TLSA record(s) and the peer DANE authentication succeeds Downgrades to Mandatory TLS if all TLSA record(s) are unusable",
+    "metadata": {
+      "filename": "transport-layer-security-tls-peers.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/transport-layer-security-tls-peers.md",
+      "title": "Transport Layer Security (TLS) peers",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.270Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      146,
+      51,
+      999
+    ]
+  },
+  {
+    "id": "transport-layer-security-tls-peers.md_chunk_3",
+    "content": "due to unsupported parameters or malformed data In other cases, downgrades to Opportunistic TLS Mandatory DANE TLS (Outbound protection only) Communicates using encryption if the peer DANE authentication succeeds Does not communicate if the peer does not pass DANE authentication MTA-STS (Outbound protection only) Delivers the message using encryption when the TLS peer uses the policy mode enforce or testing and passes MTA-STS validation Does not deliver the message when the TLS peer uses the policy mode enforce but fails the MTA-STS validation Uses Opportunistic TLS to deliver the message when the policy of the TLS peer cannot be obtained, the TLS peer uses the policy mode none, or the TLS peer uses the policy mode testing but fails the MTA-STS validation Note When a TLS peer supports both DANE and MTA-STS, Trend Micro recommends that you select DANE for communicating with the peer. DANE is considered more secure than MTA-STS for protecting SMTP connections.",
+    "metadata": {
+      "filename": "transport-layer-security-tls-peers.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/transport-layer-security-tls-peers.md",
+      "title": "Transport Layer Security (TLS) peers",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.270Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      5,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      148,
+      64,
+      972
+    ]
+  },
+  {
+    "id": "transport-layer-security-tls-peers.md_chunk_4",
+    "content": "Default (for unspecified peers) This configuration applies to all peers that meet any of the following criteria: Peer is not in the peer list Peer is in the peer list, but is not enabled Related information Adding domain TLS peers Editing domain TLS peers © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "transport-layer-security-tls-peers.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/transport-layer-security-tls-peers.md",
+      "title": "Transport Layer Security (TLS) peers",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.270Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 4
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      47,
+      34,
+      330
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+---
+id: add-disclaimer-asp-for-eo-cecp
+title: \"Add disclaimer\" available for BEC detection in Advanced Spam Protection for Exchange Online in Cloud Email and Collaboration Protection
+sidebar_label: \"Add disclaimer\" available for BEC detection in Advanced Spam Protection for Exchange Online in Cloud Email and Collaboration Protection
+description: \"Add disclaimer\" available for BEC detection in Advanced Spam Protection for Exchange Online in Cloud Email and Collaboration Protection
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ "Add disclaimer" available for BEC detection in Advanced Spam Protection for Exchange Online in Cloud Email and Collaboration Protection February 21, 2025—Cloud Email and Collaboration Protection adds the "Add disclaimer" action for BEC detections to the Advanced Spam Protection security filter of ATP policies for Exchange Online and Exchange Online (Inline Mode). Email and Collaboration Security → Cloud Email and Collaboration Protection © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

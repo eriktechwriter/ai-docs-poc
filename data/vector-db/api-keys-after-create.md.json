@@ -1,0 +1,134 @@
+[
+  {
+    "id": "api-keys-after-create.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Manage API keys after their creation Tip This article describes how to create API keys for legacy accounts. If you're using a new Trend Micro Cloud One account, see Manage API keys instead. You can modify the properties of an API key at any time after it is created. Reset a secret key Use an APIKeysApi object to generate a new secret key for an existing API key. For example, reset the secret key when periodically rotating API keys. Once replaced, the previous secret key will no longer be authenticated by Server & Workload Protection. When you reset the secret key, the returned API key contains the new secret key in the secret_key (Python) or secretKey (JavaScript) property. For Java, you can use the getSecretKey method of the returned ApiKey object.",
+    "metadata": {
+      "filename": "api-keys-after-create.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/api-keys-after-create.md",
+      "title": "Manage API keys after their creation",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.695Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      120,
+      73,
+      848
+    ]
+  },
+  {
+    "id": "api-keys-after-create.md_chunk_1",
+    "content": "The APIKeysApi class provides the replace_api_secret_key function (replaceApiSecretKey in JavaScript and Java) that takes the ID of the API key as a parameter. The following example creates a new secret key for an existing API key. View source # Reset the key api_keys_api = api.APIKeysApi(api.ApiClient(configuration)) return api_keys_api.replace_api_secret_key(key_id, api_version) Also see the Generate an API Secret Key in the API Reference. Control API key access after creation After you create an API key you still have control over the API key's access to Server & Workload Protection: Modify access rights: Modify the role that is associated with the API key or associate the API key with a different role. (See also Control Access Using Roles.) Revoke access: Either lock out the key to temporarily revoke access, or delete the API key to permanently revoke access. To modify an API key, create an ApiKey object and set values for the properties that you want to change.",
+    "metadata": {
+      "filename": "api-keys-after-create.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/api-keys-after-create.md",
+      "title": "Manage API keys after their creation",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.695Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      7,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      136,
+      70,
+      980
+    ]
+  },
+  {
+    "id": "api-keys-after-create.md_chunk_2",
+    "content": "Then, use the APIKeysApi class to modify the API key on Server & Workload Protection. The following example code changes the role that is associated with an API key. View source # Create a key and set the role ID key = api.ApiKey() key.role_id = role_id # Modify the key on Server & Workload Protection api_keys_api = api.APIKeysApi(api.ApiClient(configuration)) api_keys_api.modify_api_key(key_id, key, api_version) return key.role_id Also see the Modify an API Key, Delete and API Key, and Modify an Administrator Role operations in the API Reference. Tip To use Server & Workload Protection to modify the API key, go to Administration → User Management → API Keys, select the API key and click Properties. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "api-keys-after-create.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/api-keys-after-create.md",
+      "title": "Manage API keys after their creation",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.695Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      107,
+      57,
+      783
+    ]
+  }
+]

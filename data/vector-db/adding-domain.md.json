@@ -1,0 +1,178 @@
+[
+  {
+    "id": "adding-domain.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Adding a domain Procedure Click Domains. On the Domains screen, click Add. The Add Domain screen appears. In the General section, specify the following: Domain name: Includes everything to the right of the at sign (@) in email addresses managed by the server(s) being added. Skip default domain-level policy creation: By default, this check box is selected. Trend Micro recommends that you skip creating default domain-level policy rules. The preconfigured default organization-level policy rules have the same rule scanning criteria as the default domain-level policy rules and will automatically apply to the new domain. If your account was provisioned before the release of the organization-level policy feature, no default organization-level policy rules were available. Trend Micro recommends that you manually create organization-level policy rules to provide organization-level protection.",
+    "metadata": {
+      "filename": "adding-domain.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/adding-domain.md",
+      "title": "Adding a domain",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.614Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      7,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      128,
+      73,
+      985
+    ]
+  },
+  {
+    "id": "adding-domain.md_chunk_1",
+    "content": "In the Inbound Servers section, specify the following: Recipient: Recipient can be a wildcard (*) or an exact email address. Specify the local part of an email address. IP address or FQDN: Fully qualified domain name (FQDN) is a unique name, which includes both host name and domain name, and resolves to a single IP address. Port: Port is a number from 1 to 65535 that an inbound server listens on. These ports vary based on server configuration. Preference: Preference, sometimes referred to as distance, is a value from 1 to 100. The lower the preference value, the higher the priority. If more than one mail server is available, delivery is prioritized to servers with lower values. Using the same value will balance delivery to each server. Note You can specify up to 100 inbound servers and 100 outbound servers. Use the add and the remove buttons to manage additional entries. Here is an example to explain how messages are routed to inbound servers based on preference values.",
+    "metadata": {
+      "filename": "adding-domain.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/adding-domain.md",
+      "title": "Adding a domain",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.614Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      127,
+      79,
+      984
+    ]
+  },
+  {
+    "id": "adding-domain.md_chunk_2",
+    "content": "Message routing example Recipient IP Address or FQDN Preference *@test.com 1.2.3.4 10 recipient1@test.com 1.2.3.5 11 recipient2@test.com 1.2.3.6 9 If a message is sent to recipient1@test.com, Cloud Email Gateway Protection routes the message to the server (IP address: 1.2.3.4) with lower preference value (10), and then the server (IP address: 1.2.3.5) if the first server is unavailable. If a message is sent to recipient2@test.com, Cloud Email Gateway Protection routes the message to the server (IP address: 1.2.3.6) with lower preference value (9), and then the server (IP address: 1.2.3.4) if the first server is unavailable. Send test message to: (optional) Email address used to confirm email delivery from Cloud Email Gateway Protection. In the Outbound Servers section, specify the following: Note Outbound protection is disabled for trial users. To enable this feature, purchase a full license or contact technical support. Select Enable outbound protection.",
+    "metadata": {
+      "filename": "adding-domain.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/adding-domain.md",
+      "title": "Adding a domain",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.614Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      113,
+      52,
+      969
+    ]
+  },
+  {
+    "id": "adding-domain.md_chunk_3",
+    "content": "WARNING Enabling outbound protection without specifying outbound servers will prevent the delivery of any outbound traffic routed through the service. Configure outbound servers using the following options: Microsoft 365: Relays your outbound messages from your Microsoft 365 solution. Google Workspace: Relays your outbound messages from your Google Workspace solution. User-defined mail servers: Relays your outbound messages from the mail servers you specified for your managed domain. Click Add Domain. If the domain is valid and an MX record for the domain exists, the domain appears on the Domains screen. After adding a domain, Trend Micro sends a welcome message to the administrative email address on record. The domain is also automatically added under Administration → Domain Verification in the Trend Vision One console. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "adding-domain.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/adding-domain.md",
+      "title": "Adding a domain",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.614Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      121,
+      73,
+      907
+    ]
+  }
+]

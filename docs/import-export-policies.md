@@ -1,0 +1,11 @@
+---
+id: import-export-policies
+title: Importing and Exporting Policies
+sidebar_label: Importing and Exporting Policies
+description: Importing and Exporting Policies
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Importing and Exporting Policies Export policies for backup or to import to another Trend Micro Apex Central server of the same version. Note Trend Micro Apex Central exports policy settings but not policy targets. A parent policy stays as a parent after the export or import. A child policy becomes a parent after the export. Consequently, it is a parent after the import. Trend Micro Apex Central cannot import a policy if its name is the same as an existing child policy. If the existing policy is not a child, Trend Micro Apex Central overwrites it after the import. For more information, see the following topics: Creating a New Policy Inheriting Policy Settings Procedure Go to Policies → Policy Management. The Policy Management screen appears. Select the type of product settings from the Product list. The screen refreshes to display policies created for the selected managed product. To export, select one or several policies, click Export Settings, and then save the resulting policy file. If you exported a single policy, the resulting file has the extension *.cmpolicy. If you exported several policies, the resulting file is a compressed (*.zip) file containing the individual .cmpolicy files. To import, click Import Settings and then locate and load the policy file. You can import an entire *.zip file or import individual *.cmpolicy files one by one. If the policy already exists in the policy list, a confirmation prompt appears, asking if you want to overwrite the existing policy. Click OK to proceed. The screen refreshes and displays the imported policy at the top of the list. For more information about reordering the policy list, see Reordering the Policy List. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

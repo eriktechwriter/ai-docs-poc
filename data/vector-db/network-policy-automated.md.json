@@ -1,0 +1,178 @@
+[
+  {
+    "id": "network-policy-automated.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 5.4.4 Ensure Network Policy is Enabled and set as appropriate (Automated) Profile applicability: Level 1 - Cluster / Control Plane Ensure that Network Policy is enabled and set appropriately when creating an Amazon EKS cluster, as the network policy option selected at creation cannot be changed later. Amazon EKS supports Calico Network Policies, an open-source solution that uses Linux IPTables to enforce network security policies. These policies are translated into rules that allow or disallow traffic between IP pairs, effectively acting as a pod-level firewall that restricts traffic between sources within a cluster. By default, pod-to-pod traffic is unrestricted within a cluster unless a Network Policy that uses labels to select specific pods is implemented.",
+    "metadata": {
+      "filename": "network-policy-automated.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/network-policy-automated.md",
+      "title": "5.4.4 Ensure Network Policy is Enabled and set as appropriate (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.739Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      6,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      103,
+      72,
+      858
+    ]
+  },
+  {
+    "id": "network-policy-automated.md_chunk_1",
+    "content": "Once a policy is applied to a pod, it will block any connections not explicitly allowed by the policy, while pods not selected by any Network Policy will continue to accept all traffic. Network Policies are managed via the Kubernetes Network Policy API and must be enforced by a compatible network plugin; without this, creating the resource alone will have no effect. Enabling Network Policy requires the Network Policy add-on, which is automatically included when a new cluster is set up with Network Policy but must be added manually to existing clusters. The process of enabling or disabling Network Policy triggers a rolling update of all cluster nodes, a long operation that blocks other cluster operations until complete. Additionally, enforcing Network Policy consumes extra node resources, increasing the memory footprint of the kube-system process by approximately 128MB and requiring about 300 millicores of CPU. Impact Network Policy requires the Network Policy add-on.",
+    "metadata": {
+      "filename": "network-policy-automated.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/network-policy-automated.md",
+      "title": "5.4.4 Ensure Network Policy is Enabled and set as appropriate (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.739Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      11,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      11,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      127,
+      87,
+      981
+    ]
+  },
+  {
+    "id": "network-policy-automated.md_chunk_2",
+    "content": "This add-on is included automatically when a cluster with Network Policy is created, but for an existing cluster, it needs to be added before enabling Network Policy. Enabling or disabling Network Policy causes a rolling update of all cluster nodes, similar to performing a cluster upgrade. This operation is long-running and will block other operations on the cluster (including delete) until it has completed. Enabling Network Policy enforcement consumes additional resources in nodes, increasing the memory footprint of the kube-system process by approximately 128MB, and requiring around 300 millicores of CPU. Audit Check for the following is not null and set with the appropriate group id: export CLUSTER_NAME=<your cluster name> aws eks describe-cluster --name ${CLUSTER_NAME} --query \"cluster.resourcesVpcConfig.clusterSecurityGroupId\" Remediation Utilize Calico or another network policy engine to segment and isolate your traffic. © 2025 Trend Micro Incorporated.",
+    "metadata": {
+      "filename": "network-policy-automated.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/network-policy-automated.md",
+      "title": "5.4.4 Ensure Network Policy is Enabled and set as appropriate (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.739Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      118,
+      87,
+      973
+    ]
+  },
+  {
+    "id": "network-policy-automated.md_chunk_3",
+    "content": "All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "network-policy-automated.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/network-policy-automated.md",
+      "title": "5.4.4 Ensure Network Policy is Enabled and set as appropriate (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.739Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      6,
+      6,
+      41
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+---
+id: cloud-accounts-exclusion-aws-orgs
+title: Cloud Accounts now supports excluding accounts when connecting AWS organizations
+sidebar_label: Cloud Accounts now supports excluding accounts when connecting AWS organizations
+description: Cloud Accounts now supports excluding accounts when connecting AWS organizations
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Cloud Accounts now supports excluding accounts when connecting AWS organizations October 14, 2024—You can now specify accounts to exclude when connecting or updating AWS Organizations in the Cloud Accounts app. This feature can be used to exclude certain accounts from being monitored by Trend Vision One, or to allow connecting excluded accounts individually to set up feature and account configurations different from the organization. Cloud Security → Cloud Accounts © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

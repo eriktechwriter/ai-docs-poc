@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-pre-release-disclaimer
+slug: pre-release-disclaimer
 title: Pre-release disclaimer
 ---
 

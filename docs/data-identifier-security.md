@@ -1,0 +1,11 @@
+---
+id: data-identifier-security
+title: Data identifier types
+sidebar_label: Data identifier types
+description: Data identifier types
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Data identifier types Digital assets are files and data that an organization must protect against unauthorized transmission. Administrators can define digital assets using the following data identifiers: Expressions: Data that has a certain structure. For details, see Expressions. File attributes: File properties such as file type and file size. For details, see File Attributes. Keyword lists: A list of special words or phrases. For details, see Keywords. Note Administrators cannot delete a data identifier that a DLP template is using. Delete the template before deleting the data identifier. Related information Expressions Keywords File Attributes © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

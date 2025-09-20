@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-managing-webhooks
+slug: managing-webhooks
 title: Managing webhooks
 ---
 

@@ -1,0 +1,134 @@
+[
+  {
+    "id": "pac-file-configuration-tips.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Common PAC file configuration errors When configuring an existing PAC file, or creating a new one, you should be aware of the following common configuration errors. If your configuration is incorrect, the PAC file may fail. Configure Bypass domains (Basic mode) or SkipHosts (Advanced mode) One of the common errors occurs when adding domains to the PAC file. You must ensure that the domains are properly configured in the PAC file. Domain configurations: example.com domain only matches <example.com> itself, but not its subdomains, for example <www.example.com> *.example.com matches all subdomains of <example.com>, such as <www.example.com>, but not the main domain, <example.com>.",
+    "metadata": {
+      "filename": "pac-file-configuration-tips.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/pac-file-configuration-tips.md",
+      "title": "Common PAC file configuration errors",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.802Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      106,
+      60,
+      775
+    ]
+  },
+  {
+    "id": "pac-file-configuration-tips.md_chunk_1",
+    "content": "id configuration which does not match either <example.com> or <www.example.com> Domain entries are invalid if they contain: Ports: 10.206.199.33:8843, *example.com:8443 Paths, this includes the domain containing a \"/\" : abc.example.com/, abc.example.com/category, http://http.badssl.com:9998/， 172.16.0.0/16 Protocol prefix: http://example.com, https://www.example.com Do not modify the variable name of SkipHosts in advanced mode PROXY entry configuration in the Advanced Mode PAC file content - Advanced mode When configuring your proxy entries in the advanced mode, ensure that: Each PROXY entry (except DIRECT) must start with PROXY (in all uppercase letters) Each PROXY entry (except DIRECT) must include a port number Each PROXY entry must not include protocol, such as http:// or https:// Multiple PROXY entries must be separated by semicolons (;) The examples below illustrate these common errors when adding a proxy.",
+    "metadata": {
+      "filename": "pac-file-configuration-tips.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/pac-file-configuration-tips.md",
+      "title": "Common PAC file configuration errors",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.802Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      128,
+      73,
+      925
+    ]
+  },
+  {
+    "id": "pac-file-configuration-tips.md_chunk_2",
+    "content": "The correct entry should be: var DefaultScanner = \"PROXY 10.206.199.222:8088; PROXY proxy.ztsa-iag-int.trendmicro.com:80; DIRECT\"; In this example, the first proxy entry is missing the port number : var DefaultScanner = \"PROXY 10.206.199.222; PROXY proxy.ztsa-iag-int.trendmicro.com:80; DIRECT\"; In this example, the second proxy entry is missing PROXY keyword for the second proxy entry: var DefaultScanner = \"PROXY 10.206.199.222:8088; proxy.ztsa-iag-int.trendmicro.com:80; DIRECT\"; In this example, the second proxy entry uses the lowercase \"proxy\" instead of the upper case PROXY keyword : var DefaultScanner = \"PROXY 10.206.199.222:8088; proxy proxy.ztsa-iag-int.trendmicro.com:80; DIRECT\"; PAC file configuration errors in the Advanced Mode When configuring your PAC file in advanced mode, do not: Change any existing function name and how they are being called. Modify any content in functions with skip_prefix. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "pac-file-configuration-tips.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/pac-file-configuration-tips.md",
+      "title": "Common PAC file configuration errors",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.802Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      144,
+      67,
+      993
+    ]
+  }
+]

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-sg-ports-used
+slug: sg-ports-used
 title: Service Gateway virtual appliance communication ports
 ---
 

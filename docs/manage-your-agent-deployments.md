@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-manage-your-agent-deployments
+slug: manage-your-agent-deployments
 title: Manage Your Agent Deployments
 ---
 

@@ -1,0 +1,11 @@
+---
+id: understanding-quarantine
+title: Understanding quarantine
+sidebar_label: Understanding quarantine
+description: Understanding quarantine
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Understanding quarantine Quarantined messages are blocked as detected spam or other inappropriate content before delivery to an email account. Messages held in quarantine can be reviewed and manually deleted or delivered. WARNING Cloud Email Gateway Protection automatically deletes messages from the quarantine after 30 days. To go to the Quarantine screen, choose Email and Collaboration Security Operations → Cloud Email Gateway Protection → Quarantine. Do any of the following to manage quarantined messages on the administrator console: Use the Query screen to view a list of quarantined messages for your managed domains. You can review the messages, delete them, or release them for further scanning. Queries include data for up to seven continuous days in one calendar month. Use more than one query to search across calendar months. Use the End User Quarantine Settings screen to specify the type of sender addresses shown on the End User Console and in the quarantine digest notifications. On this screen, you can also configure settings for end users to view and take action on email messages quarantined for a specific reason. Use the Digest Settings screen to configure the policy rules and templates that Cloud Email Gateway Protection applies to automatically send quarantine digest notifications. Intended digest recipients can either go to the End User Console or use inline actions in the digest notifications if available to manage quarantined messages. Related information Querying the quarantine Configuring end user quarantine settings Quarantine digest settings © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

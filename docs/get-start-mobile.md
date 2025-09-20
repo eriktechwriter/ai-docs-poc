@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-get-start-mobile
+slug: get-start-mobile
 title: Getting started with Trend Vision One Mobile
 ---
 

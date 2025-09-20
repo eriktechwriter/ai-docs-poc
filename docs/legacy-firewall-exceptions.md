@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-legacy-firewall-exceptions
+slug: legacy-firewall-exceptions
 title: Legacy firewall exceptions
 ---
 

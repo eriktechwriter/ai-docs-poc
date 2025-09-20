@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-data-source-tenable-setup
+slug: data-source-tenable-setup
 title: Tenable Vulnerability Management integration
 ---
 

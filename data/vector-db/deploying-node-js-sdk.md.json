@@ -1,0 +1,134 @@
+[
+  {
+    "id": "deploying-node-js-sdk.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Deploy with Node.js SDK Use the Trend Vision One™ File Security Node.js SDK to scan files for malware. The Node.js SDK for Trend Vision One™ File Security empowers you to craft applications which seamlessly integrate with File Security. With this SDK you can perform a thorough scan of data and artifacts within your applications to identify potential malicious elements. Follow the steps below to set up your development environment and configure your project, laying the foundation to effectively use File Security. Related information Node.js API reference Code example Common errors Prerequisites Before installing the SDK, ensure you have the following: Node.js 16.20.1+, 18.x or later Trend Vision One account associated with your region Configuring custom user roles with File Security permissions When you have all the prerequisites, continue with creating an API key.",
+    "metadata": {
+      "filename": "deploying-node-js-sdk.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/deploying-node-js-sdk.md",
+      "title": "Deploy with Node.js SDK",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.220Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      130,
+      83,
+      965
+    ]
+  },
+  {
+    "id": "deploying-node-js-sdk.md_chunk_1",
+    "content": "Create an API key The File Security SDK requires a valid API key provided as a parameter to the SDK client object. Trend Vision One API keys are associated with different regions. Refer to the region flag below to obtain a better understanding of the valid regions associated with the API key. Procedure Go to Administrations → API Keys. Click Add API Key. Configure the API key to use the role with the Run file scan via SDK permission. Verify that the API key is associated with the region you plan to use. Set an expiry time for the API key and make a record of it for future reference. Install the SDK Procedure Ensure you have already created the API key. Run the following commands in your Node.js application folder to install the Node.js package. npm install file-security-sdk Continue to authenticating. Authenticate Procedure Supply the AMaaSHostName and API Key to initiate a new instance of the AmaasGrpcClient.",
+    "metadata": {
+      "filename": "deploying-node-js-sdk.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/deploying-node-js-sdk.md",
+      "title": "Deploy with Node.js SDK",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.220Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      135,
+      75,
+      923
+    ]
+  },
+  {
+    "id": "deploying-node-js-sdk.md_chunk_2",
+    "content": "import { AmaasGrpcClient } from \"file-security-sdk\"; Use a fully qualified domain name (FQDN) with or without a port. Replace __REGION__ with the region of your Trend Vision One account. const amaasHostName = \"antimalware.__REGION__.cloudone.trendmicro.com:443\"; Use the region. Replace __REGION__ with the region of your Trend Vision One account. const amaasHostName = __REGION__; Replace __YOUR_OWN_VISION_ONE_API_KEY__ with your own Trend Vision One API key. const key = __YOUR_OWN_VISION_ONE_API_KEY__; Create a new instance of the AmaasGrpcClient class using the key. const scanClient = new AmaasGrpcClient(amaasHostName, key); Next steps Refer to the following resources as needed: API reference Code example Common errors © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "deploying-node-js-sdk.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/deploying-node-js-sdk.md",
+      "title": "Deploy with Node.js SDK",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.220Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      100,
+      61,
+      803
+    ]
+  }
+]

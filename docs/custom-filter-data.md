@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-custom-filter-data
+slug: custom-filter-data
 title: Custom filter data
 ---
 

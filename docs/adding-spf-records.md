@@ -1,0 +1,11 @@
+---
+id: adding-spf-records
+title: Adding SPF records
+sidebar_label: Adding SPF records
+description: Adding SPF records
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Adding SPF records Sender Policy Framework (SPF) is an open standard to prevent sender address forgery. An SPF record is a type of Domain Name Service (DNS) record that identifies which mail servers are permitted to send email messages on behalf of your domain. The purpose of an SPF record is to prevent spammers from sending messages with forged addresses at your domain. Procedure Access your DNS hosting provider's website. Edit the existing SPF record or create a new TXT record for SPF. If you have an SPF record for your domain, add required values to the current record for Trend Micro. For example, change the following TXT record: v=spf1 ip4:x.x.x.x include:spf.example.com ~all Into: v=spf1 ip4:x.x.x.x include:<SPF record for Trend Micro Email Security server> include:spf.example.com ~all The SPF record for Trend Micro Email Security server is as follows for each serving site: Serving Site SPF record North America, Latin America and Asia Pacific spf-us.tmes.trendmicro.com Europe and Africa spf.tmes.trendmicro.eu Australia and New Zealand spf.tmes-anz.trendmicro.com Japan spf.tmems-jp.trendmicro.com Singapore spf.tmes-sg.trendmicro.com India spf.tmes-in.trendmicro.com Middle East (UAE) spf.tmes-uae.trendmicro.com Note If you are using the "spf.tmes.trendmicro.com" record for your serving site, Trend Micro recommends that you change it to the above SPF record that is reserved specifically for your site. You can also find the SPF record for Cloud Email Gateway Protection server in Domains > Domain name > Outbound Servers on the Cloud Email Gateway Protection console. Important A domain cannot have more than one TXT record for SPF. If your domain has more than one SPF record, a message delivery or spam classification issue may occur. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

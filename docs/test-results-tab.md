@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-test-results-tab
+slug: test-results-tab
 title: Test results tab
 ---
 

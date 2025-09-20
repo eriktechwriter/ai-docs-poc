@@ -1,0 +1,222 @@
+[
+  {
+    "id": "moving-agents-ipxfer-tool.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Move agents with the IPXfer tool Use the IPXfer tool to move agents to Trend Vision One Standard Endpoint Protection. Follow the instructions below to connect your Trend Micro Apex One as a Service or Trend Micro Apex Central on-premises products to Trend Vision One Endpoint Security and move selected endpoints from your Trend Micro Apex One server to Standard Endpoint Protection. Important The IPXfer tool can only move one agent at a time and you must have administrator access to the endpoint device where the agent is installed. To move more than one agent at a time, see Move agents with the Trend Micro Apex One server console. Note After moving agents to Standard Endpoint Protection, you cannot move them back to Trend Micro Apex One as a Service or Trend Micro Apex Central using the Trend Vision One console. If you need to move agents from Trend Vision One, you must use the IPXfer tool.",
+    "metadata": {
+      "filename": "moving-agents-ipxfer-tool.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/moving-agents-ipxfer-tool.md",
+      "title": "Move agents with the IPXfer tool",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.720Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      5,
+      0,
+      0,
+      3,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      144,
+      64,
+      990
+    ]
+  },
+  {
+    "id": "moving-agents-ipxfer-tool.md_chunk_1",
+    "content": "When moving agents using this method, the agents automatically inherit the settings of the parent group or domain. They do not retain their settings from the source Trend Micro Apex One server. To move the agents using the IPXfer tool, please note the following requirements: You must download the IPXfer tool from the target server. The certificate (OfcNTCer.dat) must be downloaded from the target server. For 32-bit devices, use IpXfer.exe. For 64-bit devices, use IpXfer_x64.exe Procedure To copy your current endpoint policies, export Trend Micro Apex One security agent policies to Standard Endpoint Protection. On the Trend Micro Apex Central web console, go to Policies → Policy Management. Select the type of product settings from the Product list. Select one or more policies and click Export Settings and save the file. If you exported a single policy, the resulting file has the extension *.CMPOLICY.",
+    "metadata": {
+      "filename": "moving-agents-ipxfer-tool.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/moving-agents-ipxfer-tool.md",
+      "title": "Move agents with the IPXfer tool",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.720Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      1,
+      2,
+      0,
+      2,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      132,
+      76,
+      912
+    ]
+  },
+  {
+    "id": "moving-agents-ipxfer-tool.md_chunk_2",
+    "content": "If you exported several policies, the resulting file is a compressed (.ZIP) file containing the individual .CMPOLICY files. In the Trend Vision One console, go to Endpoint Security → Standard Endpoint Protection. If you have more than one Standard Endpoint Protection instance, select the instance you want to use for the evaluation. In the target instance, go to Policies → Policy Management Click Import Settings and locate the policy file to import. You can import a .ZIP file containng several policy files, or import individual .CMPOLICY files. If the selected policy already exists, a confirmation prompt appears asking if you want to overwrite the existing policy. Click OK to continue. In the Trend Vision One console, go to Endpoint Security → Standard Endpoint Protection. If you have more than one Standard Endpoint Protection instance, select the instance you want to use for the evaluation.",
+    "metadata": {
+      "filename": "moving-agents-ipxfer-tool.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/moving-agents-ipxfer-tool.md",
+      "title": "Move agents with the IPXfer tool",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.720Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      2,
+      6,
+      0,
+      5,
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      116,
+      50,
+      903
+    ]
+  },
+  {
+    "id": "moving-agents-ipxfer-tool.md_chunk_3",
+    "content": "In the target instance, go to Directories → Product Servers Copy the first six characters of the server FQDN before manage.trendmicro.com. For example, if the target server address is https://exampl.manage.trendmicro.com:443/officescan, then copy exampl. Open a new tab in your browser and use the following links to download the necessary files. Replace <FQDN> with the six characters copied in the previous step. URL Description https://<FQDN>.manage.trendmicro.com:443/officescan/hotfix_pccnt/Common/OfcNTCer.dat Target server certificate https://<FQDN>.manage.trendmicro.com:443/officescan/hotfix_admin/utility/ipxfer/ipxfer.exe IpXfer tool for 32-bit devices https://<FQDN>.manage.trendmicro.com:443/officescan/hotfix_admin/utility/ipxfer/ipxfer_x64.exe IpXfer tool for 64-bit devices Transfer the files to the target endpoints you want to move to Trend Vision One Endpoint Security. Note Make sure the IPXfer tool and certificate files are in the same folder.",
+    "metadata": {
+      "filename": "moving-agents-ipxfer-tool.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/moving-agents-ipxfer-tool.md",
+      "title": "Move agents with the IPXfer tool",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.720Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      135,
+      72,
+      965
+    ]
+  },
+  {
+    "id": "moving-agents-ipxfer-tool.md_chunk_4",
+    "content": "On the target endpoint, run Command Prompt with administrator permission in the folder where the IPXfer tool is located. Type the following command and press ENTER. <TOOL> -s <FQDN>.manage.trendmicro.com -p 80 -sp 443 -e ofcntcer.dat -pwd <unload password> <TOOL> is the IPXfer version, ipxfer.exe for 32-bit devices, ipxfer_x64.exe for 64-bit devices. <FQDN> is the six characters from the target server address. <unload password> is the unload password of the Trend Micro Apex One agent on the endpoint. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "moving-agents-ipxfer-tool.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/moving-agents-ipxfer-tool.md",
+      "title": "Move agents with the IPXfer tool",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.720Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 4
+    },
+    "embedding": [
+      0,
+      2,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      80,
+      53,
+      580
+    ]
+  }
+]

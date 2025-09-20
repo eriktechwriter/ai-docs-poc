@@ -1,0 +1,178 @@
+[
+  {
+    "id": "add-amazon-workspaces.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Add Amazon WorkSpaces Important AWS Accounts in Trend Vision One are now managed by the Cloud Accounts app. To add new AWS accounts, see Adding an AWS account using CloudFormation. You can still use APIs to add new accounts to Server & Workload Protection. However, Trend Micro recommends using the Cloud Accounts app, which provides access to more advanced cloud security and XDR capabilities. This topic is for reference only. Amazon WorkSpaces are virtual cloud desktops that run in Amazon Web Services (AWS). You can protect them with Server & Workload Protection following the instructions below. Note The agent only supports Amazon WorkSpaces Windows desktops — it does not support Linux desktops.",
+    "metadata": {
+      "filename": "add-amazon-workspaces.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/add-amazon-workspaces.md",
+      "title": "Add Amazon WorkSpaces",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.586Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      108,
+      75,
+      792
+    ]
+  },
+  {
+    "id": "add-amazon-workspaces.md_chunk_1",
+    "content": "ompleting the steps in one of the above-mentioned sections: your Amazon WorkSpaces are displayed in the Server & Workload Protection console on the left under Computers > your_AWS_account > your_region > WorkSpaces. your Amazon WorkSpaces are protected by the agent. Protect Amazon WorkSpaces if you already added your AWS account If you already added your AWS account to Server & Workload Protection (to protect your Amazon EC2 instances), complete the steps in this section to configure Server & Workload Protection to work with Amazon WorkSpaces. Procedure Launch an Amazon WorkSpace, and then install and activate agent version 10.2+ on it. See Install the agent on Amazon EC2 and WorkSpaces for details. Optionally, create a custom WorkSpace bundle so that you can deploy it to many people. See Bake the agent into your AMI or WorkSpace bundle for details on installation, activation, and bundle creation.",
+    "metadata": {
+      "filename": "add-amazon-workspaces.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/add-amazon-workspaces.md",
+      "title": "Add Amazon WorkSpaces",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.586Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      116,
+      63,
+      910
+    ]
+  },
+  {
+    "id": "add-amazon-workspaces.md_chunk_2",
+    "content": "Modify your IAM policy to include Amazon WorkSpaces permissions: Log in to AWS with the account that was added to Server & Workload Protection. Go to the IAM service. Find the Server & Workload Protection IAM policy. You can find it under Policies on the left, or you can look for the Server & Workload Protection IAM role or IAM user that references the policy and then click the policy within it. Modify the Server & Workload Protection IAM policy as shown below. The policy includes Amazon WorkSpaces permissions. If you added more than one AWS account to Server & Workload Protection, the IAM policy must be updated under all the AWS accounts. { \"Version\": \"2012-10-17\", \"Statement\": [ { \"Sid\": \"cloudconnector\", \"Action\": [ \"ec2:DescribeImages\", \"ec2:DescribeInstances\", \"ec2:DescribeRegions\", \"ec2:DescribeSubnets\", \"ec2:DescribeTags\", \"ec2:DescribeVpcs\", \"ec2:DescribeAvailabilityZones\", \"ec2:DescribeSecurityGroups\", \"workspaces:DescribeWorkspaces\", \"workspaces:DescribeWorkspaceDirectories\"",
+    "metadata": {
+      "filename": "add-amazon-workspaces.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/add-amazon-workspaces.md",
+      "title": "Add Amazon WorkSpaces",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.586Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      7,
+      0,
+      0,
+      0,
+      5,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      119,
+      62,
+      999
+    ]
+  },
+  {
+    "id": "add-amazon-workspaces.md_chunk_3",
+    "content": ", \"workspaces:DescribeWorkspaceBundles\", \"workspaces:DescribeTags\", \"iam:ListAccountAliases\", \"iam:GetRole\", \"iam:GetRolePolicy\" ], \"Effect\": \"Allow\", \"Resource\": \"*\" } ] } In the Server & Workload Protection console, edit your AWS account: On the left, right-click your AWS account and select Properties. Enable Include Amazon WorkSpaces. Click Save. Next steps You have now added Amazon WorkSpaces to Server & Workload Protection. Protect Amazon WorkSpaces if you have not yet added your AWS account If you have not yet added your AWS account to Server & Workload Protection, complete the steps in one of the following sections: If you want to protect existing Amazon WorkSpaces, read Install the agent on Amazon EC2 and WorkSpaces. If you want to be able to launch new Amazon WorkSpaces with the agent 'baked in', read Bake the agent into your AMI or WorkSpace bundle. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "add-amazon-workspaces.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/add-amazon-workspaces.md",
+      "title": "Add Amazon WorkSpaces",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.586Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      122,
+      68,
+      946
+    ]
+  }
+]

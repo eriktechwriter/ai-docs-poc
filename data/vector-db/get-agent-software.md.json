@@ -1,0 +1,222 @@
+[
+  {
+    "id": "get-agent-software.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Get agent software Important To deploy the Server & Workload Protection agent with endpoint sensor and full XDR functionality, download and deploy the agent package from Endpoint Inventory. For more information, see Deploy agents. Computers added using this method do not support the endpoint sensor and do not have XDR functionality. Trend Micro recommends only using this method for testing purposes or troubleshooting with your support provider. View a list of available agent software To view a list of all available software: In the Server & Workload Protection console, go to Administration → Updates → Software → Local. All available software appears. (Optional) Organize the list of software by version or platform (OS) by selecting Version or Platform from the drop-down list at the top. Export the agent installer You can download the agent installer from the Server & Workload Protection console.",
+    "metadata": {
+      "filename": "get-agent-software.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/get-agent-software.md",
+      "title": "Get agent software",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.500Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      3,
+      0,
+      0,
+      6,
+      0,
+      0,
+      3,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      127,
+      72,
+      996
+    ]
+  },
+  {
+    "id": "get-agent-software.md_chunk_1",
+    "content": "In the Server & Workload Protection console, go to Administration → Updates → Software → Local. Select your agent from the list. Note If you're looking for a Solaris agent, see Solaris-version-to-agent-package mapping table for information on which agent to choose. Click Export → Export Installer. Server & Workload Protection then checks the digital signature on the software package. If the signature is good, the export proceeds. Save the agent installer. If you will install the agent manually, save it on the computer where you want to install the agent. Tip To install the agent, only use the exported agent installer (the .msi, .rpm, .pkg, .p5p, or .bff file depending on the platform) not the full agent ZIP package. If you run the agent installer from the same folder that holds the other zipped agent components, all protection modules will be installed, even if you haven't enabled them on the computer. This consumes extra disk space.",
+    "metadata": {
+      "filename": "get-agent-software.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/get-agent-software.md",
+      "title": "Get agent software",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.500Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      12,
+      0,
+      0,
+      3,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      132,
+      78,
+      947
+    ]
+  },
+  {
+    "id": "get-agent-software.md_chunk_2",
+    "content": "(For comparison, if you use the .msi, .rpm, .pkg, .p5p, or .bff file, the agent will download and install protection modules only if your configuration requires them.) Tip Installing an agent, activating it, and applying protection with a security policy can be done using a command line script. For more information, see Use a deployment script. Tip You can generate deployment scripts to automate the agent installation using the Server & Workload Protection API. For more information, see Generate an agent deployment script. Solaris-version-to-agent-package mapping table If you're not sure which agent package to pick when exporting the agent, review the mapping table below. If you're installing the agent on... Choose this agent package...",
+    "metadata": {
+      "filename": "get-agent-software.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/get-agent-software.md",
+      "title": "Get agent software",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.500Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      1,
+      0,
+      1,
+      1,
+      9,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      3,
+      0,
+      0,
+      101,
+      62,
+      746
+    ]
+  },
+  {
+    "id": "get-agent-software.md_chunk_3",
+    "content": "Solaris_5.10_U5-xx.x.x-xxx.<sparc|.x86_64>.zip Solaris 10 Updates 7-11 (64-bit, SPARC or x86) Agent-Solaris_5.10_U7-xx.x.x-xxx.<sparc|.x86_64>.zip Solaris 11.0 (1111)-11.3 (64-bit, SPARC or x86) Agent-Solaris_5.11-xx.x.x-xxx.<sparc|.x86_64>.zip Solaris 11.4 (64-bit, SPARC or x86) Agent-Solaris_5.11_U4-xx.x.x-xxx.<sparc|.x86_64>.zip xx.x.x.xxx is the build number of the agent. For example: 12.0.0-682 <sparc|.x86_64> is one of sparc or .x86_64, depending on the Solaris processor. AIX agent package naming format The naming format is different depending on the agent version: Agent version 12 for AIX: Agent-AIX-<agent_release>-<agent_build>.powerpc.zip. Example: Agent-AIX-12.0.0-1234.powerpc.zip. Agent version 9.0 for AIX: Agent-AIX_<AIX_version>-<agent_release>-<build>.powerpc.bff.gz.zip. Example: Agent-AIX_5.3-9.0.0-5625.powerpc.bff.gz.zip. For details on which agent you'll need for the version of AIX you're using, see Agent platforms.",
+    "metadata": {
+      "filename": "get-agent-software.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/get-agent-software.md",
+      "title": "Get agent software",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.500Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      14,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      121,
+      45,
+      946
+    ]
+  },
+  {
+    "id": "get-agent-software.md_chunk_4",
+    "content": "Related information Check digital signatures of software packages © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "get-agent-software.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/get-agent-software.md",
+      "title": "Get agent software",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.500Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 4
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      17,
+      17,
+      140
+    ]
+  }
+]

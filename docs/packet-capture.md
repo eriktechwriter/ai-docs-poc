@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-packet-capture
+slug: packet-capture
 title: Packet Capture
 ---
 

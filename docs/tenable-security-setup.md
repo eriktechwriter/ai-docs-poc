@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-tenable-security-setup
+slug: tenable-security-setup
 title: Tenable Security Center integration
 ---
 

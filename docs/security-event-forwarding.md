@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-security-event-forwarding
+slug: security-event-forwarding
 title: Security event forwarding
 ---
 

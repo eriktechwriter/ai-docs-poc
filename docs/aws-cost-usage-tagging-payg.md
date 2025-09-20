@@ -1,0 +1,11 @@
+---
+id: aws-cost-usage-tagging-payg
+title: Set up cost tagging in AWS
+sidebar_label: Set up cost tagging in AWS
+description: Set up cost tagging in AWS
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Set up cost tagging in AWS Use AWS cost tagging to view a detailed breakdown of Trend Vision One pay-as-you-go billing in the AWS Billing and Cost Management console. Procedure Activate cost tagging in the AWS Billing and Cost Management console. For more information, see AWS Billing documentation. Sign in to the AWS Billing and Cost Management console. Click Cost allocation tags. Choose AWS-generated cost allocation tags. Search for aws:marketplace:isv: to find the tags corresponding to the Trend Vision One solutions and features that support AWS cost tagging. Select the following tags: aws:marketplace:isv:cloudAccountID aws:marketplace:isv:customTag Click Activate. Note AWS cost tagging might take up to 24 hours to activate. Go to Billing and Cost Management → Cost Explorer. For Date Range, choose a start and end date for the billing period and click Apply. In the Filters section, choose a Trend Vision One solution or feature to view a cost breakdown for. For Service, search for and select Trend Vision One. Click Apply. For Usage type, search for and select the billing dimension of a specific offering. Tip To see the AWS usage type for each supported Trend Vision One pay-as-you-go offering, see AWS usage type and cost allocation tags for Trend Vision One solutions. For Dimension in the Group by section, choose Tag. Under Tag, search for and select the tag for a specific offering. Tip To see the AWS-generated cost allocation tag for each supported Trend Vision One pay-as-you-go offering, see AWS usage type and cost allocation tags for Trend Vision One solutions. A bar chart displays with cost tagging information, specifying the proportion of the total cost contributed by each unit. For example, the Cyber Risk Exposure Management chart shows the overall cost for the solution, itemized by cloud account. Related information AWS usage type and cost allocation tags for Trend Vision One solutions © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

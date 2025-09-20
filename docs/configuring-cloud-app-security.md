@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-configuring-cloud-app-security
+slug: configuring-cloud-app-security
 title: Configuring Cloud App Security
 ---
 

@@ -1,0 +1,11 @@
+---
+id: medigate-data-source
+title: Claroty xDome supported as a new data source for Cyber Risk Exposure Management
+sidebar_label: Claroty xDome supported as a new data source for Cyber Risk Exposure Management
+description: Claroty xDome supported as a new data source for Cyber Risk Exposure Management
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Claroty xDome supported as a new data source for Cyber Risk Exposure Management April 8, 2024—You may now integrate Claroty xDome as a data source in Cyber Risk Exposure Management to gain access to device information and vulnerabilities detected by Medigate. Connect your Claroty xDome account in Data Sources. Cyber Risk Exposure Management → Attack Surface Discovery © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

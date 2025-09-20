@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-sps-product-support
+slug: sps-product-support
 title: Smart Protection Services product support
 ---
 

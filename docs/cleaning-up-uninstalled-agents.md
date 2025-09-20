@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-cleaning-up-uninstalled-agents
+slug: cleaning-up-uninstalled-agents
 title: Cleaning Up Uninstalled Agents
 ---
 

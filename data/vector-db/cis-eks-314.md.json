@@ -1,0 +1,134 @@
+[
+  {
+    "id": "cis-eks-314.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 3.1.4 - Ensure that the kubelet configuration file ownership is set to root:root (Automated) Profile applicability: Level 1 Ensure that if the kubelet refers to a configuration file with the --config argument, that file is owned by root:root. The kubelet reads various parameters, including security settings, from a config file specified by the --config argument. If this file is specified you should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system. Note See the AWS EKS documentation for the default value. Audit Method 1 SSH to the relevant worker nodes. Enter the following command to check to see if the Kubelet Service is running: sudo systemctl status kubelet The output should return Active: active (running) since...",
+    "metadata": {
+      "filename": "cis-eks-314.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-eks-314.md",
+      "title": "3.1.4 - Ensure that the kubelet configuration file ownership is set to root:root (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.840Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      116,
+      74,
+      904
+    ]
+  },
+  {
+    "id": "cis-eks-314.md_chunk_1",
+    "content": "Run the following command on each node to find the appropriate Kubelet config file: ps -ef | grep kubelet The output of the above command should return something similar to --config/etc/kubernetes/kubelet/kubelet-config.json, which is the location of the Kubelet config file. Run this command to obtain the Kubelet config file's ownership: stat -c %U:%G /etc/kubernetes/kubelet/kubelet-config.json Verify that the ownership is set to root:root. Method 2 Create and Run a Privileged Pod Run a pod that is privileged enough to access the host's file system. To do this, deploy a pod that uses the hostPath volume to mount the node's file system into the pod. An example of a simple pod definition that mounts the root of the host to /host within the pod: apiVersion: v1 kind: Pod metadata: name: file-check spec: volumes: - name: host-root hostPath: path: / type: Directory containers: - name: nsenter image: busybox command: [\"sleep\", \"3600\"] volumeMounts: - name: host-root mountPath: /host security",
+    "metadata": {
+      "filename": "cis-eks-314.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-eks-314.md",
+      "title": "3.1.4 - Ensure that the kubelet configuration file ownership is set to root:root (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.840Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      137,
+      70,
+      999
+    ]
+  },
+  {
+    "id": "cis-eks-314.md_chunk_2",
+    "content": "Context: privileged: true Save this to a file (e.g., file-check-pod.yaml) and create the pod: kubectl apply -f file-check-pod.yaml Once the pod is running, exec into it to check file ownership on the node: kubectl exec -it file-check -- sh Now you are in a shell inside the pod, but you can access the node's file system through the /host directory and check the azure.json file's ownership: ls -l /host/etc/kubernetes/kubelet/kubelet-config.json Verify that the ownership is set to root:root. Remediation Run the following command (using the config file location identified in the Audit step): chown root:root /etc/kubernetes/kubelet/kubelet-config.json © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-eks-314.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-eks-314.md",
+      "title": "3.1.4 - Ensure that the kubelet configuration file ownership is set to root:root (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.840Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      108,
+      62,
+      729
+    ]
+  }
+]

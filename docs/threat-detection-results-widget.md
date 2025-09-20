@@ -1,0 +1,11 @@
+---
+id: threat-detection-results-widget
+title: Threat Detection Results Widget
+sidebar_label: Threat Detection Results Widget
+description: Threat Detection Results Widget
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Threat Detection Results Widget This widget displays the number of threat detections and the ratio of threats compared to the total number of detections. The widget can display data for only one information type at a time. Clicking links in the Detections column opens a screen that displays detailed information. Apex Central performs a log query to provide the detailed information. Data Description Results The action or result of the action performed by the managed product Note This column does not display for the Web Security threat type Policy/Rule The type of policy/rule applied under the Web Security threat type. Note This column does not display for other listed threat types. Detections The number of security threats detected Percentage (%) The percentage of total detections that are security threats This widget displays threat detections for the following threat types: Threat Types Threat Type Description Virus/Malware Displays the action taken on all files by any managed product that the Data Scope specifies. For example: Cleaned, Access denied, and so on. Spyware/Grayware Displays the action taken on all files by any managed product that the Data Scope specifies. For example: Successful, Further action required, and so on. Content Security Displays the action taken on all email messages by any managed product that the Data Scope specifies. For example: Deleted, Attachments stripped, and so on. Web Security Displays all web security violations blocked using the policies by any managed product that the Data Scope specifies. For example: File blocking, File name, and so on. Network Virus Displays the action taken on all network viruses by any managed product that the Data Scope specifies Click the settings icon ( → ) to edit the widget title, product scope, or type of threats that displays. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

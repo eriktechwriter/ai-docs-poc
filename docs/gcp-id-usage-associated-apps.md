@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-gcp-id-usage-associated-apps
+slug: gcp-id-usage-associated-apps
 title: Google Cloud Identity data usage in associated apps
 ---
 

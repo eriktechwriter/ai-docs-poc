@@ -1,0 +1,11 @@
+---
+id: setup-365-defender-allow-list
+title: Set up a Microsoft 365 Defender allow list
+sidebar_label: Set up a Microsoft 365 Defender allow list
+description: Set up a Microsoft 365 Defender allow list
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Set up a Microsoft 365 Defender allow list Configure the allow list settings for Microsoft 365 Defender to ensure the delivery of Security Awareness Training training campaign invitations and reminders, and simulated phishing emails to employees in your organization. Procedure Record the Security Awareness sending domains and IP addresses. On the Trend Vision One console, go to Cyber Risk Exposure Management → Security Awareness → Phishing Simulations. Click Settings. Click Settings and copy the sending domains and IP addresses. Configure Microsoft 365 Defender to allow training campaign invitations and reminders, and phishing simulation emails from Security Awareness. Important The following instructions were valid as of July 15, 2024. For further help, refer to the Microsoft 365 Defender documentation. Sign in to the Microsoft 365 Defender portal using an administrator account. In the Rules section of the Microsoft 365 Defender portal, go to Email & Collaboration → Policies & Rules → Threat policies → Advanced delivery. Click the Phishing simulation tab. Configure your phishing simulations. If you have not previously configured a phishing simulation, click Add. If you have already configured a phishing simulation, click Edit. In the Add third party phishing simulations screen, enter your sending domains and sending IP addresses in the respective fields. Click Add. Click Close. You have configured Microsoft 365 Defender to allow employees in your organization to receive training campaign invitations, reminders, and phishing simulation emails from Security Awareness. Related information Avoid Microsoft Safe Links alerts when opening phishing simulation landing pages © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

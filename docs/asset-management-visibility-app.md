@@ -1,0 +1,11 @@
+---
+id: asset-management-visibility-app
+title: Enhanced multi-layered asset management and new Asset Visibility Management app available
+sidebar_label: Enhanced multi-layered asset management and new Asset Visibility Management app available
+description: Enhanced multi-layered asset management and new Asset Visibility Management app available
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Enhanced multi-layered asset management and new Asset Visibility Management app available February 19, 2024—Besides the management scope for endpoints and containers that were introduced in 2023, Trend Vision One enhances the asset management capability to support more data assets, including mobile devices, accounts, cloud assets, network assets, and secure access assets. Large-sized customers that run multiple businesses or have the need to segregate asset data visibility for different teams can leverage this enhanced capability to achieve multi-tenancy management purposes within a single Trend Vision One console. For customers to better organize assets of multiple layers in a centralized location, Trend Vision One launches a new app Asset Visibility Management for administrators to group data and Trend Vision One app assets into asset visibility scopes based on the corporate structure. The asset visibility scopes can then be assigned to user roles to determine which assets are visible or manageable to these roles in all applicable Trend Vision One apps that display the data of the selected assets. Only customers that have updated to the Foundation Services release have access to the app. If customers have configured scopes for endpoints and containers in User Roles, to achieve seamless migration, asset visibility scopes that include newly supported assets are automatically created and associated to the corresponding roles. Trend Vision One continues enhancing the asset visibility management capability with more asset coverage or granularity. Service Management → Asset Visibility Management © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

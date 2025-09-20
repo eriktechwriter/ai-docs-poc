@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-features-benefits-trend-vision-one
+slug: features-benefits-trend-vision-one
 title: Features and benefits
 ---
 

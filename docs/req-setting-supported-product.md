@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-req-setting-supported-product
+slug: req-setting-supported-product
 title: Required settings on supported products
 ---
 

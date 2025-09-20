@@ -1,0 +1,11 @@
+---
+id: secure-access-history
+title: Secure access history
+sidebar_label: Secure access history
+description: Secure access history
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Secure access history The Secure Access History screen provides detailed logs about user/device access to internal and cloud apps. The access control logs provide valuable information to analyze the security of your corporate devices and resources and to tailor your access control settings. Tab Description User Activity Logs Displays the rule enforcement details by user or device's app or URL access behavior Click a rule name to open the rule configuration screen and modify the rule as needed. Use the drop-down lists and search field to filter logs about specific users. Click Switch to advanced to filter logs in XDR Data Explorer using your selected query conditions. To search for data older than 30 days, you must use XDR Data Explorer. Click the (>) icon to view available access and risk control details. For blocked Private Access attempts , you may view associated Private Access rules. View further details, including matches with specific rule parameters, for rules that specify the same destination as the target of the access attempt. Tip Examining the details of triggered private access rules helps identify the cause of a blocked access attempt. If desired, you may modify the existing rule or create a new rule to open app or URL access for a user. Remediation Logs Displays the details about the remediation measures that are performed manually by the administrator or automatically through secure access rules Click a user or device name to view the user or device's current risk status, as well as the matched risk control rules, and take an action on the user or device for risk remediation. Click the (>) icon to view risk control details. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

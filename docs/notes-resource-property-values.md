@@ -1,0 +1,11 @@
+---
+id: notes-resource-property-values
+title: Notes about resource property values
+sidebar_label: Notes about resource property values
+description: Notes about resource property values
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Notes about resource property values There are a few things that you should be aware of when setting values for resource properties or Server & Workload Protection settings. How to express a null value To express a null value using the API, use 0 (zero). For example, when you use 0 as the policyID for a computer it is interpreted as null, and that the computer has no assigned policy. Note that this applies when using the API directly. The client libraries support the use of null values. Valid values for Boolean properties When you use the API, you must use either true or false for the values of Boolean properties. Any other value returns an error. If you do not provide a value (i.e. null), false is the default value. Include only changed values when modifying resources When you use an operation to modify a resource, you provide only the properties that you need to change. For example, to change the name of a policy, you provide a policy object with a name property, and all other properties are null or not specified. This pattern is typical for REST APIs. When using programming languages such as Python, JavaScript, or Java, you might be accustomed to obtaining an object that represents the resource, changing a property, and then returning the object in the update call. However, when using the Server & Workload Protection client libraries you create an object, set only the values that you want to change, and then use that object in the update call. In this example, only the policy name is changed: policy = api.Policy() policy.name = policy_name policy_api = api.PoliciesApi() policy_api.modifyPolicy(policyID, policy, false, "v1") © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

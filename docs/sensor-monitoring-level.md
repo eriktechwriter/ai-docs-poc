@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-sensor-monitoring-level
+slug: sensor-monitoring-level
 title: About Monitoring Level
 ---
 

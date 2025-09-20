@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-es-agent-sys-reqs
+slug: es-agent-sys-reqs
 title: Endpoint Sensor Agent System Requirements
 ---
 

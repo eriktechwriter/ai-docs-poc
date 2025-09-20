@@ -1,0 +1,134 @@
+[
+  {
+    "id": "kubernetes-compliance-scanning.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Kubernetes compliance scanning Configure CIS Kubernetes compliance checks to maintain a list of exempted users and roles for security policy controls and standards. This includes CIS checks 5.1.1 to 5.1.4 and check 5.1.6. Refer to the error messages for these checks in your PDF or CSV report, then update the corresponding configuration settings in Compliance Scanning to address the errors in the report. For more information about CIS benchmarks, see Kubernetes 1.9.0 recommendations. The table below describes the compliance configuration settings that should be updated for CIS Kubernetes checks. Note After making an update, save any new compliance configuration settings before running a new scan.",
+    "metadata": {
+      "filename": "kubernetes-compliance-scanning.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/kubernetes-compliance-scanning.md",
+      "title": "Kubernetes compliance scanning",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.634Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      0,
+      3,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      97,
+      66,
+      793
+    ]
+  },
+  {
+    "id": "kubernetes-compliance-scanning.md_chunk_1",
+    "content": "nchmark check Compliance scan configuration settings Configuration settings value 5.1.1 Cluster Admin Role Users 5.1.2 Secrets Permission Users 5.1.3 Role Wildcards Roles/cluster-rules 5.1.4 Pods Creation Permission Users 5.1.6 Allow Service Account Tokens mounting on pods Service accounts for pods Configuration change example For example, for CIS check 5.1.6, you could see a failure message like the following: \"Pod service accounts coredns,kindnet have mounted service account tokens with automountServiceAccountToken set to true. Review the pod service accounts and, if required, add them to the Pods mounted with service account tokens list to exempt the pod service accounts from the check.\" On the Compliance Scanning page, you could add the compliance scan configuration setting for \"Allow Service Account Tokens on Pods\" with the values \"coredns,kindnet\", according to the above error message in the compliance scan report.",
+    "metadata": {
+      "filename": "kubernetes-compliance-scanning.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/kubernetes-compliance-scanning.md",
+      "title": "Kubernetes compliance scanning",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.634Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      122,
+      61,
+      934
+    ]
+  },
+  {
+    "id": "kubernetes-compliance-scanning.md_chunk_2",
+    "content": "After updating and saving these configuration settings, this check should now pass when the next compliance scan is run. Note If a CIS compliance check returns the error message Could not run check in the compliance report, contact support. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "kubernetes-compliance-scanning.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/kubernetes-compliance-scanning.md",
+      "title": "Kubernetes compliance scanning",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.634Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      45,
+      38,
+      315
+    ]
+  }
+]

@@ -1,0 +1,222 @@
+[
+  {
+    "id": "manage-scan-reports.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Manage scan reports View and download reports generated from scans, and view troubleshooting information such as authentication or network problems. Important This is a \"Pre-release\" feature and is not considered an official release. Please review the Pre-release disclaimer before using the feature. Note This feature is not available in all regions. In Scan Reports, you can view a list of your most recent network scan reports. Scan reports contain the results of the scan, including any discovered assets, vulnerable assets, and detected CVEs. Currently, only the most recent report for a scan is retained. To save earlier reports, download the reports before the next scan time. The following table details actions you can take in Scan reports. Action Details View scan status The icon next to the scan ID indicates whether the scan is complete (), in progress (), or failed ().",
+    "metadata": {
+      "filename": "manage-scan-reports.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/manage-scan-reports.md",
+      "title": "Manage scan reports",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.668Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      129,
+      79,
+      972
+    ]
+  },
+  {
+    "id": "manage-scan-reports.md_chunk_1",
+    "content": "Scans that are in progress cannot be triggered. For failed scans, verify your network status, the status of your Service Gateway, and the status of the Network Vulnerability Scanner service. View report details Drill down from a scan ID to view details including: The Service Gateway used for the scan Target IPs Number of assets discovered during the initial discovery scan Number of assets assessed during the vulnerability scan Number of assets found to have vulnerabilities Number of CVEs detected Number of errors encountered during the scan indicating assets that could not be scanned View scan errors Click the number displayed under Scan errors to view access issues encountered during the scan. Access error: Indicates a required field such as a port could not be accessed. If the problem persists, contact support. Authentication error: Indicates the device at the target IP could not be accessed using the provided authentication credentials.",
+    "metadata": {
+      "filename": "manage-scan-reports.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/manage-scan-reports.md",
+      "title": "Manage scan reports",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.668Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      127,
+      68,
+      953
+    ]
+  },
+  {
+    "id": "manage-scan-reports.md_chunk_2",
+    "content": "Verify your authentication credentials in the scan configuration. If you need to use a different set of credentials, create a new scan. Unsupported device or device version: Indicates the device at the target IP is not currently supported for network vulnerability scans. Only devices running a supported operating system are currently supported for network vulnerability scans. Authentication credentials must be for an account with the required privileges for scanning. To view supported devices, operating systems, and privilege requirements, see Network Vulnerability Scanner supported products. Click Request additional device or device version support to provide feedback on further device or version support you would like to see. If the product is supported, check your authentication credentials. If the problem persists, contact support. No device detected: Indicates no devices were detected at the target IP. No open SSH port detected: Indicates SSH login access failed.",
+    "metadata": {
+      "filename": "manage-scan-reports.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/manage-scan-reports.md",
+      "title": "Manage scan reports",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.668Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      3,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      116,
+      68,
+      982
+    ]
+  },
+  {
+    "id": "manage-scan-reports.md_chunk_3",
+    "content": "Ensure your SSH port (default port 22) is open. If the problem persists, contact support. Scan timed out: Indicates the target took too long to scan. Try running the scan again. If the problem persists, contact support. Important Only the first 100 inaccessible target IP addresses are displayed. Download the scan report to view the access status of all inaccessible target IP addresses. Download scan report Click the download icon () to download a zip file containing the report files for the specified scan. Report files for each scan type include: Discovery scan: Discovery_results.csv Contains information such as IP addresses, FQDNs, hostnames, asset operating systems, open ports, and TLS certificates Vulnerability scan: Discovery_results.csv and Detected_CVE_VulnerabilityList.csv Detected_CVE_VulnerabilityList.csv contains CVE IDs, hostnames, IP addresses, affected products, affected product versions, mitigation options, and security advisory links External attack surface scan: Intern",
+    "metadata": {
+      "filename": "manage-scan-reports.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/manage-scan-reports.md",
+      "title": "Manage scan reports",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.668Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      127,
+      79,
+      999
+    ]
+  },
+  {
+    "id": "manage-scan-reports.md_chunk_4",
+    "content": "etFacingAssetScan_results.csv Contains information such as IP addresses, FQDNs, hostnames, asset operating systems, open ports, and TLS certificates Manually refresh scan reports Click the refresh icon () to manually refresh the status of displayed reports. Statuses automatically refresh after the scan completes. View scan results in Threat and Exposure Management Click View scan reports in Threat and Exposure Management to view affected assets and detected vulnerabilities found by Network Vulnerability Scanner along with risk score of the affected assets. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "manage-scan-reports.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/manage-scan-reports.md",
+      "title": "Manage scan reports",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.668Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 4
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      79,
+      56,
+      637
+    ]
+  }
+]

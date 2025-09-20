@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-configuring-integration
+slug: configuring-integration
 title: Configuring Microsoft Entra ID integration
 ---
 

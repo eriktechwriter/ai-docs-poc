@@ -1,0 +1,11 @@
+---
+id: predefined-file-attributes-list
+title: Predefined file attributes list
+sidebar_label: Predefined file attributes list
+description: Predefined file attributes list
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Predefined file attributes list Learn details about the predefined file attributes list used in data loss prevention. Data loss prevention provides a predefined file attributes list. This list cannot be modified or deleted. The list has its own built-in conditions that determine if the template should trigger a policy violation. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

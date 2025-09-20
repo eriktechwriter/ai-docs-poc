@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-accessing-your-console
+slug: accessing-your-console
 title: Accessing your Trend Vision One console
 ---
 

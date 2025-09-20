@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-asset-group-management
+slug: asset-group-management
 title: Asset Group Management
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-disable-user-account-task
+slug: disable-user-account-task
 title: Disable User Account task
 ---
 

@@ -1,0 +1,90 @@
+[
+  {
+    "id": "create-modify-lists.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Create and modify lists You can create several types of lists that are used to configure protection modules: directory lists, file extension lists, file lists, IP lists, MAC lists, and port lists. The way that you create each list is very similar: Procedure Create the list object. Set general properties such as the name and description. Add items to the list. The type of list determines the nature of the item that you add. Use the API object that is associated with the list object to add the list to Server & Workload Protection. For example, you use a DirectoryListsApi object to add a directory list. Next steps To modify a list, you obtain the list, modify it, then update the list. Like any other object, to obtain the list you can search, get the list by ID, or get all lists and cycle through them to find a particular list. The following example adds a directory to a directory list.",
+    "metadata": {
+      "filename": "create-modify-lists.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/create-modify-lists.md",
+      "title": "Create and modify lists",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.057Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      143,
+      73,
+      984
+    ]
+  },
+  {
+    "id": "create-modify-lists.md_chunk_1",
+    "content": "View source dir_list = api.DirectoryList() dir_lists_api = api.DirectoryListsApi(api.ApiClient(configuration)) try: dir_lists = dir_lists_api.list_directory_lists(api_version) for dir in dir_lists.directory_lists: if dir.name == dir_list_name: dir_list.dir_list = dir # Create the directory list if dir_list_name was not found if dir_list.name == None: dir_list.name = dir_list_name dir_list = dir_lists_api.create_directory_list(dir_list, api_version) dir_list_with_directory = api.DirectoryList() dir_list_with_directory.items = dir_path return dir_lists_api.modify_directory_list(dir_list.id, dir_list_with_directory, api_version) except api_exception as e: return \"Exception: \" + str(e) Also see the Modify a Directory List operation in the API Reference. For information about authenticating API calls, see Authenticate with Server & Workload Protection<. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "create-modify-lists.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/create-modify-lists.md",
+      "title": "Create and modify lists",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.057Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      94,
+      60,
+      935
+    ]
+  }
+]

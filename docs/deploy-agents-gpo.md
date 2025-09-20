@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-deploy-agents-gpo
+slug: deploy-agents-gpo
 title: Deploying Agents Using Group Policy Objects
 ---
 

@@ -1,0 +1,11 @@
+---
+id: network-security-direct-sync-ddi
+title: Network Security now supports direct synchronization of Suspicious Objects with Deep Discovery Inspector
+sidebar_label: Network Security now supports direct synchronization of Suspicious Objects with Deep Discovery Inspector
+description: Network Security now supports direct synchronization of Suspicious Objects with Deep Discovery Inspector
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Network Security now supports direct synchronization of Suspicious Objects with Deep Discovery Inspector May 13, 2024—Connecting to Network Security allows Deep Discovery Inspector version 6.7 SP1 and later to synchronization the Suspicious Object List directly with Trend Vision One. The Suspicious Object List Synchronization service is no longer required to be enabled on your Service Gateway when connecting as a proxy or using the Service Gateway as a service source. Network Security → Network Inventory © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

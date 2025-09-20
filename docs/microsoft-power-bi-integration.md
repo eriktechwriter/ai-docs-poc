@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-microsoft-power-bi-integration
+slug: microsoft-power-bi-integration
 title: Microsoft Power BI integration
 ---
 

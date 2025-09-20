@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-cyborg-security-hunter-integration
+slug: cyborg-security-hunter-integration
 title: Cyborg Security - HUNTER integration
 ---
 

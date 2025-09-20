@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-data-privacy-security-compliance
+slug: data-privacy-security-compliance
 title: Trend Vision One data privacy, security, and compliance
 ---
 

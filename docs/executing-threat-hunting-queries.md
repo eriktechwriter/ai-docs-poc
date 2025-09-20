@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-executing-threat-hunting-queries
+slug: executing-threat-hunting-queries
 title: Search for and execute threat-hunting queries
 ---
 

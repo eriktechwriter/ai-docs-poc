@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-creating-support-case
+slug: creating-support-case
 title: Creating a support case
 ---
 

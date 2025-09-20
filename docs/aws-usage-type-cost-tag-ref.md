@@ -1,0 +1,11 @@
+---
+id: aws-usage-type-cost-tag-ref
+title: AWS usage type and cost allocation tags for Trend Vision One solutions
+sidebar_label: AWS usage type and cost allocation tags for Trend Vision One solutions
+description: AWS usage type and cost allocation tags for Trend Vision One solutions
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ AWS usage type and cost allocation tags for Trend Vision One solutions View the billing dimension and AWS-generated cost allocation tag for each supported Trend Vision One pay-as-you-go offering. Important To view cost tagging for File Security SDK, Virtual Appliance, and Containerized Scanner, you must first set a cloud account ID to automatically append to all scan tags. This cloud account ID maps to the aws:marketplace:isv:customTag tag in the AWS Billing and Cost Management console. For more information on setting the File Security cloud account ID, see the Trend Vision One File Security Go SDK User Guide. Solution Offering Usage type Tag Trend Vision One Cyber Risk Exposure Management Cloud Risk Management MP:TM_ASRM_Cloud-Units aws:marketplace:isv:cloudAccountID Trend Vision One Endpoint Security Endpoint Security - Essentials MP:TM_ES_Essentials-Units aws:marketplace:isv:cloudAccountID Endpoint Security - Small MP:TM_ES_Small-Units aws:marketplace:isv:cloudAccountID Endpoint Security - Medium MP:TM_ES_Medium-Units aws:marketplace:isv:cloudAccountID Endpoint Security - Large MP:TM_ES_Large-Units aws:marketplace:isv:cloudAccountID Endpoint Security - Not Cloud MP:TM_ES_NotCloud-Units aws:marketplace:isv:cloudAccountID Trend Vision One File Security File Security SDK FS_SDK_SUBMISSION_STATISTICS aws:marketplace:isv:customTag File Security Virtual Appliance FS_VA_SCAN_STATISTICS aws:marketplace:isv:customTag File Security Containerized Scanner FS_CTR_SCAN_STATISTICS aws:marketplace:isv:customTag File Security Storage (buckets) MP:TM_File_Storage-Units aws:marketplace:isv:cloudAccountID File Security Storage (scans) MP:TM_FSS_Scan-Units aws:marketplace:isv:cloudAccountID © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-available-data-subtypes
+slug: available-data-subtypes
 title: Available data subtypes
 ---
 

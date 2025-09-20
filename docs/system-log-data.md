@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-system-log-data
+slug: system-log-data
 title: System log data
 ---
 

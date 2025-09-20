@@ -1,0 +1,222 @@
+[
+  {
+    "id": "misp-threat-intel-feed.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Configure MISP for the Trend Threat Intelligence feed The Malware Information Sharing Platform (MISP) can receive events and indicators from the Trend Threat Intelligence feed. Prerequisites: MISP version 2.4 or later MISP privileges Perm site admin Perm auth Galaxy editor Write access at the operating system level Trend Vision One application programming interface (API) token Credits allocated to the Trend Threat Intelligence Feed Add the feed in MISP Access the Trend Threat Intelligence Feed through the built-in feeds functionality in MISP. Procedure In the MISP web interface, select Sync Actions → Feeds. Click Add Feed to display the configuration page. Select Enabled. Enter the Name and Provider for the feed. Enter the regional feed URL from the table below.",
+    "metadata": {
+      "filename": "misp-threat-intel-feed.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/misp-threat-intel-feed.md",
+      "title": "Configure MISP for the Trend Threat Intelligence feed",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.704Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      119,
+      72,
+      861
+    ]
+  },
+  {
+    "id": "misp-threat-intel-feed.md_chunk_1",
+    "content": "Feed URLs Region MISP feed URL Australia https://api.au.xdr.trendmicro.com/v3.0/threatintel/misp/feed European Union https://api.eu.xdr.trendmicro.com/v3.0/threatintel/misp/feed India https://api.in.xdr.trendmicro.com/v3.0/threatintel/misp/feed Japan https://api.xdr.trendmicro.co.jp/v3.0/threatintel/misp/feed Singapore https://api.sg.xdr.trendmicro.com/v3.0/threatintel/misp/feed United Arab Emirates https://api.mea.xdr.trendmicro.com/v3.0/threatintel/misp/feed United States https://api.xdr.trendmicro.com/v3.0/threatintel/misp/feed Enter the API token as follows: Authorization: Bearer <your_token> Click Submit to save the configuration. Add custom galaxies After adding the Trend Threat Intelligence Feed in MISP, you can add or update Trend Micro galaxies using the Python script available here. Alternatively, you can manually add custom galaxies by following the steps below.",
+    "metadata": {
+      "filename": "misp-threat-intel-feed.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/misp-threat-intel-feed.md",
+      "title": "Configure MISP for the Trend Threat Intelligence feed",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.704Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      121,
+      55,
+      885
+    ]
+  },
+  {
+    "id": "misp-threat-intel-feed.md_chunk_2",
+    "content": "Procedure Download the relevant galaxy JavaScript Object Notation (JSON) files from the URL for your region shown in the table below. Available Trend Micro galaxy types: trendmicro-campaign-galaxy trendmicro-intrusion-set-galaxy trendmicro-malware-galaxy trendmicro-tool-galaxy trendmicro-vulnerability-galaxy Galaxy URLs Region Galaxy URL template Australia https://api.au.xdr.trendmicro.com/v3.0/threatintel/misp/galaxies/%7Bgalaxy European Union https://api.eu.xdr.trendmicro.com/v3.0/threatintel/misp/galaxies/%7Bgalaxy India https://api.in.xdr.trendmicro.com/v3.0/threatintel/misp/galaxies/%7Bgalaxy Japan https://api.xdr.trendmicro.co.jp/v3.0/threatintel/misp/galaxies/%7Bgalaxy Singapore https://api.sg.xdr.trendmicro.com/v3.0/threatintel/misp/galaxies/%7Bgalaxy United Arab Emirates https://api.mea.xdr.trendmicro.com/v3.0/threatintel/misp/galaxies/%7Bgalaxy United States https://api.xdr.trendmicro.com/v3.0/threatintel/misp/galaxies/%7Bgalaxy Copy the files to the galaxies folder (locatio",
+    "metadata": {
+      "filename": "misp-threat-intel-feed.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/misp-threat-intel-feed.md",
+      "title": "Configure MISP for the Trend Threat Intelligence feed",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.704Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      128,
+      53,
+      999
+    ]
+  },
+  {
+    "id": "misp-threat-intel-feed.md_chunk_3",
+    "content": "n may vary): /var/www/MISP/app/files/misp-galaxy/galaxies/ Click Force Update Galaxies to save changes. Add custom clusters After adding the Trend Threat Intelligence Feed in MISP, you can add or update Trend Micro clusters using the Python script available here. Alternatively, you can manually add custom galaxies by following the steps below. Procedure Download the relevant cluster JSON files from the URL for your region shown in the table below. Cluster URLs Region Cluster URL template Australia https://api.au.xdr.trendmicro.com/v3.0/threatintel/misp/clusters/%7Bcluster European Union https://api.eu.xdr.trendmicro.com/v3.0/threatintel/misp/clusters/%7Bcluster India https://api.in.xdr.trendmicro.com/v3.0/threatintel/misp/clusters/%7Bcluster Japan https://api.xdr.trendmicro.co.jp/v3.0/threatintel/misp/clusters/%7Bcluster Singapore https://api.sg.xdr.trendmicro.com/v3.0/threatintel/misp/clusters/%7Bcluster United Arab Emirates https://api.mea.xdr.trendmicro.com/v3.0/threatintel/misp/clu",
+    "metadata": {
+      "filename": "misp-threat-intel-feed.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/misp-threat-intel-feed.md",
+      "title": "Configure MISP for the Trend Threat Intelligence feed",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.704Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      136,
+      69,
+      1000
+    ]
+  },
+  {
+    "id": "misp-threat-intel-feed.md_chunk_4",
+    "content": "sters/%7Bcluster United States https://api.xdr.trendmicro.com/v3.0/threatintel/misp/clusters/%7Bcluster Copy the files to the clusters folder (location may vary): /var/www/MISP/app/files/misp-galaxy/clusters/ Click Force Update Galaxies to save changes. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "misp-threat-intel-feed.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/misp-threat-intel-feed.md",
+      "title": "Configure MISP for the Trend Threat Intelligence feed",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.704Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 4
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      46,
+      39,
+      328
+    ]
+  }
+]

@@ -1,0 +1,134 @@
+[
+  {
+    "id": "cis-gke17-328.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 3.2.8 - Ensure that the --rotate-certificates argument is not present or is set to true (Automated) Profile applicability: Level 1 Enable kubelet client certificate rotation. The --rotate-certificates setting causes the kubelet to rotate its client certificates by creating new CSRs as its existing credentials expire. This automated periodic rotation ensures that the there is no downtime due to expired certificates and thus addressing availability in the CIA (Confidentiality, Integrity, and Availability) security triad. Note This recommendation only applies if you let kubelets get their certificates from the API server. In case your kubelet certificates come from an outside authority/tool (e.g. Vault) then you need to implement rotation yourself. This feature also requires the RotateKubeletClientCertificate feature gate to be enabled. See the GKE documentation for the default value.",
+    "metadata": {
+      "filename": "cis-gke17-328.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-328.md",
+      "title": "3.2.8 - Ensure that the --rotate-certificates argument is not present or is set to true (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.852Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      118,
+      88,
+      983
+    ]
+  },
+  {
+    "id": "cis-gke17-328.md_chunk_1",
+    "content": "Audit SSH to each node and run the following command to find the Kubelet process: ps -ef | grep kubelet If the output of the command above includes the --RotateCertificate executable argument, verify that it is set to true. If the output of the command above does not include the --RotateCertificate executable argument then check the Kubelet config file. The output of the above command should return something similar to --config /etc/kubernetes/kubelet/kubelet-config.json, which is the location of the Kubelet config file. Open the Kubelet config file: cat /etc/kubernetes/kubelet-config.yaml Verify that the RotateCertificate argument is not present, or is set to true. Remediation Remediation Method 1: If modifying the Kubelet config file, edit the kubelet-config.yaml file /etc/kubernetes/kubelet/kubelet-config.yaml and set the below parameter to true: \"RotateCertificate\":true Additionally, ensure that the kubelet service file /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf do",
+    "metadata": {
+      "filename": "cis-gke17-328.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-328.md",
+      "title": "3.2.8 - Ensure that the --rotate-certificates argument is not present or is set to true (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.852Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      133,
+      56,
+      999
+    ]
+  },
+  {
+    "id": "cis-gke17-328.md_chunk_2",
+    "content": "es not set the --RotateCertificate executable argument to false because this would override the Kubelet config file. Remediation Method 2: If using executable arguments, edit the kubelet service file /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf on each worker node and add the below parameter at the end of the KUBELET_ARGS variable string: --RotateCertificate=true © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-gke17-328.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-328.md",
+      "title": "3.2.8 - Ensure that the --rotate-certificates argument is not present or is set to true (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.852Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      59,
+      47,
+      454
+    ]
+  }
+]

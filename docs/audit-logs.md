@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-audit-logs
+slug: audit-logs
 title: Audit Logs
 ---
 

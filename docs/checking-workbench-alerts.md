@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-checking-workbench-alerts
+slug: checking-workbench-alerts
 title: Check Workbench alerts
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-activate-ddi-clp
+slug: activate-ddi-clp
 title: Activating a Deep Discovery Inspector license using the Customer Licensing Portal
 ---
 

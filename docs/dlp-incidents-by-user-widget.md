@@ -1,0 +1,11 @@
+---
+id: dlp-incidents-by-user-widget
+title: DLP Incidents by User Widget
+sidebar_label: DLP Incidents by User Widget
+description: DLP Incidents by User Widget
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ DLP Incidents by User Widget This widget checks the number of DLP incidents based on severity levels and managed users. Data can be filtered by severity level, as well as display the total number of new and high severity incidents triggered by specific users. By default the widget displays data from all the managed products that a user's account privileges allow. The widget shows a maximum of 50 users. Important This widget only displays data for Trend Vision One user accounts that have been assigned Data Loss Prevention (DLP) user roles. For more information about reviewing DLP incidents and configuring DLP user roles, see https://docs.trendmicro.com/en-us/enterprise/apex-central-saas/dlp_incidents. Use the Range drop-down to select the time period for the data that displays. Click the numbers in any column to open the Incident Information screen and review the summary of incidents. To look up a specific user, type a few characters in the User field and click Search. For example typing ke shows all user names with ke, such as Ken and Brooke. You can also type a domain and user name, such as domain1\chris. Note User names must not contain the following characters: " [ ] : ; | = + * ? / \ < &> , Domain names must not contain the following characters: \ * + = | : ; " ? < &> , Click the widget settings icon on the widget to access additional settings. Setting Description Title Specify a new and meaningful title for the widget in the field. Range Specify the time range when the DLP incidents were triggered. Scope Specify the data scope displayed by the widget. Directly managed users All managed users: Data is collected from both directly managed users and people under the directly managed users. Severity Specify the severity levels to filter the data. Users to display Specify the number of managed users to display. Click Save to apply changes and update the widget data. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

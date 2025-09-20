@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-deploy-agents
+slug: deploy-agents
 title: Deploy Agents
 ---
 

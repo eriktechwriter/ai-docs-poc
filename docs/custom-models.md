@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-custom-models
+slug: custom-models
 title: Custom models
 ---
 

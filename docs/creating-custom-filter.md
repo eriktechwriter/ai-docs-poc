@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-creating-custom-filter
+slug: creating-custom-filter
 title: Create a custom filter
 ---
 

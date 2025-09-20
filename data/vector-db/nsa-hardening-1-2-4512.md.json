@@ -1,0 +1,90 @@
+[
+  {
+    "id": "nsa-hardening-1-2-4512.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 4.5.12 - Restrict allowedHostPath to minimize access to the host file system (Automated) Profile applicability: Level 1 Use allowedHostPath to deny a container feature frequently exploited to breakout. Audit Run the following command and review the namespace metadata annotations: kubectl get namespaces Verify that the annotations pod-security.kubernetes.io/enforce equal restricted and pod-security.kubernetes.io/allowedHostPath equal false. Remediation Add relevant annotations in namespaces to enforce restricted policies and configure allowedHostPath. Using Pod Security Admission (PSA), apply \"restricted\" security mode at the namespace level. Alternatively, create and apply a Kyverno policy to restrict hostPath usage, or use Open Policy Agent (OPA) Gatekeeper to create a constraint template for an allowed hostPath to enforce and apply the policy.",
+    "metadata": {
+      "filename": "nsa-hardening-1-2-4512.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/nsa-hardening-1-2-4512.md",
+      "title": "4.5.12 - Restrict allowedHostPath to minimize access to the host file system (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.771Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      4,
+      0,
+      0,
+      3,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      109,
+      73,
+      946
+    ]
+  },
+  {
+    "id": "nsa-hardening-1-2-4512.md_chunk_1",
+    "content": "For AWS EKS clusters, Kyverno or OPA Gatekeeper is recommended. For OpenShift, ensure that the Security Context Constraint (SCC) assigned to a user/group does not allow hostPath. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "nsa-hardening-1-2-4512.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/nsa-hardening-1-2-4512.md",
+      "title": "4.5.12 - Restrict allowedHostPath to minimize access to the host file system (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.771Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      34,
+      33,
+      253
+    ]
+  }
+]

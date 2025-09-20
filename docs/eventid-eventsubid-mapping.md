@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-eventid-eventsubid-mapping
+slug: eventid-eventsubid-mapping
 title: eventId and eventSubId mapping
 ---
 

@@ -1,0 +1,222 @@
+[
+  {
+    "id": "installedsoftwareset.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ InstalledSoftwareSet Note The Integrity Monitoring module scans for unexpected changes to directories, registry values, registry keys, services, processes, installed software, ports, groups, users, files, and the WQL query statement on agents. To enable and configure Integrity Monitoring, see Set up integrity monitoring. Represents a set of installed software. The \"key\" used to uniquely identify an installed application is platform-specific, but it is often a shorthand version of the application name or a unique numeric value. On Windows, the key can be something readable like \"FogBugz Screenshot_is1\" or it can be a GUID like \"{90110409-6000-11D3-8CFE-0150048383C9}\". You can examine these by looking at the sub-keys of HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall.",
+    "metadata": {
+      "filename": "installedsoftwareset.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/installedsoftwareset.md",
+      "title": "InstalledSoftwareSet",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.583Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      101,
+      77,
+      888
+    ]
+  },
+  {
+    "id": "installedsoftwareset.md_chunk_1",
+    "content": "On Linux the key is the RPM package name, as shown by the command: rpm -qa --qf \"%{NAME}\\n\" On Solaris the key is the package name as shown by the pkginfo command. Tag Attributes These are XML attributes of the tag itself, as opposed to the attributes of the computer where Integrity Monitoring is enabled. Attribute Description Required Default Value Allowed Values onChange Will be monitored in real time No false true, false Entity Set Attributes These are the attributes of the Entity that can be monitored by Integrity Monitoring Rules. Presence of the attributes is dependent on both the platform and the application itself - installation programs do not necessarily populate all of the attributes. Manufacturer: The publisher or manufacturer of the application Name: The friendly name or display name of the application. (Not available on Linux.) InstalledDate: Date of installation.",
+    "metadata": {
+      "filename": "installedsoftwareset.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/installedsoftwareset.md",
+      "title": "InstalledSoftwareSet",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.583Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      109,
+      60,
+      890
+    ]
+  },
+  {
+    "id": "installedsoftwareset.md_chunk_2",
+    "content": "This is normally returned as YYYY-MM-DD [HH:MM:SS], but many installers on Windows format the date string in a different manner so this format is not guaranteed. (Not available on AIX.) InstallLocation: The directory where the application is installed. (Only available on Windows and Solaris.) Parent: For patches and updates, this gives the key name of this item's parent. (Only available on Windows.) Size: The estimated size of the application, if available. On Windows this attribute is read from the \"EstimatedSize\" registry value under HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\*. The value in that location is expressed in KB, so the Agent multiplies it by 1024 before returning the value. Note that not all Windows applications populate the EstimatedSize field in the registry. (Not available on AIX.) Version: The version of the installed application. On Windows, this comes from the \"DisplayVersion\" registry value.",
+    "metadata": {
+      "filename": "installedsoftwareset.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/installedsoftwareset.md",
+      "title": "InstalledSoftwareSet",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.583Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      114,
+      64,
+      954
+    ]
+  },
+  {
+    "id": "installedsoftwareset.md_chunk_3",
+    "content": "Short Hand Attributes These are the short hand attributes of the Entity and the attributes to which they resolve STANDARD: InstalledDate, Name, Version Meaning of \"Key\" The key is the name of the installed software. This is not a hierarchical key, so the ** pattern does not apply. On Windows the key is often a GUID, especially for anything installed via the Windows Installer (aka MSI). Use the name=\"XXX\" feature if you need to include or exclude based on the display name rather than the GUID. The following example would monitor for the addition and deletion of new software. <InstalledSoftwareSet> <include key=\"\\*\"/> <attributes/> </InstalledSoftwareSet> Sub Elements Include Exclude See Integrity monitoring rules language for a general description of Include and Exclude for their allowed attributes and sub elements. Only information specific to includes and excludes relating to this EntitySet class are included here.",
+    "metadata": {
+      "filename": "installedsoftwareset.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/installedsoftwareset.md",
+      "title": "InstalledSoftwareSet",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.583Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      123,
+      75,
+      929
+    ]
+  },
+  {
+    "id": "installedsoftwareset.md_chunk_4",
+    "content": "Special attributes of Include and Exclude for InstalledSoftwareSets name (Windows only): Allows wildcard matching using ? and * on the display name of the application (the \"name\" attribute of the Entity). For example: <InstalledSoftwareSet> <include name=\"Microsoft*\"/> <InstalledSoftwareSet> will match all installed applications whose display name (as shown by the Control Panel) starts with \"Microsoft\". manufacturer: Allows wildcard matching using ? and * on the publisher or manufacturer of the application. For example: <InstalledSoftwareSet> <include manufacturer=\"* Company \"/> <InstalledSoftwareSet> will match all installed applications whose manufacturer ends with \"Company\". © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "installedsoftwareset.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/installedsoftwareset.md",
+      "title": "InstalledSoftwareSet",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.583Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 4
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      85,
+      46,
+      761
+    ]
+  }
+]

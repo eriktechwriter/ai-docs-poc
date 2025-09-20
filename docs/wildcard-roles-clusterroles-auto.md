@@ -1,0 +1,11 @@
+---
+id: wildcard-roles-clusterroles-auto
+title: 4.1.3 - Minimize wildcard use in Roles and ClusterRoles (automated)
+sidebar_label: 4.1.3 - Minimize wildcard use in Roles and ClusterRoles (automated)
+description: 4.1.3 - Minimize wildcard use in Roles and ClusterRoles (automated)
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 4.1.3 - Minimize wildcard use in Roles and ClusterRoles (automated) Profile applicability: Level 1 - Cluster / Control Plane Kubernetes Roles and ClusterRoles grant access to resources by defining permissible sets of objects and actions. Setting these roles to the wildcard "*" character, which matches all items, can lead to security vulnerabilities by inadvertently granting access to new resources added to the Kubernetes API, whether through Custom Resource Definitions (CRDs) or future versions of the platform. From a security perspective, this practice is not advised because it contradicts the principle of least privilege, which mandates limiting user access strictly to what is necessary for their roles, thereby avoiding the provision of excessive rights within the Kubernetes API. Audit Retrieve the roles defined across each namespace in the cluster and review for wildcards: kubectl get roles --all-namespaces -o yaml Retrieve the cluster roles defined in the cluster and review for wildcards: kubectl get clusterroles -o yaml Remediation Where possible, replace any use of wildcards in clusterroles and roles with specific objects or actions. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

@@ -1,0 +1,178 @@
+[
+  {
+    "id": "anonymous-auth-not-enabled.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 3.2.1 - Ensure that anonymous authentication is not enabled (automated) Profile applicability: Level 1 - Worker Node Disabling anonymous authentication to the Kubelet server enhances the security of Kubernetes worker nodes by ensuring that all requests require authentication, thus mitigating unauthorized access risks. Impact Anonymous requests will be rejected. Audit Audit method 1: Important Kubelets can be configured using either a configuration file or command line arguments. Command line arguments take precedence over the same parameters set in the configuration file. When auditing Kubelet configurations, ensure you check both command line arguments and configuration file entries.",
+    "metadata": {
+      "filename": "anonymous-auth-not-enabled.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/anonymous-auth-not-enabled.md",
+      "title": "3.2.1 - Ensure that anonymous authentication is not enabled (automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.682Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      91,
+      68,
+      782
+    ]
+  },
+  {
+    "id": "anonymous-auth-not-enabled.md_chunk_1",
+    "content": "e and run the following command to view details of the active Kubelet process, including command line arguments: ps -ef | grep kubelet Identify the location of the configuration file from the output, specified by the --config argument. View the file using: sudo less /path/to/kubelet-config.json Verify that anonymous authentication is disabled: Check for the command line argument: --anonymous-auth=false In the Kubelet configuration file, ensure the following setting is present: { \"authentication\": { \"anonymous\": { \"enabled\": false } } } Audit method 2: Review the running configuration of a Kubelet via the \"/configz\" endpoint of the Kubernetes API using kubectl: Discover all nodes in your cluster: kubectl get nodes Initiate a proxy with kubectl on a local port (e.g., 8080): kubectl proxy --port=8080 In a separate terminal, run the following command for each node: export NODE_NAME=my-node-name curl http://localhost:8080/api/v1/nodes/${NODE_NAME}/proxy/configz Verify that anonymous authent",
+    "metadata": {
+      "filename": "anonymous-auth-not-enabled.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/anonymous-auth-not-enabled.md",
+      "title": "3.2.1 - Ensure that anonymous authentication is not enabled (automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.682Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      1,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      128,
+      74,
+      1000
+    ]
+  },
+  {
+    "id": "anonymous-auth-not-enabled.md_chunk_2",
+    "content": "ication is disabled by checking for the following in the API response: { \"authentication\": { \"anonymous\": { \"enabled\": false } } } Remediation Method 1: SSH into each node. If using a Kubelet configuration file, locate the file: ps -ef | grep kubelet View the configuration file using: sudo less /path/to/kubelet-config.json Disable anonymous authentication by setting the following parameter in the configuration file: { \"authentication\": { \"anonymous\": { \"enabled\": false } } } Restart the kubelet service and check its status (example for systems using systemd): systemctl daemon-reload systemctl restart kubelet.service systemctl status kubelet -l Method 2: If using command line arguments, edit the kubelet service file to include: --anonymous-auth=false For systems using systemd, edit the file located at /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf.",
+    "metadata": {
+      "filename": "anonymous-auth-not-enabled.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/anonymous-auth-not-enabled.md",
+      "title": "3.2.1 - Ensure that anonymous authentication is not enabled (automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.682Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      106,
+      56,
+      871
+    ]
+  },
+  {
+    "id": "anonymous-auth-not-enabled.md_chunk_3",
+    "content": "Restart the kubelet service and check its status (example for systems using systemd): systemctl daemon-reload systemctl restart kubelet.service systemctl status kubelet -l © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "anonymous-auth-not-enabled.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/anonymous-auth-not-enabled.md",
+      "title": "3.2.1 - Ensure that anonymous authentication is not enabled (automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.682Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      33,
+      26,
+      246
+    ]
+  }
+]

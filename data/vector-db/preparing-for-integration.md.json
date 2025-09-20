@@ -1,0 +1,222 @@
+[
+  {
+    "id": "preparing-for-integration.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Prepare for VMware Workspace ONE UEM integration Make some preparations on the VMware Workspace ONE UEM console before integration. The integration between Mobile Security and VMware Workspace ONE UEM uses REST APIs over HTTPS to transfer data. The REST APIs require authentication to integrate with Workspace ONE UEM. Prior to authentication, API access must be enabled on the Workspace ONE UEM console. To integrate Mobile Security with Workspace ONE UEM, you also need to have an account with required permissions for the communication between Mobile Security and Workspace ONE UEM. Important The following Workspace ONE UEM instructions and screen captures were valid as of July, 2022. For further help, check your Workspace ONE UEM documentation. Procedure Enable API access on the VMware Workspace ONE UEM console.",
+    "metadata": {
+      "filename": "preparing-for-integration.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/preparing-for-integration.md",
+      "title": "Prepare for VMware Workspace ONE UEM integration",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.858Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      123,
+      66,
+      909
+    ]
+  },
+  {
+    "id": "preparing-for-integration.md_chunk_1",
+    "content": "Sign into the Workspace ONE UEM console, and select any level of organization group (OG) from the hierarchy structure. Mobile Security supports not only the \"Customer\" type OG, but also all other levels of OGs. Important Workspace ONE UEM integration is associated with OGs. Once the integration is completed, only administrator accounts within the selected OG will have permission to edit the integration settings. Go to GROUPS & SETTINGS → All Settings. On the Settings screen, go to System → Advanced → API → REST API. On the General tab, select ENABLED for Enable API Access. Enabling API access automatically generates an API key for the OG, which is necessary for API authentication. On the Authentication tab, select Override for Current Settings and select ENABLED for Basic if the previously selected OG is the \"Customer\" type OG; select Inherit for Current Settings if the previously selected OG is a child OG of the \"Customer\" type OG.",
+    "metadata": {
+      "filename": "preparing-for-integration.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/preparing-for-integration.md",
+      "title": "Prepare for VMware Workspace ONE UEM integration",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.858Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      122,
+      69,
+      946
+    ]
+  },
+  {
+    "id": "preparing-for-integration.md_chunk_2",
+    "content": "Note Mobile Security does not support certificate-based or directory-based API authentication. APIs get authenticated using basic account credentials (user name and password). Create an account with the required API permissions. You can either add an account with the Console Administrator role, or add an account with a custom role that has been granted minimum required permissions. Note The Console Administrator role allows comprehensive access in the console. With this role, you do not need to assign the role any new permissions required by new features released in the future. A custom role with minimum required permissions offers better security. However, custom roles must be manually maintained over time and updated with new features. To add an account with the Console Administrator role, perform the following steps: On the VMware Workspace ONE UEM console, go to ACCOUNTS → Administrators → List View. Select Add and then Add Admin.",
+    "metadata": {
+      "filename": "preparing-for-integration.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/preparing-for-integration.md",
+      "title": "Prepare for VMware Workspace ONE UEM integration",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.858Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      129,
+      75,
+      948
+    ]
+  },
+  {
+    "id": "preparing-for-integration.md_chunk_3",
+    "content": "On the Add Admin screen, select Basic and click Next. On the Definition tab, specify all required fields including username, password, first name, last name, and email address and click Next. On the Roles tab, choose the specific OG you selected in step 1, select Console Administrator from the Role drop-down list, and click Next. On the Details and Settings tabs, specify additional information if necessary, and click Save. The Mobile Security for Business can be deployed to the devices of any user groups or smart groups within the selected OG, as well as any of its child OGs. To add an account with a custom role granted minimum required permissions, perform the following steps: On the VMware Workspace ONE UEM console, go to ACCOUNTS → Administrators → Roles. On the Roles screen, click ADD ROLE, and create a custom administrator role and grant minimum required permissions to the role.",
+    "metadata": {
+      "filename": "preparing-for-integration.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/preparing-for-integration.md",
+      "title": "Prepare for VMware Workspace ONE UEM integration",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.858Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      124,
+      76,
+      896
+    ]
+  },
+  {
+    "id": "preparing-for-integration.md_chunk_4",
+    "content": "Tip To quickly assign all required permissions to the categories falling under Accounts, click the circular icon to the right of these categories and select Read under Choose Edit Mode. Minimum permissions required to complete the integration Category Name Read Edit Accounts → Administrators → Admin Groups Members View Accounts → Users → Accounts Add Device Batch Import Migration Search User Detail View Accounts → Users → User Groups Members View API → REST Admins Apps Devices Groups Users Apps & Books Application Publish Public Apps Purchased Applications Device Management → Device Details Enterprise Wipe Lock Settings → System General View Go to ACCOUNTS → Administrators → List View, and add an account with the newly created role. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "preparing-for-integration.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/preparing-for-integration.md",
+      "title": "Prepare for VMware Workspace ONE UEM integration",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.858Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 4
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      108,
+      74,
+      817
+    ]
+  }
+]

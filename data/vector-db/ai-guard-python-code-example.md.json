@@ -1,0 +1,90 @@
+[
+  {
+    "id": "ai-guard-python-code-example.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Python code example An example of Python code for the Trend Vision One AI Guard integration. The following is an example of how to integrate AI Guard with your application. import openai import os import requests # Get your Trend Vision One API key from environment variable api_key = os.environ.get(\"V1_API_KEY\") if not api_key: raise ValueError(\"Missing V1_API_KEY environment variable\") # Set your OpenAI API key openai.api_key = \"your-model-api-key\" # User prompt stored in a variable user_prompt = \"Explain the concept of machine learning in simple terms.\" # Use the requests library to make the direct call to the /guard endpoint headers = { \"Authorization\": f\"Bearer {api_key}\", \"Content-Type\": \"application/json\", \"detailedResponse\": \"false\" # Optional: Set to true for more detailed responses } payload = { \"guard\": user_prompt } response = requests.post( f\"<https://api.{region}.xdr.trendmicro.com/bet",
+    "metadata": {
+      "filename": "ai-guard-python-code-example.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/ai-guard-python-code-example.md",
+      "title": "Python code example",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.657Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      122,
+      80,
+      1000
+    ]
+  },
+  {
+    "id": "ai-guard-python-code-example.md_chunk_1",
+    "content": "a/aiSecurity>\", headers=headers, json=payload ) # Check the response for the 'action' header unsafe = False action = response.headers.get(\"action\") if action and action.lower() == \"block\": unsafe = True if not unsafe: # Send the prompt to the OpenAI LLM response = openai.ChatCompletion.create( model=\"gpt-4\", messages=[ {\"role\": \"user\", \"content\": user_prompt} ], max_tokens=150, temperature=0.7 ) # Payload can also be the openAI request object guard_response = requests.post( f\"<https://api.{region}.xdr.trendmicro.com/beta/aiSecurity>\", headers=headers, json=response ) action = guard_response.headers.get(\"action\") if action and action.lower() == \"block\": print(\"LLM response is considered unsafe. No response will be shown.\") exit(0) # Print the response print(response.choices[0].text.strip()) else: print(\"User prompt is considered unsafe. No response will be generated.\") exit(0) © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "ai-guard-python-code-example.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/ai-guard-python-code-example.md",
+      "title": "Python code example",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.657Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      117,
+      68,
+      963
+    ]
+  }
+]

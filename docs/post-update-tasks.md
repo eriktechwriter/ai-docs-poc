@@ -1,0 +1,11 @@
+---
+id: post-update-tasks
+title: Post-Update Tasks
+sidebar_label: Post-Update Tasks
+description: Post-Update Tasks
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Post-Update Tasks After updating to Trend Vision One Endpoint Security, confirm that the system update completed successfully and all of your users can connect to the new environment. System checks Console location Description Identity Provider set up Administration → Identity Providers Check that your Identity Provider (IdP) is properly configured If your business uses more than one IdP, the updated console supports the addition of multiple IdPs. Identity provider set up instructions User access and permissions Administration → User Accounts Administration → User Roles Review your users' access permissions to your Trend Vision One environment The updated Trend Vision One system manages access to all your connected solutions and provides user role scope definitions to ensure users can only access the data you allow. Review user accounts Review user roles Note Your users may have to update their user accounts to a new email format or reset their password before signing in for the first time. Affected users receive an email or on-screen notification. Connect endpoint solutions registered under another business name Point Product Connection → Product Instance Consolidate multiple registered businesses under a single console If your business has multiple consoles, you can consolidate all offering under the new single console. Important After connecting an endpoint solution that is registered under a different business name or Primary User Account (formerly Trend Micro Account), only the managed protection agents are automatically moved to the updated Trend Vision One console. Any XDR Endpoint Sensor deployments do not move automatically and you must request assistance from Trend Micro Support. Before filing a support case, consolidate all business account offerings to ensure that the Support engineer can properly associate all your Endpoint Sensors and avoid any disruption of service. Connect other Trend solutions © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

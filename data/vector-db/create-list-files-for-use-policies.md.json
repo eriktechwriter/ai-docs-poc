@@ -1,0 +1,178 @@
+[
+  {
+    "id": "create-list-files-for-use-policies.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Create a list of files for use in policies You can create lists of file paths so that you can use them in multiple policies. A single list is easier to manage than several identical lists that are each created in a different policy. The most common use cases for these lists are for Anti-Malware scan inclusions or exclusions. For more information, see Configure malware scan inclusions and Configure malware scan exclusions. To create a file list that is similar to an existing one, duplicate the list and then edit it. The following table describes the syntax for defining file list items. The use of forward slashes and backslashes is supported for both Windows and Linux conventions. Inclusion Format Description Example File FILE Includes all files with the specified file name regardless of its location or directory. abc.doc Includes all files named \"abc.doc\" in all directories.",
+    "metadata": {
+      "filename": "create-list-files-for-use-policies.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/create-list-files-for-use-policies.md",
+      "title": "Create a list of files for use in policies",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.055Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      135,
+      84,
+      975
+    ]
+  },
+  {
+    "id": "create-list-files-for-use-policies.md_chunk_1",
+    "content": "Does not include \"abc.exe\". File path FILEPATH Includes the specific file specified by the file path. C:\\Documents\\abc.doc Includes only the file named \"abc.doc\" in the \"Documents\" directory. File with wildcard (*) FILE* Includes all files with a matching pattern in the file name. abc*.exe Includes any file that has prefix of \"abc\" and extension of \".exe\". *.db Matches: 123.db abc.db Does not match: 123db 123.abd cbc.dba *db Matches: 123.db 123db ac.db acdb db Does not match: db123 wxy*.db Matches: wxy.db wxy123.db Does not match: wxydb File with wildcard (*) FILE.EXT* Includes all files with a matching pattern in the file extension. abc.v* Includes any file that has file name of \"abc\" and extension beginning with \".v\".",
+    "metadata": {
+      "filename": "create-list-files-for-use-policies.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/create-list-files-for-use-policies.md",
+      "title": "Create a list of files for use in policies",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.055Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      108,
+      44,
+      729
+    ]
+  },
+  {
+    "id": "create-list-files-for-use-policies.md_chunk_2",
+    "content": "es: abc.ap abc.a123p Does not match: abc.pp abc.* Matches: abc.123 abc.xyz Does not match: wxy.123 File with wildcard (*) FILE*.EXT* Includes all files with a matching pattern in the file name and in the extension. a*c.a*p Matches: ac.ap a123c.ap ac.a456p a123c.a456p Does not match: ad.aa Environment variable ${ENV VAR} Includes files specified by an environment variable with the format ${ENV VAR}. These can be defined or overridden using Policy or Computer Editor > Settings > General > Environment Variable Overrides. ${myDBFile} Includes the file \"myDBFile\". Comments FILEPATH #Comment Allows you to add comments to your inclusion definitions. C:\\Documents\\abc.doc #This a comment Click Policies → Common Objects → Lists → File Lists. Click New → New File List. Type a name and, optionally, a description. In the File(s) list, add the file paths, one per line. Click OK.",
+    "metadata": {
+      "filename": "create-list-files-for-use-policies.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/create-list-files-for-use-policies.md",
+      "title": "Create a list of files for use in policies",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.055Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      118,
+      68,
+      877
+    ]
+  },
+  {
+    "id": "create-list-files-for-use-policies.md_chunk_3",
+    "content": "Import and export file lists You can export one or more file lists to an XML or CSV file, and import lists from an XML file. Click Policies → Common Objects → Lists → File Lists. To export one or more lists, select them and click Export → Export Selected to CSV or Export → Export Selected to XML. To export all lists, click Export → Export to CSV or Export → Export to XML. To import lists, click New → Import From File and follow the instructions on the wizard. See which policies use a file list It is useful to see which policies use a file list to be aware of which policies are affected by any changes you make. For example, you can ensure no policies use a file list before deleting it. Click Policies → Common Objects → Lists → File Lists. Select the file list and click Properties. Click the Assigned To tab. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "create-list-files-for-use-policies.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/create-list-files-for-use-policies.md",
+      "title": "Create a list of files for use in policies",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.055Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      128,
+      53,
+      892
+    ]
+  }
+]

@@ -1,0 +1,91 @@
+{
+  "models": [
+    {
+      "title": "Company AI API",
+      "provider": "openai",
+      "model": "gpt-4",
+      "apiKey": "${COMPANY_AI_API_KEY}",
+      "apiBase": "${COMPANY_AI_API_BASE}",
+      "contextLength": 8192,
+      "completionOptions": {
+        "temperature": 0.3,
+        "topP": 1,
+        "presencePenalty": 0,
+        "frequencyPenalty": 0
+      }
+    },
+    {
+      "title": "Local Ollama",
+      "provider": "ollama",
+      "model": "codellama:7b",
+      "apiBase": "http://localhost:11434",
+      "contextLength": 4096,
+      "completionOptions": {
+        "temperature": 0.2
+      }
+    }
+  ],
+  "customCommands": [
+    {
+      "name": "docs",
+      "prompt": "Write comprehensive technical documentation for the following code, including usage examples and best practices:",
+      "description": "Generate technical documentation"
+    },
+    {
+      "name": "improve",
+      "prompt": "Analyze this content and suggest improvements for clarity, accuracy, and completeness:",
+      "description": "Improve content quality"
+    },
+    {
+      "name": "metadata",
+      "prompt": "Generate appropriate frontmatter metadata for this documentation including title, description, tags, and category:",
+      "description": "Generate metadata"
+    },
+    {
+      "name": "outline",
+      "prompt": "Create a detailed outline for documentation about:",
+      "description": "Create content outline"
+    }
+  ],
+  "contextProviders": [
+    {
+      "name": "diff",
+      "params": {}
+    },
+    {
+      "name": "folder",
+      "params": {
+        "folders": ["docs", "src"]
+      }
+    },
+    {
+      "name": "codebase",
+      "params": {}
+    }
+  ],
+  "slashCommands": [
+    {
+      "name": "edit",
+      "description": "Edit selected code"
+    },
+    {
+      "name": "comment",
+      "description": "Write comments for code"
+    },
+    {
+      "name": "share",
+      "description": "Export conversation"
+    },
+    {
+      "name": "cmd",
+      "description": "Generate shell command"
+    }
+  ],
+  "allowAnonymousTelemetry": false,
+  "embeddingsProvider": {
+    "provider": "openai",
+    "model": "text-embedding-ada-002",
+    "apiKey": "${COMPANY_AI_API_KEY}",
+    "apiBase": "${COMPANY_AI_API_BASE}"
+  }
+}

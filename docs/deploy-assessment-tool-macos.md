@@ -1,0 +1,11 @@
+---
+id: deploy-assessment-tool-macos
+title: Deploying the assessment tool to macOS endpoints
+sidebar_label: Deploying the assessment tool to macOS endpoints
+description: Deploying the assessment tool to macOS endpoints
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Deploying the assessment tool to macOS endpoints Deploy the assessment tool to scan macOS endpoints for suspicious file activity and file-based threat indicators from global intelligence sources. The tool supports macOS 10.11 or later. Endpoints must be connected to the internet so the tool can upload data to Trend Vision One. Trend Micro recommends adding the following URLs and ports to the safe list. Region URL Port Australia https://mac-asmt-au1.mactrt.trendmicro.com 443 https://api-ap4.xbc.trendmicro.com 443 Europe https://mac-asmt-eu1.mactrt.trendmicro.com 443 https://api-eu1.xbc.trendmicro.com 443 India https://mac-asmt-in1.mactrt.trendmicro.com 443 https://api-ap5.xbc.trendmicro.com 443 Japan https://mac-asmt-jp1.mactrt.trendmicro.com 443 https://api-ap2.xbc.trendmicro.com 443 Singapore https://mac-asmt-sg1.mactrt.trendmicro.com 443 https://api-ap3.xbc.trendmicro.com 443 United States https://mac-asmt.mactrt.trendmicro.com 443 https://api-us1.xbc.trendmicro.com 443 The assessment report identifies unknown threats and helps determine if your organization is affected by the latest threat campaigns. Procedure In the At-Risk Endpoint Assessment area, click Start Assessment. Click Download Assessment Tool. Click Download Assessment Tool under macOS on the dialog that displays. Note The assessment tool continuously collects user activity, cloud app access, and vulnerability data to provide advanced risk visibility. To uninstall the tool from your endpoints, contact your support provider. Locate and double-click the downloaded file (endpoint_basecamp_mac.zip). A window opens. Double-click endpoint_basecamp.pkg. The Install Endpoint Basecamp window opens. Complete the steps in the installation wizard. Click Close. The tool starts running in the background and automatically uploads data to Trend Vision One. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

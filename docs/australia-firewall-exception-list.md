@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-australia-firewall-exception-list
+slug: australia-firewall-exception-list
 title: Australia - firewall exceptions
 ---
 

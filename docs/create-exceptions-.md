@@ -1,0 +1,11 @@
+---
+id: create-exceptions-
+title: Create exceptions
+sidebar_label: Create exceptions
+description: Create exceptions
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Create exceptions You can override the block and allow behavior dictated by the Smart Protection Network's assessments with your lists of URLs that you want to block or allow. Important The Allowed list takes precedence over the Blocked list. URLs that match entries in the Allowed list are not checked against the Blocked list. Procedure Go to Policies. Double-click the policy that you want to edit. Click Web Reputation → Exceptions. To allow URLs: Go to the Allowed section. In the blank under URLs to be added to the Allowed list (one per line), enter your desired URL. Multiple URLs can be added at once but they must be separated by a line break. Select either: Allow URLs from the domain: Allow all pages from the domain. Sub-domains are supported. Only include the domain (and optionally sub-domain) in the entry. For example, "example.com" and "another.example.com" are valid entries. Allow the URL: The URL as entered will be allowed. Wildcards are supported. For example, "example.com/shopping/coats.html", and "example.com/shopping/*" are valid entries. Click Add. To block URLs: Go to the Blocked section. In the area under URLs to be added to the Blocked list (one per line), enter your desired URL. Multiple URLs or keywords can be added at once but they must be separated by a line break. Select either: Block URLs from the domain: Block all pages from the domain. Sub-domains are supported. Only include the domain (and optionally sub-domain) in the entry. For example, "example.com" and "another.example.com" are valid entries. Block the URL: The URL as entered will be blocked. Wildcards are supported. For example, "example.com/shopping/coats.html", and "example.com/shopping/*" are valid entries. Block URLs containing this keyword: Any URL containing the keyword will be blocked. Click Add. Click Save. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

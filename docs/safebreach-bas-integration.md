@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-safebreach-bas-integration
+slug: safebreach-bas-integration
 title: SafeBreach BAS integration
 ---
 

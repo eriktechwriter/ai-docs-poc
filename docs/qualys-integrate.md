@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-qualys-integrate
+slug: qualys-integrate
 title: Qualys integration
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-getting-started-part
+slug: getting-started-part
 title: Getting started
 ---
 

@@ -1,0 +1,11 @@
+---
+id: eks-1-5-0-recommendations
+title: Amazon Elastic Kubernetes (EKS) 1.5.0 recommendations
+sidebar_label: Amazon Elastic Kubernetes (EKS) 1.5.0 recommendations
+description: Amazon Elastic Kubernetes (EKS) 1.5.0 recommendations
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Amazon Elastic Kubernetes (EKS) 1.5.0 recommendations Related information 3.1.1 - Ensure that the kubeconfig file permissions are set to 644 or more restrictive (Automated) 3.1.2 - Ensure that the kubelet kubeconfig file ownership is set to root:root (Automated) 3.1.3 - Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Automated) 3.1.4 - Ensure that the kubelet configuration file ownership is set to root:root (Automated) 3.2.4 - Ensure that the --read-only-port is disabled (Automated) 3.2.8 - Ensure that the --rotate-certificates argument is not present or is set to true (Automated) 4.1.1 - Ensure that the cluster-admin role is only used where required (Automated) 4.1.2 - Minimize access to secrets (Automated) 4.1.4 - Minimize access to create pods (Automated) 4.1.5 - Ensure that default service accounts are not actively used (Automated) 4.1.6 - Ensure that Service Account Tokens are only mounted where necessary (Automated) 4.1.7 - Avoid use of system:masters group (Automated) 4.2.1 - Minimize the admission of privileged containers (Automated) 4.2.2 - Minimize the admission of containers wishing to share the host process ID namespace (Automated) 4.2.3 - Minimize the admission of containers wishing to share the host IPC namespace (Automated) 4.2.4 - Minimize the admission of containers wishing to share the host network namespace (Automated) 4.2.5 - Minimize the admission of containers with allowPrivilegeEscalation (Automated) 4.3.2 - Ensure that all Namespaces have Network Policies defined (Automated) 4.4.1 - Prefer using secrets as files over secrets as environment variables (Automated) 4.5.3 - The default namespace should not be used (Automated) 5.2.1 - Prefer using dedicated EKS Service Accounts (Automated) © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

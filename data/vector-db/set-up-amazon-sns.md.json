@@ -1,0 +1,178 @@
+[
+  {
+    "id": "set-up-amazon-sns.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Set up Amazon SNS If you have an AWS account, you can take advantage of the Amazon Simple Notification Service (SNS) to publish notifications about Server & Workload Protection events and deliver them to subscribers. For details about SNS, see https://aws.amazon.com/sns/. To set up Amazon SNS: Procedure Create an AWS user. Create an Amazon SNS topic. Enable SNS. Create subscriptions. Next steps See the sections below for details on how to perform these tasks. Related information SNS configuration in JSON format Create an AWS user In order to use Amazon SNS with Server & Workload Protection, you need to create an AWS user with the appropriate permissions for SNS. Note the access key and secret key for the user, because you will need that information for step 3, below. The AWS user will need the \"sns:Publish\" permission on all SNS topics that Server & Workload Protection will publish to.",
+    "metadata": {
+      "filename": "set-up-amazon-sns.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/set-up-amazon-sns.md",
+      "title": "Set up Amazon SNS",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.063Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      5,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      139,
+      75,
+      987
+    ]
+  },
+  {
+    "id": "set-up-amazon-sns.md_chunk_1",
+    "content": "This is an example of a policy with this permission: { \"Version\": \"2012-10-17\", \"Statement\": [ { \"Action\": [ \"sns:Publish\" ], \"Effect\": \"Allow\", \"Resource\": \"\\*\" } ] } If you want to limit publishing rights to a single topic, you can replace \"Resource\":\"*\" with \"Resource\":\"TOPIC ARN\". For more information, see Controlling User Access to Your AWS Account and Special Information for Amazon SNS Policies in the Amazon AWS documentation. Create an Amazon SNS topic In AWS, create an SNS topic where the events will be published. For instructions on how to create an Amazon SNS topic, see \"Create a Topic\" in the Amazon SNS documentation. Note the SNS Topic ARN because you will need this information in step 3, below. Enable SNS Procedure In the Server & Workload Protection console, go to Administration > System Settings > Event Forwarding. In the Amazon SNS section, select Publish Events to Amazon Simple Notification Service.",
+    "metadata": {
+      "filename": "set-up-amazon-sns.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/set-up-amazon-sns.md",
+      "title": "Set up Amazon SNS",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.063Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      115,
+      68,
+      929
+    ]
+  },
+  {
+    "id": "set-up-amazon-sns.md_chunk_2",
+    "content": "Enter this information: Access Key: The access key of the AWS user you created in section 1. Secret Key: The secret key of the AWS user you created in section 1. SNS Topic ARN: The SNS Topic ARN that events will be sent to. This is the ARN that you noted in section 2. Select the types of events that you want to forward to SNS. Selecting the events automatically generates a JSON SNS configuration. (Optional) You can also click Edit JSON SNS configuration to edit the JSON SNS configuration directly if you want to filter the events in greater detail and configure the forwarding instructions for each filter. For details on the configuration language, see JSON SNS configuration. Note: If you edit the JSON, the event check boxes will become unavailable. If you want to select or deselect any of the event check boxes, you can click Revert to basic SNS configuration, but any customizations you have made to the JSON SNS configuration will be discarded. Click Save.",
+    "metadata": {
+      "filename": "set-up-amazon-sns.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/set-up-amazon-sns.md",
+      "title": "Set up Amazon SNS",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.063Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      7,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      141,
+      63,
+      968
+    ]
+  },
+  {
+    "id": "set-up-amazon-sns.md_chunk_3",
+    "content": "Next steps Create subscriptions Now that SNS is enabled and events are being published to the topic, go to the Amazon SNS console and subscribe to the topic to access the events. There are several ways that you can subscribe to events, including email, SMS, and Lambda endpoints. Note: Lambda is not available in all AWS regions. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "set-up-amazon-sns.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/set-up-amazon-sns.md",
+      "title": "Set up Amazon SNS",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.063Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      58,
+      44,
+      404
+    ]
+  }
+]

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-notifications
+slug: notifications
 title: Notifications
 ---
 

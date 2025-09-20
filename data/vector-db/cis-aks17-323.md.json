@@ -1,0 +1,222 @@
+[
+  {
+    "id": "cis-aks17-323.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 3.2.3 - Ensure that the --client-ca-file argument is set as appropriate (Automated) Profile Applicability: Level 1 Enable Kubelet authentication using certificates. The connections from the apiserver to the kubelet are used for fetching logs for pods, attaching (through kubectl) to running pods, and using the kubelet’s port-forwarding functionality. These connections terminate at the kubelet’s HTTPS endpoint. By default, the apiserver does not verify the kubelet’s serving certificate, which makes the connection subject to man-in-the-middle attacks, and unsafe to run over untrusted and/or public networks. Enabling Kubelet certificate authentication ensures that the apiserver could authenticate the Kubelet before submitting any requests. Note See the Azure AKS documentation for the default value. Impact You require TLS to be configured on apiserver as well as kubelets.",
+    "metadata": {
+      "filename": "cis-aks17-323.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-aks17-323.md",
+      "title": "3.2.3 - Ensure that the --client-ca-file argument is set as appropriate (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.826Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      120,
+      87,
+      968
+    ]
+  },
+  {
+    "id": "cis-aks17-323.md_chunk_1",
+    "content": "Audit Audit Method 1: If using a Kubelet configuration file, check that there is an entry for \"x509\": {\"clientCAFile\": \"/path/to/ca.crt\"} set to the location of the client certificate authority file. SSH to the relevant node and run the following command to find the Kubelet config file: ps -ef | grep kubelet The output should return something similar to --config /etc/kubernetes/kubelet/kubelet-config.json. Open the Kubelet config file: sudo more /etc/kubernetes/kubelet/kubelet-config.json Verify that \"x509\": {\"clientCAFile:\" exists and is set to the appropriate location of the client certificate authority file. If the \"x509\": {\"clientCAFile:\" argument is not present, check that there is a Kubelet config file specified by --config, and that the file sets \"authentication\": { \"x509\": {\"clientCAFile:\" to the location of the client certificate authority file. Audit Method 2: If using the API configz endpoint, consider searching for the status of \"authentication\"...",
+    "metadata": {
+      "filename": "cis-aks17-323.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-aks17-323.md",
+      "title": "3.2.3 - Ensure that the --client-ca-file argument is set as appropriate (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.826Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      123,
+      57,
+      974
+    ]
+  },
+  {
+    "id": "cis-aks17-323.md_chunk_2",
+    "content": "\"x509\": {\"clientCAFile\": \"/etc/kubernetes/pki/ca.crt\"} by extracting the live configuration from the nodes running Kubelet. Set the local proxy port and the following variables, and provide the proxy port number and node name: HOSTNAME_PORT=\"localhost-and-port-number\" NODE_NAME=\"The-Name-Of-Node-To-Extract-Configuration\" from the output of \"kubectl get nodes\" kubectl proxy --port=8001 & export HOSTNAME_PORT=localhost:8001 (example host and port number) export NODE_NAME=ip-192.168.31.226.aks.internal (example node name from \"kubectl get nodes\") curl -sSL \"http://${HOSTNAME_PORT}/api/v1/nodes/${NODE_NAME}/proxy/configz\" Remediation Remediation Method 1: If modifying the Kubelet config file, edit /etc/kubernetes/kubelet/kubelet-config.json and the below parameter to false: \"authentication\": { \"x509\": {\"clientCAFile:\" to the location of the client CA file.",
+    "metadata": {
+      "filename": "cis-aks17-323.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-aks17-323.md",
+      "title": "3.2.3 - Ensure that the --client-ca-file argument is set as appropriate (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.826Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      114,
+      59,
+      864
+    ]
+  },
+  {
+    "id": "cis-aks17-323.md_chunk_3",
+    "content": "Remediation Method 2: If using executable arguments, edit the Kubelet service file /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf on each worker node and add the following to the KUBELET_ARGS variable string: --client-ca-file=<path/to/client-ca-file> Remediation Method 3: If using the API configz endpoint, consider searching for the status of \"authentication.*x509\": {\"clientCAFile\": \"/etc/kubernetes/pki/ca.crt\"} by extracting the live configuration from the nodes running Kubelet. See step-by-step configmap procedures in the Kubernetes documentation, and rerun the curl command from the audit process to check for kubelet configuration changes: kubectl proxy --port=8001 & export HOSTNAME_PORT=localhost:8001 (example host and port number) export NODE_NAME=ip-192.168.31.226.aks.internal (example node name from \"kubectl get nodes\") curl -sSL \"http://${HOSTNAME_PORT}/api/v1/nodes/${NODE_NAME}/proxy/configz\" For all three remediations: Restart the kubelet service and check the sta",
+    "metadata": {
+      "filename": "cis-aks17-323.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-aks17-323.md",
+      "title": "3.2.3 - Ensure that the --client-ca-file argument is set as appropriate (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.826Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      132,
+      82,
+      999
+    ]
+  },
+  {
+    "id": "cis-aks17-323.md_chunk_4",
+    "content": "tus: systemctl daemon-reload systemctl restart kubelet.service systemctl status kubelet -l © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-aks17-323.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-aks17-323.md",
+      "title": "3.2.3 - Ensure that the --client-ca-file argument is set as appropriate (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.826Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 4
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      21,
+      18,
+      165
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+---
+id: openshift-411
+title: 4.1.1 - Ensure that the kubelet service file permissions are set to 644 or more restrictive (Automated)
+sidebar_label: 4.1.1 - Ensure that the kubelet service file permissions are set to 644 or more restrictive (Automated)
+description: 4.1.1 - Ensure that the kubelet service file permissions are set to 644 or more restrictive (Automated)
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 4.1.1 - Ensure that the kubelet service file permissions are set to 644 or more restrictive (Automated) Profile applicability: Level 1 Ensure that the kubelet service file has permissions of 644 or more restrictive. The kubelet service file controls various parameters that set the behavior of the kubelet service in the worker node. You should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system. Note By default, the kubelet service file has permissions of 644. Audit Kubelet is run as a systemd unit and its configuration file is created with 644 permissions. Run the following command: for node in $(oc get nodes -o jsonpath='{.items[*].metadata.name}') do oc debug node/${node} -- chroot /host stat -c %a /etc/systemd/system/kubelet.service done Verify that the permissions are 644 or more restrictive. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-platform-directory
+slug: platform-directory
 title: Platform Directory
 ---
 

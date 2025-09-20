@@ -1,0 +1,11 @@
+---
+id: proxy-kubernetes-clusters
+title: Proxy Settings Script Generator (for Kubernetes clusters)
+sidebar_label: Proxy Settings Script Generator (for Kubernetes clusters)
+description: Proxy Settings Script Generator (for Kubernetes clusters)
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Proxy Settings Script Generator (for Kubernetes clusters) Allow Container Security to generate your updated Helm commands to configure proxy settings on your Kubernetes clusters. If you need to update the proxy settings of configured Kubernetes clusters, Container Security provides a Helm script generator for quick updates. Important Changes do not take effect until you execute the Helm script. The cluster details page updates once the changes have taken effect on the cluster. If this is a Fargate cluster, you must reboot the affected pods. Procedure Go to Cloud Security → Container Security → Inventory/Overview. Click Kubernetes. Locate and click the cluster in the table that on which you want to modify the proxy settings. Click the Proxy Settings Tool link next to the Proxy field. The Proxy Settings Script Generator screen appears. If your cluster requires a proxy server, turn on Use Proxy and configure the following settings: Protocol: Select HTTP, HTTPS, or SOCKS5. Proxy address: Specify the IP address of the proxy server. Port: Specify the port number of the proxy server. Require authentication credentials: Select and specify the Account and Password of the proxy server. Use self-signed certificate: Select and choose from Host file, Secret, or ConfigMap, and then enter the certificate information. If your cluster does not require a proxy server, turn off Use Proxy. Copy and execute the Helm script on your cluster. Important Changes do not take effect until you execute the Helm script. The cluster details page updates once the changes have taken effect on the cluster. If this is a Fargate cluster, you must reboot the affected pods. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

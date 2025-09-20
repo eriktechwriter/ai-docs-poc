@@ -1,0 +1,178 @@
+[
+  {
+    "id": "adding-aws-account-using-terraform.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Adding an AWS account using Terraform Connect your AWS account using a terraform script to deploy monitoring assets to your account. Adding an AWS account to the Cloud Accounts app allows Trend Vision One to access your cloud service to provide security and visibility into your cloud assets. Some Cloud Account features have limited support for AWS regions. For more information, see AWS supported regions and limitations. Important The steps are valid for the AWS CloudShell as of September 2024. Terraform only supports Core Features. Procedure Sign in to the Trend Vision One console. In a new tab in the same browser session, access the AWS CloudShell for the account you want to connect. In the Trend Vision One console, go to Cloud Security → Cloud Accounts → AWS. Click Add Account. The Add AWS Account window appears. Specify the Deployment Type. For Deployment Method, select Terraform.",
+    "metadata": {
+      "filename": "adding-aws-account-using-terraform.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/adding-aws-account-using-terraform.md",
+      "title": "Adding an AWS account using Terraform",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.603Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      135,
+      76,
+      985
+    ]
+  },
+  {
+    "id": "adding-aws-account-using-terraform.md_chunk_1",
+    "content": "For account type, select Single AWS Account. Specify the general information for the account. Specify the Account name to display in the Cloud Accounts app. Specify a Description to display in the Cloud Accounts app. Select the AWS region for terraform template deployment. Important The selected region must be the same as your CloudShell region. Attempting to run a terraform script for a different region can cause the deployment to fail. The default region is based on your Trend Vision One region. If you have more than one Server & Workload Protection Manager instance, select the instance to associate with the connected account. Note If you only have one Server & Workload Protection Manager instance, the account is automatically associated with that instance. Click Next. Commands for the following steps are provided on the Launch screen in the Trend Vision One console.",
+    "metadata": {
+      "filename": "adding-aws-account-using-terraform.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/adding-aws-account-using-terraform.md",
+      "title": "Adding an AWS account using Terraform",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.603Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      121,
+      65,
+      881
+    ]
+  },
+  {
+    "id": "adding-aws-account-using-terraform.md_chunk_2",
+    "content": "Trend Micro recommends using these commands as the filename for the terraform package is uniquely generated for the package. Choose your upload method. To use a command to upload the template directly to your CloudShell, select Upload via CLI. Copy and paste the curl command into your CloudShell interface to retrieve the template package. The command is dynamically generated based on your account and region. To download the template first and upload from your local machine, select Manual Upload. Click Download the Terraform Template to save the template to your local machine. Make sure your CloudShell environment is set to the same region you selected for the terraform deployment before uploading the package. In your AWS CloudShell, extract the template to a unique folder. Important The terraform script must be in a folder with no other terraform files. Attempting to run a terraform from a folder with more than one script can cause the deployment to fail.",
+    "metadata": {
+      "filename": "adding-aws-account-using-terraform.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/adding-aws-account-using-terraform.md",
+      "title": "Adding an AWS account using Terraform",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.603Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      132,
+      72,
+      969
+    ]
+  },
+  {
+    "id": "adding-aws-account-using-terraform.md_chunk_3",
+    "content": "Access the folder containing the extracted terraform script. Run the terraform script using the command ./deploy .sh AWS begins the terraform process to deploy Trend Vision One security resources. In the Trend Vision One console, in the Add AWS Account screen, click Done. Note If the Done button is not enabled, make sure you have copied the command line for each step on the screen. The connection process might take a few moments to complete. You can refresh the Cloud Accounts screen to check the status of your added account. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "adding-aws-account-using-terraform.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/adding-aws-account-using-terraform.md",
+      "title": "Adding an AWS account using Terraform",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.603Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      89,
+      61,
+      605
+    ]
+  }
+]

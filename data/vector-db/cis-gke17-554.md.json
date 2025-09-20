@@ -1,0 +1,178 @@
+[
+  {
+    "id": "cis-gke17-554.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 5.5.4 - When creating New Clusters - Automate GKE version management using Release Channels (Automated) Profile applicability: Level 1 Subscribe to the Regular or Stable Release Channel to automate version upgrades to the GKE cluster and to reduce version management complexity to the number of features and level of stability required. Release Channels signal a graduating level of stability and production-readiness. These are based on observed performance of GKE clusters running that version and represent experience and confidence in the cluster version. The Regular release channel upgrades every few weeks and is for production users who need features not yet offered in the Stable channel. These versions have passed internal validation, but don't have enough historical data to guarantee their stability. Known issues generally have known workarounds.",
+    "metadata": {
+      "filename": "cis-gke17-554.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-554.md",
+      "title": "5.5.4 - When creating New Clusters - Automate GKE version management using Release Channels (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.862Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      117,
+      78,
+      949
+    ]
+  },
+  {
+    "id": "cis-gke17-554.md_chunk_1",
+    "content": "The Stable release channel upgrades every few months and is for production users who need stability above all else, and for whom frequent upgrades are too risky. These versions have passed internal validation and have been shown to be stable and reliable in production, based on the observed performance of those clusters. Critical security patches are delivered to all release channels. Note Currently, release channels are not enabled by default. Impact Once release channels are enabled on a cluster, they cannot be disabled. To stop using release channels, the cluster must be recreated without the --release-channel flag. Node auto-upgrade is enabled (and cannot be disabled), so the cluster is updated automatically from releases available in the chosen release channel. Audit Using Google Cloud Console: Go to Kubernetes Engine website. From the list of clusters, select the desired cluster.",
+    "metadata": {
+      "filename": "cis-gke17-554.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-554.md",
+      "title": "5.5.4 - When creating New Clusters - Automate GKE version management using Release Channels (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.862Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      119,
+      78,
+      898
+    ]
+  },
+  {
+    "id": "cis-gke17-554.md_chunk_2",
+    "content": "Within the Details pane, if using a release channel, the release channel should be set to the Regular or Stable channel. Using Command Line: Run the following command: gcloud container clusters describe $CLUSTER_NAME --zone $COMPUTE_ZONE -- format json | jq .releaseChannel.channel Returned Value: \"REGULAR\" The output of the above command will return regular or stable if these release channels are being used to manage automatic upgrades for the cluster. Remediation Currently, cluster Release Channels are only configurable at cluster provisioning time. Using Google Cloud Console: Go to Kubernetes Engine website. Click CREATE, and choose CONFIGURE for the required cluster mode. Under the Control plane version heading, click the Release Channels button. Select the Regular or Stable channels from the Release Channel drop-down menu. Configure the rest of the cluster settings as required. Click CREATE.",
+    "metadata": {
+      "filename": "cis-gke17-554.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-554.md",
+      "title": "5.5.4 - When creating New Clusters - Automate GKE version management using Release Channels (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.862Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      118,
+      73,
+      908
+    ]
+  },
+  {
+    "id": "cis-gke17-554.md_chunk_3",
+    "content": "Using Command Line: Create a new cluster by running the following command: gcloud container clusters create <cluster_name> --zone <cluster_zone> -- release-channel <release_channel> Set <release_channel> to stable or regular, according to requirements. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-gke17-554.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-554.md",
+      "title": "5.5.4 - When creating New Clusters - Automate GKE version management using Release Channels (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.862Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      36,
+      33,
+      327
+    ]
+  }
+]

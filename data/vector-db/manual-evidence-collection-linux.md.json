@@ -1,0 +1,134 @@
+[
+  {
+    "id": "manual-evidence-collection-linux.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Manual evidence collection for Linux endpoints Collect evidence from Linux endpoints manually using the Trend Micro Incident Response Toolkit. Important Evidence archives use the same folder structures as the SANS Institute and the CyLR tool. Procedure Select Agentic SIEM & XDR → Forensics → Packages. Click Collect Evidence. Configure the following settings for manual collection. Setting Description Evidence types The types of evidence to collect. For Linux endpoints, you need the following information: Basic information Process information Service information Network information Account information User activity Archive location on endpoint Location of the evidence package on the local endpoint. Important The local archive does not have encryption and remains on the endpoint until deleted.",
+    "metadata": {
+      "filename": "manual-evidence-collection-linux.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/manual-evidence-collection-linux.md",
+      "title": "Manual evidence collection for Linux endpoints",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.681Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      112,
+      71,
+      890
+    ]
+  },
+  {
+    "id": "manual-evidence-collection-linux.md_chunk_1",
+    "content": "This might allow anyone with access to the file system to access sensitive information or reveal the presence of an ongoing investigation. Evidence archives take up hard drive space which may impact endpoint performance. Click to download the Trend Micro Incident Response Toolkit. Deploy the toolkit to the endpoints on which you want to collect evidence. Execute the toolkit. Extract the contents of the .zip archive. Execute TMIRT.sh as the root user. If you do not have privileges for executing scripts, execute the following commands. Identify the endpoint operating system (OS) architecture by executing the uname -m command. For AArch64 or ARM64 architecture, use the TMIRT-arm64.tgz toolkit. For i386 or i686 architecture, use the TMIRT-x86.tgz toolkit. For AMD64 or x86_64 architecture, use the TMIRT-x64.tgz toolkit. To extract the toolkit from the .tgz file, execute the ./tar -xf command with the correct version of the Trend Micro Incident Response Toolkit based on your OS architecture.",
+    "metadata": {
+      "filename": "manual-evidence-collection-linux.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/manual-evidence-collection-linux.md",
+      "title": "Manual evidence collection for Linux endpoints",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.681Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      135,
+      75,
+      1000
+    ]
+  },
+  {
+    "id": "manual-evidence-collection-linux.md_chunk_2",
+    "content": "To begin collecting evidence, execute ./TMIRT evidence --config_file ./config.json. Upload the evidence packages that the toolkit generates to Forensics. You can upload multiple files at once. Each file must not exceed 4 GB. Forensics begins processing the uploaded evidence packages. Important Processing an evidence package can take several minutes. Do not close the browser tab or refresh the screen until the process finishes. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "manual-evidence-collection-linux.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/manual-evidence-collection-linux.md",
+      "title": "Manual evidence collection for Linux endpoints",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.681Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      66,
+      51,
+      505
+    ]
+  }
+]

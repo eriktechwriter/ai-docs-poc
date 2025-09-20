@@ -1,0 +1,134 @@
+[
+  {
+    "id": "webhook-communication.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Webhook communication Cloud Risk Management supports notifications sent via a custom webhook channel. These notifications will be sent to user-created channels with all relevant users receiving the notifications. Click on Create a Webhook channel. Set automatic notifications. Configure Triggers. Configure now will allow the addition of a Webhook channel using the following parameter Webhook URL: Make sure that you enter a secure Webhook URL with 'https' !!! note \"\" * URL cannot begin with http:// (only https://) * URL cannot contain localhost * URL cannot contain an IP address Webhook Security Token !!! note \"\" Any non-base64 characters will not be accepted Validating payloads from Cloud Risk Management If you decide to set the optional security token, Cloud Risk Management uses it to create a hash signature with each payload.The hash signature is passed along with each request to the url you have",
+    "metadata": {
+      "filename": "webhook-communication.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/webhook-communication.md",
+      "title": "Webhook communication",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.389Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      130,
+      81,
+      999
+    ]
+  },
+  {
+    "id": "webhook-communication.md_chunk_1",
+    "content": "specified in the headers as X-Cloud Risk Management-Signature. The idea is to compute a hash using your provided security token, and ensuring that the hash from our end matches with your end. The hash signature is generated from Cloud Risk Management and uses HMAC hexdigest (sha-256) so you could set up your server similar to this example below: const signatureHash = request.headers[\"X-Cloud Risk Management-Signature\"]; const hmac = crypto.createHmac(\"sha256\", YOUR_SECURITY_TOKEN); const digest = Buffer.from( hmac.update(JSON.stringify(PAYLOAD_BODY)).digest(\"hex\") ); const checksum = Buffer.from(signatureHash, \"utf8\"); if ( checksum.length !== digest.length || !crypto.timingSafeEqual(digest, checksum) ) { console.log('Request body digest(${ digest }) did not match X - Cloud Risk Management - Signature(${ checksum })'); throw new Error(\"Hashes do not match!\"); } console.log(\"Hashes match!\"); Copy communication settingsOnce the channel creation is successful, you will be able to see the",
+    "metadata": {
+      "filename": "webhook-communication.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/webhook-communication.md",
+      "title": "Webhook communication",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.389Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      126,
+      74,
+      999
+    ]
+  },
+  {
+    "id": "webhook-communication.md_chunk_2",
+    "content": "Webhook channel from your Communication Settings. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "webhook-communication.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/webhook-communication.md",
+      "title": "Webhook communication",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.389Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      16,
+      16,
+      124
+    ]
+  }
+]

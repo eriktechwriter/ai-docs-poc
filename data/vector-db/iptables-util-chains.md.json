@@ -1,0 +1,178 @@
+[
+  {
+    "id": "iptables-util-chains.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 3.2.6 - Ensure that the --make-iptables-util-chains argument is set to true (automated) Profile applicability: Level 1 - Worker Node Allow Kubelet to manage iptables. Kubelets can automatically manage the required changes to iptables based on how you choose your networking options for the pods. It is recommended to let kubelets manage the changes to iptables. This ensures that the iptables configuration remains in sync with pods networking configuration. Manually configuring iptables with dynamic pod network configuration changes might hamper the communication between pods/containers and to the outside world. You might have iptables rules too restrictive or too open. Impact Kubelet would manage the iptables on the system and keep it in sync. If you are using any other iptables management solution, then there might be some conflicts.",
+    "metadata": {
+      "filename": "iptables-util-chains.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/iptables-util-chains.md",
+      "title": "3.2.6 - Ensure that the --make-iptables-util-chains argument is set to true (automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.617Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      119,
+      82,
+      933
+    ]
+  },
+  {
+    "id": "iptables-util-chains.md_chunk_1",
+    "content": "Audit Audit method 1: Note First, SSH to each node: Run the following command on each node to find the Kubelet process: ps -ef | grep kubelet If the output of the above command includes the argument --make-iptables-util-chains then verify it is set to true. If the --make-iptables-util-chains argument does not exist, and there is a Kubelet config file specified by --config, verify that the file does not set makeIPTablesUtilChains to false. Audit method 2: If using the API configz endpoint consider searching for the status of authentication... \"makeIPTablesUtilChains\": true by extracting the live configuration from the nodes running Kubelet. Set the local proxy port and the following variables and provide proxy port number and node name: HOSTNAME_PORT=\"localhost-and-port-number\" NODE_NAME=\"The-Name-Of-Node-To-Extract-Configuration\" from the output of \"kubectl get nodes\" kubectl proxy --port=8001 & export HOSTNAME_PORT=localhost:8001 (example host and port number) export NODE_NAME=ip-192",
+    "metadata": {
+      "filename": "iptables-util-chains.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/iptables-util-chains.md",
+      "title": "3.2.6 - Ensure that the --make-iptables-util-chains argument is set to true (automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.617Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      1,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      135,
+      71,
+      999
+    ]
+  },
+  {
+    "id": "iptables-util-chains.md_chunk_2",
+    "content": ".168.31.226.ec2.internal (example node name from \"kubectl get nodes\") curl --SSL \"http://${HOSTNAME_PORT}/api/v1/nodes/${NODE_NAME}/proxy/configz\" Remediation Remediation Method 1: If modifying the Kubelet config file, edit the /etc/kubernetes/kubelet/kubelet-config.json file and set the below parameter to true \"makeIPTablesUtilChains\": true Ensure that /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf does not set the --make-iptables-util-chains argument because that would override your Kubelet config file. Remediation Method 2: If using executable arguments, edit the kubelet service file /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf on each worker node and add the below parameter at the end of the KUBELET_ARGS variable string. --make-iptables-util-chains=true Remediation Method 3: If using the API configz endpoint consider searching for the status of \"makeIPTablesUtilChains\": true by extracting the live configuration from the nodes running kubelet.",
+    "metadata": {
+      "filename": "iptables-util-chains.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/iptables-util-chains.md",
+      "title": "3.2.6 - Ensure that the --make-iptables-util-chains argument is set to true (automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.617Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      132,
+      73,
+      986
+    ]
+  },
+  {
+    "id": "iptables-util-chains.md_chunk_3",
+    "content": "kubectl proxy --port=8001 & export HOSTNAME_PORT=localhost:8001 (example host and port number) export NODE_NAME=ip-192.168.31.226.ec2.internal (example node name from \"kubectl get nodes\") curl --SSL \"http://${HOSTNAME_PORT}/api/v1/nodes/${NODE_NAME}/proxy/configz\" For all three remediations: Based on your system, restart the kubelet service and check status using: systemctl daemon-reload systemctl restart kubelet.service systemctl status kubelet -l Default Value See the Amazon EKS documentation for the default value. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "iptables-util-chains.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/iptables-util-chains.md",
+      "title": "3.2.6 - Ensure that the --make-iptables-util-chains argument is set to true (automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.617Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      82,
+      59,
+      597
+    ]
+  }
+]

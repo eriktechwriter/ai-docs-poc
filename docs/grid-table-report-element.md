@@ -1,0 +1,11 @@
+---
+id: grid-table-report-element
+title: Configuring the Grid Table Report Element
+sidebar_label: Configuring the Grid Table Report Element
+description: Configuring the Grid Table Report Element
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Configuring the Grid Table Report Element This task assumes that you have already added the Grid Table report element to a custom report template row. For more information, see Adding or Editing Custom Templates. Procedure In the Grid Table report element, click Edit. The Edit Grid Table > Step 1: Data View screen appears. Select the type of report data you want to display from the Data Views directory. Click Next >. The Step 2: Set Query Criteria screen appears. To filter the data that displays, select Custom criteria. Specify the Match rule for the custom filter. All of the criteria: Data must match all the specified criteria. Any of the criteria: Data can match any of the specified criteria. Specify the filtering criteria, each of which consists of three parts: Data type: Corresponds to a column returned by the data view Operator: Used to match or exclude data type values Value: Select criteria from the drop-down controls or specify values in the text boxes Note The options that display depend on the selected data view, and the selected data type and operator. Trend Micro Apex Central supports a maximum of 20 filters. Add or remove criteria using the plus () and minus () controls. Click Next >. The Step 3: Specify Design screen appears. Specify the Name used as the title for the chart. Select the data fields to display in the report. Note By default, Trend Micro Apex Central selects all fields for the specified data view. Select the Sorting order of the Selected Fields. Select the Display quantity to define the maximum number of items included in the report. Click Save. The Add/Edit Report Template screen appears with the updated chart settings applied. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

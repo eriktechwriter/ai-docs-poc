@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-openldap-integration
+slug: openldap-integration
 title: OpenLDAP integration
 ---
 

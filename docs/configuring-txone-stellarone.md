@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-configuring-txone-stellarone
+slug: configuring-txone-stellarone
 title: Configuring TXOne StellarOne
 ---
 

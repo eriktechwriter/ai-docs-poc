@@ -1,0 +1,11 @@
+---
+id: enhanced-ci-policy-monitoring-cecp
+title: Enhanced Correlated Intelligence monitoring for existing ATP policies in Cloud Email and Collaboration Protection
+sidebar_label: Enhanced Correlated Intelligence monitoring for existing ATP policies in Cloud Email and Collaboration Protection
+description: Enhanced Correlated Intelligence monitoring for existing ATP policies in Cloud Email and Collaboration Protection
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Enhanced Correlated Intelligence monitoring for existing ATP policies in Cloud Email and Collaboration Protection October 25, 2024—Cloud Email and Collaboration Protection enhances the monitoring of Correlated Intelligence detections without disrupting your email flow. This update automatically enables the Correlated Intelligence filter for policies where this filter is currently disabled, allowing you to keep track of Correlated Intelligence detections seamlessly while maintaining smooth email operations. Specifically, For existing policies without Correlated Intelligence enabled, the action for Security Risks is set to Pass, and “All pre-defined rules” is selected for anomalies with the action set to Pass. For existing policies with Correlated Intelligence enabled, no changes are made to the action for Security Risks. However, if “Specified pre-defined rules” was selected for anomalies with no rules specified, it is changed to “All pre-defined rules” with the action set to Pass. Email and Collaboration Security → Cloud Email and Collaboration Protection © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-greenbone-integration
+slug: greenbone-integration
 title: Greenbone Integration
 ---
 

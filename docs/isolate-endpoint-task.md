@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-isolate-endpoint-task
+slug: isolate-endpoint-task
 title: Isolate Endpoint task
 ---
 

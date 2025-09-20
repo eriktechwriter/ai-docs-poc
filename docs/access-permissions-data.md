@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-access-permissions-data
+slug: access-permissions-data
 title: Overview of access permissions to Microsoft Entra ID data
 ---
 

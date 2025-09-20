@@ -1,0 +1,11 @@
+---
+id: service-gateway-fps-ver-205
+title: "Service Gateway: Forward Proxy Service Version 2.0.5"
+sidebar_label: "Service Gateway: Forward Proxy Service Version 2.0.5"
+description: "Service Gateway: Forward Proxy Service Version 2.0.5"
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Service Gateway: Forward Proxy Service Version 2.0.5 October 21, 2024—Service Gateway: Forward Proxy Service Version 2.0.5 delivers key enhancements, bug fixes, and security updates. This update includes the following changes: This update enhances the DNS policy to fix network instability. This update reduces unnecessary PTR requests to improve network performance and reduce latency. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-ddi-connection-deployment
+slug: ddi-connection-deployment
 title: Deep Discovery Inspector connection guides
 ---
 

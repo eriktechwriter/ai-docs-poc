@@ -1,0 +1,90 @@
+[
+  {
+    "id": "removing-kubernetes-helm-chart.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Removing Container Security by uninstalling the Kubernetes Helm chart You can delete all of the resources created by a helm chart using Helm's uninstall command: WARNING helm uninstall and kubectl delete namespace are destructive commands and will delete all associated resources.. helm uninstall trendmicro --namespace ${namespace} Use the helm list --all-namespaces command to list installed releases in all namespaces. If you created a trendmicro-system namespace during install, and do not have any other components in the trendmicro-system namespace, you can delete the namespace by running: kubectl delete namespace trendmicro-system. By default, Container Security continuous compliance creates a Kubernetes network policy for you. The created network policies is not be removed, even if the chart is uninstalled.",
+    "metadata": {
+      "filename": "removing-kubernetes-helm-chart.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/removing-kubernetes-helm-chart.md",
+      "title": "Removing Container Security by uninstalling the Kubernetes Helm chart",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.914Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      2,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      112,
+      61,
+      909
+    ]
+  },
+  {
+    "id": "removing-kubernetes-helm-chart.md_chunk_1",
+    "content": "To remove these policies, run: kubectl delete networkpolicy -l app.kubernetes.io/instance=trendmicro --all-namespaces If you have running Pods that are isolated by a network policy, removing the network policy restores network access. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "removing-kubernetes-helm-chart.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/removing-kubernetes-helm-chart.md",
+      "title": "Removing Container Security by uninstalling the Kubernetes Helm chart",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.914Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      39,
+      35,
+      309
+    ]
+  }
+]

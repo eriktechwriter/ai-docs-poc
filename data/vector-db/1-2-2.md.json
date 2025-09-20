@@ -1,0 +1,90 @@
+[
+  {
+    "id": "1-2-2.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 1.2.2 - Ensure that the --token-auth-file parameter is not set (Automated) Profile applicability: Level 1 - Master Node Do not use token based authentication. The token-based authentication utilizes static tokens to authenticate requests to the apiserver. The tokens are stored in clear-text in a file on the apiserver, and cannot be revoked or rotated without restarting the apiserver. Hence, do not use static token- based authentication. Note By default, --token-auth-file argument is not set. Impact You will have to configure and use alternate authentication mechanisms such as certificates. Static token based authentication could not be used. Audit Run the following command on the Control Plane node: ps -ef | grep kube-apiserver Verify that the --token-auth-file argument does not exist.",
+    "metadata": {
+      "filename": "1-2-2.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/1-2-2.md",
+      "title": "1.2.2 - Ensure that the --token-auth-file parameter is not set (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.529Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      113,
+      69,
+      885
+    ]
+  },
+  {
+    "id": "1-2-2.md_chunk_1",
+    "content": "Alternative Audit Method kubectl get pod -nkube-system -lcomponent=kube-apiserver -o=jsonpath='{range .items[]}{.spec.containers[].command} {\"\\n\"}{end}' | grep '--token-auth-file' | grep -i false If the exit code is '1', then the control isn't present / failed. Remediation Follow the documentation and configure alternate mechanisms for authentication. Then, edit the API server pod specification file /etc/kubernetes/manifests/kube-apiserver.yaml on the master node and remove the --token-auth-file=<filename> parameter. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "1-2-2.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/1-2-2.md",
+      "title": "1.2.2 - Ensure that the --token-auth-file parameter is not set (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.529Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      78,
+      63,
+      597
+    ]
+  }
+]

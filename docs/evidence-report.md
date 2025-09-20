@@ -1,0 +1,11 @@
+---
+id: evidence-report
+title: Evidence report
+sidebar_label: Evidence report
+description: Evidence report
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Evidence report Search, filter, and organize all the digital evidence collected from endpoints. The following table outlines the actions available in the Evidence Report screen. Action Description Filter evidence Locate key pieces of evidence by using the evidence categories, search field, and the Package menu. The Package list only displays evidence packages collected from the endpoint added to the workspace. View high-risk elements The Highlights section of the evidence report displays all the high-risk pieces of evidence found in the collected evidence. Forensics uses the Trend Micro threat intelligence service to classify elements as high-risk. You can use the Highlights section as a starting point for your investigations. The information in the Highlights section does not update automatically. To update the information, you must collect evidence from your endpoints again. Add evidence to timeline Add key evidence to your workspace timeline to gain insights into the context of an incident. You can add up to 1,000 elements to the timeline at a time. Select one or more pieces of evidence, click Add Selected to Timeline, select a timestamp type, and click Create. View execution context The Execution Context panel lets you to see all the events that happened before and after the execution of a program. Right-click a piece of evidence, then click View Execution Context to see the execution context of a specific element. The Execution Context panel can display up to 20,000 elements. View related threat intelligence from VirusTotal Threat intelligence from VirusTotal facilitates thorough investigation of possible threats in your environment. Right-click URLs, domains, IPs, or file SHA-1 and select VirusTotal to check the related element information from VirusTotal. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

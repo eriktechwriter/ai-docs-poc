@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-account-info-settings
+slug: account-info-settings
 title: Account Settings
 ---
 

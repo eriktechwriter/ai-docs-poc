@@ -1,0 +1,11 @@
+---
+id: groupset
+title: GroupSet
+sidebar_label: GroupSet
+description: GroupSet
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ GroupSet Note The Integrity Monitoring module scans for unexpected changes to directories, registry values, registry keys, services, processes, installed software, ports, groups, users, files, and the WQL query statement on agents. To enable and configure Integrity Monitoring, see Set up integrity monitoring. GroupSet represents a set of groups. Note these are local groups only. Tag Attributes Attribute Description Required Default Value Allowed Values onChange Will be monitored in real time No false true, false Entity Set Attributes These are the attributes of the entity that can be monitored: Description: (Windows only) The textual description of the group. Group: The group ID and name. The group name is part of the entity key, but it's still important to be able to monitor the group ID-name pairing in case groups are renamed and given new IDs. Operating systems generally enforce security based on its ID. Members: A comma separated list of the members of the group. SubGroups: (Windows only) A comma separated list of sub-groups of the group. Short Hand Attributes Standard: Group Members SubGroups Meaning of "Key" The key is the group's name. This is not a hierarchical Entity Set. Patterns are applied only to the group name. As a result the "**" pattern is not applicable. The following example monitors the "Administrators" group for additions and deletions. (The "Member" attribute is included implicitly because it is a part of the STANDARD set, and no attributes are explicitly listed.) <GroupSet> <include key="Administrators" /> </GroupSet> Include and Exclude See Integrity monitoring rules language for a general description of Include and Exclude and their allowed attributes and sub elements. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

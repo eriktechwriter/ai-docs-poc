@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-palo-alto-panorama-integration
+slug: palo-alto-panorama-integration
 title: Palo Alto Panorama integration
 ---
 

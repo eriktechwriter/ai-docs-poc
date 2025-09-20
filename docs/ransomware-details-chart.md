@@ -1,0 +1,11 @@
+---
+id: ransomware-details-chart
+title: Ransomware details chart
+sidebar_label: Ransomware details chart
+description: Ransomware details chart
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Ransomware details chart The Ransomware Details chart on the Threats tab of Dashboard displays the number of messages detected as ransomware by different components of Cloud Email Gateway Protection. Hover over Malware Scanning detections above the chart to view the number of threats detected by Predictive Machine Learning and the number of threats detected by pattern-based scanning. Select a time period by Date, Week, Month, or Last 12 months to show data for the selected time period. The specified time period only affects the data shown on this chart and its corresponding thumbnail chart on the Threats tab. Changing these selections does not affect other charts. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

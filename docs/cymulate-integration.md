@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-cymulate-integration
+slug: cymulate-integration
 title: Cymulate integration
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-sensor-settings-policies
+slug: sensor-settings-policies
 title: Endpoint Security Policies
 ---
 

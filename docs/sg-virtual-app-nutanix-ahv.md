@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-sg-virtual-app-nutanix-ahv
+slug: sg-virtual-app-nutanix-ahv
 title: Deploying a Service Gateway virtual appliance with Nutanix AHV
 ---
 

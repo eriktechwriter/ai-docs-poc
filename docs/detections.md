@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-detections
+slug: detections
 title: Detections data sources
 ---
 

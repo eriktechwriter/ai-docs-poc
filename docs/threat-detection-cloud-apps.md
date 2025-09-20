@@ -1,0 +1,11 @@
+---
+id: threat-detection-cloud-apps
+title: Threat detection
+sidebar_label: Threat detection
+description: Threat detection
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Threat detection Learn about the widgets available on the Threat Detection tab. The Threat Detection tab groups widgets into different sections, each providing a different perspective about threats in your organization. You can configure how this tab displays threat detection data. For details, see Viewing threat detection data. The following table outlines the available sections. Section Description Overall Threat Detections Displays threat detection statistics, that is, the total number of email messages, Teams chat messages, files, Saleforce objects scanned, and the number of each type of security threats detected. Click a number to view the corresponding logs within the selected time period. Scam Displays scam detection statistics, including the total detections and top rankings. Quishing Displays quishing detection statistics, including the total detections and top rankings. Ransomware Displays ransomware detection statistics, including the total detections and top rankings. Business Email Compromise (BEC) Displays BEC detection statistics, including the total detections and top rankings. Summary Displays widgets that provide security risk summary over selected time periods. Security Risk Scan Displays activity about threats known to Trend Micro that affect your network. Virtual Analyzer for Suspicious Objects Displays activity that may become an emerging threat. Data Loss Prevention Displays violations by policy, compliance template, destination, and source. Related information Scam widgets Quishing widgets Ransomware widgets Business email compromise (BEC) widgets Summary widgets Security risk scan widgets Virtual Analyzer widgets Data Loss Prevention widgets Viewing threat detection data © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

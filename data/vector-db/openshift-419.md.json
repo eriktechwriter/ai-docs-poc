@@ -1,0 +1,90 @@
+[
+  {
+    "id": "openshift-419.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 4.1.9 - Ensure that the kubelet --config configuration file has permissions set to 600 or more restrictive (Automated) Profile applicability: Level 1 Ensure that if the kubelet refers to a configuration file with the --config argument, that file has permissions of 600 or more restrictive. The kubelet reads various parameters, including security settings, from a config file specified by the --config argument. If this file is specified you should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system. Note By default, the /var/lib/kubelet/config.json file has permissions of 600. Audit In OpenShift 4, the kubelet configuration file is managed by the Machine Config Operator and is found at /var/lib/kubelet/config.json or /var/data/kubelet/config.json with file permissions set to 600.",
+    "metadata": {
+      "filename": "openshift-419.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/openshift-419.md",
+      "title": "4.1.9 - Ensure that the kubelet --config configuration file has permissions set to 600 or more restrictive (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.789Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      122,
+      61,
+      962
+    ]
+  },
+  {
+    "id": "openshift-419.md_chunk_1",
+    "content": "For OpenShift 4.13 and above, run the following command to check the permission: for node in $(oc get nodes -o jsonpath='{.items[*].metadata.name}') do oc debug node/${node} -- chroot /host stat -c %a /var/data/kubelet/config.json done For earlier versions of OpenShift, run the following command to check the permission: for node in $(oc get nodes -o jsonpath='{.items[*].metadata.name}') do oc debug node/${node} -- chroot /host stat -c %a /var/lib/kubelet/config.json done Verify that the permissions are 600. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "openshift-419.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/openshift-419.md",
+      "title": "4.1.9 - Ensure that the kubelet --config configuration file has permissions set to 600 or more restrictive (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.789Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      78,
+      45,
+      587
+    ]
+  }
+]

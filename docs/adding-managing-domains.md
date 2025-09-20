@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-adding-managing-domains
+slug: adding-managing-domains
 title: Adding and managing domains
 ---
 

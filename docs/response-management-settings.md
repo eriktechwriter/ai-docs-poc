@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-response-management-settings
+slug: response-management-settings
 title: Response Management settings
 ---
 

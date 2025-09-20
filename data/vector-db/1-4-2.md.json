@@ -1,0 +1,90 @@
+[
+  {
+    "id": "1-4-2.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 1.4.2 - Ensure that the --bind-address argument is set to 127.0.0.1 (Automated) Profile applicability: Level 1 - Master Node Do not bind the scheduler service to non-loopback insecure addresses. The Scheduler API service which runs on port 10251/TCP by default is used for health and metrics information and is available without authentication or encryption. As such it should only be bound to a localhost interface, to minimize the cluster's attack surface. Note By default, the --bind-address parameter is set to 0.0.0.0. Audit Run the following command on the Control Plane node: ps -ef | grep kube-scheduler Verify that the --bind-address argument is set to 127.0.0.1. Remediation Edit the Scheduler pod specification file /etc/kubernetes/manifests/kube-scheduler.yaml on the Control Plane node and ensure the correct value for the --bind-address parameter. © 2025 Trend Micro Incorporated.",
+    "metadata": {
+      "filename": "1-4-2.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/1-4-2.md",
+      "title": "1.4.2 - Ensure that the --bind-address argument is set to 127.0.0.1 (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.538Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      122,
+      83,
+      983
+    ]
+  },
+  {
+    "id": "1-4-2.md_chunk_1",
+    "content": "All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "1-4-2.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/1-4-2.md",
+      "title": "1.4.2 - Ensure that the --bind-address argument is set to 127.0.0.1 (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.538Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      6,
+      6,
+      41
+    ]
+  }
+]

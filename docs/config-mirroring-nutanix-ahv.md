@@ -1,0 +1,11 @@
+---
+id: config-mirroring-nutanix-ahv
+title: Configure traffic mirroring for Nutanix AHV
+sidebar_label: Configure traffic mirroring for Nutanix AHV
+description: Configure traffic mirroring for Nutanix AHV
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Configure traffic mirroring for Nutanix AHV Learn how to configure traffic mirroring for your own Virtual Network Sensor on Nutanix AHV. Nutanix AHV supports traffic mirroring. Paid subscribers should refer to the most current documentation version at the Nutanix AHV website for more information. You can use the following procedure to configure traffic mirroring on the Nutanix host. Procedure SSH to CVM. Enter the following command to identify the UUID of your VM: acli vm.list SSH to the Nutanix host. Enter the following command to identify the name of the interface according to its MAC address. Note: This requires use of the data port of your VNS and the sources mirrored to it. virsh domiflist <YOUR-VM-UUID> Enter the following command to identify the name of the vswitch attached to your VM: ovs-vsctl show Enter the following command to clear mirror settings: ovs-vsctl clear bridge ovsbr mirrors Configure SPAN settings, as in the following example: ovs-vsctl \ -- set bridge ovsbr mirrors=@m \ -- --id=@s1 get port vnet1 \ -- --id=@s2 get port vnet2 \ -- --id=@d get port vnet0 \ -- --id=@m create mirror name=m0 select-dst-port=@s1, @s2 select-src-port=@s1,@s2 output-port=@d select-all=true Note The preceding example uses vnet0 as the destination and vnet1, vnet2 as the source. You can change the port names according to the needs of your deployment. Enter the following commands to verify your mirror settings: ovs-vsctl -- list bridge ovs-vsctl -- list mirror Note Users of ERSPAN must add a NIC for their VNS from the user interface, and ensure that the VNS data port IP can be routed. After configuring your network settings, access the Virtual Network Sensor console and use the command show traffic to verify the Virtual Network Sensor is receiving traffic. For more information about troubleshooting, see Virtual Network Sensor FAQ and Virtual Network Sensor CLI commands. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

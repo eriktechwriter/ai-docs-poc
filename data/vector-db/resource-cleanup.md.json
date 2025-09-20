@@ -1,0 +1,90 @@
+[
+  {
+    "id": "resource-cleanup.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Resource cleanup Policy resources in Kubernetes clusters are not deleted when you uninstall Container Security helm chart. Ensure that the custom resources are deleted before uninstalling Container Security helm chart disabling the policy operator in helm chart. The policy and ruleset resources that are owned by the cluster remain in the Trend Vision One console until the cluster object that owns these resources is deleted. Custom resource finalizers We recommend that the policy operator adds a finalizer to the custom resources to ensure that the policy and ruleset files are not deleted until the operator has removed the policy from Trend Vision One. The finalizer is removed after the policy is deleted from Trend Vision One. If the policy operator is disabled before the finalizer is removed, the finalizer can be removed manually to allow the custom resources to be deleted.",
+    "metadata": {
+      "filename": "resource-cleanup.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/resource-cleanup.md",
+      "title": "Resource cleanup",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.924Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      2,
+      0,
+      0,
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      132,
+      59,
+      974
+    ]
+  },
+  {
+    "id": "resource-cleanup.md_chunk_1",
+    "content": "To remove the finalizer, edit the custom resources and remove the finalizer from the metadata section: metadata: finalizers: - clusterpolicy.visionone.trendmicro.com/finalizer - runtimeruleset.visionone.trendmicro.com/finalizer The custom resource can also be patched to remove the finalizer by using the following: kubectl patch clusterpolicy <name> -p '{\"metadata\":{\"finalizers\":null}}' --type=merge © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "resource-cleanup.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/resource-cleanup.md",
+      "title": "Resource cleanup",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.924Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      58,
+      38,
+      476
+    ]
+  }
+]

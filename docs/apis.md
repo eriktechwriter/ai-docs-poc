@@ -1,0 +1,11 @@
+---
+id: apis
+title: APIs
+sidebar_label: APIs
+description: APIs
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ APIs Gain comprehensive visibility over your organization's APIs to identify potential security vulnerabilities. Attack Surface Discovery detects the REST and HTTP-based API endpoints from the API gateways of your organization's connected cloud accounts and groups them into API collections. Trend Vision One categorizes and assigns risk scores for each API collection. The APIs section of Attack Surface Discovery provides a consolidated overview of your API collections and endpoints to help you quickly identify potential vulnerabilities and continuously assess and prioritize risk. For information about connecting cloud accounts, see Cloud Accounts. The following cloud providers and services are currently supported: AWS Amazon API Gateway Azure Azure API Management Google Cloud Platform (GCP) GCP APIGateway Apigee X Kong Gateway Note For Azure API Management, the OData API type is not supported, and will not appear in the endpoint lists for an API Collection. The following table details the actions available in the APIs section of Attack Surface Discovery. Action Description Find API collections Search for API collections by name. Click Filter to add a filter. Manage connected cloud accounts Click any cloud provider name to go to Cloud Accounts. Export a report Click Export to generate a report for the cloud assets currently displayed on the list. View the details of an API collection Click any API collection name to view additional details on the API collection profile screen. Expand any API collection for an overview of the individual API endpoints contained in the collection. Click on any integration resource to view additional details. Related information Enable detailed metrics for an API gateway Delete API gateways in AWS © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

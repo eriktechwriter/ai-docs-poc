@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-custom-model-data
+slug: custom-model-data
 title: Custom model data
 ---
 

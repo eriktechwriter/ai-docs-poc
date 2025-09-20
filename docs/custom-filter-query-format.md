@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-custom-filter-query-format
+slug: custom-filter-query-format
 title: Filter query format
 ---
 

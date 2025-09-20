@@ -1,0 +1,11 @@
+---
+id: linux-agent-july-2025-update
+title: Trend Vision One Endpoint Security agent July 2025 update - Linux
+sidebar_label: Trend Vision One Endpoint Security agent July 2025 update - Linux
+description: Trend Vision One Endpoint Security agent July 2025 update - Linux
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Trend Vision One Endpoint Security agent July 2025 update - Linux July 9, 2025—Trend Vision One Endpoint Security agent version 202507 includes security enhancements, bug fixes, and feature releases. Updates to individual components and agent modules may follow different batch release schedules. This update includes the following changes: Agent program services package 1.2.0.824 Endpoint Sensor version 3.0.0.6679 Server & Workload Protection version 20.0.2.14430 Detailed release notes: New features Add support for the updated Endpoint Security Policies (unified assignment). This is a pre-release feature with limited release. Add support for disabling self-protection using the authorization token (see Authorization tokens in Policy Resources) Supports TPL Endpoint Sensor supports Red Hat Enterprise Linux 10 Server & Workload Protection supports Red Hat Enterprise Linux 10, including support for SELinux, Secure Boot and FIPS mode Enhancements Enhance collection of hardware information including CPU, manufacturer brand and model, serial number, disk information, and network adapter information Server & Workload Protection adds a function to inject a packet when connection is not locked to avoid crashing Bug fixes and resolved issues Server & Workload Protection: fixed issue where the "Scan Now" button for on-demand Enhanced Recommendation Scans doesn't work until the first automatic scan is triggered after agent activation or after agent restart Release schedule: Batch 1: July 2, 2025 Batch 2: July 9, 2025 Batch 3: July 16, 2025 © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

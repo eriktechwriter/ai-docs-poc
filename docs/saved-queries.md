@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-saved-queries
+slug: saved-queries
 title: Saved queries
 ---
 

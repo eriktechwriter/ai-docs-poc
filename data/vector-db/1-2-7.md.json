@@ -1,0 +1,46 @@
+[
+  {
+    "id": "1-2-7.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 1.2.7 - Ensure that the --authorization-mode argument includes Node (Automated) Profile applicability: Level 1 - Master Node Restrict kubelet nodes to reading only objects associated with them. The Node authorization mode only allows kubelets to read Secret, ConfigMap, PersistentVolume, and PersistentVolumeClaim objects associated with their nodes. Note By default, Node authorization is not enabled. Audit Run the following command on the Control Plane node: ps -ef | grep kube-apiserver Verify that the --authorization-mode argument exists and is set to a value to include Node. Remediation Edit the API server pod specification file /etc/kubernetes/manifests/kube-apiserver.yaml on the Control Plane node and set the --authorization-mode parameter to a value that includes Node. --authorization-mode=Node,RBAC © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "1-2-7.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/1-2-7.md",
+      "title": "1.2.7 - Ensure that the --authorization-mode argument includes Node (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.533Z",
+      "heading": "",
+      "chunkType": "section",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      122,
+      81,
+      978
+    ]
+  }
+]

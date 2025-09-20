@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-chronicle-soar-integration
+slug: chronicle-soar-integration
 title: Chronicle SOAR (Siemplify) integration
 ---
 

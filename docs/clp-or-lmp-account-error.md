@@ -1,0 +1,11 @@
+---
+id: clp-or-lmp-account-error
+title: \"clp or lmp account already registered\" error upon granting access to Microsoft 365 services
+sidebar_label: \"clp or lmp account already registered\" error upon granting access to Microsoft 365 services
+description: \"clp or lmp account already registered\" error upon granting access to Microsoft 365 services
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ "clp or lmp account already registered" error upon granting access to Microsoft 365 services Problem: An error message saying "This CLP or LMP account is already registered by another Microsoft 365 account" appears when you grant access to Microsoft 365 services. The possible reason is as follows: You have created a CLP account with a Cloud Email and Collaboration Protection trial license and successfully completed granting access to Microsoft 365 services. After that, you created another CLP account with a Cloud Email and Collaboration Protection full license and want to grant access to Microsoft 365 services again with this account. Perform either of the following: Revoke access to Microsoft 365 services with the old CLP account that you used for granting access. Submit a support ticket to Trend Micro. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

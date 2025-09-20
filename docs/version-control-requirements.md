@@ -1,0 +1,11 @@
+---
+id: version-control-requirements
+title: Version control policies agent requirements
+sidebar_label: Version control policies agent requirements
+description: Version control policies agent requirements
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Version control policies agent requirements The agent version requirements for version control policy enrollment. Version control policies only support endpoints with the Trend Vision One Endpoint Security agent version 202412 or later installed. The following table details the minimum endpoint protection and endpoint sensor version within the agent package that is required to support and enroll in version control policies: Agent feature Windows macOS Linux Standard Endpoint Protection 14.0.0.14203 3.5.7903 - Server & Workload Protection 20.0.1-25770 - 20.0.1-25770 Endpoint Sensor 1.2.0.5721 1.2.379 3.0.0.5147 © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

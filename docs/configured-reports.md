@@ -1,0 +1,11 @@
+---
+id: configured-reports
+title: Configured reports
+sidebar_label: Configured reports
+description: Configured reports
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Configured reports Users can create customized views of the rules and checks on their accounts, groups, and organizations using filters. These report configurations can then be saved and scheduled to be generated at a set time each week, to cater to the specific requirements of a team, manager, or administrator. For example, you can create a daily notification sent to a specific set of email recipients that is filtered on Severity and only created in the last 24hrs. User Access Preconfigured reports Cloud Risk Management offers 2 preconfigured reports: Cloud Posture Report CIS AWS Foundations Note Preconfigured reports are only available for individual accounts. Saved report configurations User configured reports can be identified by the menu icon. To create a new Configured Report, click on the New Report button. Functionality Expanding all the reports displays a history of the configured report. Users can also download reports from the list available in All Generated Reports or Generate reports on demand. Note The column 'Scheduled' indicates whether you have set a frequency for the reports to be auto-generated. New Report Input Title Check if you want to Include individual checks in PDF report If you want to set a frequency of your report, check Scheduled Select Frequency, timezone, and if you want to send scheduled reports over the email, clicking Send email allows you to select recipient(s) or add email address(es), which can be used to send reports to external email address(es). Note Reports will be generated at midnight of the Report timezone. Tip For more specific Frequency, you can click on the Advanced button. Follow the format instructions by clicking the ? Select tabs to view Checks by Rule, Resource, or Standard or Framework Filter checks Save Configuration - the newly created report will be added to the Reports list You can also Generate reports on demand without saving the configuration © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

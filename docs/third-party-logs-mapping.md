@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-third-party-logs-mapping
+slug: third-party-logs-mapping
 title: Third-Party Logs
 ---
 

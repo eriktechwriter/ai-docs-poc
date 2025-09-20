@@ -1,0 +1,222 @@
+[
+  {
+    "id": "aws-security-groups-network-sensor.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Configure AWS security groups for Virtual Network Sensor Prepare security groups before deploying the instance to ensure properly configured rules for the data port and management port. Before you deploy the Virtual Network Sensor AMI to a new instance, you need to create two security groups for the data port and management port. Because the security settings are different between both ports, Trend Micro recommends using the steps below to create the security groups before launching the instance. Important Your security groups must be on the same VPC as your Virtual Network Sensor deployment. Before you begin, make sure you have chosen or created a VPC for the Virtual Network Sensor. For more information on how to set up a VPC and subnet, refer to the Amazon documentation. Note The steps contained in these instructions are valid as of January 2024.",
+    "metadata": {
+      "filename": "aws-security-groups-network-sensor.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/aws-security-groups-network-sensor.md",
+      "title": "Configure AWS security groups for Virtual Network Sensor",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.769Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      6,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      2,
+      0,
+      0,
+      2,
+      0,
+      1,
+      0,
+      0,
+      132,
+      78,
+      949
+    ]
+  },
+  {
+    "id": "aws-security-groups-network-sensor.md_chunk_1",
+    "content": "Procedure On the AWS Management Console, go to the EC2 dashboard. In the top navigation bar, select the Region where you plan to deploy your instance. Note The region can be set to any region you require the Virtual Network Sensor to be deployed. If you are unsure which region to select, use the default region for your AWS account. Go to Network & Security → Security Groups. To create the data port rules, click Create security group. Configure the Basic details. Specify a unique name. Trend Micro recommends using easy to identify rule name such as VirtualNetworkSensor_DataPort Type a description of the ruleset. Select the VPC to save the security group. Configure the Inbound rules. Click Add rule. Configure the new rule. Type: Select All traffic. Source: Trend Micro recommends setting the source to custom and setting the IP to 0.0.0.0/0 to allow the Virtual Network Sensor to scan all traffic.",
+    "metadata": {
+      "filename": "aws-security-groups-network-sensor.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/aws-security-groups-network-sensor.md",
+      "title": "Configure AWS security groups for Virtual Network Sensor",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.769Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      124,
+      73,
+      905
+    ]
+  },
+  {
+    "id": "aws-security-groups-network-sensor.md_chunk_2",
+    "content": "Allowing all traffic to the data port provides the Virtual Network Sensor with maximum visibility into your security environment. Make sure Outbound rules is set to the default to accept all traffic. Note Trend Micro recommends using default settings for outbound port rules. Setting additional outbound rules might affect the ability of the Virtual Network Sensor to scan all traffic. Assign tags to your rule. Tip Adding tags helps with managing objects like security rules by providing a way to track ownership or locate resources associated with deployed instances. Click Create security group. The security group is created and opens the details page for the newly created security group. Go to Network & Security → Security Groups. To create the management port rules, click Create security group. Configure the Basic details. Specify a unique name. Trend Micro recommends using easy to identify rule name such as VirtualNetworkSensor_ManagementPort Type a description of the ruleset.",
+    "metadata": {
+      "filename": "aws-security-groups-network-sensor.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/aws-security-groups-network-sensor.md",
+      "title": "Configure AWS security groups for Virtual Network Sensor",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.769Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      131,
+      78,
+      990
+    ]
+  },
+  {
+    "id": "aws-security-groups-network-sensor.md_chunk_3",
+    "content": "Select the VPC to save the security group. Configure the Inbound rules. Click Add rule to create a new rule. Configure the following rules. Type Protocol Port Range Source Type Source Purpose SSH TCP 22 Recommended: Custom Specify an IP address in CIDR notation or select a security group which is allowed to access the Virtual Network Sensor. See note For accessing the Virtual Network Sensor CLISH console HTTP TCP 80 Recommended: Custom Specify an IP address in CIDR notation or select a security group which is allowed to access the Virtual Network Sensor. See note Debug log export Custom UDP UDP 4789 Recommended: Custom Specify the IP address in CIDR notation of your mirror source or NLB. See note For VXLAN traffic required by the AWS traffic mirror Custom TCP TCP 14789 Recommended: Custom Specify the IP address in CIDR notation of your NLB. See note For answering NLB health check Note Source type controls which IP addresses are allowed to connect to the Virtual Network Sensor.",
+    "metadata": {
+      "filename": "aws-security-groups-network-sensor.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/aws-security-groups-network-sensor.md",
+      "title": "Configure AWS security groups for Virtual Network Sensor",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.769Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      138,
+      62,
+      991
+    ]
+  },
+  {
+    "id": "aws-security-groups-network-sensor.md_chunk_4",
+    "content": "Trend Micro suggests setting Source type to Custom, then specifying Source IP addresses or security groups. See the AWS help for more information about assigning IP addresses and security groups. Make sure Outbound rules is set to the default to accept all traffic. Note Trend Micro recommends using default settings for outbound port rules. Setting additional outbound rules may affect the ability of the Virtual Network Sensor to connect to Network Inventory. Assign tags to your rule. Click Create security group. The security group is created and opens the details page for the newly created security group. Your environment should now be ready to launch the Virtual Network Sensor instance. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "aws-security-groups-network-sensor.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/aws-security-groups-network-sensor.md",
+      "title": "Configure AWS security groups for Virtual Network Sensor",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.769Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 4
+    },
+    "embedding": [
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      106,
+      70,
+      770
+    ]
+  }
+]

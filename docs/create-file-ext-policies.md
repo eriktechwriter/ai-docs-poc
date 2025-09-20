@@ -1,0 +1,11 @@
+---
+id: create-file-ext-policies
+title: Create a list of file extensions for use in policies
+sidebar_label: Create a list of file extensions for use in policies
+description: Create a list of file extensions for use in policies
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Create a list of file extensions for use in policies Create lists of file extensions so that you can use them in multiple malware scan configurations. A single list is easier to manage than several identical lists that are each created in a different rule. For example, one list of file extensions can be used by multiple malware scan configurations as files to include in a scan. Another list of file extensions can be used by multiple malware scan configurations as files to exclude from a scan. Tip To create a file extension list that is similar to an existing one, duplicate the list and then edit it. You can insert comments into your list by preceding the text with a pound sign ("#"). Procedure Click Policies → Common Objects → Lists → File Extension Lists. Click New → New File Extension List. Type a name and, optionally, a description. In the File Extension(s) list, add the extensions, one per line. Click OK. Next steps Import and export file extension lists You can export one or more file extension lists to an XML or CSV file, and import lists from an XML file. Procedure Click Policies → Common Objects → Lists → File Extension Lists. To export one or more lists, select them and click Export → Export Selected to CSV or Export → Export Selected to XML. To export all lists, click Export → Export to CSV or Export → Export to XML. To import lists, click New → Import From File and follow the instructions in the wizard. Next steps See which malware scan configurations use a file extension list It is useful to see which malware scan configurations use a file extension list to be aware of which rules are affected by any changes you make. For example, you can ensure no scan configurations use a file extension list before deleting it. Procedure Click Policies → Common Objects → Lists → File Extension Lists. Select the list and click Properties. Click the Assigned To tab. Next steps © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

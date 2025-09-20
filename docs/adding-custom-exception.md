@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-adding-custom-exception
+slug: adding-custom-exception
 title: Add a custom exception
 ---
 

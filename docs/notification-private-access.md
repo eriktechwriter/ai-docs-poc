@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-notification-private-access
+slug: notification-private-access
 title: Configuring notifications for Private Access Connector status
 ---
 

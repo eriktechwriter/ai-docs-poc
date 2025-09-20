@@ -1,0 +1,92 @@
+[
+  {
+    "id": "1-1-11.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 1.1.11 - Ensure that the etcd data directory permissions are set to 700 or more restrictive (Automated) Profile applicability: Level 1 - Master Node Ensure that the etcd data directory has permissions of 700 or more restrictive. etcd is a highly-available key-value store used by Kubernetes deployments for persistent storage of all of its REST API objects. This data directory should be protected from any unauthorized reads or writes. It should not be readable or writable by any group members or the world. Note By default, etcd data directory has permissions of 755. Audit On the etcd server node, get the etcd data directory, passed as an argument --data-dir, from the below command: ps -ef | grep etcd Run the below command (based on the etcd data directory found above). stat -c %a /var/lib/etcd Verify that the permissions are 700 or more restrictive.",
+    "metadata": {
+      "filename": "1-1-11.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/1-1-11.md",
+      "title": "1.1.11 - Ensure that the etcd data directory permissions are set to 700 or more restrictive (Automated)",
+      "category": "integration",
+      "tags": [
+        "beginner",
+        "trend-vision-one",
+        "documentation"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.501Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      7,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      125,
+      78,
+      948
+    ]
+  },
+  {
+    "id": "1-1-11.md_chunk_1",
+    "content": "Remediation On the etcd server node, get the etcd data directory, passed as an argument --data-dir, from the below command: ps -ef | grep etcd Run the below command (based on the etcd data directory found above). chmod 700 /var/lib/etcd © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "1-1-11.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/1-1-11.md",
+      "title": "1.1.11 - Ensure that the etcd data directory permissions are set to 700 or more restrictive (Automated)",
+      "category": "integration",
+      "tags": [
+        "beginner",
+        "trend-vision-one",
+        "documentation"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.501Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      46,
+      33,
+      311
+    ]
+  }
+]

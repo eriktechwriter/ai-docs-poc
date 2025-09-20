@@ -1,0 +1,11 @@
+---
+id: protect-openshift-containers
+title: Protect OpenShift containers
+sidebar_label: Protect OpenShift containers
+description: Protect OpenShift containers
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Protect OpenShift containers Red Hat OpenShift enables applications inside and outside Kubernetes clusters to run applications where it makes the most sense. OpenShift's basic security includes security hardening and FIPS (Federal Information Processing Standard) compliant encryption (FIPS 140-2 Level 1). Once you have a secure foundation in place, adding Server & Workload Protection to your OpenShift deployment gives you access to Trend Micro’s extensive experience protecting physical, virtual, and cloud workloads as well as to real-time threat information from the Trend Micro Smart Protection Network. Server & Workload Protection both protects your deployment as well as helps meet and maintain continuous compliance requirements. Server & Workload Protection protects your OpenShift hosts and containers running on Red Hat Linux distributions. Server & Workload Protection can do the following: Identify, find, and protect OpenShift hosts within your deployment Provide real-time anti-malware detection for the file systems used on OpenShift hosts and within the containers Note Communication between containers in the pod is not supported. Server & Workload Protection protection for the OpenShift host The following Server & Workload Protection modules can be used to protect the OpenShift host: Anti-Malware (excluding On-demand scan) Server & Workload Protection protection for OpenShift containers The following Server & Workload Protection modules can be used to protect OpenShift containers: Anti-Malware (excluding On-demand scan) More OpenShift information Install the agent on Red Hat OpenShift Server & Workload Protection system requirements To protect OpenShift outside of Server & Workload Protection with Container Security, see Protect Red Hat OpenShift containers in Container Security. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

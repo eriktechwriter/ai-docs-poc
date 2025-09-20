@@ -1,0 +1,178 @@
+[
+  {
+    "id": "configure-anti-evasion-settings.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Configure anti-evasion settings Anti-evasion settings control the network engine handling of abnormal packets that may be attempting to evade analysis. Anti evasion settings are configured in a policy or an individual computer. The Security Posture setting controls how rigorous intrusion prevention analyzes packets, and can be set to one of the following values: Normal: Prevents the evasion of intrusion prevention rules without false positives. This is the default value. Strict: Performs more stringent checking than Normal mode but can produce some false-positive results. Strict mode is useful for penetration testing but should not be enabled under normal circumstances. Custom: If you select Custom, additional settings are available that enable you to specify how the agent will handle issues with packets.",
+    "metadata": {
+      "filename": "configure-anti-evasion-settings.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/configure-anti-evasion-settings.md",
+      "title": "Configure anti-evasion settings",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.935Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      116,
+      87,
+      905
+    ]
+  },
+  {
+    "id": "configure-anti-evasion-settings.md_chunk_1",
+    "content": "For these settings (with the exception of TCP Timestamp PAWS Window), the options are Allow (the agent sends the packet through to the system) or Deny Silent (same behavior as Deny, but no event is logged): Note Deny (the agent drops the packet and logs an event) is not a customizable option. Setting Description Normal value Strict value Default custom value (pre-10.2) Default custom value (10.2 or later) Invalid TCP Timestamps Action to take when a TCP timestamp is too old Ignore (same function as Allow) Deny Deny Ignore (same function as Allow) TCP Timestamp PAWS Window Packets can have timestamps. When a timestamp has an earlier timestamp than the one that came before it, it can be suspicious. The tolerance for the difference in timestamps depends on the operating system. For Windows systems, select 0 (the system will only accept packets with a timestamp that is equal to or newer than the previous packet).",
+    "metadata": {
+      "filename": "configure-anti-evasion-settings.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/configure-anti-evasion-settings.md",
+      "title": "Configure anti-evasion settings",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.935Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      127,
+      74,
+      922
+    ]
+  },
+  {
+    "id": "configure-anti-evasion-settings.md_chunk_2",
+    "content": "For Linux systems, select 1 (the system will accept packets with a timestamp that is a maximum of one second earlier than the previous packet). 1 for Linux agents, otherwise 0 1 for Linux agents, otherwise 0 0 1 for Linux agents, otherwise 0 Timestamp PAWS Zero Allowed Action to take when a TCP timestamp is zero Deny for Linux agents or NDIS5, otherwise Allow Deny for Linux agents or NDIS5, otherwise Allow Deny Deny for Linux agents or NDIS5, otherwise Allow Fragmented Packets Action to take when a packet is fragmented Allow Allow Deny Allow TCP Zero Flags Action to take when a packet has zero flags set Deny Deny Deny Deny TCP Congestion Flags Action to take when a packet has congestion flags set Allow Allow Deny Allow TCP Urgent Flags Action to take when a packet has urgent flags set Allow Deny Deny Allow TCP Syn Fin Flags Action to take when a packet has both SYN and FIN flags set Deny Deny Deny Deny TCP Syn Rst Flags Action to take when a packet has both SYN and RST flags set Deny",
+    "metadata": {
+      "filename": "configure-anti-evasion-settings.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/configure-anti-evasion-settings.md",
+      "title": "Configure anti-evasion settings",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.935Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      155,
+      42,
+      998
+    ]
+  },
+  {
+    "id": "configure-anti-evasion-settings.md_chunk_3",
+    "content": "Deny Deny Deny TCP Rst Fin Flags Action to take when a packet has both RST and FIN flags set Deny Deny Deny Deny TCP Syn with Data Action to take when a packet has a SYN flag set and also contains data Deny Deny Deny Deny TCP Split Handshake Action to take when a SYN is received instead of SYN-ACK, as a reply to a SYN. Deny Deny Deny Deny RST Packet Out of Connection Action to take for a RST packet without a known connection Allow Deny Deny Allow FIN Packet Out of Connection Action to take for a FIN packet without a known connection Allow Deny Deny Allow OUT Packet Out of Connection Action to take for an outgoing packet without a known connection Allow Deny Deny Allow Evasive Retransmit Action to take for a packet with duplicated or overlapping data Allow Deny Deny Allow TCP Checksum Action to take for a packet with an invalid checksum Allow Deny Deny Allow © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "configure-anti-evasion-settings.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/configure-anti-evasion-settings.md",
+      "title": "Configure anti-evasion settings",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.935Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      144,
+      48,
+      944
+    ]
+  }
+]

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-endpoint-agent-system-requirements
+slug: endpoint-agent-system-requirements
 title: Endpoint Agent System Requirements
 ---
 

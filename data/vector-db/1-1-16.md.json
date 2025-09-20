@@ -1,0 +1,46 @@
+[
+  {
+    "id": "1-1-16.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 1.1.16 - Ensure that the scheduler.conf file ownership is set to root:root (Automated) Profile applicability: Level 1 - Master Node Ensure that the scheduler.conf file ownership is set to root:root. The scheduler.conf file is the kubeconfig file for the Scheduler. You should set its file ownership to maintain the integrity of the file. The file should be owned by root:root. Note By default, scheduler.conf file ownership is set to root:root. Audit Run the below command (based on the file location on your system) on the Control Plane node. stat -c %U:%G /etc/kubernetes/scheduler.conf Verify that the ownership is set to root:root. Remediation Run the below command (based on the file location on your system) on the Control Plane node. chown root:root /etc/kubernetes/scheduler.conf © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "1-1-16.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/1-1-16.md",
+      "title": "1.1.16 - Ensure that the scheduler.conf file ownership is set to root:root (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.503Z",
+      "heading": "",
+      "chunkType": "section",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      130,
+      60,
+      951
+    ]
+  }
+]

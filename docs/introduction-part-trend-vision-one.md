@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-introduction-part-trend-vision-one
+slug: introduction-part-trend-vision-one
 title: Introduction
 ---
 

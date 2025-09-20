@@ -1,0 +1,11 @@
+---
+id: cis-gke17-511b
+title: 5.1.1 - Ensure Image Vulnerability Scanning is enabled (Automated)
+sidebar_label: 5.1.1 - Ensure Image Vulnerability Scanning is enabled (Automated)
+description: 5.1.1 - Ensure Image Vulnerability Scanning is enabled (Automated)
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 5.1.1 - Ensure Image Vulnerability Scanning is enabled (Automated) Profile applicability: Level 2 Note GCR is now deprecated, being superseded by Artifact Registry starting 15th May 2024. Runtime Vulnerability scanning is available via GKE Security Posture. Scan images stored in Google Container Registry (GCR) or Artifact Registry (AR) for vulnerabilities. Vulnerabilities in software packages can be exploited by malicious users to obtain unauthorized access to local cloud resources. GCR Container Analysis API or Artifact Registry Container Scanning API allow images stored in GCR or AR respectively to be scanned for known vulnerabilities. Note By default, GCR Container Analysis and AR Container Scanning are disabled. Audit For Images Hosted in GCR: Using Google Cloud Console: Go to the GCR website. Select Settings and check if Vulnerability scanning is Enabled. Using Command Line: gcloud services list --enabled Ensure that the Container Registry API and Container Analysis API are listed in the output. For Images Hosted in AR: Using Google Cloud Console: Go to the AR website. Select Settings and check if Vulnerability scanning is Enabled. Using Command Line: gcloud services list --enabled Ensure that the Container Scanning API and Artifact Registry API are listed in the output. Remediation For Images Hosted in GCR: Using Google Cloud Console: Go to the GCR website. Select Settings under the Vulnerability Scanning heading, click the TURN ON button. Using Command Line: gcloud services enable containeranalysis.googleapis.com For Images Hosted in AR: Using Google Cloud Console: Go to the AR website. Select Settings and, under the Vulnerability Scanning heading, click the ENABLE button. Using Command Line: gcloud services enable containerscanning.googleapis.com © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

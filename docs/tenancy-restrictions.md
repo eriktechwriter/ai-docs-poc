@@ -1,0 +1,11 @@
+---
+id: tenancy-restrictions
+title: Tenancy restrictions
+sidebar_label: Tenancy restrictions
+description: Tenancy restrictions
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Tenancy restrictions Manage tenancy restrictions to maintain a list of tenants or contents for certain cloud apps that users are permitted to access. Internet Access allows you to restrict access to cloud apps that support tenancy restrictions by creating tenancy restriction rules and applying them to secure access rules. For example, you might want the employees in your organization to sign in to a cloud app such as Google Workspace using corporate accounts rather than personal accounts. When a user makes an HTTP or HTTPS request to a supported cloud app, the request is forwarded to the Internet Access Gateway. The gateway then inserts required HTTP/HTTPS header fields for the cloud app along with the specified values, allowing the app to identify what content the user may access. Note Tenancy restrictions can be applied to the following: Internet access rules The following table outlines the options available on the Tenancy Restrictions tab (Zero Trust Secure Access → Secure Access Resources → Tenancy Restrictions). Action Description Add a tenancy restriction rule On the Tenancy Restrictions tab, click Add. Follow the instructions to add a tenancy restriction rule. For more information, see Adding a tenancy restriction. Check tenancy restriction rule details View the basic information about a tenancy restriction rule, including the number of secure access rules that are using the rule. Configure a tenancy restriction rule To change the basic information about a tenancy restriction rule, click in the Action column. To delete a tenancy restriction rule from Trend Vision One, click in the Action column. To delete more than one tenancy restriction rule, select the rules and click Delete in the upper left. Note Only the tenancy restriction rule that is not in use by any secure access rule can be deleted. Related information Adding a tenancy restriction © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

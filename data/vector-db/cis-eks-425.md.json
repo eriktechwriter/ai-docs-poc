@@ -1,0 +1,178 @@
+[
+  {
+    "id": "cis-eks-425.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 4.2.5 - Minimize the admission of containers with allowPrivilegeEscalation (Automated) Profile applicability: Level 1 Do not generally permit containers to be run with the allowPrivilegeEscalation flag set to true. Allowing this right can lead to a process running a container getting more rights than it started with. It's important to note that these rights are still constrained by the overall container sandbox, and this setting does not relate to the use of privileged containers. A container running with the allowPrivilegeEscalation flag set to true may have processes that can gain more privileges than their parent. There should be at least one admission control policy defined which does not permit containers to allow privilege escalation. The option exists (and is defaulted to true) to permit setuid binaries to run.",
+    "metadata": {
+      "filename": "cis-eks-425.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-eks-425.md",
+      "title": "4.2.5 - Minimize the admission of containers with allowPrivilegeEscalation (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.845Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      111,
+      77,
+      918
+    ]
+  },
+  {
+    "id": "cis-eks-425.md_chunk_1",
+    "content": "If you have need to run containers which use setuid binaries or require privilege escalation, this should be defined in a separate policy and you should carefully check to ensure that only limited service accounts and users are given permission to use that policy. Note By default, there are no restrictions on contained process ability to escalate privileges within the context of the container. Impact Pods defined with spec.allowPrivilegeEscalation: true will not be permitted unless they are run under a specific policy. Audit List the policies in use for each namespace in the cluster, and ensure that each policy disallows the admission of containers which allow privilege escalation. This command gets all pods across all namespaces, outputs their details in JSON format, and uses jq to parse and filter the output for containers with allowPrivilegeEscalation set to true.",
+    "metadata": {
+      "filename": "cis-eks-425.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-eks-425.md",
+      "title": "4.2.5 - Minimize the admission of containers with allowPrivilegeEscalation (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.845Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      117,
+      81,
+      879
+    ]
+  },
+  {
+    "id": "cis-eks-425.md_chunk_2",
+    "content": "Option 1 kubectl get pods --all-namespaces -o json | jq -r '.items[] | select(any(.spec.containers[]; .securityContext.allowPrivilegeEscalation == true)) | \"\\(.metadata.namespace)/\\(.metadata.name)\"' Option 2 kubectl get pods --all-namespaces -o json | jq '.items[] | select(.metadata.namespace != \"kube-system\" and .spec.containers[]; .securityContext.allowPrivilegeEscalation == true) | {pod: .metadata.name, namespace: .metadata.namespace, container: .spec.containers[].name}' When creating a Pod Security Policy, [\"kube-system\"] namespaces are excluded by default. This command uses jq, a command-line JSON processor, to parse the JSON output from kubectl get pods and filter out pods where any container has the securityContext.privileged flag set to true. Note You might need to adjust the command depending on your specific requirements and the structure of your pod specifications.",
+    "metadata": {
+      "filename": "cis-eks-425.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-eks-425.md",
+      "title": "4.2.5 - Minimize the admission of containers with allowPrivilegeEscalation (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.845Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      105,
+      57,
+      889
+    ]
+  },
+  {
+    "id": "cis-eks-425.md_chunk_3",
+    "content": "Remediation Add policies to each namespace in the cluster which has user workloads to restrict the admission of containers with .spec.allowPrivilegeEscalation set to true. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-eks-425.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-eks-425.md",
+      "title": "4.2.5 - Minimize the admission of containers with allowPrivilegeEscalation (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.845Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      30,
+      29,
+      246
+    ]
+  }
+]

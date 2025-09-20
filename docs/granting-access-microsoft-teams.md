@@ -1,0 +1,11 @@
+---
+id: granting-access-microsoft-teams
+title: Granting access to Microsoft teams
+sidebar_label: Granting access to Microsoft teams
+description: Granting access to Microsoft teams
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Granting access to Microsoft teams Grant Cloud Email and Collaboration Protection access to Microsoft Teams (Teams) to allow Cloud Email and Collaboration Protection to run advanced threat protection and data loss prevention scanning on files in protected teams. Important Cloud Email and Collaboration Protection protects the Teams and Chat services in Microsoft Teams separately. Cloud Email and Collaboration Protection scans files that employees share in team channels, which are stored in SharePoint. If you have also granted Cloud Email and Collaboration Protection access to SharePoint Online, when the SharePoint site and the team corresponding to a file are selected as a policy target respectively, Cloud Email and Collaboration Protection applies policies for Microsoft Teams (Teams) to this site unless the site does not hit any policy for Microsoft Teams. The steps outlined below detail how to grant access to Microsoft Teams (Teams) from Dashboard. Procedure Go to Dashboard → Service Status. Click Grant Access in the Action column for Microsoft Teams. The Grant Access to Microsoft Teams screen appears. Select the policy to enable automatically when the access grant is complete. Click Grant Permission. Specify your Microsoft 365 Global Administrator credentials and click Sign in. The Microsoft authorization screen appears. Click Accept to grant Cloud Email and Collaboration Protection permissions on teams in your organization. Wait until the process is completed. If the message "Successfully created a service account and synced data." appears on the screen, the access grant is successful. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

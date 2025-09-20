@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-vai-deployment-plan
+slug: vai-deployment-plan
 title: Creating a Virtual Analyzer image deployment plan
 ---
 

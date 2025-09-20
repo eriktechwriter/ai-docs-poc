@@ -1,0 +1,134 @@
+[
+  {
+    "id": "auto-assign-provider-tags-labels.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Automatically assign policies using cloud provider tags/labels AWS tags, Azure tags, and GCP labels allow you to categorize your resources by assigning metadata to AWS EC2 instances, Azure VMs, or GCP VM instances in the form of keys and values. You can also tag Amazon WorkSpaces with the similar key and value pair. Server & Workload Protection can use this metadata to trigger the automatic assigning of a policy to an agent when that agent is activated. This is done by creating an event-based task in Server & Workload Protection and defining the event, policy, and metadata. Event-based tasks are used to monitor protected resources for specific events and then perform tasks based on certain conditions.",
+    "metadata": {
+      "filename": "auto-assign-provider-tags-labels.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/auto-assign-provider-tags-labels.md",
+      "title": "Automatically assign policies using cloud provider tags/labels",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.745Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      2,
+      2,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      107,
+      75,
+      799
+    ]
+  },
+  {
+    "id": "auto-assign-provider-tags-labels.md_chunk_1",
+    "content": "In this example, the event is agent-initiated activation and a specific AWS instance tag is the condition: Policy: AIA_Policy AWS tag key: Group AWS tag value: development Note The example below is based on the assumption that the policy AIA_Policy has already been created. Procedure Go to Administration → Event-Based Tasks in the Server & Workload Protection console and click New. Select Agent-Initiated Activation from the Event list and click Next. Select the Assign Policy check box, select AIA_Policy from the list, and click Next. Select Cloud Instance Metadata from the list, type Group and development into the key and value fields, and click Next. (Optional) To restrict the scope to only one cloud vendor, select Cloud Vendor from the list and select AWS, Azure, or GCP as the matching criteria. If you want to apply the rule to all three, don't define the Cloud Vendor condition. Click Next. Type a name for the event-based task and click Finish to save it.",
+    "metadata": {
+      "filename": "auto-assign-provider-tags-labels.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/auto-assign-provider-tags-labels.md",
+      "title": "Automatically assign policies using cloud provider tags/labels",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.745Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      3,
+      2,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      145,
+      72,
+      971
+    ]
+  },
+  {
+    "id": "auto-assign-provider-tags-labels.md_chunk_2",
+    "content": "Next steps You have now created an event-based task that will apply the AIA_Policy to an instance tagged with the key \"Group\" and the value \"development\" when the agent is activated on that instance. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "auto-assign-provider-tags-labels.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/auto-assign-provider-tags-labels.md",
+      "title": "Automatically assign policies using cloud provider tags/labels",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.745Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      40,
+      35,
+      274
+    ]
+  }
+]

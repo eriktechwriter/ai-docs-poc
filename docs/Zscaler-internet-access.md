@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-Zscaler-internet-access
+slug: Zscaler-internet-access
 title: Zscaler Internet Access integration
 ---
 

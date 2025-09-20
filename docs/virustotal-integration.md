@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-virustotal-integration
+slug: virustotal-integration
 title: VirusTotal integration
 ---
 

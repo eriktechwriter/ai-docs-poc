@@ -1,0 +1,11 @@
+---
+id: spyware-grayware-approved-list
+title: Spyware/Grayware Approved List
+sidebar_label: Spyware/Grayware Approved List
+description: Spyware/Grayware Approved List
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Spyware/Grayware Approved List The Trend Vision One Endpoint Security agent provides a list of "approved" spyware/grayware, which contains files or applications that you do not want treated as spyware or grayware. When a particular spyware/grayware is detected during scanning, the Trend Vision One Endpoint Security agent checks the approved list and performs no action if it finds a match in the approved list. Apply the approved list to one or several Trend Vision One Endpoint Security agents and domains, or to all Trend Vision One Endpoint Security agents that the server manages. The approved list applies to all scan types, which means that the same approved list will be used during Manual Scan, Real-time Scan, Scheduled Scan, and Scan Now. Related information Managing the Spyware/Grayware Approved List © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

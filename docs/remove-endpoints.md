@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-remove-endpoints
+slug: remove-endpoints
 title: Remove Endpoints
 ---
 

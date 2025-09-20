@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-models-filters-email-collab-data
+slug: models-filters-email-collab-data
 title: Creating filters and models for abnormal download behavior in SharePoint and OneDrive
 ---
 

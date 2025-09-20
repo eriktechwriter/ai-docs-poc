@@ -1,0 +1,11 @@
+---
+id: restore-connection-task-ztsa
+title: Restore Connection task
+sidebar_label: Restore Connection task
+description: Restore Connection task
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Restore Connection task After resolving the risk issues on the isolated endpoint, you can restore network connectivity using the Zero Trust Secure Access or Threat and Exposure Management app. Procedure Locate the isolated endpoint using the Zero Trust Secure Access or Threat and Exposure Management app. Zero Trust Secure Access: Go to the User Information screen by clicking on a user anywhere within the Zero Trust Secure Access app. Threat and Exposure Management: Go to the User Profile screen. Click the options icon () and Restore Connection. The Restore Connection Task screen appears. (Optional) Specify a description for the task. Click Create. Trend Vision One creates the task and displays the current action status on the Secure Access History screen. Trend Vision One also creates the task and displays the current action status in the Response Management app. Monitor the task status. Click View task status in the success message that pops up in the lower right corner. The Remediation Logs tab on the Secure Access History screen appears. You can also go directly to Secure Access History → Remediation Logs, and locate the task using the search field. View the task status under Action status. In progress... (): Trend Vision One sent the command to the enforcement point and is waiting for a response Successful (): The enforcement point successfully received and executed the command Unsuccessful (): An error or time-out occurred when attempting to send the command to the enforcement point Queued (): The server queued the task due to a high volume of requests or because the Security Agent was offline Note The task status indicates whether the enforcement point was able to successfully receive and execute the command. It may take a few minutes for the process to complete. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

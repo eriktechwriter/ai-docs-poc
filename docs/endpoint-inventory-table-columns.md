@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-endpoint-inventory-table-columns
+slug: endpoint-inventory-table-columns
 title: Endpoint Inventory table columns
 ---
 

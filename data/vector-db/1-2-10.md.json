@@ -1,0 +1,90 @@
+[
+  {
+    "id": "1-2-10.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 1.2.10 - Ensure that the admission control plugin AlwaysAdmit is not set (Automated) Profile applicability: Level 1 - Master Node Do not allow all requests. Setting admission control plugin AlwaysAdmit allows all requests and do not filter any requests. The AlwaysAdmit admission controller was deprecated in Kubernetes v1.13. Its behavior was equivalent to turning off all admission controllers. Note AlwaysAdmit is not in the list of default admission plugins. Impact Only requests explicitly allowed by the admissions control plugins would be served. Audit Run the following command on the Control Plane node: ps -ef | grep kube-apiserver Verify that if the --enable-admission-plugins argument is set, its value does not include AlwaysAdmit.",
+    "metadata": {
+      "filename": "1-2-10.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/1-2-10.md",
+      "title": "1.2.10 - Ensure that the admission control plugin AlwaysAdmit is not set (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.523Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      102,
+      67,
+      833
+    ]
+  },
+  {
+    "id": "1-2-10.md_chunk_1",
+    "content": "Remediation Edit the API server pod specification file /etc/kubernetes/manifests/kube-apiserver.yaml on the Control Plane node and either remove the --enable-admission-plugins parameter, or set it to a value that does not include AlwaysAdmit. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "1-2-10.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/1-2-10.md",
+      "title": "1.2.10 - Ensure that the admission control plugin AlwaysAdmit is not set (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.523Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      43,
+      41,
+      317
+    ]
+  }
+]

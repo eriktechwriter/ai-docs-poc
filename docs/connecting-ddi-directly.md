@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-connecting-ddi-directly
+slug: connecting-ddi-directly
 title: Connecting a Deep Discovery Inspector appliance directly
 ---
 

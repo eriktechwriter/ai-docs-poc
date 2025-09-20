@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-submit-for-sandbox-analysis-task
+slug: submit-for-sandbox-analysis-task
 title: Submit for Sandbox Analysis task
 ---
 

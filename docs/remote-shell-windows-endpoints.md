@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-remote-shell-windows-endpoints
+slug: remote-shell-windows-endpoints
 title: Remote Shell Commands for Windows Endpoints
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-connecting-your-idp-solutions
+slug: connecting-your-idp-solutions
 title: Connecting your IdP solutions
 ---
 

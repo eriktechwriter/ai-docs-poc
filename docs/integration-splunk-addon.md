@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-integration-splunk-addon
+slug: integration-splunk-addon
 title: Splunk XDR integration
 ---
 

@@ -1,0 +1,11 @@
+---
+id: enrolling-devices-using-mc
+title: Enroll devices using managed configuration
+sidebar_label: Enroll devices using managed configuration
+description: Enroll devices using managed configuration
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Enroll devices using managed configuration Integrate Mobile Security with an MDM solution that supports managed configuration to enroll your devices for security protection. Procedure On the Trend Vision One console, access the configuration screen for integration with other MDMs. If this is the first time you set up Mobile Security, go to Mobile Security → Mobile Inventory to display the Mobile Security landing page. Under I have an MDM solution, choose Use My MDM Solution → Other MDM Solution. If you have already set up an MDM integration or Mobile Device Director, go to Mobile Security → Mobile Inventory, click the settings icon (), and click Add MDM Solution. Under I have an MDM solution, choose Use My MDM Solution → Other MDM Solution. The configuration screen appears. Note Only administrators with the Master Administrator or Operator role can edit the integration settings. In the Enrollment section, follow the onscreen guide to enable the Mobile Security for Business app and create an app configuration policy for Mobile Security for Business in your MDM solution. Note The specific operations vary from MDM to MDM. This guide uses Ivanti as an example to illustrate the operations. For details, see Managed configuration for Ivanti (MobileIron). The enrollment key for enrolling devices from an MDM is valid only for the time period specified in screen. Click Regenerate to generate a new enrollment key when necessary. Select Send email notification x days before enrollment key expiration to get notified of enrollment key expiration. Click Advanced Settings and set a schedule to re-calculate memberships for assignment groups of the "Dynamic devices" type. Click Save Other MDM Solution X Settings. Related information Managed configuration for Ivanti (MobileIron) © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-deploy-agents-using-sccm
+slug: deploy-agents-using-sccm
 title: Deploying Agents Using Microsoft Endpoint Configuration Manager (SCCM)
 ---
 

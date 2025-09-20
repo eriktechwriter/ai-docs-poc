@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-general-search
+slug: general-search
 title: Data sources general search
 ---
 

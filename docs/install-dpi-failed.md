@@ -1,0 +1,11 @@
+---
+id: install-dpi-failed
+title: "Error: Installation of Feature 'dpi' failed: Not available: Filter"
+sidebar_label: "Error: Installation of Feature 'dpi' failed: Not available: Filter"
+description: "Error: Installation of Feature 'dpi' failed: Not available: Filter"
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Error: Installation of Feature 'dpi' failed: Not available: Filter The error message "Installation of Feature 'dpi' failed: Not available: Filter" indicates that your operating system kernel version is not supported by the network driver. You will typically get this message when installing Intrusion Prevention, Web Reputation, or Firewall because the agent installs a network driver at the same time in order to examine traffic. The same circumstances can cause engine offline alerts. An update may be on its way. Trend Micro actively monitors a variety of operating system vendors for new kernel releases. After completing quality assurance tests, we will release an update with support for these kernels. Your system will install the required support automatically when an update for your operating system kernel version becomes available. Contact technical support to find out when support for your operating system kernel version will be released. Additional information This only affects Intrusion Prevention, Web Reputation, and Firewall. All other protection modules (Anti-Malware, Integrity Monitoring, and Log Inspection) will operate correctly. To review supported operating system kernel versions, see Agent Linux kernel support. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-cloud-pak-for-security-integration
+slug: cloud-pak-for-security-integration
 title: Cloud Pak for Security integration
 ---
 

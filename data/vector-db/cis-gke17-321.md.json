@@ -1,0 +1,222 @@
+[
+  {
+    "id": "cis-gke17-321.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 3.2.1 - Ensure that the Anonymous Auth is Not Enabled Draft (Automated) Profile applicability: Level 1 Disable anonymous requests to the Kubelet server. When enabled, requests that are not rejected by other configured authentication methods are treated as anonymous requests. These requests are then served by the Kubelet server. You should rely on authentication to authorize access and disallow anonymous requests. Note See the GKE documentation for the default value. Impact Anonymous requests will be rejected. Audit Audit Method 1: Kubelets can accept configuration from a configuration file and in some cases from command line arguments.",
+    "metadata": {
+      "filename": "cis-gke17-321.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-321.md",
+      "title": "3.2.1 - Ensure that the Anonymous Auth is Not Enabled Draft (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.849Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      91,
+      65,
+      732
+    ]
+  },
+  {
+    "id": "cis-gke17-321.md_chunk_1",
+    "content": "guments will override their counterpart parameters in the configuration file (see --config details in the Kubelet CLI Reference for more info, where you can also find out which configuration parameters can be supplied as a command line argument). With this in mind, it is important to check for the existence of command line arguments as well as configuration file entries when auditing Kubelet configuration. SSH to each node and execute the following command to find the Kubelet process: ps -ef | grep kubelet The output of the above command provides details of the active Kubelet process, from which we can see the command line arguments provided to the process. Also note the location of the configuration file, provided with the --config argument, as this will be needed to verify configuration. The file can be viewed with a command like more or less: sudo less /path/to/kubelet-config.json Verify that Anonymous Authentication is not enabled.",
+    "metadata": {
+      "filename": "cis-gke17-321.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-321.md",
+      "title": "3.2.1 - Ensure that the Anonymous Auth is Not Enabled Draft (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.849Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      6,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      126,
+      69,
+      949
+    ]
+  },
+  {
+    "id": "cis-gke17-321.md_chunk_2",
+    "content": "This may be configured as a command line argument to the kubelet service with --anonymous-auth=false or in the kubelet configuration file with \"authentication\": { \"anonymous\": { \"enabled\": false }. Audit Method 2: It is also possible to review the running configuration of a Kubelet via the /configz endpoint of the Kubernetes API. Use kubectl to proxy your requests to the API. Discover all nodes in your cluster by running the following command: kubectl get nodes Initiate a proxy with kubectl on a local port of your choice, like: kubectl proxy --port=8080 With this running, in a separate terminal run the following command for each node: export NODE_NAME=my-node-name curl http://localhost:8080/api/v1/nodes/${NODE_NAME}/proxy/configz The curl command will return the API response which will be a JSON formatted string representing the Kubelet configuration.",
+    "metadata": {
+      "filename": "cis-gke17-321.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-321.md",
+      "title": "3.2.1 - Ensure that the Anonymous Auth is Not Enabled Draft (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.849Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      1,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      112,
+      65,
+      863
+    ]
+  },
+  {
+    "id": "cis-gke17-321.md_chunk_3",
+    "content": "Verify that Anonymous Authentication is not enabled checking that \"authentication\": { \"anonymous\": { \"enabled\": false } is in the API response. Remediation Remediation Method 1: If configuring via the Kubelet config file, first locate the file: SSH to each node and execute the following command to find the kubelet process: ps -ef | grep kubelet The output of the above command provides details of the active kubelet process, from which we can see the location of the configuration file provided to the kubelet service with the --config argument. The file can be viewed with a command like more or less: sudo less /path/to/kubelet-config.json Disable Anonymous Authentication by setting the following parameter: \"authentication\": { \"anonymous\": { \"enabled\": false } } Remediation Method 2: If using executable arguments, edit the kubelet service file on each worker node and ensure the below parameters are part of the KUBELET_ARGS variable string.",
+    "metadata": {
+      "filename": "cis-gke17-321.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-321.md",
+      "title": "3.2.1 - Ensure that the Anonymous Auth is Not Enabled Draft (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.849Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      120,
+      68,
+      949
+    ]
+  },
+  {
+    "id": "cis-gke17-321.md_chunk_4",
+    "content": "For systems using systemd, such as the Amazon EKS Optimized Amazon Linux or Bottlerocket AMIs, then this file can be found at /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf. Otherwise, you may need to look up documentation for your chosen operating system to determine which service manager is configured: --anonymous-auth=false. For Both Remediation Steps: Based on your system, restart the kubelet service and check the service status. The following example is for operating systems using systemd, such as the Amazon EKS Optimised Amazon Linux or Bottlerocket AMIs, and invokes the systemctl command. If systemctl is not available then you will need to look up documentation for your chosen operating system to determine which service manager is configured: systemctl daemon-reload systemctl restart kubelet.service systemctl status kubelet -l © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-gke17-321.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-321.md",
+      "title": "3.2.1 - Ensure that the Anonymous Auth is Not Enabled Draft (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.849Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 4
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      122,
+      68,
+      932
+    ]
+  }
+]

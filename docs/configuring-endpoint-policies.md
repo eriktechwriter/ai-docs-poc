@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-configuring-endpoint-policies
+slug: configuring-endpoint-policies
 title: Configuring endpoint security policies
 ---
 

@@ -1,0 +1,178 @@
+[
+  {
+    "id": "cis-gke17-562.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 5.6.2 - Ensure use of VPC-native clusters (Automated) Profile applicability: Level 1 Create Alias IPs for the node network CIDR range in order to subsequently configure IP-based policies and firewalling for pods. A cluster that uses Alias IPs is called a VPC-native cluster. Using Alias IPs has several benefits: Pod IPs are reserved within the network ahead of time, which prevents conflict with other compute resources. The networking layer can perform anti-spoofing checks to ensure that egress traffic is not sent with arbitrary source IPs. Firewall controls for Pods can be applied separately from their nodes. Alias IPs allow Pods to directly access hosted services without using a NAT gateway.",
+    "metadata": {
+      "filename": "cis-gke17-562.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-562.md",
+      "title": "5.6.2 - Ensure use of VPC-native clusters (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.864Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      107,
+      84,
+      789
+    ]
+  },
+  {
+    "id": "cis-gke17-562.md_chunk_1",
+    "content": "fault, VPC-native (using alias IP) is enabled when you create a new cluster in the Google Cloud Console, however this is disabled when creating a new cluster using the gcloud CLI, unless the --enable-ip-alias argument is specified. Impact You cannot currently migrate an existing cluster that uses routes for Pod routing to a cluster that uses Alias IPs. Cluster IPs for internal services remain only available from within the cluster. If you want to access a Kubernetes Service from within the VPC, but from outside of the cluster, use an internal load balancer. Audit Using Google Cloud Console: Go to Kubernetes Engine website. From the list of clusters, click on the desired cluster to open the Details page. Under the Networking section, make sure VPC-native traffic routing is set to Enabled.",
+    "metadata": {
+      "filename": "cis-gke17-562.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-562.md",
+      "title": "5.6.2 - Ensure use of VPC-native clusters (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.864Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      112,
+      70,
+      798
+    ]
+  },
+  {
+    "id": "cis-gke17-562.md_chunk_2",
+    "content": "sing Command Line: To check Alias IP is enabled for an existing cluster, run the following command: gcloud container clusters describe <cluster_name> --zone <compute_zone> --format json | jq '.ipAllocationPolicy.useIpAliases' The output of the above command should return true, if VPC-native (using alias IP) is enabled. If VPC-native (using alias IP) is disabled, the above command will return null ({ }). Remediation Alias IPs cannot be enabled on an existing cluster. To create a new cluster using Alias IPs, follow the instructions below. Using Google Cloud Console: If using Standard configuration mode: Go to Kubernetes Engine website. Click CREATE CLUSTER, and select Standard configuration mode. Configure your cluster as desired , then click Networking under CLUSTER in the navigation pane. In the VPC-native section, leave Enable VPC-native (using alias IP) selected. Click CREATE. If using Autopilot configuration mode: Note This is VPC-native only, and cannot be disabled.",
+    "metadata": {
+      "filename": "cis-gke17-562.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-562.md",
+      "title": "5.6.2 - Ensure use of VPC-native clusters (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.864Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      121,
+      70,
+      984
+    ]
+  },
+  {
+    "id": "cis-gke17-562.md_chunk_3",
+    "content": "Go to Kubernetes Engine website. Click CREATE CLUSTER, and select Autopilot configuration mode. Configure your cluster as required. Click CREATE. Using Command Line To enable Alias IP on a new cluster, run the following command: gcloud container clusters create <cluster_name> --zone <compute_zone> --enable-ip-alias If using Autopilot configuration mode: gcloud container clusters create-auto <cluster_name> --zone <compute_zone> © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-gke17-562.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-562.md",
+      "title": "5.6.2 - Ensure use of VPC-native clusters (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.864Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      59,
+      40,
+      505
+    ]
+  }
+]

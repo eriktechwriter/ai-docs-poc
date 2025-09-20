@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-firewall-singapore-cloud-service
+slug: firewall-singapore-cloud-service
 title: 'Firewall exceptions: Singapore - cloud service extension'
 ---
 

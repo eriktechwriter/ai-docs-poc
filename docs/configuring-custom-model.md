@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-configuring-custom-model
+slug: configuring-custom-model
 title: Configure a custom model
 ---
 

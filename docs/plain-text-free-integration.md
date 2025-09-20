@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-plain-text-free-integration
+slug: plain-text-free-integration
 title: Plain text (freetext) feed integration
 ---
 

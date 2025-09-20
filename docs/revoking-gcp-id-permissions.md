@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-revoking-gcp-id-permissions
+slug: revoking-gcp-id-permissions
 title: Revoking Google Cloud Identity permissions
 ---
 

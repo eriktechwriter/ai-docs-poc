@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-action-details
+slug: action-details
 title: Action details
 ---
 

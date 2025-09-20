@@ -1,0 +1,11 @@
+---
+id: ms-defender-support-cdf
+title: Support for Microsoft Defender logs in custom detection filters
+sidebar_label: Support for Microsoft Defender logs in custom detection filters
+description: Support for Microsoft Defender logs in custom detection filters
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Support for Microsoft Defender logs in custom detection filters April 25, 2025—Trend Vision One now supports Microsoft Defender logs in custom detection models. This update includes the following changes: Active Directory (AD) Reconnaissance Activities Bloodhound Post-Exploitation Tool Command Line Used for Possible Overpass-The-Hash DLL Search Order Hijack Event Log Cleared Executable Loaded an Unexpected DLL File Backups Were Deleted File Dropped and Launched from Remote Location Hacktool in a PowerShell Script was Prevented from Executing via AMSI Malicious File Uploaded to Storage Account Malware Prevented Malware in a Command Line was Prevented from Executing Microsoft Defender Antivirus Tampering Microsoft Defender has Detected a Malware Possible Sideload Stealer Activity Process Memory Dump Process Related to Possible AD Reconnaissance Security Software was Disabled Sticky Keys Binary Hijack Detected Successful Logon Using Overpass-the-Hash with Potentially Stolen Credentials Suspected Delivery of Gootkit Malware Suspected Overpass-the-Hash Attack Suspicious Azure Role Assignment Detected Suspicious Key Vault Recovery Detected Suspicious Lsass Process Access Suspicious PowerShell Command Line Suspicious Script Launched Suspicious Sequence of Exploration Activities Windows Defender AV Detected To help you test the new feature, we added custom detection filters to the tm-v1-detection-models GitHub repository. You can import these detection models to your Trend Vision One environment to test the new integration. For more information about custom detection filters, see Custom filters © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

@@ -1,0 +1,11 @@
+---
+id: create-ip-policies
+title: Create a list of IP addresses for use in policies
+sidebar_label: Create a list of IP addresses for use in policies
+description: Create a list of IP addresses for use in policies
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Create a list of IP addresses for use in policies Create lists of IP addresses so that you can use them in multiple firewall rules. A single list is easier to manage than several identical lists that are each defined in a different rule. Tip To create an IP list that is similar to an existing one, duplicate the list and then edit it. You can enter an individual IP address, or you can enter IP ranges and masked IPs. You can also insert comments into your IP list by preceding the text with a hash sign ("#"). Masked IP examples are 192.168.0/24, 192.168.2.0/255.255.255.0, and for IPV6 2001:0DB8::CD30:0:0:0:0/60. IP range examples are 192.168.0.2 - 192.168.0.125 and, for IPV6, FF01::101 - FF01::102 Procedure Click Policies → Common Objects → Lists → IP Lists. Click New → New IP List. Type a name and, optionally, a description. In the IP(s) list, add the IP addresses, masked IP addresses, or IP ranges (one per line). Click OK. Next steps Import and export IP lists You can export one or more IP lists to an XML or CSV file, and import lists from an XML file. Procedure Click Policies → Common Objects → Lists → IP Lists. To export one or more lists, select them and click Export → Export Selected to CSV or Export → Export Selected to XML. To export all lists, click Export → Export to CSV or Export → Export to XML. To import lists, click New → Import From File and follow the instructions on the wizard. Next steps See which rules use an IP list It is useful to see which firewall rules use an IP list to be aware of which rules are affected by any changes you make. For example, you can ensure no firewall rules use an IP list before deleting it. Procedure Click Policies → Common Objects → Lists → IP Lists. Select the IP list and click Properties. Click the Assigned To tab. Next steps © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

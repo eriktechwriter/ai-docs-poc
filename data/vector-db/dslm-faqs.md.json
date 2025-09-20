@@ -1,0 +1,134 @@
+[
+  {
+    "id": "dslm-faqs.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Troubleshooting and frequently asked questions Get help and find answers to questions about Data Source and Log Management. Related information How do I upload a certificate to a Service Gateway? How do I upload a certificate to a Service Gateway? Your third-party data sources may require your Service Gateway to have a certificate for validation purposes. To receive data from the data source, you must upload a valid certificate. In order to perform the following steps, you need a CA certificate for your organization that meets the following requirements: Satisfies PKCS #1 standards Contains both RSA PRIVATE KEY and CERTIFICATE Procedure Ensure the private key is not encrypted. Run the following script to decrypt and regenerate your certificate PEM file.",
+    "metadata": {
+      "filename": "dslm-faqs.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/dslm-faqs.md",
+      "title": "Troubleshooting and frequently asked questions",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.308Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      108,
+      73,
+      852
+    ]
+  },
+  {
+    "id": "dslm-faqs.md_chunk_1",
+    "content": "#!/bin/bash # Check if exactly 2 parameters are provided if [ \"$#\" -ne 2 ]; then echo \"Warning: You must provide exactly 2 parameters.\" echo \"Usage: $0 <<original>>.pem <<decrypted>>.pem\" exit 1 fi # Parameters INPUT_PEM=$1 OUTPUT_PEM=$2 TEMP_CERT=\"temp_cert.pem\" TEMP_KEY=\"temp_key_encrypted.pem\" TEMP_KEY_DEC=\"temp_key_decrypted.pem\" # extract cert openssl x509 -in \"$INPUT_PEM\" -out \"$TEMP_CERT\" # extract key openssl pkey -in \"$INPUT_PEM\" -out \"$TEMP_KEY\" # decrypt key openssl rsa -in \"$TEMP_KEY\" -out \"$TEMP_KEY_DEC\" # combine cert and decrypt key into new PEM cat \"$TEMP_CERT\" \"$TEMP_KEY_DEC\" > \"$OUTPUT_PEM\" # clear temp rm \"$TEMP_CERT\" \"$TEMP_KEY\" \"$TEMP_KEY_DEC\" echo \"New pem generated.New filename = \"$OUTPUT_PEM\" Confirm the output format is as follows: -----BEGIN CERTIFICATE----- (base64....) -----END CERTIFICATE----- -----BEGIN PRIVATE KEY----- (base64....) -----END PRIVATE KEY----- In Service Gateway Management, click the Configure settings icon () next to the Service Gateway to",
+    "metadata": {
+      "filename": "dslm-faqs.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/dslm-faqs.md",
+      "title": "Troubleshooting and frequently asked questions",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.308Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      108,
+      61,
+      999
+    ]
+  },
+  {
+    "id": "dslm-faqs.md_chunk_2",
+    "content": "which you wish to upload the certificate. The Service Gateway Settings window appears. Click Import certificate. Click Select file… and select your certificate file. Click Import. Click Save. The certificate is uploaded to the virtual appliance. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "dslm-faqs.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/dslm-faqs.md",
+      "title": "Troubleshooting and frequently asked questions",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.308Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      43,
+      31,
+      320
+    ]
+  }
+]

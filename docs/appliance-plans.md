@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-appliance-plans
+slug: appliance-plans
 title: Appliance Plans
 ---
 

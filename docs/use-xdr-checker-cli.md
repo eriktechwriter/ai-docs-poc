@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-use-xdr-checker-cli
+slug: use-xdr-checker-cli
 title: Using XDR Endpoint Checker from the command line
 ---
 

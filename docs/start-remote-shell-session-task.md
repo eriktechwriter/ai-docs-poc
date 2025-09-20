@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-start-remote-shell-session-task
+slug: start-remote-shell-session-task
 title: Start Remote Shell Session task
 ---
 

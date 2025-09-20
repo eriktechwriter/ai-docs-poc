@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-run-remote-custom-script-task
+slug: run-remote-custom-script-task
 title: Run Remote Custom Script task
 ---
 

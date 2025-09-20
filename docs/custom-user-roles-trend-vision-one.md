@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-custom-user-roles-trend-vision-one
+slug: custom-user-roles-trend-vision-one
 title: Configuring custom user roles
 ---
 

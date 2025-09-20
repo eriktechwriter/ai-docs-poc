@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-user-logs
+slug: user-logs
 title: User logs
 ---
 

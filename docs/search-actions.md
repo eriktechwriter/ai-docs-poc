@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-search-actions
+slug: search-actions
 title: Search actions
 ---
 

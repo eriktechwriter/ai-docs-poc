@@ -1,0 +1,11 @@
+---
+id: aws-feature-mapping
+title: AWS deployment architecture
+sidebar_label: AWS deployment architecture
+description: AWS deployment architecture
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ AWS deployment architecture Get an overview of how the Cloud Accounts stack fits into your environment and how data is shared with Trend Vision One. The diagrams below provide an abstract visualization of how the deployment stack fits into your AWS cloud account. Additionally, these diagrams show the flow of information between related AWS assets and how that data is shared with Trend Vision One to power cloud security features. For details about the resources used and deployed to your AWS environment, see Resources deployed by Cloud Accounts. Related information Cloud Accounts core features and stack deployment Agentless Vulnerability & Threat Detection XDR for Cloud - AWS CloudTrail File Security Storage Cloud Accounts core features and stack deployment When deploying the Cloud Accounts stack to your AWS account, the stack creates IAM policies and roles to allow Trend Vision One to connect with your account. Additionally, nested stacks are deployed based on the features you enable. For details about the resources used and deployed to your AWS environment, see Resources deployed by Cloud Accounts. Core Features Deployment Architecture Agentless Vulnerability & Threat Detection The diagram shows how the Agentless Vulnerability & Threat Detection feature utilizes assets within your AWS account to discover vulnerabilities in EBS volumes attached to EC2 instances and ECR images. Agentless Vulnerability & Threat Detection XDR for Cloud - AWS CloudTrail Trend Vision One supports monitoring your CloudTrail logs either through a single account, or by leveraging ControlTower. The diagrams below detail the resources leveraged to enable the XDR for Cloud - AWS CloudTrail feature. CloudTrail Log Monitoring for a Single Account CloudTrail Log Monitoring using ControlTower File Security Storage The diagram shows how the File Security Storage feature utilizes assets within your AWS account to monitor and scan files and cloud storage. File Security © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

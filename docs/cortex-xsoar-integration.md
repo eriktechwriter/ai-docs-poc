@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-cortex-xsoar-integration
+slug: cortex-xsoar-integration
 title: Cortex XSOAR integration
 ---
 

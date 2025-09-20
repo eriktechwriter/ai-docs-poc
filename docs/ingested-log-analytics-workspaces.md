@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-ingested-log-analytics-workspaces
+slug: ingested-log-analytics-workspaces
 title: View the ingested data in Log Analytics workspaces
 ---
 

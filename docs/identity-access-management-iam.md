@@ -1,0 +1,11 @@
+---
+id: identity-access-management-iam
+title: Identity and access management (IAM)
+sidebar_label: Identity and access management (IAM)
+description: Identity and access management (IAM)
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Identity and access management (IAM) Integrate your IAM systems with Zero Trust Secure Access and manage authentication settings, such as single sign-on (SSO). The following table describes the tabs available on the Identity and Access Management screen. Tab Description IAM Management Leverage Third-Party Integration to grant permissions in your IAM systems and allow Zero Trust Secure Access to monitor user sign-in attempts, access user data, and perform actions such as disabling user accounts and forcing account password reset. For more information, see Supported IAM systems and required permissions. Local User Account Management Important This feature is only available for customers that have updated to the Foundation Services release. Add and manage user accounts not connected to an integrated third-party IAM system. Enabled accounts that have completed enrollment may authenticate to Private Access and Internet Access services through Trend Vision One. For more information, see Local user account management. Authentication Management Click Configure Authentication Method to set up SAML-based single sign-on (SSO) for Private Access and Internet Access user authentication. Important You must grant data upload permission from the IAM Management tab for the IAM system you intend to use for SSO. Note Zero Trust Secure Access only supports SSO for one IAM system at a time. Reauthentication Settings Configure the following re-authentication settings for Private Access and Internet Access desktop and mobile users: The period before Private Access requires re-authentication (module and browser-based) The period before Private Access automatically signs out inactive users (module only) The period before Internet Access automatically signs out inactive users (module and browser-based) Related information Supported IAM systems and required permissions Local user account management © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

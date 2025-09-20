@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-user-accounts-foundation-services
+slug: user-accounts-foundation-services
 title: User Accounts (Foundation Services release)
 ---
 

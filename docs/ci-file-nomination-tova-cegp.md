@@ -1,0 +1,11 @@
+---
+id: ci-file-nomination-tova-cegp
+title: Enhanced file scanning with Virtual Analyzer nominated by Correlated Intelligence in Cloud Email Gateway Protection
+sidebar_label: Enhanced file scanning with Virtual Analyzer nominated by Correlated Intelligence in Cloud Email Gateway Protection
+description: Enhanced file scanning with Virtual Analyzer nominated by Correlated Intelligence in Cloud Email Gateway Protection
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Enhanced file scanning with Virtual Analyzer nominated by Correlated Intelligence in Cloud Email Gateway Protection May 20, 2025—Cloud Email Gateway Protection allows administrators to decide whether to send files that are identified as suspicious by Correlated Intelligence to Virtual Analyzer for further analysis. Administrator can also specify the security level for configured actions based on Virtual Analyzer’s scan results. This feature enhances file scanning robustness, ensuring more thorough threat detection and improved security. Email and Collaboration Security → Cloud Email Gateway Protection © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

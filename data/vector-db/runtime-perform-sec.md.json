@@ -1,0 +1,134 @@
+[
+  {
+    "id": "runtime-perform-sec.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Runtime Security performance impact Kubernetes environments can be dynamic, and Runtime Security's performance impact depends on both the workload being run in a given environment and the cluster’s applied rulesets. This topic documents the recommended resource configuration for different node sizes. Runtime Security’s performance depends directly on the number of syscalls overall and the number of those syscalls that trigger active runtime rules for the cluster. Different applications have varying volumes of syscalls and resource usage impact on Runtime Security. The table below is a recommended configuration based on Trend Micro's test environment, which you may need adjust based on your actual environment. All values in the following table are for a single node of the stated size.",
+    "metadata": {
+      "filename": "runtime-perform-sec.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/runtime-perform-sec.md",
+      "title": "Runtime Security performance impact",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.972Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      4,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      111,
+      73,
+      883
+    ]
+  },
+  {
+    "id": "runtime-perform-sec.md_chunk_1",
+    "content": "Node Environment Resource Type Falco Requests Falco Limits Scout Request Scout Limits CPU: 1 vCPU Memory: 4.0 GiB CPU 100m 200m 100m 200m Memory 256Mi 512Mi 256Mi 512Mi CPU: 4 vCPU Memory: 16.0 GiB CPU 500m 700m 100m 200m Memory 1Gi 2Gi 256Mi 512Mi CPU: 8 vCPU Memory: 32.0 GiB CPU 500m 1000m 100m 512m Memory 2Gi 4Gi 512Mi 700Mi General Sizing Guidance We recommend that you maintain the default size settings for the majority of components, and adjust only the Falco and Scout resources using the recommendations in the table above, and within the Helm chart using overrides file. If you encounter persistent Out Of Memory (OOM) kill issues, consider allocating additional resources to your cluster to ensure it meets the requirements listed in Kubernetes system requirements for Container Security. If your instance differs from the sizes listed above, we recommend that you set the following resource limits for Falco and Scout: Allocate 12.5% of your instance's total vCPU and memory to Falco.",
+    "metadata": {
+      "filename": "runtime-perform-sec.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/runtime-perform-sec.md",
+      "title": "Runtime Security performance impact",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.972Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      144,
+      79,
+      998
+    ]
+  },
+  {
+    "id": "runtime-perform-sec.md_chunk_2",
+    "content": "If Falco is restarting often because of Out of Memory (OOM) issue, incrementally raise the memory allocation up to a maximum of 25% of the instance's total memory. Exceeding this threshold could negatively impact the performance of other applications on the instance. Set Scout's CPU and memory limits to half of the limit set for Falco. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "runtime-perform-sec.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/runtime-perform-sec.md",
+      "title": "Runtime Security performance impact",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.972Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      52,
+      42,
+      412
+    ]
+  }
+]

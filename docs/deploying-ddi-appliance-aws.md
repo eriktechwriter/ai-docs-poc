@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-deploying-ddi-appliance-aws
+slug: deploying-ddi-appliance-aws
 title: Deploying a Deep Discovery Inspector virtual appliance on AWS
 ---
 

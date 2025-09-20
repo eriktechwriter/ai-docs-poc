@@ -1,0 +1,134 @@
+[
+  {
+    "id": "cis-gke17-556.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 5.5.6 - Ensure Integrity Monitoring for Shielded GKE Nodes is Enabled (Automated) Profile applicability: Level 1 Enable Integrity Monitoring for Shielded GKE Nodes to be notified of inconsistencies during the node boot sequence. Integrity Monitoring provides active alerting for Shielded GKE nodes which allows administrators to respond to integrity failures and prevent compromised nodes from being deployed into the cluster. Note Integrity Monitoring is disabled by default on GKE clusters. Integrity Monitoring is enabled by default for Shielded GKE Nodes; however, if Secure Boot is enabled at creation time, Integrity Monitoring is disabled. Audit Using Google Cloud Console: Go to Kubernetes Engine website. From the list of clusters, click on the name of the cluster under test.",
+    "metadata": {
+      "filename": "cis-gke17-556.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-556.md",
+      "title": "5.5.6 - Ensure Integrity Monitoring for Shielded GKE Nodes is Enabled (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.863Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      6,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      103,
+      65,
+      874
+    ]
+  },
+  {
+    "id": "cis-gke17-556.md_chunk_1",
+    "content": "Open the Details pane for each Node pool within the cluster, and ensure that Integrity monitoring is set to Enabled under the Security heading. Using Command Line: To check if Integrity Monitoring is enabled for the Node pools in the cluster, run the following command for each Node pool: gcloud container node-pools describe <node_pool_name> --cluster <cluster_name> --zone <compute_zone> --format json | jq .config.shieldedInstanceConfig This will return the following, if Integrity Monitoring is enabled: { \"enableIntegrityMonitoring\": true } Remediation Once a Node pool is provisioned, it cannot be updated to enable Integrity Monitoring. New Node pools must be created within the cluster with Integrity Monitoring enabled. Using Google Cloud Console: Go to Kubernetes Engine website. From the list of clusters, click on the cluster requiring the update and click ADD NODE POOL. Ensure that the 'Integrity monitoring' checkbox is checked under the Shielded options heading. Click SAVE.",
+    "metadata": {
+      "filename": "cis-gke17-556.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-556.md",
+      "title": "5.5.6 - Ensure Integrity Monitoring for Shielded GKE Nodes is Enabled (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.863Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      6,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      125,
+      71,
+      990
+    ]
+  },
+  {
+    "id": "cis-gke17-556.md_chunk_2",
+    "content": "Workloads from existing non-conforming Node pools will need to be migrated to the newly created Node pool, then delete non-conforming Node pools to complete the remediation. Using Command Line: To create a Node pool within the cluster with Integrity Monitoring enabled, run the following command: gcloud container node-pools create <node_pool_name> --cluster <cluster_name> --zone <compute_zone> --shielded-integrity-monitoring Workloads from existing non-conforming Node pools will need to be migrated to the newly created Node pool, then delete non-conforming Node pools to complete the remediation © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-gke17-556.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-556.md",
+      "title": "5.5.6 - Ensure Integrity Monitoring for Shielded GKE Nodes is Enabled (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.863Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      88,
+      47,
+      675
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+---
+id: strong-password-disabled
+title: Strong password requirement disabled
+sidebar_label: Strong password requirement disabled
+description: Strong password requirement disabled
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Strong password requirement disabled Requiring account owners to create strong passwords reduces the risk of brute force attacks. Strong passwords are long, complex, uncommon, and never reused. Your organization's password creation policy ideally requires a minimum length and a certain level of complexity (combining uppercase and lowercase letters, numbers, and symbols). You may also prohibit usage of common and previously used passwords. The strong password requirement is enabled by default in Microsoft 365. Disabling the requirement makes user accounts more susceptible to brute force attacks, wherein threat actors use trial and error to guess account credentials, particularly passwords. Threat actors cycle through combinations of characters, commonly used passwords, and compromised credentials to sign into accounts. To enable the strong password requirement for specific users, run the following PowerShell command: $Set-MsolUser –UserPrincipalName {user_principal_name} –StrongPasswordRequired $true Depending on your organization's unique setup, you may be unable to require strong passwords for all accounts. The following are examples of accounts that may be exempted from the requirement. Service accounts Accounts used for automated tasks Accounts that are used for short-term, low-risk activities (for example, guest accounts) If necessary, you can add the "Strong password disabled" issue to the exception list to exclude related risk event data from the calculation of your company's Cyber Risk Index. Important Adding issues to the exception list permanently excludes related risk event data from Cyber Risk Exposure Management apps. Excluded risk event data cannot be restored. Changes to the exception list are applied only to new risk events. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

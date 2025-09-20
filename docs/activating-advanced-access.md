@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-activating-advanced-access
+slug: activating-advanced-access
 title: Activating Trend Vision One with Advanced Access
 ---
 

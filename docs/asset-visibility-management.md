@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-asset-visibility-management
+slug: asset-visibility-management
 title: Asset Visibility Management
 ---
 

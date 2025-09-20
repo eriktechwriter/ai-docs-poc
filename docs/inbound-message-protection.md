@@ -1,0 +1,11 @@
+---
+id: inbound-message-protection
+title: Inbound message protection
+sidebar_label: Inbound message protection
+description: Inbound message protection
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Inbound message protection Cloud Email Gateway Protection provides inbound message protection by evaluating email messages in the following order: Connection filtering Provides the recipient filter, sender filter, Transport Layer Security (TLS) check, and IP Reputation settings. Domain-based authentication Provides authentication methods such as Sender IP Match, Sender Policy Framework (SPF), DomainKeys Identified Mail (DKIM) and Domain-based Message Authentication, Reporting & Conformance (DMARC) to protect against email spoofing. Virus scan Allows you to configure virus policies and scan exceptions. Spam filtering Allows you to configure spam policies, high profile users for BEC policies and Time-of-Click Protection settings. Correlated Intelligence Allows you to configure Correlated Intelligence policies to detect phishing security risks and anomalies by correlating signals across different sources. Content filtering Allows you to configure content filtering policies to take actions on messages based on the conditions matched. Data Loss Prevention Allows you to create Data Loss Prevention (DLP) policies to manage your incoming email messages containing sensitive data. Related information Inbound message flow © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

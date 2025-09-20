@@ -1,0 +1,11 @@
+---
+id: customizing-security-dashboard
+title: Customize Dashboards
+sidebar_label: Customize Dashboards
+description: Customize Dashboards
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Customize Dashboards Customize the dashboards, widgets, and widget data. The widgets a user can access depends on the company's license and the user's account permissions. The following table outlines the customization actions that users can perform. Task Options Customize dashboards Manage your dashboards to personalize your Dashboards app. Options include: Create your own dashboard: Click the add icon () and click Create your own dashboard. On the Widget Catalog screen, select from the available widgets, and click Add Create a dashboard from a template: Click the add icon () and click Create a dashboard from a template. On the Dashboard Templates screen, select the dashboard template you want, and click Create. After creating the dashboard, you can further personalize it by clicking Widget Catalog. Rename a dashboard: Click the down arrow () and Rename. Delete a dashboard: Click the down arrow () and Delete. Rearrange the dashboard order: Use drag-and-drop by hovering over a dashboard name. Manage widgets Organize, add, and delete widgets on your dashboards to gain access to the data you want to see. Options include: Add widgets: Click Widget Catalog, select from the available widgets, and click Add. Note You can add a maximum of 20 widgets per dashboard. Edit widgets: Click the options icon () on the widgets and click Edit. Delete widgets: Click the options icon () on the unwanted widgets and click Delete. Rearrange the widget layout: Use drag-and-drop by hovering over a widget title until the mouse icon changes (). Manage widget data You can manipulate the data that displays on some widgets or go to the a specific app to view more detailed data. Options include: Change the display period: If available, click the date range dropdown list and select a new period. Export widget data: If available, click the options icon () on the widgets and click Export. View details on the related app: Click Go to App. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

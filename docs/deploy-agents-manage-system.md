@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-deploy-agents-manage-system
+slug: deploy-agents-manage-system
 title: Deploying Agents with a Software Management System
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-insight-based-execution-profile
+slug: insight-based-execution-profile
 title: Insight-Based Execution Profile
 ---
 

@@ -1,0 +1,11 @@
+---
+id: automated-tagging-resources-aws
+title: Automated tagging for security resources deployed to your AWS environment
+sidebar_label: Automated tagging for security resources deployed to your AWS environment
+description: Automated tagging for security resources deployed to your AWS environment
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Automated tagging for security resources deployed to your AWS environment December 2, 2024—Automated tagging is now available for resources deployed to your AWS account by the Cloud Accounts app. Resources deployed by the Cloud Accounts app have the "TrendMicroProduct" tag added. You can use these tags to track resources and costs from the Cloud Accounts features. To add the tags to an existing connection, update your AWS account resource stack. For more information, see Resources deployed by Cloud Accounts. Cloud Security → Cloud Accounts → AWS © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

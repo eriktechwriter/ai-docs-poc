@@ -1,0 +1,11 @@
+---
+id: human-identities
+title: User
+sidebar_label: User
+description: User
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ User View details of user profiles in order to review type, status, and privilege information. The User tab allows you to view details of all human user accounts in your organization. Human user accounts may be members or guests in your identity provider, and they may obtain access from either inside or outside of your organization. Some human user accounts may not have a configured user type. If you have sufficient permissions, you may configure a user type in your Microsoft Entra ID tenant. For more information, see Microsoft's documentation. The following table details the columns on the User tab. Column name Description User name Name of a user in your organization. User principal name An Internet-style login name for a user. A UPN consists of a prefix (the user account name) and a suffix (a DNS domain name) joined by the "@" symbol. Privileged Indicates whether a user is privileged. Users are privileged if they are assigned privileged Microsoft Entra roles. For details about privileged roles, see Microsoft's documentation. Role Role assigned to a user. Status Status of a user. An enabled user is allowed to sign in. Password last changed Last time when the password of a user was changed. Synced with Active Directory Indicates whether a user is being synced from an on-premises Active Directory (AD). User type Type of a user. The user type determines the set of default permissions for the user. Member: a native member of the tenant Guest: a user brought over from another directory, such as a business-to-business (B2B) collaboration guest Authentication type Indicates how a user authenticates. Internal: The user has an account on the Microsoft Entra tenant of the host organization and uses that account to authenticate to Microsoft Entra ID. External: The user authenticates using an external Microsoft Entra account that belongs to another organization, a social network identity, or other external identity provider. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

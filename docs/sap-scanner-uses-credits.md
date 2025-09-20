@@ -1,0 +1,11 @@
+---
+id: sap-scanner-uses-credits
+title: Server & Workload Security SAP Scanner feature now uses Trend Vision One Credits
+sidebar_label: Server & Workload Security SAP Scanner feature now uses Trend Vision One Credits
+description: Server & Workload Security SAP Scanner feature now uses Trend Vision One Credits
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Server & Workload Security SAP Scanner feature now uses Trend Vision One Credits December 2, 2024—You can now allocate Trend Vision One credits to enable SAP Scanner for Trend Vision One - Endpoint Security (Pro). You can view your current credit balance in the Credits & Billing app to help estimate future credit usage. Additionally, all existing SAP Scanner licenses are automatically converted to Trend Vision One credits upon updating from Trend Cloud One Endpoint & Workload Security to Trend Vision One Server & Workload Security. Endpoint Security → Server & Workload Protection © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

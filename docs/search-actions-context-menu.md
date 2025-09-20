@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-search-actions-context-menu
+slug: search-actions-context-menu
 title: Search actions from the context menu
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-firewall-australia-hosted-service
+slug: firewall-australia-hosted-service
 title: 'Firewall exceptions: Australia - hosted Service Gateway'
 ---
 

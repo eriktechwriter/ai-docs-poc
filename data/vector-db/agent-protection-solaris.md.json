@@ -1,0 +1,134 @@
+[
+  {
+    "id": "agent-protection-solaris.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ How does agent protection work for Solaris zones? The agent can be deployed only on a Solaris global zone. If your Solaris environment uses any non-global zones, the protection that the agent can provide for the global zone and non-global zones will differ with each protection module: Intrusion Prevention Firewall Web Reputation Anti-Malware Integrity Monitoring Log Inspection See Install the agent manually for more on installing the agent on Solaris. Intrusion Prevention (IPS), Firewall, and Web Reputation If your Solaris environment uses any non-global zones, the Intrusion Prevention, Firewall, and Web Reputation modules can only provide protection to specific traffic flows between the global zone, non-global zones and any external IP addresses. Which traffic flows the agent can protect depends on if the non-global zones use a shared-IP network interface or an exclusive-IP network interface.",
+    "metadata": {
+      "filename": "agent-protection-solaris.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/agent-protection-solaris.md",
+      "title": "How does agent protection work for Solaris zones?",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.648Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      6,
+      0,
+      0,
+      4,
+      1,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      136,
+      68,
+      995
+    ]
+  },
+  {
+    "id": "agent-protection-solaris.md_chunk_1",
+    "content": "Kernel zones use an exclusive-IP network interface and agent protection to traffic flows is limited to that network configuration. Non-global zones use a shared-IP network interface Agent protection to traffic flows in a shared-IP configuration is as follows: Traffic Flow Protected by agent external address <-> non-global zone Yes external address <-> global zone Yes global zone <-> non-global zone No non-global zone <-> non-global zone No Non-global zones use an exclusive-IP network interface Agent protection to traffic flows in a exclusive-IP configuration is as follows: Traffic Flow Protected by agent external address <-> non-global zone No external address <-> global zone Yes global zone <-> non-global zone Yes non-global zone <-> non-global zone No Anti-Malware, Integrity Monitoring, and Log Inspection The Anti-Malware, Integrity Monitoring and Log Inspection modules provides protection to the global zone.",
+    "metadata": {
+      "filename": "agent-protection-solaris.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/agent-protection-solaris.md",
+      "title": "How does agent protection work for Solaris zones?",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.648Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      3,
+      0,
+      5,
+      0,
+      0,
+      4,
+      2,
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      116,
+      33,
+      924
+    ]
+  },
+  {
+    "id": "agent-protection-solaris.md_chunk_2",
+    "content": "For non-global zones, any files or directories that are also visible to the global zone are protected. Files specific to a non-global zone are not protected. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "agent-protection-solaris.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/agent-protection-solaris.md",
+      "title": "How does agent protection work for Solaris zones?",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.648Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      34,
+      26,
+      232
+    ]
+  }
+]

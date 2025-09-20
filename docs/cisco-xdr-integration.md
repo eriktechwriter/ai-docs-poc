@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-cisco-xdr-integration
+slug: cisco-xdr-integration
 title: Cisco XDR integration
 ---
 

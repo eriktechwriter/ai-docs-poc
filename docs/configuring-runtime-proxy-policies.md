@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-configuring-runtime-proxy-policies
+slug: configuring-runtime-proxy-policies
 title: Configuring Runtime Proxy policies
 ---
 

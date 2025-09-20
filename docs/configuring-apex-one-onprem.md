@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-configuring-apex-one-onprem
+slug: configuring-apex-one-onprem
 title: Configuring Trend Micro Apex One On-Premises
 ---
 

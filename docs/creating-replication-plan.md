@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-creating-replication-plan
+slug: creating-replication-plan
 title: Creating a configuration replication plan
 ---
 

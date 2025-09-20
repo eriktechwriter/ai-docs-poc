@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-ad-premises-integration
+slug: ad-premises-integration
 title: Active Directory (on-premises) integration
 ---
 

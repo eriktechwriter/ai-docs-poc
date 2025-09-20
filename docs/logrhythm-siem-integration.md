@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-logrhythm-siem-integration
+slug: logrhythm-siem-integration
 title: LogRhythm SIEM integration
 ---
 

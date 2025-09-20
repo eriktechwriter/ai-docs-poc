@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-running-simulations-endpoints-xdr
+slug: running-simulations-endpoints-xdr
 title: Running simulations with Trend Vision One Endpoint Security agents
 ---
 

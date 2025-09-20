@@ -1,0 +1,11 @@
+---
+id: high-profile-exception-list
+title: Configuring high profile user exception list
+sidebar_label: Configuring high profile user exception list
+description: Configuring high profile user exception list
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Configuring high profile user exception list A high profile user may have more than one mailbox for different uses, for example, one for business connections and one for personal life, and use different writing styles in composing email messages for various purposes. In most cases, BEC attacks tend to target business mailboxes, with the goal of initiating an unauthorized wire transfer. In addition, some applications with an email system may have the function of automatically sending system-generated messages in the name of a high profile user. To avoid these types of email messages from being classified as BEC attacks and help reduce false positives, specify the email addresses related to high profile users for which you want Cloud Email and Collaboration Protection to skip the scanning for BEC. As a global setting, the specified High Profile User Exception List is applicable to all Advanced Spam Protection enabled policies for your email service, that is, Exchange Online or Gmail. Procedure In Cloud Email and Collaboration Protection, go to Policies → Global Settings → User-Defined Lists → High Profile List and click High Profile User Exceptions. Perform the following tasks: Click Add, on the Add Email Address screen that appears, specify the email address related to a high profile user that you want Cloud Email and Collaboration Protection to skip from scanning for writing style verification, and then click Save. Note A maximum of 500 email addresses can be added. Select one or multiple email addresses, click Delete to remove them from the exception list, and then click OK. Click OK. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

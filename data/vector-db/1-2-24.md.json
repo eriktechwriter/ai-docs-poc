@@ -1,0 +1,90 @@
+[
+  {
+    "id": "1-2-24.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 1.2.24 - Ensure that the --tls-cert-file and --tls-private-key-file arguments are set as appropriate (Automated) Profile applicability: Level 1 - Master Node Setup TLS connection on the API server. API server communication contains sensitive parameters that should remain encrypted in transit. Configure the API server to serve only HTTPS traffic. Note By default, --tls-cert-file and --tls-private-key-file are presented and created for use. Impact TLS and client certificate authentication must be configured for your Kubernetes cluster deployment. Audit Run the following command on the Control Plane node: ps -ef | grep kube-apiserver Verify that the --tls-cert-file and --tls-private-key-file arguments exist and they are set as appropriate. Remediation Follow the Kubernetes documentation and set up the TLS connection on the apiserver.",
+    "metadata": {
+      "filename": "1-2-24.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/1-2-24.md",
+      "title": "1.2.24 - Ensure that the --tls-cert-file and --tls-private-key-file arguments are set as appropriate (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.530Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      126,
+      76,
+      931
+    ]
+  },
+  {
+    "id": "1-2-24.md_chunk_1",
+    "content": "Then, edit the API server pod specification file /etc/kubernetes/manifests/kube-apiserver.yaml on the master node and set the TLS certificate and private key file parameters. --tls-cert-file=<path/to/tls-certificate-file> --tls-private-key-file=<path/to/tls-key-file> © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "1-2-24.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/1-2-24.md",
+      "title": "1.2.24 - Ensure that the --tls-cert-file and --tls-private-key-file arguments are set as appropriate (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.530Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      52,
+      35,
+      342
+    ]
+  }
+]

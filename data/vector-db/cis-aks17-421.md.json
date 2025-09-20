@@ -1,0 +1,178 @@
+[
+  {
+    "id": "cis-aks17-421.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 4.2.1 - Minimize the admission of privileged containers (Automated) Profile Applicability: Level 1 Do not generally permit containers to be run with the securityContext.privileged flag set to true. Privileged containers have access to all Linux Kernel capabilities and devices. A container running with full privileges can do almost everything that the host can do. This flag exists to allow special use-cases, like manipulating the network stack and accessing devices. There should be at least one admission control policy defined which does not permit privileged containers. If you need to run privileged containers, this should be defined in a separate policy and you should carefully check to ensure that only limited service accounts and users are given permission to use that policy. Note By default, there are no restrictions on the creation of privileged containers.",
+    "metadata": {
+      "filename": "cis-aks17-421.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-aks17-421.md",
+      "title": "4.2.1 - Minimize the admission of privileged containers (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.832Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      119,
+      82,
+      963
+    ]
+  },
+  {
+    "id": "cis-aks17-421.md_chunk_1",
+    "content": "Impact Pods defined with spec.containers[].securityContext.privileged: true, spec.initContainers[].securityContext.privileged: true and spec.ephemeralContainers[].securityContext.privileged: true will not be permitted. Audit List the policies in use for each namespace in the cluster, ensure that each policy disallows the admission of privileged containers. Since manually searching through each pod's configuration might be tedious, especially in environments with many pods, you can use a more automated approach with grep or other command-line tools. Here's an example of how you might approach this with a combination of kubectl, grep, and shell scripting for a more automated solution: kubectl get pods --all-namespaces -o json | jq -r '.items[] | select(.spec.containers[].securityContext.privileged == true) | .metadata.name' OR kubectl get pods --all-namespaces -o json | jq -r '.items[] | select(.spec.containers[].securityContext.privileged == true) | select(.metadata.namespace != \"kube-",
+    "metadata": {
+      "filename": "cis-aks17-421.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-aks17-421.md",
+      "title": "4.2.1 - Minimize the admission of privileged containers (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.832Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      118,
+      68,
+      999
+    ]
+  },
+  {
+    "id": "cis-aks17-421.md_chunk_2",
+    "content": "system\" and .metadata.namespace != \"gatekeeper-system\" and .metadata.namespace != \"azure-arc\" and .metadata.namespace != \"azure-extensions-usage-system\") | \"\\(.metadata.name) \\(.metadata.namespace)\"' When creating a Pod Security Policy, [\"kube-system\", \"gatekeeper-system\", \"azure-arc\", \"azure-extensions-usage-system\"] namespaces are excluded by default. This command uses jq, a command-line JSON processor, to parse the JSON output from kubectl get pods and filter out pods where any container has the securityContext.privileged flag set to true. Note You might need to adjust the command depending on your specific requirements and the structure of your pod specifications. Remediation Add policies to each namespace in the cluster which has user workloads to restrict the admission of privileged containers. To enable PSA for a namespace in your cluster, set the pod-security.kubernetes.io/enforce label with the policy value you want to enforce.",
+    "metadata": {
+      "filename": "cis-aks17-421.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-aks17-421.md",
+      "title": "4.2.1 - Minimize the admission of privileged containers (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.832Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      2,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      6,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      123,
+      75,
+      950
+    ]
+  },
+  {
+    "id": "cis-aks17-421.md_chunk_3",
+    "content": "kubectl label --overwrite ns NAMESPACE pod- security.kubernetes.io/enforce=restricted The above command enforces the restricted policy for the NAMESPACE namespace. You can also enable Pod Security Admission for all your namespaces. For example: kubectl label --overwrite ns --all pod- security.kubernetes.io/warn=baseline Pod Security Policies and Assignments can be found by searching for Policies in the Azure Portal. A detailed step-by-step guide can be found here: https://learn.microsoft.com/en-us/azure/governance/policy/concepts/policy-for-kubernetes © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-aks17-421.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-aks17-421.md",
+      "title": "4.2.1 - Minimize the admission of privileged containers (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.832Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      4,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      83,
+      52,
+      632
+    ]
+  }
+]

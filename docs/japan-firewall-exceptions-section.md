@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-japan-firewall-exceptions-section
+slug: japan-firewall-exceptions-section
 title: Japan - firewall exceptions
 ---
 

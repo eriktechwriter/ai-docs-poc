@@ -1,0 +1,11 @@
+---
+id: cloud-storage-scanning
+title: File Security Storage
+sidebar_label: File Security Storage
+description: File Security Storage
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ File Security Storage File Security Storage provides anti-malware scanning on files in cloud storage services such as Amazon Web Services (AWS). You can integrate automated scanning of files as you upload them into your storage and effortlessly detect all types of malware including viruses, trojans, spyware, and more. The File Security Storage scan engine can scan of all sizes and types of files. File types include .BIN, .EXE, .MP4, .PDF, .TXT, .ZIP and more. File Security Storage can identify obfuscated or polymorphic variants of malware based on fragments of previously seen malware and detection algorithms. When a user or program uploads a file to a designated cloud storage container, File Security Storage performs a scan. The scan is performed only on the added file, not on existing resources in the storage container. When the scan is complete, your custom plugins or Lambdas take the scan results and connect with your downstream workflow for further processing. File Security Storage supports the following cloud service providers (CSPs): AWS Related information File Security Storage for AWS © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

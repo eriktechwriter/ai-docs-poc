@@ -1,0 +1,178 @@
+[
+  {
+    "id": "migrate-agents-apex-one-server.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Migrating Agents with the Apex One Server Console Use the Apex One server console to move agents to Trend Vision One Standard Endpoint Protection. Follow the instructions below to migrate agents from your Apex One server to Standard Endpoint Protection. Note After moving agents to Standard Endpoint Protection, you cannot move them back to their source Apex One server using the Trend Vision One console. If you need to move agents from Trend Vision One, you must use the IPXfer tool. Agents inherit the settings of the target server. Procedure Obtain the Apex One Settings Export Tool on the Apex One server host machine and export Apex One Security Agent policies to Standard Endpoint Protection. In the Trend Vision One console, go to Endpoint Security → Standard Endpoint Protection and click Directories → Product Servers.",
+    "metadata": {
+      "filename": "migrate-agents-apex-one-server.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/migrate-agents-apex-one-server.md",
+      "title": "Migrating Agents with the Apex One Server Console",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.696Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      2,
+      6,
+      0,
+      0,
+      1,
+      0,
+      0,
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      128,
+      60,
+      917
+    ]
+  },
+  {
+    "id": "migrate-agents-apex-one-server.md_chunk_1",
+    "content": "For Product, select Apex One and click the link to access the Apex One server console. In the Apex One server console, go to Administration → Settings → Server Migration and click the Apex One Settings Export Tool link to download the package. Extract the package. Open Command Prompt or PowerShell as an administrator from the folder of the extracted package. Type the following command to run the tool. run ApexOneSettingsExportTool.exe The tool generates two archive files: ApexOne_Agent_Policies.zip ApexOne_Agent_DLP_Policies.zip In the Trend Vision One console, go to Endpoint Security → Standard Endpoint Protection. If you have more than one Standard Endpoint Protection instance, select the instance you want to migrate your agents to. In the target instance, go to Policies → Policy Management For Product, select Apex One Security Agent. Click Import Settings and locate the ApexOne_Agent_Policies.zip policy file. Click OK to continue. Change the Product to Apex One Data Loss Prevention.",
+    "metadata": {
+      "filename": "migrate-agents-apex-one-server.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/migrate-agents-apex-one-server.md",
+      "title": "Migrating Agents with the Apex One Server Console",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.696Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      2,
+      3,
+      0,
+      2,
+      1,
+      0,
+      0,
+      2,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      130,
+      68,
+      1000
+    ]
+  },
+  {
+    "id": "migrate-agents-apex-one-server.md_chunk_2",
+    "content": "Click Import Settings and locate the ApexOne_Agent_DLP_Policies.zip policy file. Click OK to continue. Policies imported from the policy files are created and displayed on the policy list. The policies by default have no targets. The targets must be set by an administrator. In the Trend Vision One console, go to Endpoint Security → Standard Endpoint Protection. If you have more than one Standard Endpoint Protection instance, select the instance you want to migrate your agents to. In the target instance, go to Directories → Product Servers Copy the FQDN of the server you want to use. Only include the address of the FQDN. Do not include the port or path. For example, if the target server is https://exampl.manage.trendmicro.com:443/officescan, copy exampl.manage.trendmicro.com. On the Trend Micro Apex One server console, go to Agents → Agent Management. Select the agents you want to move. You can use SHIFT+Click or CTRL+Click to select multiple agents.",
+    "metadata": {
+      "filename": "migrate-agents-apex-one-server.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/migrate-agents-apex-one-server.md",
+      "title": "Migrating Agents with the Apex One Server Console",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.696Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      1,
+      3,
+      0,
+      3,
+      1,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      130,
+      74,
+      963
+    ]
+  },
+  {
+    "id": "migrate-agents-apex-one-server.md_chunk_3",
+    "content": "Click Manage Agent Tree → Move Agent. Select Move selected agent(s) to another Apex One server. Paste the target server FQDN for the Apex One Server name or IP address. Click Move. Once the selected agents complete moving, the agents begin reporting to the Trend Vision One Standard Endpoint Protection instance. Important Policies are not automatically applied to the moved agents. You must apply the policies to the target agents once migration has finished. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "migrate-agents-apex-one-server.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/migrate-agents-apex-one-server.md",
+      "title": "Migrating Agents with the Apex One Server Console",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.696Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      1,
+      0,
+      0,
+      3,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      77,
+      52,
+      535
+    ]
+  }
+]

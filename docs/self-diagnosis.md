@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-self-diagnosis
+slug: self-diagnosis
 title: Self-Diagnosis
 ---
 

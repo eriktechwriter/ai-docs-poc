@@ -1,0 +1,90 @@
+[
+  {
+    "id": "cis-aks17-416.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 4.1.6 - Ensure that Service Account Tokens are only mounted where necessary (Automated) Profile Applicability: Level 1 Service accounts tokens should not be mounted in pods except where the workload running in the pod explicitly needs to communicate with the API server. Mounting service account tokens inside pods can provide an avenue for privilege escalation attacks where an attacker is able to compromise a single pod in the cluster. Avoiding mounting these tokens removes this attack avenue. Note By default, all pods get a service account token mounted in them. Impact Pods mounted without service account tokens will not be able to communicate with the API server, except where the resource is available to unauthenticated principals. Audit Review pod and service account objects in the cluster and ensure that the option below is set, unless the resource explicitly requires this access.",
+    "metadata": {
+      "filename": "cis-aks17-416.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-aks17-416.md",
+      "title": "4.1.6 - Ensure that Service Account Tokens are only mounted where necessary (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.832Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      128,
+      80,
+      985
+    ]
+  },
+  {
+    "id": "cis-aks17-416.md_chunk_1",
+    "content": "Set SERVICE_ACCOUNT and POD variables to appropriate values: automountServiceAccountToken: false Remediation Modify the definition of pods and service accounts which do not need to mount service account tokens to disable it. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-aks17-416.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-aks17-416.md",
+      "title": "4.1.6 - Ensure that Service Account Tokens are only mounted where necessary (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.832Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      35,
+      33,
+      299
+    ]
+  }
+]

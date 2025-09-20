@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-context-menu
+slug: context-menu
 title: Context menu
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-user-accounts-roles-idp-foundation
+slug: user-accounts-roles-idp-foundation
 title: User Accounts, Identity Providers, and User Roles (Foundation Services release)
 ---
 

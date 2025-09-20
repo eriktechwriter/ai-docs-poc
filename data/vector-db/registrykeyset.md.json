@@ -1,0 +1,178 @@
+[
+  {
+    "id": "registrykeyset.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ RegistryKeySet Note The Integrity Monitoring module scans for unexpected changes to directories, registry values, registry keys, services, processes, installed software, ports, groups, users, files, and the WQL query statement on agents. To enable and configure Integrity Monitoring, see Set up integrity monitoring. The RegistryKeySet tag describes a set keys in the registry (Windows only). Tag Attributes These are XML attributes of the tag itself, as opposed to the attributes of the Entity monitored by Integrity Monitoring Rules. Attribute Description Required Default Value Allowed Values base Sets the base key of the RegistryKeySet. Everything else in the tag is relative to this key.",
+    "metadata": {
+      "filename": "registrykeyset.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/registrykeyset.md",
+      "title": "RegistryKeySet",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.905Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      96,
+      65,
+      782
+    ]
+  },
+  {
+    "id": "registrykeyset.md_chunk_1",
+    "content": "in with one of the following registry branch names: HKEY_CLASSES_ROOT (or HKCR) HKEY_LOCAL_MACHINE (or HKLM) HKEY_USERS (or HKU) HKEY_CURRENT_CONFIG (or HKCC) Yes N/A String values resolving to syntactically valid registry key path Note The agent runs as a service using the Local System account, so HKEY_CURRENT_USER is meaningless. The HKCU branch of the registry is only valid for an interactive logged-on user, and it is specific to that user. In a Windows terminal server environment or on Windows XP and Vista with \"fast user switching\" enabled, several different users could be logged on simultaneously. Because of this, the agent will say that any rule with HKEY_CURRENT_USER is a compile error. There are several subkeys under HKEY_USERS that are named using the numeric form of the Windows user account ID. When a user logs on, one of those subkeys is mapped to HKCU during the user's logon session. Tip Rules are allowed to use HKEY_USERS in their base to monitor per-user registry items.",
+    "metadata": {
+      "filename": "registrykeyset.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/registrykeyset.md",
+      "title": "RegistryKeySet",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.905Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      7,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      125,
+      86,
+      999
+    ]
+  },
+  {
+    "id": "registrykeyset.md_chunk_2",
+    "content": "However, those rules could match many entries. The ...\\Software\\Classes branch is very large, especially under HKLM, so try to avoid rules that will need to traverse all of Software\\Classes. Entity Set Attributes These are the attributes of the Entity that can be monitored by Integrity Monitoring Rules. Owner Group Permissions LastModified (\"LastWriteTime\" in Windows registry terminology) Class SecurityDescriptorSize Short Hand Attributes STANDARD: Group, Owner, Permissions, LastModified Meaning of \"Key\" Registry Keys are stored hierarchically in the registry, much like directories in a file system. For the purpose of this language the \"key path\" to a key is considered to look like the path to a directory. For example the \"key path\" to the \"Deep Security Agent\" key of the agent would be: HKEY_LOCAL_MACHINE\\SOFTWARE\\Trend Micro\\Deep Security Agent The \"key\" value for includes and excludes for the RegistryValueSet is matched against the key path.",
+    "metadata": {
+      "filename": "registrykeyset.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/registrykeyset.md",
+      "title": "RegistryKeySet",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.905Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      2,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      123,
+      78,
+      958
+    ]
+  },
+  {
+    "id": "registrykeyset.md_chunk_3",
+    "content": "This is a hierarchical pattern, with sections of the pattern separated by \"/\" matched against sections of the key path separated by \"\". Sub Elements Include Exclude See Integrity monitoring rules language for a general description of include for their allowed attributes and sub elements. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "registrykeyset.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/registrykeyset.md",
+      "title": "RegistryKeySet",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.905Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      45,
+      37,
+      363
+    ]
+  }
+]

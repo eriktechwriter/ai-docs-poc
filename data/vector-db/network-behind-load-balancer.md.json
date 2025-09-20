@@ -1,0 +1,134 @@
+[
+  {
+    "id": "network-behind-load-balancer.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Deploy a Virtual Network Sensor behind a network load balancer Configure your Virtual Network Sensor instance for use with a network load balancer (NLB). Note The steps contained in these instructions are valid as of January 2024. Procedure Sign in to the AWS Management Console. Access the EC2 dashboard. Go to Load Balancing → Target Groups. Click Create target group. Configure the Basic configuration settings. For Choose a target type, select Instances. Specify a Target group name. Use a name that is descriptive and easy to find, such as Virtual Network Sensor Target Group. Configure Protocol : Port settings. Select UDP. Type 4789 for the port. Select the VPC which hosts the Virtual Network Sensor instance. Configure the Health checks settings. Select TCP for the Health check protocol. Expand the Advanced health check settings. For Health check port, select Override and specify port 14789.",
+    "metadata": {
+      "filename": "network-behind-load-balancer.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/network-behind-load-balancer.md",
+      "title": "Deploy a Virtual Network Sensor behind a network load balancer",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.731Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      6,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      135,
+      76,
+      992
+    ]
+  },
+  {
+    "id": "network-behind-load-balancer.md_chunk_1",
+    "content": "Keep all other settings as default. Click Next. In Available instances, select the Virtual Network Sensor instance. Click Include as pending below. Click Create target group. After the target group finishes creation, go to Load Balancing → Load Balancers. Click Create load balancer. Under Network Load Balancer, click Create. Configure the Basic configuration settings. Specify a unique Load balancer name. Use a name that is descriptive and easy to find, such as Virtual Network Sensor Load Balancer. For Scheme, select Internal. Select the IP address type your subnets use. Configure the Network mapping settings. Select the VPC which hosts the Virtual Network Sensor instance. Select the availability zone where your Virtual Network Sensor instance is located. Select the subnet assigned to the Virtual Network Sensor data port (eth0).",
+    "metadata": {
+      "filename": "network-behind-load-balancer.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/network-behind-load-balancer.md",
+      "title": "Deploy a Virtual Network Sensor behind a network load balancer",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.731Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      7,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      114,
+      62,
+      839
+    ]
+  },
+  {
+    "id": "network-behind-load-balancer.md_chunk_2",
+    "content": "For Private IPv4 address, select Assigned from CIDR to have AWS automatically assign an IP address, or select Enter IP from CIDR if you want to manually specify the IP address. Important If you want to select more than one availability zone, you must have at least one target in each availability zone defined in your target group. Otherwise, the load balancer cannot route traffic to the Virtual Network Sensor. Select the Security group you configured for your Virtual Network Sensor data port. Configure the Listeners and routing settings. For Protocol, select UDP. Specify 4789 for the Port. Select the target group you created. Select Create load balancer. The load balancer might take a few moments to finish creation. Once complete, configure your traffic mirror settings. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "network-behind-load-balancer.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/network-behind-load-balancer.md",
+      "title": "Deploy a Virtual Network Sensor behind a network load balancer",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.731Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      120,
+      73,
+      854
+    ]
+  }
+]

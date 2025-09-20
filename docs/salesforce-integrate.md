@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-salesforce-integrate
+slug: salesforce-integrate
 title: Salesforce integration
 ---
 

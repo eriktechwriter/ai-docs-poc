@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-firewall-japan-cloud-service
+slug: firewall-japan-cloud-service
 title: 'Firewall exceptions: Japan - cloud service extension'
 ---
 

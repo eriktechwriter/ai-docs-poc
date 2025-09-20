@@ -1,0 +1,222 @@
+[
+  {
+    "id": "service-gateway-1-0-cli-commands.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Service Gateway 1.0 CLI commands A list of available CLI commands for managing the Service Gateway 1.0 virtual appliance. To access the CLI, connect to VMware ESXi (either directly or through SSH) and open the Service Gateway virtual appliance. Log on to the CLI with your account credentials. Note Make sure you disable the Scroll Lock key on your keyboard when using HyperTerminal. To view basic information of the Service Gateway, such as network settings and service status, run the show command. For example, use show ipv4 address to check the network address. For a list of available commands, type show and then press the ? key. To view a list of tasks you can perform and enable administrative commands, run the enable command. Enabling administrative commands changes the command prompt from > to #.",
+    "metadata": {
+      "filename": "service-gateway-1-0-cli-commands.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/service-gateway-1-0-cli-commands.md",
+      "title": "Service Gateway 1.0 CLI commands",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.047Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      121,
+      74,
+      897
+    ]
+  },
+  {
+    "id": "service-gateway-1-0-cli-commands.md_chunk_1",
+    "content": "The following table lists out the administrative commands you can use to manage the Service Gateway virtual appliance. Command Syntax Description configure dns ipv4 configure dns ipv4 <dns1> [dns2] Configure IPv4 DNS settings <dns1>: IPv4 address of the primary DNS server [dns2]: IPv4 address of the secondary DNS server configure dns ipv6 configure dns ipv6 <dns1> [dns2] Configure IPv6 DNS settings <dns1>: IPv6 address of the primary DNS server [dns2]: IPv4 address of the secondary DNS server configure dump configure dump List commands to recreate configuration on other appliances configure endpoint configure endpoint <hostname> Configure the endpoint name <hostname>: Endpoint name or FQDN configure ipv4 cni configure ipv4 cni <ip> <mask> <gateway> <cni> [vlan] Configure the default Ethernet interface to use the static IP configuration and setup internal network address pool <cni>: Internal network address pool (IP address ending in .0.0) [vlan]: VLAN ID (1-4094) configure ipv4 static",
+    "metadata": {
+      "filename": "service-gateway-1-0-cli-commands.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/service-gateway-1-0-cli-commands.md",
+      "title": "Service Gateway 1.0 CLI commands",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.047Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      4,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      133,
+      53,
+      999
+    ]
+  },
+  {
+    "id": "service-gateway-1-0-cli-commands.md_chunk_2",
+    "content": "configure ipv4 static <ip> <mask> <gateway> [vlan] Configure the default Ethernet interface to use the static IPv4 configuration [vlan]: VLAN ID (1-4094) configure ipv6 static configure ipv6 static <v6ip> <v6mask> <v6gate> [vlan] Configure the default Ethernet interface to use the static IPv6 configuration [vlan]: VLAN ID (1-4094) configure ntp configure ntp <ip or FQDN> Configure the NTP server configure password configure password Configure the account password configure proxy set configure proxy set <proxy type> <proxy information> Configure the proxy server for the Service Gateway virtual appliance <proxy type>: Currently supports http <proxy information>: Credentials as username:password@IP:port configure proxy delete configure proxy delete Delete proxy settings configure verify aws configure verify aws Verify AWS server configuration configure verify dns configure verify dns <domain> Verify DNS server configuration <domain>: Domain used to verify DNS server (default: www.google.",
+    "metadata": {
+      "filename": "service-gateway-1-0-cli-commands.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/service-gateway-1-0-cli-commands.md",
+      "title": "Service Gateway 1.0 CLI commands",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.047Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      129,
+      45,
+      999
+    ]
+  },
+  {
+    "id": "service-gateway-1-0-cli-commands.md_chunk_3",
+    "content": "com) configure verify ntp configure verify ntp Verify NTP server configuration configure verify dbg configure verify dbg [cmd] [param] [subparam] Debug command for configure verify [cmd]: debug cmd [] [param]: debug param [] [subparam]: debug subparam [] Note This command typically for support provider use only. connect connect Test connection to Trend Vision One exit exit Exit the CLI help help Display the CLI syntax history history [limit] Display the session's command history [limit]: The number of CLI commands to display log log collect <upload> <local> Collect Service Gateway debugging data for troubleshooting <upload>: Upload Service Gateway debugging data to Trend Vision One <local>: Store Service Gateway debugging data locally ping ping <address> Check the connection to a specific address reboot reboot [time] Restart the Service Gateway after a specified delay or immediately [time]: Delay in minutes register register <regiatration_token> Register the Service Gateway to Trend Vi",
+    "metadata": {
+      "filename": "service-gateway-1-0-cli-commands.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/service-gateway-1-0-cli-commands.md",
+      "title": "Service Gateway 1.0 CLI commands",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.047Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      133,
+      62,
+      1000
+    ]
+  },
+  {
+    "id": "service-gateway-1-0-cli-commands.md_chunk_4",
+    "content": "sion One shutdown shutdown [time] Shut down the Service Gateway after a specified delay or immediately [time]: Delay in minutes unregister unregister Unregister the Service Gateway from Trend Vision One © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "service-gateway-1-0-cli-commands.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/service-gateway-1-0-cli-commands.md",
+      "title": "Service Gateway 1.0 CLI commands",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.047Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 4
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      37,
+      27,
+      277
+    ]
+  }
+]

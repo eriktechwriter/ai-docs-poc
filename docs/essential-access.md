@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-essential-access
+slug: essential-access
 title: Essential Access
 ---
 

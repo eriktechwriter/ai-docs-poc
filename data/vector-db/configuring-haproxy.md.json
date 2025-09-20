@@ -1,0 +1,90 @@
+[
+  {
+    "id": "configuring-haproxy.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Configuring HAProxy as a load balancer for use with multiple Internet Access on-premises gateways Configure and deploy HAProxy as your load balancer to support using multiple Internet Access on-premises gateways as the authentication proxy for single sign-on. Note These instructions are valid as of June 15, 2024 using HAProxy 1.5.18 Procedure Open the configuration file located at /etc/haproxy/haproxy.cfg. In the defaults section, set the mode to tcp. Complete the configuration to be used in load balancing. defaults mode tcp ... frontend main bind *:<port> default_backend auth_proxy backend auth_proxy balance <balance> server app1 <IP/FQDN 1>:<port 1> check server app2 <IP/FQDN 2>:<port 2> check ... server appN <IP/FQDN n>:<port n> check The following table explains the values you must specify in the placeholder fields in order to complete the configuration.",
+    "metadata": {
+      "filename": "configuring-haproxy.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/configuring-haproxy.md",
+      "title": "Configuring HAProxy as a load balancer for use with multiple Internet Access on-premises gateways",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.976Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      117,
+      78,
+      959
+    ]
+  },
+  {
+    "id": "configuring-haproxy.md_chunk_1",
+    "content": "Field Value Port Listening port on the load balancer used as the authentication proxy Balance The desired load balancing algorithm. Use source if you are mapping a client-server relationship based on the client’s IP address. IP/FQDN (1, 2, … ) IP or FQDN of a Service Gateway with the Internet Access on-premises gateway installed Port (1, 2, … ) Listening port on a Service Gateway used for the authentication proxy © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "configuring-haproxy.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/configuring-haproxy.md",
+      "title": "Configuring HAProxy as a load balancer for use with multiple Internet Access on-premises gateways",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.976Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      61,
+      43,
+      491
+    ]
+  }
+]

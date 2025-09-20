@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-product-instance
+slug: product-instance
 title: Product Instance
 ---
 

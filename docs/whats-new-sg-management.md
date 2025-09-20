@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-whats-new-sg-management
+slug: whats-new-sg-management
 title: What's new in Service Gateway Management
 ---
 

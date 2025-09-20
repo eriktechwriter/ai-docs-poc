@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-configuring-detection-exceptions
+slug: configuring-detection-exceptions
 title: Configuring Detection Exceptions
 ---
 

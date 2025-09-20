@@ -1,0 +1,178 @@
+[
+  {
+    "id": "api-generate-agent-deploy.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Use the API to generate an agent deployment script Use the API to generate deployment scripts to automate the installation of the agent on a computer. For background information about these scripts, see Use deployment scripts to add and protect computers. Note The displayed code is an example of a generated deployment script. Depending on your region, the deployment script you generate might be different. General steps Use the following general procedure to generate a deployment script: Procedure Create an AgentDeploymentScript object and configure the properties: The only required property is the platform of the target computer. Properties that are used for downloading the agent software are the Server & Workload Protection proxy ID and whether to require the manager to be using a valid certificate for securing the connection.",
+    "metadata": {
+      "filename": "api-generate-agent-deploy.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/api-generate-agent-deploy.md",
+      "title": "Use the API to generate an agent deployment script",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.694Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      6,
+      0,
+      0,
+      114,
+      72,
+      928
+    ]
+  },
+  {
+    "id": "api-generate-agent-deploy.md_chunk_1",
+    "content": "All other properties are useful only if you want the script to activate the agent.Create an AgentDeploymentScript object and configure the properties: Create an AgentDeploymentScriptsApi object and use it with the AgentDeploymentScript to send a request to Server & Workload Protection to create the script. The returned object is an AgentDeploymentScript that stores the script in the script_body (Python) or scriptBody (JavaScript and Java) property. Next steps For more information about the properties and operations, see the Agent Deployment Scripts operations in the API Reference. The following example creates the most basic deployment script where only the platform is specified: deployment_script = api.AgentDeploymentScript() deployment_script.platform = platform Then, the request to create the script is sent to Server & Workload Protection.",
+    "metadata": {
+      "filename": "api-generate-agent-deploy.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/api-generate-agent-deploy.md",
+      "title": "Use the API to generate an agent deployment script",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.694Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      101,
+      57,
+      854
+    ]
+  },
+  {
+    "id": "api-generate-agent-deploy.md_chunk_2",
+    "content": "The returned value contains the script: deployment_scripts_api = api.AgentDeploymentScriptsApi(api.ApiClient(configuration)) deployment_script = deployment_scripts_api.generate_agent_deployment_script(api_version, agent_deployment_script = deployment_script) Example The following example shows the configuration of many aspects of a deployment script. Once you generate the agent deployment script, you can save the script to a file on the target computer and run it. Although the following example does not perform those activities, you can adapt it to do so, automating the entire agent deployment process. View source # Create the AgentDeploymentScript object and configure deployment_script = api.AgentDeploymentScript() deployment_script.platform = platform deployment_script.dsm_proxy_id = dsm_proxy_id deployment_script.validate_certificate_required = validate_certificate deployment_script.activation_required = activate deployment_script.computer_group_id = computer_group_id deployment_sc",
+    "metadata": {
+      "filename": "api-generate-agent-deploy.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/api-generate-agent-deploy.md",
+      "title": "Use the API to generate an agent deployment script",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.694Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      2,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      92,
+      55,
+      999
+    ]
+  },
+  {
+    "id": "api-generate-agent-deploy.md_chunk_3",
+    "content": "ript.policy_id = policy_id deployment_script.relay_id = relay_id deployment_script.replay_proxy_id = relay_proxy_id deployment_scripts_api = api.AgentDeploymentScriptsApi(api.ApiClient(configuration)) deployment_script = deployment_scripts_api.generate_agent_deployment_script(api_version, agent_deployment_script = deployment_script) return deployment_script.script_body Also see the Generate Agent Deployment Scripts operation in the API Reference. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "api-generate-agent-deploy.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/api-generate-agent-deploy.md",
+      "title": "Use the API to generate an agent deployment script",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.694Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      45,
+      35,
+      525
+    ]
+  }
+]

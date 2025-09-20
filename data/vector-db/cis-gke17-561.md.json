@@ -1,0 +1,134 @@
+[
+  {
+    "id": "cis-gke17-561.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 5.6.1 - Enable VPC Flow Logs and Intranode Visibility (Automated) Profile applicability: Level 2 Enable VPC Flow Logs and Intranode Visibility to see pod-level traffic, even for traffic within a worker node. Enabling Intranode Visibility makes intranode pod to pod traffic visible to the networking fabric. With this feature, VPC Flow Logs or other VPC features can be used for intranode traffic. Note By default, Intranode Visibility is disabled. Impact Enabling it on existing cluster causes the cluster master and the cluster nodes to restart, which might cause disruption. Audit Using Google Cloud Console: Go to Kubernetes Engine website. Select the desired cluster. Under the Cluster section, make sure that Intranode visibility is set to Enabled.",
+    "metadata": {
+      "filename": "cis-gke17-561.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-561.md",
+      "title": "5.6.1 - Enable VPC Flow Logs and Intranode Visibility (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.864Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      108,
+      72,
+      842
+    ]
+  },
+  {
+    "id": "cis-gke17-561.md_chunk_1",
+    "content": "Using Command Line: Run this command: gcloud container clusters describe <cluster_name> --zone <compute_zone> -- format json | jq '.networkConfig.enableIntraNodeVisibility' The result should return true if Intranode Visibility is Enabled. Remediation Enable Intranode Visibility: Using Google Cloud Console: Go to Kubernetes Engine website. Select Kubernetes clusters for which intranode visibility is disabled. Within the Details pane, under the Network section, click on the pencil icon named Edit intranode visibility. Check the box next to Enable Intranode visibility. Click SAVE CHANGES. Using Command Line: To enable intranode visibility on an existing cluster, run the following command: gcloud container clusters update <cluster_name> --enable-intra-node- visibility Enable VPC Flow Logs: Using Google Cloud Console: Go to Kubernetes Engine website. Select Kubernetes clusters for which VPC Flow Logs are disabled. Select Nodes tab. Select Node Pool without VPC Flow Logs enabled.",
+    "metadata": {
+      "filename": "cis-gke17-561.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-561.md",
+      "title": "5.6.1 - Enable VPC Flow Logs and Intranode Visibility (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.864Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      123,
+      66,
+      988
+    ]
+  },
+  {
+    "id": "cis-gke17-561.md_chunk_2",
+    "content": "Select an Instance Group within the node pool. Select an Instance Group Member. Select the Subnetwork under Network Interfaces. Click EDIT. Set Flow logs to On. Click SAVE. Using Command Line: Find the subnetwork name associated with the cluster: gcloud container clusters describe <cluster_name> --region <cluster_region> --format json | jq '.subnetwork' Update the subnetwork to enable VPC Flow Logs: gcloud compute networks subnets update <subnet_name> --enable-flow-logs © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-gke17-561.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-561.md",
+      "title": "5.6.1 - Enable VPC Flow Logs and Intranode Visibility (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.864Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      71,
+      52,
+      549
+    ]
+  }
+]

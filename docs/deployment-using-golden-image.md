@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-deployment-using-golden-image
+slug: deployment-using-golden-image
 title: Deployment using a golden image
 ---
 

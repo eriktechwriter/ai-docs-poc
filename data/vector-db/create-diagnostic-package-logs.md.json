@@ -1,0 +1,178 @@
+[
+  {
+    "id": "create-diagnostic-package-logs.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Create a diagnostic package and logs To diagnose an issue, your support provider may ask you to send a diagnostic package containing debug information for the agent. Agent diagnostics For an agent, you can create a diagnostic package either: via Server & Workload Protection using the CLI on a protected computer (if the Server & Workload Protection cannot reach the agent remotely) For Linux-specific information on increasing or decreasing the anti-malware debug logging for the diagnostic package, see Increase debug logging for anti-malware in protected Linux instances. Your support provider may also ask you collect: a screenshot of Task Manager (Windows) or output from top (Linux) or prstat (Solaris) or topas (AIX) debug logs Perfmon log (Windows) or Syslog memory dumps (Windows) or core dumps (Linux, , AIX) Create an agent diagnostic package via Server & Workload Protection Note Server & Workload P",
+    "metadata": {
+      "filename": "create-diagnostic-package-logs.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/create-diagnostic-package-logs.md",
+      "title": "Create a diagnostic package and logs",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.048Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      5,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      128,
+      73,
+      1000
+    ]
+  },
+  {
+    "id": "create-diagnostic-package-logs.md_chunk_1",
+    "content": "rotection must be able to connect to an agent remotely to create a diagnostic package for it. If Server & Workload Protection cannot reach the agent remotely, or if the agent is using agent-initiated activation, you must create the diagnostic package directly from the agent. Procedure Go to Computers. Double-click the name of the computer you want to generate the diagnostic package for. Select the Actions tab. Under Support, click Create Diagnostics Package. Click Next. The package will take several minutes to create. After the package has been generated, a summary will be displayed and your browser will download a ZIP file containing the diagnostic package. Next steps Note When the System Information check box is selected, it might create a huge diagnostic package that could have a negative impact on performance. The check box is greyed out if you are not a primary tenant or do not have the proper viewing rights.",
+    "metadata": {
+      "filename": "create-diagnostic-package-logs.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/create-diagnostic-package-logs.md",
+      "title": "Create a diagnostic package and logs",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.048Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      5,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      125,
+      79,
+      927
+    ]
+  },
+  {
+    "id": "create-diagnostic-package-logs.md_chunk_2",
+    "content": "Create an agent diagnostic package via CLI on a protected computer Procedure Linux, AIX, and Solaris Connect to the server that you want to generate the diagnostic package for. Enter the command: sudo /opt/ds_agent/dsa_control -d The output shows the name and location of the diagnostic package: /var/opt/ds_agent/diag Windows Connect to the computer that you want to generate the diagnostic package for. Open a command prompt as an administrator, and enter the command. In PowerShell: & \"\\Program Files\\Trend Micro\\Deep Security Agent\\dsa_control\" -d In cmd.exe: cd C:\\Program Files\\Trend Micro\\Deep Security Agent dsa_control.cmd -d The output shows the name and location of the diagnostic package: C:\\ProgramData\\Trend Micro\\Deep Security Agent\\diag Collect debug logs with DebugView On Windows computers, you can collect debug logs using DebugView software. WARNING Only collect debug logs if your support provider asks for them.",
+    "metadata": {
+      "filename": "create-diagnostic-package-logs.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/create-diagnostic-package-logs.md",
+      "title": "Create a diagnostic package and logs",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.048Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      3,
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      128,
+      63,
+      933
+    ]
+  },
+  {
+    "id": "create-diagnostic-package-logs.md_chunk_3",
+    "content": "During debug logging, CPU usage will increase, which will make high CPU usage issues worse. Procedure Download the DebugView utility. If self-protection is enabled, disable it. Stop the Trend Micro Deep Security Agent service. In the C:\\Windows directory, create a plain text file named ds_agent.ini. In the ds_agent.ini file, add this line: trace=* Launch DebugView.exe. Go to Menu > Capture. Enable these settings: Capture Win32 Capture Kernel Capture Events Start the Trend Micro Deep Security Agent service. Export the information in DebugView to a CSV file. Re-enable self-protection if you disabled it at the beginning of this procedure. Next steps © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "create-diagnostic-package-logs.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/create-diagnostic-package-logs.md",
+      "title": "Create a diagnostic package and logs",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.048Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      2,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      99,
+      68,
+      729
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+---
+id: agent-package-integrity-check
+title: Agent package integrity check
+sidebar_label: Agent package integrity check
+description: Agent package integrity check
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Agent package integrity check Server & Workload Protection verifies the signature on the agent to ensure that the software files have not changed since the time of signing. An integrity check occurs when: You're upgrading the agent. You're enabling a new security module so the kernel support is being updated. If the validation fails, plugin installations and agent upgrades are blocked. Troubleshoot ID Event Reason Solution 5302 Agent/Plugin package signature download failed. The signature files used to check the integrity of the agent are not available in your update source. Your relay might not be upgraded to the required version. If you do not have a relay in your environment: Create a diagnostic package and logs and send it to the Trend Micro support team. If you have a relay in your environment: On the Alerts page, check for the "Relay Upgrade Required For Agent Integrity Check" alert. If the alert exists, see Supported relay versions and Upgrade the relay accordingly. Confirm signature files sync to your update source. Confirm your signature files have synced to your update source. Attempt to upgrade your agent or send your updated policy again. If the issue isn't resolved, Create a diagnostic package and logs and send it to the Trend Micro support team. 5300 Agent/Plugin package signature validation failed. The agent package might have been tampered with or something is wrong on the package. Create a diagnostic package and logs and send it to the Trend Micro support team. 5301 Agent/Plugin package validation failed. 5303 Agent/Plugin package signature mismatch with the one in our policy. Supported relay versions The following relay versions are supported: Deep Security 20 Deep Security 12.0 update 8 (12.0.0.967) Deep Security 11.0 update 23 (11.0.1617) © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

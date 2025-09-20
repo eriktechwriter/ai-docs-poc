@@ -1,0 +1,222 @@
+[
+  {
+    "id": "issues-adding-your-aws-account.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Issues adding your AWS account to Server & Workload Protection Important AWS Accounts in Trend Vision One are now managed by the Cloud Accounts app. To add new AWS accounts, see Adding an AWS account using CloudFormation. You can still use APIs to add new accounts to Server & Workload Protection. However, Trend Micro recommends using the Cloud Accounts app, which provides access to more advanced cloud security and XDR capabilities. This topic is for reference only. When adding your AWS account to Server & Workload Protection, you may encounter the following issues. In this topic: AWS is taking longer than expected Resource is not supported in this region Template validation issue Server & Workload Protection was unable to add your AWS account AWS is taking longer than expected If AWS is taking longer than expected, it might be because: Procedure The template is still running While the Cloud Formati",
+    "metadata": {
+      "filename": "issues-adding-your-aws-account.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/issues-adding-your-aws-account.md",
+      "title": "Issues adding your AWS account to Server & Workload Protection",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.623Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      134,
+      78,
+      1000
+    ]
+  },
+  {
+    "id": "issues-adding-your-aws-account.md_chunk_1",
+    "content": "on Template is running, Server & Workload Protection has no information on how far it has progressed or when it will finish. Server & Workload Protection is notified when the template has completed successfully. Because of this, Server & Workload Protection has a timeout that is triggered if the template has not completed within the expected time. If the timeout was triggered it doesn’t mean the template has failed, AWS could just be taking longer than usual. To check the status of the template, go to the Cloud Formation section of the AWS console. From there, look for the Status of the Stack Named DeepSecuritySetup. If the status field shows CREATE_IN_PROGRESS then the template is still running and more time is required. The template has failed to complete If the status field in the Cloud Formation section of the AWS console shows ROLLBACK_IN_PROGRESS, ROLLBACK_COMPLETE, or CREATE_FAILED then the template creation has failed within AWS.",
+    "metadata": {
+      "filename": "issues-adding-your-aws-account.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/issues-adding-your-aws-account.md",
+      "title": "Issues adding your AWS account to Server & Workload Protection",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.623Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      122,
+      63,
+      951
+    ]
+  },
+  {
+    "id": "issues-adding-your-aws-account.md_chunk_2",
+    "content": "If this happens, go to the Events tab in the Cloud Formation interface to find more information about why the template failed. Contact Trend Micro technical support for help. Next steps Resource is not supported in this region The Cloud Formation Template creates a Lambda function to create the cross-account role. AWS Lambda is not currently supported in all regions, so if the Cloud Formation Template is run in a region that does not support Lambda then it will fail to create the cross-account role. By default, the link provided by the wizard will run the Cloud Formation Template in the US East (N. Virginia) region. The other regions that currently support Lambda are: Asia Pacific (Singapore) Asia Pacific (Sydney) Asia Pacific (Tokyo) EU (Frankfurt) EU (Ireland) US East (N. Virginia) US West (Oregon) Template validation issue The user running the Cloud Formation Template doesn’t have the required permissions to run the template.",
+    "metadata": {
+      "filename": "issues-adding-your-aws-account.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/issues-adding-your-aws-account.md",
+      "title": "Issues adding your AWS account to Server & Workload Protection",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.623Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      126,
+      70,
+      942
+    ]
+  },
+  {
+    "id": "issues-adding-your-aws-account.md_chunk_3",
+    "content": "In the IAM console, scroll down and find the user that is currently logged in and running the template. Open the user properties by double-clicking on the user. Scroll down to the Managed Policies and Inline Policies section and click the Show Policy link on any policies visible. All of the permissions listed below must be contained in at least one of the polices attached to the user. cloudformation:CreateStack cloudformation:DescribeStackEvents cloudformation:DescribeStacks cloudformation:EstimateTemplateCost cloudformation:GetTemplate cloudformation:GetTemplateSummary cloudformation:ListStackResources cloudformation:ListStacks ec2:CreateTags ec2:DescribeAvailabilityZones ec2:DescribeImages ec2:DescribeInstances ec2:DescribeRegions ec2:DescribeSecurityGroups ec2:DescribeSubnets ec2:DescribeTags ec2:DescribeVpcs iam:AddRoleToInstanceProfile iam:AttachRolePolicy iam:CreateInstanceProfile iam:CreatePolicy iam:CreateRole iam:DeleteInstanceProfile iam:DeleteRole iam:DeleteRolePolicy iam:G",
+    "metadata": {
+      "filename": "issues-adding-your-aws-account.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/issues-adding-your-aws-account.md",
+      "title": "Issues adding your AWS account to Server & Workload Protection",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.623Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      107,
+      64,
+      999
+    ]
+  },
+  {
+    "id": "issues-adding-your-aws-account.md_chunk_4",
+    "content": "etRole iam:GetRolePolicy iam:PassRole iam:PutRolePolicy iam:RemoveRoleFromInstanceProfile lambda:InvokeFunction lambda:CreateFunction lambda:GetFunctionConfiguration sts:AssumeRole sts:DecodeAuthorizationMessage workspaces:DescribeWorkspaces workspaces:DescribeWorkspaceDirectories workspaces:DescribeWorkspaceBundles workspaces:DescribeTags Server & Workload Protection was unable to add your AWS account The information that Server & Workload Protection received from AWS was incomplete. If this happens, close the wizard and try running it again from the beginning as there might be a temporary system problem. If the error happens a second time, contact technical support. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "issues-adding-your-aws-account.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/issues-adding-your-aws-account.md",
+      "title": "Issues adding your AWS account to Server & Workload Protection",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.623Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 4
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      82,
+      63,
+      751
+    ]
+  }
+]

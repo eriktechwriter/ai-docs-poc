@@ -1,0 +1,134 @@
+[
+  {
+    "id": "migrate-cloud-connector.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ How do I migrate to the new cloud connector functionality? If you previously used the \"Add Cloud Account\" wizard to import Amazon Web Services resources into Deep Security as a Service, those resources are organized by AWS region on Computers. You may have run the wizard more than once if you have multiple AWS regions. Server & Workload Protection the ability to display your AWS instances under your AWS account name, organized in a hierarchy that includes the AWS Region, VPC, and subnet. Before migrating your AWS resources, you will need to edit the policy that allows Server & Workload Protection to access your AWS account: Procedure Log in to your Amazon Web Services Console and go to Identity and Access Management (IAM). In the left navigation pane, click Policies. In the list of policies, select the policy that allows Server & Workload Protection to access your AWS account.",
+    "metadata": {
+      "filename": "migrate-cloud-connector.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/migrate-cloud-connector.md",
+      "title": "How do I migrate to the new cloud connector functionality?",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.697Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      132,
+      80,
+      978
+    ]
+  },
+  {
+    "id": "migrate-cloud-connector.md_chunk_1",
+    "content": "Go to the Policy Document tab and click Edit. Edit the policy document to include this JSON code: { \"Version\": \"2012-10-17\", \"Statement\": [ { \"Sid\": \"cloudconnector\", \"Effect\": \"Allow\", \"Action\": [ \"ec2:DescribeImages\", \"ec2:DescribeInstances\", \"ec2:DescribeRegions\", \"ec2:DescribeSubnets\", \"ec2:DescribeTags\", \"ec2:DescribeVpcs\", \"iam:ListAccountAliases\", \"sts:AssumeRole\" ], \"Resource\": [ \"*\" ] } ] } Note The \"sts:AssumeRole\" permission is required only if you are using cross-account role access. For more information on IAM roles, see Tutorial: Delegate Access Across AWS Accounts Using IAM Roles. Select Save as default version. Next steps To migrate your AWS resources in the Server & Workload Protection console: In the Server & Workload Protection console, go to the Computers page. In the Computers tree, right-click an AWS region and select Upgrade to Amazon Account. Click Finish and then Close.",
+    "metadata": {
+      "filename": "migrate-cloud-connector.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/migrate-cloud-connector.md",
+      "title": "How do I migrate to the new cloud connector functionality?",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.697Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      109,
+      74,
+      907
+    ]
+  },
+  {
+    "id": "migrate-cloud-connector.md_chunk_2",
+    "content": "Your AWS instances will now appear under your AWS account name, organized in a hierarchy that includes the AWS Region, VPC, and subnet. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "migrate-cloud-connector.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/migrate-cloud-connector.md",
+      "title": "How do I migrate to the new cloud connector functionality?",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.697Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      31,
+      28,
+      210
+    ]
+  }
+]

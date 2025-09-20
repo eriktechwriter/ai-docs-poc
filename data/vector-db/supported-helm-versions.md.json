@@ -1,0 +1,178 @@
+[
+  {
+    "id": "supported-helm-versions.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Supported Helm versions Container Security components use the Helm package manager for Kubernetes. To ensure continued rule updates, Trend Micro recommends using the latest version of Helm chart available. See Upgrade Helm chart. Note Clusters that run Helm chart versions 3.0.1 and later can support both x86 and ARM platforms for runtime malware scanning. Clusters that run Helm chart versions older than 2.3.25 (or 1.0.8 for ECS) will no longer receive new rule updates. Clusters that run Helm chart versions 2.6.7 and later can support all proxy settings for runtime malware scanning. Clusters that use unsupported Helm chart versions retain protection from their last downloaded rules file but might have error logs in Scout for rule download failures. Install Helm chart Starting with version 3.0.0, Helm chart will be in a new location, https://github.com/trendmicro/visionone-container-security-helm.",
+    "metadata": {
+      "filename": "supported-helm-versions.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/supported-helm-versions.md",
+      "title": "Supported Helm versions",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.187Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      137,
+      86,
+      997
+    ]
+  },
+  {
+    "id": "supported-helm-versions.md_chunk_1",
+    "content": "Only this new version of Helm chart will receive updates. Create a file named overrides.yaml, which is used to contain your cluster-specific settings. Note You can find the setting values in the Trend Vision One console or the Container Security API when you create a cluster. See the Values.yaml file for a reference when creating your overrides file. Use helm to install Container Security components with your cluster-specific settings. We recommend that you run Container Security in its own namespace. To install Helm chart into an existing Kubernetes namespace, use the --namespace flag with the helm install command: helm install \\ --values overrides.yaml \\ --namespace ${namespace} \\ trendmicro \\ https://github.com/trendmicro/visionone-container-security-helm/archive/main.tar.gz Note For more information about helm install, see the Helm installation documentation. The table below describes environments that require specific settings.",
+    "metadata": {
+      "filename": "supported-helm-versions.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/supported-helm-versions.md",
+      "title": "Supported Helm versions",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.187Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      129,
+      73,
+      946
+    ]
+  },
+  {
+    "id": "supported-helm-versions.md_chunk_2",
+    "content": "Environment Description AWS EKS Fargate If you are using Container Security in a pure AWS EKS Fargate environment, you might need to adjust your Fargate profile to allow pods in a non-default namespace (ex: trendmicro-system). See AWS documentation for more information on Fargate profiles. Red Hat OpenShift If you are using Container Security in a Red Hat OpenShift environment, the Helm Chart creates a Security Context Constraint to allow Container Security components to have the minimum security context requirements to run. Pod Security Admission If you are using Container Security in a cluster with Pod Security Admission and you have runtime security enabled, ensure the namespace where Container Security is installed is using the privileged Pod Security Standards policy. Upgrade Helm chart Use the following to upgrade an existing installation in the default Kubernetes namespace to the latest version: Note Helm overrides the reset values in overrides.yaml when upgraded.",
+    "metadata": {
+      "filename": "supported-helm-versions.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/supported-helm-versions.md",
+      "title": "Supported Helm versions",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.187Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      11,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      126,
+      71,
+      985
+    ]
+  },
+  {
+    "id": "supported-helm-versions.md_chunk_3",
+    "content": "helm upgrade \\ --values overrides.yaml \\ --namespace ${namespace} \\ trendmicro \\ https://github.com/trendmicro/visionone-container-security-helm/archive/main.tar.gz To use the previously set values, use the --reuse-values option during a Helm upgrade: helm upgrade \\ --namespace ${namespace} \\ --reuse-values \\ trendmicro \\ https://github.com/trendmicro/visionone-container-security-helm/archive/main.tar.gz Related information Upgrade Helm chart from Trend Cloud One to Trend Vision One © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "supported-helm-versions.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/supported-helm-versions.md",
+      "title": "Supported Helm versions",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:47.187Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      72,
+      40,
+      562
+    ]
+  }
+]

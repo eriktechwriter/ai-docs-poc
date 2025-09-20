@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-cef-workbench-logs
+slug: cef-workbench-logs
 title: CEF Workbench logs
 ---
 

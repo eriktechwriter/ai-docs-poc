@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-add-block-list-task
+slug: add-block-list-task
 title: Add to Block List task
 ---
 

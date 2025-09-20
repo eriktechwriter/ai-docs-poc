@@ -1,0 +1,178 @@
+[
+  {
+    "id": "client-ca-automated.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 3.2.3 - Ensure that a Client CA file is configured (automated) Profile applicability: Level 1 - Worker Node Ensure that a Client CA file is configured for Kubelet authentication using certificates to enhance security. This configuration is critical because the connections from the apiserver to the kubelet, which are used for activities such as fetching logs for pods, attaching to running pods via kubectl, and enabling the kubelet’s port-forwarding functionality, terminate at the kubelet’s HTTPS endpoint. By default, the apiserver does not verify the kubelet’s serving certificate, making these connections vulnerable to man-in-the-middle attacks and unsafe over untrusted or public networks. Configuring Kubelet certificate authentication allows the apiserver to authenticate the Kubelet before it processes any requests, thereby safeguarding these interactions.",
+    "metadata": {
+      "filename": "client-ca-automated.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/client-ca-automated.md",
+      "title": "3.2.3 - Ensure that a Client CA file is configured (automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.871Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      112,
+      82,
+      957
+    ]
+  },
+  {
+    "id": "client-ca-automated.md_chunk_1",
+    "content": "This setup requires TLS to be configured both on the apiserver and the kubelets to ensure secure communication. Impact You require TLS to be configured on apiserver as well as kubelets. Audit Audit method 1: Note Kubelets can be configured via a configuration file or command line arguments. Command line arguments take precedence. Check both command line arguments and configuration file entries when auditing Kubelet configurations. SSH into each node and run the following command to view details of the active Kubelet process: ps -ef | grep kubelet Identify the location of the configuration file from the --config argument in the output. View the file using: sudo less /path/to/kubelet-config.json Verify that a client certificate authority file is configured: Command line argument to the Kubelet service: --client-ca-file=/path/to/client-ca-file In the Kubelet configuration file: { \"authentication\": { \"x509\": { \"clientCAFile\": \"/path/to/client-ca-file\" } } } Audit method 2: Review the runn",
+    "metadata": {
+      "filename": "client-ca-automated.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/client-ca-automated.md",
+      "title": "3.2.3 - Ensure that a Client CA file is configured (automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.871Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      125,
+      68,
+      999
+    ]
+  },
+  {
+    "id": "client-ca-automated.md_chunk_2",
+    "content": "ing configuration of a Kubelet via the \"/configz\" endpoint of the Kubernetes API using kubectl: Discover all nodes in your cluster: kubectl get nodes Initiate a proxy with kubectl on a local port (e.g., 8080): kubectl proxy --port=8080 In a separate terminal, run the following command for each node: export NODE_NAME=my-node-name curl http://localhost:8080/api/v1/nodes/${NODE_NAME}/proxy/configz Verify that a client certificate authority file is configured by checking the API response: { \"authentication\": { \"x509\": { \"clientCAFile\": \"/path/to/client-ca-file\" } } } Remediation Method 1: SSH into each node. Locate the Kubelet configuration file: ps -ef | grep kubelet View the configuration file using: sudo less /path/to/kubelet-config.json Configure the client certificate authority file by setting the following parameter: { \"authentication\": { \"x509\": { \"clientCAFile\": \"/path/to/client-ca-file\" } } } Restart the kubelet service and check its status (example for systems using systemd): sys",
+    "metadata": {
+      "filename": "client-ca-automated.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/client-ca-automated.md",
+      "title": "3.2.3 - Ensure that a Client CA file is configured (automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.871Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      1,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      124,
+      74,
+      1000
+    ]
+  },
+  {
+    "id": "client-ca-automated.md_chunk_3",
+    "content": "temctl daemon-reload systemctl restart kubelet.service systemctl status kubelet -l Method 2: If using command line arguments, edit the kubelet service file to include the following parameter: --client-ca-file=/path/to/client-ca-file For systems using systemd, edit the file located at /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf. Restart the kubelet service and check its status (example for systems using systemd): systemctl daemon-reload systemctl restart kubelet.service systemctl status kubelet -l © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "client-ca-automated.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/client-ca-automated.md",
+      "title": "3.2.3 - Ensure that a Client CA file is configured (automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.871Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      78,
+      43,
+      591
+    ]
+  }
+]

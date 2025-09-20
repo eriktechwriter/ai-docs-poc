@@ -1,0 +1,11 @@
+---
+id: aws-terraform-resource-update
+title: AWS Resource Update
+sidebar_label: AWS Resource Update
+description: AWS Resource Update
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ AWS Resource Update Update the terraform template to get the latest security features for your connected AWS account. The Resource Update tab in the Cloud Account Settings screen allows you to download and update the terraform template for your AWS account. Important Resource updates are for AWS accounts connected using terraform. If you connected your account using CloudFormation, see AWS Stack Update. Procedure Sign in to the Trend Vision One console. In a new tab in the same browser session, access the AWS CloudShell for the account you want to connect. Important Your CloudShell region must be the same as the region the terraform deployment. Go to Cloud Security → Cloud Accounts → AWS and click on the name of the account you want to update. In the Cloud Accounts Settings screen, go to the Resource Update tab. Commands for the following steps are provided on the Launch screen in the Trend Vision One console. Trend Micro recommends using these commands as the filename for the terraform package is uniquely generated for the package. Upload the template to your AWS CloudShell. Copy and paste the curl command into your CloudShell interface to retrieve the template package. The command is dynamically generated based on your account and region. Click Download the Terraform Template to save the template to your local machine. Make sure your CloudShell environment is set to the same region you selected for the terraform deployment before uploading the package. In your AWS CloudShell, extract the template to a unique folder. Important The terraform script must be in a folder with no other terraform files. Attempting to run a terraform from a folder with more than one script can cause the deployment to fail. Access the folder containing the extracted terraform script. Run the terraform script using the command ./deploy .sh AWS begins the terraform process to update the security resources. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

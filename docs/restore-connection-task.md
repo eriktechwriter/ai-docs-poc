@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-restore-connection-task
+slug: restore-connection-task
 title: Restore Connection task
 ---
 

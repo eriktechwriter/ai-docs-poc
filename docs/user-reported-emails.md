@@ -1,0 +1,11 @@
+---
+id: user-reported-emails
+title: User-reported emails
+sidebar_label: User-reported emails
+description: User-reported emails
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ User-reported emails Cloud Email and Collaboration Protection provides you visibility into the emails that your users report as a spam, phishing, or not a risk through the add-in for Outlook or the warning banner in anomalous emails detected by predefined correlation rules in Correlated Intelligence. On the User-Reported Emails screen, you can get the volume and variety of the reported emails and view the details of each report email. If you have multiple organizations, select an organization to view data. The following table details the sections available on the User-Reported Emails screen. Section Description Summary Total number of reported emails and number of emails reported as spam, phishing, or not a risk. You can select a time range to view the data. Both the pie chart and the line chart are available. Details on Reported Email Details about each reported email, including the reporting time, subject, message ID, reported type. In this section, you can perform the following operations on the reported emails: Filter emails: Select the time range and reported type, specify the email subject , and press ENTER. You can also click the filter icon () to add more criteria. Download emails: Select one or multiple emails and click Download. View emails approved, rejected, skipped, or waiting for approval: Click Waiting for Approval, Approved, Rejected, or Skipped to view the emails whose reporting is waiting for approval, approved, rejected, or skipped. If you expect that the emails reporting by end users should be manually approved before sent to Trend Micro, enable email reporting approval. For details, see Email reporting. Approve/reject reporting: Click the three dots at the end of each email item, and then select whether to allow sending a reported email to Trend Micro. Add sender to Block List: Click the three dots at the end of each email item, and then select Add to Block List if you want to add the sender address of a reported email to the block list of Trend Vision One. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

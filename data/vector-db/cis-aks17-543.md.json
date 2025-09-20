@@ -1,0 +1,90 @@
+[
+  {
+    "id": "cis-aks17-543.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 5.4.3 - Ensure clusters are created with Private Nodes (Automated) Profile Applicability: Level 1 Disable public IP addresses for cluster nodes, so that they only have private IP addresses. Private Nodes are nodes with no public IP addresses. Disabling public IP addresses on cluster nodes restricts access to only internal networks, forcing attackers to obtain local network access before attempting to compromise the underlying Kubernetes hosts. Impact To enable Private Nodes, the cluster has to also be configured with a private master IP range and IP Aliasing enabled. Private Nodes do not have outbound access to the public internet. If you want to provide outbound Internet access for your private nodes, you can use Cloud NAT or you can manage your own NAT gateway.",
+    "metadata": {
+      "filename": "cis-aks17-543.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-aks17-543.md",
+      "title": "5.4.3 - Ensure clusters are created with Private Nodes (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.837Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      109,
+      70,
+      862
+    ]
+  },
+  {
+    "id": "cis-aks17-543.md_chunk_1",
+    "content": "Audit Check for the following to be 'enabled: true': export CLUSTER_NAME=<your cluster name> export RESOURCE_GROUP=<your resource group name> az aks show --name ${CLUSTER_NAME} --resource-group ${RESOURCE_GROUP} --query \"apiServerAccessProfile.enablePrivateCluster\" Remediation az aks create \\ --resource-group <private-cluster-resource-group> \\ --name <private-cluster-name> \\ --load-balancer-sku standard \\ --enable-private-cluster \\ --network-plugin azure \\ --vnet-subnet-id <subnet-id> \\ --docker-bridge-address \\ --dns-service-ip \\ --service-cidr Where --enable-private-cluster is a mandatory flag for a private cluster. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-aks17-543.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-aks17-543.md",
+      "title": "5.4.3 - Ensure clusters are created with Private Nodes (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.837Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      80,
+      52,
+      700
+    ]
+  }
+]

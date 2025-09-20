@@ -1,0 +1,11 @@
+---
+id: account-running-aws-outposts
+title: Protect an account running in AWS Outposts
+sidebar_label: Protect an account running in AWS Outposts
+description: Protect an account running in AWS Outposts
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Protect an account running in AWS Outposts Server & Workload Protection supports AWS accounts running on AWS Outposts. To protect your AWS accounts in Outposts: Important Adding new AWS accounts on the Trend Vision One console is now performed in the Cloud Accounts app. Using the Cloud Accounts app allows access to the latest Cloud Security solutions. To get started, see Getting started with Cloud Accounts. You can still use the following steps to manage legacy accounts or accounts added using the API functions. However, Trend Micro suggests updating your legacy connections in the Cloud Accounts app. Procedure Install the agent on Amazon EC2 and WorkSpaces. Activate the agent. Create policies. Next steps © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

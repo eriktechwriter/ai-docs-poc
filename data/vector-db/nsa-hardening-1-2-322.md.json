@@ -1,0 +1,90 @@
+[
+  {
+    "id": "nsa-hardening-1-2-322.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 3.2.2 - Ensure ResouceQuota policy is used to limit resource usage (Automated) Profile applicability: Level 1 ResourceQuotas are restrictions placed on the aggregate resource usage for an entire namespace, such as limits placed on total CPU and memory usage. If a user tries to create a Pod that violates a LimitRange or ResourceQuota policy, the Pod creation fails. Audit Run the following command and review ResourceQuota policies: kubectl get resourcequotas --all-namespaces Add ResourceQuota policies to limit resource usage. Remediation Create a ResourceQuota policy with memory and CPU quota per each namespace. ResourceQuota objects to limit aggregate resource usage within a namespace are created by applying a YAML file to a namespace or specifying requirements in the configuration file of Pods. For more information, see the Kubernetes documentation.",
+    "metadata": {
+      "filename": "nsa-hardening-1-2-322.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/nsa-hardening-1-2-322.md",
+      "title": "3.2.2 - Ensure ResouceQuota policy is used to limit resource usage (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.768Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      111,
+      76,
+      950
+    ]
+  },
+  {
+    "id": "nsa-hardening-1-2-322.md_chunk_1",
+    "content": "Configuration file for a namespace: apiVersion: v1 kind: ResourceQuota metadata: name: example-cpu-mem-resourcequota spec: hard: requests.cpu: “1” requests.memory: 1Gi limits.cpu: “2” limits.memory: 2Gi This ResourceQuota can be applied with: kubectl apply -f example-cpu-mem-resourcequota.yaml --namespace=<insert-namespace-here> This ResourceQuota places the following constraints on the chosen namespace. Every container must have the following: A memory request, memory limit, CPU request, and CPU limit Aggregate memory request for all containers should not exceed 1 GB Total memory limit for all containers should not exceed 2 GB Aggregate CPU request for all containers should not exceed 1 CPU Total CPU limit for all containers should not exceed 2 CPUs © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "nsa-hardening-1-2-322.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/nsa-hardening-1-2-322.md",
+      "title": "3.2.2 - Ensure ResouceQuota policy is used to limit resource usage (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.768Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      113,
+      57,
+      835
+    ]
+  }
+]

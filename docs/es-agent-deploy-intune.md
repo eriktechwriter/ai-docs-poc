@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-es-agent-deploy-intune
+slug: es-agent-deploy-intune
 title: Endpoint Sensor Agent Deployment using Microsoft Intune
 ---
 

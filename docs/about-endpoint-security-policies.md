@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-about-endpoint-security-policies
+slug: about-endpoint-security-policies
 title: About endpoint security policies
 ---
 

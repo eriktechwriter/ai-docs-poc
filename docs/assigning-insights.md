@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-assigning-insights
+slug: assigning-insights
 title: Assign owners to Workbench insights
 ---
 

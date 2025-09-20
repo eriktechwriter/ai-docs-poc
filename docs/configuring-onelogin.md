@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-configuring-onelogin
+slug: configuring-onelogin
 title: Configuring OneLogin
 ---
 

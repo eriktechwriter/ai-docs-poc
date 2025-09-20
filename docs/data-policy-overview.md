@@ -1,0 +1,11 @@
+---
+id: data-policy-overview
+title: Data Policy
+sidebar_label: Data Policy
+description: Data Policy
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Data Policy Define data policies for Data Security to identify the network locations with local devices and files that contain sensitive data. A data policy specifies the network location and, optionally, the file types in that location that contain sensitive data. Data Security uses the data policies you define to create an inventory of assets and files with sensitive data, which you can view in the Data Inventory app. Note Before you begin, note the following: You must deploy endpoint data sensors in the network locations that have a data policy to enable Data Detection and Response. For more information, see Configure endpoint security policies. Data policies monitor local devices and files, not cloud assets. To monitor cloud assets for sensitive data, you must enable Data Security Posture. The following table details the actions you can take on the Data Policy screen: Action Details Create a data policy Click Create Policy. For more information, see Add a data policy. View a list of sensitive data files defined by a data policy Click a policy name to open Data Inventory and view all of the sensitive data files in that policy. Turn a data policy on or off Enable or disable the toggle switch. Delete a data policy Click the Delete icon () beside the data policy you want to delete. Additional actions Filter the list of data policies by creator. Use the search function to find policies by network location, policy name, and more. Click Add filter to help locate assets by adding filters such as provider, region, custom tags, and more. Click the three dots at the top right of the page, and then click Export to export listed policies to a CSV file. Click Customize Columns () to choose which columns display in the list. Related information Add a data policy © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

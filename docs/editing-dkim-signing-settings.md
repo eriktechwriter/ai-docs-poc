@@ -1,0 +1,11 @@
+---
+id: editing-dkim-signing-settings
+title: Editing DKIM signing settings
+sidebar_label: Editing DKIM signing settings
+description: Editing DKIM signing settings
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Editing DKIM signing settings Procedure Go to Outbound Protection → Domain-based Authentication → DomainKeys Identified Mail (DKIM) Signing. From the list of DKIM signing domains, click a domain that you want to edit. Modify the DKIM signing settings as required. Note For details about the settings, see Adding DKIM signing settings. If you regenerate a key pair, make sure you publish the new public key to your DNS server. Before the new public key takes effect, Cloud Email Gateway Protection uses the old public key for signing. Therefore, make sure you do not delete the DNS record for the old key from your DNS server until the new DNS record takes effect. Click Save. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

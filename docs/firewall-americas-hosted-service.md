@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-firewall-americas-hosted-service
+slug: firewall-americas-hosted-service
 title: 'Firewall exceptions: Americas - hosted Service Gateway'
 ---
 

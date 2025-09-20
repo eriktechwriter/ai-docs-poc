@@ -1,0 +1,11 @@
+---
+id: security-awareness-fqdns
+title: Security Awareness firewall exceptions
+sidebar_label: Security Awareness firewall exceptions
+description: Security Awareness firewall exceptions
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Security Awareness firewall exceptions Add FQDNs used by Security Awareness to your firewall allow lists to allow access to Security Awareness content. Your network firewalls may block FQDNs used to access and deliver training campaign and phishing simulation content. Add the following regional URLs to your firewall exceptions to ensure access to Security Awareness content. Important Training programs used in training campaigns may use domains that are not included on the list of firewall exceptions. Training programs are created by third-party content providers and may use different domains depending on the content selected. Check whether your firewall blocks domains related to the provider of the selected third-party content if you have issues accessing training program content. AWS S3 firewall exceptions Region short name S3 domain US s3.us-east-1.amazonaws.com IN s3.ap-south-1.amazonaws.com JP s3.ap-northeast-1.amazonaws.com SG s3.ap-southeast-1.amazonaws.com AU s3.ap-southeast-2.amazonaws.com EU s3.eu-west-1.amazonaws.com MEA s3.me-central-1.amazonaws.com Phishing simulation firewall exceptions Region short name Phishing simulation content host US saa-us-content.phishinsight.trendmicro.com IN saa-in-content.phishinsight.trendmicro.com JP saa-jp-content.phishinsight.trendmicro.com SG saa-sg-content.phishinsight.trendmicro.com AU saa-au-content.phishinsight.trendmicro.com EU saa-eu-content.phishinsight.trendmicro.com MEA saa-mea-content.phishinsight.trendmicro.com General Security Awareness firewall exceptions Region short name Security Awareness template content host US awareness.xdr.trendmicro.com IN awareness.in.xdr.trendmicro.com JP awareness.jp.xdr.trendmicro.com SG awareness.sg.xdr.trendmicro.com AU awareness.au.xdr.trendmicro.com EU awareness.eu.xdr.trendmicro.com MEA awareness.mea.xdr.trendmicro.com © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-configuring-saml-ad
+slug: configuring-saml-ad
 title: Configuring Microsoft Entra ID
 ---
 

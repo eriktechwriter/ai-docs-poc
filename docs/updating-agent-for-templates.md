@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-updating-agent-for-templates
+slug: updating-agent-for-templates
 title: Updating the agent for golden image templates
 ---
 

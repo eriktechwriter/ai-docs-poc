@@ -1,0 +1,11 @@
+---
+id: migrate-billed-aws-market
+title: Migrating a Trend Cloud One - Endpoint & Workload Security instance billed to AWS Marketplace
+sidebar_label: Migrating a Trend Cloud One - Endpoint & Workload Security instance billed to AWS Marketplace
+description: Migrating a Trend Cloud One - Endpoint & Workload Security instance billed to AWS Marketplace
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Migrating a Trend Cloud One - Endpoint & Workload Security instance billed to AWS Marketplace Review the billing policy when a Trend Cloud One - Endpoint & Workload Security instance charged to AWS Marketplace is converted into a Server & Workload Protection instance in Trend Vision One. When updating to Trend Vision One Endpoint Security, your Trend Cloud One - Endpoint & Workload Security instance converts into a Trend Vision One Server & Workload Protection instance. If your Trend Cloud One account was originally billed to AWS Marketplace before the update, the product instance continues to be charged to your Cloud One AWS Marketplace billing contract following the migration. Therefore, the migrated instance does not count towards your credit usage in Trend Vision One. Note Endpoint Sensor agents deployed on endpoints associated with the migrated instance also do not count towards your Trend Vision One credit usage. With the exception of the migrated instance, you must allocate credits to use any additional Trend Vision One features or services that require credits, including provisioning additional Server & Workload Protection instances. You can view your credit usage and allocate credits to different features and services in the Credits & Billing app. You can purchase additional credits through the Trend Vision One listing on AWS Marketplace. For more information, see Purchase credits from AWS Marketplace. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

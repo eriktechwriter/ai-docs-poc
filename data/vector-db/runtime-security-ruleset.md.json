@@ -1,0 +1,134 @@
+[
+  {
+    "id": "runtime-security-ruleset.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Create a Container Security Runtime Security ruleset Define Container Security rulesets to ensure protection for your containers during Runtime Security scanning. Runtime security provides visibility into container activity that violates a customizable set of rules. Currently, runtime security includes a set of predefined rules that provide visibility into MITRE ATT&CK framework tactics for containers, as well as container drift detection. Container Security can automatically mitigate problems detected by the runtime security feature. If a pod violates any rule during runtime, the issue is mitigated by terminating or isolating the pod based on the ruleset assigned to its Container Security policy. Important Rulesets are compatible with Kubernetes and support Amazon EKS, Microsoft Azure AKS, Google GKE, and OpenShift running supported Linux kernels.",
+    "metadata": {
+      "filename": "runtime-security-ruleset.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/runtime-security-ruleset.md",
+      "title": "Create a Container Security Runtime Security ruleset",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.974Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      9,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      114,
+      80,
+      949
+    ]
+  },
+  {
+    "id": "runtime-security-ruleset.md_chunk_1",
+    "content": "Procedure Go to Cloud Security → Container Security → Configuration → Object Management. Click the Rulesets tab. Create a ruleset by clicking New. Specify a unique ruleset name. Note Ruleset names must not contain spaces and only support alphanumeric characters, underscores (_), and periods (.). You cannot modify the ruleset name after creating the ruleset. If you want to provide more details about the purpose for the ruleset, use the Description field. The description appears under the ruleset name in the ruleset list. For users that have applied labels to your Kubernetes clusters and want to apply the ruleset only to clusters with corresponding labels, click Add Label. Specify the Key and Value for each label. If you have multiple labels that you want to apply the ruleset to, click Add Label again. Important Labels are only supported on Kubernetes clusters and have no effect on Amazon ECS clusters. Apply rules to the ruleset by clicking Add Rule.",
+    "metadata": {
+      "filename": "runtime-security-ruleset.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/runtime-security-ruleset.md",
+      "title": "Create a Container Security Runtime Security ruleset",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.974Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      2,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      134,
+      75,
+      962
+    ]
+  },
+  {
+    "id": "runtime-security-ruleset.md_chunk_2",
+    "content": "Select the checkboxes next to the available rules you want to apply to the ruleset. Click Submit. Tip To get more information about the attack technique that a rule is designed to prevent, search for the MITRE ID (for example T1021.004) on the MITRE site. In the Mitigation column, select what action you want Container Security to perform when the rule is violated. Log: Log the event but allow the container to continue running Isolate: Isolate the pod from all network traffic (Kubernetes only) Terminate: Terminate the pod (Kubernetes only) Important Amazon ECS clusters only support the Log action. If you select to Isolate or Terminate and apply the ruleset to an Amazon ECS cluster, Container Security defaults to the Log action only. Click Create. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "runtime-security-ruleset.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/runtime-security-ruleset.md",
+      "title": "Create a Container Security Runtime Security ruleset",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.974Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      117,
+      71,
+      830
+    ]
+  }
+]

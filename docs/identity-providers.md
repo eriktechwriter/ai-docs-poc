@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-identity-providers
+slug: identity-providers
 title: Identity Providers (Foundation Services release)
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-extended-support-for-agents
+slug: extended-support-for-agents
 title: Standard and Extended Support Policies for Agents
 ---
 

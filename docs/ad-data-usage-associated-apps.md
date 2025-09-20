@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-ad-data-usage-associated-apps
+slug: ad-data-usage-associated-apps
 title: Active Directory data usage in associated apps
 ---
 

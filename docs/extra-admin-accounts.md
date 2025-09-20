@@ -1,0 +1,11 @@
+---
+id: extra-admin-accounts
+title: Extra admin accounts
+sidebar_label: Extra admin accounts
+description: Extra admin accounts
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Extra admin accounts Learn about extra admin accounts and how to mitigate the risk the accounts pose. Having numerous accounts with high-level administrative roles increases vulnerability to security breaches. Limiting the number of accounts with privileged roles reduces your attack surface, giving attackers fewer opportunities to infiltrate your organization's infrastructure. Cyber Risk Exposure Management defines extra admin accounts as any administrator accounts past a total of five. To mitigate this risk: Microsoft Entra ID: Ensure that there are no more than five users assigned the Global Administrator role. For more information, see Microsoft Entra ID guidance on role best practices. Active Directory: Ensure that there are no more than five members of the Administrators group. For more information, see Microsoft's guide on reducing accounts in highly privileged administrative groups. Google Workspace: Ensure there are no more than five users assigned to the Super Admin role. Note Very large organizations may need more than five admin accounts. However, "Extra Admin Accounts" risks cannot currently be added to the exception list. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-simulations-deep-security-agents
+slug: simulations-deep-security-agents
 title: Running simulations on Deep Security Agents endpoints with Activity Monitoring
 ---
 

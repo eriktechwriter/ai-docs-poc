@@ -1,0 +1,11 @@
+---
+id: custom-autoscale
+title: Custom Autoscale
+sidebar_label: Custom Autoscale
+description: Custom Autoscale
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Custom Autoscale Scale your Private Access Connector VM instances based on metric thresholds by creating a custom autoscale policy. Procedure In the left navigation, click Scaling. On the Configure tab of the Scaling screen that appears, select Custom autoscale. In the Custom autoscale configuration area, set Scale mode to Scale based on a metric. Add a "Scale out" rule to increase the instance count by clicking Add a rule and specifying the following fields. Field Setting Metric source Current resource Criteria Metric namespace Virtual Machine Host Metric name Percentage CPU Dimension Name VMNAME "= All values" Enable metric divide by instance count Do not toggle on. Operator Greater than Metric threshold to trigger scale action 80 (suggested) for 2 virtual CPUs 70 (suggested) for 4 virtual CPUs Duration 5 Time grain statistic Average Time aggregation Average Action Operation Increase count by Cool down 10 Instance count 1 (Optional) To modify an existing metric trigger rule, click the metric threshold part of the rule, update the desired fields, and then click Update. Click Add. Add a "Scale in" rule to decrease the instance count by clicking Add a rule and specifying the following fields. Field Setting Metric source Current resource Criteria Metric namespace Virtual Machine Host Metric name Percentage CPU Dimension Name VMNAME "= All values" Enable metric divide by instance count Do not toggle on. Operator Less than Metric threshold to trigger scale action 15 (suggested) for 2 virtual CPUs 10 (suggested) for 4 virtual CPUs Duration 10 Time grain statistic Average Time aggregation Average Action Operation Decrease count by Cool down 20 Instance count 1 (Optional) To modify an existing metric trigger rule, click the metric threshold part of the rule, update the desired fields, and then click Update. Click Add. Click Save. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

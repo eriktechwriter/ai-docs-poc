@@ -1,0 +1,11 @@
+---
+id: add-restricted-user-group-task
+title: Add to Zscaler Restricted User Group task
+sidebar_label: Add to Zscaler Restricted User Group task
+description: Add to Zscaler Restricted User Group task
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Add to Zscaler Restricted User Group task Manually or autocratically add user accounts with a high risk exposure to the Zscaler-defined restricted user group to allow for Zscaler policy enforcement. This task can be triggered manually using the context menu in Attack Surface Discovery or automatically by creating Automated High-Risk Account Response playbooks. This task is supported by the following services: Microsoft Entra ID Important The response action is available only after you have configured Zscaler Internet Access integration or Zscaler Private Access integration in Third-Party Integration. Procedure After identifying the user account to apply Zscaler policies to, access the context or response menu and click Add to Zscaler Restricted User Group. The Add to Zscaler Restricted User Group screen appears. Confirm the targets of the response. Specify a Description for the response or event. Click Create. Monitor the task status. Go to Workflow and Automation → Response Management . (Optional) Locate the task using the Search field or by selecting Add to Zscaler Restricted User Group from the Action drop-down list. View the task status. In progress (): Trend Vision One sent the command and is waiting for a response. Successful (): The command was successfully executed. When successful, the access control policy defined in Zscaler can be applied to the user account. Partially successful (): The task was unsuccessful on one or more IAM service Unsuccessful (): The task was unsuccessful on all connected IAM services Pending approval (): The task is pending approval from specified users Rejected (): The task has been rejected © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-trend-Vision-One-About
+slug: trend-Vision-One-About
 title: Trend Vision One™
 ---
 

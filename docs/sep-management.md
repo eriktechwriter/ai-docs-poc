@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-sep-management
+slug: sep-management
 title: Standard Endpoint Protection Management
 ---
 

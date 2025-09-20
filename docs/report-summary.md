@@ -1,0 +1,11 @@
+---
+id: report-summary
+title: Report summary
+sidebar_label: Report summary
+description: Report summary
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Report summary Note The Widget is accessible to custom users role only on the individual account level and not on “All Accounts” and “Group” level. The Report Summaries widget enables you to view a summary of up to 100 reports from all your Cloud Risk Management accounts and Groups allowing you to compare all checks across different report filters in a single view. You can click on the View button to access and update the Report filters. The widget displays the following columns you can sort by ascending/descending order by clicking on the headers: Compliance Score Total checks Number of Successful Checks, and Number of failed checks To download the widget as a PDF, click on the three dots next to the Configured Reports button and select Export PNG. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

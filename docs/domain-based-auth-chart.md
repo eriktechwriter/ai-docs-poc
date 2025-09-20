@@ -1,0 +1,11 @@
+---
+id: domain-based-auth-chart
+title: Domain-based authentication details chart
+sidebar_label: Domain-based authentication details chart
+description: Domain-based authentication details chart
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Domain-based authentication details chart The Domain-based Authentication Details chart on the Threat tab of Dashboard displays the number of messages that failed Sender IP Match, Sender Policy Framework (SPF), DomainKeys Identified Mail (DKIM), and Domain-based Message Authentication, Reporting & Conformance (DMARC) authentication based on the selected mail traffic direction. Sender IP Match is a way that readily enables you to simultaneously allow all inbound email traffic from a particular domain while equally preventing spoofing by manually defining the allowed IP ranges. SPF, DKIM and DMARC are three email authentication systems to protect against email spoofing. Note The data on this tab is displayed for incoming mail traffic only. Select a time period by Date, Week, Month, or Last 12 months to show data for the selected time period. The specified time period only affects the data shown on this chart and its corresponding thumbnail chart on the Threats tab. Changing these selections does not affect other charts. The following is the specific data displayed: Detected Values on Charts Detected Values For Incoming Mail Sender IP Match The total number of messages that failed the Sender IP Match check. SPF The total number of messages that failed SPF check. DKIM The total number of messages that failed DKIM verification. DMARC The total number of messages that failed DMARC authentication. DMARC - SPF The total number of messages that failed SPF check of DMARC authentication. DMARC - DKIM The total number of messages that failed DKIM signature check of DMARC authentication. DMARC - Alignment The total number of messages that failed alignment check of DMARC authentication. DMARC - Availability The total number of messages that failed availability check of DMARC authentication because the sending domain does not have any DMARC record. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

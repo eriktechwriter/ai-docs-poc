@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-configuring-user-accounts
+slug: configuring-user-accounts
 title: Configure user accounts
 ---
 

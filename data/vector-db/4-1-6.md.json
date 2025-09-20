@@ -1,0 +1,90 @@
+[
+  {
+    "id": "4-1-6.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 4.1.6 - Ensure that the --kubeconfig kubelet.conf file ownership is set to root:root (Automated) Profile applicability: Level 1 - Worker Node Ensure that the kubelet.conf file ownership is set to root:root. The kubelet.conf file is the kubeconfig file for the node, and controls various parameters that set the behavior and identity of the worker node. You should set its file ownership to maintain the integrity of the file. The file should be owned by root:root. Note By default, kubelet.conf file ownership is set to root:root. Audit Automated AAC auditing has been modified to allow CIS-CAT to input a variable for the <PATH>/<FILENAME> of the kubelet config file.",
+    "metadata": {
+      "filename": "4-1-6.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/4-1-6.md",
+      "title": "4.1.6 - Ensure that the --kubeconfig kubelet.conf file ownership is set to root:root (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.544Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      105,
+      54,
+      757
+    ]
+  },
+  {
+    "id": "4-1-6.md_chunk_1",
+    "content": "le location on your system: export kubelet_config=/etc/kubernetes/kubelet.conf To perform the audit manually, run the below command (based on the file location on your system) on the each worker node: stat -c %U:%G /etc/kubernetes/kubelet.conf Verify that the ownership is set to root:root. Remediation Run the below command (based on the file location on your system) on the each worker node: chown root:root /etc/kubernetes/kubelet.conf © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "4-1-6.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/4-1-6.md",
+      "title": "4.1.6 - Ensure that the --kubeconfig kubelet.conf file ownership is set to root:root (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.544Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      71,
+      39,
+      513
+    ]
+  }
+]

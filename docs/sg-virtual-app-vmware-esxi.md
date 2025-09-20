@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-sg-virtual-app-vmware-esxi
+slug: sg-virtual-app-vmware-esxi
 title: Deploying a Service Gateway virtual appliance with VMware ESXi
 ---
 

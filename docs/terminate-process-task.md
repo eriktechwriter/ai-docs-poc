@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-terminate-process-task
+slug: terminate-process-task
 title: Terminate Process task
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-picus-security-integration
+slug: picus-security-integration
 title: Picus Security integration
 ---
 

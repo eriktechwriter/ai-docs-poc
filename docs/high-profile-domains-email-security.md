@@ -1,0 +1,11 @@
+---
+id: high-profile-domains-email-security
+title: High profile domains
+sidebar_label: High profile domains
+description: High profile domains
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ High profile domains Cloud Email Gateway Protection allows you to specify high profile external domains, for example, your partners' domains or domains of famous brands, which are likely to be forged into cousin domains for spam, phishing, and BEC attacks, for example, vendor frauds. A cousin domain (or look-alike domain) is a domain that looks deceptively similar to a legitimate target domain, which is well-known or familiar to users. Cousin domains are often used in phishing attacks to steal sensitive or confidential information from users. Cousin domains are usually created by replacing one or more characters (for example, replacing the letter "l" with the number "1") or adding or removing an extra character in the domain name. Without careful inspection of the email addresses, users may not notice the trick and think that an email message is sent from a legitimate domain being forged. By leveraging the Trend Micro Antispam Engine, Cloud Email Gateway Protection can scan domains in email messages (the from and replyto headers) based on the settings you configure to detect cousin domains of these high profile domains and prevent users from spam, phishing and BEC messages. Related information Configuring high profile domains © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-connect-exist-prod-instance
+slug: connect-exist-prod-instance
 title: Connecting existing products to Product Instance
 ---
 

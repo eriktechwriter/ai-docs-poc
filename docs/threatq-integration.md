@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-threatq-integration
+slug: threatq-integration
 title: ThreatQ integration
 ---
 

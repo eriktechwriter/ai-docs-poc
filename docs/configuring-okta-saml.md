@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-configuring-okta-saml
+slug: configuring-okta-saml
 title: Configuring Okta
 ---
 

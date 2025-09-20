@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-troubleshooting-deployment-script
+slug: troubleshooting-deployment-script
 title: Troubleshooting common errors when using the Deployment Script
 ---
 

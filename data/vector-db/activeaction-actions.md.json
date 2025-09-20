@@ -1,0 +1,178 @@
+[
+  {
+    "id": "activeaction-actions.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ ActiveAction actions The following table lists the actions that ActiveAction takes: Malware Type Action Virus Clean. If a virus cannot be cleaned, it is deleted (Windows) or quarantined (Linux or Solaris). There is an exception to this behavior: On a Linux or Solaris agent, if a virus of type 'Test Virus' is found, access is denied to the infected file. Trojans Quarantine Packer Quarantine Spyware Quarantine CVE Exploit Quarantine Aggressive Detection Rule Pass (This setting detects more issues but may also result in more false positives, so the default action is to raise an event.) Cookie Delete (Does not apply to real-time scans) Other threats Clean If a threat cannot be cleaned, it is handled as follows: on Windows, the infected file is deleted but can be viewed and restored, if needed on Linux or Solaris, access is denied to the infected file Also, on a Linux or Solaris agent, if a virus of typ",
+    "metadata": {
+      "filename": "activeaction-actions.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/activeaction-actions.md",
+      "title": "ActiveAction actions",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.575Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      2,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      120,
+      82,
+      1000
+    ]
+  },
+  {
+    "id": "activeaction-actions.md_chunk_1",
+    "content": "e 'Joke' is found, it is quarantined immediately. No attempt is made to clean it. Possible malware Pass For more information about CVE Exploit and Aggressive Detection Rule, see Configure Anti-Malware Monitoring Level. Note When the agent downloads virus pattern updates from an ActiveUpdate server or relay, it may change its ActiveAction scan actions. The following is a list of anti-malware remedial actions and their descriptions. Pass: Allows full access to the infected file without doing anything to the file. (An Anti-Malware Event is still recorded.) WARNING The remedial action Pass should never be used for a possible virus. Clean: Cleans an infected file before allowing full access to it. If the file can't be cleaned, it is quarantined. Delete: On Linux, the infected file is deleted without a backup. On Windows, the infected file is backed up and then deleted. Windows backup files can be viewed and restored in Events & Reports → Events → Anti-Malware Events → Identified Files.",
+    "metadata": {
+      "filename": "activeaction-actions.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/activeaction-actions.md",
+      "title": "ActiveAction actions",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.575Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      126,
+      82,
+      995
+    ]
+  },
+  {
+    "id": "activeaction-actions.md_chunk_2",
+    "content": "Deny Access: This scan action can only be performed during Real-time scans. When Server & Workload Protection detects an attempt to open or execute an infected file, it immediately blocks the operation. The infected file is left unchanged. When the Access Denied action is triggered, the infected files stay in their original location. Important Do not use the remedial action Deny Access when Real-Time Scan is set to During Write. When During Write is selected, files are scanned when they are written and the action Deny Access has no effect. Quarantine: Moves the infected file to the quarantine directory on the computer or Virtual Appliance. The quarantined file can be viewed and restored in Events & Reports → Events → Anti-Malware Events → Identified Files. Note Malware marked as Quarantined on Linux might be marked as Deleted on Windows, despite the malware being identical on both operating systems.",
+    "metadata": {
+      "filename": "activeaction-actions.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/activeaction-actions.md",
+      "title": "ActiveAction actions",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.575Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      121,
+      75,
+      912
+    ]
+  },
+  {
+    "id": "activeaction-actions.md_chunk_3",
+    "content": "In either case, the file can be viewed and restored in Events & Reports → Events → Anti-Malware Events → Identified Files. Note On Windows, infected non-compressed files (for example, .txt files) are quarantined, while infected compressed files (for example, .zip files) are deleted. On Windows, both quarantined or deleted files have a backup that can be viewed and restored in Events & Reports → Events → Anti-Malware Events → Identified Files. On Linux, all infected files (compressed or non-compressed) are quarantined, and can be viewed and restored in Events & Reports → Events → Anti-Malware Events → Identified Files. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "activeaction-actions.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/activeaction-actions.md",
+      "title": "ActiveAction actions",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.575Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      90,
+      42,
+      700
+    ]
+  }
+]

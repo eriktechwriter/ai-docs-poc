@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-troubleshooting-faq
+slug: troubleshooting-faq
 title: Troubleshooting & FAQ
 ---
 

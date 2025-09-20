@@ -1,0 +1,11 @@
+---
+id: update-source
+title: Update Source
+sidebar_label: Update Source
+description: Update Source
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Update Source Configure the Trend Micro Apex Central server to download components from the Trend Micro ActiveUpdate server or other update sources. You can specify other update sources if the Trend Micro Apex Central server is unable to connect to the Trend Micro ActiveUpdate server directly or if you host an update server in your network. By default, Trend Micro Apex Central uses a more secure HTTPS connection method to download components from the Trend Micro ActiveUpdate server. To access other update sources, Trend Micro Apex Central supports Remote UNC authentication, which uses a user account from the update source server to share a folder for Trend Micro Apex Central to download updates. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

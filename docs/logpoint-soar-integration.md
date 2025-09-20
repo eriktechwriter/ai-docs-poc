@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-logpoint-soar-integration
+slug: logpoint-soar-integration
 title: Logpoint SOAR integration
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-trend-vision-one-mobile
+slug: trend-vision-one-mobile
 title: Trend Vision One Mobile
 ---
 

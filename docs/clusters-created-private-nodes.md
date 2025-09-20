@@ -1,0 +1,11 @@
+---
+id: clusters-created-private-nodes
+title: 5.4.3 Ensure clusters are created with Private Nodes (Automated)
+sidebar_label: 5.4.3 Ensure clusters are created with Private Nodes (Automated)
+description: 5.4.3 Ensure clusters are created with Private Nodes (Automated)
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 5.4.3 Ensure clusters are created with Private Nodes (Automated) Profile applicability: Level 1 - Cluster / Control Plane Ensure that clusters are created with Private Nodes to enhance security by disabling public IP addresses on cluster nodes, thereby restricting them to only private IP addresses. Private Nodes, which lack public IPs, limit node accessibility to internal networks only, thus requiring attackers to gain access to the local network before they can attempt to compromise the Kubernetes hosts. To implement Private Nodes effectively, the cluster must also be configured with a private master IP range and IP Aliasing. Note that Private Nodes do not inherently have outbound access to the public internet; to facilitate this, Cloud NAT can be used, or you can manage your own NAT gateway to provide outbound internet access for these nodes. Impact To enable Private Nodes, the cluster has to also be configured with a private master IP range and IP Aliasing enabled. Private Nodes do not have outbound access to the public internet. If you want to provide outbound Internet access for your private nodes, you can use Cloud NAT or you can manage your own NAT gateway. Audit Check for the following to be 'enabled: true' export CLUSTER_NAME=<your cluster name> aws eks describe-cluster --name ${CLUSTER_NAME} --query "cluster.resourcesVpcConfig.endpointPrivateAccess" Check for the following is not null: export CLUSTER_NAME=<your cluster name> aws eks describe-cluster --name ${CLUSTER_NAME} --query "cluster.resourcesVpcConfig.publicAccessCidrs" Remediation aws eks update-cluster-config \ --region region-code \ --name my-cluster \ --resources-vpc-config endpointPublicAccess=true,publicAccessCidrs="203.0.113.5/32",endpointPrivateAccess=true © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

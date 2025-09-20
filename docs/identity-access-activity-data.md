@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-identity-access-activity-data
+slug: identity-access-activity-data
 title: Identity and access activity data
 ---
 

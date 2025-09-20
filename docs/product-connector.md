@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-product-connector
+slug: product-connector
 title: Product Connector
 ---
 

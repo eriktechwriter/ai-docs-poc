@@ -1,0 +1,11 @@
+---
+id: upgrading-service-gateway-1-0-2-0
+title: Upgrade from Service Gateway 1.0 to 2.0
+sidebar_label: Upgrade from Service Gateway 1.0 to 2.0
+description: Upgrade from Service Gateway 1.0 to 2.0
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Upgrade from Service Gateway 1.0 to 2.0 Upgrade to Service Gateway 2.0 to manage services more easily and use resources more efficiently. Note This feature is not available in all regions. Upgrading requires fewer configuration steps than migrating, but results in a longer downtime. All services on the Service Gateway are unavailable during downtime. Trend Micro recommends migrating from Service Gateway 1.0 to 2.0. If an unexpected error occurs during the upgrade process, you could experience an interruption in services and may need to reinstall the server. Important To ensure a smooth upgrade, make sure you have configured correct “Allow” rules for the following services in your firewall settings: Setting Synchronization for Service Gateway Upload Center To find the FQDNs of these services, refer to the topics under Service Gateway virtual appliance communication ports based on your region. Procedure Go to Workflow and Automation → Service Gateway Management. Click the configuration icon () for the Service Gateway appliance that you want to upgrade. Click the Migration Options tab. Click Upgrade to Service Gateway 2.0. Select the services to upgrade and install on Service Gateway 2.0. Note Active services used within the last 30 days are selected by default. Services not selected can be installed manually after upgrading. Click Start Upgrade. The upgrade process may take up to an hour. If the process stops progressing: Ensure Service Gateway 1.0 can download the upgrade package by verifying access to the correct FQDNs. Sign in to the Service Gateway from the CLISH and check the displayed version number. Ensure the Service Gateway 1.0 status is healthy. Unhealthy Service Gateway Virtual Appliances must be migrated rather than upgraded. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

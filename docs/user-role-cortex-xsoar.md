@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-user-role-cortex-xsoar
+slug: user-role-cortex-xsoar
 title: Creating a user role for Cortex XSOAR integration
 ---
 

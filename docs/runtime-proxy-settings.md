@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-runtime-proxy-settings
+slug: runtime-proxy-settings
 title: Runtime Proxy Settings
 ---
 

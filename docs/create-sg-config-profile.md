@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-create-sg-config-profile
+slug: create-sg-config-profile
 title: Creating Service Gateway configuration profiles
 ---
 

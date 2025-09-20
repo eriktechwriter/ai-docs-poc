@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-third-party-integration
+slug: third-party-integration
 title: Third-Party Integration
 ---
 

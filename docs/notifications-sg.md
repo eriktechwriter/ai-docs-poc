@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-notifications-sg
+slug: notifications-sg
 title: Configuring notifications for Service Gateway critical service status or performance
 ---
 

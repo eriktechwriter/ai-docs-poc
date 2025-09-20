@@ -1,0 +1,222 @@
+[
+  {
+    "id": "how-relays-work.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ How relays work Important If you enrolled your Server & Workload Protection Manager in Version Control Policies, Trend Vision One Endpoint Security agents version 202412 or later do not use relays for updates. You must configure a Service Gateway with the Generic Caching Service for agents to retrieve updates. A relay is an agent that is configured to redistribute software and component updates to other agents. Relays help your deployment perform well as it grows and scales. Default relays are available inside Server & Workload Protection. Agents should be able to use them if they can connect to Server & Workload Protection. You might need more relays for performance or cost reasons. Alternatively, software updates (but not component updates) can be distributed by a local mirror web server. Relays are organized into relay groups.",
+    "metadata": {
+      "filename": "how-relays-work.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/how-relays-work.md",
+      "title": "How relays work",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.548Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      118,
+      84,
+      930
+    ]
+  },
+  {
+    "id": "how-relays-work.md_chunk_1",
+    "content": "The relays provided by Server & Workload Protection are in a relay group named Primary Tenant Relay Group. If you decide to deploy your own relays, you will need to create at least one more relay group. Agents receive a randomly ordered list of relays for their assigned relay group. When an agent needs to download an update, it tries the first relay. If there is no response, the agent tries the next in the list until it can successfully download the update. Because the list is random for each agent, this distributes load evenly across relays in a group. The following diagram depicts the distribution of updates. Major improvements to self-deployed relays were introduced with the Deep Security Agent version 20.0.0-3445. Earlier versions of the relay downloaded every supported agent software package (all versions, all platforms) from Server & Workload Protection, as well as every component update from their primary component update source.",
+    "metadata": {
+      "filename": "how-relays-work.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/how-relays-work.md",
+      "title": "How relays work",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.548Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      5,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      127,
+      81,
+      950
+    ]
+  },
+  {
+    "id": "how-relays-work.md_chunk_2",
+    "content": "This took approximately 400 GB of disk space and downloads could take several hours to complete. The new relay is a reverse proxy which only downloads and caches agent software packages and component updates that are requested by agents, rather than downloading all released updates. Also, the new relay downloads both the agent software packages and component updates directly from Server & Workload Protection relays. When you deploy a new relay or upgrade an existing relay to version 20.0.0-3445 or later, you get the improved relay functionality and, if upgrading, should notice an immediate decrease in the required disk space. Consider the following when using relays: New relays for Deep Security Agent version 20.0.0-3771 or earlier cannot connect to Workload Security relays via proxy. This support was added in the agent version 20.0.0-3964. To avoid known issues related to the upgrade, consider deploying the agent version 20.0.1-12510 or later.",
+    "metadata": {
+      "filename": "how-relays-work.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/how-relays-work.md",
+      "title": "How relays work",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.548Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      2,
+      0,
+      0,
+      0,
+      5,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      128,
+      81,
+      958
+    ]
+  },
+  {
+    "id": "how-relays-work.md_chunk_3",
+    "content": "The Secondary Source setting (Administration → System Settings → Updates → Component Updates → Secondary Source) includes a new option: Allow Agents/Appliances to download component and software updates from Primary Tenant Relay Group if user-deployed Relays are not accessible. This option is disabled by default, so it does not affect any existing settings. When enabled, you can download component and software updates from the Primary Tenant Relay Group to help resolve any issues arising from relays you have deployed. When to deploy your own relays If you need to reduce bandwidth and costs on your Internet or WAN connection, deploy a relay inside your own network. This reduces how much external traffic occurs when protected computers need to download updates. Deploying your own relays is also useful if you have network segments with limited bandwidth. For instructions on how to deploy your own relays, see Deploy more relays. © 2025 Trend Micro Incorporated.",
+    "metadata": {
+      "filename": "how-relays-work.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/how-relays-work.md",
+      "title": "How relays work",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.548Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      131,
+      79,
+      971
+    ]
+  },
+  {
+    "id": "how-relays-work.md_chunk_4",
+    "content": "All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "how-relays-work.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/how-relays-work.md",
+      "title": "How relays work",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.548Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 4
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      6,
+      6,
+      41
+    ]
+  }
+]

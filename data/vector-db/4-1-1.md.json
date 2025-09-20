@@ -1,0 +1,90 @@
+[
+  {
+    "id": "4-1-1.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 4.1.1 - Ensure that the kubelet service file permissions are set to 600 or more restrictive (Automated) Profile applicability: Level 1 - Master Node Ensure that the kubelet service file has permissions of 600 or more restrictive. The kubelet service file controls various parameters that set the behavior of the kubelet service in the worker node. You should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system. Note By default, the kubelet service file has permissions of 640. Audit Automated AAC auditing has been modified to allow CIS-CAT to input a variable for the <PATH>/<FILENAME> of the kubelet service config file.",
+    "metadata": {
+      "filename": "4-1-1.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/4-1-1.md",
+      "title": "4.1.1 - Ensure that the kubelet service file permissions are set to 600 or more restrictive (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.542Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      105,
+      60,
+      798
+    ]
+  },
+  {
+    "id": "4-1-1.md_chunk_1",
+    "content": "et $kubelet_service_config=<PATH> based on the file location on your system: export kubelet_service_config=/etc/systemd/system/kubelet.service.d/kubeadm.conf To perform the audit manually, run the below command (based on the file location on your system) on the each worker node: stat -c %a /etc/systemd/system/kubelet.service.d/10-kubeadm.conf Verify that the permissions are 600 or more restrictive. Remediation Run the below command (based on the file location on your system) on the each worker node: chmod 600 /etc/systemd/system/kubelet.service.d/kubeadm.conf © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "4-1-1.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/4-1-1.md",
+      "title": "4.1.1 - Ensure that the kubelet service file permissions are set to 600 or more restrictive (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.542Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      6,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      85,
+      44,
+      640
+    ]
+  }
+]

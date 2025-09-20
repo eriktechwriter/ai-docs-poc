@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-adding-exception-context-menu
+slug: adding-exception-context-menu
 title: Add an exception from the context menu
 ---
 

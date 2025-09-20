@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-investigating-alert
+slug: investigating-alert
 title: Investigate an alert
 ---
 

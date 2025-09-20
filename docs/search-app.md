@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-search-app
+slug: search-app
 title: Search app
 ---
 

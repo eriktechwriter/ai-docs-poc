@@ -1,0 +1,11 @@
+---
+id: openshift-4110
+title: 4.1.10 - Ensure that the kubelet configuration file ownership is set to root:root (Automated)
+sidebar_label: 4.1.10 - Ensure that the kubelet configuration file ownership is set to root:root (Automated)
+description: 4.1.10 - Ensure that the kubelet configuration file ownership is set to root:root (Automated)
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 4.1.10 - Ensure that the kubelet configuration file ownership is set to root:root (Automated) Profile applicability: Level 1 Ensure that if the kubelet refers to a configuration file with the --config argument, that file is owned by root:root. The kubelet reads various parameters, including security settings, from a config file specified by the --config argument. If this file is specified you should restrict its file permissions to maintain the integrity of the file. The file should be owned by root:root. Note By default, /var/lib/kubelet/config.json file is owned by root:root. Audit In OpenShift 4, the kubelet configuration file is managed by the Machine Config Operator and is found at /var/lib/kubelet/config.json or /var/data/kubelet/config.json with file permissions set to root:root. For OpenShift 4.13 and above, run the following command to check the permission: for node in $(oc get nodes -o jsonpath='{.items[*].metadata.name}') do oc debug node/${node} -- chroot /host stat -c %a /var/data/kubelet/config.json done For earlier versions of OpenShift, run the following command to check the permission: for node in $(oc get nodes -o jsonpath='{.items[*].metadata.name}') do oc debug node/${node} -- chroot /host stat -c %a /var/lib/kubelet/config.json done Verify that the ownership is set to root:root. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

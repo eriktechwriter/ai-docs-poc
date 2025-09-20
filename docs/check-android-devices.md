@@ -1,0 +1,11 @@
+---
+id: check-android-devices
+title: Check Android devices
+sidebar_label: Check Android devices
+description: Check Android devices
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Check Android devices You need to check that: The device is running the following OS version or later Check whether the device is running on the required operating system version. If the option is enabled, select a minimum version number of the corresponding operating systems. A device installed with the specified version or later passes the check. The company CA certificate is present in the Trust Store Check the certificates installed on android devices. A device installed with the specified certificate passes the check. For more information on certificates, see Device posture certificate requirements. To check the certificates installed on an android device: Go to the Home screen. Tap Settings → Additional Settings → Privacy → Trusted credentials. The client certificate is signed by company's CA Check the certificates installed on android devices. A device installed with the specified certificate passes the check. For more information on certificates, see Device posture certificate requirements. To check the certificates installed on an android device: Go to the Home screen. Tap Settings → Additional Settings → Privacy → Trusted credentials. The device is not rooted Check if the android device has unauthorized modifications. A device that was not rooted passes the check. Unauthorized modifications to Android, also known as "rooting", bypass Google's security features. For more information, see Security risks with modified (rooted) Android versions - Google Account Help The Trend Micro Mobile Security detected device risk level is correct Check whether the device is in the specified risk level state. If this option is enabled, select a minimum acceptable risk level. A device with the specified risk level or lower passes the check. For more information, see Devices Tab. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

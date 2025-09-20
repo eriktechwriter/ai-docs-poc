@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-time-out-settings
+slug: time-out-settings
 title: Configure time-out settings
 ---
 

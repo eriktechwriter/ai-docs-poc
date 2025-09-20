@@ -1,0 +1,11 @@
+---
+id: configure-sandbox-submission
+title: Configure Sandbox Submission Settings
+sidebar_label: Configure Sandbox Submission Settings
+description: Configure Sandbox Submission Settings
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Configure Sandbox Submission Settings Important Sandbox Submission is a paid feature. Enabling the feature requires 7 credits per targeted endpoint. You can configure Trend Vision One Endpoint Security agents to submit file objects that might contain previously unidentified threats to a cloud based virtual sandbox for further analysis. After assessing the objects, Trend Vision One adds any objects found to contain unknown threats to the Suspicious Objects lists and distributes the lists to other Trend Vision One Endpoint Security agents throughout the network. You can view the analysis results in Sandbox Analysis. Suspicious files include any of the following: Programs not known to Trend Micro (downloaded through supported web browsers or email channels) Files detected heuristically, downloaded through supported web browsers or email channels Low prevalence autorun programs on removable storage Procedure To enable Sandbox Submission, select Send suspicious files to a virtual sandbox for analysis. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

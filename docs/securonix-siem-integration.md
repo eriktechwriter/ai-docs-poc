@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-securonix-siem-integration
+slug: securonix-siem-integration
 title: Securonix SIEM integration
 ---
 

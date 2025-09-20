@@ -1,0 +1,11 @@
+---
+id: volume-chart
+title: Volume chart
+sidebar_label: Volume chart
+description: Volume chart
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Volume chart The Volume chart on the Summary tab of Dashboard displays the total number of accepted and blocked messages and the total percentage of blocked messages. Select a time period by Date, Week, Month, or Last 12 months to show data for the selected time period. The specified time period only affects the data shown on this chart and its corresponding thumbnail chart on the Threats tab. Changing these selections does not affect other charts. The following is the specific data displayed: Detected Values on Charts Detected Values For Incoming Mail For Outgoing Mail Blocked The number of email messages blocked by connection-based filtering at the MTA connection level or by Cloud Email Gateway Protection incoming security filtering Note This value does not include messages blocked by content-based filtering. The number of messages blocked using Cloud Email Gateway Protection relay mail service filtering Possible reasons for blocking include: Recipient address is not resolvable (such as someone@???.com). Spammers forged the mail sender address so the message appears to be coming from the customer domain. The customer's MTA is compromised and is sending spam messages (for example, it is an open relay). Accepted The number of email messages passed by connection-based filtering at the MTA connection level or by Cloud Email Gateway Protection incoming security filtering The number of messages passed by Cloud Email Gateway Protection relay mail service filtering Blocked % The percentage of email messages blocked by connection-based filtering at the MTA connection level or by Cloud Email Gateway Protection incoming security filtering The percentage of messages blocked by Cloud Email Gateway Protection relay mail service filtering Total The total number of email messages processed © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

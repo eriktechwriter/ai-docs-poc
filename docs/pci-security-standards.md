@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-pci-security-standards
+slug: pci-security-standards
 title: PCI Security Standards
 ---
 

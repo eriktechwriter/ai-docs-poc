@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-netskope-cte-integration
+slug: netskope-cte-integration
 title: Netskope CTE integration
 ---
 

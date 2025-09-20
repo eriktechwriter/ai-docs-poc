@@ -1,0 +1,11 @@
+---
+id: scheduled-investigation
+title: Scheduled Investigation
+sidebar_label: Scheduled Investigation
+description: Scheduled Investigation
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Scheduled Investigation A scheduled investigation is an investigation that is set to run automatically at certain periods. To view the results and monitor the progress of scheduled investigations, go to Response → Live Investigation, and click the Scheduled Investigation tab. The following table lists the details available for review. Column Description Enable Current state of the investigation Name User-defined name that identifies the investigation Click to open the Scheduled Task History screen. Method Method used by the investigation Criteria File name of the OpenIOC file User-defined registry value Target Endpoints Total number of selected endpoints for investigation Click to view more details about the selected endpoints. Note The Target Endpoints screen may not show all endpoints selected for the investigation. A user can only view endpoints where he has been granted sufficient access rights. Frequency How often the investigation repeats during the duration of the schedule Latest Investigation Date and time when the latest investigation started Latest Time Elapsed Time elapsed since the start of the latest investigation Latest Match Endpoints Number of endpoints that contain an object matching the specified criteria for the latest investigation Creator User who created the investigation Click New Investigation to start a new investigation. Click Delete to stop the investigation, and then removes the investigation from the list. Removed investigations cannot be recovered. Note Deleting an OpenIOC file will automatically disable any scheduled investigation that uses the deleted OpenIOC file. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

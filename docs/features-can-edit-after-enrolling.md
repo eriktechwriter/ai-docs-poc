@@ -1,0 +1,11 @@
+---
+id: features-can-edit-after-enrolling
+title: Features editable after enrolling a Server Workload Protection endpoint group
+sidebar_label: Features editable after enrolling a Server Workload Protection endpoint group
+description: Features editable after enrolling a Server Workload Protection endpoint group
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Features editable after enrolling a Server Workload Protection endpoint group Review which settings can still be configured in Server & Workload Protection after enrolling your endpoint group in Endpoint Security Policies. When you enroll an endpoint group in Endpoint Security Policies, most features are locked in Server & Workload Protection, and cannot be changed. Due to ongoing development of feature support, some settings can be configured in the computer editor for Server & Workload Protection. Changing these features might override the policy settings or alter the behavior of the endpoint protection module. Feature Settings Notes Computer general settings Computer → Settings → General Choose whether to use Drivers for System Protection Setting is configurable CPU Usage Control Setting is configurable Agent Self Protection Setting is configurable Ongoing Scan Interval Setting is configurable Anti-Malware User mode exclusion Setting is configurable Predictive Machine Learning Detection Exceptions Exceptions can be added or removed Smart Protection Server for File Reputation Service Setting is configurable Web Reputation Smart Protection Server for File Reputation Service Setting is configurable Firewall Generate Firewall Events for packets that are "Out Of Allowed Policy" Setting is configurable Intrusion Prevention Advanced TLS Traffic Inspection Feature is configurable Allow Intrusion Prevention Rules to capture data for first hit of each rule (in period) Setting is configurable Container Protection Computer → Settings → Container Protection Feature is configurable Network Engine Settings Computer → Settings → Advanced Feature is configurable Allow packet data capture in network events Administration → System Settings → Agent Setting is configurable, but might not have any effect © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

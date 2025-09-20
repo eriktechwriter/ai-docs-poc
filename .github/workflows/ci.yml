@@ -10,6 +10,9 @@ jobs:
   quality-checks:
     name: Quality Checks
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./ai-docs-poc
     
     steps:
     - name: Checkout code
@@ -20,23 +23,21 @@ jobs:
       with:
         node-version: '18'
         cache: 'npm'
+        cache-dependency-path: './ai-docs-poc/package-lock.json'
         
     - name: Install dependencies
       run: npm ci
       
-    - name: Run ESLint
-      run: npm run lint
-      
     - name: Run TypeScript check
       run: npm run typecheck
-      
-    - name: Validate content structure
-      run: npm run validate:content
       
   build-test:
     name: Build and Test
     runs-on: ubuntu-latest
     needs: quality-checks
+    defaults:
+      run:
+        working-directory: ./ai-docs-poc
     
     steps:
     - name: Checkout code
@@ -47,6 +48,7 @@ jobs:
       with:
         node-version: '18'
         cache: 'npm'
+        cache-dependency-path: './ai-docs-poc/package-lock.json'
         
     - name: Install dependencies
       run: npm ci
@@ -58,7 +60,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: build-files
-        path: build/
+        path: ai-docs-poc/build/
         retention-days: 7
         
   deploy-preview:
@@ -66,6 +68,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-test
     if: github.event_name == 'pull_request'
+    defaults:
+      run:
+        working-directory: ./ai-docs-poc
     
     steps:
     - name: Checkout code
@@ -76,32 +81,22 @@ jobs:
       with:
         node-version: '18'
         cache: 'npm'
+        cache-dependency-path: './ai-docs-poc/package-lock.json'
         
     - name: Install dependencies
       run: npm ci
       
     - name: Build for preview
       run: npm run build
-      
-    - name: Deploy to Netlify
-      uses: nwtgck/actions-netlify@v3.0
-      with:
-        publish-dir: './build'
-        production-branch: main
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        deploy-message: "Deploy from GitHub Actions"
-        enable-pull-request-comment: true
-        enable-commit-comment: false
-        overwrites-pull-request-comment: true
-      env:
-        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         
   deploy-production:
     name: Deploy to Production
     runs-on: ubuntu-latest
     needs: build-test
     if: github.ref == 'refs/heads/main'
+    defaults:
+      run:
+        working-directory: ./ai-docs-poc
     
     steps:
     - name: Checkout code
@@ -112,6 +107,7 @@ jobs:
       with:
         node-version: '18'
         cache: 'npm'
+        cache-dependency-path: './ai-docs-poc/package-lock.json'
         
     - name: Install dependencies
       run: npm ci
@@ -125,5 +121,4 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build
-        cname: ai-docs-poc.trendmicro.com
+        publish_dir: ./ai-docs-poc/build

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-foundation-update-consider
+slug: foundation-update-consider
 title: Foundation Services update considerations
 ---
 

@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-setup-endpoint-security-for-new
+slug: setup-endpoint-security-for-new
 title: Setting up Endpoint Security for new Trend Micro customers
 ---
 

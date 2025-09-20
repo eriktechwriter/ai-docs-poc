@@ -1,0 +1,11 @@
+---
+id: add-azure-instances
+title: Azure Instances
+sidebar_label: Azure Instances
+description: Azure Instances
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Azure Instances Review and protect instances on your connected Azure subscriptions. Server & Workload Protection can detect and track virtual machine instances on your connected Azure subscriptions. You can add or manage connections to your Azure subscriptions in Cloud Accounts. For more information about connecting and managing Azure subscriptions in Trend Vision One, see Azure subscriptions. Connecting an Azure subscription using Cloud Accounts instead of adding individual instances provides several key benefits: Changes in your Azure virtual machine inventory are automatically reflected in Server & Workload Protection. For example, if you delete an instance from your Azure environment, Server & Workload Protection automatically removes the instance from the Server & Workload Protection Manager and Endpoint Inventory. If you manually add an instance and then delete the instance, Server & Workload Protection does not remove the instance from the inventory unless manually deleted or using inactive agent cleanup. Server & Workload Protection organizes virtual machines into their own branch in the protection manager, enabling you to see which Azure instances are protected. Manually connected virtual machines appear at the same root level in the Computers inventory. Related information Synchronize Azure subscriptions Install the agent on Azure VMs © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

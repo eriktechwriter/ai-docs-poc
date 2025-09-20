@@ -1,0 +1,222 @@
+[
+  {
+    "id": "ms-defender-endpoint-log-collection.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Enable Microsoft Defender for Endpoint Log Collection You can enable Microsoft Defender for Endpoint Log Collection on both new and existing Azure subscriptions in Cloud Accounts. Deploying this feature gives you actionable insights into risky or malicious endpoint activities. Detection models identify behaviors such as malware execution, suspicious file modifications, lateral movement attempts, and unauthorized access to sensitive data. Microsoft Defender for Endpoint Log Collection offers both Cyber Risk Exposure Management and XDR capabilities: Cyber Risk Exposure Management is automatically enabled when you deploy Microsoft Defender for Endpoint Log Collection in an Azure subscription. Trend Vision One collects DeviceInfo and DeviceNetworkInfo events and sends them to Cyber Risk Exposure Management, where you can view security configuration risk events.",
+    "metadata": {
+      "filename": "ms-defender-endpoint-log-collection.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/ms-defender-endpoint-log-collection.md",
+      "title": "Enable Microsoft Defender for Endpoint Log Collection",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.720Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      5,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      118,
+      78,
+      958
+    ]
+  },
+  {
+    "id": "ms-defender-endpoint-log-collection.md_chunk_1",
+    "content": "Note Cyber Risk Exposure Management requires credits for each desktop or server assessed as a result of enabling Microsoft Defender for Endpoint Log Collection. For more information, see Credit requirements for Trend Vision One solutions, capabilities, and features. Optionally, you can enable XDR data collection for the Azure subscription, which sends detections and log data to the following security operations features: Identity Security Data Security Endpoint Security Cloud Security Network Security Email and Collaboration Security XDR data collection does not require credits during the pre-release period for Microsoft Defender for Endpoint Log Collection. Note Before enabling Microsoft Defender for Endpoint Log Collection, make note of the following: You must be assigned the Key Vault Secrets role in Azure. This role is required to create and manage secrets in Azure Key Vault during deployment.",
+    "metadata": {
+      "filename": "ms-defender-endpoint-log-collection.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/ms-defender-endpoint-log-collection.md",
+      "title": "Enable Microsoft Defender for Endpoint Log Collection",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.720Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      7,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      4,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      123,
+      71,
+      910
+    ]
+  },
+  {
+    "id": "ms-defender-endpoint-log-collection.md_chunk_2",
+    "content": "When you enable Microsoft Defender for Endpoint Log Collection, you must configure Microsoft Defender to export events to Trend Vision One. The instructions for configuring Microsoft Defender are included in the steps below. Procedure Enable Microsoft Defender for Endpoint Log Collection for a new or existing Azure subscription: Go to Cloud Security → Cloud Accounts. Click the Azure tab. Click Add Subscription or select an Azure subscription from the list. On the Features and Permissions page (if you are adding a new subscription), or the Resource Update tab (if you are configuring an existing subscription), enable Microsoft Defender for Endpoint Log Collection . To enable XDR data collection, click Subscription settings. To enable the use of collected data for XDR, select XDR data collection. Select a log repository in Trend Vision One from the list. If no log repositories have been added to Trend Vision One, click the link to add a log repository in Third-Party Log Collection.",
+    "metadata": {
+      "filename": "ms-defender-endpoint-log-collection.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/ms-defender-endpoint-log-collection.md",
+      "title": "Enable Microsoft Defender for Endpoint Log Collection",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.720Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 2
+    },
+    "embedding": [
+      1,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      131,
+      57,
+      993
+    ]
+  },
+  {
+    "id": "ms-defender-endpoint-log-collection.md_chunk_3",
+    "content": "After adding a log repository, click the refresh icon to show the repository in the list and select it. Click Save Changes. If you are adding a new Azure subscription, complete the steps to add the subscription. For more information, see Adding an Azure subscription. If you are updating an existing Azure subscription, go to the next step. Configure Microsoft Defender to export events: In Microsoft Defender, go to General ➞ Streaming API. Click Add to create a new Streaming API setting. Provide a name for the setting. Select Forward events to Event Hub. In the Event-Hub Resource ID field, enter /subscriptions/{subscriptionID}/resourceGroups/trendmicro-clm-mde-rg/providers/Microsoft.EventHub/namespaces/clm-eventhub-ns-{first 8 chars of subscriptionID}.where {subscriptionID} is your Azure subscription ID. In the Event-Hub name field, enter insights-logs-advancedhunting. In the Event Types area, select all Alerts & Behaviors and Devices. Click Submit.",
+    "metadata": {
+      "filename": "ms-defender-endpoint-log-collection.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/ms-defender-endpoint-log-collection.md",
+      "title": "Enable Microsoft Defender for Endpoint Log Collection",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.720Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 3
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      120,
+      71,
+      961
+    ]
+  },
+  {
+    "id": "ms-defender-endpoint-log-collection.md_chunk_4",
+    "content": "Next stepsTo ensure that Trend Vision One retains the Microsoft Defender data for an adequate period, you can configure the retention period for the log repository. The default retention period is 30 days. For more information see Log repositories. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "ms-defender-endpoint-log-collection.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/ms-defender-endpoint-log-collection.md",
+      "title": "Enable Microsoft Defender for Endpoint Log Collection",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:46.720Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 4
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      46,
+      36,
+      323
+    ]
+  }
+]

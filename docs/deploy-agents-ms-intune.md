@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-deploy-agents-ms-intune
+slug: deploy-agents-ms-intune
 title: Deploying Agents Using Microsoft Intune
 ---
 

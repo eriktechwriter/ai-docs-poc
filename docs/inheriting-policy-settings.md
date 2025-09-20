@@ -1,0 +1,11 @@
+---
+id: inheriting-policy-settings
+title: Inheriting Policy Settings
+sidebar_label: Inheriting Policy Settings
+description: Inheriting Policy Settings
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Inheriting Policy Settings Create a new child policy by inheriting the settings of an existing parent policy. A child policy cannot be copied and its settings cannot be inherited. This task requires a parent policy for the Apex One agent. A parent policy for the Apex One agent has the value N/A displayed under the Parent Policy column. Procedure Go to Policies → Policy Management. The Policy Management screen appears. Select Apex One Agent from the Product list. The screen refreshes to display policies created for the selected managed product. Select a parent policy that does not have locally managed settings. Click Inherit Settings. The Inherit and Create Policy screen appears. In the Policy Name field, type a name for the policy. Assign Targets to the policy. (Optional) Review the settings that can be customized or extended and then make changes as necessary. For a list of settings to review, see Working with Parent Policy Settings. Note A setting cannot be customized or extended if the option selected on the parent policy is Inherit from parent. For example: If the Scheduled Scan setting is customizable, you can change the schedule from weekly to daily. If the scan exclusion list for Real-time Scan can be extended, you can type additional file names that you deem safe and trustworthy. After the child policy is created, it will add those file names to the scan exclusion list. Click Deploy. Note After clicking Deploy, please wait two minutes for Trend Micro Apex Central to deploy the policy to the targets. Click Refresh on the Policy Management screen to update the status information in the policy list. Trend Micro Apex Central enforces the policy settings on the targets every 24 hours. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

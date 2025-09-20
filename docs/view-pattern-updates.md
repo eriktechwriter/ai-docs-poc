@@ -1,0 +1,11 @@
+---
+id: view-pattern-updates
+title: Pattern updates
+sidebar_label: Pattern updates
+description: Pattern updates
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Pattern updates Review details about pattern component updates. To view a list of the components in an Anti-Malware pattern update, go to Administration → Updates → Component → Patterns. This page is available only when Server & Workload Protection has an active relay. The table provides the following information: Component: The type of component update. For Use By: The Server & Workload Protection version the component updates. Platform: The operating system the component update affects. Current Version: The current version of the component update currently distributed by the relays. Tip To check which pattern component update versions apply to a protected computer, go to Computers, double-click the computer, and then go to Updates. Last Updated: When the system downloaded the current component update from Trend Micro. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

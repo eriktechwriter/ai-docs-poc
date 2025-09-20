@@ -1,0 +1,90 @@
+[
+  {
+    "id": "config-app-control-policy.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Configure Application Control for a policy Configure the Application Control module to define its behavior for a policy. Generally, use the following steps to configure the module: Procedure Create an ApplicationControlPolicyExtension object and add the Ruleset IDs to use. Also configure the running state (on or off). Create an PolicySettings object to configure runtime settings of the module. Create a Policy object and add the ApplicationControlPolicyExtension and PolicySettings objects. Use a PoliciesApi object to add or update the policy on Server & Workload Protection. Next steps For more information about Application Control, see About Application Control. The following example creates an ApplicationControlPolicyExtension object and turns on application control. The object is added to a Policy object which is used to modify a policy on Server & Workload Protection.",
+    "metadata": {
+      "filename": "config-app-control-policy.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/config-app-control-policy.md",
+      "title": "Configure Application Control for a policy",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.915Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      0,
+      0,
+      0,
+      6,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      110,
+      56,
+      971
+    ]
+  },
+  {
+    "id": "config-app-control-policy.md_chunk_1",
+    "content": "source # Get the policy policies_api = api.PoliciesApi(api.ApiClient(configuration)) # Turn on Application Control application_control_policy_extension = api.ApplicationControlPolicyExtension() application_control_policy_extension.state = \"on\" # Update the policy update_policy = api.Policy() update_policy.application_control = application_control_policy_extension # Modify the policy on Server & Workload Protection app_control_policy = policies_api.modify_policy(policy_id, update_policy, api_version, overrides=False) return app_control_policy Also see the Modify a Policy operation in the API Reference. For information about authenticating API calls, see Authenticate with Server & Workload Protection. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "config-app-control-policy.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/config-app-control-policy.md",
+      "title": "Configure Application Control for a policy",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.915Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      0,
+      0,
+      1,
+      5,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      74,
+      50,
+      783
+    ]
+  }
+]

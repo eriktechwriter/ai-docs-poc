@@ -1,5 +1,5 @@
 ---
-slug: trend-vision-one-all-alerts
+slug: all-alerts
 title: All Alerts
 ---
 

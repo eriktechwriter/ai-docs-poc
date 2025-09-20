@@ -1,0 +1,90 @@
+[
+  {
+    "id": "cis-gke17-462b.md_chunk_0",
+    "content": "/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ 4.6.2 - Ensure that the seccomp profile is set to RuntimeDefault in the pod definitions (Automated) Profile applicability: Level 2 Enable RuntimeDefault seccomp profile in the pod definitions. Seccomp (secure computing mode) is used to restrict the set of system calls applications can make, allowing cluster administrators greater control over the security of workloads running in the cluster. Kubernetes disables seccomp profiles by default for historical reasons. It should be enabled to ensure that the workloads have restricted actions available within the container. Note By default, seccomp profile is set to unconfined which means that no seccomp profiles are enabled. Impact If the RuntimeDefault seccomp profile is too restrictive for you, you would have to create/manage your own Localhost seccomp profiles.",
+    "metadata": {
+      "filename": "cis-gke17-462b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-462b.md",
+      "title": "4.6.2 - Ensure that the seccomp profile is set to RuntimeDefault in the pod definitions (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.858Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 0
+    },
+    "embedding": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      108,
+      71,
+      907
+    ]
+  },
+  {
+    "id": "cis-gke17-462b.md_chunk_1",
+    "content": "Audit Review the pod definitions output for all namespaces in the cluster with the command below. kubectl get pods --all-namespaces -o json | jq -r '.items[] | select(.metadata.annotations.\"seccomp.security.alpha.kubernetes.io/pod\" == \"runtime/default\" or .spec.securityContext.seccompProfile.type == \"RuntimeDefault\") | {namespace: .metadata.namespace, name: .metadata.name, seccompProfile: .spec.securityContext.seccompProfile.type}' Remediation Use security context to enable the RuntimeDefault seccomp profile in your pod definitions. An example is as below: { \"namespace\": \"kube-system\", \"name\": \"metrics-server-v0.7.0-dbcc8ddf6-gz7d4\", \"seccompProfile\": \"RuntimeDefault\" } © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base",
+    "metadata": {
+      "filename": "cis-gke17-462b.md",
+      "filePath": "/Users/erik_olafson/kiro-projects/agentic-docs/agentic-docs-poc/ai-docs-poc/docs/cis-gke17-462b.md",
+      "title": "4.6.2 - Ensure that the seccomp profile is set to RuntimeDefault in the pod definitions (Automated)",
+      "category": "general",
+      "tags": [
+        "endpoint-security",
+        "trend-vision-one"
+      ],
+      "lastIndexed": "2025-09-18T23:50:45.858Z",
+      "heading": "",
+      "chunkType": "partial",
+      "chunkIndex": 1
+    },
+    "embedding": [
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      82,
+      56,
+      753
+    ]
+  }
+]

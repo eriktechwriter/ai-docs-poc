@@ -1,0 +1,11 @@
+---
+id: create-list-ports-for-use-policies
+title: Create a list of ports for use in policies
+sidebar_label: Create a list of ports for use in policies
+description: Create a list of ports for use in policies
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Create a list of ports for use in policies Create lists of port numbers so that you can use them in multiple rules. A single list is easier to manage than several identical lists that are each created in a different rule. Tip To create a port list that is similar to an existing one, duplicate the list and then edit it. Individual ports and port ranges can be included on the list, for example 80, and 20-21. You can insert comments into your port list by preceding the text with a pound sign ("#"). Note For a listing commonly accepted port number assignments, see the Internet Assigned Numbers Authority (IANA). For a list of port numbers used by Server & Workload Protection, relay, or agents, see Server & Workload Protection Port numbers. Procedure Click Policies → Common Objects → Lists → Port Lists. Click New → New Port List. Type a name and, optionally, a description. In the Port(s) list, add the port numbers, one per line. Click OK. Next steps Import and export port lists You can export one or more port lists to an XML or CSV file, and import lists from an XML file. Procedure Click Policies → Common Objects → Lists → Port Lists. To export one or more lists, select them and click Export → Export Selected to CSV or Export → Export Selected to XML. To export all lists, click Export → Export to CSV or Export → Export to XML. To import lists, click New → Import From File and follow the instructions on the wizard. Next steps See which rules use a port list It is useful to see which rules use a port list to be aware of which rules are affected by any changes you make. For example, you can ensure no rules use a port list before deleting it. Procedure Click Policies → Common Objects → Lists → Port Lists. Select the port list and click Properties. Click the Assigned To tab. Next steps © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

@@ -1,0 +1,11 @@
+---
+id: endpoint-inventory-updates-filters
+title: Endpoint Inventory updates Available Actions and adds new filters
+sidebar_label: Endpoint Inventory updates Available Actions and adds new filters
+description: Endpoint Inventory updates Available Actions and adds new filters
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Endpoint Inventory updates Available Actions and adds new filters March 4, 2024—The Available Actions quick filters have been updated with two new behaviors: If there are a total of zero (0) endpoints for an available action, Endpoint Inventory now hides the action, providing a cleaner interface. The "Sensor disabled" Available Action now only includes endpoints which have the Trend Vision One sensor installed but disabled by settings or policy. Additionally, a new category of filters has been added for Sensor Maintenance Recommended. You can follow the recommended actions to resolve any issue the endpoints might have. Endpoint Security Operations → Endpoint Inventory © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

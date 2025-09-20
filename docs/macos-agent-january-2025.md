@@ -1,0 +1,11 @@
+---
+id: macos-agent-january-2025
+title: Trend Vision One Endpoint Security agent January 2025 update - macOS
+sidebar_label: Trend Vision One Endpoint Security agent January 2025 update - macOS
+description: Trend Vision One Endpoint Security agent January 2025 update - macOS
+tags:
+  - endpoint-security
+  - trend-vision-one
+---
+
+/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Trend Vision One Endpoint Security agent January 2025 update - macOS January 8, 2025—Trend Vision One Endpoint Security agent version 202501 includes security enhancements, bug fixes, and feature releases. Updates to individual components and agent modules may follow different batch release schedules. This update includes the following changes: Agent program services package 1.2.503 ws_communicator.app XBCAgent.app PreCheck.app SilentInstaller.app Endpoint sensor version 1.2.503 Standard Endpoint Protection version 3.5.7952 Detailed release notes: New features The following features and support enhancements Version control policies now supports macOS endpoint agents Bug fixes and resolved issues The update package includes several bug fixes for included component and module updates Release schedule: Batch 1: January 8, 2025 Batch 2: January 15, 2025 Batch 3: January 22, 2025 © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
