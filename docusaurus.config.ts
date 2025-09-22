@@ -67,7 +67,7 @@ const config: Config = {
     //image: 'img/docusaurus-social-card.jpg',
     navbar: {
       style: "dark",
-      title: "", // Using custom navigation header instead
+      title: "Trend Micro", // CSS adds "TechDocs" with ::after pseudo-element
       logo: {
         alt: "Trend Micro TechDocs",
         src: "brand/t-ball.png",
