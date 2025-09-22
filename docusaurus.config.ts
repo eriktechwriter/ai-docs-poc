@@ -67,16 +67,16 @@ const config: Config = {
     //image: 'img/docusaurus-social-card.jpg',
     navbar: {
       style: "dark",
-      title: "Trend Vision One TechDocs | Endpoint Security", // The title that appears in the navbar
+      title: "Trend Micro TechDocs", // The title that appears in the navbar
       logo: {
-        alt: "Trend Vision One TechDocs",
+        alt: "Trend Micro TechDocs",
         src: "brand/t-ball.png",
       },
       items: [
         {
           type: 'dropdown',
           label: 'Trend Vision One',
-          position: 'left',
+          position: 'right',
           items: [
             {
               type: 'html',
@@ -127,7 +127,7 @@ const config: Config = {
         {
           type: 'dropdown',
           label: 'Other Products',
-          position: 'left',
+          position: 'right',
           items: [
             {
               label: 'Deep Security',
@@ -150,7 +150,7 @@ const config: Config = {
         {
           type: 'dropdown',
           label: 'Resources',
-          position: 'left',
+          position: 'right',
           items: [
             {
               label: 'API Documentation',

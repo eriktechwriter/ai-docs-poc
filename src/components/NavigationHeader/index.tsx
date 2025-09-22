@@ -150,7 +150,7 @@ export default function NavigationHeader() {
           <Link to="/" className="nav-brand">
             <div className="nav-icon">T</div>
             <span className="nav-text">
-              Trend Vision One <span className="tech-docs">TechDocs</span>
+              <span className="trend-micro">Trend Micro</span> <span className="tech-docs">TechDocs</span>
             </span>
           </Link>
 

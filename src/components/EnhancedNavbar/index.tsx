@@ -266,7 +266,7 @@ export default function EnhancedNavbar(): JSX.Element {
             <Link to="/" className={styles.navbarBrand}>
               <div className={styles.navbarIcon}>T</div>
               <span className={styles.navbarText}>
-                Trend Vision One <span className={styles.techDocs}>TechDocs</span>
+                <span className={styles.trendMicro}>Trend Micro</span> <span className={styles.techDocs}>TechDocs</span>
               </span>
             </Link>
 
