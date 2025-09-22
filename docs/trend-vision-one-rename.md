@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Trend Micro Vision One is now Trend Vision One To align with our company strategy and image, the following product names have been changed: Trend Micro Vision One™ is now Trend Vision One™ Trend Micro Cloud One™ is now Trend Cloud One™ © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Trend Micro Vision One is now Trend Vision One To align with our company strategy and image, the following product names have been changed: Trend Micro Vision One™ is now Trend Vision One™ Trend Micro Cloud One™ is now Trend Cloud One™ © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

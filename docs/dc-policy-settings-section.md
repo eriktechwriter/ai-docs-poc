@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Device Control Policy Settings This section describes how to configure Device Control policies on Trend Vision One Endpoint Security agents. Topics include: Device Control Configuring Device Control Settings Related information Device Control Configuring Device Control Settings © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Device Control Policy Settings This section describes how to configure Device Control policies on Trend Vision One Endpoint Security agents. Topics include: Device Control Configuring Device Control Settings Related information Device Control Configuring Device Control Settings © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Communication channels Related information Communication integrations Email communication SMS communication Slack communication Pagerduty communication Jira communication Zendesk communication ServiceNow communication Amazon SNS communication Microsoft Teams communication Webhook communication © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Communication channels Related information Communication integrations Email communication SMS communication Slack communication Pagerduty communication Jira communication Zendesk communication ServiceNow communication Amazon SNS communication Microsoft Teams communication Webhook communication © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

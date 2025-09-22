@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ You can now move Kubernetes clusters between groups in Container Inventory November 13, 2024—Trend Vision One Container Security now enables you to move Kubernetes clusters between groups in Container Inventory. This facilitates more efficient management of your clusters. For more information, see Inventory/Overview. Cloud Security → Container Security → Container Inventory © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ You can now move Kubernetes clusters between groups in Container Inventory November 13, 2024—Trend Vision One Container Security now enables you to move Kubernetes clusters between groups in Container Inventory. This facilitates more efficient management of your clusters. For more information, see Inventory/Overview. Cloud Security → Container Security → Container Inventory © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

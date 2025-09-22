@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Using attachment is password protected criteria Cloud Email Gateway Protection can scan messages for attachments of the following types: .7z .ace .arj .docx .pptx .rar .xlsx .zip .pdf .alz .egg Procedure On the Scanning Criteria tab, click Advanced. Select Any Match. The Attachment is password protected, Attachment contains active content, and Recipient number criteria become available. Select Attachment is password protected. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Using attachment is password protected criteria Cloud Email Gateway Protection can scan messages for attachments of the following types: .7z .ace .arj .docx .pptx .rar .xlsx .zip .pdf .alz .egg Procedure On the Scanning Criteria tab, click Advanced. Select Any Match. The Attachment is password protected, Attachment contains active content, and Recipient number criteria become available. Select Attachment is password protected. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

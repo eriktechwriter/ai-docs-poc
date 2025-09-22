@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Agent Configurations This section describes how to configure agent settings on macOS Trend Vision One Endpoint Security agents. Related information Update Settings Cache Settings for Scans Privileges and Other Settings © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Agent Configurations This section describes how to configure agent settings on macOS Trend Vision One Endpoint Security agents. Related information Update Settings Cache Settings for Scans Privileges and Other Settings © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

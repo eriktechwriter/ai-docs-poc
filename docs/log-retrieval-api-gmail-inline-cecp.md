@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Log Retrieval API to support Gmail (Inline Mode) in Cloud Email and Collaboration Protection February 21, 2025—Beside Gmail, Cloud Email and Collaboration Protection extends the Log Retrieval API to allow administrators to get security event logs of the Gmail (Inline Mode) service. Email and Collaboration Security → Cloud Email and Collaboration Protection © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Log Retrieval API to support Gmail (Inline Mode) in Cloud Email and Collaboration Protection February 21, 2025—Beside Gmail, Cloud Email and Collaboration Protection extends the Log Retrieval API to allow administrators to get security event logs of the Gmail (Inline Mode) service. Email and Collaboration Security → Cloud Email and Collaboration Protection © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

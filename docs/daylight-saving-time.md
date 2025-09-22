@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Trend Vision One console now supports daylight saving time October 9, 2023—The Trend Vision One console now adjusts the displayed time according to daylight saving time, depending on your selected time zone. Administration → Console Settings © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Trend Vision One console now supports daylight saving time October 9, 2023—The Trend Vision One console now adjusts the displayed time according to daylight saving time, depending on your selected time zone. Administration → Console Settings © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

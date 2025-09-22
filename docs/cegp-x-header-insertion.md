@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Cloud Email Gateway Protection supports X-Header insertion for messages matching scan exceptions April 19, 2024—Cloud Email Gateway Protection allows you to leverage the action "Insert X-Header" for messages matching scan exceptions in virus scan to meet your specific needs, for example, identify the specific scan exception for subsequent processing. Email and Collaboration Security → Cloud Email Gateway Protection © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Cloud Email Gateway Protection supports X-Header insertion for messages matching scan exceptions April 19, 2024—Cloud Email Gateway Protection allows you to leverage the action "Insert X-Header" for messages matching scan exceptions in virus scan to meet your specific needs, for example, identify the specific scan exception for subsequent processing. Email and Collaboration Security → Cloud Email Gateway Protection © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

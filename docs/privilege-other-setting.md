@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Privileges and Other Settings Configure Trend Vision One Endpoint Security agents to grant users rights to configure personalized settings, to display notification messages, and to protect critical Trend Vision One Endpoint Security agent files and services. Related information Configuring Agent Privileges Configuring Other Agent Settings © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Privileges and Other Settings Configure Trend Vision One Endpoint Security agents to grant users rights to configure personalized settings, to display notification messages, and to protect critical Trend Vision One Endpoint Security agent files and services. Related information Configuring Agent Privileges Configuring Other Agent Settings © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

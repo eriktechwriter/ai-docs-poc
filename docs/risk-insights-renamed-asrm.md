@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Risk Insights renamed to Attack Surface Risk Management November 20, 2023—The Risk Insights app group has been renamed to Attack Surface Risk Management to align with the expanding scope of capabilities provided by the included apps. The renamed app group currently contains the Cyber Risk Overview, Attack Surface Discovery, Threat and Exposure Management, and Cloud Security Posture apps. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Risk Insights renamed to Attack Surface Risk Management November 20, 2023—The Risk Insights app group has been renamed to Attack Surface Risk Management to align with the expanding scope of capabilities provided by the included apps. The renamed app group currently contains the Cyber Risk Overview, Attack Surface Discovery, Threat and Exposure Management, and Cloud Security Posture apps. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

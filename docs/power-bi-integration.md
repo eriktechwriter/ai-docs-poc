@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Power BI integration with Trend Vision One February 10, 2025—Microsoft Power BI can now be integrated with Trend Vision One to access and analyze data directly from the Trend Vision One platform via APIs. For more information, see Microsoft Power BI integration. Workflow and Automation → Third-Party Integration © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Power BI integration with Trend Vision One February 10, 2025—Microsoft Power BI can now be integrated with Trend Vision One to access and analyze data directly from the Trend Vision One platform via APIs. For more information, see Microsoft Power BI integration. Workflow and Automation → Third-Party Integration © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

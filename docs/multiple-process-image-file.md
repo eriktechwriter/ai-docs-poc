@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Multiple process image file exclusion lists January 31, 2025—In Server & Workload Protection, the process image file list is now part of the inheritance exclusion list, and applies to real-time exclusions. The setting is available through Server & Workload Protection > Policies > Anti-Malware > Exclusions. For more information, see Overview section of the policy editor. Endpoint Security → Server & Workload Protection © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Multiple process image file exclusion lists January 31, 2025—In Server & Workload Protection, the process image file list is now part of the inheritance exclusion list, and applies to real-time exclusions. The setting is available through Server & Workload Protection > Policies > Anti-Malware > Exclusions. For more information, see Overview section of the policy editor. Endpoint Security → Server & Workload Protection © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

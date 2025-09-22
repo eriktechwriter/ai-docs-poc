@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Context menu for highlighted objects December 4, 2024—Workbench users can access response actions and detailed profiles from the context menu on the Highlighted Objects tab. Agentic SIEM & XDR → Workbench © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Context menu for highlighted objects December 4, 2024—Workbench users can access response actions and detailed profiles from the context menu on the Highlighted Objects tab. Agentic SIEM & XDR → Workbench © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

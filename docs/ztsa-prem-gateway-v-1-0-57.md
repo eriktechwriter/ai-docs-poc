@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Zero Trust Secure Access On-premises Gateway Version 1.0.57 December 2, 2024—Zero Trust Secure Access On-premises Gateway Version 1.0.57 includes optimization for local cache mechanisms. This update includes the following changes: Optimized the local cache mechanism in peak hours for better user/group information handling. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Zero Trust Secure Access On-premises Gateway Version 1.0.57 December 2, 2024—Zero Trust Secure Access On-premises Gateway Version 1.0.57 includes optimization for local cache mechanisms. This update includes the following changes: Optimized the local cache mechanism in peak hours for better user/group information handling. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

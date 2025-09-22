@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Cloud Risk Management to Support New Public APIs March 28, 2024—Accounts and Template Scanner Public APIs for Cloud Risk Management now available on Trend Vision One Automation Center. See the Automation Center for more information. Cyber Risk Exposure Management → Cloud Risk Management → Misconfiguration and Compliance © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Cloud Risk Management to Support New Public APIs March 28, 2024—Accounts and Template Scanner Public APIs for Cloud Risk Management now available on Trend Vision One Automation Center. See the Automation Center for more information. Cyber Risk Exposure Management → Cloud Risk Management → Misconfiguration and Compliance © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

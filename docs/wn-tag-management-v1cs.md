@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Tag Management in Container Security April 9, 2025—Trend Vision One now supports adding custom tags to your clusters in Container Security using Tag Management. You can assign tags to specific assets to gain visibility across all Trend Vision One applications and keep your assets organized. For more information, see Tag Management. Cloud Security → Container Security © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Tag Management in Container Security April 9, 2025—Trend Vision One now supports adding custom tags to your clusters in Container Security using Tag Management. You can assign tags to specific assets to gain visibility across all Trend Vision One applications and keep your assets organized. For more information, see Tag Management. Cloud Security → Container Security © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

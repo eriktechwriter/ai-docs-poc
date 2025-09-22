@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Network Access Control Events Use the Event Notifications screen to enable and configure notifications for Network VirusWall policy violations or potential vulnerability attacks detected on your network. Related information Network VirusWall Policy Violations Potential Vulnerability Attacks © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Network Access Control Events Use the Event Notifications screen to enable and configure notifications for Network VirusWall policy violations or potential vulnerability attacks detected on your network. Related information Network VirusWall Policy Violations Potential Vulnerability Attacks © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

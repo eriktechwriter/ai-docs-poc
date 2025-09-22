@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Configuring spam criteria Procedure Select Spam. Choose a baseline spam catch rate. Lowest (most conservative) Low Moderately low (the default setting) Moderately high High Highest (most aggressive) © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Configuring spam criteria Procedure Select Spam. Choose a baseline spam catch rate. Lowest (most conservative) Low Moderately low (the default setting) Moderately high High Highest (most aggressive) © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

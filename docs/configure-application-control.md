@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Configure Application Control Related information Configure Application Control for a policy Allow or block unrecognized software Create a shared ruleset Add Global Rules Configure maintenance mode during upgrades © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Configure Application Control Related information Configure Application Control for a policy Allow or block unrecognized software Create a shared ruleset Add Global Rules Configure maintenance mode during upgrades © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

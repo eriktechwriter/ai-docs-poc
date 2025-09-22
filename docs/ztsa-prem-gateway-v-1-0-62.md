@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Zero Trust Secure Access On-premises Gateway Version 1.0.62 March 24, 2025—Zero Trust Secure Access On-premises Gateway Version 1.0.62 includes enhancements for FTP protocol support. This update includes the following changes: Support access control & content inspection for FTP protocol as FTP forward proxy. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Zero Trust Secure Access On-premises Gateway Version 1.0.62 March 24, 2025—Zero Trust Secure Access On-premises Gateway Version 1.0.62 includes enhancements for FTP protocol support. This update includes the following changes: Support access control & content inspection for FTP protocol as FTP forward proxy. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Endpoint Security Introduces Agent Installer Proxy Settings July 17, 2024—Endpoint Security introduces Agent Installer Proxy settings, replacing previous proxy settings, to configure proxies for initial agent deployment, installation, and registration to Trend Vision One. Endpoint Security → Endpoint Inventory © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Endpoint Security Introduces Agent Installer Proxy Settings July 17, 2024—Endpoint Security introduces Agent Installer Proxy settings, replacing previous proxy settings, to configure proxies for initial agent deployment, installation, and registration to Trend Vision One. Endpoint Security → Endpoint Inventory © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

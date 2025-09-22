@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Using body matches criteria Cloud Email Gateway Protection can scan the message body for keyword expressions. Procedure On the Scanning Criteria tab, click Advanced. Select Body matches. Click the keyword expressions link. Configure keywords. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Using body matches criteria Cloud Email Gateway Protection can scan the message body for keyword expressions. Procedure On the Scanning Criteria tab, click Advanced. Select Body matches. Click the keyword expressions link. Configure keywords. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

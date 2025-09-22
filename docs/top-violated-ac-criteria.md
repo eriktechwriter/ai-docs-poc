@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Top Violated Application Control Criteria This widget provides an overview of the top Application Control criteria that users triggered while attempting to access unauthorized applications. Use the settings button to change the default number of matches that display. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Top Violated Application Control Criteria This widget provides an overview of the top Application Control criteria that users triggered while attempting to access unauthorized applications. Use the settings button to change the default number of matches that display. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Editing domain TLS peers Procedure Go to Inbound Protection → Connection Filtering → Transport Layer Security (TLS) Peers or Outbound Protection → Connection Filtering → Transport Layer Security (TLS) Peers. Click the name of a managed domain. Find the TLS peer that you want to edit, and click the peer name. Edit the peer information as required. Click Save. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Editing domain TLS peers Procedure Go to Inbound Protection → Connection Filtering → Transport Layer Security (TLS) Peers or Outbound Protection → Connection Filtering → Transport Layer Security (TLS) Peers. Click the name of a managed domain. Find the TLS peer that you want to edit, and click the peer name. Edit the peer information as required. Click Save. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

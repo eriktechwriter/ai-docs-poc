@@ -4,7 +4,7 @@
  * Demonstrates cross-reference and relationship management capabilities
  */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '@theme/Layout';
 import {
   RelatedContent,

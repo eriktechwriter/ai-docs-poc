@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Add the CLI to your PATH After obtaining the key, add the Trend Micro Artifact Scanner (TMAS) CLI to your PATH: export PATH="/path/to/tmas/binary/directory:$PATH" © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Add the CLI to your PATH After obtaining the key, add the Trend Micro Artifact Scanner (TMAS) CLI to your PATH: export PATH="/path/to/tmas/binary/directory:$PATH" © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

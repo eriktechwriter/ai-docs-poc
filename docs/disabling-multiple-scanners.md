@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Disable scanning for multiple mount points You can disable the scanning in multiple mount points at the same time. Procedure In Trend Vision One go to Cloud Security → File Security. Click Inventory. Click the Virtual Appliance node. Select the checkboxes of the Folder Paths whose scanning you want to enable. From the Manage scanning configuration list, select Disable scanning. Click Disable. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Disable scanning for multiple mount points You can disable the scanning in multiple mount points at the same time. Procedure In Trend Vision One go to Cloud Security → File Security. Click Inventory. Click the Virtual Appliance node. Select the checkboxes of the Folder Paths whose scanning you want to enable. From the Manage scanning configuration list, select Disable scanning. Click Disable. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

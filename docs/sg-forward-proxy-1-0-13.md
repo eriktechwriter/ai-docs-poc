@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Service Gateway: Forward Proxy Service Version 1.0.13 March 26, 2024—Service Gateway Forward Proxy Service Version 1.0.13 provides enhanced security and network connectivity features. This update includes the following changes: Add request information and error code to Squid access log Fix vulnerabilities: Disable gopher/URN/FTP protocol © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Service Gateway: Forward Proxy Service Version 1.0.13 March 26, 2024—Service Gateway Forward Proxy Service Version 1.0.13 provides enhanced security and network connectivity features. This update includes the following changes: Add request information and error code to Squid access log Fix vulnerabilities: Disable gopher/URN/FTP protocol © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

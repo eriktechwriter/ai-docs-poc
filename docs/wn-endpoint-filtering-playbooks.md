@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Enhanced endpoint filtering for Automated Response Playbooks September 30, 2024—Automated Response Playbooks now provide additional endpoint conditions, including endpoint name, endpoint type, and operating system, to filter targeted endpoints for the playbook. For more information, see Create Automated Response Playbooks. Workflow and Automation → Security Playbooks © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Enhanced endpoint filtering for Automated Response Playbooks September 30, 2024—Automated Response Playbooks now provide additional endpoint conditions, including endpoint name, endpoint type, and operating system, to filter targeted endpoints for the playbook. For more information, see Create Automated Response Playbooks. Workflow and Automation → Security Playbooks © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

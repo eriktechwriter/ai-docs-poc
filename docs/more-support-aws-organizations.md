@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ XDR for Cloud - AWS VPC Flow Logs and Cloud Response for AWS now support AWS Organization connections August 19, 2024—The "XDR for Cloud - AWS VPC Flow Logs" and "Cloud Response for AWS" features can now be enabled and deployed to AWS Organization accounts in the Cloud Accounts app. Cloud Security → Cloud Accounts © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ XDR for Cloud - AWS VPC Flow Logs and Cloud Response for AWS now support AWS Organization connections August 19, 2024—The "XDR for Cloud - AWS VPC Flow Logs" and "Cloud Response for AWS" features can now be enabled and deployed to AWS Organization accounts in the Cloud Accounts app. Cloud Security → Cloud Accounts © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

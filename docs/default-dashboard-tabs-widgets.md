@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Default Dashboard Tabs and Widgets Related information Summary Tab Security Posture Tab Data Loss Prevention Tab Compliance Tab Threat Statistics Tab © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Default Dashboard Tabs and Widgets Related information Summary Tab Security Posture Tab Data Loss Prevention Tab Compliance Tab Threat Statistics Tab © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

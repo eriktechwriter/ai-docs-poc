@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Uninstall Containerized Scanner Helm chart To uninstall the Helm chart, run the following script: helm uninstall my-release -n visionone-filesecurity © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Uninstall Containerized Scanner Helm chart To uninstall the Helm chart, run the following script: helm uninstall my-release -n visionone-filesecurity © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

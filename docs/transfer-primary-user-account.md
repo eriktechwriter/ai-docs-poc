@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Transfer ownership of the Primary User Account June 19, 2024—Trend Vision One now supports the transfer of the Primary User Account to a local account within the same business. This feature is accessible to all customers, whether or not they have updated to the Foundation Services release. For more information, see Transferring ownership of the Primary User Account. Administration → User Accounts © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Transfer ownership of the Primary User Account June 19, 2024—Trend Vision One now supports the transfer of the Primary User Account to a local account within the same business. This feature is accessible to all customers, whether or not they have updated to the Foundation Services release. For more information, see Transferring ownership of the Primary User Account. Administration → User Accounts © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

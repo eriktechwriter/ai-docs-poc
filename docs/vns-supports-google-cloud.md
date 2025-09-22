@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Virtual Network Sensor supports deployment to Google Cloud July 15, 2024—The Virtual Network Sensor can now be deployed to your Google Cloud environment. For more information, see Virtual Network Sensor deployment guides. Network Security → Network Inventory © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Virtual Network Sensor supports deployment to Google Cloud July 15, 2024—The Virtual Network Sensor can now be deployed to your Google Cloud environment. For more information, see Virtual Network Sensor deployment guides. Network Security → Network Inventory © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

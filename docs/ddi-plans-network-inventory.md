@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Deep Discovery Inspector appliance plans available for Network Inventory Manage connected Deep Discovery Inspector appliances in Network Inventory with appliance plans. Plans allow you to deploy important upgrades such as firmware, patches, or hotfixes; as well as replicate settings from one appliance to another. You can also deploy prepared images to appliances configured to use Virtual Analyzer. Network Security → Network Inventory © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Deep Discovery Inspector appliance plans available for Network Inventory Manage connected Deep Discovery Inspector appliances in Network Inventory with appliance plans. Plans allow you to deploy important upgrades such as firmware, patches, or hotfixes; as well as replicate settings from one appliance to another. You can also deploy prepared images to appliances configured to use Virtual Analyzer. Network Security → Network Inventory © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

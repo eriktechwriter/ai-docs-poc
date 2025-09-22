@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Editing DKIM verification settings Procedure Go to Inbound Protection → Domain-based Authentication → DomainKeys Identified Mail (DKIM) Verification. From the list of DKIM verification domains, click a domain that you want to edit. Modify the DKIM verification settings as required. Note For details about the settings, see Adding DKIM verification settings. Click Save. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Editing DKIM verification settings Procedure Go to Inbound Protection → Domain-based Authentication → DomainKeys Identified Mail (DKIM) Verification. From the list of DKIM verification domains, click a domain that you want to edit. Modify the DKIM verification settings as required. Note For details about the settings, see Adding DKIM verification settings. Click Save. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

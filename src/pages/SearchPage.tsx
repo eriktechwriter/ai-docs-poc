@@ -4,18 +4,25 @@
  * Full-page search interface integrated with Docusaurus
  */
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '@theme/Layout';
 import { SearchResultsPage } from '../components/SemanticSearch';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 
 export default function SearchPage(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
+  const [initialQuery, setInitialQuery] = useState('');
+  const [initialCategory, setInitialCategory] = useState('');
   
-  // Get query parameters from URL
-  const urlParams = new URLSearchParams(window.location.search);
-  const initialQuery = urlParams.get('q') || '';
-  const initialCategory = urlParams.get('category') || '';
+  useEffect(() => {
+    // Only access window on client side
+    if (ExecutionEnvironment.canUseDOM) {
+      const urlParams = new URLSearchParams(window.location.search);
+      setInitialQuery(urlParams.get('q') || '');
+      setInitialCategory(urlParams.get('category') || '');
+    }
+  }, []);
 
   return (
     <Layout

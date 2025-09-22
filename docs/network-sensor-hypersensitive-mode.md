@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Virtual Network Sensor supports hypersensitive mode September 25, 2023—The Virtual Network Sensor now supports hypersensitive mode. The detection mode is available after enabling it in Support Settings. For more information, see Sensor Details. Network Security → Network Inventory © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Virtual Network Sensor supports hypersensitive mode September 25, 2023—The Virtual Network Sensor now supports hypersensitive mode. The detection mode is available after enabling it in Support Settings. For more information, see Sensor Details. Network Security → Network Inventory © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

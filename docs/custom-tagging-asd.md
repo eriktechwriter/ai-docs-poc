@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Custom Tagging in Attack Surface Discovery July 15, 2024—Create and use custom tags for your organization’s assets in Attack Surface Discovery for better asset management. Cyber Risk Exposure Management → Attack Surface Discovery © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Custom Tagging in Attack Surface Discovery July 15, 2024—Create and use custom tags for your organization’s assets in Attack Surface Discovery for better asset management. Cyber Risk Exposure Management → Attack Surface Discovery © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

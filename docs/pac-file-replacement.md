@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ PAC File replacement Related information Replacing the PAC file on Trend Vision One Endpoint Security agents © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ PAC File replacement Related information Replacing the PAC file on Trend Vision One Endpoint Security agents © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

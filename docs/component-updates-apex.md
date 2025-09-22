@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Component Updates This section discusses how to configure component updates in Trend Vision One. Topics include: Component Updates Configuring Scheduled Update Settings Configuring Manual Update Settings © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Component Updates This section discusses how to configure component updates in Trend Vision One. Topics include: Component Updates Configuring Scheduled Update Settings Configuring Manual Update Settings © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

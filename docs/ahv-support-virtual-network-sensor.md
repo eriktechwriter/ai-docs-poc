@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Nutanix AHV platform now supported for Virtual Network Sensor July 15, 2024—Trend Micro Virtual Network Sensor now extends its platform support to include Nutanix AHV. For more information, see Virtual Network Sensor deployment guides. Network Security → Network Inventory © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Nutanix AHV platform now supported for Virtual Network Sensor July 15, 2024—Trend Micro Virtual Network Sensor now extends its platform support to include Nutanix AHV. For more information, see Virtual Network Sensor deployment guides. Network Security → Network Inventory © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

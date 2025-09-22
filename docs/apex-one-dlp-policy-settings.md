@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Apex One Data Loss Prevention Policy Settings This section describes how to configure Data Loss Prevention policies for Trend Vision One Endpoint Security agents. Topics include: Data Loss Prevention (DLP) Configuring a Data Loss Prevention Policy Related information Data Loss Prevention (DLP) Configuring a Data Loss Prevention Policy © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Apex One Data Loss Prevention Policy Settings This section describes how to configure Data Loss Prevention policies for Trend Vision One Endpoint Security agents. Topics include: Data Loss Prevention (DLP) Configuring a Data Loss Prevention Policy Related information Data Loss Prevention (DLP) Configuring a Data Loss Prevention Policy © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

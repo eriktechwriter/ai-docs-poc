@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Standard Endpoint Protection supports Windows 11 ARM64 September 9, 2024—You can now deploy the Trend Endpoint Agent with Standard Endpoint Protection on endpoints with the Windows 11 ARM64 operating system. Endpoint Security → Endpoint Inventory © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Standard Endpoint Protection supports Windows 11 ARM64 September 9, 2024—You can now deploy the Trend Endpoint Agent with Standard Endpoint Protection on endpoints with the Windows 11 ARM64 operating system. Endpoint Security → Endpoint Inventory © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

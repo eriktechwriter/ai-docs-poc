@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Isolate and terminate Kubernetes containers Dec 15, 2023—Customers can now isolate or terminate potentially compromised Kubernetes pods when investigating threat incidents in Workbench, Observed Attack Techniques, and Search. Cloud Security → Container Security © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Isolate and terminate Kubernetes containers Dec 15, 2023—Customers can now isolate or terminate potentially compromised Kubernetes pods when investigating threat incidents in Workbench, Observed Attack Techniques, and Search. Cloud Security → Container Security © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

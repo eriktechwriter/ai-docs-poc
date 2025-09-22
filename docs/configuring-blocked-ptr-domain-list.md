@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Configuring the blocked PTR domain list When the domain in the PTR record of a sending IP address matches the blocked PTR domain list, Cloud Email Gateway Protection rejects email messages from this IP address. Related information Adding PTR domains Editing PTR domains © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Configuring the blocked PTR domain list When the domain in the PTR record of a sending IP address matches the blocked PTR domain list, Cloud Email Gateway Protection rejects email messages from this IP address. Related information Adding PTR domains Editing PTR domains © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

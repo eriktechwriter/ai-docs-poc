@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Compliance Management cases now supported July 2, 2025—You can now open Trend Vision One cases in Compliance Management to track and manage non-compliant assets. For more information, see Trend Vision One cases. Cyber Risk Exposure Management → Compliance Management Workflow and Automation → Case Management © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Compliance Management cases now supported July 2, 2025—You can now open Trend Vision One cases in Compliance Management to track and manage non-compliant assets. For more information, see Trend Vision One cases. Cyber Risk Exposure Management → Compliance Management Workflow and Automation → Case Management © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Enhance investigations with VirusTotal threat intelligence in Evidence Report view December 11, 2023—You can now right-click URLs, domains, IPs, or file SHA-1 and select “VirusTotal” to facilitate thorough investigation of possible threats in your environment. Agentic SIEM & XDR → Forensics © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Enhance investigations with VirusTotal threat intelligence in Evidence Report view December 11, 2023—You can now right-click URLs, domains, IPs, or file SHA-1 and select “VirusTotal” to facilitate thorough investigation of possible threats in your environment. Agentic SIEM & XDR → Forensics © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

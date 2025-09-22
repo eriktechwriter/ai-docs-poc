@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Use the Legacy APIs Related information Provide access for legacy APIs Transition from the SOAP API Use the legacy REST API © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Use the Legacy APIs Related information Provide access for legacy APIs Transition from the SOAP API Use the legacy REST API © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

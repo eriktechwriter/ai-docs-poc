@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ If I have disabled the connection to the Smart Protection Network, is any other information sent to Trend Micro? When Smart Protection Network is disabled, the agents will not send any threat intelligence information to Trend Micro. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ If I have disabled the connection to the Smart Protection Network, is any other information sent to Trend Micro? When Smart Protection Network is disabled, the agents will not send any threat intelligence information to Trend Micro. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

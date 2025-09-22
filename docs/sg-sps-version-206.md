@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Service Gateway: Smart Protection Services Version 2.0.6 July 16, 2025—Service Gateway Smart Protection Services Version 2.0.6 includes enhancements, bug fixes, and security updates. This update includes the following changes: This update includes the client IP address in Web Reputation Services access logs to provide more detailed visibility into incoming requests. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Service Gateway: Smart Protection Services Version 2.0.6 July 16, 2025—Service Gateway Smart Protection Services Version 2.0.6 includes enhancements, bug fixes, and security updates. This update includes the following changes: This update includes the client IP address in Web Reputation Services access logs to provide more detailed visibility into incoming requests. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

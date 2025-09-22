@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Automated Response Playbook enhancements December 18, 2023—The Automated Response Playbook has been enhanced to support a wider range of response actions, including user account actions such as disabling the user account, forcing sign out, and forcing password reset, and the ability to run custom scripts on endpoints. Workflow and Automation → Security Playbooks © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Automated Response Playbook enhancements December 18, 2023—The Automated Response Playbook has been enhanced to support a wider range of response actions, including user account actions such as disabling the user account, forcing sign out, and forcing password reset, and the ability to run custom scripts on endpoints. Workflow and Automation → Security Playbooks © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

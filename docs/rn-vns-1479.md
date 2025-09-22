@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Virtual Network Sensor version 1.0.1479 May 19, 2025 This update includes enhancements, bug fixes, and security updates for the Virtual Network Sensor including: This update adds support for QUIC protocol with Virtual Network Sensor. This update adds support for new Virtual Network Sensor FQDNs. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Virtual Network Sensor version 1.0.1479 May 19, 2025 This update includes enhancements, bug fixes, and security updates for the Virtual Network Sensor including: This update adds support for QUIC protocol with Virtual Network Sensor. This update adds support for new Virtual Network Sensor FQDNs. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

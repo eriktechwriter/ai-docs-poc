@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Viewing Settings for Predefined Expressions Note Predefined expressions cannot be modified or deleted. Procedure Go to Policies → Policy Resources → DLP Data Identifiers. Click the Expression tab. Click the expression name. View settings in the screen that opens. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Viewing Settings for Predefined Expressions Note Predefined expressions cannot be modified or deleted. Procedure Go to Policies → Policy Resources → DLP Data Identifiers. Click the Expression tab. Click the expression name. View settings in the screen that opens. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

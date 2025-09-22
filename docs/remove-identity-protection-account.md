@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Removing a Microsoft Identity Protection account The steps outlined below detail how to remove the Microsoft Identity Protection account to revoke access to Microsoft Identity Protection. Procedure Choose Administration → Service Account. Select the Microsoft Identity Protection account and click Remove. On the Remove Microsoft Identity Protection screen that appears, click OK. The account disappears from the Service Account screen. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Removing a Microsoft Identity Protection account The steps outlined below detail how to remove the Microsoft Identity Protection account to revoke access to Microsoft Identity Protection. Procedure Choose Administration → Service Account. Select the Microsoft Identity Protection account and click Remove. On the Remove Microsoft Identity Protection screen that appears, click OK. The account disappears from the Service Account screen. © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

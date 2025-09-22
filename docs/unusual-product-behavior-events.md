@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Unusual Product Behavior Events Use the Event Notifications screen to enable and configure notifications for unusual product behaviors detected on your network. Related information Managed Product Unreachable Real-time Scan Disabled Real-time Scan Enabled © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Unusual Product Behavior Events Use the Event Notifications screen to enable and configure notifications for unusual product behaviors detected on your network. Related information Managed Product Unreachable Real-time Scan Disabled Real-time Scan Enabled © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

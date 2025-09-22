@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Custom models now support Identity and Access Activity Data May 6, 2024—You can now create custom models that include filters for Identity and Access Activity Data in Detection Model Management. For more information, see Configure a custom model. Agentic SIEM & XDR → Detection Model Management © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Custom models now support Identity and Access Activity Data May 6, 2024—You can now create custom models that include filters for Identity and Access Activity Data in Detection Model Management. For more information, see Configure a custom model. Agentic SIEM & XDR → Detection Model Management © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

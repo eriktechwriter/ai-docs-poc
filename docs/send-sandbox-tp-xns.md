@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Send to Sandbox support for TippingPoint Network Sensor files December 16, 2024—TippingPoint Network Sensor now supports the sending of files to the Sandbox Analysis app. When TippingPoint Network Sensor is enabled in conjunction with Send to Sandbox, the sandbox analysis will result in additional charged credits. Network Security → Network Inventory © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Send to Sandbox support for TippingPoint Network Sensor files December 16, 2024—TippingPoint Network Sensor now supports the sending of files to the Sandbox Analysis app. When TippingPoint Network Sensor is enabled in conjunction with Send to Sandbox, the sandbox analysis will result in additional charged credits. Network Security → Network Inventory © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base

@@ -8,4 +8,4 @@ tags:
   - trend-vision-one
 ---
 
-/*<![CDATA[*/ $('#title').html($('meta[name=map-description]').attr('content')); /*]]>*/ Risk Insights supports multiple Azure AD tenants Customers with multiple Azure AD tenants can now have full visibility of accounts on all tenants and perform risk assessment on multiple Azure AD tenants in Risk Insights apps. Cyber Risk Exposure Management © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
+ Risk Insights supports multiple Azure AD tenants Customers with multiple Azure AD tenants can now have full visibility of accounts on all tenants and perform risk assessment on multiple Azure AD tenants in Risk Insights apps. Cyber Risk Exposure Management © 2025 Trend Micro Incorporated. All rights reserved.Search Knowledge Base
