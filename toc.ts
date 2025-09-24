@@ -3,7 +3,6 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 const sidebars: SidebarsConfig = {
   // Main documentation sidebar matching WebHelp TOC structure
   endpointSecuritySidebar: [
-    'intro',
     {
       type: 'category',
       label: 'Getting Started',
@@ -46,9 +45,6 @@ const sidebars: SidebarsConfig = {
           label: 'System Settings',
           items: [
             'administration/system-settings/index',
-            'administration/system-settings/global-settings',
-            'administration/system-settings/notifications',
-            'administration/system-settings/updates',
           ],
         },
       ],
@@ -64,40 +60,6 @@ const sidebars: SidebarsConfig = {
           label: 'Anti-Malware',
           items: [
             'endpoint-protection/anti-malware/index',
-            'endpoint-protection/anti-malware/real-time-scan',
-            'endpoint-protection/anti-malware/scheduled-scan',
-            'endpoint-protection/anti-malware/manual-scan',
-            'endpoint-protection/anti-malware/scan-exclusions',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Firewall',
-          items: [
-            'endpoint-protection/firewall/index',
-            'endpoint-protection/firewall/firewall-rules',
-            'endpoint-protection/firewall/stateful-configuration',
-            'endpoint-protection/firewall/events-logs',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Intrusion Prevention',
-          items: [
-            'endpoint-protection/intrusion-prevention/index',
-            'endpoint-protection/intrusion-prevention/ips-rules',
-            'endpoint-protection/intrusion-prevention/configuration',
-            'endpoint-protection/intrusion-prevention/events',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Application Control',
-          items: [
-            'endpoint-protection/application-control/index',
-            'endpoint-protection/application-control/trusted-programs',
-            'endpoint-protection/application-control/blocked-programs',
-            'endpoint-protection/application-control/events',
           ],
         },
       ],
@@ -108,10 +70,6 @@ const sidebars: SidebarsConfig = {
       collapsed: true,
       items: [
         'monitoring-reporting/index',
-        'monitoring-reporting/dashboards',
-        'monitoring-reporting/reports',
-        'monitoring-reporting/events-logs',
-        'monitoring-reporting/alerts-notifications',
       ],
     },
     {
@@ -120,10 +78,6 @@ const sidebars: SidebarsConfig = {
       collapsed: true,
       items: [
         'troubleshooting/index',
-        'troubleshooting/common-issues',
-        'troubleshooting/diagnostic-tools',
-        'troubleshooting/log-analysis',
-        'troubleshooting/support-resources',
       ],
     },
     {
@@ -132,10 +86,6 @@ const sidebars: SidebarsConfig = {
       collapsed: true,
       items: [
         'reference/index',
-        'reference/api-documentation',
-        'reference/command-line-tools',
-        'reference/configuration-files',
-        'reference/glossary',
       ],
     },
   ],
