@@ -3,6 +3,7 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 const sidebars: SidebarsConfig = {
   // Main documentation sidebar matching WebHelp TOC structure
   endpointSecuritySidebar: [
+    'index',
     {
       type: 'category',
       label: 'Getting Started',
