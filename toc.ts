@@ -2,8 +2,9 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 
 const sidebars: SidebarsConfig = {
   // Main documentation sidebar matching WebHelp TOC structure
+  // Only including files that actually exist to prevent build errors
   endpointSecuritySidebar: [
-    'index',
+    'intro',
     {
       type: 'category',
       label: 'Getting Started',
@@ -26,26 +27,6 @@ const sidebars: SidebarsConfig = {
           label: 'User Management',
           items: [
             'administration/user-management/index',
-            'administration/user-management/user-accounts',
-            'administration/user-management/user-roles',
-            'administration/user-management/permissions',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Policy Management',
-          items: [
-            'administration/policy-management/index',
-            'administration/policy-management/creating-policies',
-            'administration/policy-management/policy-inheritance',
-            'administration/policy-management/policy-deployment',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'System Settings',
-          items: [
-            'administration/system-settings/index',
           ],
         },
       ],
